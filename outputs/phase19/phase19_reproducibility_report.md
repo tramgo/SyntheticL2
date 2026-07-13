@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-13T20:25:25.697672+00:00
+Generated UTC: 2026-07-13T20:35:49.307707+00:00
 
 ## Scope
 
@@ -12,9 +12,9 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | coverage_status | field_checks |
 | --- | --- |
 | manifest_missing_or_unreadable | 10 |
-| missing | 136 |
-| present_alias_or_inferred | 24 |
-| present_exact | 80 |
+| missing | 80 |
+| present_alias_or_inferred | 10 |
+| present_exact | 150 |
 
 ## Artifact Summary
 
@@ -36,13 +36,13 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | phase17 | outputs/phase17/work_packages_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase18 | outputs/phase18/technology_stack_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | phase1_event_reconstruction | outputs/phase1/event_reconstruction/event_reconstruction_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
-| phase2 | outputs/phase2/calibration_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase3 | outputs/phase3/regime_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase4 | outputs/phase4/scenario_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase5 | outputs/phase5/price_process_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase6 | outputs/phase6/l2_book_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase7 | outputs/phase7/shock_library_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase8 | outputs/phase8/retail_feed_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
+| phase2 | outputs/phase2/calibration_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase3 | outputs/phase3/regime_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase4 | outputs/phase4/scenario_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase5 | outputs/phase5/price_process_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase6 | outputs/phase6/l2_book_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase7 | outputs/phase7/shock_library_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase8 | outputs/phase8/retail_feed_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase9 | outputs/phase9/data_product_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | stage_a1 | outputs/stage_a1/manifest_check.json | 10 | 0 | 0 | 10 | 0 | False |
 
@@ -60,24 +60,24 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | regime_calendar_version | manifest_missing_or_unreadable | 1 | phase1 | Record scenario/regime calendar version for generated artifacts. |
 | scenario_ids | manifest_missing_or_unreadable | 1 | phase1 | Record scenario IDs/profiles represented by each generated artifact. |
 | ticker_metadata_version | manifest_missing_or_unreadable | 1 | phase1 | Version ticker universe and metadata source. |
-| calibration_dataset_id | missing | 15 | dashboard;phase10;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record real-data calibration dataset identifier and date range. |
-| configuration_hash | missing | 16 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Serialize effective config and store a stable hash per artifact. |
-| cost_model_version | missing | 16 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Version execution/cost assumptions and cost schedule. |
+| calibration_dataset_id | missing | 8 | dashboard;phase10;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Record real-data calibration dataset identifier and date range. |
+| configuration_hash | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Serialize effective config and store a stable hash per artifact. |
+| cost_model_version | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Version execution/cost assumptions and cost schedule. |
 | creation_timestamp | missing | 1 | stage_a1 | Store generated_utc or creation_timestamp in every manifest. |
-| generator_version | missing | 16 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Add generator_version or code hash to every phase manifest. |
-| latency_model_version | missing | 16 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Version feed latency/drop/duplication assumptions. |
-| random_seed | missing | 16 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record seed or seed-plan reference for every stochastic artifact. |
-| regime_calendar_version | missing | 15 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario/regime calendar version for generated artifacts. |
-| scenario_ids | missing | 16 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario IDs/profiles represented by each generated artifact. |
+| generator_version | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Add generator_version or code hash to every phase manifest. |
+| latency_model_version | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Version feed latency/drop/duplication assumptions. |
+| random_seed | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Record seed or seed-plan reference for every stochastic artifact. |
+| regime_calendar_version | missing | 8 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase18;phase9;stage_a1 | Record scenario/regime calendar version for generated artifacts. |
+| scenario_ids | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Record scenario IDs/profiles represented by each generated artifact. |
 | ticker_metadata_version | missing | 9 | dashboard;phase10;phase11;phase13;phase13_smoke_run;phase14;phase18;phase9;stage_a1 | Version ticker universe and metadata source. |
 
 ## Remediation Status
 
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
-| add_field_in_generator | 136 | 16 |
-| complete_exact | 80 | 8 |
-| normalize_alias_to_exact_field | 24 | 15 |
+| add_field_in_generator | 80 | 9 |
+| complete_exact | 150 | 15 |
+| normalize_alias_to_exact_field | 10 | 8 |
 | recover_or_rerun_manifest | 10 | 1 |
 
 ## Normalized Manifest Overlay
@@ -89,8 +89,8 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | --- | --- |
 | normalized_overlay_artifacts | 25 |
 | exact_field_overlay_ready_artifacts | 25 |
-| normalizer_default_fields | 147 |
-| source_manifest_exact_or_alias_fields | 103 |
+| normalizer_default_fields | 90 |
+| source_manifest_exact_or_alias_fields | 160 |
 | normalized_field_rows | 250 |
 
 | artifact_id | source_manifest_path | normalized_manifest_path | source_manifest_exists | required_fields | normalized_fields_present | normalizer_default_fields | source_manifest_exact_or_alias_fields | exact_field_overlay_ready |
@@ -98,13 +98,13 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | stage_a1 | outputs/stage_a1/manifest_check.json | outputs\phase19\normalized_manifests\stage_a1.normalized_manifest.json | True | 10 | 10 | 10 | 0 | True |
 | phase1 | outputs/phase1/phase1_manifest.json | outputs\phase19\normalized_manifests\phase1.normalized_manifest.json | False | 10 | 10 | 10 | 0 | True |
 | phase1_event_reconstruction | outputs/phase1/event_reconstruction/event_reconstruction_manifest.json | outputs\phase19\normalized_manifests\phase1_event_reconstruction.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
-| phase2 | outputs/phase2/calibration_manifest.json | outputs\phase19\normalized_manifests\phase2.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |
-| phase3 | outputs/phase3/regime_manifest.json | outputs\phase19\normalized_manifests\phase3.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |
-| phase4 | outputs/phase4/scenario_manifest.json | outputs\phase19\normalized_manifests\phase4.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |
-| phase5 | outputs/phase5/price_process_manifest.json | outputs\phase19\normalized_manifests\phase5.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |
-| phase6 | outputs/phase6/l2_book_manifest.json | outputs\phase19\normalized_manifests\phase6.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |
-| phase7 | outputs/phase7/shock_library_manifest.json | outputs\phase19\normalized_manifests\phase7.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |
-| phase8 | outputs/phase8/retail_feed_manifest.json | outputs\phase19\normalized_manifests\phase8.normalized_manifest.json | True | 10 | 10 | 9 | 1 | True |
+| phase2 | outputs/phase2/calibration_manifest.json | outputs\phase19\normalized_manifests\phase2.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase3 | outputs/phase3/regime_manifest.json | outputs\phase19\normalized_manifests\phase3.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase4 | outputs/phase4/scenario_manifest.json | outputs\phase19\normalized_manifests\phase4.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase5 | outputs/phase5/price_process_manifest.json | outputs\phase19\normalized_manifests\phase5.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase6 | outputs/phase6/l2_book_manifest.json | outputs\phase19\normalized_manifests\phase6.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase7 | outputs/phase7/shock_library_manifest.json | outputs\phase19\normalized_manifests\phase7.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase8 | outputs/phase8/retail_feed_manifest.json | outputs\phase19\normalized_manifests\phase8.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase9 | outputs/phase9/data_product_manifest.json | outputs\phase19\normalized_manifests\phase9.normalized_manifest.json | True | 10 | 10 | 9 | 1 | True |
 | phase10 | outputs/phase10/storage_manifest.json | outputs\phase19\normalized_manifests\phase10.normalized_manifest.json | True | 10 | 10 | 9 | 1 | True |
 | phase11 | outputs/phase11/strategy_validation_manifest.json | outputs\phase19\normalized_manifests\phase11.normalized_manifest.json | True | 10 | 10 | 8 | 2 | True |

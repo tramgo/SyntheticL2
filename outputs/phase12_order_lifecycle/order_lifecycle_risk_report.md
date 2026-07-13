@@ -1,6 +1,6 @@
 # Phase 12 Order Lifecycle and Risk Proxy Report
 
-Generated UTC: 2026-07-13T20:24:49.895217+00:00
+Generated UTC: 2026-07-13T20:34:53.810655+00:00
 
 ## Scope
 
@@ -13,17 +13,17 @@ Lifecycle rows: 749979
 
 | fill_model | strategy_profiles | mean_fill_ratio | partial_fill_fraction | no_fill_fraction |
 | --- | --- | --- | --- | --- |
-| neutral_partial | 27 | 0.704458 | 1 | 0 |
-| optimistic_marketable | 27 | 0.985887 | 0.290652 | 0 |
-| pessimistic_partial | 27 | 0.371428 | 1 | 0 |
+| neutral_partial | 27 | 0.704554 | 1 | 0 |
+| optimistic_marketable | 27 | 0.985914 | 0.290156 | 0 |
+| pessimistic_partial | 27 | 0.3716 | 1 | 0 |
 
 ## Risk Summary
 
 | fill_model | strategy_profiles | max_drawdown_units | position_limit_breach_rows | daily_loss_limit_breach_rows |
 | --- | --- | --- | --- | --- |
-| neutral_partial | 27 | -5.88735 | 81771 | 8922 |
-| optimistic_marketable | 27 | -9.76114 | 105776 | 16669 |
-| pessimistic_partial | 27 | -2.08648 | 45463 | 1957 |
+| neutral_partial | 27 | -5.40608 | 80882 | 8735 |
+| optimistic_marketable | 27 | -8.92028 | 104681 | 17016 |
+| pessimistic_partial | 27 | -2.23868 | 46864 | 2261 |
 
 ## Risk Limits
 

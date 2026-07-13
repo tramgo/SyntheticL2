@@ -2,8 +2,8 @@ dataset,layer,path_pattern,file_count,total_rows,total_bytes,bytes_per_row,mb,ta
 stage_a1_compact_real_ticks,real_received_ticks,outputs/stage_a1/compact_ticks_by_symbol/symbol=*/ticks.parquet,32,620853,41641489,67.07141465048892,39.71241855621338,128-512,True
 phase5_price_paths_5m,synthetic_price_bars,outputs/phase5/price_paths_5m.parquet,1,453600,17764553,39.1634766313933,16.941597938537598,128-512,False
 phase6_l2_book_states_5m,synthetic_l2_book,outputs/phase6/l2_book_states_5m.parquet,1,453600,27471300,60.56283068783069,26.198673248291016,128-512,False
-phase8_retail_feed_observations,synthetic_retail_feed,outputs/phase8/retail_feed_observations.parquet,1,2259039,159756031,70.71858033438113,152.35522365570068,128-512,False
-phase9_tier_a_raw_synthetic_events,synthetic_event_product,outputs/phase9/tier_a/raw_synthetic_events.parquet,1,2276143,16129601,7.086374186507614,15.382386207580566,128-512,False
-phase9_tier_b_compact_l2_state,synthetic_l2_product,outputs/phase9/tier_b/compact_l2_state.parquet,1,2259039,165943933,73.45775482406457,158.25646686553955,128-512,False
-phase9_tier_c_features_5m,synthetic_feature_product,outputs/phase9/tier_c/features_5m.parquet,1,2259039,128897765,57.058671851172114,122.92648792266846,128-512,False
-phase9_tier_d_resampled_features_15m,synthetic_resampled_feature_product,outputs/phase9/tier_d/resampled_features_15m.parquet,1,756000,57907772,76.59758201058202,55.225154876708984,128-512,False
+phase8_retail_feed_observations,synthetic_retail_feed,outputs/phase8/retail_feed_observations.parquet,1,2259228,159825638,70.74347431954632,152.42160606384277,128-512,False
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,outputs/phase9/tier_a/raw_synthetic_events.parquet,1,2276282,16136936,7.089163820651396,15.389381408691406,128-512,False
+phase9_tier_b_compact_l2_state,synthetic_l2_product,outputs/phase9/tier_b/compact_l2_state.parquet,1,2259228,166006256,73.47919554821381,158.31590270996094,128-512,False
+phase9_tier_c_features_5m,synthetic_feature_product,outputs/phase9/tier_c/features_5m.parquet,1,2259228,128833717,57.025548992841806,122.86540699005127,128-512,False
+phase9_tier_d_resampled_features_15m,synthetic_resampled_feature_product,outputs/phase9/tier_d/resampled_features_15m.parquet,1,755996,57894440,76.58035227699618,55.212440490722656,128-512,False

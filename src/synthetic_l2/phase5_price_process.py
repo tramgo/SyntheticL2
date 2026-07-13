@@ -12,6 +12,8 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 SYMBOL_SECTORS = {
     "ADANIPORTS": "industrials",
@@ -335,8 +337,9 @@ def run_phase5(phase2_dir: Path, phase4_dir: Path, output_dir: Path) -> None:
 
     pq.write_table(pa.Table.from_pandas(paths, preserve_index=False), output_dir / "price_paths_5m.parquet", compression="zstd")
     daily.to_csv(output_dir / "daily_price_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase2_dir": str(phase2_dir),
         "phase4_dir": str(phase4_dir),
         "bar_minutes": BAR_MINUTES,
@@ -345,6 +348,27 @@ def run_phase5(phase2_dir: Path, phase4_dir: Path, output_dir: Path) -> None:
         "validation": validation,
         "evidence_scope": "synthetic_price_process_v1",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase5",
+            generated_utc=generated_utc,
+            inputs={"phase2_dir": str(phase2_dir), "phase4_dir": str(phase4_dir)},
+            parameters={
+                "bar_minutes": BAR_MINUTES,
+                "session_start": SESSION_START.isoformat(),
+                "session_end": SESSION_END.isoformat(),
+            },
+            outputs={
+                "price_paths_5m": str(output_dir / "price_paths_5m.parquet"),
+                "daily_price_summary": str(output_dir / "daily_price_summary.csv"),
+                "report": str(output_dir / "phase5_price_process_report.md"),
+            },
+            random_seed="phase4_scenario_calendar.seed plus deterministic symbol_seed",
+            scenario_ids="outputs/phase4/scenario_calendar.csv",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "price_process_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, validation, daily)
 
@@ -364,4 +388,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

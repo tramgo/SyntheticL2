@@ -1,2 +1,2 @@
 level,metric,value,symbols,status,evidence
-L6_strategy_neutral_realism,simple_symbol_feature_separability_score,1.6428901729437893,32,pass,Simple real-vs-synthetic symbol aggregate separability proxy; not a trained discriminator.
+L6_strategy_neutral_realism,simple_symbol_feature_separability_score,1.6422071180478104,32,pass,Simple real-vs-synthetic symbol aggregate separability proxy; not a trained discriminator.

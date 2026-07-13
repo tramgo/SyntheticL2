@@ -1,6 +1,6 @@
 # Phase 14 Synthetic Data Quality Validation Report
 
-Generated UTC: 2026-07-13T15:46:34.486787+00:00
+Generated UTC: 2026-07-13T20:35:16.473029+00:00
 
 ## Scope
 
@@ -27,7 +27,7 @@ It is a quality gate diagnostic, not strategy acceptance.
 | L1_structural | phase6_crossed_l1_rows | 0 | 1 | 1 | pass | Phase 6/DuckDB validation has 0 crossed L1 rows. |
 | L1_structural | phase9_negative_spread_rows | 0 | 1 | 1 | pass | Tier C spread_ticks should be non-negative. |
 | L1_structural | phase9_nonpositive_mid_price_rows | 0 | 1 | 1 | pass | Tier C mid_price should be positive. |
-| L1_structural | phase9_future_label_null_fraction | 0.0133862 | 0.02 | 0.05 | pass | Expected terminal rows per symbol/profile/day have null forward labels. |
+| L1_structural | phase9_future_label_null_fraction | 0.0133851 | 0.02 | 0.05 | pass | Expected terminal rows per symbol/profile/day have null forward labels. |
 | L1_structural | phase6_summary_groups | 170 | 1 | 0 | pass | Phase 6 L2 book summary groups exist. |
 
 ## Level 2 Marginal
@@ -36,7 +36,7 @@ It is a quality gate diagnostic, not strategy acceptance.
 | --- | --- | --- | --- | --- | --- |
 | L2_marginal | spread_ticks_median | 32 | 1.13687e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
 | L2_marginal | spread_ticks_q95 | 32 | 1.07371e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
-| L2_marginal | nonzero_price_change_fraction | 32 | 1.20531 | warn | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
+| L2_marginal | nonzero_price_change_fraction | 32 | 1.20472 | warn | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
 | L2_marginal | l5_imbalance_median | 32 | 0.486332 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
 
 ## Caveats

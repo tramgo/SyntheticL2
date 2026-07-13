@@ -1,6 +1,6 @@
 # Phase 6 L2 Book Generator Report
 
-Generated UTC: 2026-07-13T14:42:16.306476+00:00
+Generated UTC: 2026-07-13T20:31:55.953698+00:00
 
 ## Scope
 

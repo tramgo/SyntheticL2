@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T15:46:34.460072+00:00",
+  "generated_utc": "2026-07-13T20:35:16.460391+00:00",
   "inputs": {
     "real_quality": "outputs\\stage_a1\\data_quality_report.csv",
     "real_price": "outputs\\phase2\\price_tick_calibration.csv",

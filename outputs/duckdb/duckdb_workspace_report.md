@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T20:25:29.069897+00:00
+Generated UTC: 2026-07-13T20:35:52.224521+00:00
 
 ## Storage Decision
 
@@ -33,17 +33,17 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 7 market events: 200
 - Phase 7 ticker events: 1304
 - Phase 7 target symbols: 32
-- Phase 8 feed observation rows: 2259039
+- Phase 8 feed observation rows: 2259228
 - Phase 8 feed profiles: 5
-- Phase 8 dropped rows: 15600
-- Phase 8 duplicate rows: 6639
-- Phase 9 Tier A events: 2276143
-- Phase 9 Tier B rows: 2259039
-- Phase 9 Tier C rows: 2259039
-- Phase 9 Tier D 15-minute resampled rows: 756000
+- Phase 8 dropped rows: 15550
+- Phase 8 duplicate rows: 6778
+- Phase 9 Tier A events: 2276282
+- Phase 9 Tier B rows: 2259228
+- Phase 9 Tier C rows: 2259228
+- Phase 9 Tier D 15-minute resampled rows: 755996
 - Phase 9 Tier D symbols: 32
 - Phase 9 Tier D interval minutes: 15
-- Phase 9 Tier D incomplete panels: 21633
+- Phase 9 Tier D incomplete panels: 21749
 - Phase 9 Tier B crossed L1 rows: 0
 - Phase 10 measured storage layers: 5
 - Phase 10 generation profiles: 5
@@ -54,14 +54,14 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 10 consolidated schema columns: 346
 - Phase 10 partition recommendation rows: 8
 - Phase 10 consolidated Medium estimated total GB: 29.73
-- Phase 10 consolidated Full estimated total GB: 118.93
+- Phase 10 consolidated Full estimated total GB: 118.91
 - Phase 10 type optimization candidates: 223
 - Phase 11 strategies: 11
 - Phase 11 baselines: 7
 - Phase 11 runnable proxy strategies: 5
 - Phase 11 partial/missing-feature strategies: 4
 - Phase 11 unsupported-by-current-product strategies: 2
-- Phase 11 rows evaluated per strategy: 2259039
+- Phase 11 rows evaluated per strategy: 2259228
 - Phase 11 strategy modules: 11
 - Phase 11 implemented proxy modules: 11
 - Phase 11 promotion-ready modules: 0
@@ -70,7 +70,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 execution summary rows: 27
 - Phase 12 execution profiles: 3
 - Phase 12 strategies simulated: 9
-- Phase 12 total simulated trades: 10350654
+- Phase 12 total simulated trades: 10375860
 - Phase 12 trade sample rows: 249993
 - Phase 12 cost components: 13
 - Phase 12 event-backtest order rows: 6480
@@ -82,8 +82,8 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 fill models: 3
 - Phase 12 partial-fill summary rows: 81
 - Phase 12 risk-control summary rows: 81
-- Phase 12 position-limit breach rows: 233010
-- Phase 12 daily-loss-limit breach rows: 27548
+- Phase 12 position-limit breach rows: 232427
+- Phase 12 daily-loss-limit breach rows: 28012
 - Phase 13 split rows: 189
 - Phase 13 seed rows: 30
 - Phase 13 initial engineering seeds: 9
@@ -115,7 +115,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 16 missing trading metrics: 0
 - Phase 16 trading scoreboard rows: 27
 - Phase 16 markout/MAE/MFE summary rows: 27
-- Phase 16 markout sample trades: 243958
+- Phase 16 markout sample trades: 243973
 - Phase 16 adverse-selection metric status: sample_proxy
 - Phase 16 MAE/MFE metric status: sample_proxy
 - Phase 16 breakdown rows: 12
@@ -141,18 +141,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 19 required fields: 10
 - Phase 19 audited artifacts: 25
 - Phase 19 field checks: 250
-- Phase 19 exact-regeneration-ready artifacts: 8
-- Phase 19 artifacts with missing fields: 16
+- Phase 19 exact-regeneration-ready artifacts: 15
+- Phase 19 artifacts with missing fields: 9
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
 - Phase 19 remediation rows: 250
 - Phase 19 remediation summary rows: 4
 - Phase 19 normalized overlay artifacts: 25
 - Phase 19 normalized overlay-ready artifacts: 25
-- Phase 19 normalizer-default fields: 147
-- Phase 19 source-or-alias fields: 103
-- Phase 19 add-field-in-generator rows: 136
-- Phase 19 alias-normalization rows: 24
+- Phase 19 normalizer-default fields: 90
+- Phase 19 source-or-alias fields: 160
+- Phase 19 add-field-in-generator rows: 80
+- Phase 19 alias-normalization rows: 10
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30

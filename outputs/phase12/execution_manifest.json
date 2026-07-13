@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-07-13T20:24:44.506410+00:00",
+  "generated_utc": "2026-07-13T20:34:49.372872+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "seed_plan_path": "outputs\\phase13\\seed_plan.csv",
   "seeded_trade_sample": true,
   "seed_values_in_trade_sample": 30,
-  "rows_evaluated": 2259039,
+  "rows_evaluated": 2259228,
   "strategies_simulated": 9,
   "execution_profiles": 3,
   "summary_rows": 27,
@@ -33,7 +33,7 @@
   "charge_components": 6,
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "bab8802425a86825eddfc7d15e6a5cd50565090b",
+  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
   "configuration_hash": "d3e6d3c5f26527a099149d28f7eacf69d4ef1728b3417d204f583a204360b1ae",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -41,5 +41,5 @@
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
   "scenario_ids": "outputs/phase4/scenario_calendar.csv_and_phase13_seed_plan_cycle",
   "latency_model_version": "phase12_execution_profiles_v1",
-  "creation_timestamp": "2026-07-13T20:24:44.506410+00:00"
+  "creation_timestamp": "2026-07-13T20:34:49.372872+00:00"
 }

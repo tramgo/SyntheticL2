@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 COUNTERFACTUAL_VARIANTS = [
     "no_shock",
@@ -364,14 +366,34 @@ def run_phase7(phase4_dir: Path, phase6_dir: Path, output_dir: Path) -> None:
     events.to_json(output_dir / "shock_library.jsonl", orient="records", lines=True)
     by_type.to_csv(output_dir / "shock_type_summary.csv", index=False)
     by_day.to_csv(output_dir / "shock_day_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase4_dir": str(phase4_dir),
         "phase6_dir": str(phase6_dir),
         "phase6_book_event_labels": sorted(book_summary["book_event_label"].unique().tolist()) if "book_event_label" in book_summary else [],
         "validation": validation,
         "evidence_scope": "synthetic_shock_event_design",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase7",
+            generated_utc=generated_utc,
+            inputs={"phase4_dir": str(phase4_dir), "phase6_dir": str(phase6_dir)},
+            parameters={"shock_scope": manifest["evidence_scope"]},
+            outputs={
+                "shock_library": str(output_dir / "shock_library.csv"),
+                "shock_library_jsonl": str(output_dir / "shock_library.jsonl"),
+                "shock_type_summary": str(output_dir / "shock_type_summary.csv"),
+                "shock_day_summary": str(output_dir / "shock_day_summary.csv"),
+                "report": str(output_dir / "phase7_shock_library_report.md"),
+            },
+            random_seed="phase4_scenario_calendar.seed plus deterministic shock day/symbol seeds",
+            scenario_ids="outputs/phase4/scenario_calendar.csv",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "shock_library_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, validation, by_type, by_day)
 

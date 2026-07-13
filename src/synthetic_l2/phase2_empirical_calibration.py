@@ -7,6 +7,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+from synthetic_l2.reproducibility import reproducibility_fields
 import pyarrow.parquet as pq
 
 
@@ -306,14 +308,35 @@ def run_phase2(phase1_dir: Path, output_dir: Path) -> None:
     class_summary.to_csv(output_dir / "cross_section_class_summary.csv", index=False)
     corr_summary.to_csv(output_dir / "cross_section_correlation_summary.csv", index=False)
     ledger.to_csv(output_dir / "parameter_evidence_ledger.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase1_dir": str(phase1_dir),
         "symbols": int(len(price_df)),
         "rows": int(price_df["rows"].sum()) if len(price_df) else 0,
         "five_second_return_bins": int(len(returns_5s)),
         "evidence_scope": "one_day_received_tick_sample",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase2",
+            generated_utc=generated_utc,
+            inputs={"phase1_dir": str(phase1_dir)},
+            parameters={"calibration_scope": manifest["evidence_scope"]},
+            outputs={
+                "price_tick_calibration": str(output_dir / "price_tick_calibration.csv"),
+                "activity_calibration": str(output_dir / "activity_calibration.csv"),
+                "depth_calibration": str(output_dir / "depth_calibration.csv"),
+                "trade_flow_calibration": str(output_dir / "trade_flow_calibration.csv"),
+                "parameter_evidence_ledger": str(output_dir / "parameter_evidence_ledger.csv"),
+                "report": str(output_dir / "phase2_calibration_report.md"),
+            },
+            random_seed="not_applicable_deterministic_empirical_calibration",
+            scenario_ids="not_applicable_received_real_sample",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "calibration_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, price_df, activity_df, depth_df, trade_flow_df, class_summary, corr_summary)
 

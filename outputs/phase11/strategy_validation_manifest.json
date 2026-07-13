@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-07-13T15:21:14.547823+00:00",
+  "generated_utc": "2026-07-13T20:33:15.516859+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
-  "rows_evaluated": 2259039,
+  "rows_evaluated": 2259228,
   "strategies": 11,
   "baselines": 7,
   "support_levels": {

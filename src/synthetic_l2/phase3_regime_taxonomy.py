@@ -7,6 +7,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+from synthetic_l2.reproducibility import reproducibility_fields
 import pyarrow.parquet as pq
 
 
@@ -354,8 +356,9 @@ def run_phase3(phase1_dir: Path, phase2_dir: Path, output_dir: Path, bin_ms: int
     intraday.to_csv(output_dir / "intraday_market_states.csv", index=False)
     ticker_states.to_csv(output_dir / "ticker_state_profile.csv", index=False)
     symbol_bins.to_csv(output_dir / "symbol_intraday_features.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase1_dir": str(phase1_dir),
         "phase2_dir": str(phase2_dir),
         "symbols": int(symbol_bins["symbol"].nunique()),
@@ -364,6 +367,25 @@ def run_phase3(phase1_dir: Path, phase2_dir: Path, output_dir: Path, bin_ms: int
         "symbol_bin_rows": int(symbol_bins.shape[0]),
         "evidence_scope": "one_day_candidate_taxonomy",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase3",
+            generated_utc=generated_utc,
+            inputs={"phase1_dir": str(phase1_dir), "phase2_dir": str(phase2_dir)},
+            parameters={"bin_ms": int(bin_ms), "taxonomy_scope": manifest["evidence_scope"]},
+            outputs={
+                "daily_regime_observation": str(output_dir / "daily_regime_observation.csv"),
+                "intraday_market_states": str(output_dir / "intraday_market_states.csv"),
+                "ticker_state_profile": str(output_dir / "ticker_state_profile.csv"),
+                "symbol_intraday_features": str(output_dir / "symbol_intraday_features.csv"),
+                "report": str(output_dir / "phase3_regime_report.md"),
+            },
+            random_seed="not_applicable_deterministic_regime_taxonomy",
+            scenario_ids="one_day_candidate_taxonomy_bins",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "regime_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, daily, intraday, ticker_states)
 

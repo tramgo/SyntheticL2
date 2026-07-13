@@ -11,6 +11,8 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 LEVELS = range(1, 6)
 
@@ -222,13 +224,31 @@ def run_phase6(phase2_dir: Path, phase5_dir: Path, output_dir: Path) -> None:
     validation = validate_books(states)
     pq.write_table(pa.Table.from_pandas(states, preserve_index=False), output_dir / "l2_book_states_5m.parquet", compression="zstd")
     summary.to_csv(output_dir / "l2_book_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase2_dir": str(phase2_dir),
         "phase5_dir": str(phase5_dir),
         "validation": validation,
         "evidence_scope": "synthetic_l2_state_v1_market_by_price",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase6",
+            generated_utc=generated_utc,
+            inputs={"phase2_dir": str(phase2_dir), "phase5_dir": str(phase5_dir)},
+            parameters={"l2_scope": manifest["evidence_scope"]},
+            outputs={
+                "l2_book_states_5m": str(output_dir / "l2_book_states_5m.parquet"),
+                "l2_book_summary": str(output_dir / "l2_book_summary.csv"),
+                "report": str(output_dir / "phase6_l2_book_report.md"),
+            },
+            random_seed="not_applicable_deterministic_from_phase5_price_paths",
+            scenario_ids="outputs/phase4/scenario_calendar.csv_via_phase5",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "l2_book_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, validation, summary)
 
@@ -248,4 +268,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

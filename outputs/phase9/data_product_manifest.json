@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:37:18.401033+00:00",
+  "generated_utc": "2026-07-13T20:33:07.308937+00:00",
   "phase7_dir": "outputs\\phase7",
   "phase8_dir": "outputs\\phase8",
   "products": {
@@ -9,21 +9,21 @@
     "tier_d": "15-minute resampled feature panel derived from Tier C"
   },
   "validation": {
-    "tier_a_events": 2276143,
+    "tier_a_events": 2276282,
     "tier_a_event_kinds": 4,
-    "tier_b_rows": 2259039,
+    "tier_b_rows": 2259228,
     "tier_b_profiles": 5,
     "tier_b_symbols": 32,
-    "tier_c_rows": 2259039,
+    "tier_c_rows": 2259228,
     "tier_c_profiles": 5,
     "tier_c_symbols": 32,
     "tier_c_future_label_nulls": 30240,
     "tier_b_crossed_l1_rows": 0,
-    "tier_d_resampled_rows": 756000,
+    "tier_d_resampled_rows": 755996,
     "tier_d_resampled_profiles": 5,
     "tier_d_resampled_symbols": 32,
     "tier_d_target_interval_minutes": 15,
-    "tier_d_incomplete_panels": 21633
+    "tier_d_incomplete_panels": 21749
   },
   "resampled_product": {
     "source_tier": "tier_c",

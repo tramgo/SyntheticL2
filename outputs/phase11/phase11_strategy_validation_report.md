@@ -1,6 +1,6 @@
 # Phase 11 Strategy Validation Matrix Report
 
-Generated UTC: 2026-07-13T15:21:14.568470+00:00
+Generated UTC: 2026-07-13T20:33:15.519489+00:00
 
 ## Scope
 
@@ -19,15 +19,15 @@ These diagnostics are not strategy acceptance results. The current feature produ
 
 | strategy_id | signal_rows | signal_fraction | signed_mean_future_return | directional_accuracy_nonzero | status |
 | --- | --- | --- | --- | --- | --- |
-| S01 | 164347 | 0.0727508 | -0.00110589 | 0.434302 | diagnostic_only_not_acceptance_test |
-| S02 | 889386 | 0.393701 | -0.000113875 | 0.485228 | diagnostic_only_not_acceptance_test |
-| S03 | 280437 | 0.12414 | -0.000700219 | 0.466749 | diagnostic_only_not_acceptance_test |
-| S04 | 424857 | 0.18807 | -0.00020299 | 0.480748 | diagnostic_only_not_acceptance_test |
-| S05 | 445761 | 0.197323 | -3.17341e-05 | 0.497055 | diagnostic_only_not_acceptance_test |
-| S06 | 33809 | 0.0149661 | 4.1775e-05 | 0.505817 | diagnostic_only_not_acceptance_test |
-| S07 | 234969 | 0.104013 | 2.61682e-05 | 0.501803 | diagnostic_only_not_acceptance_test |
-| S08 | 442897 | 0.196055 | 2.1323e-05 | 0.506523 | diagnostic_only_not_acceptance_test |
-| S09 | 585389 | 0.259132 | -1.37599e-05 | 0.497817 | diagnostic_only_not_acceptance_test |
+| S01 | 164253 | 0.0727032 | -0.00108613 | 0.434982 | diagnostic_only_not_acceptance_test |
+| S02 | 898620 | 0.397755 | -0.00011217 | 0.485755 | diagnostic_only_not_acceptance_test |
+| S03 | 280476 | 0.124147 | -0.000691527 | 0.467834 | diagnostic_only_not_acceptance_test |
+| S04 | 424887 | 0.188067 | -0.000203103 | 0.480829 | diagnostic_only_not_acceptance_test |
+| S05 | 445798 | 0.197323 | -3.00993e-05 | 0.497367 | diagnostic_only_not_acceptance_test |
+| S06 | 33993 | 0.0150463 | 2.70872e-05 | 0.505455 | diagnostic_only_not_acceptance_test |
+| S07 | 234925 | 0.103985 | 2.68998e-05 | 0.501421 | diagnostic_only_not_acceptance_test |
+| S08 | 442644 | 0.195927 | 4.8916e-06 | 0.504006 | diagnostic_only_not_acceptance_test |
+| S09 | 585341 | 0.259089 | -1.41998e-05 | 0.49772 | diagnostic_only_not_acceptance_test |
 | S10 | 0 | 0 |  |  | not_evaluated_missing_product_support |
 | S11 | 0 | 0 |  |  | not_evaluated_missing_product_support |
 

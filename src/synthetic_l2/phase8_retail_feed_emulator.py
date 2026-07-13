@@ -10,6 +10,8 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 FEED_PROFILES = {
     "ideal_research": {
@@ -81,8 +83,12 @@ def build_shock_day_index(shocks: pd.DataFrame) -> set[tuple[str, int]]:
     return set(zip(active["quarter_profile"], active["scenario_day"].astype(int)))
 
 
+def stable_profile_seed(profile_name: str) -> int:
+    return sum((idx + 1) * ord(ch) for idx, ch in enumerate(profile_name)) % (2**32)
+
+
 def emulate_profile(states: pd.DataFrame, profile_name: str, profile: dict, shock_days: set[tuple[str, int]]) -> tuple[pd.DataFrame, pd.DataFrame]:
-    rng = np.random.default_rng(abs(hash(profile_name)) % (2**32))
+    rng = np.random.default_rng(stable_profile_seed(profile_name))
     feed = states.copy()
     feed["source_sequence"] = np.arange(len(feed), dtype=np.int64)
     feed["feed_profile"] = profile_name
@@ -229,8 +235,9 @@ def run_phase8(phase6_dir: Path, phase7_dir: Path, output_dir: Path) -> None:
     pq.write_table(pa.Table.from_pandas(observed_all, preserve_index=False), output_dir / "retail_feed_observations.parquet", compression="zstd")
     dropped_all.to_csv(output_dir / "retail_feed_dropped_events.csv", index=False)
     validation.to_csv(output_dir / "feed_profile_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase6_dir": str(phase6_dir),
         "phase7_dir": str(phase7_dir),
         "source_rows_per_profile": int(len(states)),
@@ -238,6 +245,27 @@ def run_phase8(phase6_dir: Path, phase7_dir: Path, output_dir: Path) -> None:
         "validation": validation.to_dict(orient="records"),
         "evidence_scope": "synthetic_retail_feed_test_profiles",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase8",
+            generated_utc=generated_utc,
+            inputs={"phase6_dir": str(phase6_dir), "phase7_dir": str(phase7_dir)},
+            parameters={
+                "feed_profiles": FEED_PROFILES,
+                "stable_profile_seeds": {name: stable_profile_seed(name) for name in FEED_PROFILES},
+            },
+            outputs={
+                "retail_feed_observations": str(output_dir / "retail_feed_observations.parquet"),
+                "retail_feed_dropped_events": str(output_dir / "retail_feed_dropped_events.csv"),
+                "feed_profile_summary": str(output_dir / "feed_profile_summary.csv"),
+                "report": str(output_dir / "phase8_retail_feed_report.md"),
+            },
+            random_seed={name: stable_profile_seed(name) for name in FEED_PROFILES},
+            scenario_ids="outputs/phase4/scenario_calendar.csv_via_phase6_phase7",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="phase8_feed_profiles_v1",
+        )
+    )
     (output_dir / "retail_feed_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, validation)
 

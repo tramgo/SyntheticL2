@@ -10,6 +10,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 REGIME_FAMILIES = {
     "D01": "Normal balanced",
@@ -403,8 +405,9 @@ def run_phase4(phase3_dir: Path, output_dir: Path, start_date: str) -> None:
     calendar.to_json(output_dir / "scenario_calendar.jsonl", orient="records", lines=True)
     mix_summary.to_csv(output_dir / "regime_mix_summary.csv", index=False)
     profile_summary.to_csv(output_dir / "profile_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase3_dir": str(phase3_dir),
         "start_date": start_date,
         "profiles": list(SEED_PROFILES),
@@ -414,6 +417,30 @@ def run_phase4(phase3_dir: Path, output_dir: Path, start_date: str) -> None:
         "observed_anchor": anchor,
         "evidence_scope": "synthetic_scenario_design_not_market_forecast",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase4",
+            generated_utc=generated_utc,
+            inputs={"phase3_dir": str(phase3_dir)},
+            parameters={
+                "start_date": start_date,
+                "seed_profiles": SEED_PROFILES,
+                "days_per_profile": 63,
+            },
+            outputs={
+                "scenario_calendar": str(output_dir / "scenario_calendar.csv"),
+                "scenario_calendar_jsonl": str(output_dir / "scenario_calendar.jsonl"),
+                "regime_mix_summary": str(output_dir / "regime_mix_summary.csv"),
+                "profile_summary": str(output_dir / "profile_summary.csv"),
+                "report": str(output_dir / "phase4_scenario_calendar_report.md"),
+            },
+            random_seed={name: profile["seed"] for name, profile in SEED_PROFILES.items()},
+            scenario_ids="phase4_scenario_calendar_all_profiles",
+            regime_calendar_version="phase4_scenario_calendar_v1",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "scenario_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, calendar, profile_summary, anchor)
 

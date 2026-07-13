@@ -1,8 +1,19 @@
 {
-  "generated_utc": "2026-07-13T14:19:31.701098+00:00",
+  "generated_utc": "2026-07-13T20:30:08.900405+00:00",
   "phase1_dir": "outputs\\phase1",
   "symbols": 32,
   "rows": 620853,
   "five_second_return_bins": 4509,
-  "evidence_scope": "one_day_received_tick_sample"
+  "evidence_scope": "one_day_received_tick_sample",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
+  "configuration_hash": "bbfdeed4e3c16a758633249fa8531000179970df117d37ee62f812f7b9f507bd",
+  "random_seed": "not_applicable_deterministic_empirical_calibration",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "not_applicable_received_real_sample",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-13T20:30:08.900405+00:00"
 }

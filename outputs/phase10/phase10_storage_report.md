@@ -1,6 +1,6 @@
 # Phase 10 Storage and Size Optimization Report
 
-Generated UTC: 2026-07-13T19:37:21.763074+00:00
+Generated UTC: 2026-07-13T20:33:10.804802+00:00
 
 ## Scope
 
@@ -14,21 +14,21 @@ Parquet/Zstandard remains the durable format. DuckDB remains the analytic query 
 | stage_a1_compact_real_ticks | 32 | 620853 | 39.7124 | 67.0714 | True |
 | phase5_price_paths_5m | 1 | 453600 | 16.9416 | 39.1635 | False |
 | phase6_l2_book_states_5m | 1 | 453600 | 26.1987 | 60.5628 | False |
-| phase8_retail_feed_observations | 1 | 2259039 | 152.3552 | 70.7186 | False |
-| phase9_tier_a_raw_synthetic_events | 1 | 2276143 | 15.3824 | 7.0864 | False |
-| phase9_tier_b_compact_l2_state | 1 | 2259039 | 158.2565 | 73.4578 | False |
-| phase9_tier_c_features_5m | 1 | 2259039 | 122.9265 | 57.0587 | False |
-| phase9_tier_d_resampled_features_15m | 1 | 756000 | 55.2252 | 76.5976 | False |
+| phase8_retail_feed_observations | 1 | 2259228 | 152.4216 | 70.7435 | False |
+| phase9_tier_a_raw_synthetic_events | 1 | 2276282 | 15.3894 | 7.0892 | False |
+| phase9_tier_b_compact_l2_state | 1 | 2259228 | 158.3159 | 73.4792 | False |
+| phase9_tier_c_features_5m | 1 | 2259228 | 122.8654 | 57.0255 | False |
+| phase9_tier_d_resampled_features_15m | 1 | 755996 | 55.2124 | 76.5804 | False |
 
 ## Size Estimates
 
 | profile | tickers | trading_days | feed_profiles | event_multiplier | estimated_feed_rows | total_gb | conservative_total_gb | aggressive_total_gb |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Small | 5 | 10 | 1 | 1.0000 | 970082.8125 | 0.1475 | 0.1032 | 0.3687 |
-| Medium | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 29.7315 | 20.8121 | 74.3288 |
-| Full | 32 | 252 | 5 | 1.0000 | 782274780.0000 | 118.9261 | 83.2482 | 297.3151 |
-| Dense | 10 | 63 | 5 | 4.0000 | 244460868.7500 | 37.1644 | 26.0151 | 92.9110 |
-| Feature-only | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 28.4408 | 19.9086 | 71.1020 |
+| Medium | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 29.7284 | 20.8099 | 74.3211 |
+| Full | 32 | 252 | 5 | 1.0000 | 782274780.0000 | 118.9137 | 83.2396 | 297.2843 |
+| Dense | 10 | 63 | 5 | 4.0000 | 244460868.7500 | 37.1605 | 26.0124 | 92.9013 |
+| Feature-only | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 28.4372 | 19.9061 | 71.0931 |
 
 ## Partition Recommendations
 

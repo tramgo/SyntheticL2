@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T14:47:46.167727+00:00",
+  "generated_utc": "2026-07-13T20:31:58.267292+00:00",
   "phase4_dir": "outputs\\phase4",
   "phase6_dir": "outputs\\phase6",
   "phase6_book_event_labels": [
@@ -20,5 +20,16 @@
     "null_required_effect_rows": 0,
     "invalid_duration_rows": 0
   },
-  "evidence_scope": "synthetic_shock_event_design"
+  "evidence_scope": "synthetic_shock_event_design",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
+  "configuration_hash": "e9aeedca7a3244c7ff96b412cf6d74032743954ee49e8d1f2129136f88e05867",
+  "random_seed": "phase4_scenario_calendar.seed plus deterministic shock day/symbol seeds",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "outputs/phase4/scenario_calendar.csv",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-13T20:31:58.267292+00:00"
 }

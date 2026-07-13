@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T14:27:04.995432+00:00",
+  "generated_utc": "2026-07-13T20:30:12.829803+00:00",
   "phase3_dir": "outputs\\phase3",
   "start_date": "2026-07-14",
   "profiles": [
@@ -48,5 +48,20 @@
     "observed_regime": "Gradual bullish trend",
     "observed_regime_evidence_label": "one_day_candidate_not_promotable"
   },
-  "evidence_scope": "synthetic_scenario_design_not_market_forecast"
+  "evidence_scope": "synthetic_scenario_design_not_market_forecast",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
+  "configuration_hash": "922cd4436969037263be229f4c4267041164d824b3b614fb4ffa0702a8f0b75d",
+  "random_seed": {
+    "Q-A": 4101,
+    "Q-B": 4102,
+    "Q-C": 4103
+  },
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "phase4_scenario_calendar_v1",
+  "scenario_ids": "phase4_scenario_calendar_all_profiles",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-13T20:30:12.829803+00:00"
 }

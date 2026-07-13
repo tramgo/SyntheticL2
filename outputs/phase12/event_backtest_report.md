@@ -1,6 +1,6 @@
 # Phase 12 Event-Driven Backtester Report
 
-Generated UTC: 2026-07-13T20:24:51.376044+00:00
+Generated UTC: 2026-07-13T20:34:55.298239+00:00
 
 ## Scope
 
@@ -12,25 +12,25 @@ It is still proxy evidence: no individual exchange order identity, queue priorit
 
 | order_model | orders |
 | --- | --- |
-| market_order | 2351 |
-| marketable_limit_order | 1908 |
-| passive_limit_order | 738 |
-| cancel_replace | 699 |
-| partial_fill | 526 |
-| rejection_scenario | 258 |
+| market_order | 2337 |
+| marketable_limit_order | 1906 |
+| passive_limit_order | 757 |
+| cancel_replace | 723 |
+| partial_fill | 515 |
+| rejection_scenario | 242 |
 
 ## Order Summary
 
 | order_model | order_status | orders | mean_fill_ratio | total_filled_qty | mean_event_net_return | total_event_net_pnl_units |
 | --- | --- | --- | --- | --- | --- | --- |
-| cancel_replace | FILLED | 653 | 1 | 653 | -0.000772397 | -0.504375 |
-| cancel_replace | REJECTED_OR_CANCELLED | 46 | 0 | 0 | 0 | 0 |
-| market_order | FILLED | 2351 | 1 | 2351 | -0.0018867 | -4.43564 |
-| marketable_limit_order | FILLED | 1793 | 1 | 1793 | -0.00104515 | -1.87396 |
-| marketable_limit_order | REJECTED_OR_CANCELLED | 115 | 0 | 0 | 0 | 0 |
-| partial_fill | FILLED | 526 | 0.45 | 236.7 | -0.000480177 | -0.252573 |
-| passive_limit_order | FILLED | 738 | 0.65 | 479.7 | -0.00147185 | -1.08622 |
-| rejection_scenario | REJECTED_OR_CANCELLED | 258 | 0 | 0 | 0 | 0 |
+| cancel_replace | FILLED | 669 | 1 | 669 | -0.00217535 | -1.45531 |
+| cancel_replace | REJECTED_OR_CANCELLED | 54 | 0 | 0 | 0 | 0 |
+| market_order | FILLED | 2337 | 1 | 2337 | -0.00151869 | -3.54917 |
+| marketable_limit_order | FILLED | 1783 | 1 | 1783 | -0.00112709 | -2.0096 |
+| marketable_limit_order | REJECTED_OR_CANCELLED | 123 | 0 | 0 | 0 | 0 |
+| partial_fill | FILLED | 515 | 0.45 | 231.75 | -0.000430997 | -0.221964 |
+| passive_limit_order | FILLED | 757 | 0.65 | 492.05 | -0.00143471 | -1.08607 |
+| rejection_scenario | REJECTED_OR_CANCELLED | 242 | 0 | 0 | 0 | 0 |
 
 ## Outputs
 

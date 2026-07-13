@@ -1,5 +1,5 @@
 level,metric,rows,spearman_corr,status,evidence
-L5_conditional,future_return_vs_mlofi,2228799,-0.027401897978013255,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
-L5_conditional,spread_vs_local_volatility,2198559,0.1813870824138069,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
-L5_conditional,event_intensity_vs_local_volatility,2198559,0.625093616468629,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
-L5_conditional,future_abs_return_vs_spread,2228799,0.11328303643834423,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
+L5_conditional,future_return_vs_mlofi,2228988,-0.027152867847825685,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
+L5_conditional,spread_vs_local_volatility,2198748,0.18022614926640323,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
+L5_conditional,event_intensity_vs_local_volatility,2198748,0.6252725983451691,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."
+L5_conditional,future_abs_return_vs_spread,2228988,0.11265701283289571,pass,"Synthetic conditional relationship diagnostic; sign is descriptive, not acceptance."

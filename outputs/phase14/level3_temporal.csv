@@ -1,5 +1,5 @@
 level,metric,groups,median_value,status,evidence
-L3_temporal,return_autocorr_lag1,10080,-6.42169884116845e-05,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
-L3_temporal,abs_return_autocorr_lag1,10080,-0.04250368892896137,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
-L3_temporal,mlofi_autocorr_lag1,10080,0.004691935986496786,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
+L3_temporal,return_autocorr_lag1,10080,-0.00036482204040824294,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
+L3_temporal,abs_return_autocorr_lag1,10080,-0.04219803283128257,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
+L3_temporal,mlofi_autocorr_lag1,10080,0.0037449214749374687,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
 L3_temporal,spread_autocorr_lag1,6765,-0.4983193229757477,pass,Autocorrelation measured over synthetic profile/day/symbol feature sequences.
