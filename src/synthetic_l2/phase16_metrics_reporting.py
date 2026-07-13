@@ -45,6 +45,42 @@ TRADING_METRICS = [
     ("exposure_holding_time", "sample_proxy", "Phase 12 order-lifecycle proxy provides running position exposure; holding-time lifecycle remains approximate."),
 ]
 
+METRIC_EVIDENCE_PATHS = {
+    "directional_accuracy": "outputs/phase16/predictive_metric_scoreboard.csv; outputs/phase11/strategy_signal_diagnostics.csv",
+    "balanced_accuracy": "outputs/phase16/predictive_proxy_diagnostics.csv",
+    "precision_recall_by_direction": "outputs/phase16/predictive_proxy_diagnostics.csv",
+    "roc_auc": "outputs/phase16/predictive_proxy_diagnostics.csv",
+    "brier_score": "outputs/phase16/predictive_brier_score_proxy.csv",
+    "calibration_curve": "outputs/phase16/predictive_calibration_curve_proxy.csv",
+    "information_coefficient": "outputs/phase16/predictive_metric_scoreboard.csv; outputs/phase11/strategy_signal_diagnostics.csv",
+    "future_return_by_signal_decile": "outputs/phase16/predictive_signal_bucket_returns.csv",
+    "incremental_r2": "outputs/phase16/predictive_proxy_diagnostics.csv",
+    "feature_importance_stability": "outputs/phase16/feature_importance_stability_proxy.csv",
+    "gross_pnl": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
+    "net_pnl": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
+    "return_on_allocated_capital": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12_order_lifecycle/risk_control_summary.csv",
+    "sharpe": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/trade_ledger_sample.parquet",
+    "sortino": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/trade_ledger_sample.parquet",
+    "maximum_drawdown": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12_order_lifecycle/risk_control_summary.csv",
+    "calmar_ratio": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12_order_lifecycle/risk_control_summary.csv",
+    "profit_factor": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/trade_ledger_sample.parquet",
+    "win_rate": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
+    "average_win_loss": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/trade_ledger_sample.parquet",
+    "expectancy_per_trade": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
+    "turnover": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
+    "cost_to_gross_profit_ratio": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/cost_schedule.csv",
+    "fill_ratio": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12_order_lifecycle/partial_fill_summary.csv",
+    "adverse_selection": "outputs/phase16/markout_mae_mfe_summary.csv",
+    "mae_mfe": "outputs/phase16/markout_mae_mfe_summary.csv",
+    "exposure_holding_time": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12_order_lifecycle/risk_control_summary.csv",
+}
+
+METRIC_ACCEPTANCE_BLOCKERS = {
+    "computed_proxy": "Computed from current one-day-derived synthetic/proxy products; not acceptance-grade without multi-day real holdout, full execution validation and promotion-gate clearance.",
+    "sample_proxy": "Computed from sampled/proxy evidence; not acceptance-grade without full-run coverage, multi-seed/walk-forward/holdout evidence and broker/exchange fill validation where applicable.",
+    "proxy_available": "Supporting proxy evidence exists, but the accepted production metric definition or capital/fill normalization remains incomplete.",
+}
+
 BREAKDOWNS = [
     ("ticker", "symbol", "available"),
     ("day", "trade_date", "available"),
@@ -133,6 +169,8 @@ def metric_catalog() -> pd.DataFrame:
                     "metric_name": metric_name,
                     "current_status": current_status,
                     "evidence_note": evidence_note,
+                    "evidence_path": METRIC_EVIDENCE_PATHS.get(metric_name, ""),
+                    "blocker": "" if current_status == "computed_acceptance" else METRIC_ACCEPTANCE_BLOCKERS.get(current_status, "Not acceptance-grade in the current one-day/proxy evidence set."),
                     "acceptance_eligible_now": current_status == "computed_acceptance",
                 }
             )
