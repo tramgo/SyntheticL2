@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 def _read_csv(path: Path) -> pd.DataFrame:
     if not path.exists():
@@ -173,11 +175,16 @@ def run(output_dir: Path, paths: dict[str, Path]) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     registry = build_module_registry(paths)
     coverage = build_module_coverage(registry)
-    registry.to_csv(output_dir / "strategy_module_registry.csv", index=False)
-    coverage.to_csv(output_dir / "strategy_module_coverage.csv", index=False)
+    registry_path = output_dir / "strategy_module_registry.csv"
+    coverage_path = output_dir / "strategy_module_coverage.csv"
+    report_path = output_dir / "strategy_module_registry_report.md"
+    registry.to_csv(registry_path, index=False)
+    coverage.to_csv(coverage_path, index=False)
+    inputs = {key: str(value) for key, value in paths.items()}
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "inputs": {key: str(value) for key, value in paths.items()},
+        "generated_utc": generated_utc,
+        "inputs": inputs,
         "modules": int(len(registry)),
         "implemented_proxy_modules": int(registry["implementation_status"].astype(str).str.startswith("implemented_proxy").sum()),
         "acceptance_grade_modules": int(registry["acceptance_grade"].astype(bool).sum()),
@@ -185,6 +192,22 @@ def run(output_dir: Path, paths: dict[str, Path]) -> None:
         "non_alpha_or_risk_modules": int(registry["module_type"].isin(["execution_risk_module_proxy", "risk_filter_module_proxy"]).sum()),
         "scope": "s01_s11_strategy_module_registry_not_promotion_evidence",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase11_strategy_modules",
+            generated_utc=generated_utc,
+            inputs=inputs,
+            parameters={"registry_scope": manifest["scope"]},
+            outputs={
+                "registry": str(registry_path),
+                "coverage": str(coverage_path),
+                "report": str(report_path),
+            },
+            scenario_ids="outputs/phase11/strategy_scenario_requirements.csv",
+            cost_model_version="phase12_event_backtest_cost_model_if_execution_module_else_not_applicable",
+            latency_model_version="phase12_event_backtest_latency_model_if_execution_module_else_not_applicable",
+        )
+    )
     (output_dir / "strategy_module_registry_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, registry, coverage)
 

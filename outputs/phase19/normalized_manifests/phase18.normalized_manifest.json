@@ -3,7 +3,7 @@
   "artifact_id": "phase18",
   "source_manifest_path": "outputs/phase18/technology_stack_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "2858917066eafe77d6f5164e52ba170d50947cdd",
+  "generator_version": "effa40bcd4afe3250f5dfedc4869f301d317981f",
   "configuration_hash": "2aa9131c05495b176dd99f9dbf6545c790d1310f10a3c3be98e5466be56840a1",
   "random_seed": "not_applicable_or_seed_plan_not_recorded",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -13,6 +13,6 @@
   "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1_or_not_applicable",
   "latency_model_version": "phase8_retail_feed_profiles_and_phase12_execution_profiles_or_not_applicable",
   "creation_timestamp": "2026-07-13T16:12:33.139779+00:00",
-  "normalization_timestamp": "2026-07-13T20:01:13.584649+00:00",
+  "normalization_timestamp": "2026-07-13T20:05:33.870354+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

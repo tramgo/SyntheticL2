@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-07-13T20:01:14.324884+00:00",
+  "generated_utc": "2026-07-13T20:05:34.652721+00:00",
   "required_fields": 10,
   "audited_artifacts": 25,
   "field_checks": 250,
-  "exact_regeneration_ready_artifacts": 0,
-  "artifacts_with_missing_fields": 24,
+  "exact_regeneration_ready_artifacts": 3,
+  "artifacts_with_missing_fields": 21,
   "manifest_missing_or_unreadable_artifacts": 1,
   "gap_rows": 20,
   "remediation_rows": 250,

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:47:46.369070+00:00",
+  "generated_utc": "2026-07-13T20:05:30.037973+00:00",
   "delta_dir": "outputs\\phase1\\received_tick_deltas_by_symbol",
   "rows_evaluated": 620853,
   "symbols": 32,
@@ -8,5 +8,16 @@
   "queue_event_proxy_rows": 360142,
   "direct_exchange_observation": false,
   "acceptance_grade": false,
-  "scope": "received_tick_market_by_price_event_inference_not_exchange_truth"
+  "scope": "received_tick_market_by_price_event_inference_not_exchange_truth",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "effa40bcd4afe3250f5dfedc4869f301d317981f",
+  "configuration_hash": "0924b3fe7e69c35b9886a72da22fb4e33c311d96f025abae2886298bd9084a79",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "not_applicable_received_real_sample",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-13T20:05:30.037973+00:00"
 }

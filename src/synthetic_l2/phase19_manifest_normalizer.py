@@ -11,6 +11,7 @@ from typing import Any
 import pandas as pd
 
 from synthetic_l2.phase19_reproducibility import FIELD_ALIASES, MANIFEST_CANDIDATES, REQUIRED_FIELDS, _load_json
+from synthetic_l2.reproducibility import reproducibility_fields
 
 
 def _git_sha(base_dir: Path) -> str:
@@ -132,8 +133,9 @@ def run(output_dir: Path, base_dir: Path) -> None:
     fields = pd.DataFrame(field_rows)
     summary.to_csv(output_dir / "normalized_manifest_overlay_summary.csv", index=False)
     fields.to_csv(output_dir / "normalized_manifest_field_sources.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "git_sha_used": git_sha,
         "artifacts_normalized": int(len(summary)),
         "field_rows": int(len(fields)),
@@ -142,6 +144,22 @@ def run(output_dir: Path, base_dir: Path) -> None:
         "source_manifest_exact_or_alias_fields": int(summary["source_manifest_exact_or_alias_fields"].sum()),
         "scope": "phase19_normalized_manifest_overlay_not_source_manifest_rewrite",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase19_normalized_manifest_overlay",
+            generated_utc=generated_utc,
+            inputs={"manifest_candidates": MANIFEST_CANDIDATES},
+            parameters={"required_fields": [field for field, _definition in REQUIRED_FIELDS]},
+            outputs={
+                "overlay_summary": str(output_dir / "normalized_manifest_overlay_summary.csv"),
+                "field_sources": str(output_dir / "normalized_manifest_field_sources.csv"),
+                "normalized_manifest_dir": str(manifest_dir),
+            },
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+            base_dir=base_dir,
+        )
+    )
     (output_dir / "normalized_manifest_overlay_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
 

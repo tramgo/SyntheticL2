@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:52:34.442643+00:00",
+  "generated_utc": "2026-07-13T20:05:31.568012+00:00",
   "trade_sample_path": "outputs\\phase12\\trade_ledger_sample.parquet",
   "input_trade_sample_rows": 249993,
   "order_trace_rows": 6480,
@@ -14,5 +14,16 @@
   "partial_fill_orders": 1264,
   "direct_queue_truth": false,
   "not_acceptance_grade": true,
-  "scope": "event_driven_order_lifecycle_proxy_over_phase12_trade_sample"
+  "scope": "event_driven_order_lifecycle_proxy_over_phase12_trade_sample",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "effa40bcd4afe3250f5dfedc4869f301d317981f",
+  "configuration_hash": "5ceffee4b54b8a9db28f5dfcfea10555c92ad04527c24d69a56a7023247c4d3f",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase12_trade_sample_strategy_execution_profile_cross_section",
+  "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1",
+  "latency_model_version": "phase12_execution_profiles_v1",
+  "creation_timestamp": "2026-07-13T20:05:31.568012+00:00"
 }

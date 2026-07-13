@@ -10,6 +10,8 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 ORDER_MODELS = [
     ("market_order", "Cross spread and fill immediately against displayed opposite-side liquidity proxy."),
@@ -244,13 +246,20 @@ def run(trade_sample_path: Path, output_dir: Path, max_per_strategy_profile: int
     trace = build_order_trace(trades, max_per_strategy_profile=max_per_strategy_profile)
     summary = summarize_orders(trace)
     pnl = build_pnl_trace(trace)
-    pq.write_table(pa.Table.from_pandas(trace, preserve_index=False), output_dir / "event_backtest_order_trace.parquet", compression="zstd")
-    summary.to_csv(output_dir / "event_backtest_order_summary.csv", index=False)
-    pnl.to_csv(output_dir / "event_backtest_pnl_trace.csv", index=False)
-    pd.DataFrame(ORDER_MODELS, columns=["order_model", "description"]).to_csv(output_dir / "order_model_catalog.csv", index=False)
-    pd.DataFrame(SLIPPAGE_MODELS, columns=["slippage_model", "description"]).to_csv(output_dir / "slippage_model_catalog.csv", index=False)
+    trace_path = output_dir / "event_backtest_order_trace.parquet"
+    summary_path = output_dir / "event_backtest_order_summary.csv"
+    pnl_path = output_dir / "event_backtest_pnl_trace.csv"
+    order_model_path = output_dir / "order_model_catalog.csv"
+    slippage_model_path = output_dir / "slippage_model_catalog.csv"
+    report_path = output_dir / "event_backtest_report.md"
+    pq.write_table(pa.Table.from_pandas(trace, preserve_index=False), trace_path, compression="zstd")
+    summary.to_csv(summary_path, index=False)
+    pnl.to_csv(pnl_path, index=False)
+    pd.DataFrame(ORDER_MODELS, columns=["order_model", "description"]).to_csv(order_model_path, index=False)
+    pd.DataFrame(SLIPPAGE_MODELS, columns=["slippage_model", "description"]).to_csv(slippage_model_path, index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "trade_sample_path": str(trade_sample_path),
         "input_trade_sample_rows": int(len(trades)),
         "order_trace_rows": int(len(trace)),
@@ -267,6 +276,29 @@ def run(trade_sample_path: Path, output_dir: Path, max_per_strategy_profile: int
         "not_acceptance_grade": True,
         "scope": "event_driven_order_lifecycle_proxy_over_phase12_trade_sample",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase12_event_backtest",
+            generated_utc=generated_utc,
+            inputs={"trade_sample_path": str(trade_sample_path)},
+            parameters={
+                "max_per_strategy_profile": max_per_strategy_profile,
+                "order_models": [model for model, _description in ORDER_MODELS],
+                "slippage_models": [model for model, _description in SLIPPAGE_MODELS],
+            },
+            outputs={
+                "order_trace": str(trace_path),
+                "order_summary": str(summary_path),
+                "pnl_trace": str(pnl_path),
+                "order_model_catalog": str(order_model_path),
+                "slippage_model_catalog": str(slippage_model_path),
+                "report": str(report_path),
+            },
+            scenario_ids="phase12_trade_sample_strategy_execution_profile_cross_section",
+            cost_model_version="zerodha_equity_intraday_nse_round_trip_bps_v1",
+            latency_model_version="phase12_execution_profiles_v1",
+        )
+    )
     (output_dir / "event_backtest_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, trace, summary)
 

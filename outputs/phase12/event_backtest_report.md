@@ -1,6 +1,6 @@
 # Phase 12 Event-Driven Backtester Report
 
-Generated UTC: 2026-07-13T19:52:34.448226+00:00
+Generated UTC: 2026-07-13T20:05:31.605835+00:00
 
 ## Scope
 

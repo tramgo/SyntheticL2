@@ -8,6 +8,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 def load_deltas(delta_dir: Path) -> pd.DataFrame:
     files = sorted(delta_dir.glob("symbol=*/received_tick_deltas.parquet"))
@@ -236,10 +238,14 @@ def run(delta_dir: Path, output_dir: Path) -> None:
     events = classify_events(deltas)
     summary = event_summary(events)
     quality = quality_summary(events)
-    summary.to_csv(output_dir / "event_reconstruction_summary.csv", index=False)
-    quality.to_csv(output_dir / "event_reconstruction_quality.csv", index=False)
+    summary_path = output_dir / "event_reconstruction_summary.csv"
+    quality_path = output_dir / "event_reconstruction_quality.csv"
+    report_path = output_dir / "event_reconstruction_report.md"
+    summary.to_csv(summary_path, index=False)
+    quality.to_csv(quality_path, index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "delta_dir": str(delta_dir),
         "rows_evaluated": int(len(events)),
         "symbols": int(events["symbol"].nunique()),
@@ -250,6 +256,22 @@ def run(delta_dir: Path, output_dir: Path) -> None:
         "acceptance_grade": False,
         "scope": "received_tick_market_by_price_event_inference_not_exchange_truth",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase1_event_reconstruction",
+            generated_utc=generated_utc,
+            inputs={"delta_dir": str(delta_dir)},
+            parameters={"classification_scope": manifest["scope"]},
+            outputs={
+                "summary": str(summary_path),
+                "quality": str(quality_path),
+                "report": str(report_path),
+            },
+            scenario_ids="not_applicable_received_real_sample",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "event_reconstruction_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, summary, quality)
 

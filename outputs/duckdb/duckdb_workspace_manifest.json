@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:01:17.078585+00:00",
+  "generated_utc": "2026-07-13T20:05:37.432191+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -135,18 +135,18 @@
     "phase19_required_fields": 10,
     "phase19_audited_artifacts": 25,
     "phase19_field_checks": 250,
-    "phase19_exact_regeneration_ready_artifacts": 0,
-    "phase19_artifacts_with_missing_fields": 24,
+    "phase19_exact_regeneration_ready_artifacts": 3,
+    "phase19_artifacts_with_missing_fields": 21,
     "phase19_manifest_missing_or_unreadable_artifacts": 1,
     "phase19_gap_rows": 20,
     "phase19_remediation_rows": 250,
     "phase19_remediation_summary_rows": 4,
     "phase19_normalized_overlay_artifacts": 25,
     "phase19_normalized_overlay_ready_artifacts": 25,
-    "phase19_normalizer_default_fields": 211,
-    "phase19_source_or_alias_fields": 39,
-    "phase19_generator_field_rows": 200,
-    "phase19_alias_normalization_rows": 39,
+    "phase19_normalizer_default_fields": 187,
+    "phase19_source_or_alias_fields": 63,
+    "phase19_generator_field_rows": 176,
+    "phase19_alias_normalization_rows": 33,
     "phase19_recover_manifest_rows": 10,
     "phase4_days_per_profile": [
       [

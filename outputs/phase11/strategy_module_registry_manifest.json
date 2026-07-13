@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:56:36.617135+00:00",
+  "generated_utc": "2026-07-13T20:05:32.341866+00:00",
   "inputs": {
     "strategy_matrix": "outputs\\phase11\\strategy_validation_matrix.csv",
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
@@ -13,5 +13,16 @@
   "acceptance_grade_modules": 0,
   "promotion_ready_modules": 0,
   "non_alpha_or_risk_modules": 2,
-  "scope": "s01_s11_strategy_module_registry_not_promotion_evidence"
+  "scope": "s01_s11_strategy_module_registry_not_promotion_evidence",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "effa40bcd4afe3250f5dfedc4869f301d317981f",
+  "configuration_hash": "dfcc63b8b4299b9b98c6f5d189c1fa815bbd5a2c732520123095633decc21010",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "outputs/phase11/strategy_scenario_requirements.csv",
+  "cost_model_version": "phase12_event_backtest_cost_model_if_execution_module_else_not_applicable",
+  "latency_model_version": "phase12_event_backtest_latency_model_if_execution_module_else_not_applicable",
+  "creation_timestamp": "2026-07-13T20:05:32.341866+00:00"
 }
