@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import math
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -161,6 +162,13 @@ def _simulate_strategy_profile(
     return summary, trades
 
 
+def _deterministic_even_sample(frame: pd.DataFrame, max_rows: int) -> pd.DataFrame:
+    if len(frame) <= max_rows:
+        return frame.copy()
+    positions = np.linspace(0, len(frame) - 1, num=max_rows, dtype=int)
+    return frame.iloc[positions].copy()
+
+
 def run_simulation(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     support = _strategy_support()
     runnable = set(support[support["support_level"].isin(["runnable_proxy", "partial_missing_required_features"])]["strategy_id"])
@@ -168,7 +176,9 @@ def run_simulation(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     signals = build_signals(base)
     summary_rows: list[dict] = []
     trade_samples: list[pd.DataFrame] = []
-    sample_remaining = 250_000
+    runnable_signal_count = len([strategy_id for strategy_id in signals if strategy_id in runnable])
+    sample_groups = max(1, runnable_signal_count * len(EXECUTION_PROFILES))
+    per_group_sample_rows = max(1, math.floor(250_000 / sample_groups))
 
     for strategy_id, signal in signals.items():
         if strategy_id not in runnable:
@@ -176,10 +186,9 @@ def run_simulation(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         for profile in EXECUTION_PROFILES:
             summary, trades = _simulate_strategy_profile(base, signal, strategy_id, profile)
             summary_rows.append(summary)
-            if sample_remaining > 0 and len(trades):
-                sample = trades.head(min(sample_remaining, len(trades))).copy()
+            if len(trades):
+                sample = _deterministic_even_sample(trades, per_group_sample_rows)
                 trade_samples.append(sample)
-                sample_remaining -= len(sample)
 
     summary_frame = pd.DataFrame(summary_rows).merge(support, on="strategy_id", how="left")
     sample_frame = pd.concat(trade_samples, ignore_index=True) if trade_samples else pd.DataFrame()
@@ -261,6 +270,8 @@ def run_phase12(features_path: Path, output_dir: Path) -> None:
         "execution_profiles": int(len(profiles)),
         "summary_rows": int(len(summary)),
         "trade_sample_rows": int(len(trade_sample)),
+        "trade_sample_strategy_profiles": int(trade_sample[["strategy_id", "execution_profile"]].drop_duplicates().shape[0]) if len(trade_sample) else 0,
+        "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
         "scope": "marketable_order_proxy_over_5m_feature_events",
         "not_acceptance_result": True,
     }

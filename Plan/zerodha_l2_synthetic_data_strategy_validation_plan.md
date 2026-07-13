@@ -1505,11 +1505,11 @@ Additional order-lifecycle and risk-control artifacts are under `outputs/phase12
 - `fill_model_catalog.csv`;
 - `order_lifecycle_sample.parquet`.
 
-The current completed run processed all 2,259,039 Phase 9 Tier C 5-minute feature rows, applied Phase 11 proxy signals, and simulated 9 supported/proxy strategies across 3 execution profiles: `zero_latency_spread_only_control`, `retail_marketable_default` and `stressed_retail`. It produced 27 strategy/profile summary rows and a 250,000-row sampled trade ledger. Across all strategy/profile combinations the run simulated 10,350,654 marketable proxy trades.
+The current completed run processed all 2,259,039 Phase 9 Tier C 5-minute feature rows, applied Phase 11 proxy signals, and simulated 9 supported/proxy strategies across 3 execution profiles: `zero_latency_spread_only_control`, `retail_marketable_default` and `stressed_retail`. It produced 27 strategy/profile summary rows and a 249,993-row deterministic stratified sampled trade ledger covering all 27 strategy/profile combinations. Across all strategy/profile combinations the run simulated 10,350,654 marketable proxy trades.
 
 The simulator applies event-latency shifts, stale/disconnect cancellation, half-spread marketable execution cost, fixed slippage ticks, internal impact bps and placeholder profile-level fee bps. The current `cost_schedule.csv` is intentionally conservative about evidence: brokerage, statutory and exchange charges are marked `not_verified_v1` rather than claimed as current broker-derived costs. Refresh these charges from broker/exchange sources before making economic or deployability claims.
 
-The lifecycle/risk-control proxy currently expands the 250,000-row sampled trade ledger into 750,000 lifecycle rows across 3 deterministic fill profiles: `optimistic_marketable`, `neutral_partial` and `pessimistic_partial`. It adds queue-position bucket, partial-fill ratio, unfilled quantity, filled notional, risk-equity, drawdown, tail-loss, position-limit and daily-loss-halt fields, with 6 strategy/profile partial-fill summary rows and 6 strategy/profile risk-control summary rows.
+The lifecycle/risk-control proxy currently expands the 249,993-row sampled trade ledger into 749,979 lifecycle rows across 3 deterministic fill profiles: `optimistic_marketable`, `neutral_partial` and `pessimistic_partial`. It adds queue-position bucket, partial-fill ratio, unfilled quantity, filled notional, risk-equity, drawdown, tail-loss, position-limit and daily-loss-halt fields, with 81 strategy/profile/fill-model partial-fill summary rows and 81 strategy/profile/fill-model risk-control summary rows.
 
 Important Phase 12 caveat: this is an execution-plumbing, cost-sensitivity and sampled lifecycle/risk proxy, not a tick-accurate exchange queue simulator, full-run backtest acceptance result or promotion result. Passive order-book placement, cancel/replace/rejection state machines and broker-verified statutory charge schedules remain requirements for the next simulator iteration.
 
@@ -1929,12 +1929,13 @@ Generated artifacts are under `outputs/phase16/`:
 - `metric_catalog.csv`;
 - `predictive_metric_scoreboard.csv`;
 - `trading_metric_scoreboard.csv`;
+- `markout_mae_mfe_summary.csv`;
 - `breakdown_coverage.csv`;
 - `strategy_metric_requirement_coverage.csv`.
 
-The current completed run builds the reporting catalog and proxy scoreboards from Phase 11 diagnostics, Phase 12 execution summaries, the sampled trade ledger, the Phase 12 lifecycle/risk-control proxy and Phase 15 acceptance status. It produced 27 metric catalog rows, 11 predictive scoreboard rows, 27 trading scoreboard rows, 12 breakdown-coverage rows and 59 strategy-metric requirement coverage rows. No metric is acceptance-grade yet: `acceptance_grade_metrics=0`.
+The current completed run builds the reporting catalog and proxy scoreboards from Phase 11 diagnostics, Phase 12 execution summaries, the sampled trade ledger, the Phase 12 lifecycle/risk-control proxy and Phase 15 acceptance status. It produced 27 metric catalog rows, 11 predictive scoreboard rows, 27 trading scoreboard rows, 27 sampled markout/MAE/MFE summary rows, 12 breakdown-coverage rows and 59 strategy-metric requirement coverage rows. All trading metrics now have at least proxy/sample evidence, including adverse selection and MAE/MFE from 1/3/6-bar post-fill markout windows. No metric is acceptance-grade yet: `acceptance_grade_metrics=0`.
 
-Important Phase 16 caveat: these reports are current-evidence scoreboards, not promotion evidence. Predictive metrics are Phase 11 proxy diagnostics, trading metrics are Phase 12 5-minute marketable-order/lifecycle proxies, and several required metrics remain proxy-only until full experiment execution, acceptance-grade risk/equity-curve simulation, broker-verified fill/cost modeling and holdout-generator evidence exist.
+Important Phase 16 caveat: these reports are current-evidence scoreboards, not promotion evidence. Predictive metrics are Phase 11 proxy diagnostics, trading metrics are Phase 12 5-minute marketable-order/lifecycle/markout proxies, and several required metrics remain proxy-only until full experiment execution, acceptance-grade risk/equity-curve simulation, broker-verified fill/cost modeling and holdout-generator evidence exist.
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T18:57:42.179770+00:00",
+  "generated_utc": "2026-07-13T19:10:26.650784+00:00",
   "inputs": {
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
     "metric_requirements": "outputs\\phase11\\strategy_metric_requirements.csv",
@@ -10,6 +10,12 @@
   "metric_catalog_rows": 27,
   "predictive_scoreboard_rows": 11,
   "trading_scoreboard_rows": 27,
+  "markout_summary_rows": 27,
+  "markout_horizons_bars": [
+    1,
+    3,
+    6
+  ],
   "breakdown_rows": 12,
   "acceptance_grade_metrics": 0,
   "scope": "metrics_reporting_catalog_and_proxy_scoreboards"

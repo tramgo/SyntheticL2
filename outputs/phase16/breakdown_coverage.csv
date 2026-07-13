@@ -1,13 +1,13 @@
 breakdown_name,source_column,current_status,available_in_trade_sample,distinct_values_in_sample
-ticker,symbol,available,True,30
+ticker,symbol,available,True,32
 day,trade_date,available,True,63
 regime,regime_code,available,True,18
 time_of_day,bar_index,proxy_available,True,75
 volatility_bucket,volatility_bucket,missing,False,0
-spread_bucket,spread_ticks,proxy_available,True,15
+spread_bucket,spread_ticks,proxy_available,True,36
 liquidity_bucket,liquidity_bucket,missing,False,0
 long_short,side,available,True,2
-latency_profile,execution_profile,available,True,2
-cost_profile,execution_profile,proxy_available,True,2
+latency_profile,execution_profile,available,True,3
+cost_profile,execution_profile,proxy_available,True,3
 random_seed,seed,missing,False,0
 event_vs_non_event_day,is_market_shock_day,available,True,2

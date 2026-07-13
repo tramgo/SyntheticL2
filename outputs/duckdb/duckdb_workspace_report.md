@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:06:44.421306+00:00
+Generated UTC: 2026-07-13T19:11:44.635384+00:00
 
 ## Storage Decision
 
@@ -57,14 +57,14 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 execution profiles: 3
 - Phase 12 strategies simulated: 9
 - Phase 12 total simulated trades: 10350654
-- Phase 12 trade sample rows: 250000
+- Phase 12 trade sample rows: 249993
 - Phase 12 cost components: 6
-- Phase 12 lifecycle rows: 750000
+- Phase 12 lifecycle rows: 749979
 - Phase 12 fill models: 3
-- Phase 12 partial-fill summary rows: 6
-- Phase 12 risk-control summary rows: 6
-- Phase 12 position-limit breach rows: 577681
-- Phase 12 daily-loss-limit breach rows: 459858
+- Phase 12 partial-fill summary rows: 81
+- Phase 12 risk-control summary rows: 81
+- Phase 12 position-limit breach rows: 233010
+- Phase 12 daily-loss-limit breach rows: 23317
 - Phase 13 split rows: 189
 - Phase 13 seed rows: 30
 - Phase 13 initial engineering seeds: 9
@@ -88,9 +88,13 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 16 metric catalog rows: 27
 - Phase 16 predictive scoreboard rows: 11
 - Phase 16 trading scoreboard rows: 27
+- Phase 16 markout/MAE/MFE summary rows: 27
+- Phase 16 markout sample trades: 243958
+- Phase 16 adverse-selection metric status: sample_proxy
+- Phase 16 MAE/MFE metric status: sample_proxy
 - Phase 16 breakdown rows: 12
 - Phase 16 acceptance-grade metrics: 0
-- Phase 16 missing/proxy metrics: 27
+- Phase 16 non-acceptance-grade metrics: 27
 - Phase 17 work packages: 10
 - Phase 17 deliverables: 55
 - Phase 17 implemented deliverables: 23

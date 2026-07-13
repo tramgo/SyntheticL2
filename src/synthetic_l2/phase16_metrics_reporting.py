@@ -37,8 +37,8 @@ TRADING_METRICS = [
     ("turnover", "proxy_available", "Trade count is available; capital-normalized turnover is not."),
     ("cost_to_gross_profit_ratio", "sample_proxy", "Computed from sampled trade ledger."),
     ("fill_ratio", "sample_proxy", "Phase 12 order-lifecycle proxy provides submitted and filled quantities over the sampled trade ledger."),
-    ("adverse_selection", "missing", "Requires post-fill markout windows."),
-    ("mae_mfe", "missing", "Requires intra-holding path after entry."),
+    ("adverse_selection", "sample_proxy", "Computed from sampled post-fill markout windows over the Phase 12 trade ledger."),
+    ("mae_mfe", "sample_proxy", "Computed from sampled 1/3/6-bar post-entry markout path over the Phase 12 trade ledger."),
     ("exposure_holding_time", "sample_proxy", "Phase 12 order-lifecycle proxy provides running position exposure; holding-time lifecycle remains approximate."),
 ]
 
@@ -151,10 +151,69 @@ def _sample_trade_metrics(sample: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def markout_analysis(sample: pd.DataFrame, horizons: tuple[int, ...] = (1, 3, 6)) -> pd.DataFrame:
+    required = {"quarter_profile", "trade_date", "symbol", "bar_index", "strategy_id", "execution_profile", "side", "mid_price"}
+    missing = required.difference(sample.columns)
+    if missing:
+        raise ValueError(f"trade sample is missing required markout columns: {sorted(missing)}")
+    base = sample.copy()
+    group_cols = ["quarter_profile", "trade_date", "symbol"]
+    base = base.sort_values(group_cols + ["bar_index"], kind="mergesort").reset_index(drop=True)
+    for horizon in horizons:
+        future_mid = base.groupby(group_cols, sort=False)["mid_price"].shift(-horizon)
+        base[f"signed_markout_{horizon}bar"] = base["side"].astype(float) * (future_mid.astype(float) - base["mid_price"].astype(float)) / base["mid_price"].astype(float)
+
+    markout_cols = [f"signed_markout_{horizon}bar" for horizon in horizons]
+    base["valid_markout_windows"] = base[markout_cols].notna().sum(axis=1)
+    base["mae_proxy"] = base[markout_cols].min(axis=1, skipna=True)
+    base["mfe_proxy"] = base[markout_cols].max(axis=1, skipna=True)
+    base["adverse_selection_proxy"] = base[markout_cols[-1]] < 0
+    valid = base[base["valid_markout_windows"] > 0].copy()
+    if valid.empty:
+        return pd.DataFrame(
+            columns=[
+                "strategy_id",
+                "execution_profile",
+                "markout_sample_trades",
+                "adverse_selection_rate_6bar_proxy",
+                "mean_markout_1bar",
+                "mean_markout_3bar",
+                "mean_markout_6bar",
+                "mean_mae_proxy",
+                "mean_mfe_proxy",
+                "worst_mae_proxy",
+                "best_mfe_proxy",
+                "metric_scope",
+            ]
+        )
+    rows = []
+    for (strategy_id, execution_profile), group in valid.groupby(["strategy_id", "execution_profile"], sort=True):
+        rows.append(
+            {
+                "strategy_id": strategy_id,
+                "execution_profile": execution_profile,
+                "markout_sample_trades": int(len(group)),
+                "adverse_selection_rate_6bar_proxy": float(group["adverse_selection_proxy"].mean()),
+                "mean_markout_1bar": float(group["signed_markout_1bar"].mean()),
+                "mean_markout_3bar": float(group["signed_markout_3bar"].mean()),
+                "mean_markout_6bar": float(group["signed_markout_6bar"].mean()),
+                "mean_mae_proxy": float(group["mae_proxy"].mean()),
+                "mean_mfe_proxy": float(group["mfe_proxy"].mean()),
+                "worst_mae_proxy": float(group["mae_proxy"].min()),
+                "best_mfe_proxy": float(group["mfe_proxy"].max()),
+                "metric_scope": "phase12_sampled_trade_markout_not_acceptance",
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def trading_scoreboard(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     summary = inputs["execution_summary"].copy()
     sample_metrics = _sample_trade_metrics(inputs["trade_sample"])
+    markouts = inputs.get("markout_analysis", pd.DataFrame())
     out = summary.merge(sample_metrics, on=["strategy_id", "execution_profile"], how="left")
+    if not markouts.empty:
+        out = out.merge(markouts.drop(columns=["metric_scope"], errors="ignore"), on=["strategy_id", "execution_profile"], how="left")
     out["gross_pnl_units_proxy"] = out["mean_gross_return"] * out["trades"]
     out["net_pnl_units_proxy"] = out["total_net_pnl_units"]
     out["expectancy_per_trade_proxy"] = out["mean_net_return"]
@@ -182,6 +241,15 @@ def trading_scoreboard(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
             "sample_average_win",
             "sample_average_loss",
             "sample_cost_to_gross_profit_ratio",
+            "markout_sample_trades",
+            "adverse_selection_rate_6bar_proxy",
+            "mean_markout_1bar",
+            "mean_markout_3bar",
+            "mean_markout_6bar",
+            "mean_mae_proxy",
+            "mean_mfe_proxy",
+            "worst_mae_proxy",
+            "best_mfe_proxy",
             "metric_scope",
             "status",
         ]
@@ -264,6 +332,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     inputs = load_inputs(paths)
     catalog = metric_catalog()
     predictive = predictive_scoreboard(inputs)
+    markouts = markout_analysis(inputs["trade_sample"])
+    inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
     breakdowns = breakdown_coverage(inputs)
     requirement_coverage = metric_requirement_coverage(inputs, catalog)
@@ -271,6 +341,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     catalog.to_csv(output_dir / "metric_catalog.csv", index=False)
     predictive.to_csv(output_dir / "predictive_metric_scoreboard.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
+    markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
     requirement_coverage.to_csv(output_dir / "strategy_metric_requirement_coverage.csv", index=False)
     manifest = {
@@ -279,6 +350,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "metric_catalog_rows": int(len(catalog)),
         "predictive_scoreboard_rows": int(len(predictive)),
         "trading_scoreboard_rows": int(len(trading)),
+        "markout_summary_rows": int(len(markouts)),
+        "markout_horizons_bars": [1, 3, 6],
         "breakdown_rows": int(len(breakdowns)),
         "acceptance_grade_metrics": int(catalog["acceptance_eligible_now"].sum()),
         "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
