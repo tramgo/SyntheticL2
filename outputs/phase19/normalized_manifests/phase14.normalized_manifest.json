@@ -3,8 +3,8 @@
   "artifact_id": "phase14",
   "source_manifest_path": "outputs/phase14/quality_validation_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "2286460c7894c36654ae7c7bd2e4eac4b73f83b8",
-  "configuration_hash": "79f25374e2849c50e2af765b15a8edb9d6d2bc40e2543c88609a36c4bc7079ab",
+  "generator_version": "2490e96dbd92cdef4126836766bfee44b497f072",
+  "configuration_hash": "54133daf78732236f6f8d57d286448b14012c4c641f5aacb7c7d4d1db362b1f8",
   "random_seed": "not_applicable_deterministic_quality_checks",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -12,7 +12,7 @@
   "scenario_ids": "outputs/phase4/scenario_calendar.csv_via_phase5_phase6_phase9",
   "cost_model_version": "not_applicable_no_execution_costs",
   "latency_model_version": "phase8_feed_profiles_v1",
-  "creation_timestamp": "2026-07-13T21:08:23.835630+00:00",
-  "normalization_timestamp": "2026-07-13T21:34:25.144325+00:00",
+  "creation_timestamp": "2026-07-13T21:38:42.466048+00:00",
+  "normalization_timestamp": "2026-07-13T21:39:32.286419+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

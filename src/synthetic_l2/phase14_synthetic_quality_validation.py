@@ -273,6 +273,97 @@ def level7_counterfactual(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def holdout_generator_realism(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    features = inputs["phase9_features"].copy()
+    calendar = inputs["phase4_calendar"].copy()
+    if features.empty:
+        return pd.DataFrame(
+            columns=[
+                "quarter_profile",
+                "feed_profile",
+                "holdout_role",
+                "scenario_days",
+                "feature_rows",
+                "symbols",
+                "regimes",
+                "market_shock_days",
+                "median_spread_ticks",
+                "nonzero_mid_return_fraction",
+                "structural_ready_for_holdout_proxy",
+                "realism_status",
+                "acceptance_eligible_now",
+                "blocker",
+            ]
+        )
+    calendar_flags = calendar.groupby("quarter_profile", sort=True).agg(
+        calendar_days=("scenario_day", "nunique"),
+        regimes=("regime_code", "nunique"),
+        market_shock_days=("is_market_shock_day", "sum"),
+    ).reset_index()
+    grouped = (
+        features.groupby(["quarter_profile", "feed_profile"], sort=True)
+        .agg(
+            scenario_days=("scenario_day", "nunique"),
+            feature_rows=("symbol", "size"),
+            symbols=("symbol", "nunique"),
+            median_spread_ticks=("spread_ticks", "median"),
+            nonzero_mid_return_fraction=("mid_return_1", lambda values: float(values.fillna(0).ne(0).mean())),
+            negative_spread_rows=("spread_ticks", lambda values: int((values < 0).sum())),
+            nonpositive_mid_rows=("mid_price", lambda values: int((values <= 0).sum())),
+        )
+        .reset_index()
+        .merge(calendar_flags, on="quarter_profile", how="left")
+    )
+    grouped["holdout_role"] = np.select(
+        [
+            grouped["quarter_profile"].astype(str).eq("Q-A"),
+            grouped["quarter_profile"].astype(str).eq("Q-B"),
+            grouped["quarter_profile"].astype(str).eq("Q-C"),
+        ],
+        [
+            "development_reference_profile",
+            "bullish_high_momentum_holdout_proxy",
+            "stressed_volatile_holdout_proxy",
+        ],
+        default="unclassified_profile",
+    )
+    grouped["structural_ready_for_holdout_proxy"] = (
+        grouped["scenario_days"].ge(60)
+        & grouped["symbols"].ge(32)
+        & grouped["negative_spread_rows"].eq(0)
+        & grouped["nonpositive_mid_rows"].eq(0)
+    )
+    grouped["realism_status"] = np.where(
+        grouped["structural_ready_for_holdout_proxy"],
+        "holdout_proxy_available_not_acceptance",
+        "holdout_proxy_incomplete",
+    )
+    grouped["acceptance_eligible_now"] = False
+    grouped["blocker"] = (
+        "Holdout generator/feed-profile coverage exists as synthetic proxy evidence, but it is not "
+        "acceptance-grade until the Phase 14 warning is resolved and strategies are rerun on holdout "
+        "configs with full event/tick execution and later multi-day real holdout."
+    )
+    return grouped[
+        [
+            "quarter_profile",
+            "feed_profile",
+            "holdout_role",
+            "scenario_days",
+            "feature_rows",
+            "symbols",
+            "regimes",
+            "market_shock_days",
+            "median_spread_ticks",
+            "nonzero_mid_return_fraction",
+            "structural_ready_for_holdout_proxy",
+            "realism_status",
+            "acceptance_eligible_now",
+            "blocker",
+        ]
+    ]
+
+
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
         return "_No rows._"
@@ -340,7 +431,7 @@ def warning_triage(summary: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=columns)
 
 
-def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.DataFrame) -> None:
+def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.DataFrame, holdout: pd.DataFrame) -> None:
     summary = pd.concat(
         [
             frame.assign(validation_table=name)
@@ -377,6 +468,10 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.D
         "",
         _markdown_table(triage),
         "",
+        "## Holdout Generator Realism Proxy",
+        "",
+        _markdown_table(holdout),
+        "",
         "## Caveats",
         "",
         "- Real evidence is still a one-day sample.",
@@ -407,8 +502,10 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         sort=False,
     )
     triage = warning_triage(summary)
+    holdout = holdout_generator_realism(inputs)
     summary.to_csv(output_dir / "quality_gate_summary.csv", index=False)
     triage.to_csv(output_dir / "quality_warning_triage.csv", index=False)
+    holdout.to_csv(output_dir / "holdout_generator_realism_summary.csv", index=False)
     inputs_manifest = {key: str(value) for key, value in paths.items()}
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
@@ -417,6 +514,10 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         "tables": list(frames),
         "summary_rows": int(len(summary)),
         "warning_triage_rows": int(len(triage)),
+        "holdout_generator_realism_rows": int(len(holdout)),
+        "holdout_proxy_available_rows": int(
+            (holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()
+        ),
         "status_counts": summary["status"].value_counts(dropna=False).to_dict(),
         "not_strategy_acceptance": True,
     }
@@ -429,6 +530,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
             outputs={
                 "quality_gate_summary": str(output_dir / "quality_gate_summary.csv"),
                 "quality_warning_triage": str(output_dir / "quality_warning_triage.csv"),
+                "holdout_generator_realism_summary": str(output_dir / "holdout_generator_realism_summary.csv"),
                 "report": str(output_dir / "phase14_quality_validation_report.md"),
                 "manifest": str(output_dir / "quality_validation_manifest.json"),
                 **{name: str(output_dir / f"{name}.csv") for name in frames},
@@ -440,7 +542,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         )
     )
     (output_dir / "quality_validation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, frames, triage)
+    write_report(output_dir, frames, triage, holdout)
 
 
 def parse_args() -> argparse.Namespace:

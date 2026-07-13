@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:34:23.587406+00:00
+Generated UTC: 2026-07-13T21:39:30.763527+00:00
 
 ## Storage Decision
 
@@ -109,6 +109,8 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 14 fail checks: 0
 - Phase 14 warning triage rows: 1
 - Phase 14 realism-blocking warnings: 1
+- Phase 14 holdout generator rows: 15
+- Phase 14 holdout proxy available rows: 15
 - Phase 15 gate rows: 55
 - Phase 15 promoted strategies: 0
 - Phase 15 blocked strategies: 11
@@ -139,7 +141,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 missing deliverables: 0
 - Phase 17 blocked work packages: 0
 - Phase 17 P0 gaps: 0
-- Validation dashboard summary rows: 10
+- Validation dashboard summary rows: 12
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

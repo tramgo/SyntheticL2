@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:34:19.109756+00:00",
+  "generated_utc": "2026-07-13T21:39:26.199621+00:00",
   "work_packages": 10,
   "deliverables": 55,
   "implemented_deliverables": 23,
@@ -9,7 +9,7 @@
   "acceptance_grade_deliverables": 23,
   "scope": "phase17_work_package_traceability_and_gap_backlog",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "affcb3db228e1d117e5f22bff2dc7d64194e3a79",
+  "generator_version": "2490e96dbd92cdef4126836766bfee44b497f072",
   "configuration_hash": "4f77f183521dd3756a7e179d36401e743071cfd74cc168d22617142dc360fc7f",
   "random_seed": "not_applicable_deterministic_traceability_registry",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -18,5 +18,5 @@
   "scenario_ids": "wp1_wp10_current_workspace_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T21:34:19.109756+00:00"
+  "creation_timestamp": "2026-07-13T21:39:26.199621+00:00"
 }

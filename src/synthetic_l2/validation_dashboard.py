@@ -91,6 +91,7 @@ def _bar_rows(frame: pd.DataFrame, label_col: str, value_col: str) -> str:
 
 def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dict]:
     quality = _read_csv(paths["quality"])
+    holdout = _read_csv(paths["holdout"])
     acceptance = _read_csv(paths["acceptance"])
     blockers = _read_csv(paths["blockers"])
     metric_catalog = _read_csv(paths["metric_catalog"])
@@ -111,6 +112,8 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("quality_checks", int(len(quality)), "Phase 14 quality rows"),
         ("quality_warn_checks", int((quality["status"].astype(str) == "warn").sum()), "Current quality warnings"),
         ("quality_fail_checks", int((quality["status"].astype(str) == "fail").sum()), "Current quality failures"),
+        ("holdout_proxy_rows", int(len(holdout)), "Phase 14 holdout generator proxy rows"),
+        ("holdout_proxy_available_rows", int((holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()), "Holdout proxy rows structurally available"),
         ("strategies", int(acceptance["strategy_id"].nunique()), "Phase 15 strategies"),
         ("promoted_strategies", int(acceptance["promotion_allowed"].astype(bool).sum()), "Promotion allowed count"),
         ("acceptance_blockers", int(len(blockers)), "Phase 15 blocker rows"),
@@ -182,6 +185,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <p class="muted">Generated UTC: {html.escape(manifest['generated_utc'])}. Static dashboard for research traceability only; not promotion evidence.</p>
   <div class="cards">{cards}</div>
   <section><h2>Phase 14 Quality Status</h2>{_bar_rows(quality_status, 'status', 'checks')}{_table(quality, ['level', 'check_name', 'value', 'status', 'evidence'], 24)}</section>
+  <section><h2>Phase 14 Holdout Generator Realism Proxy</h2>{_table(holdout, ['quarter_profile', 'feed_profile', 'holdout_role', 'scenario_days', 'symbols', 'regimes', 'realism_status', 'acceptance_eligible_now'], 20)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -205,6 +209,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "## Quality Status",
         "",
         _markdown_table(quality_status),
+        "",
+        "## Holdout Generator Realism Proxy",
+        "",
+        _markdown_table(holdout),
         "",
         "## Acceptance Blockers by Gate",
         "",
@@ -235,6 +243,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build a static SyntheticL2 validation dashboard from Phase 14-17 outputs.")
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/dashboard"))
     parser.add_argument("--quality", type=Path, default=Path("outputs/phase14/quality_gate_summary.csv"))
+    parser.add_argument("--holdout", type=Path, default=Path("outputs/phase14/holdout_generator_realism_summary.csv"))
     parser.add_argument("--acceptance", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--blockers", type=Path, default=Path("outputs/phase15/acceptance_blockers.csv"))
     parser.add_argument("--metric-catalog", type=Path, default=Path("outputs/phase16/metric_catalog.csv"))
@@ -249,6 +258,7 @@ def main() -> None:
     args = parse_args()
     paths = {
         "quality": args.quality,
+        "holdout": args.holdout,
         "acceptance": args.acceptance,
         "blockers": args.blockers,
         "metric_catalog": args.metric_catalog,
