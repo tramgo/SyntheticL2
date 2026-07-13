@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:37:27.341131+00:00
+Generated UTC: 2026-07-13T19:43:08.824732+00:00
 
 ## Storage Decision
 
@@ -93,7 +93,10 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 16 predictive scoreboard rows: 11
 - Phase 16 predictive proxy rows: 9
 - Phase 16 predictive signal bucket rows: 27
-- Phase 16 missing predictive metrics: 3
+- Phase 16 Brier score proxy rows: 9
+- Phase 16 calibration-curve proxy rows: 45
+- Phase 16 feature-importance stability rows: 9
+- Phase 16 missing predictive metrics: 0
 - Phase 16 missing trading metrics: 0
 - Phase 16 trading scoreboard rows: 27
 - Phase 16 markout/MAE/MFE summary rows: 27
@@ -129,8 +132,8 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 19 gap rows: 20
 - Phase 19 remediation rows: 220
 - Phase 19 remediation summary rows: 4
-- Phase 19 add-field-in-generator rows: 177
-- Phase 19 alias-normalization rows: 32
+- Phase 19 add-field-in-generator rows: 176
+- Phase 19 alias-normalization rows: 33
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30

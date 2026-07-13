@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T19:30:54.822598+00:00
+Generated UTC: 2026-07-13T19:43:03.475861+00:00
 
 ## Scope
 
@@ -12,9 +12,8 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | metric_category | current_status | metrics |
 | --- | --- | --- |
 | predictive | computed_proxy | 1 |
-| predictive | missing | 3 |
 | predictive | proxy_available | 1 |
-| predictive | sample_proxy | 5 |
+| predictive | sample_proxy | 8 |
 | trading | computed_proxy | 4 |
 | trading | proxy_available | 2 |
 | trading | sample_proxy | 11 |
@@ -79,6 +78,69 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | S09 | flat_signal | 1643410 | -1.28158e-07 | 0 | 0.483999 | ternary_signal_bucket_not_true_decile |
 | S09 | long_signal | 445887 | -1.84642e-05 | -1.84642e-05 | 0.474287 | ternary_signal_bucket_not_true_decile |
 | S09 | short_signal | 139502 | -1.27629e-06 | 1.27629e-06 | 0.487634 | ternary_signal_bucket_not_true_decile |
+
+## Brier Score Proxy
+
+| strategy_id | rows_evaluated | brier_score_proxy | baseline_brier_score_proxy | brier_skill_score_proxy | mean_predicted_up_probability | observed_up_fraction | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| S06 | 2228799 | 0.250566 | 0.249875 | -0.00276591 | 0.5 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S07 | 2228799 | 0.253685 | 0.249875 | -0.0152488 | 0.495185 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S01 | 2228799 | 0.254853 | 0.249875 | -0.0199215 | 0.500206 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S03 | 2228799 | 0.256696 | 0.249875 | -0.0272978 | 0.500588 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S08 | 2228799 | 0.257438 | 0.249875 | -0.0302677 | 0.49998 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S04 | 2228799 | 0.259059 | 0.249875 | -0.036754 | 0.499712 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S05 | 2228799 | 0.259434 | 0.249875 | -0.0382554 | 0.527273 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S09 | 2228799 | 0.261909 | 0.249875 | -0.0481597 | 0.527493 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+| S02 | 2228799 | 0.268273 | 0.249875 | -0.0736299 | 0.500153 | 0.488827 | ternary_signal_probability_proxy_not_calibrated_model |
+
+## Calibration Curve Proxy
+
+| strategy_id | probability_bucket | rows | mean_predicted_up_probability | observed_up_fraction | calibration_error_abs | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| S01 | 0.0_0.2 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S01 | 0.2_0.4 | 81028 | 0.3 | 0.563435 | 0.263435 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S01 | 0.4_0.6 | 2064452 | 0.5 | 0.488096 | 0.0119044 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S01 | 0.6_0.8 | 83319 | 0.7 | 0.434391 | 0.265609 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S01 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S02 | 0.0_0.2 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S02 | 0.2_0.4 | 443843 | 0.3 | 0.50145 | 0.20145 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S02 | 0.4_0.6 | 1339413 | 0.5 | 0.490064 | 0.00993607 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S02 | 0.6_0.8 | 445543 | 0.7 | 0.472534 | 0.227466 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S02 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S03 | 0.0_0.2 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S03 | 0.2_0.4 | 136941 | 0.3 | 0.529944 | 0.229944 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S03 | 0.4_0.6 | 1948362 | 0.5 | 0.487766 | 0.0122339 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S03 | 0.6_0.8 | 143496 | 0.7 | 0.463992 | 0.236008 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S03 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S04 | 0.0_0.2 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S04 | 0.2_0.4 | 214031 | 0.3 | 0.515117 | 0.215117 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S04 | 0.4_0.6 | 1803942 | 0.5 | 0.487038 | 0.0129616 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S04 | 0.6_0.8 | 210826 | 0.7 | 0.477441 | 0.222559 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S04 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S05 | 0.0_0.2 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S05 | 0.2_0.4 | 70918 | 0.3 | 0.495361 | 0.195361 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S05 | 0.4_0.6 | 1783038 | 0.5 | 0.490885 | 0.00911534 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S05 | 0.6_0.8 | 374843 | 0.7 | 0.477803 | 0.222197 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S05 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S06 | 0.0_0.2 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S06 | 0.2_0.4 | 16905 | 0.3 | 0.502987 | 0.202987 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S06 | 0.4_0.6 | 2194990 | 0.5 | 0.488506 | 0.0114939 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S06 | 0.6_0.8 | 16904 | 0.7 | 0.516327 | 0.183673 | ternary_signal_probability_bucket_proxy_not_acceptance |
+| S06 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+
+## Feature Importance Stability Proxy
+
+| feature_name | seed_runs | mean_abs_correlation_importance | std_abs_correlation_importance | mean_rank | rank_std | top3_frequency | coefficient_of_variation | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| momentum_3 | 12 | 0.207085 | 0.00608193 | 1 | 0 | 1 | 0.0293692 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| local_volatility_6 | 12 | 0.0283284 | 0.0151434 | 2.08333 | 0.288675 | 1 | 0.534566 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| event_intensity_proxy | 12 | 0.0114651 | 0.00659267 | 3.91667 | 1.83196 | 0.666667 | 0.575023 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| spread_ticks | 12 | 0.00736697 | 0.00453969 | 4.91667 | 1.72986 | 0.166667 | 0.616222 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| mlofi_qty | 12 | 0.00537183 | 0.00207191 | 5.66667 | 2.05971 | 0.166667 | 0.385699 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| l5_imbalance | 12 | 0.00386688 | 0.00260783 | 6.33333 | 1.72328 | 0 | 0.674402 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| l1_imbalance | 12 | 0.00379502 | 0.00260258 | 6.75 | 1.3568 | 0 | 0.685787 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| book_convexity_l5 | 12 | 0.00338795 | 0.00247051 | 7.16667 | 1.64225 | 0 | 0.729206 | seed_sampled_feature_target_association_proxy_not_model_importance |
+| book_slope_l5 | 12 | 0.00253216 | 0.00169655 | 7.16667 | 1.80067 | 0 | 0.67 | seed_sampled_feature_target_association_proxy_not_model_importance |
 
 ## Top Trading Proxy Rows
 

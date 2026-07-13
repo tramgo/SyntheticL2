@@ -171,7 +171,7 @@ phase15,outputs/phase15/acceptance_gates_manifest.json,True,latency_model_versio
 phase15,outputs/phase15/acceptance_gates_manifest.json,True,creation_timestamp,present_alias_or_inferred,generated_utc
 phase16,outputs/phase16/metrics_reporting_manifest.json,True,generator_version,missing,
 phase16,outputs/phase16/metrics_reporting_manifest.json,True,configuration_hash,missing,
-phase16,outputs/phase16/metrics_reporting_manifest.json,True,random_seed,missing,
+phase16,outputs/phase16/metrics_reporting_manifest.json,True,random_seed,present_alias_or_inferred,seed_plan
 phase16,outputs/phase16/metrics_reporting_manifest.json,True,calibration_dataset_id,missing,
 phase16,outputs/phase16/metrics_reporting_manifest.json,True,ticker_metadata_version,missing,
 phase16,outputs/phase16/metrics_reporting_manifest.json,True,regime_calendar_version,missing,

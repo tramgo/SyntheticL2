@@ -3,12 +3,12 @@ predictive,directional_accuracy,computed_proxy,phase11_signal_diagnostics.direct
 predictive,balanced_accuracy,sample_proxy,Computed from Phase 11 ternary proxy signal confusion by direction.,False
 predictive,precision_recall_by_direction,sample_proxy,Computed from Phase 11 ternary proxy signal confusion by long/short direction.,False
 predictive,roc_auc,sample_proxy,Rank-AUC proxy computed from ternary signal score; not a calibrated probabilistic ROC.,False
-predictive,brier_score,missing,Requires calibrated probability forecasts.,False
-predictive,calibration_curve,missing,Requires probability bins and realized frequencies.,False
+predictive,brier_score,sample_proxy,Computed from deterministic ternary-signal pseudo-probabilities; not a calibrated probability model.,False
+predictive,calibration_curve,sample_proxy,Computed from deterministic ternary-signal probability buckets and realized up/down frequency.,False
 predictive,information_coefficient,proxy_available,Proxy signed_mean_future_return is available; rank IC is not computed yet.,False
 predictive,future_return_by_signal_decile,sample_proxy,Computed as ternary signal-score buckets because current signals are not continuous decile scores.,False
 predictive,incremental_r2,sample_proxy,Computed as simple signal-vs-intercept R2 over future returns; not a model-vs-rich-baseline result.,False
-predictive,feature_importance_stability,missing,Requires multi-seed/model feature importance runs.,False
+predictive,feature_importance_stability,sample_proxy,Computed from deterministic seed-sampled feature/target association stability; not model importance.,False
 trading,gross_pnl,computed_proxy,phase12_execution_summary.total gross proxy can be inferred from mean_gross_return * trades.,False
 trading,net_pnl,computed_proxy,phase12_execution_summary.total_net_pnl_units.,False
 trading,return_on_allocated_capital,proxy_available,Phase 12 order-lifecycle proxy carries submitted/filled notional; accepted capital allocation is still missing.,False

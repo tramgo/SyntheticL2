@@ -16,12 +16,12 @@ PREDICTIVE_METRICS = [
     ("balanced_accuracy", "sample_proxy", "Computed from Phase 11 ternary proxy signal confusion by direction."),
     ("precision_recall_by_direction", "sample_proxy", "Computed from Phase 11 ternary proxy signal confusion by long/short direction."),
     ("roc_auc", "sample_proxy", "Rank-AUC proxy computed from ternary signal score; not a calibrated probabilistic ROC."),
-    ("brier_score", "missing", "Requires calibrated probability forecasts."),
-    ("calibration_curve", "missing", "Requires probability bins and realized frequencies."),
+    ("brier_score", "sample_proxy", "Computed from deterministic ternary-signal pseudo-probabilities; not a calibrated probability model."),
+    ("calibration_curve", "sample_proxy", "Computed from deterministic ternary-signal probability buckets and realized up/down frequency."),
     ("information_coefficient", "proxy_available", "Proxy signed_mean_future_return is available; rank IC is not computed yet."),
     ("future_return_by_signal_decile", "sample_proxy", "Computed as ternary signal-score buckets because current signals are not continuous decile scores."),
     ("incremental_r2", "sample_proxy", "Computed as simple signal-vs-intercept R2 over future returns; not a model-vs-rich-baseline result."),
-    ("feature_importance_stability", "missing", "Requires multi-seed/model feature importance runs."),
+    ("feature_importance_stability", "sample_proxy", "Computed from deterministic seed-sampled feature/target association stability; not model importance."),
 ]
 
 TRADING_METRICS = [
@@ -118,6 +118,7 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "trade_sample": pd.read_parquet(paths["trade_sample"]),
         "features": load_features(paths["features"]),
         "acceptance_summary": pd.read_csv(paths["acceptance_summary"]),
+        "seed_plan": pd.read_csv(paths["seed_plan"]),
     }
 
 
@@ -271,6 +272,154 @@ def predictive_proxy_diagnostics(inputs: dict[str, pd.DataFrame]) -> tuple[pd.Da
         bucket_rows.append(grouped)
 
     return pd.DataFrame(summary_rows), pd.concat(bucket_rows, ignore_index=True)
+
+
+def predictive_calibration_proxies(inputs: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    features = inputs["features"].copy()
+    future = features["future_mid_return_1"].astype(float)
+    valid = future.notna()
+    binary_up = (future > 0).astype(int)
+    signals = build_signals(features)
+    brier_rows = []
+    curve_rows = []
+    bins = [-0.001, 0.2, 0.4, 0.6, 0.8, 1.001]
+    labels = ["0.0_0.2", "0.2_0.4", "0.4_0.6", "0.6_0.8", "0.8_1.0"]
+    for strategy_id, signal in signals.items():
+        signal = signal.astype(float)
+        p_up = (0.5 + 0.2 * signal).clip(0.05, 0.95)
+        eval_mask = valid & p_up.notna()
+        if int(eval_mask.sum()) == 0:
+            brier_rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "rows_evaluated": 0,
+                    "brier_score_proxy": None,
+                    "baseline_brier_score_proxy": None,
+                    "brier_skill_score_proxy": None,
+                    "mean_predicted_up_probability": None,
+                    "observed_up_fraction": None,
+                    "metric_scope": "ternary_signal_probability_proxy_not_calibrated_model",
+                }
+            )
+            continue
+        y = binary_up[eval_mask].astype(float)
+        p = p_up[eval_mask].astype(float)
+        baseline = float(y.mean())
+        brier = float(((p - y) ** 2).mean())
+        baseline_brier = float(((baseline - y) ** 2).mean())
+        brier_rows.append(
+            {
+                "strategy_id": strategy_id,
+                "rows_evaluated": int(eval_mask.sum()),
+                "brier_score_proxy": brier,
+                "baseline_brier_score_proxy": baseline_brier,
+                "brier_skill_score_proxy": _safe_metric(baseline_brier - brier, baseline_brier),
+                "mean_predicted_up_probability": float(p.mean()),
+                "observed_up_fraction": float(y.mean()),
+                "metric_scope": "ternary_signal_probability_proxy_not_calibrated_model",
+            }
+        )
+        frame = pd.DataFrame(
+            {
+                "strategy_id": strategy_id,
+                "probability_bucket": pd.cut(p, bins=bins, labels=labels, include_lowest=True),
+                "predicted_up_probability": p,
+                "actual_up": y,
+            }
+        )
+        grouped = (
+            frame.groupby(["strategy_id", "probability_bucket"], observed=False, sort=True)
+            .agg(
+                rows=("actual_up", "count"),
+                mean_predicted_up_probability=("predicted_up_probability", "mean"),
+                observed_up_fraction=("actual_up", "mean"),
+            )
+            .reset_index()
+        )
+        grouped["calibration_error_abs"] = (
+            grouped["mean_predicted_up_probability"] - grouped["observed_up_fraction"]
+        ).abs()
+        grouped["metric_scope"] = "ternary_signal_probability_bucket_proxy_not_acceptance"
+        curve_rows.append(grouped)
+    return pd.DataFrame(brier_rows), pd.concat(curve_rows, ignore_index=True)
+
+
+def feature_importance_stability(inputs: dict[str, pd.DataFrame], sample_rows: int = 100_000, max_seeds: int = 12) -> pd.DataFrame:
+    features = inputs["features"]
+    seed_plan = inputs["seed_plan"].copy()
+    seed_column = next((column for column in ["seed", "simulation_seed", "random_seed"] if column in seed_plan.columns), None)
+    seeds = seed_plan[seed_column].dropna().astype(int).drop_duplicates().head(max_seeds).tolist() if seed_column else []
+    if not seeds:
+        seeds = [20260714]
+    candidate_features = [
+        "mlofi_qty",
+        "momentum_3",
+        "book_slope_l5",
+        "event_intensity_proxy",
+        "l5_imbalance",
+        "l1_imbalance",
+        "local_volatility_6",
+        "spread_ticks",
+        "book_convexity_l5",
+    ]
+    available_features = [column for column in candidate_features if column in features.columns]
+    base_cols = [*available_features, "future_mid_return_1"]
+    base = features[base_cols].dropna()
+    if base.empty or not available_features:
+        return pd.DataFrame(
+            columns=[
+                "feature_name",
+                "seed_runs",
+                "mean_abs_correlation_importance",
+                "std_abs_correlation_importance",
+                "coefficient_of_variation",
+                "mean_rank",
+                "rank_std",
+                "top3_frequency",
+                "metric_scope",
+            ]
+        )
+    rows = []
+    replace = len(base) < sample_rows
+    n = min(sample_rows, len(base)) if not replace else sample_rows
+    for seed in seeds:
+        sample = base.sample(n=n, replace=replace, random_state=seed)
+        target = sample["future_mid_return_1"].astype(float)
+        importances = {}
+        for feature_name in available_features:
+            value = sample[feature_name].astype(float)
+            corr = value.corr(target)
+            importances[feature_name] = 0.0 if pd.isna(corr) else abs(float(corr))
+        ranked = pd.Series(importances).rank(method="average", ascending=False)
+        for feature_name, importance in importances.items():
+            rows.append(
+                {
+                    "seed": seed,
+                    "feature_name": feature_name,
+                    "abs_correlation_importance": importance,
+                    "rank": float(ranked[feature_name]),
+                    "in_top3": bool(ranked[feature_name] <= 3),
+                }
+            )
+    frame = pd.DataFrame(rows)
+    out = (
+        frame.groupby("feature_name", sort=True)
+        .agg(
+            seed_runs=("seed", "nunique"),
+            mean_abs_correlation_importance=("abs_correlation_importance", "mean"),
+            std_abs_correlation_importance=("abs_correlation_importance", "std"),
+            mean_rank=("rank", "mean"),
+            rank_std=("rank", "std"),
+            top3_frequency=("in_top3", "mean"),
+        )
+        .reset_index()
+    )
+    out["coefficient_of_variation"] = out.apply(
+        lambda row: _safe_metric(float(row["std_abs_correlation_importance"]), float(row["mean_abs_correlation_importance"])),
+        axis=1,
+    )
+    out["metric_scope"] = "seed_sampled_feature_target_association_proxy_not_model_importance"
+    return out.sort_values(["top3_frequency", "mean_abs_correlation_importance"], ascending=[False, False], kind="mergesort")
 
 
 def _safe_div(num: float, den: float) -> float | None:
@@ -457,6 +606,9 @@ def write_report(
     predictive: pd.DataFrame,
     predictive_proxy: pd.DataFrame,
     signal_buckets: pd.DataFrame,
+    brier: pd.DataFrame,
+    calibration: pd.DataFrame,
+    importance: pd.DataFrame,
     trading: pd.DataFrame,
     breakdowns: pd.DataFrame,
 ) -> None:
@@ -488,6 +640,18 @@ def write_report(
         "",
         _markdown_table(signal_buckets.head(30)),
         "",
+        "## Brier Score Proxy",
+        "",
+        _markdown_table(brier.sort_values("brier_score_proxy", ascending=True).head(12)),
+        "",
+        "## Calibration Curve Proxy",
+        "",
+        _markdown_table(calibration.head(30)),
+        "",
+        "## Feature Importance Stability Proxy",
+        "",
+        _markdown_table(importance.head(12)),
+        "",
         "## Top Trading Proxy Rows",
         "",
         _markdown_table(trading.sort_values("mean_net_return", ascending=False).head(10)),
@@ -508,6 +672,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     catalog = metric_catalog()
     predictive = predictive_scoreboard(inputs)
     predictive_proxy, signal_buckets = predictive_proxy_diagnostics(inputs)
+    brier, calibration = predictive_calibration_proxies(inputs)
+    importance = feature_importance_stability(inputs)
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
@@ -518,6 +684,9 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     predictive.to_csv(output_dir / "predictive_metric_scoreboard.csv", index=False)
     predictive_proxy.to_csv(output_dir / "predictive_proxy_diagnostics.csv", index=False)
     signal_buckets.to_csv(output_dir / "predictive_signal_bucket_returns.csv", index=False)
+    brier.to_csv(output_dir / "predictive_brier_score_proxy.csv", index=False)
+    calibration.to_csv(output_dir / "predictive_calibration_curve_proxy.csv", index=False)
+    importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
@@ -529,6 +698,9 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "predictive_scoreboard_rows": int(len(predictive)),
         "predictive_proxy_rows": int(len(predictive_proxy)),
         "predictive_signal_bucket_rows": int(len(signal_buckets)),
+        "predictive_brier_score_rows": int(len(brier)),
+        "predictive_calibration_curve_rows": int(len(calibration)),
+        "feature_importance_stability_rows": int(len(importance)),
         "trading_scoreboard_rows": int(len(trading)),
         "markout_summary_rows": int(len(markouts)),
         "markout_horizons_bars": [1, 3, 6],
@@ -537,7 +709,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
     }
     (output_dir / "metrics_reporting_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, catalog, predictive, predictive_proxy, signal_buckets, trading, breakdowns)
+    write_report(output_dir, catalog, predictive, predictive_proxy, signal_buckets, brier, calibration, importance, trading, breakdowns)
 
 
 def parse_args() -> argparse.Namespace:
@@ -549,6 +721,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--trade-sample", type=Path, default=Path("outputs/phase12/trade_ledger_sample.parquet"))
     parser.add_argument("--features", type=Path, default=Path("outputs/phase9/tier_c/features_5m.parquet"))
     parser.add_argument("--acceptance-summary", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
+    parser.add_argument("--seed-plan", type=Path, default=Path("outputs/phase13/seed_plan.csv"))
     return parser.parse_args()
 
 
@@ -561,6 +734,7 @@ def main() -> None:
         "trade_sample": args.trade_sample,
         "features": args.features,
         "acceptance_summary": args.acceptance_summary,
+        "seed_plan": args.seed_plan,
     }
     run_phase16(args.output_dir, paths)
 

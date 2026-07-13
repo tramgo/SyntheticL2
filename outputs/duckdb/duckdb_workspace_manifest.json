@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:37:27.341131+00:00",
+  "generated_utc": "2026-07-13T19:43:08.824732+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -87,7 +87,10 @@
     "phase16_predictive_scoreboard_rows": 11,
     "phase16_predictive_proxy_rows": 9,
     "phase16_predictive_signal_bucket_rows": 27,
-    "phase16_missing_predictive_metrics": 3,
+    "phase16_predictive_brier_score_rows": 9,
+    "phase16_predictive_calibration_curve_rows": 45,
+    "phase16_feature_importance_stability_rows": 9,
+    "phase16_missing_predictive_metrics": 0,
     "phase16_missing_trading_metrics": 0,
     "phase16_trading_scoreboard_rows": 27,
     "phase16_markout_summary_rows": 27,
@@ -123,8 +126,8 @@
     "phase19_gap_rows": 20,
     "phase19_remediation_rows": 220,
     "phase19_remediation_summary_rows": 4,
-    "phase19_generator_field_rows": 177,
-    "phase19_alias_normalization_rows": 32,
+    "phase19_generator_field_rows": 176,
+    "phase19_alias_normalization_rows": 33,
     "phase19_recover_manifest_rows": 10,
     "phase4_days_per_profile": [
       [
@@ -191,8 +194,11 @@
     "phase15_strategy_acceptance_summary",
     "phase15_strategy_gate_results",
     "phase16_breakdown_coverage",
+    "phase16_feature_importance_stability_proxy",
     "phase16_markout_mae_mfe_summary",
     "phase16_metric_catalog",
+    "phase16_predictive_brier_score_proxy",
+    "phase16_predictive_calibration_curve_proxy",
     "phase16_predictive_metric_scoreboard",
     "phase16_predictive_proxy_diagnostics",
     "phase16_predictive_signal_bucket_returns",
