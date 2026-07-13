@@ -269,6 +269,127 @@ def build_control_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+def build_robustness_dimension_summary(
+    ledger: pd.DataFrame,
+    profile_ledger: pd.DataFrame,
+    profile_summary: pd.DataFrame,
+    signal_diagnostics: pd.DataFrame,
+    seed_plan: pd.DataFrame,
+    walk_forward_windows: pd.DataFrame,
+    parameter_grid: pd.DataFrame,
+    holdout_realism: pd.DataFrame,
+) -> pd.DataFrame:
+    strategy_ids = sorted(signal_diagnostics["strategy_id"].astype(str).unique().tolist())
+    holdout_available_profiles = set()
+    if not holdout_realism.empty and {"quarter_profile", "holdout_role", "structural_ready_for_holdout_proxy"}.issubset(holdout_realism.columns):
+        holdout_available_profiles = set(
+            holdout_realism[
+                holdout_realism["structural_ready_for_holdout_proxy"].astype(bool)
+                & holdout_realism["holdout_role"].astype(str).str.contains("holdout", case=False, na=False)
+            ]["quarter_profile"].astype(str)
+        )
+
+    rows = []
+    for strategy_id in strategy_ids:
+        strategy_ledger = ledger[ledger["strategy_id"].astype(str) == strategy_id].copy()
+        strategy_profile_ledger = profile_ledger[profile_ledger["strategy_id"].astype(str) == strategy_id].copy()
+        strategy_profile_summary = profile_summary[profile_summary["strategy_id"].astype(str) == strategy_id].copy()
+        strategy_grid = parameter_grid[parameter_grid["strategy_id"].astype(str) == strategy_id].copy()
+        registered = not strategy_ledger.empty
+        base = strategy_ledger[strategy_ledger["control_id"].astype(str) == "BASE"] if registered else pd.DataFrame()
+        controls = strategy_ledger[strategy_ledger["control_id"].astype(str) != "BASE"] if registered else pd.DataFrame()
+        profile_base = (
+            strategy_profile_ledger[strategy_profile_ledger["control_id"].astype(str) == "BASE"]
+            if not strategy_profile_ledger.empty
+            else pd.DataFrame()
+        )
+        profile_quarters = set(profile_base["quarter_profile"].astype(str).unique().tolist()) if not profile_base.empty else set()
+        holdout_profiles_present = profile_quarters.intersection(holdout_available_profiles)
+        execution_profiles = (
+            int(strategy_profile_ledger["execution_profile"].astype(str).nunique())
+            if "execution_profile" in strategy_profile_ledger
+            else 0
+        )
+        seeds_run = int(strategy_ledger["simulation_seed"].nunique()) if registered and "simulation_seed" in strategy_ledger else 0
+        required_seeds = int(seed_plan["simulation_seed"].nunique()) if "simulation_seed" in seed_plan else 0
+        initial_seed_rows = int(seed_plan["initial_engineering_seed"].sum()) if "initial_engineering_seed" in seed_plan else 0
+        parameter_sets_planned = int(strategy_grid["parameter_set_id"].nunique()) if "parameter_set_id" in strategy_grid else 0
+        parameter_sets_run = int(strategy_ledger["parameter_set_id"].nunique()) if registered and "parameter_set_id" in strategy_ledger else 0
+        walk_forward_windows_planned = int(len(walk_forward_windows))
+        negative_control_rows = int(len(controls))
+        interpretable_controls = (
+            int(controls["negative_control_interpretable"].astype(bool).sum())
+            if not controls.empty and "negative_control_interpretable" in controls
+            else 0
+        )
+        passed_controls = (
+            int((controls["negative_control_result"].astype(str) == "pass_proxy").sum())
+            if not controls.empty and "negative_control_result" in controls
+            else 0
+        )
+        all_profiles_positive = (
+            bool(strategy_profile_summary["all_profiles_positive"].astype(bool).any())
+            if not strategy_profile_summary.empty and "all_profiles_positive" in strategy_profile_summary
+            else False
+        )
+        stressed_profile_positive = (
+            bool(strategy_profile_summary["stressed_profile_positive"].astype(bool).any())
+            if not strategy_profile_summary.empty and "stressed_profile_positive" in strategy_profile_summary
+            else False
+        )
+        dimension_status = (
+            "robustness_proxy_dimensions_available_not_acceptance"
+            if registered
+            else "not_registered_for_phase13_proxy_run"
+        )
+        rows.append(
+            {
+                "strategy_id": strategy_id,
+                "registered_for_phase13_proxy": bool(registered),
+                "proxy_run_rows": int(len(strategy_ledger)),
+                "profile_robustness_rows": int(len(strategy_profile_ledger)),
+                "initial_engineering_seeds_run": seeds_run,
+                "required_full_validation_seeds": required_seeds,
+                "seed_scope_status": "initial_engineering_seed_proxy_only" if seeds_run else "not_run",
+                "quarter_profiles_run": int(strategy_ledger["quarter_profile"].nunique()) if registered else 0,
+                "execution_profiles_evaluated": execution_profiles,
+                "all_execution_profiles_positive": all_profiles_positive,
+                "stressed_profile_positive": stressed_profile_positive,
+                "negative_control_rows": negative_control_rows,
+                "interpretable_negative_control_rows": interpretable_controls,
+                "passed_negative_control_rows": passed_controls,
+                "parameter_sets_planned": parameter_sets_planned,
+                "parameter_sets_run": parameter_sets_run,
+                "parameter_smoothness_status": (
+                    "design_available_single_parameter_proxy_run"
+                    if parameter_sets_planned > parameter_sets_run > 0
+                    else "not_registered_or_not_run"
+                ),
+                "walk_forward_windows_planned": walk_forward_windows_planned,
+                "walk_forward_windows_run": 0,
+                "walk_forward_status": "design_available_not_run",
+                "holdout_generator_profiles_available": int(len(holdout_available_profiles)),
+                "holdout_generator_profiles_present_in_proxy": int(len(holdout_profiles_present)),
+                "holdout_status": (
+                    "holdout_profiles_present_as_proxy_not_rerun_acceptance"
+                    if len(holdout_profiles_present) > 0
+                    else "holdout_proxy_not_present_for_strategy"
+                ),
+                "real_data_rerun_status": "not_available_one_day_seed_only",
+                "dimension_status": dimension_status,
+                "acceptance_eligible": False,
+                "blocker": (
+                    "Robustness proxy dimensions are now summarized, but acceptance still requires full required-seed "
+                    "execution, walk-forward runs, parameter-neighborhood smoothness, holdout-generator strategy reruns "
+                    "and later multi-day real-data reruns."
+                    if registered
+                    else "Strategy is not registered in the current Phase 13 alpha-parameter proxy grid; robustness acceptance evidence is missing."
+                ),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
         return "_No rows._"
@@ -287,6 +408,7 @@ def write_report(
     summary: pd.DataFrame,
     control_summary: pd.DataFrame,
     profile_summary: pd.DataFrame,
+    dimension_summary: pd.DataFrame,
 ) -> None:
     lines = [
         "# Phase 13 Experiment Run Smoke Report",
@@ -319,9 +441,13 @@ def write_report(
         "",
         _markdown_table(profile_summary),
         "",
+        "## Robustness Dimension Coverage Summary",
+        "",
+        _markdown_table(dimension_summary),
+        "",
         "## Caveat",
         "",
-        "The output closes the bookkeeping gap between a planned registry and auditable proxy run ledgers, including execution-profile sensitivity, but it does not close the acceptance-grade robustness gate.",
+        "The output closes the bookkeeping gap between a planned registry and auditable proxy run ledgers, including execution-profile sensitivity and dimension coverage, but it does not close the acceptance-grade robustness gate.",
         "",
     ]
     (output_dir / "experiment_run_smoke_report.md").write_text("\n".join(lines), encoding="utf-8")
@@ -331,6 +457,10 @@ def run_phase13_experiment_smoke(
     registry_path: Path,
     signal_diagnostics_path: Path,
     execution_summary_path: Path,
+    seed_plan_path: Path,
+    walk_forward_windows_path: Path,
+    parameter_grid_path: Path,
+    holdout_realism_path: Path,
     output_dir: Path,
     execution_profile: str,
     robustness_profiles: list[str] | None = None,
@@ -339,6 +469,10 @@ def run_phase13_experiment_smoke(
     registry = _read_csv(registry_path)
     signal_diagnostics = _read_csv(signal_diagnostics_path)
     execution_summary = _read_csv(execution_summary_path)
+    seed_plan = _read_csv(seed_plan_path)
+    walk_forward_windows = _read_csv(walk_forward_windows_path)
+    parameter_grid = _read_csv(parameter_grid_path)
+    holdout_realism = _read_csv(holdout_realism_path) if holdout_realism_path.exists() else pd.DataFrame()
 
     ledger = build_experiment_run_ledger(registry, signal_diagnostics, execution_summary, execution_profile)
     summary = build_summary(ledger)
@@ -352,12 +486,23 @@ def run_phase13_experiment_smoke(
         execution_profiles=robustness_profiles,
     )
     profile_summary = build_profile_robustness_summary(profile_ledger)
+    dimension_summary = build_robustness_dimension_summary(
+        ledger=ledger,
+        profile_ledger=profile_ledger,
+        profile_summary=profile_summary,
+        signal_diagnostics=signal_diagnostics,
+        seed_plan=seed_plan,
+        walk_forward_windows=walk_forward_windows,
+        parameter_grid=parameter_grid,
+        holdout_realism=holdout_realism,
+    )
 
     ledger.to_csv(output_dir / "experiment_run_ledger.csv", index=False)
     summary.to_csv(output_dir / "experiment_run_summary.csv", index=False)
     control_summary.to_csv(output_dir / "negative_control_run_summary.csv", index=False)
     profile_ledger.to_csv(output_dir / "experiment_profile_robustness_ledger.csv", index=False)
     profile_summary.to_csv(output_dir / "experiment_profile_robustness_summary.csv", index=False)
+    dimension_summary.to_csv(output_dir / "robustness_dimension_summary.csv", index=False)
 
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
@@ -365,6 +510,10 @@ def run_phase13_experiment_smoke(
         "registry_path": str(registry_path),
         "signal_diagnostics_path": str(signal_diagnostics_path),
         "execution_summary_path": str(execution_summary_path),
+        "seed_plan_path": str(seed_plan_path),
+        "walk_forward_windows_path": str(walk_forward_windows_path),
+        "parameter_grid_path": str(parameter_grid_path),
+        "holdout_realism_path": str(holdout_realism_path),
         "execution_profile": execution_profile,
         "registered_rows_evaluated": int(len(ledger)),
         "strategies": int(ledger["strategy_id"].nunique()),
@@ -372,6 +521,11 @@ def run_phase13_experiment_smoke(
         "robustness_execution_profiles": robustness_profiles,
         "profile_robustness_rows": int(len(profile_ledger)),
         "profile_robustness_summary_rows": int(len(profile_summary)),
+        "robustness_dimension_summary_rows": int(len(dimension_summary)),
+        "robustness_dimension_registered_rows": int(dimension_summary["registered_for_phase13_proxy"].sum()) if len(dimension_summary) else 0,
+        "robustness_dimension_holdout_proxy_rows": int(
+            (dimension_summary["holdout_generator_profiles_present_in_proxy"] > 0).sum()
+        ) if len(dimension_summary) else 0,
         "base_rows": int((ledger["control_id"].astype(str) == "BASE").sum()),
         "negative_control_rows": int((ledger["control_id"].astype(str) != "BASE").sum()),
         "acceptance_eligible": False,
@@ -385,6 +539,10 @@ def run_phase13_experiment_smoke(
                 "registry_path": str(registry_path),
                 "signal_diagnostics_path": str(signal_diagnostics_path),
                 "execution_summary_path": str(execution_summary_path),
+                "seed_plan_path": str(seed_plan_path),
+                "walk_forward_windows_path": str(walk_forward_windows_path),
+                "parameter_grid_path": str(parameter_grid_path),
+                "holdout_realism_path": str(holdout_realism_path),
             },
             parameters={
                 "execution_profile": execution_profile,
@@ -398,6 +556,7 @@ def run_phase13_experiment_smoke(
                 "negative_control_run_summary": str(output_dir / "negative_control_run_summary.csv"),
                 "experiment_profile_robustness_ledger": str(output_dir / "experiment_profile_robustness_ledger.csv"),
                 "experiment_profile_robustness_summary": str(output_dir / "experiment_profile_robustness_summary.csv"),
+                "robustness_dimension_summary": str(output_dir / "robustness_dimension_summary.csv"),
                 "report": str(output_dir / "experiment_run_smoke_report.md"),
                 "manifest": str(output_dir / "experiment_run_manifest.json"),
             },
@@ -408,7 +567,7 @@ def run_phase13_experiment_smoke(
         )
     )
     (output_dir / "experiment_run_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, manifest, summary, control_summary, profile_summary)
+    write_report(output_dir, manifest, summary, control_summary, profile_summary, dimension_summary)
 
 
 def parse_args() -> argparse.Namespace:
@@ -416,6 +575,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--registry", type=Path, default=Path("outputs/phase13/experiment_registry.csv"))
     parser.add_argument("--signal-diagnostics", type=Path, default=Path("outputs/phase11/strategy_signal_diagnostics.csv"))
     parser.add_argument("--execution-summary", type=Path, default=Path("outputs/phase12/execution_summary.csv"))
+    parser.add_argument("--seed-plan", type=Path, default=Path("outputs/phase13/seed_plan.csv"))
+    parser.add_argument("--walk-forward-windows", type=Path, default=Path("outputs/phase13/walk_forward_windows.csv"))
+    parser.add_argument("--parameter-grid", type=Path, default=Path("outputs/phase13/parameter_grid.csv"))
+    parser.add_argument("--holdout-realism", type=Path, default=Path("outputs/phase14/holdout_generator_realism_summary.csv"))
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/phase13"))
     parser.add_argument("--execution-profile", default="retail_marketable_default")
     parser.add_argument(
@@ -433,6 +596,10 @@ def main() -> None:
         registry_path=args.registry,
         signal_diagnostics_path=args.signal_diagnostics,
         execution_summary_path=args.execution_summary,
+        seed_plan_path=args.seed_plan,
+        walk_forward_windows_path=args.walk_forward_windows,
+        parameter_grid_path=args.parameter_grid,
+        holdout_realism_path=args.holdout_realism,
         output_dir=args.output_dir,
         execution_profile=args.execution_profile,
         robustness_profiles=args.robustness_profiles,

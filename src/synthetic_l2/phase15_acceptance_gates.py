@@ -123,6 +123,13 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
         "No Phase 13 proxy smoke row is registered for this strategy; no completed multi-seed, "
         "walk-forward, parameter-smoothness, holdout or real-data rerun evidence."
     )
+    if Path("outputs/phase13/robustness_dimension_summary.csv").exists():
+        robustness_evidence_source += "; outputs/phase13/robustness_dimension_summary.csv"
+        robustness_blocker = (
+            "Phase 13 robustness-dimension coverage ledger marks this strategy as not registered for the current "
+            "alpha-parameter proxy grid; no completed multi-seed, walk-forward, parameter-smoothness, holdout "
+            "or real-data rerun evidence."
+        )
     if not run_summary.empty and "strategy_id" in run_summary:
         strategy_run = run_summary[run_summary["strategy_id"] == sid]
         if len(strategy_run):
@@ -134,6 +141,13 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             )
             if Path("outputs/phase13/experiment_profile_robustness_summary.csv").exists():
                 robustness_evidence_source += "; outputs/phase13/experiment_profile_robustness_summary.csv"
+            if Path("outputs/phase13/robustness_dimension_summary.csv").exists():
+                robustness_evidence_source += "; outputs/phase13/robustness_dimension_summary.csv"
+                robustness_blocker = (
+                    "Phase 13 has deterministic proxy smoke, multi-profile robustness and robustness-dimension coverage ledgers, "
+                    "but no acceptance-grade full required-seed execution, walk-forward runs, parameter-smoothness, "
+                    "holdout-generator strategy reruns or real-data rerun evidence."
+                )
     runnable = strategy["support_level"] in {"runnable_proxy", "partial_missing_required_features"}
     retail = _exec_row(execution, sid, "retail_marketable_default")
     stressed = _exec_row(execution, sid, "stressed_retail")

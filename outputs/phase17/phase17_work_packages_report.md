@@ -1,6 +1,6 @@
 # Phase 17 Implementation Work Packages Report
 
-Generated UTC: 2026-07-13T21:59:19.607928+00:00
+Generated UTC: 2026-07-13T22:05:13.210788+00:00
 
 ## Scope
 
@@ -40,7 +40,7 @@ It does not claim acceptance completion; it identifies which deliverables are im
 
 | priority | work_package_id | deliverable | implementation_status | evidence_path | evidence_status | recommended_next_action | note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| P2 | WP10 | robustness matrix | implemented_proxy | outputs/phase13/experiment_run_summary.csv; outputs/phase13/experiment_profile_robustness_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Pre-registered experiment rows have deterministic proxy smoke and execution-profile robustness ledgers; full robustness validation is not acceptance-grade yet. |
+| P2 | WP10 | robustness matrix | implemented_proxy | outputs/phase13/experiment_run_summary.csv; outputs/phase13/experiment_profile_robustness_summary.csv; outputs/phase13/robustness_dimension_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Pre-registered experiment rows have deterministic proxy smoke, execution-profile robustness and robustness-dimension coverage ledgers; full robustness validation is not acceptance-grade yet. |
 | P2 | WP10 | strategy performance reports | implemented_proxy | outputs/phase16/phase16_metrics_reporting_report.md | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Proxy performance report exists. |
 | P2 | WP10 | synthetic realism dashboard | implemented_proxy | outputs/dashboard/synthetic_l2_validation_dashboard.html | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Static validation dashboard exists over Phase 14-17 quality, holdout-generator realism, acceptance, metrics and gap evidence. |
 | P2 | WP2 | MLOFI | implemented_proxy | outputs/phase11/strategy_feature_availability.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | MLOFI strategy support is proxy-level. |

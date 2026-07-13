@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:59:24.791372+00:00
+Generated UTC: 2026-07-13T22:05:17.803237+00:00
 
 ## Storage Decision
 
@@ -107,6 +107,9 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 13 profile robustness summary rows: 9
 - Phase 13 profile robustness profiles: 3
 - Phase 13 all-profile-positive strategies: 0
+- Phase 13 robustness dimension rows: 11
+- Phase 13 robustness dimension registered rows: 9
+- Phase 13 robustness holdout proxy rows: 9
 - Phase 13 acceptance-eligible smoke rows: 0
 - Phase 14 quality checks: 24
 - Phase 14 pass checks: 24
@@ -147,7 +150,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 missing deliverables: 0
 - Phase 17 blocked work packages: 0
 - Phase 17 P0 gaps: 0
-- Validation dashboard summary rows: 15
+- Validation dashboard summary rows: 17
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

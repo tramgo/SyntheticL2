@@ -7,6 +7,8 @@ holdout_proxy_available_rows,15,Holdout proxy rows structurally available
 full_run_lifecycle_risk_rows,81,Phase 12 full-run fill-adjusted risk rows
 full_run_lifecycle_fill_models,3,Phase 12 full-run fill models
 full_run_lifecycle_daily_halt_rows,21299578,Phase 12 full-run lifecycle halt rows
+robustness_dimension_rows,11,Phase 13 robustness dimension rows
+robustness_dimension_registered_rows,9,Phase 13 registered robustness proxy rows
 strategies,11,Phase 15 strategies
 promoted_strategies,0,Promotion allowed count
 acceptance_blockers,50,Phase 15 blocker rows

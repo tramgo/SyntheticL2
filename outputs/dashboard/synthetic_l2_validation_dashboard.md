@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-13T21:59:20.418842+00:00
+Generated UTC: 2026-07-13T22:05:13.952840+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -16,6 +16,8 @@ This dashboard is static research traceability output, not strategy promotion ev
 | full_run_lifecycle_risk_rows | 81 | Phase 12 full-run fill-adjusted risk rows |
 | full_run_lifecycle_fill_models | 3 | Phase 12 full-run fill models |
 | full_run_lifecycle_daily_halt_rows | 21299578 | Phase 12 full-run lifecycle halt rows |
+| robustness_dimension_rows | 11 | Phase 13 robustness dimension rows |
+| robustness_dimension_registered_rows | 9 | Phase 13 registered robustness proxy rows |
 | strategies | 11 | Phase 15 strategies |
 | promoted_strategies | 0 | Promotion allowed count |
 | acceptance_blockers | 50 | Phase 15 blocker rows |
@@ -57,6 +59,13 @@ This dashboard is static research traceability output, not strategy promotion ev
 | neutral_partial | 27 | 10375860 | 0.7045303605574683 | 205634027.27410844 | 7329401 | 3241574 |
 | optimistic_marketable | 27 | 10375860 | 0.9859071061166582 | 295398866.74432045 | 7877052 | 3757171 |
 | pessimistic_partial | 27 | 10375860 | 0.37155813610202526 | 120472769.73654498 | 6093125 | 2422779 |
+
+## Phase 13 Robustness Dimension Proxy
+
+| dimension_status | strategies |
+| --- | --- |
+| robustness_proxy_dimensions_available_not_acceptance | 9 |
+| not_registered_for_phase13_proxy_run | 2 |
 
 ## Acceptance Blockers by Gate
 
