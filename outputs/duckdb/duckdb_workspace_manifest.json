@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:01:52.600688+00:00",
+  "generated_utc": "2026-07-13T21:08:50.635136+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -96,6 +96,8 @@
     "phase14_pass_checks": 23,
     "phase14_warn_checks": 1,
     "phase14_fail_checks": 0,
+    "phase14_warning_triage_rows": 1,
+    "phase14_realism_blocking_warnings": 1,
     "phase15_gate_rows": 55,
     "phase15_promoted_strategies": 0,
     "phase15_blocked_strategies": 11,
@@ -224,6 +226,7 @@
     "phase14_level6_discriminator_proxy",
     "phase14_level7_counterfactual",
     "phase14_quality_gate_summary",
+    "phase14_quality_warning_triage",
     "phase15_acceptance_blockers",
     "phase15_gate_definitions",
     "phase15_strategy_acceptance_summary",
@@ -287,8 +290,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "f730c8e7f2e0586a5a87443dd60a2232e0cc1931",
-  "configuration_hash": "900d05c6989c36168c9b5d43f4d2756070600dc64ae3ea2c92a83acb6277aa80",
+  "generator_version": "2286460c7894c36654ae7c7bd2e4eac4b73f83b8",
+  "configuration_hash": "fe39aa62435af612386aeb6e4d7b73e3546833d545a47df46fa7eebac5357282",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -296,5 +299,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T21:01:52.600688+00:00"
+  "creation_timestamp": "2026-07-13T21:08:50.635136+00:00"
 }

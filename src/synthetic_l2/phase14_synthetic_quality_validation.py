@@ -285,7 +285,62 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, frames: dict[str, pd.DataFrame]) -> None:
+def warning_triage(summary: pd.DataFrame) -> pd.DataFrame:
+    columns = [
+        "level",
+        "validation_table",
+        "metric",
+        "status",
+        "observed_value",
+        "acceptance_impact",
+        "root_cause",
+        "next_required_evidence",
+        "not_acceptance_waiver",
+    ]
+    non_pass = summary[summary["status"].astype(str) != "pass"].copy()
+    rows = []
+    for row in non_pass.to_dict("records"):
+        metric = str(row.get("metric") or row.get("check_name") or row.get("intervention") or "unknown_check")
+        status = str(row.get("status"))
+        observed_value = next(
+            (
+                row.get(field)
+                for field in ("value", "median_relative_or_absolute_error", "median_value")
+                if pd.notna(row.get(field))
+            ),
+            None,
+        )
+        if metric == "nonzero_price_change_fraction":
+            root_cause = (
+                "Current Phase 9 features are 5-minute synthetic state/features, while the calibration reference is "
+                "one-day received-tick activity; price-change frequency is therefore not expected to match tick-level "
+                "nonzero-change frequency without a dedicated event/tick generator or horizon-specific tolerance."
+            )
+            next_required = (
+                "Either add a horizon-matched comparison for 5-minute synthetic features versus 5-minute real-derived "
+                "features, or introduce a tick/event-level generator that can target received-tick nonzero price-change "
+                "frequency directly."
+            )
+        else:
+            root_cause = "Non-pass quality check requires manual review before promotion use."
+            next_required = "Add metric-specific tolerance, calibration evidence or generator fix before treating this as accepted realism evidence."
+        rows.append(
+            {
+                "level": row.get("level"),
+                "validation_table": row.get("validation_table"),
+                "metric": metric,
+                "status": status,
+                "observed_value": observed_value,
+                "acceptance_impact": "blocks_realism_gate",
+                "root_cause": root_cause,
+                "next_required_evidence": next_required,
+                "not_acceptance_waiver": True,
+            }
+        )
+    return pd.DataFrame(rows, columns=columns)
+
+
+def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.DataFrame) -> None:
     summary = pd.concat(
         [
             frame.assign(validation_table=name)
@@ -318,6 +373,10 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame]) -> None:
         "",
         _markdown_table(frames["level2_marginal"]),
         "",
+        "## Warning Triage",
+        "",
+        _markdown_table(triage),
+        "",
         "## Caveats",
         "",
         "- Real evidence is still a one-day sample.",
@@ -347,7 +406,9 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         ignore_index=True,
         sort=False,
     )
+    triage = warning_triage(summary)
     summary.to_csv(output_dir / "quality_gate_summary.csv", index=False)
+    triage.to_csv(output_dir / "quality_warning_triage.csv", index=False)
     inputs_manifest = {key: str(value) for key, value in paths.items()}
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
@@ -355,6 +416,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         "inputs": inputs_manifest,
         "tables": list(frames),
         "summary_rows": int(len(summary)),
+        "warning_triage_rows": int(len(triage)),
         "status_counts": summary["status"].value_counts(dropna=False).to_dict(),
         "not_strategy_acceptance": True,
     }
@@ -366,6 +428,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
             parameters={"validation_levels": list(frames), "not_strategy_acceptance": True},
             outputs={
                 "quality_gate_summary": str(output_dir / "quality_gate_summary.csv"),
+                "quality_warning_triage": str(output_dir / "quality_warning_triage.csv"),
                 "report": str(output_dir / "phase14_quality_validation_report.md"),
                 "manifest": str(output_dir / "quality_validation_manifest.json"),
                 **{name: str(output_dir / f"{name}.csv") for name in frames},
@@ -377,7 +440,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         )
     )
     (output_dir / "quality_validation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, frames)
+    write_report(output_dir, frames, triage)
 
 
 def parse_args() -> argparse.Namespace:

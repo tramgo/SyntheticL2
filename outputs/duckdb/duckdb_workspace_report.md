@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:01:52.600688+00:00
+Generated UTC: 2026-07-13T21:08:50.635136+00:00
 
 ## Storage Decision
 
@@ -100,6 +100,8 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 14 pass checks: 23
 - Phase 14 warn checks: 1
 - Phase 14 fail checks: 0
+- Phase 14 warning triage rows: 1
+- Phase 14 realism-blocking warnings: 1
 - Phase 15 gate rows: 55
 - Phase 15 promoted strategies: 0
 - Phase 15 blocked strategies: 11

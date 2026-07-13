@@ -1,6 +1,6 @@
 # Phase 14 Synthetic Data Quality Validation Report
 
-Generated UTC: 2026-07-13T20:47:20.817616+00:00
+Generated UTC: 2026-07-13T21:08:23.880453+00:00
 
 ## Scope
 
@@ -38,6 +38,12 @@ It is a quality gate diagnostic, not strategy acceptance.
 | L2_marginal | spread_ticks_q95 | 32 | 1.07371e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
 | L2_marginal | nonzero_price_change_fraction | 32 | 1.20472 | warn | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
 | L2_marginal | l5_imbalance_median | 32 | 0.486332 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
+
+## Warning Triage
+
+| level | validation_table | metric | status | observed_value | acceptance_impact | root_cause | next_required_evidence | not_acceptance_waiver |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| L2_marginal | level2_marginal | nonzero_price_change_fraction | warn | 1.20472 | blocks_realism_gate | Current Phase 9 features are 5-minute synthetic state/features, while the calibration reference is one-day received-tick activity; price-change frequency is therefore not expected to match tick-level nonzero-change frequency without a dedicated event/tick generator or horizon-specific tolerance. | Either add a horizon-matched comparison for 5-minute synthetic features versus 5-minute real-derived features, or introduce a tick/event-level generator that can target received-tick nonzero price-change frequency directly. | True |
 
 ## Caveats
 

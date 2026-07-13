@@ -3,7 +3,7 @@
   "artifact_id": "phase17",
   "source_manifest_path": "outputs/phase17/work_packages_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "f730c8e7f2e0586a5a87443dd60a2232e0cc1931",
+  "generator_version": "2286460c7894c36654ae7c7bd2e4eac4b73f83b8",
   "configuration_hash": "4f77f183521dd3756a7e179d36401e743071cfd74cc168d22617142dc360fc7f",
   "random_seed": "not_applicable_deterministic_traceability_registry",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -12,7 +12,7 @@
   "scenario_ids": "wp1_wp10_current_workspace_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T21:01:48.550261+00:00",
-  "normalization_timestamp": "2026-07-13T21:01:54.062155+00:00",
+  "creation_timestamp": "2026-07-13T21:08:46.978799+00:00",
+  "normalization_timestamp": "2026-07-13T21:08:52.108975+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

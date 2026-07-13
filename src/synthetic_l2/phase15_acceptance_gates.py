@@ -254,7 +254,7 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "gate_status": "pass" if realism_pass else "blocked",
             "evidence_value": f"fail={quality_fail};warn={quality_warn};support={strategy['support_level']}",
             "blocker": "" if realism_pass else "Synthetic quality has warnings and/or strategy only has proxy/partial support; no holdout generator evidence.",
-            "evidence_source": "outputs/phase14/quality_gate_summary.csv; outputs/phase11/strategy_validation_matrix.csv",
+            "evidence_source": "outputs/phase14/quality_gate_summary.csv; outputs/phase14/quality_warning_triage.csv; outputs/phase11/strategy_validation_matrix.csv",
         }
     )
     return rows

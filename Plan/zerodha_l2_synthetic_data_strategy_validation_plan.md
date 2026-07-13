@@ -1720,6 +1720,7 @@ Generated artifacts are under `outputs/phase14/`:
 - `phase14_quality_validation_report.md`;
 - `quality_validation_manifest.json`;
 - `quality_gate_summary.csv`;
+- `quality_warning_triage.csv`;
 - `level1_structural.csv`;
 - `level2_marginal.csv`;
 - `level3_temporal.csv`;
@@ -1728,7 +1729,7 @@ Generated artifacts are under `outputs/phase14/`:
 - `level6_discriminator_proxy.csv`;
 - `level7_counterfactual.csv`.
 
-The first completed run validates the current synthetic products against structural, marginal, temporal, cross-sectional, conditional, strategy-neutral discriminator-proxy and counterfactual checks. It produced 24 quality-gate rows: 23 pass and 1 warn. The warning is for `nonzero_price_change_fraction`, where the current 5-minute synthetic feature product differs materially from the one-day real received-tick calibration. Structural checks passed for crossed L1, negative spreads, nonpositive mid prices, expected forward-label null fraction and Phase 6 summary availability.
+The current completed run validates the current synthetic products against structural, marginal, temporal, cross-sectional, conditional, strategy-neutral discriminator-proxy and counterfactual checks. It produced 24 quality-gate rows: 23 pass and 1 warn. The warning is for `nonzero_price_change_fraction`, where the current 5-minute synthetic feature product differs materially from the one-day real received-tick calibration. The warning triage ledger records this as a horizon mismatch between 5-minute synthetic state/features and tick-level received activity, with `acceptance_impact=blocks_realism_gate` and `not_acceptance_waiver=true`. The next required evidence is either a horizon-matched 5-minute real-derived comparison or a tick/event-level generator that directly targets received-tick nonzero price-change frequency. Structural checks passed for crossed L1, negative spreads, nonpositive mid prices, expected forward-label null fraction and Phase 6 summary availability.
 
 Important Phase 14 caveat: this is a data-quality gate diagnostic, not strategy acceptance. Real evidence is still a one-day sample, and current Phase 6-9 synthetic products are 5-minute state/feature products rather than full tick-event simulation.
 
@@ -1887,7 +1888,7 @@ Generated artifacts are under `outputs/phase15/`:
 - `strategy_acceptance_summary.csv`;
 - `acceptance_blockers.csv`.
 
-The current completed run evaluated 11 strategies across 5 gates each: predictive, economic, robustness, risk and realism. All 55 strategy/gate rows are blocked, 0 strategies are promoted and 11 strategies remain `blocked_not_promotable`. The blocker ledger now attaches structured blocker categories, missing requirements, next-required-evidence text and evidence-source status to all 55 blocker rows; all 55 blocker evidence sources are present. This is the correct current result because Phase 11 diagnostics are proxy-only, Phase 12 remains a 5-minute execution/lifecycle proxy whose P&L still uses normalized cost application even though Zerodha-sourced order-formula scenarios now exist, Phase 12 risk evidence is sampled rather than acceptance-grade full-run validation, Phase 13 now has only a deterministic proxy smoke ledger rather than full multi-seed/walk-forward/holdout validation, and Phase 14 still has one quality warning plus no holdout-generator evidence.
+The current completed run evaluated 11 strategies across 5 gates each: predictive, economic, robustness, risk and realism. All 55 strategy/gate rows are blocked, 0 strategies are promoted and 11 strategies remain `blocked_not_promotable`. The blocker ledger now attaches structured blocker categories, missing requirements, next-required-evidence text and evidence-source status to all 55 blocker rows; all 55 blocker evidence sources are present. The 11 realism blocker rows now cite both `outputs/phase14/quality_gate_summary.csv` and `outputs/phase14/quality_warning_triage.csv`, so the remaining Phase 14 warning is traceable to an explicit root cause and next-required-evidence record rather than an implicit warning. This is the correct current result because Phase 11 diagnostics are proxy-only, Phase 12 remains a 5-minute execution/lifecycle proxy whose P&L still uses normalized cost application even though Zerodha-sourced order-formula scenarios now exist, Phase 12 risk evidence is sampled rather than acceptance-grade full-run validation, Phase 13 now has only a deterministic proxy smoke ledger rather than full multi-seed/walk-forward/holdout validation, and Phase 14 still has one realism-blocking quality warning plus no holdout-generator evidence.
 
 Important Phase 15 caveat: this phase is the promotion gate. A strategy may only advance when every applicable gate is backed by completed, current evidence. The current result is explicitly non-promotion for all S01-S11 strategies.
 
