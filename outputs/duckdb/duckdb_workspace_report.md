@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:26:18.347583+00:00
+Generated UTC: 2026-07-13T19:31:30.816272+00:00
 
 ## Storage Decision
 
@@ -58,13 +58,13 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 strategies simulated: 9
 - Phase 12 total simulated trades: 10350654
 - Phase 12 trade sample rows: 249993
-- Phase 12 cost components: 6
+- Phase 12 cost components: 12
 - Phase 12 lifecycle rows: 749979
 - Phase 12 fill models: 3
 - Phase 12 partial-fill summary rows: 81
 - Phase 12 risk-control summary rows: 81
 - Phase 12 position-limit breach rows: 233010
-- Phase 12 daily-loss-limit breach rows: 23317
+- Phase 12 daily-loss-limit breach rows: 27548
 - Phase 13 split rows: 189
 - Phase 13 seed rows: 30
 - Phase 13 initial engineering seeds: 9
@@ -108,7 +108,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 P0 gaps: 0
 - Validation dashboard summary rows: 10
 - Validation dashboard promoted strategies: 0
-- Validation dashboard P1 gaps: 8
+- Validation dashboard P1 gaps: 7
 - Replay validation tiers: 3
 - Replay deterministic tiers: 3
 - Phase 18 stack decision rows: 21
@@ -124,9 +124,9 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
 - Phase 19 remediation rows: 220
-- Phase 19 remediation summary rows: 3
+- Phase 19 remediation summary rows: 4
 - Phase 19 add-field-in-generator rows: 177
-- Phase 19 alias-normalization rows: 33
+- Phase 19 alias-normalization rows: 32
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30

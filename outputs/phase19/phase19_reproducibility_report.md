@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-13T19:26:15.792106+00:00
+Generated UTC: 2026-07-13T19:31:28.285203+00:00
 
 ## Scope
 
@@ -13,7 +13,8 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | --- | --- |
 | manifest_missing_or_unreadable | 10 |
 | missing | 177 |
-| present_alias_or_inferred | 33 |
+| present_alias_or_inferred | 32 |
+| present_exact | 1 |
 
 ## Artifact Summary
 
@@ -24,7 +25,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | phase1 | outputs/phase1/phase1_manifest.json | 10 | 0 | 0 | 0 | 10 | False |
 | phase10 | outputs/phase10/storage_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | phase11 | outputs/phase11/strategy_validation_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
-| phase12 | outputs/phase12/execution_manifest.json | 10 | 0 | 4 | 6 | 0 | False |
+| phase12 | outputs/phase12/execution_manifest.json | 10 | 1 | 3 | 6 | 0 | False |
 | phase13 | outputs/phase13/experiment_design_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | phase13_smoke_run | outputs/phase13/experiment_run_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | phase14 | outputs/phase14/quality_validation_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
@@ -72,7 +73,8 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
 | add_field_in_generator | 177 | 21 |
-| normalize_alias_to_exact_field | 33 | 20 |
+| complete_exact | 1 | 1 |
+| normalize_alias_to_exact_field | 32 | 20 |
 | recover_or_rerun_manifest | 10 | 1 |
 
 ## Highest Priority Remediation Rows

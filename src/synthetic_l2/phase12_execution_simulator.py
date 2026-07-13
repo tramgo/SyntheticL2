@@ -22,8 +22,9 @@ EXECUTION_PROFILES = [
         "fixed_slippage_ticks": 0.0,
         "impact_bps": 0.0,
         "fees_bps": 0.0,
+        "apply_zerodha_equity_intraday_charges": False,
         "cancel_on_stale_or_disconnect": False,
-        "description": "Leakage/control profile with zero latency and half-spread marketable execution cost only. Not deployable.",
+        "description": "Leakage/control profile with zero latency and spread/slippage controls only. Not deployable and excludes statutory/brokerage charges.",
     },
     {
         "execution_profile": "retail_marketable_default",
@@ -31,9 +32,10 @@ EXECUTION_PROFILES = [
         "broker_latency_events": 1,
         "fixed_slippage_ticks": 1.0,
         "impact_bps": 0.5,
-        "fees_bps": 1.5,
+        "fees_bps": 0.0,
+        "apply_zerodha_equity_intraday_charges": True,
         "cancel_on_stale_or_disconnect": True,
-        "description": "Default marketable retail proxy with next-event latency, placeholder profile-level fees, and internal impact/slippage assumptions.",
+        "description": "Default marketable retail proxy with next-event latency, Zerodha equity-intraday charge estimate, and internal impact/slippage assumptions.",
     },
     {
         "execution_profile": "stressed_retail",
@@ -41,20 +43,45 @@ EXECUTION_PROFILES = [
         "broker_latency_events": 2,
         "fixed_slippage_ticks": 2.0,
         "impact_bps": 2.0,
-        "fees_bps": 3.0,
+        "fees_bps": 0.0,
+        "apply_zerodha_equity_intraday_charges": True,
         "cancel_on_stale_or_disconnect": True,
-        "description": "Stress proxy with longer event latency, placeholder profile-level fees, and higher internal impact/slippage assumptions.",
+        "description": "Stress proxy with longer event latency, Zerodha equity-intraday charge estimate, and higher internal impact/slippage assumptions.",
     },
 ]
 
 
+ZERODHA_CHARGES_SOURCE_URL = "https://zerodha.com/charges/"
+ZERODHA_CHARGES_SOURCE_NAME = "Zerodha charges page"
+ZERODHA_CHARGES_ACCESS_DATE = "2026-07-14"
+ZERODHA_EQUITY_INTRADAY_NSE_BPS = {
+    "brokerage_round_trip_bps": 6.0,  # 0.03% per executed order * buy and sell; ₹20/order cap not modeled without rupee order notional.
+    "stt_sell_side_bps": 2.5,  # 0.025% on sell side.
+    "transaction_charges_round_trip_bps": 0.614,  # NSE 0.00307% per side * buy and sell.
+    "sebi_charges_round_trip_bps": 0.002,  # ₹10/crore = 0.001 bps per side * buy and sell.
+    "stamp_duty_buy_side_bps": 0.3,  # 0.003% buy side.
+}
+ZERODHA_EQUITY_INTRADAY_NSE_BPS["gst_bps"] = 0.18 * (
+    ZERODHA_EQUITY_INTRADAY_NSE_BPS["brokerage_round_trip_bps"]
+    + ZERODHA_EQUITY_INTRADAY_NSE_BPS["transaction_charges_round_trip_bps"]
+    + ZERODHA_EQUITY_INTRADAY_NSE_BPS["sebi_charges_round_trip_bps"]
+)
+ZERODHA_EQUITY_INTRADAY_TOTAL_BPS = float(sum(ZERODHA_EQUITY_INTRADAY_NSE_BPS.values()))
+
+
 COST_SCHEDULE = [
-    ("profile_fee_bps", "execution_profile.fees_bps", "Placeholder profile-level fee assumption; not broker/exchange verified."),
-    ("impact_bps", "execution_profile.impact_bps", "Internal market-impact proxy; not broker/exchange charge."),
-    ("half_spread", "spread_ticks * tick_size / 2", "Marketable execution spread-crossing proxy."),
-    ("fixed_slippage_ticks", "execution_profile.fixed_slippage_ticks * tick_size / mid_price", "Internal slippage stress parameter."),
-    ("partial_fill_opportunity_cost", "not_modeled_v1", "Passive fills, queue position and partial fills are not modeled in this proxy."),
-    ("statutory_and_brokerage_charges", "not_verified_v1", "Brokerage, statutory and exchange charges are placeholders only; refresh from broker/exchange sources before economic claims."),
+    ("profile_fee_bps", "execution_profile.fees_bps", 0.0, "all_profiles", "Internal residual profile fee hook; current profiles set this to zero because verified Zerodha charge rows are modeled separately.", "internal_model", ""),
+    ("impact_bps", "execution_profile.impact_bps", None, "all_profiles", "Internal market-impact proxy; not broker/exchange charge.", "internal_model", ""),
+    ("half_spread", "spread_ticks * tick_size / 2", None, "all_profiles", "Marketable execution spread-crossing proxy.", "internal_model", ""),
+    ("fixed_slippage_ticks", "execution_profile.fixed_slippage_ticks * tick_size / mid_price", None, "all_profiles", "Internal slippage stress parameter.", "internal_model", ""),
+    ("partial_fill_opportunity_cost", "phase12_order_lifecycle_proxy", None, "sampled_lifecycle_profiles", "Partial fills and queue-position buckets are modeled in outputs/phase12_order_lifecycle, not as a scalar charge in the base execution summary.", "implemented_proxy", ""),
+    ("zerodha_equity_intraday_brokerage", "0.03% or Rs. 20 per executed order, lower; modeled as 0.03% per buy/sell order before cap", ZERODHA_EQUITY_INTRADAY_NSE_BPS["brokerage_round_trip_bps"], "retail_and_stressed_profiles", "Round-trip bps approximation; ₹20/order cap requires rupee order notional and is not applied in the normalized return proxy.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
+    ("zerodha_equity_intraday_stt", "0.025% on sell side", ZERODHA_EQUITY_INTRADAY_NSE_BPS["stt_sell_side_bps"], "retail_and_stressed_profiles", "Equity intraday STT applied on sell side.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
+    ("zerodha_equity_intraday_nse_transaction_charges", "NSE 0.00307% per side", ZERODHA_EQUITY_INTRADAY_NSE_BPS["transaction_charges_round_trip_bps"], "retail_and_stressed_profiles", "Round-trip NSE transaction-charge approximation.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
+    ("zerodha_equity_intraday_sebi_charges", "Rs. 10/crore per side", ZERODHA_EQUITY_INTRADAY_NSE_BPS["sebi_charges_round_trip_bps"], "retail_and_stressed_profiles", "Round-trip SEBI charge approximation.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
+    ("zerodha_equity_intraday_stamp_duty", "0.003% buy side", ZERODHA_EQUITY_INTRADAY_NSE_BPS["stamp_duty_buy_side_bps"], "retail_and_stressed_profiles", "Stamp duty applied on buy side.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
+    ("zerodha_equity_intraday_gst", "18% on brokerage + SEBI charges + transaction charges", ZERODHA_EQUITY_INTRADAY_NSE_BPS["gst_bps"], "retail_and_stressed_profiles", "GST calculated from modeled brokerage, SEBI and transaction-charge bps.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
+    ("statutory_and_brokerage_charges", "verified_zerodha_equity_intraday_nse_round_trip_bps_v1", ZERODHA_EQUITY_INTRADAY_TOTAL_BPS, "retail_and_stressed_profiles", "Total normalized round-trip charge estimate from Zerodha-published equity intraday rows; not acceptance-grade because order-notional cap and contract-note rounding are not modeled.", "verified_source_normalized_proxy", ZERODHA_CHARGES_SOURCE_URL),
 ]
 
 
@@ -65,7 +92,7 @@ def execution_profiles() -> pd.DataFrame:
 def cost_schedule() -> pd.DataFrame:
     return pd.DataFrame(
         COST_SCHEDULE,
-        columns=["cost_component", "formula_or_source", "note"],
+        columns=["cost_component", "formula_or_source", "basis_points", "applies_to", "note", "evidence_status", "source_url"],
     )
 
 
@@ -139,8 +166,11 @@ def _simulate_strategy_profile(
     half_spread_return = ((trades["spread_ticks"].clip(lower=1) * tick_size) / 2.0) / trades["mid_price"]
     slippage_return = (float(profile["fixed_slippage_ticks"]) * tick_size) / trades["mid_price"]
     internal_bps_cost_return = (float(profile["impact_bps"]) + float(profile["fees_bps"])) / 10000.0
+    zerodha_charge_bps = ZERODHA_EQUITY_INTRADAY_TOTAL_BPS if bool(profile.get("apply_zerodha_equity_intraday_charges", False)) else 0.0
+    zerodha_charge_return = zerodha_charge_bps / 10000.0
     trades["gross_return"] = gross_return
-    trades["cost_return"] = half_spread_return + slippage_return + internal_bps_cost_return
+    trades["cost_return"] = half_spread_return + slippage_return + internal_bps_cost_return + zerodha_charge_return
+    trades["zerodha_equity_intraday_charge_bps"] = zerodha_charge_bps
     trades["net_return"] = trades["gross_return"] - trades["cost_return"]
     trades["notional"] = 1.0
     trades["net_pnl_units"] = trades["net_return"] * trades["notional"]
@@ -255,8 +285,8 @@ def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
         "",
         "- Current features are 5-minute synthetic feature events, not true tick-level order events.",
         "- Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.",
-        "- Explicit fees are placeholder profile-level bps assumptions, not verified brokerage/statutory/exchange charges.",
-        "- Refresh costs from broker/exchange sources before making economic or deployability claims.",
+        "- Zerodha equity-intraday statutory/brokerage charges are modeled as a normalized bps estimate from the published charges page.",
+        "- The Rs. 20/order brokerage cap, DP charges, contract-note rounding and order-notional-specific effects are not modeled in the normalized return proxy.",
         "- Spread crossing, fixed slippage and impact remain internal execution assumptions.",
         "- Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.",
         "",
@@ -290,6 +320,12 @@ def run_phase12(features_path: Path, output_dir: Path) -> None:
         "trade_sample_strategy_profiles": int(trade_sample[["strategy_id", "execution_profile"]].drop_duplicates().shape[0]) if len(trade_sample) else 0,
         "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
         "scope": "marketable_order_proxy_over_5m_feature_events",
+        "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1",
+        "cost_model_source": ZERODHA_CHARGES_SOURCE_URL,
+        "cost_model_source_name": ZERODHA_CHARGES_SOURCE_NAME,
+        "cost_model_access_date": ZERODHA_CHARGES_ACCESS_DATE,
+        "zerodha_equity_intraday_total_bps": ZERODHA_EQUITY_INTRADAY_TOTAL_BPS,
+        "zerodha_equity_intraday_components_bps": ZERODHA_EQUITY_INTRADAY_NSE_BPS,
         "not_acceptance_result": True,
     }
     (output_dir / "execution_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")

@@ -103,15 +103,20 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
     }
     present_cost_components = set(cost_schedule["cost_component"].astype(str)) if "cost_component" in cost_schedule else set()
     has_proxy_cost_basis = required_cost_components.issubset(present_cost_components)
+    statutory_rows = cost_schedule.loc[
+        cost_schedule["cost_component"].astype(str) == "statutory_and_brokerage_charges"
+    ]
     statutory_placeholder = (
-        "formula_or_source" in cost_schedule
-        and (
-            cost_schedule.loc[
-                cost_schedule["cost_component"].astype(str) == "statutory_and_brokerage_charges",
-                "formula_or_source",
-            ].astype(str)
-            == "not_verified_v1"
-        ).any()
+        len(statutory_rows) == 0
+        or (
+            "formula_or_source" in statutory_rows
+            and (statutory_rows["formula_or_source"].astype(str) == "not_verified_v1").any()
+        )
+    )
+    statutory_verified_proxy = (
+        len(statutory_rows) > 0
+        and "evidence_status" in statutory_rows
+        and (statutory_rows["evidence_status"].astype(str) == "verified_source_normalized_proxy").any()
     )
 
     rows: list[dict] = []
@@ -149,6 +154,9 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             economic_blocker.append("stressed profile mean_net_return not positive")
     if has_proxy_cost_basis and statutory_placeholder:
         economic_blocker.append("statutory/brokerage charges are not verified; current cost schedule is placeholder only")
+        economic_blocker.append("execution result is still a 5-minute proxy and not acceptance evidence")
+    elif has_proxy_cost_basis and statutory_verified_proxy:
+        economic_blocker.append("statutory/brokerage charges use a Zerodha-sourced normalized bps proxy; order-notional caps, DP charges and contract-note rounding are not acceptance-grade")
         economic_blocker.append("execution result is still a 5-minute proxy and not acceptance evidence")
     elif has_proxy_cost_basis:
         economic_blocker.append("execution result is still a 5-minute proxy and not acceptance evidence")

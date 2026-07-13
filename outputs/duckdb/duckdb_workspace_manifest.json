@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:26:18.347583+00:00",
+  "generated_utc": "2026-07-13T19:31:30.816272+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -52,13 +52,13 @@
     "phase12_strategies_simulated": 9,
     "phase12_total_trades": 10350654,
     "phase12_trade_sample_rows": 249993,
-    "phase12_cost_components": 6,
+    "phase12_cost_components": 12,
     "phase12_lifecycle_rows": 749979,
     "phase12_fill_models": 3,
     "phase12_partial_fill_summary_rows": 81,
     "phase12_risk_control_summary_rows": 81,
     "phase12_position_limit_breach_rows": 233010,
-    "phase12_daily_loss_limit_breach_rows": 23317,
+    "phase12_daily_loss_limit_breach_rows": 27548,
     "phase13_split_rows": 189,
     "phase13_seed_rows": 30,
     "phase13_initial_engineering_seeds": 9,
@@ -102,7 +102,7 @@
     "phase17_p0_gaps": 0,
     "validation_dashboard_summary_rows": 10,
     "validation_dashboard_promoted_strategies": 0,
-    "validation_dashboard_p1_gaps": 8,
+    "validation_dashboard_p1_gaps": 7,
     "replay_validation_tiers": 3,
     "replay_validation_deterministic_tiers": 3,
     "phase18_stack_decision_rows": 21,
@@ -118,9 +118,9 @@
     "phase19_manifest_missing_or_unreadable_artifacts": 1,
     "phase19_gap_rows": 20,
     "phase19_remediation_rows": 220,
-    "phase19_remediation_summary_rows": 3,
+    "phase19_remediation_summary_rows": 4,
     "phase19_generator_field_rows": 177,
-    "phase19_alias_normalization_rows": 33,
+    "phase19_alias_normalization_rows": 32,
     "phase19_recover_manifest_rows": 10,
     "phase4_days_per_profile": [
       [

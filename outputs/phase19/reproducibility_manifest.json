@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:26:15.789572+00:00",
+  "generated_utc": "2026-07-13T19:31:28.282755+00:00",
   "required_fields": 10,
   "audited_artifacts": 22,
   "field_checks": 220,
@@ -8,7 +8,7 @@
   "manifest_missing_or_unreadable_artifacts": 1,
   "gap_rows": 20,
   "remediation_rows": 220,
-  "remediation_summary_rows": 3,
+  "remediation_summary_rows": 4,
   "schema_template": "outputs\\phase19\\manifest_schema_template.json",
   "scope": "phase19_reproducibility_manifest_field_audit"
 }

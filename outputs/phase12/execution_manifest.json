@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:23:14.317941+00:00",
+  "generated_utc": "2026-07-13T19:30:34.324582+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "rows_evaluated": 2259039,
   "strategies_simulated": 9,
@@ -9,5 +9,18 @@
   "trade_sample_strategy_profiles": 27,
   "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
   "scope": "marketable_order_proxy_over_5m_feature_events",
+  "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1",
+  "cost_model_source": "https://zerodha.com/charges/",
+  "cost_model_source_name": "Zerodha charges page",
+  "cost_model_access_date": "2026-07-14",
+  "zerodha_equity_intraday_total_bps": 10.60688,
+  "zerodha_equity_intraday_components_bps": {
+    "brokerage_round_trip_bps": 6.0,
+    "stt_sell_side_bps": 2.5,
+    "transaction_charges_round_trip_bps": 0.614,
+    "sebi_charges_round_trip_bps": 0.002,
+    "stamp_duty_buy_side_bps": 0.3,
+    "gst_bps": 1.19088
+  },
   "not_acceptance_result": true
 }

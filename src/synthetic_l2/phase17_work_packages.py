@@ -67,7 +67,7 @@ DELIVERABLES = [
     ("WP8", "latency", "implemented_proxy", "outputs/phase12/execution_profiles.csv", "Latency profiles are applied."),
     ("WP8", "partial fills", "implemented_proxy", "outputs/phase12_order_lifecycle/partial_fill_summary.csv", "Deterministic partial-fill and queue-position bucket proxy exists over the sampled Phase 12 trade ledger."),
     ("WP8", "slippage", "implemented_proxy", "outputs/phase12/cost_schedule.csv", "Fixed slippage ticks are modeled as a proxy."),
-    ("WP8", "fees", "partial_proxy", "outputs/phase12/cost_schedule.csv", "Profile-level fees are placeholders; statutory/brokerage charges are not verified."),
+    ("WP8", "fees", "implemented_proxy", "outputs/phase12/cost_schedule.csv", "Zerodha-sourced equity intraday charge schedule exists as a normalized bps proxy; order-notional caps and contract-note rounding are not acceptance-grade."),
     ("WP8", "risk controls", "implemented_proxy", "outputs/phase12_order_lifecycle/risk_control_summary.csv", "Sampled risk-control proxy exists for position limits, drawdown, tail loss and daily loss halts."),
     ("WP9", "S01-S11 modules", "partial_proxy", "outputs/phase11/strategy_validation_matrix.csv", "S01-S11 are registered; only proxy signals are implemented."),
     ("WP9", "shared feature interface", "implemented_proxy", "outputs/phase11/strategy_feature_availability.csv", "Strategy-feature availability matrix exists."),
