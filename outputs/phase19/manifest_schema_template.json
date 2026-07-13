@@ -1,0 +1,75 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "schema_purpose": "Minimum metadata required to evaluate whether a generated artifact can be exactly regenerated.",
+  "required_fields": [
+    {
+      "field": "generator_version",
+      "definition": "Exact code/generator version for the artifact.",
+      "value_guidance": "Use git commit SHA or package version for the code that generated the artifact.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "configuration_hash",
+      "definition": "Hash of effective configuration used to generate the artifact.",
+      "value_guidance": "Hash the effective runtime configuration, inputs and materially relevant defaults.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "random_seed",
+      "definition": "Seed or seed plan for stochastic generation.",
+      "value_guidance": "Record integer seed, seed-plan artifact, or explicit not_applicable_deterministic.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "calibration_dataset_id",
+      "definition": "Identifier for real-data calibration input.",
+      "value_guidance": "Record real-data source ID/date range or synthetic upstream artifact ID.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "ticker_metadata_version",
+      "definition": "Version of ticker universe and metadata.",
+      "value_guidance": "Record ticker universe version and exchange metadata source/date.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "regime_calendar_version",
+      "definition": "Version of regime/scenario calendar.",
+      "value_guidance": "Record scenario/regime calendar artifact and generator version.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "scenario_ids",
+      "definition": "Scenario profile/day IDs represented in the artifact.",
+      "value_guidance": "Record scenario profile/day IDs or explicit not_applicable_observed_real_sample.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "cost_model_version",
+      "definition": "Version of execution/cost assumptions.",
+      "value_guidance": "Record cost schedule artifact/version or explicit not_applicable_no_execution_costs.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "latency_model_version",
+      "definition": "Version of feed/latency assumptions.",
+      "value_guidance": "Record feed/execution latency model artifact/version or explicit not_applicable_no_latency_model.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    },
+    {
+      "field": "creation_timestamp",
+      "definition": "Creation timestamp for the artifact.",
+      "value_guidance": "Record generated_utc in UTC ISO-8601 format.",
+      "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply."
+    }
+  ],
+  "recommended_additional_fields": [
+    "inputs",
+    "outputs",
+    "generator_command",
+    "environment",
+    "dependency_versions",
+    "artifact_row_counts",
+    "validation_checks"
+  ]
+}

@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-13T19:17:08.120292+00:00
+Generated UTC: 2026-07-13T19:20:28.760427+00:00
 
 ## Scope
 
@@ -65,3 +65,56 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | regime_calendar_version | missing | 19 | duckdb;phase10;phase11;phase12;phase13;phase13_smoke_run;phase15;phase16;phase17;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario/regime calendar version for generated artifacts. |
 | scenario_ids | missing | 20 | duckdb;phase10;phase11;phase12;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario IDs/profiles represented by each generated artifact. |
 | ticker_metadata_version | missing | 13 | duckdb;phase10;phase11;phase12;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase9;stage_a1 | Version ticker universe and metadata source. |
+
+## Remediation Status
+
+| remediation_status | field_checks | artifacts |
+| --- | --- | --- |
+| add_field_in_generator | 168 | 20 |
+| normalize_alias_to_exact_field | 32 | 19 |
+| recover_or_rerun_manifest | 10 | 1 |
+
+## Highest Priority Remediation Rows
+
+| artifact_id | manifest_path | required_field | current_coverage_status | matched_aliases | remediation_status | recommended_value_source | recommended_action |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| phase1 | outputs/phase1/phase1_manifest.json | calibration_dataset_id | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | configuration_hash | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | cost_model_version | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | creation_timestamp | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | generator_version | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | latency_model_version | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | random_seed | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | regime_calendar_version | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | scenario_ids | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| phase1 | outputs/phase1/phase1_manifest.json | ticker_metadata_version | manifest_missing_or_unreadable |  | recover_or_rerun_manifest | manifest_missing_or_unreadable | Recover the manifest or rerun the generating phase with the normalized manifest schema. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | calibration_dataset_id | missing |  | add_field_in_generator | Record real-data source ID/date range or synthetic upstream artifact ID. | Record real-data calibration dataset identifier and date range. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | configuration_hash | missing |  | add_field_in_generator | Hash the effective runtime configuration, inputs and materially relevant defaults. | Serialize effective config and store a stable hash per artifact. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | cost_model_version | missing |  | add_field_in_generator | Record cost schedule artifact/version or explicit not_applicable_no_execution_costs. | Version execution/cost assumptions and cost schedule. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | generator_version | missing |  | add_field_in_generator | Use git commit SHA or package version for the code that generated the artifact. | Add generator_version or code hash to every phase manifest. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | latency_model_version | missing |  | add_field_in_generator | Record feed/execution latency model artifact/version or explicit not_applicable_no_latency_model. | Version feed latency/drop/duplication assumptions. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | random_seed | missing |  | add_field_in_generator | Record integer seed, seed-plan artifact, or explicit not_applicable_deterministic. | Record seed or seed-plan reference for every stochastic artifact. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | regime_calendar_version | missing |  | add_field_in_generator | Record scenario/regime calendar artifact and generator version. | Record scenario/regime calendar version for generated artifacts. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | scenario_ids | missing |  | add_field_in_generator | Record scenario profile/day IDs or explicit not_applicable_observed_real_sample. | Record scenario IDs/profiles represented by each generated artifact. |
+| duckdb | outputs/duckdb/duckdb_workspace_manifest.json | ticker_metadata_version | missing |  | add_field_in_generator | Record ticker universe version and exchange metadata source/date. | Version ticker universe and metadata source. |
+| phase10 | outputs/phase10/storage_manifest.json | calibration_dataset_id | missing |  | add_field_in_generator | Record real-data source ID/date range or synthetic upstream artifact ID. | Record real-data calibration dataset identifier and date range. |
+| phase10 | outputs/phase10/storage_manifest.json | configuration_hash | missing |  | add_field_in_generator | Hash the effective runtime configuration, inputs and materially relevant defaults. | Serialize effective config and store a stable hash per artifact. |
+| phase10 | outputs/phase10/storage_manifest.json | cost_model_version | missing |  | add_field_in_generator | Record cost schedule artifact/version or explicit not_applicable_no_execution_costs. | Version execution/cost assumptions and cost schedule. |
+| phase10 | outputs/phase10/storage_manifest.json | generator_version | missing |  | add_field_in_generator | Use git commit SHA or package version for the code that generated the artifact. | Add generator_version or code hash to every phase manifest. |
+| phase10 | outputs/phase10/storage_manifest.json | latency_model_version | missing |  | add_field_in_generator | Record feed/execution latency model artifact/version or explicit not_applicable_no_latency_model. | Version feed latency/drop/duplication assumptions. |
+| phase10 | outputs/phase10/storage_manifest.json | random_seed | missing |  | add_field_in_generator | Record integer seed, seed-plan artifact, or explicit not_applicable_deterministic. | Record seed or seed-plan reference for every stochastic artifact. |
+| phase10 | outputs/phase10/storage_manifest.json | regime_calendar_version | missing |  | add_field_in_generator | Record scenario/regime calendar artifact and generator version. | Record scenario/regime calendar version for generated artifacts. |
+| phase10 | outputs/phase10/storage_manifest.json | scenario_ids | missing |  | add_field_in_generator | Record scenario profile/day IDs or explicit not_applicable_observed_real_sample. | Record scenario IDs/profiles represented by each generated artifact. |
+| phase10 | outputs/phase10/storage_manifest.json | ticker_metadata_version | missing |  | add_field_in_generator | Record ticker universe version and exchange metadata source/date. | Version ticker universe and metadata source. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | configuration_hash | missing |  | add_field_in_generator | Hash the effective runtime configuration, inputs and materially relevant defaults. | Serialize effective config and store a stable hash per artifact. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | cost_model_version | missing |  | add_field_in_generator | Record cost schedule artifact/version or explicit not_applicable_no_execution_costs. | Version execution/cost assumptions and cost schedule. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | generator_version | missing |  | add_field_in_generator | Use git commit SHA or package version for the code that generated the artifact. | Add generator_version or code hash to every phase manifest. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | latency_model_version | missing |  | add_field_in_generator | Record feed/execution latency model artifact/version or explicit not_applicable_no_latency_model. | Version feed latency/drop/duplication assumptions. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | random_seed | missing |  | add_field_in_generator | Record integer seed, seed-plan artifact, or explicit not_applicable_deterministic. | Record seed or seed-plan reference for every stochastic artifact. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | regime_calendar_version | missing |  | add_field_in_generator | Record scenario/regime calendar artifact and generator version. | Record scenario/regime calendar version for generated artifacts. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | scenario_ids | missing |  | add_field_in_generator | Record scenario profile/day IDs or explicit not_applicable_observed_real_sample. | Record scenario IDs/profiles represented by each generated artifact. |
+| phase11 | outputs/phase11/strategy_validation_manifest.json | ticker_metadata_version | missing |  | add_field_in_generator | Record ticker universe version and exchange metadata source/date. | Version ticker universe and metadata source. |
+| phase12 | outputs/phase12/execution_manifest.json | configuration_hash | missing |  | add_field_in_generator | Hash the effective runtime configuration, inputs and materially relevant defaults. | Serialize effective config and store a stable hash per artifact. |
+| phase12 | outputs/phase12/execution_manifest.json | generator_version | missing |  | add_field_in_generator | Use git commit SHA or package version for the code that generated the artifact. | Add generator_version or code hash to every phase manifest. |
+| phase12 | outputs/phase12/execution_manifest.json | random_seed | missing |  | add_field_in_generator | Record integer seed, seed-plan artifact, or explicit not_applicable_deterministic. | Record seed or seed-plan reference for every stochastic artifact. |
+| phase12 | outputs/phase12/execution_manifest.json | regime_calendar_version | missing |  | add_field_in_generator | Record scenario/regime calendar artifact and generator version. | Record scenario/regime calendar version for generated artifacts. |

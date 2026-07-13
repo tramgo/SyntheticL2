@@ -2127,11 +2127,16 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_required_fields.csv`;
 - `manifest_field_audit.csv`;
 - `artifact_reproducibility_summary.csv`;
-- `reproducibility_gap_summary.csv`.
+- `reproducibility_gap_summary.csv`;
+- `manifest_schema_template.json`;
+- `reproducibility_remediation_plan.csv`;
+- `reproducibility_remediation_summary.csv`.
 
 The current completed run audits 10 required reproducibility fields across 21 phase/workspace manifests, including the Phase 13 smoke-run manifest, producing 210 field checks. Current coverage is not sufficient for exact regeneration: 0 artifacts are exact-regeneration-ready, 20 artifacts have missing fields, and 1 artifact group has a missing/unreadable manifest. This is the correct current result because earlier phases generally record `generated_utc` and selected input paths, but do not yet consistently record generator version, configuration hash, seed, calibration dataset ID, ticker metadata version, regime calendar version, scenario IDs, cost model version and latency model version.
 
-Important Phase 19 caveat: this phase is an audit, not a retrofit. The next implementation step is to add a common manifest builder and backfill future phase runs with exact regeneration metadata rather than manually editing old manifests.
+The remediation layer now emits a normalized reproducibility manifest template and 210 field-level remediation rows: 168 `add_field_in_generator` actions, 32 `normalize_alias_to_exact_field` actions and 10 `recover_or_rerun_manifest` actions for the missing/unreadable Phase 1 manifest. This converts the audit into a generator-by-generator implementation checklist without pretending the historical artifacts are already exactly reproducible.
+
+Important Phase 19 caveat: this phase is now an audit plus remediation plan, not a completed retrofit. The next implementation step is to adopt the normalized manifest schema inside each phase runner and rerun/backfill artifacts with exact regeneration metadata rather than manually editing old manifests.
 
 ---
 

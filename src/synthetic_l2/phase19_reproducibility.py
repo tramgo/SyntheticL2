@@ -23,6 +23,20 @@ REQUIRED_FIELDS = [
 ]
 
 
+FIELD_VALUE_GUIDANCE = {
+    "generator_version": "Use git commit SHA or package version for the code that generated the artifact.",
+    "configuration_hash": "Hash the effective runtime configuration, inputs and materially relevant defaults.",
+    "random_seed": "Record integer seed, seed-plan artifact, or explicit not_applicable_deterministic.",
+    "calibration_dataset_id": "Record real-data source ID/date range or synthetic upstream artifact ID.",
+    "ticker_metadata_version": "Record ticker universe version and exchange metadata source/date.",
+    "regime_calendar_version": "Record scenario/regime calendar artifact and generator version.",
+    "scenario_ids": "Record scenario profile/day IDs or explicit not_applicable_observed_real_sample.",
+    "cost_model_version": "Record cost schedule artifact/version or explicit not_applicable_no_execution_costs.",
+    "latency_model_version": "Record feed/execution latency model artifact/version or explicit not_applicable_no_latency_model.",
+    "creation_timestamp": "Record generated_utc in UTC ISO-8601 format.",
+}
+
+
 MANIFEST_CANDIDATES = [
     ("stage_a1", "outputs/stage_a1/manifest_check.json"),
     ("phase1", "outputs/phase1/phase1_manifest.json"),
@@ -88,6 +102,31 @@ def _load_json(path: Path) -> dict[str, Any] | None:
 
 def required_field_catalog() -> pd.DataFrame:
     return pd.DataFrame(REQUIRED_FIELDS, columns=["required_field", "definition"])
+
+
+def manifest_schema_template() -> dict[str, Any]:
+    return {
+        "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+        "schema_purpose": "Minimum metadata required to evaluate whether a generated artifact can be exactly regenerated.",
+        "required_fields": [
+            {
+                "field": field,
+                "definition": definition,
+                "value_guidance": FIELD_VALUE_GUIDANCE[field],
+                "allowed_missing_policy": "Do not omit. Use an explicit not_applicable_* value only when the concept truly does not apply.",
+            }
+            for field, definition in REQUIRED_FIELDS
+        ],
+        "recommended_additional_fields": [
+            "inputs",
+            "outputs",
+            "generator_command",
+            "environment",
+            "dependency_versions",
+            "artifact_row_counts",
+            "validation_checks",
+        ],
+    }
 
 
 def manifest_audit(base_dir: Path) -> pd.DataFrame:
@@ -158,6 +197,62 @@ def gap_summary(audit: pd.DataFrame) -> pd.DataFrame:
     ].sort_values(["coverage_status", "required_field"], kind="mergesort")
 
 
+def remediation_plan(audit: pd.DataFrame) -> pd.DataFrame:
+    rows = []
+    for row in audit.to_dict("records"):
+        status = row["coverage_status"]
+        field = row["required_field"]
+        if status == "present_exact":
+            remediation_status = "complete_exact"
+            action = "No remediation required."
+            value_source = field
+        elif status == "present_alias_or_inferred":
+            remediation_status = "normalize_alias_to_exact_field"
+            action = f"Copy or rename matched alias into exact field `{field}` in the next generated manifest."
+            value_source = row.get("matched_aliases") or "alias"
+        elif status == "manifest_missing_or_unreadable":
+            remediation_status = "recover_or_rerun_manifest"
+            action = "Recover the manifest or rerun the generating phase with the normalized manifest schema."
+            value_source = "manifest_missing_or_unreadable"
+        else:
+            remediation_status = "add_field_in_generator"
+            action = _recommended_action(field)
+            value_source = FIELD_VALUE_GUIDANCE[field]
+        rows.append(
+            {
+                "artifact_id": row["artifact_id"],
+                "manifest_path": row["manifest_path"],
+                "required_field": field,
+                "current_coverage_status": status,
+                "matched_aliases": row.get("matched_aliases", ""),
+                "remediation_status": remediation_status,
+                "recommended_value_source": value_source,
+                "recommended_action": action,
+            }
+        )
+    frame = pd.DataFrame(rows)
+    status_rank = {
+        "recover_or_rerun_manifest": 0,
+        "add_field_in_generator": 1,
+        "normalize_alias_to_exact_field": 2,
+        "complete_exact": 3,
+    }
+    frame["remediation_rank"] = frame["remediation_status"].map(status_rank)
+    return frame.sort_values(["remediation_rank", "artifact_id", "required_field"], kind="mergesort").drop(columns=["remediation_rank"])
+
+
+def remediation_summary(plan: pd.DataFrame) -> pd.DataFrame:
+    return (
+        plan.groupby("remediation_status", sort=True)
+        .agg(
+            field_checks=("required_field", "count"),
+            artifacts=("artifact_id", "nunique"),
+        )
+        .reset_index()
+        .sort_values("remediation_status", kind="mergesort")
+    )
+
+
 def _recommended_action(field: str) -> str:
     actions = {
         "generator_version": "Add generator_version or code hash to every phase manifest.",
@@ -186,7 +281,7 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, summary: pd.DataFrame, gaps: pd.DataFrame, audit: pd.DataFrame) -> None:
+def write_report(output_dir: Path, summary: pd.DataFrame, gaps: pd.DataFrame, audit: pd.DataFrame, remediation: pd.DataFrame, remediation_status: pd.DataFrame) -> None:
     status_summary = audit.groupby("coverage_status", sort=True).size().reset_index(name="field_checks")
     lines = [
         "# Phase 19 Reproducibility Report",
@@ -210,6 +305,14 @@ def write_report(output_dir: Path, summary: pd.DataFrame, gaps: pd.DataFrame, au
         "",
         _markdown_table(gaps),
         "",
+        "## Remediation Status",
+        "",
+        _markdown_table(remediation_status),
+        "",
+        "## Highest Priority Remediation Rows",
+        "",
+        _markdown_table(remediation.head(40)),
+        "",
     ]
     (output_dir / "phase19_reproducibility_report.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -220,11 +323,16 @@ def run_phase19(output_dir: Path, base_dir: Path) -> None:
     audit = manifest_audit(base_dir)
     summary = artifact_summary(audit)
     gaps = gap_summary(audit)
+    remediation = remediation_plan(audit)
+    remediation_status = remediation_summary(remediation)
 
     catalog.to_csv(output_dir / "reproducibility_required_fields.csv", index=False)
     audit.to_csv(output_dir / "manifest_field_audit.csv", index=False)
     summary.to_csv(output_dir / "artifact_reproducibility_summary.csv", index=False)
     gaps.to_csv(output_dir / "reproducibility_gap_summary.csv", index=False)
+    remediation.to_csv(output_dir / "reproducibility_remediation_plan.csv", index=False)
+    remediation_status.to_csv(output_dir / "reproducibility_remediation_summary.csv", index=False)
+    (output_dir / "manifest_schema_template.json").write_text(json.dumps(manifest_schema_template(), indent=2), encoding="utf-8")
     manifest = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "required_fields": int(len(catalog)),
@@ -234,10 +342,13 @@ def run_phase19(output_dir: Path, base_dir: Path) -> None:
         "artifacts_with_missing_fields": int((summary["missing_fields"] > 0).sum()),
         "manifest_missing_or_unreadable_artifacts": int((summary["manifest_missing_or_unreadable_fields"] > 0).sum()),
         "gap_rows": int(len(gaps)),
+        "remediation_rows": int(len(remediation)),
+        "remediation_summary_rows": int(len(remediation_status)),
+        "schema_template": str(output_dir / "manifest_schema_template.json"),
         "scope": "phase19_reproducibility_manifest_field_audit",
     }
     (output_dir / "reproducibility_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, summary, gaps, audit)
+    write_report(output_dir, summary, gaps, audit, remediation, remediation_status)
 
 
 def parse_args() -> argparse.Namespace:

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:17:11.148181+00:00",
+  "generated_utc": "2026-07-13T19:20:31.548904+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -114,6 +114,11 @@
     "phase19_artifacts_with_missing_fields": 20,
     "phase19_manifest_missing_or_unreadable_artifacts": 1,
     "phase19_gap_rows": 20,
+    "phase19_remediation_rows": 210,
+    "phase19_remediation_summary_rows": 3,
+    "phase19_generator_field_rows": 168,
+    "phase19_alias_normalization_rows": 32,
+    "phase19_recover_manifest_rows": 10,
     "phase4_days_per_profile": [
       [
         "Q-A",
@@ -194,6 +199,8 @@
     "phase19_artifact_reproducibility_summary",
     "phase19_manifest_field_audit",
     "phase19_reproducibility_gap_summary",
+    "phase19_reproducibility_remediation_plan",
+    "phase19_reproducibility_remediation_summary",
     "phase19_reproducibility_required_fields",
     "phase1_summary",
     "phase2_activity",
