@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 
 from synthetic_l2.phase11_strategy_validation_matrix import build_signals, load_features
+from synthetic_l2.reproducibility import reproducibility_fields
 
 
 PREDICTIVE_METRICS = [
@@ -691,9 +692,11 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
     requirement_coverage.to_csv(output_dir / "strategy_metric_requirement_coverage.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
+    inputs_manifest = {key: str(value) for key, value in paths.items()}
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "inputs": {key: str(value) for key, value in paths.items()},
+        "generated_utc": generated_utc,
+        "inputs": inputs_manifest,
         "metric_catalog_rows": int(len(catalog)),
         "predictive_scoreboard_rows": int(len(predictive)),
         "predictive_proxy_rows": int(len(predictive_proxy)),
@@ -708,6 +711,31 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "acceptance_grade_metrics": int(catalog["acceptance_eligible_now"].sum()),
         "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase16",
+            generated_utc=generated_utc,
+            inputs=inputs_manifest,
+            parameters={
+                "predictive_metric_count": len(PREDICTIVE_METRICS),
+                "trading_metric_count": len(TRADING_METRICS),
+                "breakdown_count": len(BREAKDOWNS),
+                "markout_horizons_bars": [1, 3, 6],
+            },
+            outputs={
+                "metric_catalog": str(output_dir / "metric_catalog.csv"),
+                "predictive_metric_scoreboard": str(output_dir / "predictive_metric_scoreboard.csv"),
+                "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
+                "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
+                "strategy_metric_requirement_coverage": str(output_dir / "strategy_metric_requirement_coverage.csv"),
+                "report": str(output_dir / "phase16_metrics_reporting_report.md"),
+            },
+            random_seed="outputs/phase13/seed_plan.csv",
+            scenario_ids="phase11_strategy_metric_requirements_and_phase12_seeded_trade_sample",
+            cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
+            latency_model_version="outputs/phase12/execution_profiles.csv",
+        )
+    )
     (output_dir / "metrics_reporting_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, catalog, predictive, predictive_proxy, signal_buckets, brier, calibration, importance, trading, breakdowns)
 

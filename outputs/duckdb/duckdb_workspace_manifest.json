@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:19:41.323001+00:00",
+  "generated_utc": "2026-07-13T20:25:29.069897+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -137,18 +137,18 @@
     "phase19_required_fields": 10,
     "phase19_audited_artifacts": 25,
     "phase19_field_checks": 250,
-    "phase19_exact_regeneration_ready_artifacts": 3,
-    "phase19_artifacts_with_missing_fields": 21,
+    "phase19_exact_regeneration_ready_artifacts": 8,
+    "phase19_artifacts_with_missing_fields": 16,
     "phase19_manifest_missing_or_unreadable_artifacts": 1,
     "phase19_gap_rows": 20,
     "phase19_remediation_rows": 250,
     "phase19_remediation_summary_rows": 4,
     "phase19_normalized_overlay_artifacts": 25,
     "phase19_normalized_overlay_ready_artifacts": 25,
-    "phase19_normalizer_default_fields": 187,
-    "phase19_source_or_alias_fields": 63,
-    "phase19_generator_field_rows": 176,
-    "phase19_alias_normalization_rows": 33,
+    "phase19_normalizer_default_fields": 147,
+    "phase19_source_or_alias_fields": 103,
+    "phase19_generator_field_rows": 136,
+    "phase19_alias_normalization_rows": 24,
     "phase19_recover_manifest_rows": 10,
     "phase4_days_per_profile": [
       [
@@ -279,5 +279,16 @@
     "stage_a1_open_window_coverage",
     "stage_a1_quality",
     "validation_dashboard_summary"
-  ]
+  ],
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "bab8802425a86825eddfc7d15e6a5cd50565090b",
+  "configuration_hash": "287cfd6572b50d1ebfd840b40bcc4f2d33e9bde41c4cab21754d701d90db8aaf",
+  "random_seed": "not_applicable_deterministic_duckdb_view_registration",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_workspace_registered_phase_views",
+  "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
+  "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
+  "creation_timestamp": "2026-07-13T20:25:29.069897+00:00"
 }

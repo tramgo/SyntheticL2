@@ -7,6 +7,8 @@ from pathlib import Path
 
 import duckdb
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 VIEW_SQL = {
     "stage_a1_quality": "read_csv_auto('outputs/stage_a1/data_quality_report.csv')",
@@ -317,13 +319,34 @@ def run_validation(con: duckdb.DuckDBPyConnection) -> dict:
 
 def write_report(output_dir: Path, workspace_db: Path, validation: dict) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "duckdb_database": str(workspace_db),
         "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
         "validation": validation,
         "views": sorted(VIEW_SQL),
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="duckdb",
+            generated_utc=generated_utc,
+            inputs={"registered_views": sorted(VIEW_SQL)},
+            parameters={
+                "storage_decision": manifest["storage_decision"],
+                "view_count": len(VIEW_SQL),
+            },
+            outputs={
+                "duckdb_database": str(workspace_db),
+                "manifest": str(output_dir / "duckdb_workspace_manifest.json"),
+                "report": str(output_dir / "duckdb_workspace_report.md"),
+            },
+            random_seed="not_applicable_deterministic_duckdb_view_registration",
+            scenario_ids="current_workspace_registered_phase_views",
+            cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
+            latency_model_version="outputs/phase12/execution_profiles.csv_or_not_applicable",
+        )
+    )
     (output_dir / "duckdb_workspace_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     day_rows = "\n".join(f"| {profile} | {days} |" for profile, days in validation["phase4_days_per_profile"])

@@ -12,6 +12,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from synthetic_l2.phase11_strategy_validation_matrix import build_signals, load_features, strategy_matrix
+from synthetic_l2.reproducibility import reproducibility_fields
 from synthetic_l2.zerodha_costs import (
     ZERODHA_CHARGE_COMPONENTS_SOURCE_URL,
     ZERODHA_CHARGES_ACCESS_DATE,
@@ -369,8 +370,27 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     else:
         pq.write_table(pa.Table.from_pandas(pd.DataFrame(), preserve_index=False), output_dir / "trade_ledger_sample.parquet", compression="zstd")
 
+    generated_utc = datetime.now(timezone.utc).isoformat()
+    inputs = {
+        "features_path": str(features_path),
+        "seed_plan_path": None if seed_plan_path is None else str(seed_plan_path),
+    }
+    parameters = {
+        "execution_profiles": [profile["execution_profile"] for profile in EXECUTION_PROFILES],
+        "cost_model_version": ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
+        "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
+    }
+    outputs = {
+        "execution_summary": str(output_dir / "execution_summary.csv"),
+        "execution_profiles": str(output_dir / "execution_profiles.csv"),
+        "cost_schedule": str(output_dir / "cost_schedule.csv"),
+        "charge_component_catalog": str(output_dir / "charge_component_catalog.csv"),
+        "representative_charge_scenarios": str(output_dir / "representative_charge_scenarios.csv"),
+        "trade_ledger_sample": str(output_dir / "trade_ledger_sample.parquet"),
+        "report": str(output_dir / "phase12_execution_simulator_report.md"),
+    }
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "features_path": str(features_path),
         "seed_plan_path": None if seed_plan_path is None else str(seed_plan_path),
         "seeded_trade_sample": bool(seed_mapping),
@@ -397,6 +417,19 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "charge_components": int(len(component_catalog)),
         "not_acceptance_result": True,
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase12",
+            generated_utc=generated_utc,
+            inputs=inputs,
+            parameters=parameters,
+            outputs=outputs,
+            random_seed="outputs/phase13/seed_plan.csv",
+            scenario_ids="outputs/phase4/scenario_calendar.csv_and_phase13_seed_plan_cycle",
+            cost_model_version=ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
+            latency_model_version="phase12_execution_profiles_v1",
+        )
+    )
     (output_dir / "execution_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, summary)
 

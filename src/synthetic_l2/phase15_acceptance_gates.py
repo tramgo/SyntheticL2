@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 GATES = [
     {
@@ -299,9 +301,11 @@ def run_phase15(output_dir: Path, paths: dict[str, Path]) -> None:
     gates.to_csv(output_dir / "strategy_gate_results.csv", index=False)
     summary.to_csv(output_dir / "strategy_acceptance_summary.csv", index=False)
     blockers.to_csv(output_dir / "acceptance_blockers.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
+    inputs_manifest = {key: str(value) for key, value in paths.items()}
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "inputs": {key: str(value) for key, value in paths.items()},
+        "generated_utc": generated_utc,
+        "inputs": inputs_manifest,
         "strategies": int(summary["strategy_id"].nunique()),
         "gate_rows": int(len(gates)),
         "promoted_strategies": int(summary["promotion_allowed"].sum()),
@@ -309,6 +313,28 @@ def run_phase15(output_dir: Path, paths: dict[str, Path]) -> None:
         "not_promotion_result": True,
         "promotion_allowed_requires_all_gates_pass": True,
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase15",
+            generated_utc=generated_utc,
+            inputs=inputs_manifest,
+            parameters={
+                "gate_ids": [gate["gate_id"] for gate in GATES],
+                "promotion_allowed_requires_all_gates_pass": True,
+            },
+            outputs={
+                "gate_definitions": str(output_dir / "gate_definitions.csv"),
+                "strategy_gate_results": str(output_dir / "strategy_gate_results.csv"),
+                "strategy_acceptance_summary": str(output_dir / "strategy_acceptance_summary.csv"),
+                "acceptance_blockers": str(output_dir / "acceptance_blockers.csv"),
+                "report": str(output_dir / "phase15_acceptance_gates_report.md"),
+            },
+            random_seed="not_applicable_deterministic_gate_evaluation",
+            scenario_ids="phase13_experiment_registry_and_phase15_all_s01_s11_strategies",
+            cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
+            latency_model_version="outputs/phase12/execution_profiles.csv",
+        )
+    )
     (output_dir / "acceptance_gates_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, gates, summary, blockers)
 

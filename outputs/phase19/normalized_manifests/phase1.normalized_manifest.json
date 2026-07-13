@@ -3,7 +3,7 @@
   "artifact_id": "phase1",
   "source_manifest_path": "outputs/phase1/phase1_manifest.json",
   "source_manifest_exists": false,
-  "generator_version": "9295eb74ad0ab17b76863b24ddb4590311a37fee",
+  "generator_version": "bab8802425a86825eddfc7d15e6a5cd50565090b",
   "configuration_hash": "661086f648b228b37c169cd6cc83f19f61f9f075511aa014074e36e6f70e0a74",
   "random_seed": "not_applicable_or_seed_plan_not_recorded",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -12,7 +12,7 @@
   "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
   "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1_or_not_applicable",
   "latency_model_version": "phase8_retail_feed_profiles_and_phase12_execution_profiles_or_not_applicable",
-  "creation_timestamp": "2026-07-13T20:19:36.898092+00:00",
-  "normalization_timestamp": "2026-07-13T20:19:36.898109+00:00",
+  "creation_timestamp": "2026-07-13T20:25:24.762181+00:00",
+  "normalization_timestamp": "2026-07-13T20:25:24.762193+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

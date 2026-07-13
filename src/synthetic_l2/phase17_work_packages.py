@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 WORK_PACKAGES = [
     ("WP1", "Data intake and audit", "Stage A1; Phase 1; Phase 10", "partial_current"),
@@ -243,8 +245,9 @@ def run_phase17(output_dir: Path, base_dir: Path) -> None:
     registry.to_csv(output_dir / "work_package_registry.csv", index=False)
     deliverables.to_csv(output_dir / "deliverable_traceability.csv", index=False)
     gaps.to_csv(output_dir / "implementation_gap_backlog.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "work_packages": int(len(registry)),
         "deliverables": int(len(deliverables)),
         "implemented_deliverables": int((deliverables["implementation_status"] == "implemented").sum()),
@@ -254,6 +257,29 @@ def run_phase17(output_dir: Path, base_dir: Path) -> None:
         "acceptance_grade_deliverables": int(deliverables["acceptance_grade"].sum()),
         "scope": "phase17_work_package_traceability_and_gap_backlog",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase17",
+            generated_utc=generated_utc,
+            inputs={"base_dir": str(base_dir)},
+            parameters={
+                "work_package_count": len(WORK_PACKAGES),
+                "deliverable_count": len(DELIVERABLES),
+                "gap_priorities": ["P0", "P1", "P2"],
+            },
+            outputs={
+                "work_package_registry": str(output_dir / "work_package_registry.csv"),
+                "deliverable_traceability": str(output_dir / "deliverable_traceability.csv"),
+                "implementation_gap_backlog": str(output_dir / "implementation_gap_backlog.csv"),
+                "report": str(output_dir / "phase17_work_packages_report.md"),
+            },
+            random_seed="not_applicable_deterministic_traceability_registry",
+            scenario_ids="wp1_wp10_current_workspace_evidence",
+            cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
+            latency_model_version="outputs/phase12/execution_profiles.csv_or_not_applicable",
+            base_dir=base_dir,
+        )
+    )
     (output_dir / "work_packages_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, registry, deliverables, gaps)
 

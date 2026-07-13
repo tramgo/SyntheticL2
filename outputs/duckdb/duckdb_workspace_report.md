@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T20:19:41.323001+00:00
+Generated UTC: 2026-07-13T20:25:29.069897+00:00
 
 ## Storage Decision
 
@@ -141,18 +141,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 19 required fields: 10
 - Phase 19 audited artifacts: 25
 - Phase 19 field checks: 250
-- Phase 19 exact-regeneration-ready artifacts: 3
-- Phase 19 artifacts with missing fields: 21
+- Phase 19 exact-regeneration-ready artifacts: 8
+- Phase 19 artifacts with missing fields: 16
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
 - Phase 19 remediation rows: 250
 - Phase 19 remediation summary rows: 4
 - Phase 19 normalized overlay artifacts: 25
 - Phase 19 normalized overlay-ready artifacts: 25
-- Phase 19 normalizer-default fields: 187
-- Phase 19 source-or-alias fields: 63
-- Phase 19 add-field-in-generator rows: 176
-- Phase 19 alias-normalization rows: 33
+- Phase 19 normalizer-default fields: 147
+- Phase 19 source-or-alias fields: 103
+- Phase 19 add-field-in-generator rows: 136
+- Phase 19 alias-normalization rows: 24
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30
