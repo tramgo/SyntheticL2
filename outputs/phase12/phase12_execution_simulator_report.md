@@ -1,6 +1,6 @@
 # Phase 12 Execution Simulator Report
 
-Generated UTC: 2026-07-13T21:48:49.111707+00:00
+Generated UTC: 2026-07-13T22:36:54.839066+00:00
 
 ## Scope
 
@@ -166,6 +166,51 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 | S09 | zero_latency_spread_only_control | optimistic_marketable | 590612 | 0.990421 | -1.57159e+07 | -1.73051e+06 | -87270.5 | -6266.76 | -1.29455e+06 | 5257.4 | 376490 | full_run_fill_adjusted_proxy_all_simulated_trades |
 | S09 | zero_latency_spread_only_control | pessimistic_partial | 590612 | 0.394563 | -5.51977e+06 | 3.36944e+06 | -77126 | -2574.45 | -2.75754e+06 | 2523.75 | 190214 | full_run_fill_adjusted_proxy_all_simulated_trades |
 
+## Full-Run Lifecycle Risk Breach Severity
+
+| strategy_id | execution_profile | fill_model | breach_days | daily_loss_breach_days | position_limit_breach_days | drawdown_breach_days | daily_halt_days | risk_severity_score | risk_severity_band | risk_pass_candidate_proxy |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S03 | zero_latency_spread_only_control | optimistic_marketable | 45 | 45 | 22 | 44 | 45 | 2751.96 | high_proxy_breach_severity | False |
+| S03 | zero_latency_spread_only_control | neutral_partial | 44 | 44 | 17 | 43 | 44 | 1679.02 | high_proxy_breach_severity | False |
+| S05 | stressed_retail | optimistic_marketable | 63 | 55 | 63 | 63 | 55 | 1110.62 | high_proxy_breach_severity | False |
+| S05 | stressed_retail | neutral_partial | 63 | 54 | 63 | 60 | 54 | 941.724 | high_proxy_breach_severity | False |
+| S01 | zero_latency_spread_only_control | optimistic_marketable | 63 | 63 | 20 | 63 | 63 | 901.956 | high_proxy_breach_severity | False |
+| S05 | retail_marketable_default | optimistic_marketable | 63 | 60 | 63 | 63 | 60 | 756.443 | high_proxy_breach_severity | False |
+| S03 | stressed_retail | optimistic_marketable | 38 | 29 | 22 | 31 | 29 | 736.55 | high_proxy_breach_severity | False |
+| S05 | stressed_retail | pessimistic_partial | 63 | 53 | 63 | 55 | 53 | 734.515 | high_proxy_breach_severity | False |
+| S01 | zero_latency_spread_only_control | neutral_partial | 63 | 63 | 14 | 63 | 63 | 708.967 | high_proxy_breach_severity | False |
+| S03 | zero_latency_spread_only_control | pessimistic_partial | 42 | 42 | 6 | 41 | 42 | 690.141 | high_proxy_breach_severity | False |
+| S05 | retail_marketable_default | pessimistic_partial | 63 | 55 | 63 | 57 | 55 | 676.11 | high_proxy_breach_severity | False |
+| S05 | retail_marketable_default | neutral_partial | 63 | 60 | 63 | 63 | 60 | 580.505 | high_proxy_breach_severity | False |
+| S03 | stressed_retail | neutral_partial | 36 | 28 | 18 | 28 | 28 | 557.61 | high_proxy_breach_severity | False |
+| S01 | stressed_retail | optimistic_marketable | 47 | 40 | 18 | 41 | 40 | 556.262 | high_proxy_breach_severity | False |
+| S04 | zero_latency_spread_only_control | optimistic_marketable | 45 | 45 | 5 | 44 | 45 | 541.521 | high_proxy_breach_severity | False |
+| S07 | zero_latency_spread_only_control | optimistic_marketable | 58 | 47 | 44 | 50 | 47 | 504.733 | high_proxy_breach_severity | False |
+| S04 | retail_marketable_default | optimistic_marketable | 37 | 27 | 6 | 37 | 27 | 481.112 | high_proxy_breach_severity | False |
+| S04 | stressed_retail | optimistic_marketable | 42 | 42 | 6 | 40 | 42 | 478.887 | high_proxy_breach_severity | False |
+| S01 | zero_latency_spread_only_control | pessimistic_partial | 62 | 62 | 1 | 62 | 62 | 474.999 | high_proxy_breach_severity | False |
+| S02 | stressed_retail | optimistic_marketable | 63 | 63 | 0 | 63 | 63 | 441.849 | high_proxy_breach_severity | False |
+| S09 | zero_latency_spread_only_control | pessimistic_partial | 63 | 36 | 63 | 30 | 36 | 434.8 | high_proxy_breach_severity | False |
+| S01 | stressed_retail | neutral_partial | 45 | 39 | 12 | 40 | 39 | 434.581 | high_proxy_breach_severity | False |
+| S09 | stressed_retail | pessimistic_partial | 63 | 57 | 63 | 58 | 57 | 434.162 | high_proxy_breach_severity | False |
+| S09 | retail_marketable_default | pessimistic_partial | 63 | 56 | 63 | 56 | 56 | 427.377 | high_proxy_breach_severity | False |
+| S05 | zero_latency_spread_only_control | optimistic_marketable | 63 | 17 | 63 | 37 | 17 | 418.505 | high_proxy_breach_severity | False |
+| S09 | stressed_retail | optimistic_marketable | 63 | 63 | 63 | 63 | 63 | 414.62 | high_proxy_breach_severity | False |
+| S07 | stressed_retail | optimistic_marketable | 57 | 48 | 44 | 57 | 48 | 413.524 | high_proxy_breach_severity | False |
+| S04 | zero_latency_spread_only_control | neutral_partial | 43 | 42 | 3 | 42 | 42 | 410.187 | high_proxy_breach_severity | False |
+| S05 | zero_latency_spread_only_control | pessimistic_partial | 63 | 13 | 63 | 15 | 13 | 404.435 | high_proxy_breach_severity | False |
+| S09 | zero_latency_spread_only_control | neutral_partial | 63 | 50 | 63 | 47 | 50 | 402.749 | high_proxy_breach_severity | False |
+| S09 | retail_marketable_default | optimistic_marketable | 63 | 63 | 63 | 63 | 63 | 401.702 | high_proxy_breach_severity | False |
+| S09 | retail_marketable_default | neutral_partial | 63 | 60 | 63 | 61 | 60 | 393.047 | high_proxy_breach_severity | False |
+| S09 | stressed_retail | neutral_partial | 63 | 63 | 63 | 63 | 63 | 392.805 | high_proxy_breach_severity | False |
+| S08 | stressed_retail | optimistic_marketable | 63 | 63 | 36 | 63 | 63 | 388.394 | high_proxy_breach_severity | False |
+| S02 | retail_marketable_default | optimistic_marketable | 63 | 63 | 0 | 63 | 63 | 379.034 | high_proxy_breach_severity | False |
+| S02 | stressed_retail | neutral_partial | 63 | 63 | 0 | 63 | 63 | 364.408 | high_proxy_breach_severity | False |
+| S09 | zero_latency_spread_only_control | optimistic_marketable | 63 | 55 | 63 | 52 | 55 | 358.253 | high_proxy_breach_severity | False |
+| S07 | stressed_retail | neutral_partial | 56 | 42 | 44 | 55 | 42 | 343.157 | high_proxy_breach_severity | False |
+| S08 | retail_marketable_default | optimistic_marketable | 62 | 62 | 42 | 62 | 62 | 340.32 | high_proxy_breach_severity | False |
+| S03 | stressed_retail | pessimistic_partial | 27 | 23 | 10 | 23 | 23 | 337.065 | high_proxy_breach_severity | False |
+
 ## Caveats
 
 - Current features are 5-minute synthetic feature events, not true tick-level order events.
@@ -173,6 +218,6 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 - Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.
 - Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.
 - Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.
-- Full-run risk diagnostics now include both no-fill and fill-adjusted lifecycle summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
+- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle and breach-severity summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
 - Spread crossing, fixed slippage and impact remain internal execution assumptions.
 - Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.

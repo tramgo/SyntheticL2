@@ -93,6 +93,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     quality = _read_csv(paths["quality"])
     holdout = _read_csv(paths["holdout"])
     lifecycle_risk = _read_csv(paths["lifecycle_risk"])
+    lifecycle_risk_severity = _read_csv(paths["lifecycle_risk_severity"])
     robustness_dimension = _read_csv(paths["robustness_dimension"])
     acceptance = _read_csv(paths["acceptance"])
     blockers = _read_csv(paths["blockers"])
@@ -129,6 +130,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     robustness_status = robustness_dimension["dimension_status"].value_counts().rename_axis("dimension_status").reset_index(name="strategies")
     hardening_priority = hardening_queue["priority_band"].value_counts().rename_axis("priority_band").reset_index(name="queue_items").sort_values("priority_band")
+    top_risk_severity = lifecycle_risk_severity.sort_values("risk_severity_score", ascending=False)
 
     summary_rows = [
         ("quality_checks", int(len(quality)), "Phase 14 quality rows"),
@@ -139,6 +141,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("full_run_lifecycle_risk_rows", int(len(lifecycle_risk)), "Phase 12 full-run fill-adjusted risk rows"),
         ("full_run_lifecycle_fill_models", int(lifecycle_risk["fill_model"].nunique()), "Phase 12 full-run fill models"),
         ("full_run_lifecycle_daily_halt_rows", int(lifecycle_risk["daily_halt_rows"].sum()), "Phase 12 full-run lifecycle halt rows"),
+        ("full_run_lifecycle_breach_severity_rows", int(len(lifecycle_risk_severity)), "Phase 12 full-run lifecycle breach-severity rows"),
+        ("full_run_lifecycle_risk_pass_candidate_rows", int(lifecycle_risk_severity["risk_pass_candidate_proxy"].astype(bool).sum()), "Phase 12 proxy risk-pass candidate rows"),
+        ("full_run_lifecycle_high_severity_rows", int((lifecycle_risk_severity["risk_severity_band"].astype(str) == "high_proxy_breach_severity").sum()), "Phase 12 high-severity proxy risk rows"),
         ("robustness_dimension_rows", int(len(robustness_dimension)), "Phase 13 robustness dimension rows"),
         ("robustness_dimension_registered_rows", int(robustness_dimension["registered_for_phase13_proxy"].astype(bool).sum()), "Phase 13 registered robustness proxy rows"),
         ("strategies", int(acceptance["strategy_id"].nunique()), "Phase 15 strategies"),
@@ -223,6 +228,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 14 Holdout Generator Realism Proxy</h2>{_table(holdout, ['quarter_profile', 'feed_profile', 'holdout_role', 'scenario_days', 'symbols', 'regimes', 'realism_status', 'acceptance_eligible_now'], 20)}</section>
   <section><h2>Phase 13 Robustness Dimension Proxy</h2>{_table(robustness_status, None, 10)}{_table(robustness_dimension, ['strategy_id', 'registered_for_phase13_proxy', 'initial_engineering_seeds_run', 'required_full_validation_seeds', 'execution_profiles_evaluated', 'parameter_sets_run', 'parameter_sets_planned', 'walk_forward_status', 'holdout_status', 'dimension_status'], 14)}</section>
   <section><h2>Phase 12 Full-Run Lifecycle Risk Proxy</h2>{_table(lifecycle_overview, ['fill_model', 'strategy_profiles', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'daily_halt_rows', 'position_limit_breach_rows'], 10)}{_table(lifecycle_risk, ['strategy_id', 'execution_profile', 'fill_model', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'max_intraday_drawdown_inr', 'daily_halt_rows'], 18)}</section>
+  <section><h2>Phase 12 Risk Breach Severity Proxy</h2>{_table(top_risk_severity, ['strategy_id', 'execution_profile', 'fill_model', 'breach_days', 'daily_loss_breach_days', 'position_limit_breach_days', 'drawdown_breach_days', 'daily_halt_days', 'risk_severity_score', 'risk_severity_band', 'risk_pass_candidate_proxy'], 25)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -257,6 +263,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "## Phase 12 Full-Run Lifecycle Risk Proxy",
         "",
         _markdown_table(lifecycle_overview),
+        "",
+        "## Phase 12 Risk Breach Severity Proxy",
+        "",
+        _markdown_table(top_risk_severity.head(25)),
         "",
         "## Phase 13 Robustness Dimension Proxy",
         "",
@@ -307,6 +317,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--quality", type=Path, default=Path("outputs/phase14/quality_gate_summary.csv"))
     parser.add_argument("--holdout", type=Path, default=Path("outputs/phase14/holdout_generator_realism_summary.csv"))
     parser.add_argument("--lifecycle-risk", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_summary.csv"))
+    parser.add_argument("--lifecycle-risk-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
     parser.add_argument("--robustness-dimension", type=Path, default=Path("outputs/phase13/robustness_dimension_summary.csv"))
     parser.add_argument("--acceptance", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--blockers", type=Path, default=Path("outputs/phase15/acceptance_blockers.csv"))
@@ -328,6 +339,7 @@ def main() -> None:
         "quality": args.quality,
         "holdout": args.holdout,
         "lifecycle_risk": args.lifecycle_risk,
+        "lifecycle_risk_severity": args.lifecycle_risk_severity,
         "robustness_dimension": args.robustness_dimension,
         "acceptance": args.acceptance,
         "blockers": args.blockers,

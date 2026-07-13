@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T22:28:51.267235+00:00
+Generated UTC: 2026-07-13T22:37:43.684462+00:00
 
 ## Storage Decision
 
@@ -81,6 +81,9 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 full-run lifecycle fill models: 3
 - Phase 12 full-run lifecycle daily halt rows: 21299578
 - Phase 12 full-run lifecycle position-breach rows: 9421524
+- Phase 12 full-run lifecycle breach-severity rows: 81
+- Phase 12 full-run lifecycle risk-pass candidate rows: 0
+- Phase 12 full-run lifecycle high-severity rows: 68
 - Phase 12 event-backtest order rows: 6480
 - Phase 12 event-backtest order models: 6
 - Phase 12 event-backtest P&L rows: 6480
@@ -161,7 +164,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 acceptance hardening strategy rows: 11
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 25
+- Validation dashboard summary rows: 28
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

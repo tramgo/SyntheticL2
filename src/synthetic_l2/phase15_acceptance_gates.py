@@ -287,12 +287,13 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "gate_status": "blocked",
             "evidence_value": None,
             "blocker": (
-                "Full-run marketable-proxy risk diagnostics now include fill-adjusted lifecycle summaries over all simulated trades, "
+                "Full-run marketable-proxy risk diagnostics now include fill-adjusted lifecycle and breach-severity summaries over all simulated trades, "
                 "but no broker/exchange-confirmed fill-adjusted drawdown, position-limit, tail-loss or daily-loss-limit validation exists."
             ),
             "evidence_source": (
                 "outputs/phase12/execution_summary.csv; outputs/phase12/full_run_risk_summary.csv; "
                 "outputs/phase12/full_run_lifecycle_risk_summary.csv; outputs/phase12/full_run_lifecycle_daily_risk_summary.csv; "
+                "outputs/phase12/full_run_lifecycle_risk_breach_severity.csv; "
                 "outputs/phase12_order_lifecycle/risk_control_summary.csv"
             ),
         }
