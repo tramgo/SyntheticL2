@@ -1485,7 +1485,7 @@ Do not classify participants or assert market manipulation.
 
 ## Phase 12 — Backtest and Execution Simulator
 
-**Current implementation status as of 2026-07-13:** Phase 12 has an initial runnable marketable-order execution simulator in `scripts/run_phase12_execution_simulator.py`, backed by `src/synthetic_l2/phase12_execution_simulator.py`.
+**Current implementation status as of 2026-07-14:** Phase 12 has an initial runnable marketable-order execution simulator in `scripts/run_phase12_execution_simulator.py`, backed by `src/synthetic_l2/phase12_execution_simulator.py`, plus a sampled order-lifecycle and risk-control proxy in `scripts/run_phase12_order_lifecycle_risk.py`, backed by `src/synthetic_l2/phase12_order_lifecycle_risk.py`.
 
 Generated artifacts are under `outputs/phase12/`:
 
@@ -1496,11 +1496,22 @@ Generated artifacts are under `outputs/phase12/`:
 - `cost_schedule.csv`;
 - `trade_ledger_sample.parquet`.
 
+Additional order-lifecycle and risk-control artifacts are under `outputs/phase12_order_lifecycle/`:
+
+- `order_lifecycle_risk_report.md`;
+- `order_lifecycle_risk_manifest.json`;
+- `partial_fill_summary.csv`;
+- `risk_control_summary.csv`;
+- `fill_model_catalog.csv`;
+- `order_lifecycle_sample.parquet`.
+
 The current completed run processed all 2,259,039 Phase 9 Tier C 5-minute feature rows, applied Phase 11 proxy signals, and simulated 9 supported/proxy strategies across 3 execution profiles: `zero_latency_spread_only_control`, `retail_marketable_default` and `stressed_retail`. It produced 27 strategy/profile summary rows and a 250,000-row sampled trade ledger. Across all strategy/profile combinations the run simulated 10,350,654 marketable proxy trades.
 
 The simulator applies event-latency shifts, stale/disconnect cancellation, half-spread marketable execution cost, fixed slippage ticks, internal impact bps and placeholder profile-level fee bps. The current `cost_schedule.csv` is intentionally conservative about evidence: brokerage, statutory and exchange charges are marked `not_verified_v1` rather than claimed as current broker-derived costs. Refresh these charges from broker/exchange sources before making economic or deployability claims.
 
-Important Phase 12 caveat: this is an execution-plumbing and cost-sensitivity proxy, not a tick-accurate queue simulator, backtest acceptance result or promotion result. Passive orders, partial fills, cancel/replace and rejections remain requirements for the next simulator iteration.
+The lifecycle/risk-control proxy currently expands the 250,000-row sampled trade ledger into 750,000 lifecycle rows across 3 deterministic fill profiles: `optimistic_marketable`, `neutral_partial` and `pessimistic_partial`. It adds queue-position bucket, partial-fill ratio, unfilled quantity, filled notional, risk-equity, drawdown, tail-loss, position-limit and daily-loss-halt fields, with 6 strategy/profile partial-fill summary rows and 6 strategy/profile risk-control summary rows.
+
+Important Phase 12 caveat: this is an execution-plumbing, cost-sensitivity and sampled lifecycle/risk proxy, not a tick-accurate exchange queue simulator, full-run backtest acceptance result or promotion result. Passive order-book placement, cancel/replace/rejection state machines and broker-verified statutory charge schedules remain requirements for the next simulator iteration.
 
 ## 38. Event-driven backtester
 
@@ -1832,7 +1843,7 @@ A strategy may advance from synthetic screening only if it passes all applicable
 - remains viable with feed imperfections;
 - remains viable under pessimistic execution.
 
-**Current implementation status as of 2026-07-13:** Phase 15 has an initial runnable acceptance-gate evaluator in `scripts/run_phase15_acceptance_gates.py`, backed by `src/synthetic_l2/phase15_acceptance_gates.py`.
+**Current implementation status as of 2026-07-14:** Phase 15 has an initial runnable acceptance-gate evaluator in `scripts/run_phase15_acceptance_gates.py`, backed by `src/synthetic_l2/phase15_acceptance_gates.py`.
 
 Generated artifacts are under `outputs/phase15/`:
 
@@ -1843,7 +1854,7 @@ Generated artifacts are under `outputs/phase15/`:
 - `strategy_acceptance_summary.csv`;
 - `acceptance_blockers.csv`.
 
-The current completed run evaluated 11 strategies across 5 gates each: predictive, economic, robustness, risk and realism. All 55 strategy/gate rows are blocked, 0 strategies are promoted and 11 strategies remain `blocked_not_promotable`. This is the correct current result because Phase 11 diagnostics are proxy-only, Phase 12 is still a 5-minute execution proxy with placeholder-only statutory/brokerage charges, Phase 12 lacks full risk metrics, Phase 13 experiments are planned but not run, and Phase 14 still has one quality warning plus no holdout-generator evidence.
+The current completed run evaluated 11 strategies across 5 gates each: predictive, economic, robustness, risk and realism. All 55 strategy/gate rows are blocked, 0 strategies are promoted and 11 strategies remain `blocked_not_promotable`. This is the correct current result because Phase 11 diagnostics are proxy-only, Phase 12 remains a 5-minute execution/lifecycle proxy with placeholder-only statutory/brokerage charges, Phase 12 risk evidence is sampled rather than acceptance-grade full-run validation, Phase 13 experiments are planned but not run, and Phase 14 still has one quality warning plus no holdout-generator evidence.
 
 Important Phase 15 caveat: this phase is the promotion gate. A strategy may only advance when every applicable gate is backed by completed, current evidence. The current result is explicitly non-promotion for all S01-S11 strategies.
 
@@ -1899,7 +1910,7 @@ Every report must break results down by:
 - random seed;
 - event versus non-event day.
 
-**Current implementation status as of 2026-07-13:** Phase 16 has a runnable metrics/reporting layer in `scripts/run_phase16_metrics_reporting.py`, backed by `src/synthetic_l2/phase16_metrics_reporting.py`.
+**Current implementation status as of 2026-07-14:** Phase 16 has a runnable metrics/reporting layer in `scripts/run_phase16_metrics_reporting.py`, backed by `src/synthetic_l2/phase16_metrics_reporting.py`.
 
 Generated artifacts are under `outputs/phase16/`:
 
@@ -1911,9 +1922,9 @@ Generated artifacts are under `outputs/phase16/`:
 - `breakdown_coverage.csv`;
 - `strategy_metric_requirement_coverage.csv`.
 
-The current completed run builds the reporting catalog and proxy scoreboards from Phase 11 diagnostics, Phase 12 execution summaries and sampled trade ledger, and Phase 15 acceptance status. It produced 27 metric catalog rows, 11 predictive scoreboard rows, 27 trading scoreboard rows, 12 breakdown-coverage rows and 59 strategy-metric requirement coverage rows. No metric is acceptance-grade yet: `acceptance_grade_metrics=0`.
+The current completed run builds the reporting catalog and proxy scoreboards from Phase 11 diagnostics, Phase 12 execution summaries, the sampled trade ledger, the Phase 12 lifecycle/risk-control proxy and Phase 15 acceptance status. It produced 27 metric catalog rows, 11 predictive scoreboard rows, 27 trading scoreboard rows, 12 breakdown-coverage rows and 59 strategy-metric requirement coverage rows. No metric is acceptance-grade yet: `acceptance_grade_metrics=0`.
 
-Important Phase 16 caveat: these reports are current-evidence scoreboards, not promotion evidence. Predictive metrics are Phase 11 proxy diagnostics, trading metrics are Phase 12 5-minute marketable-order proxies, and several required metrics remain missing until full experiment execution, risk/equity-curve simulation, fill modeling and holdout-generator evidence exist.
+Important Phase 16 caveat: these reports are current-evidence scoreboards, not promotion evidence. Predictive metrics are Phase 11 proxy diagnostics, trading metrics are Phase 12 5-minute marketable-order/lifecycle proxies, and several required metrics remain proxy-only until full experiment execution, acceptance-grade risk/equity-curve simulation, broker-verified fill/cost modeling and holdout-generator evidence exist.
 
 ---
 
@@ -2034,12 +2045,9 @@ Generated artifacts are under `outputs/phase17/`:
 - `deliverable_traceability.csv`;
 - `implementation_gap_backlog.csv`.
 
-The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 30 proxy/partial deliverables and 2 missing deliverables. One work package is currently blocked by missing deliverables. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`.
+The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, and the Phase 17 backlog has 0 P0 gaps. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for partial fills and risk controls through `outputs/phase12_order_lifecycle/partial_fill_summary.csv` and `outputs/phase12_order_lifecycle/risk_control_summary.csv`.
 
-The remaining P0 gaps are:
-
-1. WP8 partial fills;
-2. WP8 risk controls.
+The remaining work is acceptance hardening rather than missing-deliverable closure: promote proxy/partial artifacts to full-run, broker-verified and holdout-tested evidence before any strategy promotion claim.
 
 Important Phase 17 caveat: this is a traceability and implementation-backlog layer, not a promotion result. It intentionally preserves proxy/partial statuses where earlier phases have generated useful artifacts but not acceptance-grade evidence.
 

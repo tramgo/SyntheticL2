@@ -25,21 +25,21 @@ PREDICTIVE_METRICS = [
 TRADING_METRICS = [
     ("gross_pnl", "computed_proxy", "phase12_execution_summary.total gross proxy can be inferred from mean_gross_return * trades."),
     ("net_pnl", "computed_proxy", "phase12_execution_summary.total_net_pnl_units."),
-    ("return_on_allocated_capital", "missing", "Requires capital allocation and position sizing."),
+    ("return_on_allocated_capital", "proxy_available", "Phase 12 order-lifecycle proxy carries submitted/filled notional; accepted capital allocation is still missing."),
     ("sharpe", "sample_proxy", "Computed from Phase 12 sampled trade ledger, not full daily equity curves."),
     ("sortino", "sample_proxy", "Computed from Phase 12 sampled trade ledger, not full daily equity curves."),
     ("maximum_drawdown", "sample_proxy", "Computed on sampled trade sequence, not accepted daily equity curve."),
-    ("calmar_ratio", "missing", "Requires annualized return and accepted drawdown horizon."),
+    ("calmar_ratio", "sample_proxy", "Drawdown proxy exists in Phase 12 order-lifecycle sample; accepted annualized return horizon is still missing."),
     ("profit_factor", "sample_proxy", "Computed from sampled trade ledger."),
     ("win_rate", "computed_proxy", "phase12_execution_summary.win_rate_net."),
     ("average_win_loss", "sample_proxy", "Computed from sampled trade ledger."),
     ("expectancy_per_trade", "computed_proxy", "phase12_execution_summary.mean_net_return."),
     ("turnover", "proxy_available", "Trade count is available; capital-normalized turnover is not."),
     ("cost_to_gross_profit_ratio", "sample_proxy", "Computed from sampled trade ledger."),
-    ("fill_ratio", "missing", "Requires order/fill simulator with submitted and filled quantities."),
+    ("fill_ratio", "sample_proxy", "Phase 12 order-lifecycle proxy provides submitted and filled quantities over the sampled trade ledger."),
     ("adverse_selection", "missing", "Requires post-fill markout windows."),
     ("mae_mfe", "missing", "Requires intra-holding path after entry."),
-    ("exposure_holding_time", "missing", "Requires position lifecycle state."),
+    ("exposure_holding_time", "sample_proxy", "Phase 12 order-lifecycle proxy provides running position exposure; holding-time lifecycle remains approximate."),
 ]
 
 BREAKDOWNS = [

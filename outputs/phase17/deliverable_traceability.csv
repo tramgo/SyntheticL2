@@ -41,10 +41,10 @@ WP7,metadata manifest,implemented,4,outputs/duckdb/duckdb_workspace_manifest.jso
 WP8,event-driven engine,partial_proxy,1,outputs/phase12/execution_summary.csv,present,False,Phase 12 is a marketable-order proxy over feature events.
 WP8,market and limit orders,partial_proxy,1,outputs/phase12/execution_summary.csv,present,False,Marketable orders are modeled; passive limit orders are not.
 WP8,latency,implemented_proxy,3,outputs/phase12/execution_profiles.csv,present,False,Latency profiles are applied.
-WP8,partial fills,missing,0,,not_required_for_missing,False,Partial fills and queue position are not modeled.
+WP8,partial fills,implemented_proxy,3,outputs/phase12_order_lifecycle/partial_fill_summary.csv,present,False,Deterministic partial-fill and queue-position bucket proxy exists over the sampled Phase 12 trade ledger.
 WP8,slippage,implemented_proxy,3,outputs/phase12/cost_schedule.csv,present,False,Fixed slippage ticks are modeled as a proxy.
-WP8,fees,partial_proxy,1,outputs/phase12/cost_schedule.csv,present,False,Zerodha-derived statutory/brokerage components are included; unit-normalized brokerage caps and STT rounding remain approximate.
-WP8,risk controls,missing,0,,not_required_for_missing,False,"Drawdown, position, tail-loss and daily-loss controls are not implemented."
+WP8,fees,partial_proxy,1,outputs/phase12/cost_schedule.csv,present,False,Profile-level fees are placeholders; statutory/brokerage charges are not verified.
+WP8,risk controls,implemented_proxy,3,outputs/phase12_order_lifecycle/risk_control_summary.csv,present,False,"Sampled risk-control proxy exists for position limits, drawdown, tail loss and daily loss halts."
 WP9,S01-S11 modules,partial_proxy,1,outputs/phase11/strategy_validation_matrix.csv,present,False,S01-S11 are registered; only proxy signals are implemented.
 WP9,shared feature interface,implemented_proxy,3,outputs/phase11/strategy_feature_availability.csv,present,False,Strategy-feature availability matrix exists.
 WP9,baseline strategies,implemented_proxy,3,outputs/phase11/baseline_strategy_matrix.csv,present,False,Baseline registry exists.

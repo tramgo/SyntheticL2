@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T16:10:26.476612+00:00
+Generated UTC: 2026-07-13T18:57:42.184071+00:00
 
 ## Scope
 
@@ -15,9 +15,9 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | predictive | missing | 8 |
 | predictive | proxy_available | 1 |
 | trading | computed_proxy | 4 |
-| trading | missing | 6 |
-| trading | proxy_available | 1 |
-| trading | sample_proxy | 6 |
+| trading | missing | 2 |
+| trading | proxy_available | 2 |
+| trading | sample_proxy | 9 |
 
 ## Top Predictive Proxy Rows
 
@@ -38,16 +38,16 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 
 | strategy_id | name | execution_profile | trades | gross_pnl_units_proxy | net_pnl_units_proxy | mean_gross_return | mean_cost_return | mean_net_return | expectancy_per_trade_proxy | win_rate_net | turnover_trade_count_proxy | sample_trades | sample_sharpe_per_trade | sample_sortino_per_trade | sample_max_drawdown_units | sample_profit_factor | sample_average_win | sample_average_loss | sample_cost_to_gross_profit_ratio | metric_scope | status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| S01 | Momentum/breakout filtered by MLOFI | retail_marketable_default | 160629 | 1196.04 | 1079.02 | 0.00744598 | 0.000728501 | 0.00671748 | 0.00671748 | 0.610917 | 160629 | 83090 | 0.235605 | 0.376488 | -1.91862 | 1.86929 | 0.0234643 | -0.0193764 | 0.0494767 | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
-| S03 | Liquidity-vacuum breakout | retail_marketable_default | 273433 | 1638.12 | 1456.34 | 0.00599094 | 0.000664799 | 0.00532614 | 0.00532614 | 0.576262 | 273433 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
+| S01 | Momentum/breakout filtered by MLOFI | retail_marketable_default | 160629 | 1196.04 | 1140.05 | 0.00744598 | 0.000348576 | 0.00709741 | 0.00709741 | 0.617286 | 160629 | 83090 | 0.249077 | 0.398663 | -1.80166 | 1.93719 | 0.0235849 | -0.0193276 | 0.0236987 | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
+| S03 | Liquidity-vacuum breakout | retail_marketable_default | 273433 | 1638.12 | 1559.92 | 0.00599094 | 0.000286006 | 0.00570493 | 0.00570493 | 0.581305 | 273433 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
 | S05 | Microprice entry/exit filter | zero_latency_spread_only_control | 449723 | 674.085 | 523.749 | 0.00149889 | 0.000334287 | 0.0011646 | 0.0011646 | 0.503712 | 449723 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
+| S04 | Trade-flow plus depth confirmation | retail_marketable_default | 414097 | 290.045 | 115.024 | 0.000700428 | 0.000422657 | 0.000277771 | 0.000277771 | 0.504995 | 414097 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
 | S06 | Absorption and exhaustion reversal | zero_latency_spread_only_control | 34199 | 13.5054 | 6.33407 | 0.000394906 | 0.000209694 | 0.000185212 | 0.000185212 | 0.494459 | 34199 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
-| S04 | Trade-flow plus depth confirmation | retail_marketable_default | 414097 | 290.045 | -43.2331 | 0.000700428 | 0.000804831 | -0.000104403 | -0.000104403 | 0.499663 | 414097 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
 | S08 | Cross-ticker/index lead-lag OFI | zero_latency_spread_only_control | 448520 | 1.40284 | -69.3333 | 3.12771e-06 | 0.00015771 | -0.000154582 | -0.000154582 | 0.496232 | 448520 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
+| S03 | Liquidity-vacuum breakout | stressed_retail | 271051 | 104.674 | -61.4669 | 0.000386179 | 0.000612951 | -0.000226772 | -0.000226772 | 0.490196 | 271051 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
 | S09 | Pure queue-imbalance scalping | zero_latency_spread_only_control | 590670 | -13.6481 | -161.495 | -2.31062e-05 | 0.000250304 | -0.00027341 | -0.00027341 | 0.482606 | 590670 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
 | S02 | Pure multi-level OFI directional model | zero_latency_spread_only_control | 898020 | -85.7117 | -271.664 | -9.54452e-05 | 0.00020707 | -0.000302515 | -0.000302515 | 0.492408 | 898020 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
-| S03 | Liquidity-vacuum breakout | stressed_retail | 271051 | 104.674 | -123.527 | 0.000386179 | 0.000841914 | -0.000455735 | -0.000455735 | 0.485492 | 271051 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
-| S09 | Pure queue-imbalance scalping | retail_marketable_default | 573331 | 103.561 | -401.342 | 0.000180631 | 0.000880648 | -0.000700017 | -0.000700017 | 0.471637 | 573331 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
+| S09 | Pure queue-imbalance scalping | retail_marketable_default | 573331 | 103.561 | -215.696 | 0.000180631 | 0.000556846 | -0.000376215 | -0.000376215 | 0.479976 | 573331 |  |  |  |  |  |  |  |  | phase12_5m_marketable_proxy_not_acceptance | simulated_marketable_proxy_not_acceptance |
 
 ## Required Breakdown Coverage
 

@@ -54,7 +54,8 @@ def _fill_ratio(base: pd.DataFrame, profile: dict) -> pd.Series:
     ratio = pd.Series(float(profile["base_fill_ratio"]), index=base.index)
     ratio -= np.where(base["is_market_shock_day"].astype(bool) | base["is_symbol_shock"].astype(bool), profile["shock_haircut"], 0.0)
     ratio -= np.where(base["spread_ticks"].astype(float) >= 8, profile["wide_spread_haircut"], 0.0)
-    ratio -= np.where(base.get("is_disconnect_gap", False).astype(bool), profile["disconnect_haircut"], 0.0)
+    disconnect_flag = base["is_disconnect_gap"].astype(bool) if "is_disconnect_gap" in base else pd.Series(False, index=base.index)
+    ratio -= np.where(disconnect_flag, profile["disconnect_haircut"], 0.0)
     return ratio.clip(lower=0.0, upper=1.0)
 
 

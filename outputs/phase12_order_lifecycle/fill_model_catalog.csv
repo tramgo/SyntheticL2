@@ -1,0 +1,4 @@
+fill_model,base_fill_ratio,shock_haircut,wide_spread_haircut,disconnect_haircut,queue_position_bucket
+optimistic_marketable,1.0,0.05,0.02,0.25,front_or_marketable
+neutral_partial,0.75,0.15,0.08,0.4,middle_queue_proxy
+pessimistic_partial,0.45,0.25,0.15,0.6,back_queue_proxy

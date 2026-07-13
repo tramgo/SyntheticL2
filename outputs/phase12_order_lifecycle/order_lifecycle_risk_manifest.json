@@ -1,0 +1,17 @@
+{
+  "generated_utc": "2026-07-13T18:57:40.408964+00:00",
+  "trade_sample_path": "outputs\\phase12\\trade_ledger_sample.parquet",
+  "input_trade_rows": 250000,
+  "lifecycle_rows": 750000,
+  "fill_models": 3,
+  "strategy_profile_fill_rows": 6,
+  "strategy_profile_risk_rows": 6,
+  "scope": "sampled_order_lifecycle_partial_fill_and_risk_proxy",
+  "not_acceptance_grade": true,
+  "risk_limits": {
+    "max_abs_position_units": 15.0,
+    "daily_loss_limit_units": -0.75,
+    "tail_loss_quantile": 0.01,
+    "drawdown_warn_units": -1.0
+  }
+}
