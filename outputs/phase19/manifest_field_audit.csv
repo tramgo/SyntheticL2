@@ -199,6 +199,16 @@ phase18,outputs/phase18/technology_stack_manifest.json,True,scenario_ids,missing
 phase18,outputs/phase18/technology_stack_manifest.json,True,cost_model_version,missing,
 phase18,outputs/phase18/technology_stack_manifest.json,True,latency_model_version,missing,
 phase18,outputs/phase18/technology_stack_manifest.json,True,creation_timestamp,present_alias_or_inferred,generated_utc
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,generator_version,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,configuration_hash,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,random_seed,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,calibration_dataset_id,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,ticker_metadata_version,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,regime_calendar_version,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,scenario_ids,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,cost_model_version,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,latency_model_version,missing,
+dashboard,outputs/dashboard/validation_dashboard_manifest.json,True,creation_timestamp,present_alias_or_inferred,generated_utc
 duckdb,outputs/duckdb/duckdb_workspace_manifest.json,True,generator_version,missing,
 duckdb,outputs/duckdb/duckdb_workspace_manifest.json,True,configuration_hash,missing,
 duckdb,outputs/duckdb/duckdb_workspace_manifest.json,True,random_seed,missing,

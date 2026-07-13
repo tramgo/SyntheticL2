@@ -1,4 +1,4 @@
 remediation_status,field_checks,artifacts
-add_field_in_generator,168,20
-normalize_alias_to_exact_field,32,19
+add_field_in_generator,177,21
+normalize_alias_to_exact_field,33,20
 recover_or_rerun_manifest,10,1
