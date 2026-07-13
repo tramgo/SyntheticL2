@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T22:37:43.684462+00:00
+Generated UTC: 2026-07-13T22:44:15.958823+00:00
 
 ## Storage Decision
 
@@ -127,7 +127,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 15 promoted strategies: 0
 - Phase 15 blocked strategies: 11
 - Phase 15 blocker rows: 50
-- Phase 16 metric catalog rows: 29
+- Phase 16 metric catalog rows: 30
 - Phase 16 predictive scoreboard rows: 11
 - Phase 16 predictive proxy rows: 9
 - Phase 16 predictive signal bucket rows: 27
@@ -145,13 +145,17 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 16 economic viability rows: 27
 - Phase 16 economic viability net-positive rows: 4
 - Phase 16 economic viability retail/stress positive rows: 2
+- Phase 16 risk-adjusted economic rows: 81
+- Phase 16 risk-adjusted economic joint-pass rows: 0
+- Phase 16 risk-adjusted economic retail/stress joint-pass rows: 0
+- Phase 16 economic-positive but risk-blocked rows: 12
 - Phase 16 markout/MAE/MFE summary rows: 27
 - Phase 16 markout sample trades: 243973
 - Phase 16 adverse-selection metric status: sample_proxy
 - Phase 16 MAE/MFE metric status: sample_proxy
 - Phase 16 breakdown rows: 12
 - Phase 16 acceptance-grade metrics: 0
-- Phase 16 non-acceptance-grade metrics: 29
+- Phase 16 non-acceptance-grade metrics: 30
 - Phase 17 work packages: 10
 - Phase 17 deliverables: 55
 - Phase 17 implemented deliverables: 23
@@ -164,7 +168,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 acceptance hardening strategy rows: 11
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 28
+- Validation dashboard summary rows: 31
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

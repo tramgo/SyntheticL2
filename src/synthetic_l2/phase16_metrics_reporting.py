@@ -39,6 +39,7 @@ TRADING_METRICS = [
     ("win_rate", "computed_proxy", "phase12_execution_summary.win_rate_net."),
     ("average_win_loss", "sample_proxy", "Computed from sampled trade ledger."),
     ("expectancy_per_trade", "computed_proxy", "phase12_execution_summary.mean_net_return."),
+    ("risk_adjusted_net_edge", "sample_proxy", "Joins economic frontier rows to Phase 12 full-run lifecycle breach severity; not acceptance-grade broker risk evidence."),
     ("turnover", "proxy_available", "Trade count is available; capital-normalized turnover is not."),
     ("cost_to_gross_profit_ratio", "sample_proxy", "Computed from sampled trade ledger."),
     ("fill_ratio", "sample_proxy", "Phase 12 order-lifecycle proxy provides submitted and filled quantities over the sampled trade ledger."),
@@ -71,6 +72,7 @@ METRIC_EVIDENCE_PATHS = {
     "win_rate": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
     "average_win_loss": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/trade_ledger_sample.parquet",
     "expectancy_per_trade": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
+    "risk_adjusted_net_edge": "outputs/phase16/risk_adjusted_economic_frontier.csv; outputs/phase12/full_run_lifecycle_risk_breach_severity.csv",
     "turnover": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/execution_summary.csv",
     "cost_to_gross_profit_ratio": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12/cost_schedule.csv",
     "fill_ratio": "outputs/phase16/trading_metric_scoreboard.csv; outputs/phase12_order_lifecycle/partial_fill_summary.csv",
@@ -157,6 +159,7 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "metric_requirements": pd.read_csv(paths["metric_requirements"]),
         "execution_summary": pd.read_csv(paths["execution_summary"]),
         "trade_sample": pd.read_parquet(paths["trade_sample"]),
+        "risk_breach_severity": pd.read_csv(paths["risk_breach_severity"]),
         "features": load_features(paths["features"]),
         "acceptance_summary": pd.read_csv(paths["acceptance_summary"]),
         "seed_plan": pd.read_csv(paths["seed_plan"]),
@@ -894,6 +897,95 @@ def economic_viability_frontier(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame
     ]
 
 
+def risk_adjusted_economic_frontier(economic_frontier: pd.DataFrame, inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    severity = inputs["risk_breach_severity"].copy()
+    severity_cols = [
+        "strategy_id",
+        "execution_profile",
+        "fill_model",
+        "queue_position_bucket",
+        "breach_days",
+        "daily_loss_breach_days",
+        "position_limit_breach_days",
+        "drawdown_breach_days",
+        "daily_halt_days",
+        "breach_day_fraction",
+        "daily_halt_day_fraction",
+        "risk_severity_score",
+        "risk_severity_band",
+        "risk_pass_candidate_proxy",
+    ]
+    out = economic_frontier.merge(severity[severity_cols], on=["strategy_id", "execution_profile"], how="left")
+    out["fill_model"] = out["fill_model"].fillna("not_available")
+    out["risk_severity_band"] = out["risk_severity_band"].fillna("risk_severity_missing")
+    out["risk_pass_candidate_proxy"] = out["risk_pass_candidate_proxy"].fillna(False).astype(bool)
+    out["risk_severity_score"] = out["risk_severity_score"].fillna(np.inf).astype(float)
+    out["breach_day_fraction"] = out["breach_day_fraction"].fillna(1.0).astype(float)
+    out["daily_halt_day_fraction"] = out["daily_halt_day_fraction"].fillna(1.0).astype(float)
+    out["risk_penalty_bps"] = out["risk_severity_score"].replace(np.inf, 10_000.0).clip(lower=0.0)
+    out["risk_adjusted_net_edge_bps"] = out["net_edge_bps"].astype(float) - out["risk_penalty_bps"]
+    out["net_positive_and_risk_pass_proxy"] = out["net_positive_proxy"].astype(bool) & out["risk_pass_candidate_proxy"]
+    out["retail_stress_net_positive_and_risk_pass_proxy"] = (
+        out["retail_or_stress_profile"].astype(bool)
+        & out["net_positive_and_risk_pass_proxy"]
+    )
+    out["risk_adjusted_frontier_status"] = np.select(
+        [
+            out["net_positive_and_risk_pass_proxy"] & out["retail_or_stress_profile"].astype(bool),
+            out["net_positive_proxy"].astype(bool) & ~out["risk_pass_candidate_proxy"],
+            out["risk_pass_candidate_proxy"] & ~out["net_positive_proxy"].astype(bool),
+            ~out["retail_or_stress_profile"].astype(bool),
+        ],
+        [
+            "net_positive_and_risk_pass_proxy_not_acceptance",
+            "economic_positive_but_risk_blocked_proxy",
+            "risk_pass_but_economic_negative_proxy",
+            "control_profile_not_deployable",
+        ],
+        default="economic_and_risk_blocked_proxy",
+    )
+    out["acceptance_eligible_now"] = False
+    out["blocker"] = np.where(
+        out["net_positive_and_risk_pass_proxy"],
+        "Proxy economics and proxy risk pass candidate align, but acceptance still requires broker/exchange fills, contract-note reconciliation and multi-day holdout.",
+        "Current row does not jointly clear proxy net-edge and proxy lifecycle risk-pass checks; do not promote.",
+    )
+    return out[
+        [
+            "strategy_id",
+            "name",
+            "support_level",
+            "execution_profile",
+            "fill_model",
+            "queue_position_bucket",
+            "gross_edge_bps",
+            "cost_drag_bps",
+            "net_edge_bps",
+            "risk_penalty_bps",
+            "risk_adjusted_net_edge_bps",
+            "net_positive_proxy",
+            "risk_pass_candidate_proxy",
+            "net_positive_and_risk_pass_proxy",
+            "retail_or_stress_profile",
+            "retail_stress_net_positive_and_risk_pass_proxy",
+            "breach_days",
+            "daily_loss_breach_days",
+            "position_limit_breach_days",
+            "drawdown_breach_days",
+            "daily_halt_days",
+            "breach_day_fraction",
+            "daily_halt_day_fraction",
+            "risk_severity_score",
+            "risk_severity_band",
+            "risk_adjusted_frontier_status",
+            "promotion_allowed",
+            "acceptance_status",
+            "acceptance_eligible_now",
+            "blocker",
+        ]
+    ].sort_values(["risk_adjusted_net_edge_bps", "strategy_id", "execution_profile", "fill_model"], ascending=[False, True, True, True], kind="mergesort")
+
+
 def breakdown_coverage(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     sample_cols = set(inputs["trade_sample"].columns)
     rows = []
@@ -944,6 +1036,7 @@ def write_report(
     importance: pd.DataFrame,
     trading: pd.DataFrame,
     economic_frontier: pd.DataFrame,
+    risk_adjusted_frontier: pd.DataFrame,
     breakdowns: pd.DataFrame,
 ) -> None:
     catalog_summary = catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
@@ -1002,6 +1095,10 @@ def write_report(
         "",
         _markdown_table(economic_frontier.sort_values("net_edge_bps", ascending=False).head(18)),
         "",
+        "## Risk-Adjusted Economic Frontier",
+        "",
+        _markdown_table(risk_adjusted_frontier.sort_values("risk_adjusted_net_edge_bps", ascending=False).head(18)),
+        "",
         "## Required Breakdown Coverage",
         "",
         _markdown_table(breakdown_summary),
@@ -1026,6 +1123,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
     economic_frontier = economic_viability_frontier(inputs)
+    risk_adjusted_frontier = risk_adjusted_economic_frontier(economic_frontier, inputs)
     breakdowns = breakdown_coverage(inputs)
     requirement_coverage = metric_requirement_coverage(inputs, catalog)
 
@@ -1041,6 +1139,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     economic_frontier.to_csv(output_dir / "economic_viability_frontier.csv", index=False)
+    risk_adjusted_frontier.to_csv(output_dir / "risk_adjusted_economic_frontier.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
     requirement_coverage.to_csv(output_dir / "strategy_metric_requirement_coverage.csv", index=False)
@@ -1074,6 +1173,10 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "economic_viability_retail_stress_net_positive_rows": int(
             (economic_frontier["net_positive_proxy"] & economic_frontier["retail_or_stress_profile"]).sum()
         ) if "retail_or_stress_profile" in economic_frontier else 0,
+        "risk_adjusted_economic_frontier_rows": int(len(risk_adjusted_frontier)),
+        "risk_adjusted_economic_joint_pass_rows": int(risk_adjusted_frontier["net_positive_and_risk_pass_proxy"].sum()) if len(risk_adjusted_frontier) else 0,
+        "risk_adjusted_economic_retail_stress_joint_pass_rows": int(risk_adjusted_frontier["retail_stress_net_positive_and_risk_pass_proxy"].sum()) if len(risk_adjusted_frontier) else 0,
+        "risk_adjusted_economic_risk_blocked_positive_rows": int((risk_adjusted_frontier["risk_adjusted_frontier_status"].astype(str) == "economic_positive_but_risk_blocked_proxy").sum()) if len(risk_adjusted_frontier) else 0,
         "markout_summary_rows": int(len(markouts)),
         "markout_horizons_bars": [1, 3, 6],
         "breakdown_rows": int(len(breakdowns)),
@@ -1099,6 +1202,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "predictive_holdout_stability_summary": str(output_dir / "predictive_holdout_stability_summary.csv"),
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
                 "economic_viability_frontier": str(output_dir / "economic_viability_frontier.csv"),
+                "risk_adjusted_economic_frontier": str(output_dir / "risk_adjusted_economic_frontier.csv"),
                 "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
                 "strategy_metric_requirement_coverage": str(output_dir / "strategy_metric_requirement_coverage.csv"),
                 "report": str(output_dir / "phase16_metrics_reporting_report.md"),
@@ -1123,6 +1227,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         importance,
         trading,
         economic_frontier,
+        risk_adjusted_frontier,
         breakdowns,
     )
 
@@ -1134,6 +1239,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--metric-requirements", type=Path, default=Path("outputs/phase11/strategy_metric_requirements.csv"))
     parser.add_argument("--execution-summary", type=Path, default=Path("outputs/phase12/execution_summary.csv"))
     parser.add_argument("--trade-sample", type=Path, default=Path("outputs/phase12/trade_ledger_sample.parquet"))
+    parser.add_argument("--risk-breach-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
     parser.add_argument("--features", type=Path, default=Path("outputs/phase9/tier_c/features_5m.parquet"))
     parser.add_argument("--acceptance-summary", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--seed-plan", type=Path, default=Path("outputs/phase13/seed_plan.csv"))
@@ -1147,6 +1253,7 @@ def main() -> None:
         "metric_requirements": args.metric_requirements,
         "execution_summary": args.execution_summary,
         "trade_sample": args.trade_sample,
+        "risk_breach_severity": args.risk_breach_severity,
         "features": args.features,
         "acceptance_summary": args.acceptance_summary,
         "seed_plan": args.seed_plan,

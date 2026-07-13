@@ -1,15 +1,16 @@
 {
-  "generated_utc": "2026-07-13T22:37:29.907750+00:00",
+  "generated_utc": "2026-07-13T22:44:02.531602+00:00",
   "inputs": {
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
     "metric_requirements": "outputs\\phase11\\strategy_metric_requirements.csv",
     "execution_summary": "outputs\\phase12\\execution_summary.csv",
     "trade_sample": "outputs\\phase12\\trade_ledger_sample.parquet",
+    "risk_breach_severity": "outputs\\phase12\\full_run_lifecycle_risk_breach_severity.csv",
     "features": "outputs\\phase9\\tier_c\\features_5m.parquet",
     "acceptance_summary": "outputs\\phase15\\strategy_acceptance_summary.csv",
     "seed_plan": "outputs\\phase13\\seed_plan.csv"
   },
-  "metric_catalog_rows": 29,
+  "metric_catalog_rows": 30,
   "predictive_scoreboard_rows": 11,
   "predictive_proxy_rows": 9,
   "predictive_signal_bucket_rows": 27,
@@ -25,6 +26,10 @@
   "economic_viability_frontier_rows": 27,
   "economic_viability_net_positive_rows": 4,
   "economic_viability_retail_stress_net_positive_rows": 2,
+  "risk_adjusted_economic_frontier_rows": 81,
+  "risk_adjusted_economic_joint_pass_rows": 0,
+  "risk_adjusted_economic_retail_stress_joint_pass_rows": 0,
+  "risk_adjusted_economic_risk_blocked_positive_rows": 12,
   "markout_summary_rows": 27,
   "markout_horizons_bars": [
     1,
@@ -35,8 +40,8 @@
   "acceptance_grade_metrics": 0,
   "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "2471f124c61015d1e477ab3cdd9af490283d2a4f",
-  "configuration_hash": "dc4c7fb7ac0b472ba1d36dacffd4d0de8bd98f0c002d75324d328b4e988b38f4",
+  "generator_version": "9a84e35b83023a8fd9ac20c455dc85fdf5b846a1",
+  "configuration_hash": "bc6cb2f5f588f2c12de170ae6aaf33865fa378da947846b9b2c8119e8250dd65",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -44,5 +49,5 @@
   "scenario_ids": "phase11_strategy_metric_requirements_and_phase12_seeded_trade_sample",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T22:37:29.907750+00:00"
+  "creation_timestamp": "2026-07-13T22:44:02.531602+00:00"
 }

@@ -15,12 +15,15 @@ robustness_dimension_registered_rows,9,Phase 13 registered robustness proxy rows
 strategies,11,Phase 15 strategies
 promoted_strategies,0,Promotion allowed count
 acceptance_blockers,50,Phase 15 blocker rows
-metric_catalog_rows,29,Phase 16 metric catalog rows
+metric_catalog_rows,30,Phase 16 metric catalog rows
 predictive_holdout_summary_rows,11,Phase 16 predictive holdout stability summary rows
 predictive_holdout_all_cell_pass_rows,0,Predictive holdout all-cell pass rows
 economic_viability_rows,27,Phase 16 economic viability frontier rows
 economic_viability_net_positive_rows,4,Phase 16 net-positive proxy rows
 economic_viability_retail_stress_positive_rows,2,Retail/stress net-positive proxy rows
+risk_adjusted_economic_rows,81,Phase 16 risk-adjusted economic frontier rows
+risk_adjusted_economic_joint_pass_rows,0,Proxy rows with net-positive economics and risk-pass candidate
+risk_adjusted_economic_retail_stress_joint_pass_rows,0,Retail/stress proxy rows with net-positive economics and risk-pass candidate
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows
 p1_gaps,0,Phase 17 P1 backlog rows

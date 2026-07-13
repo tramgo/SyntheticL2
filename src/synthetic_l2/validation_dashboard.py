@@ -102,6 +102,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     predictive_holdout = _read_csv(paths["predictive_holdout"])
     trading = _read_csv(paths["trading"])
     economic = _read_csv(paths["economic"])
+    risk_adjusted_economic = _read_csv(paths["risk_adjusted_economic"])
     markout = _read_csv(paths["markout"])
     gaps = _read_csv(paths["gaps"])
     hardening_queue = _read_csv(paths["hardening_queue"])
@@ -115,6 +116,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     top_predictive_holdout = predictive_holdout.sort_values("cell_beat_fraction", ascending=False)
     top_trading = trading.sort_values("mean_net_return", ascending=False)
     top_economic = economic.sort_values("net_edge_bps", ascending=False)
+    top_risk_adjusted_economic = risk_adjusted_economic.sort_values("risk_adjusted_net_edge_bps", ascending=False)
     top_markout = markout.sort_values("adverse_selection_rate_6bar_proxy", ascending=True)
     lifecycle_overview = (
         lifecycle_risk.groupby("fill_model", sort=True)
@@ -155,6 +157,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("economic_viability_rows", int(len(economic)), "Phase 16 economic viability frontier rows"),
         ("economic_viability_net_positive_rows", int(economic["net_positive_proxy"].astype(bool).sum()), "Phase 16 net-positive proxy rows"),
         ("economic_viability_retail_stress_positive_rows", int((economic["net_positive_proxy"].astype(bool) & economic["retail_or_stress_profile"].astype(bool)).sum()), "Retail/stress net-positive proxy rows"),
+        ("risk_adjusted_economic_rows", int(len(risk_adjusted_economic)), "Phase 16 risk-adjusted economic frontier rows"),
+        ("risk_adjusted_economic_joint_pass_rows", int(risk_adjusted_economic["net_positive_and_risk_pass_proxy"].astype(bool).sum()), "Proxy rows with net-positive economics and risk-pass candidate"),
+        ("risk_adjusted_economic_retail_stress_joint_pass_rows", int(risk_adjusted_economic["retail_stress_net_positive_and_risk_pass_proxy"].astype(bool).sum()), "Retail/stress proxy rows with net-positive economics and risk-pass candidate"),
         ("acceptance_grade_metrics", int(metric_catalog["acceptance_eligible_now"].astype(bool).sum()), "Acceptance-grade metrics"),
         ("missing_metrics", int((metric_catalog["current_status"].astype(str) == "missing").sum()), "Missing metric rows"),
         ("p1_gaps", int((gaps["priority"].astype(str) == "P1").sum()), "Phase 17 P1 backlog rows"),
@@ -234,6 +239,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
   <section><h2>Phase 16 Predictive Holdout Stability</h2>{_table(top_predictive_holdout, ['strategy_id', 'support_level', 'stability_cells', 'cells_beating_local_majority', 'cell_beat_fraction', 'untouched_test_cells_beating_local_majority', 'min_accuracy_excess_vs_majority', 'worst_segment_status'], 14)}</section>
   <section><h2>Phase 16 Economic Viability Frontier</h2>{_table(top_economic, ['strategy_id', 'execution_profile', 'gross_edge_bps', 'cost_drag_bps', 'net_edge_bps', 'additional_gross_edge_needed_bps', 'cost_reduction_needed_bps', 'economic_frontier_status'], 18)}</section>
+  <section><h2>Phase 16 Risk-Adjusted Economic Frontier</h2>{_table(top_risk_adjusted_economic, ['strategy_id', 'execution_profile', 'fill_model', 'net_edge_bps', 'risk_penalty_bps', 'risk_adjusted_net_edge_bps', 'net_positive_proxy', 'risk_pass_candidate_proxy', 'net_positive_and_risk_pass_proxy', 'risk_severity_band', 'risk_adjusted_frontier_status'], 25)}</section>
   <section><h2>Top Trading Proxy Rows</h2>{_table(top_trading, ['strategy_id', 'execution_profile', 'trades', 'mean_net_return', 'win_rate_net', 'sample_max_drawdown_units', 'sample_profit_factor'], 15)}</section>
   <section><h2>Best Lower-Adverse-Selection Markout Rows</h2>{_table(top_markout, ['strategy_id', 'execution_profile', 'markout_sample_trades', 'adverse_selection_rate_6bar_proxy', 'mean_mae_proxy', 'mean_mfe_proxy'], 15)}</section>
   <section><h2>Phase 20 Acceptance Hardening Queue</h2>{_bar_rows(hardening_priority, 'priority_band', 'queue_items')}{_table(hardening_gate_summary, ['priority_rank', 'gate_id', 'gate_name', 'blocked_strategies', 'work_package_focus', 'acceptance_milestone'], 10)}{_table(hardening_queue, ['queue_rank', 'priority_band', 'gate_id', 'strategy_id', 'strategy_support_level', 'work_package_focus', 'acceptance_milestone', 'next_required_evidence'], 25)}</section>
@@ -275,6 +281,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "## Economic Viability Frontier",
         "",
         _markdown_table(top_economic.head(18)),
+        "",
+        "## Risk-Adjusted Economic Frontier",
+        "",
+        _markdown_table(top_risk_adjusted_economic.head(25)),
         "",
         "## Predictive Holdout Stability",
         "",
@@ -326,6 +336,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--predictive-holdout", type=Path, default=Path("outputs/phase16/predictive_holdout_stability_summary.csv"))
     parser.add_argument("--trading", type=Path, default=Path("outputs/phase16/trading_metric_scoreboard.csv"))
     parser.add_argument("--economic", type=Path, default=Path("outputs/phase16/economic_viability_frontier.csv"))
+    parser.add_argument("--risk-adjusted-economic", type=Path, default=Path("outputs/phase16/risk_adjusted_economic_frontier.csv"))
     parser.add_argument("--markout", type=Path, default=Path("outputs/phase16/markout_mae_mfe_summary.csv"))
     parser.add_argument("--gaps", type=Path, default=Path("outputs/phase17/implementation_gap_backlog.csv"))
     parser.add_argument("--hardening-queue", type=Path, default=Path("outputs/phase20/acceptance_hardening_queue.csv"))
@@ -348,6 +359,7 @@ def main() -> None:
         "predictive_holdout": args.predictive_holdout,
         "trading": args.trading,
         "economic": args.economic,
+        "risk_adjusted_economic": args.risk_adjusted_economic,
         "markout": args.markout,
         "gaps": args.gaps,
         "hardening_queue": args.hardening_queue,
