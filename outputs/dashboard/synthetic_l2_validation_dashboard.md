@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-13T22:19:23.213439+00:00
+Generated UTC: 2026-07-13T22:23:52.565047+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -21,7 +21,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 | strategies | 11 | Phase 15 strategies |
 | promoted_strategies | 0 | Promotion allowed count |
 | acceptance_blockers | 50 | Phase 15 blocker rows |
-| metric_catalog_rows | 28 | Phase 16 metric catalog rows |
+| metric_catalog_rows | 29 | Phase 16 metric catalog rows |
 | predictive_holdout_summary_rows | 11 | Phase 16 predictive holdout stability summary rows |
 | predictive_holdout_all_cell_pass_rows | 0 | Predictive holdout all-cell pass rows |
 | economic_viability_rows | 27 | Phase 16 economic viability frontier rows |
@@ -127,7 +127,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 | --- | --- | --- |
 | predictive | computed_proxy | 1 |
 | predictive | proxy_available | 1 |
-| predictive | sample_proxy | 9 |
+| predictive | sample_proxy | 10 |
 | trading | computed_proxy | 4 |
 | trading | proxy_available | 2 |
 | trading | sample_proxy | 11 |

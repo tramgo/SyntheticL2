@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T22:19:21.466462+00:00
+Generated UTC: 2026-07-13T22:23:50.714146+00:00
 
 ## Scope
 
@@ -13,7 +13,7 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | --- | --- | --- |
 | predictive | computed_proxy | 1 |
 | predictive | proxy_available | 1 |
-| predictive | sample_proxy | 9 |
+| predictive | sample_proxy | 10 |
 | trading | computed_proxy | 4 |
 | trading | proxy_available | 2 |
 | trading | sample_proxy | 11 |
