@@ -75,7 +75,7 @@ DELIVERABLES = [
     ("WP9", "parameter registry", "implemented_proxy", "outputs/phase13/parameter_grid.csv", "Initial parameter grid exists."),
     ("WP10", "synthetic realism dashboard", "partial_current", "outputs/phase14/phase14_quality_validation_report.md", "Quality report exists; no interactive dashboard yet."),
     ("WP10", "strategy performance reports", "implemented_proxy", "outputs/phase16/phase16_metrics_reporting_report.md", "Proxy performance report exists."),
-    ("WP10", "robustness matrix", "partial_current", "outputs/phase13/experiment_registry.csv", "Planned robustness registry exists; experiments are not run."),
+    ("WP10", "robustness matrix", "implemented_proxy", "outputs/phase13/experiment_run_summary.csv", "Pre-registered experiment rows have a deterministic proxy smoke ledger; full robustness validation is not acceptance-grade yet."),
     ("WP10", "failed-test log", "implemented", "outputs/phase15/acceptance_blockers.csv", "Acceptance blockers provide failed-test log."),
     ("WP10", "promotion/rejection decision", "implemented", "outputs/phase15/strategy_acceptance_summary.csv", "All strategies currently blocked/not promotable."),
 ]

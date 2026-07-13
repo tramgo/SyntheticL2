@@ -38,7 +38,7 @@ GATES = [
 
 
 def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
-    return {
+    inputs = {
         "strategy_matrix": pd.read_csv(paths["strategy_matrix"]),
         "signal_diagnostics": pd.read_csv(paths["signal_diagnostics"]),
         "execution_summary": pd.read_csv(paths["execution_summary"]),
@@ -46,6 +46,12 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "experiment_registry": pd.read_csv(paths["experiment_registry"]),
         "quality_summary": pd.read_csv(paths["quality_summary"]),
     }
+    run_summary_path = paths.get("experiment_run_summary")
+    if run_summary_path is not None and run_summary_path.exists():
+        inputs["experiment_run_summary"] = pd.read_csv(run_summary_path)
+    else:
+        inputs["experiment_run_summary"] = pd.DataFrame()
+    return inputs
 
 
 def gate_definitions() -> pd.DataFrame:
@@ -64,10 +70,26 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
     execution = inputs["execution_summary"]
     cost_schedule = inputs["cost_schedule"]
     registry = inputs["experiment_registry"]
+    run_summary = inputs["experiment_run_summary"]
     quality = inputs["quality_summary"]
     quality_fail = int((quality["status"] == "fail").sum()) if "status" in quality else 0
     quality_warn = int((quality["status"] == "warn").sum()) if "status" in quality else 0
     planned_experiments = int((registry["strategy_id"] == sid).sum()) if "strategy_id" in registry else 0
+    run_rows = 0
+    robustness_evidence_source = "outputs/phase13/experiment_registry.csv"
+    robustness_blocker = (
+        "No Phase 13 proxy smoke row is registered for this strategy; no completed multi-seed, "
+        "walk-forward, parameter-smoothness, holdout or real-data rerun evidence."
+    )
+    if not run_summary.empty and "strategy_id" in run_summary:
+        strategy_run = run_summary[run_summary["strategy_id"] == sid]
+        if len(strategy_run):
+            run_rows = int(strategy_run.iloc[0].get("run_rows", 0))
+            robustness_evidence_source = "outputs/phase13/experiment_registry.csv; outputs/phase13/experiment_run_summary.csv"
+            robustness_blocker = (
+                "Phase 13 has a deterministic proxy smoke ledger, but no acceptance-grade full multi-seed, "
+                "walk-forward, parameter-smoothness, holdout or real-data rerun evidence."
+            )
     runnable = strategy["support_level"] in {"runnable_proxy", "partial_missing_required_features"}
     retail = _exec_row(execution, sid, "retail_marketable_default")
     stressed = _exec_row(execution, sid, "stressed_retail")
@@ -149,9 +171,9 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "strategy_id": sid,
             "gate_id": "G03_robustness",
             "gate_status": "blocked",
-            "evidence_value": planned_experiments,
-            "blocker": "Phase 13 experiments are planned_not_run; no completed multi-seed/walk-forward/parameter-smoothness evidence.",
-            "evidence_source": "outputs/phase13/experiment_registry.csv",
+            "evidence_value": f"planned={planned_experiments};smoke_run_rows={run_rows}",
+            "blocker": robustness_blocker,
+            "evidence_source": robustness_evidence_source,
         }
     )
 
@@ -283,6 +305,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--execution-summary", type=Path, default=Path("outputs/phase12/execution_summary.csv"))
     parser.add_argument("--cost-schedule", type=Path, default=Path("outputs/phase12/cost_schedule.csv"))
     parser.add_argument("--experiment-registry", type=Path, default=Path("outputs/phase13/experiment_registry.csv"))
+    parser.add_argument("--experiment-run-summary", type=Path, default=Path("outputs/phase13/experiment_run_summary.csv"))
     parser.add_argument("--quality-summary", type=Path, default=Path("outputs/phase14/quality_gate_summary.csv"))
     return parser.parse_args()
 
@@ -295,6 +318,7 @@ def main() -> None:
         "execution_summary": args.execution_summary,
         "cost_schedule": args.cost_schedule,
         "experiment_registry": args.experiment_registry,
+        "experiment_run_summary": args.experiment_run_summary,
         "quality_summary": args.quality_summary,
     }
     run_phase15(args.output_dir, paths)

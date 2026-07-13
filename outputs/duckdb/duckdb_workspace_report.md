@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T18:57:45.828414+00:00
+Generated UTC: 2026-07-13T19:06:44.421306+00:00
 
 ## Storage Decision
 
@@ -72,6 +72,11 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 13 parameter sets: 63
 - Phase 13 negative controls: 9
 - Phase 13 planned experiment registry rows: 324
+- Phase 13 proxy smoke run rows: 324
+- Phase 13 proxy smoke strategies: 9
+- Phase 13 proxy smoke controls: 4
+- Phase 13 proxy smoke summary rows: 9
+- Phase 13 acceptance-eligible smoke rows: 0
 - Phase 14 quality checks: 24
 - Phase 14 pass checks: 23
 - Phase 14 warn checks: 1
@@ -101,10 +106,10 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 18 missing required-now dependencies: 0
 - Phase 18 deferred/optional stack items: 11
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 20
-- Phase 19 field checks: 200
+- Phase 19 audited artifacts: 21
+- Phase 19 field checks: 210
 - Phase 19 exact-regeneration-ready artifacts: 0
-- Phase 19 artifacts with missing fields: 19
+- Phase 19 artifacts with missing fields: 20
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
 - Dense full-session 1s below 90% symbols: 32

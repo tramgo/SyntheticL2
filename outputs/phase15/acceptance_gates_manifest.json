@@ -1,11 +1,12 @@
 {
-  "generated_utc": "2026-07-13T18:57:41.276089+00:00",
+  "generated_utc": "2026-07-13T19:06:42.017146+00:00",
   "inputs": {
     "strategy_matrix": "outputs\\phase11\\strategy_validation_matrix.csv",
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
     "execution_summary": "outputs\\phase12\\execution_summary.csv",
     "cost_schedule": "outputs\\phase12\\cost_schedule.csv",
     "experiment_registry": "outputs\\phase13\\experiment_registry.csv",
+    "experiment_run_summary": "outputs\\phase13\\experiment_run_summary.csv",
     "quality_summary": "outputs\\phase14\\quality_gate_summary.csv"
   },
   "strategies": 11,

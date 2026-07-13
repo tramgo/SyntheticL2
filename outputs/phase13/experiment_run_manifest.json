@@ -1,0 +1,14 @@
+{
+  "generated_utc": "2026-07-13T19:04:20.034054+00:00",
+  "registry_path": "outputs\\phase13\\experiment_registry.csv",
+  "signal_diagnostics_path": "outputs\\phase11\\strategy_signal_diagnostics.csv",
+  "execution_summary_path": "outputs\\phase12\\execution_summary.csv",
+  "execution_profile": "retail_marketable_default",
+  "registered_rows_evaluated": 324,
+  "strategies": 9,
+  "controls": 4,
+  "base_rows": 81,
+  "negative_control_rows": 243,
+  "acceptance_eligible": false,
+  "run_scope": "deterministic_proxy_smoke_not_full_experiment"
+}

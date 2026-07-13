@@ -38,6 +38,7 @@ MANIFEST_CANDIDATES = [
     ("phase11", "outputs/phase11/strategy_validation_manifest.json"),
     ("phase12", "outputs/phase12/execution_manifest.json"),
     ("phase13", "outputs/phase13/experiment_design_manifest.json"),
+    ("phase13_smoke_run", "outputs/phase13/experiment_run_manifest.json"),
     ("phase14", "outputs/phase14/quality_validation_manifest.json"),
     ("phase15", "outputs/phase15/acceptance_gates_manifest.json"),
     ("phase16", "outputs/phase16/metrics_reporting_manifest.json"),

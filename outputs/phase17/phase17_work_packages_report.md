@@ -1,6 +1,6 @@
 # Phase 17 Implementation Work Packages Report
 
-Generated UTC: 2026-07-13T18:57:42.937021+00:00
+Generated UTC: 2026-07-13T19:04:21.660793+00:00
 
 ## Scope
 
@@ -19,8 +19,8 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | implementation_status | deliverables |
 | --- | --- |
 | implemented | 23 |
-| implemented_proxy | 22 |
-| partial_current | 3 |
+| implemented_proxy | 23 |
+| partial_current | 2 |
 | partial_proxy | 7 |
 
 ## Work Package Registry
@@ -42,7 +42,6 @@ It does not claim acceptance completion; it identifies which deliverables are im
 
 | priority | work_package_id | deliverable | implementation_status | evidence_path | evidence_status | recommended_next_action | note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| P1 | WP10 | robustness matrix | partial_current | outputs/phase13/experiment_registry.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Planned robustness registry exists; experiments are not run. |
 | P1 | WP10 | synthetic realism dashboard | partial_current | outputs/phase14/phase14_quality_validation_report.md | present | Create static or interactive dashboard from Phase 14-16 CSV outputs. | Quality report exists; no interactive dashboard yet. |
 | P1 | WP2 | replenishment | partial_proxy | outputs/phase11/strategy_feature_availability.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Replenishment is strategy-feature tracked but not fully event reconstructed. |
 | P1 | WP2 | trade classification | partial_proxy | outputs/phase1/received_tick_deltas_by_symbol | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Received-tick deltas exist; aggressor classification is not acceptance-grade. |
@@ -52,6 +51,7 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | P1 | WP8 | fees | partial_proxy | outputs/phase12/cost_schedule.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Profile-level fees are placeholders; statutory/brokerage charges are not verified. |
 | P1 | WP8 | market and limit orders | partial_proxy | outputs/phase12/execution_summary.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Marketable orders are modeled; passive limit orders are not. |
 | P1 | WP9 | S01-S11 modules | partial_proxy | outputs/phase11/strategy_validation_matrix.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | S01-S11 are registered; only proxy signals are implemented. |
+| P2 | WP10 | robustness matrix | implemented_proxy | outputs/phase13/experiment_run_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Pre-registered experiment rows have a deterministic proxy smoke ledger; full robustness validation is not acceptance-grade yet. |
 | P2 | WP10 | strategy performance reports | implemented_proxy | outputs/phase16/phase16_metrics_reporting_report.md | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Proxy performance report exists. |
 | P2 | WP2 | MLOFI | implemented_proxy | outputs/phase11/strategy_feature_availability.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | MLOFI strategy support is proxy-level. |
 | P2 | WP2 | book shape | implemented_proxy | outputs/phase9/tier_c/features_5m.parquet | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Book-shape proxies are available in 5-minute features. |

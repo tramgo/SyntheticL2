@@ -1657,7 +1657,7 @@ Mandatory controls:
 
 These detect simulator leakage and backtest bugs.
 
-**Current implementation status as of 2026-07-13:** Phase 13 has an initial runnable experiment-design implementation in `scripts/run_phase13_experiment_design.py`, backed by `src/synthetic_l2/phase13_experiment_design.py`.
+**Current implementation status as of 2026-07-14:** Phase 13 has an initial runnable experiment-design implementation in `scripts/run_phase13_experiment_design.py`, backed by `src/synthetic_l2/phase13_experiment_design.py`, plus a deterministic experiment smoke-run ledger in `scripts/run_phase13_experiment_runner.py`, backed by `src/synthetic_l2/phase13_experiment_runner.py`.
 
 Generated artifacts are under `outputs/phase13/`:
 
@@ -1670,9 +1670,19 @@ Generated artifacts are under `outputs/phase13/`:
 - `negative_controls.csv`;
 - `experiment_registry.csv`.
 
+Additional experiment-run smoke artifacts are under `outputs/phase13/`:
+
+- `experiment_run_smoke_report.md`;
+- `experiment_run_manifest.json`;
+- `experiment_run_ledger.csv`;
+- `experiment_run_summary.csv`;
+- `negative_control_run_summary.csv`.
+
 The first completed run used the Phase 4 189-row, 3-profile scenario calendar. It preserved ordered 63-day quarter splits per profile: 30 calibration/development days, 15 validation days and 18 untouched-test days. It produced 30 full-validation seed rows, 9 initial engineering seeds, 48 walk-forward windows, 63 predeclared parameter sets across S01-S09, 9 mandatory negative controls and 324 planned initial experiment-registry rows.
 
-Important Phase 13 caveat: this phase defines experiment controls and registry rows only. It does not run backtests, select parameters, or promote strategy results.
+The current smoke run evaluated all 324 pre-registered initial experiment rows using existing Phase 11 signal diagnostics and the Phase 12 `retail_marketable_default` execution profile. It produced 324 run-ledger rows, 9 strategy-level robustness-smoke summary rows and 4 negative-control summary rows covering `BASE`, `NC01`, `NC02` and `NC03`. All rows are marked `acceptance_eligible=false`.
+
+Important Phase 13 caveat: the run ledger closes the bookkeeping gap between a planned registry and auditable proxy evidence, but it is not a full experiment execution, parameter search, walk-forward result, holdout validation, real-data rerun or promotion result.
 
 ---
 
@@ -1854,7 +1864,7 @@ Generated artifacts are under `outputs/phase15/`:
 - `strategy_acceptance_summary.csv`;
 - `acceptance_blockers.csv`.
 
-The current completed run evaluated 11 strategies across 5 gates each: predictive, economic, robustness, risk and realism. All 55 strategy/gate rows are blocked, 0 strategies are promoted and 11 strategies remain `blocked_not_promotable`. This is the correct current result because Phase 11 diagnostics are proxy-only, Phase 12 remains a 5-minute execution/lifecycle proxy with placeholder-only statutory/brokerage charges, Phase 12 risk evidence is sampled rather than acceptance-grade full-run validation, Phase 13 experiments are planned but not run, and Phase 14 still has one quality warning plus no holdout-generator evidence.
+The current completed run evaluated 11 strategies across 5 gates each: predictive, economic, robustness, risk and realism. All 55 strategy/gate rows are blocked, 0 strategies are promoted and 11 strategies remain `blocked_not_promotable`. This is the correct current result because Phase 11 diagnostics are proxy-only, Phase 12 remains a 5-minute execution/lifecycle proxy with placeholder-only statutory/brokerage charges, Phase 12 risk evidence is sampled rather than acceptance-grade full-run validation, Phase 13 now has only a deterministic proxy smoke ledger rather than full multi-seed/walk-forward/holdout validation, and Phase 14 still has one quality warning plus no holdout-generator evidence.
 
 Important Phase 15 caveat: this phase is the promotion gate. A strategy may only advance when every applicable gate is backed by completed, current evidence. The current result is explicitly non-promotion for all S01-S11 strategies.
 
@@ -2045,7 +2055,7 @@ Generated artifacts are under `outputs/phase17/`:
 - `deliverable_traceability.csv`;
 - `implementation_gap_backlog.csv`.
 
-The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, and the Phase 17 backlog has 0 P0 gaps. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for partial fills and risk controls through `outputs/phase12_order_lifecycle/partial_fill_summary.csv` and `outputs/phase12_order_lifecycle/risk_control_summary.csv`.
+The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, and the Phase 17 backlog has 0 P0 gaps. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for partial fills and risk controls through `outputs/phase12_order_lifecycle/partial_fill_summary.csv` and `outputs/phase12_order_lifecycle/risk_control_summary.csv`. WP10 now has a deterministic robustness-smoke ledger through `outputs/phase13/experiment_run_summary.csv`.
 
 The remaining work is acceptance hardening rather than missing-deliverable closure: promote proxy/partial artifacts to full-run, broker-verified and holdout-tested evidence before any strategy promotion claim.
 
@@ -2116,7 +2126,7 @@ Generated artifacts are under `outputs/phase19/`:
 - `artifact_reproducibility_summary.csv`;
 - `reproducibility_gap_summary.csv`.
 
-The current completed run audits 10 required reproducibility fields across 20 phase/workspace manifests, producing 200 field checks. Current coverage is not sufficient for exact regeneration: 0 artifacts are exact-regeneration-ready, 19 artifacts have missing fields, and 1 artifact group has a missing/unreadable manifest. This is the correct current result because earlier phases generally record `generated_utc` and selected input paths, but do not yet consistently record generator version, configuration hash, seed, calibration dataset ID, ticker metadata version, regime calendar version, scenario IDs, cost model version and latency model version.
+The current completed run audits 10 required reproducibility fields across 21 phase/workspace manifests, including the Phase 13 smoke-run manifest, producing 210 field checks. Current coverage is not sufficient for exact regeneration: 0 artifacts are exact-regeneration-ready, 20 artifacts have missing fields, and 1 artifact group has a missing/unreadable manifest. This is the correct current result because earlier phases generally record `generated_utc` and selected input paths, but do not yet consistently record generator version, configuration hash, seed, calibration dataset ID, ticker metadata version, regime calendar version, scenario IDs, cost model version and latency model version.
 
 Important Phase 19 caveat: this phase is an audit, not a retrofit. The next implementation step is to add a common manifest builder and backfill future phase runs with exact regeneration metadata rather than manually editing old manifests.
 

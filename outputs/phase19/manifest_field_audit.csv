@@ -139,6 +139,16 @@ phase13,outputs/phase13/experiment_design_manifest.json,True,scenario_ids,missin
 phase13,outputs/phase13/experiment_design_manifest.json,True,cost_model_version,missing,
 phase13,outputs/phase13/experiment_design_manifest.json,True,latency_model_version,missing,
 phase13,outputs/phase13/experiment_design_manifest.json,True,creation_timestamp,present_alias_or_inferred,generated_utc
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,generator_version,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,configuration_hash,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,random_seed,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,calibration_dataset_id,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,ticker_metadata_version,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,regime_calendar_version,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,scenario_ids,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,cost_model_version,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,latency_model_version,missing,
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,True,creation_timestamp,present_alias_or_inferred,generated_utc
 phase14,outputs/phase14/quality_validation_manifest.json,True,generator_version,missing,
 phase14,outputs/phase14/quality_validation_manifest.json,True,configuration_hash,missing,
 phase14,outputs/phase14/quality_validation_manifest.json,True,random_seed,missing,

@@ -5,6 +5,7 @@ phase10,outputs/phase10/storage_manifest.json,10,0,1,9,0,False
 phase11,outputs/phase11/strategy_validation_manifest.json,10,0,2,8,0,False
 phase12,outputs/phase12/execution_manifest.json,10,0,4,6,0,False
 phase13,outputs/phase13/experiment_design_manifest.json,10,0,1,9,0,False
+phase13_smoke_run,outputs/phase13/experiment_run_manifest.json,10,0,1,9,0,False
 phase14,outputs/phase14/quality_validation_manifest.json,10,0,2,8,0,False
 phase15,outputs/phase15/acceptance_gates_manifest.json,10,0,2,8,0,False
 phase16,outputs/phase16/metrics_reporting_manifest.json,10,0,1,9,0,False
