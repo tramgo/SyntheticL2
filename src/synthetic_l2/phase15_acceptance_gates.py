@@ -38,6 +38,34 @@ GATES = [
     },
 ]
 
+BLOCKER_METADATA = {
+    "G01_predictive": {
+        "blocker_category": "predictive_proxy_or_weak_signal",
+        "missing_requirement": "Acceptance-level predictive evidence with baseline improvement, multi-seed stability and no ticker/template dependence.",
+        "next_required_evidence": "Full predictive validation over multi-seed synthetic runs and later multi-day real holdout, including calibrated model outputs and baseline comparisons.",
+    },
+    "G02_economic": {
+        "blocker_category": "economic_proxy_or_negative_net_return",
+        "missing_requirement": "Positive net performance after realistic costs, slippage stress and retail latency, using acceptance-grade fill/cost evidence.",
+        "next_required_evidence": "Full-run event/tick execution P&L with rupee order-formula costs, broker contract-note reconciliation where possible, and stress-profile net profitability.",
+    },
+    "G03_robustness": {
+        "blocker_category": "robustness_smoke_only",
+        "missing_requirement": "Multi-seed, walk-forward, parameter-smoothness, holdout-generator and real-data rerun evidence.",
+        "next_required_evidence": "Execute the pre-registered Phase 13 experiment registry across all required seeds, folds, controls, parameter neighborhoods and holdout generator configurations.",
+    },
+    "G04_risk": {
+        "blocker_category": "risk_sample_proxy_only",
+        "missing_requirement": "Acceptance-grade full-run drawdown, position-limit, tail-loss and daily-loss-limit validation.",
+        "next_required_evidence": "Full lifecycle/risk run over all generated trades with daily equity curves, position exposure, halt behavior and tail-loss summaries.",
+    },
+    "G05_realism": {
+        "blocker_category": "realism_warning_or_proxy_support",
+        "missing_requirement": "Synthetic quality without blocking warnings plus strategy support and holdout-generator realism evidence.",
+        "next_required_evidence": "Resolve Phase 14 warnings or document accepted tolerances, then rerun strategies on holdout generator configurations with feed imperfection and pessimistic execution controls.",
+    },
+}
+
 
 def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
     inputs = {
@@ -58,6 +86,18 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
 
 def gate_definitions() -> pd.DataFrame:
     return pd.DataFrame(GATES)
+
+
+def _evidence_source_status(evidence_source: str) -> str:
+    paths = [part.strip() for part in str(evidence_source).split(";") if part.strip()]
+    if not paths:
+        return "missing_evidence_source"
+    missing = [path for path in paths if not Path(path).exists()]
+    if not missing:
+        return "present"
+    if len(missing) < len(paths):
+        return "partial_missing:" + "; ".join(missing)
+    return "missing:" + "; ".join(missing)
 
 
 def _exec_row(execution: pd.DataFrame, strategy_id: str, profile: str) -> pd.Series | None:
@@ -249,6 +289,10 @@ def evaluate(inputs: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFram
     blockers = gates[gates["gate_status"] != "pass"][
         ["strategy_id", "gate_id", "gate_name", "blocker", "evidence_source"]
     ].reset_index(drop=True)
+    blockers["blocker_category"] = blockers["gate_id"].map(lambda gate_id: BLOCKER_METADATA[gate_id]["blocker_category"])
+    blockers["missing_requirement"] = blockers["gate_id"].map(lambda gate_id: BLOCKER_METADATA[gate_id]["missing_requirement"])
+    blockers["next_required_evidence"] = blockers["gate_id"].map(lambda gate_id: BLOCKER_METADATA[gate_id]["next_required_evidence"])
+    blockers["evidence_source_status"] = blockers["evidence_source"].map(_evidence_source_status)
     return gates, summary, blockers
 
 
@@ -308,6 +352,9 @@ def run_phase15(output_dir: Path, paths: dict[str, Path]) -> None:
         "inputs": inputs_manifest,
         "strategies": int(summary["strategy_id"].nunique()),
         "gate_rows": int(len(gates)),
+        "blocker_rows": int(len(blockers)),
+        "blocker_categories": int(blockers["blocker_category"].nunique()) if len(blockers) else 0,
+        "blockers_with_present_evidence_sources": int((blockers["evidence_source_status"] == "present").sum()) if len(blockers) else 0,
         "promoted_strategies": int(summary["promotion_allowed"].sum()),
         "blocked_strategies": int((~summary["promotion_allowed"]).sum()),
         "not_promotion_result": True,

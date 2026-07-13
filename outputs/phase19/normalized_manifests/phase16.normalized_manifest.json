@@ -3,7 +3,7 @@
   "artifact_id": "phase16",
   "source_manifest_path": "outputs/phase16/metrics_reporting_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "dc549f100faa2ba870b985e7ae4c564882211dfb",
+  "generator_version": "f730c8e7f2e0586a5a87443dd60a2232e0cc1931",
   "configuration_hash": "05aefae75912727f73285a50525136db4e3aa4b787e072cbfb3f6ccac57bea95",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -12,7 +12,7 @@
   "scenario_ids": "phase11_strategy_metric_requirements_and_phase12_seeded_trade_sample",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T20:59:14.878410+00:00",
-  "normalization_timestamp": "2026-07-13T20:59:20.773892+00:00",
+  "creation_timestamp": "2026-07-13T21:01:47.586693+00:00",
+  "normalization_timestamp": "2026-07-13T21:01:54.061327+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
