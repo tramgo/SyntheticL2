@@ -21,3 +21,6 @@ economic_viability_retail_stress_positive_rows,2,Retail/stress net-positive prox
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows
 p1_gaps,0,Phase 17 P1 backlog rows
+phase20_hardening_queue_rows,50,Phase 20 acceptance hardening queue rows
+phase20_hardening_gate_rows,5,Phase 20 gate hardening summary rows
+phase20_acceptance_ready_rows,0,Phase 20 acceptance-ready queue rows

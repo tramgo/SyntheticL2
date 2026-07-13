@@ -17,6 +17,7 @@ phase17,outputs/phase17/work_packages_manifest.json,10,10,0,0,0,True
 phase18,outputs/phase18/technology_stack_manifest.json,10,10,0,0,0,True
 phase1_event_reconstruction,outputs/phase1/event_reconstruction/event_reconstruction_manifest.json,10,10,0,0,0,True
 phase2,outputs/phase2/calibration_manifest.json,10,10,0,0,0,True
+phase20,outputs/phase20/acceptance_hardening_manifest.json,10,10,0,0,0,True
 phase3,outputs/phase3/regime_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True

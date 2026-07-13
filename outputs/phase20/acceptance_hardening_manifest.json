@@ -1,0 +1,20 @@
+{
+  "generated_utc": "2026-07-13T22:28:09.515991+00:00",
+  "queue_rows": 50,
+  "gate_summary_rows": 5,
+  "strategy_summary_rows": 11,
+  "acceptance_ready_queue_rows": 0,
+  "top_priority_gate": "G04_risk",
+  "scope": "phase20_acceptance_hardening_queue",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "6dd6e2eacfd5494bfde905e3bf4a17d81cabf230",
+  "configuration_hash": "ee04214981ff24216d5df99c9dde86de653330ded073a07f2317c1f4326dd976",
+  "random_seed": "not_applicable_deterministic_blocker_queue",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase15_blockers_by_strategy_gate",
+  "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
+  "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
+  "creation_timestamp": "2026-07-13T22:28:09.515991+00:00"
+}

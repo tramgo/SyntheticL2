@@ -103,6 +103,8 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     economic = _read_csv(paths["economic"])
     markout = _read_csv(paths["markout"])
     gaps = _read_csv(paths["gaps"])
+    hardening_queue = _read_csv(paths["hardening_queue"])
+    hardening_gate_summary = _read_csv(paths["hardening_gate_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     gate_blockers = blockers["gate_id"].value_counts().rename_axis("gate_id").reset_index(name="blockers").sort_values("gate_id")
@@ -126,6 +128,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .reset_index()
     )
     robustness_status = robustness_dimension["dimension_status"].value_counts().rename_axis("dimension_status").reset_index(name="strategies")
+    hardening_priority = hardening_queue["priority_band"].value_counts().rename_axis("priority_band").reset_index(name="queue_items").sort_values("priority_band")
 
     summary_rows = [
         ("quality_checks", int(len(quality)), "Phase 14 quality rows"),
@@ -150,6 +153,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("acceptance_grade_metrics", int(metric_catalog["acceptance_eligible_now"].astype(bool).sum()), "Acceptance-grade metrics"),
         ("missing_metrics", int((metric_catalog["current_status"].astype(str) == "missing").sum()), "Missing metric rows"),
         ("p1_gaps", int((gaps["priority"].astype(str) == "P1").sum()), "Phase 17 P1 backlog rows"),
+        ("phase20_hardening_queue_rows", int(len(hardening_queue)), "Phase 20 acceptance hardening queue rows"),
+        ("phase20_hardening_gate_rows", int(len(hardening_gate_summary)), "Phase 20 gate hardening summary rows"),
+        ("phase20_acceptance_ready_rows", int(hardening_queue["acceptance_ready_now"].astype(bool).sum()), "Phase 20 acceptance-ready queue rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -174,7 +180,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -224,6 +230,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 16 Economic Viability Frontier</h2>{_table(top_economic, ['strategy_id', 'execution_profile', 'gross_edge_bps', 'cost_drag_bps', 'net_edge_bps', 'additional_gross_edge_needed_bps', 'cost_reduction_needed_bps', 'economic_frontier_status'], 18)}</section>
   <section><h2>Top Trading Proxy Rows</h2>{_table(top_trading, ['strategy_id', 'execution_profile', 'trades', 'mean_net_return', 'win_rate_net', 'sample_max_drawdown_units', 'sample_profit_factor'], 15)}</section>
   <section><h2>Best Lower-Adverse-Selection Markout Rows</h2>{_table(top_markout, ['strategy_id', 'execution_profile', 'markout_sample_trades', 'adverse_selection_rate_6bar_proxy', 'mean_mae_proxy', 'mean_mfe_proxy'], 15)}</section>
+  <section><h2>Phase 20 Acceptance Hardening Queue</h2>{_bar_rows(hardening_priority, 'priority_band', 'queue_items')}{_table(hardening_gate_summary, ['priority_rank', 'gate_id', 'gate_name', 'blocked_strategies', 'work_package_focus', 'acceptance_milestone'], 10)}{_table(hardening_queue, ['queue_rank', 'priority_band', 'gate_id', 'strategy_id', 'strategy_support_level', 'work_package_focus', 'acceptance_milestone', 'next_required_evidence'], 25)}</section>
   <section><h2>Phase 17 Gap Backlog</h2>{_bar_rows(gap_priority, 'priority', 'gaps')}{_table(gaps, ['priority', 'work_package_id', 'deliverable', 'implementation_status', 'evidence_status', 'recommended_next_action'], 40)}</section>
 </body>
 </html>"""
@@ -267,6 +274,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(gate_blockers),
         "",
+        "## Phase 20 Acceptance Hardening Queue",
+        "",
+        _markdown_table(hardening_gate_summary),
+        "",
+        _markdown_table(hardening_queue.head(25)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -304,6 +317,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--economic", type=Path, default=Path("outputs/phase16/economic_viability_frontier.csv"))
     parser.add_argument("--markout", type=Path, default=Path("outputs/phase16/markout_mae_mfe_summary.csv"))
     parser.add_argument("--gaps", type=Path, default=Path("outputs/phase17/implementation_gap_backlog.csv"))
+    parser.add_argument("--hardening-queue", type=Path, default=Path("outputs/phase20/acceptance_hardening_queue.csv"))
+    parser.add_argument("--hardening-gate-summary", type=Path, default=Path("outputs/phase20/acceptance_hardening_gate_summary.csv"))
     return parser.parse_args()
 
 
@@ -323,6 +338,8 @@ def main() -> None:
         "economic": args.economic,
         "markout": args.markout,
         "gaps": args.gaps,
+        "hardening_queue": args.hardening_queue,
+        "hardening_gate_summary": args.hardening_gate_summary,
     }
     run_dashboard(args.output_dir, paths)
 

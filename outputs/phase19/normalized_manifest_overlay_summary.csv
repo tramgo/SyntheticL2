@@ -22,6 +22,7 @@ phase15,outputs/phase15/acceptance_gates_manifest.json,outputs\phase19\normalize
 phase16,outputs/phase16/metrics_reporting_manifest.json,outputs\phase19\normalized_manifests\phase16.normalized_manifest.json,True,10,10,0,10,True
 phase17,outputs/phase17/work_packages_manifest.json,outputs\phase19\normalized_manifests\phase17.normalized_manifest.json,True,10,10,0,10,True
 phase18,outputs/phase18/technology_stack_manifest.json,outputs\phase19\normalized_manifests\phase18.normalized_manifest.json,True,10,10,0,10,True
+phase20,outputs/phase20/acceptance_hardening_manifest.json,outputs\phase19\normalized_manifests\phase20.normalized_manifest.json,True,10,10,0,10,True
 horizon_readiness,outputs/horizon_readiness/horizon_readiness_manifest.json,outputs\phase19\normalized_manifests\horizon_readiness.normalized_manifest.json,True,10,10,0,10,True
 dashboard,outputs/dashboard/validation_dashboard_manifest.json,outputs\phase19\normalized_manifests\dashboard.normalized_manifest.json,True,10,10,0,10,True
 duckdb,outputs/duckdb/duckdb_workspace_manifest.json,outputs\phase19\normalized_manifests\duckdb.normalized_manifest.json,True,10,10,0,10,True
