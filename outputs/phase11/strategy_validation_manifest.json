@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:33:15.516859+00:00",
+  "generated_utc": "2026-07-13T20:47:00.252098+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "rows_evaluated": 2259228,
   "strategies": 11,
@@ -10,5 +10,16 @@
     "not_supported_by_current_product": 2
   },
   "diagnostic_scope": "preliminary_feature_and_signal_diagnostics_only",
-  "not_acceptance_result": true
+  "not_acceptance_result": true,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
+  "configuration_hash": "7722c84e9340a4d11b4aedf1c85b87bd0076623ef6b4ed031f192923dcd65fda",
+  "random_seed": "not_applicable_deterministic_proxy_signal_diagnostics",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "outputs/phase9/tier_c/features_5m.parquet_all_current_scenarios",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "phase8_feed_profiles_v1",
+  "creation_timestamp": "2026-07-13T20:47:00.252098+00:00"
 }

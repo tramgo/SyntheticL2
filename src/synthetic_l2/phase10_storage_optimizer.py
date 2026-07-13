@@ -8,6 +8,8 @@ from pathlib import Path
 import pandas as pd
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 PRODUCTS = [
     ("stage_a1_compact_real_ticks", "outputs/stage_a1/compact_ticks_by_symbol/symbol=*/ticks.parquet", "real_received_ticks"),
@@ -299,8 +301,9 @@ def run_phase10(output_dir: Path, data_quality_path: Path) -> None:
     schema.to_csv(output_dir / "schema_physical_types.csv", index=False)
     estimates.to_csv(output_dir / "size_estimates.csv", index=False)
     partitions.to_csv(output_dir / "partition_recommendations.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "data_quality_path": str(data_quality_path),
         "outputs": [
             "storage_inventory.csv",
@@ -312,6 +315,26 @@ def run_phase10(output_dir: Path, data_quality_path: Path) -> None:
         "storage_decision": "Parquet/Zstandard durable storage with DuckDB query layer; SQLite only for small metadata if needed later.",
         "evidence_scope": "current Stage A1 and Phase 5-9 artifacts",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase10",
+            generated_utc=generated_utc,
+            inputs={"data_quality_path": str(data_quality_path), "products": PRODUCTS},
+            parameters={"storage_decision": manifest["storage_decision"], "evidence_scope": manifest["evidence_scope"]},
+            outputs={
+                "storage_inventory": str(output_dir / "storage_inventory.csv"),
+                "schema_physical_types": str(output_dir / "schema_physical_types.csv"),
+                "size_estimates": str(output_dir / "size_estimates.csv"),
+                "partition_recommendations": str(output_dir / "partition_recommendations.csv"),
+                "report": str(output_dir / "phase10_storage_report.md"),
+                "manifest": str(output_dir / "storage_manifest.json"),
+            },
+            random_seed="not_applicable_deterministic_storage_inventory",
+            scenario_ids="current_workspace_stage_a1_phase5_phase6_phase8_phase9_products",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="phase8_feed_profiles_v1_or_not_applicable",
+        )
+    )
     (output_dir / "storage_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, inventory, estimates, partitions, schema)
 

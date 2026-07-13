@@ -10,6 +10,8 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 @dataclass(frozen=True)
 class StrategySpec:
@@ -457,8 +459,9 @@ def run_phase11(features_path: Path, output_dir: Path) -> None:
     baselines.to_csv(output_dir / "baseline_strategy_matrix.csv", index=False)
     availability.to_csv(output_dir / "strategy_feature_availability.csv", index=False)
     diagnostics.to_csv(output_dir / "strategy_signal_diagnostics.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "features_path": str(features_path),
         "rows_evaluated": int(len(features)),
         "strategies": int(len(matrix)),
@@ -467,6 +470,30 @@ def run_phase11(features_path: Path, output_dir: Path) -> None:
         "diagnostic_scope": "preliminary_feature_and_signal_diagnostics_only",
         "not_acceptance_result": True,
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase11",
+            generated_utc=generated_utc,
+            inputs={"features_path": str(features_path)},
+            parameters={
+                "strategy_count": int(len(matrix)),
+                "baseline_count": int(len(baselines)),
+                "diagnostic_scope": manifest["diagnostic_scope"],
+            },
+            outputs={
+                "strategy_validation_matrix": str(output_dir / "strategy_validation_matrix.csv"),
+                "baseline_strategy_matrix": str(output_dir / "baseline_strategy_matrix.csv"),
+                "strategy_feature_availability": str(output_dir / "strategy_feature_availability.csv"),
+                "strategy_signal_diagnostics": str(output_dir / "strategy_signal_diagnostics.csv"),
+                "report": str(output_dir / "phase11_strategy_validation_report.md"),
+                "manifest": str(output_dir / "strategy_validation_manifest.json"),
+            },
+            random_seed="not_applicable_deterministic_proxy_signal_diagnostics",
+            scenario_ids="outputs/phase9/tier_c/features_5m.parquet_all_current_scenarios",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="phase8_feed_profiles_v1",
+        )
+    )
     (output_dir / "strategy_validation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, matrix, diagnostics, availability)
 

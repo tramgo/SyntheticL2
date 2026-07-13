@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 def _read_csv(path: Path) -> pd.DataFrame:
     if not path.exists():
@@ -118,13 +120,33 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("p1_gaps", int((gaps["priority"].astype(str) == "P1").sum()), "Phase 17 P1 backlog rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
+    inputs_manifest = {key: str(value) for key, value in paths.items()}
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "inputs": {key: str(value) for key, value in paths.items()},
+        "generated_utc": generated_utc,
+        "inputs": inputs_manifest,
         "summary": {row["metric"]: int(row["value"]) for row in summary.to_dict("records")},
         "scope": "static_validation_dashboard_not_promotion_evidence",
         "not_acceptance_result": True,
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="dashboard",
+            generated_utc=generated_utc,
+            inputs=inputs_manifest,
+            parameters={"scope": manifest["scope"], "summary_metrics": list(summary["metric"])},
+            outputs={
+                "html": "outputs/dashboard/synthetic_l2_validation_dashboard.html",
+                "markdown": "outputs/dashboard/synthetic_l2_validation_dashboard.md",
+                "summary": "outputs/dashboard/validation_dashboard_summary.csv",
+                "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
+            },
+            random_seed="not_applicable_deterministic_static_dashboard",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_evidence",
+            cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
+            latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
+        )
+    )
 
     cards = "".join(_metric_card(row["metric"], row["value"], row["note"]) for row in summary.to_dict("records"))
     css = """

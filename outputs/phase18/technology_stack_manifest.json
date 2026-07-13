@@ -1,9 +1,20 @@
 {
-  "generated_utc": "2026-07-13T16:12:33.139779+00:00",
+  "generated_utc": "2026-07-13T20:47:21.679363+00:00",
   "stack_decision_rows": 21,
   "dependency_rows": 15,
   "required_now_dependencies": 5,
   "missing_required_now_dependencies": 0,
   "deferred_or_optional_items": 11,
-  "scope": "phase18_technology_stack_decisions_and_local_availability"
+  "scope": "phase18_technology_stack_decisions_and_local_availability",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
+  "configuration_hash": "83394ec484f0b665fdad988bc6e1908669b6c80caf72008cf97e7dcc27554097",
+  "random_seed": "not_applicable_deterministic_stack_inventory",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "not_applicable_technology_stack_decision_artifact",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-13T20:47:21.679363+00:00"
 }

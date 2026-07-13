@@ -12,7 +12,7 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T20:35:46.872080+00:00",
-  "normalization_timestamp": "2026-07-13T20:35:48.440478+00:00",
+  "creation_timestamp": "2026-07-13T20:35:52.224521+00:00",
+  "normalization_timestamp": "2026-07-13T20:47:24.216264+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

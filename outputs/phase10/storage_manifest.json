@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:33:10.792482+00:00",
+  "generated_utc": "2026-07-13T20:46:55.712970+00:00",
   "data_quality_path": "outputs\\stage_a1\\data_quality_report.csv",
   "outputs": [
     "storage_inventory.csv",
@@ -9,5 +9,16 @@
     "phase10_storage_report.md"
   ],
   "storage_decision": "Parquet/Zstandard durable storage with DuckDB query layer; SQLite only for small metadata if needed later.",
-  "evidence_scope": "current Stage A1 and Phase 5-9 artifacts"
+  "evidence_scope": "current Stage A1 and Phase 5-9 artifacts",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
+  "configuration_hash": "bb5e1452c5c2c209cca2bb2275c67649f235fea8e92c020bfd982589a178ab38",
+  "random_seed": "not_applicable_deterministic_storage_inventory",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_workspace_stage_a1_phase5_phase6_phase8_phase9_products",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "phase8_feed_profiles_v1_or_not_applicable",
+  "creation_timestamp": "2026-07-13T20:46:55.712970+00:00"
 }

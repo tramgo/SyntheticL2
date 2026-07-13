@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 CONTROL_TRANSFORMS = {
     "BASE": {
@@ -241,8 +243,9 @@ def run_phase13_experiment_smoke(
     summary.to_csv(output_dir / "experiment_run_summary.csv", index=False)
     control_summary.to_csv(output_dir / "negative_control_run_summary.csv", index=False)
 
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "registry_path": str(registry_path),
         "signal_diagnostics_path": str(signal_diagnostics_path),
         "execution_summary_path": str(execution_summary_path),
@@ -255,6 +258,29 @@ def run_phase13_experiment_smoke(
         "acceptance_eligible": False,
         "run_scope": "deterministic_proxy_smoke_not_full_experiment",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase13_smoke_run",
+            generated_utc=generated_utc,
+            inputs={
+                "registry_path": str(registry_path),
+                "signal_diagnostics_path": str(signal_diagnostics_path),
+                "execution_summary_path": str(execution_summary_path),
+            },
+            parameters={"execution_profile": execution_profile, "run_scope": manifest["run_scope"], "control_transforms": CONTROL_TRANSFORMS},
+            outputs={
+                "experiment_run_ledger": str(output_dir / "experiment_run_ledger.csv"),
+                "experiment_run_summary": str(output_dir / "experiment_run_summary.csv"),
+                "negative_control_run_summary": str(output_dir / "negative_control_run_summary.csv"),
+                "report": str(output_dir / "experiment_run_smoke_report.md"),
+                "manifest": str(output_dir / "experiment_run_manifest.json"),
+            },
+            random_seed="outputs/phase13/seed_plan.csv_via_experiment_registry",
+            scenario_ids="outputs/phase13/experiment_registry.csv",
+            cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
+            latency_model_version="outputs/phase12/execution_profiles.csv",
+        )
+    )
     (output_dir / "experiment_run_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, manifest, summary, control_summary)
 

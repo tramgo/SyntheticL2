@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:35:52.224521+00:00",
+  "generated_utc": "2026-07-13T20:47:29.281564+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -137,19 +137,19 @@
     "phase19_required_fields": 10,
     "phase19_audited_artifacts": 25,
     "phase19_field_checks": 250,
-    "phase19_exact_regeneration_ready_artifacts": 15,
-    "phase19_artifacts_with_missing_fields": 9,
-    "phase19_manifest_missing_or_unreadable_artifacts": 1,
-    "phase19_gap_rows": 20,
+    "phase19_exact_regeneration_ready_artifacts": 25,
+    "phase19_artifacts_with_missing_fields": 0,
+    "phase19_manifest_missing_or_unreadable_artifacts": 0,
+    "phase19_gap_rows": 0,
     "phase19_remediation_rows": 250,
-    "phase19_remediation_summary_rows": 4,
+    "phase19_remediation_summary_rows": 1,
     "phase19_normalized_overlay_artifacts": 25,
     "phase19_normalized_overlay_ready_artifacts": 25,
-    "phase19_normalizer_default_fields": 90,
-    "phase19_source_or_alias_fields": 160,
-    "phase19_generator_field_rows": 80,
-    "phase19_alias_normalization_rows": 10,
-    "phase19_recover_manifest_rows": 10,
+    "phase19_normalizer_default_fields": 0,
+    "phase19_source_or_alias_fields": 250,
+    "phase19_generator_field_rows": 0,
+    "phase19_alias_normalization_rows": 0,
+    "phase19_recover_manifest_rows": 0,
     "phase4_days_per_profile": [
       [
         "Q-A",
@@ -281,7 +281,7 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
+  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
   "configuration_hash": "287cfd6572b50d1ebfd840b40bcc4f2d33e9bde41c4cab21754d701d90db8aaf",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -290,5 +290,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T20:35:52.224521+00:00"
+  "creation_timestamp": "2026-07-13T20:47:29.281564+00:00"
 }

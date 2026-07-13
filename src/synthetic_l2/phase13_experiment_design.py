@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 SPLITS = [
     ("calibration_development", 1, 30, "feature construction and rough thresholds"),
@@ -238,8 +240,9 @@ def run_phase13(calendar_path: Path, output_dir: Path) -> None:
     grid.to_csv(output_dir / "parameter_grid.csv", index=False)
     controls.to_csv(output_dir / "negative_controls.csv", index=False)
     registry.to_csv(output_dir / "experiment_registry.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "calendar_path": str(calendar_path),
         "split_days": {name: end - start + 1 for name, start, end, _ in SPLITS},
         "quarter_profiles": int(calendar["quarter_profile"].nunique()),
@@ -251,6 +254,33 @@ def run_phase13(calendar_path: Path, output_dir: Path) -> None:
         "planned_initial_experiments": int(len(registry)),
         "not_strategy_results": True,
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase13",
+            generated_utc=generated_utc,
+            inputs={"calendar_path": str(calendar_path)},
+            parameters={
+                "splits": SPLITS,
+                "negative_controls": NEGATIVE_CONTROLS,
+                "strategy_grids": STRATEGY_GRIDS,
+                "design_scope": "pre_registered_experiment_design_not_results",
+            },
+            outputs={
+                "data_splits": str(output_dir / "data_splits.csv"),
+                "seed_plan": str(output_dir / "seed_plan.csv"),
+                "walk_forward_windows": str(output_dir / "walk_forward_windows.csv"),
+                "parameter_grid": str(output_dir / "parameter_grid.csv"),
+                "negative_controls": str(output_dir / "negative_controls.csv"),
+                "experiment_registry": str(output_dir / "experiment_registry.csv"),
+                "report": str(output_dir / "phase13_experiment_design_report.md"),
+                "manifest": str(output_dir / "experiment_design_manifest.json"),
+            },
+            random_seed="outputs/phase13/seed_plan.csv",
+            scenario_ids="outputs/phase4/scenario_calendar.csv",
+            cost_model_version="phase12_zerodha_order_formula_cost_catalog_if_used_by_runner",
+            latency_model_version="phase12_execution_profiles_if_used_by_runner",
+        )
+    )
     (output_dir / "experiment_design_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, splits, seeds, windows, grid, controls, registry)
 

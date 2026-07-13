@@ -1,6 +1,6 @@
 # Phase 13 Experiment Design Report
 
-Generated UTC: 2026-07-13T20:34:56.994112+00:00
+Generated UTC: 2026-07-13T20:47:01.273880+00:00
 
 ## Scope
 

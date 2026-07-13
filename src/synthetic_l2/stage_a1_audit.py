@@ -14,6 +14,8 @@ import pyarrow as pa
 import pyarrow.dataset as ds
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 EXPECTED_SYMBOLS = [
     "ADANIPORTS",
@@ -540,7 +542,29 @@ def run_stage_a1(input_dir: Path, output_dir: Path) -> None:
     quality_df = pd.DataFrame(quality_rows).sort_values("symbol")
     coverage_df = pd.DataFrame(coverage_rows).sort_values(["symbol", "horizon_ms"])
     ledger_df = parameter_ledger()
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = manifest_summary(input_dir)
+    manifest["generated_utc"] = generated_utc
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="stage_a1",
+            generated_utc=generated_utc,
+            inputs={"input_dir": str(input_dir), "expected_symbols": EXPECTED_SYMBOLS},
+            parameters={"audit_scope": "one_day_received_tick_intake_audit"},
+            outputs={
+                "data_quality_report_csv": str(output_dir / "data_quality_report.csv"),
+                "data_quality_report_parquet": str(output_dir / "data_quality_report.parquet"),
+                "horizon_coverage": str(output_dir / "horizon_coverage.csv"),
+                "parameter_evidence_ledger": str(output_dir / "parameter_evidence_ledger.csv"),
+                "manifest": str(output_dir / "manifest_check.json"),
+                "report": str(output_dir / "stage_a1_report.md"),
+            },
+            random_seed="not_applicable_deterministic_real_sample_audit",
+            scenario_ids="not_applicable_received_real_sample",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
 
     quality_df.to_csv(output_dir / "data_quality_report.csv", index=False)
     pq.write_table(pa.Table.from_pandas(quality_df, preserve_index=False), output_dir / "data_quality_report.parquet", compression="zstd")

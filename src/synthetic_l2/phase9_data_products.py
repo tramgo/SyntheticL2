@@ -10,6 +10,8 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 LEVELS = range(1, 6)
 
@@ -378,8 +380,9 @@ def run_phase9(phase7_dir: Path, phase8_dir: Path, output_dir: Path) -> None:
     pq.write_table(pa.Table.from_pandas(tier_c, preserve_index=False), tier_c_dir / "features_5m.parquet", compression="zstd")
     pq.write_table(pa.Table.from_pandas(tier_d, preserve_index=False), tier_d_dir / "resampled_features_15m.parquet", compression="zstd")
     resampled_summary.to_csv(tier_d_dir / "resampled_panel_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "phase7_dir": str(phase7_dir),
         "phase8_dir": str(phase8_dir),
         "products": {
@@ -398,6 +401,30 @@ def run_phase9(phase7_dir: Path, phase8_dir: Path, output_dir: Path) -> None:
         },
         "evidence_scope": "synthetic_data_products_v1",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase9",
+            generated_utc=generated_utc,
+            inputs={"phase7_dir": str(phase7_dir), "phase8_dir": str(phase8_dir)},
+            parameters={
+                "source_interval_minutes": 5,
+                "target_interval_minutes": 15,
+                "product_scope": manifest["evidence_scope"],
+            },
+            outputs={
+                "tier_a": str(tier_a_dir / "raw_synthetic_events.parquet"),
+                "tier_b": str(tier_b_dir / "compact_l2_state.parquet"),
+                "tier_c": str(tier_c_dir / "features_5m.parquet"),
+                "tier_d": str(tier_d_dir / "resampled_features_15m.parquet"),
+                "resampled_summary": str(tier_d_dir / "resampled_panel_summary.csv"),
+                "manifest": str(output_dir / "data_product_manifest.json"),
+            },
+            random_seed="not_applicable_deterministic_transformation_from_phase7_phase8",
+            scenario_ids="outputs/phase4/scenario_calendar.csv_via_phase7_phase8",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="phase8_feed_profiles_v1",
+        )
+    )
     (output_dir / "data_product_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, validation, tier_a, tier_b, resampled_summary)
 

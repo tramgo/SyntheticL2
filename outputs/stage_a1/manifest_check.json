@@ -7,5 +7,17 @@
   "size_mismatch_count": 0,
   "missing_local_examples": [],
   "extra_local_examples": [],
-  "size_mismatch_examples": []
+  "size_mismatch_examples": [],
+  "generated_utc": "2026-07-13T20:45:59.583216+00:00",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
+  "configuration_hash": "741973c07f4010a364963adde3a51d53bb974e12e244c1aba2b70ca67b967bb4",
+  "random_seed": "not_applicable_deterministic_real_sample_audit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "not_applicable_received_real_sample",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-13T20:45:59.583216+00:00"
 }

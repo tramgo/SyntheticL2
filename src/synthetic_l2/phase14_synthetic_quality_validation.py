@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 def status_from_value(value: float | int | None, warn: float, fail: float, higher_bad: bool = True) -> str:
     if value is None or pd.isna(value):
@@ -346,14 +348,34 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         sort=False,
     )
     summary.to_csv(output_dir / "quality_gate_summary.csv", index=False)
+    inputs_manifest = {key: str(value) for key, value in paths.items()}
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "inputs": {key: str(value) for key, value in paths.items()},
+        "generated_utc": generated_utc,
+        "inputs": inputs_manifest,
         "tables": list(frames),
         "summary_rows": int(len(summary)),
         "status_counts": summary["status"].value_counts(dropna=False).to_dict(),
         "not_strategy_acceptance": True,
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase14",
+            generated_utc=generated_utc,
+            inputs=inputs_manifest,
+            parameters={"validation_levels": list(frames), "not_strategy_acceptance": True},
+            outputs={
+                "quality_gate_summary": str(output_dir / "quality_gate_summary.csv"),
+                "report": str(output_dir / "phase14_quality_validation_report.md"),
+                "manifest": str(output_dir / "quality_validation_manifest.json"),
+                **{name: str(output_dir / f"{name}.csv") for name in frames},
+            },
+            random_seed="not_applicable_deterministic_quality_checks",
+            scenario_ids="outputs/phase4/scenario_calendar.csv_via_phase5_phase6_phase9",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="phase8_feed_profiles_v1",
+        )
+    )
     (output_dir / "quality_validation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, frames)
 

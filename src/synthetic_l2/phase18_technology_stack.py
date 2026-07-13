@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from synthetic_l2.reproducibility import reproducibility_fields
+
 
 STACK_DECISIONS = [
     ("Language", "Python", "adopted", "Current pipeline is Python scripts/modules."),
@@ -145,8 +147,9 @@ def run_phase18(output_dir: Path) -> None:
     availability = dependency_availability()
     decisions.to_csv(output_dir / "stack_decisions.csv", index=False)
     availability.to_csv(output_dir / "dependency_availability.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": generated_utc,
         "stack_decision_rows": int(len(decisions)),
         "dependency_rows": int(len(availability)),
         "required_now_dependencies": int((availability["requirement_status"] == "required_now").sum()),
@@ -154,6 +157,24 @@ def run_phase18(output_dir: Path) -> None:
         "deferred_or_optional_items": int(decisions["decision_status"].isin(["optional_later", "defer"]).sum()),
         "scope": "phase18_technology_stack_decisions_and_local_availability",
     }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase18",
+            generated_utc=generated_utc,
+            inputs={"local_python_environment": "current_workspace_runtime"},
+            parameters={"stack_decisions": STACK_DECISIONS, "scope": manifest["scope"]},
+            outputs={
+                "stack_decisions": str(output_dir / "stack_decisions.csv"),
+                "dependency_availability": str(output_dir / "dependency_availability.csv"),
+                "report": str(output_dir / "phase18_technology_stack_report.md"),
+                "manifest": str(output_dir / "technology_stack_manifest.json"),
+            },
+            random_seed="not_applicable_deterministic_stack_inventory",
+            scenario_ids="not_applicable_technology_stack_decision_artifact",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
     (output_dir / "technology_stack_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     write_report(output_dir, decisions, availability)
 

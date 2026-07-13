@@ -1,6 +1,6 @@
 # Phase 1 Received-Tick Feature Report
 
-Generated UTC: 2026-07-13T14:14:58.349858+00:00
+Generated UTC: 2026-07-13T20:46:13.154802+00:00
 Input directory: `outputs\stage_a1\compact_ticks_by_symbol`
 Output directory: `outputs\phase1`
 

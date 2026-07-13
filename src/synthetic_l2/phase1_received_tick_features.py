@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -8,6 +9,8 @@ import numpy as np
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
+
+from synthetic_l2.reproducibility import reproducibility_fields
 
 
 LEVELS = range(1, 6)
@@ -220,10 +223,40 @@ def run_phase1(input_dir: Path, output_dir: Path) -> None:
 
     summary = pd.DataFrame(summaries).sort_values("symbol")
     summary.to_csv(output_dir / "phase1_feature_summary.csv", index=False)
+    generated_utc = datetime.now(timezone.utc).isoformat()
+    manifest = {
+        "generated_utc": generated_utc,
+        "input_dir": str(input_dir),
+        "symbols_processed": int(len(summary)),
+        "rows_processed": int(summary["rows"].sum()) if len(summary) else 0,
+        "outputs": {
+            "normalized_ticks_by_symbol": str(normalized_dir),
+            "received_tick_deltas_by_symbol": str(delta_dir),
+            "phase1_feature_summary": str(output_dir / "phase1_feature_summary.csv"),
+            "report": str(output_dir / "phase1_report.md"),
+            "manifest": str(output_dir / "phase1_manifest.json"),
+        },
+        "scope": "phase1_received_tick_normalization_and_delta_features",
+        "inference_caveat": "market_by_price_deltas_are_received_tick_inferences_not_exchange_order_events",
+    }
+    manifest.update(
+        reproducibility_fields(
+            artifact_id="phase1",
+            generated_utc=generated_utc,
+            inputs={"input_dir": str(input_dir)},
+            parameters={"levels": list(LEVELS), "scope": manifest["scope"]},
+            outputs=manifest["outputs"],
+            random_seed="not_applicable_deterministic_received_tick_feature_derivation",
+            scenario_ids="not_applicable_received_real_sample",
+            cost_model_version="not_applicable_no_execution_costs",
+            latency_model_version="not_applicable_no_latency_model",
+        )
+    )
+    (output_dir / "phase1_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     report = [
         "# Phase 1 Received-Tick Feature Report",
         "",
-        f"Generated UTC: {datetime.now(timezone.utc).isoformat()}",
+        f"Generated UTC: {generated_utc}",
         f"Input directory: `{input_dir}`",
         f"Output directory: `{output_dir}`",
         "",
@@ -263,4 +296,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
