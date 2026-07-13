@@ -3,7 +3,7 @@
   "artifact_id": "phase11",
   "source_manifest_path": "outputs/phase11/strategy_validation_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "effa40bcd4afe3250f5dfedc4869f301d317981f",
+  "generator_version": "36b3df2a99a1eb18c9d8ece134dda93705796efa",
   "configuration_hash": "a7ec7313e132868962cc441cf5e81b1031936a4abe6f0c98906179ce1125d742",
   "random_seed": "not_applicable_or_seed_plan_not_recorded",
   "calibration_dataset_id": "outputs\\phase9\\tier_c\\features_5m.parquet",
@@ -13,6 +13,6 @@
   "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1_or_not_applicable",
   "latency_model_version": "phase8_retail_feed_profiles_and_phase12_execution_profiles_or_not_applicable",
   "creation_timestamp": "2026-07-13T15:21:14.547823+00:00",
-  "normalization_timestamp": "2026-07-13T20:05:33.861205+00:00",
+  "normalization_timestamp": "2026-07-13T20:14:37.667015+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 from synthetic_l2.reproducibility import reproducibility_fields
+from synthetic_l2.zerodha_costs import ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION
 
 
 def _read_csv(path: Path) -> pd.DataFrame:
@@ -204,7 +205,7 @@ def run(output_dir: Path, paths: dict[str, Path]) -> None:
                 "report": str(report_path),
             },
             scenario_ids="outputs/phase11/strategy_scenario_requirements.csv",
-            cost_model_version="phase12_event_backtest_cost_model_if_execution_module_else_not_applicable",
+            cost_model_version=f"{ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION}_if_execution_module_else_not_applicable",
             latency_model_version="phase12_event_backtest_latency_model_if_execution_module_else_not_applicable",
         )
     )

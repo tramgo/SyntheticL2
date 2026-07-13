@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:05:37.432191+00:00",
+  "generated_utc": "2026-07-13T20:14:41.373178+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -66,7 +66,9 @@
     "phase12_strategies_simulated": 9,
     "phase12_total_trades": 10350654,
     "phase12_trade_sample_rows": 249993,
-    "phase12_cost_components": 12,
+    "phase12_cost_components": 13,
+    "phase12_charge_formula_components": 6,
+    "phase12_representative_charge_scenarios": 6,
     "phase12_event_backtest_order_rows": 6480,
     "phase12_event_backtest_order_models": 6,
     "phase12_event_backtest_pnl_rows": 6480,
@@ -185,6 +187,7 @@
     "phase11_strategy_matrix",
     "phase11_strategy_module_coverage",
     "phase11_strategy_module_registry",
+    "phase12_charge_component_catalog",
     "phase12_cost_schedule",
     "phase12_event_backtest_order_summary",
     "phase12_event_backtest_pnl_trace",
@@ -194,6 +197,7 @@
     "phase12_lifecycle_sample",
     "phase12_order_model_catalog",
     "phase12_partial_fill_summary",
+    "phase12_representative_charge_scenarios",
     "phase12_risk_control_summary",
     "phase12_slippage_model_catalog",
     "phase12_trade_ledger_sample",

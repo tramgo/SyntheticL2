@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:30:34.324582+00:00",
+  "generated_utc": "2026-07-13T20:12:52.592067+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "rows_evaluated": 2259039,
   "strategies_simulated": 9,
@@ -9,10 +9,14 @@
   "trade_sample_strategy_profiles": 27,
   "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
   "scope": "marketable_order_proxy_over_5m_feature_events",
-  "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
   "cost_model_source": "https://zerodha.com/charges/",
-  "cost_model_source_name": "Zerodha charges page",
+  "cost_model_source_name": "Zerodha published equity intraday NSE charge schedule",
   "cost_model_access_date": "2026-07-14",
+  "cost_model_support_sources": [
+    "https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/how-is-the-securities-transaction-tax-stt-calculated",
+    "https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/what-are-the-various-statutory-charges-like-stamp-duty-and-taxes-etc"
+  ],
   "zerodha_equity_intraday_total_bps": 10.60688,
   "zerodha_equity_intraday_components_bps": {
     "brokerage_round_trip_bps": 6.0,
@@ -22,5 +26,7 @@
     "stamp_duty_buy_side_bps": 0.3,
     "gst_bps": 1.19088
   },
+  "representative_charge_scenarios": 6,
+  "charge_components": 6,
   "not_acceptance_result": true
 }

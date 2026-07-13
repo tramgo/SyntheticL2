@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T20:05:37.432191+00:00
+Generated UTC: 2026-07-13T20:14:41.373178+00:00
 
 ## Storage Decision
 
@@ -72,7 +72,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 strategies simulated: 9
 - Phase 12 total simulated trades: 10350654
 - Phase 12 trade sample rows: 249993
-- Phase 12 cost components: 12
+- Phase 12 cost components: 13
 - Phase 12 event-backtest order rows: 6480
 - Phase 12 event-backtest order models: 6
 - Phase 12 event-backtest P&L rows: 6480

@@ -11,6 +11,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from synthetic_l2.reproducibility import reproducibility_fields
+from synthetic_l2.zerodha_costs import ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION
 
 
 ORDER_MODELS = [
@@ -295,7 +296,7 @@ def run(trade_sample_path: Path, output_dir: Path, max_per_strategy_profile: int
                 "report": str(report_path),
             },
             scenario_ids="phase12_trade_sample_strategy_execution_profile_cross_section",
-            cost_model_version="zerodha_equity_intraday_nse_round_trip_bps_v1",
+            cost_model_version=ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
             latency_model_version="phase12_execution_profiles_v1",
         )
     )

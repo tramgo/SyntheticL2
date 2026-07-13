@@ -1,0 +1,7 @@
+component,formula,side,rate,source_url,rounding_or_cap
+brokerage,"min(0.03% of executed order value, Rs 20) per buy/sell executed order",buy_and_sell,0.0003,https://zerodha.com/charges/,Rs 20 cap per executed order
+stt,0.025% on equity intraday sell side; rounded to nearest rupee,sell,0.00025,https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/how-is-the-securities-transaction-tax-stt-calculated,nearest rupee
+nse_transaction_charge,0.00307% of buy plus sell turnover,buy_and_sell,3.07e-05,https://zerodha.com/charges/,unrounded analytical estimate
+sebi_charge,Rs 10 per crore of buy plus sell turnover,buy_and_sell,1e-06,https://zerodha.com/charges/,unrounded analytical estimate
+stamp_duty,0.003% on buy side,buy,3e-05,https://zerodha.com/charges/,unrounded analytical estimate
+gst,18% of brokerage plus SEBI charges plus transaction charges,buy_and_sell,0.18,https://zerodha.com/charges/,unrounded analytical estimate

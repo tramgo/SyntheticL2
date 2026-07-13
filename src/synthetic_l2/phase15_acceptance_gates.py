@@ -118,6 +118,11 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
         and "evidence_status" in statutory_rows
         and (statutory_rows["evidence_status"].astype(str) == "verified_source_normalized_proxy").any()
     )
+    statutory_order_formula = (
+        len(statutory_rows) > 0
+        and "evidence_status" in statutory_rows
+        and statutory_rows["evidence_status"].astype(str).str.contains("verified_source_order_formula", regex=False).any()
+    )
 
     rows: list[dict] = []
 
@@ -154,6 +159,9 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             economic_blocker.append("stressed profile mean_net_return not positive")
     if has_proxy_cost_basis and statutory_placeholder:
         economic_blocker.append("statutory/brokerage charges are not verified; current cost schedule is placeholder only")
+        economic_blocker.append("execution result is still a 5-minute proxy and not acceptance evidence")
+    elif has_proxy_cost_basis and statutory_order_formula:
+        economic_blocker.append("statutory/brokerage charges now include Zerodha-sourced order-formula scenarios, but normalized P&L still uses a bps proxy and lacks broker contract-note reconciliation")
         economic_blocker.append("execution result is still a 5-minute proxy and not acceptance evidence")
     elif has_proxy_cost_basis and statutory_verified_proxy:
         economic_blocker.append("statutory/brokerage charges use a Zerodha-sourced normalized bps proxy; order-notional caps, DP charges and contract-note rounding are not acceptance-grade")
