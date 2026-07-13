@@ -206,6 +206,12 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "No acceptance-level predictive evidence; Phase 16 baseline comparison is proxy-only and current signals "
             "do not clear all required no-skill, majority-direction, Brier and support/readiness checks."
         )
+    if Path("outputs/phase16/predictive_holdout_stability_summary.csv").exists():
+        predictive_evidence_source += "; outputs/phase16/predictive_holdout_stability_summary.csv"
+        predictive_blocker = (
+            "No acceptance-level predictive evidence; Phase 16 baseline and holdout-stability diagnostics are proxy-only "
+            "and current signals do not clear required majority, Brier, segment-stability and support/readiness checks."
+        )
     rows.append(
         {
             "strategy_id": sid,

@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T22:12:29.043005+00:00
+Generated UTC: 2026-07-13T22:19:21.466462+00:00
 
 ## Scope
 
@@ -143,6 +143,22 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | S01 | Momentum/breakout filtered by MLOFI | runnable_proxy | 161956 | 0.434982 | 0.43486 | 0.490981 | 0.00673538 | 0.488809 | 0.5 | 0.511191 | -0.0650177 | -0.0762084 | 0.254824 | 0.249875 | -0.019807 | False | False | False | True | does_not_beat_required_proxy_baselines | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
 | S10 | Passive market making | not_supported_by_current_product |  |  |  |  |  |  | 0.5 |  |  |  |  |  |  | False | False | False | False | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
 | S11 | Spoof-like wall filter | not_supported_by_current_product |  |  |  |  |  |  | 0.5 |  |  |  |  |  |  | False | False | False | False | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+
+## Predictive Holdout Stability Summary
+
+| strategy_id | name | support_level | stability_cells | cells_with_minimum_rows | cells_beating_local_majority | cell_beat_fraction | untouched_test_cells | untouched_test_cells_beating_local_majority | min_accuracy_excess_vs_majority | median_accuracy_excess_vs_majority | worst_segment_status | acceptance_eligible_now | blocker | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S08 | Cross-ticker/index lead-lag OFI | partial_missing_required_features | 45 | 45 | 5 | 0.111111 | 15 | 0 | -0.0559028 | -0.0190096 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S05 | Microprice entry/exit filter | runnable_proxy | 45 | 45 | 4 | 0.0888889 | 15 | 0 | -0.032239 | -0.0101295 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S02 | Pure multi-level OFI directional model | runnable_proxy | 45 | 45 | 4 | 0.0888889 | 15 | 4 | -0.0620127 | -0.0176678 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S07 | Mean reversion after imbalance | runnable_proxy | 45 | 45 | 4 | 0.0888889 | 15 | 1 | -0.0176427 | -0.00712531 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S06 | Absorption and exhaustion reversal | partial_missing_required_features | 45 | 10 | 1 | 0.0222222 | 15 | 0 | -0.119565 | -0.0248528 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S03 | Liquidity-vacuum breakout | partial_missing_required_features | 45 | 45 | 0 | 0 | 15 | 0 | -0.136996 | -0.048849 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S01 | Momentum/breakout filtered by MLOFI | runnable_proxy | 45 | 45 | 0 | 0 | 15 | 0 | -0.167369 | -0.0603063 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S04 | Trade-flow plus depth confirmation | partial_missing_required_features | 45 | 45 | 0 | 0 | 15 | 0 | -0.0877593 | -0.0351554 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S09 | Pure queue-imbalance scalping | runnable_proxy | 45 | 45 | 0 | 0 | 15 | 0 | -0.03096 | -0.00809941 | fails_some_holdout_stability_cells | False | Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S10 | Passive market making | not_supported_by_current_product | 0 | 0 | 0 | 0 | 0 | 0 |  |  | not_supported_by_current_product | False | Strategy is not supported by the current feature product for predictive holdout stability validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
+| S11 | Spoof-like wall filter | not_supported_by_current_product | 0 | 0 | 0 | 0 | 0 | 0 |  |  | not_supported_by_current_product | False | Strategy is not supported by the current feature product for predictive holdout stability validation. | phase16_predictive_holdout_stability_summary_proxy_not_acceptance |
 
 ## Feature Importance Stability Proxy
 

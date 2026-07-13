@@ -98,6 +98,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     blockers = _read_csv(paths["blockers"])
     metric_catalog = _read_csv(paths["metric_catalog"])
     predictive = _read_csv(paths["predictive"])
+    predictive_holdout = _read_csv(paths["predictive_holdout"])
     trading = _read_csv(paths["trading"])
     economic = _read_csv(paths["economic"])
     markout = _read_csv(paths["markout"])
@@ -108,6 +109,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     metric_status = metric_catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
     gap_priority = gaps["priority"].value_counts().rename_axis("priority").reset_index(name="gaps").sort_values("priority")
     top_predictive = predictive.sort_values("balanced_accuracy_proxy", ascending=False)
+    top_predictive_holdout = predictive_holdout.sort_values("cell_beat_fraction", ascending=False)
     top_trading = trading.sort_values("mean_net_return", ascending=False)
     top_economic = economic.sort_values("net_edge_bps", ascending=False)
     top_markout = markout.sort_values("adverse_selection_rate_6bar_proxy", ascending=True)
@@ -140,6 +142,8 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("promoted_strategies", int(acceptance["promotion_allowed"].astype(bool).sum()), "Promotion allowed count"),
         ("acceptance_blockers", int(len(blockers)), "Phase 15 blocker rows"),
         ("metric_catalog_rows", int(len(metric_catalog)), "Phase 16 metric catalog rows"),
+        ("predictive_holdout_summary_rows", int(len(predictive_holdout)), "Phase 16 predictive holdout stability summary rows"),
+        ("predictive_holdout_all_cell_pass_rows", int((predictive_holdout["worst_segment_status"].astype(str) == "all_cells_beat_local_majority_proxy").sum()), "Predictive holdout all-cell pass rows"),
         ("economic_viability_rows", int(len(economic)), "Phase 16 economic viability frontier rows"),
         ("economic_viability_net_positive_rows", int(economic["net_positive_proxy"].astype(bool).sum()), "Phase 16 net-positive proxy rows"),
         ("economic_viability_retail_stress_positive_rows", int((economic["net_positive_proxy"].astype(bool) & economic["retail_or_stress_profile"].astype(bool)).sum()), "Retail/stress net-positive proxy rows"),
@@ -216,6 +220,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
+  <section><h2>Phase 16 Predictive Holdout Stability</h2>{_table(top_predictive_holdout, ['strategy_id', 'support_level', 'stability_cells', 'cells_beating_local_majority', 'cell_beat_fraction', 'untouched_test_cells_beating_local_majority', 'min_accuracy_excess_vs_majority', 'worst_segment_status'], 14)}</section>
   <section><h2>Phase 16 Economic Viability Frontier</h2>{_table(top_economic, ['strategy_id', 'execution_profile', 'gross_edge_bps', 'cost_drag_bps', 'net_edge_bps', 'additional_gross_edge_needed_bps', 'cost_reduction_needed_bps', 'economic_frontier_status'], 18)}</section>
   <section><h2>Top Trading Proxy Rows</h2>{_table(top_trading, ['strategy_id', 'execution_profile', 'trades', 'mean_net_return', 'win_rate_net', 'sample_max_drawdown_units', 'sample_profit_factor'], 15)}</section>
   <section><h2>Best Lower-Adverse-Selection Markout Rows</h2>{_table(top_markout, ['strategy_id', 'execution_profile', 'markout_sample_trades', 'adverse_selection_rate_6bar_proxy', 'mean_mae_proxy', 'mean_mfe_proxy'], 15)}</section>
@@ -254,6 +259,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(top_economic.head(18)),
         "",
+        "## Predictive Holdout Stability",
+        "",
+        _markdown_table(top_predictive_holdout),
+        "",
         "## Acceptance Blockers by Gate",
         "",
         _markdown_table(gate_blockers),
@@ -290,6 +299,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--blockers", type=Path, default=Path("outputs/phase15/acceptance_blockers.csv"))
     parser.add_argument("--metric-catalog", type=Path, default=Path("outputs/phase16/metric_catalog.csv"))
     parser.add_argument("--predictive", type=Path, default=Path("outputs/phase16/predictive_proxy_diagnostics.csv"))
+    parser.add_argument("--predictive-holdout", type=Path, default=Path("outputs/phase16/predictive_holdout_stability_summary.csv"))
     parser.add_argument("--trading", type=Path, default=Path("outputs/phase16/trading_metric_scoreboard.csv"))
     parser.add_argument("--economic", type=Path, default=Path("outputs/phase16/economic_viability_frontier.csv"))
     parser.add_argument("--markout", type=Path, default=Path("outputs/phase16/markout_mae_mfe_summary.csv"))
@@ -308,6 +318,7 @@ def main() -> None:
         "blockers": args.blockers,
         "metric_catalog": args.metric_catalog,
         "predictive": args.predictive,
+        "predictive_holdout": args.predictive_holdout,
         "trading": args.trading,
         "economic": args.economic,
         "markout": args.markout,

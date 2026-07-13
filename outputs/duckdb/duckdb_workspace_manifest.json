@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T22:12:34.615186+00:00",
+  "generated_utc": "2026-07-13T22:19:27.348691+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -128,6 +128,9 @@
     "phase16_predictive_calibration_curve_rows": 45,
     "phase16_predictive_baseline_comparison_rows": 11,
     "phase16_predictive_baseline_beating_rows": 0,
+    "phase16_predictive_holdout_stability_rows": 407,
+    "phase16_predictive_holdout_stability_summary_rows": 11,
+    "phase16_predictive_holdout_all_cell_pass_rows": 0,
     "phase16_feature_importance_stability_rows": 9,
     "phase16_missing_predictive_metrics": 0,
     "phase16_missing_trading_metrics": 0,
@@ -149,7 +152,7 @@
     "phase17_missing_deliverables": 0,
     "phase17_blocked_work_packages": 0,
     "phase17_p0_gaps": 0,
-    "validation_dashboard_summary_rows": 20,
+    "validation_dashboard_summary_rows": 22,
     "validation_dashboard_promoted_strategies": 0,
     "validation_dashboard_p1_gaps": 0,
     "replay_validation_tiers": 3,
@@ -270,6 +273,8 @@
     "phase16_predictive_baseline_comparison",
     "phase16_predictive_brier_score_proxy",
     "phase16_predictive_calibration_curve_proxy",
+    "phase16_predictive_holdout_stability",
+    "phase16_predictive_holdout_stability_summary",
     "phase16_predictive_metric_scoreboard",
     "phase16_predictive_proxy_diagnostics",
     "phase16_predictive_signal_bucket_returns",
@@ -323,8 +328,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "550e79f267a43c61affd60bef76ac990d7a79d38",
-  "configuration_hash": "f6eaebb2002bd605b721ec0fd5af28e7cd6bf830295e8637acbb8c06939eda16",
+  "generator_version": "ef96a90f52838c819f191363a02890738ca544e0",
+  "configuration_hash": "db7a727d441992a1dc860eb0f3581b4a5fdbb4b9996c95ef68fdcfe29f07fbe0",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -332,5 +337,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T22:12:34.615186+00:00"
+  "creation_timestamp": "2026-07-13T22:19:27.348691+00:00"
 }

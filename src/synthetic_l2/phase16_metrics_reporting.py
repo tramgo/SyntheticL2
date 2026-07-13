@@ -479,6 +479,134 @@ def predictive_baseline_comparison(
     ]
 
 
+def _scenario_segment(day: object) -> str:
+    try:
+        value = int(day)
+    except (TypeError, ValueError):
+        return "unknown"
+    if value <= 30:
+        return "calibration_development"
+    if value <= 45:
+        return "validation"
+    return "untouched_test"
+
+
+def predictive_holdout_stability(inputs: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    features = inputs["features"].copy()
+    matrix = inputs["signal_diagnostics"][["strategy_id", "name", "support_level"]].drop_duplicates()
+    features["scenario_segment"] = features["scenario_day"].map(_scenario_segment)
+    future = features["future_mid_return_1"].astype(float)
+    future_sign = np.sign(future)
+    signals = build_signals(features)
+    group_cols = ["quarter_profile", "feed_profile", "scenario_segment"]
+    detail_rows = []
+
+    for _, spec in matrix.sort_values("strategy_id").iterrows():
+        strategy_id = str(spec["strategy_id"])
+        signal = signals.get(strategy_id)
+        if signal is None:
+            detail_rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "name": spec.get("name"),
+                    "support_level": spec.get("support_level"),
+                    "quarter_profile": "not_supported",
+                    "feed_profile": "not_supported",
+                    "scenario_segment": "not_supported",
+                    "rows_evaluated": int(len(features)),
+                    "directional_eval_rows": 0,
+                    "signal_rows": 0,
+                    "directional_accuracy_proxy": None,
+                    "majority_direction_baseline": None,
+                    "accuracy_excess_vs_majority": None,
+                    "mean_signed_future_return": None,
+                    "stability_cell_status": "not_supported_by_current_product",
+                    "metric_scope": "phase16_predictive_holdout_stability_proxy_not_acceptance",
+                }
+            )
+            continue
+        signal = signal.astype(float)
+        frame = features[group_cols].copy()
+        frame["signal"] = signal
+        frame["future"] = future
+        frame["future_sign"] = future_sign
+        frame["signed_future_return"] = signal * future
+        frame["eval_mask"] = signal.ne(0) & future.notna() & future.ne(0)
+        for keys, group in frame.groupby(group_cols, sort=True):
+            eval_group = group[group["eval_mask"]].copy()
+            directional_rows = int(len(eval_group))
+            if directional_rows:
+                accuracy = float((np.sign(eval_group["signal"]) == eval_group["future_sign"]).mean())
+                up_fraction = float((eval_group["future"] > 0).mean())
+                majority = max(up_fraction, 1.0 - up_fraction)
+                excess = accuracy - majority
+                signed_mean = float(eval_group["signed_future_return"].mean())
+                status = "beats_local_majority_proxy" if excess > 0 and directional_rows >= 1_000 else "does_not_beat_local_majority_proxy"
+            else:
+                accuracy = None
+                majority = None
+                excess = None
+                signed_mean = None
+                status = "no_directional_rows"
+            detail_rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "name": spec.get("name"),
+                    "support_level": spec.get("support_level"),
+                    "quarter_profile": keys[0],
+                    "feed_profile": keys[1],
+                    "scenario_segment": keys[2],
+                    "rows_evaluated": int(len(group)),
+                    "directional_eval_rows": directional_rows,
+                    "signal_rows": int(group["signal"].ne(0).sum()),
+                    "directional_accuracy_proxy": accuracy,
+                    "majority_direction_baseline": majority,
+                    "accuracy_excess_vs_majority": excess,
+                    "mean_signed_future_return": signed_mean,
+                    "stability_cell_status": status,
+                    "metric_scope": "phase16_predictive_holdout_stability_proxy_not_acceptance",
+                }
+            )
+
+    detail = pd.DataFrame(detail_rows)
+    summary_rows = []
+    for strategy_id, group in detail.groupby("strategy_id", sort=True):
+        supported = group["stability_cell_status"].astype(str).ne("not_supported_by_current_product")
+        eval_group = group[supported & group["directional_eval_rows"].fillna(0).gt(0)].copy()
+        beat_group = eval_group[eval_group["stability_cell_status"].astype(str).eq("beats_local_majority_proxy")]
+        test_group = eval_group[eval_group["scenario_segment"].astype(str).eq("untouched_test")]
+        summary_rows.append(
+            {
+                "strategy_id": strategy_id,
+                "name": group["name"].dropna().iloc[0] if group["name"].notna().any() else None,
+                "support_level": group["support_level"].dropna().iloc[0] if group["support_level"].notna().any() else None,
+                "stability_cells": int(len(eval_group)),
+                "cells_with_minimum_rows": int((eval_group["directional_eval_rows"] >= 1_000).sum()) if len(eval_group) else 0,
+                "cells_beating_local_majority": int(len(beat_group)),
+                "cell_beat_fraction": float(len(beat_group) / len(eval_group)) if len(eval_group) else 0.0,
+                "untouched_test_cells": int(len(test_group)),
+                "untouched_test_cells_beating_local_majority": int(
+                    (test_group["stability_cell_status"].astype(str) == "beats_local_majority_proxy").sum()
+                ) if len(test_group) else 0,
+                "min_accuracy_excess_vs_majority": float(eval_group["accuracy_excess_vs_majority"].min()) if len(eval_group) else None,
+                "median_accuracy_excess_vs_majority": float(eval_group["accuracy_excess_vs_majority"].median()) if len(eval_group) else None,
+                "worst_segment_status": (
+                    "not_supported_by_current_product"
+                    if not len(eval_group)
+                    else ("all_cells_beat_local_majority_proxy" if len(beat_group) == len(eval_group) else "fails_some_holdout_stability_cells")
+                ),
+                "acceptance_eligible_now": False,
+                "blocker": (
+                    "Proxy holdout stability cells do not consistently beat local majority baselines; acceptance requires multi-seed, walk-forward and later real holdout predictive validation."
+                    if len(eval_group)
+                    else "Strategy is not supported by the current feature product for predictive holdout stability validation."
+                ),
+                "metric_scope": "phase16_predictive_holdout_stability_summary_proxy_not_acceptance",
+            }
+        )
+    return detail, pd.DataFrame(summary_rows)
+
+
 def feature_importance_stability(inputs: dict[str, pd.DataFrame], sample_rows: int = 100_000, max_seeds: int = 12) -> pd.DataFrame:
     features = inputs["features"]
     seed_plan = inputs["seed_plan"].copy()
@@ -810,6 +938,7 @@ def write_report(
     brier: pd.DataFrame,
     calibration: pd.DataFrame,
     baseline_comparison: pd.DataFrame,
+    holdout_stability_summary: pd.DataFrame,
     importance: pd.DataFrame,
     trading: pd.DataFrame,
     economic_frontier: pd.DataFrame,
@@ -855,6 +984,10 @@ def write_report(
         "",
         _markdown_table(baseline_comparison.sort_values("directional_accuracy_excess_vs_majority", ascending=False).head(12)),
         "",
+        "## Predictive Holdout Stability Summary",
+        "",
+        _markdown_table(holdout_stability_summary.sort_values("cell_beat_fraction", ascending=False).head(12)),
+        "",
         "## Feature Importance Stability Proxy",
         "",
         _markdown_table(importance.head(12)),
@@ -885,6 +1018,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     predictive_proxy, signal_buckets = predictive_proxy_diagnostics(inputs)
     brier, calibration = predictive_calibration_proxies(inputs)
     baseline_comparison = predictive_baseline_comparison(predictive, predictive_proxy, brier)
+    holdout_stability, holdout_stability_summary = predictive_holdout_stability(inputs)
     importance = feature_importance_stability(inputs)
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
@@ -900,6 +1034,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     brier.to_csv(output_dir / "predictive_brier_score_proxy.csv", index=False)
     calibration.to_csv(output_dir / "predictive_calibration_curve_proxy.csv", index=False)
     baseline_comparison.to_csv(output_dir / "predictive_baseline_comparison.csv", index=False)
+    holdout_stability.to_csv(output_dir / "predictive_holdout_stability.csv", index=False)
+    holdout_stability_summary.to_csv(output_dir / "predictive_holdout_stability_summary.csv", index=False)
     importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     economic_frontier.to_csv(output_dir / "economic_viability_frontier.csv", index=False)
@@ -918,6 +1054,11 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "predictive_brier_score_rows": int(len(brier)),
         "predictive_calibration_curve_rows": int(len(calibration)),
         "predictive_baseline_comparison_rows": int(len(baseline_comparison)),
+        "predictive_holdout_stability_rows": int(len(holdout_stability)),
+        "predictive_holdout_stability_summary_rows": int(len(holdout_stability_summary)),
+        "predictive_holdout_stability_all_cell_pass_rows": int(
+            (holdout_stability_summary["worst_segment_status"].astype(str) == "all_cells_beat_local_majority_proxy").sum()
+        ) if len(holdout_stability_summary) else 0,
         "predictive_baseline_beating_rows": int(
             (
                 baseline_comparison["predictive_baseline_status"].astype(str)
@@ -952,6 +1093,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "metric_catalog": str(output_dir / "metric_catalog.csv"),
                 "predictive_metric_scoreboard": str(output_dir / "predictive_metric_scoreboard.csv"),
                 "predictive_baseline_comparison": str(output_dir / "predictive_baseline_comparison.csv"),
+                "predictive_holdout_stability": str(output_dir / "predictive_holdout_stability.csv"),
+                "predictive_holdout_stability_summary": str(output_dir / "predictive_holdout_stability_summary.csv"),
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
                 "economic_viability_frontier": str(output_dir / "economic_viability_frontier.csv"),
                 "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
@@ -974,6 +1117,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         brier,
         calibration,
         baseline_comparison,
+        holdout_stability_summary,
         importance,
         trading,
         economic_frontier,
