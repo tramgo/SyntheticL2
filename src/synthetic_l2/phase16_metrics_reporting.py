@@ -66,6 +66,7 @@ METRIC_ALIASES = {
     "next_quote_accuracy": "directional_accuracy",
     "continuation_probability": "directional_accuracy",
     "false_positive_rate": "precision_recall_by_direction",
+    "false_detection_rate": "precision_recall_by_direction",
     "false_breakout_reduction": "precision_recall_by_direction",
     "false_reversion_rate": "precision_recall_by_direction",
     "false_absorption_rate": "precision_recall_by_direction",
@@ -80,6 +81,7 @@ METRIC_ALIASES = {
     "calibration": "calibration_curve",
     "net_expectancy": "expectancy_per_trade",
     "net_expectancy_by_state": "expectancy_per_trade",
+    "state_conditional_return": "expectancy_per_trade",
     "net_edge_after_costs": "expectancy_per_trade",
     "net_edge_after_spread": "expectancy_per_trade",
     "net_performance_uplift_over_parent": "expectancy_per_trade",
@@ -103,8 +105,8 @@ METRIC_ALIASES = {
     "reversal_probability": "directional_accuracy",
     "regime_stability": "strategy_specific_missing_or_not_mapped",
     "regime_aware_vs_unaware_uplift": "strategy_specific_missing_or_not_mapped",
-    "miss_rate": "strategy_specific_missing_or_not_mapped",
-    "trade_reduction": "strategy_specific_missing_or_not_mapped",
+    "miss_rate": "fill_ratio",
+    "trade_reduction": "turnover",
 }
 
 

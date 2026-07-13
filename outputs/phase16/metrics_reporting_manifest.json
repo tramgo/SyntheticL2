@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:15:15.559208+00:00",
+  "generated_utc": "2026-07-13T19:17:07.259167+00:00",
   "inputs": {
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
     "metric_requirements": "outputs\\phase11\\strategy_metric_requirements.csv",
