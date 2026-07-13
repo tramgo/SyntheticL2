@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-13T19:52:36.636430+00:00
+Generated UTC: 2026-07-13T19:56:38.850711+00:00
 
 ## Scope
 
@@ -12,8 +12,8 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | coverage_status | field_checks |
 | --- | --- |
 | manifest_missing_or_unreadable | 10 |
-| missing | 191 |
-| present_alias_or_inferred | 38 |
+| missing | 200 |
+| present_alias_or_inferred | 39 |
 | present_exact | 1 |
 
 ## Artifact Summary
@@ -25,6 +25,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | phase1 | outputs/phase1/phase1_manifest.json | 10 | 0 | 0 | 0 | 10 | False |
 | phase10 | outputs/phase10/storage_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | phase11 | outputs/phase11/strategy_validation_manifest.json | 10 | 0 | 2 | 8 | 0 | False |
+| phase11_strategy_modules | outputs/phase11/strategy_module_registry_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
 | phase12 | outputs/phase12/execution_manifest.json | 10 | 1 | 3 | 6 | 0 | False |
 | phase12_event_backtest | outputs/phase12/event_backtest_manifest.json | 10 | 0 | 3 | 7 | 0 | False |
 | phase13 | outputs/phase13/experiment_design_manifest.json | 10 | 0 | 1 | 9 | 0 | False |
@@ -59,24 +60,24 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | regime_calendar_version | manifest_missing_or_unreadable | 1 | phase1 | Record scenario/regime calendar version for generated artifacts. |
 | scenario_ids | manifest_missing_or_unreadable | 1 | phase1 | Record scenario IDs/profiles represented by each generated artifact. |
 | ticker_metadata_version | manifest_missing_or_unreadable | 1 | phase1 | Version ticker universe and metadata source. |
-| calibration_dataset_id | missing | 21 | dashboard;duckdb;phase10;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record real-data calibration dataset identifier and date range. |
-| configuration_hash | missing | 23 | dashboard;duckdb;phase10;phase11;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Serialize effective config and store a stable hash per artifact. |
-| cost_model_version | missing | 20 | dashboard;duckdb;phase10;phase11;phase13;phase13_smoke_run;phase14;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Version execution/cost assumptions and cost schedule. |
+| calibration_dataset_id | missing | 22 | dashboard;duckdb;phase10;phase11_strategy_modules;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record real-data calibration dataset identifier and date range. |
+| configuration_hash | missing | 24 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Serialize effective config and store a stable hash per artifact. |
+| cost_model_version | missing | 21 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase13;phase13_smoke_run;phase14;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Version execution/cost assumptions and cost schedule. |
 | creation_timestamp | missing | 1 | stage_a1 | Store generated_utc or creation_timestamp in every manifest. |
-| generator_version | missing | 23 | dashboard;duckdb;phase10;phase11;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Add generator_version or code hash to every phase manifest. |
-| latency_model_version | missing | 21 | dashboard;duckdb;phase10;phase11;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Version feed latency/drop/duplication assumptions. |
-| random_seed | missing | 22 | dashboard;duckdb;phase10;phase11;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record seed or seed-plan reference for every stochastic artifact. |
-| regime_calendar_version | missing | 22 | dashboard;duckdb;phase10;phase11;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario/regime calendar version for generated artifacts. |
-| scenario_ids | missing | 23 | dashboard;duckdb;phase10;phase11;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario IDs/profiles represented by each generated artifact. |
-| ticker_metadata_version | missing | 15 | dashboard;duckdb;phase10;phase11;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase9;stage_a1 | Version ticker universe and metadata source. |
+| generator_version | missing | 24 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Add generator_version or code hash to every phase manifest. |
+| latency_model_version | missing | 22 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Version feed latency/drop/duplication assumptions. |
+| random_seed | missing | 23 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record seed or seed-plan reference for every stochastic artifact. |
+| regime_calendar_version | missing | 23 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario/regime calendar version for generated artifacts. |
+| scenario_ids | missing | 24 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase1_event_reconstruction;phase2;phase3;phase4;phase5;phase6;phase7;phase8;phase9;stage_a1 | Record scenario IDs/profiles represented by each generated artifact. |
+| ticker_metadata_version | missing | 16 | dashboard;duckdb;phase10;phase11;phase11_strategy_modules;phase12;phase12_event_backtest;phase13;phase13_smoke_run;phase14;phase15;phase16;phase17;phase18;phase9;stage_a1 | Version ticker universe and metadata source. |
 
 ## Remediation Status
 
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
-| add_field_in_generator | 191 | 23 |
+| add_field_in_generator | 200 | 24 |
 | complete_exact | 1 | 1 |
-| normalize_alias_to_exact_field | 38 | 22 |
+| normalize_alias_to_exact_field | 39 | 23 |
 | recover_or_rerun_manifest | 10 | 1 |
 
 ## Highest Priority Remediation Rows

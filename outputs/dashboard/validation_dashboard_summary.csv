@@ -8,4 +8,4 @@ acceptance_blockers,55,Phase 15 blocker rows
 metric_catalog_rows,27,Phase 16 metric catalog rows
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows
-p1_gaps,1,Phase 17 P1 backlog rows
+p1_gaps,0,Phase 17 P1 backlog rows

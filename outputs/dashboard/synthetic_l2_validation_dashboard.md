@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-13T19:52:35.868560+00:00
+Generated UTC: 2026-07-13T19:56:38.085833+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -17,7 +17,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 | metric_catalog_rows | 27 | Phase 16 metric catalog rows |
 | acceptance_grade_metrics | 0 | Acceptance-grade metrics |
 | missing_metrics | 0 | Missing metric rows |
-| p1_gaps | 1 | Phase 17 P1 backlog rows |
+| p1_gaps | 0 | Phase 17 P1 backlog rows |
 
 ## Quality Status
 
@@ -51,5 +51,4 @@ This dashboard is static research traceability output, not strategy promotion ev
 
 | priority | gaps |
 | --- | --- |
-| P1 | 1 |
-| P2 | 31 |
+| P2 | 32 |

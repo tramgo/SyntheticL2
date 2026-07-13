@@ -51,6 +51,7 @@ MANIFEST_CANDIDATES = [
     ("phase9", "outputs/phase9/data_product_manifest.json"),
     ("phase10", "outputs/phase10/storage_manifest.json"),
     ("phase11", "outputs/phase11/strategy_validation_manifest.json"),
+    ("phase11_strategy_modules", "outputs/phase11/strategy_module_registry_manifest.json"),
     ("phase12", "outputs/phase12/execution_manifest.json"),
     ("phase12_event_backtest", "outputs/phase12/event_backtest_manifest.json"),
     ("phase13", "outputs/phase13/experiment_design_manifest.json"),

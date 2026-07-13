@@ -1,0 +1,17 @@
+{
+  "generated_utc": "2026-07-13T19:56:36.617135+00:00",
+  "inputs": {
+    "strategy_matrix": "outputs\\phase11\\strategy_validation_matrix.csv",
+    "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
+    "feature_availability": "outputs\\phase11\\strategy_feature_availability.csv",
+    "metric_requirements": "outputs\\phase11\\strategy_metric_requirements.csv",
+    "scenario_requirements": "outputs\\phase11\\strategy_scenario_requirements.csv",
+    "event_backtest_manifest": "outputs\\phase12\\event_backtest_manifest.json"
+  },
+  "modules": 11,
+  "implemented_proxy_modules": 11,
+  "acceptance_grade_modules": 0,
+  "promotion_ready_modules": 0,
+  "non_alpha_or_risk_modules": 2,
+  "scope": "s01_s11_strategy_module_registry_not_promotion_evidence"
+}

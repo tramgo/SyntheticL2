@@ -69,7 +69,7 @@ DELIVERABLES = [
     ("WP8", "slippage", "implemented_proxy", "outputs/phase12/cost_schedule.csv", "Fixed slippage ticks are modeled as a proxy."),
     ("WP8", "fees", "implemented_proxy", "outputs/phase12/cost_schedule.csv", "Zerodha-sourced equity intraday charge schedule exists as a normalized bps proxy; order-notional caps and contract-note rounding are not acceptance-grade."),
     ("WP8", "risk controls", "implemented_proxy", "outputs/phase12_order_lifecycle/risk_control_summary.csv", "Sampled risk-control proxy exists for position limits, drawdown, tail loss and daily loss halts."),
-    ("WP9", "S01-S11 modules", "partial_proxy", "outputs/phase11/strategy_validation_matrix.csv", "S01-S11 are registered; only proxy signals are implemented."),
+    ("WP9", "S01-S11 modules", "implemented_proxy", "outputs/phase11/strategy_module_registry.csv", "S01-S11 have explicit module registry rows; S10/S11 are non-alpha execution/risk-filter modules and no strategy is promotion-ready."),
     ("WP9", "shared feature interface", "implemented_proxy", "outputs/phase11/strategy_feature_availability.csv", "Strategy-feature availability matrix exists."),
     ("WP9", "baseline strategies", "implemented_proxy", "outputs/phase11/baseline_strategy_matrix.csv", "Baseline registry exists."),
     ("WP9", "parameter registry", "implemented_proxy", "outputs/phase13/parameter_grid.csv", "Initial parameter grid exists."),

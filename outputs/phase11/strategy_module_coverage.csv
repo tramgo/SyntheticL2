@@ -1,0 +1,6 @@
+coverage_check,value,target,passed,evidence
+s01_s11_module_rows,11,11,True,strategy_module_registry.csv
+implemented_proxy_modules,11,11,True,strategy_module_registry.csv
+acceptance_grade_modules,0,0,True,strategy_module_registry.csv
+promotion_ready_modules,0,0,True,strategy_module_registry.csv
+non_alpha_or_risk_modules,2,2,True,S10/S11 module_type rows

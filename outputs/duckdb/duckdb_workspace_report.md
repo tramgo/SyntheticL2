@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:52:39.395614+00:00
+Generated UTC: 2026-07-13T19:56:42.057023+00:00
 
 ## Storage Decision
 
@@ -62,6 +62,11 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 11 partial/missing-feature strategies: 4
 - Phase 11 unsupported-by-current-product strategies: 2
 - Phase 11 rows evaluated per strategy: 2259039
+- Phase 11 strategy modules: 11
+- Phase 11 implemented proxy modules: 11
+- Phase 11 promotion-ready modules: 0
+- Phase 11 module coverage checks: 5
+- Phase 11 module coverage checks passed: 5
 - Phase 12 execution summary rows: 27
 - Phase 12 execution profiles: 3
 - Phase 12 strategies simulated: 9
@@ -125,7 +130,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 P0 gaps: 0
 - Validation dashboard summary rows: 10
 - Validation dashboard promoted strategies: 0
-- Validation dashboard P1 gaps: 1
+- Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
 - Replay deterministic tiers: 3
 - Phase 18 stack decision rows: 21
@@ -134,16 +139,16 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 18 missing required-now dependencies: 0
 - Phase 18 deferred/optional stack items: 11
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 24
-- Phase 19 field checks: 240
+- Phase 19 audited artifacts: 25
+- Phase 19 field checks: 250
 - Phase 19 exact-regeneration-ready artifacts: 0
-- Phase 19 artifacts with missing fields: 23
+- Phase 19 artifacts with missing fields: 24
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
-- Phase 19 remediation rows: 240
+- Phase 19 remediation rows: 250
 - Phase 19 remediation summary rows: 4
-- Phase 19 add-field-in-generator rows: 191
-- Phase 19 alias-normalization rows: 38
+- Phase 19 add-field-in-generator rows: 200
+- Phase 19 alias-normalization rows: 39
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30
