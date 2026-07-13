@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:15:05.049236+00:00",
+  "generated_utc": "2026-07-13T21:23:02.194212+00:00",
   "inputs": {
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
     "metric_requirements": "outputs\\phase11\\strategy_metric_requirements.csv",
@@ -27,7 +27,7 @@
   "acceptance_grade_metrics": 0,
   "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
+  "generator_version": "cd48fe5da6009a803b4e59be39e8707996fe0489",
   "configuration_hash": "05aefae75912727f73285a50525136db4e3aa4b787e072cbfb3f6ccac57bea95",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -36,5 +36,5 @@
   "scenario_ids": "phase11_strategy_metric_requirements_and_phase12_seeded_trade_sample",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T21:15:05.049236+00:00"
+  "creation_timestamp": "2026-07-13T21:23:02.194212+00:00"
 }

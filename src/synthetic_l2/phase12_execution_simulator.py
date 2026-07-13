@@ -86,6 +86,13 @@ ZERODHA_EQUITY_INTRADAY_NSE_BPS["gst_bps"] = 0.18 * (
 )
 ZERODHA_EQUITY_INTRADAY_TOTAL_BPS = float(sum(ZERODHA_EQUITY_INTRADAY_NSE_BPS.values()))
 
+FULL_RUN_RISK_LIMITS = {
+    "daily_loss_warn_inr": -75_000.0,
+    "tail_loss_quantile": 0.01,
+    "drawdown_warn_inr": -100_000.0,
+    "max_abs_signal_position_units": 500.0,
+}
+
 
 COST_SCHEDULE = [
     ("profile_fee_bps", "execution_profile.fees_bps", 0.0, "all_profiles", "Internal residual profile fee hook; current profiles set this to zero because verified Zerodha charge rows are modeled separately.", "internal_model", ""),
@@ -262,7 +269,7 @@ def _simulate_strategy_profile(
     strategy_id: str,
     profile: dict,
     seed_mapping: dict[str, dict[int, int]],
-) -> tuple[dict, pd.DataFrame]:
+) -> tuple[dict, pd.DataFrame, dict]:
     total_latency = int(profile["decision_latency_events"] + profile["broker_latency_events"])
     executable_signal = _latency_shift(base, raw_signal, total_latency)
     mask = executable_signal.ne(0) & base["next_mid_price"].notna()
@@ -353,7 +360,70 @@ def _simulate_strategy_profile(
         "symbol_shock_trade_fraction": float(trades["is_symbol_shock"].mean()) if len(trades) else None,
         "status": "simulated_marketable_proxy_not_acceptance",
     }
-    return summary, trades
+    risk_summary = summarize_full_run_risk(trades, strategy_id, profile)
+    return summary, trades, risk_summary
+
+
+def summarize_full_run_risk(trades: pd.DataFrame, strategy_id: str, profile: dict) -> dict:
+    execution_profile = str(profile["execution_profile"])
+    if trades.empty:
+        return {
+            "strategy_id": strategy_id,
+            "execution_profile": execution_profile,
+            "trades": 0,
+            "trade_dates": 0,
+            "total_net_pnl_inr": 0.0,
+            "mean_net_return": None,
+            "worst_daily_net_pnl_inr": None,
+            "tail_loss_1pct_trade_pnl_inr": None,
+            "max_intraday_drawdown_inr": 0.0,
+            "max_abs_signal_position_units": 0.0,
+            "daily_loss_warn_days": 0,
+            "drawdown_warn_days": 0,
+            "position_warn_days": 0,
+            "risk_evidence_scope": "full_execution_summary_proxy_no_fills",
+            "risk_limits": json.dumps(FULL_RUN_RISK_LIMITS, sort_keys=True),
+        }
+
+    ordered = trades.sort_values(
+        ["trade_date", "feed_profile", "scenario_day", "symbol", "bar_index"],
+        kind="mergesort",
+    ).copy()
+    day_cols = ["trade_date"]
+    ordered["running_net_pnl_inr"] = ordered.groupby(day_cols, sort=False)["net_pnl_inr"].cumsum()
+    ordered["running_peak_net_pnl_inr"] = ordered.groupby(day_cols, sort=False)["running_net_pnl_inr"].cummax()
+    ordered["running_drawdown_inr"] = ordered["running_net_pnl_inr"] - ordered["running_peak_net_pnl_inr"]
+    ordered["running_signal_position_units"] = ordered.groupby(day_cols, sort=False)["side"].cumsum()
+
+    daily = (
+        ordered.groupby(day_cols, sort=True)
+        .agg(
+            trades=("net_pnl_inr", "size"),
+            daily_net_pnl_inr=("net_pnl_inr", "sum"),
+            max_intraday_drawdown_inr=("running_drawdown_inr", "min"),
+            max_abs_signal_position_units=("running_signal_position_units", lambda values: float(values.abs().max())),
+        )
+        .reset_index()
+    )
+    return {
+        "strategy_id": strategy_id,
+        "execution_profile": execution_profile,
+        "trades": int(len(ordered)),
+        "trade_dates": int(daily["trade_date"].nunique()),
+        "total_net_pnl_inr": float(ordered["net_pnl_inr"].sum()),
+        "mean_net_return": float(ordered["net_return"].mean()),
+        "worst_daily_net_pnl_inr": float(daily["daily_net_pnl_inr"].min()) if len(daily) else None,
+        "tail_loss_1pct_trade_pnl_inr": float(ordered["net_pnl_inr"].quantile(FULL_RUN_RISK_LIMITS["tail_loss_quantile"])),
+        "max_intraday_drawdown_inr": float(daily["max_intraday_drawdown_inr"].min()) if len(daily) else 0.0,
+        "max_abs_signal_position_units": float(daily["max_abs_signal_position_units"].max()) if len(daily) else 0.0,
+        "daily_loss_warn_days": int((daily["daily_net_pnl_inr"] <= FULL_RUN_RISK_LIMITS["daily_loss_warn_inr"]).sum()),
+        "drawdown_warn_days": int((daily["max_intraday_drawdown_inr"] <= FULL_RUN_RISK_LIMITS["drawdown_warn_inr"]).sum()),
+        "position_warn_days": int(
+            (daily["max_abs_signal_position_units"] > FULL_RUN_RISK_LIMITS["max_abs_signal_position_units"]).sum()
+        ),
+        "risk_evidence_scope": "full_execution_summary_proxy_no_fills",
+        "risk_limits": json.dumps(FULL_RUN_RISK_LIMITS, sort_keys=True),
+    }
 
 
 def _tertile_bucket(values: pd.Series, labels: list[str]) -> pd.Series:
@@ -375,13 +445,14 @@ def _deterministic_even_sample(frame: pd.DataFrame, max_rows: int) -> pd.DataFra
     return frame.iloc[positions].copy()
 
 
-def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int]] | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int]] | None = None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     seed_mapping = seed_mapping or {}
     support = _strategy_support()
     runnable = set(support[support["support_level"].isin(["runnable_proxy", "partial_missing_required_features"])]["strategy_id"])
     base = _prepare_base(features)
     signals = build_signals(base)
     summary_rows: list[dict] = []
+    risk_rows: list[dict] = []
     trade_samples: list[pd.DataFrame] = []
     runnable_signal_count = len([strategy_id for strategy_id in signals if strategy_id in runnable])
     sample_groups = max(1, runnable_signal_count * len(EXECUTION_PROFILES))
@@ -391,15 +462,17 @@ def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int
         if strategy_id not in runnable:
             continue
         for profile in EXECUTION_PROFILES:
-            summary, trades = _simulate_strategy_profile(base, signal, strategy_id, profile, seed_mapping)
+            summary, trades, risk_summary = _simulate_strategy_profile(base, signal, strategy_id, profile, seed_mapping)
             summary_rows.append(summary)
+            risk_rows.append(risk_summary)
             if len(trades):
                 sample = _deterministic_even_sample(trades, per_group_sample_rows)
                 trade_samples.append(sample)
 
     summary_frame = pd.DataFrame(summary_rows).merge(support, on="strategy_id", how="left")
+    risk_frame = pd.DataFrame(risk_rows).merge(support, on="strategy_id", how="left")
     sample_frame = pd.concat(trade_samples, ignore_index=True) if trade_samples else pd.DataFrame()
-    return summary_frame, sample_frame
+    return summary_frame, sample_frame, risk_frame
 
 
 def _markdown_table(frame: pd.DataFrame) -> str:
@@ -414,7 +487,7 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
+def write_report(output_dir: Path, summary: pd.DataFrame, full_run_risk: pd.DataFrame) -> None:
     overview = summary.groupby("execution_profile", sort=True).agg(
         strategies=("strategy_id", "nunique"),
         trades=("trades", "sum"),
@@ -436,6 +509,19 @@ def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
         "zerodha_charge_model_basis",
         "status",
     ]
+    risk_cols = [
+        "strategy_id",
+        "execution_profile",
+        "trades",
+        "trade_dates",
+        "worst_daily_net_pnl_inr",
+        "tail_loss_1pct_trade_pnl_inr",
+        "max_intraday_drawdown_inr",
+        "daily_loss_warn_days",
+        "drawdown_warn_days",
+        "position_warn_days",
+        "risk_evidence_scope",
+    ]
     lines = [
         "# Phase 12 Execution Simulator Report",
         "",
@@ -455,6 +541,10 @@ def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
         "",
         _markdown_table(summary[top_cols].sort_values(["strategy_id", "execution_profile"])),
         "",
+        "## Full-Run Risk Proxy Summary",
+        "",
+        _markdown_table(full_run_risk[risk_cols].sort_values(["strategy_id", "execution_profile"])),
+        "",
         "## Caveats",
         "",
         "- Current features are 5-minute synthetic feature events, not true tick-level order events.",
@@ -462,6 +552,7 @@ def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
         "- Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.",
         "- Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.",
         "- Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.",
+        "- Full-run risk diagnostics cover all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
         "- Spread crossing, fixed slippage and impact remain internal execution assumptions.",
         "- Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.",
         "",
@@ -473,13 +564,14 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     output_dir.mkdir(parents=True, exist_ok=True)
     features = load_features(features_path)
     seed_mapping = _seed_map(seed_plan_path)
-    summary, trade_sample = run_simulation(features, seed_mapping=seed_mapping)
+    summary, trade_sample, full_run_risk = run_simulation(features, seed_mapping=seed_mapping)
     profiles = execution_profiles()
     costs = cost_schedule()
     component_catalog = charge_component_catalog()
     charge_scenarios = representative_charge_scenarios()
 
     summary.to_csv(output_dir / "execution_summary.csv", index=False)
+    full_run_risk.to_csv(output_dir / "full_run_risk_summary.csv", index=False)
     profiles.to_csv(output_dir / "execution_profiles.csv", index=False)
     costs.to_csv(output_dir / "cost_schedule.csv", index=False)
     component_catalog.to_csv(output_dir / "charge_component_catalog.csv", index=False)
@@ -505,6 +597,7 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     }
     outputs = {
         "execution_summary": str(output_dir / "execution_summary.csv"),
+        "full_run_risk_summary": str(output_dir / "full_run_risk_summary.csv"),
         "execution_profiles": str(output_dir / "execution_profiles.csv"),
         "cost_schedule": str(output_dir / "cost_schedule.csv"),
         "charge_component_catalog": str(output_dir / "charge_component_catalog.csv"),
@@ -522,10 +615,13 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "strategies_simulated": int(summary["strategy_id"].nunique()) if len(summary) else 0,
         "execution_profiles": int(len(profiles)),
         "summary_rows": int(len(summary)),
+        "full_run_risk_rows": int(len(full_run_risk)),
         "trade_sample_rows": int(len(trade_sample)),
         "trade_sample_strategy_profiles": int(trade_sample[["strategy_id", "execution_profile"]].drop_duplicates().shape[0]) if len(trade_sample) else 0,
         "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
         "scope": "marketable_order_proxy_over_5m_feature_events",
+        "full_run_risk_scope": "all_simulated_marketable_proxy_trades_no_fills",
+        "full_run_risk_limits": FULL_RUN_RISK_LIMITS,
         "cost_model_version": ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
         "cost_model_source": ZERODHA_CHARGES_SOURCE_URL,
         "cost_model_source_name": ZERODHA_CHARGES_SOURCE_NAME,
@@ -558,7 +654,7 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         )
     )
     (output_dir / "execution_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, summary)
+    write_report(output_dir, summary, full_run_risk)
 
 
 def parse_args() -> argparse.Namespace:

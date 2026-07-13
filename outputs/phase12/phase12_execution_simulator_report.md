@@ -1,6 +1,6 @@
 # Phase 12 Execution Simulator Report
 
-Generated UTC: 2026-07-13T21:14:14.204109+00:00
+Generated UTC: 2026-07-13T21:22:12.023451+00:00
 
 ## Scope
 
@@ -48,6 +48,38 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 | S09 | stressed_retail | 567805 | 0.000204235 | 0.00149066 | 8.2686 | -0.00128642 | -7.30437e+07 | 0.458492 | zerodha_equity_intraday_nse_order_formula_per_trade | simulated_marketable_proxy_not_acceptance |
 | S09 | zero_latency_spread_only_control | 590612 | -2.08091e-05 | 0.000250359 | 0 | -0.000271168 | -1.60155e+07 | 0.482628 | not_applied_control_profile | simulated_marketable_proxy_not_acceptance |
 
+## Full-Run Risk Proxy Summary
+
+| strategy_id | execution_profile | trades | trade_dates | worst_daily_net_pnl_inr | tail_loss_1pct_trade_pnl_inr | max_intraday_drawdown_inr | daily_loss_warn_days | drawdown_warn_days | position_warn_days | risk_evidence_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S01 | retail_marketable_default | 160471 | 63 | -294196 | -6718.93 | -363951 | 2 | 3 | 17 | full_execution_summary_proxy_no_fills |
+| S01 | stressed_retail | 158070 | 63 | -4.38609e+06 | -6355.9 | -4.38461e+06 | 39 | 41 | 18 | full_execution_summary_proxy_no_fills |
+| S01 | zero_latency_spread_only_control | 166760 | 63 | -7.73645e+06 | -8314.01 | -7.738e+06 | 63 | 63 | 20 | full_execution_summary_proxy_no_fills |
+| S02 | retail_marketable_default | 879151 | 63 | -2.4282e+06 | -7016.36 | -2.45888e+06 | 63 | 63 | 0 | full_execution_summary_proxy_no_fills |
+| S02 | stressed_retail | 870977 | 63 | -3.02469e+06 | -6833.91 | -3.02458e+06 | 63 | 63 | 0 | full_execution_summary_proxy_no_fills |
+| S02 | zero_latency_spread_only_control | 907352 | 63 | -1.7356e+06 | -6949.47 | -1.77975e+06 | 55 | 61 | 0 | full_execution_summary_proxy_no_fills |
+| S03 | retail_marketable_default | 273427 | 60 | -395511 | -7999.18 | -408842 | 6 | 7 | 22 | full_execution_summary_proxy_no_fills |
+| S03 | stressed_retail | 270999 | 60 | -6.02188e+06 | -6299.45 | -6.02478e+06 | 27 | 31 | 22 | full_execution_summary_proxy_no_fills |
+| S03 | zero_latency_spread_only_control | 283411 | 60 | -2.7519e+07 | -9467.71 | -2.75202e+07 | 44 | 44 | 22 | full_execution_summary_proxy_no_fills |
+| S04 | retail_marketable_default | 414066 | 60 | -4.02483e+06 | -8776.85 | -4.09426e+06 | 26 | 37 | 6 | full_execution_summary_proxy_no_fills |
+| S04 | stressed_retail | 410666 | 60 | -3.86432e+06 | -6609.02 | -3.90628e+06 | 41 | 40 | 6 | full_execution_summary_proxy_no_fills |
+| S04 | zero_latency_spread_only_control | 429202 | 60 | -4.32104e+06 | -8640.5 | -4.33786e+06 | 42 | 44 | 5 | full_execution_summary_proxy_no_fills |
+| S05 | retail_marketable_default | 436284 | 63 | -4.82368e+06 | -7045.1 | -4.8965e+06 | 58 | 63 | 63 | full_execution_summary_proxy_no_fills |
+| S05 | stressed_retail | 432377 | 63 | -8.04801e+06 | -6847.87 | -8.06818e+06 | 54 | 63 | 63 | full_execution_summary_proxy_no_fills |
+| S05 | zero_latency_spread_only_control | 449765 | 63 | -2.31953e+06 | -6403.69 | -2.32885e+06 | 14 | 37 | 63 | full_execution_summary_proxy_no_fills |
+| S06 | retail_marketable_default | 33129 | 54 | -941443 | -8520.49 | -992879 | 21 | 22 | 0 | full_execution_summary_proxy_no_fills |
+| S06 | stressed_retail | 32935 | 54 | -521309 | -6296.75 | -525307 | 18 | 17 | 0 | full_execution_summary_proxy_no_fills |
+| S06 | zero_latency_spread_only_control | 34373 | 54 | -282528 | -8358.8 | -443046 | 11 | 15 | 0 | full_execution_summary_proxy_no_fills |
+| S07 | retail_marketable_default | 229792 | 59 | -1.63271e+06 | -6787.47 | -1.81724e+06 | 44 | 54 | 44 | full_execution_summary_proxy_no_fills |
+| S07 | stressed_retail | 227842 | 59 | -2.59844e+06 | -6158.01 | -2.65117e+06 | 44 | 57 | 44 | full_execution_summary_proxy_no_fills |
+| S07 | zero_latency_spread_only_control | 237064 | 59 | -3.81934e+06 | -6286.31 | -3.82588e+06 | 44 | 51 | 44 | full_execution_summary_proxy_no_fills |
+| S08 | retail_marketable_default | 431798 | 63 | -2.01361e+06 | -7141.42 | -2.0188e+06 | 62 | 62 | 42 | full_execution_summary_proxy_no_fills |
+| S08 | stressed_retail | 426101 | 63 | -2.33058e+06 | -7175.83 | -2.33786e+06 | 63 | 63 | 36 | full_execution_summary_proxy_no_fills |
+| S08 | zero_latency_spread_only_control | 448403 | 63 | -1.00346e+06 | -7020.09 | -1.0129e+06 | 33 | 29 | 42 | full_execution_summary_proxy_no_fills |
+| S09 | retail_marketable_default | 573028 | 63 | -1.69625e+06 | -6439.6 | -1.69696e+06 | 62 | 63 | 63 | full_execution_summary_proxy_no_fills |
+| S09 | stressed_retail | 567805 | 63 | -1.83695e+06 | -6472.91 | -1.83647e+06 | 63 | 63 | 63 | full_execution_summary_proxy_no_fills |
+| S09 | zero_latency_spread_only_control | 590612 | 63 | -911328 | -6343.36 | -930397 | 51 | 53 | 63 | full_execution_summary_proxy_no_fills |
+
 ## Caveats
 
 - Current features are 5-minute synthetic feature events, not true tick-level order events.
@@ -55,5 +87,6 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 - Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.
 - Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.
 - Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.
+- Full-run risk diagnostics cover all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
 - Spread crossing, fixed slippage and impact remain internal execution assumptions.
 - Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.

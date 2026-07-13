@@ -252,8 +252,8 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "gate_id": "G04_risk",
             "gate_status": "blocked",
             "evidence_value": None,
-            "blocker": "Only sampled proxy risk-control evidence exists; no acceptance-grade full-run drawdown, position-limit, tail-loss or daily-loss-limit validation exists.",
-            "evidence_source": "outputs/phase12/execution_summary.csv; outputs/phase12_order_lifecycle/risk_control_summary.csv",
+            "blocker": "Full-run marketable-proxy risk diagnostics now exist, but no acceptance-grade fill-adjusted drawdown, position-limit, tail-loss or daily-loss-limit validation exists.",
+            "evidence_source": "outputs/phase12/execution_summary.csv; outputs/phase12/full_run_risk_summary.csv; outputs/phase12_order_lifecycle/risk_control_summary.csv",
         }
     )
 

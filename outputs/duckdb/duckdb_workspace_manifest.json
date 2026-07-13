@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:16:44.666683+00:00",
+  "generated_utc": "2026-07-13T21:23:07.358051+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -69,6 +69,9 @@
     "phase12_cost_components": 13,
     "phase12_charge_formula_components": 6,
     "phase12_representative_charge_scenarios": 6,
+    "phase12_full_run_risk_rows": 27,
+    "phase12_full_run_daily_loss_warn_days": 1113,
+    "phase12_full_run_drawdown_warn_days": 1209,
     "phase12_event_backtest_order_rows": 6480,
     "phase12_event_backtest_order_models": 6,
     "phase12_event_backtest_pnl_rows": 6480,
@@ -202,6 +205,7 @@
     "phase12_execution_profiles",
     "phase12_execution_summary",
     "phase12_fill_model_catalog",
+    "phase12_full_run_risk_summary",
     "phase12_lifecycle_sample",
     "phase12_order_model_catalog",
     "phase12_partial_fill_summary",
@@ -290,8 +294,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
-  "configuration_hash": "fe39aa62435af612386aeb6e4d7b73e3546833d545a47df46fa7eebac5357282",
+  "generator_version": "cd48fe5da6009a803b4e59be39e8707996fe0489",
+  "configuration_hash": "a4a9386745dcd22e5274e76a5faf9d4b280bb0c0263f682a3c14816321adc1fd",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -299,5 +303,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T21:16:44.666683+00:00"
+  "creation_timestamp": "2026-07-13T21:23:07.358051+00:00"
 }

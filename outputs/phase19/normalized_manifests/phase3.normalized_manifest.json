@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_no_execution_costs",
   "latency_model_version": "not_applicable_no_latency_model",
   "creation_timestamp": "2026-07-13T20:30:11.966841+00:00",
-  "normalization_timestamp": "2026-07-13T21:16:46.120279+00:00",
+  "normalization_timestamp": "2026-07-13T21:23:08.843452+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

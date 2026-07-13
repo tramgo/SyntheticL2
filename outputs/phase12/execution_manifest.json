@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:14:14.105898+00:00",
+  "generated_utc": "2026-07-13T21:22:11.912886+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "seed_plan_path": "outputs\\phase13\\seed_plan.csv",
   "seeded_trade_sample": true,
@@ -8,10 +8,18 @@
   "strategies_simulated": 9,
   "execution_profiles": 3,
   "summary_rows": 27,
+  "full_run_risk_rows": 27,
   "trade_sample_rows": 249993,
   "trade_sample_strategy_profiles": 27,
   "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
   "scope": "marketable_order_proxy_over_5m_feature_events",
+  "full_run_risk_scope": "all_simulated_marketable_proxy_trades_no_fills",
+  "full_run_risk_limits": {
+    "daily_loss_warn_inr": -75000.0,
+    "tail_loss_quantile": 0.01,
+    "drawdown_warn_inr": -100000.0,
+    "max_abs_signal_position_units": 500.0
+  },
   "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
   "cost_model_source": "https://zerodha.com/charges/",
   "cost_model_source_name": "Zerodha published equity intraday NSE charge schedule",
@@ -39,13 +47,13 @@
   "charge_components": 6,
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
-  "configuration_hash": "6d94531f62b32d0202ce1f93027201a49772a6d62b20ea2268d071ece335fba0",
+  "generator_version": "cd48fe5da6009a803b4e59be39e8707996fe0489",
+  "configuration_hash": "d24834c4ad7dec117a2b500d26e14bb4474debeadb9c0f10045f26908edfca72",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
   "scenario_ids": "outputs/phase4/scenario_calendar.csv_and_phase13_seed_plan_cycle",
   "latency_model_version": "phase12_execution_profiles_v1",
-  "creation_timestamp": "2026-07-13T21:14:14.105898+00:00"
+  "creation_timestamp": "2026-07-13T21:22:11.912886+00:00"
 }
