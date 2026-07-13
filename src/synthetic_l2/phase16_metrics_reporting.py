@@ -19,6 +19,7 @@ PREDICTIVE_METRICS = [
     ("roc_auc", "sample_proxy", "Rank-AUC proxy computed from ternary signal score; not a calibrated probabilistic ROC."),
     ("brier_score", "sample_proxy", "Computed from deterministic ternary-signal pseudo-probabilities; not a calibrated probability model."),
     ("calibration_curve", "sample_proxy", "Computed from deterministic ternary-signal probability buckets and realized up/down frequency."),
+    ("baseline_improvement", "sample_proxy", "Compares current proxy signals against no-skill, majority-direction and Brier baselines."),
     ("information_coefficient", "proxy_available", "Proxy signed_mean_future_return is available; rank IC is not computed yet."),
     ("future_return_by_signal_decile", "sample_proxy", "Computed as ternary signal-score buckets because current signals are not continuous decile scores."),
     ("incremental_r2", "sample_proxy", "Computed as simple signal-vs-intercept R2 over future returns; not a model-vs-rich-baseline result."),
@@ -52,6 +53,7 @@ METRIC_EVIDENCE_PATHS = {
     "roc_auc": "outputs/phase16/predictive_proxy_diagnostics.csv",
     "brier_score": "outputs/phase16/predictive_brier_score_proxy.csv",
     "calibration_curve": "outputs/phase16/predictive_calibration_curve_proxy.csv",
+    "baseline_improvement": "outputs/phase16/predictive_baseline_comparison.csv",
     "information_coefficient": "outputs/phase16/predictive_metric_scoreboard.csv; outputs/phase11/strategy_signal_diagnostics.csv",
     "future_return_by_signal_decile": "outputs/phase16/predictive_signal_bucket_returns.csv",
     "incremental_r2": "outputs/phase16/predictive_proxy_diagnostics.csv",
@@ -383,6 +385,100 @@ def predictive_calibration_proxies(inputs: dict[str, pd.DataFrame]) -> tuple[pd.
     return pd.DataFrame(brier_rows), pd.concat(curve_rows, ignore_index=True)
 
 
+def predictive_baseline_comparison(
+    predictive: pd.DataFrame,
+    predictive_proxy: pd.DataFrame,
+    brier: pd.DataFrame,
+) -> pd.DataFrame:
+    rows = predictive.merge(
+        predictive_proxy[
+            [
+                "strategy_id",
+                "directional_eval_rows",
+                "balanced_accuracy_proxy",
+                "rank_auc_proxy",
+                "incremental_r2_proxy",
+            ]
+        ],
+        on="strategy_id",
+        how="left",
+    ).merge(
+        brier[
+            [
+                "strategy_id",
+                "brier_score_proxy",
+                "baseline_brier_score_proxy",
+                "brier_skill_score_proxy",
+                "observed_up_fraction",
+            ]
+        ],
+        on="strategy_id",
+        how="left",
+    )
+    rows["no_skill_directional_accuracy_baseline"] = 0.5
+    rows["majority_direction_accuracy_baseline"] = rows["observed_up_fraction"].map(
+        lambda value: max(float(value), 1.0 - float(value)) if pd.notna(value) else np.nan
+    )
+    rows["directional_accuracy_excess_vs_no_skill"] = (
+        rows["directional_accuracy_nonzero"] - rows["no_skill_directional_accuracy_baseline"]
+    )
+    rows["directional_accuracy_excess_vs_majority"] = (
+        rows["directional_accuracy_nonzero"] - rows["majority_direction_accuracy_baseline"]
+    )
+    rows["beats_no_skill_accuracy_proxy"] = rows["directional_accuracy_excess_vs_no_skill"] > 0
+    rows["beats_majority_accuracy_proxy"] = rows["directional_accuracy_excess_vs_majority"] > 0
+    rows["beats_brier_baseline_proxy"] = rows["brier_skill_score_proxy"] > 0
+    rows["has_minimum_directional_rows_proxy"] = rows["directional_eval_rows"].fillna(0) >= 1_000
+    rows["support_level_blocks_acceptance"] = rows["support_level"].astype(str).ne("runnable_proxy")
+    rows["predictive_baseline_status"] = np.select(
+        [
+            rows["support_level_blocks_acceptance"],
+            rows["directional_eval_rows"].fillna(0).eq(0),
+            rows["beats_no_skill_accuracy_proxy"]
+            & rows["beats_majority_accuracy_proxy"]
+            & rows["beats_brier_baseline_proxy"]
+            & rows["has_minimum_directional_rows_proxy"],
+        ],
+        [
+            "unsupported_or_partial_strategy_proxy",
+            "no_directional_evaluation_rows",
+            "beats_proxy_baselines_not_acceptance",
+        ],
+        default="does_not_beat_required_proxy_baselines",
+    )
+    rows["acceptance_eligible_now"] = False
+    rows["metric_scope"] = "phase16_predictive_baseline_proxy_not_acceptance"
+    return rows[
+        [
+            "strategy_id",
+            "name",
+            "support_level",
+            "directional_eval_rows",
+            "directional_accuracy_nonzero",
+            "balanced_accuracy_proxy",
+            "rank_auc_proxy",
+            "incremental_r2_proxy",
+            "observed_up_fraction",
+            "no_skill_directional_accuracy_baseline",
+            "majority_direction_accuracy_baseline",
+            "directional_accuracy_excess_vs_no_skill",
+            "directional_accuracy_excess_vs_majority",
+            "brier_score_proxy",
+            "baseline_brier_score_proxy",
+            "brier_skill_score_proxy",
+            "beats_no_skill_accuracy_proxy",
+            "beats_majority_accuracy_proxy",
+            "beats_brier_baseline_proxy",
+            "has_minimum_directional_rows_proxy",
+            "predictive_baseline_status",
+            "promotion_allowed",
+            "acceptance_status",
+            "acceptance_eligible_now",
+            "metric_scope",
+        ]
+    ]
+
+
 def feature_importance_stability(inputs: dict[str, pd.DataFrame], sample_rows: int = 100_000, max_seeds: int = 12) -> pd.DataFrame:
     features = inputs["features"]
     seed_plan = inputs["seed_plan"].copy()
@@ -647,6 +743,7 @@ def write_report(
     signal_buckets: pd.DataFrame,
     brier: pd.DataFrame,
     calibration: pd.DataFrame,
+    baseline_comparison: pd.DataFrame,
     importance: pd.DataFrame,
     trading: pd.DataFrame,
     breakdowns: pd.DataFrame,
@@ -687,6 +784,10 @@ def write_report(
         "",
         _markdown_table(calibration.head(30)),
         "",
+        "## Predictive Baseline Comparison",
+        "",
+        _markdown_table(baseline_comparison.sort_values("directional_accuracy_excess_vs_majority", ascending=False).head(12)),
+        "",
         "## Feature Importance Stability Proxy",
         "",
         _markdown_table(importance.head(12)),
@@ -712,6 +813,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     predictive = predictive_scoreboard(inputs)
     predictive_proxy, signal_buckets = predictive_proxy_diagnostics(inputs)
     brier, calibration = predictive_calibration_proxies(inputs)
+    baseline_comparison = predictive_baseline_comparison(predictive, predictive_proxy, brier)
     importance = feature_importance_stability(inputs)
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
@@ -725,6 +827,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     signal_buckets.to_csv(output_dir / "predictive_signal_bucket_returns.csv", index=False)
     brier.to_csv(output_dir / "predictive_brier_score_proxy.csv", index=False)
     calibration.to_csv(output_dir / "predictive_calibration_curve_proxy.csv", index=False)
+    baseline_comparison.to_csv(output_dir / "predictive_baseline_comparison.csv", index=False)
     importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
@@ -741,6 +844,13 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "predictive_signal_bucket_rows": int(len(signal_buckets)),
         "predictive_brier_score_rows": int(len(brier)),
         "predictive_calibration_curve_rows": int(len(calibration)),
+        "predictive_baseline_comparison_rows": int(len(baseline_comparison)),
+        "predictive_baseline_beating_rows": int(
+            (
+                baseline_comparison["predictive_baseline_status"].astype(str)
+                == "beats_proxy_baselines_not_acceptance"
+            ).sum()
+        ),
         "feature_importance_stability_rows": int(len(importance)),
         "trading_scoreboard_rows": int(len(trading)),
         "markout_summary_rows": int(len(markouts)),
@@ -763,6 +873,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
             outputs={
                 "metric_catalog": str(output_dir / "metric_catalog.csv"),
                 "predictive_metric_scoreboard": str(output_dir / "predictive_metric_scoreboard.csv"),
+                "predictive_baseline_comparison": str(output_dir / "predictive_baseline_comparison.csv"),
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
                 "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
                 "strategy_metric_requirement_coverage": str(output_dir / "strategy_metric_requirement_coverage.csv"),
@@ -775,7 +886,19 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         )
     )
     (output_dir / "metrics_reporting_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, catalog, predictive, predictive_proxy, signal_buckets, brier, calibration, importance, trading, breakdowns)
+    write_report(
+        output_dir,
+        catalog,
+        predictive,
+        predictive_proxy,
+        signal_buckets,
+        brier,
+        calibration,
+        baseline_comparison,
+        importance,
+        trading,
+        breakdowns,
+    )
 
 
 def parse_args() -> argparse.Namespace:

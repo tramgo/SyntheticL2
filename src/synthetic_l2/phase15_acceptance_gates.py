@@ -184,14 +184,22 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
         and pd.notna(signal_row.get("directional_accuracy_nonzero"))
         and float(signal_row["directional_accuracy_nonzero"]) >= 0.52
     )
+    predictive_evidence_source = "outputs/phase11/strategy_signal_diagnostics.csv"
+    predictive_blocker = "No acceptance-level predictive evidence; current diagnostics are proxy-only and/or directional accuracy below threshold."
+    if Path("outputs/phase16/predictive_baseline_comparison.csv").exists():
+        predictive_evidence_source += "; outputs/phase16/predictive_baseline_comparison.csv"
+        predictive_blocker = (
+            "No acceptance-level predictive evidence; Phase 16 baseline comparison is proxy-only and current signals "
+            "do not clear all required no-skill, majority-direction, Brier and support/readiness checks."
+        )
     rows.append(
         {
             "strategy_id": sid,
             "gate_id": "G01_predictive",
             "gate_status": "pass" if predictive_pass else "blocked",
             "evidence_value": None if signal_row is None else signal_row.get("directional_accuracy_nonzero"),
-            "blocker": "" if predictive_pass else "No acceptance-level predictive evidence; current diagnostics are proxy-only and/or directional accuracy below threshold.",
-            "evidence_source": "outputs/phase11/strategy_signal_diagnostics.csv",
+            "blocker": "" if predictive_pass else predictive_blocker,
+            "evidence_source": predictive_evidence_source,
         }
     )
 

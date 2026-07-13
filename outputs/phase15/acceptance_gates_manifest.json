@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:27:49.018523+00:00",
+  "generated_utc": "2026-07-13T21:33:56.085108+00:00",
   "inputs": {
     "strategy_matrix": "outputs\\phase11\\strategy_validation_matrix.csv",
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
@@ -19,7 +19,7 @@
   "not_promotion_result": true,
   "promotion_allowed_requires_all_gates_pass": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "70cb8755627b9fe76c553c75f01695fb50eb5927",
+  "generator_version": "affcb3db228e1d117e5f22bff2dc7d64194e3a79",
   "configuration_hash": "ff85acb5e6dd99dab703c00d324464048012ec99842dec13c373115b9e9b5b55",
   "random_seed": "not_applicable_deterministic_gate_evaluation",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -28,5 +28,5 @@
   "scenario_ids": "phase13_experiment_registry_and_phase15_all_s01_s11_strategies",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T21:27:49.018523+00:00"
+  "creation_timestamp": "2026-07-13T21:33:56.085108+00:00"
 }

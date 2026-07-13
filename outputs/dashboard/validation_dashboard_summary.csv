@@ -5,7 +5,7 @@ quality_fail_checks,0,Current quality failures
 strategies,11,Phase 15 strategies
 promoted_strategies,0,Promotion allowed count
 acceptance_blockers,55,Phase 15 blocker rows
-metric_catalog_rows,27,Phase 16 metric catalog rows
+metric_catalog_rows,28,Phase 16 metric catalog rows
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows
 p1_gaps,0,Phase 17 P1 backlog rows

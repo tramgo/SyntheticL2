@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T21:28:11.857202+00:00
+Generated UTC: 2026-07-13T21:34:18.280518+00:00
 
 ## Scope
 
@@ -13,7 +13,7 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | --- | --- | --- |
 | predictive | computed_proxy | 1 |
 | predictive | proxy_available | 1 |
-| predictive | sample_proxy | 8 |
+| predictive | sample_proxy | 9 |
 | trading | computed_proxy | 4 |
 | trading | proxy_available | 2 |
 | trading | sample_proxy | 11 |
@@ -127,6 +127,22 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | S06 | 0.4_0.6 | 2194995 | 0.5 | 0.488485 | 0.0115151 | ternary_signal_probability_bucket_proxy_not_acceptance |
 | S06 | 0.6_0.8 | 17034 | 0.7 | 0.516085 | 0.183915 | ternary_signal_probability_bucket_proxy_not_acceptance |
 | S06 | 0.8_1.0 | 0 |  |  |  | ternary_signal_probability_bucket_proxy_not_acceptance |
+
+## Predictive Baseline Comparison
+
+| strategy_id | name | support_level | directional_eval_rows | directional_accuracy_nonzero | balanced_accuracy_proxy | rank_auc_proxy | incremental_r2_proxy | observed_up_fraction | no_skill_directional_accuracy_baseline | majority_direction_accuracy_baseline | directional_accuracy_excess_vs_no_skill | directional_accuracy_excess_vs_majority | brier_score_proxy | baseline_brier_score_proxy | brier_skill_score_proxy | beats_no_skill_accuracy_proxy | beats_majority_accuracy_proxy | beats_brier_baseline_proxy | has_minimum_directional_rows_proxy | predictive_baseline_status | promotion_allowed | acceptance_status | acceptance_eligible_now | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S06 | Absorption and exhaustion reversal | partial_missing_required_features | 33550 | 0.505455 | 0.505391 | 0.500194 | 8.67678e-07 | 0.488809 | 0.5 | 0.511191 | 0.00545455 | -0.00573618 | 0.250571 | 0.249875 | -0.00278699 | True | False | False | True | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S08 | Cross-ticker/index lead-lag OFI | partial_missing_required_features | 434894 | 0.504006 | 0.50416 | 0.501374 | 3.75725e-07 | 0.488809 | 0.5 | 0.511191 | 0.00400557 | -0.00718515 | 0.257647 | 0.249875 | -0.0311065 | True | False | False | True | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S07 | Mean reversion after imbalance | runnable_proxy | 227966 | 0.501421 | 0.50028 | 0.50197 | 5.50787e-06 | 0.488809 | 0.5 | 0.511191 | 0.00142126 | -0.00976946 | 0.253697 | 0.249875 | -0.0152963 | True | False | False | True | does_not_beat_required_proxy_baselines | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S09 | Pure queue-imbalance scalping | runnable_proxy | 569284 | 0.49772 | 0.49921 | 0.496284 | 3.10769e-06 | 0.488809 | 0.5 | 0.511191 | -0.00228006 | -0.0134708 | 0.26193 | 0.249875 | -0.0482466 | False | False | False | True | does_not_beat_required_proxy_baselines | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S05 | Microprice entry/exit filter | runnable_proxy | 431486 | 0.497367 | 0.499583 | 0.496143 | 1.25584e-05 | 0.488809 | 0.5 | 0.511191 | -0.00263276 | -0.0138235 | 0.259418 | 0.249875 | -0.038193 | False | False | False | True | does_not_beat_required_proxy_baselines | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S02 | Pure multi-level OFI directional model | runnable_proxy | 877100 | 0.485755 | 0.485756 | 0.491032 | 0.000393025 | 0.488809 | 0.5 | 0.511191 | -0.0142447 | -0.0254354 | 0.268373 | 0.249875 | -0.0740315 | False | False | False | True | does_not_beat_required_proxy_baselines | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S04 | Trade-flow plus depth confirmation | partial_missing_required_features | 420091 | 0.480829 | 0.480846 | 0.493531 | 0.000609508 | 0.488809 | 0.5 | 0.511191 | -0.0191708 | -0.0303616 | 0.259047 | 0.249875 | -0.0367088 | False | False | False | True | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S03 | Liquidity-vacuum breakout | partial_missing_required_features | 277765 | 0.467834 | 0.467804 | 0.492536 | 0.00466175 | 0.488809 | 0.5 | 0.511191 | -0.0321657 | -0.0433564 | 0.256639 | 0.249875 | -0.027069 | False | False | False | True | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S01 | Momentum/breakout filtered by MLOFI | runnable_proxy | 161956 | 0.434982 | 0.43486 | 0.490981 | 0.00673538 | 0.488809 | 0.5 | 0.511191 | -0.0650177 | -0.0762084 | 0.254824 | 0.249875 | -0.019807 | False | False | False | True | does_not_beat_required_proxy_baselines | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S10 | Passive market making | not_supported_by_current_product |  |  |  |  |  |  | 0.5 |  |  |  |  |  |  | False | False | False | False | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
+| S11 | Spoof-like wall filter | not_supported_by_current_product |  |  |  |  |  |  | 0.5 |  |  |  |  |  |  | False | False | False | False | unsupported_or_partial_strategy_proxy | False | blocked_not_promotable | False | phase16_predictive_baseline_proxy_not_acceptance |
 
 ## Feature Importance Stability Proxy
 
