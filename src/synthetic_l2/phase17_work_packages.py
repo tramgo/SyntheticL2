@@ -76,7 +76,7 @@ DELIVERABLES = [
     ("WP9", "baseline strategies", "implemented_proxy", "outputs/phase11/baseline_strategy_matrix.csv", "Baseline registry exists."),
     ("WP9", "parameter registry", "implemented_proxy", "outputs/phase13/parameter_grid.csv", "Initial parameter grid exists."),
     ("WP10", "synthetic realism dashboard", "implemented_proxy", "outputs/dashboard/synthetic_l2_validation_dashboard.html", "Static validation dashboard exists over Phase 14-17 quality, holdout-generator realism, acceptance, metrics and gap evidence."),
-    ("WP10", "strategy performance reports", "implemented_proxy", "outputs/phase16/phase16_metrics_reporting_report.md", "Proxy performance report exists."),
+    ("WP10", "strategy performance reports", "implemented_proxy", "outputs/phase16/phase16_metrics_reporting_report.md; outputs/phase16/economic_viability_frontier.csv", "Proxy performance report exists, including economic viability frontier and break-even cost/gross-edge diagnostics."),
     ("WP10", "robustness matrix", "implemented_proxy", "outputs/phase13/experiment_run_summary.csv; outputs/phase13/experiment_profile_robustness_summary.csv; outputs/phase13/robustness_dimension_summary.csv", "Pre-registered experiment rows have deterministic proxy smoke, execution-profile robustness and robustness-dimension coverage ledgers; full robustness validation is not acceptance-grade yet."),
     ("WP10", "failed-test log", "implemented", "outputs/phase15/acceptance_blockers.csv", "Acceptance blockers provide failed-test log."),
     ("WP10", "promotion/rejection decision", "implemented", "outputs/phase15/strategy_acceptance_summary.csv", "All strategies currently blocked/not promotable."),

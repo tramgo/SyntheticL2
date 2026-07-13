@@ -698,6 +698,72 @@ def trading_scoreboard(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     ]
 
 
+def economic_viability_frontier(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    summary = inputs["execution_summary"].copy()
+    acceptance_columns = ["strategy_id", "promotion_allowed", "acceptance_status"]
+    if "support_level" not in summary.columns and "support_level" in inputs["acceptance_summary"].columns:
+        acceptance_columns.append("support_level")
+    acceptance = inputs["acceptance_summary"][acceptance_columns].copy()
+    out = summary.merge(acceptance, on="strategy_id", how="left")
+    if "support_level" not in out.columns:
+        out["support_level"] = ""
+    out["gross_edge_bps"] = out["mean_gross_return"].astype(float) * 10_000.0
+    out["cost_drag_bps"] = out["mean_cost_return"].astype(float) * 10_000.0
+    out["net_edge_bps"] = out["mean_net_return"].astype(float) * 10_000.0
+    out["zerodha_charge_bps"] = out.get("mean_zerodha_charge_bps", pd.Series(0.0, index=out.index)).fillna(0.0).astype(float)
+    out["non_zerodha_cost_bps"] = out["cost_drag_bps"] - out["zerodha_charge_bps"]
+    out["break_even_cost_bps"] = out["gross_edge_bps"]
+    out["cost_surplus_bps"] = out["gross_edge_bps"] - out["cost_drag_bps"]
+    out["additional_gross_edge_needed_bps"] = (-out["net_edge_bps"]).clip(lower=0.0)
+    out["cost_reduction_needed_bps"] = (-out["cost_surplus_bps"]).clip(lower=0.0)
+    out["gross_edge_covers_cost"] = out["gross_edge_bps"] > out["cost_drag_bps"]
+    out["net_positive_proxy"] = out["net_edge_bps"] > 0
+    out["retail_or_stress_profile"] = out["execution_profile"].astype(str).isin(["retail_marketable_default", "stressed_retail"])
+    out["economic_frontier_status"] = np.select(
+        [
+            out["net_positive_proxy"] & out["retail_or_stress_profile"],
+            ~out["retail_or_stress_profile"],
+        ],
+        [
+            "net_positive_proxy_not_acceptance",
+            "control_profile_not_deployable",
+        ],
+        default="below_break_even_after_costs",
+    )
+    out["acceptance_eligible_now"] = False
+    out["blocker"] = np.where(
+        out["net_positive_proxy"] & out["retail_or_stress_profile"],
+        "Proxy net edge is positive for this profile, but acceptance still requires broker/exchange fills, multi-day holdout and stress-profile confirmation.",
+        "Proxy net edge is not positive after the current cost/slippage/latency assumptions; improve gross edge, lower turnover/cost exposure, or reject the strategy before promotion.",
+    )
+    return out[
+        [
+            "strategy_id",
+            "name",
+            "support_level",
+            "execution_profile",
+            "trades",
+            "gross_edge_bps",
+            "cost_drag_bps",
+            "zerodha_charge_bps",
+            "non_zerodha_cost_bps",
+            "net_edge_bps",
+            "break_even_cost_bps",
+            "cost_surplus_bps",
+            "additional_gross_edge_needed_bps",
+            "cost_reduction_needed_bps",
+            "gross_edge_covers_cost",
+            "net_positive_proxy",
+            "retail_or_stress_profile",
+            "economic_frontier_status",
+            "promotion_allowed",
+            "acceptance_status",
+            "acceptance_eligible_now",
+            "blocker",
+        ]
+    ]
+
+
 def breakdown_coverage(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     sample_cols = set(inputs["trade_sample"].columns)
     rows = []
@@ -746,6 +812,7 @@ def write_report(
     baseline_comparison: pd.DataFrame,
     importance: pd.DataFrame,
     trading: pd.DataFrame,
+    economic_frontier: pd.DataFrame,
     breakdowns: pd.DataFrame,
 ) -> None:
     catalog_summary = catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
@@ -796,6 +863,10 @@ def write_report(
         "",
         _markdown_table(trading.sort_values("mean_net_return", ascending=False).head(10)),
         "",
+        "## Economic Viability Frontier",
+        "",
+        _markdown_table(economic_frontier.sort_values("net_edge_bps", ascending=False).head(18)),
+        "",
         "## Required Breakdown Coverage",
         "",
         _markdown_table(breakdown_summary),
@@ -818,6 +889,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
+    economic_frontier = economic_viability_frontier(inputs)
     breakdowns = breakdown_coverage(inputs)
     requirement_coverage = metric_requirement_coverage(inputs, catalog)
 
@@ -830,6 +902,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     baseline_comparison.to_csv(output_dir / "predictive_baseline_comparison.csv", index=False)
     importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
+    economic_frontier.to_csv(output_dir / "economic_viability_frontier.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
     requirement_coverage.to_csv(output_dir / "strategy_metric_requirement_coverage.csv", index=False)
@@ -853,6 +926,11 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         ),
         "feature_importance_stability_rows": int(len(importance)),
         "trading_scoreboard_rows": int(len(trading)),
+        "economic_viability_frontier_rows": int(len(economic_frontier)),
+        "economic_viability_net_positive_rows": int(economic_frontier["net_positive_proxy"].sum()) if len(economic_frontier) else 0,
+        "economic_viability_retail_stress_net_positive_rows": int(
+            (economic_frontier["net_positive_proxy"] & economic_frontier["retail_or_stress_profile"]).sum()
+        ) if "retail_or_stress_profile" in economic_frontier else 0,
         "markout_summary_rows": int(len(markouts)),
         "markout_horizons_bars": [1, 3, 6],
         "breakdown_rows": int(len(breakdowns)),
@@ -875,6 +953,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "predictive_metric_scoreboard": str(output_dir / "predictive_metric_scoreboard.csv"),
                 "predictive_baseline_comparison": str(output_dir / "predictive_baseline_comparison.csv"),
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
+                "economic_viability_frontier": str(output_dir / "economic_viability_frontier.csv"),
                 "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
                 "strategy_metric_requirement_coverage": str(output_dir / "strategy_metric_requirement_coverage.csv"),
                 "report": str(output_dir / "phase16_metrics_reporting_report.md"),
@@ -897,6 +976,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         baseline_comparison,
         importance,
         trading,
+        economic_frontier,
         breakdowns,
     )
 

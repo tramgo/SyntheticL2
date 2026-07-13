@@ -13,6 +13,9 @@ strategies,11,Phase 15 strategies
 promoted_strategies,0,Promotion allowed count
 acceptance_blockers,50,Phase 15 blocker rows
 metric_catalog_rows,28,Phase 16 metric catalog rows
+economic_viability_rows,27,Phase 16 economic viability frontier rows
+economic_viability_net_positive_rows,4,Phase 16 net-positive proxy rows
+economic_viability_retail_stress_positive_rows,2,Retail/stress net-positive proxy rows
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows
 p1_gaps,0,Phase 17 P1 backlog rows

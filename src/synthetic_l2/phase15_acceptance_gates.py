@@ -247,6 +247,10 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
         economic_blocker.append("execution result is still a 5-minute proxy and not acceptance evidence")
     else:
         economic_blocker.append("missing required proxy cost schedule components")
+    economic_evidence_source = "outputs/phase12/execution_summary.csv; outputs/phase12/cost_schedule.csv"
+    if Path("outputs/phase16/economic_viability_frontier.csv").exists():
+        economic_evidence_source += "; outputs/phase16/economic_viability_frontier.csv"
+        economic_blocker.append("Phase 16 economic viability frontier quantifies break-even cost and gross-edge gaps, but it is proxy-only")
     rows.append(
         {
             "strategy_id": sid,
@@ -254,7 +258,7 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "gate_status": "blocked",
             "evidence_value": None if retail is None else retail.get("mean_net_return"),
             "blocker": "; ".join(economic_blocker),
-            "evidence_source": "outputs/phase12/execution_summary.csv; outputs/phase12/cost_schedule.csv",
+            "evidence_source": economic_evidence_source,
         }
     )
 

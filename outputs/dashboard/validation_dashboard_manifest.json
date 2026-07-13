@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T22:05:13.952840+00:00",
+  "generated_utc": "2026-07-13T22:12:30.680910+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -10,6 +10,7 @@
     "metric_catalog": "outputs\\phase16\\metric_catalog.csv",
     "predictive": "outputs\\phase16\\predictive_proxy_diagnostics.csv",
     "trading": "outputs\\phase16\\trading_metric_scoreboard.csv",
+    "economic": "outputs\\phase16\\economic_viability_frontier.csv",
     "markout": "outputs\\phase16\\markout_mae_mfe_summary.csv",
     "gaps": "outputs\\phase17\\implementation_gap_backlog.csv"
   },
@@ -28,6 +29,9 @@
     "promoted_strategies": 0,
     "acceptance_blockers": 50,
     "metric_catalog_rows": 28,
+    "economic_viability_rows": 27,
+    "economic_viability_net_positive_rows": 4,
+    "economic_viability_retail_stress_positive_rows": 2,
     "acceptance_grade_metrics": 0,
     "missing_metrics": 0,
     "p1_gaps": 0
@@ -35,8 +39,8 @@
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "95ddff8b6442a29be8a67d2789e7124f0b8ab570",
-  "configuration_hash": "0790063c8bad4202710de871bf09187615e3446c8024d2ef34df3d0a46892127",
+  "generator_version": "550e79f267a43c61affd60bef76ac990d7a79d38",
+  "configuration_hash": "d6d6e2f11826a3d52c5594902f9a9de12e80a86568e03c804a2d4e0cd3f11f1b",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -44,5 +48,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-13T22:05:13.952840+00:00"
+  "creation_timestamp": "2026-07-13T22:12:30.680910+00:00"
 }
