@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:20:31.548904+00:00",
+  "generated_utc": "2026-07-13T19:25:34.588313+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -100,6 +100,9 @@
     "phase17_missing_deliverables": 0,
     "phase17_blocked_work_packages": 0,
     "phase17_p0_gaps": 0,
+    "validation_dashboard_summary_rows": 10,
+    "validation_dashboard_promoted_strategies": 0,
+    "validation_dashboard_p1_gaps": 8,
     "replay_validation_tiers": 3,
     "replay_validation_deterministic_tiers": 3,
     "phase18_stack_decision_rows": 21,
@@ -229,6 +232,7 @@
     "replay_validation_summary",
     "stage_a1_horizon_coverage",
     "stage_a1_open_window_coverage",
-    "stage_a1_quality"
+    "stage_a1_quality",
+    "validation_dashboard_summary"
   ]
 }

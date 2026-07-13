@@ -1,0 +1,27 @@
+{
+  "generated_utc": "2026-07-13T19:25:20.195568+00:00",
+  "inputs": {
+    "quality": "outputs\\phase14\\quality_gate_summary.csv",
+    "acceptance": "outputs\\phase15\\strategy_acceptance_summary.csv",
+    "blockers": "outputs\\phase15\\acceptance_blockers.csv",
+    "metric_catalog": "outputs\\phase16\\metric_catalog.csv",
+    "predictive": "outputs\\phase16\\predictive_proxy_diagnostics.csv",
+    "trading": "outputs\\phase16\\trading_metric_scoreboard.csv",
+    "markout": "outputs\\phase16\\markout_mae_mfe_summary.csv",
+    "gaps": "outputs\\phase17\\implementation_gap_backlog.csv"
+  },
+  "summary": {
+    "quality_checks": 24,
+    "quality_warn_checks": 1,
+    "quality_fail_checks": 0,
+    "strategies": 11,
+    "promoted_strategies": 0,
+    "acceptance_blockers": 55,
+    "metric_catalog_rows": 27,
+    "acceptance_grade_metrics": 0,
+    "missing_metrics": 3,
+    "p1_gaps": 8
+  },
+  "scope": "static_validation_dashboard_not_promotion_evidence",
+  "not_acceptance_result": true
+}

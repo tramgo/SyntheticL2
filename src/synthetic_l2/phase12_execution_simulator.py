@@ -124,6 +124,8 @@ def _simulate_strategy_profile(
             "mid_price",
             "next_mid_price",
             "spread_ticks",
+            "local_volatility_6",
+            "event_intensity_proxy",
             "is_market_shock_day",
             "is_symbol_shock",
         ],
@@ -142,6 +144,9 @@ def _simulate_strategy_profile(
     trades["net_return"] = trades["gross_return"] - trades["cost_return"]
     trades["notional"] = 1.0
     trades["net_pnl_units"] = trades["net_return"] * trades["notional"]
+    trades["volatility_bucket"] = _tertile_bucket(trades["local_volatility_6"], ["low_volatility", "medium_volatility", "high_volatility"])
+    liquidity_score = trades["event_intensity_proxy"].astype(float) / trades["spread_ticks"].clip(lower=1).astype(float)
+    trades["liquidity_bucket"] = _tertile_bucket(liquidity_score, ["low_liquidity", "medium_liquidity", "high_liquidity"])
 
     summary = {
         "strategy_id": strategy_id,
@@ -160,6 +165,18 @@ def _simulate_strategy_profile(
         "status": "simulated_marketable_proxy_not_acceptance",
     }
     return summary, trades
+
+
+def _tertile_bucket(values: pd.Series, labels: list[str]) -> pd.Series:
+    numeric = values.astype(float).replace([np.inf, -np.inf], np.nan)
+    if numeric.notna().sum() == 0 or numeric.nunique(dropna=True) <= 1:
+        return pd.Series(labels[1], index=values.index, dtype="object")
+    ranked = numeric.rank(method="first")
+    try:
+        bucket = pd.qcut(ranked, q=3, labels=labels, duplicates="drop")
+        return bucket.astype("object").fillna(labels[1])
+    except ValueError:
+        return pd.Series(labels[1], index=values.index, dtype="object")
 
 
 def _deterministic_even_sample(frame: pd.DataFrame, max_rows: int) -> pd.DataFrame:

@@ -73,7 +73,7 @@ DELIVERABLES = [
     ("WP9", "shared feature interface", "implemented_proxy", "outputs/phase11/strategy_feature_availability.csv", "Strategy-feature availability matrix exists."),
     ("WP9", "baseline strategies", "implemented_proxy", "outputs/phase11/baseline_strategy_matrix.csv", "Baseline registry exists."),
     ("WP9", "parameter registry", "implemented_proxy", "outputs/phase13/parameter_grid.csv", "Initial parameter grid exists."),
-    ("WP10", "synthetic realism dashboard", "partial_current", "outputs/phase14/phase14_quality_validation_report.md", "Quality report exists; no interactive dashboard yet."),
+    ("WP10", "synthetic realism dashboard", "implemented_proxy", "outputs/dashboard/synthetic_l2_validation_dashboard.html", "Static validation dashboard exists over Phase 14-17 quality, acceptance, metrics and gap evidence."),
     ("WP10", "strategy performance reports", "implemented_proxy", "outputs/phase16/phase16_metrics_reporting_report.md", "Proxy performance report exists."),
     ("WP10", "robustness matrix", "implemented_proxy", "outputs/phase13/experiment_run_summary.csv", "Pre-registered experiment rows have a deterministic proxy smoke ledger; full robustness validation is not acceptance-grade yet."),
     ("WP10", "failed-test log", "implemented", "outputs/phase15/acceptance_blockers.csv", "Acceptance blockers provide failed-test log."),
@@ -178,7 +178,7 @@ def _recommend_next_action(wp_id: str, deliverable: str, status: str) -> str:
         return "Build replay CLI over Tier A/Tier B Parquet with symbol/date/profile filters and deterministic ordering checks."
     if status == "missing" and wp_id == "WP8":
         return "Extend execution simulator with order lifecycle, queue/partial-fill model and risk-control state."
-    if wp_id == "WP10" and "dashboard" in deliverable:
+    if wp_id == "WP10" and "dashboard" in deliverable and status.startswith("partial"):
         return "Create static or interactive dashboard from Phase 14-16 CSV outputs."
     if wp_id == "WP13":
         return "No action mapped."
