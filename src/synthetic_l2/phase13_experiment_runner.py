@@ -162,6 +162,99 @@ def build_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def build_profile_robustness_ledger(
+    registry: pd.DataFrame,
+    signal_diagnostics: pd.DataFrame,
+    execution_summary: pd.DataFrame,
+    execution_profiles: list[str],
+) -> pd.DataFrame:
+    ledgers = []
+    for profile in execution_profiles:
+        profile_ledger = build_experiment_run_ledger(
+            registry=registry,
+            signal_diagnostics=signal_diagnostics,
+            execution_summary=execution_summary,
+            execution_profile=profile,
+        )
+        profile_ledger["robustness_axis"] = "execution_profile"
+        ledgers.append(profile_ledger)
+    return pd.concat(ledgers, ignore_index=True) if ledgers else pd.DataFrame()
+
+
+def build_profile_robustness_summary(profile_ledger: pd.DataFrame) -> pd.DataFrame:
+    rows = []
+    if profile_ledger.empty:
+        return pd.DataFrame(
+            columns=[
+                "strategy_id",
+                "execution_profiles_evaluated",
+                "base_profile_rows",
+                "positive_base_profiles",
+                "all_profiles_positive",
+                "retail_profile_positive",
+                "stressed_profile_positive",
+                "worst_profile_base_net_return",
+                "best_profile_base_net_return",
+                "profile_base_net_return_range",
+                "interpretable_negative_control_rows",
+                "passed_negative_control_rows",
+                "profile_robustness_status",
+                "acceptance_eligible",
+                "blocker",
+            ]
+        )
+
+    for strategy_id, group in profile_ledger.groupby("strategy_id", sort=True):
+        bases = group[group["control_id"].astype(str) == "BASE"].copy()
+        profile_base = (
+            bases.groupby("execution_profile", sort=True)
+            .agg(median_base_net_return=("proxy_mean_net_return", "median"))
+            .reset_index()
+        )
+        controls = group[group["control_id"].astype(str) != "BASE"]
+        interpretable = controls[controls["negative_control_interpretable"].astype(bool)]
+        passed = interpretable[interpretable["negative_control_result"].astype(str) == "pass_proxy"]
+        positive_profiles = profile_base[profile_base["median_base_net_return"] > 0]
+        profile_values = profile_base["median_base_net_return"].astype(float)
+        rows.append(
+            {
+                "strategy_id": strategy_id,
+                "execution_profiles_evaluated": int(profile_base["execution_profile"].nunique()),
+                "base_profile_rows": int(len(profile_base)),
+                "positive_base_profiles": int(len(positive_profiles)),
+                "all_profiles_positive": bool(len(profile_base) > 0 and len(positive_profiles) == len(profile_base)),
+                "retail_profile_positive": bool(
+                    (
+                        profile_base[
+                            profile_base["execution_profile"].astype(str) == "retail_marketable_default"
+                        ]["median_base_net_return"]
+                        > 0
+                    ).any()
+                ),
+                "stressed_profile_positive": bool(
+                    (
+                        profile_base[profile_base["execution_profile"].astype(str) == "stressed_retail"][
+                            "median_base_net_return"
+                        ]
+                        > 0
+                    ).any()
+                ),
+                "worst_profile_base_net_return": float(profile_values.min()) if len(profile_values) else 0.0,
+                "best_profile_base_net_return": float(profile_values.max()) if len(profile_values) else 0.0,
+                "profile_base_net_return_range": float(profile_values.max() - profile_values.min()) if len(profile_values) else 0.0,
+                "interpretable_negative_control_rows": int(len(interpretable)),
+                "passed_negative_control_rows": int(len(passed)),
+                "profile_robustness_status": "multi_profile_proxy_not_acceptance",
+                "acceptance_eligible": False,
+                "blocker": (
+                    "Multi-profile proxy robustness evidence exists, but full multi-seed, walk-forward, "
+                    "parameter-smoothness, holdout-generator and real-data rerun evidence is still missing."
+                ),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def build_control_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     return (
         ledger.groupby("control_id", sort=True)
@@ -188,7 +281,13 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, manifest: dict, summary: pd.DataFrame, control_summary: pd.DataFrame) -> None:
+def write_report(
+    output_dir: Path,
+    manifest: dict,
+    summary: pd.DataFrame,
+    control_summary: pd.DataFrame,
+    profile_summary: pd.DataFrame,
+) -> None:
     lines = [
         "# Phase 13 Experiment Run Smoke Report",
         "",
@@ -205,6 +304,7 @@ def write_report(output_dir: Path, manifest: dict, summary: pd.DataFrame, contro
         f"- Strategies: {manifest['strategies']}",
         f"- Controls: {manifest['controls']}",
         f"- Execution profile: {manifest['execution_profile']}",
+        f"- Robustness execution profiles: {manifest['robustness_execution_profiles']}",
         f"- Acceptance eligible: {manifest['acceptance_eligible']}",
         "",
         "## Strategy Robustness Smoke Summary",
@@ -215,9 +315,13 @@ def write_report(output_dir: Path, manifest: dict, summary: pd.DataFrame, contro
         "",
         _markdown_table(control_summary),
         "",
+        "## Multi-Profile Robustness Proxy Summary",
+        "",
+        _markdown_table(profile_summary),
+        "",
         "## Caveat",
         "",
-        "The output closes the bookkeeping gap between a planned registry and an auditable proxy run ledger, but it does not close the acceptance-grade robustness gate.",
+        "The output closes the bookkeeping gap between a planned registry and auditable proxy run ledgers, including execution-profile sensitivity, but it does not close the acceptance-grade robustness gate.",
         "",
     ]
     (output_dir / "experiment_run_smoke_report.md").write_text("\n".join(lines), encoding="utf-8")
@@ -229,6 +333,7 @@ def run_phase13_experiment_smoke(
     execution_summary_path: Path,
     output_dir: Path,
     execution_profile: str,
+    robustness_profiles: list[str] | None = None,
 ) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     registry = _read_csv(registry_path)
@@ -238,10 +343,21 @@ def run_phase13_experiment_smoke(
     ledger = build_experiment_run_ledger(registry, signal_diagnostics, execution_summary, execution_profile)
     summary = build_summary(ledger)
     control_summary = build_control_summary(ledger)
+    if robustness_profiles is None:
+        robustness_profiles = sorted(execution_summary["execution_profile"].astype(str).unique().tolist())
+    profile_ledger = build_profile_robustness_ledger(
+        registry=registry,
+        signal_diagnostics=signal_diagnostics,
+        execution_summary=execution_summary,
+        execution_profiles=robustness_profiles,
+    )
+    profile_summary = build_profile_robustness_summary(profile_ledger)
 
     ledger.to_csv(output_dir / "experiment_run_ledger.csv", index=False)
     summary.to_csv(output_dir / "experiment_run_summary.csv", index=False)
     control_summary.to_csv(output_dir / "negative_control_run_summary.csv", index=False)
+    profile_ledger.to_csv(output_dir / "experiment_profile_robustness_ledger.csv", index=False)
+    profile_summary.to_csv(output_dir / "experiment_profile_robustness_summary.csv", index=False)
 
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
@@ -253,10 +369,13 @@ def run_phase13_experiment_smoke(
         "registered_rows_evaluated": int(len(ledger)),
         "strategies": int(ledger["strategy_id"].nunique()),
         "controls": int(ledger["control_id"].nunique()),
+        "robustness_execution_profiles": robustness_profiles,
+        "profile_robustness_rows": int(len(profile_ledger)),
+        "profile_robustness_summary_rows": int(len(profile_summary)),
         "base_rows": int((ledger["control_id"].astype(str) == "BASE").sum()),
         "negative_control_rows": int((ledger["control_id"].astype(str) != "BASE").sum()),
         "acceptance_eligible": False,
-        "run_scope": "deterministic_proxy_smoke_not_full_experiment",
+        "run_scope": "deterministic_proxy_smoke_and_profile_robustness_not_full_experiment",
     }
     manifest.update(
         reproducibility_fields(
@@ -267,11 +386,18 @@ def run_phase13_experiment_smoke(
                 "signal_diagnostics_path": str(signal_diagnostics_path),
                 "execution_summary_path": str(execution_summary_path),
             },
-            parameters={"execution_profile": execution_profile, "run_scope": manifest["run_scope"], "control_transforms": CONTROL_TRANSFORMS},
+            parameters={
+                "execution_profile": execution_profile,
+                "robustness_execution_profiles": robustness_profiles,
+                "run_scope": manifest["run_scope"],
+                "control_transforms": CONTROL_TRANSFORMS,
+            },
             outputs={
                 "experiment_run_ledger": str(output_dir / "experiment_run_ledger.csv"),
                 "experiment_run_summary": str(output_dir / "experiment_run_summary.csv"),
                 "negative_control_run_summary": str(output_dir / "negative_control_run_summary.csv"),
+                "experiment_profile_robustness_ledger": str(output_dir / "experiment_profile_robustness_ledger.csv"),
+                "experiment_profile_robustness_summary": str(output_dir / "experiment_profile_robustness_summary.csv"),
                 "report": str(output_dir / "experiment_run_smoke_report.md"),
                 "manifest": str(output_dir / "experiment_run_manifest.json"),
             },
@@ -282,7 +408,7 @@ def run_phase13_experiment_smoke(
         )
     )
     (output_dir / "experiment_run_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, manifest, summary, control_summary)
+    write_report(output_dir, manifest, summary, control_summary, profile_summary)
 
 
 def parse_args() -> argparse.Namespace:
@@ -292,6 +418,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--execution-summary", type=Path, default=Path("outputs/phase12/execution_summary.csv"))
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/phase13"))
     parser.add_argument("--execution-profile", default="retail_marketable_default")
+    parser.add_argument(
+        "--robustness-profiles",
+        nargs="*",
+        default=None,
+        help="Execution profiles to include in the multi-profile robustness proxy. Defaults to all profiles in Phase 12 execution_summary.",
+    )
     return parser.parse_args()
 
 
@@ -303,6 +435,7 @@ def main() -> None:
         execution_summary_path=args.execution_summary,
         output_dir=args.output_dir,
         execution_profile=args.execution_profile,
+        robustness_profiles=args.robustness_profiles,
     )
 
 

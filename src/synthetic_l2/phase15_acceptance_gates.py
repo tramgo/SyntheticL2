@@ -129,9 +129,11 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             run_rows = int(strategy_run.iloc[0].get("run_rows", 0))
             robustness_evidence_source = "outputs/phase13/experiment_registry.csv; outputs/phase13/experiment_run_summary.csv"
             robustness_blocker = (
-                "Phase 13 has a deterministic proxy smoke ledger, but no acceptance-grade full multi-seed, "
-                "walk-forward, parameter-smoothness, holdout or real-data rerun evidence."
+                "Phase 13 has deterministic proxy smoke and multi-profile robustness ledgers, but no acceptance-grade full multi-seed, "
+                "walk-forward, parameter-smoothness, holdout-generator or real-data rerun evidence."
             )
+            if Path("outputs/phase13/experiment_profile_robustness_summary.csv").exists():
+                robustness_evidence_source += "; outputs/phase13/experiment_profile_robustness_summary.csv"
     runnable = strategy["support_level"] in {"runnable_proxy", "partial_missing_required_features"}
     retail = _exec_row(execution, sid, "retail_marketable_default")
     stressed = _exec_row(execution, sid, "stressed_retail")

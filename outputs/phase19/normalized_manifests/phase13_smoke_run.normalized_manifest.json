@@ -3,8 +3,8 @@
   "artifact_id": "phase13_smoke_run",
   "source_manifest_path": "outputs/phase13/experiment_run_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "cd48fe5da6009a803b4e59be39e8707996fe0489",
-  "configuration_hash": "bf0e9a068e5dc7d39b9f2e46d555a5fb139ccbc4a157b069116f500aa0a5d3a3",
+  "generator_version": "70cb8755627b9fe76c553c75f01695fb50eb5927",
+  "configuration_hash": "17f184b6a651ab2f8696a5317fe47c8b7a01df87c39e17122a6447339e7f3f6e",
   "random_seed": "outputs/phase13/seed_plan.csv_via_experiment_registry",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -12,7 +12,7 @@
   "scenario_ids": "outputs/phase13/experiment_registry.csv",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T21:22:38.719980+00:00",
-  "normalization_timestamp": "2026-07-13T21:23:08.854320+00:00",
+  "creation_timestamp": "2026-07-13T21:27:32.750274+00:00",
+  "normalization_timestamp": "2026-07-13T21:28:18.922610+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

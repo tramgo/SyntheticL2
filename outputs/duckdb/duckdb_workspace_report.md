@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:23:07.358051+00:00
+Generated UTC: 2026-07-13T21:28:17.410243+00:00
 
 ## Storage Decision
 
@@ -98,6 +98,10 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 13 proxy smoke strategies: 9
 - Phase 13 proxy smoke controls: 4
 - Phase 13 proxy smoke summary rows: 9
+- Phase 13 profile robustness rows: 972
+- Phase 13 profile robustness summary rows: 9
+- Phase 13 profile robustness profiles: 3
+- Phase 13 all-profile-positive strategies: 0
 - Phase 13 acceptance-eligible smoke rows: 0
 - Phase 14 quality checks: 24
 - Phase 14 pass checks: 23
