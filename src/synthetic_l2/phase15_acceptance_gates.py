@@ -276,16 +276,31 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
 
     realism_pass = quality_fail == 0 and quality_warn == 0 and runnable and strategy["support_level"] == "runnable_proxy"
     realism_evidence_source = "outputs/phase14/quality_gate_summary.csv; outputs/phase14/quality_warning_triage.csv; outputs/phase11/strategy_validation_matrix.csv"
-    realism_blocker = "Synthetic quality has warnings and/or strategy only has proxy/partial support; no holdout generator evidence."
+    realism_reasons = []
+    if quality_fail:
+        realism_reasons.append("synthetic quality has failing checks")
+    if quality_warn:
+        realism_reasons.append("synthetic quality has warning checks")
+    if not runnable or strategy["support_level"] != "runnable_proxy":
+        realism_reasons.append("strategy support is partial or unsupported by the current product")
+    realism_reasons.append("no holdout generator evidence")
+    realism_blocker = "; ".join(realism_reasons)
     if Path("outputs/phase14/holdout_generator_realism_summary.csv").exists():
         realism_evidence_source = (
             "outputs/phase14/quality_gate_summary.csv; outputs/phase14/quality_warning_triage.csv; "
             "outputs/phase14/holdout_generator_realism_summary.csv; outputs/phase11/strategy_validation_matrix.csv"
         )
-        realism_blocker = (
-            "Synthetic quality has warnings and/or strategy only has proxy/partial support; holdout generator "
-            "coverage exists as proxy evidence but has not been rerun as acceptance-grade strategy evidence."
+        realism_reasons = []
+        if quality_fail:
+            realism_reasons.append("synthetic quality has failing checks")
+        if quality_warn:
+            realism_reasons.append("synthetic quality has warning checks")
+        if not runnable or strategy["support_level"] != "runnable_proxy":
+            realism_reasons.append("strategy support is partial or unsupported by the current product")
+        realism_reasons.append(
+            "holdout generator coverage exists as proxy evidence but has not been rerun as acceptance-grade strategy evidence"
         )
+        realism_blocker = "; ".join(realism_reasons)
     rows.append(
         {
             "strategy_id": sid,

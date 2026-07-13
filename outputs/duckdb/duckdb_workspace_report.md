@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:49:33.551938+00:00
+Generated UTC: 2026-07-13T21:59:24.791372+00:00
 
 ## Storage Decision
 
@@ -109,17 +109,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 13 all-profile-positive strategies: 0
 - Phase 13 acceptance-eligible smoke rows: 0
 - Phase 14 quality checks: 24
-- Phase 14 pass checks: 23
-- Phase 14 warn checks: 1
+- Phase 14 pass checks: 24
+- Phase 14 warn checks: 0
 - Phase 14 fail checks: 0
-- Phase 14 warning triage rows: 1
-- Phase 14 realism-blocking warnings: 1
+- Phase 14 warning triage rows: 0
+- Phase 14 realism-blocking warnings: 0
 - Phase 14 holdout generator rows: 15
 - Phase 14 holdout proxy available rows: 15
+- Phase 14 real 5-minute symbol marginal rows: 32
 - Phase 15 gate rows: 55
 - Phase 15 promoted strategies: 0
 - Phase 15 blocked strategies: 11
-- Phase 15 blocker rows: 55
+- Phase 15 blocker rows: 50
 - Phase 16 metric catalog rows: 28
 - Phase 16 predictive scoreboard rows: 11
 - Phase 16 predictive proxy rows: 9

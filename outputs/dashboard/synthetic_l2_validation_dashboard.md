@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-13T21:49:29.318761+00:00
+Generated UTC: 2026-07-13T21:59:20.418842+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -9,7 +9,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 | metric | value | note |
 | --- | --- | --- |
 | quality_checks | 24 | Phase 14 quality rows |
-| quality_warn_checks | 1 | Current quality warnings |
+| quality_warn_checks | 0 | Current quality warnings |
 | quality_fail_checks | 0 | Current quality failures |
 | holdout_proxy_rows | 15 | Phase 14 holdout generator proxy rows |
 | holdout_proxy_available_rows | 15 | Holdout proxy rows structurally available |
@@ -18,7 +18,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 | full_run_lifecycle_daily_halt_rows | 21299578 | Phase 12 full-run lifecycle halt rows |
 | strategies | 11 | Phase 15 strategies |
 | promoted_strategies | 0 | Promotion allowed count |
-| acceptance_blockers | 55 | Phase 15 blocker rows |
+| acceptance_blockers | 50 | Phase 15 blocker rows |
 | metric_catalog_rows | 28 | Phase 16 metric catalog rows |
 | acceptance_grade_metrics | 0 | Acceptance-grade metrics |
 | missing_metrics | 0 | Missing metric rows |
@@ -28,8 +28,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 
 | status | checks |
 | --- | --- |
-| pass | 23 |
-| warn | 1 |
+| pass | 24 |
 
 ## Holdout Generator Realism Proxy
 
@@ -67,7 +66,7 @@ This dashboard is static research traceability output, not strategy promotion ev
 | G02_economic | 11 |
 | G03_robustness | 11 |
 | G04_risk | 11 |
-| G05_realism | 11 |
+| G05_realism | 6 |
 
 ## Metric Status
 

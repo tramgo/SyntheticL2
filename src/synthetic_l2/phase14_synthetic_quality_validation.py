@@ -28,11 +28,12 @@ def status_from_value(value: float | int | None, warn: float, fail: float, highe
     return "pass"
 
 
-def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
+def load_inputs(paths: dict[str, Path]) -> dict[str, object]:
     return {
         "real_quality": pd.read_csv(paths["real_quality"]),
         "real_price": pd.read_csv(paths["real_price"]),
         "real_depth": pd.read_csv(paths["real_depth"]),
+        "phase1_deltas_dir": paths["phase1_deltas_dir"],
         "phase4_calendar": pd.read_csv(paths["phase4_calendar"]),
         "phase5_daily": pd.read_csv(paths["phase5_daily"]),
         "phase6_summary": pd.read_csv(paths["phase6_summary"]),
@@ -40,7 +41,7 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
     }
 
 
-def level1_structural(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
+def level1_structural(inputs: dict[str, object]) -> pd.DataFrame:
     features = inputs["phase9_features"]
     phase6 = inputs["phase6_summary"]
     checks = [
@@ -93,10 +94,74 @@ def level1_structural(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     return pd.DataFrame(checks)
 
 
-def level2_marginals(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    real_price = inputs["real_price"][["symbol", "spread_ticks_median", "spread_ticks_q95", "nonzero_price_change_fraction"]]
+def real_5m_symbol_marginals(deltas_dir: Path) -> pd.DataFrame:
+    rows = []
+    for parquet_path in sorted(deltas_dir.glob("symbol=*/received_tick_deltas.parquet")):
+        frame = pq.ParquetFile(parquet_path).read(
+            columns=["trading_date", "event_ts_receive", "symbol", "mid_price", "spread_ticks", "l5_imbalance", "book_valid"],
+        ).to_pandas()
+        if frame.empty:
+            continue
+        frame = frame[frame["book_valid"].astype(bool) & frame["mid_price"].notna()].copy()
+        if frame.empty:
+            continue
+        frame["event_ts_receive"] = pd.to_datetime(frame["event_ts_receive"], utc=True, errors="coerce")
+        frame = frame[frame["event_ts_receive"].notna()].copy()
+        frame["bar_5m"] = frame["event_ts_receive"].dt.floor("5min")
+        bars = (
+            frame.sort_values(["symbol", "event_ts_receive"], kind="mergesort")
+            .groupby(["symbol", "trading_date", "bar_5m"], sort=True)
+            .agg(
+                mid_price=("mid_price", "last"),
+                spread_ticks=("spread_ticks", "median"),
+                l5_imbalance=("l5_imbalance", "median"),
+                ticks=("mid_price", "size"),
+            )
+            .reset_index()
+        )
+        bars["mid_return_5m"] = bars.groupby(["symbol", "trading_date"], sort=False)["mid_price"].pct_change()
+        rows.append(
+            bars.groupby("symbol", sort=True)
+            .agg(
+                real_5m_bars=("bar_5m", "nunique"),
+                real_ticks_in_5m_bars=("ticks", "sum"),
+                spread_ticks_median=("spread_ticks", "median"),
+                spread_ticks_q95=("spread_ticks", lambda values: values.quantile(0.95)),
+                nonzero_price_change_fraction=("mid_return_5m", lambda values: float(values.fillna(0).ne(0).mean())),
+                l5_imbalance_median=("l5_imbalance", "median"),
+            )
+            .reset_index()
+        )
+    if not rows:
+        return pd.DataFrame(
+            columns=[
+                "symbol",
+                "real_5m_bars",
+                "real_ticks_in_5m_bars",
+                "spread_ticks_median",
+                "spread_ticks_q95",
+                "nonzero_price_change_fraction",
+                "l5_imbalance_median",
+            ]
+        )
+    return pd.concat(rows, ignore_index=True)
+
+
+def level2_marginals(inputs: dict[str, object], real_5m: pd.DataFrame | None = None) -> pd.DataFrame:
+    real_price = inputs["real_price"][["symbol", "spread_ticks_median", "spread_ticks_q95", "nonzero_price_change_fraction"]].copy()
     real_depth = inputs["real_depth"][["symbol", "bid_l5_qty_median", "ask_l5_qty_median", "l5_imbalance_median"]]
     real = real_price.merge(real_depth, on="symbol", how="inner")
+    if real_5m is None:
+        real_5m = real_5m_symbol_marginals(inputs["phase1_deltas_dir"])
+    if not real_5m.empty:
+        real = real.drop(columns=["nonzero_price_change_fraction"]).merge(
+            real_5m[["symbol", "nonzero_price_change_fraction", "real_5m_bars", "real_ticks_in_5m_bars"]],
+            on="symbol",
+            how="inner",
+        )
+    else:
+        real["real_5m_bars"] = np.nan
+        real["real_ticks_in_5m_bars"] = np.nan
     synth = inputs["phase9_features"].groupby("symbol", sort=True).agg(
         spread_ticks_median=("spread_ticks", "median"),
         spread_ticks_q95=("spread_ticks", lambda s: s.quantile(0.95)),
@@ -111,6 +176,11 @@ def level2_marginals(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
         denom = joined[f"{metric}_real"].abs().replace(0, np.nan)
         rel = (diff / denom).replace([np.inf, -np.inf], np.nan)
         value = float(rel.median()) if rel.notna().any() else float(diff.median())
+        evidence = (
+            "Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates."
+            if metric != "nonzero_price_change_fraction"
+            else "Horizon-matched 5-minute real-derived bars versus current Phase 9 5-minute synthetic feature aggregates."
+        )
         rows.append(
             {
                 "level": "L2_marginal",
@@ -118,7 +188,8 @@ def level2_marginals(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
                 "symbols_compared": int(len(joined)),
                 "median_relative_or_absolute_error": value,
                 "status": status_from_value(value, 0.75, 1.5),
-                "evidence": "Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.",
+                "evidence": evidence,
+                "real_5m_bar_symbols": int(joined["real_5m_bars"].notna().sum()) if "real_5m_bars" in joined else 0,
             }
         )
     return pd.DataFrame(rows)
@@ -431,7 +502,13 @@ def warning_triage(summary: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=columns)
 
 
-def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.DataFrame, holdout: pd.DataFrame) -> None:
+def write_report(
+    output_dir: Path,
+    frames: dict[str, pd.DataFrame],
+    triage: pd.DataFrame,
+    holdout: pd.DataFrame,
+    real_5m: pd.DataFrame,
+) -> None:
     summary = pd.concat(
         [
             frame.assign(validation_table=name)
@@ -464,6 +541,10 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.D
         "",
         _markdown_table(frames["level2_marginal"]),
         "",
+        "## Real-Derived 5-Minute Symbol Marginals",
+        "",
+        _markdown_table(real_5m),
+        "",
         "## Warning Triage",
         "",
         _markdown_table(triage),
@@ -485,9 +566,10 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame], triage: pd.D
 def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     inputs = load_inputs(paths)
+    real_5m = real_5m_symbol_marginals(inputs["phase1_deltas_dir"])
     frames = {
         "level1_structural": level1_structural(inputs),
-        "level2_marginal": level2_marginals(inputs),
+        "level2_marginal": level2_marginals(inputs, real_5m=real_5m),
         "level3_temporal": level3_temporal(inputs),
         "level4_cross_sectional": level4_cross_sectional(inputs),
         "level5_conditional": level5_conditional(inputs),
@@ -496,6 +578,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
     }
     for name, frame in frames.items():
         frame.to_csv(output_dir / f"{name}.csv", index=False)
+    real_5m.to_csv(output_dir / "real_5m_symbol_marginals.csv", index=False)
     summary = pd.concat(
         [frame.assign(validation_table=name) for name, frame in frames.items() if "status" in frame.columns],
         ignore_index=True,
@@ -514,6 +597,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         "tables": list(frames),
         "summary_rows": int(len(summary)),
         "warning_triage_rows": int(len(triage)),
+        "real_5m_symbol_marginal_rows": int(len(real_5m)),
         "holdout_generator_realism_rows": int(len(holdout)),
         "holdout_proxy_available_rows": int(
             (holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()
@@ -530,6 +614,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
             outputs={
                 "quality_gate_summary": str(output_dir / "quality_gate_summary.csv"),
                 "quality_warning_triage": str(output_dir / "quality_warning_triage.csv"),
+                "real_5m_symbol_marginals": str(output_dir / "real_5m_symbol_marginals.csv"),
                 "holdout_generator_realism_summary": str(output_dir / "holdout_generator_realism_summary.csv"),
                 "report": str(output_dir / "phase14_quality_validation_report.md"),
                 "manifest": str(output_dir / "quality_validation_manifest.json"),
@@ -542,7 +627,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         )
     )
     (output_dir / "quality_validation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, frames, triage, holdout)
+    write_report(output_dir, frames, triage, holdout, real_5m)
 
 
 def parse_args() -> argparse.Namespace:
@@ -551,6 +636,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--real-quality", type=Path, default=Path("outputs/stage_a1/data_quality_report.csv"))
     parser.add_argument("--real-price", type=Path, default=Path("outputs/phase2/price_tick_calibration.csv"))
     parser.add_argument("--real-depth", type=Path, default=Path("outputs/phase2/depth_calibration.csv"))
+    parser.add_argument("--phase1-deltas-dir", type=Path, default=Path("outputs/phase1/received_tick_deltas_by_symbol"))
     parser.add_argument("--phase4-calendar", type=Path, default=Path("outputs/phase4/scenario_calendar.csv"))
     parser.add_argument("--phase5-daily", type=Path, default=Path("outputs/phase5/daily_price_summary.csv"))
     parser.add_argument("--phase6-summary", type=Path, default=Path("outputs/phase6/l2_book_summary.csv"))
@@ -564,6 +650,7 @@ def main() -> None:
         "real_quality": args.real_quality,
         "real_price": args.real_price,
         "real_depth": args.real_depth,
+        "phase1_deltas_dir": args.phase1_deltas_dir,
         "phase4_calendar": args.phase4_calendar,
         "phase5_daily": args.phase5_daily,
         "phase6_summary": args.phase6_summary,

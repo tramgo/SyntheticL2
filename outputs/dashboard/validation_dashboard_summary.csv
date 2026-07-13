@@ -1,6 +1,6 @@
 metric,value,note
 quality_checks,24,Phase 14 quality rows
-quality_warn_checks,1,Current quality warnings
+quality_warn_checks,0,Current quality warnings
 quality_fail_checks,0,Current quality failures
 holdout_proxy_rows,15,Phase 14 holdout generator proxy rows
 holdout_proxy_available_rows,15,Holdout proxy rows structurally available
@@ -9,7 +9,7 @@ full_run_lifecycle_fill_models,3,Phase 12 full-run fill models
 full_run_lifecycle_daily_halt_rows,21299578,Phase 12 full-run lifecycle halt rows
 strategies,11,Phase 15 strategies
 promoted_strategies,0,Promotion allowed count
-acceptance_blockers,55,Phase 15 blocker rows
+acceptance_blockers,50,Phase 15 blocker rows
 metric_catalog_rows,28,Phase 16 metric catalog rows
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows

@@ -1,5 +1,5 @@
-level,metric,symbols_compared,median_relative_or_absolute_error,status,evidence
-L2_marginal,spread_ticks_median,32,1.1368683772148678e-12,pass,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.
-L2_marginal,spread_ticks_q95,32,1.0737090229252167e-12,pass,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.
-L2_marginal,nonzero_price_change_fraction,32,1.2047214283997036,warn,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.
-L2_marginal,l5_imbalance_median,32,0.48633189256104936,pass,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.
+level,metric,symbols_compared,median_relative_or_absolute_error,status,evidence,real_5m_bar_symbols
+L2_marginal,spread_ticks_median,32,1.1368683772148678e-12,pass,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.,32
+L2_marginal,spread_ticks_q95,32,1.0737090229252167e-12,pass,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.,32
+L2_marginal,nonzero_price_change_fraction,32,0.010953956711197105,pass,Horizon-matched 5-minute real-derived bars versus current Phase 9 5-minute synthetic feature aggregates.,32
+L2_marginal,l5_imbalance_median,32,0.48633189256104936,pass,Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates.,32

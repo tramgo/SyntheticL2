@@ -1,6 +1,6 @@
 # Phase 14 Synthetic Data Quality Validation Report
 
-Generated UTC: 2026-07-13T21:38:42.511747+00:00
+Generated UTC: 2026-07-13T21:58:55.281182+00:00
 
 ## Scope
 
@@ -12,8 +12,7 @@ It is a quality gate diagnostic, not strategy acceptance.
 | level | status | checks |
 | --- | --- | --- |
 | L1_structural | pass | 5 |
-| L2_marginal | pass | 3 |
-| L2_marginal | warn | 1 |
+| L2_marginal | pass | 4 |
 | L3_temporal | pass | 4 |
 | L4_cross_sectional | pass | 2 |
 | L5_conditional | pass | 4 |
@@ -32,18 +31,53 @@ It is a quality gate diagnostic, not strategy acceptance.
 
 ## Level 2 Marginal
 
-| level | metric | symbols_compared | median_relative_or_absolute_error | status | evidence |
-| --- | --- | --- | --- | --- | --- |
-| L2_marginal | spread_ticks_median | 32 | 1.13687e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
-| L2_marginal | spread_ticks_q95 | 32 | 1.07371e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
-| L2_marginal | nonzero_price_change_fraction | 32 | 1.20472 | warn | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
-| L2_marginal | l5_imbalance_median | 32 | 0.486332 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. |
+| level | metric | symbols_compared | median_relative_or_absolute_error | status | evidence | real_5m_bar_symbols |
+| --- | --- | --- | --- | --- | --- | --- |
+| L2_marginal | spread_ticks_median | 32 | 1.13687e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. | 32 |
+| L2_marginal | spread_ticks_q95 | 32 | 1.07371e-12 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. | 32 |
+| L2_marginal | nonzero_price_change_fraction | 32 | 0.010954 | pass | Horizon-matched 5-minute real-derived bars versus current Phase 9 5-minute synthetic feature aggregates. | 32 |
+| L2_marginal | l5_imbalance_median | 32 | 0.486332 | pass | Real one-day symbol calibration versus current Phase 9 synthetic feature aggregates. | 32 |
+
+## Real-Derived 5-Minute Symbol Marginals
+
+| symbol | real_5m_bars | real_ticks_in_5m_bars | spread_ticks_median | spread_ticks_q95 | nonzero_price_change_fraction | l5_imbalance_median |
+| --- | --- | --- | --- | --- | --- | --- |
+| ADANIPORTS | 77 | 13885 | 4 | 7 | 0.974026 | 0.158513 |
+| AXISBANK | 77 | 18308 | 2 | 3 | 0.961039 | -0.0524158 |
+| BAJAJ-AUTO | 77 | 25140 | 6 | 8 | 0.987013 | 0.00343643 |
+| BANKBEES | 76 | 18915 | 20 | 28 | 0.973684 | 0.167612 |
+| BHARTIARTL | 77 | 19559 | 3 | 6 | 0.987013 | -0.00562567 |
+| BPCL | 77 | 10683 | 1 | 3 | 0.883117 | -0.0525606 |
+| BRITANNIA | 77 | 8525 | 4 | 5 | 0.948052 | 0.00571429 |
+| CIPLA | 77 | 11663 | 4 | 6 | 0.961039 | 0.413088 |
+| DRREDDY | 77 | 12256 | 4 | 5 | 0.974026 | 0.106969 |
+| GOLDBEES | 76 | 12980 | 1 | 2 | 0.907895 | -0.157629 |
+| HCLTECH | 77 | 29265 | 3 | 4.2 | 0.974026 | -0.18416 |
+| HDFCBANK | 77 | 35958 | 2 | 3 | 0.974026 | -0.440181 |
+| HINDUNILVR | 77 | 12172 | 4 | 7 | 0.948052 | 0.0517375 |
+| ICICIBANK | 77 | 26473 | 2 | 3.2 | 0.948052 | -0.252836 |
+| INFY | 77 | 34510 | 2 | 3 | 0.987013 | -0.110118 |
+| ITBEES | 76 | 11479 | 1 | 2 | 0.921053 | 0.576055 |
+| ITC | 77 | 12378 | 1 | 2 | 0.87013 | 0.329611 |
+| JUNIORBEES | 76 | 17440 | 28 | 43.875 | 0.986842 | -0.668286 |
+| KOTAKBANK | 77 | 14090 | 2 | 3 | 0.961039 | -0.0830894 |
+| LT | 77 | 19465 | 5 | 9.2 | 0.987013 | 0.0146341 |
+| M&M | 77 | 25698 | 3 | 7 | 0.974026 | -0.154859 |
+| MARUTI | 77 | 27644 | 4 | 5 | 0.961039 | -0.0490956 |
+| NESTLEIND | 77 | 12917 | 4 | 6 | 0.961039 | 0.270278 |
+| NIFTYBEES | 76 | 22412 | 4 | 8 | 0.921053 | 0.38671 |
+| ONGC | 77 | 17304 | 4 | 7 | 0.974026 | 0.03409 |
+| RELIANCE | 77 | 26055 | 2 | 3 | 0.948052 | 0.264917 |
+| SBIN | 77 | 24727 | 2 | 3 | 0.987013 | 0.0470679 |
+| SUNPHARMA | 77 | 14609 | 3 | 6.2 | 0.948052 | -0.160256 |
+| TCS | 77 | 36466 | 4 | 5 | 0.974026 | -0.038875 |
+| TECHM | 77 | 19123 | 5 | 6 | 0.974026 | -0.0664458 |
+| ULTRACEMCO | 77 | 8385 | 3 | 5 | 0.948052 | 0.259832 |
+| WIPRO | 77 | 20333 | 4 | 5 | 0.961039 | -0.0593338 |
 
 ## Warning Triage
 
-| level | validation_table | metric | status | observed_value | acceptance_impact | root_cause | next_required_evidence | not_acceptance_waiver |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| L2_marginal | level2_marginal | nonzero_price_change_fraction | warn | 1.20472 | blocks_realism_gate | Current Phase 9 features are 5-minute synthetic state/features, while the calibration reference is one-day received-tick activity; price-change frequency is therefore not expected to match tick-level nonzero-change frequency without a dedicated event/tick generator or horizon-specific tolerance. | Either add a horizon-matched comparison for 5-minute synthetic features versus 5-minute real-derived features, or introduce a tick/event-level generator that can target received-tick nonzero price-change frequency directly. | True |
+_No rows._
 
 ## Holdout Generator Realism Proxy
 
