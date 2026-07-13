@@ -1,0 +1,55 @@
+{
+  "generated_utc": "2026-07-13T20:49:58.167994+00:00",
+  "phase19_dir": "outputs\\phase19",
+  "artifact_count": 25,
+  "field_check_count": 250,
+  "passed": true,
+  "results": [
+    {
+      "name": "all_audited_artifacts_native_exact_ready",
+      "passed": true,
+      "observed": "25/25",
+      "expected": "25/25",
+      "detail": "Artifacts not exact-ready: none"
+    },
+    {
+      "name": "no_missing_source_manifest_fields",
+      "passed": true,
+      "observed": 0,
+      "expected": 0,
+      "detail": "Artifacts with missing fields: none"
+    },
+    {
+      "name": "no_missing_or_unreadable_manifests",
+      "passed": true,
+      "observed": 0,
+      "expected": 0,
+      "detail": "Artifacts with missing/unreadable manifests: none"
+    },
+    {
+      "name": "all_normalized_overlays_ready",
+      "passed": true,
+      "observed": "25/25",
+      "expected": "25/25",
+      "detail": "Overlay artifacts not ready: none"
+    },
+    {
+      "name": "no_normalizer_default_fields",
+      "passed": true,
+      "observed": 0,
+      "expected": 0,
+      "detail": "All normalized overlay values should be sourced from exact or alias fields in source manifests."
+    },
+    {
+      "name": "remediation_is_complete_exact_only",
+      "passed": true,
+      "observed": {
+        "complete_exact": 250
+      },
+      "expected": {
+        "complete_exact": 250
+      },
+      "detail": "Remediation rows should not require add-field, alias-normalization or manifest recovery actions."
+    }
+  ]
+}

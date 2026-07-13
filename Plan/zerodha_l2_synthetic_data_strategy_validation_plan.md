@@ -2158,7 +2158,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `normalized_manifest_overlay_manifest.json`;
 - `normalized_manifest_overlay_summary.csv`;
 - `normalized_manifest_field_sources.csv`;
-- `normalized_manifests/*.normalized_manifest.json`.
+- `normalized_manifests/*.normalized_manifest.json`;
+- `reproducibility_gate_result.json`;
+- `reproducibility_gate_report.md`.
 
 The current completed run audits 10 required reproducibility fields across 25 phase/workspace/dashboard manifests, producing 250 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 25 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `dashboard` and `duckdb`.
 
@@ -2167,6 +2169,8 @@ The remediation layer now emits a normalized reproducibility manifest template a
 The normalized manifest overlay still creates exact-field manifest overlays for all 25 audited artifacts. The overlay now has 25 exact-field-ready artifacts and 250 normalized field rows, with all 250 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
 Important Phase 19 caveat: this phase now proves native reproducibility metadata coverage for the 25 audited manifests, not byte-for-byte deterministic regeneration of every large Parquet/table artifact and not coverage for future artifact classes that are not yet registered in the Phase 19 manifest-candidate list. New phases or dashboards must be added to the audit candidate list and emit the same normalized manifest schema before they can be treated as exact-regeneration-ready.
+
+The regression guardrail is `python scripts/run_reproducibility_gate.py`. It fails if the 25/25 native exact-ready invariant, zero missing/unreadable manifests, 25/25 normalized-overlay readiness, zero normalizer-default fields, or `complete_exact`-only remediation state regresses.
 
 ---
 

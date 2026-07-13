@@ -23,3 +23,7 @@ Current research scope includes:
 - deterministic replay tooling over Phase 9 tiered products.
 
 No strategy is currently promoted for live use. Existing outputs are engineering/proxy evidence unless a later acceptance gate explicitly marks them as acceptance-grade.
+
+Useful guardrail:
+
+- `python scripts/run_reproducibility_gate.py` fails if Phase 19 native reproducibility coverage regresses from the current 25/25 exact-ready audited manifests.
