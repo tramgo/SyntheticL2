@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:39:30.763527+00:00
+Generated UTC: 2026-07-13T21:49:33.551938+00:00
 
 ## Storage Decision
 
@@ -72,10 +72,15 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 strategies simulated: 9
 - Phase 12 total simulated trades: 10375860
 - Phase 12 trade sample rows: 249993
-- Phase 12 cost components: 13
+- Phase 12 cost components: 14
 - Phase 12 full-run risk rows: 27
 - Phase 12 full-run daily-loss warn days: 1113
 - Phase 12 full-run drawdown warn days: 1209
+- Phase 12 full-run lifecycle risk rows: 81
+- Phase 12 full-run lifecycle daily rows: 4932
+- Phase 12 full-run lifecycle fill models: 3
+- Phase 12 full-run lifecycle daily halt rows: 21299578
+- Phase 12 full-run lifecycle position-breach rows: 9421524
 - Phase 12 event-backtest order rows: 6480
 - Phase 12 event-backtest order models: 6
 - Phase 12 event-backtest P&L rows: 6480
@@ -141,7 +146,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 missing deliverables: 0
 - Phase 17 blocked work packages: 0
 - Phase 17 P0 gaps: 0
-- Validation dashboard summary rows: 12
+- Validation dashboard summary rows: 15
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

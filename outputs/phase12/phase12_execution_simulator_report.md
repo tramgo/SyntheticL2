@@ -1,6 +1,6 @@
 # Phase 12 Execution Simulator Report
 
-Generated UTC: 2026-07-13T21:22:12.023451+00:00
+Generated UTC: 2026-07-13T21:48:49.111707+00:00
 
 ## Scope
 
@@ -80,6 +80,92 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 | S09 | stressed_retail | 567805 | 63 | -1.83695e+06 | -6472.91 | -1.83647e+06 | 63 | 63 | 63 | full_execution_summary_proxy_no_fills |
 | S09 | zero_latency_spread_only_control | 590612 | 63 | -911328 | -6343.36 | -930397 | 51 | 53 | 63 | full_execution_summary_proxy_no_fills |
 
+## Full-Run Lifecycle / Fill-Adjusted Risk Proxy Summary
+
+| strategy_id | execution_profile | fill_model | orders | mean_fill_ratio | filled_net_pnl_inr | risk_adjusted_net_pnl_inr | worst_daily_risk_adjusted_net_pnl_inr | tail_loss_1pct_filled_pnl_inr | max_intraday_drawdown_inr | max_abs_position_units | daily_halt_rows | risk_evidence_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S01 | retail_marketable_default | neutral_partial | 160471 | 0.723818 | 7.58e+07 | 7.58742e+07 | -75482.5 | -4825.39 | -181226 | 1245 | 1156 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | retail_marketable_default | optimistic_marketable | 160471 | 0.991478 | 1.02923e+08 | 1.03082e+08 | -76395.4 | -6648.71 | -313393 | 1660 | 3554 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | retail_marketable_default | pessimistic_partial | 160471 | 0.405851 | 4.34786e+07 | 4.34786e+07 | -10713.5 | -2740.89 | -34952.7 | 747 | 0 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | stressed_retail | neutral_partial | 158070 | 0.726291 | -1.24716e+07 | 6.89391e+06 | -78550.3 | -4541.44 | -3.2853e+06 | 1183.5 | 71717 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | stressed_retail | optimistic_marketable | 158070 | 0.992315 | -1.76045e+07 | 9.6519e+06 | -79882.1 | -6295.44 | -4.38353e+06 | 1578 | 79915 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | stressed_retail | pessimistic_partial | 158070 | 0.409941 | -6.42734e+06 | 3.27099e+06 | -76825 | -2632.97 | -1.96787e+06 | 710.1 | 59325 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | zero_latency_spread_only_control | neutral_partial | 166760 | 0.723504 | -9.39421e+07 | -4.78506e+06 | -79039.1 | -5749.41 | -5.51772e+06 | 1359.75 | 156066 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | zero_latency_spread_only_control | optimistic_marketable | 166760 | 0.991168 | -1.30417e+08 | -4.82783e+06 | -79837.1 | -8147.21 | -7.35696e+06 | 1813 | 159044 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S01 | zero_latency_spread_only_control | pessimistic_partial | 166760 | 0.405841 | -5.08599e+07 | -4.74928e+06 | -78412.3 | -3173.59 | -3.31063e+06 | 815.85 | 144061 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | retail_marketable_default | neutral_partial | 879151 | 0.719796 | -7.13472e+07 | -4.7811e+06 | -80098.8 | -4993.81 | -1.72374e+06 | 273.86 | 812367 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | retail_marketable_default | optimistic_marketable | 879151 | 0.990631 | -9.92684e+07 | -4.7945e+06 | -81241 | -6902.46 | -2.39034e+06 | 389.19 | 830520 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | retail_marketable_default | pessimistic_partial | 879151 | 0.397913 | -3.82282e+07 | -4.75055e+06 | -77166.6 | -2836.13 | -1.03086e+06 | 156.9 | 755561 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | stressed_retail | neutral_partial | 870977 | 0.720118 | -8.95442e+07 | -4.76835e+06 | -77969.8 | -4899.92 | -2.24408e+06 | 302.05 | 825407 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | stressed_retail | optimistic_marketable | 870977 | 0.990745 | -1.23921e+08 | -4.81302e+06 | -85647.8 | -6749.27 | -3.01849e+06 | 436.1 | 839258 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | stressed_retail | pessimistic_partial | 870977 | 0.398432 | -4.87039e+07 | -4.75362e+06 | -76900.3 | -2778.54 | -1.3154e+06 | 146.85 | 784332 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | zero_latency_spread_only_control | neutral_partial | 907352 | 0.718182 | -1.79699e+07 | -3.62574e+06 | -78924.9 | -4918.37 | -1.03619e+06 | 282.93 | 630123 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | zero_latency_spread_only_control | optimistic_marketable | 907352 | 0.990104 | -2.64178e+07 | -3.71542e+06 | -78299.5 | -6844.94 | -1.68363e+06 | 393.92 | 701205 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S02 | zero_latency_spread_only_control | pessimistic_partial | 907352 | 0.395196 | -8.05356e+06 | -3.26889e+06 | -77537.7 | -2752.62 | -397466 | 151.5 | 412655 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | retail_marketable_default | neutral_partial | 273427 | 0.697521 | 9.92587e+07 | 9.98526e+07 | -76891.3 | -5294.87 | -306632 | 2503.02 | 3597 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | retail_marketable_default | optimistic_marketable | 273427 | 0.983358 | 1.3613e+08 | 1.37048e+08 | -77468.4 | -7735.3 | -408842 | 3530.68 | 4099 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | retail_marketable_default | pessimistic_partial | 273427 | 0.360408 | 5.5424e+07 | 5.56549e+07 | -75974.9 | -3039.77 | -183979 | 1480.25 | 2347 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | stressed_retail | neutral_partial | 270999 | 0.702749 | -1.32835e+07 | 1.62328e+07 | -77640.6 | -4386.59 | -4.50999e+06 | 2163.9 | 151888 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | stressed_retail | optimistic_marketable | 270999 | 0.985112 | -2.0134e+07 | 2.04956e+07 | -77931.3 | -6159.56 | -6.0221e+06 | 3341.98 | 172197 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | stressed_retail | pessimistic_partial | 270999 | 0.369092 | -5.32486e+06 | 8.64023e+06 | -76699 | -2573.81 | -2.69634e+06 | 1163.2 | 128446 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | zero_latency_spread_only_control | neutral_partial | 283411 | 0.658219 | -1.20372e+08 | -3.03774e+06 | -80597.4 | -5927.15 | -1.54705e+07 | 2098.58 | 269394 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | zero_latency_spread_only_control | optimistic_marketable | 283411 | 0.970941 | -1.82091e+08 | -2.93729e+06 | -82170 | -8987.97 | -2.58838e+07 | 3554.02 | 272891 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S03 | zero_latency_spread_only_control | pessimistic_partial | 283411 | 0.293194 | -4.8677e+07 | -3.1027e+06 | -77446.3 | -3032.82 | -5.85902e+06 | 961.95 | 254498 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | retail_marketable_default | neutral_partial | 414066 | 0.695582 | -1.06416e+07 | 8.50435e+06 | -79434.8 | -6015.88 | -2.69945e+06 | 689.28 | 288080 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | retail_marketable_default | optimistic_marketable | 414066 | 0.982899 | -1.60264e+07 | 1.20709e+07 | -79165 | -8582.59 | -3.97801e+06 | 957.22 | 294253 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | retail_marketable_default | pessimistic_partial | 414066 | 0.356708 | -4.37185e+06 | 4.28234e+06 | -76850.9 | -3403.96 | -1.20492e+06 | 376.6 | 247158 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | stressed_retail | neutral_partial | 410666 | 0.700966 | -3.93705e+07 | -3.04391e+06 | -78243.4 | -4620.53 | -2.44581e+06 | 715.59 | 373115 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | stressed_retail | optimistic_marketable | 410666 | 0.9847 | -5.58729e+07 | -3.05418e+06 | -81715.4 | -6464.16 | -3.74179e+06 | 985.41 | 379984 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | stressed_retail | pessimistic_partial | 410666 | 0.365665 | -1.99075e+07 | -2.80533e+06 | -77747.2 | -2710.51 | -1.36799e+06 | 396.15 | 339202 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | zero_latency_spread_only_control | neutral_partial | 429202 | 0.657991 | -2.66678e+07 | -1.65314e+06 | -81069.7 | -5568.97 | -3.08659e+06 | 743.05 | 334442 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | zero_latency_spread_only_control | optimistic_marketable | 429202 | 0.970886 | -3.82924e+07 | -2.55274e+06 | -79320.5 | -8316.9 | -4.28395e+06 | 1031.3 | 386418 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S04 | zero_latency_spread_only_control | pessimistic_partial | 429202 | 0.292763 | -1.30001e+07 | -1.75987e+06 | -77072.7 | -2912.95 | -1.66982e+06 | 402.75 | 225020 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | retail_marketable_default | neutral_partial | 436284 | 0.706696 | -7.20038e+07 | -3.64077e+06 | -79392.5 | -5049.4 | -3.59026e+06 | 4692.99 | 392101 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | retail_marketable_default | optimistic_marketable | 436284 | 0.987117 | -9.77493e+07 | -3.59799e+06 | -80296.3 | -6993.53 | -4.87604e+06 | 7061.01 | 399069 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | retail_marketable_default | pessimistic_partial | 436284 | 0.373949 | -4.12313e+07 | -842109 | -77140.4 | -2909.79 | -5.01997e+06 | 2523.1 | 331160 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | stressed_retail | neutral_partial | 432377 | 0.70804 | -4.75108e+07 | 6.70389e+06 | -78967.3 | -4939.91 | -7.25692e+06 | 4658.75 | 336851 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | stressed_retail | optimistic_marketable | 432377 | 0.987562 | -6.43883e+07 | 7.87261e+06 | -81087.1 | -6771.86 | -8.47126e+06 | 6992.15 | 349978 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | stressed_retail | pessimistic_partial | 432377 | 0.376195 | -2.73092e+07 | 4.44923e+06 | -76591.1 | -2819.79 | -5.63029e+06 | 2471.1 | 304069 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | zero_latency_spread_only_control | neutral_partial | 449765 | 0.697598 | 3.61173e+07 | 3.62467e+07 | -77329.7 | -4503.37 | -686945 | 4629.96 | 74310 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | zero_latency_spread_only_control | optimistic_marketable | 449765 | 0.984263 | 5.14003e+07 | 5.69152e+07 | -79601.2 | -6292.8 | -1.80153e+06 | 7243.04 | 109208 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S05 | zero_latency_spread_only_control | pessimistic_partial | 449765 | 0.358338 | 1.81235e+07 | 2.3641e+07 | -77283.5 | -2518.39 | -2.66366e+06 | 2387.55 | 70540 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | retail_marketable_default | neutral_partial | 33129 | 0.699173 | -4.17325e+06 | -1.77059e+06 | -80907.8 | -5750.93 | -746366 | 123.52 | 11699 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | retail_marketable_default | optimistic_marketable | 33129 | 0.984115 | -5.77481e+06 | -1.89126e+06 | -78857.5 | -8343.71 | -993178 | 181.73 | 15678 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | retail_marketable_default | pessimistic_partial | 33129 | 0.362646 | -2.2742e+06 | -1.23862e+06 | -77763.8 | -3310.31 | -450316 | 65.1 | 5642 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | stressed_retail | neutral_partial | 32935 | 0.700493 | -2.49929e+06 | -1.3544e+06 | -78420.8 | -4455.95 | -392303 | 135.26 | 8865 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | stressed_retail | optimistic_marketable | 32935 | 0.984597 | -3.47846e+06 | -1.37032e+06 | -77352.6 | -6201.07 | -524808 | 190.09 | 13043 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | stressed_retail | pessimistic_partial | 32935 | 0.36474 | -1.33848e+06 | -1.04428e+06 | -77116.2 | -2623.2 | -233442 | 70.4 | 3252 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | zero_latency_spread_only_control | neutral_partial | 34373 | 0.664462 | 514737 | 910290 | -77236.6 | -5307.83 | -311477 | 141.26 | 5042 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | zero_latency_spread_only_control | optimistic_marketable | 34373 | 0.973005 | 642134 | 1.42516e+06 | -78971.7 | -7979.75 | -435538 | 204.74 | 8892 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S06 | zero_latency_spread_only_control | pessimistic_partial | 34373 | 0.303644 | 367071 | 447312 | -75484 | -2857.14 | -178706 | 67.5 | 729 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | retail_marketable_default | neutral_partial | 229792 | 0.703949 | -1.50621e+07 | 1.52098e+06 | -77210.4 | -4612.63 | -1.5057e+06 | 1103.32 | 150634 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | retail_marketable_default | optimistic_marketable | 229792 | 0.986331 | -2.35232e+07 | 861283 | -81133.2 | -6635.99 | -1.85293e+06 | 1411.97 | 176734 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | retail_marketable_default | pessimistic_partial | 229792 | 0.369045 | -5.18484e+06 | 3.97471e+06 | -76093 | -2554.49 | -1.14319e+06 | 772.05 | 104216 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | stressed_retail | neutral_partial | 227842 | 0.706737 | -2.54463e+07 | 1.06424e+06 | -78344.1 | -4196.01 | -2.10703e+06 | 1097.27 | 157713 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | stressed_retail | optimistic_marketable | 227842 | 0.987231 | -3.63066e+07 | -930626 | -82351.4 | -6015.48 | -2.68083e+06 | 1407.64 | 180715 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | stressed_retail | pessimistic_partial | 227842 | 0.373765 | -1.26294e+07 | 1.69552e+06 | -76442.5 | -2377.58 | -1.43941e+06 | 767.4 | 122154 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | zero_latency_spread_only_control | neutral_partial | 237064 | 0.704302 | -1.28829e+07 | 675357 | -77223 | -4211.18 | -2.06328e+06 | 1132.29 | 102612 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | zero_latency_spread_only_control | optimistic_marketable | 237064 | 0.986478 | -1.99032e+07 | 149854 | -80560.2 | -6062.1 | -3.57474e+06 | 1456.18 | 132446 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S07 | zero_latency_spread_only_control | pessimistic_partial | 237064 | 0.36956 | -4.71203e+06 | 2.09954e+06 | -76218.2 | -2299.57 | -1.00695e+06 | 793.2 | 66500 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | retail_marketable_default | neutral_partial | 431798 | 0.710411 | -3.18292e+07 | -4.66809e+06 | -79551.2 | -5001.98 | -1.1516e+06 | 1124.31 | 362548 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | retail_marketable_default | optimistic_marketable | 431798 | 0.987713 | -4.51783e+07 | -4.7664e+06 | -78762.8 | -7023.86 | -1.82558e+06 | 1507.14 | 380664 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | retail_marketable_default | pessimistic_partial | 431798 | 0.381744 | -1.60829e+07 | -3.90362e+06 | -76646.6 | -2874.24 | -592207 | 665.1 | 279729 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | stressed_retail | neutral_partial | 426101 | 0.710354 | -4.05251e+07 | -4.76286e+06 | -80333.9 | -5034.21 | -1.65061e+06 | 1121.66 | 372114 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | stressed_retail | optimistic_marketable | 426101 | 0.987695 | -5.6889e+07 | -4.79161e+06 | -79285.7 | -7049.97 | -2.28313e+06 | 1504.04 | 387868 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | stressed_retail | pessimistic_partial | 426101 | 0.381648 | -2.11675e+07 | -4.46415e+06 | -77532.3 | -2897.66 | -1.04501e+06 | 663 | 302061 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | zero_latency_spread_only_control | neutral_partial | 448403 | 0.710286 | -3.75204e+06 | 1.0069e+06 | -76593.6 | -4927.13 | -749048 | 1377.39 | 124685 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | zero_latency_spread_only_control | optimistic_marketable | 448403 | 0.987672 | -6.26403e+06 | 1.10665e+06 | -82531.3 | -6901.78 | -1.00601e+06 | 1846.66 | 160494 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S08 | zero_latency_spread_only_control | pessimistic_partial | 448403 | 0.381535 | -860506 | 1.55953e+06 | -76245.2 | -2834.79 | -452705 | 814.5 | 83264 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | retail_marketable_default | neutral_partial | 573028 | 0.718423 | -4.30213e+07 | -3.23484e+06 | -77714.7 | -4603.82 | -1.87188e+06 | 3912.04 | 494542 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | retail_marketable_default | optimistic_marketable | 573028 | 0.990482 | -5.97117e+07 | -4.75154e+06 | -83919.3 | -6362.84 | -1.69267e+06 | 5121.76 | 529327 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | retail_marketable_default | pessimistic_partial | 573028 | 0.394853 | -2.31987e+07 | 692267 | -78936.7 | -2628.72 | -2.53768e+06 | 2458.2 | 427634 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | stressed_retail | neutral_partial | 567805 | 0.718412 | -5.21539e+07 | -4.74279e+06 | -77564.3 | -4630.99 | -1.85345e+06 | 3872.99 | 522825 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | stressed_retail | optimistic_marketable | 567805 | 0.990475 | -7.22586e+07 | -4.7551e+06 | -81594.4 | -6388.19 | -1.83209e+06 | 5070.56 | 533108 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | stressed_retail | pessimistic_partial | 567805 | 0.394841 | -2.82604e+07 | -99792.3 | -76793.5 | -2651.74 | -2.60249e+06 | 2433.75 | 449356 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | zero_latency_spread_only_control | neutral_partial | 590612 | 0.718246 | -1.10372e+07 | 17123 | -76988.6 | -4520.35 | -2.02749e+06 | 4015.85 | 295508 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | zero_latency_spread_only_control | optimistic_marketable | 590612 | 0.990421 | -1.57159e+07 | -1.73051e+06 | -87270.5 | -6266.76 | -1.29455e+06 | 5257.4 | 376490 | full_run_fill_adjusted_proxy_all_simulated_trades |
+| S09 | zero_latency_spread_only_control | pessimistic_partial | 590612 | 0.394563 | -5.51977e+06 | 3.36944e+06 | -77126 | -2574.45 | -2.75754e+06 | 2523.75 | 190214 | full_run_fill_adjusted_proxy_all_simulated_trades |
+
 ## Caveats
 
 - Current features are 5-minute synthetic feature events, not true tick-level order events.
@@ -87,6 +173,6 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 - Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.
 - Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.
 - Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.
-- Full-run risk diagnostics cover all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
+- Full-run risk diagnostics now include both no-fill and fill-adjusted lifecycle summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
 - Spread crossing, fixed slippage and impact remain internal execution assumptions.
 - Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.

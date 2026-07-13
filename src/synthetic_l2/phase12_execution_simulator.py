@@ -93,6 +93,33 @@ FULL_RUN_RISK_LIMITS = {
     "max_abs_signal_position_units": 500.0,
 }
 
+FULL_RUN_FILL_PROFILES = [
+    {
+        "fill_model": "optimistic_marketable",
+        "base_fill_ratio": 1.0,
+        "shock_haircut": 0.05,
+        "wide_spread_haircut": 0.02,
+        "disconnect_haircut": 0.25,
+        "queue_position_bucket": "front_or_marketable",
+    },
+    {
+        "fill_model": "neutral_partial",
+        "base_fill_ratio": 0.75,
+        "shock_haircut": 0.15,
+        "wide_spread_haircut": 0.08,
+        "disconnect_haircut": 0.40,
+        "queue_position_bucket": "middle_queue_proxy",
+    },
+    {
+        "fill_model": "pessimistic_partial",
+        "base_fill_ratio": 0.45,
+        "shock_haircut": 0.25,
+        "wide_spread_haircut": 0.15,
+        "disconnect_haircut": 0.60,
+        "queue_position_bucket": "back_queue_proxy",
+    },
+]
+
 
 COST_SCHEDULE = [
     ("profile_fee_bps", "execution_profile.fees_bps", 0.0, "all_profiles", "Internal residual profile fee hook; current profiles set this to zero because verified Zerodha charge rows are modeled separately.", "internal_model", ""),
@@ -100,6 +127,7 @@ COST_SCHEDULE = [
     ("half_spread", "spread_ticks * tick_size / 2", None, "all_profiles", "Marketable execution spread-crossing proxy.", "internal_model", ""),
     ("fixed_slippage_ticks", "execution_profile.fixed_slippage_ticks * tick_size / mid_price", None, "all_profiles", "Internal slippage stress parameter.", "internal_model", ""),
     ("partial_fill_opportunity_cost", "phase12_order_lifecycle_proxy", None, "sampled_lifecycle_profiles", "Partial fills and queue-position buckets are modeled in outputs/phase12_order_lifecycle, not as a scalar charge in the base execution summary.", "implemented_proxy", ""),
+    ("full_run_fill_adjusted_risk", "phase12_full_run_lifecycle_proxy", None, "all_simulated_marketable_proxy_trades", "Full-run lifecycle/fill-adjusted risk summaries are modeled over every simulated marketable proxy trade in outputs/phase12/full_run_lifecycle_risk_summary.csv and daily summaries.", "implemented_proxy", ""),
     ("statutory_and_brokerage_charges", "verified_zerodha_equity_intraday_nse_order_formula_v2", None, "retail_and_stressed_profiles", "Retail/stressed return simulation applies the rupee order formula per trade using configured order_notional_inr, brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.", "verified_source_order_formula_applied_to_pnl_proxy", ZERODHA_CHARGES_SOURCE_URL),
     ("zerodha_equity_intraday_brokerage", "min(0.03% of executed order value, Rs. 20) per buy/sell executed order", None, "retail_and_stressed_profiles", "Applied per simulated round trip with one buy order and one sell order.", "verified_source_order_formula_applied_to_pnl_proxy", ZERODHA_CHARGES_SOURCE_URL),
     ("zerodha_equity_intraday_stt", "0.025% on sell-side value rounded to nearest rupee using documented intraday average-price method", None, "retail_and_stressed_profiles", "Applied per simulated round trip.", "verified_source_order_formula_applied_to_pnl_proxy", ZERODHA_STT_SOURCE_URL),
@@ -426,6 +454,165 @@ def summarize_full_run_risk(trades: pd.DataFrame, strategy_id: str, profile: dic
     }
 
 
+def _full_run_fill_ratio(trades: pd.DataFrame, fill_profile: dict) -> pd.Series:
+    ratio = pd.Series(float(fill_profile["base_fill_ratio"]), index=trades.index, dtype="float64")
+    ratio -= np.where(
+        trades["is_market_shock_day"].astype(bool) | trades["is_symbol_shock"].astype(bool),
+        float(fill_profile["shock_haircut"]),
+        0.0,
+    )
+    ratio -= np.where(trades["spread_ticks"].astype(float) >= 8, float(fill_profile["wide_spread_haircut"]), 0.0)
+    disconnect_flag = (
+        trades["is_disconnect_gap"].astype(bool)
+        if "is_disconnect_gap" in trades
+        else pd.Series(False, index=trades.index, dtype="bool")
+    )
+    ratio -= np.where(disconnect_flag, float(fill_profile["disconnect_haircut"]), 0.0)
+    return ratio.clip(lower=0.0, upper=1.0)
+
+
+def summarize_full_run_lifecycle_risk(
+    trades: pd.DataFrame,
+    strategy_id: str,
+    profile: dict,
+) -> tuple[list[dict], list[dict]]:
+    execution_profile = str(profile["execution_profile"])
+    if trades.empty:
+        empty_summary_rows = []
+        for fill_profile in FULL_RUN_FILL_PROFILES:
+            empty_summary_rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "execution_profile": execution_profile,
+                    "fill_model": fill_profile["fill_model"],
+                    "queue_position_bucket": fill_profile["queue_position_bucket"],
+                    "orders": 0,
+                    "trade_dates": 0,
+                    "mean_fill_ratio": None,
+                    "submitted_notional_inr": 0.0,
+                    "filled_notional_inr": 0.0,
+                    "unfilled_notional_inr": 0.0,
+                    "filled_net_pnl_inr": 0.0,
+                    "filled_cost_inr": 0.0,
+                    "risk_adjusted_net_pnl_inr": 0.0,
+                    "worst_daily_filled_net_pnl_inr": None,
+                    "worst_daily_risk_adjusted_net_pnl_inr": None,
+                    "tail_loss_1pct_filled_pnl_inr": None,
+                    "max_intraday_drawdown_inr": 0.0,
+                    "max_abs_position_units": 0.0,
+                    "position_limit_breach_rows": 0,
+                    "daily_loss_limit_breach_rows": 0,
+                    "daily_halt_rows": 0,
+                    "risk_evidence_scope": "full_run_fill_adjusted_proxy_all_simulated_trades",
+                    "not_acceptance_grade": True,
+                    "risk_limits": json.dumps(FULL_RUN_RISK_LIMITS, sort_keys=True),
+                }
+            )
+        return empty_summary_rows, []
+
+    base = trades.sort_values(
+        ["trade_date", "feed_profile", "scenario_day", "symbol", "bar_index"],
+        kind="mergesort",
+    ).copy()
+    summary_rows: list[dict] = []
+    daily_rows: list[dict] = []
+    order_notional = base["entry_notional_inr"].astype(float)
+
+    for fill_profile in FULL_RUN_FILL_PROFILES:
+        frame = base[
+            [
+                "trade_date",
+                "feed_profile",
+                "scenario_day",
+                "symbol",
+                "bar_index",
+                "side",
+                "net_pnl_inr",
+                "entry_notional_inr",
+                "cost_return",
+            ]
+        ].copy()
+        fill_ratio = _full_run_fill_ratio(base, fill_profile)
+        frame["fill_model"] = fill_profile["fill_model"]
+        frame["queue_position_bucket"] = fill_profile["queue_position_bucket"]
+        frame["fill_ratio"] = fill_ratio
+        frame["submitted_notional_inr"] = order_notional
+        frame["filled_notional_inr"] = order_notional * fill_ratio
+        frame["unfilled_notional_inr"] = order_notional - frame["filled_notional_inr"]
+        frame["filled_net_pnl_inr"] = frame["net_pnl_inr"].astype(float) * fill_ratio
+        frame["filled_cost_inr"] = order_notional * frame["cost_return"].astype(float) * fill_ratio
+        frame["position_delta_units"] = frame["side"].astype(float) * fill_ratio
+
+        day_cols = ["trade_date"]
+        frame["running_position_units"] = frame.groupby(day_cols, sort=False)["position_delta_units"].cumsum()
+        frame["running_filled_net_pnl_inr"] = frame.groupby(day_cols, sort=False)["filled_net_pnl_inr"].cumsum()
+        frame["running_peak_filled_net_pnl_inr"] = frame.groupby(day_cols, sort=False)["running_filled_net_pnl_inr"].cummax()
+        frame["running_drawdown_inr"] = frame["running_filled_net_pnl_inr"] - frame["running_peak_filled_net_pnl_inr"]
+        frame["position_limit_breach"] = frame["running_position_units"].abs() > FULL_RUN_RISK_LIMITS["max_abs_signal_position_units"]
+        frame["daily_loss_limit_breach"] = frame["running_filled_net_pnl_inr"] <= FULL_RUN_RISK_LIMITS["daily_loss_warn_inr"]
+        frame["daily_halt_triggered"] = frame.groupby(day_cols, sort=False)["daily_loss_limit_breach"].cummax().astype(bool)
+        frame["risk_trade_allowed"] = ~frame["daily_halt_triggered"].groupby(
+            [frame[col] for col in day_cols], sort=False
+        ).shift(1).fillna(False).astype(bool)
+        frame["risk_adjusted_net_pnl_inr"] = np.where(frame["risk_trade_allowed"], frame["filled_net_pnl_inr"], 0.0)
+
+        daily = (
+            frame.groupby(day_cols, sort=True)
+            .agg(
+                orders=("filled_net_pnl_inr", "size"),
+                mean_fill_ratio=("fill_ratio", "mean"),
+                submitted_notional_inr=("submitted_notional_inr", "sum"),
+                filled_notional_inr=("filled_notional_inr", "sum"),
+                unfilled_notional_inr=("unfilled_notional_inr", "sum"),
+                filled_net_pnl_inr=("filled_net_pnl_inr", "sum"),
+                filled_cost_inr=("filled_cost_inr", "sum"),
+                risk_adjusted_net_pnl_inr=("risk_adjusted_net_pnl_inr", "sum"),
+                max_intraday_drawdown_inr=("running_drawdown_inr", "min"),
+                max_abs_position_units=("running_position_units", lambda values: float(values.abs().max())),
+                position_limit_breach_rows=("position_limit_breach", "sum"),
+                daily_loss_limit_breach_rows=("daily_loss_limit_breach", "sum"),
+                daily_halt_rows=("daily_halt_triggered", "sum"),
+            )
+            .reset_index()
+        )
+        daily["strategy_id"] = strategy_id
+        daily["execution_profile"] = execution_profile
+        daily["fill_model"] = fill_profile["fill_model"]
+        daily["queue_position_bucket"] = fill_profile["queue_position_bucket"]
+        daily_rows.extend(daily.to_dict("records"))
+
+        summary_rows.append(
+            {
+                "strategy_id": strategy_id,
+                "execution_profile": execution_profile,
+                "fill_model": fill_profile["fill_model"],
+                "queue_position_bucket": fill_profile["queue_position_bucket"],
+                "orders": int(len(frame)),
+                "trade_dates": int(daily["trade_date"].nunique()),
+                "mean_fill_ratio": float(frame["fill_ratio"].mean()),
+                "submitted_notional_inr": float(frame["submitted_notional_inr"].sum()),
+                "filled_notional_inr": float(frame["filled_notional_inr"].sum()),
+                "unfilled_notional_inr": float(frame["unfilled_notional_inr"].sum()),
+                "filled_net_pnl_inr": float(frame["filled_net_pnl_inr"].sum()),
+                "filled_cost_inr": float(frame["filled_cost_inr"].sum()),
+                "risk_adjusted_net_pnl_inr": float(frame["risk_adjusted_net_pnl_inr"].sum()),
+                "worst_daily_filled_net_pnl_inr": float(daily["filled_net_pnl_inr"].min()) if len(daily) else None,
+                "worst_daily_risk_adjusted_net_pnl_inr": float(daily["risk_adjusted_net_pnl_inr"].min()) if len(daily) else None,
+                "tail_loss_1pct_filled_pnl_inr": float(frame["filled_net_pnl_inr"].quantile(FULL_RUN_RISK_LIMITS["tail_loss_quantile"])),
+                "max_intraday_drawdown_inr": float(daily["max_intraday_drawdown_inr"].min()) if len(daily) else 0.0,
+                "max_abs_position_units": float(daily["max_abs_position_units"].max()) if len(daily) else 0.0,
+                "position_limit_breach_rows": int(frame["position_limit_breach"].sum()),
+                "daily_loss_limit_breach_rows": int(frame["daily_loss_limit_breach"].sum()),
+                "daily_halt_rows": int(frame["daily_halt_triggered"].sum()),
+                "risk_evidence_scope": "full_run_fill_adjusted_proxy_all_simulated_trades",
+                "not_acceptance_grade": True,
+                "risk_limits": json.dumps(FULL_RUN_RISK_LIMITS, sort_keys=True),
+            }
+        )
+
+    return summary_rows, daily_rows
+
+
 def _tertile_bucket(values: pd.Series, labels: list[str]) -> pd.Series:
     numeric = values.astype(float).replace([np.inf, -np.inf], np.nan)
     if numeric.notna().sum() == 0 or numeric.nunique(dropna=True) <= 1:
@@ -445,7 +632,10 @@ def _deterministic_even_sample(frame: pd.DataFrame, max_rows: int) -> pd.DataFra
     return frame.iloc[positions].copy()
 
 
-def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int]] | None = None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def run_simulation(
+    features: pd.DataFrame,
+    seed_mapping: dict[str, dict[int, int]] | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     seed_mapping = seed_mapping or {}
     support = _strategy_support()
     runnable = set(support[support["support_level"].isin(["runnable_proxy", "partial_missing_required_features"])]["strategy_id"])
@@ -453,6 +643,8 @@ def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int
     signals = build_signals(base)
     summary_rows: list[dict] = []
     risk_rows: list[dict] = []
+    lifecycle_risk_rows: list[dict] = []
+    lifecycle_daily_rows: list[dict] = []
     trade_samples: list[pd.DataFrame] = []
     runnable_signal_count = len([strategy_id for strategy_id in signals if strategy_id in runnable])
     sample_groups = max(1, runnable_signal_count * len(EXECUTION_PROFILES))
@@ -465,14 +657,42 @@ def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int
             summary, trades, risk_summary = _simulate_strategy_profile(base, signal, strategy_id, profile, seed_mapping)
             summary_rows.append(summary)
             risk_rows.append(risk_summary)
+            lifecycle_summary, lifecycle_daily = summarize_full_run_lifecycle_risk(trades, strategy_id, profile)
+            lifecycle_risk_rows.extend(lifecycle_summary)
+            lifecycle_daily_rows.extend(lifecycle_daily)
             if len(trades):
                 sample = _deterministic_even_sample(trades, per_group_sample_rows)
                 trade_samples.append(sample)
 
     summary_frame = pd.DataFrame(summary_rows).merge(support, on="strategy_id", how="left")
     risk_frame = pd.DataFrame(risk_rows).merge(support, on="strategy_id", how="left")
+    lifecycle_risk_frame = pd.DataFrame(lifecycle_risk_rows).merge(support, on="strategy_id", how="left")
+    lifecycle_daily_frame = pd.DataFrame(lifecycle_daily_rows)
+    if len(lifecycle_daily_frame):
+        lifecycle_daily_frame = lifecycle_daily_frame[
+            [
+                "strategy_id",
+                "execution_profile",
+                "fill_model",
+                "queue_position_bucket",
+                "trade_date",
+                "orders",
+                "mean_fill_ratio",
+                "submitted_notional_inr",
+                "filled_notional_inr",
+                "unfilled_notional_inr",
+                "filled_net_pnl_inr",
+                "filled_cost_inr",
+                "risk_adjusted_net_pnl_inr",
+                "max_intraday_drawdown_inr",
+                "max_abs_position_units",
+                "position_limit_breach_rows",
+                "daily_loss_limit_breach_rows",
+                "daily_halt_rows",
+            ]
+        ]
     sample_frame = pd.concat(trade_samples, ignore_index=True) if trade_samples else pd.DataFrame()
-    return summary_frame, sample_frame, risk_frame
+    return summary_frame, sample_frame, risk_frame, lifecycle_risk_frame, lifecycle_daily_frame
 
 
 def _markdown_table(frame: pd.DataFrame) -> str:
@@ -487,7 +707,12 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, summary: pd.DataFrame, full_run_risk: pd.DataFrame) -> None:
+def write_report(
+    output_dir: Path,
+    summary: pd.DataFrame,
+    full_run_risk: pd.DataFrame,
+    full_run_lifecycle_risk: pd.DataFrame,
+) -> None:
     overview = summary.groupby("execution_profile", sort=True).agg(
         strategies=("strategy_id", "nunique"),
         trades=("trades", "sum"),
@@ -522,6 +747,21 @@ def write_report(output_dir: Path, summary: pd.DataFrame, full_run_risk: pd.Data
         "position_warn_days",
         "risk_evidence_scope",
     ]
+    lifecycle_cols = [
+        "strategy_id",
+        "execution_profile",
+        "fill_model",
+        "orders",
+        "mean_fill_ratio",
+        "filled_net_pnl_inr",
+        "risk_adjusted_net_pnl_inr",
+        "worst_daily_risk_adjusted_net_pnl_inr",
+        "tail_loss_1pct_filled_pnl_inr",
+        "max_intraday_drawdown_inr",
+        "max_abs_position_units",
+        "daily_halt_rows",
+        "risk_evidence_scope",
+    ]
     lines = [
         "# Phase 12 Execution Simulator Report",
         "",
@@ -545,6 +785,10 @@ def write_report(output_dir: Path, summary: pd.DataFrame, full_run_risk: pd.Data
         "",
         _markdown_table(full_run_risk[risk_cols].sort_values(["strategy_id", "execution_profile"])),
         "",
+        "## Full-Run Lifecycle / Fill-Adjusted Risk Proxy Summary",
+        "",
+        _markdown_table(full_run_lifecycle_risk[lifecycle_cols].sort_values(["strategy_id", "execution_profile", "fill_model"])),
+        "",
         "## Caveats",
         "",
         "- Current features are 5-minute synthetic feature events, not true tick-level order events.",
@@ -552,7 +796,7 @@ def write_report(output_dir: Path, summary: pd.DataFrame, full_run_risk: pd.Data
         "- Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.",
         "- Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.",
         "- Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.",
-        "- Full-run risk diagnostics cover all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
+        "- Full-run risk diagnostics now include both no-fill and fill-adjusted lifecycle summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
         "- Spread crossing, fixed slippage and impact remain internal execution assumptions.",
         "- Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.",
         "",
@@ -564,7 +808,10 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     output_dir.mkdir(parents=True, exist_ok=True)
     features = load_features(features_path)
     seed_mapping = _seed_map(seed_plan_path)
-    summary, trade_sample, full_run_risk = run_simulation(features, seed_mapping=seed_mapping)
+    summary, trade_sample, full_run_risk, full_run_lifecycle_risk, full_run_lifecycle_daily = run_simulation(
+        features,
+        seed_mapping=seed_mapping,
+    )
     profiles = execution_profiles()
     costs = cost_schedule()
     component_catalog = charge_component_catalog()
@@ -572,6 +819,8 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
 
     summary.to_csv(output_dir / "execution_summary.csv", index=False)
     full_run_risk.to_csv(output_dir / "full_run_risk_summary.csv", index=False)
+    full_run_lifecycle_risk.to_csv(output_dir / "full_run_lifecycle_risk_summary.csv", index=False)
+    full_run_lifecycle_daily.to_csv(output_dir / "full_run_lifecycle_daily_risk_summary.csv", index=False)
     profiles.to_csv(output_dir / "execution_profiles.csv", index=False)
     costs.to_csv(output_dir / "cost_schedule.csv", index=False)
     component_catalog.to_csv(output_dir / "charge_component_catalog.csv", index=False)
@@ -598,6 +847,8 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     outputs = {
         "execution_summary": str(output_dir / "execution_summary.csv"),
         "full_run_risk_summary": str(output_dir / "full_run_risk_summary.csv"),
+        "full_run_lifecycle_risk_summary": str(output_dir / "full_run_lifecycle_risk_summary.csv"),
+        "full_run_lifecycle_daily_risk_summary": str(output_dir / "full_run_lifecycle_daily_risk_summary.csv"),
         "execution_profiles": str(output_dir / "execution_profiles.csv"),
         "cost_schedule": str(output_dir / "cost_schedule.csv"),
         "charge_component_catalog": str(output_dir / "charge_component_catalog.csv"),
@@ -616,11 +867,15 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "execution_profiles": int(len(profiles)),
         "summary_rows": int(len(summary)),
         "full_run_risk_rows": int(len(full_run_risk)),
+        "full_run_lifecycle_risk_rows": int(len(full_run_lifecycle_risk)),
+        "full_run_lifecycle_daily_risk_rows": int(len(full_run_lifecycle_daily)),
+        "full_run_lifecycle_fill_models": int(full_run_lifecycle_risk["fill_model"].nunique()) if len(full_run_lifecycle_risk) else 0,
         "trade_sample_rows": int(len(trade_sample)),
         "trade_sample_strategy_profiles": int(trade_sample[["strategy_id", "execution_profile"]].drop_duplicates().shape[0]) if len(trade_sample) else 0,
         "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
         "scope": "marketable_order_proxy_over_5m_feature_events",
         "full_run_risk_scope": "all_simulated_marketable_proxy_trades_no_fills",
+        "full_run_lifecycle_risk_scope": "all_simulated_marketable_proxy_trades_with_fill_adjusted_lifecycle_risk",
         "full_run_risk_limits": FULL_RUN_RISK_LIMITS,
         "cost_model_version": ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
         "cost_model_source": ZERODHA_CHARGES_SOURCE_URL,
@@ -654,7 +909,7 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         )
     )
     (output_dir / "execution_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, summary, full_run_risk)
+    write_report(output_dir, summary, full_run_risk, full_run_lifecycle_risk)
 
 
 def parse_args() -> argparse.Namespace:

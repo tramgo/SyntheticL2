@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-13T21:39:26.966975+00:00
+Generated UTC: 2026-07-13T21:49:29.318761+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -13,6 +13,9 @@ This dashboard is static research traceability output, not strategy promotion ev
 | quality_fail_checks | 0 | Current quality failures |
 | holdout_proxy_rows | 15 | Phase 14 holdout generator proxy rows |
 | holdout_proxy_available_rows | 15 | Holdout proxy rows structurally available |
+| full_run_lifecycle_risk_rows | 81 | Phase 12 full-run fill-adjusted risk rows |
+| full_run_lifecycle_fill_models | 3 | Phase 12 full-run fill models |
+| full_run_lifecycle_daily_halt_rows | 21299578 | Phase 12 full-run lifecycle halt rows |
 | strategies | 11 | Phase 15 strategies |
 | promoted_strategies | 0 | Promotion allowed count |
 | acceptance_blockers | 55 | Phase 15 blocker rows |
@@ -47,6 +50,14 @@ This dashboard is static research traceability output, not strategy promotion ev
 | Q-C | ideal_research | stressed_volatile_holdout_proxy | 63 | 151200 | 32 | 18 | 8 | 4.0 | 0.9695767195767196 | True | holdout_proxy_available_not_acceptance | False | Holdout generator/feed-profile coverage exists as synthetic proxy evidence, but it is not acceptance-grade until the Phase 14 warning is resolved and strategies are rerun on holdout configs with full event/tick execution and later multi-day real holdout. |
 | Q-C | normal_retail | stressed_volatile_holdout_proxy | 63 | 151040 | 32 | 18 | 8 | 4.0 | 0.9681475105932204 | True | holdout_proxy_available_not_acceptance | False | Holdout generator/feed-profile coverage exists as synthetic proxy evidence, but it is not acceptance-grade until the Phase 14 warning is resolved and strategies are rerun on holdout configs with full event/tick execution and later multi-day real holdout. |
 | Q-C | stressed_retail | stressed_volatile_holdout_proxy | 63 | 150451 | 32 | 18 | 8 | 4.0 | 0.9671055692551064 | True | holdout_proxy_available_not_acceptance | False | Holdout generator/feed-profile coverage exists as synthetic proxy evidence, but it is not acceptance-grade until the Phase 14 warning is resolved and strategies are rerun on holdout configs with full event/tick execution and later multi-day real holdout. |
+
+## Phase 12 Full-Run Lifecycle Risk Proxy
+
+| fill_model | strategy_profiles | orders | mean_fill_ratio | risk_adjusted_net_pnl_inr | daily_halt_rows | position_limit_breach_rows |
+| --- | --- | --- | --- | --- | --- | --- |
+| neutral_partial | 27 | 10375860 | 0.7045303605574683 | 205634027.27410844 | 7329401 | 3241574 |
+| optimistic_marketable | 27 | 10375860 | 0.9859071061166582 | 295398866.74432045 | 7877052 | 3757171 |
+| pessimistic_partial | 27 | 10375860 | 0.37155813610202526 | 120472769.73654498 | 6093125 | 2422779 |
 
 ## Acceptance Blockers by Gate
 

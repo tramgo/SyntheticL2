@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T21:22:11.912886+00:00",
+  "generated_utc": "2026-07-13T21:48:48.990694+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "seed_plan_path": "outputs\\phase13\\seed_plan.csv",
   "seeded_trade_sample": true,
@@ -9,11 +9,15 @@
   "execution_profiles": 3,
   "summary_rows": 27,
   "full_run_risk_rows": 27,
+  "full_run_lifecycle_risk_rows": 81,
+  "full_run_lifecycle_daily_risk_rows": 4932,
+  "full_run_lifecycle_fill_models": 3,
   "trade_sample_rows": 249993,
   "trade_sample_strategy_profiles": 27,
   "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
   "scope": "marketable_order_proxy_over_5m_feature_events",
   "full_run_risk_scope": "all_simulated_marketable_proxy_trades_no_fills",
+  "full_run_lifecycle_risk_scope": "all_simulated_marketable_proxy_trades_with_fill_adjusted_lifecycle_risk",
   "full_run_risk_limits": {
     "daily_loss_warn_inr": -75000.0,
     "tail_loss_quantile": 0.01,
@@ -47,13 +51,13 @@
   "charge_components": 6,
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "cd48fe5da6009a803b4e59be39e8707996fe0489",
-  "configuration_hash": "d24834c4ad7dec117a2b500d26e14bb4474debeadb9c0f10045f26908edfca72",
+  "generator_version": "0fc1d30f8c7075ce5cad6afb65cc1fa1112415c7",
+  "configuration_hash": "107a58f8754c6f1095f7eac1ef18f27b8926988bc406af7dde88c723f55b776b",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
   "scenario_ids": "outputs/phase4/scenario_calendar.csv_and_phase13_seed_plan_cycle",
   "latency_model_version": "phase12_execution_profiles_v1",
-  "creation_timestamp": "2026-07-13T21:22:11.912886+00:00"
+  "creation_timestamp": "2026-07-13T21:48:48.990694+00:00"
 }

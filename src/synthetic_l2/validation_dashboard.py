@@ -92,6 +92,7 @@ def _bar_rows(frame: pd.DataFrame, label_col: str, value_col: str) -> str:
 def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dict]:
     quality = _read_csv(paths["quality"])
     holdout = _read_csv(paths["holdout"])
+    lifecycle_risk = _read_csv(paths["lifecycle_risk"])
     acceptance = _read_csv(paths["acceptance"])
     blockers = _read_csv(paths["blockers"])
     metric_catalog = _read_csv(paths["metric_catalog"])
@@ -107,6 +108,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     top_predictive = predictive.sort_values("balanced_accuracy_proxy", ascending=False)
     top_trading = trading.sort_values("mean_net_return", ascending=False)
     top_markout = markout.sort_values("adverse_selection_rate_6bar_proxy", ascending=True)
+    lifecycle_overview = (
+        lifecycle_risk.groupby("fill_model", sort=True)
+        .agg(
+            strategy_profiles=("strategy_id", "size"),
+            orders=("orders", "sum"),
+            mean_fill_ratio=("mean_fill_ratio", "mean"),
+            risk_adjusted_net_pnl_inr=("risk_adjusted_net_pnl_inr", "sum"),
+            daily_halt_rows=("daily_halt_rows", "sum"),
+            position_limit_breach_rows=("position_limit_breach_rows", "sum"),
+        )
+        .reset_index()
+    )
 
     summary_rows = [
         ("quality_checks", int(len(quality)), "Phase 14 quality rows"),
@@ -114,6 +127,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("quality_fail_checks", int((quality["status"].astype(str) == "fail").sum()), "Current quality failures"),
         ("holdout_proxy_rows", int(len(holdout)), "Phase 14 holdout generator proxy rows"),
         ("holdout_proxy_available_rows", int((holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()), "Holdout proxy rows structurally available"),
+        ("full_run_lifecycle_risk_rows", int(len(lifecycle_risk)), "Phase 12 full-run fill-adjusted risk rows"),
+        ("full_run_lifecycle_fill_models", int(lifecycle_risk["fill_model"].nunique()), "Phase 12 full-run fill models"),
+        ("full_run_lifecycle_daily_halt_rows", int(lifecycle_risk["daily_halt_rows"].sum()), "Phase 12 full-run lifecycle halt rows"),
         ("strategies", int(acceptance["strategy_id"].nunique()), "Phase 15 strategies"),
         ("promoted_strategies", int(acceptance["promotion_allowed"].astype(bool).sum()), "Promotion allowed count"),
         ("acceptance_blockers", int(len(blockers)), "Phase 15 blocker rows"),
@@ -186,6 +202,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <div class="cards">{cards}</div>
   <section><h2>Phase 14 Quality Status</h2>{_bar_rows(quality_status, 'status', 'checks')}{_table(quality, ['level', 'check_name', 'value', 'status', 'evidence'], 24)}</section>
   <section><h2>Phase 14 Holdout Generator Realism Proxy</h2>{_table(holdout, ['quarter_profile', 'feed_profile', 'holdout_role', 'scenario_days', 'symbols', 'regimes', 'realism_status', 'acceptance_eligible_now'], 20)}</section>
+  <section><h2>Phase 12 Full-Run Lifecycle Risk Proxy</h2>{_table(lifecycle_overview, ['fill_model', 'strategy_profiles', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'daily_halt_rows', 'position_limit_breach_rows'], 10)}{_table(lifecycle_risk, ['strategy_id', 'execution_profile', 'fill_model', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'max_intraday_drawdown_inr', 'daily_halt_rows'], 18)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -213,6 +230,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "## Holdout Generator Realism Proxy",
         "",
         _markdown_table(holdout),
+        "",
+        "## Phase 12 Full-Run Lifecycle Risk Proxy",
+        "",
+        _markdown_table(lifecycle_overview),
         "",
         "## Acceptance Blockers by Gate",
         "",
@@ -244,6 +265,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/dashboard"))
     parser.add_argument("--quality", type=Path, default=Path("outputs/phase14/quality_gate_summary.csv"))
     parser.add_argument("--holdout", type=Path, default=Path("outputs/phase14/holdout_generator_realism_summary.csv"))
+    parser.add_argument("--lifecycle-risk", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_summary.csv"))
     parser.add_argument("--acceptance", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--blockers", type=Path, default=Path("outputs/phase15/acceptance_blockers.csv"))
     parser.add_argument("--metric-catalog", type=Path, default=Path("outputs/phase16/metric_catalog.csv"))
@@ -259,6 +281,7 @@ def main() -> None:
     paths = {
         "quality": args.quality,
         "holdout": args.holdout,
+        "lifecycle_risk": args.lifecycle_risk,
         "acceptance": args.acceptance,
         "blockers": args.blockers,
         "metric_catalog": args.metric_catalog,
