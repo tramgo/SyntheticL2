@@ -95,14 +95,28 @@ STATUS_RANK = {
 def _evidence_exists(base_dir: Path, evidence_path: str) -> bool:
     if not evidence_path:
         return False
-    return (base_dir / evidence_path).exists()
+    evidence_paths = [part.strip() for part in evidence_path.split(";") if part.strip()]
+    return bool(evidence_paths) and all((base_dir / path).exists() for path in evidence_paths)
+
+
+def _evidence_status(base_dir: Path, evidence_path: str, status: str) -> str:
+    if not evidence_path:
+        return "not_required_for_missing" if status == "missing" else "missing_evidence"
+    evidence_paths = [part.strip() for part in evidence_path.split(";") if part.strip()]
+    missing = [path for path in evidence_paths if not (base_dir / path).exists()]
+    if not missing:
+        return "present"
+    if status == "missing":
+        return "not_required_for_missing"
+    if len(missing) < len(evidence_paths):
+        return "partial_evidence_missing:" + "; ".join(missing)
+    return "missing_evidence"
 
 
 def build_deliverable_traceability(base_dir: Path) -> pd.DataFrame:
     rows = []
     for wp_id, deliverable, status, evidence_path, note in DELIVERABLES:
-        evidence_exists = _evidence_exists(base_dir, evidence_path)
-        evidence_status = "present" if evidence_exists else ("not_required_for_missing" if status == "missing" else "missing_evidence")
+        evidence_status = _evidence_status(base_dir, evidence_path, status)
         rows.append(
             {
                 "work_package_id": wp_id,
