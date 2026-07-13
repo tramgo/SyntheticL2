@@ -10,6 +10,10 @@ full_run_lifecycle_daily_halt_rows,21299578,Phase 12 full-run lifecycle halt row
 full_run_lifecycle_breach_severity_rows,81,Phase 12 full-run lifecycle breach-severity rows
 full_run_lifecycle_risk_pass_candidate_rows,0,Phase 12 proxy risk-pass candidate rows
 full_run_lifecycle_high_severity_rows,68,Phase 12 high-severity proxy risk rows
+full_run_lifecycle_risk_limit_sensitivity_rows,324,Phase 12 risk-limit sensitivity rows
+full_run_lifecycle_risk_limit_profiles,4,Phase 12 risk-limit sensitivity profiles
+full_run_lifecycle_risk_limit_pass_rows,14,Phase 12 proxy pass rows under sensitivity profiles
+full_run_lifecycle_risk_limit_high_rows,267,Phase 12 high-severity risk-limit rows
 robustness_dimension_rows,11,Phase 13 robustness dimension rows
 robustness_dimension_registered_rows,9,Phase 13 registered robustness proxy rows
 strategies,11,Phase 15 strategies

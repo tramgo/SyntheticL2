@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T22:44:15.958823+00:00",
+  "generated_utc": "2026-07-13T22:54:19.413197+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -80,6 +80,10 @@
     "phase12_full_run_lifecycle_breach_severity_rows": 81,
     "phase12_full_run_lifecycle_risk_pass_candidate_rows": 0,
     "phase12_full_run_lifecycle_high_severity_rows": 68,
+    "phase12_full_run_lifecycle_risk_limit_sensitivity_rows": 324,
+    "phase12_full_run_lifecycle_risk_limit_profiles": 4,
+    "phase12_full_run_lifecycle_risk_limit_pass_rows": 14,
+    "phase12_full_run_lifecycle_risk_limit_high_rows": 267,
     "phase12_event_backtest_order_rows": 6480,
     "phase12_event_backtest_order_models": 6,
     "phase12_event_backtest_pnl_rows": 6480,
@@ -164,7 +168,7 @@
     "phase20_hardening_strategy_rows": 11,
     "phase20_acceptance_ready_rows": 0,
     "phase20_top_priority_gate_rows": 11,
-    "validation_dashboard_summary_rows": 31,
+    "validation_dashboard_summary_rows": 35,
     "validation_dashboard_promoted_strategies": 0,
     "validation_dashboard_p1_gaps": 0,
     "replay_validation_tiers": 3,
@@ -242,6 +246,7 @@
     "phase12_fill_model_catalog",
     "phase12_full_run_lifecycle_daily_risk_summary",
     "phase12_full_run_lifecycle_risk_breach_severity",
+    "phase12_full_run_lifecycle_risk_limit_sensitivity",
     "phase12_full_run_lifecycle_risk_summary",
     "phase12_full_run_risk_summary",
     "phase12_lifecycle_sample",
@@ -345,8 +350,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "9a84e35b83023a8fd9ac20c455dc85fdf5b846a1",
-  "configuration_hash": "070ec1d54c581b227d85a72efbf1e81c2d64c0d4af0cc97bbc06e9b5ae32c121",
+  "generator_version": "20fec85486b1bc29e790caea06a870843e9802ab",
+  "configuration_hash": "a5a34046769a2b5f78b10958462592a576df9709d4242da3aab3b4c8fcd15f3a",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -354,5 +359,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T22:44:15.958823+00:00"
+  "creation_timestamp": "2026-07-13T22:54:19.413197+00:00"
 }

@@ -93,6 +93,41 @@ FULL_RUN_RISK_LIMITS = {
     "max_abs_signal_position_units": 500.0,
 }
 
+RISK_LIMIT_SENSITIVITY_PROFILES = [
+    {
+        "risk_limit_profile": "tight_capital_preservation",
+        "daily_loss_limit_inr": -50_000.0,
+        "drawdown_limit_inr": -75_000.0,
+        "tail_trade_loss_limit_inr": -25_000.0,
+        "max_abs_position_units": 250.0,
+        "profile_role": "stricter_than_current_proxy",
+    },
+    {
+        "risk_limit_profile": "current_proxy_limits",
+        "daily_loss_limit_inr": FULL_RUN_RISK_LIMITS["daily_loss_warn_inr"],
+        "drawdown_limit_inr": FULL_RUN_RISK_LIMITS["drawdown_warn_inr"],
+        "tail_trade_loss_limit_inr": -35_000.0,
+        "max_abs_position_units": FULL_RUN_RISK_LIMITS["max_abs_signal_position_units"],
+        "profile_role": "current_phase12_proxy_guardrail",
+    },
+    {
+        "risk_limit_profile": "expanded_research_limits",
+        "daily_loss_limit_inr": -150_000.0,
+        "drawdown_limit_inr": -200_000.0,
+        "tail_trade_loss_limit_inr": -75_000.0,
+        "max_abs_position_units": 1_000.0,
+        "profile_role": "looser_research_sensitivity",
+    },
+    {
+        "risk_limit_profile": "stress_capacity_limits",
+        "daily_loss_limit_inr": -300_000.0,
+        "drawdown_limit_inr": -500_000.0,
+        "tail_trade_loss_limit_inr": -150_000.0,
+        "max_abs_position_units": 2_500.0,
+        "profile_role": "very_loose_stress_sensitivity",
+    },
+]
+
 FULL_RUN_FILL_PROFILES = [
     {
         "fill_model": "optimistic_marketable",
@@ -749,6 +784,138 @@ def summarize_lifecycle_risk_breach_severity(
     return out[columns].sort_values(["risk_severity_score", "strategy_id", "execution_profile", "fill_model"], ascending=[False, True, True, True], kind="mergesort")
 
 
+def summarize_risk_limit_sensitivity(
+    lifecycle_risk: pd.DataFrame,
+    lifecycle_daily: pd.DataFrame,
+) -> pd.DataFrame:
+    columns = [
+        "strategy_id",
+        "execution_profile",
+        "fill_model",
+        "queue_position_bucket",
+        "risk_limit_profile",
+        "profile_role",
+        "trade_dates",
+        "orders",
+        "daily_loss_limit_inr",
+        "drawdown_limit_inr",
+        "tail_trade_loss_limit_inr",
+        "max_abs_position_limit_units",
+        "breach_days",
+        "daily_loss_breach_days",
+        "drawdown_breach_days",
+        "position_limit_breach_days",
+        "tail_trade_loss_breach",
+        "breach_day_fraction",
+        "worst_daily_risk_adjusted_net_pnl_inr",
+        "tail_loss_1pct_filled_pnl_inr",
+        "max_intraday_drawdown_inr",
+        "max_abs_position_units",
+        "daily_loss_excess_ratio",
+        "drawdown_excess_ratio",
+        "position_excess_ratio",
+        "tail_loss_excess_ratio",
+        "risk_limit_severity_score",
+        "risk_limit_status",
+        "risk_pass_candidate_under_limit_profile",
+        "risk_evidence_scope",
+        "not_acceptance_grade",
+    ]
+    if lifecycle_risk.empty or lifecycle_daily.empty:
+        return pd.DataFrame(columns=columns)
+
+    group_cols = ["strategy_id", "execution_profile", "fill_model", "queue_position_bucket"]
+    daily = lifecycle_daily.copy()
+    summary = lifecycle_risk.copy()
+    rows: list[dict] = []
+    for profile in RISK_LIMIT_SENSITIVITY_PROFILES:
+        daily_loss_limit = float(profile["daily_loss_limit_inr"])
+        drawdown_limit = float(profile["drawdown_limit_inr"])
+        tail_loss_limit = float(profile["tail_trade_loss_limit_inr"])
+        position_limit = float(profile["max_abs_position_units"])
+
+        prof_daily = daily.copy()
+        prof_daily["daily_loss_breach_day"] = prof_daily["risk_adjusted_net_pnl_inr"].astype(float) <= daily_loss_limit
+        prof_daily["drawdown_breach_day"] = prof_daily["max_intraday_drawdown_inr"].astype(float) <= drawdown_limit
+        prof_daily["position_limit_breach_day"] = prof_daily["max_abs_position_units"].astype(float) > position_limit
+        prof_daily["any_breach_day"] = (
+            prof_daily["daily_loss_breach_day"]
+            | prof_daily["drawdown_breach_day"]
+            | prof_daily["position_limit_breach_day"]
+        )
+        daily_summary = (
+            prof_daily.groupby(group_cols, sort=True)
+            .agg(
+                breach_days=("any_breach_day", "sum"),
+                daily_loss_breach_days=("daily_loss_breach_day", "sum"),
+                drawdown_breach_days=("drawdown_breach_day", "sum"),
+                position_limit_breach_days=("position_limit_breach_day", "sum"),
+            )
+            .reset_index()
+        )
+        out = summary.merge(daily_summary, on=group_cols, how="left")
+        for column in ["breach_days", "daily_loss_breach_days", "drawdown_breach_days", "position_limit_breach_days"]:
+            out[column] = out[column].fillna(0).astype(int)
+        trade_dates = out["trade_dates"].replace(0, np.nan).astype(float)
+        out["breach_day_fraction"] = (out["breach_days"] / trade_dates).fillna(0.0)
+        out["tail_trade_loss_breach"] = out["tail_loss_1pct_filled_pnl_inr"].astype(float) <= tail_loss_limit
+        out["daily_loss_excess_ratio"] = (
+            (-out["worst_daily_risk_adjusted_net_pnl_inr"].astype(float) / abs(daily_loss_limit)) - 1.0
+        ).clip(lower=0.0)
+        out["drawdown_excess_ratio"] = (
+            (-out["max_intraday_drawdown_inr"].astype(float) / abs(drawdown_limit)) - 1.0
+        ).clip(lower=0.0)
+        out["position_excess_ratio"] = (
+            (out["max_abs_position_units"].astype(float) / position_limit) - 1.0
+        ).clip(lower=0.0)
+        out["tail_loss_excess_ratio"] = (
+            (-out["tail_loss_1pct_filled_pnl_inr"].astype(float) / abs(tail_loss_limit)) - 1.0
+        ).clip(lower=0.0)
+        out["risk_limit_severity_score"] = (
+            100.0 * out["breach_day_fraction"].astype(float)
+            + 25.0 * out["daily_loss_excess_ratio"].astype(float)
+            + 25.0 * out["drawdown_excess_ratio"].astype(float)
+            + 20.0 * out["position_excess_ratio"].astype(float)
+            + 10.0 * out["tail_loss_excess_ratio"].astype(float)
+        )
+        out["risk_pass_candidate_under_limit_profile"] = (
+            (out["breach_days"] == 0)
+            & (~out["tail_trade_loss_breach"].astype(bool))
+            & (out["worst_daily_risk_adjusted_net_pnl_inr"].astype(float) > daily_loss_limit)
+            & (out["max_intraday_drawdown_inr"].astype(float) > drawdown_limit)
+            & (out["max_abs_position_units"].astype(float) <= position_limit)
+        )
+        out["risk_limit_status"] = np.select(
+            [
+                out["risk_pass_candidate_under_limit_profile"].astype(bool),
+                out["risk_limit_severity_score"].astype(float) <= 25.0,
+                out["risk_limit_severity_score"].astype(float) <= 100.0,
+            ],
+            [
+                "proxy_pass_under_limit_profile_not_acceptance",
+                "low_proxy_breach_under_limit_profile",
+                "medium_proxy_breach_under_limit_profile",
+            ],
+            default="high_proxy_breach_under_limit_profile",
+        )
+        out["risk_limit_profile"] = str(profile["risk_limit_profile"])
+        out["profile_role"] = str(profile["profile_role"])
+        out["daily_loss_limit_inr"] = daily_loss_limit
+        out["drawdown_limit_inr"] = drawdown_limit
+        out["tail_trade_loss_limit_inr"] = tail_loss_limit
+        out["max_abs_position_limit_units"] = position_limit
+        out["risk_evidence_scope"] = "phase12_full_run_fill_adjusted_proxy_risk_limit_sensitivity"
+        out["not_acceptance_grade"] = True
+        rows.extend(out[columns].to_dict("records"))
+
+    result = pd.DataFrame(rows, columns=columns)
+    return result.sort_values(
+        ["risk_limit_severity_score", "strategy_id", "execution_profile", "fill_model", "risk_limit_profile"],
+        ascending=[False, True, True, True, True],
+        kind="mergesort",
+    )
+
+
 def _tertile_bucket(values: pd.Series, labels: list[str]) -> pd.Series:
     numeric = values.astype(float).replace([np.inf, -np.inf], np.nan)
     if numeric.notna().sum() == 0 or numeric.nunique(dropna=True) <= 1:
@@ -849,6 +1016,7 @@ def write_report(
     full_run_risk: pd.DataFrame,
     full_run_lifecycle_risk: pd.DataFrame,
     risk_breach_severity: pd.DataFrame,
+    risk_limit_sensitivity: pd.DataFrame,
 ) -> None:
     overview = summary.groupby("execution_profile", sort=True).agg(
         strategies=("strategy_id", "nunique"),
@@ -912,6 +1080,20 @@ def write_report(
         "risk_severity_band",
         "risk_pass_candidate_proxy",
     ]
+    sensitivity_cols = [
+        "strategy_id",
+        "execution_profile",
+        "fill_model",
+        "risk_limit_profile",
+        "breach_days",
+        "daily_loss_breach_days",
+        "drawdown_breach_days",
+        "position_limit_breach_days",
+        "tail_trade_loss_breach",
+        "risk_limit_severity_score",
+        "risk_limit_status",
+        "risk_pass_candidate_under_limit_profile",
+    ]
     lines = [
         "# Phase 12 Execution Simulator Report",
         "",
@@ -943,6 +1125,10 @@ def write_report(
         "",
         _markdown_table(risk_breach_severity[severity_cols].sort_values(["risk_severity_score", "strategy_id"], ascending=[False, True]).head(40)),
         "",
+        "## Full-Run Lifecycle Risk Limit Sensitivity",
+        "",
+        _markdown_table(risk_limit_sensitivity[sensitivity_cols].sort_values(["risk_limit_severity_score", "strategy_id"], ascending=[False, True]).head(40)),
+        "",
         "## Caveats",
         "",
         "- Current features are 5-minute synthetic feature events, not true tick-level order events.",
@@ -950,7 +1136,7 @@ def write_report(
         "- Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.",
         "- Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.",
         "- Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.",
-        "- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle and breach-severity summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
+        "- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle, breach-severity and risk-limit sensitivity summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
         "- Spread crossing, fixed slippage and impact remain internal execution assumptions.",
         "- Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.",
         "",
@@ -977,6 +1163,8 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     full_run_lifecycle_daily.to_csv(output_dir / "full_run_lifecycle_daily_risk_summary.csv", index=False)
     risk_breach_severity = summarize_lifecycle_risk_breach_severity(full_run_lifecycle_risk, full_run_lifecycle_daily)
     risk_breach_severity.to_csv(output_dir / "full_run_lifecycle_risk_breach_severity.csv", index=False)
+    risk_limit_sensitivity = summarize_risk_limit_sensitivity(full_run_lifecycle_risk, full_run_lifecycle_daily)
+    risk_limit_sensitivity.to_csv(output_dir / "full_run_lifecycle_risk_limit_sensitivity.csv", index=False)
     profiles.to_csv(output_dir / "execution_profiles.csv", index=False)
     costs.to_csv(output_dir / "cost_schedule.csv", index=False)
     component_catalog.to_csv(output_dir / "charge_component_catalog.csv", index=False)
@@ -1006,6 +1194,7 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "full_run_lifecycle_risk_summary": str(output_dir / "full_run_lifecycle_risk_summary.csv"),
         "full_run_lifecycle_daily_risk_summary": str(output_dir / "full_run_lifecycle_daily_risk_summary.csv"),
         "full_run_lifecycle_risk_breach_severity": str(output_dir / "full_run_lifecycle_risk_breach_severity.csv"),
+        "full_run_lifecycle_risk_limit_sensitivity": str(output_dir / "full_run_lifecycle_risk_limit_sensitivity.csv"),
         "execution_profiles": str(output_dir / "execution_profiles.csv"),
         "cost_schedule": str(output_dir / "cost_schedule.csv"),
         "charge_component_catalog": str(output_dir / "charge_component_catalog.csv"),
@@ -1027,16 +1216,21 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "full_run_lifecycle_risk_rows": int(len(full_run_lifecycle_risk)),
         "full_run_lifecycle_daily_risk_rows": int(len(full_run_lifecycle_daily)),
         "full_run_lifecycle_risk_breach_severity_rows": int(len(risk_breach_severity)),
+        "full_run_lifecycle_risk_limit_sensitivity_rows": int(len(risk_limit_sensitivity)),
         "full_run_lifecycle_risk_pass_candidate_rows": int(risk_breach_severity["risk_pass_candidate_proxy"].astype(bool).sum()) if len(risk_breach_severity) else 0,
         "full_run_lifecycle_high_severity_rows": int((risk_breach_severity["risk_severity_band"].astype(str) == "high_proxy_breach_severity").sum()) if len(risk_breach_severity) else 0,
+        "full_run_lifecycle_risk_limit_sensitivity_profiles": int(risk_limit_sensitivity["risk_limit_profile"].nunique()) if len(risk_limit_sensitivity) else 0,
+        "full_run_lifecycle_risk_limit_sensitivity_pass_rows": int(risk_limit_sensitivity["risk_pass_candidate_under_limit_profile"].astype(bool).sum()) if len(risk_limit_sensitivity) else 0,
+        "full_run_lifecycle_risk_limit_sensitivity_high_rows": int((risk_limit_sensitivity["risk_limit_status"].astype(str) == "high_proxy_breach_under_limit_profile").sum()) if len(risk_limit_sensitivity) else 0,
         "full_run_lifecycle_fill_models": int(full_run_lifecycle_risk["fill_model"].nunique()) if len(full_run_lifecycle_risk) else 0,
         "trade_sample_rows": int(len(trade_sample)),
         "trade_sample_strategy_profiles": int(trade_sample[["strategy_id", "execution_profile"]].drop_duplicates().shape[0]) if len(trade_sample) else 0,
         "trade_sample_policy": "deterministic_even_stratified_by_strategy_profile",
         "scope": "marketable_order_proxy_over_5m_feature_events",
         "full_run_risk_scope": "all_simulated_marketable_proxy_trades_no_fills",
-        "full_run_lifecycle_risk_scope": "all_simulated_marketable_proxy_trades_with_fill_adjusted_lifecycle_risk_and_breach_severity",
+        "full_run_lifecycle_risk_scope": "all_simulated_marketable_proxy_trades_with_fill_adjusted_lifecycle_risk_breach_severity_and_limit_sensitivity",
         "full_run_risk_limits": FULL_RUN_RISK_LIMITS,
+        "risk_limit_sensitivity_profiles": RISK_LIMIT_SENSITIVITY_PROFILES,
         "cost_model_version": ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
         "cost_model_source": ZERODHA_CHARGES_SOURCE_URL,
         "cost_model_source_name": ZERODHA_CHARGES_SOURCE_NAME,
@@ -1069,7 +1263,7 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         )
     )
     (output_dir / "execution_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, summary, full_run_risk, full_run_lifecycle_risk, risk_breach_severity)
+    write_report(output_dir, summary, full_run_risk, full_run_lifecycle_risk, risk_breach_severity, risk_limit_sensitivity)
 
 
 def parse_args() -> argparse.Namespace:
