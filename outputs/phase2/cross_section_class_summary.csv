@@ -1,0 +1,3 @@
+instrument_class,symbols,rows,median_event_rate_per_second,median_spread_ticks,median_book_valid_fraction,median_l5_imbalance,total_volume_increment
+equity,27,537618,0.8396891797680396,4.0,0.9999477096841665,-0.0011467889908256881,187046042.0
+etf,5,83235,0.7727358997628363,4.000000000005684,0.9998853342506593,0.16302367941712204,85686346.0

@@ -1,0 +1,190 @@
+quarter_profile,scenario_day,trade_date,regime_code,regime_family,is_market_shock_day,event_cluster,segment,purpose,no_shuffle
+Q-A,1,2026-07-14,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,2,2026-07-15,D12,Event day,True,True,calibration_development,feature construction and rough thresholds,True
+Q-A,3,2026-07-16,D02,Low-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,4,2026-07-17,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,5,2026-07-20,D07,Sell-off/panic,True,False,calibration_development,feature construction and rough thresholds,True
+Q-A,6,2026-07-21,D10,Gap-down continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,7,2026-07-22,D15,Rotation day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,8,2026-07-23,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,9,2026-07-24,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,10,2026-07-27,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,11,2026-07-28,D08,Gap-up continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,12,2026-07-29,D08,Gap-up continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,13,2026-07-30,D02,Low-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,14,2026-07-31,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,15,2026-08-03,D15,Rotation day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,16,2026-08-04,D10,Gap-down continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,17,2026-08-05,D02,Low-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,18,2026-08-06,D17,Stock-specific dispersion,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,19,2026-08-07,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,20,2026-08-10,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,21,2026-08-11,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,22,2026-08-12,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,23,2026-08-13,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,24,2026-08-14,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,25,2026-08-17,D05,Strong rally,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,26,2026-08-18,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,27,2026-08-19,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,28,2026-08-20,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-A,29,2026-08-21,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,30,2026-08-24,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-A,31,2026-08-25,D02,Low-volatility sideways,False,False,validation,model/threshold selection,True
+Q-A,32,2026-08-26,D20,Shock-and-normalize,True,False,validation,model/threshold selection,True
+Q-A,33,2026-08-27,D19,Trend reversal day,False,False,validation,model/threshold selection,True
+Q-A,34,2026-08-28,D19,Trend reversal day,False,False,validation,model/threshold selection,True
+Q-A,35,2026-08-31,D02,Low-volatility sideways,False,False,validation,model/threshold selection,True
+Q-A,36,2026-09-01,D12,Event day,False,True,validation,model/threshold selection,True
+Q-A,37,2026-09-02,D04,Gradual bullish trend,False,False,validation,model/threshold selection,True
+Q-A,38,2026-09-03,D18,False-breakout day,False,False,validation,model/threshold selection,True
+Q-A,39,2026-09-04,D13,Liquidity-stressed,True,False,validation,model/threshold selection,True
+Q-A,40,2026-09-07,D01,Normal balanced,False,False,validation,model/threshold selection,True
+Q-A,41,2026-09-08,D18,False-breakout day,False,False,validation,model/threshold selection,True
+Q-A,42,2026-09-09,D07,Sell-off/panic,True,False,validation,model/threshold selection,True
+Q-A,43,2026-09-10,D06,Gradual bearish trend,False,False,validation,model/threshold selection,True
+Q-A,44,2026-09-11,D11,Gap-down recovery,False,False,validation,model/threshold selection,True
+Q-A,45,2026-09-14,D09,Gap-up fade,False,False,validation,model/threshold selection,True
+Q-A,46,2026-09-15,D17,Stock-specific dispersion,False,False,untouched_test,final quarter evaluation,True
+Q-A,47,2026-09-16,D05,Strong rally,False,False,untouched_test,final quarter evaluation,True
+Q-A,48,2026-09-17,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-A,49,2026-09-18,D04,Gradual bullish trend,False,False,untouched_test,final quarter evaluation,True
+Q-A,50,2026-09-21,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-A,51,2026-09-22,D18,False-breakout day,False,False,untouched_test,final quarter evaluation,True
+Q-A,52,2026-09-23,D07,Sell-off/panic,True,False,untouched_test,final quarter evaluation,True
+Q-A,53,2026-09-24,D02,Low-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-A,54,2026-09-25,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-A,55,2026-09-28,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-A,56,2026-09-29,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-A,57,2026-09-30,D03,High-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-A,58,2026-10-01,D02,Low-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-A,59,2026-10-02,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-A,60,2026-10-05,D06,Gradual bearish trend,False,False,untouched_test,final quarter evaluation,True
+Q-A,61,2026-10-06,D12,Event day,False,True,untouched_test,final quarter evaluation,True
+Q-A,62,2026-10-07,D06,Gradual bearish trend,False,False,untouched_test,final quarter evaluation,True
+Q-A,63,2026-10-08,D12,Event day,True,True,untouched_test,final quarter evaluation,True
+Q-B,1,2026-07-14,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,2,2026-07-15,D05,Strong rally,True,False,calibration_development,feature construction and rough thresholds,True
+Q-B,3,2026-07-16,D07,Sell-off/panic,True,False,calibration_development,feature construction and rough thresholds,True
+Q-B,4,2026-07-17,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,5,2026-07-20,D13,Liquidity-stressed,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,6,2026-07-21,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,7,2026-07-22,D02,Low-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,8,2026-07-23,D05,Strong rally,True,False,calibration_development,feature construction and rough thresholds,True
+Q-B,9,2026-07-24,D05,Strong rally,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,10,2026-07-27,D15,Rotation day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,11,2026-07-28,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,12,2026-07-29,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,13,2026-07-30,D05,Strong rally,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,14,2026-07-31,D18,False-breakout day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,15,2026-08-03,D08,Gap-up continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,16,2026-08-04,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,17,2026-08-05,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,18,2026-08-06,D05,Strong rally,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,19,2026-08-07,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,20,2026-08-10,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,21,2026-08-11,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,22,2026-08-12,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-B,23,2026-08-13,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-B,24,2026-08-14,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,25,2026-08-17,D15,Rotation day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,26,2026-08-18,D19,Trend reversal day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,27,2026-08-19,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-B,28,2026-08-20,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-B,29,2026-08-21,D04,Gradual bullish trend,True,False,calibration_development,feature construction and rough thresholds,True
+Q-B,30,2026-08-24,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-B,31,2026-08-25,D08,Gap-up continuation,False,False,validation,model/threshold selection,True
+Q-B,32,2026-08-26,D09,Gap-up fade,False,False,validation,model/threshold selection,True
+Q-B,33,2026-08-27,D12,Event day,False,True,validation,model/threshold selection,True
+Q-B,34,2026-08-28,D01,Normal balanced,False,False,validation,model/threshold selection,True
+Q-B,35,2026-08-31,D08,Gap-up continuation,True,False,validation,model/threshold selection,True
+Q-B,36,2026-09-01,D04,Gradual bullish trend,False,False,validation,model/threshold selection,True
+Q-B,37,2026-09-02,D03,High-volatility sideways,False,False,validation,model/threshold selection,True
+Q-B,38,2026-09-03,D01,Normal balanced,False,False,validation,model/threshold selection,True
+Q-B,39,2026-09-04,D05,Strong rally,True,False,validation,model/threshold selection,True
+Q-B,40,2026-09-07,D18,False-breakout day,False,False,validation,model/threshold selection,True
+Q-B,41,2026-09-08,D15,Rotation day,False,False,validation,model/threshold selection,True
+Q-B,42,2026-09-09,D11,Gap-down recovery,False,False,validation,model/threshold selection,True
+Q-B,43,2026-09-10,D02,Low-volatility sideways,False,False,validation,model/threshold selection,True
+Q-B,44,2026-09-11,D03,High-volatility sideways,False,False,validation,model/threshold selection,True
+Q-B,45,2026-09-14,D02,Low-volatility sideways,False,False,validation,model/threshold selection,True
+Q-B,46,2026-09-15,D10,Gap-down continuation,False,False,untouched_test,final quarter evaluation,True
+Q-B,47,2026-09-16,D01,Normal balanced,True,False,untouched_test,final quarter evaluation,True
+Q-B,48,2026-09-17,D19,Trend reversal day,False,False,untouched_test,final quarter evaluation,True
+Q-B,49,2026-09-18,D04,Gradual bullish trend,False,False,untouched_test,final quarter evaluation,True
+Q-B,50,2026-09-21,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-B,51,2026-09-22,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-B,52,2026-09-23,D03,High-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-B,53,2026-09-24,D04,Gradual bullish trend,False,False,untouched_test,final quarter evaluation,True
+Q-B,54,2026-09-25,D20,Shock-and-normalize,True,False,untouched_test,final quarter evaluation,True
+Q-B,55,2026-09-28,D03,High-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-B,56,2026-09-29,D18,False-breakout day,False,False,untouched_test,final quarter evaluation,True
+Q-B,57,2026-09-30,D02,Low-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-B,58,2026-10-01,D06,Gradual bearish trend,True,False,untouched_test,final quarter evaluation,True
+Q-B,59,2026-10-02,D17,Stock-specific dispersion,False,False,untouched_test,final quarter evaluation,True
+Q-B,60,2026-10-05,D06,Gradual bearish trend,False,True,untouched_test,final quarter evaluation,True
+Q-B,61,2026-10-06,D05,Strong rally,False,False,untouched_test,final quarter evaluation,True
+Q-B,62,2026-10-07,D17,Stock-specific dispersion,False,False,untouched_test,final quarter evaluation,True
+Q-B,63,2026-10-08,D08,Gap-up continuation,True,False,untouched_test,final quarter evaluation,True
+Q-C,1,2026-07-14,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,2,2026-07-15,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,3,2026-07-16,D07,Sell-off/panic,True,False,calibration_development,feature construction and rough thresholds,True
+Q-C,4,2026-07-17,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,5,2026-07-20,D02,Low-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,6,2026-07-21,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,7,2026-07-22,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,8,2026-07-23,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,9,2026-07-24,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,10,2026-07-27,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,11,2026-07-28,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-C,12,2026-07-29,D04,Gradual bullish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,13,2026-07-30,D07,Sell-off/panic,True,False,calibration_development,feature construction and rough thresholds,True
+Q-C,14,2026-07-31,D09,Gap-up fade,False,True,calibration_development,feature construction and rough thresholds,True
+Q-C,15,2026-08-03,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,16,2026-08-04,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-C,17,2026-08-05,D03,High-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,18,2026-08-06,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,19,2026-08-07,D18,False-breakout day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,20,2026-08-10,D12,Event day,False,True,calibration_development,feature construction and rough thresholds,True
+Q-C,21,2026-08-11,D02,Low-volatility sideways,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,22,2026-08-12,D08,Gap-up continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,23,2026-08-13,D10,Gap-down continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,24,2026-08-14,D15,Rotation day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,25,2026-08-17,D10,Gap-down continuation,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,26,2026-08-18,D01,Normal balanced,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,27,2026-08-19,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,28,2026-08-20,D07,Sell-off/panic,True,False,calibration_development,feature construction and rough thresholds,True
+Q-C,29,2026-08-21,D19,Trend reversal day,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,30,2026-08-24,D06,Gradual bearish trend,False,False,calibration_development,feature construction and rough thresholds,True
+Q-C,31,2026-08-25,D15,Rotation day,False,False,validation,model/threshold selection,True
+Q-C,32,2026-08-26,D05,Strong rally,False,False,validation,model/threshold selection,True
+Q-C,33,2026-08-27,D03,High-volatility sideways,False,False,validation,model/threshold selection,True
+Q-C,34,2026-08-28,D03,High-volatility sideways,False,False,validation,model/threshold selection,True
+Q-C,35,2026-08-31,D07,Sell-off/panic,True,False,validation,model/threshold selection,True
+Q-C,36,2026-09-01,D18,False-breakout day,False,False,validation,model/threshold selection,True
+Q-C,37,2026-09-02,D13,Liquidity-stressed,False,False,validation,model/threshold selection,True
+Q-C,38,2026-09-03,D09,Gap-up fade,False,False,validation,model/threshold selection,True
+Q-C,39,2026-09-04,D11,Gap-down recovery,False,False,validation,model/threshold selection,True
+Q-C,40,2026-09-07,D03,High-volatility sideways,False,False,validation,model/threshold selection,True
+Q-C,41,2026-09-08,D13,Liquidity-stressed,False,False,validation,model/threshold selection,True
+Q-C,42,2026-09-09,D20,Shock-and-normalize,True,False,validation,model/threshold selection,True
+Q-C,43,2026-09-10,D19,Trend reversal day,False,False,validation,model/threshold selection,True
+Q-C,44,2026-09-11,D18,False-breakout day,False,False,validation,model/threshold selection,True
+Q-C,45,2026-09-14,D15,Rotation day,False,False,validation,model/threshold selection,True
+Q-C,46,2026-09-15,D17,Stock-specific dispersion,False,False,untouched_test,final quarter evaluation,True
+Q-C,47,2026-09-16,D12,Event day,False,True,untouched_test,final quarter evaluation,True
+Q-C,48,2026-09-17,D02,Low-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-C,49,2026-09-18,D17,Stock-specific dispersion,False,False,untouched_test,final quarter evaluation,True
+Q-C,50,2026-09-21,D05,Strong rally,False,False,untouched_test,final quarter evaluation,True
+Q-C,51,2026-09-22,D17,Stock-specific dispersion,False,False,untouched_test,final quarter evaluation,True
+Q-C,52,2026-09-23,D07,Sell-off/panic,True,False,untouched_test,final quarter evaluation,True
+Q-C,53,2026-09-24,D06,Gradual bearish trend,False,False,untouched_test,final quarter evaluation,True
+Q-C,54,2026-09-25,D10,Gap-down continuation,False,False,untouched_test,final quarter evaluation,True
+Q-C,55,2026-09-28,D06,Gradual bearish trend,False,False,untouched_test,final quarter evaluation,True
+Q-C,56,2026-09-29,D04,Gradual bullish trend,False,False,untouched_test,final quarter evaluation,True
+Q-C,57,2026-09-30,D06,Gradual bearish trend,False,False,untouched_test,final quarter evaluation,True
+Q-C,58,2026-10-01,D01,Normal balanced,False,False,untouched_test,final quarter evaluation,True
+Q-C,59,2026-10-02,D20,Shock-and-normalize,True,False,untouched_test,final quarter evaluation,True
+Q-C,60,2026-10-05,D03,High-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-C,61,2026-10-06,D12,Event day,False,True,untouched_test,final quarter evaluation,True
+Q-C,62,2026-10-07,D03,High-volatility sideways,False,False,untouched_test,final quarter evaluation,True
+Q-C,63,2026-10-08,D07,Sell-off/panic,True,False,untouched_test,final quarter evaluation,True

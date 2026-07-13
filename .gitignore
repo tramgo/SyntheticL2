@@ -1,0 +1,31 @@
+# Python/runtime cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local agent/session state
+.agents/
+
+# Local secrets
+.env
+
+# Raw/private market data samples
+real_data_sample/
+scratch*/
+
+# Large generated analytical data products
+*.duckdb
+*.duckdb.wal
+*.db
+*.sqlite
+*.sqlite3
+*.parquet
+*.feather
+*.arrow
+
+# Local logs/temp files
+*.log
+*.tmp
+~$*

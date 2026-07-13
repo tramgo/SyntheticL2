@@ -1,0 +1,10 @@
+order_model,description
+market_order,Cross spread and fill against the displayed opposite L1/L2 depth.
+marketable_limit_order,Limit order priced through L1; reject if stale arrival price breaches limit.
+passive_limit_order,Rest at L1 with pessimistic queue-position fill approximation.
+stop_market_approximation,Trigger market order when stop condition is observed in event stream.
+stop_limit_approximation,Trigger limit order when stop condition is observed in event stream.
+cancel_replace,Cancel stale passive order and replace at refreshed price.
+partial_fill,Allow displayed-depth-constrained partial fills.
+rejection_scenario,"Reject stale, crossed, missing-depth or price-band-invalid orders."
+stale_signal_cancellation,Cancel when signal age exceeds configured maximum before order arrival.

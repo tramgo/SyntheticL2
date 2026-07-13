@@ -1,0 +1,14 @@
+{
+  "generated_utc": "2026-07-13T15:21:14.547823+00:00",
+  "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
+  "rows_evaluated": 2259039,
+  "strategies": 11,
+  "baselines": 7,
+  "support_levels": {
+    "runnable_proxy": 5,
+    "partial_missing_required_features": 4,
+    "not_supported_by_current_product": 2
+  },
+  "diagnostic_scope": "preliminary_feature_and_signal_diagnostics_only",
+  "not_acceptance_result": true
+}

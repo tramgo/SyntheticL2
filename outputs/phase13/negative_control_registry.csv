@@ -1,0 +1,100 @@
+strategy_id,name,control_id,description,mandatory,expected_result,blocks_promotion_if_failed
+S01,Momentum/breakout filtered by MLOFI,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S01,Momentum/breakout filtered by MLOFI,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S02,Pure multi-level OFI directional model,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S03,Liquidity-vacuum breakout,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S04,Trade-flow plus depth confirmation,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S05,Microprice entry/exit filter,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S06,Absorption and exhaustion reversal,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S07,Mean reversion after imbalance,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S08,Cross-ticker/index lead-lag OFI,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S09,Pure queue-imbalance scalping,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S10,Passive market making,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S10,Passive market making,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S10,Passive market making,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S10,Passive market making,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S10,Passive market making,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S10,Passive market making,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S10,Passive market making,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S10,Passive market making,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S10,Passive market making,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,shuffled_same_time_bucket,Shuffle signal within the same time-of-day bucket to detect timestamp/label leakage.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,delayed_signal,Delay signal by one or more execution events to verify edge decay.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,inverted_signal,Invert side/sign to catch accidental sign errors or symmetric simulator bugs.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,random_matching_turnover,Random signal with matched turnover and symbol/time distribution.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,no_predictive_coupling_synthetic,Run on synthetic data generated without embedded predictive coupling.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,zero_cost_vs_realistic_cost,Compare zero-cost control with realistic cost schedule.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,zero_latency_vs_realistic_latency,Compare zero-latency control with retail/stressed profiles.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,hidden_regime_labels,Hide regime labels to test whether strategy depends on privileged labels.,True,no_promotable_edge_after_control,True
+S11,Spoof-like wall filter,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect spurious lead-lag leakage.,True,no_promotable_edge_after_control,True

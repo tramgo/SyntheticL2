@@ -1,0 +1,11 @@
+{
+  "generated_utc": "2026-07-13T16:18:43.730038+00:00",
+  "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
+  "rows_evaluated": 2259039,
+  "strategies_simulated": 9,
+  "execution_profiles": 3,
+  "summary_rows": 27,
+  "trade_sample_rows": 250000,
+  "scope": "marketable_order_proxy_over_5m_feature_events",
+  "not_acceptance_result": true
+}

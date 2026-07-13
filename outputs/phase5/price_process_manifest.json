@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-07-13T14:33:41.563462+00:00",
+  "phase2_dir": "outputs\\phase2",
+  "phase4_dir": "outputs\\phase4",
+  "bar_minutes": 5,
+  "session_start": "09:15:00",
+  "session_end": "15:30:00",
+  "validation": {
+    "bar_rows": 453600,
+    "daily_rows": 6048,
+    "profiles": 3,
+    "scenario_days": 189,
+    "symbols": 32,
+    "bars_per_symbol_day_min": 75,
+    "bars_per_symbol_day_max": 75,
+    "min_price": 27.62,
+    "max_tick_grid_error": 7.275957614183426e-12,
+    "high_low_violations": 0
+  },
+  "evidence_scope": "synthetic_price_process_v1"
+}

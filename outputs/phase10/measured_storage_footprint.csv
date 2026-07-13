@@ -1,0 +1,6 @@
+layer,path,rows,file_bytes,evidence_scope,bytes_per_row,size_mb
+real_raw_source_files,outputs\stage_a1\file_inventory.csv,620853,1764005784,measured_real_sample_raw_l2_tiny_files,2841.2615933240236,1682.287010192871
+real_compact_ticks,outputs\stage_a1\compact_ticks_by_symbol,620853,41641489,measured_real_sample_compact_parquet,67.07141465048892,39.71241855621338
+tier_a_raw_synthetic_events,outputs\phase9\tier_a\raw_synthetic_events.parquet,2276143,16129601,measured_current_synthetic_phase9,7.086374186507614,15.382386207580566
+tier_b_compact_l2_state,outputs\phase9\tier_b\compact_l2_state.parquet,2259039,165943933,measured_current_synthetic_phase9,73.45775482406457,158.25646686553955
+tier_c_features_5m,outputs\phase9\tier_c\features_5m.parquet,2259039,128897765,measured_current_synthetic_phase9,57.058671851172114,122.92648792266846

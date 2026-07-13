@@ -1,0 +1,11 @@
+required_field,definition
+generator_version,Exact code/generator version for the artifact.
+configuration_hash,Hash of effective configuration used to generate the artifact.
+random_seed,Seed or seed plan for stochastic generation.
+calibration_dataset_id,Identifier for real-data calibration input.
+ticker_metadata_version,Version of ticker universe and metadata.
+regime_calendar_version,Version of regime/scenario calendar.
+scenario_ids,Scenario profile/day IDs represented in the artifact.
+cost_model_version,Version of execution/cost assumptions.
+latency_model_version,Version of feed/latency assumptions.
+creation_timestamp,Creation timestamp for the artifact.

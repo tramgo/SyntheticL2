@@ -1,0 +1,387 @@
+from __future__ import annotations
+
+import argparse
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+import duckdb
+
+
+VIEW_SQL = {
+    "stage_a1_quality": "read_csv_auto('outputs/stage_a1/data_quality_report.csv')",
+    "stage_a1_horizon_coverage": "read_csv_auto('outputs/stage_a1/horizon_coverage.csv')",
+    "stage_a1_open_window_coverage": "read_csv_auto('outputs/stage_a1/horizon_window_coverage_open_0915_0920.csv')",
+    "phase1_summary": "read_csv_auto('outputs/phase1/phase1_feature_summary.csv')",
+    "phase2_price": "read_csv_auto('outputs/phase2/price_tick_calibration.csv')",
+    "phase2_activity": "read_csv_auto('outputs/phase2/activity_calibration.csv')",
+    "phase2_depth": "read_csv_auto('outputs/phase2/depth_calibration.csv')",
+    "phase2_trade_flow": "read_csv_auto('outputs/phase2/trade_flow_calibration.csv')",
+    "phase3_daily": "read_csv_auto('outputs/phase3/daily_regime_observation.csv')",
+    "phase3_intraday": "read_csv_auto('outputs/phase3/intraday_market_states.csv')",
+    "phase3_ticker_states": "read_csv_auto('outputs/phase3/ticker_state_profile.csv')",
+    "phase4_calendar": "read_csv_auto('outputs/phase4/scenario_calendar.csv')",
+    "phase4_profile_summary": "read_csv_auto('outputs/phase4/profile_summary.csv')",
+    "phase5_price_paths": "read_parquet('outputs/phase5/price_paths_5m.parquet')",
+    "phase5_daily_price_summary": "read_csv_auto('outputs/phase5/daily_price_summary.csv')",
+    "phase6_l2_book_states": "read_parquet('outputs/phase6/l2_book_states_5m.parquet')",
+    "phase6_l2_book_summary": "read_csv_auto('outputs/phase6/l2_book_summary.csv')",
+    "phase7_shock_library": "read_csv_auto('outputs/phase7/shock_library.csv')",
+    "phase7_shock_type_summary": "read_csv_auto('outputs/phase7/shock_type_summary.csv')",
+    "phase7_shock_day_summary": "read_csv_auto('outputs/phase7/shock_day_summary.csv')",
+    "phase8_retail_feed_observations": "read_parquet('outputs/phase8/retail_feed_observations.parquet')",
+    "phase8_retail_feed_dropped_events": "read_csv_auto('outputs/phase8/retail_feed_dropped_events.csv')",
+    "phase8_feed_profile_summary": "read_csv_auto('outputs/phase8/feed_profile_summary.csv')",
+    "phase9_tier_a_events": "read_parquet('outputs/phase9/tier_a/raw_synthetic_events.parquet')",
+    "phase9_tier_b_l2_state": "read_parquet('outputs/phase9/tier_b/compact_l2_state.parquet')",
+    "phase9_tier_c_features_5m": "read_parquet('outputs/phase9/tier_c/features_5m.parquet')",
+    "phase10_measured_storage": "read_csv_auto('outputs/phase10/measured_storage_footprint.csv')",
+    "phase10_real_symbol_storage": "read_csv_auto('outputs/phase10/real_sample_symbol_storage.csv')",
+    "phase10_regime_storage_multipliers": "read_csv_auto('outputs/phase10/regime_storage_multipliers.csv')",
+    "phase10_generation_profile_estimates": "read_csv_auto('outputs/phase10/generation_profile_size_estimates.csv')",
+    "phase10_feature_interval_estimates": "read_csv_auto('outputs/phase10/feature_interval_size_estimates.csv')",
+    "phase10_storage_inventory": "read_csv_auto('outputs/phase10/storage_inventory.csv')",
+    "phase10_schema_physical_types": "read_csv_auto('outputs/phase10/schema_physical_types.csv')",
+    "phase10_size_estimates": "read_csv_auto('outputs/phase10/size_estimates.csv')",
+    "phase10_partition_recommendations": "read_csv_auto('outputs/phase10/partition_recommendations.csv')",
+    "phase11_strategy_matrix": "read_csv_auto('outputs/phase11/strategy_validation_matrix.csv')",
+    "phase11_baseline_matrix": "read_csv_auto('outputs/phase11/baseline_strategy_matrix.csv')",
+    "phase11_feature_availability": "read_csv_auto('outputs/phase11/strategy_feature_availability.csv')",
+    "phase11_signal_diagnostics": "read_csv_auto('outputs/phase11/strategy_signal_diagnostics.csv')",
+    "phase12_execution_summary": "read_csv_auto('outputs/phase12/execution_summary.csv')",
+    "phase12_execution_profiles": "read_csv_auto('outputs/phase12/execution_profiles.csv')",
+    "phase12_cost_schedule": "read_csv_auto('outputs/phase12/cost_schedule.csv')",
+    "phase12_trade_ledger_sample": "read_parquet('outputs/phase12/trade_ledger_sample.parquet')",
+    "phase13_data_splits": "read_csv_auto('outputs/phase13/data_splits.csv')",
+    "phase13_seed_plan": "read_csv_auto('outputs/phase13/seed_plan.csv')",
+    "phase13_walk_forward_windows": "read_csv_auto('outputs/phase13/walk_forward_windows.csv')",
+    "phase13_parameter_grid": "read_csv_auto('outputs/phase13/parameter_grid.csv')",
+    "phase13_negative_controls": "read_csv_auto('outputs/phase13/negative_controls.csv')",
+    "phase13_experiment_registry": "read_csv_auto('outputs/phase13/experiment_registry.csv')",
+    "phase14_quality_gate_summary": "read_csv_auto('outputs/phase14/quality_gate_summary.csv')",
+    "phase14_level1_structural": "read_csv_auto('outputs/phase14/level1_structural.csv')",
+    "phase14_level2_marginal": "read_csv_auto('outputs/phase14/level2_marginal.csv')",
+    "phase14_level3_temporal": "read_csv_auto('outputs/phase14/level3_temporal.csv')",
+    "phase14_level4_cross_sectional": "read_csv_auto('outputs/phase14/level4_cross_sectional.csv')",
+    "phase14_level5_conditional": "read_csv_auto('outputs/phase14/level5_conditional.csv')",
+    "phase14_level6_discriminator_proxy": "read_csv_auto('outputs/phase14/level6_discriminator_proxy.csv')",
+    "phase14_level7_counterfactual": "read_csv_auto('outputs/phase14/level7_counterfactual.csv')",
+    "phase15_gate_definitions": "read_csv_auto('outputs/phase15/gate_definitions.csv')",
+    "phase15_strategy_gate_results": "read_csv_auto('outputs/phase15/strategy_gate_results.csv')",
+    "phase15_strategy_acceptance_summary": "read_csv_auto('outputs/phase15/strategy_acceptance_summary.csv')",
+    "phase15_acceptance_blockers": "read_csv_auto('outputs/phase15/acceptance_blockers.csv')",
+    "phase16_metric_catalog": "read_csv_auto('outputs/phase16/metric_catalog.csv')",
+    "phase16_predictive_metric_scoreboard": "read_csv_auto('outputs/phase16/predictive_metric_scoreboard.csv')",
+    "phase16_trading_metric_scoreboard": "read_csv_auto('outputs/phase16/trading_metric_scoreboard.csv')",
+    "phase16_breakdown_coverage": "read_csv_auto('outputs/phase16/breakdown_coverage.csv')",
+    "phase16_strategy_metric_requirement_coverage": "read_csv_auto('outputs/phase16/strategy_metric_requirement_coverage.csv')",
+    "phase17_work_package_registry": "read_csv_auto('outputs/phase17/work_package_registry.csv')",
+    "phase17_deliverable_traceability": "read_csv_auto('outputs/phase17/deliverable_traceability.csv')",
+    "phase17_implementation_gap_backlog": "read_csv_auto('outputs/phase17/implementation_gap_backlog.csv')",
+    "replay_validation_summary": "read_csv_auto('outputs/replay/replay_validation_summary.csv')",
+    "phase18_stack_decisions": "read_csv_auto('outputs/phase18/stack_decisions.csv')",
+    "phase18_dependency_availability": "read_csv_auto('outputs/phase18/dependency_availability.csv')",
+    "phase19_reproducibility_required_fields": "read_csv_auto('outputs/phase19/reproducibility_required_fields.csv')",
+    "phase19_manifest_field_audit": "read_csv_auto('outputs/phase19/manifest_field_audit.csv')",
+    "phase19_artifact_reproducibility_summary": "read_csv_auto('outputs/phase19/artifact_reproducibility_summary.csv')",
+    "phase19_reproducibility_gap_summary": "read_csv_auto('outputs/phase19/reproducibility_gap_summary.csv')",
+    "phase14_quality_gate_summary": "read_csv_auto('outputs/phase14/quality_gate_summary.csv')",
+    "phase14_level1_structural": "read_csv_auto('outputs/phase14/level1_structural.csv')",
+    "phase14_level2_marginal": "read_csv_auto('outputs/phase14/level2_marginal.csv')",
+    "phase14_level3_temporal": "read_csv_auto('outputs/phase14/level3_temporal.csv')",
+    "phase14_level4_cross_sectional": "read_csv_auto('outputs/phase14/level4_cross_sectional.csv')",
+    "phase14_level5_conditional": "read_csv_auto('outputs/phase14/level5_conditional.csv')",
+    "phase14_level6_discriminator_proxy": "read_csv_auto('outputs/phase14/level6_discriminator_proxy.csv')",
+    "phase14_level7_counterfactual": "read_csv_auto('outputs/phase14/level7_counterfactual.csv')",
+    "compact_ticks": "read_parquet('outputs/stage_a1/compact_ticks_by_symbol/symbol=*/ticks.parquet', union_by_name=true)",
+    "normalized_ticks": "read_parquet('outputs/phase1/normalized_ticks_by_symbol/symbol=*/normalized_ticks.parquet', union_by_name=true)",
+    "received_tick_deltas": "read_parquet('outputs/phase1/received_tick_deltas_by_symbol/symbol=*/received_tick_deltas.parquet', union_by_name=true)",
+}
+
+
+def connect(workspace_db: Path) -> duckdb.DuckDBPyConnection:
+    workspace_db.parent.mkdir(parents=True, exist_ok=True)
+    con = duckdb.connect(str(workspace_db))
+    con.execute("INSTALL json")
+    con.execute("LOAD json")
+    return con
+
+
+def create_views(con: duckdb.DuckDBPyConnection) -> None:
+    for view_name, source_sql in VIEW_SQL.items():
+        con.execute(f"CREATE OR REPLACE VIEW {view_name} AS SELECT * FROM {source_sql}")
+
+
+def run_validation(con: duckdb.DuckDBPyConnection) -> dict:
+    checks = {
+        "stage_a1_symbols": "SELECT count(*) FROM stage_a1_quality",
+        "stage_a1_rows": "SELECT sum(row_count) FROM stage_a1_quality",
+        "compact_tick_rows": "SELECT count(*) FROM compact_ticks",
+        "normalized_tick_rows": "SELECT count(*) FROM normalized_ticks",
+        "received_delta_rows": "SELECT count(*) FROM received_tick_deltas",
+        "phase2_symbols": "SELECT count(*) FROM phase2_price",
+        "phase3_intraday_bins": "SELECT count(*) FROM phase3_intraday",
+        "phase4_calendar_rows": "SELECT count(*) FROM phase4_calendar",
+        "phase4_profiles": "SELECT count(distinct quarter_profile) FROM phase4_calendar",
+        "phase5_price_bar_rows": "SELECT count(*) FROM phase5_price_paths",
+        "phase5_daily_rows": "SELECT count(*) FROM phase5_daily_price_summary",
+        "phase5_symbols": "SELECT count(distinct symbol) FROM phase5_price_paths",
+        "phase6_l2_book_rows": "SELECT count(*) FROM phase6_l2_book_states",
+        "phase6_symbols": "SELECT count(distinct symbol) FROM phase6_l2_book_states",
+        "phase6_crossed_l1_rows": "SELECT count(*) FROM phase6_l2_book_states WHERE bid_px_1 >= ask_px_1",
+        "phase7_shock_events": "SELECT count(*) FROM phase7_shock_library",
+        "phase7_market_events": "SELECT count(*) FROM phase7_shock_library WHERE scope = 'market'",
+        "phase7_ticker_events": "SELECT count(*) FROM phase7_shock_library WHERE scope = 'ticker'",
+        "phase7_target_symbols": "SELECT count(distinct target) FROM phase7_shock_library WHERE scope = 'ticker'",
+        "phase8_feed_observation_rows": "SELECT count(*) FROM phase8_retail_feed_observations",
+        "phase8_feed_profiles": "SELECT count(distinct feed_profile) FROM phase8_retail_feed_observations",
+        "phase8_dropped_rows": "SELECT count(*) FROM phase8_retail_feed_dropped_events",
+        "phase8_duplicate_rows": "SELECT count(*) FROM phase8_retail_feed_observations WHERE is_duplicate = true",
+        "phase9_tier_a_events": "SELECT count(*) FROM phase9_tier_a_events",
+        "phase9_tier_b_rows": "SELECT count(*) FROM phase9_tier_b_l2_state",
+        "phase9_tier_c_rows": "SELECT count(*) FROM phase9_tier_c_features_5m",
+        "phase9_tier_b_crossed_l1_rows": "SELECT count(*) FROM phase9_tier_b_l2_state WHERE bid_px_1 >= ask_px_1",
+        "phase10_measured_layers": "SELECT count(*) FROM phase10_measured_storage",
+        "phase10_generation_profiles": "SELECT count(*) FROM phase10_generation_profile_estimates",
+        "phase10_feature_intervals": "SELECT count(*) FROM phase10_feature_interval_estimates",
+        "phase10_medium_estimated_total_gb": "SELECT estimated_total_gb FROM phase10_generation_profile_estimates WHERE profile = 'Medium'",
+        "phase10_full_estimated_total_gb": "SELECT estimated_total_gb FROM phase10_generation_profile_estimates WHERE profile = 'Full'",
+        "phase10_inventory_datasets": "SELECT count(*) FROM phase10_storage_inventory",
+        "phase10_schema_columns": "SELECT count(*) FROM phase10_schema_physical_types",
+        "phase10_partition_rows": "SELECT count(*) FROM phase10_partition_recommendations",
+        "phase10_new_medium_total_gb": "SELECT total_gb FROM phase10_size_estimates WHERE profile = 'Medium'",
+        "phase10_new_full_total_gb": "SELECT total_gb FROM phase10_size_estimates WHERE profile = 'Full'",
+        "phase10_type_optimization_candidates": "SELECT count(*) FROM phase10_schema_physical_types WHERE recommended_type_note <> ''",
+        "phase11_strategies": "SELECT count(*) FROM phase11_strategy_matrix",
+        "phase11_baselines": "SELECT count(*) FROM phase11_baseline_matrix",
+        "phase11_runnable_proxy_strategies": "SELECT count(*) FROM phase11_strategy_matrix WHERE support_level = 'runnable_proxy'",
+        "phase11_partial_strategies": "SELECT count(*) FROM phase11_strategy_matrix WHERE support_level = 'partial_missing_required_features'",
+        "phase11_not_supported_strategies": "SELECT count(*) FROM phase11_strategy_matrix WHERE support_level = 'not_supported_by_current_product'",
+        "phase11_evaluated_rows": "SELECT max(rows_evaluated) FROM phase11_signal_diagnostics",
+        "phase12_summary_rows": "SELECT count(*) FROM phase12_execution_summary",
+        "phase12_execution_profiles": "SELECT count(*) FROM phase12_execution_profiles",
+        "phase12_strategies_simulated": "SELECT count(distinct strategy_id) FROM phase12_execution_summary",
+        "phase12_total_trades": "SELECT sum(trades) FROM phase12_execution_summary",
+        "phase12_trade_sample_rows": "SELECT count(*) FROM phase12_trade_ledger_sample",
+        "phase12_cost_components": "SELECT count(*) FROM phase12_cost_schedule",
+        "phase13_split_rows": "SELECT count(*) FROM phase13_data_splits",
+        "phase13_seed_rows": "SELECT count(*) FROM phase13_seed_plan",
+        "phase13_initial_engineering_seeds": "SELECT count(*) FROM phase13_seed_plan WHERE initial_engineering_seed = true",
+        "phase13_walk_forward_windows": "SELECT count(*) FROM phase13_walk_forward_windows",
+        "phase13_parameter_sets": "SELECT count(*) FROM phase13_parameter_grid",
+        "phase13_negative_controls": "SELECT count(*) FROM phase13_negative_controls",
+        "phase13_planned_experiments": "SELECT count(*) FROM phase13_experiment_registry",
+        "phase14_quality_checks": "SELECT count(*) FROM phase14_quality_gate_summary",
+        "phase14_pass_checks": "SELECT count(*) FROM phase14_quality_gate_summary WHERE status = 'pass'",
+        "phase14_warn_checks": "SELECT count(*) FROM phase14_quality_gate_summary WHERE status = 'warn'",
+        "phase14_fail_checks": "SELECT count(*) FROM phase14_quality_gate_summary WHERE status = 'fail'",
+        "phase15_gate_rows": "SELECT count(*) FROM phase15_strategy_gate_results",
+        "phase15_promoted_strategies": "SELECT count(*) FROM phase15_strategy_acceptance_summary WHERE promotion_allowed = true",
+        "phase15_blocked_strategies": "SELECT count(*) FROM phase15_strategy_acceptance_summary WHERE promotion_allowed = false",
+        "phase15_blocker_rows": "SELECT count(*) FROM phase15_acceptance_blockers",
+        "phase16_metric_catalog_rows": "SELECT count(*) FROM phase16_metric_catalog",
+        "phase16_predictive_scoreboard_rows": "SELECT count(*) FROM phase16_predictive_metric_scoreboard",
+        "phase16_trading_scoreboard_rows": "SELECT count(*) FROM phase16_trading_metric_scoreboard",
+        "phase16_breakdown_rows": "SELECT count(*) FROM phase16_breakdown_coverage",
+        "phase16_acceptance_grade_metrics": "SELECT count(*) FROM phase16_metric_catalog WHERE acceptance_eligible_now = true",
+        "phase16_missing_or_proxy_metrics": "SELECT count(*) FROM phase16_metric_catalog WHERE acceptance_eligible_now = false",
+        "phase17_work_packages": "SELECT count(*) FROM phase17_work_package_registry",
+        "phase17_deliverables": "SELECT count(*) FROM phase17_deliverable_traceability",
+        "phase17_implemented_deliverables": "SELECT count(*) FROM phase17_deliverable_traceability WHERE implementation_status = 'implemented'",
+        "phase17_proxy_or_partial_deliverables": "SELECT count(*) FROM phase17_deliverable_traceability WHERE implementation_status IN ('implemented_proxy', 'partial_current', 'partial_proxy')",
+        "phase17_missing_deliverables": "SELECT count(*) FROM phase17_deliverable_traceability WHERE implementation_status = 'missing'",
+        "phase17_blocked_work_packages": "SELECT count(*) FROM phase17_work_package_registry WHERE current_status = 'blocked_by_missing_deliverables'",
+        "phase17_p0_gaps": "SELECT count(*) FROM phase17_implementation_gap_backlog WHERE priority = 'P0'",
+        "replay_validation_tiers": "SELECT count(*) FROM replay_validation_summary",
+        "replay_validation_deterministic_tiers": "SELECT count(*) FROM replay_validation_summary WHERE deterministic_ordering = true",
+        "phase18_stack_decision_rows": "SELECT count(*) FROM phase18_stack_decisions",
+        "phase18_dependency_rows": "SELECT count(*) FROM phase18_dependency_availability",
+        "phase18_required_now_dependencies": "SELECT count(*) FROM phase18_dependency_availability WHERE requirement_status = 'required_now'",
+        "phase18_missing_required_now_dependencies": "SELECT count(*) FROM phase18_dependency_availability WHERE requirement_status = 'required_now' AND available_now = false",
+        "phase18_deferred_or_optional_items": "SELECT count(*) FROM phase18_stack_decisions WHERE decision_status IN ('optional_later', 'defer')",
+        "phase19_required_fields": "SELECT count(*) FROM phase19_reproducibility_required_fields",
+        "phase19_audited_artifacts": "SELECT count(*) FROM phase19_artifact_reproducibility_summary",
+        "phase19_field_checks": "SELECT count(*) FROM phase19_manifest_field_audit",
+        "phase19_exact_regeneration_ready_artifacts": "SELECT count(*) FROM phase19_artifact_reproducibility_summary WHERE exact_regeneration_ready = true",
+        "phase19_artifacts_with_missing_fields": "SELECT count(*) FROM phase19_artifact_reproducibility_summary WHERE missing_fields > 0",
+        "phase19_manifest_missing_or_unreadable_artifacts": "SELECT count(*) FROM phase19_artifact_reproducibility_summary WHERE manifest_missing_or_unreadable_fields > 0",
+        "phase19_gap_rows": "SELECT count(*) FROM phase19_reproducibility_gap_summary",
+        "phase14_quality_checks": "SELECT count(*) FROM phase14_quality_gate_summary",
+        "phase14_pass_checks": "SELECT count(*) FROM phase14_quality_gate_summary WHERE status = 'pass'",
+        "phase14_warn_checks": "SELECT count(*) FROM phase14_quality_gate_summary WHERE status = 'warn'",
+        "phase14_fail_checks": "SELECT count(*) FROM phase14_quality_gate_summary WHERE status = 'fail'",
+    }
+    results = {name: con.execute(sql).fetchone()[0] for name, sql in checks.items()}
+    results["phase4_days_per_profile"] = con.execute(
+        "SELECT quarter_profile, count(*) AS days FROM phase4_calendar GROUP BY 1 ORDER BY 1"
+    ).fetchall()
+    results["dense_full_session_1s_below_90_symbols"] = con.execute(
+        "SELECT count(*) FROM stage_a1_horizon_coverage WHERE horizon_ms = 1000 AND supported_for_resampling = false"
+    ).fetchone()[0]
+    results["dense_full_session_5s_supported_symbols"] = con.execute(
+        "SELECT count(*) FROM stage_a1_horizon_coverage WHERE horizon_ms = 5000 AND supported_for_resampling = true"
+    ).fetchone()[0]
+    results["open_window_dense_1s_supported_symbols"] = con.execute(
+        "SELECT count(*) FROM stage_a1_open_window_coverage WHERE horizon_ms = 1000 AND supported_dense_regular_panel = true"
+    ).fetchone()[0]
+    results["open_window_event_driven_1s_supported_symbols"] = con.execute(
+        "SELECT count(*) FROM stage_a1_open_window_coverage WHERE horizon_ms = 1000 AND supports_event_driven_1s = true"
+    ).fetchone()[0]
+    return results
+
+
+def write_report(output_dir: Path, workspace_db: Path, validation: dict) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    manifest = {
+        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "duckdb_database": str(workspace_db),
+        "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
+        "validation": validation,
+        "views": sorted(VIEW_SQL),
+    }
+    (output_dir / "duckdb_workspace_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+
+    day_rows = "\n".join(f"| {profile} | {days} |" for profile, days in validation["phase4_days_per_profile"])
+    lines = [
+        "# DuckDB Workspace Report",
+        "",
+        f"Generated UTC: {manifest['generated_utc']}",
+        "",
+        "## Storage Decision",
+        "",
+        "Use Parquet as durable storage and DuckDB as the local analytic query engine over registered views.",
+        "Use SQLite only later if we need a small transactional run registry or manual annotation database.",
+        "",
+        "## Validation",
+        "",
+        f"- Stage A1 symbols: {validation['stage_a1_symbols']}",
+        f"- Stage A1 rows: {validation['stage_a1_rows']}",
+        f"- Compact tick rows: {validation['compact_tick_rows']}",
+        f"- Normalized tick rows: {validation['normalized_tick_rows']}",
+        f"- Received delta rows: {validation['received_delta_rows']}",
+        f"- Phase 2 symbols: {validation['phase2_symbols']}",
+        f"- Phase 3 intraday bins: {validation['phase3_intraday_bins']}",
+        f"- Phase 4 calendar rows: {validation['phase4_calendar_rows']}",
+        f"- Phase 4 profiles: {validation['phase4_profiles']}",
+        f"- Phase 5 price bar rows: {validation['phase5_price_bar_rows']}",
+        f"- Phase 5 daily rows: {validation['phase5_daily_rows']}",
+        f"- Phase 5 symbols: {validation['phase5_symbols']}",
+        f"- Phase 6 L2 book rows: {validation['phase6_l2_book_rows']}",
+        f"- Phase 6 symbols: {validation['phase6_symbols']}",
+        f"- Phase 6 crossed L1 rows: {validation['phase6_crossed_l1_rows']}",
+        f"- Phase 7 shock events: {validation['phase7_shock_events']}",
+        f"- Phase 7 market events: {validation['phase7_market_events']}",
+        f"- Phase 7 ticker events: {validation['phase7_ticker_events']}",
+        f"- Phase 7 target symbols: {validation['phase7_target_symbols']}",
+        f"- Phase 8 feed observation rows: {validation['phase8_feed_observation_rows']}",
+        f"- Phase 8 feed profiles: {validation['phase8_feed_profiles']}",
+        f"- Phase 8 dropped rows: {validation['phase8_dropped_rows']}",
+        f"- Phase 8 duplicate rows: {validation['phase8_duplicate_rows']}",
+        f"- Phase 9 Tier A events: {validation['phase9_tier_a_events']}",
+        f"- Phase 9 Tier B rows: {validation['phase9_tier_b_rows']}",
+        f"- Phase 9 Tier C rows: {validation['phase9_tier_c_rows']}",
+        f"- Phase 9 Tier B crossed L1 rows: {validation['phase9_tier_b_crossed_l1_rows']}",
+        f"- Phase 10 measured storage layers: {validation['phase10_measured_layers']}",
+        f"- Phase 10 generation profiles: {validation['phase10_generation_profiles']}",
+        f"- Phase 10 feature intervals: {validation['phase10_feature_intervals']}",
+        f"- Phase 10 Medium estimated total GB: {validation['phase10_medium_estimated_total_gb']}",
+        f"- Phase 10 Full estimated total GB: {validation['phase10_full_estimated_total_gb']}",
+        f"- Phase 10 consolidated inventory datasets: {validation['phase10_inventory_datasets']}",
+        f"- Phase 10 consolidated schema columns: {validation['phase10_schema_columns']}",
+        f"- Phase 10 partition recommendation rows: {validation['phase10_partition_rows']}",
+        f"- Phase 10 consolidated Medium estimated total GB: {validation['phase10_new_medium_total_gb']:.2f}",
+        f"- Phase 10 consolidated Full estimated total GB: {validation['phase10_new_full_total_gb']:.2f}",
+        f"- Phase 10 type optimization candidates: {validation['phase10_type_optimization_candidates']}",
+        f"- Phase 11 strategies: {validation['phase11_strategies']}",
+        f"- Phase 11 baselines: {validation['phase11_baselines']}",
+        f"- Phase 11 runnable proxy strategies: {validation['phase11_runnable_proxy_strategies']}",
+        f"- Phase 11 partial/missing-feature strategies: {validation['phase11_partial_strategies']}",
+        f"- Phase 11 unsupported-by-current-product strategies: {validation['phase11_not_supported_strategies']}",
+        f"- Phase 11 rows evaluated per strategy: {validation['phase11_evaluated_rows']}",
+        f"- Phase 12 execution summary rows: {validation['phase12_summary_rows']}",
+        f"- Phase 12 execution profiles: {validation['phase12_execution_profiles']}",
+        f"- Phase 12 strategies simulated: {validation['phase12_strategies_simulated']}",
+        f"- Phase 12 total simulated trades: {validation['phase12_total_trades']}",
+        f"- Phase 12 trade sample rows: {validation['phase12_trade_sample_rows']}",
+        f"- Phase 12 cost components: {validation['phase12_cost_components']}",
+        f"- Phase 13 split rows: {validation['phase13_split_rows']}",
+        f"- Phase 13 seed rows: {validation['phase13_seed_rows']}",
+        f"- Phase 13 initial engineering seeds: {validation['phase13_initial_engineering_seeds']}",
+        f"- Phase 13 walk-forward windows: {validation['phase13_walk_forward_windows']}",
+        f"- Phase 13 parameter sets: {validation['phase13_parameter_sets']}",
+        f"- Phase 13 negative controls: {validation['phase13_negative_controls']}",
+        f"- Phase 13 planned experiment registry rows: {validation['phase13_planned_experiments']}",
+        f"- Phase 14 quality checks: {validation['phase14_quality_checks']}",
+        f"- Phase 14 pass checks: {validation['phase14_pass_checks']}",
+        f"- Phase 14 warn checks: {validation['phase14_warn_checks']}",
+        f"- Phase 14 fail checks: {validation['phase14_fail_checks']}",
+        f"- Phase 15 gate rows: {validation['phase15_gate_rows']}",
+        f"- Phase 15 promoted strategies: {validation['phase15_promoted_strategies']}",
+        f"- Phase 15 blocked strategies: {validation['phase15_blocked_strategies']}",
+        f"- Phase 15 blocker rows: {validation['phase15_blocker_rows']}",
+        f"- Phase 16 metric catalog rows: {validation['phase16_metric_catalog_rows']}",
+        f"- Phase 16 predictive scoreboard rows: {validation['phase16_predictive_scoreboard_rows']}",
+        f"- Phase 16 trading scoreboard rows: {validation['phase16_trading_scoreboard_rows']}",
+        f"- Phase 16 breakdown rows: {validation['phase16_breakdown_rows']}",
+        f"- Phase 16 acceptance-grade metrics: {validation['phase16_acceptance_grade_metrics']}",
+        f"- Phase 16 missing/proxy metrics: {validation['phase16_missing_or_proxy_metrics']}",
+        f"- Phase 17 work packages: {validation['phase17_work_packages']}",
+        f"- Phase 17 deliverables: {validation['phase17_deliverables']}",
+        f"- Phase 17 implemented deliverables: {validation['phase17_implemented_deliverables']}",
+        f"- Phase 17 proxy/partial deliverables: {validation['phase17_proxy_or_partial_deliverables']}",
+        f"- Phase 17 missing deliverables: {validation['phase17_missing_deliverables']}",
+        f"- Phase 17 blocked work packages: {validation['phase17_blocked_work_packages']}",
+        f"- Phase 17 P0 gaps: {validation['phase17_p0_gaps']}",
+        f"- Replay validation tiers: {validation['replay_validation_tiers']}",
+        f"- Replay deterministic tiers: {validation['replay_validation_deterministic_tiers']}",
+        f"- Phase 18 stack decision rows: {validation['phase18_stack_decision_rows']}",
+        f"- Phase 18 dependency rows: {validation['phase18_dependency_rows']}",
+        f"- Phase 18 required-now dependencies: {validation['phase18_required_now_dependencies']}",
+        f"- Phase 18 missing required-now dependencies: {validation['phase18_missing_required_now_dependencies']}",
+        f"- Phase 18 deferred/optional stack items: {validation['phase18_deferred_or_optional_items']}",
+        f"- Phase 19 required fields: {validation['phase19_required_fields']}",
+        f"- Phase 19 audited artifacts: {validation['phase19_audited_artifacts']}",
+        f"- Phase 19 field checks: {validation['phase19_field_checks']}",
+        f"- Phase 19 exact-regeneration-ready artifacts: {validation['phase19_exact_regeneration_ready_artifacts']}",
+        f"- Phase 19 artifacts with missing fields: {validation['phase19_artifacts_with_missing_fields']}",
+        f"- Phase 19 manifest-missing/unreadable artifacts: {validation['phase19_manifest_missing_or_unreadable_artifacts']}",
+        f"- Phase 19 gap rows: {validation['phase19_gap_rows']}",
+        f"- Dense full-session 1s below 90% symbols: {validation['dense_full_session_1s_below_90_symbols']}",
+        f"- Dense full-session 5s supported symbols: {validation['dense_full_session_5s_supported_symbols']}",
+        f"- Open 09:15-09:20 dense 1s supported symbols: {validation['open_window_dense_1s_supported_symbols']}",
+        f"- Open 09:15-09:20 event-driven 1s supported symbols: {validation['open_window_event_driven_1s_supported_symbols']}",
+        "",
+        "## Phase 4 Days Per Profile",
+        "",
+        "| Profile | Days |",
+        "| --- | --- |",
+        day_rows,
+        "",
+    ]
+    (output_dir / "duckdb_workspace_report.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def run(workspace_db: Path, output_dir: Path) -> None:
+    con = connect(workspace_db)
+    try:
+        create_views(con)
+        validation = run_validation(con)
+    finally:
+        con.close()
+    write_report(output_dir, workspace_db, validation)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Create DuckDB views over SyntheticL2 Parquet/CSV outputs.")
+    parser.add_argument("--workspace-db", type=Path, default=Path("outputs/duckdb/synthetic_l2.duckdb"))
+    parser.add_argument("--output-dir", type=Path, default=Path("outputs/duckdb"))
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    run(args.workspace_db, args.output_dir)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,27 @@
+{
+  "generated_utc": "2026-07-13T15:46:34.460072+00:00",
+  "inputs": {
+    "real_quality": "outputs\\stage_a1\\data_quality_report.csv",
+    "real_price": "outputs\\phase2\\price_tick_calibration.csv",
+    "real_depth": "outputs\\phase2\\depth_calibration.csv",
+    "phase4_calendar": "outputs\\phase4\\scenario_calendar.csv",
+    "phase5_daily": "outputs\\phase5\\daily_price_summary.csv",
+    "phase6_summary": "outputs\\phase6\\l2_book_summary.csv",
+    "phase9_features": "outputs\\phase9\\tier_c\\features_5m.parquet"
+  },
+  "tables": [
+    "level1_structural",
+    "level2_marginal",
+    "level3_temporal",
+    "level4_cross_sectional",
+    "level5_conditional",
+    "level6_discriminator_proxy",
+    "level7_counterfactual"
+  ],
+  "summary_rows": 24,
+  "status_counts": {
+    "pass": 23,
+    "warn": 1
+  },
+  "not_strategy_acceptance": true
+}

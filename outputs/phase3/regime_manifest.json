@@ -1,0 +1,10 @@
+{
+  "generated_utc": "2026-07-13T14:23:20.121541+00:00",
+  "phase1_dir": "outputs\\phase1",
+  "phase2_dir": "outputs\\phase2",
+  "symbols": 32,
+  "bin_ms": 300000,
+  "intraday_bins": 77,
+  "symbol_bin_rows": 2459,
+  "evidence_scope": "one_day_candidate_taxonomy"
+}

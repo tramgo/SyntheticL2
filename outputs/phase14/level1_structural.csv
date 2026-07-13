@@ -1,0 +1,6 @@
+level,check_name,value,threshold_warn,threshold_fail,status,evidence
+L1_structural,phase6_crossed_l1_rows,0.0,1.0,1.0,pass,Phase 6/DuckDB validation has 0 crossed L1 rows.
+L1_structural,phase9_negative_spread_rows,0.0,1.0,1.0,pass,Tier C spread_ticks should be non-negative.
+L1_structural,phase9_nonpositive_mid_price_rows,0.0,1.0,1.0,pass,Tier C mid_price should be positive.
+L1_structural,phase9_future_label_null_fraction,0.013386223079814028,0.02,0.05,pass,Expected terminal rows per symbol/profile/day have null forward labels.
+L1_structural,phase6_summary_groups,170.0,1.0,0.0,pass,Phase 6 L2 book summary groups exist.

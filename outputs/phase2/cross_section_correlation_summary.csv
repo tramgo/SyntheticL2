@@ -1,0 +1,5 @@
+metric,value,evidence_label
+five_second_pairwise_corr_count,992.0,weak_one_day
+five_second_pairwise_corr_median,0.04352251141775541,weak_one_day
+five_second_pairwise_corr_q05,-0.05057314631409772,weak_one_day
+five_second_pairwise_corr_q95,0.2428643184774939,weak_one_day

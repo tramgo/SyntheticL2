@@ -1,0 +1,11 @@
+{
+  "generated_utc": "2026-07-13T16:16:24.814922+00:00",
+  "work_packages": 10,
+  "deliverables": 55,
+  "implemented_deliverables": 23,
+  "proxy_or_partial_deliverables": 30,
+  "missing_deliverables": 2,
+  "work_packages_blocked_by_missing_deliverables": 1,
+  "acceptance_grade_deliverables": 23,
+  "scope": "phase17_work_package_traceability_and_gap_backlog"
+}

@@ -1,0 +1,6 @@
+profile,purpose,symbols,days,event_retention_multiplier,raw_replay,compact_l2,feature_only,base_events_per_symbol_day,estimated_event_rows,estimated_raw_replay_bytes,estimated_compact_l2_bytes,estimated_feature_5m_rows,estimated_feature_5m_bytes,estimated_total_bytes,estimated_total_gb,evidence_label
+Small,unit/integration tests,5,10,1.0,True,True,False,18612.5,930625,6594756,68361623,3750,213970,75170349,0.07000784296542406,projected_from_one_day_real_tick_density_and_phase9_parquet_sizes
+Medium,initial strategy screening,32,63,1.0,True,True,False,18612.5,37522800,265900601,2756340642,151200,8627271,3030868514,2.8227162677794695,projected_from_one_day_real_tick_density_and_phase9_parquet_sizes
+Full,annual stress study,32,252,1.0,True,True,False,18612.5,150091200,1063602405,11025362570,604800,34509084,12123474059,11.290865073911846,projected_from_one_day_real_tick_density_and_phase9_parquet_sizes
+Dense,microstructure stress for selected liquid names,10,63,4.0,True,True,False,18612.5,46903500,332375751,3445425803,47250,2696022,3780497576,3.5208627358078957,projected_from_one_day_real_tick_density_and_phase9_parquet_sizes
+Feature-only,rapid ML experiments without raw replay,32,252,1.0,False,False,True,18612.5,150091200,0,0,604800,34509084,34509084,0.032139088958501816,projected_from_one_day_real_tick_density_and_phase9_parquet_sizes

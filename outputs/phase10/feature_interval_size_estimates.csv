@@ -1,0 +1,6 @@
+interval_seconds,symbols,days,estimated_rows,bytes_per_feature_row_from_current_5m_product,estimated_bytes,estimated_gb,coverage_caveat
+1,32,63,45360000,57.058671851172114,2588181355,2.410431723110378,"1s/5s/15s outputs must be symbol-window gated; this is a storage projection, not a support claim"
+5,32,63,9072000,57.058671851172114,517636271,0.48208634462207556,"1s/5s/15s outputs must be symbol-window gated; this is a storage projection, not a support claim"
+15,32,63,3024000,57.058671851172114,172545423,0.1606954475864768,"1s/5s/15s outputs must be symbol-window gated; this is a storage projection, not a support claim"
+60,32,63,756000,57.058671851172114,43136355,0.04017386119812727,"1s/5s/15s outputs must be symbol-window gated; this is a storage projection, not a support claim"
+300,32,63,151200,57.058671851172114,8627271,0.008034772239625454,"1s/5s/15s outputs must be symbol-window gated; this is a storage projection, not a support claim"

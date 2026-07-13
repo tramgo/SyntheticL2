@@ -1,0 +1,34 @@
+strategy_id,name,role,support_level,parameter,values,value_count,total_strategy_grid_combinations,predeclared,retain_failed_runs,selection_segment,final_evaluation_segment
+S01,Momentum/breakout filtered by MLOFI,priority,runnable_proxy,breakout_horizon_minutes,1|3|5|10,4,4,True,True,validation,untouched_test
+S01,Momentum/breakout filtered by MLOFI,priority,runnable_proxy,ofi_lookback_seconds,5|15|30,3,12,True,True,validation,untouched_test
+S01,Momentum/breakout filtered by MLOFI,priority,runnable_proxy,ofi_percentile,0.7|0.85|0.95,3,36,True,True,validation,untouched_test
+S02,Pure multi-level OFI directional model,priority,runnable_proxy,feature_set,l1_static|l5_static|mlofi|mlofi_plus_trade_proxy,4,4,True,True,validation,untouched_test
+S02,Pure multi-level OFI directional model,priority,runnable_proxy,forecast_horizon,next_event|5m_proxy,2,8,True,True,validation,untouched_test
+S02,Pure multi-level OFI directional model,priority,runnable_proxy,model,linear_decile|rank_ic,2,16,True,True,validation,untouched_test
+S03,Liquidity-vacuum breakout,priority,partial_missing_required_features,withdrawal_threshold,0.7|0.85|0.95,3,3,True,True,validation,untouched_test
+S03,Liquidity-vacuum breakout,priority,partial_missing_required_features,spread_max_ticks,3|5|10,3,9,True,True,validation,untouched_test
+S03,Liquidity-vacuum breakout,priority,partial_missing_required_features,confirmation,none|momentum_proxy|event_intensity_proxy,3,27,True,True,validation,untouched_test
+S04,Trade-flow plus depth confirmation,priority,partial_missing_required_features,mlofi_bucket,tercile|quintile,2,2,True,True,validation,untouched_test
+S04,Trade-flow plus depth confirmation,priority,partial_missing_required_features,trade_flow_proxy,event_intensity|none,2,4,True,True,validation,untouched_test
+S04,Trade-flow plus depth confirmation,priority,partial_missing_required_features,regime_gate,off|on,2,8,True,True,validation,untouched_test
+S05,Microprice entry/exit filter,filter,runnable_proxy,microprice_edge_ticks,0.25|0.5|1.0,3,3,True,True,validation,untouched_test
+S05,Microprice entry/exit filter,filter,runnable_proxy,parent_strategy,S01|S02|S09,3,9,True,True,validation,untouched_test
+S05,Microprice entry/exit filter,filter,runnable_proxy,use_as,entry_filter|exit_filter,2,18,True,True,validation,untouched_test
+S06,Absorption and exhaustion reversal,priority,partial_missing_required_features,flow_size_proxy_percentile,0.8|0.9|0.97,3,3,True,True,validation,untouched_test
+S06,Absorption and exhaustion reversal,priority,partial_missing_required_features,price_progress_max_ticks,1|2|3,3,9,True,True,validation,untouched_test
+S06,Absorption and exhaustion reversal,priority,partial_missing_required_features,reversal_horizon,next_event|5m_proxy,2,18,True,True,validation,untouched_test
+S07,Mean reversion after imbalance,priority,runnable_proxy,imbalance_percentile,0.8|0.9|0.97,3,3,True,True,validation,untouched_test
+S07,Mean reversion after imbalance,priority,runnable_proxy,regime_gate,sideways_only|sideways_and_recovery,2,6,True,True,validation,untouched_test
+S07,Mean reversion after imbalance,priority,runnable_proxy,cooldown_events,1|2|3,3,18,True,True,validation,untouched_test
+S08,Cross-ticker/index lead-lag OFI,research,partial_missing_required_features,factor_scope,market|sector|leader_ticker,3,3,True,True,validation,untouched_test
+S08,Cross-ticker/index lead-lag OFI,research,partial_missing_required_features,lag_events,1|2|3,3,9,True,True,validation,untouched_test
+S08,Cross-ticker/index lead-lag OFI,research,partial_missing_required_features,timestamp_shift_control_events,1|3|5,3,27,True,True,validation,untouched_test
+S09,Pure queue-imbalance scalping,benchmark,runnable_proxy,imbalance_threshold,0.6|0.75|0.9,3,3,True,True,validation,untouched_test
+S09,Pure queue-imbalance scalping,benchmark,runnable_proxy,latency_ms,50|100|250|500,4,12,True,True,validation,untouched_test
+S09,Pure queue-imbalance scalping,benchmark,runnable_proxy,cost_model,zero_cost|zerodha_intraday_proxy,2,24,True,True,validation,untouched_test
+S10,Passive market making,research_only,not_supported_by_current_product,fill_model,optimistic|neutral|pessimistic,3,3,True,True,validation,untouched_test
+S10,Passive market making,research_only,not_supported_by_current_product,inventory_limit,100|250|500,3,9,True,True,validation,untouched_test
+S10,Passive market making,research_only,not_supported_by_current_product,cancel_latency_events,1|2|4,3,27,True,True,validation,untouched_test
+S11,Spoof-like wall filter,risk_filter_only,not_supported_by_current_product,wall_size_percentile,0.9|0.95|0.99,3,3,True,True,validation,untouched_test
+S11,Spoof-like wall filter,risk_filter_only,not_supported_by_current_product,cancel_before_touch_events,1|2|3,3,9,True,True,validation,untouched_test
+S11,Spoof-like wall filter,risk_filter_only,not_supported_by_current_product,parent_strategy,S01|S03|S09,3,27,True,True,validation,untouched_test

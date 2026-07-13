@@ -1,0 +1,56 @@
+work_package_id,deliverable,implementation_status,status_rank,evidence_path,evidence_status,acceptance_grade,note
+WP1,schema detector,implemented,4,outputs/stage_a1/schema_report.csv,present,True,Real-sample schema audit exists.
+WP1,data-quality checks,implemented,4,outputs/stage_a1/data_quality_report.csv,present,True,Per-symbol quality checks exist.
+WP1,sample-day profile,implemented,4,outputs/stage_a1/stage_a1_report.md,present,True,Sample-day profile report exists.
+WP1,size report,implemented,4,outputs/phase10/phase10_storage_report.md,present,True,Storage inventory and size estimates exist.
+WP1,canonical Parquet conversion,implemented,4,outputs/stage_a1/compact_ticks_by_symbol,present,True,Compact per-symbol Parquet conversion exists.
+WP2,L1/L5 imbalance,implemented,4,outputs/phase9/tier_c/features_5m.parquet,present,True,Feature product contains imbalance proxies.
+WP2,MLOFI,implemented_proxy,3,outputs/phase11/strategy_feature_availability.csv,present,False,MLOFI strategy support is proxy-level.
+WP2,trade classification,partial_proxy,1,outputs/phase1/received_tick_deltas_by_symbol,present,False,Received-tick deltas exist; aggressor classification is not acceptance-grade.
+WP2,microprice,implemented,4,outputs/phase9/tier_c/features_5m.parquet,present,True,Microprice feature is available in Tier C.
+WP2,liquidity withdrawal,implemented_proxy,3,outputs/phase11/strategy_feature_availability.csv,present,False,Liquidity-withdrawal features are proxy-supported.
+WP2,replenishment,partial_proxy,1,outputs/phase11/strategy_feature_availability.csv,present,False,Replenishment is strategy-feature tracked but not fully event reconstructed.
+WP2,book shape,implemented_proxy,3,outputs/phase9/tier_c/features_5m.parquet,present,False,Book-shape proxies are available in 5-minute features.
+WP2,regime-independent baseline features,implemented,4,outputs/phase11/baseline_strategy_matrix.csv,present,True,Baseline strategy features are registered.
+WP3,regime definitions,implemented,4,outputs/phase3/intraday_market_states.csv,present,True,Intraday market-state definitions exist.
+WP3,scenario YAML/JSON,implemented,4,outputs/phase4/scenario_manifest.json,present,True,Scenario profiles exist as structured JSON/manifest artifacts.
+WP3,daily calendar generator,implemented,4,outputs/phase4/scenario_calendar.csv,present,True,Daily scenario calendar exists.
+WP3,intraday state generator,implemented,4,outputs/phase3/intraday_market_states.csv,present,True,Intraday state grid exists.
+WP3,shock injector,implemented_proxy,3,outputs/phase7/shock_library.csv,present,False,Shock library exists; injector is represented by generated shock annotations.
+WP4,market/sector/ticker factors,implemented_proxy,3,outputs/phase5/price_paths_5m.parquet,present,False,Synthetic price paths include cross-sectional structure proxies.
+WP4,stochastic volatility,implemented_proxy,3,outputs/phase5/daily_price_summary.csv,present,False,Volatility regime effects are represented at proxy level.
+WP4,jump process,implemented_proxy,3,outputs/phase7/shock_library.csv,present,False,Jump/shock events are registered.
+WP4,correlation controls,implemented_proxy,3,outputs/phase7/shock_day_summary.csv,present,False,Market/ticker shock grouping provides proxy correlation controls.
+WP4,price-grid enforcement,implemented,4,outputs/phase5/price_paths_5m.parquet,present,True,Price grid validation passed in Phase 5/6 artifacts.
+WP5,additions/cancellations/trades,partial_proxy,1,outputs/phase9/tier_a/raw_synthetic_events.parquet,present,False,"Tier A events exist, but full event-type realism is not acceptance-grade."
+WP5,five-level reconstruction,implemented,4,outputs/phase6/l2_book_states_5m.parquet,present,True,Five-level L2 state product exists.
+WP5,resilience,implemented_proxy,3,outputs/phase6/l2_book_summary.csv,present,False,Spread/depth structural checks exist.
+WP5,spread/depth dynamics,implemented_proxy,3,outputs/phase6/l2_book_states_5m.parquet,present,False,Spread/depth dynamics are generated at 5-minute granularity.
+WP5,activity seasonality,implemented_proxy,3,outputs/phase8/feed_profile_summary.csv,present,False,Feed/event profiles carry activity-seasonality effects.
+WP6,receive latency,implemented,4,outputs/phase8/feed_profile_summary.csv,present,True,Latency profiles exist.
+WP6,batching,implemented,4,outputs/phase8/retail_feed_observations.parquet,present,True,Batched retail observations exist.
+WP6,gaps,implemented,4,outputs/phase8/retail_feed_dropped_events.csv,present,True,Dropped/gap events are recorded.
+WP6,duplicates,implemented,4,outputs/phase8/feed_profile_summary.csv,present,True,Duplicate observations are summarized.
+WP6,reconnects,implemented_proxy,3,outputs/phase8/feed_profile_summary.csv,present,False,Disconnect/reconnect proxy states exist.
+WP6,asynchronous ticker stream,implemented_proxy,3,outputs/phase8/retail_feed_observations.parquet,present,False,Per-symbol retail feed observations are asynchronous proxies.
+WP7,raw/delta/resampled Parquet,partial_current,2,outputs/phase9,present,False,Raw synthetic and compact/state/features Parquet exist; replay/resampled product is partial.
+WP7,partitioning,implemented,4,outputs/phase10/partition_recommendations.csv,present,True,Partition recommendations exist.
+WP7,compression benchmark,implemented_proxy,3,outputs/phase10/size_estimates.csv,present,False,Compression/size estimates exist; full benchmark matrix is not exhaustive.
+WP7,replay tool,implemented,4,outputs/replay/replay_validation_report.md,present,True,Standalone deterministic replay CLI exists for Phase 9 Tier A/B/C products.
+WP7,metadata manifest,implemented,4,outputs/duckdb/duckdb_workspace_manifest.json,present,True,Cross-phase manifest exists.
+WP8,event-driven engine,partial_proxy,1,outputs/phase12/execution_summary.csv,present,False,Phase 12 is a marketable-order proxy over feature events.
+WP8,market and limit orders,partial_proxy,1,outputs/phase12/execution_summary.csv,present,False,Marketable orders are modeled; passive limit orders are not.
+WP8,latency,implemented_proxy,3,outputs/phase12/execution_profiles.csv,present,False,Latency profiles are applied.
+WP8,partial fills,missing,0,,not_required_for_missing,False,Partial fills and queue position are not modeled.
+WP8,slippage,implemented_proxy,3,outputs/phase12/cost_schedule.csv,present,False,Fixed slippage ticks are modeled as a proxy.
+WP8,fees,partial_proxy,1,outputs/phase12/cost_schedule.csv,present,False,Zerodha-derived statutory/brokerage components are included; unit-normalized brokerage caps and STT rounding remain approximate.
+WP8,risk controls,missing,0,,not_required_for_missing,False,"Drawdown, position, tail-loss and daily-loss controls are not implemented."
+WP9,S01-S11 modules,partial_proxy,1,outputs/phase11/strategy_validation_matrix.csv,present,False,S01-S11 are registered; only proxy signals are implemented.
+WP9,shared feature interface,implemented_proxy,3,outputs/phase11/strategy_feature_availability.csv,present,False,Strategy-feature availability matrix exists.
+WP9,baseline strategies,implemented_proxy,3,outputs/phase11/baseline_strategy_matrix.csv,present,False,Baseline registry exists.
+WP9,parameter registry,implemented_proxy,3,outputs/phase13/parameter_grid.csv,present,False,Initial parameter grid exists.
+WP10,synthetic realism dashboard,partial_current,2,outputs/phase14/phase14_quality_validation_report.md,present,False,Quality report exists; no interactive dashboard yet.
+WP10,strategy performance reports,implemented_proxy,3,outputs/phase16/phase16_metrics_reporting_report.md,present,False,Proxy performance report exists.
+WP10,robustness matrix,partial_current,2,outputs/phase13/experiment_registry.csv,present,False,Planned robustness registry exists; experiments are not run.
+WP10,failed-test log,implemented,4,outputs/phase15/acceptance_blockers.csv,present,True,Acceptance blockers provide failed-test log.
+WP10,promotion/rejection decision,implemented,4,outputs/phase15/strategy_acceptance_summary.csv,present,True,All strategies currently blocked/not promotable.

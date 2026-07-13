@@ -1,0 +1,7 @@
+cost_component,formula_or_source,note
+profile_fee_bps,execution_profile.fees_bps,Placeholder profile-level fee assumption; not broker/exchange verified.
+impact_bps,execution_profile.impact_bps,Internal market-impact proxy; not broker/exchange charge.
+half_spread,spread_ticks * tick_size / 2,Marketable execution spread-crossing proxy.
+fixed_slippage_ticks,execution_profile.fixed_slippage_ticks * tick_size / mid_price,Internal slippage stress parameter.
+partial_fill_opportunity_cost,not_modeled_v1,"Passive fills, queue position and partial fills are not modeled in this proxy."
+statutory_and_brokerage_charges,not_verified_v1,"Brokerage, statutory and exchange charges are placeholders only; refresh from broker/exchange sources before economic claims."

@@ -1,0 +1,20 @@
+{
+  "generated_utc": "2026-07-13T14:42:16.290996+00:00",
+  "phase2_dir": "outputs\\phase2",
+  "phase5_dir": "outputs\\phase5",
+  "validation": {
+    "book_rows": 453600,
+    "profiles": 3,
+    "scenario_days": 189,
+    "symbols": 32,
+    "crossed_or_locked_l1_rows": 0,
+    "bid_depth_sort_error_rows": 0,
+    "ask_depth_sort_error_rows": 0,
+    "nonpositive_quantity_rows": 0,
+    "nonpositive_order_rows": 0,
+    "tick_grid_error_rows": 0,
+    "median_spread_ticks": 4.0,
+    "q95_spread_ticks": 22.0
+  },
+  "evidence_scope": "synthetic_l2_state_v1_market_by_price"
+}

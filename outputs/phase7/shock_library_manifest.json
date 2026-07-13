@@ -1,0 +1,24 @@
+{
+  "generated_utc": "2026-07-13T14:47:46.167727+00:00",
+  "phase4_dir": "outputs\\phase4",
+  "phase6_dir": "outputs\\phase6",
+  "phase6_book_event_labels": [
+    "best_price_shift",
+    "book_state_update",
+    "multi_level_sweep",
+    "replenishment",
+    "spread_widening"
+  ],
+  "validation": {
+    "shock_events": 1504,
+    "market_events": 200,
+    "ticker_events": 1304,
+    "counterfactual_groups": 366,
+    "scenario_days": 56,
+    "target_symbols": 32,
+    "variants": 5,
+    "null_required_effect_rows": 0,
+    "invalid_duration_rows": 0
+  },
+  "evidence_scope": "synthetic_shock_event_design"
+}

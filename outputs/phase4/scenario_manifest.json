@@ -1,0 +1,52 @@
+{
+  "generated_utc": "2026-07-13T14:27:04.995432+00:00",
+  "phase3_dir": "outputs\\phase3",
+  "start_date": "2026-07-14",
+  "profiles": [
+    "Q-A",
+    "Q-B",
+    "Q-C"
+  ],
+  "calendar_rows": 189,
+  "days_per_profile": 63,
+  "symbols": [
+    "ADANIPORTS",
+    "AXISBANK",
+    "BAJAJ-AUTO",
+    "BANKBEES",
+    "BHARTIARTL",
+    "BPCL",
+    "BRITANNIA",
+    "CIPLA",
+    "DRREDDY",
+    "GOLDBEES",
+    "HCLTECH",
+    "HDFCBANK",
+    "HINDUNILVR",
+    "ICICIBANK",
+    "INFY",
+    "ITBEES",
+    "ITC",
+    "JUNIORBEES",
+    "KOTAKBANK",
+    "LT",
+    "M&M",
+    "MARUTI",
+    "NESTLEIND",
+    "NIFTYBEES",
+    "ONGC",
+    "RELIANCE",
+    "SBIN",
+    "SUNPHARMA",
+    "TCS",
+    "TECHM",
+    "ULTRACEMCO",
+    "WIPRO"
+  ],
+  "observed_anchor": {
+    "observed_regime_code": "D04",
+    "observed_regime": "Gradual bullish trend",
+    "observed_regime_evidence_label": "one_day_candidate_not_promotable"
+  },
+  "evidence_scope": "synthetic_scenario_design_not_market_forecast"
+}

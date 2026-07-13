@@ -1,0 +1,15 @@
+parameter,evidence_label,evidence_note
+received_event_rate,measured,Computed per symbol from collector_received_utc_ms.
+interarrival_distribution,measured,Computed per symbol from receive timestamp differences.
+batch_flush_cadence,measured,Approximated from source file time ranges and rows per file.
+schema_presence,measured,Detected from all Parquet file schemas.
+manifest_completeness,measured,Compared local files to azure_files_manifest.csv.
+depth_sorting_validity,measured,Checked L1-L5 bid/ask price monotonicity.
+crossed_locked_book_frequency,measured,Checked best bid and best ask state.
+horizon_coverage,measured,Computed per symbol for 100ms through 60s bins.
+tick_size,weakly_estimated,Minimum observed price increment is sample-derived; exchange tick rules are not embedded.
+add_cancel_consume_events,assumed,Market-by-price snapshots do not identify individual order events.
+aggressor_side,assumed,Can only be inferred from price/volume/depth changes.
+queue_position,blocked,Top-five market-by-price feed lacks individual order queue identity.
+connection_reconnect_boundaries,blocked,Current row schema has no connection_id or reconnect markers.
+dropped_message_rate,blocked,No exchange sequence or dropped-message diagnostics in the row schema.

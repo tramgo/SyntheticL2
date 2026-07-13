@@ -1,0 +1,16 @@
+dependency,dependency_type,requirement_status,available_now,evidence_method,action
+python,executable,required_now,True,shutil.which,no_action
+pandas,python_module,required_now,True,importlib.find_spec,no_action
+numpy,python_module,required_now,True,importlib.find_spec,no_action
+pyarrow,python_module,required_now,True,importlib.find_spec,no_action
+duckdb,python_module,required_now,True,importlib.find_spec,no_action
+scipy,python_module,optional_later,False,importlib.find_spec,defer_until_needed
+sklearn,python_module,optional_later,False,importlib.find_spec,defer_until_needed
+statsmodels,python_module,optional_later,False,importlib.find_spec,defer_until_needed
+polars,python_module,optional_later,False,importlib.find_spec,defer_until_needed
+pydantic,python_module,optional_later,False,importlib.find_spec,defer_until_needed
+pytest,python_module,recommended_next,False,importlib.find_spec,install_when_adding_tests_or_versioning:pytest
+hypothesis,python_module,optional_later,False,importlib.find_spec,defer_until_needed
+matplotlib,python_module,optional_later,True,importlib.find_spec,no_action
+plotly,python_module,optional_later,True,importlib.find_spec,no_action
+git,executable,recommended_next,True,shutil.which,no_action

@@ -1,0 +1,11 @@
+{
+  "manifest_present": true,
+  "manifest_rows": 50205,
+  "local_file_rows": 50205,
+  "missing_local_count": 0,
+  "extra_local_count": 0,
+  "size_mismatch_count": 0,
+  "missing_local_examples": [],
+  "extra_local_examples": [],
+  "size_mismatch_examples": []
+}

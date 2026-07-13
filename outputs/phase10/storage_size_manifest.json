@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-07-13T15:15:08.658007+00:00",
+  "stage_a1_dir": "outputs\\stage_a1",
+  "phase4_dir": "outputs\\phase4",
+  "phase9_dir": "outputs\\phase9",
+  "outputs": [
+    "measured_storage_footprint.csv",
+    "real_sample_symbol_storage.csv",
+    "regime_storage_multipliers.csv",
+    "generation_profile_size_estimates.csv",
+    "feature_interval_size_estimates.csv",
+    "phase10_storage_size_report.md"
+  ],
+  "storage_decision": "Parquet/Zstandard for durable high-volume data; DuckDB for analytics; SQLite only for small transactional metadata if later needed.",
+  "evidence_scope": "one_day_real_sample_plus_current_phase9_products"
+}

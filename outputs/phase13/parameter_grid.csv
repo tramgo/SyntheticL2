@@ -1,0 +1,64 @@
+strategy_id,parameter_set_id,parameters_json,predeclared,max_tuning_segment,final_test_reuse_allowed
+S01,S01_P001,"{""lookback"": 1, ""mlofi_quantile"": 0.7, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P002,"{""lookback"": 1, ""mlofi_quantile"": 0.7, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P003,"{""lookback"": 1, ""mlofi_quantile"": 0.8, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P004,"{""lookback"": 1, ""mlofi_quantile"": 0.8, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P005,"{""lookback"": 1, ""mlofi_quantile"": 0.9, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P006,"{""lookback"": 1, ""mlofi_quantile"": 0.9, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P007,"{""lookback"": 3, ""mlofi_quantile"": 0.7, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P008,"{""lookback"": 3, ""mlofi_quantile"": 0.7, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P009,"{""lookback"": 3, ""mlofi_quantile"": 0.8, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P010,"{""lookback"": 3, ""mlofi_quantile"": 0.8, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P011,"{""lookback"": 3, ""mlofi_quantile"": 0.9, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P012,"{""lookback"": 3, ""mlofi_quantile"": 0.9, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P013,"{""lookback"": 5, ""mlofi_quantile"": 0.7, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P014,"{""lookback"": 5, ""mlofi_quantile"": 0.7, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P015,"{""lookback"": 5, ""mlofi_quantile"": 0.8, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P016,"{""lookback"": 5, ""mlofi_quantile"": 0.8, ""spread_max_ticks"": 5}",True,validation,False
+S01,S01_P017,"{""lookback"": 5, ""mlofi_quantile"": 0.9, ""spread_max_ticks"": 2}",True,validation,False
+S01,S01_P018,"{""lookback"": 5, ""mlofi_quantile"": 0.9, ""spread_max_ticks"": 5}",True,validation,False
+S02,S02_P001,"{""horizon"": ""next_event"", ""ofi_quantile"": 0.6}",True,validation,False
+S02,S02_P002,"{""horizon"": ""5m"", ""ofi_quantile"": 0.6}",True,validation,False
+S02,S02_P003,"{""horizon"": ""next_event"", ""ofi_quantile"": 0.8}",True,validation,False
+S02,S02_P004,"{""horizon"": ""5m"", ""ofi_quantile"": 0.8}",True,validation,False
+S02,S02_P005,"{""horizon"": ""next_event"", ""ofi_quantile"": 0.9}",True,validation,False
+S02,S02_P006,"{""horizon"": ""5m"", ""ofi_quantile"": 0.9}",True,validation,False
+S03,S03_P001,"{""intensity_quantile"": 0.75, ""withdrawal_proxy_quantile"": 0.75}",True,validation,False
+S03,S03_P002,"{""intensity_quantile"": 0.9, ""withdrawal_proxy_quantile"": 0.75}",True,validation,False
+S03,S03_P003,"{""intensity_quantile"": 0.75, ""withdrawal_proxy_quantile"": 0.85}",True,validation,False
+S03,S03_P004,"{""intensity_quantile"": 0.9, ""withdrawal_proxy_quantile"": 0.85}",True,validation,False
+S03,S03_P005,"{""intensity_quantile"": 0.75, ""withdrawal_proxy_quantile"": 0.95}",True,validation,False
+S03,S03_P006,"{""intensity_quantile"": 0.9, ""withdrawal_proxy_quantile"": 0.95}",True,validation,False
+S04,S04_P001,"{""intensity_quantile"": 0.7, ""mlofi_quantile"": 0.6}",True,validation,False
+S04,S04_P002,"{""intensity_quantile"": 0.9, ""mlofi_quantile"": 0.6}",True,validation,False
+S04,S04_P003,"{""intensity_quantile"": 0.7, ""mlofi_quantile"": 0.8}",True,validation,False
+S04,S04_P004,"{""intensity_quantile"": 0.9, ""mlofi_quantile"": 0.8}",True,validation,False
+S05,S05_P001,"{""microprice_deviation_quantile"": 0.7}",True,validation,False
+S05,S05_P002,"{""microprice_deviation_quantile"": 0.8}",True,validation,False
+S05,S05_P003,"{""microprice_deviation_quantile"": 0.9}",True,validation,False
+S06,S06_P001,"{""intensity_quantile"": 0.8, ""price_progress_max_quantile"": 0.1}",True,validation,False
+S06,S06_P002,"{""intensity_quantile"": 0.8, ""price_progress_max_quantile"": 0.2}",True,validation,False
+S06,S06_P003,"{""intensity_quantile"": 0.9, ""price_progress_max_quantile"": 0.1}",True,validation,False
+S06,S06_P004,"{""intensity_quantile"": 0.9, ""price_progress_max_quantile"": 0.2}",True,validation,False
+S07,S07_P001,"{""imbalance_quantile"": 0.8, ""regime_gate"": ""strict""}",True,validation,False
+S07,S07_P002,"{""imbalance_quantile"": 0.8, ""regime_gate"": ""loose""}",True,validation,False
+S07,S07_P003,"{""imbalance_quantile"": 0.9, ""regime_gate"": ""strict""}",True,validation,False
+S07,S07_P004,"{""imbalance_quantile"": 0.9, ""regime_gate"": ""loose""}",True,validation,False
+S08,S08_P001,"{""lag_events"": 1, ""market_factor_quantile"": 0.7}",True,validation,False
+S08,S08_P002,"{""lag_events"": 2, ""market_factor_quantile"": 0.7}",True,validation,False
+S08,S08_P003,"{""lag_events"": 3, ""market_factor_quantile"": 0.7}",True,validation,False
+S08,S08_P004,"{""lag_events"": 1, ""market_factor_quantile"": 0.8}",True,validation,False
+S08,S08_P005,"{""lag_events"": 2, ""market_factor_quantile"": 0.8}",True,validation,False
+S08,S08_P006,"{""lag_events"": 3, ""market_factor_quantile"": 0.8}",True,validation,False
+S08,S08_P007,"{""lag_events"": 1, ""market_factor_quantile"": 0.9}",True,validation,False
+S08,S08_P008,"{""lag_events"": 2, ""market_factor_quantile"": 0.9}",True,validation,False
+S08,S08_P009,"{""lag_events"": 3, ""market_factor_quantile"": 0.9}",True,validation,False
+S09,S09_P001,"{""l1_imbalance_quantile"": 0.6, ""latency_profile"": ""zero""}",True,validation,False
+S09,S09_P002,"{""l1_imbalance_quantile"": 0.6, ""latency_profile"": ""retail""}",True,validation,False
+S09,S09_P003,"{""l1_imbalance_quantile"": 0.6, ""latency_profile"": ""stressed""}",True,validation,False
+S09,S09_P004,"{""l1_imbalance_quantile"": 0.8, ""latency_profile"": ""zero""}",True,validation,False
+S09,S09_P005,"{""l1_imbalance_quantile"": 0.8, ""latency_profile"": ""retail""}",True,validation,False
+S09,S09_P006,"{""l1_imbalance_quantile"": 0.8, ""latency_profile"": ""stressed""}",True,validation,False
+S09,S09_P007,"{""l1_imbalance_quantile"": 0.9, ""latency_profile"": ""zero""}",True,validation,False
+S09,S09_P008,"{""l1_imbalance_quantile"": 0.9, ""latency_profile"": ""retail""}",True,validation,False
+S09,S09_P009,"{""l1_imbalance_quantile"": 0.9, ""latency_profile"": ""stressed""}",True,validation,False

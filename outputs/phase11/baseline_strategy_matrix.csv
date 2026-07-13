@@ -1,0 +1,8 @@
+baseline_id,name,requirement
+B01,Random direction with matched trade frequency,must match signal count and holding horizon
+B02,Buy-and-hold intraday control,price-only benchmark
+B03,Simple short-term momentum,price-only benchmark
+B04,Opening-range breakout,price-only benchmark
+B05,VWAP continuation,requires VWAP/trade-volume feature before runnable
+B06,Short-term mean reversion,price-only benchmark
+B07,Volatility breakout,price-only benchmark

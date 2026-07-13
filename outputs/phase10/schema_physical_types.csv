@@ -1,0 +1,310 @@
+dataset,layer,column,arrow_type,nullable,recommended_type_note
+stage_a1_compact_real_ticks,real_received_ticks,source_file,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,source_file_ordinal,int32,True,
+stage_a1_compact_real_ticks,real_received_ticks,row_in_source_file,int32,True,
+stage_a1_compact_real_ticks,real_received_ticks,collector_received_utc,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,collector_received_utc_ms,int64,True,integer sequence/timestamp type is appropriate
+stage_a1_compact_real_ticks,real_received_ticks,collector_received_monotonic_ns,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,exchange_timestamp,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,last_trade_time,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,trade_date,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,exchange,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,tradingsymbol,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,requested_symbol,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,instrument_token,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,last_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,last_traded_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,volume_traded,double,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,average_traded_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,total_buy_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,total_sell_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,oi,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,oi_day_high,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,oi_day_low,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,ohlc_open,double,True,
+stage_a1_compact_real_ticks,real_received_ticks,ohlc_high,double,True,
+stage_a1_compact_real_ticks,real_received_ticks,ohlc_low,double,True,
+stage_a1_compact_real_ticks,real_received_ticks,ohlc_close,double,True,
+stage_a1_compact_real_ticks,real_received_ticks,change,double,True,
+stage_a1_compact_real_ticks,real_received_ticks,buy_1_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,buy_1_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,buy_1_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,buy_2_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,buy_2_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,buy_2_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,buy_3_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,buy_3_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,buy_3_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,buy_4_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,buy_4_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,buy_4_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,buy_5_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,buy_5_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,buy_5_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,sell_1_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,sell_1_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,sell_1_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,sell_2_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,sell_2_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,sell_2_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,sell_3_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,sell_3_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,sell_3_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,sell_4_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,sell_4_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,sell_4_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,sell_5_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+stage_a1_compact_real_ticks,real_received_ticks,sell_5_quantity,int64,True,
+stage_a1_compact_real_ticks,real_received_ticks,sell_5_orders,int64,True,integer quantity/order type preferred
+stage_a1_compact_real_ticks,real_received_ticks,instrument_class,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,observation_semantics,large_string,True,
+stage_a1_compact_real_ticks,real_received_ticks,sequence_local,int64,True,
+phase5_price_paths_5m,synthetic_price_bars,quarter_profile,large_string,True,dictionary encoding recommended
+phase5_price_paths_5m,synthetic_price_bars,scenario_day,int64,True,integer sequence/timestamp type is appropriate
+phase5_price_paths_5m,synthetic_price_bars,trade_date,large_string,True,
+phase5_price_paths_5m,synthetic_price_bars,bar_index,int64,True,integer sequence/timestamp type is appropriate
+phase5_price_paths_5m,synthetic_price_bars,bar_start,large_string,True,
+phase5_price_paths_5m,synthetic_price_bars,symbol,large_string,True,dictionary encoding recommended
+phase5_price_paths_5m,synthetic_price_bars,sector,large_string,True,
+phase5_price_paths_5m,synthetic_price_bars,regime_code,large_string,True,dictionary encoding recommended
+phase5_price_paths_5m,synthetic_price_bars,regime_family,large_string,True,
+phase5_price_paths_5m,synthetic_price_bars,intraday_template,large_string,True,
+phase5_price_paths_5m,synthetic_price_bars,open,double,True,
+phase5_price_paths_5m,synthetic_price_bars,high,double,True,
+phase5_price_paths_5m,synthetic_price_bars,low,double,True,
+phase5_price_paths_5m,synthetic_price_bars,close,double,True,
+phase5_price_paths_5m,synthetic_price_bars,bar_return,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase5_price_paths_5m,synthetic_price_bars,cumulative_return,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase5_price_paths_5m,synthetic_price_bars,tick_size,double,True,
+phase5_price_paths_5m,synthetic_price_bars,vol_multiplier,double,True,
+phase5_price_paths_5m,synthetic_price_bars,event_rate_multiplier,double,True,
+phase5_price_paths_5m,synthetic_price_bars,spread_multiplier,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase5_price_paths_5m,synthetic_price_bars,depth_multiplier,double,True,
+phase5_price_paths_5m,synthetic_price_bars,correlation_multiplier,double,True,
+phase5_price_paths_5m,synthetic_price_bars,is_gap_day,bool,True,boolean flag is appropriate
+phase5_price_paths_5m,synthetic_price_bars,is_market_shock_day,bool,True,boolean flag is appropriate
+phase5_price_paths_5m,synthetic_price_bars,is_symbol_shock,bool,True,boolean flag is appropriate
+phase5_price_paths_5m,synthetic_price_bars,market_component,double,True,
+phase5_price_paths_5m,synthetic_price_bars,sector_component,double,True,
+phase5_price_paths_5m,synthetic_price_bars,idiosyncratic_component,double,True,
+phase5_price_paths_5m,synthetic_price_bars,jump_component,double,True,
+phase5_price_paths_5m,synthetic_price_bars,evidence_label,large_string,True,
+phase6_l2_book_states_5m,synthetic_l2_book,quarter_profile,large_string,True,dictionary encoding recommended
+phase6_l2_book_states_5m,synthetic_l2_book,scenario_day,int64,True,integer sequence/timestamp type is appropriate
+phase6_l2_book_states_5m,synthetic_l2_book,trade_date,large_string,True,
+phase6_l2_book_states_5m,synthetic_l2_book,bar_index,int64,True,integer sequence/timestamp type is appropriate
+phase6_l2_book_states_5m,synthetic_l2_book,bar_start,large_string,True,
+phase6_l2_book_states_5m,synthetic_l2_book,symbol,large_string,True,dictionary encoding recommended
+phase6_l2_book_states_5m,synthetic_l2_book,regime_code,large_string,True,dictionary encoding recommended
+phase6_l2_book_states_5m,synthetic_l2_book,regime_family,large_string,True,
+phase6_l2_book_states_5m,synthetic_l2_book,mid_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,tick_size,double,True,
+phase6_l2_book_states_5m,synthetic_l2_book,spread_ticks,int64,True,
+phase6_l2_book_states_5m,synthetic_l2_book,spread,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,book_event_label,large_string,True,dictionary encoding recommended
+phase6_l2_book_states_5m,synthetic_l2_book,event_intensity_proxy,double,True,
+phase6_l2_book_states_5m,synthetic_l2_book,is_market_shock_day,bool,True,boolean flag is appropriate
+phase6_l2_book_states_5m,synthetic_l2_book,is_symbol_shock,bool,True,boolean flag is appropriate
+phase6_l2_book_states_5m,synthetic_l2_book,bar_return,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,depth_multiplier,double,True,
+phase6_l2_book_states_5m,synthetic_l2_book,evidence_label,large_string,True,
+phase6_l2_book_states_5m,synthetic_l2_book,bid_px_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,ask_px_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,bid_qty_1,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_qty_1,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_orders_1,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_orders_1,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_px_2,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,ask_px_2,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,bid_qty_2,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_qty_2,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_orders_2,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_orders_2,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_px_3,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,ask_px_3,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,bid_qty_3,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_qty_3,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_orders_3,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_orders_3,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_px_4,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,ask_px_4,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,bid_qty_4,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_qty_4,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_orders_4,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_orders_4,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_px_5,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,ask_px_5,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase6_l2_book_states_5m,synthetic_l2_book,bid_qty_5,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_qty_5,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,bid_orders_5,int64,True,integer quantity/order type preferred
+phase6_l2_book_states_5m,synthetic_l2_book,ask_orders_5,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,quarter_profile,large_string,True,dictionary encoding recommended
+phase8_retail_feed_observations,synthetic_retail_feed,scenario_day,int64,True,integer sequence/timestamp type is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,trade_date,large_string,True,
+phase8_retail_feed_observations,synthetic_retail_feed,bar_index,int64,True,integer sequence/timestamp type is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,bar_start,large_string,True,
+phase8_retail_feed_observations,synthetic_retail_feed,symbol,large_string,True,dictionary encoding recommended
+phase8_retail_feed_observations,synthetic_retail_feed,regime_code,large_string,True,dictionary encoding recommended
+phase8_retail_feed_observations,synthetic_retail_feed,regime_family,large_string,True,
+phase8_retail_feed_observations,synthetic_retail_feed,mid_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,tick_size,double,True,
+phase8_retail_feed_observations,synthetic_retail_feed,spread_ticks,int64,True,
+phase8_retail_feed_observations,synthetic_retail_feed,spread,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,book_event_label,large_string,True,dictionary encoding recommended
+phase8_retail_feed_observations,synthetic_retail_feed,event_intensity_proxy,double,True,
+phase8_retail_feed_observations,synthetic_retail_feed,is_market_shock_day,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,is_symbol_shock,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,bar_return,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,depth_multiplier,double,True,
+phase8_retail_feed_observations,synthetic_retail_feed,evidence_label,large_string,True,
+phase8_retail_feed_observations,synthetic_retail_feed,bid_px_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,ask_px_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,bid_qty_1,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_qty_1,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_orders_1,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_orders_1,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_px_2,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,ask_px_2,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,bid_qty_2,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_qty_2,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_orders_2,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_orders_2,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_px_3,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,ask_px_3,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,bid_qty_3,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_qty_3,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_orders_3,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_orders_3,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_px_4,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,ask_px_4,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,bid_qty_4,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_qty_4,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_orders_4,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_orders_4,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_px_5,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,ask_px_5,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase8_retail_feed_observations,synthetic_retail_feed,bid_qty_5,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_qty_5,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,bid_orders_5,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,ask_orders_5,int64,True,integer quantity/order type preferred
+phase8_retail_feed_observations,synthetic_retail_feed,source_sequence,int64,True,integer sequence/timestamp type is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,feed_profile,large_string,True,dictionary encoding recommended
+phase8_retail_feed_observations,synthetic_retail_feed,exchange_ts,timestamp[us],True,
+phase8_retail_feed_observations,synthetic_retail_feed,exchange_ts_ms,int64,True,
+phase8_retail_feed_observations,synthetic_retail_feed,is_shock_day_from_library,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,collector_received_utc_ms,int64,True,integer sequence/timestamp type is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,collector_received_utc,large_string,True,
+phase8_retail_feed_observations,synthetic_retail_feed,latency_ms,int64,True,
+phase8_retail_feed_observations,synthetic_retail_feed,is_disconnect_gap,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,is_out_of_order_injected,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,is_duplicate,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,is_dropped_in_profile,bool,True,boolean flag is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,receive_sequence,int64,True,integer sequence/timestamp type is appropriate
+phase8_retail_feed_observations,synthetic_retail_feed,receive_order_violation,bool,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,event_id,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,event_source,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,event_kind,large_string,True,dictionary encoding recommended
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,event_ts,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,feed_profile,large_string,True,dictionary encoding recommended
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,quarter_profile,large_string,True,dictionary encoding recommended
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,scenario_day,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,trade_date,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,symbol,large_string,True,dictionary encoding recommended
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,scope,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,target,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,variant,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,shock_type,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,required_l2_effects,large_string,True,
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,regime_code,string,True,dictionary encoding recommended
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,source_sequence,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,receive_sequence,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,collector_received_utc_ms,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,book_event_label,string,True,dictionary encoding recommended
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,is_duplicate,double,True,boolean flag is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,is_disconnect_gap,double,True,boolean flag is appropriate
+phase9_tier_a_raw_synthetic_events,synthetic_event_product,is_out_of_order_injected,double,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,feed_profile,large_string,True,dictionary encoding recommended
+phase9_tier_b_compact_l2_state,synthetic_l2_product,quarter_profile,large_string,True,dictionary encoding recommended
+phase9_tier_b_compact_l2_state,synthetic_l2_product,scenario_day,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,trade_date,large_string,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bar_index,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bar_start,large_string,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,symbol,large_string,True,dictionary encoding recommended
+phase9_tier_b_compact_l2_state,synthetic_l2_product,regime_code,large_string,True,dictionary encoding recommended
+phase9_tier_b_compact_l2_state,synthetic_l2_product,regime_family,large_string,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,collector_received_utc,large_string,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,collector_received_utc_ms,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,receive_sequence,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,source_sequence,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,mid_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,tick_size,double,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,spread_ticks,int64,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,spread,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,book_event_label,large_string,True,dictionary encoding recommended
+phase9_tier_b_compact_l2_state,synthetic_l2_product,event_intensity_proxy,double,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,is_market_shock_day,bool,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,is_symbol_shock,bool,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,is_shock_day_from_library,bool,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,is_duplicate,bool,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,is_disconnect_gap,bool,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,is_out_of_order_injected,bool,True,boolean flag is appropriate
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_px_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_px_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_qty_1,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_qty_1,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_orders_1,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_orders_1,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_px_2,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_px_2,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_qty_2,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_qty_2,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_orders_2,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_orders_2,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_px_3,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_px_3,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_qty_3,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_qty_3,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_orders_3,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_orders_3,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_px_4,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_px_4,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_qty_4,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_qty_4,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_orders_4,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_orders_4,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_px_5,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_px_5,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_qty_5,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_qty_5,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,bid_orders_5,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,ask_orders_5,int64,True,integer quantity/order type preferred
+phase9_tier_b_compact_l2_state,synthetic_l2_product,l1_imbalance,double,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,l5_imbalance,double,True,
+phase9_tier_b_compact_l2_state,synthetic_l2_product,microprice_l1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_c_features_5m,synthetic_feature_product,feed_profile,large_string,True,dictionary encoding recommended
+phase9_tier_c_features_5m,synthetic_feature_product,quarter_profile,large_string,True,dictionary encoding recommended
+phase9_tier_c_features_5m,synthetic_feature_product,scenario_day,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,trade_date,large_string,True,
+phase9_tier_c_features_5m,synthetic_feature_product,bar_index,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,symbol,large_string,True,dictionary encoding recommended
+phase9_tier_c_features_5m,synthetic_feature_product,collector_received_utc_ms,int64,True,integer sequence/timestamp type is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,regime_code,large_string,True,dictionary encoding recommended
+phase9_tier_c_features_5m,synthetic_feature_product,mid_price,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_c_features_5m,synthetic_feature_product,spread_ticks,int64,True,
+phase9_tier_c_features_5m,synthetic_feature_product,spread,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_c_features_5m,synthetic_feature_product,l1_imbalance,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,l5_imbalance,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,microprice_l1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_c_features_5m,synthetic_feature_product,mlofi_qty,double,True,integer quantity/order type preferred
+phase9_tier_c_features_5m,synthetic_feature_product,momentum_3,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,local_volatility_6,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,book_slope_l5,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,book_convexity_l5,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,event_intensity_proxy,double,True,
+phase9_tier_c_features_5m,synthetic_feature_product,is_market_shock_day,bool,True,boolean flag is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,is_symbol_shock,bool,True,boolean flag is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,is_duplicate,bool,True,boolean flag is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,is_disconnect_gap,bool,True,boolean flag is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,is_out_of_order_injected,bool,True,boolean flag is appropriate
+phase9_tier_c_features_5m,synthetic_feature_product,mid_return_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required
+phase9_tier_c_features_5m,synthetic_feature_product,future_mid_return_1,double,True,candidate for fixed-point integer ticks where exact tick-grid replay is required

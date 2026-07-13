@@ -1,0 +1,12 @@
+strategy_id,support_level,proxy_feature_count,proxy_features_present,proxy_features_absent,present_proxy_features,absent_proxy_features,plan_missing_features,name
+S01,runnable_proxy,5,5,0,momentum_3; mlofi_qty; spread_ticks; future_mid_return_1; regime_code,,trade_flow_confirmation; true_1s_lookbacks; market_or_sector_alignment,Momentum/breakout filtered by MLOFI
+S02,runnable_proxy,4,4,0,l1_imbalance; l5_imbalance; mlofi_qty; future_mid_return_1,,true_l1_ofi; next_quote_move_label; multi_horizon_second_labels,Pure multi-level OFI directional model
+S03,partial_missing_required_features,4,4,0,book_slope_l5; spread_ticks; momentum_3; future_mid_return_1,,explicit_depth_withdrawal_rate; aggressive_trade_flow; multi_level_sweep_labels,Liquidity-vacuum breakout
+S04,partial_missing_required_features,4,4,0,mlofi_qty; event_intensity_proxy; future_mid_return_1; regime_code,,aggressive_trade_imbalance; absorption_label; exhaustion_label,Trade-flow plus depth confirmation
+S05,runnable_proxy,4,4,0,microprice_l1; mid_price; future_mid_return_1; spread_ticks,,next_tick_direction; entry_slippage; parent_strategy_linkage,Microprice entry/exit filter
+S06,partial_missing_required_features,4,4,0,event_intensity_proxy; momentum_3; future_mid_return_1; regime_code,,signed_aggressive_flow; flow_reversal; replenishment_rate,Absorption and exhaustion reversal
+S07,runnable_proxy,4,4,0,l5_imbalance; event_intensity_proxy; regime_code; future_mid_return_1,,explicit_replenishment_rate; trend_suppression_gate,Mean reversion after imbalance
+S08,partial_missing_required_features,5,5,0,mlofi_qty; future_mid_return_1; symbol; bar_index; trade_date,,sector_mapping; leader_labels; timestamp_skew_simulations; explicit_lead_lag_scenarios,Cross-ticker/index lead-lag OFI
+S09,runnable_proxy,3,3,0,l1_imbalance; future_mid_return_1; spread_ticks,,queue_position; 50_100_250_500ms_labels; cost_model,Pure queue-imbalance scalping
+S10,not_supported_by_current_product,0,0,0,,,queue_position; fill_model; inventory_model; cancellation_latency; order_simulator,Passive market making
+S11,not_supported_by_current_product,0,0,0,,,order_lifetime_proxy; wall_tracking; touch/non_touch_events; cancellation_labels,Spoof-like wall filter

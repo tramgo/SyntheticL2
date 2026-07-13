@@ -1,0 +1,6 @@
+gate_id,gate_name,requirement
+G01_predictive,Predictive gate,"Stable signal-response relationship, baseline improvement, multi-seed stability, no ticker/template dependence."
+G02_economic,Economic gate,"Positive after realistic costs, slippage stress, retail latency, adequate edge versus spread, acceptable turnover."
+G03_robustness,Robustness gate,"Works in intended regimes, deactivates in hostile regimes, adjacent parameters are smooth, not day-concentrated."
+G04_risk,Risk gate,"Controlled drawdown, bounded position size, tail loss understood, effective daily loss limit."
+G05_realism,Realism gate,"No generator-artifact exploitation; viable with holdout configs, feed imperfections and pessimistic execution."

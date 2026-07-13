@@ -1,0 +1,8 @@
+{
+  "generated_utc": "2026-07-13T14:19:31.701098+00:00",
+  "phase1_dir": "outputs\\phase1",
+  "symbols": 32,
+  "rows": 620853,
+  "five_second_return_bins": 4509,
+  "evidence_scope": "one_day_received_tick_sample"
+}

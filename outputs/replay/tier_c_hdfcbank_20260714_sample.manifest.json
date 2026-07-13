@@ -1,0 +1,52 @@
+{
+  "generated_utc": "2026-07-13T16:15:46.666424+00:00",
+  "tier": "tier_c",
+  "source_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
+  "output_path": "outputs\\replay\\tier_c_hdfcbank_20260714_sample.parquet",
+  "rows": 0,
+  "columns": [
+    "feed_profile",
+    "quarter_profile",
+    "scenario_day",
+    "trade_date",
+    "bar_index",
+    "symbol",
+    "collector_received_utc_ms",
+    "regime_code",
+    "mid_price",
+    "spread_ticks",
+    "spread",
+    "l1_imbalance",
+    "l5_imbalance",
+    "microprice_l1",
+    "mlofi_qty",
+    "momentum_3",
+    "local_volatility_6",
+    "book_slope_l5",
+    "book_convexity_l5",
+    "event_intensity_proxy",
+    "is_market_shock_day",
+    "is_symbol_shock",
+    "is_duplicate",
+    "is_disconnect_gap",
+    "is_out_of_order_injected",
+    "mid_return_1",
+    "future_mid_return_1"
+  ],
+  "order_columns": [
+    "trade_date",
+    "feed_profile",
+    "quarter_profile",
+    "symbol",
+    "bar_index",
+    "collector_received_utc_ms"
+  ],
+  "filters": {
+    "trade_date": "2026-07-14",
+    "feed_profile": "retail_default",
+    "symbol": "HDFCBANK"
+  },
+  "limit": 25,
+  "sha256_csv_ordered_rows": "6390ddc83fb9fdaed1d5d9d480ba944b67d9bdc3cc4fcaadaf1b210104e254f2",
+  "deterministic_ordering": true
+}

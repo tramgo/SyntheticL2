@@ -1,0 +1,11 @@
+work_package_id,work_package_name,evidence_phase_or_artifact,planned_status,deliverables,implemented_deliverables,proxy_or_partial_deliverables,missing_deliverables,current_status
+WP1,Data intake and audit,Stage A1; Phase 1; Phase 10,partial_current,5,5,0,0,implemented_current_evidence
+WP2,Feature and event reconstruction,Phase 1; Phase 9; Phase 11,partial_current,8,3,5,0,partial_or_proxy_complete
+WP3,Regime/scenario framework,Phase 3; Phase 4; Phase 7,implemented_proxy,5,4,1,0,partial_or_proxy_complete
+WP4,Price and cross-ticker simulator,Phase 5; Phase 7,implemented_proxy,5,1,4,0,partial_or_proxy_complete
+WP5,L2 event simulator,Phase 6; Phase 9,partial_proxy,5,1,4,0,partial_or_proxy_complete
+WP6,Retail feed emulator,Phase 8,implemented_proxy,6,4,2,0,partial_or_proxy_complete
+WP7,Storage pipeline,Phase 9; Phase 10; DuckDB workspace,partial_current,5,3,2,0,partial_or_proxy_complete
+WP8,Backtester,Phase 12; Phase 15,partial_proxy,7,0,5,2,blocked_by_missing_deliverables
+WP9,Strategy suite,Phase 11; Phase 13,partial_proxy,4,0,4,0,partial_or_proxy_complete
+WP10,Validation and reporting,Phase 14; Phase 15; Phase 16,partial_current,5,2,3,0,partial_or_proxy_complete

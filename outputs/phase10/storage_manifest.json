@@ -1,0 +1,13 @@
+{
+  "generated_utc": "2026-07-13T15:17:52.907390+00:00",
+  "data_quality_path": "outputs\\stage_a1\\data_quality_report.csv",
+  "outputs": [
+    "storage_inventory.csv",
+    "schema_physical_types.csv",
+    "size_estimates.csv",
+    "partition_recommendations.csv",
+    "phase10_storage_report.md"
+  ],
+  "storage_decision": "Parquet/Zstandard durable storage with DuckDB query layer; SQLite only for small metadata if needed later.",
+  "evidence_scope": "current Stage A1 and Phase 5-9 artifacts"
+}

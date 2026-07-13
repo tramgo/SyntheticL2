@@ -1,0 +1,15 @@
+parameter,evidence_label,evidence_note
+reference_price,measured_one_day,Median LTP from normalized received ticks.
+spread_distribution,measured_one_day,Distribution of best ask minus best bid.
+inferred_tick_size,weakly_estimated_one_day,Minimum observed LTP increment; not an exchange rule lookup.
+event_rate,measured_one_day,Rows per receive-duration by symbol.
+interarrival_distribution,measured_one_day,Elapsed receive milliseconds from consecutive received ticks.
+stale_gap_profile,measured_one_day,Counts of receive gaps above 5s and 15s.
+depth_quantity_distribution,measured_one_day,L1-L5 visible market-by-price quantities.
+l1_l5_imbalance,measured_one_day,Computed from visible bid/ask depth.
+mlofi_quantity,weakly_inferred_one_day,"Consecutive market-by-price state deltas, not direct order events."
+trade_flow_pressure,weakly_inferred_one_day,Volume increments plus price-change sign; aggressor side is not directly observed.
+cross_symbol_correlation,weak_one_day,Five-second forward-filled mid returns; needs multi-day holdout before calibration use.
+regime_transition_probabilities,blocked,One day cannot identify robust regime transitions.
+shock_frequency,blocked,One day cannot calibrate shock arrival frequencies.
+queue_position_or_fill_priority,blocked,Top-five market-by-price feed has no individual order queue identity.

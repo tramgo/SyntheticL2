@@ -1,0 +1,9 @@
+{
+  "generated_utc": "2026-07-13T16:12:33.139779+00:00",
+  "stack_decision_rows": 21,
+  "dependency_rows": 15,
+  "required_now_dependencies": 5,
+  "missing_required_now_dependencies": 0,
+  "deferred_or_optional_items": 11,
+  "scope": "phase18_technology_stack_decisions_and_local_availability"
+}

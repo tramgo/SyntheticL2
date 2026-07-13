@@ -1,0 +1,10 @@
+negative_control_id,control_name,implementation_requirement,mandatory,promotion_blocks_if_failed
+NC01,shuffle_signal_time_bucket,Shuffle signal within same time-of-day bucket; preserves intraday seasonality.,True,True
+NC02,delayed_signal,Delay signal by one or more decision horizons.,True,True
+NC03,inverted_signal,Invert signal direction while preserving turnover.,True,True
+NC04,random_matched_turnover,Random direction with matched strategy turnover and holding horizon.,True,True
+NC05,no_predictive_coupling_data,Run on synthetic data generated without predictive coupling.,True,True
+NC06,zero_cost_vs_realistic_cost,Compare zero-cost control against configured cost schedule.,True,True
+NC07,zero_latency_vs_realistic_latency,Compare zero latency against retail/stressed profiles.,True,True
+NC08,hide_regime_labels,Suppress regime labels for regime-aware strategies.,True,True
+NC09,cross_ticker_timestamp_shift,Shift cross-ticker timestamps to detect lead-lag leakage.,True,True

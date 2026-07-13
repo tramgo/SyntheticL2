@@ -1,0 +1,5 @@
+level,intervention,calendar_field,min_value,median_value,max_value,has_variation,status,expected_result
+L7_counterfactual,increase_volatility,vol_multiplier,0.65,1.35,2.2,True,pass,higher values should correspond to wider return distribution
+L7_counterfactual,reduce_liquidity,depth_multiplier,0.5,0.95,1.05,True,pass,lower values should correspond to lower depth
+L7_counterfactual,widen_spreads,spread_multiplier,0.85,1.1,2.0,True,pass,higher values should correspond to wider spreads
+L7_counterfactual,increase_activity,event_rate_multiplier,0.8,1.15,1.55,True,pass,higher values should correspond to more activity

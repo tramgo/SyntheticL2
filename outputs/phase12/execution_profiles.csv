@@ -1,0 +1,4 @@
+execution_profile,decision_latency_events,broker_latency_events,fixed_slippage_ticks,impact_bps,fees_bps,cancel_on_stale_or_disconnect,description
+zero_latency_spread_only_control,0,0,0.0,0.0,0.0,False,Leakage/control profile with zero latency and half-spread marketable execution cost only. Not deployable.
+retail_marketable_default,1,1,1.0,0.5,1.5,True,"Default marketable retail proxy with next-event latency, placeholder profile-level fees, and internal impact/slippage assumptions."
+stressed_retail,2,2,2.0,2.0,3.0,True,"Stress proxy with longer event latency, placeholder profile-level fees, and higher internal impact/slippage assumptions."

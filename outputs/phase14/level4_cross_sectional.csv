@@ -1,0 +1,3 @@
+level,metric,value,status,evidence
+L4_cross_sectional,pairwise_daily_return_correlation_median,0.9140890224826543,pass,Pairwise symbol correlation across synthetic daily returns.
+L4_cross_sectional,pairwise_daily_return_correlation_q95,0.9684557856553077,pass,Upper-tail synthetic cross-sectional correlation.

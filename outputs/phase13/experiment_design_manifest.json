@@ -1,0 +1,17 @@
+{
+  "generated_utc": "2026-07-13T15:36:04.299041+00:00",
+  "calendar_path": "outputs\\phase4\\scenario_calendar.csv",
+  "split_days": {
+    "calibration_development": 30,
+    "validation": 15,
+    "untouched_test": 18
+  },
+  "quarter_profiles": 3,
+  "calendar_rows": 189,
+  "seed_rows": 30,
+  "walk_forward_windows": 48,
+  "parameter_sets": 63,
+  "negative_controls": 9,
+  "planned_initial_experiments": 324,
+  "not_strategy_results": true
+}

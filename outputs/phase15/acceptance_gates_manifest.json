@@ -1,0 +1,17 @@
+{
+  "generated_utc": "2026-07-13T16:10:24.902364+00:00",
+  "inputs": {
+    "strategy_matrix": "outputs\\phase11\\strategy_validation_matrix.csv",
+    "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
+    "execution_summary": "outputs\\phase12\\execution_summary.csv",
+    "cost_schedule": "outputs\\phase12\\cost_schedule.csv",
+    "experiment_registry": "outputs\\phase13\\experiment_registry.csv",
+    "quality_summary": "outputs\\phase14\\quality_gate_summary.csv"
+  },
+  "strategies": 11,
+  "gate_rows": 55,
+  "promoted_strategies": 0,
+  "blocked_strategies": 11,
+  "not_promotion_result": true,
+  "promotion_allowed_requires_all_gates_pass": true
+}
