@@ -287,6 +287,47 @@ def _markdown_table(frame: pd.DataFrame) -> str:
 
 def write_report(output_dir: Path, summary: pd.DataFrame, gaps: pd.DataFrame, audit: pd.DataFrame, remediation: pd.DataFrame, remediation_status: pd.DataFrame) -> None:
     status_summary = audit.groupby("coverage_status", sort=True).size().reset_index(name="field_checks")
+    normalized_summary_path = output_dir / "normalized_manifest_overlay_summary.csv"
+    normalized_field_path = output_dir / "normalized_manifest_field_sources.csv"
+    normalized_lines = []
+    if normalized_summary_path.exists() and normalized_field_path.exists():
+        normalized_summary = pd.read_csv(normalized_summary_path)
+        normalized_fields = pd.read_csv(normalized_field_path)
+        overlay_totals = pd.DataFrame(
+            [
+                {
+                    "overlay_metric": "normalized_overlay_artifacts",
+                    "value": int(len(normalized_summary)),
+                },
+                {
+                    "overlay_metric": "exact_field_overlay_ready_artifacts",
+                    "value": int(normalized_summary["exact_field_overlay_ready"].sum()),
+                },
+                {
+                    "overlay_metric": "normalizer_default_fields",
+                    "value": int(normalized_summary["normalizer_default_fields"].sum()),
+                },
+                {
+                    "overlay_metric": "source_manifest_exact_or_alias_fields",
+                    "value": int(normalized_summary["source_manifest_exact_or_alias_fields"].sum()),
+                },
+                {
+                    "overlay_metric": "normalized_field_rows",
+                    "value": int(len(normalized_fields)),
+                },
+            ]
+        )
+        normalized_lines = [
+            "## Normalized Manifest Overlay",
+            "",
+            "The overlay provides exact required-field manifests for current audit artifacts without rewriting historical source manifests.",
+            "It is a reproducibility bridge, not proof that every original phase generator already emits normalized manifests.",
+            "",
+            _markdown_table(overlay_totals),
+            "",
+            _markdown_table(normalized_summary),
+            "",
+        ]
     lines = [
         "# Phase 19 Reproducibility Report",
         "",
@@ -313,6 +354,7 @@ def write_report(output_dir: Path, summary: pd.DataFrame, gaps: pd.DataFrame, au
         "",
         _markdown_table(remediation_status),
         "",
+        *normalized_lines,
         "## Highest Priority Remediation Rows",
         "",
         _markdown_table(remediation.head(40)),

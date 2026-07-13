@@ -2152,13 +2152,19 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gap_summary.csv`;
 - `manifest_schema_template.json`;
 - `reproducibility_remediation_plan.csv`;
-- `reproducibility_remediation_summary.csv`.
+- `reproducibility_remediation_summary.csv`;
+- `normalized_manifest_overlay_manifest.json`;
+- `normalized_manifest_overlay_summary.csv`;
+- `normalized_manifest_field_sources.csv`;
+- `normalized_manifests/*.normalized_manifest.json`.
 
 The current completed run audits 10 required reproducibility fields across 25 phase/workspace/dashboard manifests, including the Phase 1 event-reconstruction manifest, Phase 11 strategy-module manifest, Phase 12 event-backtest manifest, Phase 13 smoke-run manifest and validation dashboard manifest, producing 250 field checks. Current coverage is not sufficient for exact regeneration: 0 artifacts are exact-regeneration-ready, 24 artifacts have missing fields, and 1 artifact group has a missing/unreadable manifest. This is the correct current result because earlier phases generally record `generated_utc` and selected input paths, but do not yet consistently record generator version, configuration hash, seed, calibration dataset ID, ticker metadata version, regime calendar version, scenario IDs, cost model version and latency model version.
 
 The remediation layer now emits a normalized reproducibility manifest template and 250 field-level remediation rows: 200 `add_field_in_generator` actions, 39 `normalize_alias_to_exact_field` actions, 10 `recover_or_rerun_manifest` actions and 1 `complete_exact` row. This converts the audit into a generator-by-generator implementation checklist without pretending the historical artifacts are already exactly reproducible.
 
-Important Phase 19 caveat: this phase is now an audit plus remediation plan, not a completed retrofit. The next implementation step is to adopt the normalized manifest schema inside each phase runner and rerun/backfill artifacts with exact regeneration metadata rather than manually editing old manifests.
+The normalized manifest overlay now creates exact-field manifest overlays for all 25 audited artifacts without rewriting their historical source manifests. The overlay has 25 exact-field-ready artifacts and 250 normalized field rows: 39 values came from exact/alias fields already present in source manifests and 211 values were supplied by the normalizer using current git/config/source defaults. This is a reproducibility bridge for current audit artifacts, not proof that every original phase generator already emits normalized manifests.
+
+Important Phase 19 caveat: this phase is now an audit plus remediation/normalization layer, not a completed generator retrofit. The next implementation step is to adopt the normalized manifest schema inside each phase runner and rerun/backfill artifacts with exact regeneration metadata rather than relying on overlay defaults.
 
 ---
 
