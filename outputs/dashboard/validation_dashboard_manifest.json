@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:47:48.301237+00:00",
+  "generated_utc": "2026-07-13T19:52:35.868560+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "acceptance": "outputs\\phase15\\strategy_acceptance_summary.csv",
@@ -20,7 +20,7 @@
     "metric_catalog_rows": 27,
     "acceptance_grade_metrics": 0,
     "missing_metrics": 0,
-    "p1_gaps": 3
+    "p1_gaps": 1
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true

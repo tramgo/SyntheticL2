@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:47:52.362578+00:00
+Generated UTC: 2026-07-13T19:52:39.395614+00:00
 
 ## Storage Decision
 
@@ -68,6 +68,11 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 total simulated trades: 10350654
 - Phase 12 trade sample rows: 249993
 - Phase 12 cost components: 12
+- Phase 12 event-backtest order rows: 6480
+- Phase 12 event-backtest order models: 6
+- Phase 12 event-backtest P&L rows: 6480
+- Phase 12 order model catalog rows: 6
+- Phase 12 slippage model catalog rows: 4
 - Phase 12 lifecycle rows: 749979
 - Phase 12 fill models: 3
 - Phase 12 partial-fill summary rows: 81
@@ -120,7 +125,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 P0 gaps: 0
 - Validation dashboard summary rows: 10
 - Validation dashboard promoted strategies: 0
-- Validation dashboard P1 gaps: 3
+- Validation dashboard P1 gaps: 1
 - Replay validation tiers: 3
 - Replay deterministic tiers: 3
 - Phase 18 stack decision rows: 21
@@ -129,16 +134,16 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 18 missing required-now dependencies: 0
 - Phase 18 deferred/optional stack items: 11
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 23
-- Phase 19 field checks: 230
+- Phase 19 audited artifacts: 24
+- Phase 19 field checks: 240
 - Phase 19 exact-regeneration-ready artifacts: 0
-- Phase 19 artifacts with missing fields: 22
+- Phase 19 artifacts with missing fields: 23
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
-- Phase 19 remediation rows: 230
+- Phase 19 remediation rows: 240
 - Phase 19 remediation summary rows: 4
-- Phase 19 add-field-in-generator rows: 184
-- Phase 19 alias-normalization rows: 35
+- Phase 19 add-field-in-generator rows: 191
+- Phase 19 alias-normalization rows: 38
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30

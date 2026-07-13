@@ -1,0 +1,18 @@
+{
+  "generated_utc": "2026-07-13T19:52:34.442643+00:00",
+  "trade_sample_path": "outputs\\phase12\\trade_ledger_sample.parquet",
+  "input_trade_sample_rows": 249993,
+  "order_trace_rows": 6480,
+  "order_models": 6,
+  "slippage_models": 4,
+  "strategies": 9,
+  "execution_profiles": 3,
+  "filled_orders": 6061,
+  "rejected_or_cancelled_orders": 419,
+  "passive_limit_orders": 738,
+  "market_or_marketable_orders": 4259,
+  "partial_fill_orders": 1264,
+  "direct_queue_truth": false,
+  "not_acceptance_grade": true,
+  "scope": "event_driven_order_lifecycle_proxy_over_phase12_trade_sample"
+}

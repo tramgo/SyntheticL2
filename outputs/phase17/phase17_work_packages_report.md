@@ -1,6 +1,6 @@
 # Phase 17 Implementation Work Packages Report
 
-Generated UTC: 2026-07-13T19:47:47.435110+00:00
+Generated UTC: 2026-07-13T19:52:35.166160+00:00
 
 ## Scope
 
@@ -19,8 +19,8 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | implementation_status | deliverables |
 | --- | --- |
 | implemented | 23 |
-| implemented_proxy | 29 |
-| partial_proxy | 3 |
+| implemented_proxy | 31 |
+| partial_proxy | 1 |
 
 ## Work Package Registry
 
@@ -41,8 +41,6 @@ It does not claim acceptance completion; it identifies which deliverables are im
 
 | priority | work_package_id | deliverable | implementation_status | evidence_path | evidence_status | recommended_next_action | note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| P1 | WP8 | event-driven engine | partial_proxy | outputs/phase12/execution_summary.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Phase 12 is a marketable-order proxy over feature events. |
-| P1 | WP8 | market and limit orders | partial_proxy | outputs/phase12/execution_summary.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Marketable orders are modeled; passive limit orders are not. |
 | P1 | WP9 | S01-S11 modules | partial_proxy | outputs/phase11/strategy_validation_matrix.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | S01-S11 are registered; only proxy signals are implemented. |
 | P2 | WP10 | robustness matrix | implemented_proxy | outputs/phase13/experiment_run_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Pre-registered experiment rows have a deterministic proxy smoke ledger; full robustness validation is not acceptance-grade yet. |
 | P2 | WP10 | strategy performance reports | implemented_proxy | outputs/phase16/phase16_metrics_reporting_report.md | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Proxy performance report exists. |
@@ -61,3 +59,5 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | P2 | WP5 | additions/cancellations/trades | implemented_proxy | outputs/phase1/event_reconstruction/event_reconstruction_quality.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Add/cancel/consume proxies are explicitly summarized from visible quantity deltas and volume increments; individual-order causality remains unavailable. |
 | P2 | WP5 | resilience | implemented_proxy | outputs/phase6/l2_book_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Spread/depth structural checks exist. |
 | P2 | WP5 | spread/depth dynamics | implemented_proxy | outputs/phase6/l2_book_states_5m.parquet | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Spread/depth dynamics are generated at 5-minute granularity. |
+| P2 | WP6 | asynchronous ticker stream | implemented_proxy | outputs/phase8/retail_feed_observations.parquet | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Per-symbol retail feed observations are asynchronous proxies. |
+| P2 | WP6 | reconnects | implemented_proxy | outputs/phase8/feed_profile_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Disconnect/reconnect proxy states exist. |

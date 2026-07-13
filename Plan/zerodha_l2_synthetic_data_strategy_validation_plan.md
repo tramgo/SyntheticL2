@@ -1491,7 +1491,7 @@ Do not classify participants or assert market manipulation.
 
 ## Phase 12 — Backtest and Execution Simulator
 
-**Current implementation status as of 2026-07-14:** Phase 12 has an initial runnable marketable-order execution simulator in `scripts/run_phase12_execution_simulator.py`, backed by `src/synthetic_l2/phase12_execution_simulator.py`, plus a sampled order-lifecycle and risk-control proxy in `scripts/run_phase12_order_lifecycle_risk.py`, backed by `src/synthetic_l2/phase12_order_lifecycle_risk.py`.
+**Current implementation status as of 2026-07-14:** Phase 12 has an initial runnable marketable-order execution simulator in `scripts/run_phase12_execution_simulator.py`, backed by `src/synthetic_l2/phase12_execution_simulator.py`, a sampled order-lifecycle and risk-control proxy in `scripts/run_phase12_order_lifecycle_risk.py`, backed by `src/synthetic_l2/phase12_order_lifecycle_risk.py`, and an event-driven order-lifecycle backtester proxy in `scripts/run_phase12_event_backtester.py`, backed by `src/synthetic_l2/phase12_event_backtester.py`.
 
 Generated artifacts are under `outputs/phase12/`:
 
@@ -1500,7 +1500,14 @@ Generated artifacts are under `outputs/phase12/`:
 - `execution_summary.csv`;
 - `execution_profiles.csv`;
 - `cost_schedule.csv`;
-- `trade_ledger_sample.parquet`.
+- `trade_ledger_sample.parquet`;
+- `event_backtest_report.md`;
+- `event_backtest_manifest.json`;
+- `event_backtest_order_summary.csv`;
+- `event_backtest_pnl_trace.csv`;
+- `order_model_catalog.csv`;
+- `slippage_model_catalog.csv`;
+- local/generated `event_backtest_order_trace.parquet`.
 
 Additional order-lifecycle and risk-control artifacts are under `outputs/phase12_order_lifecycle/`:
 
@@ -1517,7 +1524,9 @@ The simulator applies event-latency shifts, stale/disconnect cancellation, half-
 
 The lifecycle/risk-control proxy currently expands the 249,993-row sampled trade ledger into 749,979 lifecycle rows across 3 deterministic fill profiles: `optimistic_marketable`, `neutral_partial` and `pessimistic_partial`. It adds queue-position bucket, partial-fill ratio, unfilled quantity, filled notional, risk-equity, drawdown, tail-loss, position-limit and daily-loss-halt fields, with 81 strategy/profile/fill-model partial-fill summary rows and 81 strategy/profile/fill-model risk-control summary rows.
 
-Important Phase 12 caveat: this is an execution-plumbing, cost-sensitivity and sampled lifecycle/risk proxy, not a tick-accurate exchange queue simulator, full-run backtest acceptance result or promotion result. Passive order-book placement, cancel/replace/rejection state machines and exact order-notional charge application remain requirements for the next simulator iteration.
+The event-driven backtester proxy samples the Phase 12 trade ledger into 6,480 order-lifecycle rows across 9 strategies, 3 execution profiles, 6 order models and 4 slippage models. It exercises market orders, marketable limits, passive-limit proxies, cancel/replace, partial fills and rejection scenarios; the summary shows 6,061 filled orders, 419 rejected/cancelled orders, 738 passive-limit orders, 4,259 market/marketable orders and 1,264 partial-fill orders.
+
+Important Phase 12 caveat: this is an execution-plumbing, cost-sensitivity and sampled lifecycle/risk proxy, not a tick-accurate exchange queue simulator, full-run backtest acceptance result or promotion result. Passive order-book placement, cancel/replace/rejection state machines and exact order-notional charge application are now exercised as proxy scenarios, but true queue priority and broker/exchange fills remain requirements for acceptance.
 
 ## 38. Event-driven backtester
 
@@ -2067,7 +2076,7 @@ Generated artifacts are under `outputs/phase17/`:
 - `deliverable_traceability.csv`;
 - `implementation_gap_backlog.csv`.
 
-The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, the Phase 17 backlog has 0 P0 gaps, and the current P1 backlog has 3 rows. WP2 now has explicit inference-quality evidence for weak trade classification and visible-depth replenishment through `outputs/phase1/event_reconstruction/`. WP5 now has explicit add/cancel/consume proxy summaries from received market-by-price deltas through the same event-reconstruction quality artifact. WP7 has explicit raw/compact/features/resampled evidence through Phase 9 Tier A/B/C/D products; the 15-minute resampled panel is registered in DuckDB through `phase9_tier_d_resampled_features_15m`. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for partial fills, risk controls and Zerodha-sourced normalized equity-intraday fees through `outputs/phase12_order_lifecycle/partial_fill_summary.csv`, `outputs/phase12_order_lifecycle/risk_control_summary.csv` and `outputs/phase12/cost_schedule.csv`. WP10 now has a deterministic robustness-smoke ledger through `outputs/phase13/experiment_run_summary.csv` and a static validation dashboard through `outputs/dashboard/synthetic_l2_validation_dashboard.html`.
+The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, the Phase 17 backlog has 0 P0 gaps, and the current P1 backlog has 1 row. WP2 now has explicit inference-quality evidence for weak trade classification and visible-depth replenishment through `outputs/phase1/event_reconstruction/`. WP5 now has explicit add/cancel/consume proxy summaries from received market-by-price deltas through the same event-reconstruction quality artifact. WP7 has explicit raw/compact/features/resampled evidence through Phase 9 Tier A/B/C/D products; the 15-minute resampled panel is registered in DuckDB through `phase9_tier_d_resampled_features_15m`. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for event-driven order lifecycle, market/limit order models, partial fills, risk controls and Zerodha-sourced normalized equity-intraday fees through `outputs/phase12/event_backtest_order_summary.csv`, `outputs/phase12/order_model_catalog.csv`, `outputs/phase12_order_lifecycle/partial_fill_summary.csv`, `outputs/phase12_order_lifecycle/risk_control_summary.csv` and `outputs/phase12/cost_schedule.csv`. WP10 now has a deterministic robustness-smoke ledger through `outputs/phase13/experiment_run_summary.csv` and a static validation dashboard through `outputs/dashboard/synthetic_l2_validation_dashboard.html`.
 
 The remaining work is acceptance hardening rather than missing-deliverable closure: promote proxy/partial artifacts to full-run, broker-verified and holdout-tested evidence before any strategy promotion claim.
 
@@ -2141,9 +2150,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_remediation_plan.csv`;
 - `reproducibility_remediation_summary.csv`.
 
-The current completed run audits 10 required reproducibility fields across 23 phase/workspace/dashboard manifests, including the Phase 1 event-reconstruction manifest, Phase 13 smoke-run manifest and validation dashboard manifest, producing 230 field checks. Current coverage is not sufficient for exact regeneration: 0 artifacts are exact-regeneration-ready, 22 artifacts have missing fields, and 1 artifact group has a missing/unreadable manifest. This is the correct current result because earlier phases generally record `generated_utc` and selected input paths, but do not yet consistently record generator version, configuration hash, seed, calibration dataset ID, ticker metadata version, regime calendar version, scenario IDs, cost model version and latency model version.
+The current completed run audits 10 required reproducibility fields across 24 phase/workspace/dashboard manifests, including the Phase 1 event-reconstruction manifest, Phase 12 event-backtest manifest, Phase 13 smoke-run manifest and validation dashboard manifest, producing 240 field checks. Current coverage is not sufficient for exact regeneration: 0 artifacts are exact-regeneration-ready, 23 artifacts have missing fields, and 1 artifact group has a missing/unreadable manifest. This is the correct current result because earlier phases generally record `generated_utc` and selected input paths, but do not yet consistently record generator version, configuration hash, seed, calibration dataset ID, ticker metadata version, regime calendar version, scenario IDs, cost model version and latency model version.
 
-The remediation layer now emits a normalized reproducibility manifest template and 230 field-level remediation rows: 184 `add_field_in_generator` actions, 35 `normalize_alias_to_exact_field` actions and 10 `recover_or_rerun_manifest` actions for the missing/unreadable Phase 1 manifest. This converts the audit into a generator-by-generator implementation checklist without pretending the historical artifacts are already exactly reproducible.
+The remediation layer now emits a normalized reproducibility manifest template and 240 field-level remediation rows: 191 `add_field_in_generator` actions, 38 `normalize_alias_to_exact_field` actions, 10 `recover_or_rerun_manifest` actions and 1 `complete_exact` row. This converts the audit into a generator-by-generator implementation checklist without pretending the historical artifacts are already exactly reproducible.
 
 Important Phase 19 caveat: this phase is now an audit plus remediation plan, not a completed retrofit. The next implementation step is to adopt the normalized manifest schema inside each phase runner and rerun/backfill artifacts with exact regeneration metadata rather than manually editing old manifests.
 

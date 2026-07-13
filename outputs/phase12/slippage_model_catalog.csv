@@ -1,6 +1,5 @@
 slippage_model,description
-fixed_ticks,Add a fixed tick penalty by side and stress setting.
-participation_rate_impact,Impact increases with order quantity versus displayed L1-L5 depth.
-depth_consuming_book_walk,Fill quantity by walking displayed five-level book.
-volatility_liquidity_conditioned,"Extra penalty under high spread, shock and low-depth states."
-stressed_shock_slippage,Stress multiplier applied on market/symbol shock rows.
+spread_cross,Pay half-spread plus fixed profile cost for marketable flow.
+depth_consuming_book_walk,Increase cost when liquidity bucket is low or spread is wide.
+passive_queue_adverse_selection,Passive fill receives spread benefit but carries adverse-selection haircut.
+stale_reject,Reject when signal age or price protection gate fails.
