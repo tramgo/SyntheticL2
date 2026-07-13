@@ -3,7 +3,7 @@
   "artifact_id": "phase13_smoke_run",
   "source_manifest_path": "outputs/phase13/experiment_run_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
+  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
   "configuration_hash": "bf0e9a068e5dc7d39b9f2e46d555a5fb139ccbc4a157b069116f500aa0a5d3a3",
   "random_seed": "outputs/phase13/seed_plan.csv_via_experiment_registry",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -12,7 +12,7 @@
   "scenario_ids": "outputs/phase13/experiment_registry.csv",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T20:47:02.130086+00:00",
-  "normalization_timestamp": "2026-07-13T21:08:52.105888+00:00",
+  "creation_timestamp": "2026-07-13T21:14:41.886130+00:00",
+  "normalization_timestamp": "2026-07-13T21:16:46.131128+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

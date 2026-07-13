@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:34:49.372872+00:00",
+  "generated_utc": "2026-07-13T21:14:14.105898+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
   "seed_plan_path": "outputs\\phase13\\seed_plan.csv",
   "seeded_trade_sample": true,
@@ -29,17 +29,23 @@
     "stamp_duty_buy_side_bps": 0.3,
     "gst_bps": 1.19088
   },
+  "zerodha_charge_application": "per_trade_rupee_order_formula_for_retail_and_stressed_profiles",
+  "order_notional_inr_by_profile": {
+    "zero_latency_spread_only_control": 100000.0,
+    "retail_marketable_default": 100000.0,
+    "stressed_retail": 100000.0
+  },
   "representative_charge_scenarios": 6,
   "charge_components": 6,
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
-  "configuration_hash": "d3e6d3c5f26527a099149d28f7eacf69d4ef1728b3417d204f583a204360b1ae",
+  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
+  "configuration_hash": "6d94531f62b32d0202ce1f93027201a49772a6d62b20ea2268d071ece335fba0",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
   "scenario_ids": "outputs/phase4/scenario_calendar.csv_and_phase13_seed_plan_cycle",
   "latency_model_version": "phase12_execution_profiles_v1",
-  "creation_timestamp": "2026-07-13T20:34:49.372872+00:00"
+  "creation_timestamp": "2026-07-13T21:14:14.105898+00:00"
 }

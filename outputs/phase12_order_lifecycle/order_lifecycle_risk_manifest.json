@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:34:53.794709+00:00",
+  "generated_utc": "2026-07-13T21:14:39.549336+00:00",
   "trade_sample_path": "outputs\\phase12\\trade_ledger_sample.parquet",
   "input_trade_rows": 249993,
   "lifecycle_rows": 749979,

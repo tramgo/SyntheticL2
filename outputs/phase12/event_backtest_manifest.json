@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:34:55.253630+00:00",
+  "generated_utc": "2026-07-13T21:14:41.027156+00:00",
   "trade_sample_path": "outputs\\phase12\\trade_ledger_sample.parquet",
   "input_trade_sample_rows": 249993,
   "order_trace_rows": 6480,
@@ -16,7 +16,7 @@
   "not_acceptance_grade": true,
   "scope": "event_driven_order_lifecycle_proxy_over_phase12_trade_sample",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
+  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
   "configuration_hash": "5ceffee4b54b8a9db28f5dfcfea10555c92ad04527c24d69a56a7023247c4d3f",
   "random_seed": "not_applicable_deterministic",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -25,5 +25,5 @@
   "scenario_ids": "phase12_trade_sample_strategy_execution_profile_cross_section",
   "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
   "latency_model_version": "phase12_execution_profiles_v1",
-  "creation_timestamp": "2026-07-13T20:34:55.253630+00:00"
+  "creation_timestamp": "2026-07-13T21:14:41.027156+00:00"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:47:02.130086+00:00",
+  "generated_utc": "2026-07-13T21:14:41.886130+00:00",
   "registry_path": "outputs\\phase13\\experiment_registry.csv",
   "signal_diagnostics_path": "outputs\\phase11\\strategy_signal_diagnostics.csv",
   "execution_summary_path": "outputs\\phase12\\execution_summary.csv",
@@ -12,7 +12,7 @@
   "acceptance_eligible": false,
   "run_scope": "deterministic_proxy_smoke_not_full_experiment",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "7d4c1438da5b8d8d6f428a9a20f13e94f48f8392",
+  "generator_version": "348f8a691d7f8cad46fbbea008926745da4bbf03",
   "configuration_hash": "bf0e9a068e5dc7d39b9f2e46d555a5fb139ccbc4a157b069116f500aa0a5d3a3",
   "random_seed": "outputs/phase13/seed_plan.csv_via_experiment_registry",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -21,5 +21,5 @@
   "scenario_ids": "outputs/phase13/experiment_registry.csv",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T20:47:02.130086+00:00"
+  "creation_timestamp": "2026-07-13T21:14:41.886130+00:00"
 }

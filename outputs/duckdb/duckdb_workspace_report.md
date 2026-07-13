@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T21:08:50.635136+00:00
+Generated UTC: 2026-07-13T21:16:44.666683+00:00
 
 ## Storage Decision
 
@@ -83,7 +83,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 12 partial-fill summary rows: 81
 - Phase 12 risk-control summary rows: 81
 - Phase 12 position-limit breach rows: 232427
-- Phase 12 daily-loss-limit breach rows: 28012
+- Phase 12 daily-loss-limit breach rows: 26330
 - Phase 13 split rows: 189
 - Phase 13 seed rows: 30
 - Phase 13 initial engineering seeds: 9
