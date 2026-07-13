@@ -967,7 +967,7 @@ At 100 ms, 250 ms, 500 ms, 1 s, 5 s, 15 s, only where the symbol/window coverage
 
 Tier C is for fast model iteration and should be reproducible from Tier A/B.
 
-**Current implementation status as of 2026-07-13:** Phase 9 has an initial runnable implementation in `scripts/run_phase9_data_products.py`, backed by `src/synthetic_l2/phase9_data_products.py`.
+**Current implementation status as of 2026-07-14:** Phase 9 has an initial runnable implementation in `scripts/run_phase9_data_products.py`, backed by `src/synthetic_l2/phase9_data_products.py`.
 
 Generated artifacts are under `outputs/phase9/`:
 
@@ -975,9 +975,11 @@ Generated artifacts are under `outputs/phase9/`:
 - `data_product_manifest.json`;
 - `tier_a/raw_synthetic_events.parquet`;
 - `tier_b/compact_l2_state.parquet`;
-- `tier_c/features_5m.parquet`.
+- `tier_c/features_5m.parquet`;
+- `tier_d/resampled_features_15m.parquet`;
+- `tier_d/resampled_panel_summary.csv`.
 
-The first completed run produced 2,276,143 Tier A synthetic event rows, 2,259,039 Tier B compact L2 rows and 2,259,039 Tier C 5-minute feature rows across 5 feed profiles and all 32 symbols. Tier B had 0 crossed L1 rows. Tier C currently emits 5-minute features; any 1-second product must be gated by symbol/window coverage and staleness labels rather than assumed as a dense full-session panel.
+The current completed run produced 2,276,143 Tier A synthetic event rows, 2,259,039 Tier B compact L2 rows, 2,259,039 Tier C 5-minute feature rows and 756,000 Tier D 15-minute resampled feature-panel rows across 5 feed profiles and all 32 symbols. Tier B had 0 crossed L1 rows. Tier D is a deterministic resampled product derived from Tier C, with 21,633 incomplete panels retained and labeled by `panel_complete`; any 1-second product must still be gated by symbol/window coverage and staleness labels rather than assumed as a dense full-session panel.
 
 ---
 
@@ -1057,7 +1059,7 @@ Generated artifacts are under `outputs/duckdb/`:
 - `duckdb_workspace_report.md`;
 - `duckdb_workspace_manifest.json`.
 
-The current DuckDB validation registers views over Stage A1 through Phase 11 outputs. SQL validation confirms 620,853 compact tick rows, 620,853 normalized rows, 620,853 received-delta rows, 32 Stage A1 symbols, 32 Phase 2 symbols, 77 Phase 3 intraday bins, 189 Phase 4 scenario-calendar rows, 453,600 Phase 5 price-bar rows, 6,048 Phase 5 daily symbol rows, 453,600 Phase 6 L2 book rows, 0 Phase 6 crossed L1 rows, 1,504 Phase 7 shock events, 32 Phase 7 ticker targets, 2,259,039 Phase 8 feed observation rows, 15,600 Phase 8 dropped source events, 6,639 Phase 8 duplicate observations, 2,276,143 Phase 9 Tier A events, 2,259,039 Phase 9 Tier B rows, 2,259,039 Phase 9 Tier C rows, 5 Phase 10 measured storage layers, 5 Phase 10 generation profiles, 5 Phase 10 feature intervals and 11 Phase 11 strategy rows.
+The current DuckDB validation registers views over Stage A1 through Phase 19 outputs. SQL validation confirms 620,853 compact tick rows, 620,853 normalized rows, 620,853 received-delta rows, 32 Stage A1 symbols, 32 Phase 2 symbols, 77 Phase 3 intraday bins, 189 Phase 4 scenario-calendar rows, 453,600 Phase 5 price-bar rows, 6,048 Phase 5 daily symbol rows, 453,600 Phase 6 L2 book rows, 0 Phase 6 crossed L1 rows, 1,504 Phase 7 shock events, 32 Phase 7 ticker targets, 2,259,039 Phase 8 feed observation rows, 15,600 Phase 8 dropped source events, 6,639 Phase 8 duplicate observations, 2,276,143 Phase 9 Tier A events, 2,259,039 Phase 9 Tier B rows, 2,259,039 Phase 9 Tier C rows, 756,000 Phase 9 Tier D 15-minute resampled rows, 8 Phase 10 inventory datasets, 5 Phase 10 generation profiles, 5 Phase 10 feature intervals, 11 Phase 11 strategy rows and 0 promoted Phase 15 strategies.
 
 **Current implementation status as of 2026-07-13:** Phase 10 has an initial runnable storage optimizer in `scripts/run_phase10_storage_optimizer.py`, backed by `src/synthetic_l2/phase10_storage_optimizer.py`. The older `scripts/run_phase10_storage_size_estimator.py` entrypoint remains as a compatibility wrapper.
 
@@ -1077,7 +1079,7 @@ Generated artifacts are under `outputs/phase10/`:
 - `generation_profile_size_estimates.csv`;
 - `feature_interval_size_estimates.csv`.
 
-The consolidated storage run measured current product sizes across Stage A1 and Phase 5-9 artifacts. Current Parquet footprints include 39.71 MB for Stage A1 compact real ticks, 158.26 MB for Phase 9 Tier B compact L2 state and 122.93 MB for Phase 9 Tier C 5-minute features. Using the current one-day received-tick row rate and current synthetic product bytes-per-row, the consolidated optimizer projects approximately 25.06 GB for the Medium profile, 100.25 GB for the Full annual profile, 31.33 GB for the Dense profile and 23.77 GB for Feature-only. The earlier storage-size estimate artifacts are retained for comparison. Three-month fine-horizon feature products remain subject to the symbol/window coverage gates.
+The consolidated storage run measured current product sizes across Stage A1 and Phase 5-9 artifacts. Current Parquet footprints include 39.71 MB for Stage A1 compact real ticks, 158.26 MB for Phase 9 Tier B compact L2 state, 122.93 MB for Phase 9 Tier C 5-minute features and 55.23 MB for Phase 9 Tier D 15-minute resampled features. Using the current one-day received-tick row rate and current synthetic product bytes-per-row, including the Tier D resampled product, the consolidated optimizer projects approximately 29.73 GB for the Medium profile, 118.93 GB for the Full annual profile, 37.16 GB for the Dense profile and 28.44 GB for Feature-only. The earlier storage-size estimate artifacts are retained for comparison. Three-month fine-horizon feature products remain subject to the symbol/window coverage gates.
 
 Important Phase 10 caveat: these are capacity-planning estimates from a one-day real sample and the current Phase 9 products. They are not guarantees for multi-day production capture, and the raw source-file footprint is inflated by many tiny files. Compact Parquet should remain the planning basis.
 
@@ -2058,7 +2060,7 @@ Generated artifacts are under `outputs/phase17/`:
 - `deliverable_traceability.csv`;
 - `implementation_gap_backlog.csv`.
 
-The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, the Phase 17 backlog has 0 P0 gaps, and the current P1 backlog has 7 rows. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for partial fills, risk controls and Zerodha-sourced normalized equity-intraday fees through `outputs/phase12_order_lifecycle/partial_fill_summary.csv`, `outputs/phase12_order_lifecycle/risk_control_summary.csv` and `outputs/phase12/cost_schedule.csv`. WP10 now has a deterministic robustness-smoke ledger through `outputs/phase13/experiment_run_summary.csv` and a static validation dashboard through `outputs/dashboard/synthetic_l2_validation_dashboard.html`.
+The current completed run converts WP1-WP10 into an evidence-backed work-package registry. It tracks 10 work packages and 55 deliverables: 23 implemented deliverables, 32 proxy/partial deliverables and 0 missing deliverables. No work package is currently blocked by missing deliverables, the Phase 17 backlog has 0 P0 gaps, and the current P1 backlog has 6 rows. WP7 now has explicit raw/compact/features/resampled evidence through Phase 9 Tier A/B/C/D products; the 15-minute resampled panel is registered in DuckDB through `phase9_tier_d_resampled_features_15m`. The WP7 replay tool is implemented through `scripts/run_replay_tool.py`, validated by `outputs/replay/replay_validation_report.md`, and registered in DuckDB through `replay_validation_summary`. WP8 now has sampled proxy evidence for partial fills, risk controls and Zerodha-sourced normalized equity-intraday fees through `outputs/phase12_order_lifecycle/partial_fill_summary.csv`, `outputs/phase12_order_lifecycle/risk_control_summary.csv` and `outputs/phase12/cost_schedule.csv`. WP10 now has a deterministic robustness-smoke ledger through `outputs/phase13/experiment_run_summary.csv` and a static validation dashboard through `outputs/dashboard/synthetic_l2_validation_dashboard.html`.
 
 The remaining work is acceptance hardening rather than missing-deliverable closure: promote proxy/partial artifacts to full-run, broker-verified and holdout-tested evidence before any strategy promotion claim.
 

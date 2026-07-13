@@ -206,7 +206,76 @@ def build_tier_c(tier_b: pd.DataFrame) -> pd.DataFrame:
     ].reset_index(drop=True)
 
 
-def validate_products(tier_a: pd.DataFrame, tier_b: pd.DataFrame, tier_c: pd.DataFrame) -> dict:
+def build_tier_d_resampled(tier_c: pd.DataFrame, source_interval_minutes: int = 5, target_interval_minutes: int = 15) -> pd.DataFrame:
+    if target_interval_minutes % source_interval_minutes != 0:
+        raise ValueError("target_interval_minutes must be a multiple of source_interval_minutes")
+    bars_per_panel = target_interval_minutes // source_interval_minutes
+    group_cols = ["feed_profile", "quarter_profile", "scenario_day", "trade_date", "symbol"]
+    ordered = tier_c.sort_values([*group_cols, "bar_index", "collector_received_utc_ms"], kind="mergesort").copy()
+    ordered["resample_bar_index"] = (ordered["bar_index"] // bars_per_panel).astype("int64")
+    ordered["source_interval_minutes"] = source_interval_minutes
+    ordered["target_interval_minutes"] = target_interval_minutes
+    resample_cols = [*group_cols, "resample_bar_index"]
+    out = (
+        ordered.groupby(resample_cols, sort=False)
+        .agg(
+            source_rows=("bar_index", "count"),
+            source_bar_start=("bar_index", "min"),
+            source_bar_end=("bar_index", "max"),
+            collector_received_utc_ms_start=("collector_received_utc_ms", "min"),
+            collector_received_utc_ms_end=("collector_received_utc_ms", "max"),
+            mid_price_open=("mid_price", "first"),
+            mid_price_high=("mid_price", "max"),
+            mid_price_low=("mid_price", "min"),
+            mid_price_close=("mid_price", "last"),
+            spread_ticks_mean=("spread_ticks", "mean"),
+            spread_ticks_max=("spread_ticks", "max"),
+            spread_mean=("spread", "mean"),
+            l1_imbalance_mean=("l1_imbalance", "mean"),
+            l5_imbalance_mean=("l5_imbalance", "mean"),
+            microprice_l1_close=("microprice_l1", "last"),
+            mlofi_qty_sum=("mlofi_qty", "sum"),
+            momentum_3_close=("momentum_3", "last"),
+            local_volatility_6_mean=("local_volatility_6", "mean"),
+            book_slope_l5_mean=("book_slope_l5", "mean"),
+            book_convexity_l5_mean=("book_convexity_l5", "mean"),
+            event_intensity_proxy_mean=("event_intensity_proxy", "mean"),
+            duplicate_rows=("is_duplicate", "sum"),
+            disconnect_gap_rows=("is_disconnect_gap", "sum"),
+            out_of_order_rows=("is_out_of_order_injected", "sum"),
+            is_market_shock_day=("is_market_shock_day", "max"),
+            is_symbol_shock=("is_symbol_shock", "max"),
+        )
+        .reset_index()
+    )
+    out["source_interval_minutes"] = source_interval_minutes
+    out["target_interval_minutes"] = target_interval_minutes
+    out["mid_return_panel"] = out["mid_price_close"] / out["mid_price_open"].replace(0, np.nan) - 1.0
+    out["panel_complete"] = out["source_rows"] == bars_per_panel
+    grouped = out.sort_values([*group_cols, "resample_bar_index"], kind="mergesort").groupby(group_cols, sort=False)
+    out["future_mid_return_panel_1"] = grouped["mid_price_close"].shift(-1) / out["mid_price_close"].replace(0, np.nan) - 1.0
+    return out.reset_index(drop=True)
+
+
+def summarize_resampled(tier_d: pd.DataFrame) -> pd.DataFrame:
+    return (
+        tier_d.groupby(["feed_profile", "target_interval_minutes"], sort=True)
+        .agg(
+            rows=("symbol", "count"),
+            symbols=("symbol", "nunique"),
+            trade_dates=("trade_date", "nunique"),
+            scenario_days=("scenario_day", "nunique"),
+            complete_panels=("panel_complete", "sum"),
+            incomplete_panels=("panel_complete", lambda values: int((~values.astype(bool)).sum())),
+            mean_source_rows=("source_rows", "mean"),
+            median_spread_ticks=("spread_ticks_mean", "median"),
+            mean_event_intensity=("event_intensity_proxy_mean", "mean"),
+        )
+        .reset_index()
+    )
+
+
+def validate_products(tier_a: pd.DataFrame, tier_b: pd.DataFrame, tier_c: pd.DataFrame, tier_d: pd.DataFrame) -> dict:
     return {
         "tier_a_events": int(len(tier_a)),
         "tier_a_event_kinds": int(tier_a["event_kind"].nunique()),
@@ -218,6 +287,11 @@ def validate_products(tier_a: pd.DataFrame, tier_b: pd.DataFrame, tier_c: pd.Dat
         "tier_c_symbols": int(tier_c["symbol"].nunique()),
         "tier_c_future_label_nulls": int(tier_c["future_mid_return_1"].isna().sum()),
         "tier_b_crossed_l1_rows": int((tier_b["bid_px_1"] >= tier_b["ask_px_1"]).sum()),
+        "tier_d_resampled_rows": int(len(tier_d)),
+        "tier_d_resampled_profiles": int(tier_d["feed_profile"].nunique()),
+        "tier_d_resampled_symbols": int(tier_d["symbol"].nunique()),
+        "tier_d_target_interval_minutes": int(tier_d["target_interval_minutes"].max()) if len(tier_d) else 0,
+        "tier_d_incomplete_panels": int((~tier_d["panel_complete"]).sum()) if len(tier_d) else 0,
     }
 
 
@@ -234,7 +308,7 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, validation: dict, tier_a: pd.DataFrame, tier_b: pd.DataFrame) -> None:
+def write_report(output_dir: Path, validation: dict, tier_a: pd.DataFrame, tier_b: pd.DataFrame, resampled_summary: pd.DataFrame) -> None:
     event_kinds = tier_a["event_kind"].value_counts().rename_axis("event_kind").reset_index(name="rows")
     profiles = tier_b.groupby("feed_profile", sort=True).agg(rows=("symbol", "count"), symbols=("symbol", "nunique")).reset_index()
     lines = [
@@ -244,8 +318,8 @@ def write_report(output_dir: Path, validation: dict, tier_a: pd.DataFrame, tier_
         "",
         "## Scope",
         "",
-        "This phase assembles formal Tier A/B/C synthetic data products from Phase 7 and Phase 8 outputs.",
-        "Tier C is currently a 5-minute feature product; finer horizons remain gated by source/feed support.",
+        "This phase assembles formal Tier A/B/C/D synthetic data products from Phase 7 and Phase 8 outputs.",
+        "Tier D is a deterministic 15-minute resampled feature panel derived from the current Tier C 5-minute feature product.",
         "",
         "## Validation",
         "",
@@ -259,11 +333,17 @@ def write_report(output_dir: Path, validation: dict, tier_a: pd.DataFrame, tier_
         "",
         _markdown_table(profiles),
         "",
+        "## Tier D Resampled 15-Minute Summary",
+        "",
+        _markdown_table(resampled_summary),
+        "",
         "## Outputs",
         "",
         "- `tier_a/raw_synthetic_events.parquet`",
         "- `tier_b/compact_l2_state.parquet`",
         "- `tier_c/features_5m.parquet`",
+        "- `tier_d/resampled_features_15m.parquet`",
+        "- `tier_d/resampled_panel_summary.csv`",
         "- `data_product_manifest.json`",
         "",
     ]
@@ -275,9 +355,11 @@ def run_phase9(phase7_dir: Path, phase8_dir: Path, output_dir: Path) -> None:
     tier_a_dir = output_dir / "tier_a"
     tier_b_dir = output_dir / "tier_b"
     tier_c_dir = output_dir / "tier_c"
+    tier_d_dir = output_dir / "tier_d"
     tier_a_dir.mkdir(exist_ok=True)
     tier_b_dir.mkdir(exist_ok=True)
     tier_c_dir.mkdir(exist_ok=True)
+    tier_d_dir.mkdir(exist_ok=True)
 
     shocks, feed, dropped = load_inputs(phase7_dir, phase8_dir)
     print("[phase9] building Tier A", flush=True)
@@ -286,11 +368,16 @@ def run_phase9(phase7_dir: Path, phase8_dir: Path, output_dir: Path) -> None:
     tier_b = build_tier_b(feed)
     print("[phase9] building Tier C", flush=True)
     tier_c = build_tier_c(tier_b)
-    validation = validate_products(tier_a, tier_b, tier_c)
+    print("[phase9] building Tier D resampled panel", flush=True)
+    tier_d = build_tier_d_resampled(tier_c)
+    resampled_summary = summarize_resampled(tier_d)
+    validation = validate_products(tier_a, tier_b, tier_c, tier_d)
 
     pq.write_table(pa.Table.from_pandas(tier_a, preserve_index=False), tier_a_dir / "raw_synthetic_events.parquet", compression="zstd")
     pq.write_table(pa.Table.from_pandas(tier_b, preserve_index=False), tier_b_dir / "compact_l2_state.parquet", compression="zstd")
     pq.write_table(pa.Table.from_pandas(tier_c, preserve_index=False), tier_c_dir / "features_5m.parquet", compression="zstd")
+    pq.write_table(pa.Table.from_pandas(tier_d, preserve_index=False), tier_d_dir / "resampled_features_15m.parquet", compression="zstd")
+    resampled_summary.to_csv(tier_d_dir / "resampled_panel_summary.csv", index=False)
     manifest = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "phase7_dir": str(phase7_dir),
@@ -299,12 +386,20 @@ def run_phase9(phase7_dir: Path, phase8_dir: Path, output_dir: Path) -> None:
             "tier_a": "raw synthetic events and feed lifecycle events",
             "tier_b": "compact received L2 state stream",
             "tier_c": "5-minute feature and future-return label dataset",
+            "tier_d": "15-minute resampled feature panel derived from Tier C",
         },
         "validation": validation,
+        "resampled_product": {
+            "source_tier": "tier_c",
+            "source_interval_minutes": 5,
+            "target_interval_minutes": 15,
+            "path": str(tier_d_dir / "resampled_features_15m.parquet"),
+            "summary_path": str(tier_d_dir / "resampled_panel_summary.csv"),
+        },
         "evidence_scope": "synthetic_data_products_v1",
     }
     (output_dir / "data_product_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, validation, tier_a, tier_b)
+    write_report(output_dir, validation, tier_a, tier_b, resampled_summary)
 
 
 def parse_args() -> argparse.Namespace:

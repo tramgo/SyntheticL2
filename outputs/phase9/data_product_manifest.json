@@ -1,11 +1,12 @@
 {
-  "generated_utc": "2026-07-13T15:04:21.109802+00:00",
+  "generated_utc": "2026-07-13T19:37:18.401033+00:00",
   "phase7_dir": "outputs\\phase7",
   "phase8_dir": "outputs\\phase8",
   "products": {
     "tier_a": "raw synthetic events and feed lifecycle events",
     "tier_b": "compact received L2 state stream",
-    "tier_c": "5-minute feature and future-return label dataset"
+    "tier_c": "5-minute feature and future-return label dataset",
+    "tier_d": "15-minute resampled feature panel derived from Tier C"
   },
   "validation": {
     "tier_a_events": 2276143,
@@ -17,7 +18,19 @@
     "tier_c_profiles": 5,
     "tier_c_symbols": 32,
     "tier_c_future_label_nulls": 30240,
-    "tier_b_crossed_l1_rows": 0
+    "tier_b_crossed_l1_rows": 0,
+    "tier_d_resampled_rows": 756000,
+    "tier_d_resampled_profiles": 5,
+    "tier_d_resampled_symbols": 32,
+    "tier_d_target_interval_minutes": 15,
+    "tier_d_incomplete_panels": 21633
+  },
+  "resampled_product": {
+    "source_tier": "tier_c",
+    "source_interval_minutes": 5,
+    "target_interval_minutes": 15,
+    "path": "outputs\\phase9\\tier_d\\resampled_features_15m.parquet",
+    "summary_path": "outputs\\phase9\\tier_d\\resampled_panel_summary.csv"
   },
   "evidence_scope": "synthetic_data_products_v1"
 }

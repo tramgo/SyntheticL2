@@ -57,7 +57,7 @@ DELIVERABLES = [
     ("WP6", "duplicates", "implemented", "outputs/phase8/feed_profile_summary.csv", "Duplicate observations are summarized."),
     ("WP6", "reconnects", "implemented_proxy", "outputs/phase8/feed_profile_summary.csv", "Disconnect/reconnect proxy states exist."),
     ("WP6", "asynchronous ticker stream", "implemented_proxy", "outputs/phase8/retail_feed_observations.parquet", "Per-symbol retail feed observations are asynchronous proxies."),
-    ("WP7", "raw/delta/resampled Parquet", "partial_current", "outputs/phase9", "Raw synthetic and compact/state/features Parquet exist; replay/resampled product is partial."),
+    ("WP7", "raw/delta/resampled Parquet", "implemented_proxy", "outputs/phase9/tier_d/resampled_features_15m.parquet", "Raw synthetic, compact state, 5-minute features and a 15-minute resampled feature panel exist; exact tick-delta resampling remains not acceptance-grade."),
     ("WP7", "partitioning", "implemented", "outputs/phase10/partition_recommendations.csv", "Partition recommendations exist."),
     ("WP7", "compression benchmark", "implemented_proxy", "outputs/phase10/size_estimates.csv", "Compression/size estimates exist; full benchmark matrix is not exhaustive."),
     ("WP7", "replay tool", "implemented", "outputs/replay/replay_validation_report.md", "Standalone deterministic replay CLI exists for Phase 9 Tier A/B/C products."),

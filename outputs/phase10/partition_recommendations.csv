@@ -6,3 +6,4 @@ phase8_retail_feed_observations,layer=l2_state/trade_date=YYYY-MM-DD/symbol=ABC/
 phase9_tier_a_raw_synthetic_events,layer=raw_events/trade_date=YYYY-MM-DD/symbol=ABC/part-*.parquet,1,15.382386207580566,False,keep current single-file product until it exceeds practical rewrite threshold
 phase9_tier_b_compact_l2_state,layer=l2_state/trade_date=YYYY-MM-DD/symbol=ABC/part-*.parquet,1,158.25646686553955,False,keep current single-file product until it exceeds practical rewrite threshold
 phase9_tier_c_features_5m,layer=features_5m/trading_month=YYYY-MM/symbol=ABC/part-*.parquet,1,122.92648792266846,False,keep current single-file product until it exceeds practical rewrite threshold
+phase9_tier_d_resampled_features_15m,layer=features_15m/trading_month=YYYY-MM/symbol=ABC/part-*.parquet,1,55.225154876708984,False,keep current single-file product until it exceeds practical rewrite threshold

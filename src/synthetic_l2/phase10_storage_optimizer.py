@@ -17,6 +17,7 @@ PRODUCTS = [
     ("phase9_tier_a_raw_synthetic_events", "outputs/phase9/tier_a/raw_synthetic_events.parquet", "synthetic_event_product"),
     ("phase9_tier_b_compact_l2_state", "outputs/phase9/tier_b/compact_l2_state.parquet", "synthetic_l2_product"),
     ("phase9_tier_c_features_5m", "outputs/phase9/tier_c/features_5m.parquet", "synthetic_feature_product"),
+    ("phase9_tier_d_resampled_features_15m", "outputs/phase9/tier_d/resampled_features_15m.parquet", "synthetic_resampled_feature_product"),
 ]
 
 
@@ -156,7 +157,11 @@ def build_size_estimates(inventory: pd.DataFrame, data_quality_path: Path) -> pd
     compact_real_bpr = float(inv.loc["stage_a1_compact_real_ticks", "bytes_per_row"])
     tier_b_bpr = float(inv.loc["phase9_tier_b_compact_l2_state", "bytes_per_row"])
     tier_c_bpr = float(inv.loc["phase9_tier_c_features_5m", "bytes_per_row"])
+    tier_d_bpr = float(inv.loc["phase9_tier_d_resampled_features_15m", "bytes_per_row"])
     tier_a_bpr = float(inv.loc["phase9_tier_a_raw_synthetic_events", "bytes_per_row"])
+    tier_c_rows = float(inv.loc["phase9_tier_c_features_5m", "total_rows"])
+    tier_d_rows = float(inv.loc["phase9_tier_d_resampled_features_15m", "total_rows"])
+    tier_d_rows_per_source_row = tier_d_rows / tier_c_rows if tier_c_rows else 0.0
 
     rows: list[dict] = []
     for spec in PROFILE_SPECS:
@@ -167,7 +172,8 @@ def build_size_estimates(inventory: pd.DataFrame, data_quality_path: Path) -> pd
         raw_replay_bytes = estimated_feed_rows * tier_a_bpr if spec["include_raw_replay"] else 0.0
         compact_l2_bytes = estimated_feed_rows * max(compact_real_bpr, tier_b_bpr)
         feature_bytes = estimated_feed_rows * tier_c_bpr if spec["include_features"] else 0.0
-        total_bytes = raw_replay_bytes + compact_l2_bytes + feature_bytes
+        resampled_feature_bytes = estimated_feed_rows * tier_d_rows_per_source_row * tier_d_bpr if spec["include_features"] else 0.0
+        total_bytes = raw_replay_bytes + compact_l2_bytes + feature_bytes + resampled_feature_bytes
         rows.append(
             {
                 "profile": spec["profile"],
@@ -185,6 +191,7 @@ def build_size_estimates(inventory: pd.DataFrame, data_quality_path: Path) -> pd
                 "raw_replay_gb": raw_replay_bytes / (1024**3),
                 "compact_l2_gb": compact_l2_bytes / (1024**3),
                 "feature_gb": feature_bytes / (1024**3),
+                "resampled_feature_gb": resampled_feature_bytes / (1024**3),
                 "total_gb": total_bytes / (1024**3),
                 "conservative_total_gb": total_bytes * 0.70 / (1024**3),
                 "aggressive_total_gb": total_bytes * 2.50 / (1024**3),
@@ -201,6 +208,8 @@ def build_partition_recommendations(inventory: pd.DataFrame) -> pd.DataFrame:
             partition = "layer=raw_events/trade_date=YYYY-MM-DD/symbol=ABC/part-*.parquet"
         elif "tier_b" in dataset or "l2" in dataset or "feed" in dataset:
             partition = "layer=l2_state/trade_date=YYYY-MM-DD/symbol=ABC/part-*.parquet"
+        elif "tier_d" in dataset or "resampled" in dataset:
+            partition = "layer=features_15m/trading_month=YYYY-MM/symbol=ABC/part-*.parquet"
         elif "tier_c" in dataset or "feature" in dataset:
             partition = "layer=features_5m/trading_month=YYYY-MM/symbol=ABC/part-*.parquet"
         else:

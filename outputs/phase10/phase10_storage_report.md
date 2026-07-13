@@ -1,6 +1,6 @@
 # Phase 10 Storage and Size Optimization Report
 
-Generated UTC: 2026-07-13T15:17:52.914719+00:00
+Generated UTC: 2026-07-13T19:37:21.763074+00:00
 
 ## Scope
 
@@ -18,16 +18,17 @@ Parquet/Zstandard remains the durable format. DuckDB remains the analytic query 
 | phase9_tier_a_raw_synthetic_events | 1 | 2276143 | 15.3824 | 7.0864 | False |
 | phase9_tier_b_compact_l2_state | 1 | 2259039 | 158.2565 | 73.4578 | False |
 | phase9_tier_c_features_5m | 1 | 2259039 | 122.9265 | 57.0587 | False |
+| phase9_tier_d_resampled_features_15m | 1 | 756000 | 55.2252 | 76.5976 | False |
 
 ## Size Estimates
 
 | profile | tickers | trading_days | feed_profiles | event_multiplier | estimated_feed_rows | total_gb | conservative_total_gb | aggressive_total_gb |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Small | 5 | 10 | 1 | 1.0000 | 970082.8125 | 0.1243 | 0.0870 | 0.3108 |
-| Medium | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 25.0626 | 17.5438 | 62.6566 |
-| Full | 32 | 252 | 5 | 1.0000 | 782274780.0000 | 100.2505 | 70.1754 | 250.6264 |
-| Dense | 10 | 63 | 5 | 4.0000 | 244460868.7500 | 31.3283 | 21.9298 | 78.3207 |
-| Feature-only | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 23.7719 | 16.6404 | 59.4299 |
+| Small | 5 | 10 | 1 | 1.0000 | 970082.8125 | 0.1475 | 0.1032 | 0.3687 |
+| Medium | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 29.7315 | 20.8121 | 74.3288 |
+| Full | 32 | 252 | 5 | 1.0000 | 782274780.0000 | 118.9261 | 83.2482 | 297.3151 |
+| Dense | 10 | 63 | 5 | 4.0000 | 244460868.7500 | 37.1644 | 26.0151 | 92.9110 |
+| Feature-only | 32 | 63 | 5 | 1.0000 | 195568695.0000 | 28.4408 | 19.9086 | 71.1020 |
 
 ## Partition Recommendations
 
@@ -40,6 +41,7 @@ Parquet/Zstandard remains the durable format. DuckDB remains the analytic query 
 | phase9_tier_a_raw_synthetic_events | layer=raw_events/trade_date=YYYY-MM-DD/symbol=ABC/part-*.parquet | keep current single-file product until it exceeds practical rewrite threshold |
 | phase9_tier_b_compact_l2_state | layer=l2_state/trade_date=YYYY-MM-DD/symbol=ABC/part-*.parquet | keep current single-file product until it exceeds practical rewrite threshold |
 | phase9_tier_c_features_5m | layer=features_5m/trading_month=YYYY-MM/symbol=ABC/part-*.parquet | keep current single-file product until it exceeds practical rewrite threshold |
+| phase9_tier_d_resampled_features_15m | layer=features_15m/trading_month=YYYY-MM/symbol=ABC/part-*.parquet | keep current single-file product until it exceeds practical rewrite threshold |
 
 ## Type Optimization Candidates
 

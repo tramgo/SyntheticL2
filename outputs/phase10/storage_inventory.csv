@@ -6,3 +6,4 @@ phase8_retail_feed_observations,synthetic_retail_feed,outputs/phase8/retail_feed
 phase9_tier_a_raw_synthetic_events,synthetic_event_product,outputs/phase9/tier_a/raw_synthetic_events.parquet,1,2276143,16129601,7.086374186507614,15.382386207580566,128-512,False
 phase9_tier_b_compact_l2_state,synthetic_l2_product,outputs/phase9/tier_b/compact_l2_state.parquet,1,2259039,165943933,73.45775482406457,158.25646686553955,128-512,False
 phase9_tier_c_features_5m,synthetic_feature_product,outputs/phase9/tier_c/features_5m.parquet,1,2259039,128897765,57.058671851172114,122.92648792266846,128-512,False
+phase9_tier_d_resampled_features_15m,synthetic_resampled_feature_product,outputs/phase9/tier_d/resampled_features_15m.parquet,1,756000,57907772,76.59758201058202,55.225154876708984,128-512,False

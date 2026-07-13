@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:31:30.816272+00:00
+Generated UTC: 2026-07-13T19:37:27.341131+00:00
 
 ## Storage Decision
 
@@ -35,18 +35,22 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 9 Tier A events: 2276143
 - Phase 9 Tier B rows: 2259039
 - Phase 9 Tier C rows: 2259039
+- Phase 9 Tier D 15-minute resampled rows: 756000
+- Phase 9 Tier D symbols: 32
+- Phase 9 Tier D interval minutes: 15
+- Phase 9 Tier D incomplete panels: 21633
 - Phase 9 Tier B crossed L1 rows: 0
 - Phase 10 measured storage layers: 5
 - Phase 10 generation profiles: 5
 - Phase 10 feature intervals: 5
 - Phase 10 Medium estimated total GB: 2.8227162677794695
 - Phase 10 Full estimated total GB: 11.290865073911846
-- Phase 10 consolidated inventory datasets: 7
-- Phase 10 consolidated schema columns: 309
-- Phase 10 partition recommendation rows: 7
-- Phase 10 consolidated Medium estimated total GB: 25.06
-- Phase 10 consolidated Full estimated total GB: 100.25
-- Phase 10 type optimization candidates: 207
+- Phase 10 consolidated inventory datasets: 8
+- Phase 10 consolidated schema columns: 346
+- Phase 10 partition recommendation rows: 8
+- Phase 10 consolidated Medium estimated total GB: 29.73
+- Phase 10 consolidated Full estimated total GB: 118.93
+- Phase 10 type optimization candidates: 223
 - Phase 11 strategies: 11
 - Phase 11 baselines: 7
 - Phase 11 runnable proxy strategies: 5
@@ -108,7 +112,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 P0 gaps: 0
 - Validation dashboard summary rows: 10
 - Validation dashboard promoted strategies: 0
-- Validation dashboard P1 gaps: 7
+- Validation dashboard P1 gaps: 6
 - Replay validation tiers: 3
 - Replay deterministic tiers: 3
 - Phase 18 stack decision rows: 21

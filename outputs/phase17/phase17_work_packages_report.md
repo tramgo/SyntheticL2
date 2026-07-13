@@ -1,6 +1,6 @@
 # Phase 17 Implementation Work Packages Report
 
-Generated UTC: 2026-07-13T19:31:26.786594+00:00
+Generated UTC: 2026-07-13T19:37:22.563145+00:00
 
 ## Scope
 
@@ -19,8 +19,7 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | implementation_status | deliverables |
 | --- | --- |
 | implemented | 23 |
-| implemented_proxy | 25 |
-| partial_current | 1 |
+| implemented_proxy | 26 |
 | partial_proxy | 6 |
 
 ## Work Package Registry
@@ -45,7 +44,6 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | P1 | WP2 | replenishment | partial_proxy | outputs/phase11/strategy_feature_availability.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Replenishment is strategy-feature tracked but not fully event reconstructed. |
 | P1 | WP2 | trade classification | partial_proxy | outputs/phase1/received_tick_deltas_by_symbol | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Received-tick deltas exist; aggressor classification is not acceptance-grade. |
 | P1 | WP5 | additions/cancellations/trades | partial_proxy | outputs/phase9/tier_a/raw_synthetic_events.parquet | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Tier A events exist, but full event-type realism is not acceptance-grade. |
-| P1 | WP7 | raw/delta/resampled Parquet | partial_current | outputs/phase9 | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Raw synthetic and compact/state/features Parquet exist; replay/resampled product is partial. |
 | P1 | WP8 | event-driven engine | partial_proxy | outputs/phase12/execution_summary.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Phase 12 is a marketable-order proxy over feature events. |
 | P1 | WP8 | market and limit orders | partial_proxy | outputs/phase12/execution_summary.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | Marketable orders are modeled; passive limit orders are not. |
 | P1 | WP9 | S01-S11 modules | partial_proxy | outputs/phase11/strategy_validation_matrix.csv | present | Promote proxy to current evidence by adding validation checks and acceptance-grade outputs. | S01-S11 are registered; only proxy signals are implemented. |
@@ -62,3 +60,4 @@ It does not claim acceptance completion; it identifies which deliverables are im
 | P2 | WP4 | stochastic volatility | implemented_proxy | outputs/phase5/daily_price_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Volatility regime effects are represented at proxy level. |
 | P2 | WP5 | activity seasonality | implemented_proxy | outputs/phase8/feed_profile_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Feed/event profiles carry activity-seasonality effects. |
 | P2 | WP5 | resilience | implemented_proxy | outputs/phase6/l2_book_summary.csv | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Spread/depth structural checks exist. |
+| P2 | WP5 | spread/depth dynamics | implemented_proxy | outputs/phase6/l2_book_states_5m.parquet | present | Document assumptions and add sensitivity/holdout validation before using for promotion. | Spread/depth dynamics are generated at 5-minute granularity. |

@@ -33,7 +33,7 @@ WP6,gaps,implemented,4,outputs/phase8/retail_feed_dropped_events.csv,present,Tru
 WP6,duplicates,implemented,4,outputs/phase8/feed_profile_summary.csv,present,True,Duplicate observations are summarized.
 WP6,reconnects,implemented_proxy,3,outputs/phase8/feed_profile_summary.csv,present,False,Disconnect/reconnect proxy states exist.
 WP6,asynchronous ticker stream,implemented_proxy,3,outputs/phase8/retail_feed_observations.parquet,present,False,Per-symbol retail feed observations are asynchronous proxies.
-WP7,raw/delta/resampled Parquet,partial_current,2,outputs/phase9,present,False,Raw synthetic and compact/state/features Parquet exist; replay/resampled product is partial.
+WP7,raw/delta/resampled Parquet,implemented_proxy,3,outputs/phase9/tier_d/resampled_features_15m.parquet,present,False,"Raw synthetic, compact state, 5-minute features and a 15-minute resampled feature panel exist; exact tick-delta resampling remains not acceptance-grade."
 WP7,partitioning,implemented,4,outputs/phase10/partition_recommendations.csv,present,True,Partition recommendations exist.
 WP7,compression benchmark,implemented_proxy,3,outputs/phase10/size_estimates.csv,present,False,Compression/size estimates exist; full benchmark matrix is not exhaustive.
 WP7,replay tool,implemented,4,outputs/replay/replay_validation_report.md,present,True,Standalone deterministic replay CLI exists for Phase 9 Tier A/B/C products.
