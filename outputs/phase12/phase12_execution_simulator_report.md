@@ -1,6 +1,6 @@
 # Phase 12 Execution Simulator Report
 
-Generated UTC: 2026-07-13T20:12:52.641268+00:00
+Generated UTC: 2026-07-13T20:19:03.602431+00:00
 
 ## Scope
 
@@ -51,6 +51,7 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 ## Caveats
 
 - Current features are 5-minute synthetic feature events, not true tick-level order events.
+- Sampled trades carry a deterministic seed column assigned from the Phase 13 seed plan by quarter profile and scenario day; this is reporting lineage, not independent multi-seed acceptance evidence.
 - Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.
 - Zerodha equity-intraday statutory/brokerage charges are modeled as a normalized bps estimate for returns and as representative rupee order-formula scenarios.
 - The rupee scenarios apply the brokerage cap and STT rounding, but DP charges, broker contract-note rounding and actual broker fills remain outside the normalized return proxy.

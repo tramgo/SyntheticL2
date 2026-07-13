@@ -1,6 +1,9 @@
 {
-  "generated_utc": "2026-07-13T20:12:52.592067+00:00",
+  "generated_utc": "2026-07-13T20:19:03.542057+00:00",
   "features_path": "outputs\\phase9\\tier_c\\features_5m.parquet",
+  "seed_plan_path": "outputs\\phase13\\seed_plan.csv",
+  "seeded_trade_sample": true,
+  "seed_values_in_trade_sample": 30,
   "rows_evaluated": 2259039,
   "strategies_simulated": 9,
   "execution_profiles": 3,

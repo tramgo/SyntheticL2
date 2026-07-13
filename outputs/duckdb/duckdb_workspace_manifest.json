@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T20:14:41.373178+00:00",
+  "generated_utc": "2026-07-13T20:19:41.323001+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {

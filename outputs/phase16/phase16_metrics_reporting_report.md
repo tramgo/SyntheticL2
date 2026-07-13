@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T20:13:22.101862+00:00
+Generated UTC: 2026-07-13T20:19:34.301181+00:00
 
 ## Scope
 
@@ -162,8 +162,7 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | current_status | breakdowns |
 | --- | --- |
 | available | 6 |
-| missing | 1 |
-| proxy_available | 5 |
+| proxy_available | 6 |
 
 | breakdown_name | source_column | current_status | available_in_trade_sample | distinct_values_in_sample |
 | --- | --- | --- | --- | --- |
@@ -177,5 +176,5 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | long_short | side | available | True | 2 |
 | latency_profile | execution_profile | available | True | 3 |
 | cost_profile | execution_profile | proxy_available | True | 3 |
-| random_seed | seed | missing | False | 0 |
+| random_seed | seed | proxy_available | True | 30 |
 | event_vs_non_event_day | is_market_shock_day | available | True | 2 |

@@ -127,6 +127,49 @@ def _prepare_base(features: pd.DataFrame) -> pd.DataFrame:
     return ordered
 
 
+def _seed_map(seed_plan_path: Path | None) -> dict[str, dict[int, int]]:
+    if seed_plan_path is None or not seed_plan_path.exists():
+        return {}
+    seed_plan = pd.read_csv(seed_plan_path)
+    required = {"quarter_profile", "seed_ordinal", "simulation_seed"}
+    if not required.issubset(seed_plan.columns):
+        return {}
+    mapping: dict[str, dict[int, int]] = {}
+    for profile, group in seed_plan.groupby("quarter_profile", sort=True):
+        mapping[str(profile)] = {
+            int(row["seed_ordinal"]): int(row["simulation_seed"])
+            for row in group.to_dict("records")
+            if pd.notna(row["seed_ordinal"]) and pd.notna(row["simulation_seed"])
+        }
+    return mapping
+
+
+def _attach_seed_columns(trades: pd.DataFrame, seed_mapping: dict[str, dict[int, int]]) -> pd.DataFrame:
+    if trades.empty:
+        trades["seed_ordinal"] = pd.Series(dtype="int64")
+        trades["seed"] = pd.Series(dtype="int64")
+        trades["simulation_seed"] = pd.Series(dtype="int64")
+        trades["seed_assignment_scope"] = pd.Series(dtype="object")
+        return trades
+    max_seed_count = max((len(values) for values in seed_mapping.values()), default=0)
+    if max_seed_count <= 0:
+        trades["seed_ordinal"] = 0
+        trades["seed"] = 0
+        trades["simulation_seed"] = 0
+        trades["seed_assignment_scope"] = "seed_plan_missing_or_unavailable"
+        return trades
+    trades["seed_ordinal"] = ((trades["scenario_day"].astype(int) - 1) % max_seed_count) + 1
+
+    def lookup_seed(row: pd.Series) -> int:
+        profile_map = seed_mapping.get(str(row["quarter_profile"]), {})
+        return int(profile_map.get(int(row["seed_ordinal"]), 0))
+
+    trades["seed"] = trades.apply(lookup_seed, axis=1).astype("int64")
+    trades["simulation_seed"] = trades["seed"]
+    trades["seed_assignment_scope"] = "phase13_seed_plan_cycle_by_quarter_profile_and_scenario_day"
+    return trades
+
+
 def _latency_shift(frame: pd.DataFrame, signal: pd.Series, latency_events: int) -> pd.Series:
     if latency_events <= 0:
         return signal
@@ -139,6 +182,7 @@ def _simulate_strategy_profile(
     raw_signal: pd.Series,
     strategy_id: str,
     profile: dict,
+    seed_mapping: dict[str, dict[int, int]],
 ) -> tuple[dict, pd.DataFrame]:
     total_latency = int(profile["decision_latency_events"] + profile["broker_latency_events"])
     executable_signal = _latency_shift(base, raw_signal, total_latency)
@@ -168,6 +212,7 @@ def _simulate_strategy_profile(
     trades["strategy_id"] = strategy_id
     trades["execution_profile"] = profile["execution_profile"]
     trades["side"] = executable_signal.loc[mask].astype("int8").to_numpy()
+    trades = _attach_seed_columns(trades, seed_mapping)
 
     gross_return = trades["side"] * (trades["next_mid_price"] / trades["mid_price"] - 1.0)
     tick_size = np.where(trades["mid_price"] < 250, 0.01, 0.05)
@@ -224,7 +269,8 @@ def _deterministic_even_sample(frame: pd.DataFrame, max_rows: int) -> pd.DataFra
     return frame.iloc[positions].copy()
 
 
-def run_simulation(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def run_simulation(features: pd.DataFrame, seed_mapping: dict[str, dict[int, int]] | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    seed_mapping = seed_mapping or {}
     support = _strategy_support()
     runnable = set(support[support["support_level"].isin(["runnable_proxy", "partial_missing_required_features"])]["strategy_id"])
     base = _prepare_base(features)
@@ -239,7 +285,7 @@ def run_simulation(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         if strategy_id not in runnable:
             continue
         for profile in EXECUTION_PROFILES:
-            summary, trades = _simulate_strategy_profile(base, signal, strategy_id, profile)
+            summary, trades = _simulate_strategy_profile(base, signal, strategy_id, profile, seed_mapping)
             summary_rows.append(summary)
             if len(trades):
                 sample = _deterministic_even_sample(trades, per_group_sample_rows)
@@ -292,6 +338,7 @@ def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
         "## Caveats",
         "",
         "- Current features are 5-minute synthetic feature events, not true tick-level order events.",
+        "- Sampled trades carry a deterministic seed column assigned from the Phase 13 seed plan by quarter profile and scenario day; this is reporting lineage, not independent multi-seed acceptance evidence.",
         "- Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.",
         "- Zerodha equity-intraday statutory/brokerage charges are modeled as a normalized bps estimate for returns and as representative rupee order-formula scenarios.",
         "- The rupee scenarios apply the brokerage cap and STT rounding, but DP charges, broker contract-note rounding and actual broker fills remain outside the normalized return proxy.",
@@ -302,10 +349,11 @@ def write_report(output_dir: Path, summary: pd.DataFrame) -> None:
     (output_dir / "phase12_execution_simulator_report.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def run_phase12(features_path: Path, output_dir: Path) -> None:
+def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     features = load_features(features_path)
-    summary, trade_sample = run_simulation(features)
+    seed_mapping = _seed_map(seed_plan_path)
+    summary, trade_sample = run_simulation(features, seed_mapping=seed_mapping)
     profiles = execution_profiles()
     costs = cost_schedule()
     component_catalog = charge_component_catalog()
@@ -324,6 +372,9 @@ def run_phase12(features_path: Path, output_dir: Path) -> None:
     manifest = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "features_path": str(features_path),
+        "seed_plan_path": None if seed_plan_path is None else str(seed_plan_path),
+        "seeded_trade_sample": bool(seed_mapping),
+        "seed_values_in_trade_sample": int(trade_sample["seed"].nunique()) if len(trade_sample) and "seed" in trade_sample else 0,
         "rows_evaluated": int(len(features)),
         "strategies_simulated": int(summary["strategy_id"].nunique()) if len(summary) else 0,
         "execution_profiles": int(len(profiles)),
@@ -354,12 +405,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run Phase 12 execution simulator proxy over Phase 9 Tier C features.")
     parser.add_argument("--features-path", type=Path, default=Path("outputs/phase9/tier_c/features_5m.parquet"))
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/phase12"))
+    parser.add_argument("--seed-plan", type=Path, default=Path("outputs/phase13/seed_plan.csv"))
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    run_phase12(args.features_path, args.output_dir)
+    run_phase12(args.features_path, args.output_dir, args.seed_plan)
 
 
 if __name__ == "__main__":

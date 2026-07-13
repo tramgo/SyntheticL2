@@ -55,7 +55,7 @@ BREAKDOWNS = [
     ("long_short", "side", "available"),
     ("latency_profile", "execution_profile", "available"),
     ("cost_profile", "execution_profile", "proxy_available"),
-    ("random_seed", "seed", "missing"),
+    ("random_seed", "seed", "proxy_available"),
     ("event_vs_non_event_day", "is_market_shock_day", "available"),
 ]
 

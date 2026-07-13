@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T20:14:41.373178+00:00
+Generated UTC: 2026-07-13T20:19:41.323001+00:00
 
 ## Storage Decision
 

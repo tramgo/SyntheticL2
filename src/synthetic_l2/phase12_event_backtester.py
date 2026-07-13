@@ -124,6 +124,9 @@ def build_order_trace(trades: pd.DataFrame, max_per_strategy_profile: int = 240)
     sample["position_delta_units"] = sample["side"].astype(float) * sample["filled_qty"]
     sample["direct_queue_truth"] = False
     sample["event_engine_scope"] = "sampled_phase12_trade_event_lifecycle_proxy"
+    for column in ["seed_ordinal", "seed", "simulation_seed", "seed_assignment_scope"]:
+        if column not in sample:
+            sample[column] = 0 if column != "seed_assignment_scope" else "seed_not_available"
     return sample[
         [
             "order_id",
@@ -132,6 +135,10 @@ def build_order_trace(trades: pd.DataFrame, max_per_strategy_profile: int = 240)
             "feed_profile",
             "trade_date",
             "scenario_day",
+            "seed_ordinal",
+            "seed",
+            "simulation_seed",
+            "seed_assignment_scope",
             "symbol",
             "bar_index",
             "signal_event_sequence",

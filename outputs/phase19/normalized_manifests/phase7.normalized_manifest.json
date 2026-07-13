@@ -3,7 +3,7 @@
   "artifact_id": "phase7",
   "source_manifest_path": "outputs/phase7/shock_library_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "36b3df2a99a1eb18c9d8ece134dda93705796efa",
+  "generator_version": "9295eb74ad0ab17b76863b24ddb4590311a37fee",
   "configuration_hash": "aba260e497bd23fcc2351e77983ef1b5a97fd8275b3d977d437a5704fca9f2d5",
   "random_seed": "not_applicable_or_seed_plan_not_recorded",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -13,6 +13,6 @@
   "cost_model_version": "zerodha_equity_intraday_nse_round_trip_bps_v1_or_not_applicable",
   "latency_model_version": "phase8_retail_feed_profiles_and_phase12_execution_profiles_or_not_applicable",
   "creation_timestamp": "2026-07-13T14:47:46.167727+00:00",
-  "normalization_timestamp": "2026-07-13T20:14:37.663530+00:00",
+  "normalization_timestamp": "2026-07-13T20:19:36.905462+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
