@@ -1,6 +1,7 @@
 artifact_id,manifest_path,required_fields,present_exact,present_alias_or_inferred,missing_fields,manifest_missing_or_unreadable_fields,exact_regeneration_ready
 dashboard,outputs/dashboard/validation_dashboard_manifest.json,10,10,0,0,0,True
 duckdb,outputs/duckdb/duckdb_workspace_manifest.json,10,10,0,0,0,True
+horizon_readiness,outputs/horizon_readiness/horizon_readiness_manifest.json,10,10,0,0,0,True
 phase1,outputs/phase1/phase1_manifest.json,10,10,0,0,0,True
 phase10,outputs/phase10/storage_manifest.json,10,10,0,0,0,True
 phase11,outputs/phase11/strategy_validation_manifest.json,10,10,0,0,0,True

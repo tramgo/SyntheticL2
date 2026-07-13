@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-13T20:47:30.326010+00:00
+Generated UTC: 2026-07-13T20:54:43.372182+00:00
 
 ## Scope
 
@@ -11,7 +11,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 
 | coverage_status | field_checks |
 | --- | --- |
-| present_exact | 250 |
+| present_exact | 260 |
 
 ## Artifact Summary
 
@@ -19,6 +19,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | dashboard | outputs/dashboard/validation_dashboard_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | duckdb | outputs/duckdb/duckdb_workspace_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase1 | outputs/phase1/phase1_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase10 | outputs/phase10/storage_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase11 | outputs/phase11/strategy_validation_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
@@ -51,7 +52,7 @@ _No rows._
 
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
-| complete_exact | 250 | 25 |
+| complete_exact | 260 | 26 |
 
 ## Normalized Manifest Overlay
 
@@ -60,11 +61,11 @@ It is a reproducibility bridge, not proof that every original phase generator al
 
 | overlay_metric | value |
 | --- | --- |
-| normalized_overlay_artifacts | 25 |
-| exact_field_overlay_ready_artifacts | 25 |
+| normalized_overlay_artifacts | 26 |
+| exact_field_overlay_ready_artifacts | 26 |
 | normalizer_default_fields | 0 |
-| source_manifest_exact_or_alias_fields | 250 |
-| normalized_field_rows | 250 |
+| source_manifest_exact_or_alias_fields | 260 |
+| normalized_field_rows | 260 |
 
 | artifact_id | source_manifest_path | normalized_manifest_path | source_manifest_exists | required_fields | normalized_fields_present | normalizer_default_fields | source_manifest_exact_or_alias_fields | exact_field_overlay_ready |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -91,6 +92,7 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | phase16 | outputs/phase16/metrics_reporting_manifest.json | outputs\phase19\normalized_manifests\phase16.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase17 | outputs/phase17/work_packages_manifest.json | outputs\phase19\normalized_manifests\phase17.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase18 | outputs/phase18/technology_stack_manifest.json | outputs\phase19\normalized_manifests\phase18.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | outputs\phase19\normalized_manifests\horizon_readiness.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | dashboard | outputs/dashboard/validation_dashboard_manifest.json | outputs\phase19\normalized_manifests\dashboard.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | duckdb | outputs/duckdb/duckdb_workspace_manifest.json | outputs\phase19\normalized_manifests\duckdb.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 
@@ -118,6 +120,16 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | duckdb | outputs/duckdb/duckdb_workspace_manifest.json | regime_calendar_version | present_exact | regime_calendar_version | complete_exact | regime_calendar_version | No remediation required. |
 | duckdb | outputs/duckdb/duckdb_workspace_manifest.json | scenario_ids | present_exact | scenario_ids | complete_exact | scenario_ids | No remediation required. |
 | duckdb | outputs/duckdb/duckdb_workspace_manifest.json | ticker_metadata_version | present_exact | ticker_metadata_version | complete_exact | ticker_metadata_version | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | calibration_dataset_id | present_exact | calibration_dataset_id | complete_exact | calibration_dataset_id | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | configuration_hash | present_exact | configuration_hash | complete_exact | configuration_hash | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | cost_model_version | present_exact | cost_model_version | complete_exact | cost_model_version | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | creation_timestamp | present_exact | creation_timestamp;generated_utc | complete_exact | creation_timestamp | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | generator_version | present_exact | generator_version | complete_exact | generator_version | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | latency_model_version | present_exact | latency_model_version | complete_exact | latency_model_version | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | random_seed | present_exact | random_seed | complete_exact | random_seed | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | regime_calendar_version | present_exact | regime_calendar_version | complete_exact | regime_calendar_version | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | scenario_ids | present_exact | scenario_ids | complete_exact | scenario_ids | No remediation required. |
+| horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | ticker_metadata_version | present_exact | ticker_metadata_version | complete_exact | ticker_metadata_version | No remediation required. |
 | phase1 | outputs/phase1/phase1_manifest.json | calibration_dataset_id | present_exact | calibration_dataset_id | complete_exact | calibration_dataset_id | No remediation required. |
 | phase1 | outputs/phase1/phase1_manifest.json | configuration_hash | present_exact | configuration_hash | complete_exact | configuration_hash | No remediation required. |
 | phase1 | outputs/phase1/phase1_manifest.json | cost_model_version | present_exact | cost_model_version | complete_exact | cost_model_version | No remediation required. |
@@ -128,13 +140,3 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | phase1 | outputs/phase1/phase1_manifest.json | regime_calendar_version | present_exact | regime_calendar_version | complete_exact | regime_calendar_version | No remediation required. |
 | phase1 | outputs/phase1/phase1_manifest.json | scenario_ids | present_exact | scenario_ids | complete_exact | scenario_ids | No remediation required. |
 | phase1 | outputs/phase1/phase1_manifest.json | ticker_metadata_version | present_exact | ticker_metadata_version | complete_exact | ticker_metadata_version | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | calibration_dataset_id | present_exact | calibration_dataset_id | complete_exact | calibration_dataset_id | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | configuration_hash | present_exact | configuration_hash | complete_exact | configuration_hash | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | cost_model_version | present_exact | cost_model_version | complete_exact | cost_model_version | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | creation_timestamp | present_exact | creation_timestamp;generated_utc | complete_exact | creation_timestamp | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | generator_version | present_exact | generator_version | complete_exact | generator_version | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | latency_model_version | present_exact | latency_model_version | complete_exact | latency_model_version | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | random_seed | present_exact | random_seed | complete_exact | random_seed | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | regime_calendar_version | present_exact | regime_calendar_version | complete_exact | regime_calendar_version | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | scenario_ids | present_exact | scenario_ids | complete_exact | scenario_ids | No remediation required. |
-| phase10 | outputs/phase10/storage_manifest.json | ticker_metadata_version | present_exact | ticker_metadata_version | complete_exact | ticker_metadata_version | No remediation required. |

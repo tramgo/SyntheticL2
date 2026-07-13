@@ -3,8 +3,8 @@
   "artifact_id": "duckdb",
   "source_manifest_path": "outputs/duckdb/duckdb_workspace_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "8cb36fd0c32ba3c4ca40fa6e579e1b689549ae0e",
-  "configuration_hash": "287cfd6572b50d1ebfd840b40bcc4f2d33e9bde41c4cab21754d701d90db8aaf",
+  "generator_version": "7397ffcd467be41a4a33b3cf220df13b419ce991",
+  "configuration_hash": "900d05c6989c36168c9b5d43f4d2756070600dc64ae3ea2c92a83acb6277aa80",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -12,7 +12,7 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-13T20:35:52.224521+00:00",
-  "normalization_timestamp": "2026-07-13T20:47:24.216264+00:00",
+  "creation_timestamp": "2026-07-13T20:54:40.136673+00:00",
+  "normalization_timestamp": "2026-07-13T20:54:42.562674+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T20:47:29.281564+00:00
+Generated UTC: 2026-07-13T20:54:40.136673+00:00
 
 ## Storage Decision
 
@@ -138,19 +138,23 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 18 required-now dependencies: 5
 - Phase 18 missing required-now dependencies: 0
 - Phase 18 deferred/optional stack items: 11
+- Horizon readiness decision rows: 14
+- Horizon readiness one-second symbol rows: 32
+- Horizon readiness event-driven 1s symbols: 12
+- Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 25
-- Phase 19 field checks: 250
-- Phase 19 exact-regeneration-ready artifacts: 25
+- Phase 19 audited artifacts: 26
+- Phase 19 field checks: 260
+- Phase 19 exact-regeneration-ready artifacts: 26
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 250
+- Phase 19 remediation rows: 260
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 25
-- Phase 19 normalized overlay-ready artifacts: 25
+- Phase 19 normalized overlay artifacts: 26
+- Phase 19 normalized overlay-ready artifacts: 26
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 250
+- Phase 19 source-or-alias fields: 260
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0
