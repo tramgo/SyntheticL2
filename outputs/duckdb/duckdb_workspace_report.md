@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:43:08.824732+00:00
+Generated UTC: 2026-07-13T19:47:52.362578+00:00
 
 ## Storage Decision
 
@@ -14,6 +14,11 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Compact tick rows: 620853
 - Normalized tick rows: 620853
 - Received delta rows: 620853
+- Phase 1 event reconstruction symbols: 32
+- Phase 1 event reconstruction quality rows: 4
+- Phase 1 classified trade-side rows: 144489
+- Phase 1 replenishment proxy rows: 344771
+- Phase 1 queue-event proxy rows: 360142
 - Phase 2 symbols: 32
 - Phase 3 intraday bins: 77
 - Phase 4 calendar rows: 189
@@ -115,7 +120,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 17 P0 gaps: 0
 - Validation dashboard summary rows: 10
 - Validation dashboard promoted strategies: 0
-- Validation dashboard P1 gaps: 6
+- Validation dashboard P1 gaps: 3
 - Replay validation tiers: 3
 - Replay deterministic tiers: 3
 - Phase 18 stack decision rows: 21
@@ -124,16 +129,16 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 18 missing required-now dependencies: 0
 - Phase 18 deferred/optional stack items: 11
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 22
-- Phase 19 field checks: 220
+- Phase 19 audited artifacts: 23
+- Phase 19 field checks: 230
 - Phase 19 exact-regeneration-ready artifacts: 0
-- Phase 19 artifacts with missing fields: 21
+- Phase 19 artifacts with missing fields: 22
 - Phase 19 manifest-missing/unreadable artifacts: 1
 - Phase 19 gap rows: 20
-- Phase 19 remediation rows: 220
+- Phase 19 remediation rows: 230
 - Phase 19 remediation summary rows: 4
-- Phase 19 add-field-in-generator rows: 176
-- Phase 19 alias-normalization rows: 33
+- Phase 19 add-field-in-generator rows: 184
+- Phase 19 alias-normalization rows: 35
 - Phase 19 recover/rerun-manifest rows: 10
 - Dense full-session 1s below 90% symbols: 32
 - Dense full-session 5s supported symbols: 30

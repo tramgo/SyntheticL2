@@ -1,0 +1,65 @@
+# Phase 1 Event Reconstruction Inference Report
+
+Generated UTC: 2026-07-13T19:47:46.466759+00:00
+
+## Scope
+
+This companion artifact converts received-tick deltas into explicit event-inference labels.
+It is intentionally not exchange-order truth: Zerodha top-five market-by-price snapshots cannot identify individual orders, hidden liquidity, exact queue position or true passive fills.
+
+## Totals
+
+- symbols: 32
+- rows: 620853
+- volume_increment_rows: 290881
+- classified_trade_side_rows: 144489
+- replenishment_proxy_rows: 344771
+- queue_event_proxy_rows: 357642
+- medium_confidence_rows: 166108
+- low_confidence_rows: 454745
+
+## Inference Quality
+
+| inference_area | eligible_rows | classified_rows | ambiguous_rows | direct_exchange_observation | confidence_basis | acceptance_grade | limitation |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| trade_classification | 290881 | 144489 | 146392 | False | volume increment plus last-price direction | False | Aggressor side is weak because the feed does not expose trade prints with aggressor flags. |
+| replenishment | 620853 | 344771 | 334167 | False | positive visible L1-L5 quantity deltas between received ticks | False | Cannot separate new passive orders from revealed/shifted liquidity or book-level aggregation effects. |
+| add_cancel_consume | 620853 | 360142 | 2500 | False | visible quantity deltas combined with volume increments | False | Cannot identify individual orders, queue priority, hidden liquidity or exact cancel/trade causality. |
+| overall_confidence | 620853 | 166108 | 454745 | False | book validity, stale-gap labels, trade-side and one-sided depth movement | False | All event labels are received-market-by-price inference labels, not exchange event truth. |
+
+## Symbol Summary
+
+| symbol | rows | volume_increment_rows | buy_pressure_rows | sell_pressure_rows | unknown_trade_side_rows | withdrawal_proxy_rows | replenishment_proxy_rows | consume_visible_depth_proxy_rows | add_or_replenish_proxy_rows | cancel_or_withdraw_proxy_rows | medium_confidence_rows | low_confidence_rows | stale_or_invalid_low_confidence_rows |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ADANIPORTS | 13886 | 5759 | 1375 | 1444 | 2940 | 6994 | 6809 | 5725 | 1313 | 103 | 3251 | 10635 | 2 |
+| AXISBANK | 18309 | 8969 | 2057 | 1962 | 4950 | 9585 | 9441 | 8877 | 797 | 41 | 4478 | 13831 | 2 |
+| BAJAJ-AUTO | 25141 | 10035 | 2441 | 2479 | 5115 | 16263 | 16323 | 9947 | 6711 | 497 | 6639 | 18502 | 2 |
+| BANKBEES | 18916 | 2883 | 555 | 595 | 1733 | 12558 | 12300 | 2852 | 9835 | 1018 | 3623 | 15293 | 2 |
+| BHARTIARTL | 19560 | 9053 | 2111 | 2141 | 4801 | 10405 | 10332 | 8938 | 1638 | 99 | 4930 | 14630 | 2 |
+| BPCL | 10684 | 4379 | 772 | 715 | 2892 | 4630 | 4569 | 4351 | 303 | 26 | 1665 | 9019 | 2 |
+| BRITANNIA | 8526 | 3458 | 619 | 596 | 2243 | 4408 | 4344 | 3389 | 1088 | 109 | 1683 | 6843 | 2 |
+| CIPLA | 11664 | 4855 | 1022 | 1055 | 2778 | 5736 | 5688 | 4821 | 1013 | 68 | 2461 | 9203 | 2 |
+| DRREDDY | 12257 | 5148 | 964 | 1125 | 3059 | 5407 | 5383 | 5126 | 306 | 15 | 2218 | 10039 | 2 |
+| GOLDBEES | 12982 | 5606 | 925 | 843 | 3838 | 5868 | 5692 | 5562 | 320 | 36 | 2079 | 10903 | 3 |
+| HCLTECH | 29266 | 16703 | 4636 | 5029 | 7038 | 17231 | 17035 | 16625 | 653 | 21 | 9984 | 19282 | 2 |
+| HDFCBANK | 35959 | 21059 | 5586 | 5658 | 9815 | 21259 | 20895 | 20879 | 420 | 15 | 11769 | 24190 | 2 |
+| HINDUNILVR | 12173 | 5258 | 1026 | 1143 | 3089 | 5986 | 5848 | 5222 | 822 | 72 | 2577 | 9596 | 2 |
+| ICICIBANK | 26474 | 13980 | 3383 | 3306 | 7291 | 14921 | 14808 | 13823 | 1240 | 54 | 7317 | 19157 | 2 |
+| INFY | 34511 | 20383 | 5840 | 5903 | 8640 | 20738 | 20685 | 20262 | 503 | 8 | 11959 | 22552 | 2 |
+| ITBEES | 11481 | 4811 | 887 | 876 | 3048 | 5586 | 5565 | 4799 | 800 | 13 | 1840 | 9641 | 3 |
+| ITC | 12379 | 5367 | 1376 | 1312 | 2679 | 5342 | 5312 | 5340 | 1 | 1 | 2731 | 9648 | 2 |
+| JUNIORBEES | 17442 | 4088 | 847 | 877 | 2364 | 12092 | 11884 | 4030 | 8092 | 618 | 3234 | 14208 | 3 |
+| KOTAKBANK | 14091 | 6286 | 1491 | 1499 | 3296 | 6701 | 6682 | 6243 | 513 | 36 | 3220 | 10871 | 2 |
+| LT | 19466 | 9500 | 2181 | 2381 | 4938 | 10566 | 10197 | 9401 | 1230 | 81 | 5244 | 14222 | 2 |
+| M&M | 25699 | 11596 | 3085 | 3038 | 5473 | 15609 | 15584 | 11430 | 4545 | 281 | 7491 | 18208 | 2 |
+| MARUTI | 27645 | 11206 | 2950 | 2790 | 5466 | 17721 | 17574 | 11066 | 7021 | 572 | 7735 | 19910 | 2 |
+| NESTLEIND | 12918 | 4932 | 954 | 961 | 3017 | 7105 | 7038 | 4884 | 2390 | 247 | 2799 | 10119 | 2 |
+| NIFTYBEES | 22414 | 9376 | 1698 | 1695 | 5983 | 13988 | 13077 | 9292 | 4813 | 381 | 5134 | 17280 | 3 |
+| ONGC | 17305 | 7991 | 1813 | 1870 | 4308 | 8821 | 8435 | 7853 | 1106 | 80 | 4546 | 12759 | 2 |
+| RELIANCE | 26056 | 14297 | 3524 | 3544 | 7229 | 14625 | 14477 | 14175 | 488 | 23 | 7421 | 18635 | 2 |
+| SBIN | 24728 | 13317 | 3320 | 3260 | 6737 | 13857 | 13776 | 13190 | 744 | 30 | 6977 | 17751 | 2 |
+| SUNPHARMA | 14610 | 6297 | 1507 | 1572 | 3218 | 7574 | 7529 | 6203 | 1485 | 142 | 3683 | 10927 | 2 |
+| TCS | 36467 | 21495 | 7031 | 6646 | 7818 | 21760 | 21611 | 21354 | 438 | 12 | 13992 | 22475 | 2 |
+| TECHM | 19124 | 8704 | 2383 | 2346 | 3975 | 10849 | 10715 | 8635 | 2363 | 159 | 5448 | 13676 | 2 |
+| ULTRACEMCO | 8386 | 3605 | 671 | 727 | 2207 | 4106 | 4058 | 3568 | 560 | 24 | 1559 | 6827 | 2 |
+| WIPRO | 20334 | 10485 | 3021 | 3050 | 4414 | 11247 | 11105 | 10410 | 902 | 35 | 6421 | 13913 | 2 |

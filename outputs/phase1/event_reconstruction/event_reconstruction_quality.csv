@@ -1,0 +1,5 @@
+inference_area,eligible_rows,classified_rows,ambiguous_rows,direct_exchange_observation,confidence_basis,acceptance_grade,limitation
+trade_classification,290881,144489,146392,False,volume increment plus last-price direction,False,Aggressor side is weak because the feed does not expose trade prints with aggressor flags.
+replenishment,620853,344771,334167,False,positive visible L1-L5 quantity deltas between received ticks,False,Cannot separate new passive orders from revealed/shifted liquidity or book-level aggregation effects.
+add_cancel_consume,620853,360142,2500,False,visible quantity deltas combined with volume increments,False,"Cannot identify individual orders, queue priority, hidden liquidity or exact cancel/trade causality."
+overall_confidence,620853,166108,454745,False,"book validity, stale-gap labels, trade-side and one-sided depth movement",False,"All event labels are received-market-by-price inference labels, not exchange event truth."

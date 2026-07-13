@@ -40,6 +40,7 @@ FIELD_VALUE_GUIDANCE = {
 MANIFEST_CANDIDATES = [
     ("stage_a1", "outputs/stage_a1/manifest_check.json"),
     ("phase1", "outputs/phase1/phase1_manifest.json"),
+    ("phase1_event_reconstruction", "outputs/phase1/event_reconstruction/event_reconstruction_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

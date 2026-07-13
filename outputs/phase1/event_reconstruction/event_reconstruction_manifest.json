@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-07-13T19:47:46.369070+00:00",
+  "delta_dir": "outputs\\phase1\\received_tick_deltas_by_symbol",
+  "rows_evaluated": 620853,
+  "symbols": 32,
+  "classified_trade_side_rows": 144489,
+  "replenishment_proxy_rows": 344771,
+  "queue_event_proxy_rows": 360142,
+  "direct_exchange_observation": false,
+  "acceptance_grade": false,
+  "scope": "received_tick_market_by_price_event_inference_not_exchange_truth"
+}

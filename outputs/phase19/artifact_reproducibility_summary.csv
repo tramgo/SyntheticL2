@@ -12,6 +12,7 @@ phase15,outputs/phase15/acceptance_gates_manifest.json,10,0,2,8,0,False
 phase16,outputs/phase16/metrics_reporting_manifest.json,10,0,2,8,0,False
 phase17,outputs/phase17/work_packages_manifest.json,10,0,1,9,0,False
 phase18,outputs/phase18/technology_stack_manifest.json,10,0,1,9,0,False
+phase1_event_reconstruction,outputs/phase1/event_reconstruction/event_reconstruction_manifest.json,10,0,2,8,0,False
 phase2,outputs/phase2/calibration_manifest.json,10,0,2,8,0,False
 phase3,outputs/phase3/regime_manifest.json,10,0,2,8,0,False
 phase4,outputs/phase4/scenario_manifest.json,10,0,2,8,0,False

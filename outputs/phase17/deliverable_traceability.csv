@@ -6,10 +6,10 @@ WP1,size report,implemented,4,outputs/phase10/phase10_storage_report.md,present,
 WP1,canonical Parquet conversion,implemented,4,outputs/stage_a1/compact_ticks_by_symbol,present,True,Compact per-symbol Parquet conversion exists.
 WP2,L1/L5 imbalance,implemented,4,outputs/phase9/tier_c/features_5m.parquet,present,True,Feature product contains imbalance proxies.
 WP2,MLOFI,implemented_proxy,3,outputs/phase11/strategy_feature_availability.csv,present,False,MLOFI strategy support is proxy-level.
-WP2,trade classification,partial_proxy,1,outputs/phase1/received_tick_deltas_by_symbol,present,False,Received-tick deltas exist; aggressor classification is not acceptance-grade.
+WP2,trade classification,implemented_proxy,3,outputs/phase1/event_reconstruction/event_reconstruction_quality.csv,present,False,Weak aggressor-side labels are summarized with explicit inference-quality limits; not exchange aggressor truth.
 WP2,microprice,implemented,4,outputs/phase9/tier_c/features_5m.parquet,present,True,Microprice feature is available in Tier C.
 WP2,liquidity withdrawal,implemented_proxy,3,outputs/phase11/strategy_feature_availability.csv,present,False,Liquidity-withdrawal features are proxy-supported.
-WP2,replenishment,partial_proxy,1,outputs/phase11/strategy_feature_availability.csv,present,False,Replenishment is strategy-feature tracked but not fully event reconstructed.
+WP2,replenishment,implemented_proxy,3,outputs/phase1/event_reconstruction/event_reconstruction_summary.csv,present,False,Visible-depth replenishment proxies are reconstructed from received market-by-price deltas with ambiguity flags.
 WP2,book shape,implemented_proxy,3,outputs/phase9/tier_c/features_5m.parquet,present,False,Book-shape proxies are available in 5-minute features.
 WP2,regime-independent baseline features,implemented,4,outputs/phase11/baseline_strategy_matrix.csv,present,True,Baseline strategy features are registered.
 WP3,regime definitions,implemented,4,outputs/phase3/intraday_market_states.csv,present,True,Intraday market-state definitions exist.
@@ -22,7 +22,7 @@ WP4,stochastic volatility,implemented_proxy,3,outputs/phase5/daily_price_summary
 WP4,jump process,implemented_proxy,3,outputs/phase7/shock_library.csv,present,False,Jump/shock events are registered.
 WP4,correlation controls,implemented_proxy,3,outputs/phase7/shock_day_summary.csv,present,False,Market/ticker shock grouping provides proxy correlation controls.
 WP4,price-grid enforcement,implemented,4,outputs/phase5/price_paths_5m.parquet,present,True,Price grid validation passed in Phase 5/6 artifacts.
-WP5,additions/cancellations/trades,partial_proxy,1,outputs/phase9/tier_a/raw_synthetic_events.parquet,present,False,"Tier A events exist, but full event-type realism is not acceptance-grade."
+WP5,additions/cancellations/trades,implemented_proxy,3,outputs/phase1/event_reconstruction/event_reconstruction_quality.csv,present,False,Add/cancel/consume proxies are explicitly summarized from visible quantity deltas and volume increments; individual-order causality remains unavailable.
 WP5,five-level reconstruction,implemented,4,outputs/phase6/l2_book_states_5m.parquet,present,True,Five-level L2 state product exists.
 WP5,resilience,implemented_proxy,3,outputs/phase6/l2_book_summary.csv,present,False,Spread/depth structural checks exist.
 WP5,spread/depth dynamics,implemented_proxy,3,outputs/phase6/l2_book_states_5m.parquet,present,False,Spread/depth dynamics are generated at 5-minute granularity.
