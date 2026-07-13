@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-13T19:11:44.635384+00:00",
+  "generated_utc": "2026-07-13T19:15:19.964788+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -81,6 +81,10 @@
     "phase15_blocker_rows": 55,
     "phase16_metric_catalog_rows": 27,
     "phase16_predictive_scoreboard_rows": 11,
+    "phase16_predictive_proxy_rows": 9,
+    "phase16_predictive_signal_bucket_rows": 27,
+    "phase16_missing_predictive_metrics": 3,
+    "phase16_missing_trading_metrics": 0,
     "phase16_trading_scoreboard_rows": 27,
     "phase16_markout_summary_rows": 27,
     "phase16_markout_sample_trades": 243958,
@@ -178,6 +182,8 @@
     "phase16_markout_mae_mfe_summary",
     "phase16_metric_catalog",
     "phase16_predictive_metric_scoreboard",
+    "phase16_predictive_proxy_diagnostics",
+    "phase16_predictive_signal_bucket_returns",
     "phase16_strategy_metric_requirement_coverage",
     "phase16_trading_metric_scoreboard",
     "phase17_deliverable_traceability",

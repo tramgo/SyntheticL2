@@ -1,6 +1,6 @@
 # Phase 16 Metrics and Reporting Report
 
-Generated UTC: 2026-07-13T19:10:26.654375+00:00
+Generated UTC: 2026-07-13T19:15:15.564622+00:00
 
 ## Scope
 
@@ -12,8 +12,9 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | metric_category | current_status | metrics |
 | --- | --- | --- |
 | predictive | computed_proxy | 1 |
-| predictive | missing | 8 |
+| predictive | missing | 3 |
 | predictive | proxy_available | 1 |
+| predictive | sample_proxy | 5 |
 | trading | computed_proxy | 4 |
 | trading | proxy_available | 2 |
 | trading | sample_proxy | 11 |
@@ -32,6 +33,52 @@ No metric is acceptance-grade yet; current values are proxy/reporting evidence o
 | S03 | Liquidity-vacuum breakout | partial_missing_required_features | 2259039 | 280437 | 0.12414 | 0.466749 | proxy_threshold_not_met | -5.55783e-05 | -0.000700219 | -0.000700219 | False | blocked_not_promotable | phase11_5m_proxy_diagnostic |
 | S01 | Momentum/breakout filtered by MLOFI | runnable_proxy | 2259039 | 164347 | 0.0727508 | 0.434302 | proxy_threshold_not_met | 7.63156e-06 | -0.00110589 | -0.00110589 | False | blocked_not_promotable | phase11_5m_proxy_diagnostic |
 | S10 | Passive market making | not_supported_by_current_product | 2259039 | 0 | 0 |  | proxy_threshold_not_met |  |  |  | False | blocked_not_promotable | phase11_5m_proxy_diagnostic |
+
+## Predictive Confusion / Rank Proxy Rows
+
+| strategy_id | rows_evaluated | nonzero_signal_rows | directional_eval_rows | true_long_rows | false_long_rows | true_short_rows | false_short_rows | precision_long_proxy | recall_long_proxy | precision_short_proxy | recall_short_proxy | balanced_accuracy_proxy | rank_auc_proxy | incremental_r2_proxy | mean_signed_future_return_proxy | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S08 | 2259039 | 451880 | 435060 | 107371 | 110054 | 112997 | 104638 | 0.49383 | 0.506445 | 0.519204 | 0.506597 | 0.506521 | 0.502297 | 7.05975e-06 | 2.1323e-05 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S06 | 2259039 | 34317 | 33348 | 8728 | 7977 | 8140 | 8503 | 0.522478 | 0.506529 | 0.489095 | 0.505057 | 0.505793 | 0.500201 | 2.06886e-06 | 4.1775e-05 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S07 | 2259039 | 238167 | 227980 | 44440 | 45270 | 69961 | 68309 | 0.495374 | 0.39415 | 0.505974 | 0.607137 | 0.500643 | 0.502032 | 5.29654e-06 | 2.61682e-05 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S05 | 2259039 | 451810 | 431574 | 179101 | 181928 | 35415 | 35130 | 0.496085 | 0.836018 | 0.50202 | 0.162945 | 0.499482 | 0.496062 | 1.45894e-05 | -3.17341e-05 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S09 | 2259039 | 593280 | 569452 | 214323 | 217020 | 69160 | 68949 | 0.496874 | 0.756598 | 0.500764 | 0.241666 | 0.499132 | 0.496394 | 3.04598e-06 | -1.37599e-05 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S02 | 2259039 | 902476 | 868144 | 210534 | 224331 | 210714 | 222565 | 0.484136 | 0.486111 | 0.486324 | 0.48435 | 0.48523 | 0.490756 | 0.000404352 | -0.000113875 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S04 | 2259039 | 431866 | 419989 | 100657 | 107829 | 101252 | 110251 | 0.4828 | 0.477255 | 0.478726 | 0.484272 | 0.480764 | 0.493478 | 0.000614027 | -0.00020299 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S03 | 2259039 | 285249 | 277691 | 66581 | 75508 | 63031 | 72571 | 0.468587 | 0.478477 | 0.464824 | 0.454969 | 0.466723 | 0.492268 | 0.00482047 | -0.000700219 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+| S01 | 2259039 | 168258 | 162030 | 36193 | 46006 | 34177 | 45654 | 0.440309 | 0.442203 | 0.428117 | 0.426237 | 0.43422 | 0.490851 | 0.00704728 | -0.00110589 | phase11_ternary_signal_predictive_proxy_not_acceptance |
+
+## Signal Bucket Future Returns
+
+| strategy_id | signal_score_bucket | rows | mean_future_return | mean_signed_future_return | positive_future_fraction | metric_scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| S01 | flat_signal | 2064452 | -4.78375e-06 | 0 | 0.481949 | ternary_signal_bucket_not_true_decile |
+| S01 | long_signal | 83319 | -0.00108316 | -0.00108316 | 0.424163 | ternary_signal_bucket_not_true_decile |
+| S01 | short_signal | 81028 | 0.00112927 | -0.00112927 | 0.550512 | ternary_signal_bucket_not_true_decile |
+| S02 | flat_signal | 1339413 | -6.24782e-06 | 0 | 0.483868 | ternary_signal_bucket_not_true_decile |
+| S02 | long_signal | 445543 | -0.000113942 | -0.000113942 | 0.465967 | ternary_signal_bucket_not_true_decile |
+| S02 | short_signal | 443843 | 0.000113808 | -0.000113808 | 0.493871 | ternary_signal_bucket_not_true_decile |
+| S03 | flat_signal | 1948362 | 3.5746e-06 | 0 | 0.481482 | ternary_signal_bucket_not_true_decile |
+| S03 | long_signal | 143496 | -0.000738535 | -0.000738535 | 0.457275 | ternary_signal_bucket_not_true_decile |
+| S03 | short_signal | 136941 | 0.000660069 | -0.000660069 | 0.519682 | ternary_signal_bucket_not_true_decile |
+| S04 | flat_signal | 1803942 | 3.53337e-06 | 0 | 0.480846 | ternary_signal_bucket_not_true_decile |
+| S04 | long_signal | 210826 | -0.000240096 | -0.000240096 | 0.469837 | ternary_signal_bucket_not_true_decile |
+| S04 | short_signal | 214031 | 0.000166438 | -0.000166438 | 0.506603 | ternary_signal_bucket_not_true_decile |
+| S05 | flat_signal | 1783038 | 3.37407e-06 | 0 | 0.484314 | ternary_signal_bucket_not_true_decile |
+| S05 | long_signal | 374843 | -3.83941e-05 | -3.83941e-05 | 0.471424 | ternary_signal_bucket_not_true_decile |
+| S05 | short_signal | 70918 | -3.46786e-06 | 3.46786e-06 | 0.488629 | ternary_signal_bucket_not_true_decile |
+| S06 | flat_signal | 2194990 | -4.20899e-06 | 0 | 0.481978 | ternary_signal_bucket_not_true_decile |
+| S06 | long_signal | 16904 | 6.00294e-05 | 6.00294e-05 | 0.508269 | ternary_signal_bucket_not_true_decile |
+| S06 | short_signal | 16905 | -2.35217e-05 | 2.35217e-05 | 0.495946 | ternary_signal_bucket_not_true_decile |
+| S07 | flat_signal | 1993830 | 6.09599e-07 | 0 | 0.48333 | ternary_signal_bucket_not_true_decile |
+| S07 | long_signal | 90654 | -2.03428e-05 | -2.03428e-05 | 0.483653 | ternary_signal_bucket_not_true_decile |
+| S07 | short_signal | 144315 | -5.53849e-05 | 5.53849e-05 | 0.466965 | ternary_signal_bucket_not_true_decile |
+| S08 | flat_signal | 1785902 | 5.78495e-06 | 0 | 0.485562 | ternary_signal_bucket_not_true_decile |
+| S08 | long_signal | 221338 | -2.14808e-05 | -2.14808e-05 | 0.478798 | ternary_signal_bucket_not_true_decile |
+| S08 | short_signal | 221559 | -6.40841e-05 | 6.40841e-05 | 0.459687 | ternary_signal_bucket_not_true_decile |
+| S09 | flat_signal | 1643410 | -1.28158e-07 | 0 | 0.483999 | ternary_signal_bucket_not_true_decile |
+| S09 | long_signal | 445887 | -1.84642e-05 | -1.84642e-05 | 0.474287 | ternary_signal_bucket_not_true_decile |
+| S09 | short_signal | 139502 | -1.27629e-06 | 1.27629e-06 | 0.487634 | ternary_signal_bucket_not_true_decile |
 
 ## Top Trading Proxy Rows
 

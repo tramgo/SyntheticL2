@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-13T19:11:44.635384+00:00
+Generated UTC: 2026-07-13T19:15:19.964788+00:00
 
 ## Storage Decision
 
@@ -87,6 +87,10 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 15 blocker rows: 55
 - Phase 16 metric catalog rows: 27
 - Phase 16 predictive scoreboard rows: 11
+- Phase 16 predictive proxy rows: 9
+- Phase 16 predictive signal bucket rows: 27
+- Phase 16 missing predictive metrics: 3
+- Phase 16 missing trading metrics: 0
 - Phase 16 trading scoreboard rows: 27
 - Phase 16 markout/MAE/MFE summary rows: 27
 - Phase 16 markout sample trades: 243958

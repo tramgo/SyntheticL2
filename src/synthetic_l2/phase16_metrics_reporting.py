@@ -8,17 +8,19 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from synthetic_l2.phase11_strategy_validation_matrix import build_signals, load_features
+
 
 PREDICTIVE_METRICS = [
     ("directional_accuracy", "computed_proxy", "phase11_signal_diagnostics.directional_accuracy_nonzero"),
-    ("balanced_accuracy", "missing", "Requires class-confusion counts by direction."),
-    ("precision_recall_by_direction", "missing", "Requires true/false positives by long/short direction."),
-    ("roc_auc", "missing", "Requires probabilistic scores or ranked continuous predictions."),
+    ("balanced_accuracy", "sample_proxy", "Computed from Phase 11 ternary proxy signal confusion by direction."),
+    ("precision_recall_by_direction", "sample_proxy", "Computed from Phase 11 ternary proxy signal confusion by long/short direction."),
+    ("roc_auc", "sample_proxy", "Rank-AUC proxy computed from ternary signal score; not a calibrated probabilistic ROC."),
     ("brier_score", "missing", "Requires calibrated probability forecasts."),
     ("calibration_curve", "missing", "Requires probability bins and realized frequencies."),
     ("information_coefficient", "proxy_available", "Proxy signed_mean_future_return is available; rank IC is not computed yet."),
-    ("future_return_by_signal_decile", "missing", "Requires continuous signal scores and decile bucketing."),
-    ("incremental_r2", "missing", "Requires model-vs-baseline regression outputs."),
+    ("future_return_by_signal_decile", "sample_proxy", "Computed as ternary signal-score buckets because current signals are not continuous decile scores."),
+    ("incremental_r2", "sample_proxy", "Computed as simple signal-vs-intercept R2 over future returns; not a model-vs-rich-baseline result."),
     ("feature_importance_stability", "missing", "Requires multi-seed/model feature importance runs."),
 ]
 
@@ -58,12 +60,61 @@ BREAKDOWNS = [
 ]
 
 
+METRIC_ALIASES = {
+    "signal_deciles": "future_return_by_signal_decile",
+    "classification_accuracy": "directional_accuracy",
+    "next_quote_accuracy": "directional_accuracy",
+    "continuation_probability": "directional_accuracy",
+    "false_positive_rate": "precision_recall_by_direction",
+    "false_breakout_reduction": "precision_recall_by_direction",
+    "false_reversion_rate": "precision_recall_by_direction",
+    "false_absorption_rate": "precision_recall_by_direction",
+    "risk_filter_precision": "precision_recall_by_direction",
+    "control_rejection_rate": "precision_recall_by_direction",
+    "incremental_l2_l5_value": "incremental_r2",
+    "incremental_predictive_value": "incremental_r2",
+    "feature_stability": "feature_importance_stability",
+    "label_stability": "feature_importance_stability",
+    "shock_template_stability": "feature_importance_stability",
+    "lead_lag_stability": "feature_importance_stability",
+    "calibration": "calibration_curve",
+    "net_expectancy": "expectancy_per_trade",
+    "net_expectancy_by_state": "expectancy_per_trade",
+    "net_edge_after_costs": "expectancy_per_trade",
+    "net_edge_after_spread": "expectancy_per_trade",
+    "net_performance_uplift_over_parent": "expectancy_per_trade",
+    "pessimistic_model_pnl": "net_pnl",
+    "mae": "mae_mfe",
+    "mfe": "mae_mfe",
+    "post_entry_adverse_movement": "mae_mfe",
+    "adverse_selection_loss": "adverse_selection",
+    "drawdown": "maximum_drawdown",
+    "inventory_drawdown": "maximum_drawdown",
+    "parent_strategy_drawdown_reduction": "maximum_drawdown",
+    "cost_sensitivity": "cost_to_gross_profit_ratio",
+    "slippage_sensitivity": "cost_to_gross_profit_ratio",
+    "entry_slippage": "cost_to_gross_profit_ratio",
+    "liquidation_cost": "cost_to_gross_profit_ratio",
+    "expected_move_vs_spread": "cost_to_gross_profit_ratio",
+    "latency_tolerance": "exposure_holding_time",
+    "latency_decay": "exposure_holding_time",
+    "fill_uncertainty": "fill_ratio",
+    "spread_capture": "gross_pnl",
+    "reversal_probability": "directional_accuracy",
+    "regime_stability": "strategy_specific_missing_or_not_mapped",
+    "regime_aware_vs_unaware_uplift": "strategy_specific_missing_or_not_mapped",
+    "miss_rate": "strategy_specific_missing_or_not_mapped",
+    "trade_reduction": "strategy_specific_missing_or_not_mapped",
+}
+
+
 def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
     return {
         "signal_diagnostics": pd.read_csv(paths["signal_diagnostics"]),
         "metric_requirements": pd.read_csv(paths["metric_requirements"]),
         "execution_summary": pd.read_csv(paths["execution_summary"]),
         "trade_sample": pd.read_parquet(paths["trade_sample"]),
+        "features": load_features(paths["features"]),
         "acceptance_summary": pd.read_csv(paths["acceptance_summary"]),
     }
 
@@ -113,6 +164,111 @@ def predictive_scoreboard(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
             "metric_scope",
         ]
     ]
+
+
+def _safe_metric(num: float, den: float) -> float | None:
+    if den == 0 or pd.isna(den):
+        return None
+    return float(num / den)
+
+
+def _auc_from_scores(labels: pd.Series, scores: pd.Series) -> float | None:
+    valid = labels.notna() & scores.notna()
+    y = labels[valid].astype(int)
+    s = scores[valid].astype(float)
+    positives = int((y == 1).sum())
+    negatives = int((y == 0).sum())
+    if positives == 0 or negatives == 0:
+        return None
+    ranks = s.rank(method="average")
+    positive_rank_sum = float(ranks[y == 1].sum())
+    return float((positive_rank_sum - positives * (positives + 1) / 2.0) / (positives * negatives))
+
+
+def _r2_against_intercept(y: pd.Series, x: pd.Series) -> float | None:
+    valid = y.notna() & x.notna()
+    yv = y[valid].astype(float)
+    xv = x[valid].astype(float)
+    if len(yv) < 2 or float(xv.var()) == 0.0:
+        return None
+    slope = float(np.cov(xv, yv, ddof=0)[0, 1] / xv.var(ddof=0))
+    intercept = float(yv.mean() - slope * xv.mean())
+    pred = intercept + slope * xv
+    sse = float(((yv - pred) ** 2).sum())
+    sst = float(((yv - yv.mean()) ** 2).sum())
+    return _safe_metric(sst - sse, sst)
+
+
+def predictive_proxy_diagnostics(inputs: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    features = inputs["features"].copy()
+    future = features["future_mid_return_1"].astype(float)
+    actual_direction = np.sign(future)
+    binary_up = (future > 0).astype(int)
+    signals = build_signals(features)
+
+    summary_rows = []
+    bucket_rows = []
+    for strategy_id, signal in signals.items():
+        signal = signal.astype(float)
+        valid_direction = signal.ne(0) & future.notna() & future.ne(0)
+        pred_long = valid_direction & (signal > 0)
+        pred_short = valid_direction & (signal < 0)
+        actual_up = valid_direction & (actual_direction > 0)
+        actual_down = valid_direction & (actual_direction < 0)
+        true_long = pred_long & actual_up
+        true_short = pred_short & actual_down
+        precision_long = _safe_metric(float(true_long.sum()), float(pred_long.sum()))
+        recall_long = _safe_metric(float(true_long.sum()), float(actual_up.sum()))
+        precision_short = _safe_metric(float(true_short.sum()), float(pred_short.sum()))
+        recall_short = _safe_metric(float(true_short.sum()), float(actual_down.sum()))
+        recall_values = [value for value in [recall_long, recall_short] if value is not None]
+        balanced_accuracy = float(np.mean(recall_values)) if recall_values else None
+        auc_proxy = _auc_from_scores(binary_up[future.notna()], signal[future.notna()])
+        signed_score = signal * future
+        incremental_r2 = _r2_against_intercept(future, signal)
+        summary_rows.append(
+            {
+                "strategy_id": strategy_id,
+                "rows_evaluated": int(len(features)),
+                "nonzero_signal_rows": int(signal.ne(0).sum()),
+                "directional_eval_rows": int(valid_direction.sum()),
+                "true_long_rows": int(true_long.sum()),
+                "false_long_rows": int((pred_long & actual_down).sum()),
+                "true_short_rows": int(true_short.sum()),
+                "false_short_rows": int((pred_short & actual_up).sum()),
+                "precision_long_proxy": precision_long,
+                "recall_long_proxy": recall_long,
+                "precision_short_proxy": precision_short,
+                "recall_short_proxy": recall_short,
+                "balanced_accuracy_proxy": balanced_accuracy,
+                "rank_auc_proxy": auc_proxy,
+                "incremental_r2_proxy": incremental_r2,
+                "mean_signed_future_return_proxy": float(signed_score[signal.ne(0) & future.notna()].mean()) if int((signal.ne(0) & future.notna()).sum()) else None,
+                "metric_scope": "phase11_ternary_signal_predictive_proxy_not_acceptance",
+            }
+        )
+        bucket_frame = pd.DataFrame(
+            {
+                "strategy_id": strategy_id,
+                "signal_score_bucket": np.select([signal < 0, signal > 0], ["short_signal", "long_signal"], default="flat_signal"),
+                "future_mid_return_1": future,
+                "signed_future_return": signal * future,
+            }
+        )
+        grouped = (
+            bucket_frame.groupby(["strategy_id", "signal_score_bucket"], sort=True)
+            .agg(
+                rows=("future_mid_return_1", "count"),
+                mean_future_return=("future_mid_return_1", "mean"),
+                mean_signed_future_return=("signed_future_return", "mean"),
+                positive_future_fraction=("future_mid_return_1", lambda values: float((values > 0).mean())),
+            )
+            .reset_index()
+        )
+        grouped["metric_scope"] = "ternary_signal_bucket_not_true_decile"
+        bucket_rows.append(grouped)
+
+    return pd.DataFrame(summary_rows), pd.concat(bucket_rows, ignore_index=True)
 
 
 def _safe_div(num: float, den: float) -> float | None:
@@ -275,7 +431,8 @@ def breakdown_coverage(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
 def metric_requirement_coverage(inputs: dict[str, pd.DataFrame], catalog: pd.DataFrame) -> pd.DataFrame:
     req = inputs["metric_requirements"].copy()
     status_map = dict(zip(catalog["metric_name"], catalog["current_status"]))
-    req["phase16_current_status"] = req["primary_metric"].map(status_map).fillna("strategy_specific_missing_or_not_mapped")
+    req["phase16_mapped_metric_name"] = req["primary_metric"].map(lambda value: METRIC_ALIASES.get(str(value), str(value)))
+    req["phase16_current_status"] = req["phase16_mapped_metric_name"].map(status_map).fillna("strategy_specific_missing_or_not_mapped")
     req["phase16_acceptance_ready"] = False
     return req
 
@@ -292,7 +449,15 @@ def _markdown_table(frame: pd.DataFrame) -> str:
     return "\n".join(lines)
 
 
-def write_report(output_dir: Path, catalog: pd.DataFrame, predictive: pd.DataFrame, trading: pd.DataFrame, breakdowns: pd.DataFrame) -> None:
+def write_report(
+    output_dir: Path,
+    catalog: pd.DataFrame,
+    predictive: pd.DataFrame,
+    predictive_proxy: pd.DataFrame,
+    signal_buckets: pd.DataFrame,
+    trading: pd.DataFrame,
+    breakdowns: pd.DataFrame,
+) -> None:
     catalog_summary = catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
     breakdown_summary = breakdowns.groupby("current_status", sort=True).size().reset_index(name="breakdowns")
     lines = [
@@ -313,6 +478,14 @@ def write_report(output_dir: Path, catalog: pd.DataFrame, predictive: pd.DataFra
         "",
         _markdown_table(predictive.sort_values("directional_accuracy_nonzero", ascending=False).head(10)),
         "",
+        "## Predictive Confusion / Rank Proxy Rows",
+        "",
+        _markdown_table(predictive_proxy.sort_values("balanced_accuracy_proxy", ascending=False).head(10)),
+        "",
+        "## Signal Bucket Future Returns",
+        "",
+        _markdown_table(signal_buckets.head(30)),
+        "",
         "## Top Trading Proxy Rows",
         "",
         _markdown_table(trading.sort_values("mean_net_return", ascending=False).head(10)),
@@ -332,6 +505,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     inputs = load_inputs(paths)
     catalog = metric_catalog()
     predictive = predictive_scoreboard(inputs)
+    predictive_proxy, signal_buckets = predictive_proxy_diagnostics(inputs)
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
@@ -340,6 +514,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
 
     catalog.to_csv(output_dir / "metric_catalog.csv", index=False)
     predictive.to_csv(output_dir / "predictive_metric_scoreboard.csv", index=False)
+    predictive_proxy.to_csv(output_dir / "predictive_proxy_diagnostics.csv", index=False)
+    signal_buckets.to_csv(output_dir / "predictive_signal_bucket_returns.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
@@ -349,6 +525,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "inputs": {key: str(value) for key, value in paths.items()},
         "metric_catalog_rows": int(len(catalog)),
         "predictive_scoreboard_rows": int(len(predictive)),
+        "predictive_proxy_rows": int(len(predictive_proxy)),
+        "predictive_signal_bucket_rows": int(len(signal_buckets)),
         "trading_scoreboard_rows": int(len(trading)),
         "markout_summary_rows": int(len(markouts)),
         "markout_horizons_bars": [1, 3, 6],
@@ -357,7 +535,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
     }
     (output_dir / "metrics_reporting_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, catalog, predictive, trading, breakdowns)
+    write_report(output_dir, catalog, predictive, predictive_proxy, signal_buckets, trading, breakdowns)
 
 
 def parse_args() -> argparse.Namespace:
@@ -367,6 +545,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--metric-requirements", type=Path, default=Path("outputs/phase11/strategy_metric_requirements.csv"))
     parser.add_argument("--execution-summary", type=Path, default=Path("outputs/phase12/execution_summary.csv"))
     parser.add_argument("--trade-sample", type=Path, default=Path("outputs/phase12/trade_ledger_sample.parquet"))
+    parser.add_argument("--features", type=Path, default=Path("outputs/phase9/tier_c/features_5m.parquet"))
     parser.add_argument("--acceptance-summary", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     return parser.parse_args()
 
@@ -378,6 +557,7 @@ def main() -> None:
         "metric_requirements": args.metric_requirements,
         "execution_summary": args.execution_summary,
         "trade_sample": args.trade_sample,
+        "features": args.features,
         "acceptance_summary": args.acceptance_summary,
     }
     run_phase16(args.output_dir, paths)

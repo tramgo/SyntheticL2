@@ -1928,14 +1928,16 @@ Generated artifacts are under `outputs/phase16/`:
 - `metrics_reporting_manifest.json`;
 - `metric_catalog.csv`;
 - `predictive_metric_scoreboard.csv`;
+- `predictive_proxy_diagnostics.csv`;
+- `predictive_signal_bucket_returns.csv`;
 - `trading_metric_scoreboard.csv`;
 - `markout_mae_mfe_summary.csv`;
 - `breakdown_coverage.csv`;
 - `strategy_metric_requirement_coverage.csv`.
 
-The current completed run builds the reporting catalog and proxy scoreboards from Phase 11 diagnostics, Phase 12 execution summaries, the sampled trade ledger, the Phase 12 lifecycle/risk-control proxy and Phase 15 acceptance status. It produced 27 metric catalog rows, 11 predictive scoreboard rows, 27 trading scoreboard rows, 27 sampled markout/MAE/MFE summary rows, 12 breakdown-coverage rows and 59 strategy-metric requirement coverage rows. All trading metrics now have at least proxy/sample evidence, including adverse selection and MAE/MFE from 1/3/6-bar post-fill markout windows. No metric is acceptance-grade yet: `acceptance_grade_metrics=0`.
+The current completed run builds the reporting catalog and proxy scoreboards from Phase 11 diagnostics, Phase 9 feature/signals, Phase 12 execution summaries, the sampled trade ledger, the Phase 12 lifecycle/risk-control proxy and Phase 15 acceptance status. It produced 27 metric catalog rows, 11 predictive scoreboard rows, 9 predictive confusion/rank/R2 proxy rows, 27 ternary signal-bucket return rows, 27 trading scoreboard rows, 27 sampled markout/MAE/MFE summary rows, 12 breakdown-coverage rows and 59 strategy-metric requirement coverage rows. All trading metrics now have at least proxy/sample evidence, including adverse selection and MAE/MFE from 1/3/6-bar post-fill markout windows. Seven of ten predictive metrics now have current proxy/sample evidence; the remaining missing predictive metrics are Brier score, calibration curve and feature-importance stability. No metric is acceptance-grade yet: `acceptance_grade_metrics=0`.
 
-Important Phase 16 caveat: these reports are current-evidence scoreboards, not promotion evidence. Predictive metrics are Phase 11 proxy diagnostics, trading metrics are Phase 12 5-minute marketable-order/lifecycle/markout proxies, and several required metrics remain proxy-only until full experiment execution, acceptance-grade risk/equity-curve simulation, broker-verified fill/cost modeling and holdout-generator evidence exist.
+Important Phase 16 caveat: these reports are current-evidence scoreboards, not promotion evidence. Predictive metrics are Phase 11 ternary-signal proxy diagnostics, not calibrated probabilistic model outputs; trading metrics are Phase 12 5-minute marketable-order/lifecycle/markout proxies. Metrics remain proxy-only until full experiment execution, acceptance-grade risk/equity-curve simulation, calibrated model outputs, broker-verified fill/cost modeling and holdout-generator evidence exist.
 
 ---
 
