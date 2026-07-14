@@ -1,13 +1,13 @@
 {
-  "generated_utc": "2026-07-14T17:36:13.626686+00:00",
+  "generated_utc": "2026-07-14T17:42:44.656289+00:00",
   "required_fields": 10,
-  "audited_artifacts": 42,
-  "field_checks": 420,
-  "exact_regeneration_ready_artifacts": 42,
+  "audited_artifacts": 43,
+  "field_checks": 430,
+  "exact_regeneration_ready_artifacts": 43,
   "artifacts_with_missing_fields": 0,
   "manifest_missing_or_unreadable_artifacts": 0,
   "gap_rows": 0,
-  "remediation_rows": 420,
+  "remediation_rows": 430,
   "remediation_summary_rows": 1,
   "schema_template": "outputs\\phase19\\manifest_schema_template.json",
   "scope": "phase19_reproducibility_manifest_field_audit"

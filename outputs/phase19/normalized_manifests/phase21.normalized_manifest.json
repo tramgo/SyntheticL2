@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_phase16_proxy_cost_evidence_not_acceptance",
   "latency_model_version": "phase12_phase16_proxy_latency_evidence_not_acceptance",
   "creation_timestamp": "2026-07-14T17:30:07.655256+00:00",
-  "normalization_timestamp": "2026-07-14T17:36:12.772720+00:00",
+  "normalization_timestamp": "2026-07-14T17:42:43.795155+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

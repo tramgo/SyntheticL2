@@ -1,0 +1,8 @@
+promotion_step_id,promotion_order,promotion_step,current_status,skip_allowed
+P23_01,1,Synthetic engineering test,current_proxy_running,False
+P23_02,2,Synthetic multi-regime stress test,proxy_partial_not_acceptance,False
+P23_03,3,Real-data historical test,blocked_missing_class_b_multiday,False
+P23_04,4,Live paper trading,blocked_until_historical_acceptance,False
+P23_05,5,Shadow execution,blocked_until_paper_trading,False
+P23_06,6,Very small capital,blocked_until_shadow_execution,False
+P23_07,7,Gradual scale-up,blocked_until_small_capital_risk_limits,False

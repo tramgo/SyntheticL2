@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T17:36:04.947680+00:00",
+  "generated_utc": "2026-07-14T17:42:36.439347+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -104,7 +104,11 @@
     "phase22_milestone_catalog": "outputs\\phase22\\real_data_milestone_catalog.csv",
     "phase22_recalibration_task_ledger": "outputs\\phase22\\recalibration_task_ledger.csv",
     "phase22_capture_expansion_plan": "outputs\\phase22\\capture_expansion_plan.csv",
-    "phase22_summary": "outputs\\phase22\\real_data_integration_summary.csv"
+    "phase22_summary": "outputs\\phase22\\real_data_integration_summary.csv",
+    "phase23_risk_register": "outputs\\phase23\\key_risk_register.csv",
+    "phase23_mitigation_ledger": "outputs\\phase23\\risk_mitigation_ledger.csv",
+    "phase23_promotion_path": "outputs\\phase23\\promotion_path_guardrail.csv",
+    "phase23_summary": "outputs\\phase23\\key_risk_summary.csv"
   },
   "summary": {
     "quality_checks": 24,
@@ -284,19 +288,23 @@
     "phase22_class_b_event_grade_days": 0,
     "phase22_recalibration_tasks": 54,
     "phase22_ready_recalibration_tasks": 0,
-    "phase22_extension_or_paper_ready": 0
+    "phase22_extension_or_paper_ready": 0,
+    "phase23_key_risks": 5,
+    "phase23_open_acceptance_blocking_risks": 5,
+    "phase23_mitigation_rows": 31,
+    "phase23_promotion_ready": 0
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "3eec2a47b9a3a308f980fa16c721eb2a68d96aaf",
-  "configuration_hash": "0911c1707155fc8d869094b6efadefa7e31c4fb72637ea63a0d51405741b3558",
+  "generator_version": "6338e6d8059c50eb8706436144fc886ce2e170c0",
+  "configuration_hash": "5689fad0d6e9a22cb7f0dbdad8c1dcbde7fc5c812cf11b9351635bc1174184a2",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
-  "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_evidence",
+  "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T17:36:04.947680+00:00"
+  "creation_timestamp": "2026-07-14T17:42:36.439347+00:00"
 }

@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T17:36:04.947680+00:00
+Generated UTC: 2026-07-14T17:42:36.439347+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -186,6 +186,10 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase22_recalibration_tasks | 54 | Phase 22 milestone/domain recalibration tasks |
 | phase22_ready_recalibration_tasks | 0 | Phase 22 tasks ready for event-flow recalibration |
 | phase22_extension_or_paper_ready | 0 | Phase 22 extension/paper-ready rows |
+| phase23_key_risks | 5 | Phase 23 key risk rows |
+| phase23_open_acceptance_blocking_risks | 5 | Phase 23 open acceptance-blocking risks |
+| phase23_mitigation_rows | 31 | Phase 23 mitigation rows |
+| phase23_promotion_ready | 0 | Phase 23 promotion-ready rows |
 
 ## Quality Status
 
@@ -2687,6 +2691,48 @@ This dashboard is static research traceability output, not strategy promotion ev
 | 2 | capture_contract_closure | stage_a2_open_contract_rows=192; stage_a2_acceptance_met_rows=0 | 0 open Stage A2 capture-contract rows and nonzero acceptance-met rows | blocked_until_multiday_class_b_capture_and_diagnostics_exist | Close timestamp semantics, sequencing, dropped-message, compaction and stale-gap diagnostics before counting days as Class B. |
 | 3 | real_multiday_acceptance_inputs | phase20_m07_acceptance_met_rows=0 | Real multi-day predictive, economic and robustness validation rows become acceptance-grade. | Phase 20 M07 real multi-day acceptance contract has 0 acceptance-met rows. | After Class B capture exists, run strategy real-holdout, real economic and real robustness validations. |
 | 4 | phase21_decision_guardrail | Improve or reject strategies; do not tune generator to create profit | Decision framework permits extension/paper testing only after evidence gates pass. | Current Phase 21 decision blocks extension/paper testing. | Do not tune generator to create profit; use new real days to reduce assumptions and retest blockers. |
+
+## Phase 23 Key Risk Register
+
+| severity | current_status | rows |
+| --- | --- | --- |
+| high | open_controls_proxy_only | 1 |
+| high | open_governance_gate | 1 |
+| high | open_until_broker_reconciled_lifecycle | 1 |
+| high | open_until_multiday_class_b_capture | 1 |
+| medium | mitigated_by_current_storage_design_monitor | 1 |
+
+| mitigation_status | rows |
+| --- | --- |
+| implemented_or_monitored_currently | 7 |
+| required_before_acceptance | 24 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase23_risks | 5 | Key risk rows from the plan |
+| phase23_high_risks | 4 | High-severity risk rows |
+| phase23_open_acceptance_blocking_risks | 5 | Risks still blocking acceptance or promotion |
+| phase23_mitigation_rows | 31 | Mitigation ledger rows |
+| phase23_promotion_steps | 7 | Governed promotion path steps |
+| phase23_promotion_ready | 0 | No strategy is ready to advance beyond synthetic screening |
+
+| risk_id | risk_title | risk_category | risk_description | severity | current_status | observed_value | plan_mitigations | required_next_action | acceptance_blocking |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| R23_01_synthetic_alpha | Synthetic alpha | model_artifact | The generator may accidentally encode a predictable relationship that strategies exploit. | high | open_controls_proxy_only | negative_control_open_rows=11; holdout_or_artifact_open_rows=22; phase21_extension_or_paper_ready=0 | negative-control generators; multiple model families; hidden holdout generator; parameter perturbation; real-data paper testing; generator-blind strategy development | Run acceptance-grade negative controls, holdout-generator strategy reruns and real-data paper tests before promotion. | True |
+| R23_02_one_day_overfitting | One-day overfitting | data_coverage | The sample day may be unusual. | high | open_until_multiday_class_b_capture | class_b_event_grade_days=0; ready_recalibration_tasks=0 | pooled shrinkage; broad stress ranges; explicit uncertainty bands; multiple synthetic normal-day configurations; immediate recalibration with new real days | Collect Class B event-grade multi-day data and rerun Phase 22 recalibration tasks. | True |
+| R23_03_unrealistic_fills | Unrealistic fills | execution_model | Execution assumptions may overstate attainable fills and understate adverse selection. | high | open_until_broker_reconciled_lifecycle | risk_open_rows=88; economic_open_rows=88 | pessimistic execution; marketable-order focus initially; latency simulation; partial fills; depth walk; adverse-selection modelling | Run broker/exchange fill provenance, contract-note reconciliation and full lifecycle execution replay. | True |
+| R23_04_excessive_data_volume | Excessive data volume | storage_compute | Raw and synthetic L2 data volume may make repeated experiments slow or costly. | medium | mitigated_by_current_storage_design_monitor | duckdb_report_present=True; full_year_conservative_total_gb=83.240 | event-driven generation; integer encoding; Parquet/Zstandard; delta-state representation; separate raw and feature tiers; selected dense tickers; feature-only datasets for repeated experiments | Keep Parquet/Zstandard durable storage and DuckDB query layer; re-estimate before materializing larger horizons. | True |
+| R23_05_false_confidence_three_months | False confidence from three months | governance | Three synthetic months are a screening laboratory, not a profitability proof. | high | open_governance_gate | phase20_acceptance_ready_rows=0; phase21_extension_or_paper_ready=0 | synthetic engineering test; synthetic multi-regime stress test; real-data historical test; live paper trading; shadow execution; very small capital; gradual scale-up | Preserve staged promotion path; do not skip from synthetic screening to capital deployment. | True |
+
+| promotion_step_id | promotion_order | promotion_step | current_status | skip_allowed |
+| --- | --- | --- | --- | --- |
+| P23_01 | 1 | Synthetic engineering test | current_proxy_running | False |
+| P23_02 | 2 | Synthetic multi-regime stress test | proxy_partial_not_acceptance | False |
+| P23_03 | 3 | Real-data historical test | blocked_missing_class_b_multiday | False |
+| P23_04 | 4 | Live paper trading | blocked_until_historical_acceptance | False |
+| P23_05 | 5 | Shadow execution | blocked_until_paper_trading | False |
+| P23_06 | 6 | Very small capital | blocked_until_shadow_execution | False |
+| P23_07 | 7 | Gradual scale-up | blocked_until_small_capital_risk_limits | False |
 
 ## Metric Status
 

@@ -177,3 +177,7 @@ phase22_class_b_event_grade_days,0,Phase 22 complete Class B event-grade days
 phase22_recalibration_tasks,54,Phase 22 milestone/domain recalibration tasks
 phase22_ready_recalibration_tasks,0,Phase 22 tasks ready for event-flow recalibration
 phase22_extension_or_paper_ready,0,Phase 22 extension/paper-ready rows
+phase23_key_risks,5,Phase 23 key risk rows
+phase23_open_acceptance_blocking_risks,5,Phase 23 open acceptance-blocking risks
+phase23_mitigation_rows,31,Phase 23 mitigation rows
+phase23_promotion_ready,0,Phase 23 promotion-ready rows

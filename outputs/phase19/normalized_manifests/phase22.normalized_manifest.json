@@ -13,6 +13,6 @@
   "cost_model_version": "phase20_m07_real_multiday_economic_contract_not_acceptance",
   "latency_model_version": "stage_a2_capture_diagnostics_and_phase8_feed_profiles",
   "creation_timestamp": "2026-07-14T17:36:03.874655+00:00",
-  "normalization_timestamp": "2026-07-14T17:36:12.773784+00:00",
+  "normalization_timestamp": "2026-07-14T17:42:43.795933+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

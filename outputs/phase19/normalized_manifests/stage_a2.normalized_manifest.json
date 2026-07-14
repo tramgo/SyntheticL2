@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_no_execution_costs",
   "latency_model_version": "stage_a1_one_day_zerodha_websocket_sample",
   "creation_timestamp": "2026-07-14T16:38:22.924563+00:00",
-  "normalization_timestamp": "2026-07-14T17:36:12.768266+00:00",
+  "normalization_timestamp": "2026-07-14T17:42:43.791046+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

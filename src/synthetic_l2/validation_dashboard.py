@@ -194,6 +194,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     phase22_recalibration_task_ledger = _read_csv(paths["phase22_recalibration_task_ledger"])
     phase22_capture_expansion_plan = _read_csv(paths["phase22_capture_expansion_plan"])
     phase22_summary = _read_csv(paths["phase22_summary"])
+    phase23_risk_register = _read_csv(paths["phase23_risk_register"])
+    phase23_mitigation_ledger = _read_csv(paths["phase23_mitigation_ledger"])
+    phase23_promotion_path = _read_csv(paths["phase23_promotion_path"])
+    phase23_summary = _read_csv(paths["phase23_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -348,6 +352,16 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     phase22_task_status = (
         phase22_recalibration_task_ledger.groupby(["current_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    phase23_risk_status = (
+        phase23_risk_register.groupby(["severity", "current_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    phase23_mitigation_status = (
+        phase23_mitigation_ledger.groupby(["mitigation_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -533,6 +547,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase22_recalibration_tasks", int(len(phase22_recalibration_task_ledger)), "Phase 22 milestone/domain recalibration tasks"),
         ("phase22_ready_recalibration_tasks", int(phase22_summary.loc[phase22_summary["metric"].eq("ready_recalibration_tasks"), "value"].iloc[0]), "Phase 22 tasks ready for event-flow recalibration"),
         ("phase22_extension_or_paper_ready", int(phase22_summary.loc[phase22_summary["metric"].eq("phase22_extension_or_paper_ready"), "value"].iloc[0]), "Phase 22 extension/paper-ready rows"),
+        ("phase23_key_risks", int(len(phase23_risk_register)), "Phase 23 key risk rows"),
+        ("phase23_open_acceptance_blocking_risks", int(phase23_summary.loc[phase23_summary["metric"].eq("phase23_open_acceptance_blocking_risks"), "value"].iloc[0]), "Phase 23 open acceptance-blocking risks"),
+        ("phase23_mitigation_rows", int(len(phase23_mitigation_ledger)), "Phase 23 mitigation rows"),
+        ("phase23_promotion_ready", int(phase23_summary.loc[phase23_summary["metric"].eq("phase23_promotion_ready"), "value"].iloc[0]), "Phase 23 promotion-ready rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -557,7 +575,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -626,6 +644,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Stage E Full-Year Extension Readiness</h2>{_table(stage_e_status, None, 5)}{_table(stage_e_gap_summary, None, 5)}{_table(stage_e_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(stage_e_prerequisite_ledger, ['prerequisite_id', 'observed_value', 'passes', 'blocking_gap', 'required_next_action'], 12)}{_table(stage_e_action_plan, ['priority_rank', 'prerequisite_id', 'blocking_gap', 'required_next_action'], 10)}</section>
   <section><h2>Phase 21 Decision Framework</h2>{_table(phase21_decision_status, None, 10)}{_table(phase21_decision_summary, None, 10)}{_table(phase21_decision_rules, ['decision_rule_id', 'outcome_condition', 'plan_decision'], 12)}{_table(phase21_decision_ledger, ['decision_rule_id', 'current_condition_met', 'observed_value', 'current_decision', 'decision_status', 'next_action'], 12)}</section>
   <section><h2>Phase 22 Real Data Integration Roadmap</h2>{_table(phase22_milestone_status, None, 10)}{_table(phase22_task_status, None, 10)}{_table(phase22_summary, None, 10)}{_table(phase22_milestone_catalog, ['milestone_id', 'real_data_availability', 'current_class_b_event_grade_days', 'current_sample_days_available', 'days_needed_for_min', 'recalibration_use', 'current_status'], 10)}{_table(phase22_capture_expansion_plan, ['priority_rank', 'workstream', 'current_state', 'target_state', 'blocking_gap', 'required_next_action'], 10)}</section>
+  <section><h2>Phase 23 Key Risk Register</h2>{_table(phase23_risk_status, None, 10)}{_table(phase23_mitigation_status, None, 10)}{_table(phase23_summary, None, 10)}{_table(phase23_risk_register, ['risk_id', 'risk_title', 'severity', 'current_status', 'observed_value', 'required_next_action'], 10)}{_table(phase23_promotion_path, ['promotion_order', 'promotion_step', 'current_status', 'skip_allowed'], 10)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -980,6 +999,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(phase22_capture_expansion_plan),
         "",
+        "## Phase 23 Key Risk Register",
+        "",
+        _markdown_table(phase23_risk_status),
+        "",
+        _markdown_table(phase23_mitigation_status),
+        "",
+        _markdown_table(phase23_summary),
+        "",
+        _markdown_table(phase23_risk_register),
+        "",
+        _markdown_table(phase23_promotion_path),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1108,6 +1139,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase22-recalibration-task-ledger", type=Path, default=Path("outputs/phase22/recalibration_task_ledger.csv"))
     parser.add_argument("--phase22-capture-expansion-plan", type=Path, default=Path("outputs/phase22/capture_expansion_plan.csv"))
     parser.add_argument("--phase22-summary", type=Path, default=Path("outputs/phase22/real_data_integration_summary.csv"))
+    parser.add_argument("--phase23-risk-register", type=Path, default=Path("outputs/phase23/key_risk_register.csv"))
+    parser.add_argument("--phase23-mitigation-ledger", type=Path, default=Path("outputs/phase23/risk_mitigation_ledger.csv"))
+    parser.add_argument("--phase23-promotion-path", type=Path, default=Path("outputs/phase23/promotion_path_guardrail.csv"))
+    parser.add_argument("--phase23-summary", type=Path, default=Path("outputs/phase23/key_risk_summary.csv"))
     return parser.parse_args()
 
 
@@ -1218,6 +1253,10 @@ def main() -> None:
         "phase22_recalibration_task_ledger": args.phase22_recalibration_task_ledger,
         "phase22_capture_expansion_plan": args.phase22_capture_expansion_plan,
         "phase22_summary": args.phase22_summary,
+        "phase23_risk_register": args.phase23_risk_register,
+        "phase23_mitigation_ledger": args.phase23_mitigation_ledger,
+        "phase23_promotion_path": args.phase23_promotion_path,
+        "phase23_summary": args.phase23_summary,
     }
     run_dashboard(args.output_dir, paths)
 
