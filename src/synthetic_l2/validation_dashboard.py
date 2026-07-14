@@ -141,6 +141,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     predictive_validation_ledger = _read_csv(paths["predictive_validation_ledger"])
     predictive_validation_gap_summary = _read_csv(paths["predictive_validation_gap_summary"])
     predictive_validation_strategy_summary = _read_csv(paths["predictive_validation_strategy_summary"])
+    robustness_execution_criteria = _read_csv(paths["robustness_execution_criteria"])
+    robustness_execution_ledger = _read_csv(paths["robustness_execution_ledger"])
+    robustness_execution_gap_summary = _read_csv(paths["robustness_execution_gap_summary"])
+    robustness_execution_strategy_summary = _read_csv(paths["robustness_execution_strategy_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -230,6 +234,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     predictive_validation_status = (
         predictive_validation_ledger.groupby(["predictive_contract_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    robustness_execution_status = (
+        robustness_execution_ledger.groupby(["robustness_execution_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -339,6 +348,13 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_m03_predictive_holdout_or_untouched_required_rows", int(predictive_validation_ledger["holdout_or_untouched_required"].astype(bool).sum()), "Phase 20 M03 rows requiring holdout or untouched-test evidence"),
         ("phase20_m03_predictive_promotion_falsification_required_rows", int(predictive_validation_ledger["promotion_falsification_required"].astype(bool).sum()), "Phase 20 M03 rows requiring promotion-falsification clearance"),
         ("phase20_m03_predictive_acceptance_met_rows", int(predictive_validation_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M03 rows that meet acceptance after contract"),
+        ("phase20_m04_robustness_execution_rows", int(len(robustness_execution_ledger)), "Phase 20 M04 robustness execution rows"),
+        ("phase20_m04_full_seed_required_rows", int(robustness_execution_ledger["full_seed_execution_required"].astype(bool).sum()), "Phase 20 M04 rows requiring full seed execution"),
+        ("phase20_m04_walk_forward_required_rows", int(robustness_execution_ledger["walk_forward_execution_required"].astype(bool).sum()), "Phase 20 M04 rows requiring walk-forward execution"),
+        ("phase20_m04_parameter_smoothness_required_rows", int(robustness_execution_ledger["parameter_smoothness_required"].astype(bool).sum()), "Phase 20 M04 rows requiring parameter-neighborhood smoothness"),
+        ("phase20_m04_execution_profile_required_rows", int(robustness_execution_ledger["execution_profile_required"].astype(bool).sum()), "Phase 20 M04 rows requiring execution-profile robustness"),
+        ("phase20_m04_negative_control_required_rows", int(robustness_execution_ledger["negative_control_required"].astype(bool).sum()), "Phase 20 M04 rows requiring negative-control rejection"),
+        ("phase20_m04_robustness_acceptance_met_rows", int(robustness_execution_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M04 rows that meet acceptance after contract"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -420,6 +436,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 M01 Broker Evidence Contract</h2>{_table(broker_import_checklist, ['evidence_file_id', 'expected_path', 'evidence_domain', 'file_exists_now', 'current_status', 'next_action'], 10)}{_table(broker_external_gap_summary, None, 10)}{_table(broker_external_status, None, 10)}{_table(broker_reconciliation_test_catalog, ['test_id', 'acceptance_threshold', 'current_status'], 10)}{_table(broker_external_gap_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'required_external_files', 'broker_evidence_status', 'acceptance_requirement_met_after_contract', 'blocking_gap_after_contract'], 60)}</section>
   <section><h2>Phase 20 M02 Strategy Support Contract</h2>{_table(strategy_support_gap_summary, None, 10)}{_table(strategy_support_status, None, 20)}{_table(strategy_support_decision_summary, ['strategy_id', 'strategy_support_closure_status', 'm02_rows', 'required_support_action'], 15)}{_table(strategy_support_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(strategy_support_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'strategy_support_level', 'hardening_requirement', 'support_contract_status', 'alpha_promotion_scope', 'acceptance_requirement_met_after_contract', 'required_support_action'], 60)}</section>
   <section><h2>Phase 20 M03 Predictive Validation Contract</h2>{_table(predictive_validation_gap_summary, None, 12)}{_table(predictive_validation_status, None, 12)}{_table(predictive_validation_strategy_summary, ['strategy_id', 'strategy_support_level', 'm03_rows', 'baseline_pass_proxy', 'predictive_promotion_candidate_proxy', 'predictive_validation_status'], 15)}{_table(predictive_validation_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(predictive_validation_ledger, ['execution_rank', 'strategy_id', 'hardening_requirement', 'predictive_contract_status', 'observed_predictive_metric', 'acceptance_requirement_met_after_contract', 'required_predictive_action'], 70)}</section>
+  <section><h2>Phase 20 M04 Robustness Execution Contract</h2>{_table(robustness_execution_gap_summary, None, 12)}{_table(robustness_execution_status, None, 12)}{_table(robustness_execution_strategy_summary, ['strategy_id', 'strategy_support_level', 'm04_rows', 'seed_rows_requiring_execution', 'walk_forward_rows_requiring_execution', 'robustness_execution_contract_status'], 15)}{_table(robustness_execution_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(robustness_execution_ledger, ['execution_rank', 'strategy_id', 'hardening_requirement', 'robustness_execution_status', 'observed_robustness_metric', 'acceptance_requirement_met_after_contract', 'required_robustness_action'], 70)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -620,6 +637,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(predictive_validation_ledger.head(70)),
         "",
+        "## Phase 20 M04 Robustness Execution Contract",
+        "",
+        _markdown_table(robustness_execution_gap_summary),
+        "",
+        _markdown_table(robustness_execution_status),
+        "",
+        _markdown_table(robustness_execution_strategy_summary),
+        "",
+        _markdown_table(robustness_execution_criteria),
+        "",
+        _markdown_table(robustness_execution_ledger.head(70)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -695,6 +724,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--predictive-validation-ledger", type=Path, default=Path("outputs/phase20_m03/predictive_validation_ledger.csv"))
     parser.add_argument("--predictive-validation-gap-summary", type=Path, default=Path("outputs/phase20_m03/predictive_validation_gap_summary.csv"))
     parser.add_argument("--predictive-validation-strategy-summary", type=Path, default=Path("outputs/phase20_m03/predictive_validation_strategy_summary.csv"))
+    parser.add_argument("--robustness-execution-criteria", type=Path, default=Path("outputs/phase20_m04/robustness_execution_acceptance_criteria.csv"))
+    parser.add_argument("--robustness-execution-ledger", type=Path, default=Path("outputs/phase20_m04/robustness_execution_ledger.csv"))
+    parser.add_argument("--robustness-execution-gap-summary", type=Path, default=Path("outputs/phase20_m04/robustness_execution_gap_summary.csv"))
+    parser.add_argument("--robustness-execution-strategy-summary", type=Path, default=Path("outputs/phase20_m04/robustness_execution_strategy_summary.csv"))
     return parser.parse_args()
 
 
@@ -752,6 +785,10 @@ def main() -> None:
         "predictive_validation_ledger": args.predictive_validation_ledger,
         "predictive_validation_gap_summary": args.predictive_validation_gap_summary,
         "predictive_validation_strategy_summary": args.predictive_validation_strategy_summary,
+        "robustness_execution_criteria": args.robustness_execution_criteria,
+        "robustness_execution_ledger": args.robustness_execution_ledger,
+        "robustness_execution_gap_summary": args.robustness_execution_gap_summary,
+        "robustness_execution_strategy_summary": args.robustness_execution_strategy_summary,
     }
     run_dashboard(args.output_dir, paths)
 

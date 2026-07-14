@@ -101,3 +101,10 @@ phase20_m03_predictive_baseline_lift_required_rows,11,Phase 20 M03 rows requirin
 phase20_m03_predictive_holdout_or_untouched_required_rows,22,Phase 20 M03 rows requiring holdout or untouched-test evidence
 phase20_m03_predictive_promotion_falsification_required_rows,11,Phase 20 M03 rows requiring promotion-falsification clearance
 phase20_m03_predictive_acceptance_met_rows,0,Phase 20 M03 rows that meet acceptance after contract
+phase20_m04_robustness_execution_rows,66,Phase 20 M04 robustness execution rows
+phase20_m04_full_seed_required_rows,22,Phase 20 M04 rows requiring full seed execution
+phase20_m04_walk_forward_required_rows,22,Phase 20 M04 rows requiring walk-forward execution
+phase20_m04_parameter_smoothness_required_rows,11,Phase 20 M04 rows requiring parameter-neighborhood smoothness
+phase20_m04_execution_profile_required_rows,11,Phase 20 M04 rows requiring execution-profile robustness
+phase20_m04_negative_control_required_rows,11,Phase 20 M04 rows requiring negative-control rejection
+phase20_m04_robustness_acceptance_met_rows,0,Phase 20 M04 rows that meet acceptance after contract

@@ -1,0 +1,12 @@
+strategy_id,strategy_support_level,strategy_role,m04_rows,distinct_statuses,acceptance_met_rows,seed_rows_requiring_execution,walk_forward_rows_requiring_execution,parameter_rows_requiring_smoothness,profile_rows_requiring_execution,negative_control_rows_requiring_execution,first_required_action,robustness_execution_contract_status
+S01,runnable_proxy,priority,6,6,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S02,runnable_proxy,priority,6,6,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S03,partial_missing_required_features,priority,6,1,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S04,partial_missing_required_features,priority,6,1,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S05,runnable_proxy,filter,6,6,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S06,partial_missing_required_features,priority,6,1,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S07,runnable_proxy,priority,6,6,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S08,partial_missing_required_features,research,6,1,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S09,runnable_proxy,benchmark,6,6,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S10,not_supported_by_current_product,research_only,6,1,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance
+S11,not_supported_by_current_product,risk_filter_only,6,1,0,2,2,1,1,1,Execute the registered multi-seed walk-forward windows without train/test leakage or threshold reuse.,proxy_or_support_blocked_not_acceptance

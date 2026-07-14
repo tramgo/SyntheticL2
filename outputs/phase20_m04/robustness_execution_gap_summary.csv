@@ -1,0 +1,9 @@
+robustness_execution_status,rows,strategies,acceptance_met_rows
+blocked_by_partial_strategy_support,24,4,0
+blocked_by_unsupported_strategy_scope,12,2,0
+execution_profile_proxy_not_acceptance_grade,5,5,0
+negative_control_proxy_incomplete_or_not_acceptance_grade,5,5,0
+predictive_multiseed_walk_forward_required_before_robustness_acceptance,5,5,0
+proxy_initial_seed_only_full_seed_execution_missing,5,5,0
+single_parameter_proxy_parameter_grid_missing,5,5,0
+walk_forward_design_available_not_executed,5,5,0
