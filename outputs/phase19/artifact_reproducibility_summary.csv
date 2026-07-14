@@ -35,3 +35,4 @@ phase9,outputs/phase9/data_product_manifest.json,10,10,0,0,0,True
 stage_a1,outputs/stage_a1/manifest_check.json,10,10,0,0,0,True
 stage_a2,outputs/stage_a2/stage_a2_capture_diagnostics_contract_manifest.json,10,10,0,0,0,True
 stage_b1,outputs/stage_b1/stage_b1_structural_synthetic_proof_manifest.json,10,10,0,0,0,True
+stage_b2,outputs/stage_b2/stage_b2_event_driven_synthetic_proof_manifest.json,10,10,0,0,0,True

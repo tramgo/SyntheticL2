@@ -139,3 +139,12 @@ stage_b1_scenario_coverage_rows,3,Stage B1 scenario coverage rows
 stage_b1_structural_check_rows,7,Stage B1 structural check rows
 stage_b1_structural_checks_passed,7,Stage B1 passed structural checks
 stage_b1_structural_checks_failed,0,Stage B1 failed structural checks
+stage_b2_development_symbols,5,Stage B2 development subset symbols
+stage_b2_event_driven_1s_ready_symbols,1,Stage B2 event-driven 1s-ready development symbols
+stage_b2_selected_scenario_days,8,Stage B2 selected scenario days
+stage_b2_raw_event_rows,15061,Stage B2 raw event rows
+stage_b2_event_feature_rows,14952,Stage B2 event-driven feature rows
+stage_b2_one_second_event_feature_rows,2400,Stage B2 event-driven 1s proof rows
+stage_b2_proof_check_rows,7,Stage B2 proof check rows
+stage_b2_proof_checks_passed,7,Stage B2 passed proof checks
+stage_b2_proof_checks_failed,0,Stage B2 failed proof checks

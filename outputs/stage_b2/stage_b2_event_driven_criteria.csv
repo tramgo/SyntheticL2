@@ -1,0 +1,8 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+development_subset,"Use the same five-instrument Stage B1 development subset, including at least one ETF.",5 symbols and ETF count >= 1,proof_check_not_strategy_acceptance
+scenario_selection,"Select 5 normal days, 2 explicit trend days and 1 explicit shock day.","normal_days == 5, trend_days == 2, shock_days == 1",proof_check_not_strategy_acceptance
+raw_event_dataset,Emit raw synthetic event rows for the selected symbols/days.,raw_event_rows > 0,proof_check_not_strategy_acceptance
+event_feature_dataset,Emit event-driven feature rows from received synthetic feed observations.,event_feature_rows > 0,proof_check_not_strategy_acceptance
+one_second_scope,Emit 1-second/event-driven feature rows only for symbols/windows supported by measured readiness.,all 1s symbols have event_driven_1s_ready == true,proof_check_not_strategy_acceptance
+no_dense_1s_overclaim,Do not claim dense 1-second readiness where measured coverage does not support it.,dense_1s_claim_rows == 0,proof_check_not_strategy_acceptance
+deterministic_replay_storage,Persist deterministic proof outputs with manifest and stable row counts.,dataset rows stable and manifest records inputs/outputs,proof_check_not_strategy_acceptance

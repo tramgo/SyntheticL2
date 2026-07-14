@@ -1,0 +1,6 @@
+symbol,instrument_class,window_name,rows,event_rate_per_second,coverage_fraction,forward_fill_fraction,median_gap_ms,p95_gap_ms,dense_1s_ready,event_driven_1s_ready,readiness_status,stage_b2_1s_action
+BHARTIARTL,equity,open_0915_0920,350,1.1666666666666667,0.6266666666666667,0.3733333333333333,500.0,4175.799999999995,False,True,event_driven_1s_ready,emit_event_driven_1s_features
+ADANIPORTS,equity,open_0915_0920,211,0.7033333333333334,0.42,0.5800000000000001,636.5,6214.749999999985,False,False,not_1s_ready,exclude_from_1s_features_due_to_measured_readiness
+AXISBANK,equity,open_0915_0920,203,0.6766666666666666,0.4133333333333333,0.5866666666666667,749.0,7664.349999999997,False,False,not_1s_ready,exclude_from_1s_features_due_to_measured_readiness
+BAJAJ-AUTO,equity,open_0915_0920,191,0.6366666666666667,0.4066666666666667,0.5933333333333333,750.0,7588.399999999994,False,False,not_1s_ready,exclude_from_1s_features_due_to_measured_readiness
+BANKBEES,etf,open_0915_0920,56,0.1866666666666666,0.1833333333333333,0.8166666666666667,5072.0,9931.4,False,False,not_1s_ready,exclude_from_1s_features_due_to_measured_readiness

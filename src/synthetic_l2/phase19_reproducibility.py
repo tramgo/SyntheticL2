@@ -43,6 +43,7 @@ MANIFEST_CANDIDATES = [
     ("phase1_event_reconstruction", "outputs/phase1/event_reconstruction/event_reconstruction_manifest.json"),
     ("stage_a2", "outputs/stage_a2/stage_a2_capture_diagnostics_contract_manifest.json"),
     ("stage_b1", "outputs/stage_b1/stage_b1_structural_synthetic_proof_manifest.json"),
+    ("stage_b2", "outputs/stage_b2/stage_b2_event_driven_synthetic_proof_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

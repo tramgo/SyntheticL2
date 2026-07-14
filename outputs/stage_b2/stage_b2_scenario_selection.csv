@@ -1,0 +1,9 @@
+stage_b2_bucket,scenario_day,trade_date,quarter_profile,regime_code,regime_family,is_market_shock_day,event_rate_multiplier,spread_multiplier,depth_multiplier,evidence_label
+normal,4,2026-07-17,Q-A,D01,Normal balanced,False,1.0,1.0,1.0,synthetic_scenario_design
+normal,8,2026-07-23,Q-A,D01,Normal balanced,False,1.0,1.0,1.0,synthetic_scenario_design
+normal,19,2026-08-07,Q-A,D01,Normal balanced,False,1.0,1.0,1.0,synthetic_scenario_design
+normal,21,2026-08-11,Q-A,D01,Normal balanced,False,1.0,1.0,1.0,synthetic_scenario_design
+normal,24,2026-08-14,Q-A,D01,Normal balanced,False,1.0,1.0,1.0,synthetic_scenario_design
+shock,2,2026-07-15,Q-A,D12,Event day,True,1.35,1.25,0.85,synthetic_scenario_design
+trend,1,2026-07-14,Q-A,D04,Gradual bullish trend,False,1.1,1.0,1.0,synthetic_scenario_design
+trend,10,2026-07-27,Q-A,D04,Gradual bullish trend,False,1.1,1.0,1.0,synthetic_scenario_design

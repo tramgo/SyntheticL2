@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-14T16:46:58.498808+00:00
+Generated UTC: 2026-07-14T16:58:32.765322+00:00
 
 ## Scope
 
@@ -11,7 +11,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 
 | coverage_status | field_checks |
 | --- | --- |
-| present_exact | 360 |
+| present_exact | 370 |
 
 ## Artifact Summary
 
@@ -53,6 +53,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | stage_a1 | outputs/stage_a1/manifest_check.json | 10 | 10 | 0 | 0 | 0 | True |
 | stage_a2 | outputs/stage_a2/stage_a2_capture_diagnostics_contract_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | stage_b1 | outputs/stage_b1/stage_b1_structural_synthetic_proof_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| stage_b2 | outputs/stage_b2/stage_b2_event_driven_synthetic_proof_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 
 ## Reproducibility Gaps
 
@@ -62,7 +63,7 @@ _No rows._
 
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
-| complete_exact | 360 | 36 |
+| complete_exact | 370 | 37 |
 
 ## Normalized Manifest Overlay
 
@@ -71,11 +72,11 @@ It is a reproducibility bridge, not proof that every original phase generator al
 
 | overlay_metric | value |
 | --- | --- |
-| normalized_overlay_artifacts | 36 |
-| exact_field_overlay_ready_artifacts | 36 |
+| normalized_overlay_artifacts | 37 |
+| exact_field_overlay_ready_artifacts | 37 |
 | normalizer_default_fields | 0 |
-| source_manifest_exact_or_alias_fields | 360 |
-| normalized_field_rows | 360 |
+| source_manifest_exact_or_alias_fields | 370 |
+| normalized_field_rows | 370 |
 
 | artifact_id | source_manifest_path | normalized_manifest_path | source_manifest_exists | required_fields | normalized_fields_present | normalizer_default_fields | source_manifest_exact_or_alias_fields | exact_field_overlay_ready |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -84,6 +85,7 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | phase1_event_reconstruction | outputs/phase1/event_reconstruction/event_reconstruction_manifest.json | outputs\phase19\normalized_manifests\phase1_event_reconstruction.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | stage_a2 | outputs/stage_a2/stage_a2_capture_diagnostics_contract_manifest.json | outputs\phase19\normalized_manifests\stage_a2.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | stage_b1 | outputs/stage_b1/stage_b1_structural_synthetic_proof_manifest.json | outputs\phase19\normalized_manifests\stage_b1.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| stage_b2 | outputs/stage_b2/stage_b2_event_driven_synthetic_proof_manifest.json | outputs\phase19\normalized_manifests\stage_b2.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase2 | outputs/phase2/calibration_manifest.json | outputs\phase19\normalized_manifests\phase2.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase3 | outputs/phase3/regime_manifest.json | outputs\phase19\normalized_manifests\phase3.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase4 | outputs/phase4/scenario_manifest.json | outputs\phase19\normalized_manifests\phase4.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |

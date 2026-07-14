@@ -1,0 +1,11 @@
+metric,value,description
+selected_symbols,5,same five-symbol development subset
+selected_scenario_days,8,5 normal + 2 trend + 1 shock
+normal_days,5,normal scenario days
+trend_days,2,explicit trend scenario days
+shock_days,1,explicit shock scenario days
+raw_event_rows,15061,raw synthetic event subset rows
+event_feature_rows,14952,event-driven received-feed feature rows
+event_driven_1s_ready_symbols,1,symbols eligible for event-driven 1s features
+dense_1s_ready_symbols,0,symbols eligible for dense 1s features
+one_second_event_feature_rows,2400,event-driven 1s proof rows

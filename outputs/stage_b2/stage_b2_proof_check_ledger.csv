@@ -1,0 +1,8 @@
+check_id,observed_value,expected_value,passed,detail,acceptance_scope
+development_subset,5,5,True,etf_count=1,stage_b2_event_driven_proof_not_strategy_profitability
+scenario_selection,1,1,True,"bucket_counts={'normal': 5, 'trend': 2, 'shock': 1}",stage_b2_event_driven_proof_not_strategy_profitability
+raw_event_dataset,15061,1,True,raw Phase 9 Tier A events selected for Stage B2 symbols/days,stage_b2_event_driven_proof_not_strategy_profitability
+event_feature_dataset,14952,1,True,received-feed event features built from Phase 8 observations,stage_b2_event_driven_proof_not_strategy_profitability
+one_second_scope,0,0,True,one_second_symbols=['BHARTIARTL']; ready_symbols=['BHARTIARTL'],stage_b2_event_driven_proof_not_strategy_profitability
+no_dense_1s_overclaim,0,0,True,"Stage B2 only emits event-driven 1s rows, not dense 1s claims",stage_b2_event_driven_proof_not_strategy_profitability
+deterministic_replay_storage,32413,1,True,parquet datasets plus csv ledgers and manifest,stage_b2_event_driven_proof_not_strategy_profitability
