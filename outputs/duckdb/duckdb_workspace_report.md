@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T15:05:28.937329+00:00
+Generated UTC: 2026-07-14T15:15:01.129702+00:00
 
 ## Storage Decision
 
@@ -197,9 +197,14 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 acceptance hardening queue rows: 50
 - Phase 20 acceptance hardening gate rows: 5
 - Phase 20 acceptance hardening strategy rows: 11
+- Phase 20 risk hardening plan rows: 88
+- Phase 20 risk hardening rows with proxy evidence: 54
+- Phase 20 risk hardening rows missing required evidence: 34
+- Phase 20 met risk hardening rows: 0
+- Phase 20 risk hardening action rows: 6
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 61
+- Validation dashboard summary rows: 65
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

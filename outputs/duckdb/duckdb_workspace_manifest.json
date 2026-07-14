@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T15:05:28.937329+00:00",
+  "generated_utc": "2026-07-14T15:15:01.129702+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -193,9 +193,14 @@
     "phase20_hardening_queue_rows": 50,
     "phase20_hardening_gate_rows": 5,
     "phase20_hardening_strategy_rows": 11,
+    "phase20_risk_hardening_plan_rows": 88,
+    "phase20_risk_hardening_proxy_rows": 54,
+    "phase20_risk_hardening_missing_rows": 34,
+    "phase20_risk_hardening_met_rows": 0,
+    "phase20_risk_hardening_action_rows": 6,
     "phase20_acceptance_ready_rows": 0,
     "phase20_top_priority_gate_rows": 11,
-    "validation_dashboard_summary_rows": 61,
+    "validation_dashboard_summary_rows": 65,
     "validation_dashboard_promoted_strategies": 0,
     "validation_dashboard_p1_gaps": 0,
     "replay_validation_tiers": 3,
@@ -353,6 +358,8 @@
     "phase20_acceptance_hardening_gate_summary",
     "phase20_acceptance_hardening_queue",
     "phase20_acceptance_hardening_strategy_summary",
+    "phase20_risk_hardening_action_summary",
+    "phase20_risk_hardening_plan",
     "phase2_activity",
     "phase2_depth",
     "phase2_price",
@@ -385,8 +392,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "0619fb76cdcecd5536f871c8f738d2ec95815df7",
-  "configuration_hash": "b384e4d3f6f7d441dc32a6b87f7bfeef382fc792eaa9e6473b9f0d1716b79a46",
+  "generator_version": "119398a2381883d1aa858d364302f1fb1dc4f997",
+  "configuration_hash": "32b64e828a7e1122f393a282a38d7c14e8c69c9e6c5891e3dd193c856d328aa4",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -394,5 +401,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-14T15:05:28.937329+00:00"
+  "creation_timestamp": "2026-07-14T15:15:01.129702+00:00"
 }

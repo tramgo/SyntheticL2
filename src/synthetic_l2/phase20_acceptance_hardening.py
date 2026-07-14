@@ -42,6 +42,39 @@ DEPENDENCY_NOTE = {
     "G05_realism": "Requires strategy reruns on holdout generator configurations with feed imperfections and pessimistic execution controls.",
 }
 
+RISK_REQUIREMENT_PRIORITY = {
+    "broker_exchange_fill_provenance": 1,
+    "contract_note_and_cost_reconciliation": 2,
+    "strategy_full_run_coverage": 3,
+    "daily_equity_curve_and_halt_coverage": 4,
+    "daily_loss_limit_validation": 5,
+    "drawdown_breach_validation": 6,
+    "position_limit_validation": 7,
+    "tail_loss_validation": 8,
+}
+
+RISK_ACTION_CLASS = {
+    "broker_exchange_fill_provenance": "broker_or_exchange_reconciliation",
+    "contract_note_and_cost_reconciliation": "broker_contract_note_reconciliation",
+    "strategy_full_run_coverage": "acceptance_run_coverage",
+    "daily_equity_curve_and_halt_coverage": "risk_state_persistence",
+    "daily_loss_limit_validation": "guardrail_validation",
+    "drawdown_breach_validation": "guardrail_validation",
+    "position_limit_validation": "guardrail_validation",
+    "tail_loss_validation": "tail_risk_validation",
+}
+
+RISK_DEPENDENCY_TYPE = {
+    "broker_exchange_fill_provenance": "external_broker_or_exchange_records",
+    "contract_note_and_cost_reconciliation": "external_broker_contract_notes_or_documented_synthetic_substitute",
+    "strategy_full_run_coverage": "internal_full_run_event_lifecycle_engine",
+    "daily_equity_curve_and_halt_coverage": "internal_full_run_event_lifecycle_engine",
+    "daily_loss_limit_validation": "internal_guardrail_replay_plus_acceptance_thresholds",
+    "drawdown_breach_validation": "internal_guardrail_replay_plus_acceptance_thresholds",
+    "position_limit_validation": "internal_guardrail_replay_plus_acceptance_thresholds",
+    "tail_loss_validation": "internal_tail_risk_replay_plus_acceptance_thresholds",
+}
+
 
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
@@ -61,6 +94,9 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "strategy_acceptance_summary": pd.read_csv(paths["strategy_acceptance_summary"]),
         "implementation_gap_backlog": pd.read_csv(paths["implementation_gap_backlog"]),
         "deliverable_traceability": pd.read_csv(paths["deliverable_traceability"]),
+        "risk_acceptance_readiness": pd.read_csv(paths["risk_acceptance_readiness"]),
+        "risk_breach_severity": pd.read_csv(paths["risk_breach_severity"]),
+        "risk_limit_sensitivity": pd.read_csv(paths["risk_limit_sensitivity"]),
     }
 
 
@@ -168,7 +204,185 @@ def build_strategy_queue_summary(queue: pd.DataFrame) -> pd.DataFrame:
     return grouped.sort_values(["top_queue_rank", "strategy_id"], kind="mergesort")
 
 
-def write_report(output_dir: Path, queue: pd.DataFrame, gate_summary: pd.DataFrame, strategy_summary: pd.DataFrame) -> None:
+def _risk_strategy_summary(breach: pd.DataFrame, limits: pd.DataFrame) -> pd.DataFrame:
+    if breach.empty:
+        breach_summary = pd.DataFrame(columns=["strategy_id"])
+    else:
+        breach_summary = (
+            breach.groupby("strategy_id", sort=True)
+            .agg(
+                risk_breach_rows=("strategy_id", "count"),
+                high_proxy_breach_rows=(
+                    "risk_severity_band",
+                    lambda values: int((values.astype(str) == "high_proxy_breach_severity").sum()),
+                ),
+                proxy_risk_pass_candidate_rows=("risk_pass_candidate_proxy", lambda values: int(values.astype(bool).sum())),
+                worst_daily_risk_adjusted_net_pnl_inr=("worst_daily_risk_adjusted_net_pnl_inr", "min"),
+                worst_tail_loss_1pct_filled_pnl_inr=("tail_loss_1pct_filled_pnl_inr", "min"),
+                worst_intraday_drawdown_inr=("max_intraday_drawdown_inr", "min"),
+                max_abs_position_units=("max_abs_position_units", "max"),
+                max_breach_day_fraction=("breach_day_fraction", "max"),
+                max_risk_severity_score=("risk_severity_score", "max"),
+            )
+            .reset_index()
+        )
+    if limits.empty:
+        limit_summary = pd.DataFrame(columns=["strategy_id"])
+    else:
+        limit_summary = (
+            limits.groupby("strategy_id", sort=True)
+            .agg(
+                risk_limit_rows=("strategy_id", "count"),
+                current_proxy_limit_pass_rows=(
+                    "risk_pass_candidate_under_limit_profile",
+                    lambda values: 0,
+                ),
+                any_limit_pass_rows=("risk_pass_candidate_under_limit_profile", lambda values: int(values.astype(bool).sum())),
+                high_risk_limit_rows=(
+                    "risk_limit_status",
+                    lambda values: int((values.astype(str) == "high_proxy_breach_under_limit_profile").sum()),
+                ),
+                max_risk_limit_severity_score=("risk_limit_severity_score", "max"),
+            )
+            .reset_index()
+        )
+        current_limit = limits[limits["risk_limit_profile"].astype(str) == "current_proxy_limits"]
+        if not current_limit.empty:
+            current_pass = (
+                current_limit.groupby("strategy_id", sort=True)["risk_pass_candidate_under_limit_profile"]
+                .agg(lambda values: int(values.astype(bool).sum()))
+                .reset_index(name="current_proxy_limit_pass_rows")
+            )
+            limit_summary = limit_summary.drop(columns=["current_proxy_limit_pass_rows"]).merge(
+                current_pass,
+                on="strategy_id",
+                how="left",
+            )
+    return breach_summary.merge(limit_summary, on="strategy_id", how="outer").fillna(0)
+
+
+def build_risk_hardening_plan(
+    queue: pd.DataFrame,
+    readiness: pd.DataFrame,
+    breach: pd.DataFrame,
+    limits: pd.DataFrame,
+) -> pd.DataFrame:
+    risk_queue = queue[queue["gate_id"].astype(str) == "G04_risk"][
+        ["queue_rank", "priority_band", "strategy_id", "strategy_support_level", "strategy_role"]
+    ].copy()
+    risk_summary = _risk_strategy_summary(breach, limits)
+    rows = readiness.merge(risk_queue, on="strategy_id", how="left").merge(risk_summary, on="strategy_id", how="left")
+    rows = rows[rows["queue_rank"].notna()].copy()
+    rows["requirement_priority"] = rows["risk_requirement"].map(RISK_REQUIREMENT_PRIORITY).fillna(99).astype(int)
+    rows["action_class"] = rows["risk_requirement"].map(RISK_ACTION_CLASS).fillna("unmapped_risk_action")
+    rows["dependency_type"] = rows["risk_requirement"].map(RISK_DEPENDENCY_TYPE).fillna("unmapped_dependency")
+    rows["proxy_evidence_available"] = rows["proxy_evidence_available"].astype(bool)
+    rows["acceptance_requirement_met"] = rows["acceptance_requirement_met"].astype(bool)
+    rows["acceptance_ready_now"] = False
+    rows["risk_hardening_status"] = rows.apply(
+        lambda row: "acceptance_met"
+        if row["acceptance_requirement_met"]
+        else "proxy_evidence_needs_acceptance_upgrade"
+        if row["proxy_evidence_available"]
+        else "missing_required_acceptance_evidence",
+        axis=1,
+    )
+    numeric_summary_columns = [
+        "risk_breach_rows",
+        "high_proxy_breach_rows",
+        "proxy_risk_pass_candidate_rows",
+        "current_proxy_limit_pass_rows",
+        "any_limit_pass_rows",
+        "high_risk_limit_rows",
+        "max_breach_day_fraction",
+        "max_risk_severity_score",
+        "max_risk_limit_severity_score",
+    ]
+    for column in numeric_summary_columns:
+        if column in rows:
+            rows[column] = rows[column].fillna(0)
+    rows["risk_evidence_summary"] = rows.apply(
+        lambda row: (
+            f"breach_rows={int(row.get('risk_breach_rows', 0))}; "
+            f"high_breach_rows={int(row.get('high_proxy_breach_rows', 0))}; "
+            f"proxy_pass_rows={int(row.get('proxy_risk_pass_candidate_rows', 0))}; "
+            f"current_limit_pass_rows={int(row.get('current_proxy_limit_pass_rows', 0))}; "
+            f"any_limit_pass_rows={int(row.get('any_limit_pass_rows', 0))}"
+        ),
+        axis=1,
+    )
+    output_columns = [
+        "queue_rank",
+        "priority_band",
+        "strategy_id",
+        "strategy_support_level",
+        "strategy_role",
+        "risk_requirement",
+        "requirement_priority",
+        "action_class",
+        "dependency_type",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "risk_hardening_status",
+        "blocking_gap",
+        "required_next_evidence",
+        "risk_evidence_summary",
+        "risk_breach_rows",
+        "high_proxy_breach_rows",
+        "proxy_risk_pass_candidate_rows",
+        "current_proxy_limit_pass_rows",
+        "any_limit_pass_rows",
+        "high_risk_limit_rows",
+        "max_breach_day_fraction",
+        "max_risk_severity_score",
+        "max_risk_limit_severity_score",
+        "acceptance_ready_now",
+        "evidence_source",
+    ]
+    for column in output_columns:
+        if column not in rows:
+            rows[column] = 0 if column.endswith("_rows") or column.startswith("max_") else ""
+    return rows[output_columns].sort_values(["queue_rank", "requirement_priority"], kind="mergesort")
+
+
+def build_risk_action_summary(risk_plan: pd.DataFrame) -> pd.DataFrame:
+    if risk_plan.empty:
+        return pd.DataFrame(
+            columns=[
+                "action_class",
+                "dependency_type",
+                "risk_requirement_rows",
+                "strategies",
+                "proxy_evidence_rows",
+                "acceptance_met_rows",
+                "open_rows",
+            ]
+        )
+    grouped = (
+        risk_plan.groupby(["action_class", "dependency_type"], sort=True)
+        .agg(
+            risk_requirement_rows=("risk_requirement", "count"),
+            strategies=("strategy_id", "nunique"),
+            proxy_evidence_rows=("proxy_evidence_available", lambda values: int(values.astype(bool).sum())),
+            acceptance_met_rows=("acceptance_requirement_met", lambda values: int(values.astype(bool).sum())),
+        )
+        .reset_index()
+    )
+    grouped["open_rows"] = grouped["risk_requirement_rows"] - grouped["acceptance_met_rows"]
+    return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
+
+
+def write_report(
+    output_dir: Path,
+    queue: pd.DataFrame,
+    gate_summary: pd.DataFrame,
+    strategy_summary: pd.DataFrame,
+    risk_plan: pd.DataFrame,
+    risk_action_summary: pd.DataFrame,
+) -> None:
     priority_summary = queue.groupby(["priority_band", "gate_id", "acceptance_milestone"], sort=True).size().reset_index(name="queue_items")
     lines = [
         "# Phase 20 Acceptance Hardening Queue",
@@ -196,6 +410,26 @@ def write_report(output_dir: Path, queue: pd.DataFrame, gate_summary: pd.DataFra
         "",
         _markdown_table(queue.head(25)),
         "",
+        "## Risk Hardening Action Summary",
+        "",
+        _markdown_table(risk_action_summary),
+        "",
+        "## Top Risk Hardening Requirements",
+        "",
+        _markdown_table(
+            risk_plan[
+                [
+                    "queue_rank",
+                    "strategy_id",
+                    "risk_requirement",
+                    "action_class",
+                    "risk_hardening_status",
+                    "risk_evidence_summary",
+                    "required_next_evidence",
+                ]
+            ].head(40)
+        ),
+        "",
     ]
     (output_dir / "phase20_acceptance_hardening_report.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -211,16 +445,29 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         inputs["deliverable_traceability"],
     )
     strategy_queue = build_strategy_queue_summary(queue)
+    risk_plan = build_risk_hardening_plan(
+        queue,
+        inputs["risk_acceptance_readiness"],
+        inputs["risk_breach_severity"],
+        inputs["risk_limit_sensitivity"],
+    )
+    risk_action_summary = build_risk_action_summary(risk_plan)
 
     queue.to_csv(output_dir / "acceptance_hardening_queue.csv", index=False)
     gate_summary.to_csv(output_dir / "acceptance_hardening_gate_summary.csv", index=False)
     strategy_queue.to_csv(output_dir / "acceptance_hardening_strategy_summary.csv", index=False)
+    risk_plan.to_csv(output_dir / "risk_hardening_plan.csv", index=False)
+    risk_action_summary.to_csv(output_dir / "risk_hardening_action_summary.csv", index=False)
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": generated_utc,
         "queue_rows": int(len(queue)),
         "gate_summary_rows": int(len(gate_summary)),
         "strategy_summary_rows": int(len(strategy_queue)),
+        "risk_hardening_plan_rows": int(len(risk_plan)),
+        "risk_hardening_open_rows": int((~risk_plan["acceptance_requirement_met"].astype(bool)).sum()),
+        "risk_hardening_proxy_rows": int(risk_plan["proxy_evidence_available"].astype(bool).sum()),
+        "risk_hardening_action_summary_rows": int(len(risk_action_summary)),
         "acceptance_ready_queue_rows": int(queue["acceptance_ready_now"].sum()),
         "top_priority_gate": gate_summary.iloc[0]["gate_id"] if len(gate_summary) else "",
         "scope": "phase20_acceptance_hardening_queue",
@@ -239,6 +486,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
                 "acceptance_hardening_queue": str(output_dir / "acceptance_hardening_queue.csv"),
                 "acceptance_hardening_gate_summary": str(output_dir / "acceptance_hardening_gate_summary.csv"),
                 "acceptance_hardening_strategy_summary": str(output_dir / "acceptance_hardening_strategy_summary.csv"),
+                "risk_hardening_plan": str(output_dir / "risk_hardening_plan.csv"),
+                "risk_hardening_action_summary": str(output_dir / "risk_hardening_action_summary.csv"),
                 "report": str(output_dir / "phase20_acceptance_hardening_report.md"),
             },
             random_seed="not_applicable_deterministic_blocker_queue",
@@ -249,7 +498,7 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         )
     )
     (output_dir / "acceptance_hardening_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, queue, gate_summary, strategy_queue)
+    write_report(output_dir, queue, gate_summary, strategy_queue, risk_plan, risk_action_summary)
 
 
 def parse_args() -> argparse.Namespace:
@@ -259,6 +508,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--strategy-acceptance-summary", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--implementation-gap-backlog", type=Path, default=Path("outputs/phase17/implementation_gap_backlog.csv"))
     parser.add_argument("--deliverable-traceability", type=Path, default=Path("outputs/phase17/deliverable_traceability.csv"))
+    parser.add_argument("--risk-acceptance-readiness", type=Path, default=Path("outputs/phase12/full_run_risk_acceptance_readiness.csv"))
+    parser.add_argument("--risk-breach-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
+    parser.add_argument("--risk-limit-sensitivity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv"))
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     return parser.parse_args()
 
@@ -270,6 +522,9 @@ def main() -> None:
         "strategy_acceptance_summary": args.strategy_acceptance_summary,
         "implementation_gap_backlog": args.implementation_gap_backlog,
         "deliverable_traceability": args.deliverable_traceability,
+        "risk_acceptance_readiness": args.risk_acceptance_readiness,
+        "risk_breach_severity": args.risk_breach_severity,
+        "risk_limit_sensitivity": args.risk_limit_sensitivity,
     }
     run_phase20(paths, args.output_dir, args.base_dir)
 

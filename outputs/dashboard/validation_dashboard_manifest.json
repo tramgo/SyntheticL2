@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T15:05:17.883547+00:00",
+  "generated_utc": "2026-07-14T15:14:49.473452+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -26,7 +26,9 @@
     "markout": "outputs\\phase16\\markout_mae_mfe_summary.csv",
     "gaps": "outputs\\phase17\\implementation_gap_backlog.csv",
     "hardening_queue": "outputs\\phase20\\acceptance_hardening_queue.csv",
-    "hardening_gate_summary": "outputs\\phase20\\acceptance_hardening_gate_summary.csv"
+    "hardening_gate_summary": "outputs\\phase20\\acceptance_hardening_gate_summary.csv",
+    "risk_hardening_plan": "outputs\\phase20\\risk_hardening_plan.csv",
+    "risk_hardening_action_summary": "outputs\\phase20\\risk_hardening_action_summary.csv"
   },
   "summary": {
     "quality_checks": 24,
@@ -89,13 +91,17 @@
     "p1_gaps": 0,
     "phase20_hardening_queue_rows": 50,
     "phase20_hardening_gate_rows": 5,
+    "phase20_risk_hardening_plan_rows": 88,
+    "phase20_risk_hardening_proxy_rows": 54,
+    "phase20_risk_hardening_missing_rows": 34,
+    "phase20_risk_hardening_met_rows": 0,
     "phase20_acceptance_ready_rows": 0
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "0619fb76cdcecd5536f871c8f738d2ec95815df7",
-  "configuration_hash": "12996d7037587bb7476da88164b71c6d549cd78c8900df93728162ba23c2e193",
+  "generator_version": "119398a2381883d1aa858d364302f1fb1dc4f997",
+  "configuration_hash": "6bd43e9f5191d7b5333097b0e81445d7d8de5d5393a586539dfaa2c016287a74",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -103,5 +109,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T15:05:17.883547+00:00"
+  "creation_timestamp": "2026-07-14T15:14:49.473452+00:00"
 }

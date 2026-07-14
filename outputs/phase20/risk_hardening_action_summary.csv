@@ -1,0 +1,7 @@
+action_class,dependency_type,risk_requirement_rows,strategies,proxy_evidence_rows,acceptance_met_rows,open_rows
+guardrail_validation,internal_guardrail_replay_plus_acceptance_thresholds,33,11,27,0,33
+acceptance_run_coverage,internal_full_run_event_lifecycle_engine,11,11,9,0,11
+broker_contract_note_reconciliation,external_broker_contract_notes_or_documented_synthetic_substitute,11,11,0,0,11
+broker_or_exchange_reconciliation,external_broker_or_exchange_records,11,11,0,0,11
+risk_state_persistence,internal_full_run_event_lifecycle_engine,11,11,9,0,11
+tail_risk_validation,internal_tail_risk_replay_plus_acceptance_thresholds,11,11,9,0,11
