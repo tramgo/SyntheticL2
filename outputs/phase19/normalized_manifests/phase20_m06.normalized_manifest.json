@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase20_m06",
+  "source_manifest_path": "outputs/phase20_m06/realism_rerun_contract_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "a3e97902424225d4f6b04d0e8916e3c909828776",
+  "configuration_hash": "ef6a62ff21c743ce721313565abdd0193f4852447d87b9691c126bdf43df3b46",
+  "random_seed": "not_applicable_deterministic_realism_rerun_contract",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase20_M06_holdout_generator_and_realism_reruns_rows",
+  "cost_model_version": "not_applicable_no_new_execution_costs",
+  "latency_model_version": "phase14_feed_profiles_proxy_not_acceptance_rerun",
+  "creation_timestamp": "2026-07-14T16:26:54.540842+00:00",
+  "normalization_timestamp": "2026-07-14T16:27:02.251347+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

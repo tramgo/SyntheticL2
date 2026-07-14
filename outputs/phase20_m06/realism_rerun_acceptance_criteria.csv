@@ -1,0 +1,7 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+synthetic_quality_gate_clear,Synthetic quality gates remain green on the accepted generator version.,no fail rows and no unresolved warning rows,contract_defined_not_acceptance_evidence
+holdout_generator_coverage,Predeclared holdout generator profiles are structurally available.,holdout profiles cover required quarter/feed scenarios,contract_defined_not_acceptance_evidence
+feed_imperfection_coverage,Disconnect/stressed feed imperfections are present and used in reruns.,feed-imperfection profiles are rerun through full lifecycle execution,contract_defined_not_acceptance_evidence
+holdout_strategy_rerun,Candidate strategies are rerun on holdout-generator profiles.,strategy P&L/signal/risk reruns exist on Q-B/Q-C holdout profiles,contract_defined_not_acceptance_evidence
+pessimistic_execution_realism,"Holdout reruns include stressed retail, partial-fill and pessimistic execution assumptions.",pessimistic execution rerun passes or blocks promotion,contract_defined_not_acceptance_evidence
+artifact_exploitation_rejection,Artifact/control reruns reject generator-specific edge.,negative controls show edge does not depend on synthetic artifacts,contract_defined_not_acceptance_evidence

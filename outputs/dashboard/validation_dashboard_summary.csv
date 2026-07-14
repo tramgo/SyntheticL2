@@ -114,3 +114,10 @@ phase20_m05_economic_replay_required_rows,55,Phase 20 M05 rows requiring economi
 phase20_m05_broker_reconciliation_required_rows,11,Phase 20 M05 rows requiring broker/contract-note reconciliation
 phase20_m05_guardrail_validation_required_rows,33,Phase 20 M05 rows requiring guardrail validation
 phase20_m05_lifecycle_economic_acceptance_met_rows,0,Phase 20 M05 rows that meet acceptance after contract
+phase20_m06_realism_rerun_rows,47,Phase 20 M06 holdout/realism rerun rows
+phase20_m06_holdout_rerun_required_rows,17,Phase 20 M06 rows requiring holdout strategy reruns
+phase20_m06_quality_gate_required_rows,6,Phase 20 M06 rows requiring quality-gate clearance
+phase20_m06_feed_imperfection_required_rows,6,Phase 20 M06 rows requiring feed-imperfection reruns
+phase20_m06_pessimistic_execution_required_rows,6,Phase 20 M06 rows requiring pessimistic execution realism
+phase20_m06_artifact_control_required_rows,6,Phase 20 M06 rows requiring artifact-exploitation controls
+phase20_m06_realism_acceptance_met_rows,0,Phase 20 M06 rows that meet acceptance after contract
