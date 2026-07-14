@@ -14,6 +14,10 @@ full_run_lifecycle_risk_limit_sensitivity_rows,324,Phase 12 risk-limit sensitivi
 full_run_lifecycle_risk_limit_profiles,4,Phase 12 risk-limit sensitivity profiles
 full_run_lifecycle_risk_limit_pass_rows,14,Phase 12 proxy pass rows under sensitivity profiles
 full_run_lifecycle_risk_limit_high_rows,267,Phase 12 high-severity risk-limit rows
+full_run_risk_acceptance_readiness_rows,88,Phase 12 risk acceptance readiness rows
+full_run_risk_acceptance_readiness_open_rows,88,Phase 12 open risk acceptance requirements
+full_run_risk_acceptance_readiness_proxy_rows,54,Phase 12 risk readiness rows with proxy evidence
+full_run_risk_acceptance_readiness_met_rows,0,Phase 12 met risk acceptance requirements
 robustness_dimension_rows,11,Phase 13 robustness dimension rows
 robustness_dimension_registered_rows,9,Phase 13 registered robustness proxy rows
 robustness_acceptance_gap_rows,88,Phase 13 robustness acceptance gap rows

@@ -3,8 +3,8 @@
   "artifact_id": "phase12",
   "source_manifest_path": "outputs/phase12/execution_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "20fec85486b1bc29e790caea06a870843e9802ab",
-  "configuration_hash": "13f080bcca98879d28a52e82d792e8ec0f7c416f22d33ea7ce7dcc93026ed6ab",
+  "generator_version": "e31293c924d397019316c2f809f1f8ee2766a09a",
+  "configuration_hash": "dd5228c5414eb6ba7405e63591e0a8da45245e104dab6bdf65e89b17a1debbaf",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -12,7 +12,7 @@
   "scenario_ids": "outputs/phase4/scenario_calendar.csv_and_phase13_seed_plan_cycle",
   "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
   "latency_model_version": "phase12_execution_profiles_v1",
-  "creation_timestamp": "2026-07-13T22:53:34.695849+00:00",
-  "normalization_timestamp": "2026-07-14T14:32:42.585908+00:00",
+  "creation_timestamp": "2026-07-14T14:42:17.803428+00:00",
+  "normalization_timestamp": "2026-07-14T14:42:51.259992+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

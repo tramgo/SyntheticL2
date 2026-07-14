@@ -1,6 +1,6 @@
 # Phase 12 Execution Simulator Report
 
-Generated UTC: 2026-07-13T22:53:34.855340+00:00
+Generated UTC: 2026-07-14T14:42:17.929454+00:00
 
 ## Scope
 
@@ -256,6 +256,108 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 | S09 | zero_latency_spread_only_control | pessimistic_partial | tight_capital_preservation | 63 | 41 | 37 | 63 | False | 1189.64 | high_proxy_breach_under_limit_profile | False |
 | S05 | zero_latency_spread_only_control | pessimistic_partial | tight_capital_preservation | 63 | 14 | 22 | 63 | False | 1147.53 | high_proxy_breach_under_limit_profile | False |
 
+## Full-Run Risk Acceptance Readiness Ledger
+
+| risk_requirement | proxy_evidence_available | acceptance_requirement_met | rows |
+| --- | --- | --- | --- |
+| broker_exchange_fill_provenance | False | False | 11 |
+| contract_note_and_cost_reconciliation | False | False | 11 |
+| daily_equity_curve_and_halt_coverage | False | False | 2 |
+| daily_equity_curve_and_halt_coverage | True | False | 9 |
+| daily_loss_limit_validation | False | False | 2 |
+| daily_loss_limit_validation | True | False | 9 |
+| drawdown_breach_validation | False | False | 2 |
+| drawdown_breach_validation | True | False | 9 |
+| position_limit_validation | False | False | 2 |
+| position_limit_validation | True | False | 9 |
+| strategy_full_run_coverage | False | False | 2 |
+| strategy_full_run_coverage | True | False | 9 |
+| tail_loss_validation | False | False | 2 |
+| tail_loss_validation | True | False | 9 |
+
+| strategy_id | risk_requirement | observed_value | current_evidence_status | proxy_evidence_available | acceptance_requirement_met | blocking_gap |
+| --- | --- | --- | --- | --- | --- | --- |
+| S01 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S01 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S01 | daily_equity_curve_and_halt_coverage | 567 daily rows over up to 63 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S01 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S01 | drawdown_breach_validation | 9 severity rows; high_severity_rows=6 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S01 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S01 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=runnable_proxy | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S01 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=4; high_limit_rows=26 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S02 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S02 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S02 | daily_equity_curve_and_halt_coverage | 567 daily rows over up to 63 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S02 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S02 | drawdown_breach_validation | 9 severity rows; high_severity_rows=9 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S02 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S02 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=runnable_proxy | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S02 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=1; high_limit_rows=32 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S03 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S03 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S03 | daily_equity_curve_and_halt_coverage | 540 daily rows over up to 60 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S03 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S03 | drawdown_breach_validation | 9 severity rows; high_severity_rows=7 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S03 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S03 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=partial_missing_required_features | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S03 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=1; high_limit_rows=30 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S04 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S04 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S04 | daily_equity_curve_and_halt_coverage | 540 daily rows over up to 60 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S04 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S04 | drawdown_breach_validation | 9 severity rows; high_severity_rows=9 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S04 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S04 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=partial_missing_required_features | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S04 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=0; high_limit_rows=33 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S05 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S05 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S05 | daily_equity_curve_and_halt_coverage | 567 daily rows over up to 63 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S05 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S05 | drawdown_breach_validation | 9 severity rows; high_severity_rows=9 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S05 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S05 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=runnable_proxy | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S05 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=0; high_limit_rows=36 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S06 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S06 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S06 | daily_equity_curve_and_halt_coverage | 486 daily rows over up to 54 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S06 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S06 | drawdown_breach_validation | 9 severity rows; high_severity_rows=2 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S06 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S06 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=partial_missing_required_features | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S06 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=7; high_limit_rows=14 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S07 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S07 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S07 | daily_equity_curve_and_halt_coverage | 531 daily rows over up to 59 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S07 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S07 | drawdown_breach_validation | 9 severity rows; high_severity_rows=9 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S07 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S07 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=runnable_proxy | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S07 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=0; high_limit_rows=32 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S08 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S08 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S08 | daily_equity_curve_and_halt_coverage | 567 daily rows over up to 63 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S08 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S08 | drawdown_breach_validation | 9 severity rows; high_severity_rows=8 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S08 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S08 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=partial_missing_required_features | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S08 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=1; high_limit_rows=28 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S09 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S09 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S09 | daily_equity_curve_and_halt_coverage | 567 daily rows over up to 63 trade dates | proxy_daily_risk_state_available_not_acceptance | True | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S09 | daily_loss_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_daily_loss_summary_available_not_acceptance | True | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S09 | drawdown_breach_validation | 9 severity rows; high_severity_rows=9 | proxy_drawdown_breach_summary_available_not_acceptance | True | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S09 | position_limit_validation | 9 severity rows; current_limit_pass_rows=0 | proxy_position_limit_summary_available_not_acceptance | True | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S09 | strategy_full_run_coverage | 9 lifecycle rows; profiles=3; fill_models=3; support_level=runnable_proxy | proxy_full_run_available_not_acceptance | True | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S09 | tail_loss_validation | 36 sensitivity rows; all_profile_pass_rows=0; high_limit_rows=36 | proxy_tail_loss_sensitivity_available_not_acceptance | True | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+| S10 | broker_exchange_fill_provenance | not available in current Phase 12 proxy | missing_broker_exchange_fill_provenance | False | False | The current run has no broker/exchange fill, rejection, queue or contract-note provenance. |
+| S10 | contract_note_and_cost_reconciliation | Zerodha formula applied; contract-note reconciliation not available | proxy_formula_available_contract_note_missing | False | False | Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing. |
+| S10 | daily_equity_curve_and_halt_coverage | 0 daily rows over up to 0 trade dates | missing_daily_risk_state | False | False | Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state. |
+| S10 | daily_loss_limit_validation | 0 severity rows; current_limit_pass_rows=0 | missing_daily_loss_summary | False | False | Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement. |
+| S10 | drawdown_breach_validation | 0 severity rows; high_severity_rows=0 | missing_drawdown_summary | False | False | Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists. |
+| S10 | position_limit_validation | 0 severity rows; current_limit_pass_rows=0 | missing_position_limit_summary | False | False | Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior. |
+| S10 | strategy_full_run_coverage | 0 lifecycle rows; profiles=0; fill_models=0; support_level=not_supported_by_current_product | missing_current_proxy_run | False | False | Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence. |
+| S10 | tail_loss_validation | 0 sensitivity rows; all_profile_pass_rows=0; high_limit_rows=0 | missing_tail_loss_sensitivity | False | False | Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills. |
+
 ## Caveats
 
 - Current features are 5-minute synthetic feature events, not true tick-level order events.
@@ -263,6 +365,6 @@ It is not a tick-accurate queue simulator and must not be used for strategy acce
 - Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.
 - Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.
 - Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.
-- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle, breach-severity and risk-limit sensitivity summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
+- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle, breach-severity, risk-limit sensitivity and risk acceptance-readiness summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.
 - Spread crossing, fixed slippage and impact remain internal execution assumptions.
 - Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.

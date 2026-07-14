@@ -1,11 +1,12 @@
 {
-  "generated_utc": "2026-07-14T14:32:30.191060+00:00",
+  "generated_utc": "2026-07-14T14:42:38.727151+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
     "lifecycle_risk": "outputs\\phase12\\full_run_lifecycle_risk_summary.csv",
     "lifecycle_risk_severity": "outputs\\phase12\\full_run_lifecycle_risk_breach_severity.csv",
     "lifecycle_risk_limit_sensitivity": "outputs\\phase12\\full_run_lifecycle_risk_limit_sensitivity.csv",
+    "risk_acceptance_readiness": "outputs\\phase12\\full_run_risk_acceptance_readiness.csv",
     "robustness_dimension": "outputs\\phase13\\robustness_dimension_summary.csv",
     "robustness_gap": "outputs\\phase13\\robustness_acceptance_gap_ledger.csv",
     "acceptance": "outputs\\phase15\\strategy_acceptance_summary.csv",
@@ -40,6 +41,10 @@
     "full_run_lifecycle_risk_limit_profiles": 4,
     "full_run_lifecycle_risk_limit_pass_rows": 14,
     "full_run_lifecycle_risk_limit_high_rows": 267,
+    "full_run_risk_acceptance_readiness_rows": 88,
+    "full_run_risk_acceptance_readiness_open_rows": 88,
+    "full_run_risk_acceptance_readiness_proxy_rows": 54,
+    "full_run_risk_acceptance_readiness_met_rows": 0,
     "robustness_dimension_rows": 11,
     "robustness_dimension_registered_rows": 9,
     "robustness_acceptance_gap_rows": 88,
@@ -74,8 +79,8 @@
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "55705fb93d6c5e2a07f051902fc8db4f1cdf90b9",
-  "configuration_hash": "1deadf835eda46a02ad16c654c7a71f1a6738ac52f08b6ce5103e00fd509ee03",
+  "generator_version": "e31293c924d397019316c2f809f1f8ee2766a09a",
+  "configuration_hash": "3a21f3364eff9e3950c4e712a368cc9651327a97fce5450eba68b1f81080e605",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -83,5 +88,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:32:30.191060+00:00"
+  "creation_timestamp": "2026-07-14T14:42:38.727151+00:00"
 }

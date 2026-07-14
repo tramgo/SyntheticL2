@@ -305,22 +305,31 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
         }
     )
 
+    risk_blocker = (
+        "Full-run marketable-proxy risk diagnostics now include fill-adjusted lifecycle, breach-severity and risk-limit sensitivity summaries over all simulated trades, "
+        "but no broker/exchange-confirmed fill-adjusted drawdown, position-limit, tail-loss or daily-loss-limit validation exists."
+    )
+    risk_evidence_source = (
+        "outputs/phase12/execution_summary.csv; outputs/phase12/full_run_risk_summary.csv; "
+        "outputs/phase12/full_run_lifecycle_risk_summary.csv; outputs/phase12/full_run_lifecycle_daily_risk_summary.csv; "
+        "outputs/phase12/full_run_lifecycle_risk_breach_severity.csv; outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv; "
+        "outputs/phase12_order_lifecycle/risk_control_summary.csv"
+    )
+    if Path("outputs/phase12/full_run_risk_acceptance_readiness.csv").exists():
+        risk_evidence_source += "; outputs/phase12/full_run_risk_acceptance_readiness.csv"
+        risk_blocker = (
+            "Full-run marketable-proxy risk diagnostics now include fill-adjusted lifecycle, breach-severity, risk-limit sensitivity "
+            "and explicit risk acceptance-readiness rows, but the readiness ledger still shows missing broker/exchange fill provenance, "
+            "contract-note reconciliation and acceptance-grade drawdown, position-limit, tail-loss and daily-loss-limit validation."
+        )
     rows.append(
         {
             "strategy_id": sid,
             "gate_id": "G04_risk",
             "gate_status": "blocked",
             "evidence_value": None,
-            "blocker": (
-                "Full-run marketable-proxy risk diagnostics now include fill-adjusted lifecycle, breach-severity and risk-limit sensitivity summaries over all simulated trades, "
-                "but no broker/exchange-confirmed fill-adjusted drawdown, position-limit, tail-loss or daily-loss-limit validation exists."
-            ),
-            "evidence_source": (
-                "outputs/phase12/execution_summary.csv; outputs/phase12/full_run_risk_summary.csv; "
-                "outputs/phase12/full_run_lifecycle_risk_summary.csv; outputs/phase12/full_run_lifecycle_daily_risk_summary.csv; "
-                "outputs/phase12/full_run_lifecycle_risk_breach_severity.csv; outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv; "
-                "outputs/phase12_order_lifecycle/risk_control_summary.csv"
-            ),
+            "blocker": risk_blocker,
+            "evidence_source": risk_evidence_source,
         }
     )
 

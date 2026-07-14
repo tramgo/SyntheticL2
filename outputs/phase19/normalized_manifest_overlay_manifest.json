@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-07-14T14:32:42.608058+00:00",
-  "git_sha_used": "55705fb93d6c5e2a07f051902fc8db4f1cdf90b9",
+  "generated_utc": "2026-07-14T14:42:51.283285+00:00",
+  "git_sha_used": "e31293c924d397019316c2f809f1f8ee2766a09a",
   "artifacts_normalized": 27,
   "field_rows": 270,
   "exact_field_overlay_ready_artifacts": 27,
@@ -8,7 +8,7 @@
   "source_manifest_exact_or_alias_fields": 270,
   "scope": "phase19_normalized_manifest_overlay_not_source_manifest_rewrite",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "55705fb93d6c5e2a07f051902fc8db4f1cdf90b9",
+  "generator_version": "e31293c924d397019316c2f809f1f8ee2766a09a",
   "configuration_hash": "92ee204cebf6a26fea456e2c36834c0afe6b9c6b5c933ab6b8a40efa38b482f1",
   "random_seed": "not_applicable_deterministic",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -17,5 +17,5 @@
   "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
   "cost_model_version": "not_applicable_no_execution_costs",
   "latency_model_version": "not_applicable_no_latency_model",
-  "creation_timestamp": "2026-07-14T14:32:42.608058+00:00"
+  "creation_timestamp": "2026-07-14T14:42:51.283285+00:00"
 }

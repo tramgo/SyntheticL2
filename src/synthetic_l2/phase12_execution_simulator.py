@@ -916,6 +916,182 @@ def summarize_risk_limit_sensitivity(
     )
 
 
+def build_risk_acceptance_readiness(
+    support: pd.DataFrame,
+    lifecycle_risk: pd.DataFrame,
+    lifecycle_daily: pd.DataFrame,
+    risk_breach_severity: pd.DataFrame,
+    risk_limit_sensitivity: pd.DataFrame,
+) -> pd.DataFrame:
+    columns = [
+        "strategy_id",
+        "risk_requirement",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "blocking_gap",
+        "evidence_source",
+        "required_next_evidence",
+        "acceptance_eligible_now",
+    ]
+    if support.empty:
+        return pd.DataFrame(columns=columns)
+
+    evidence_source = (
+        "outputs/phase12/full_run_lifecycle_risk_summary.csv; "
+        "outputs/phase12/full_run_lifecycle_daily_risk_summary.csv; "
+        "outputs/phase12/full_run_lifecycle_risk_breach_severity.csv; "
+        "outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv; "
+        "outputs/phase12_order_lifecycle/risk_control_summary.csv"
+    )
+    rows: list[dict] = []
+    deployable_profiles = {"retail_marketable_default", "stressed_retail"}
+    required_fill_models = {profile["fill_model"] for profile in FULL_RUN_FILL_PROFILES}
+
+    for _, strategy in support.sort_values("strategy_id").iterrows():
+        strategy_id = str(strategy["strategy_id"])
+        support_level = str(strategy.get("support_level", "unknown"))
+        strategy_lifecycle = lifecycle_risk[lifecycle_risk["strategy_id"].astype(str) == strategy_id]
+        strategy_daily = lifecycle_daily[lifecycle_daily["strategy_id"].astype(str) == strategy_id]
+        strategy_severity = risk_breach_severity[risk_breach_severity["strategy_id"].astype(str) == strategy_id]
+        strategy_sensitivity = risk_limit_sensitivity[risk_limit_sensitivity["strategy_id"].astype(str) == strategy_id]
+
+        profiles = set(map(str, strategy_lifecycle["execution_profile"].dropna().unique())) if len(strategy_lifecycle) else set()
+        fill_models = set(map(str, strategy_lifecycle["fill_model"].dropna().unique())) if len(strategy_lifecycle) else set()
+        trade_dates = int(strategy_lifecycle["trade_dates"].max()) if len(strategy_lifecycle) else 0
+        lifecycle_rows = int(len(strategy_lifecycle))
+        daily_rows = int(len(strategy_daily))
+        severity_rows = int(len(strategy_severity))
+        sensitivity_rows = int(len(strategy_sensitivity))
+        current_limit_rows = (
+            strategy_sensitivity[strategy_sensitivity["risk_limit_profile"].astype(str) == "current_proxy_limits"]
+            if len(strategy_sensitivity)
+            else pd.DataFrame()
+        )
+        current_pass_rows = (
+            int(current_limit_rows["risk_pass_candidate_under_limit_profile"].astype(bool).sum())
+            if len(current_limit_rows)
+            else 0
+        )
+        strict_pass_rows = (
+            int(strategy_sensitivity["risk_pass_candidate_under_limit_profile"].astype(bool).sum())
+            if len(strategy_sensitivity)
+            else 0
+        )
+        high_severity_rows = (
+            int((strategy_severity["risk_severity_band"].astype(str) == "high_proxy_breach_severity").sum())
+            if len(strategy_severity)
+            else 0
+        )
+        high_limit_rows = (
+            int((strategy_sensitivity["risk_limit_status"].astype(str) == "high_proxy_breach_under_limit_profile").sum())
+            if len(strategy_sensitivity)
+            else 0
+        )
+
+        def add(
+            risk_requirement: str,
+            required_threshold: str,
+            observed_value: str,
+            current_evidence_status: str,
+            proxy_evidence_available: bool,
+            blocking_gap: str,
+            required_next_evidence: str,
+        ) -> None:
+            rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "risk_requirement": risk_requirement,
+                    "required_threshold": required_threshold,
+                    "observed_value": observed_value,
+                    "current_evidence_status": current_evidence_status,
+                    "proxy_evidence_available": bool(proxy_evidence_available),
+                    "acceptance_requirement_met": False,
+                    "blocking_gap": blocking_gap,
+                    "evidence_source": evidence_source,
+                    "required_next_evidence": required_next_evidence,
+                    "acceptance_eligible_now": False,
+                }
+            )
+
+        add(
+            "strategy_full_run_coverage",
+            "strategy has lifecycle risk rows across deployable profiles and all fill models",
+            f"{lifecycle_rows} lifecycle rows; profiles={len(profiles)}; fill_models={len(fill_models)}; support_level={support_level}",
+            "proxy_full_run_available_not_acceptance" if lifecycle_rows else "missing_current_proxy_run",
+            bool(lifecycle_rows and deployable_profiles.issubset(profiles) and required_fill_models.issubset(fill_models)),
+            "Current coverage is synthetic 5-minute marketable proxy evidence, not broker/exchange-confirmed acceptance evidence.",
+            "Run the full event/tick lifecycle engine for every supported strategy/profile/fill model with preserved order and fill lineage.",
+        )
+        add(
+            "daily_equity_curve_and_halt_coverage",
+            "daily equity curves, halt state and loss-limit state for every traded day",
+            f"{daily_rows} daily rows over up to {trade_dates} trade dates",
+            "proxy_daily_risk_state_available_not_acceptance" if daily_rows else "missing_daily_risk_state",
+            bool(daily_rows),
+            "Daily risk state exists only as simulated proxy rows and has not been reconciled to actual order/fill state.",
+            "Persist acceptance-run daily equity curves, halt decisions and resumed/blocked trading state from the event lifecycle engine.",
+        )
+        add(
+            "drawdown_breach_validation",
+            "no acceptance-run drawdown breach under current limits",
+            f"{severity_rows} severity rows; high_severity_rows={high_severity_rows}",
+            "proxy_drawdown_breach_summary_available_not_acceptance" if severity_rows else "missing_drawdown_summary",
+            bool(severity_rows),
+            "Drawdown summaries are proxy diagnostics and include high-severity rows; no broker/exchange-confirmed drawdown validation exists.",
+            "Validate drawdown on acceptance-run equity curves with actual/generated fill provenance and current capital limits.",
+        )
+        add(
+            "position_limit_validation",
+            "no acceptance-run position-limit breach under current limits",
+            f"{severity_rows} severity rows; current_limit_pass_rows={current_pass_rows}",
+            "proxy_position_limit_summary_available_not_acceptance" if severity_rows else "missing_position_limit_summary",
+            bool(severity_rows),
+            "Position exposure is inferred from proxy signal/fill rows and does not prove enforceable position-limit behavior.",
+            "Run position-state accounting through the lifecycle engine and verify no limit breach before promotion.",
+        )
+        add(
+            "daily_loss_limit_validation",
+            "no acceptance-run daily-loss breach or unhandled halt under current limits",
+            f"{severity_rows} severity rows; current_limit_pass_rows={current_pass_rows}",
+            "proxy_daily_loss_summary_available_not_acceptance" if severity_rows else "missing_daily_loss_summary",
+            bool(severity_rows),
+            "Daily-loss and halt checks are proxy diagnostics and do not prove deployable halt enforcement.",
+            "Validate daily loss, stop-trading and re-entry behavior from acceptance lifecycle state.",
+        )
+        add(
+            "tail_loss_validation",
+            "1pct tail trade loss within current limit and no tail breach under current profile",
+            f"{sensitivity_rows} sensitivity rows; all_profile_pass_rows={strict_pass_rows}; high_limit_rows={high_limit_rows}",
+            "proxy_tail_loss_sensitivity_available_not_acceptance" if sensitivity_rows else "missing_tail_loss_sensitivity",
+            bool(sensitivity_rows),
+            "Tail-loss sensitivity is proxy-only and does not prove acceptance-grade tail behavior under broker/exchange fills.",
+            "Compute tail-loss distribution from acceptance lifecycle fills and current/strict limit profiles.",
+        )
+        add(
+            "broker_exchange_fill_provenance",
+            "order, arrival, partial-fill, rejection and cancel lineage reconciled to broker/exchange evidence where available",
+            "not available in current Phase 12 proxy",
+            "missing_broker_exchange_fill_provenance",
+            False,
+            "The current run has no broker/exchange fill, rejection, queue or contract-note provenance.",
+            "Capture or import broker/exchange order/fill events and reconcile lifecycle states to those records where available.",
+        )
+        add(
+            "contract_note_and_cost_reconciliation",
+            "costs and realized P&L reconcile to broker contract notes or documented no-note synthetic acceptance substitute",
+            "Zerodha formula applied; contract-note reconciliation not available",
+            "proxy_formula_available_contract_note_missing",
+            False,
+            "Zerodha rupee order formulas are applied, but broker contract notes and actual fills are missing.",
+            "Reconcile charges and realized P&L to broker contract notes or a documented acceptance substitute for synthetic-only runs.",
+        )
+
+    return pd.DataFrame(rows, columns=columns).sort_values(["strategy_id", "risk_requirement"], kind="mergesort")
+
+
 def _tertile_bucket(values: pd.Series, labels: list[str]) -> pd.Series:
     numeric = values.astype(float).replace([np.inf, -np.inf], np.nan)
     if numeric.notna().sum() == 0 or numeric.nunique(dropna=True) <= 1:
@@ -1017,6 +1193,7 @@ def write_report(
     full_run_lifecycle_risk: pd.DataFrame,
     risk_breach_severity: pd.DataFrame,
     risk_limit_sensitivity: pd.DataFrame,
+    risk_acceptance_readiness: pd.DataFrame,
 ) -> None:
     overview = summary.groupby("execution_profile", sort=True).agg(
         strategies=("strategy_id", "nunique"),
@@ -1094,6 +1271,22 @@ def write_report(
         "risk_limit_status",
         "risk_pass_candidate_under_limit_profile",
     ]
+    readiness_status = (
+        risk_acceptance_readiness.groupby(["risk_requirement", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+        if len(risk_acceptance_readiness)
+        else pd.DataFrame(columns=["risk_requirement", "proxy_evidence_available", "acceptance_requirement_met", "rows"])
+    )
+    readiness_cols = [
+        "strategy_id",
+        "risk_requirement",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "blocking_gap",
+    ]
     lines = [
         "# Phase 12 Execution Simulator Report",
         "",
@@ -1129,6 +1322,12 @@ def write_report(
         "",
         _markdown_table(risk_limit_sensitivity[sensitivity_cols].sort_values(["risk_limit_severity_score", "strategy_id"], ascending=[False, True]).head(40)),
         "",
+        "## Full-Run Risk Acceptance Readiness Ledger",
+        "",
+        _markdown_table(readiness_status),
+        "",
+        _markdown_table(risk_acceptance_readiness[readiness_cols].sort_values(["strategy_id", "risk_requirement"]).head(80)),
+        "",
         "## Caveats",
         "",
         "- Current features are 5-minute synthetic feature events, not true tick-level order events.",
@@ -1136,7 +1335,7 @@ def write_report(
         "- Passive orders, partial fills, cancel/replace and order rejections are represented as requirements, not realistic queue simulation.",
         "- Retail and stressed profiles apply the Zerodha equity-intraday NSE rupee order formula per simulated round trip using configured `order_notional_inr`, including brokerage cap, STT rounding, transaction charge, SEBI charge, stamp duty and GST.",
         "- Representative rupee scenarios are retained for auditability; DP charges, broker contract-note rounding and actual broker fills remain outside this proxy.",
-        "- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle, breach-severity and risk-limit sensitivity summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
+        "- Full-run risk diagnostics now include no-fill, fill-adjusted lifecycle, breach-severity, risk-limit sensitivity and risk acceptance-readiness summaries over all simulated marketable proxy trades, but they still use synthetic 5-minute feature events and not broker/exchange-confirmed fills.",
         "- Spread crossing, fixed slippage and impact remain internal execution assumptions.",
         "- Zero-latency/spread-only profile is a leakage/control profile, not a deployable model.",
         "",
@@ -1165,6 +1364,14 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
     risk_breach_severity.to_csv(output_dir / "full_run_lifecycle_risk_breach_severity.csv", index=False)
     risk_limit_sensitivity = summarize_risk_limit_sensitivity(full_run_lifecycle_risk, full_run_lifecycle_daily)
     risk_limit_sensitivity.to_csv(output_dir / "full_run_lifecycle_risk_limit_sensitivity.csv", index=False)
+    risk_acceptance_readiness = build_risk_acceptance_readiness(
+        _strategy_support(),
+        full_run_lifecycle_risk,
+        full_run_lifecycle_daily,
+        risk_breach_severity,
+        risk_limit_sensitivity,
+    )
+    risk_acceptance_readiness.to_csv(output_dir / "full_run_risk_acceptance_readiness.csv", index=False)
     profiles.to_csv(output_dir / "execution_profiles.csv", index=False)
     costs.to_csv(output_dir / "cost_schedule.csv", index=False)
     component_catalog.to_csv(output_dir / "charge_component_catalog.csv", index=False)
@@ -1195,6 +1402,7 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "full_run_lifecycle_daily_risk_summary": str(output_dir / "full_run_lifecycle_daily_risk_summary.csv"),
         "full_run_lifecycle_risk_breach_severity": str(output_dir / "full_run_lifecycle_risk_breach_severity.csv"),
         "full_run_lifecycle_risk_limit_sensitivity": str(output_dir / "full_run_lifecycle_risk_limit_sensitivity.csv"),
+        "full_run_risk_acceptance_readiness": str(output_dir / "full_run_risk_acceptance_readiness.csv"),
         "execution_profiles": str(output_dir / "execution_profiles.csv"),
         "cost_schedule": str(output_dir / "cost_schedule.csv"),
         "charge_component_catalog": str(output_dir / "charge_component_catalog.csv"),
@@ -1217,6 +1425,10 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         "full_run_lifecycle_daily_risk_rows": int(len(full_run_lifecycle_daily)),
         "full_run_lifecycle_risk_breach_severity_rows": int(len(risk_breach_severity)),
         "full_run_lifecycle_risk_limit_sensitivity_rows": int(len(risk_limit_sensitivity)),
+        "full_run_risk_acceptance_readiness_rows": int(len(risk_acceptance_readiness)),
+        "full_run_risk_acceptance_readiness_open_rows": int((~risk_acceptance_readiness["acceptance_requirement_met"].astype(bool)).sum()) if len(risk_acceptance_readiness) else 0,
+        "full_run_risk_acceptance_readiness_proxy_available_rows": int(risk_acceptance_readiness["proxy_evidence_available"].astype(bool).sum()) if len(risk_acceptance_readiness) else 0,
+        "full_run_risk_acceptance_readiness_met_rows": int(risk_acceptance_readiness["acceptance_requirement_met"].astype(bool).sum()) if len(risk_acceptance_readiness) else 0,
         "full_run_lifecycle_risk_pass_candidate_rows": int(risk_breach_severity["risk_pass_candidate_proxy"].astype(bool).sum()) if len(risk_breach_severity) else 0,
         "full_run_lifecycle_high_severity_rows": int((risk_breach_severity["risk_severity_band"].astype(str) == "high_proxy_breach_severity").sum()) if len(risk_breach_severity) else 0,
         "full_run_lifecycle_risk_limit_sensitivity_profiles": int(risk_limit_sensitivity["risk_limit_profile"].nunique()) if len(risk_limit_sensitivity) else 0,
@@ -1263,7 +1475,15 @@ def run_phase12(features_path: Path, output_dir: Path, seed_plan_path: Path | No
         )
     )
     (output_dir / "execution_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, summary, full_run_risk, full_run_lifecycle_risk, risk_breach_severity, risk_limit_sensitivity)
+    write_report(
+        output_dir,
+        summary,
+        full_run_risk,
+        full_run_lifecycle_risk,
+        risk_breach_severity,
+        risk_limit_sensitivity,
+        risk_acceptance_readiness,
+    )
 
 
 def parse_args() -> argparse.Namespace:
