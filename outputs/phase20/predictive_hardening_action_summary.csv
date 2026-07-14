@@ -1,0 +1,10 @@
+action_class,dependency_type,predictive_requirement_rows,strategies,proxy_evidence_rows,acceptance_met_rows,open_rows
+baseline_lift_validation,calibrated_or_proxy_predictions_with_baselines,11,11,11,0,11
+calibrated_model_training,trained_frozen_calibrated_probability_models,11,11,0,0,11
+holdout_cell_validation,quarter_feed_segment_holdout_cells,11,11,11,0,11
+model_feature_stability_validation,multi_seed_model_importance_or_attribution,11,11,11,0,11
+multi_seed_walk_forward_execution,registered_seeds_and_walk_forward_folds,11,11,0,0,11
+promotion_falsification_clearance,joined_baseline_holdout_feature_and_real_holdout_evidence,11,11,11,0,11
+real_multiday_predictive_holdout,multi_day_real_data_holdout,11,11,0,0,11
+strategy_feature_support_closure,strategy_feature_product_or_module_support,11,11,5,0,11
+untouched_test_validation,untouched_test_segments,11,11,9,0,11

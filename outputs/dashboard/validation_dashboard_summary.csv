@@ -67,4 +67,8 @@ phase20_economic_hardening_plan_rows,88,Phase 20 economic hardening requirement 
 phase20_economic_hardening_proxy_rows,58,Phase 20 economic hardening rows with proxy evidence
 phase20_economic_hardening_missing_rows,30,Phase 20 economic hardening rows missing required evidence
 phase20_economic_hardening_met_rows,0,Phase 20 met economic hardening requirements
+phase20_predictive_hardening_plan_rows,99,Phase 20 predictive hardening requirement rows
+phase20_predictive_hardening_proxy_rows,58,Phase 20 predictive hardening rows with proxy evidence
+phase20_predictive_hardening_missing_rows,41,Phase 20 predictive hardening rows missing required evidence
+phase20_predictive_hardening_met_rows,0,Phase 20 met predictive hardening requirements
 phase20_acceptance_ready_rows,0,Phase 20 acceptance-ready queue rows

@@ -108,6 +108,42 @@ ECONOMIC_DEPENDENCY_TYPE = {
     "multi_day_real_or_holdout_economic_validation": "multi_day_real_data_or_untouched_holdout_generator",
 }
 
+PREDICTIVE_REQUIREMENT_PRIORITY = {
+    "strategy_support_ready": 1,
+    "baseline_outperformance": 2,
+    "holdout_cell_stability": 3,
+    "untouched_test_stability": 4,
+    "feature_stability": 5,
+    "multi_seed_walk_forward_validation": 6,
+    "calibrated_model_output": 7,
+    "real_multi_day_holdout": 8,
+    "promotion_falsification_clear": 9,
+}
+
+PREDICTIVE_ACTION_CLASS = {
+    "strategy_support_ready": "strategy_feature_support_closure",
+    "baseline_outperformance": "baseline_lift_validation",
+    "holdout_cell_stability": "holdout_cell_validation",
+    "untouched_test_stability": "untouched_test_validation",
+    "feature_stability": "model_feature_stability_validation",
+    "multi_seed_walk_forward_validation": "multi_seed_walk_forward_execution",
+    "calibrated_model_output": "calibrated_model_training",
+    "real_multi_day_holdout": "real_multiday_predictive_holdout",
+    "promotion_falsification_clear": "promotion_falsification_clearance",
+}
+
+PREDICTIVE_DEPENDENCY_TYPE = {
+    "strategy_support_ready": "strategy_feature_product_or_module_support",
+    "baseline_outperformance": "calibrated_or_proxy_predictions_with_baselines",
+    "holdout_cell_stability": "quarter_feed_segment_holdout_cells",
+    "untouched_test_stability": "untouched_test_segments",
+    "feature_stability": "multi_seed_model_importance_or_attribution",
+    "multi_seed_walk_forward_validation": "registered_seeds_and_walk_forward_folds",
+    "calibrated_model_output": "trained_frozen_calibrated_probability_models",
+    "real_multi_day_holdout": "multi_day_real_data_holdout",
+    "promotion_falsification_clear": "joined_baseline_holdout_feature_and_real_holdout_evidence",
+}
+
 
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
@@ -135,6 +171,11 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "risk_adjusted_economic_frontier": pd.read_csv(paths["risk_adjusted_economic_frontier"]),
         "broker_reconciliation_readiness": pd.read_csv(paths["broker_reconciliation_readiness"]),
         "economic_reconciliation_strategy_summary": pd.read_csv(paths["economic_reconciliation_strategy_summary"]),
+        "predictive_acceptance_gap": pd.read_csv(paths["predictive_acceptance_gap"]),
+        "predictive_baseline_comparison": pd.read_csv(paths["predictive_baseline_comparison"]),
+        "predictive_holdout_stability_summary": pd.read_csv(paths["predictive_holdout_stability_summary"]),
+        "predictive_promotion_falsification": pd.read_csv(paths["predictive_promotion_falsification"]),
+        "feature_importance_stability": pd.read_csv(paths["feature_importance_stability"]),
     }
 
 
@@ -641,6 +682,199 @@ def build_economic_action_summary(economic_plan: pd.DataFrame) -> pd.DataFrame:
     return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
 
 
+def _predictive_strategy_summary(
+    baseline: pd.DataFrame,
+    holdout: pd.DataFrame,
+    falsification: pd.DataFrame,
+    feature_stability: pd.DataFrame,
+) -> pd.DataFrame:
+    baseline_cols = [
+        "strategy_id",
+        "directional_eval_rows",
+        "directional_accuracy_excess_vs_no_skill",
+        "directional_accuracy_excess_vs_majority",
+        "brier_skill_score_proxy",
+        "beats_no_skill_accuracy_proxy",
+        "beats_majority_accuracy_proxy",
+        "beats_brier_baseline_proxy",
+        "predictive_baseline_status",
+    ]
+    baseline_summary = baseline[[column for column in baseline_cols if column in baseline.columns]].copy()
+    holdout_cols = [
+        "strategy_id",
+        "stability_cells",
+        "cells_with_minimum_rows",
+        "cells_beating_local_majority",
+        "cell_beat_fraction",
+        "untouched_test_cells",
+        "untouched_test_cells_beating_local_majority",
+        "min_accuracy_excess_vs_majority",
+        "median_accuracy_excess_vs_majority",
+        "worst_segment_status",
+    ]
+    holdout_summary = holdout[[column for column in holdout_cols if column in holdout.columns]].copy()
+    falsification_cols = [
+        "strategy_id",
+        "baseline_pass_proxy",
+        "holdout_all_cell_pass_proxy",
+        "untouched_test_pass_proxy",
+        "feature_stability_proxy_available",
+        "stable_feature_count_proxy",
+        "max_feature_top3_frequency_proxy",
+        "median_feature_importance_cv_proxy",
+        "predictive_promotion_candidate_proxy",
+        "falsification_status",
+    ]
+    falsification_summary = falsification[[column for column in falsification_cols if column in falsification.columns]].copy()
+    stable_feature_count = int((feature_stability["top3_frequency"] >= 0.5).sum()) if "top3_frequency" in feature_stability else 0
+    max_top3_frequency = float(feature_stability["top3_frequency"].max()) if "top3_frequency" in feature_stability and len(feature_stability) else 0.0
+    median_feature_cv = float(feature_stability["coefficient_of_variation"].median()) if "coefficient_of_variation" in feature_stability and len(feature_stability) else 0.0
+    summary = baseline_summary.merge(holdout_summary, on="strategy_id", how="outer").merge(falsification_summary, on="strategy_id", how="outer")
+    summary["global_stable_feature_count"] = stable_feature_count
+    summary["global_max_feature_top3_frequency"] = max_top3_frequency
+    summary["global_median_feature_importance_cv"] = median_feature_cv
+    return summary.fillna(0)
+
+
+def build_predictive_hardening_plan(
+    queue: pd.DataFrame,
+    predictive_gap: pd.DataFrame,
+    baseline: pd.DataFrame,
+    holdout: pd.DataFrame,
+    falsification: pd.DataFrame,
+    feature_stability: pd.DataFrame,
+) -> pd.DataFrame:
+    predictive_queue = queue[queue["gate_id"].astype(str) == "G01_predictive"][
+        ["queue_rank", "priority_band", "strategy_id", "strategy_support_level", "strategy_role"]
+    ].copy()
+    predictive_summary = _predictive_strategy_summary(baseline, holdout, falsification, feature_stability)
+    rows = predictive_gap.merge(predictive_queue, on="strategy_id", how="left").merge(predictive_summary, on="strategy_id", how="left")
+    rows = rows[rows["queue_rank"].notna()].copy()
+    rows["requirement_priority"] = rows["predictive_requirement"].map(PREDICTIVE_REQUIREMENT_PRIORITY).fillna(99).astype(int)
+    rows["action_class"] = rows["predictive_requirement"].map(PREDICTIVE_ACTION_CLASS).fillna("unmapped_predictive_action")
+    rows["dependency_type"] = rows["predictive_requirement"].map(PREDICTIVE_DEPENDENCY_TYPE).fillna("unmapped_dependency")
+    rows["proxy_evidence_available"] = rows["proxy_evidence_available"].astype(bool)
+    rows["acceptance_requirement_met"] = rows["acceptance_requirement_met"].astype(bool)
+    rows["acceptance_ready_now"] = False
+    rows["predictive_hardening_status"] = rows.apply(
+        lambda row: "acceptance_met"
+        if row["acceptance_requirement_met"]
+        else "proxy_evidence_needs_acceptance_upgrade"
+        if row["proxy_evidence_available"]
+        else "missing_required_acceptance_evidence",
+        axis=1,
+    )
+    numeric_summary_columns = [
+        "directional_eval_rows",
+        "directional_accuracy_excess_vs_no_skill",
+        "directional_accuracy_excess_vs_majority",
+        "brier_skill_score_proxy",
+        "stability_cells",
+        "cells_with_minimum_rows",
+        "cells_beating_local_majority",
+        "cell_beat_fraction",
+        "untouched_test_cells",
+        "untouched_test_cells_beating_local_majority",
+        "min_accuracy_excess_vs_majority",
+        "median_accuracy_excess_vs_majority",
+        "stable_feature_count_proxy",
+        "max_feature_top3_frequency_proxy",
+        "median_feature_importance_cv_proxy",
+        "global_stable_feature_count",
+        "global_max_feature_top3_frequency",
+        "global_median_feature_importance_cv",
+    ]
+    for column in numeric_summary_columns:
+        if column in rows:
+            rows[column] = rows[column].fillna(0)
+    for column in [
+        "baseline_pass_proxy",
+        "holdout_all_cell_pass_proxy",
+        "untouched_test_pass_proxy",
+        "feature_stability_proxy_available",
+        "predictive_promotion_candidate_proxy",
+    ]:
+        if column in rows:
+            rows[column] = rows[column].fillna(False).astype(bool)
+    rows["predictive_evidence_summary"] = rows.apply(
+        lambda row: (
+            f"baseline_pass={bool(row.get('baseline_pass_proxy', False))}; "
+            f"holdout_all_cell_pass={bool(row.get('holdout_all_cell_pass_proxy', False))}; "
+            f"untouched_test_pass={bool(row.get('untouched_test_pass_proxy', False))}; "
+            f"cell_beat_fraction={float(row.get('cell_beat_fraction', 0)):.3f}; "
+            f"stable_feature_count={int(row.get('stable_feature_count_proxy', row.get('global_stable_feature_count', 0)))}; "
+            f"promotion_candidate={bool(row.get('predictive_promotion_candidate_proxy', False))}"
+        ),
+        axis=1,
+    )
+    output_columns = [
+        "queue_rank",
+        "priority_band",
+        "strategy_id",
+        "strategy_support_level",
+        "strategy_role",
+        "predictive_requirement",
+        "requirement_priority",
+        "action_class",
+        "dependency_type",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "predictive_hardening_status",
+        "blocking_gap",
+        "required_next_evidence",
+        "predictive_evidence_summary",
+        "directional_eval_rows",
+        "directional_accuracy_excess_vs_no_skill",
+        "directional_accuracy_excess_vs_majority",
+        "brier_skill_score_proxy",
+        "baseline_pass_proxy",
+        "cell_beat_fraction",
+        "untouched_test_cells_beating_local_majority",
+        "holdout_all_cell_pass_proxy",
+        "untouched_test_pass_proxy",
+        "feature_stability_proxy_available",
+        "stable_feature_count_proxy",
+        "predictive_promotion_candidate_proxy",
+        "falsification_status",
+        "acceptance_ready_now",
+        "evidence_source",
+    ]
+    for column in output_columns:
+        if column not in rows:
+            rows[column] = 0 if column.endswith("_rows") or column.endswith("_proxy") or column.endswith("_fraction") else ""
+    return rows[output_columns].sort_values(["queue_rank", "requirement_priority"], kind="mergesort")
+
+
+def build_predictive_action_summary(predictive_plan: pd.DataFrame) -> pd.DataFrame:
+    if predictive_plan.empty:
+        return pd.DataFrame(
+            columns=[
+                "action_class",
+                "dependency_type",
+                "predictive_requirement_rows",
+                "strategies",
+                "proxy_evidence_rows",
+                "acceptance_met_rows",
+                "open_rows",
+            ]
+        )
+    grouped = (
+        predictive_plan.groupby(["action_class", "dependency_type"], sort=True)
+        .agg(
+            predictive_requirement_rows=("predictive_requirement", "count"),
+            strategies=("strategy_id", "nunique"),
+            proxy_evidence_rows=("proxy_evidence_available", lambda values: int(values.astype(bool).sum())),
+            acceptance_met_rows=("acceptance_requirement_met", lambda values: int(values.astype(bool).sum())),
+        )
+        .reset_index()
+    )
+    grouped["open_rows"] = grouped["predictive_requirement_rows"] - grouped["acceptance_met_rows"]
+    return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
+
+
 def write_report(
     output_dir: Path,
     queue: pd.DataFrame,
@@ -650,6 +884,8 @@ def write_report(
     risk_action_summary: pd.DataFrame,
     economic_plan: pd.DataFrame,
     economic_action_summary: pd.DataFrame,
+    predictive_plan: pd.DataFrame,
+    predictive_action_summary: pd.DataFrame,
 ) -> None:
     priority_summary = queue.groupby(["priority_band", "gate_id", "acceptance_milestone"], sort=True).size().reset_index(name="queue_items")
     lines = [
@@ -718,6 +954,26 @@ def write_report(
             ].head(40)
         ),
         "",
+        "## Predictive Hardening Action Summary",
+        "",
+        _markdown_table(predictive_action_summary),
+        "",
+        "## Top Predictive Hardening Requirements",
+        "",
+        _markdown_table(
+            predictive_plan[
+                [
+                    "queue_rank",
+                    "strategy_id",
+                    "predictive_requirement",
+                    "action_class",
+                    "predictive_hardening_status",
+                    "predictive_evidence_summary",
+                    "required_next_evidence",
+                ]
+            ].head(40)
+        ),
+        "",
     ]
     (output_dir / "phase20_acceptance_hardening_report.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -749,6 +1005,15 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         inputs["economic_reconciliation_strategy_summary"],
     )
     economic_action_summary = build_economic_action_summary(economic_plan)
+    predictive_plan = build_predictive_hardening_plan(
+        queue,
+        inputs["predictive_acceptance_gap"],
+        inputs["predictive_baseline_comparison"],
+        inputs["predictive_holdout_stability_summary"],
+        inputs["predictive_promotion_falsification"],
+        inputs["feature_importance_stability"],
+    )
+    predictive_action_summary = build_predictive_action_summary(predictive_plan)
 
     queue.to_csv(output_dir / "acceptance_hardening_queue.csv", index=False)
     gate_summary.to_csv(output_dir / "acceptance_hardening_gate_summary.csv", index=False)
@@ -757,6 +1022,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
     risk_action_summary.to_csv(output_dir / "risk_hardening_action_summary.csv", index=False)
     economic_plan.to_csv(output_dir / "economic_hardening_plan.csv", index=False)
     economic_action_summary.to_csv(output_dir / "economic_hardening_action_summary.csv", index=False)
+    predictive_plan.to_csv(output_dir / "predictive_hardening_plan.csv", index=False)
+    predictive_action_summary.to_csv(output_dir / "predictive_hardening_action_summary.csv", index=False)
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": generated_utc,
@@ -771,6 +1038,10 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         "economic_hardening_open_rows": int((~economic_plan["acceptance_requirement_met"].astype(bool)).sum()),
         "economic_hardening_proxy_rows": int(economic_plan["proxy_evidence_available"].astype(bool).sum()),
         "economic_hardening_action_summary_rows": int(len(economic_action_summary)),
+        "predictive_hardening_plan_rows": int(len(predictive_plan)),
+        "predictive_hardening_open_rows": int((~predictive_plan["acceptance_requirement_met"].astype(bool)).sum()),
+        "predictive_hardening_proxy_rows": int(predictive_plan["proxy_evidence_available"].astype(bool).sum()),
+        "predictive_hardening_action_summary_rows": int(len(predictive_action_summary)),
         "acceptance_ready_queue_rows": int(queue["acceptance_ready_now"].sum()),
         "top_priority_gate": gate_summary.iloc[0]["gate_id"] if len(gate_summary) else "",
         "scope": "phase20_acceptance_hardening_queue",
@@ -793,6 +1064,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
                 "risk_hardening_action_summary": str(output_dir / "risk_hardening_action_summary.csv"),
                 "economic_hardening_plan": str(output_dir / "economic_hardening_plan.csv"),
                 "economic_hardening_action_summary": str(output_dir / "economic_hardening_action_summary.csv"),
+                "predictive_hardening_plan": str(output_dir / "predictive_hardening_plan.csv"),
+                "predictive_hardening_action_summary": str(output_dir / "predictive_hardening_action_summary.csv"),
                 "report": str(output_dir / "phase20_acceptance_hardening_report.md"),
             },
             random_seed="not_applicable_deterministic_blocker_queue",
@@ -803,7 +1076,18 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         )
     )
     (output_dir / "acceptance_hardening_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, queue, gate_summary, strategy_queue, risk_plan, risk_action_summary, economic_plan, economic_action_summary)
+    write_report(
+        output_dir,
+        queue,
+        gate_summary,
+        strategy_queue,
+        risk_plan,
+        risk_action_summary,
+        economic_plan,
+        economic_action_summary,
+        predictive_plan,
+        predictive_action_summary,
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -821,6 +1105,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--risk-adjusted-economic-frontier", type=Path, default=Path("outputs/phase16/risk_adjusted_economic_frontier.csv"))
     parser.add_argument("--broker-reconciliation-readiness", type=Path, default=Path("outputs/phase16/broker_reconciliation_readiness.csv"))
     parser.add_argument("--economic-reconciliation-strategy-summary", type=Path, default=Path("outputs/phase16/economic_reconciliation_strategy_summary.csv"))
+    parser.add_argument("--predictive-acceptance-gap", type=Path, default=Path("outputs/phase16/predictive_acceptance_gap_ledger.csv"))
+    parser.add_argument("--predictive-baseline-comparison", type=Path, default=Path("outputs/phase16/predictive_baseline_comparison.csv"))
+    parser.add_argument("--predictive-holdout-stability-summary", type=Path, default=Path("outputs/phase16/predictive_holdout_stability_summary.csv"))
+    parser.add_argument("--predictive-promotion-falsification", type=Path, default=Path("outputs/phase16/predictive_promotion_falsification.csv"))
+    parser.add_argument("--feature-importance-stability", type=Path, default=Path("outputs/phase16/feature_importance_stability_proxy.csv"))
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     return parser.parse_args()
 
@@ -840,6 +1129,11 @@ def main() -> None:
         "risk_adjusted_economic_frontier": args.risk_adjusted_economic_frontier,
         "broker_reconciliation_readiness": args.broker_reconciliation_readiness,
         "economic_reconciliation_strategy_summary": args.economic_reconciliation_strategy_summary,
+        "predictive_acceptance_gap": args.predictive_acceptance_gap,
+        "predictive_baseline_comparison": args.predictive_baseline_comparison,
+        "predictive_holdout_stability_summary": args.predictive_holdout_stability_summary,
+        "predictive_promotion_falsification": args.predictive_promotion_falsification,
+        "feature_importance_stability": args.feature_importance_stability,
     }
     run_phase20(paths, args.output_dir, args.base_dir)
 
