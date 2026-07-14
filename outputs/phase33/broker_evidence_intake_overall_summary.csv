@@ -1,0 +1,8 @@
+metric,value,description
+phase33_templates_generated,4,Broker evidence CSV templates generated
+phase33_expected_external_files,4,Expected external broker evidence files checked
+phase33_external_files_present,0,Expected external files present now
+phase33_acceptance_import_ready_files,0,External files with required columns and nonzero rows
+phase33_missing_external_files,4,Expected external files still missing
+phase33_reconciliation_tests_ready,0,Broker reconciliation tests ready to run
+phase33_acceptance_ready,0,Broker evidence intake is not acceptance-ready without imported files

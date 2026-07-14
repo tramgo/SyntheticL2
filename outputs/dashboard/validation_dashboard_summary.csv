@@ -229,3 +229,9 @@ phase32_external_or_new_artifact_missing_rows,21,Phase 32 external/new-artifact 
 phase32_acceptance_met_rows,0,Phase 32 acceptance-met rows
 phase32_replay_allowed_rows,0,Phase 32 replay-allowed rows
 phase32_acquisition_queue_rows,9,Phase 32 evidence acquisition queue rows
+phase33_templates_generated,4,Phase 33 broker evidence templates generated
+phase33_expected_external_files,4,Phase 33 expected external files
+phase33_external_files_present,0,Phase 33 external files present
+phase33_acceptance_import_ready_files,0,Phase 33 acceptance import-ready files
+phase33_missing_external_files,4,Phase 33 missing external files
+phase33_reconciliation_tests_ready,0,Phase 33 reconciliation tests ready

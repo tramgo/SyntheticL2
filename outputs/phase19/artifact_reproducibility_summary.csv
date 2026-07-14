@@ -37,6 +37,7 @@ phase3,outputs/phase3/regime_manifest.json,10,10,0,0,0,True
 phase30,outputs/phase30/phase30_strategy_decision_triage_manifest.json,10,10,0,0,0,True
 phase31,outputs/phase31/phase31_redesign_evidence_contract_manifest.json,10,10,0,0,0,True
 phase32,outputs/phase32/phase32_contract_evidence_scanner_manifest.json,10,10,0,0,0,True
+phase33,outputs/phase33/phase33_broker_evidence_intake_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True

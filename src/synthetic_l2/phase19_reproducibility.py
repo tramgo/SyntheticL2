@@ -58,6 +58,7 @@ MANIFEST_CANDIDATES = [
     ("phase30", "outputs/phase30/phase30_strategy_decision_triage_manifest.json"),
     ("phase31", "outputs/phase31/phase31_redesign_evidence_contract_manifest.json"),
     ("phase32", "outputs/phase32/phase32_contract_evidence_scanner_manifest.json"),
+    ("phase33", "outputs/phase33/phase33_broker_evidence_intake_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

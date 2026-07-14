@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T18:47:50.752786+00:00
+Generated UTC: 2026-07-14T18:52:47.922450+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -238,6 +238,12 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase32_acceptance_met_rows | 0 | Phase 32 acceptance-met rows |
 | phase32_replay_allowed_rows | 0 | Phase 32 replay-allowed rows |
 | phase32_acquisition_queue_rows | 9 | Phase 32 evidence acquisition queue rows |
+| phase33_templates_generated | 4 | Phase 33 broker evidence templates generated |
+| phase33_expected_external_files | 4 | Phase 33 expected external files |
+| phase33_external_files_present | 0 | Phase 33 external files present |
+| phase33_acceptance_import_ready_files | 0 | Phase 33 acceptance import-ready files |
+| phase33_missing_external_files | 4 | Phase 33 missing external files |
+| phase33_reconciliation_tests_ready | 0 | Phase 33 reconciliation tests ready |
 
 ## Quality Status
 
@@ -4601,6 +4607,48 @@ This dashboard is static research traceability output, not strategy promotion ev
 | S09 | Pure queue-imbalance scalping | medium | S09_03_zero_latency_edge_to_retail_bridge | execution_economics | Demonstrate that Phase 26 zero-latency positives survive realistic latency/slippage/costs. | missing_or_proxy_only | False | False | Frictionless edge is not tradable. | reject_current_signal_form_redesign_required | negative_execution_evidence_available | outputs/phase30/strategy_rejection_or_redesign_overall_summary.csv; outputs/phase25; outputs/phase26; outputs/phase27; outputs/phase29 | Current realistic-positive rows=0 and candidate rows=0; this is blocking evidence, not satisfaction. | False | False |
 | S09 | Pure queue-imbalance scalping | medium | S09_04_negative_control_falsification | robustness | Must beat random-side, inverted-side and stale-book controls after costs. | missing_or_proxy_only | False | False | Needed before queue-imbalance is more than a benchmark. | reject_current_signal_form_redesign_required | proxy_robustness_available_new_control_missing | outputs/phase13; outputs/phase16; outputs/phase31/redesign_evidence_contract_ledger.csv | Earlier robustness/proxy artifacts exist, but the Phase 31 strategy-specific negative controls have not been generated. | False | False |
 | S09 | Pure queue-imbalance scalping | medium | S09_05_multi_day_real_holdout | real_data | Multi-day real tick validation across queue/spread regimes. | missing_or_proxy_only | False | False | One-day/proxy evidence is insufficient. | reject_current_signal_form_redesign_required | one_day_real_sample_available_multiday_missing | outputs/stage_a2/stage_a2_readiness_summary.csv | 1 current sample day is available; minimum required complete days is 5. | False | False |
+
+## Phase 33 Broker Evidence Intake
+
+| schema_validation_status | acceptance_import_ready | rows |
+| --- | --- | --- |
+| missing_external_file | False | 4 |
+
+| current_status | test_import_ready | rows |
+| --- | --- | --- |
+| blocked_until_required_evidence_files_import_ready | False | 5 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase33_templates_generated | 4 | Broker evidence CSV templates generated |
+| phase33_expected_external_files | 4 | Expected external broker evidence files checked |
+| phase33_external_files_present | 0 | Expected external files present now |
+| phase33_acceptance_import_ready_files | 0 | External files with required columns and nonzero rows |
+| phase33_missing_external_files | 4 | Expected external files still missing |
+| phase33_reconciliation_tests_ready | 0 | Broker reconciliation tests ready to run |
+| phase33_acceptance_ready | 0 | Broker evidence intake is not acceptance-ready without imported files |
+
+| evidence_file_id | template_path | expected_external_path | required_fields | total_fields | template_status |
+| --- | --- | --- | --- | --- | --- |
+| broker_order_fill_events | outputs\phase33\broker_evidence_templates\broker_order_fill_events.template.csv | external_broker_evidence\broker_order_fill_events.csv | 11 | 16 | template_generated_not_evidence |
+| broker_contract_note_charges | outputs\phase33\broker_evidence_templates\broker_contract_note_charges.template.csv | external_broker_evidence\broker_contract_note_charges.csv | 14 | 14 | template_generated_not_evidence |
+| strategy_order_linkage | outputs\phase33\broker_evidence_templates\strategy_order_linkage.template.csv | external_broker_evidence\strategy_order_linkage.csv | 6 | 6 | template_generated_not_evidence |
+| broker_reconciliation_tolerances | outputs\phase33\broker_evidence_templates\broker_reconciliation_tolerances.template.csv | external_broker_evidence\broker_reconciliation_tolerances.csv | 2 | 4 | template_generated_not_evidence |
+
+| evidence_file_id | expected_external_path | evidence_domain | required_for_gate | file_exists_now | row_count | required_columns_present | missing_required_columns | unexpected_columns | schema_validation_status | acceptance_import_ready | next_action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| broker_order_fill_events | external_broker_evidence\broker_order_fill_events.csv | broker_exchange_fill_provenance | G04_risk;G02_economic | False | 0 | False | broker_order_id;trade_date;exchange;symbol;side;order_type;order_status;order_timestamp_ist;quantity;filled_quantity;average_price |  | missing_external_file | False | Populate external_broker_evidence\broker_order_fill_events.csv using outputs\phase33\broker_evidence_templates\broker_order_fill_events.template.csv and rerun Phase 33. |
+| broker_contract_note_charges | external_broker_evidence\broker_contract_note_charges.csv | contract_note_cost_reconciliation | G04_risk;G02_economic | False | 0 | False | contract_note_id;broker_order_id;trade_date;symbol;buy_turnover_inr;sell_turnover_inr;brokerage_inr;stt_inr;exchange_transaction_charge_inr;sebi_charge_inr;stamp_duty_inr;gst_inr;total_charges_inr;net_obligation_inr |  | missing_external_file | False | Populate external_broker_evidence\broker_contract_note_charges.csv using outputs\phase33\broker_evidence_templates\broker_contract_note_charges.template.csv and rerun Phase 33. |
+| strategy_order_linkage | external_broker_evidence\strategy_order_linkage.csv | strategy_to_broker_order_lineage | G04_risk;G02_economic | False | 0 | False | strategy_id;internal_order_id;broker_order_id;signal_timestamp_ist;order_arrival_timestamp_ist;validation_run_id |  | missing_external_file | False | Populate external_broker_evidence\strategy_order_linkage.csv using outputs\phase33\broker_evidence_templates\strategy_order_linkage.template.csv and rerun Phase 33. |
+| broker_reconciliation_tolerances | external_broker_evidence\broker_reconciliation_tolerances.csv | reconciliation_thresholds | G04_risk;G02_economic | False | 0 | False | reconciliation_metric;acceptance_policy |  | missing_external_file | False | Populate external_broker_evidence\broker_reconciliation_tolerances.csv using outputs\phase33\broker_evidence_templates\broker_reconciliation_tolerances.template.csv and rerun Phase 33. |
+
+| test_id | test_description | acceptance_threshold | required_evidence_files | missing_or_not_ready_files | test_import_ready | current_status |
+| --- | --- | --- | --- | --- | --- | --- |
+| order_lineage_join | broker_order_fill_events joins strategy_order_linkage on broker_order_id | zero orphan accepted validation fills | broker_order_fill_events;strategy_order_linkage | broker_order_fill_events;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
+| fill_quantity_match | filled quantities reconcile between broker records and internal lifecycle orders | zero unexplained quantity mismatch | broker_order_fill_events;strategy_order_linkage | broker_order_fill_events;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
+| average_price_match | broker average prices reconcile to internal fill prices within tolerance | all tested fills within tolerance | broker_order_fill_events;strategy_order_linkage | broker_order_fill_events;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
+| charge_component_match | contract-note charge components reconcile to Zerodha formula and internal costs | all charge components within predeclared tolerance | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
+| net_obligation_match | contract-note net obligation reconciles to internal realized cash-flow | all reconciled orders within predeclared tolerance | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
 
 ## Metric Status
 
