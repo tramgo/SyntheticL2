@@ -18,6 +18,7 @@ phase28,outputs/phase28/phase28_richer_event_label_support_manifest.json,outputs
 phase29,outputs/phase29/phase29_partial_strategy_proxy_replay_manifest.json,outputs\phase19\normalized_manifests\phase29.normalized_manifest.json,True,10,10,0,10,True
 phase30,outputs/phase30/phase30_strategy_decision_triage_manifest.json,outputs\phase19\normalized_manifests\phase30.normalized_manifest.json,True,10,10,0,10,True
 phase31,outputs/phase31/phase31_redesign_evidence_contract_manifest.json,outputs\phase19\normalized_manifests\phase31.normalized_manifest.json,True,10,10,0,10,True
+phase32,outputs/phase32/phase32_contract_evidence_scanner_manifest.json,outputs\phase19\normalized_manifests\phase32.normalized_manifest.json,True,10,10,0,10,True
 phase2,outputs/phase2/calibration_manifest.json,outputs\phase19\normalized_manifests\phase2.normalized_manifest.json,True,10,10,0,10,True
 phase3,outputs/phase3/regime_manifest.json,outputs\phase19\normalized_manifests\phase3.normalized_manifest.json,True,10,10,0,10,True
 phase4,outputs/phase4/scenario_manifest.json,outputs\phase19\normalized_manifests\phase4.normalized_manifest.json,True,10,10,0,10,True

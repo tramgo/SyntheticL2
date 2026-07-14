@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T18:42:25.843926+00:00",
+  "generated_utc": "2026-07-14T18:47:50.752786+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -139,7 +139,12 @@
     "phase31_spec_catalog": "outputs\\phase31\\strategy_redesign_spec_catalog.csv",
     "phase31_contract_ledger": "outputs\\phase31\\redesign_evidence_contract_ledger.csv",
     "phase31_replay_gate": "outputs\\phase31\\replay_expansion_gate.csv",
-    "phase31_overall_summary": "outputs\\phase31\\redesign_evidence_contract_overall_summary.csv"
+    "phase31_overall_summary": "outputs\\phase31\\redesign_evidence_contract_overall_summary.csv",
+    "phase32_scan_ledger": "outputs\\phase32\\contract_evidence_scan_ledger.csv",
+    "phase32_availability_summary": "outputs\\phase32\\evidence_availability_summary.csv",
+    "phase32_acquisition_queue": "outputs\\phase32\\evidence_acquisition_queue.csv",
+    "phase32_strategy_summary": "outputs\\phase32\\strategy_evidence_scan_summary.csv",
+    "phase32_overall_summary": "outputs\\phase32\\contract_evidence_scan_overall_summary.csv"
   },
   "summary": {
     "quality_checks": 24,
@@ -365,19 +370,25 @@
     "phase31_open_contract_requirements": 44,
     "phase31_replay_allowed_rows": 0,
     "phase31_replay_blocked_rows": 9,
-    "phase31_acceptance_ready_rows": 0
+    "phase31_acceptance_ready_rows": 0,
+    "phase32_contract_rows_scanned": 44,
+    "phase32_proxy_or_partial_available_rows": 35,
+    "phase32_external_or_new_artifact_missing_rows": 21,
+    "phase32_acceptance_met_rows": 0,
+    "phase32_replay_allowed_rows": 0,
+    "phase32_acquisition_queue_rows": 9
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "fc139fa7219910f9f57e06abf1604258d30683e2",
-  "configuration_hash": "53b4e3e7dd6e4554dcead758ba75ffba09f6dcd7706b78b12d9a08b836af4be6",
+  "generator_version": "0e1d1744a47d42f3d25c57967fe80cddb5c9bc42",
+  "configuration_hash": "b13342a8c63a3d8e36615beadaa6ffe8d3102d7e1325de24694e9b4c137e8ce3",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
-  "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_evidence",
+  "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T18:42:25.843926+00:00"
+  "creation_timestamp": "2026-07-14T18:47:50.752786+00:00"
 }

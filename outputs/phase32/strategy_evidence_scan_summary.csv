@@ -1,0 +1,10 @@
+strategy_id,strategy_name,redesign_priority,requirement_rows,proxy_or_partial_available_rows,external_missing_rows,acceptance_met_rows,replay_allowed_rows,evidence_scan_status
+S01,Momentum/breakout filtered by MLOFI,low,5,4,3,0,0,blocked_scanned_evidence_not_acceptance_ready
+S02,Pure multi-level OFI directional model,low,5,4,3,0,0,blocked_scanned_evidence_not_acceptance_ready
+S03,Liquidity-vacuum breakout,medium,5,3,1,0,0,blocked_scanned_evidence_not_acceptance_ready
+S04,Trade-flow plus depth confirmation,medium,5,4,2,0,0,blocked_scanned_evidence_not_acceptance_ready
+S05,Microprice entry/exit filter,medium,4,3,2,0,0,blocked_scanned_evidence_not_acceptance_ready
+S06,Absorption and exhaustion reversal,medium,5,4,2,0,0,blocked_scanned_evidence_not_acceptance_ready
+S07,Mean reversion after imbalance,medium,5,4,3,0,0,blocked_scanned_evidence_not_acceptance_ready
+S08,Cross-ticker/index lead-lag OFI,medium,5,5,2,0,0,blocked_scanned_evidence_not_acceptance_ready
+S09,Pure queue-imbalance scalping,medium,5,4,3,0,0,blocked_scanned_evidence_not_acceptance_ready

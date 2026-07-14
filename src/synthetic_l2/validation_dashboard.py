@@ -229,6 +229,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     phase31_contract_ledger = _read_csv(paths["phase31_contract_ledger"])
     phase31_replay_gate = _read_csv(paths["phase31_replay_gate"])
     phase31_overall_summary = _read_csv(paths["phase31_overall_summary"])
+    phase32_scan_ledger = _read_csv(paths["phase32_scan_ledger"])
+    phase32_availability_summary = _read_csv(paths["phase32_availability_summary"])
+    phase32_acquisition_queue = _read_csv(paths["phase32_acquisition_queue"])
+    phase32_strategy_summary = _read_csv(paths["phase32_strategy_summary"])
+    phase32_overall_summary = _read_csv(paths["phase32_overall_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -461,6 +466,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .size()
         .reset_index(name="rows")
     )
+    phase32_scanner_status = (
+        phase32_scan_ledger.groupby(["scanner_evidence_status", "scanner_acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     top_risk_severity = lifecycle_risk_severity.sort_values("risk_severity_score", ascending=False)
     top_risk_limit_sensitivity = lifecycle_risk_limit_sensitivity.sort_values("risk_limit_severity_score", ascending=False)
 
@@ -689,6 +699,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase31_replay_allowed_rows", int(phase31_overall_summary.loc[phase31_overall_summary["metric"].eq("phase31_replay_allowed_rows"), "value"].iloc[0]), "Phase 31 replay-allowed rows"),
         ("phase31_replay_blocked_rows", int(phase31_overall_summary.loc[phase31_overall_summary["metric"].eq("phase31_replay_blocked_rows"), "value"].iloc[0]), "Phase 31 replay-blocked rows"),
         ("phase31_acceptance_ready_rows", int(phase31_overall_summary.loc[phase31_overall_summary["metric"].eq("phase31_acceptance_ready_rows"), "value"].iloc[0]), "Phase 31 acceptance-ready rows"),
+        ("phase32_contract_rows_scanned", int(phase32_overall_summary.loc[phase32_overall_summary["metric"].eq("phase32_contract_rows_scanned"), "value"].iloc[0]), "Phase 32 contract rows scanned"),
+        ("phase32_proxy_or_partial_available_rows", int(phase32_overall_summary.loc[phase32_overall_summary["metric"].eq("phase32_proxy_or_partial_available_rows"), "value"].iloc[0]), "Phase 32 proxy/partial available rows"),
+        ("phase32_external_or_new_artifact_missing_rows", int(phase32_overall_summary.loc[phase32_overall_summary["metric"].eq("phase32_external_or_new_artifact_missing_rows"), "value"].iloc[0]), "Phase 32 external/new-artifact missing rows"),
+        ("phase32_acceptance_met_rows", int(phase32_overall_summary.loc[phase32_overall_summary["metric"].eq("phase32_acceptance_met_rows"), "value"].iloc[0]), "Phase 32 acceptance-met rows"),
+        ("phase32_replay_allowed_rows", int(phase32_overall_summary.loc[phase32_overall_summary["metric"].eq("phase32_replay_allowed_rows"), "value"].iloc[0]), "Phase 32 replay-allowed rows"),
+        ("phase32_acquisition_queue_rows", int(phase32_overall_summary.loc[phase32_overall_summary["metric"].eq("phase32_acquisition_queue_rows"), "value"].iloc[0]), "Phase 32 evidence acquisition queue rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -713,7 +729,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -790,6 +806,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 29 Partial Strategy Proxy Replay</h2>{_table(phase29_profile_status, None, 15)}{_table(phase29_risk_status, None, 10)}{_table(phase29_overall_summary, None, 10)}{_table(phase29_summary, ['model_id', 'execution_profile', 'trades', 'mean_gross_return', 'mean_cost_return', 'mean_net_return', 'win_rate_net', 'total_net_pnl_inr'], 20)}{_table(phase29_candidate_summary, ['model_id', 'execution_profile', 'trades', 'mean_net_return', 'positive_after_costs', 'realistic_charged_profile', 'risk_status', 'partial_proxy_candidate'], 20)}</section>
   <section><h2>Phase 30 Strategy Decision Triage</h2>{_table(phase30_decision_status, None, 10)}{_table(phase30_redesign_priority, None, 10)}{_table(phase30_overall_summary, None, 12)}{_table(phase30_decision_ledger, ['strategy_id', 'strategy_name', 'current_decision', 'promotion_ready', 'acceptance_ready', 'realistic_positive_execution_rows', 'candidate_rows', 'blocking_reason'], 20)}{_table(phase30_execution_evidence, ['strategy_id', 'evidence_scope', 'realistic_positive_execution_rows', 'candidate_rows', 'phase28_proxy_rows', 'phase29_trades', 'evidence_note'], 20)}{_table(phase30_redesign_queue, ['strategy_id', 'strategy_name', 'redesign_priority', 'redesign_theme', 'required_evidence_before_next_execution_expansion'], 20)}</section>
   <section><h2>Phase 31 Redesign Evidence Contract</h2>{_table(phase31_contract_status, None, 10)}{_table(phase31_evidence_domain_status, None, 20)}{_table(phase31_overall_summary, None, 12)}{_table(phase31_replay_gate, ['strategy_id', 'strategy_name', 'redesign_priority', 'contract_requirements', 'open_requirements', 'replay_expansion_allowed', 'redesign_contract_status', 'next_action'], 20)}{_table(phase31_spec_catalog, ['strategy_id', 'strategy_name', 'redesign_priority', 'contract_requirements', 'evidence_domains', 'open_requirements', 'replay_expansion_allowed'], 20)}{_table(phase31_contract_ledger, ['strategy_id', 'contract_requirement_id', 'evidence_domain', 'required_artifact_or_test', 'current_evidence_status', 'acceptance_requirement_met', 'replay_expansion_allowed'], 60)}</section>
+  <section><h2>Phase 32 Contract Evidence Scanner</h2>{_table(phase32_scanner_status, None, 12)}{_table(phase32_overall_summary, None, 12)}{_table(phase32_availability_summary, None, 20)}{_table(phase32_strategy_summary, ['strategy_id', 'strategy_name', 'requirement_rows', 'proxy_or_partial_available_rows', 'external_missing_rows', 'acceptance_met_rows', 'replay_allowed_rows', 'evidence_scan_status'], 20)}{_table(phase32_acquisition_queue, ['scanner_evidence_status', 'evidence_domain', 'requirement_rows', 'strategies', 'next_action'], 20)}{_table(phase32_scan_ledger, ['strategy_id', 'contract_requirement_id', 'evidence_domain', 'scanner_evidence_status', 'available_evidence_source', 'scanner_acceptance_requirement_met', 'scanner_replay_expansion_allowed'], 70)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -1248,6 +1265,20 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(phase31_contract_ledger),
         "",
+        "## Phase 32 Contract Evidence Scanner",
+        "",
+        _markdown_table(phase32_scanner_status),
+        "",
+        _markdown_table(phase32_overall_summary),
+        "",
+        _markdown_table(phase32_availability_summary),
+        "",
+        _markdown_table(phase32_strategy_summary),
+        "",
+        _markdown_table(phase32_acquisition_queue),
+        "",
+        _markdown_table(phase32_scan_ledger),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1411,6 +1442,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase31-contract-ledger", type=Path, default=Path("outputs/phase31/redesign_evidence_contract_ledger.csv"))
     parser.add_argument("--phase31-replay-gate", type=Path, default=Path("outputs/phase31/replay_expansion_gate.csv"))
     parser.add_argument("--phase31-overall-summary", type=Path, default=Path("outputs/phase31/redesign_evidence_contract_overall_summary.csv"))
+    parser.add_argument("--phase32-scan-ledger", type=Path, default=Path("outputs/phase32/contract_evidence_scan_ledger.csv"))
+    parser.add_argument("--phase32-availability-summary", type=Path, default=Path("outputs/phase32/evidence_availability_summary.csv"))
+    parser.add_argument("--phase32-acquisition-queue", type=Path, default=Path("outputs/phase32/evidence_acquisition_queue.csv"))
+    parser.add_argument("--phase32-strategy-summary", type=Path, default=Path("outputs/phase32/strategy_evidence_scan_summary.csv"))
+    parser.add_argument("--phase32-overall-summary", type=Path, default=Path("outputs/phase32/contract_evidence_scan_overall_summary.csv"))
     return parser.parse_args()
 
 
@@ -1556,6 +1592,11 @@ def main() -> None:
         "phase31_contract_ledger": args.phase31_contract_ledger,
         "phase31_replay_gate": args.phase31_replay_gate,
         "phase31_overall_summary": args.phase31_overall_summary,
+        "phase32_scan_ledger": args.phase32_scan_ledger,
+        "phase32_availability_summary": args.phase32_availability_summary,
+        "phase32_acquisition_queue": args.phase32_acquisition_queue,
+        "phase32_strategy_summary": args.phase32_strategy_summary,
+        "phase32_overall_summary": args.phase32_overall_summary,
     }
     run_dashboard(args.output_dir, paths)
 

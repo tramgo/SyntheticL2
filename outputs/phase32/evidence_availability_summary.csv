@@ -1,0 +1,10 @@
+evidence_domain,scanner_evidence_status,requirement_rows,strategies,acceptance_met_rows
+broker_evidence,external_evidence_missing,3,3,0
+data_quality,diagnostics_contract_open,1,1,0
+execution_economics,negative_execution_evidence_available,9,9,0
+feature_engineering,partial_proxy_available_not_acceptance,5,5,0
+feature_engineering,proxy_available_not_acceptance,1,1,0
+label_engineering,proxy_available_not_acceptance,7,4,0
+real_data,one_day_real_sample_available_multiday_missing,7,7,0
+robustness,proxy_robustness_available_new_control_missing,6,6,0
+signal_design,not_started_new_thesis_required,5,5,0

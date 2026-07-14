@@ -1,0 +1,8 @@
+metric,value,description
+phase32_contract_rows_scanned,44,Phase 31 contract rows scanned against current artifacts
+phase32_proxy_or_partial_available_rows,35,Rows with some current proxy/partial/negative evidence
+phase32_external_or_new_artifact_missing_rows,21,Rows requiring external evidence or new signal artifacts
+phase32_acceptance_met_rows,0,Rows that scanner can mark acceptance-met now
+phase32_replay_allowed_rows,0,Rows allowed back into replay after scan
+phase32_strategy_rows_scanned,9,Strategy families scanned
+phase32_acquisition_queue_rows,9,Evidence acquisition queue rows
