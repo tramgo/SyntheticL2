@@ -1,0 +1,5 @@
+strategy_id,feature_label,required_inputs,current_support,acceptance_blocker
+S03,liquidity_vacuum_reversal_proxy,"depth withdrawal, spread widening/normalization, local volatility, future mid move",proxy_feature_available,"market-by-price feed cannot prove hidden liquidity, exact queue state or true cause of withdrawal/reversal"
+S04,trade_flow_depth_confirmation_proxy,"volume increment, weak aggressor side, MLOFI sign, L5 imbalance sign",proxy_feature_available,aggressor side is weakly inferred and not exchange-confirmed
+S06,absorption_like_replenishment_proxy,"volume increment, weak aggressor side, visible replenishment, low realized mid move",proxy_feature_available,cannot distinguish iceberg/absorption from ordinary market-by-price aggregation and replenishment
+S08,cross_symbol_lead_lag_mlofi_proxy,"5s receive bucket, symbol MLOFI, ex-self market MLOFI, next-bucket return",proxy_feature_available,one-day receive-time correlation is not causal lead-lag and needs multi-day timestamp-skew/common-shock controls

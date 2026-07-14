@@ -198,3 +198,8 @@ phase27_positive_after_cost_rows,0,Phase 27 positive rows after costs
 phase27_realistic_cost_clearing_rows,0,Phase 27 realistic cost-clearing feature rows
 phase27_zero_latency_edge_control_rows,0,Phase 27 zero-latency positive feature controls
 phase27_acceptance_ready,0,Phase 27 acceptance-ready rows
+phase28_received_delta_rows,620853,Phase 28 received tick-delta rows scanned
+phase28_symbols_evaluated,32,Phase 28 symbols evaluated
+phase28_proxy_feature_engineered_families,4,Phase 28 partial families with proxy labels
+phase28_total_proxy_label_rows,290162,Phase 28 proxy label rows/buckets
+phase28_acceptance_ready,0,Phase 28 acceptance-ready rows

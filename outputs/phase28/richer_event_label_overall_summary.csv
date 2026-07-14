@@ -1,0 +1,7 @@
+metric,value,description
+phase28_received_delta_rows,620853,Received tick-delta rows scanned
+phase28_symbols_evaluated,32,Symbols evaluated
+phase28_partial_strategy_families,4,Partial strategy families evaluated
+phase28_proxy_feature_engineered_families,4,Partial families with proxy feature labels now engineered
+phase28_total_proxy_label_rows,290162,Total proxy label rows or buckets across S03/S04/S06/S08
+phase28_acceptance_ready,0,"Richer labels are weak market-by-price proxies, not acceptance evidence"

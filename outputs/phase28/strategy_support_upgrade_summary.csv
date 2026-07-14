@@ -1,0 +1,5 @@
+strategy_id,feature_label_family,proxy_rows,symbols_with_proxy,symbols_evaluated,support_upgrade_status,acceptance_ready,required_next_evidence
+S03,liquidity vacuum/reversal,47449,31,32,partial_proxy_feature_engineered,False,"multi-day Class B labels, common-shock controls, broker/exchange fill/cost reconciliation and acceptance replay"
+S04,trade-flow plus depth confirmation,38481,32,32,partial_proxy_feature_engineered,False,"multi-day Class B labels, common-shock controls, broker/exchange fill/cost reconciliation and acceptance replay"
+S06,absorption-like replenishment,71244,32,32,partial_proxy_feature_engineered,False,"multi-day Class B labels, common-shock controls, broker/exchange fill/cost reconciliation and acceptance replay"
+S08,cross-symbol/index lead-lag OFI,132988,32,32,partial_proxy_feature_engineered,False,"multi-day lead-lag stability, timestamp-skew tests, simultaneous-shock controls and out-of-sample acceptance replay"

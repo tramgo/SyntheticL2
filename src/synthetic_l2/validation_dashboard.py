@@ -212,6 +212,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     phase27_family_summary = _read_csv(paths["phase27_family_summary"])
     phase27_rejection_ledger = _read_csv(paths["phase27_rejection_ledger"])
     phase27_overall_summary = _read_csv(paths["phase27_overall_summary"])
+    phase28_feature_label_catalog = _read_csv(paths["phase28_feature_label_catalog"])
+    phase28_event_label_summary = _read_csv(paths["phase28_event_label_summary"])
+    phase28_lead_lag_summary = _read_csv(paths["phase28_lead_lag_summary"])
+    phase28_strategy_support_summary = _read_csv(paths["phase28_strategy_support_summary"])
+    phase28_overall_summary = _read_csv(paths["phase28_overall_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -406,6 +411,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     phase27_rejection_status = (
         phase27_rejection_ledger.groupby(["realistic_cost_clearing_edge"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    phase28_support_status = (
+        phase28_strategy_support_summary.groupby(["support_upgrade_status", "acceptance_ready"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -612,6 +622,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase27_realistic_cost_clearing_rows", int(phase27_overall_summary.loc[phase27_overall_summary["metric"].eq("phase27_realistic_cost_clearing_rows"), "value"].iloc[0]), "Phase 27 realistic cost-clearing feature rows"),
         ("phase27_zero_latency_edge_control_rows", int(phase27_overall_summary.loc[phase27_overall_summary["metric"].eq("phase27_zero_latency_edge_control_rows"), "value"].iloc[0]), "Phase 27 zero-latency positive feature controls"),
         ("phase27_acceptance_ready", int(phase27_overall_summary.loc[phase27_overall_summary["metric"].eq("phase27_acceptance_ready"), "value"].iloc[0]), "Phase 27 acceptance-ready rows"),
+        ("phase28_received_delta_rows", int(phase28_overall_summary.loc[phase28_overall_summary["metric"].eq("phase28_received_delta_rows"), "value"].iloc[0]), "Phase 28 received tick-delta rows scanned"),
+        ("phase28_symbols_evaluated", int(phase28_overall_summary.loc[phase28_overall_summary["metric"].eq("phase28_symbols_evaluated"), "value"].iloc[0]), "Phase 28 symbols evaluated"),
+        ("phase28_proxy_feature_engineered_families", int(phase28_overall_summary.loc[phase28_overall_summary["metric"].eq("phase28_proxy_feature_engineered_families"), "value"].iloc[0]), "Phase 28 partial families with proxy labels"),
+        ("phase28_total_proxy_label_rows", int(phase28_overall_summary.loc[phase28_overall_summary["metric"].eq("phase28_total_proxy_label_rows"), "value"].iloc[0]), "Phase 28 proxy label rows/buckets"),
+        ("phase28_acceptance_ready", int(phase28_overall_summary.loc[phase28_overall_summary["metric"].eq("phase28_acceptance_ready"), "value"].iloc[0]), "Phase 28 acceptance-ready rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -636,7 +651,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -709,6 +724,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 25 Event Replay Expansion</h2>{_table(phase25_profile_status, None, 10)}{_table(phase25_risk_status, None, 10)}{_table(phase25_overall_summary, None, 10)}{_table(phase25_replay_summary, ['model_id', 'model_type', 'execution_profile', 'trades', 'mean_net_return', 'total_net_pnl_inr', 'replay_status'], 30)}{_table(phase25_baseline_comparison, ['model_id', 'execution_profile', 'strategy_mean_net_return', 'best_baseline_mean_net_return', 'net_return_lift_vs_best_baseline', 'beats_best_baseline_proxy'], 20)}</section>
   <section><h2>Phase 26 Strategy Salvage Scan</h2>{_table(phase26_profile_status, None, 15)}{_table(phase26_rejection_status, None, 10)}{_table(phase26_overall_summary, None, 12)}{_table(phase26_candidate_summary, ['variant_id', 'parent_strategy_id', 'execution_profile', 'trades', 'mean_net_return', 'best_baseline_mean_net_return', 'positive_after_costs', 'realistic_charged_profile', 'salvage_candidate_proxy', 'zero_latency_positive_control'], 30)}{_table(phase26_rejection_ledger, ['variant_id', 'parent_strategy_id', 'execution_profile', 'rejection_reasons', 'salvage_candidate_proxy'], 30)}{_table(phase26_variant_catalog, ['variant_id', 'parent_strategy_id', 'threshold_quantile', 'spread_limit_quantile', 'liquidity_filter'], 20)}</section>
   <section><h2>Phase 27 Feature Edge Cost-Hurdle Scan</h2>{_table(phase27_profile_status, None, 15)}{_table(phase27_rejection_status, None, 10)}{_table(phase27_overall_summary, None, 12)}{_table(phase27_family_summary, ['feature_family', 'execution_profile', 'candidate_rows', 'positive_after_cost_rows', 'realistic_cost_clearing_rows', 'zero_latency_edge_control_rows', 'max_mean_net_return', 'max_cost_hurdle_ratio'], 30)}{_table(phase27_candidate_summary, ['candidate_id', 'feature_id', 'execution_profile', 'horizon_events', 'trades', 'mean_net_return', 'mean_cost_return', 'positive_after_costs', 'realistic_cost_clearing_edge', 'zero_latency_edge_control'], 30)}{_table(phase27_rejection_ledger, ['candidate_id', 'feature_family', 'execution_profile', 'horizon_events', 'rejection_reasons', 'realistic_cost_clearing_edge'], 30)}{_table(phase27_candidate_catalog, ['candidate_id', 'feature_family', 'feature_column', 'polarity', 'horizon_events', 'threshold_quantile'], 20)}</section>
+  <section><h2>Phase 28 Richer Event Label Support</h2>{_table(phase28_support_status, None, 10)}{_table(phase28_overall_summary, None, 10)}{_table(phase28_strategy_support_summary, ['strategy_id', 'feature_label_family', 'proxy_rows', 'symbols_with_proxy', 'support_upgrade_status', 'acceptance_ready', 'required_next_evidence'], 10)}{_table(phase28_feature_label_catalog, ['strategy_id', 'feature_label', 'current_support', 'acceptance_blocker'], 10)}{_table(phase28_event_label_summary, ['symbol', 'usable_short_horizon_rows', 's03_liquidity_vacuum_proxy_rows', 's04_trade_flow_depth_confirm_rows', 's06_absorption_like_proxy_rows', 's08_lead_lag_bucket_rows'], 40)}{_table(phase28_lead_lag_summary, ['symbol', 'lead_lag_bucket_rows', 'lead_lag_abs_corr_proxy', 's08_proxy_available', 'limitation'], 40)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -1113,6 +1129,20 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(phase27_rejection_ledger),
         "",
+        "## Phase 28 Richer Event Label Support",
+        "",
+        _markdown_table(phase28_support_status),
+        "",
+        _markdown_table(phase28_overall_summary),
+        "",
+        _markdown_table(phase28_strategy_support_summary),
+        "",
+        _markdown_table(phase28_feature_label_catalog),
+        "",
+        _markdown_table(phase28_event_label_summary),
+        "",
+        _markdown_table(phase28_lead_lag_summary),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1259,6 +1289,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase27-family-summary", type=Path, default=Path("outputs/phase27/feature_edge_family_summary.csv"))
     parser.add_argument("--phase27-rejection-ledger", type=Path, default=Path("outputs/phase27/feature_edge_rejection_ledger.csv"))
     parser.add_argument("--phase27-overall-summary", type=Path, default=Path("outputs/phase27/feature_edge_overall_summary.csv"))
+    parser.add_argument("--phase28-feature-label-catalog", type=Path, default=Path("outputs/phase28/feature_label_catalog.csv"))
+    parser.add_argument("--phase28-event-label-summary", type=Path, default=Path("outputs/phase28/event_label_summary.csv"))
+    parser.add_argument("--phase28-lead-lag-summary", type=Path, default=Path("outputs/phase28/lead_lag_proxy_summary.csv"))
+    parser.add_argument("--phase28-strategy-support-summary", type=Path, default=Path("outputs/phase28/strategy_support_upgrade_summary.csv"))
+    parser.add_argument("--phase28-overall-summary", type=Path, default=Path("outputs/phase28/richer_event_label_overall_summary.csv"))
     return parser.parse_args()
 
 
@@ -1387,6 +1422,11 @@ def main() -> None:
         "phase27_family_summary": args.phase27_family_summary,
         "phase27_rejection_ledger": args.phase27_rejection_ledger,
         "phase27_overall_summary": args.phase27_overall_summary,
+        "phase28_feature_label_catalog": args.phase28_feature_label_catalog,
+        "phase28_event_label_summary": args.phase28_event_label_summary,
+        "phase28_lead_lag_summary": args.phase28_lead_lag_summary,
+        "phase28_strategy_support_summary": args.phase28_strategy_support_summary,
+        "phase28_overall_summary": args.phase28_overall_summary,
     }
     run_dashboard(args.output_dir, paths)
 
