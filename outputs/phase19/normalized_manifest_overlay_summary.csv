@@ -8,6 +8,7 @@ stage_b2,outputs/stage_b2/stage_b2_event_driven_synthetic_proof_manifest.json,ou
 stage_c,outputs/stage_c/stage_c_medium_pilot_manifest.json,outputs\phase19\normalized_manifests\stage_c.normalized_manifest.json,True,10,10,0,10,True
 stage_d,outputs/stage_d/stage_d_three_month_study_manifest.json,outputs\phase19\normalized_manifests\stage_d.normalized_manifest.json,True,10,10,0,10,True
 stage_e,outputs/stage_e/stage_e_full_year_readiness_manifest.json,outputs\phase19\normalized_manifests\stage_e.normalized_manifest.json,True,10,10,0,10,True
+phase21,outputs/phase21/phase21_decision_framework_manifest.json,outputs\phase19\normalized_manifests\phase21.normalized_manifest.json,True,10,10,0,10,True
 phase2,outputs/phase2/calibration_manifest.json,outputs\phase19\normalized_manifests\phase2.normalized_manifest.json,True,10,10,0,10,True
 phase3,outputs/phase3/regime_manifest.json,outputs\phase19\normalized_manifests\phase3.normalized_manifest.json,True,10,10,0,10,True
 phase4,outputs/phase4/scenario_manifest.json,outputs\phase19\normalized_manifests\phase4.normalized_manifest.json,True,10,10,0,10,True

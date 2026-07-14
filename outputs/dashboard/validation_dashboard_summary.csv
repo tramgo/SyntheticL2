@@ -170,3 +170,6 @@ stage_e_prerequisite_rows,7,Stage E prerequisite rows
 stage_e_passing_prerequisites,3,Stage E passing prerequisites
 stage_e_blocking_prerequisites,4,Stage E blocking prerequisites
 stage_e_extension_allowed_rows,0,Stage E extension allowed rows
+phase21_decision_rules,9,Phase 21 decision rules
+phase21_active_current_decisions,1,Phase 21 active current decisions
+phase21_extension_or_paper_ready,0,Phase 21 extension/paper-ready rows

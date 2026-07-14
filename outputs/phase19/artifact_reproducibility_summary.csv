@@ -25,6 +25,7 @@ phase20_m04,outputs/phase20_m04/robustness_execution_contract_manifest.json,10,1
 phase20_m05,outputs/phase20_m05/lifecycle_economic_replay_contract_manifest.json,10,10,0,0,0,True
 phase20_m06,outputs/phase20_m06/realism_rerun_contract_manifest.json,10,10,0,0,0,True
 phase20_m07,outputs/phase20_m07/real_multiday_acceptance_contract_manifest.json,10,10,0,0,0,True
+phase21,outputs/phase21/phase21_decision_framework_manifest.json,10,10,0,0,0,True
 phase3,outputs/phase3/regime_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True

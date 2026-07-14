@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T17:22:35.513882+00:00",
+  "generated_utc": "2026-07-14T17:30:15.529448+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -97,7 +97,10 @@
     "stage_e_criteria": "outputs\\stage_e\\stage_e_readiness_criteria.csv",
     "stage_e_prerequisite_ledger": "outputs\\stage_e\\stage_e_prerequisite_ledger.csv",
     "stage_e_gap_summary": "outputs\\stage_e\\stage_e_gap_summary.csv",
-    "stage_e_action_plan": "outputs\\stage_e\\stage_e_required_action_plan.csv"
+    "stage_e_action_plan": "outputs\\stage_e\\stage_e_required_action_plan.csv",
+    "phase21_decision_rules": "outputs\\phase21\\decision_rules.csv",
+    "phase21_decision_ledger": "outputs\\phase21\\decision_ledger.csv",
+    "phase21_decision_summary": "outputs\\phase21\\decision_summary.csv"
   },
   "summary": {
     "quality_checks": 24,
@@ -270,19 +273,22 @@
     "stage_e_prerequisite_rows": 7,
     "stage_e_passing_prerequisites": 3,
     "stage_e_blocking_prerequisites": 4,
-    "stage_e_extension_allowed_rows": 0
+    "stage_e_extension_allowed_rows": 0,
+    "phase21_decision_rules": 9,
+    "phase21_active_current_decisions": 1,
+    "phase21_extension_or_paper_ready": 0
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "0a242a725c8f22e693c3fdae013dfed9b6c154b7",
-  "configuration_hash": "65477ed944ba21eddeaa67979ef85ee4ac44e2c0231c648839c2fb80d791827e",
+  "generator_version": "8429da7a9fbbd19d4f8bfcd4c3abcf71e383a393",
+  "configuration_hash": "7975d527b2512dfc617bb46fb9575bd389ef3849940a974059f57c21f9059c7b",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
-  "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_evidence",
+  "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T17:22:35.513882+00:00"
+  "creation_timestamp": "2026-07-14T17:30:15.529448+00:00"
 }

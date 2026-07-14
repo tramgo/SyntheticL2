@@ -1,0 +1,10 @@
+decision_rule_id,outcome_condition,plan_decision,rule_scope
+D21_01_no_strategy_survives_costs_latency,No strategy survives costs and latency,Improve or reject strategies; do not tune generator to create profit,phase21_post_three_month_decision_framework
+D21_02_only_price_baselines_work,Only price baselines work,L2 adds insufficient value under tested assumptions,phase21_post_three_month_decision_framework
+D21_03_l2_improves_modestly_robustly,L2 improves baseline modestly and robustly,Continue collecting real data and extend synthetic testing,phase21_post_three_month_decision_framework
+D21_04_strategy_works_one_regime,Strategy works only in one regime,Build explicit regime gate and test false-classification risk,phase21_post_three_month_decision_framework
+D21_05_zero_latency_only,Strategy works only with zero latency,Reject for retail deployment,phase21_post_three_month_decision_framework
+D21_06_optimistic_passive_only,Strategy works only with optimistic passive fills,Reject or redesign execution,phase21_post_three_month_decision_framework
+D21_07_across_generators_seeds,Strategy works across generators/seeds,Candidate for real-data paper testing,phase21_post_three_month_decision_framework
+D21_08_synthetic_not_real,Strategy works synthetically but not on accumulating real days,Treat as generator artifact and investigate,phase21_post_three_month_decision_framework
+D21_09_wild_seed_variation,Results vary wildly by seed,Insufficient robustness or unstable scenario design,phase21_post_three_month_decision_framework

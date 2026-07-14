@@ -47,6 +47,7 @@ MANIFEST_CANDIDATES = [
     ("stage_c", "outputs/stage_c/stage_c_medium_pilot_manifest.json"),
     ("stage_d", "outputs/stage_d/stage_d_three_month_study_manifest.json"),
     ("stage_e", "outputs/stage_e/stage_e_full_year_readiness_manifest.json"),
+    ("phase21", "outputs/phase21/phase21_decision_framework_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

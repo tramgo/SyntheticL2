@@ -187,6 +187,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     stage_e_prerequisite_ledger = _read_csv(paths["stage_e_prerequisite_ledger"])
     stage_e_gap_summary = _read_csv(paths["stage_e_gap_summary"])
     stage_e_action_plan = _read_csv(paths["stage_e_action_plan"])
+    phase21_decision_rules = _read_csv(paths["phase21_decision_rules"])
+    phase21_decision_ledger = _read_csv(paths["phase21_decision_ledger"])
+    phase21_decision_summary = _read_csv(paths["phase21_decision_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -326,6 +329,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     stage_e_status = (
         stage_e_prerequisite_ledger.groupby(["passes"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    phase21_decision_status = (
+        phase21_decision_ledger.groupby(["decision_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -504,6 +512,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("stage_e_passing_prerequisites", int(stage_e_prerequisite_ledger["passes"].astype(bool).sum()), "Stage E passing prerequisites"),
         ("stage_e_blocking_prerequisites", int((~stage_e_prerequisite_ledger["passes"].astype(bool)).sum()), "Stage E blocking prerequisites"),
         ("stage_e_extension_allowed_rows", int(stage_e_prerequisite_ledger.loc[stage_e_prerequisite_ledger["prerequisite_id"].eq("full_year_extension_allowed"), "passes"].astype(bool).sum()), "Stage E extension allowed rows"),
+        ("phase21_decision_rules", int(len(phase21_decision_rules)), "Phase 21 decision rules"),
+        ("phase21_active_current_decisions", int((phase21_decision_ledger["decision_status"].astype(str) == "active_current_decision").sum()), "Phase 21 active current decisions"),
+        ("phase21_extension_or_paper_ready", int(phase21_decision_summary.loc[phase21_decision_summary["metric"].eq("extension_or_paper_ready"), "value"].iloc[0]), "Phase 21 extension/paper-ready rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -528,7 +539,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -595,6 +606,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Stage C Medium Pilot</h2>{_table(stage_c_check_status, None, 5)}{_table(stage_c_dataset_summary, None, 12)}{_table(stage_c_selected_days, ['quarter_profile', 'scenario_day', 'trade_date', 'regime_family', 'is_market_shock_day'], 25)}{_table(stage_c_selected_seeds, None, 5)}{_table(stage_c_strategy_runs, ['model_id', 'model_name', 'simulation_seed', 'trades', 'signal_fraction', 'mean_gross_return_proxy', 'win_rate_proxy', 'pilot_status'], 20)}{_table(stage_c_baseline_runs, ['model_id', 'model_name', 'simulation_seed', 'trades', 'signal_fraction', 'mean_gross_return_proxy', 'win_rate_proxy', 'pilot_status'], 25)}{_table(stage_c_check_ledger, ['check_id', 'observed_value', 'expected_value', 'passed', 'detail'], 10)}</section>
   <section><h2>Stage D Three-Month Study Proxy</h2>{_table(stage_d_check_status, None, 5)}{_table(stage_d_dataset_summary, None, 15)}{_table(stage_d_profile_summary, None, 5)}{_table(stage_d_seed_summary, None, 5)}{_table(stage_d_data_inventory, ['data_product', 'path', 'rows', 'columns', 'present'], 5)}{_table(stage_d_strategy_summary, ['strategy_id', 'strategy_name', 'strategy_role', 'support_level', 'simulation_seed', 'trades', 'signal_fraction', 'mean_gross_return_proxy', 'control_or_risk_module', 'stage_d_status'], 35)}{_table(stage_d_check_ledger, ['check_id', 'observed_value', 'expected_value', 'passed', 'detail'], 12)}</section>
   <section><h2>Stage E Full-Year Extension Readiness</h2>{_table(stage_e_status, None, 5)}{_table(stage_e_gap_summary, None, 5)}{_table(stage_e_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(stage_e_prerequisite_ledger, ['prerequisite_id', 'observed_value', 'passes', 'blocking_gap', 'required_next_action'], 12)}{_table(stage_e_action_plan, ['priority_rank', 'prerequisite_id', 'blocking_gap', 'required_next_action'], 10)}</section>
+  <section><h2>Phase 21 Decision Framework</h2>{_table(phase21_decision_status, None, 10)}{_table(phase21_decision_summary, None, 10)}{_table(phase21_decision_rules, ['decision_rule_id', 'outcome_condition', 'plan_decision'], 12)}{_table(phase21_decision_ledger, ['decision_rule_id', 'current_condition_met', 'observed_value', 'current_decision', 'decision_status', 'next_action'], 12)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -927,6 +939,16 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(stage_e_action_plan),
         "",
+        "## Phase 21 Decision Framework",
+        "",
+        _markdown_table(phase21_decision_status),
+        "",
+        _markdown_table(phase21_decision_summary),
+        "",
+        _markdown_table(phase21_decision_rules),
+        "",
+        _markdown_table(phase21_decision_ledger),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1048,6 +1070,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--stage-e-prerequisite-ledger", type=Path, default=Path("outputs/stage_e/stage_e_prerequisite_ledger.csv"))
     parser.add_argument("--stage-e-gap-summary", type=Path, default=Path("outputs/stage_e/stage_e_gap_summary.csv"))
     parser.add_argument("--stage-e-action-plan", type=Path, default=Path("outputs/stage_e/stage_e_required_action_plan.csv"))
+    parser.add_argument("--phase21-decision-rules", type=Path, default=Path("outputs/phase21/decision_rules.csv"))
+    parser.add_argument("--phase21-decision-ledger", type=Path, default=Path("outputs/phase21/decision_ledger.csv"))
+    parser.add_argument("--phase21-decision-summary", type=Path, default=Path("outputs/phase21/decision_summary.csv"))
     return parser.parse_args()
 
 
@@ -1151,6 +1176,9 @@ def main() -> None:
         "stage_e_prerequisite_ledger": args.stage_e_prerequisite_ledger,
         "stage_e_gap_summary": args.stage_e_gap_summary,
         "stage_e_action_plan": args.stage_e_action_plan,
+        "phase21_decision_rules": args.phase21_decision_rules,
+        "phase21_decision_ledger": args.phase21_decision_ledger,
+        "phase21_decision_summary": args.phase21_decision_summary,
     }
     run_dashboard(args.output_dir, paths)
 

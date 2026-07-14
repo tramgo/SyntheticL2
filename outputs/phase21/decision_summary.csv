@@ -1,0 +1,5 @@
+metric,value,description
+decision_rules,9,Phase 21 decision rules evaluated
+active_current_decisions,1,Rules currently determining the decision
+extension_or_paper_ready,0,No current row permits full-year extension or real-data paper testing
+current_decision,Improve or reject strategies; do not tune generator to create profit,Current Phase 21 decision
