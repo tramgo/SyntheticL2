@@ -1,0 +1,7 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+multiday_class_b_coverage,At least 5-10 complete Class B event-grade days are captured.,minimum 5 diagnostically sound complete days,contract_defined_not_acceptance_evidence
+local_sequence_integrity,Local sequence IDs preserve callback order within connection sessions.,monotonic local sequence and no unaccounted sequence gaps,contract_defined_not_acceptance_evidence
+connection_boundary_log,"Connection open, close, reconnect and subscription-boundary events are recorded.",connection/session ledger exists and reconciles to ticks,contract_defined_not_acceptance_evidence
+dropped_message_diagnostics,"Dropped, duplicate, stale and out-of-order message diagnostics are persisted.",drop/duplicate/stale counters are present per symbol/session/day,contract_defined_not_acceptance_evidence
+timestamp_semantics,"Exchange, receive and collector monotonic timestamps are documented and validated.",timestamp provenance and ordering checks pass,contract_defined_not_acceptance_evidence
+lossless_compaction,Raw callback order is compacted without resampling or event loss.,row counts and ordering reconcile raw files to compact parquet,contract_defined_not_acceptance_evidence

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T16:32:39.921241+00:00",
+  "generated_utc": "2026-07-14T16:38:23.879872+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -67,7 +67,12 @@
     "real_multiday_criteria": "outputs\\phase20_m07\\real_multiday_acceptance_criteria.csv",
     "real_multiday_ledger": "outputs\\phase20_m07\\real_multiday_acceptance_ledger.csv",
     "real_multiday_gap_summary": "outputs\\phase20_m07\\real_multiday_gap_summary.csv",
-    "real_multiday_strategy_summary": "outputs\\phase20_m07\\real_multiday_strategy_summary.csv"
+    "real_multiday_strategy_summary": "outputs\\phase20_m07\\real_multiday_strategy_summary.csv",
+    "stage_a2_criteria": "outputs\\stage_a2\\capture_diagnostics_acceptance_criteria.csv",
+    "stage_a2_schema": "outputs\\stage_a2\\required_capture_schema.csv",
+    "stage_a2_ledger": "outputs\\stage_a2\\capture_diagnostics_gap_ledger.csv",
+    "stage_a2_gap_summary": "outputs\\stage_a2\\capture_diagnostics_gap_summary.csv",
+    "stage_a2_readiness_summary": "outputs\\stage_a2\\stage_a2_readiness_summary.csv"
   },
   "summary": {
     "quality_checks": 24,
@@ -197,13 +202,19 @@
     "phase20_m07_predictive_real_holdout_required_rows": 11,
     "phase20_m07_robustness_real_rerun_required_rows": 11,
     "phase20_m07_realism_real_validation_required_rows": 6,
-    "phase20_m07_real_multiday_acceptance_met_rows": 0
+    "phase20_m07_real_multiday_acceptance_met_rows": 0,
+    "stage_a2_capture_diagnostics_rows": 192,
+    "stage_a2_required_capture_schema_rows": 17,
+    "stage_a2_symbols_evaluated": 32,
+    "stage_a2_current_sample_days_available": 1,
+    "stage_a2_open_contract_rows": 192,
+    "stage_a2_acceptance_met_rows": 0
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "9abee9cbd19383cccd648b819c5baf9ddd6a5dc3",
-  "configuration_hash": "1538d68e215ba387ddb1bf30f64011c7c74cf83fa5384ba6a9d144bcee72190a",
+  "generator_version": "3bc3bc3d78718eb4d37df0633e2c8bd206d66bac",
+  "configuration_hash": "c61fa35dd3eaad972d7e00cef36779afeff3ae35abbe9274677e083789c806b8",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -211,5 +222,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T16:32:39.921241+00:00"
+  "creation_timestamp": "2026-07-14T16:38:23.879872+00:00"
 }

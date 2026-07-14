@@ -127,3 +127,9 @@ phase20_m07_predictive_real_holdout_required_rows,11,Phase 20 M07 rows requiring
 phase20_m07_robustness_real_rerun_required_rows,11,Phase 20 M07 rows requiring real robustness rerun
 phase20_m07_realism_real_validation_required_rows,6,Phase 20 M07 rows requiring real realism validation
 phase20_m07_real_multiday_acceptance_met_rows,0,Phase 20 M07 rows that meet acceptance after contract
+stage_a2_capture_diagnostics_rows,192,Stage A2 capture diagnostics contract rows
+stage_a2_required_capture_schema_rows,17,Stage A2 required capture schema rows
+stage_a2_symbols_evaluated,32,Stage A2 symbols evaluated from current one-day sample
+stage_a2_current_sample_days_available,1,Stage A2 current real sample days available
+stage_a2_open_contract_rows,192,Stage A2 open capture contract rows
+stage_a2_acceptance_met_rows,0,Stage A2 capture contract rows that meet acceptance

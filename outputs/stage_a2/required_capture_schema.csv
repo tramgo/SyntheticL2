@@ -1,0 +1,18 @@
+artifact_name,field_name,field_type,required_status,field_purpose
+capture_day_manifest,trade_date,date,required,Trading date represented by the capture.
+capture_day_manifest,class_b_complete,boolean,required,True only when the whole session is event-grade and diagnostically sound.
+capture_day_manifest,symbols_expected,integer,required,Expected subscribed symbols.
+capture_day_manifest,symbols_complete,integer,required,Symbols with complete capture coverage.
+connection_session_ledger,session_id,string,required,Stable collector connection/session identifier.
+connection_session_ledger,opened_utc,timestamp,required,Connection/session open timestamp.
+connection_session_ledger,closed_utc,timestamp,required,Connection/session close timestamp.
+connection_session_ledger,close_reason,string,required,"Normal close, reconnect, network fault, broker close, or process stop."
+tick_sequence_diagnostics,local_sequence_id,integer,required,Monotonic callback-order sequence assigned before persistence.
+tick_sequence_diagnostics,sequence_gap_count,integer,required,Unaccounted local sequence gaps.
+tick_sequence_diagnostics,duplicate_receive_timestamp_count,integer,required,Duplicate receive timestamp rows.
+tick_sequence_diagnostics,stale_gap_gt_15s_count,integer,required,Rows/sessions with stale receive gaps above 15 seconds.
+timestamp_semantics,exchange_timestamp_policy,string,required,Meaning and availability of exchange-side timestamps.
+timestamp_semantics,collector_received_utc_policy,string,required,Meaning and clock source for collector receive timestamp.
+compaction_reconciliation,raw_rows,integer,required,Raw tick rows before compaction.
+compaction_reconciliation,compact_rows,integer,required,Compact tick rows after compaction.
+compaction_reconciliation,row_count_match,boolean,required,Raw and compact rows reconcile exactly.

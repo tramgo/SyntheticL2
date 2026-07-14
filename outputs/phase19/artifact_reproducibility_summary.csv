@@ -33,3 +33,4 @@ phase7,outputs/phase7/shock_library_manifest.json,10,10,0,0,0,True
 phase8,outputs/phase8/retail_feed_manifest.json,10,10,0,0,0,True
 phase9,outputs/phase9/data_product_manifest.json,10,10,0,0,0,True
 stage_a1,outputs/stage_a1/manifest_check.json,10,10,0,0,0,True
+stage_a2,outputs/stage_a2/stage_a2_capture_diagnostics_contract_manifest.json,10,10,0,0,0,True

@@ -1,0 +1,2 @@
+current_sample_days_available,required_complete_days_min,required_complete_days_target,symbols_evaluated,current_rows,symbols_with_stale_gap_gt_15s,open_contract_rows,acceptance_met_rows,stage_a2_status
+1,5,10,32,620853,32,192,0,blocked_until_multiday_class_b_capture_and_diagnostics_exist

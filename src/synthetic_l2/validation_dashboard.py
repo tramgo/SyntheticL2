@@ -157,6 +157,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     real_multiday_ledger = _read_csv(paths["real_multiday_ledger"])
     real_multiday_gap_summary = _read_csv(paths["real_multiday_gap_summary"])
     real_multiday_strategy_summary = _read_csv(paths["real_multiday_strategy_summary"])
+    stage_a2_criteria = _read_csv(paths["stage_a2_criteria"])
+    stage_a2_schema = _read_csv(paths["stage_a2_schema"])
+    stage_a2_ledger = _read_csv(paths["stage_a2_ledger"])
+    stage_a2_gap_summary = _read_csv(paths["stage_a2_gap_summary"])
+    stage_a2_readiness_summary = _read_csv(paths["stage_a2_readiness_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -266,6 +271,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     real_multiday_status = (
         real_multiday_ledger.groupby(["real_multiday_acceptance_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    stage_a2_status = (
+        stage_a2_ledger.groupby(["capture_contract_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -401,6 +411,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_m07_robustness_real_rerun_required_rows", int(real_multiday_ledger["robustness_real_rerun_required"].astype(bool).sum()), "Phase 20 M07 rows requiring real robustness rerun"),
         ("phase20_m07_realism_real_validation_required_rows", int(real_multiday_ledger["realism_real_validation_required"].astype(bool).sum()), "Phase 20 M07 rows requiring real realism validation"),
         ("phase20_m07_real_multiday_acceptance_met_rows", int(real_multiday_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M07 rows that meet acceptance after contract"),
+        ("stage_a2_capture_diagnostics_rows", int(len(stage_a2_ledger)), "Stage A2 capture diagnostics contract rows"),
+        ("stage_a2_required_capture_schema_rows", int(len(stage_a2_schema)), "Stage A2 required capture schema rows"),
+        ("stage_a2_symbols_evaluated", int(stage_a2_ledger["symbol"].nunique()), "Stage A2 symbols evaluated from current one-day sample"),
+        ("stage_a2_current_sample_days_available", int(stage_a2_readiness_summary["current_sample_days_available"].iloc[0]), "Stage A2 current real sample days available"),
+        ("stage_a2_open_contract_rows", int((~stage_a2_ledger["acceptance_requirement_met_after_contract"].astype(bool)).sum()), "Stage A2 open capture contract rows"),
+        ("stage_a2_acceptance_met_rows", int(stage_a2_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Stage A2 capture contract rows that meet acceptance"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -486,6 +502,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 M05 Lifecycle/Economic Replay Contract</h2>{_table(lifecycle_economic_gap_summary, None, 12)}{_table(lifecycle_economic_status, None, 12)}{_table(lifecycle_economic_strategy_summary, ['strategy_id', 'strategy_support_level', 'm05_rows', 'risk_replay_rows', 'economic_replay_rows', 'lifecycle_economic_contract_status'], 15)}{_table(lifecycle_economic_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(lifecycle_economic_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'lifecycle_economic_status', 'observed_lifecycle_economic_metric', 'acceptance_requirement_met_after_contract', 'required_lifecycle_economic_action'], 90)}</section>
   <section><h2>Phase 20 M06 Holdout/Realism Rerun Contract</h2>{_table(realism_rerun_gap_summary, None, 12)}{_table(realism_rerun_status, None, 12)}{_table(realism_rerun_strategy_summary, ['strategy_id', 'strategy_support_level', 'm06_rows', 'holdout_rerun_rows', 'feed_imperfection_rows', 'realism_rerun_contract_status'], 15)}{_table(realism_rerun_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(realism_rerun_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'realism_rerun_status', 'observed_realism_metric', 'acceptance_requirement_met_after_contract', 'required_realism_action'], 70)}</section>
   <section><h2>Phase 20 M07 Real Multi-Day Acceptance Contract</h2>{_table(real_multiday_gap_summary, None, 12)}{_table(real_multiday_status, None, 12)}{_table(real_multiday_strategy_summary, ['strategy_id', 'strategy_support_level', 'm07_rows', 'economic_real_validation_rows', 'predictive_real_holdout_rows', 'real_multiday_contract_status'], 15)}{_table(real_multiday_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(real_multiday_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'real_multiday_acceptance_status', 'observed_real_multiday_metric', 'acceptance_requirement_met_after_contract', 'required_real_multiday_action'], 70)}</section>
+  <section><h2>Stage A2 Capture Diagnostics Contract</h2>{_table(stage_a2_readiness_summary, None, 5)}{_table(stage_a2_gap_summary, None, 10)}{_table(stage_a2_status, None, 10)}{_table(stage_a2_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(stage_a2_schema, ['artifact_name', 'field_name', 'field_type', 'required_status'], 25)}{_table(stage_a2_ledger, ['symbol', 'criterion_id', 'capture_contract_status', 'current_sample_days_available', 'current_stale_gap_gt_15s_count', 'acceptance_requirement_met_after_contract', 'required_capture_action'], 70)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -734,6 +751,20 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(real_multiday_ledger.head(70)),
         "",
+        "## Stage A2 Capture Diagnostics Contract",
+        "",
+        _markdown_table(stage_a2_readiness_summary),
+        "",
+        _markdown_table(stage_a2_gap_summary),
+        "",
+        _markdown_table(stage_a2_status),
+        "",
+        _markdown_table(stage_a2_criteria),
+        "",
+        _markdown_table(stage_a2_schema),
+        "",
+        _markdown_table(stage_a2_ledger.head(70)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -825,6 +856,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--real-multiday-ledger", type=Path, default=Path("outputs/phase20_m07/real_multiday_acceptance_ledger.csv"))
     parser.add_argument("--real-multiday-gap-summary", type=Path, default=Path("outputs/phase20_m07/real_multiday_gap_summary.csv"))
     parser.add_argument("--real-multiday-strategy-summary", type=Path, default=Path("outputs/phase20_m07/real_multiday_strategy_summary.csv"))
+    parser.add_argument("--stage-a2-criteria", type=Path, default=Path("outputs/stage_a2/capture_diagnostics_acceptance_criteria.csv"))
+    parser.add_argument("--stage-a2-schema", type=Path, default=Path("outputs/stage_a2/required_capture_schema.csv"))
+    parser.add_argument("--stage-a2-ledger", type=Path, default=Path("outputs/stage_a2/capture_diagnostics_gap_ledger.csv"))
+    parser.add_argument("--stage-a2-gap-summary", type=Path, default=Path("outputs/stage_a2/capture_diagnostics_gap_summary.csv"))
+    parser.add_argument("--stage-a2-readiness-summary", type=Path, default=Path("outputs/stage_a2/stage_a2_readiness_summary.csv"))
     return parser.parse_args()
 
 
@@ -898,6 +934,11 @@ def main() -> None:
         "real_multiday_ledger": args.real_multiday_ledger,
         "real_multiday_gap_summary": args.real_multiday_gap_summary,
         "real_multiday_strategy_summary": args.real_multiday_strategy_summary,
+        "stage_a2_criteria": args.stage_a2_criteria,
+        "stage_a2_schema": args.stage_a2_schema,
+        "stage_a2_ledger": args.stage_a2_ledger,
+        "stage_a2_gap_summary": args.stage_a2_gap_summary,
+        "stage_a2_readiness_summary": args.stage_a2_readiness_summary,
     }
     run_dashboard(args.output_dir, paths)
 

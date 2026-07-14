@@ -1,0 +1,7 @@
+capture_contract_status,rows,symbols,acceptance_met_rows
+connection_boundary_ledger_required,32,32,0
+dropped_message_diagnostics_required,32,32,0
+local_sequence_contract_required,32,32,0
+lossless_multiday_compaction_required,32,32,0
+missing_required_multiday_capture,32,32,0
+timestamp_semantics_contract_required,32,32,0
