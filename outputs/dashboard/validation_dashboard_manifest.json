@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T14:16:01.689184+00:00",
+  "generated_utc": "2026-07-14T14:23:35.454658+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -12,6 +12,7 @@
     "metric_catalog": "outputs\\phase16\\metric_catalog.csv",
     "predictive": "outputs\\phase16\\predictive_proxy_diagnostics.csv",
     "predictive_holdout": "outputs\\phase16\\predictive_holdout_stability_summary.csv",
+    "predictive_falsification": "outputs\\phase16\\predictive_promotion_falsification.csv",
     "trading": "outputs\\phase16\\trading_metric_scoreboard.csv",
     "economic": "outputs\\phase16\\economic_viability_frontier.csv",
     "risk_adjusted_economic": "outputs\\phase16\\risk_adjusted_economic_frontier.csv",
@@ -46,6 +47,9 @@
     "metric_catalog_rows": 30,
     "predictive_holdout_summary_rows": 11,
     "predictive_holdout_all_cell_pass_rows": 0,
+    "predictive_promotion_falsification_rows": 11,
+    "predictive_promotion_candidate_proxy_rows": 0,
+    "predictive_promotion_falsified_rows": 11,
     "economic_viability_rows": 27,
     "economic_viability_net_positive_rows": 4,
     "economic_viability_retail_stress_positive_rows": 2,
@@ -66,8 +70,8 @@
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "05fbd6e86ebae5a2c5492844840b7f371cb19e29",
-  "configuration_hash": "3aac96ea911bb9a4ef06136e93454c997246adbf03756cb1ce7d87a60e21c0d1",
+  "generator_version": "8fa56081ccdcf64f2146a35be0c8ddd008d511c1",
+  "configuration_hash": "a7a926db149c50d3471a72e2de98221c6d894413b7f5086e54c9445e9976fdbe",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -75,5 +79,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:16:01.689184+00:00"
+  "creation_timestamp": "2026-07-14T14:23:35.454658+00:00"
 }

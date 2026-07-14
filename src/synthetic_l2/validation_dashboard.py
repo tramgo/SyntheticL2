@@ -101,6 +101,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     metric_catalog = _read_csv(paths["metric_catalog"])
     predictive = _read_csv(paths["predictive"])
     predictive_holdout = _read_csv(paths["predictive_holdout"])
+    predictive_falsification = _read_csv(paths["predictive_falsification"])
     trading = _read_csv(paths["trading"])
     economic = _read_csv(paths["economic"])
     risk_adjusted_economic = _read_csv(paths["risk_adjusted_economic"])
@@ -117,6 +118,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     gap_priority = gaps["priority"].value_counts().rename_axis("priority").reset_index(name="gaps").sort_values("priority")
     top_predictive = predictive.sort_values("balanced_accuracy_proxy", ascending=False)
     top_predictive_holdout = predictive_holdout.sort_values("cell_beat_fraction", ascending=False)
+    top_predictive_falsification = predictive_falsification.sort_values("predictive_promotion_candidate_proxy", ascending=False)
     top_trading = trading.sort_values("mean_net_return", ascending=False)
     top_economic = economic.sort_values("net_edge_bps", ascending=False)
     top_risk_adjusted_economic = risk_adjusted_economic.sort_values("risk_adjusted_net_edge_bps", ascending=False)
@@ -162,6 +164,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("metric_catalog_rows", int(len(metric_catalog)), "Phase 16 metric catalog rows"),
         ("predictive_holdout_summary_rows", int(len(predictive_holdout)), "Phase 16 predictive holdout stability summary rows"),
         ("predictive_holdout_all_cell_pass_rows", int((predictive_holdout["worst_segment_status"].astype(str) == "all_cells_beat_local_majority_proxy").sum()), "Predictive holdout all-cell pass rows"),
+        ("predictive_promotion_falsification_rows", int(len(predictive_falsification)), "Phase 16 predictive promotion falsification rows"),
+        ("predictive_promotion_candidate_proxy_rows", int(predictive_falsification["predictive_promotion_candidate_proxy"].astype(bool).sum()), "Predictive proxy promotion candidates"),
+        ("predictive_promotion_falsified_rows", int((predictive_falsification["falsification_status"].astype(str) == "falsified_for_predictive_promotion_under_current_proxy_evidence").sum()), "Predictive rows falsified for proxy promotion"),
         ("economic_viability_rows", int(len(economic)), "Phase 16 economic viability frontier rows"),
         ("economic_viability_net_positive_rows", int(economic["net_positive_proxy"].astype(bool).sum()), "Phase 16 net-positive proxy rows"),
         ("economic_viability_retail_stress_positive_rows", int((economic["net_positive_proxy"].astype(bool) & economic["retail_or_stress_profile"].astype(bool)).sum()), "Retail/stress net-positive proxy rows"),
@@ -251,6 +256,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
   <section><h2>Phase 16 Predictive Holdout Stability</h2>{_table(top_predictive_holdout, ['strategy_id', 'support_level', 'stability_cells', 'cells_beating_local_majority', 'cell_beat_fraction', 'untouched_test_cells_beating_local_majority', 'min_accuracy_excess_vs_majority', 'worst_segment_status'], 14)}</section>
+  <section><h2>Phase 16 Predictive Promotion Falsification</h2>{_table(top_predictive_falsification, ['strategy_id', 'support_level', 'baseline_pass_proxy', 'holdout_all_cell_pass_proxy', 'untouched_test_pass_proxy', 'feature_stability_proxy_available', 'predictive_promotion_candidate_proxy', 'falsification_status', 'blocker'], 14)}</section>
   <section><h2>Phase 16 Economic Viability Frontier</h2>{_table(top_economic, ['strategy_id', 'execution_profile', 'gross_edge_bps', 'cost_drag_bps', 'net_edge_bps', 'additional_gross_edge_needed_bps', 'cost_reduction_needed_bps', 'economic_frontier_status'], 18)}</section>
   <section><h2>Phase 16 Risk-Adjusted Economic Frontier</h2>{_table(top_risk_adjusted_economic, ['strategy_id', 'execution_profile', 'fill_model', 'net_edge_bps', 'risk_penalty_bps', 'risk_adjusted_net_edge_bps', 'net_positive_proxy', 'risk_pass_candidate_proxy', 'net_positive_and_risk_pass_proxy', 'risk_severity_band', 'risk_adjusted_frontier_status'], 25)}</section>
   <section><h2>Phase 16 Broker Reconciliation Readiness</h2>{_table(broker_reconciliation, ['reconciliation_domain', 'reconciliation_item', 'proxy_formula_available_now', 'broker_contract_note_available_now', 'actual_fill_available_now', 'reconciliation_status', 'blocker'], 25)}{_table(economic_reconciliation, ['strategy_id', 'net_positive_proxy_rows', 'retail_stress_net_positive_proxy_rows', 'risk_adjusted_joint_pass_rows', 'documented_zerodha_formula_ready', 'broker_contract_note_reconciliation_ready', 'economic_acceptance_ready_now', 'readiness_status'], 15)}</section>
@@ -316,6 +322,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(top_predictive_holdout),
         "",
+        "## Predictive Promotion Falsification",
+        "",
+        _markdown_table(top_predictive_falsification),
+        "",
         "## Acceptance Blockers by Gate",
         "",
         _markdown_table(gate_blockers),
@@ -361,6 +371,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--metric-catalog", type=Path, default=Path("outputs/phase16/metric_catalog.csv"))
     parser.add_argument("--predictive", type=Path, default=Path("outputs/phase16/predictive_proxy_diagnostics.csv"))
     parser.add_argument("--predictive-holdout", type=Path, default=Path("outputs/phase16/predictive_holdout_stability_summary.csv"))
+    parser.add_argument("--predictive-falsification", type=Path, default=Path("outputs/phase16/predictive_promotion_falsification.csv"))
     parser.add_argument("--trading", type=Path, default=Path("outputs/phase16/trading_metric_scoreboard.csv"))
     parser.add_argument("--economic", type=Path, default=Path("outputs/phase16/economic_viability_frontier.csv"))
     parser.add_argument("--risk-adjusted-economic", type=Path, default=Path("outputs/phase16/risk_adjusted_economic_frontier.csv"))
@@ -387,6 +398,7 @@ def main() -> None:
         "metric_catalog": args.metric_catalog,
         "predictive": args.predictive,
         "predictive_holdout": args.predictive_holdout,
+        "predictive_falsification": args.predictive_falsification,
         "trading": args.trading,
         "economic": args.economic,
         "risk_adjusted_economic": args.risk_adjusted_economic,

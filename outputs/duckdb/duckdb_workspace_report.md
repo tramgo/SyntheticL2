@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T14:16:12.347256+00:00
+Generated UTC: 2026-07-14T14:23:46.134098+00:00
 
 ## Storage Decision
 
@@ -143,6 +143,9 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 16 predictive holdout stability summary rows: 11
 - Phase 16 predictive holdout all-cell-pass rows: 0
 - Phase 16 feature-importance stability rows: 9
+- Phase 16 predictive promotion falsification rows: 11
+- Phase 16 predictive promotion candidate proxy rows: 0
+- Phase 16 predictive promotion falsified rows: 11
 - Phase 16 missing predictive metrics: 0
 - Phase 16 missing trading metrics: 0
 - Phase 16 trading scoreboard rows: 27
@@ -177,7 +180,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 acceptance hardening strategy rows: 11
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 39
+- Validation dashboard summary rows: 42
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

@@ -694,6 +694,163 @@ def feature_importance_stability(inputs: dict[str, pd.DataFrame], sample_rows: i
     return out.sort_values(["top3_frequency", "mean_abs_correlation_importance"], ascending=[False, False], kind="mergesort")
 
 
+def predictive_promotion_falsification(
+    baseline_comparison: pd.DataFrame,
+    holdout_stability_summary: pd.DataFrame,
+    importance: pd.DataFrame,
+    acceptance_summary: pd.DataFrame,
+) -> pd.DataFrame:
+    acceptance = acceptance_summary[["strategy_id", "acceptance_status"]].copy()
+    baseline_cols = [
+        "strategy_id",
+        "support_level",
+        "directional_eval_rows",
+        "directional_accuracy_excess_vs_no_skill",
+        "directional_accuracy_excess_vs_majority",
+        "brier_skill_score_proxy",
+        "beats_no_skill_accuracy_proxy",
+        "beats_majority_accuracy_proxy",
+        "beats_brier_baseline_proxy",
+        "has_minimum_directional_rows_proxy",
+        "predictive_baseline_status",
+    ]
+    holdout_cols = [
+        "strategy_id",
+        "stability_cells",
+        "cells_with_minimum_rows",
+        "cells_beating_local_majority",
+        "cell_beat_fraction",
+        "untouched_test_cells",
+        "untouched_test_cells_beating_local_majority",
+        "min_accuracy_excess_vs_majority",
+        "worst_segment_status",
+    ]
+    rows = acceptance.merge(baseline_comparison[baseline_cols], on="strategy_id", how="left").merge(
+        holdout_stability_summary[holdout_cols],
+        on="strategy_id",
+        how="left",
+    )
+
+    stable_features = importance.copy()
+    if len(stable_features):
+        stable_features["feature_stable_proxy"] = (
+            stable_features["top3_frequency"].astype(float).fillna(0.0) >= 0.5
+        ) & (
+            stable_features["coefficient_of_variation"].astype(float).replace([np.inf, -np.inf], np.nan).fillna(999.0) <= 1.5
+        )
+        feature_stability_ready = bool(stable_features["feature_stable_proxy"].any())
+        stable_feature_count = int(stable_features["feature_stable_proxy"].sum())
+        max_top3_frequency = float(stable_features["top3_frequency"].max())
+        median_feature_cv = float(stable_features["coefficient_of_variation"].replace([np.inf, -np.inf], np.nan).median())
+    else:
+        feature_stability_ready = False
+        stable_feature_count = 0
+        max_top3_frequency = 0.0
+        median_feature_cv = np.nan
+
+    for column in [
+        "beats_no_skill_accuracy_proxy",
+        "beats_majority_accuracy_proxy",
+        "beats_brier_baseline_proxy",
+        "has_minimum_directional_rows_proxy",
+    ]:
+        rows[column] = rows[column].fillna(False).astype(bool)
+    numeric_defaults = {
+        "directional_eval_rows": 0,
+        "stability_cells": 0,
+        "cells_with_minimum_rows": 0,
+        "cells_beating_local_majority": 0,
+        "cell_beat_fraction": 0.0,
+        "untouched_test_cells": 0,
+        "untouched_test_cells_beating_local_majority": 0,
+    }
+    for column, default in numeric_defaults.items():
+        rows[column] = rows[column].fillna(default)
+    rows["support_level"] = rows["support_level"].fillna("not_supported_by_current_product")
+    rows["predictive_baseline_status"] = rows["predictive_baseline_status"].fillna("no_predictive_baseline_evidence")
+    rows["worst_segment_status"] = rows["worst_segment_status"].fillna("no_holdout_stability_evidence")
+    rows["baseline_pass_proxy"] = (
+        rows["beats_no_skill_accuracy_proxy"]
+        & rows["beats_majority_accuracy_proxy"]
+        & rows["beats_brier_baseline_proxy"]
+        & rows["has_minimum_directional_rows_proxy"]
+        & rows["support_level"].astype(str).eq("runnable_proxy")
+    )
+    rows["holdout_all_cell_pass_proxy"] = rows["worst_segment_status"].astype(str).eq("all_cells_beat_local_majority_proxy")
+    rows["untouched_test_pass_proxy"] = (
+        rows["untouched_test_cells"].astype(float) > 0
+    ) & (
+        rows["untouched_test_cells_beating_local_majority"].astype(float) == rows["untouched_test_cells"].astype(float)
+    )
+    rows["feature_stability_proxy_available"] = feature_stability_ready
+    rows["stable_feature_count_proxy"] = stable_feature_count
+    rows["max_feature_top3_frequency_proxy"] = max_top3_frequency
+    rows["median_feature_importance_cv_proxy"] = median_feature_cv
+    rows["predictive_promotion_candidate_proxy"] = (
+        rows["baseline_pass_proxy"]
+        & rows["holdout_all_cell_pass_proxy"]
+        & rows["untouched_test_pass_proxy"]
+        & rows["feature_stability_proxy_available"]
+        & rows["support_level"].astype(str).eq("runnable_proxy")
+    )
+
+    def _reason(row: pd.Series) -> str:
+        reasons: list[str] = []
+        if str(row["support_level"]) != "runnable_proxy":
+            reasons.append("strategy support is partial or unsupported")
+        if not bool(row["baseline_pass_proxy"]):
+            reasons.append("does not clear required no-skill, majority and Brier proxy baselines")
+        if not bool(row["holdout_all_cell_pass_proxy"]):
+            reasons.append("does not beat local-majority baseline in every holdout stability cell")
+        if not bool(row["untouched_test_pass_proxy"]):
+            reasons.append("untouched-test segment stability is incomplete or failing")
+        if not bool(row["feature_stability_proxy_available"]):
+            reasons.append("feature-importance stability proxy has no stable top feature")
+        reasons.append("requires multi-seed/walk-forward rerun and later real multi-day holdout before acceptance")
+        return "; ".join(reasons)
+
+    rows["falsification_status"] = np.where(
+        rows["predictive_promotion_candidate_proxy"],
+        "proxy_candidate_not_acceptance",
+        "falsified_for_predictive_promotion_under_current_proxy_evidence",
+    )
+    rows["acceptance_eligible_now"] = False
+    rows["blocker"] = rows.apply(_reason, axis=1)
+    rows["metric_scope"] = "phase16_predictive_promotion_falsification_proxy_not_acceptance"
+    return rows[
+        [
+            "strategy_id",
+            "support_level",
+            "acceptance_status",
+            "directional_eval_rows",
+            "directional_accuracy_excess_vs_no_skill",
+            "directional_accuracy_excess_vs_majority",
+            "brier_skill_score_proxy",
+            "baseline_pass_proxy",
+            "predictive_baseline_status",
+            "stability_cells",
+            "cells_with_minimum_rows",
+            "cells_beating_local_majority",
+            "cell_beat_fraction",
+            "untouched_test_cells",
+            "untouched_test_cells_beating_local_majority",
+            "min_accuracy_excess_vs_majority",
+            "holdout_all_cell_pass_proxy",
+            "untouched_test_pass_proxy",
+            "worst_segment_status",
+            "feature_stability_proxy_available",
+            "stable_feature_count_proxy",
+            "max_feature_top3_frequency_proxy",
+            "median_feature_importance_cv_proxy",
+            "predictive_promotion_candidate_proxy",
+            "falsification_status",
+            "acceptance_eligible_now",
+            "blocker",
+            "metric_scope",
+        ]
+    ].sort_values(["predictive_promotion_candidate_proxy", "strategy_id"], ascending=[False, True], kind="mergesort")
+
+
 def _safe_div(num: float, den: float) -> float | None:
     if den == 0 or pd.isna(den):
         return None
@@ -1147,6 +1304,7 @@ def write_report(
     baseline_comparison: pd.DataFrame,
     holdout_stability_summary: pd.DataFrame,
     importance: pd.DataFrame,
+    predictive_falsification: pd.DataFrame,
     trading: pd.DataFrame,
     economic_frontier: pd.DataFrame,
     risk_adjusted_frontier: pd.DataFrame,
@@ -1202,6 +1360,10 @@ def write_report(
         "",
         _markdown_table(importance.head(12)),
         "",
+        "## Predictive Promotion Falsification",
+        "",
+        _markdown_table(predictive_falsification),
+        "",
         "## Top Trading Proxy Rows",
         "",
         _markdown_table(trading.sort_values("mean_net_return", ascending=False).head(10)),
@@ -1242,6 +1404,12 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     baseline_comparison = predictive_baseline_comparison(predictive, predictive_proxy, brier)
     holdout_stability, holdout_stability_summary = predictive_holdout_stability(inputs)
     importance = feature_importance_stability(inputs)
+    predictive_falsification = predictive_promotion_falsification(
+        baseline_comparison,
+        holdout_stability_summary,
+        importance,
+        inputs["acceptance_summary"],
+    )
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
@@ -1267,6 +1435,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     holdout_stability.to_csv(output_dir / "predictive_holdout_stability.csv", index=False)
     holdout_stability_summary.to_csv(output_dir / "predictive_holdout_stability_summary.csv", index=False)
     importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
+    predictive_falsification.to_csv(output_dir / "predictive_promotion_falsification.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     economic_frontier.to_csv(output_dir / "economic_viability_frontier.csv", index=False)
     risk_adjusted_frontier.to_csv(output_dir / "risk_adjusted_economic_frontier.csv", index=False)
@@ -1299,6 +1468,9 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
             ).sum()
         ),
         "feature_importance_stability_rows": int(len(importance)),
+        "predictive_promotion_falsification_rows": int(len(predictive_falsification)),
+        "predictive_promotion_candidate_proxy_rows": int(predictive_falsification["predictive_promotion_candidate_proxy"].astype(bool).sum()) if len(predictive_falsification) else 0,
+        "predictive_promotion_falsified_rows": int((predictive_falsification["falsification_status"].astype(str) == "falsified_for_predictive_promotion_under_current_proxy_evidence").sum()) if len(predictive_falsification) else 0,
         "trading_scoreboard_rows": int(len(trading)),
         "economic_viability_frontier_rows": int(len(economic_frontier)),
         "economic_viability_net_positive_rows": int(economic_frontier["net_positive_proxy"].sum()) if len(economic_frontier) else 0,
@@ -1337,6 +1509,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "predictive_baseline_comparison": str(output_dir / "predictive_baseline_comparison.csv"),
                 "predictive_holdout_stability": str(output_dir / "predictive_holdout_stability.csv"),
                 "predictive_holdout_stability_summary": str(output_dir / "predictive_holdout_stability_summary.csv"),
+                "predictive_promotion_falsification": str(output_dir / "predictive_promotion_falsification.csv"),
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
                 "economic_viability_frontier": str(output_dir / "economic_viability_frontier.csv"),
                 "risk_adjusted_economic_frontier": str(output_dir / "risk_adjusted_economic_frontier.csv"),
@@ -1364,6 +1537,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         baseline_comparison,
         holdout_stability_summary,
         importance,
+        predictive_falsification,
         trading,
         economic_frontier,
         risk_adjusted_frontier,

@@ -22,6 +22,9 @@ acceptance_blockers,50,Phase 15 blocker rows
 metric_catalog_rows,30,Phase 16 metric catalog rows
 predictive_holdout_summary_rows,11,Phase 16 predictive holdout stability summary rows
 predictive_holdout_all_cell_pass_rows,0,Predictive holdout all-cell pass rows
+predictive_promotion_falsification_rows,11,Phase 16 predictive promotion falsification rows
+predictive_promotion_candidate_proxy_rows,0,Predictive proxy promotion candidates
+predictive_promotion_falsified_rows,11,Predictive rows falsified for proxy promotion
 economic_viability_rows,27,Phase 16 economic viability frontier rows
 economic_viability_net_positive_rows,4,Phase 16 net-positive proxy rows
 economic_viability_retail_stress_positive_rows,2,Retail/stress net-positive proxy rows
