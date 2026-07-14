@@ -52,6 +52,7 @@ MANIFEST_CANDIDATES = [
     ("phase23", "outputs/phase23/phase23_key_risk_register_manifest.json"),
     ("phase25", "outputs/phase25/phase25_event_replay_manifest.json"),
     ("phase26", "outputs/phase26/phase26_strategy_salvage_scan_manifest.json"),
+    ("phase27", "outputs/phase27/phase27_feature_edge_scan_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

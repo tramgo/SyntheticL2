@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T18:03:36.593202+00:00
+Generated UTC: 2026-07-14T18:13:00.725560+00:00
 
 ## Storage Decision
 
@@ -349,7 +349,15 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 26 salvage candidate rows: 0
 - Phase 26 rejected variant/profile rows: 282
 - Phase 26 acceptance-ready rows: 0
-- Validation dashboard summary rows: 193
+- Phase 27 feature-edge trade rows: 1213296
+- Phase 27 registered feature candidates: 112
+- Phase 27 candidate/profile rows: 336
+- Phase 27 positive rows after costs: 0
+- Phase 27 realistic cost-clearing rows: 0
+- Phase 27 zero-latency edge-control rows: 0
+- Phase 27 rejected candidate/profile rows: 336
+- Phase 27 acceptance-ready rows: 0
+- Validation dashboard summary rows: 199
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
@@ -364,18 +372,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Horizon readiness event-driven 1s symbols: 12
 - Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 45
-- Phase 19 field checks: 450
-- Phase 19 exact-regeneration-ready artifacts: 45
+- Phase 19 audited artifacts: 46
+- Phase 19 field checks: 460
+- Phase 19 exact-regeneration-ready artifacts: 46
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 450
+- Phase 19 remediation rows: 460
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 45
-- Phase 19 normalized overlay-ready artifacts: 45
+- Phase 19 normalized overlay artifacts: 46
+- Phase 19 normalized overlay-ready artifacts: 46
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 450
+- Phase 19 source-or-alias fields: 460
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0

@@ -1,0 +1,9 @@
+metric,value,description
+phase27_feature_candidates_registered,112,Feature/horizon/threshold candidates registered
+phase27_candidate_profile_rows,336,Candidate/profile replay summary rows
+phase27_total_replay_trades,1213296,Total trades across feature-edge replays
+phase27_positive_after_cost_rows,0,Rows with positive mean net return after costs
+phase27_realistic_cost_clearing_rows,0,"Retail/stressed rows passing net, baseline, trade-count and risk filters"
+phase27_zero_latency_edge_control_rows,0,Frictionless positive feature-edge controls
+phase27_rejected_candidate_rows,336,Candidate/profile rows rejected by at least one diagnostic
+phase27_acceptance_ready,0,"Feature-edge scan is diagnostic evidence, not acceptance evidence"

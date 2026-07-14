@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_phase16_phase20_m05_cost_and_economic_risk_evidence",
   "latency_model_version": "phase8_phase12_phase20_m05_latency_and_execution_risk_evidence",
   "creation_timestamp": "2026-07-14T17:42:35.466798+00:00",
-  "normalization_timestamp": "2026-07-14T18:03:30.463814+00:00",
+  "normalization_timestamp": "2026-07-14T18:12:54.480847+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
