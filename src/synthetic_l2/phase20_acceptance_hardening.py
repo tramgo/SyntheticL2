@@ -210,6 +210,65 @@ REALISM_DEPENDENCY_TYPE = {
     "real_multi_day_realism_validation": "multi_day_real_data_validation",
 }
 
+EXECUTION_MILESTONE_RANK = {
+    "M01_broker_external_reconciliation": 1,
+    "M02_strategy_support_and_registry_closure": 2,
+    "M03_predictive_model_and_baseline_validation": 3,
+    "M04_full_seed_walk_forward_and_robustness_execution": 4,
+    "M05_full_lifecycle_risk_and_economic_replay": 5,
+    "M06_holdout_generator_and_realism_reruns": 6,
+    "M07_real_multiday_acceptance_validation": 7,
+}
+
+EXECUTION_MILESTONE_DESCRIPTION = {
+    "M01_broker_external_reconciliation": "Broker/exchange fill provenance and contract-note/cost reconciliation prerequisites.",
+    "M02_strategy_support_and_registry_closure": "Close unsupported or partial strategy feature, module and registry coverage before acceptance reruns.",
+    "M03_predictive_model_and_baseline_validation": "Produce calibrated predictive outputs and baseline/holdout/falsification evidence.",
+    "M04_full_seed_walk_forward_and_robustness_execution": "Run full seed, walk-forward, parameter-neighborhood, execution-profile and negative-control robustness tests.",
+    "M05_full_lifecycle_risk_and_economic_replay": "Run full event/lifecycle risk, guardrail, slippage, tail-risk and risk-adjusted economic acceptance replays.",
+    "M06_holdout_generator_and_realism_reruns": "Rerun strategies on holdout generator profiles, feed imperfections, pessimistic execution and artifact controls.",
+    "M07_real_multiday_acceptance_validation": "Validate surviving candidates on diagnostically sound multi-day real data holdouts.",
+}
+
+ACTION_CLASS_WORK_PACKAGE = {
+    "acceptance_run_coverage": "WP8",
+    "artifact_exploitation_control": "WP10",
+    "baseline_lift_validation": "WP9/WP10",
+    "broker_contract_note_reconciliation": "WP8/WP10",
+    "broker_or_exchange_fill_reconciliation": "WP8/WP10",
+    "broker_or_exchange_reconciliation": "WP8/WP10",
+    "calibrated_model_training": "WP9/WP10",
+    "documented_cost_formula_validation": "WP8/WP10",
+    "execution_profile_robustness_validation": "WP8/WP10",
+    "feed_imperfection_coverage_validation": "WP6/WP10",
+    "full_seed_execution": "WP9/WP10",
+    "guardrail_validation": "WP8",
+    "holdout_cell_validation": "WP10",
+    "holdout_generator_coverage_validation": "WP10",
+    "holdout_generator_strategy_rerun": "WP10",
+    "holdout_or_real_multiday_economic_validation": "WP10",
+    "latency_slippage_acceptance_run": "WP8/WP10",
+    "model_feature_stability_validation": "WP9/WP10",
+    "multi_seed_walk_forward_execution": "WP9/WP10",
+    "negative_control_validation": "WP10",
+    "net_profitability_validation": "WP8/WP10",
+    "parameter_smoothness_validation": "WP9/WP10",
+    "pessimistic_execution_realism_rerun": "WP8/WP10",
+    "promotion_falsification_clearance": "WP10",
+    "real_data_robustness_rerun": "WP10",
+    "real_multiday_predictive_holdout": "WP10",
+    "real_multiday_realism_validation": "WP10",
+    "risk_adjusted_economic_validation": "WP8/WP10",
+    "risk_state_persistence": "WP8",
+    "strategy_feature_support_closure": "WP9",
+    "strategy_registry_support_closure": "WP9/WP10",
+    "strategy_support_closure": "WP9",
+    "synthetic_quality_gate_validation": "WP10",
+    "tail_risk_validation": "WP8",
+    "untouched_test_validation": "WP10",
+    "walk_forward_execution": "WP9/WP10",
+}
+
 
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
@@ -1297,6 +1356,242 @@ def build_realism_action_summary(realism_plan: pd.DataFrame) -> pd.DataFrame:
     return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
 
 
+def _execution_milestone_for(action_class: str, dependency_type: str) -> str:
+    action = str(action_class)
+    dependency = str(dependency_type)
+    combined = f"{action} {dependency}"
+    if "real_multiday" in action or "multi_day_real" in dependency or "real_data" in dependency:
+        return "M07_real_multiday_acceptance_validation"
+    if "broker" in combined or "contract_note" in combined or "external_" in dependency:
+        return "M01_broker_external_reconciliation"
+    if "strategy_feature_support" in action or "strategy_registry" in action or action == "strategy_support_closure":
+        return "M02_strategy_support_and_registry_closure"
+    if (
+        "baseline" in action
+        or "calibrated_model" in action
+        or "feature_stability" in action
+        or "holdout_cell" in action
+        or "untouched_test" in action
+        or "promotion_falsification" in action
+    ):
+        return "M03_predictive_model_and_baseline_validation"
+    if (
+        "seed" in action
+        or "walk_forward" in action
+        or "parameter" in action
+        or "negative_control" in action
+        or "execution_profile_robustness" in action
+        or "real_data_robustness" in action
+    ):
+        return "M04_full_seed_walk_forward_and_robustness_execution"
+    if (
+        "risk" in action
+        or "guardrail" in action
+        or "tail" in action
+        or "profitability" in action
+        or "latency_slippage" in action
+        or "acceptance_run_coverage" in action
+    ):
+        return "M05_full_lifecycle_risk_and_economic_replay"
+    if (
+        "holdout_generator" in action
+        or "feed_imperfection" in action
+        or "synthetic_quality" in action
+        or "pessimistic_execution" in action
+        or "artifact" in action
+        or "holdout_generator" in dependency
+    ):
+        return "M06_holdout_generator_and_realism_reruns"
+    return "M05_full_lifecycle_risk_and_economic_replay"
+
+
+def _normalize_hardening_plan(
+    plan: pd.DataFrame,
+    *,
+    gate_id: str,
+    gate_name: str,
+    requirement_column: str,
+    status_column: str,
+    evidence_column: str,
+) -> pd.DataFrame:
+    rows = plan.copy()
+    rows["gate_id"] = gate_id
+    rows["gate_name"] = gate_name
+    rows["hardening_requirement"] = rows[requirement_column].astype(str)
+    rows["hardening_status"] = rows[status_column].astype(str)
+    rows["evidence_summary"] = rows[evidence_column].astype(str)
+    rows["execution_milestone"] = [
+        _execution_milestone_for(action_class, dependency_type)
+        for action_class, dependency_type in zip(rows["action_class"], rows["dependency_type"])
+    ]
+    rows["execution_milestone_rank"] = rows["execution_milestone"].map(EXECUTION_MILESTONE_RANK).fillna(99).astype(int)
+    rows["execution_milestone_description"] = rows["execution_milestone"].map(EXECUTION_MILESTONE_DESCRIPTION).fillna("")
+    rows["gate_priority_rank"] = GATE_PRIORITY[gate_id]
+    rows["work_package_focus"] = rows["action_class"].map(ACTION_CLASS_WORK_PACKAGE).fillna(GATE_WORK_PACKAGE[gate_id])
+    rows["proxy_evidence_available"] = rows["proxy_evidence_available"].astype(bool)
+    rows["acceptance_requirement_met"] = rows["acceptance_requirement_met"].astype(bool)
+    rows["acceptance_ready_now"] = rows["acceptance_ready_now"].astype(bool)
+    rows["dependency_status"] = rows.apply(
+        lambda row: "acceptance_met"
+        if row["acceptance_requirement_met"]
+        else "proxy_to_upgrade"
+        if row["proxy_evidence_available"]
+        else "missing_required_evidence",
+        axis=1,
+    )
+    columns = [
+        "gate_id",
+        "gate_name",
+        "gate_priority_rank",
+        "execution_milestone",
+        "execution_milestone_rank",
+        "execution_milestone_description",
+        "queue_rank",
+        "priority_band",
+        "strategy_id",
+        "strategy_support_level",
+        "strategy_role",
+        "work_package_focus",
+        "hardening_requirement",
+        "requirement_priority",
+        "action_class",
+        "dependency_type",
+        "dependency_status",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "acceptance_ready_now",
+        "hardening_status",
+        "blocking_gap",
+        "required_next_evidence",
+        "evidence_summary",
+        "evidence_source",
+    ]
+    return rows[columns]
+
+
+def build_execution_roadmap(
+    risk_plan: pd.DataFrame,
+    economic_plan: pd.DataFrame,
+    predictive_plan: pd.DataFrame,
+    robustness_plan: pd.DataFrame,
+    realism_plan: pd.DataFrame,
+) -> pd.DataFrame:
+    roadmap = pd.concat(
+        [
+            _normalize_hardening_plan(
+                risk_plan,
+                gate_id="G04_risk",
+                gate_name="risk",
+                requirement_column="risk_requirement",
+                status_column="risk_hardening_status",
+                evidence_column="risk_evidence_summary",
+            ),
+            _normalize_hardening_plan(
+                economic_plan,
+                gate_id="G02_economic",
+                gate_name="economic",
+                requirement_column="economic_requirement",
+                status_column="economic_hardening_status",
+                evidence_column="economic_evidence_summary",
+            ),
+            _normalize_hardening_plan(
+                predictive_plan,
+                gate_id="G01_predictive",
+                gate_name="predictive",
+                requirement_column="predictive_requirement",
+                status_column="predictive_hardening_status",
+                evidence_column="predictive_evidence_summary",
+            ),
+            _normalize_hardening_plan(
+                robustness_plan,
+                gate_id="G03_robustness",
+                gate_name="robustness",
+                requirement_column="robustness_requirement",
+                status_column="robustness_hardening_status",
+                evidence_column="robustness_evidence_summary",
+            ),
+            _normalize_hardening_plan(
+                realism_plan,
+                gate_id="G05_realism",
+                gate_name="realism",
+                requirement_column="realism_requirement",
+                status_column="realism_hardening_status",
+                evidence_column="realism_evidence_summary",
+            ),
+        ],
+        ignore_index=True,
+    )
+    roadmap = roadmap.sort_values(
+        ["execution_milestone_rank", "gate_priority_rank", "queue_rank", "requirement_priority", "strategy_id"],
+        kind="mergesort",
+    ).reset_index(drop=True)
+    roadmap.insert(0, "execution_rank", range(1, len(roadmap) + 1))
+    return roadmap
+
+
+def build_execution_milestone_summary(execution_roadmap: pd.DataFrame) -> pd.DataFrame:
+    if execution_roadmap.empty:
+        return pd.DataFrame(
+            columns=[
+                "execution_milestone",
+                "execution_milestone_rank",
+                "execution_milestone_description",
+                "roadmap_rows",
+                "gates",
+                "strategies",
+                "action_classes",
+                "work_packages",
+                "proxy_evidence_rows",
+                "missing_required_evidence_rows",
+                "acceptance_met_rows",
+                "acceptance_ready_rows",
+                "first_execution_rank",
+                "top_required_next_evidence",
+            ]
+        )
+    grouped = (
+        execution_roadmap.groupby(
+            ["execution_milestone", "execution_milestone_rank", "execution_milestone_description"],
+            sort=True,
+        )
+        .agg(
+            roadmap_rows=("hardening_requirement", "size"),
+            gates=("gate_id", "nunique"),
+            strategies=("strategy_id", "nunique"),
+            action_classes=("action_class", "nunique"),
+            work_packages=("work_package_focus", "nunique"),
+            proxy_evidence_rows=("proxy_evidence_available", "sum"),
+            acceptance_met_rows=("acceptance_requirement_met", "sum"),
+            acceptance_ready_rows=("acceptance_ready_now", "sum"),
+            first_execution_rank=("execution_rank", "min"),
+            top_required_next_evidence=("required_next_evidence", "first"),
+        )
+        .reset_index()
+    )
+    grouped["missing_required_evidence_rows"] = grouped["roadmap_rows"] - grouped["proxy_evidence_rows"]
+    return grouped[
+        [
+            "execution_milestone",
+            "execution_milestone_rank",
+            "execution_milestone_description",
+            "roadmap_rows",
+            "gates",
+            "strategies",
+            "action_classes",
+            "work_packages",
+            "proxy_evidence_rows",
+            "missing_required_evidence_rows",
+            "acceptance_met_rows",
+            "acceptance_ready_rows",
+            "first_execution_rank",
+            "top_required_next_evidence",
+        ]
+    ].sort_values(["execution_milestone_rank"], kind="mergesort")
+
+
 def write_report(
     output_dir: Path,
     queue: pd.DataFrame,
@@ -1312,6 +1607,8 @@ def write_report(
     robustness_action_summary: pd.DataFrame,
     realism_plan: pd.DataFrame,
     realism_action_summary: pd.DataFrame,
+    execution_roadmap: pd.DataFrame,
+    execution_milestone_summary: pd.DataFrame,
 ) -> None:
     priority_summary = queue.groupby(["priority_band", "gate_id", "acceptance_milestone"], sort=True).size().reset_index(name="queue_items")
     lines = [
@@ -1331,6 +1628,29 @@ def write_report(
         "## Gate Summary",
         "",
         _markdown_table(gate_summary),
+        "",
+        "## Execution Milestone Roadmap",
+        "",
+        _markdown_table(execution_milestone_summary),
+        "",
+        "## Top Execution Roadmap Rows",
+        "",
+        _markdown_table(
+            execution_roadmap[
+                [
+                    "execution_rank",
+                    "execution_milestone",
+                    "gate_id",
+                    "strategy_id",
+                    "work_package_focus",
+                    "hardening_requirement",
+                    "action_class",
+                    "dependency_status",
+                    "hardening_status",
+                    "required_next_evidence",
+                ]
+            ].head(60)
+        ),
         "",
         "## Strategy Queue Summary",
         "",
@@ -1497,10 +1817,20 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         inputs["holdout_generator_realism_summary"],
     )
     realism_action_summary = build_realism_action_summary(realism_plan)
+    execution_roadmap = build_execution_roadmap(
+        risk_plan,
+        economic_plan,
+        predictive_plan,
+        robustness_plan,
+        realism_plan,
+    )
+    execution_milestone_summary = build_execution_milestone_summary(execution_roadmap)
 
     queue.to_csv(output_dir / "acceptance_hardening_queue.csv", index=False)
     gate_summary.to_csv(output_dir / "acceptance_hardening_gate_summary.csv", index=False)
     strategy_queue.to_csv(output_dir / "acceptance_hardening_strategy_summary.csv", index=False)
+    execution_roadmap.to_csv(output_dir / "acceptance_execution_roadmap.csv", index=False)
+    execution_milestone_summary.to_csv(output_dir / "acceptance_execution_milestones.csv", index=False)
     risk_plan.to_csv(output_dir / "risk_hardening_plan.csv", index=False)
     risk_action_summary.to_csv(output_dir / "risk_hardening_action_summary.csv", index=False)
     economic_plan.to_csv(output_dir / "economic_hardening_plan.csv", index=False)
@@ -1517,6 +1847,11 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         "queue_rows": int(len(queue)),
         "gate_summary_rows": int(len(gate_summary)),
         "strategy_summary_rows": int(len(strategy_queue)),
+        "acceptance_execution_roadmap_rows": int(len(execution_roadmap)),
+        "acceptance_execution_milestone_rows": int(len(execution_milestone_summary)),
+        "acceptance_execution_roadmap_proxy_rows": int(execution_roadmap["proxy_evidence_available"].astype(bool).sum()),
+        "acceptance_execution_roadmap_missing_rows": int((~execution_roadmap["proxy_evidence_available"].astype(bool)).sum()),
+        "acceptance_execution_roadmap_met_rows": int(execution_roadmap["acceptance_requirement_met"].astype(bool).sum()),
         "risk_hardening_plan_rows": int(len(risk_plan)),
         "risk_hardening_open_rows": int((~risk_plan["acceptance_requirement_met"].astype(bool)).sum()),
         "risk_hardening_proxy_rows": int(risk_plan["proxy_evidence_available"].astype(bool).sum()),
@@ -1555,6 +1890,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
                 "acceptance_hardening_queue": str(output_dir / "acceptance_hardening_queue.csv"),
                 "acceptance_hardening_gate_summary": str(output_dir / "acceptance_hardening_gate_summary.csv"),
                 "acceptance_hardening_strategy_summary": str(output_dir / "acceptance_hardening_strategy_summary.csv"),
+                "acceptance_execution_roadmap": str(output_dir / "acceptance_execution_roadmap.csv"),
+                "acceptance_execution_milestones": str(output_dir / "acceptance_execution_milestones.csv"),
                 "risk_hardening_plan": str(output_dir / "risk_hardening_plan.csv"),
                 "risk_hardening_action_summary": str(output_dir / "risk_hardening_action_summary.csv"),
                 "economic_hardening_plan": str(output_dir / "economic_hardening_plan.csv"),
@@ -1590,6 +1927,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         robustness_action_summary,
         realism_plan,
         realism_action_summary,
+        execution_roadmap,
+        execution_milestone_summary,
     )
 
 

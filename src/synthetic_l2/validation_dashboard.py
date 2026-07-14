@@ -116,6 +116,8 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     gaps = _read_csv(paths["gaps"])
     hardening_queue = _read_csv(paths["hardening_queue"])
     hardening_gate_summary = _read_csv(paths["hardening_gate_summary"])
+    execution_roadmap = _read_csv(paths["execution_roadmap"])
+    execution_milestones = _read_csv(paths["execution_milestones"])
     risk_hardening_plan = _read_csv(paths["risk_hardening_plan"])
     risk_hardening_action_summary = _read_csv(paths["risk_hardening_action_summary"])
     economic_hardening_plan = _read_csv(paths["economic_hardening_plan"])
@@ -173,6 +175,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .reset_index(name="rows")
     )
     hardening_priority = hardening_queue["priority_band"].value_counts().rename_axis("priority_band").reset_index(name="queue_items").sort_values("priority_band")
+    execution_milestone_status = (
+        execution_roadmap.groupby(["execution_milestone", "dependency_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     risk_hardening_status = (
         risk_hardening_plan.groupby(["risk_hardening_status", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
         .size()
@@ -262,6 +269,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("p1_gaps", int((gaps["priority"].astype(str) == "P1").sum()), "Phase 17 P1 backlog rows"),
         ("phase20_hardening_queue_rows", int(len(hardening_queue)), "Phase 20 acceptance hardening queue rows"),
         ("phase20_hardening_gate_rows", int(len(hardening_gate_summary)), "Phase 20 gate hardening summary rows"),
+        ("phase20_execution_roadmap_rows", int(len(execution_roadmap)), "Phase 20 cross-gate execution roadmap rows"),
+        ("phase20_execution_milestone_rows", int(len(execution_milestones)), "Phase 20 execution milestone rows"),
+        ("phase20_execution_roadmap_proxy_rows", int(execution_roadmap["proxy_evidence_available"].astype(bool).sum()), "Phase 20 roadmap rows with proxy evidence"),
+        ("phase20_execution_roadmap_missing_rows", int((~execution_roadmap["proxy_evidence_available"].astype(bool)).sum()), "Phase 20 roadmap rows missing required evidence"),
+        ("phase20_execution_roadmap_met_rows", int(execution_roadmap["acceptance_requirement_met"].astype(bool).sum()), "Phase 20 roadmap rows with met acceptance requirements"),
         ("phase20_risk_hardening_plan_rows", int(len(risk_hardening_plan)), "Phase 20 risk hardening requirement rows"),
         ("phase20_risk_hardening_proxy_rows", int(risk_hardening_plan["proxy_evidence_available"].astype(bool).sum()), "Phase 20 risk hardening rows with proxy evidence"),
         ("phase20_risk_hardening_missing_rows", int((~risk_hardening_plan["proxy_evidence_available"].astype(bool)).sum()), "Phase 20 risk hardening rows missing required evidence"),
@@ -355,6 +367,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 12 Risk Breach Severity Proxy</h2>{_table(top_risk_severity, ['strategy_id', 'execution_profile', 'fill_model', 'breach_days', 'daily_loss_breach_days', 'position_limit_breach_days', 'drawdown_breach_days', 'daily_halt_days', 'risk_severity_score', 'risk_severity_band', 'risk_pass_candidate_proxy'], 25)}</section>
   <section><h2>Phase 12 Risk Limit Sensitivity Proxy</h2>{_table(top_risk_limit_sensitivity, ['strategy_id', 'execution_profile', 'fill_model', 'risk_limit_profile', 'breach_days', 'daily_loss_breach_days', 'drawdown_breach_days', 'position_limit_breach_days', 'tail_trade_loss_breach', 'risk_limit_severity_score', 'risk_limit_status', 'risk_pass_candidate_under_limit_profile'], 25)}</section>
   <section><h2>Phase 12 Risk Acceptance Readiness Ledger</h2>{_table(risk_acceptance_status, None, 10)}{_table(risk_acceptance_readiness, ['strategy_id', 'risk_requirement', 'observed_value', 'current_evidence_status', 'proxy_evidence_available', 'acceptance_requirement_met', 'blocking_gap'], 50)}</section>
+  <section><h2>Phase 20 Execution Roadmap</h2>{_table(execution_milestones, ['execution_milestone', 'roadmap_rows', 'gates', 'strategies', 'action_classes', 'proxy_evidence_rows', 'missing_required_evidence_rows', 'acceptance_met_rows', 'acceptance_ready_rows', 'top_required_next_evidence'], 10)}{_table(execution_milestone_status, None, 30)}{_table(execution_roadmap, ['execution_rank', 'execution_milestone', 'gate_id', 'strategy_id', 'work_package_focus', 'hardening_requirement', 'action_class', 'dependency_status', 'required_next_evidence'], 60)}</section>
   <section><h2>Phase 20 Risk Hardening Plan</h2>{_table(risk_hardening_status, None, 10)}{_table(risk_hardening_action_summary, ['action_class', 'dependency_type', 'risk_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(risk_hardening_plan, ['queue_rank', 'strategy_id', 'risk_requirement', 'action_class', 'dependency_type', 'risk_hardening_status', 'risk_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 Economic Hardening Plan</h2>{_table(economic_hardening_status, None, 10)}{_table(economic_hardening_action_summary, ['action_class', 'dependency_type', 'economic_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(economic_hardening_plan, ['queue_rank', 'strategy_id', 'economic_requirement', 'action_class', 'dependency_type', 'economic_hardening_status', 'economic_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 Predictive Hardening Plan</h2>{_table(predictive_hardening_status, None, 10)}{_table(predictive_hardening_action_summary, ['action_class', 'dependency_type', 'predictive_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(predictive_hardening_plan, ['queue_rank', 'strategy_id', 'predictive_requirement', 'action_class', 'dependency_type', 'predictive_hardening_status', 'predictive_evidence_summary', 'required_next_evidence'], 50)}</section>
@@ -476,6 +489,14 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(hardening_queue.head(25)),
         "",
+        "## Phase 20 Execution Roadmap",
+        "",
+        _markdown_table(execution_milestones),
+        "",
+        _markdown_table(execution_milestone_status),
+        "",
+        _markdown_table(execution_roadmap.head(60)),
+        "",
         "## Phase 20 Risk Hardening Plan",
         "",
         _markdown_table(risk_hardening_status),
@@ -566,6 +587,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gaps", type=Path, default=Path("outputs/phase17/implementation_gap_backlog.csv"))
     parser.add_argument("--hardening-queue", type=Path, default=Path("outputs/phase20/acceptance_hardening_queue.csv"))
     parser.add_argument("--hardening-gate-summary", type=Path, default=Path("outputs/phase20/acceptance_hardening_gate_summary.csv"))
+    parser.add_argument("--execution-roadmap", type=Path, default=Path("outputs/phase20/acceptance_execution_roadmap.csv"))
+    parser.add_argument("--execution-milestones", type=Path, default=Path("outputs/phase20/acceptance_execution_milestones.csv"))
     parser.add_argument("--risk-hardening-plan", type=Path, default=Path("outputs/phase20/risk_hardening_plan.csv"))
     parser.add_argument("--risk-hardening-action-summary", type=Path, default=Path("outputs/phase20/risk_hardening_action_summary.csv"))
     parser.add_argument("--economic-hardening-plan", type=Path, default=Path("outputs/phase20/economic_hardening_plan.csv"))
@@ -608,6 +631,8 @@ def main() -> None:
         "gaps": args.gaps,
         "hardening_queue": args.hardening_queue,
         "hardening_gate_summary": args.hardening_gate_summary,
+        "execution_roadmap": args.execution_roadmap,
+        "execution_milestones": args.execution_milestones,
         "risk_hardening_plan": args.risk_hardening_plan,
         "risk_hardening_action_summary": args.risk_hardening_action_summary,
         "economic_hardening_plan": args.economic_hardening_plan,

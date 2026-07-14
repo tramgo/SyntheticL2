@@ -59,6 +59,11 @@ missing_metrics,0,Missing metric rows
 p1_gaps,0,Phase 17 P1 backlog rows
 phase20_hardening_queue_rows,50,Phase 20 acceptance hardening queue rows
 phase20_hardening_gate_rows,5,Phase 20 gate hardening summary rows
+phase20_execution_roadmap_rows,411,Phase 20 cross-gate execution roadmap rows
+phase20_execution_milestone_rows,7,Phase 20 execution milestone rows
+phase20_execution_roadmap_proxy_rows,259,Phase 20 roadmap rows with proxy evidence
+phase20_execution_roadmap_missing_rows,152,Phase 20 roadmap rows missing required evidence
+phase20_execution_roadmap_met_rows,9,Phase 20 roadmap rows with met acceptance requirements
 phase20_risk_hardening_plan_rows,88,Phase 20 risk hardening requirement rows
 phase20_risk_hardening_proxy_rows,54,Phase 20 risk hardening rows with proxy evidence
 phase20_risk_hardening_missing_rows,34,Phase 20 risk hardening rows missing required evidence
