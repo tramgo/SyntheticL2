@@ -1,0 +1,12 @@
+strategy_id,strategy_support_level,strategy_role,m03_rows,distinct_statuses,acceptance_met_rows,baseline_pass_proxy,predictive_promotion_candidate_proxy,first_required_action,predictive_validation_status
+S01,runnable_proxy,priority,6,6,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S02,runnable_proxy,priority,6,6,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S03,partial_missing_required_features,priority,6,1,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S04,partial_missing_required_features,priority,6,1,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S05,runnable_proxy,filter,6,6,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S06,partial_missing_required_features,priority,6,1,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S07,runnable_proxy,priority,6,6,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S08,partial_missing_required_features,research,6,1,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S09,runnable_proxy,benchmark,6,6,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S10,not_supported_by_current_product,research_only,6,1,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance
+S11,not_supported_by_current_product,risk_filter_only,6,1,0,False,False,"Rerun predictive validation and require positive lift over no-skill, local-majority and Brier baselines.",proxy_or_support_blocked_not_acceptance

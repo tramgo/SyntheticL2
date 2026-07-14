@@ -1,0 +1,9 @@
+predictive_contract_status,rows,strategies,acceptance_met_rows
+blocked_by_partial_strategy_support,24,4,0
+blocked_by_unsupported_strategy_scope,12,2,0
+missing_calibrated_model_artifact,5,5,0
+predictive_promotion_falsified,5,5,0
+proxy_baseline_failed,5,5,0
+proxy_feature_stability_available_not_model_importance,5,5,0
+proxy_holdout_cells_failed,5,5,0
+untouched_test_proxy_failed_or_missing,5,5,0

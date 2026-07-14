@@ -137,6 +137,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     strategy_support_ledger = _read_csv(paths["strategy_support_ledger"])
     strategy_support_gap_summary = _read_csv(paths["strategy_support_gap_summary"])
     strategy_support_decision_summary = _read_csv(paths["strategy_support_decision_summary"])
+    predictive_validation_criteria = _read_csv(paths["predictive_validation_criteria"])
+    predictive_validation_ledger = _read_csv(paths["predictive_validation_ledger"])
+    predictive_validation_gap_summary = _read_csv(paths["predictive_validation_gap_summary"])
+    predictive_validation_strategy_summary = _read_csv(paths["predictive_validation_strategy_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -221,6 +225,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     strategy_support_status = (
         strategy_support_ledger.groupby(["support_contract_status", "gate_id"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    predictive_validation_status = (
+        predictive_validation_ledger.groupby(["predictive_contract_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -324,6 +333,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_m02_strategy_support_classification_rows", int(strategy_support_ledger["classification_required"].astype(bool).sum()), "Phase 20 M02 rows requiring explicit non-alpha classification"),
         ("phase20_m02_strategy_support_acceptance_upgrade_rows", int(strategy_support_ledger["acceptance_upgrade_required"].astype(bool).sum()), "Phase 20 M02 rows requiring proxy-to-acceptance upgrade"),
         ("phase20_m02_strategy_support_acceptance_met_rows", int(strategy_support_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M02 rows that meet acceptance after contract"),
+        ("phase20_m03_predictive_validation_rows", int(len(predictive_validation_ledger)), "Phase 20 M03 predictive validation rows"),
+        ("phase20_m03_predictive_calibrated_model_required_rows", int(predictive_validation_ledger["calibrated_model_required"].astype(bool).sum()), "Phase 20 M03 rows requiring calibrated model output"),
+        ("phase20_m03_predictive_baseline_lift_required_rows", int(predictive_validation_ledger["baseline_lift_required"].astype(bool).sum()), "Phase 20 M03 rows requiring baseline lift"),
+        ("phase20_m03_predictive_holdout_or_untouched_required_rows", int(predictive_validation_ledger["holdout_or_untouched_required"].astype(bool).sum()), "Phase 20 M03 rows requiring holdout or untouched-test evidence"),
+        ("phase20_m03_predictive_promotion_falsification_required_rows", int(predictive_validation_ledger["promotion_falsification_required"].astype(bool).sum()), "Phase 20 M03 rows requiring promotion-falsification clearance"),
+        ("phase20_m03_predictive_acceptance_met_rows", int(predictive_validation_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M03 rows that meet acceptance after contract"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -404,6 +419,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 Realism Hardening Plan</h2>{_table(realism_hardening_status, None, 10)}{_table(realism_hardening_action_summary, ['action_class', 'dependency_type', 'realism_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(realism_hardening_plan, ['queue_rank', 'strategy_id', 'realism_requirement', 'action_class', 'dependency_type', 'realism_hardening_status', 'realism_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 M01 Broker Evidence Contract</h2>{_table(broker_import_checklist, ['evidence_file_id', 'expected_path', 'evidence_domain', 'file_exists_now', 'current_status', 'next_action'], 10)}{_table(broker_external_gap_summary, None, 10)}{_table(broker_external_status, None, 10)}{_table(broker_reconciliation_test_catalog, ['test_id', 'acceptance_threshold', 'current_status'], 10)}{_table(broker_external_gap_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'required_external_files', 'broker_evidence_status', 'acceptance_requirement_met_after_contract', 'blocking_gap_after_contract'], 60)}</section>
   <section><h2>Phase 20 M02 Strategy Support Contract</h2>{_table(strategy_support_gap_summary, None, 10)}{_table(strategy_support_status, None, 20)}{_table(strategy_support_decision_summary, ['strategy_id', 'strategy_support_closure_status', 'm02_rows', 'required_support_action'], 15)}{_table(strategy_support_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(strategy_support_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'strategy_support_level', 'hardening_requirement', 'support_contract_status', 'alpha_promotion_scope', 'acceptance_requirement_met_after_contract', 'required_support_action'], 60)}</section>
+  <section><h2>Phase 20 M03 Predictive Validation Contract</h2>{_table(predictive_validation_gap_summary, None, 12)}{_table(predictive_validation_status, None, 12)}{_table(predictive_validation_strategy_summary, ['strategy_id', 'strategy_support_level', 'm03_rows', 'baseline_pass_proxy', 'predictive_promotion_candidate_proxy', 'predictive_validation_status'], 15)}{_table(predictive_validation_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(predictive_validation_ledger, ['execution_rank', 'strategy_id', 'hardening_requirement', 'predictive_contract_status', 'observed_predictive_metric', 'acceptance_requirement_met_after_contract', 'required_predictive_action'], 70)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -592,6 +608,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(strategy_support_ledger.head(60)),
         "",
+        "## Phase 20 M03 Predictive Validation Contract",
+        "",
+        _markdown_table(predictive_validation_gap_summary),
+        "",
+        _markdown_table(predictive_validation_status),
+        "",
+        _markdown_table(predictive_validation_strategy_summary),
+        "",
+        _markdown_table(predictive_validation_criteria),
+        "",
+        _markdown_table(predictive_validation_ledger.head(70)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -663,6 +691,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--strategy-support-ledger", type=Path, default=Path("outputs/phase20_m02/strategy_support_closure_ledger.csv"))
     parser.add_argument("--strategy-support-gap-summary", type=Path, default=Path("outputs/phase20_m02/strategy_support_gap_summary.csv"))
     parser.add_argument("--strategy-support-decision-summary", type=Path, default=Path("outputs/phase20_m02/strategy_support_decision_summary.csv"))
+    parser.add_argument("--predictive-validation-criteria", type=Path, default=Path("outputs/phase20_m03/predictive_validation_acceptance_criteria.csv"))
+    parser.add_argument("--predictive-validation-ledger", type=Path, default=Path("outputs/phase20_m03/predictive_validation_ledger.csv"))
+    parser.add_argument("--predictive-validation-gap-summary", type=Path, default=Path("outputs/phase20_m03/predictive_validation_gap_summary.csv"))
+    parser.add_argument("--predictive-validation-strategy-summary", type=Path, default=Path("outputs/phase20_m03/predictive_validation_strategy_summary.csv"))
     return parser.parse_args()
 
 
@@ -716,6 +748,10 @@ def main() -> None:
         "strategy_support_ledger": args.strategy_support_ledger,
         "strategy_support_gap_summary": args.strategy_support_gap_summary,
         "strategy_support_decision_summary": args.strategy_support_decision_summary,
+        "predictive_validation_criteria": args.predictive_validation_criteria,
+        "predictive_validation_ledger": args.predictive_validation_ledger,
+        "predictive_validation_gap_summary": args.predictive_validation_gap_summary,
+        "predictive_validation_strategy_summary": args.predictive_validation_strategy_summary,
     }
     run_dashboard(args.output_dir, paths)
 

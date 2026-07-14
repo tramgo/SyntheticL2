@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase20_m03",
+  "source_manifest_path": "outputs/phase20_m03/predictive_validation_contract_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "de7348554589e6160f69882decce3e5aa4f50783",
+  "configuration_hash": "c084d45f6fdb4b92a3a1babd391b52b460f11d48029e7490aa628c1bc0a032ec",
+  "random_seed": "not_applicable_deterministic_predictive_validation_contract",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase20_M03_predictive_model_and_baseline_validation_rows",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-14T16:07:41.840922+00:00",
+  "normalization_timestamp": "2026-07-14T16:07:49.927738+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

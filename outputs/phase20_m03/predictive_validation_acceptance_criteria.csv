@@ -1,0 +1,7 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+calibrated_model_output,Frozen calibrated probability models exist for each candidate strategy and are evaluated out of sample.,model artifact/version present; Brier score and calibration curve computed out of sample,contract_defined_not_acceptance_evidence
+baseline_lift,"Directional and probabilistic metrics beat no-skill, majority-direction and Brier baselines.",positive accuracy excess versus no-skill and majority baselines plus positive Brier skill,contract_defined_not_acceptance_evidence
+holdout_cell_stability,Predeclared holdout cells beat local-majority baselines without threshold reuse.,all minimum-row holdout cells pass,contract_defined_not_acceptance_evidence
+untouched_test_stability,Untouched-test cells pass after development is frozen.,all untouched-test cells beat local-majority baselines,contract_defined_not_acceptance_evidence
+feature_stability,Feature importance or attribution is stable across registered seeds/folds.,stable feature set and bounded importance volatility across seeds,contract_defined_not_acceptance_evidence
+promotion_falsification_clearance,Joined predictive promotion-falsification checklist clears all blockers.,predictive_promotion_candidate is true and falsification status is clear,contract_defined_not_acceptance_evidence

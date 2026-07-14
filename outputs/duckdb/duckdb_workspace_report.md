@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T16:01:49.901808+00:00
+Generated UTC: 2026-07-14T16:07:55.393612+00:00
 
 ## Storage Decision
 
@@ -241,7 +241,14 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 M02 strategy support classification rows: 6
 - Phase 20 M02 strategy support acceptance-upgrade rows: 10
 - Phase 20 M02 strategy support acceptance-met rows: 0
-- Validation dashboard summary rows: 96
+- Phase 20 M03 predictive validation criteria rows: 6
+- Phase 20 M03 predictive validation rows: 66
+- Phase 20 M03 predictive calibrated-model-required rows: 11
+- Phase 20 M03 predictive baseline-lift-required rows: 11
+- Phase 20 M03 predictive holdout/untouched-required rows: 22
+- Phase 20 M03 predictive promotion-falsification-required rows: 11
+- Phase 20 M03 predictive acceptance-met rows: 0
+- Validation dashboard summary rows: 102
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
@@ -256,18 +263,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Horizon readiness event-driven 1s symbols: 12
 - Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 29
-- Phase 19 field checks: 290
-- Phase 19 exact-regeneration-ready artifacts: 29
+- Phase 19 audited artifacts: 30
+- Phase 19 field checks: 300
+- Phase 19 exact-regeneration-ready artifacts: 30
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 290
+- Phase 19 remediation rows: 300
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 29
-- Phase 19 normalized overlay-ready artifacts: 29
+- Phase 19 normalized overlay artifacts: 30
+- Phase 19 normalized overlay-ready artifacts: 30
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 290
+- Phase 19 source-or-alias fields: 300
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0

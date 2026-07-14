@@ -95,3 +95,9 @@ phase20_m02_strategy_support_feature_engineering_rows,12,Phase 20 M02 rows requi
 phase20_m02_strategy_support_classification_rows,6,Phase 20 M02 rows requiring explicit non-alpha classification
 phase20_m02_strategy_support_acceptance_upgrade_rows,10,Phase 20 M02 rows requiring proxy-to-acceptance upgrade
 phase20_m02_strategy_support_acceptance_met_rows,0,Phase 20 M02 rows that meet acceptance after contract
+phase20_m03_predictive_validation_rows,66,Phase 20 M03 predictive validation rows
+phase20_m03_predictive_calibrated_model_required_rows,11,Phase 20 M03 rows requiring calibrated model output
+phase20_m03_predictive_baseline_lift_required_rows,11,Phase 20 M03 rows requiring baseline lift
+phase20_m03_predictive_holdout_or_untouched_required_rows,22,Phase 20 M03 rows requiring holdout or untouched-test evidence
+phase20_m03_predictive_promotion_falsification_required_rows,11,Phase 20 M03 rows requiring promotion-falsification clearance
+phase20_m03_predictive_acceptance_met_rows,0,Phase 20 M03 rows that meet acceptance after contract
