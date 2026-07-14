@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T14:23:46.134098+00:00",
+  "generated_utc": "2026-07-14T14:32:41.097181+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -113,6 +113,9 @@
     "phase13_robustness_dimension_rows": 11,
     "phase13_robustness_dimension_registered_rows": 9,
     "phase13_robustness_holdout_proxy_rows": 9,
+    "phase13_robustness_acceptance_gap_rows": 88,
+    "phase13_robustness_acceptance_gap_open_rows": 79,
+    "phase13_robustness_acceptance_gap_met_rows": 9,
     "phase13_acceptance_eligible_smoke_rows": 0,
     "phase14_quality_checks": 24,
     "phase14_pass_checks": 24,
@@ -176,7 +179,7 @@
     "phase20_hardening_strategy_rows": 11,
     "phase20_acceptance_ready_rows": 0,
     "phase20_top_priority_gate_rows": 11,
-    "validation_dashboard_summary_rows": 42,
+    "validation_dashboard_summary_rows": 45,
     "validation_dashboard_promoted_strategies": 0,
     "validation_dashboard_p1_gaps": 0,
     "replay_validation_tiers": 3,
@@ -273,6 +276,7 @@
     "phase13_parameter_grid",
     "phase13_profile_robustness_ledger",
     "phase13_profile_robustness_summary",
+    "phase13_robustness_acceptance_gap_ledger",
     "phase13_robustness_dimension_summary",
     "phase13_seed_plan",
     "phase13_walk_forward_windows",
@@ -361,8 +365,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "8fa56081ccdcf64f2146a35be0c8ddd008d511c1",
-  "configuration_hash": "c8e66764b9150b2ce92f02f2b277c4f0ca493cb94af68e790af0125ab62b39fd",
+  "generator_version": "55705fb93d6c5e2a07f051902fc8db4f1cdf90b9",
+  "configuration_hash": "64005178f92daef2c285629e9c82aa6dbc7892250cd96dcb86d1b6d480417de4",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -370,5 +374,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:23:46.134098+00:00"
+  "creation_timestamp": "2026-07-14T14:32:41.097181+00:00"
 }

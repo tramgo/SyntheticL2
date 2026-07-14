@@ -390,6 +390,129 @@ def build_robustness_dimension_summary(
     return pd.DataFrame(rows)
 
 
+def build_robustness_acceptance_gap_ledger(dimension_summary: pd.DataFrame) -> pd.DataFrame:
+    columns = [
+        "strategy_id",
+        "robustness_requirement",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "acceptance_requirement_met",
+        "blocking_gap",
+        "evidence_source",
+        "required_next_evidence",
+        "acceptance_eligible_now",
+    ]
+    if dimension_summary.empty:
+        return pd.DataFrame(columns=columns)
+
+    rows: list[dict] = []
+    for row in dimension_summary.sort_values("strategy_id").to_dict("records"):
+        strategy_id = row["strategy_id"]
+        registered = bool(row.get("registered_for_phase13_proxy", False))
+        required_seeds = int(row.get("required_full_validation_seeds", 0) or 0)
+        observed_seeds = int(row.get("initial_engineering_seeds_run", 0) or 0)
+        planned_parameters = int(row.get("parameter_sets_planned", 0) or 0)
+        run_parameters = int(row.get("parameter_sets_run", 0) or 0)
+        planned_walk_forward = int(row.get("walk_forward_windows_planned", 0) or 0)
+        run_walk_forward = int(row.get("walk_forward_windows_run", 0) or 0)
+        execution_profiles = int(row.get("execution_profiles_evaluated", 0) or 0)
+        all_profiles_positive = bool(row.get("all_execution_profiles_positive", False))
+        holdout_profiles_present = int(row.get("holdout_generator_profiles_present_in_proxy", 0) or 0)
+        real_data_status = str(row.get("real_data_rerun_status", "not_available"))
+        negative_controls = int(row.get("negative_control_rows", 0) or 0)
+        passed_controls = int(row.get("passed_negative_control_rows", 0) or 0)
+
+        requirements = [
+            {
+                "robustness_requirement": "registered_for_alpha_parameter_proxy_grid",
+                "required_threshold": "strategy registered in Phase 13 proxy experiment grid",
+                "observed_value": str(registered),
+                "current_evidence_status": "registered_proxy" if registered else "not_registered",
+                "acceptance_requirement_met": registered,
+                "blocking_gap": "" if registered else "Strategy is not registered for the current alpha-parameter robustness proxy grid.",
+                "required_next_evidence": "Register strategy in the applicable alpha-parameter experiment grid or classify it as non-alpha/risk-only before robustness acceptance.",
+            },
+            {
+                "robustness_requirement": "full_validation_seed_coverage",
+                "required_threshold": f"{required_seeds} required full-validation seeds",
+                "observed_value": f"{observed_seeds} initial-engineering proxy seeds",
+                "current_evidence_status": str(row.get("seed_scope_status", "")),
+                "acceptance_requirement_met": registered and observed_seeds >= required_seeds and required_seeds > 0,
+                "blocking_gap": "" if registered and observed_seeds >= required_seeds and required_seeds > 0 else "Only initial-engineering seed proxy coverage is complete; full required-seed execution is missing.",
+                "required_next_evidence": "Execute all required full-validation seeds from outputs/phase13/seed_plan.csv.",
+            },
+            {
+                "robustness_requirement": "execution_profile_robustness",
+                "required_threshold": "all deployable/stress execution profiles positive and evaluated",
+                "observed_value": f"{execution_profiles} profiles; all_profiles_positive={all_profiles_positive}",
+                "current_evidence_status": "multi_profile_proxy_not_acceptance" if execution_profiles else "not_run",
+                "acceptance_requirement_met": registered and execution_profiles >= 3 and all_profiles_positive,
+                "blocking_gap": "" if registered and execution_profiles >= 3 and all_profiles_positive else "Current multi-profile proxy does not show positive results across all execution profiles.",
+                "required_next_evidence": "Run full strategy registry across deployable and stressed execution profiles with acceptance-grade fills/costs.",
+            },
+            {
+                "robustness_requirement": "parameter_neighborhood_smoothness",
+                "required_threshold": f"{planned_parameters} predeclared parameter sets evaluated smoothly",
+                "observed_value": f"{run_parameters} parameter set(s) run",
+                "current_evidence_status": str(row.get("parameter_smoothness_status", "")),
+                "acceptance_requirement_met": registered and planned_parameters > 0 and run_parameters >= planned_parameters,
+                "blocking_gap": "" if registered and planned_parameters > 0 and run_parameters >= planned_parameters else "Only one/sparse parameter-set proxy evidence exists; parameter-neighborhood smoothness is missing.",
+                "required_next_evidence": "Execute the full predeclared parameter grid and summarize neighborhood smoothness without final-test reuse.",
+            },
+            {
+                "robustness_requirement": "walk_forward_coverage",
+                "required_threshold": f"{planned_walk_forward} walk-forward windows run",
+                "observed_value": f"{run_walk_forward} walk-forward windows run",
+                "current_evidence_status": str(row.get("walk_forward_status", "")),
+                "acceptance_requirement_met": registered and planned_walk_forward > 0 and run_walk_forward >= planned_walk_forward,
+                "blocking_gap": "" if registered and planned_walk_forward > 0 and run_walk_forward >= planned_walk_forward else "Walk-forward design exists but no walk-forward windows have been executed.",
+                "required_next_evidence": "Execute registered walk-forward windows and preserve train/test leakage checks.",
+            },
+            {
+                "robustness_requirement": "holdout_generator_strategy_rerun",
+                "required_threshold": "holdout-generator profiles rerun as strategy evidence",
+                "observed_value": f"{holdout_profiles_present} holdout profiles present as proxy",
+                "current_evidence_status": str(row.get("holdout_status", "")),
+                "acceptance_requirement_met": False,
+                "blocking_gap": "Holdout-generator profiles exist as realism/proxy evidence but strategy reruns are not acceptance-grade.",
+                "required_next_evidence": "Run strategies on holdout-generator outputs and compare against calibration/development results.",
+            },
+            {
+                "robustness_requirement": "negative_control_rejection",
+                "required_threshold": "all interpretable negative controls rejected or degraded",
+                "observed_value": f"{passed_controls}/{negative_controls} negative-control rows passed proxy criterion",
+                "current_evidence_status": "proxy_negative_controls_available" if negative_controls else "not_available",
+                "acceptance_requirement_met": registered and negative_controls > 0 and passed_controls == negative_controls,
+                "blocking_gap": "" if registered and negative_controls > 0 and passed_controls == negative_controls else "Negative-control evidence is proxy-only or incomplete.",
+                "required_next_evidence": "Run mandatory negative controls under full experiment execution and require rejection/degradation before promotion.",
+            },
+            {
+                "robustness_requirement": "real_data_rerun",
+                "required_threshold": "multi-day real-data rerun evidence available",
+                "observed_value": real_data_status,
+                "current_evidence_status": real_data_status,
+                "acceptance_requirement_met": real_data_status == "multi_day_real_rerun_available",
+                "blocking_gap": "Current evidence is one-day seed/synthetic only; multi-day real rerun is missing.",
+                "required_next_evidence": "Collect and run multiple real market days, then compare stability against synthetic scenarios.",
+            },
+        ]
+        for item in requirements:
+            out = {
+                "strategy_id": strategy_id,
+                "evidence_source": (
+                    "outputs/phase13/experiment_registry.csv; outputs/phase13/experiment_run_summary.csv; "
+                    "outputs/phase13/experiment_profile_robustness_summary.csv; outputs/phase13/robustness_dimension_summary.csv"
+                ),
+                "acceptance_eligible_now": False,
+            }
+            out.update(item)
+            rows.append(out)
+
+    result = pd.DataFrame(rows)
+    return result[columns].sort_values(["strategy_id", "robustness_requirement"], kind="mergesort")
+
+
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
         return "_No rows._"
@@ -409,6 +532,7 @@ def write_report(
     control_summary: pd.DataFrame,
     profile_summary: pd.DataFrame,
     dimension_summary: pd.DataFrame,
+    acceptance_gap_ledger: pd.DataFrame,
 ) -> None:
     lines = [
         "# Phase 13 Experiment Run Smoke Report",
@@ -444,6 +568,10 @@ def write_report(
         "## Robustness Dimension Coverage Summary",
         "",
         _markdown_table(dimension_summary),
+        "",
+        "## Robustness Acceptance Gap Ledger",
+        "",
+        _markdown_table(acceptance_gap_ledger),
         "",
         "## Caveat",
         "",
@@ -496,6 +624,7 @@ def run_phase13_experiment_smoke(
         parameter_grid=parameter_grid,
         holdout_realism=holdout_realism,
     )
+    acceptance_gap_ledger = build_robustness_acceptance_gap_ledger(dimension_summary)
 
     ledger.to_csv(output_dir / "experiment_run_ledger.csv", index=False)
     summary.to_csv(output_dir / "experiment_run_summary.csv", index=False)
@@ -503,6 +632,7 @@ def run_phase13_experiment_smoke(
     profile_ledger.to_csv(output_dir / "experiment_profile_robustness_ledger.csv", index=False)
     profile_summary.to_csv(output_dir / "experiment_profile_robustness_summary.csv", index=False)
     dimension_summary.to_csv(output_dir / "robustness_dimension_summary.csv", index=False)
+    acceptance_gap_ledger.to_csv(output_dir / "robustness_acceptance_gap_ledger.csv", index=False)
 
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
@@ -522,6 +652,9 @@ def run_phase13_experiment_smoke(
         "profile_robustness_rows": int(len(profile_ledger)),
         "profile_robustness_summary_rows": int(len(profile_summary)),
         "robustness_dimension_summary_rows": int(len(dimension_summary)),
+        "robustness_acceptance_gap_rows": int(len(acceptance_gap_ledger)),
+        "robustness_acceptance_gap_open_rows": int((~acceptance_gap_ledger["acceptance_requirement_met"].astype(bool)).sum()) if len(acceptance_gap_ledger) else 0,
+        "robustness_acceptance_ready_rows": int(acceptance_gap_ledger["acceptance_requirement_met"].astype(bool).sum()) if len(acceptance_gap_ledger) else 0,
         "robustness_dimension_registered_rows": int(dimension_summary["registered_for_phase13_proxy"].sum()) if len(dimension_summary) else 0,
         "robustness_dimension_holdout_proxy_rows": int(
             (dimension_summary["holdout_generator_profiles_present_in_proxy"] > 0).sum()
@@ -557,6 +690,7 @@ def run_phase13_experiment_smoke(
                 "experiment_profile_robustness_ledger": str(output_dir / "experiment_profile_robustness_ledger.csv"),
                 "experiment_profile_robustness_summary": str(output_dir / "experiment_profile_robustness_summary.csv"),
                 "robustness_dimension_summary": str(output_dir / "robustness_dimension_summary.csv"),
+                "robustness_acceptance_gap_ledger": str(output_dir / "robustness_acceptance_gap_ledger.csv"),
                 "report": str(output_dir / "experiment_run_smoke_report.md"),
                 "manifest": str(output_dir / "experiment_run_manifest.json"),
             },
@@ -567,7 +701,7 @@ def run_phase13_experiment_smoke(
         )
     )
     (output_dir / "experiment_run_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, manifest, summary, control_summary, profile_summary, dimension_summary)
+    write_report(output_dir, manifest, summary, control_summary, profile_summary, dimension_summary, acceptance_gap_ledger)
 
 
 def parse_args() -> argparse.Namespace:

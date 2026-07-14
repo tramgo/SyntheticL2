@@ -16,6 +16,9 @@ full_run_lifecycle_risk_limit_pass_rows,14,Phase 12 proxy pass rows under sensit
 full_run_lifecycle_risk_limit_high_rows,267,Phase 12 high-severity risk-limit rows
 robustness_dimension_rows,11,Phase 13 robustness dimension rows
 robustness_dimension_registered_rows,9,Phase 13 registered robustness proxy rows
+robustness_acceptance_gap_rows,88,Phase 13 robustness acceptance gap rows
+robustness_acceptance_gap_open_rows,79,Phase 13 open robustness acceptance gaps
+robustness_acceptance_gap_met_rows,9,Phase 13 met robustness proxy requirements
 strategies,11,Phase 15 strategies
 promoted_strategies,0,Promotion allowed count
 acceptance_blockers,50,Phase 15 blocker rows

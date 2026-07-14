@@ -96,6 +96,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     lifecycle_risk_severity = _read_csv(paths["lifecycle_risk_severity"])
     lifecycle_risk_limit_sensitivity = _read_csv(paths["lifecycle_risk_limit_sensitivity"])
     robustness_dimension = _read_csv(paths["robustness_dimension"])
+    robustness_gap = _read_csv(paths["robustness_gap"])
     acceptance = _read_csv(paths["acceptance"])
     blockers = _read_csv(paths["blockers"])
     metric_catalog = _read_csv(paths["metric_catalog"])
@@ -136,6 +137,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .reset_index()
     )
     robustness_status = robustness_dimension["dimension_status"].value_counts().rename_axis("dimension_status").reset_index(name="strategies")
+    robustness_gap_status = robustness_gap["acceptance_requirement_met"].value_counts().rename_axis("acceptance_requirement_met").reset_index(name="rows")
     hardening_priority = hardening_queue["priority_band"].value_counts().rename_axis("priority_band").reset_index(name="queue_items").sort_values("priority_band")
     top_risk_severity = lifecycle_risk_severity.sort_values("risk_severity_score", ascending=False)
     top_risk_limit_sensitivity = lifecycle_risk_limit_sensitivity.sort_values("risk_limit_severity_score", ascending=False)
@@ -158,6 +160,9 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("full_run_lifecycle_risk_limit_high_rows", int((lifecycle_risk_limit_sensitivity["risk_limit_status"].astype(str) == "high_proxy_breach_under_limit_profile").sum()), "Phase 12 high-severity risk-limit rows"),
         ("robustness_dimension_rows", int(len(robustness_dimension)), "Phase 13 robustness dimension rows"),
         ("robustness_dimension_registered_rows", int(robustness_dimension["registered_for_phase13_proxy"].astype(bool).sum()), "Phase 13 registered robustness proxy rows"),
+        ("robustness_acceptance_gap_rows", int(len(robustness_gap)), "Phase 13 robustness acceptance gap rows"),
+        ("robustness_acceptance_gap_open_rows", int((~robustness_gap["acceptance_requirement_met"].astype(bool)).sum()), "Phase 13 open robustness acceptance gaps"),
+        ("robustness_acceptance_gap_met_rows", int(robustness_gap["acceptance_requirement_met"].astype(bool).sum()), "Phase 13 met robustness proxy requirements"),
         ("strategies", int(acceptance["strategy_id"].nunique()), "Phase 15 strategies"),
         ("promoted_strategies", int(acceptance["promotion_allowed"].astype(bool).sum()), "Promotion allowed count"),
         ("acceptance_blockers", int(len(blockers)), "Phase 15 blocker rows"),
@@ -249,6 +254,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 14 Quality Status</h2>{_bar_rows(quality_status, 'status', 'checks')}{_table(quality, ['level', 'check_name', 'value', 'status', 'evidence'], 24)}</section>
   <section><h2>Phase 14 Holdout Generator Realism Proxy</h2>{_table(holdout, ['quarter_profile', 'feed_profile', 'holdout_role', 'scenario_days', 'symbols', 'regimes', 'realism_status', 'acceptance_eligible_now'], 20)}</section>
   <section><h2>Phase 13 Robustness Dimension Proxy</h2>{_table(robustness_status, None, 10)}{_table(robustness_dimension, ['strategy_id', 'registered_for_phase13_proxy', 'initial_engineering_seeds_run', 'required_full_validation_seeds', 'execution_profiles_evaluated', 'parameter_sets_run', 'parameter_sets_planned', 'walk_forward_status', 'holdout_status', 'dimension_status'], 14)}</section>
+  <section><h2>Phase 13 Robustness Acceptance Gap Ledger</h2>{_table(robustness_gap_status, None, 10)}{_table(robustness_gap, ['strategy_id', 'robustness_requirement', 'required_threshold', 'observed_value', 'current_evidence_status', 'acceptance_requirement_met', 'blocking_gap'], 40)}</section>
   <section><h2>Phase 12 Full-Run Lifecycle Risk Proxy</h2>{_table(lifecycle_overview, ['fill_model', 'strategy_profiles', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'daily_halt_rows', 'position_limit_breach_rows'], 10)}{_table(lifecycle_risk, ['strategy_id', 'execution_profile', 'fill_model', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'max_intraday_drawdown_inr', 'daily_halt_rows'], 18)}</section>
   <section><h2>Phase 12 Risk Breach Severity Proxy</h2>{_table(top_risk_severity, ['strategy_id', 'execution_profile', 'fill_model', 'breach_days', 'daily_loss_breach_days', 'position_limit_breach_days', 'drawdown_breach_days', 'daily_halt_days', 'risk_severity_score', 'risk_severity_band', 'risk_pass_candidate_proxy'], 25)}</section>
   <section><h2>Phase 12 Risk Limit Sensitivity Proxy</h2>{_table(top_risk_limit_sensitivity, ['strategy_id', 'execution_profile', 'fill_model', 'risk_limit_profile', 'breach_days', 'daily_loss_breach_days', 'drawdown_breach_days', 'position_limit_breach_days', 'tail_trade_loss_breach', 'risk_limit_severity_score', 'risk_limit_status', 'risk_pass_candidate_under_limit_profile'], 25)}</section>
@@ -301,6 +307,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "## Phase 13 Robustness Dimension Proxy",
         "",
         _markdown_table(robustness_status),
+        "",
+        "## Phase 13 Robustness Acceptance Gap Ledger",
+        "",
+        _markdown_table(robustness_gap_status),
+        "",
+        _markdown_table(robustness_gap),
         "",
         "## Economic Viability Frontier",
         "",
@@ -366,6 +378,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lifecycle-risk-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
     parser.add_argument("--lifecycle-risk-limit-sensitivity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv"))
     parser.add_argument("--robustness-dimension", type=Path, default=Path("outputs/phase13/robustness_dimension_summary.csv"))
+    parser.add_argument("--robustness-gap", type=Path, default=Path("outputs/phase13/robustness_acceptance_gap_ledger.csv"))
     parser.add_argument("--acceptance", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--blockers", type=Path, default=Path("outputs/phase15/acceptance_blockers.csv"))
     parser.add_argument("--metric-catalog", type=Path, default=Path("outputs/phase16/metric_catalog.csv"))
@@ -393,6 +406,7 @@ def main() -> None:
         "lifecycle_risk_severity": args.lifecycle_risk_severity,
         "lifecycle_risk_limit_sensitivity": args.lifecycle_risk_limit_sensitivity,
         "robustness_dimension": args.robustness_dimension,
+        "robustness_gap": args.robustness_gap,
         "acceptance": args.acceptance,
         "blockers": args.blockers,
         "metric_catalog": args.metric_catalog,
