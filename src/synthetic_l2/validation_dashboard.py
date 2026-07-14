@@ -122,6 +122,8 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     economic_hardening_action_summary = _read_csv(paths["economic_hardening_action_summary"])
     predictive_hardening_plan = _read_csv(paths["predictive_hardening_plan"])
     predictive_hardening_action_summary = _read_csv(paths["predictive_hardening_action_summary"])
+    robustness_hardening_plan = _read_csv(paths["robustness_hardening_plan"])
+    robustness_hardening_action_summary = _read_csv(paths["robustness_hardening_action_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -181,6 +183,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     predictive_hardening_status = (
         predictive_hardening_plan.groupby(["predictive_hardening_status", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    robustness_hardening_status = (
+        robustness_hardening_plan.groupby(["robustness_hardening_status", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -260,6 +267,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_predictive_hardening_proxy_rows", int(predictive_hardening_plan["proxy_evidence_available"].astype(bool).sum()), "Phase 20 predictive hardening rows with proxy evidence"),
         ("phase20_predictive_hardening_missing_rows", int((~predictive_hardening_plan["proxy_evidence_available"].astype(bool)).sum()), "Phase 20 predictive hardening rows missing required evidence"),
         ("phase20_predictive_hardening_met_rows", int(predictive_hardening_plan["acceptance_requirement_met"].astype(bool).sum()), "Phase 20 met predictive hardening requirements"),
+        ("phase20_robustness_hardening_plan_rows", int(len(robustness_hardening_plan)), "Phase 20 robustness hardening requirement rows"),
+        ("phase20_robustness_hardening_proxy_rows", int(robustness_hardening_plan["proxy_evidence_available"].astype(bool).sum()), "Phase 20 robustness hardening rows with proxy evidence"),
+        ("phase20_robustness_hardening_missing_rows", int((~robustness_hardening_plan["proxy_evidence_available"].astype(bool)).sum()), "Phase 20 robustness hardening rows missing required evidence"),
+        ("phase20_robustness_hardening_met_rows", int(robustness_hardening_plan["acceptance_requirement_met"].astype(bool).sum()), "Phase 20 met robustness hardening requirements"),
         ("phase20_acceptance_ready_rows", int(hardening_queue["acceptance_ready_now"].astype(bool).sum()), "Phase 20 acceptance-ready queue rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
@@ -336,6 +347,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 Risk Hardening Plan</h2>{_table(risk_hardening_status, None, 10)}{_table(risk_hardening_action_summary, ['action_class', 'dependency_type', 'risk_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(risk_hardening_plan, ['queue_rank', 'strategy_id', 'risk_requirement', 'action_class', 'dependency_type', 'risk_hardening_status', 'risk_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 Economic Hardening Plan</h2>{_table(economic_hardening_status, None, 10)}{_table(economic_hardening_action_summary, ['action_class', 'dependency_type', 'economic_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(economic_hardening_plan, ['queue_rank', 'strategy_id', 'economic_requirement', 'action_class', 'dependency_type', 'economic_hardening_status', 'economic_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 Predictive Hardening Plan</h2>{_table(predictive_hardening_status, None, 10)}{_table(predictive_hardening_action_summary, ['action_class', 'dependency_type', 'predictive_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(predictive_hardening_plan, ['queue_rank', 'strategy_id', 'predictive_requirement', 'action_class', 'dependency_type', 'predictive_hardening_status', 'predictive_evidence_summary', 'required_next_evidence'], 50)}</section>
+  <section><h2>Phase 20 Robustness Hardening Plan</h2>{_table(robustness_hardening_status, None, 10)}{_table(robustness_hardening_action_summary, ['action_class', 'dependency_type', 'robustness_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(robustness_hardening_plan, ['queue_rank', 'strategy_id', 'robustness_requirement', 'action_class', 'dependency_type', 'robustness_hardening_status', 'robustness_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -476,6 +488,14 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(predictive_hardening_plan.head(50)),
         "",
+        "## Phase 20 Robustness Hardening Plan",
+        "",
+        _markdown_table(robustness_hardening_status),
+        "",
+        _markdown_table(robustness_hardening_action_summary),
+        "",
+        _markdown_table(robustness_hardening_plan.head(50)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -532,6 +552,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--economic-hardening-action-summary", type=Path, default=Path("outputs/phase20/economic_hardening_action_summary.csv"))
     parser.add_argument("--predictive-hardening-plan", type=Path, default=Path("outputs/phase20/predictive_hardening_plan.csv"))
     parser.add_argument("--predictive-hardening-action-summary", type=Path, default=Path("outputs/phase20/predictive_hardening_action_summary.csv"))
+    parser.add_argument("--robustness-hardening-plan", type=Path, default=Path("outputs/phase20/robustness_hardening_plan.csv"))
+    parser.add_argument("--robustness-hardening-action-summary", type=Path, default=Path("outputs/phase20/robustness_hardening_action_summary.csv"))
     return parser.parse_args()
 
 
@@ -570,6 +592,8 @@ def main() -> None:
         "economic_hardening_action_summary": args.economic_hardening_action_summary,
         "predictive_hardening_plan": args.predictive_hardening_plan,
         "predictive_hardening_action_summary": args.predictive_hardening_action_summary,
+        "robustness_hardening_plan": args.robustness_hardening_plan,
+        "robustness_hardening_action_summary": args.robustness_hardening_action_summary,
     }
     run_dashboard(args.output_dir, paths)
 

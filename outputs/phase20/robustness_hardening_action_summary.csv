@@ -1,0 +1,9 @@
+action_class,dependency_type,robustness_requirement_rows,strategies,proxy_evidence_rows,acceptance_met_rows,open_rows
+execution_profile_robustness_validation,deployable_and_stressed_execution_profiles,11,11,9,0,11
+full_seed_execution,registered_full_validation_seed_plan,11,11,9,0,11
+holdout_generator_strategy_rerun,untouched_holdout_generator_outputs,11,11,11,0,11
+negative_control_validation,mandatory_negative_control_experiments,11,11,9,0,11
+parameter_smoothness_validation,parameter_neighborhood_grid_execution,11,11,11,0,11
+real_data_robustness_rerun,multi_day_real_data_rerun,11,11,0,0,11
+walk_forward_execution,walk_forward_fold_execution,11,11,11,0,11
+strategy_registry_support_closure,phase13_strategy_registry_and_parameter_grid,11,11,11,9,2

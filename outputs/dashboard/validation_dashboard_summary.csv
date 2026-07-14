@@ -71,4 +71,8 @@ phase20_predictive_hardening_plan_rows,99,Phase 20 predictive hardening requirem
 phase20_predictive_hardening_proxy_rows,58,Phase 20 predictive hardening rows with proxy evidence
 phase20_predictive_hardening_missing_rows,41,Phase 20 predictive hardening rows missing required evidence
 phase20_predictive_hardening_met_rows,0,Phase 20 met predictive hardening requirements
+phase20_robustness_hardening_plan_rows,88,Phase 20 robustness hardening requirement rows
+phase20_robustness_hardening_proxy_rows,71,Phase 20 robustness hardening rows with proxy evidence
+phase20_robustness_hardening_missing_rows,17,Phase 20 robustness hardening rows missing required evidence
+phase20_robustness_hardening_met_rows,9,Phase 20 met robustness hardening requirements
 phase20_acceptance_ready_rows,0,Phase 20 acceptance-ready queue rows

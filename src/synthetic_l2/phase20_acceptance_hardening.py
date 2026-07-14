@@ -144,6 +144,39 @@ PREDICTIVE_DEPENDENCY_TYPE = {
     "promotion_falsification_clear": "joined_baseline_holdout_feature_and_real_holdout_evidence",
 }
 
+ROBUSTNESS_REQUIREMENT_PRIORITY = {
+    "registered_for_alpha_parameter_proxy_grid": 1,
+    "full_validation_seed_coverage": 2,
+    "execution_profile_robustness": 3,
+    "negative_control_rejection": 4,
+    "parameter_neighborhood_smoothness": 5,
+    "walk_forward_coverage": 6,
+    "holdout_generator_strategy_rerun": 7,
+    "real_data_rerun": 8,
+}
+
+ROBUSTNESS_ACTION_CLASS = {
+    "registered_for_alpha_parameter_proxy_grid": "strategy_registry_support_closure",
+    "full_validation_seed_coverage": "full_seed_execution",
+    "execution_profile_robustness": "execution_profile_robustness_validation",
+    "negative_control_rejection": "negative_control_validation",
+    "parameter_neighborhood_smoothness": "parameter_smoothness_validation",
+    "walk_forward_coverage": "walk_forward_execution",
+    "holdout_generator_strategy_rerun": "holdout_generator_strategy_rerun",
+    "real_data_rerun": "real_data_robustness_rerun",
+}
+
+ROBUSTNESS_DEPENDENCY_TYPE = {
+    "registered_for_alpha_parameter_proxy_grid": "phase13_strategy_registry_and_parameter_grid",
+    "full_validation_seed_coverage": "registered_full_validation_seed_plan",
+    "execution_profile_robustness": "deployable_and_stressed_execution_profiles",
+    "negative_control_rejection": "mandatory_negative_control_experiments",
+    "parameter_neighborhood_smoothness": "parameter_neighborhood_grid_execution",
+    "walk_forward_coverage": "walk_forward_fold_execution",
+    "holdout_generator_strategy_rerun": "untouched_holdout_generator_outputs",
+    "real_data_rerun": "multi_day_real_data_rerun",
+}
+
 
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
@@ -176,6 +209,11 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "predictive_holdout_stability_summary": pd.read_csv(paths["predictive_holdout_stability_summary"]),
         "predictive_promotion_falsification": pd.read_csv(paths["predictive_promotion_falsification"]),
         "feature_importance_stability": pd.read_csv(paths["feature_importance_stability"]),
+        "robustness_acceptance_gap": pd.read_csv(paths["robustness_acceptance_gap"]),
+        "robustness_dimension_summary": pd.read_csv(paths["robustness_dimension_summary"]),
+        "experiment_profile_robustness_summary": pd.read_csv(paths["experiment_profile_robustness_summary"]),
+        "experiment_run_summary": pd.read_csv(paths["experiment_run_summary"]),
+        "experiment_registry": pd.read_csv(paths["experiment_registry"]),
     }
 
 
@@ -875,6 +913,221 @@ def build_predictive_action_summary(predictive_plan: pd.DataFrame) -> pd.DataFra
     return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
 
 
+def _robustness_strategy_summary(
+    dimension: pd.DataFrame,
+    profile: pd.DataFrame,
+    run_summary: pd.DataFrame,
+    registry: pd.DataFrame,
+) -> pd.DataFrame:
+    dimension_cols = [
+        "strategy_id",
+        "registered_for_phase13_proxy",
+        "proxy_run_rows",
+        "profile_robustness_rows",
+        "initial_engineering_seeds_run",
+        "required_full_validation_seeds",
+        "quarter_profiles_run",
+        "execution_profiles_evaluated",
+        "all_execution_profiles_positive",
+        "stressed_profile_positive",
+        "negative_control_rows",
+        "interpretable_negative_control_rows",
+        "passed_negative_control_rows",
+        "parameter_sets_planned",
+        "parameter_sets_run",
+        "walk_forward_windows_planned",
+        "walk_forward_windows_run",
+        "holdout_generator_profiles_available",
+        "holdout_generator_profiles_present_in_proxy",
+        "acceptance_eligible",
+    ]
+    summary = dimension[[column for column in dimension_cols if column in dimension.columns]].copy()
+    profile_cols = [
+        "strategy_id",
+        "positive_base_profiles",
+        "worst_profile_base_net_return",
+        "best_profile_base_net_return",
+        "profile_base_net_return_range",
+    ]
+    if not profile.empty:
+        summary = summary.merge(profile[[column for column in profile_cols if column in profile.columns]], on="strategy_id", how="left")
+    run_cols = [
+        "strategy_id",
+        "run_rows",
+        "base_rows",
+        "median_base_net_return",
+        "worst_control_net_return",
+    ]
+    if not run_summary.empty:
+        summary = summary.merge(run_summary[[column for column in run_cols if column in run_summary.columns]], on="strategy_id", how="left")
+    if not registry.empty:
+        registry_summary = (
+            registry.groupby("strategy_id", sort=True)
+            .agg(
+                planned_registry_rows=("experiment_id", "count"),
+                registry_seeds=("simulation_seed", "nunique"),
+                registry_parameter_sets=("parameter_set_id", "nunique"),
+                registry_controls=("control_id", "nunique"),
+                registry_quarter_profiles=("quarter_profile", "nunique"),
+            )
+            .reset_index()
+        )
+        summary = summary.merge(registry_summary, on="strategy_id", how="left")
+    return summary.fillna(0)
+
+
+def build_robustness_hardening_plan(
+    queue: pd.DataFrame,
+    robustness_gap: pd.DataFrame,
+    dimension: pd.DataFrame,
+    profile: pd.DataFrame,
+    run_summary: pd.DataFrame,
+    registry: pd.DataFrame,
+) -> pd.DataFrame:
+    robustness_queue = queue[queue["gate_id"].astype(str) == "G03_robustness"][
+        ["queue_rank", "priority_band", "strategy_id", "strategy_support_level", "strategy_role"]
+    ].copy()
+    robustness_summary = _robustness_strategy_summary(dimension, profile, run_summary, registry)
+    rows = robustness_gap.merge(robustness_queue, on="strategy_id", how="left").merge(robustness_summary, on="strategy_id", how="left")
+    rows = rows[rows["queue_rank"].notna()].copy()
+    rows["requirement_priority"] = rows["robustness_requirement"].map(ROBUSTNESS_REQUIREMENT_PRIORITY).fillna(99).astype(int)
+    rows["action_class"] = rows["robustness_requirement"].map(ROBUSTNESS_ACTION_CLASS).fillna("unmapped_robustness_action")
+    rows["dependency_type"] = rows["robustness_requirement"].map(ROBUSTNESS_DEPENDENCY_TYPE).fillna("unmapped_dependency")
+    rows["acceptance_requirement_met"] = rows["acceptance_requirement_met"].astype(bool)
+    evidence_status = rows["current_evidence_status"].astype(str)
+    rows["proxy_evidence_available"] = evidence_status.str.contains(
+        "proxy|available|registered|design|present|multi_profile",
+        case=False,
+        regex=True,
+    ) & ~evidence_status.str.contains("not_available|missing", case=False, regex=True)
+    rows["proxy_evidence_available"] = rows["proxy_evidence_available"] | rows["acceptance_requirement_met"]
+    rows["acceptance_ready_now"] = False
+    rows["robustness_hardening_status"] = rows.apply(
+        lambda row: "acceptance_met"
+        if row["acceptance_requirement_met"]
+        else "proxy_evidence_needs_acceptance_upgrade"
+        if row["proxy_evidence_available"]
+        else "missing_required_acceptance_evidence",
+        axis=1,
+    )
+    numeric_summary_columns = [
+        "proxy_run_rows",
+        "profile_robustness_rows",
+        "initial_engineering_seeds_run",
+        "required_full_validation_seeds",
+        "quarter_profiles_run",
+        "execution_profiles_evaluated",
+        "negative_control_rows",
+        "interpretable_negative_control_rows",
+        "passed_negative_control_rows",
+        "parameter_sets_planned",
+        "parameter_sets_run",
+        "walk_forward_windows_planned",
+        "walk_forward_windows_run",
+        "holdout_generator_profiles_available",
+        "holdout_generator_profiles_present_in_proxy",
+        "positive_base_profiles",
+        "planned_registry_rows",
+        "registry_seeds",
+        "registry_parameter_sets",
+        "registry_controls",
+        "registry_quarter_profiles",
+    ]
+    for column in numeric_summary_columns:
+        if column in rows:
+            rows[column] = rows[column].fillna(0)
+    for column in [
+        "registered_for_phase13_proxy",
+        "all_execution_profiles_positive",
+        "stressed_profile_positive",
+        "acceptance_eligible",
+    ]:
+        if column in rows:
+            rows[column] = rows[column].fillna(False).astype(bool)
+    rows["robustness_evidence_summary"] = rows.apply(
+        lambda row: (
+            f"registered={bool(row.get('registered_for_phase13_proxy', False))}; "
+            f"initial_seeds={int(row.get('initial_engineering_seeds_run', 0))}/"
+            f"{int(row.get('required_full_validation_seeds', 0))}; "
+            f"profiles_positive={bool(row.get('all_execution_profiles_positive', False))}; "
+            f"negative_controls_passed={int(row.get('passed_negative_control_rows', 0))}/"
+            f"{int(row.get('interpretable_negative_control_rows', 0))}; "
+            f"walk_forward_run={int(row.get('walk_forward_windows_run', 0))}/"
+            f"{int(row.get('walk_forward_windows_planned', 0))}; "
+            f"parameter_sets_run={int(row.get('parameter_sets_run', 0))}/"
+            f"{int(row.get('parameter_sets_planned', 0))}"
+        ),
+        axis=1,
+    )
+    output_columns = [
+        "queue_rank",
+        "priority_band",
+        "strategy_id",
+        "strategy_support_level",
+        "strategy_role",
+        "robustness_requirement",
+        "requirement_priority",
+        "action_class",
+        "dependency_type",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "robustness_hardening_status",
+        "blocking_gap",
+        "required_next_evidence",
+        "robustness_evidence_summary",
+        "registered_for_phase13_proxy",
+        "proxy_run_rows",
+        "initial_engineering_seeds_run",
+        "required_full_validation_seeds",
+        "execution_profiles_evaluated",
+        "all_execution_profiles_positive",
+        "passed_negative_control_rows",
+        "interpretable_negative_control_rows",
+        "parameter_sets_run",
+        "parameter_sets_planned",
+        "walk_forward_windows_run",
+        "walk_forward_windows_planned",
+        "holdout_generator_profiles_present_in_proxy",
+        "planned_registry_rows",
+        "acceptance_ready_now",
+        "evidence_source",
+    ]
+    for column in output_columns:
+        if column not in rows:
+            rows[column] = 0 if column.endswith("_rows") or column.endswith("_run") or column.endswith("_planned") else ""
+    return rows[output_columns].sort_values(["queue_rank", "requirement_priority"], kind="mergesort")
+
+
+def build_robustness_action_summary(robustness_plan: pd.DataFrame) -> pd.DataFrame:
+    if robustness_plan.empty:
+        return pd.DataFrame(
+            columns=[
+                "action_class",
+                "dependency_type",
+                "robustness_requirement_rows",
+                "strategies",
+                "proxy_evidence_rows",
+                "acceptance_met_rows",
+                "open_rows",
+            ]
+        )
+    grouped = (
+        robustness_plan.groupby(["action_class", "dependency_type"], sort=True)
+        .agg(
+            robustness_requirement_rows=("robustness_requirement", "count"),
+            strategies=("strategy_id", "nunique"),
+            proxy_evidence_rows=("proxy_evidence_available", lambda values: int(values.astype(bool).sum())),
+            acceptance_met_rows=("acceptance_requirement_met", lambda values: int(values.astype(bool).sum())),
+        )
+        .reset_index()
+    )
+    grouped["open_rows"] = grouped["robustness_requirement_rows"] - grouped["acceptance_met_rows"]
+    return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
+
+
 def write_report(
     output_dir: Path,
     queue: pd.DataFrame,
@@ -886,6 +1139,8 @@ def write_report(
     economic_action_summary: pd.DataFrame,
     predictive_plan: pd.DataFrame,
     predictive_action_summary: pd.DataFrame,
+    robustness_plan: pd.DataFrame,
+    robustness_action_summary: pd.DataFrame,
 ) -> None:
     priority_summary = queue.groupby(["priority_band", "gate_id", "acceptance_milestone"], sort=True).size().reset_index(name="queue_items")
     lines = [
@@ -974,6 +1229,26 @@ def write_report(
             ].head(40)
         ),
         "",
+        "## Robustness Hardening Action Summary",
+        "",
+        _markdown_table(robustness_action_summary),
+        "",
+        "## Top Robustness Hardening Requirements",
+        "",
+        _markdown_table(
+            robustness_plan[
+                [
+                    "queue_rank",
+                    "strategy_id",
+                    "robustness_requirement",
+                    "action_class",
+                    "robustness_hardening_status",
+                    "robustness_evidence_summary",
+                    "required_next_evidence",
+                ]
+            ].head(40)
+        ),
+        "",
     ]
     (output_dir / "phase20_acceptance_hardening_report.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -1014,6 +1289,15 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         inputs["feature_importance_stability"],
     )
     predictive_action_summary = build_predictive_action_summary(predictive_plan)
+    robustness_plan = build_robustness_hardening_plan(
+        queue,
+        inputs["robustness_acceptance_gap"],
+        inputs["robustness_dimension_summary"],
+        inputs["experiment_profile_robustness_summary"],
+        inputs["experiment_run_summary"],
+        inputs["experiment_registry"],
+    )
+    robustness_action_summary = build_robustness_action_summary(robustness_plan)
 
     queue.to_csv(output_dir / "acceptance_hardening_queue.csv", index=False)
     gate_summary.to_csv(output_dir / "acceptance_hardening_gate_summary.csv", index=False)
@@ -1024,6 +1308,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
     economic_action_summary.to_csv(output_dir / "economic_hardening_action_summary.csv", index=False)
     predictive_plan.to_csv(output_dir / "predictive_hardening_plan.csv", index=False)
     predictive_action_summary.to_csv(output_dir / "predictive_hardening_action_summary.csv", index=False)
+    robustness_plan.to_csv(output_dir / "robustness_hardening_plan.csv", index=False)
+    robustness_action_summary.to_csv(output_dir / "robustness_hardening_action_summary.csv", index=False)
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": generated_utc,
@@ -1042,6 +1328,10 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         "predictive_hardening_open_rows": int((~predictive_plan["acceptance_requirement_met"].astype(bool)).sum()),
         "predictive_hardening_proxy_rows": int(predictive_plan["proxy_evidence_available"].astype(bool).sum()),
         "predictive_hardening_action_summary_rows": int(len(predictive_action_summary)),
+        "robustness_hardening_plan_rows": int(len(robustness_plan)),
+        "robustness_hardening_open_rows": int((~robustness_plan["acceptance_requirement_met"].astype(bool)).sum()),
+        "robustness_hardening_proxy_rows": int(robustness_plan["proxy_evidence_available"].astype(bool).sum()),
+        "robustness_hardening_action_summary_rows": int(len(robustness_action_summary)),
         "acceptance_ready_queue_rows": int(queue["acceptance_ready_now"].sum()),
         "top_priority_gate": gate_summary.iloc[0]["gate_id"] if len(gate_summary) else "",
         "scope": "phase20_acceptance_hardening_queue",
@@ -1066,6 +1356,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
                 "economic_hardening_action_summary": str(output_dir / "economic_hardening_action_summary.csv"),
                 "predictive_hardening_plan": str(output_dir / "predictive_hardening_plan.csv"),
                 "predictive_hardening_action_summary": str(output_dir / "predictive_hardening_action_summary.csv"),
+                "robustness_hardening_plan": str(output_dir / "robustness_hardening_plan.csv"),
+                "robustness_hardening_action_summary": str(output_dir / "robustness_hardening_action_summary.csv"),
                 "report": str(output_dir / "phase20_acceptance_hardening_report.md"),
             },
             random_seed="not_applicable_deterministic_blocker_queue",
@@ -1087,6 +1379,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         economic_action_summary,
         predictive_plan,
         predictive_action_summary,
+        robustness_plan,
+        robustness_action_summary,
     )
 
 
@@ -1110,6 +1404,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--predictive-holdout-stability-summary", type=Path, default=Path("outputs/phase16/predictive_holdout_stability_summary.csv"))
     parser.add_argument("--predictive-promotion-falsification", type=Path, default=Path("outputs/phase16/predictive_promotion_falsification.csv"))
     parser.add_argument("--feature-importance-stability", type=Path, default=Path("outputs/phase16/feature_importance_stability_proxy.csv"))
+    parser.add_argument("--robustness-acceptance-gap", type=Path, default=Path("outputs/phase13/robustness_acceptance_gap_ledger.csv"))
+    parser.add_argument("--robustness-dimension-summary", type=Path, default=Path("outputs/phase13/robustness_dimension_summary.csv"))
+    parser.add_argument("--experiment-profile-robustness-summary", type=Path, default=Path("outputs/phase13/experiment_profile_robustness_summary.csv"))
+    parser.add_argument("--experiment-run-summary", type=Path, default=Path("outputs/phase13/experiment_run_summary.csv"))
+    parser.add_argument("--experiment-registry", type=Path, default=Path("outputs/phase13/experiment_registry.csv"))
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     return parser.parse_args()
 
@@ -1134,6 +1433,11 @@ def main() -> None:
         "predictive_holdout_stability_summary": args.predictive_holdout_stability_summary,
         "predictive_promotion_falsification": args.predictive_promotion_falsification,
         "feature_importance_stability": args.feature_importance_stability,
+        "robustness_acceptance_gap": args.robustness_acceptance_gap,
+        "robustness_dimension_summary": args.robustness_dimension_summary,
+        "experiment_profile_robustness_summary": args.experiment_profile_robustness_summary,
+        "experiment_run_summary": args.experiment_run_summary,
+        "experiment_registry": args.experiment_registry,
     }
     run_phase20(paths, args.output_dir, args.base_dir)
 
