@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_zerodha_order_formula_cost_catalog_if_used_by_runner",
   "latency_model_version": "phase12_execution_profiles_if_used_by_runner",
   "creation_timestamp": "2026-07-13T20:47:01.217340+00:00",
-  "normalization_timestamp": "2026-07-14T19:04:07.759249+00:00",
+  "normalization_timestamp": "2026-07-14T19:15:41.439306+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

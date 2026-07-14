@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T19:03:19.232372+00:00
+Generated UTC: 2026-07-14T19:15:33.093684+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -251,6 +251,14 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase34_days_needed_for_target | 10 | Phase 34 additional Class B days needed for target |
 | phase34_stage_a2_open_contract_rows | 192 | Phase 34 Stage A2 open contract rows |
 | phase34_replay_allowed_rows | 0 | Phase 34 replay-allowed rows |
+| phase35_symbols_evaluated | 32 | Phase 35 symbols evaluated |
+| phase35_raw_rows_scanned | 620853 | Phase 35 raw rows scanned |
+| phase35_timestamp_semantics_computable_pass_symbols | 32 | Phase 35 timestamp computable-pass symbols |
+| phase35_lossless_compaction_computable_pass_symbols | 32 | Phase 35 lossless compaction computable-pass symbols |
+| phase35_explicit_local_sequence_symbols | 0 | Phase 35 explicit local-sequence symbols |
+| phase35_connection_boundary_ledger_symbols | 0 | Phase 35 connection-boundary ledger symbols |
+| phase35_computable_evidence_rows | 96 | Phase 35 computable evidence rows |
+| phase35_acceptance_met_rows | 0 | Phase 35 acceptance-met rows |
 
 ## Quality Status
 
@@ -4725,6 +4733,149 @@ This dashboard is static research traceability output, not strategy promotion ev
 | 2026-07-13 | NSE | TECHM | 1569 | 55179402 | 19124 | 0.9999477096841664 | 2 | 749.0 | 4856.699999999993 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
 | 2026-07-13 | NSE | ULTRACEMCO | 1569 | 54242826 | 8386 | 0.999880753637014 | 2 | 2245.0 | 6772.599999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
 | 2026-07-13 | NSE | WIPRO | 1569 | 55414740 | 20334 | 0.999950821284548 | 2 | 524.0 | 4730.799999999996 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+
+## Phase 35 Stage A2 Computable Diagnostics
+
+| diagnostic_status | rows |
+| --- | --- |
+| computable_diagnostics_pass_but_collector_contracts_missing | 32 |
+
+| criterion_id | phase35_status | rows |
+| --- | --- | --- |
+| connection_boundary_log | collector_or_multiday_evidence_missing | 32 |
+| dropped_message_diagnostics | computable_pass_not_acceptance | 32 |
+| local_sequence_integrity | collector_or_multiday_evidence_missing | 32 |
+| lossless_compaction | computable_pass_not_acceptance | 32 |
+| multiday_class_b_coverage | collector_or_multiday_evidence_missing | 32 |
+| timestamp_semantics | computable_pass_not_acceptance | 32 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase35_symbols_evaluated | 32 | Symbols scanned from current raw parquet sample |
+| phase35_raw_rows_scanned | 620853 | Raw parquet rows scanned |
+| phase35_source_files_scanned | 50205 | Distinct parquet files scanned |
+| phase35_timestamp_semantics_computable_pass_symbols | 32 | Symbols with computable timestamp checks passing |
+| phase35_lossless_compaction_computable_pass_symbols | 32 | Symbols with raw-to-Phase1/manifest reconciliation passing |
+| phase35_drop_duplicate_stale_computable_symbols | 32 | Symbols with duplicate/stale scan computable |
+| phase35_explicit_local_sequence_symbols | 0 | Symbols with explicit callback local sequence IDs |
+| phase35_connection_boundary_ledger_symbols | 0 | Symbols with connection boundary ledger evidence |
+| phase35_computable_evidence_rows | 96 | Criterion rows with computable evidence available now |
+| phase35_acceptance_met_rows | 0 | Criterion rows accepted for Class B promotion |
+
+| priority | action_id | action | current_evidence | acceptance_effect |
+| --- | --- | --- | --- | --- |
+| 1 | add_collector_session_ledger | Persist connection/session open, close, reconnect and subscription-boundary events in the collector. | 0 symbols have connection-boundary ledger evidence. | Closes the connection_boundary_log evidence family for future Class B days. |
+| 2 | add_callback_local_sequence_id | Assign and persist a monotonic callback-ingress local_sequence_id before parquet persistence. | 0 symbols have explicit local sequence evidence. | Separates true callback-order integrity from derived persisted-file ordering. |
+| 3 | add_broker_session_drop_counters | Persist dropped, duplicate, stale and out-of-order counters per connection session and symbol. | 32 symbols support symptom scanning from persisted ticks. | Turns computable stale/duplicate symptoms into capture-side dropped-message diagnostics. |
+| 4 | repeat_computable_diagnostics_for_new_days | Run this scanner after every imported/captured raw day and require passing timestamp and compaction checks. | 32 symbols pass timestamp checks and 32 pass compaction checks on the current sample. | Prevents new raw days from being counted toward Class B unless computable diagnostics keep passing. |
+
+| trade_date | exchange | symbol | instrument_class | raw_rows | source_files | phase1_delta_rows | inventory_rows | manifest_files | duplicate_receive_ms | stale_gap_gt_15s_count | receive_gap_negative_count | monotonic_gap_negative_count | median_receive_gap_ms | p95_receive_gap_ms | receive_ms_present_fraction | monotonic_ns_present_fraction | exchange_timestamp_present_fraction | row_count_match_phase1 | row_count_match_inventory | file_count_match_manifest | timestamp_semantics_computable | lossless_compaction_computable | drop_duplicate_stale_computable | local_sequence_explicitly_available | connection_boundary_ledger_available | class_b_event_grade_now | diagnostic_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-13 | NSE | ADANIPORTS | equity | 13886 | 1569 | 13886 | 13886 | 1569 | 372 | 2 | 0 | 0 | 1000.0 | 5500.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | AXISBANK | equity | 18309 | 1569 | 18309 | 18309 | 1569 | 785 | 2 | 0 | 0 | 749.0 | 4913.649999999998 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | BAJAJ-AUTO | equity | 25141 | 1569 | 25141 | 25141 | 1569 | 1172 | 2 | 0 | 0 | 741.0 | 4410.049999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | BANKBEES | etf | 18916 | 1569 | 18916 | 18916 | 1569 | 352 | 2 | 0 | 0 | 1000.0 | 4833.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | BHARTIARTL | equity | 19560 | 1569 | 19560 | 19560 | 1569 | 878 | 2 | 0 | 0 | 749.0 | 4762.399999999994 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | BPCL | equity | 10684 | 1569 | 10684 | 10684 | 1569 | 176 | 2 | 0 | 0 | 1602.0 | 6081.699999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | BRITANNIA | equity | 8526 | 1569 | 8526 | 8526 | 1569 | 117 | 2 | 0 | 0 | 2000.0 | 7000.799999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | CIPLA | equity | 11664 | 1569 | 11664 | 11664 | 1569 | 219 | 2 | 0 | 0 | 1194.0 | 5953.9 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | DRREDDY | equity | 12257 | 1569 | 12257 | 12257 | 1569 | 263 | 2 | 0 | 0 | 1250.0 | 5750.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | GOLDBEES | etf | 12982 | 1568 | 12982 | 12982 | 1568 | 361 | 2 | 0 | 0 | 1000.0 | 5680.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | HCLTECH | equity | 29266 | 1569 | 29266 | 29266 | 1569 | 1869 | 2 | 0 | 0 | 500.0 | 4158.799999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | HDFCBANK | equity | 35959 | 1569 | 35959 | 35959 | 1569 | 2598 | 2 | 0 | 0 | 500.0 | 1250.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | HINDUNILVR | equity | 12173 | 1569 | 12173 | 12173 | 1569 | 262 | 2 | 0 | 0 | 1001.0 | 5859.449999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | ICICIBANK | equity | 26474 | 1569 | 26474 | 26474 | 1569 | 1538 | 2 | 0 | 0 | 500.0 | 4201.399999999998 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | INFY | equity | 34511 | 1569 | 34511 | 34511 | 1569 | 2399 | 2 | 0 | 0 | 500.0 | 2627.099999999992 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | ITBEES | etf | 11481 | 1569 | 11481 | 11481 | 1569 | 274 | 2 | 0 | 0 | 1250.0 | 5993.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | ITC | equity | 12379 | 1569 | 12379 | 12379 | 1569 | 294 | 2 | 0 | 0 | 1250.0 | 5750.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | JUNIORBEES | etf | 17442 | 1568 | 17442 | 17442 | 1568 | 417 | 2 | 0 | 0 | 999.0 | 5021.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | KOTAKBANK | equity | 14091 | 1569 | 14091 | 14091 | 1569 | 496 | 2 | 0 | 0 | 1000.0 | 5475.549999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | LT | equity | 19466 | 1569 | 19466 | 19466 | 1569 | 874 | 2 | 0 | 0 | 749.0 | 4750.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | M&M | equity | 25699 | 1569 | 25699 | 25699 | 1569 | 1284 | 2 | 0 | 0 | 501.0 | 4285.449999999993 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | MARUTI | equity | 27645 | 1569 | 27645 | 27645 | 1569 | 1314 | 2 | 0 | 0 | 502.0 | 4139.699999999997 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | NESTLEIND | equity | 12918 | 1569 | 12918 | 12918 | 1569 | 332 | 2 | 0 | 0 | 1000.0 | 5800.199999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | NIFTYBEES | etf | 22414 | 1568 | 22414 | 22414 | 1568 | 964 | 2 | 0 | 0 | 749.0 | 4542.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | ONGC | equity | 17305 | 1569 | 17305 | 17305 | 1569 | 691 | 2 | 0 | 0 | 750.0 | 5000.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | RELIANCE | equity | 26056 | 1569 | 26056 | 26056 | 1569 | 1567 | 2 | 0 | 0 | 500.0 | 4324.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | SBIN | equity | 24728 | 1569 | 24728 | 24728 | 1569 | 1407 | 2 | 0 | 0 | 500.0 | 4329.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | SUNPHARMA | equity | 14610 | 1569 | 14610 | 14610 | 1569 | 416 | 2 | 0 | 0 | 982.0 | 5483.999999999993 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | TCS | equity | 36467 | 1569 | 36467 | 36467 | 1569 | 2640 | 2 | 0 | 0 | 500.0 | 1250.0 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | TECHM | equity | 19124 | 1569 | 19124 | 19124 | 1569 | 753 | 2 | 0 | 0 | 749.0 | 4856.699999999993 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | ULTRACEMCO | equity | 8386 | 1569 | 8386 | 8386 | 1569 | 107 | 2 | 0 | 0 | 2245.0 | 6772.599999999999 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+| 2026-07-13 | NSE | WIPRO | equity | 20334 | 1569 | 20334 | 20334 | 1569 | 928 | 2 | 0 | 0 | 524.0 | 4730.799999999996 | 1.0 | 1.0 | 1.0 | True | True | True | True | True | True | False | False | False | computable_diagnostics_pass_but_collector_contracts_missing |
+
+| trade_date | exchange | symbol | raw_rows | criterion_id | computable_evidence_available | acceptance_requirement_met | current_evidence | remaining_gap | phase35_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-13 | NSE | ADANIPORTS | 13886 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | ADANIPORTS | 13886 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | ADANIPORTS | 13886 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | ADANIPORTS | 13886 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | ADANIPORTS | 13886 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | ADANIPORTS | 13886 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | AXISBANK | 18309 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | AXISBANK | 18309 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | AXISBANK | 18309 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | AXISBANK | 18309 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | AXISBANK | 18309 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | AXISBANK | 18309 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 25141 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 25141 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 25141 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 25141 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 25141 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 25141 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BANKBEES | 18916 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BANKBEES | 18916 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BANKBEES | 18916 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BANKBEES | 18916 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BANKBEES | 18916 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BANKBEES | 18916 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BHARTIARTL | 19560 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BHARTIARTL | 19560 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BHARTIARTL | 19560 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BHARTIARTL | 19560 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BHARTIARTL | 19560 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BHARTIARTL | 19560 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BPCL | 10684 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BPCL | 10684 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BPCL | 10684 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BPCL | 10684 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BPCL | 10684 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BPCL | 10684 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BRITANNIA | 8526 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BRITANNIA | 8526 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BRITANNIA | 8526 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BRITANNIA | 8526 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | BRITANNIA | 8526 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | BRITANNIA | 8526 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | CIPLA | 11664 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | CIPLA | 11664 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | CIPLA | 11664 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | CIPLA | 11664 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | CIPLA | 11664 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | CIPLA | 11664 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | DRREDDY | 12257 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | DRREDDY | 12257 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | DRREDDY | 12257 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | DRREDDY | 12257 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | DRREDDY | 12257 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | DRREDDY | 12257 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | GOLDBEES | 12982 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | GOLDBEES | 12982 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | GOLDBEES | 12982 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | GOLDBEES | 12982 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | GOLDBEES | 12982 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | GOLDBEES | 12982 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | HCLTECH | 29266 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | HCLTECH | 29266 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | HCLTECH | 29266 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | HCLTECH | 29266 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | HCLTECH | 29266 | multiday_class_b_coverage | False | False | current raw day can be diagnosed as a smoke/regression day | minimum 5 Class B event-grade days are not available | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | HCLTECH | 29266 | timestamp_semantics | True | False | receive/monotonic/exchange timestamp columns are present and ordered in persisted data | capture-side timestamp policy document still required before Class B promotion | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | HDFCBANK | 35959 | connection_boundary_log | False | False | tick files imply a capture window | connection open/close/reconnect/subscription ledger is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | HDFCBANK | 35959 | dropped_message_diagnostics | True | False | duplicate receive-ms, stale gap and ordering symptoms are computable from persisted ticks | broker/session drop counters are not present | computable_pass_not_acceptance |
+| 2026-07-13 | NSE | HDFCBANK | 35959 | local_sequence_integrity | False | False | derived persisted ordering can be reconstructed | explicit callback-ingress local_sequence_id is absent | collector_or_multiday_evidence_missing |
+| 2026-07-13 | NSE | HDFCBANK | 35959 | lossless_compaction | True | False | raw parquet rows reconcile to Phase 1 rows and manifest file counts | repeat for every new Class B day | computable_pass_not_acceptance |
 
 ## Metric Status
 

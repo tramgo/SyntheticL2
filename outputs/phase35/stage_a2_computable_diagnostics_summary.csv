@@ -1,0 +1,11 @@
+metric,value,description
+phase35_symbols_evaluated,32,Symbols scanned from current raw parquet sample
+phase35_raw_rows_scanned,620853,Raw parquet rows scanned
+phase35_source_files_scanned,50205,Distinct parquet files scanned
+phase35_timestamp_semantics_computable_pass_symbols,32,Symbols with computable timestamp checks passing
+phase35_lossless_compaction_computable_pass_symbols,32,Symbols with raw-to-Phase1/manifest reconciliation passing
+phase35_drop_duplicate_stale_computable_symbols,32,Symbols with duplicate/stale scan computable
+phase35_explicit_local_sequence_symbols,0,Symbols with explicit callback local sequence IDs
+phase35_connection_boundary_ledger_symbols,0,Symbols with connection boundary ledger evidence
+phase35_computable_evidence_rows,96,Criterion rows with computable evidence available now
+phase35_acceptance_met_rows,0,Criterion rows accepted for Class B promotion

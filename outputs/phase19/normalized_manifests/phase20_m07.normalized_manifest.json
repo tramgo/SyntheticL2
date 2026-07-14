@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_zerodha_order_formula_proxy_contract_note_missing",
   "latency_model_version": "stage_a1_one_day_zerodha_websocket_sample",
   "creation_timestamp": "2026-07-14T16:32:38.934542+00:00",
-  "normalization_timestamp": "2026-07-14T19:04:07.772384+00:00",
+  "normalization_timestamp": "2026-07-14T19:15:41.450822+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

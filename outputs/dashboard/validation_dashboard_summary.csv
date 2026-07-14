@@ -242,3 +242,11 @@ phase34_days_needed_for_min,5,Phase 34 additional Class B days needed for minimu
 phase34_days_needed_for_target,10,Phase 34 additional Class B days needed for target
 phase34_stage_a2_open_contract_rows,192,Phase 34 Stage A2 open contract rows
 phase34_replay_allowed_rows,0,Phase 34 replay-allowed rows
+phase35_symbols_evaluated,32,Phase 35 symbols evaluated
+phase35_raw_rows_scanned,620853,Phase 35 raw rows scanned
+phase35_timestamp_semantics_computable_pass_symbols,32,Phase 35 timestamp computable-pass symbols
+phase35_lossless_compaction_computable_pass_symbols,32,Phase 35 lossless compaction computable-pass symbols
+phase35_explicit_local_sequence_symbols,0,Phase 35 explicit local-sequence symbols
+phase35_connection_boundary_ledger_symbols,0,Phase 35 connection-boundary ledger symbols
+phase35_computable_evidence_rows,96,Phase 35 computable evidence rows
+phase35_acceptance_met_rows,0,Phase 35 acceptance-met rows
