@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T16:27:08.253592+00:00
+Generated UTC: 2026-07-14T16:32:52.650298+00:00
 
 ## Storage Decision
 
@@ -271,7 +271,14 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 M06 pessimistic-execution-required rows: 6
 - Phase 20 M06 artifact-control-required rows: 6
 - Phase 20 M06 realism acceptance-met rows: 0
-- Validation dashboard summary rows: 122
+- Phase 20 M07 real multi-day criteria rows: 5
+- Phase 20 M07 real multi-day rows: 39
+- Phase 20 M07 economic-real-validation-required rows: 11
+- Phase 20 M07 predictive-real-holdout-required rows: 11
+- Phase 20 M07 robustness-real-rerun-required rows: 11
+- Phase 20 M07 realism-real-validation-required rows: 6
+- Phase 20 M07 real multi-day acceptance-met rows: 0
+- Validation dashboard summary rows: 128
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
@@ -286,18 +293,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Horizon readiness event-driven 1s symbols: 12
 - Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 33
-- Phase 19 field checks: 330
-- Phase 19 exact-regeneration-ready artifacts: 33
+- Phase 19 audited artifacts: 34
+- Phase 19 field checks: 340
+- Phase 19 exact-regeneration-ready artifacts: 34
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 330
+- Phase 19 remediation rows: 340
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 33
-- Phase 19 normalized overlay-ready artifacts: 33
+- Phase 19 normalized overlay artifacts: 34
+- Phase 19 normalized overlay-ready artifacts: 34
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 330
+- Phase 19 source-or-alias fields: 340
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0

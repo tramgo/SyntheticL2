@@ -153,6 +153,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     realism_rerun_ledger = _read_csv(paths["realism_rerun_ledger"])
     realism_rerun_gap_summary = _read_csv(paths["realism_rerun_gap_summary"])
     realism_rerun_strategy_summary = _read_csv(paths["realism_rerun_strategy_summary"])
+    real_multiday_criteria = _read_csv(paths["real_multiday_criteria"])
+    real_multiday_ledger = _read_csv(paths["real_multiday_ledger"])
+    real_multiday_gap_summary = _read_csv(paths["real_multiday_gap_summary"])
+    real_multiday_strategy_summary = _read_csv(paths["real_multiday_strategy_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -257,6 +261,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     realism_rerun_status = (
         realism_rerun_ledger.groupby(["realism_rerun_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    real_multiday_status = (
+        real_multiday_ledger.groupby(["real_multiday_acceptance_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -386,6 +395,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_m06_pessimistic_execution_required_rows", int(realism_rerun_ledger["pessimistic_execution_required"].astype(bool).sum()), "Phase 20 M06 rows requiring pessimistic execution realism"),
         ("phase20_m06_artifact_control_required_rows", int(realism_rerun_ledger["artifact_control_required"].astype(bool).sum()), "Phase 20 M06 rows requiring artifact-exploitation controls"),
         ("phase20_m06_realism_acceptance_met_rows", int(realism_rerun_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M06 rows that meet acceptance after contract"),
+        ("phase20_m07_real_multiday_rows", int(len(real_multiday_ledger)), "Phase 20 M07 real multi-day acceptance rows"),
+        ("phase20_m07_economic_real_validation_required_rows", int(real_multiday_ledger["economic_real_validation_required"].astype(bool).sum()), "Phase 20 M07 rows requiring real economic validation"),
+        ("phase20_m07_predictive_real_holdout_required_rows", int(real_multiday_ledger["predictive_real_holdout_required"].astype(bool).sum()), "Phase 20 M07 rows requiring real predictive holdout"),
+        ("phase20_m07_robustness_real_rerun_required_rows", int(real_multiday_ledger["robustness_real_rerun_required"].astype(bool).sum()), "Phase 20 M07 rows requiring real robustness rerun"),
+        ("phase20_m07_realism_real_validation_required_rows", int(real_multiday_ledger["realism_real_validation_required"].astype(bool).sum()), "Phase 20 M07 rows requiring real realism validation"),
+        ("phase20_m07_real_multiday_acceptance_met_rows", int(real_multiday_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M07 rows that meet acceptance after contract"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -470,6 +485,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 M04 Robustness Execution Contract</h2>{_table(robustness_execution_gap_summary, None, 12)}{_table(robustness_execution_status, None, 12)}{_table(robustness_execution_strategy_summary, ['strategy_id', 'strategy_support_level', 'm04_rows', 'seed_rows_requiring_execution', 'walk_forward_rows_requiring_execution', 'robustness_execution_contract_status'], 15)}{_table(robustness_execution_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(robustness_execution_ledger, ['execution_rank', 'strategy_id', 'hardening_requirement', 'robustness_execution_status', 'observed_robustness_metric', 'acceptance_requirement_met_after_contract', 'required_robustness_action'], 70)}</section>
   <section><h2>Phase 20 M05 Lifecycle/Economic Replay Contract</h2>{_table(lifecycle_economic_gap_summary, None, 12)}{_table(lifecycle_economic_status, None, 12)}{_table(lifecycle_economic_strategy_summary, ['strategy_id', 'strategy_support_level', 'm05_rows', 'risk_replay_rows', 'economic_replay_rows', 'lifecycle_economic_contract_status'], 15)}{_table(lifecycle_economic_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(lifecycle_economic_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'lifecycle_economic_status', 'observed_lifecycle_economic_metric', 'acceptance_requirement_met_after_contract', 'required_lifecycle_economic_action'], 90)}</section>
   <section><h2>Phase 20 M06 Holdout/Realism Rerun Contract</h2>{_table(realism_rerun_gap_summary, None, 12)}{_table(realism_rerun_status, None, 12)}{_table(realism_rerun_strategy_summary, ['strategy_id', 'strategy_support_level', 'm06_rows', 'holdout_rerun_rows', 'feed_imperfection_rows', 'realism_rerun_contract_status'], 15)}{_table(realism_rerun_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(realism_rerun_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'realism_rerun_status', 'observed_realism_metric', 'acceptance_requirement_met_after_contract', 'required_realism_action'], 70)}</section>
+  <section><h2>Phase 20 M07 Real Multi-Day Acceptance Contract</h2>{_table(real_multiday_gap_summary, None, 12)}{_table(real_multiday_status, None, 12)}{_table(real_multiday_strategy_summary, ['strategy_id', 'strategy_support_level', 'm07_rows', 'economic_real_validation_rows', 'predictive_real_holdout_rows', 'real_multiday_contract_status'], 15)}{_table(real_multiday_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(real_multiday_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'real_multiday_acceptance_status', 'observed_real_multiday_metric', 'acceptance_requirement_met_after_contract', 'required_real_multiday_action'], 70)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -706,6 +722,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(realism_rerun_ledger.head(70)),
         "",
+        "## Phase 20 M07 Real Multi-Day Acceptance Contract",
+        "",
+        _markdown_table(real_multiday_gap_summary),
+        "",
+        _markdown_table(real_multiday_status),
+        "",
+        _markdown_table(real_multiday_strategy_summary),
+        "",
+        _markdown_table(real_multiday_criteria),
+        "",
+        _markdown_table(real_multiday_ledger.head(70)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -793,6 +821,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--realism-rerun-ledger", type=Path, default=Path("outputs/phase20_m06/realism_rerun_ledger.csv"))
     parser.add_argument("--realism-rerun-gap-summary", type=Path, default=Path("outputs/phase20_m06/realism_rerun_gap_summary.csv"))
     parser.add_argument("--realism-rerun-strategy-summary", type=Path, default=Path("outputs/phase20_m06/realism_rerun_strategy_summary.csv"))
+    parser.add_argument("--real-multiday-criteria", type=Path, default=Path("outputs/phase20_m07/real_multiday_acceptance_criteria.csv"))
+    parser.add_argument("--real-multiday-ledger", type=Path, default=Path("outputs/phase20_m07/real_multiday_acceptance_ledger.csv"))
+    parser.add_argument("--real-multiday-gap-summary", type=Path, default=Path("outputs/phase20_m07/real_multiday_gap_summary.csv"))
+    parser.add_argument("--real-multiday-strategy-summary", type=Path, default=Path("outputs/phase20_m07/real_multiday_strategy_summary.csv"))
     return parser.parse_args()
 
 
@@ -862,6 +894,10 @@ def main() -> None:
         "realism_rerun_ledger": args.realism_rerun_ledger,
         "realism_rerun_gap_summary": args.realism_rerun_gap_summary,
         "realism_rerun_strategy_summary": args.realism_rerun_strategy_summary,
+        "real_multiday_criteria": args.real_multiday_criteria,
+        "real_multiday_ledger": args.real_multiday_ledger,
+        "real_multiday_gap_summary": args.real_multiday_gap_summary,
+        "real_multiday_strategy_summary": args.real_multiday_strategy_summary,
     }
     run_dashboard(args.output_dir, paths)
 

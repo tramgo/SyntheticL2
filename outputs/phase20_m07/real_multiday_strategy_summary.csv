@@ -1,0 +1,12 @@
+strategy_id,strategy_support_level,strategy_role,m07_rows,economic_real_validation_rows,predictive_real_holdout_rows,robustness_real_rerun_rows,realism_real_validation_rows,acceptance_met_rows,first_required_action,real_multiday_contract_status
+S01,runnable_proxy,priority,3,1,1,1,0,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S02,runnable_proxy,priority,3,1,1,1,0,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S03,partial_missing_required_features,priority,4,1,1,1,1,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S04,partial_missing_required_features,priority,4,1,1,1,1,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S05,runnable_proxy,filter,3,1,1,1,0,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S06,partial_missing_required_features,priority,4,1,1,1,1,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S07,runnable_proxy,priority,3,1,1,1,0,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S08,partial_missing_required_features,research,4,1,1,1,1,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S09,runnable_proxy,benchmark,3,1,1,1,0,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S10,not_supported_by_current_product,research_only,4,1,1,1,1,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance
+S11,not_supported_by_current_product,risk_filter_only,4,1,1,1,1,0,"Collect/run multi-day real economic validation with reconciled fills, costs and P&L.",real_multiday_evidence_missing_not_acceptance

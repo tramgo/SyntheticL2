@@ -1,0 +1,6 @@
+real_multiday_acceptance_status,rows,strategies,acceptance_met_rows
+blocked_by_partial_strategy_support,16,4,0
+blocked_by_unsupported_strategy_scope,8,2,0
+real_multiday_economic_validation_missing,5,5,0
+real_multiday_predictive_holdout_missing,5,5,0
+real_multiday_robustness_rerun_missing,5,5,0

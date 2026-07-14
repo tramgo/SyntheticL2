@@ -68,6 +68,7 @@ MANIFEST_CANDIDATES = [
     ("phase20_m04", "outputs/phase20_m04/robustness_execution_contract_manifest.json"),
     ("phase20_m05", "outputs/phase20_m05/lifecycle_economic_replay_contract_manifest.json"),
     ("phase20_m06", "outputs/phase20_m06/realism_rerun_contract_manifest.json"),
+    ("phase20_m07", "outputs/phase20_m07/real_multiday_acceptance_contract_manifest.json"),
     ("horizon_readiness", "outputs/horizon_readiness/horizon_readiness_manifest.json"),
     ("dashboard", "outputs/dashboard/validation_dashboard_manifest.json"),
     ("duckdb", "outputs/duckdb/duckdb_workspace_manifest.json"),

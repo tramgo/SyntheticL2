@@ -1,0 +1,6 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+real_multiday_data_coverage,Multiple diagnostically sound real trading days are collected for each candidate strategy universe.,multi-day real L2 coverage with documented gaps and symbol coverage,contract_defined_not_acceptance_evidence
+real_multiday_predictive_holdout,Predictive results are rerun and stable on real multi-day holdout data.,"real multi-day predictive baseline, calibration and stability pass",contract_defined_not_acceptance_evidence
+real_multiday_economic_validation,Economic P&L is validated on real multi-day or untouched holdout data with reconciled costs.,retail/stress economics remain positive after broker/fill/cost reconciliation,contract_defined_not_acceptance_evidence
+real_multiday_robustness_rerun,Robustness checks are rerun on multiple real days and compared to synthetic scenarios.,real multi-day strategy behavior is stable and not synthetic-specific,contract_defined_not_acceptance_evidence
+real_multiday_realism_validation,Synthetic/holdout realism is checked against real multi-day strategy behavior.,real behavior matches accepted synthetic/holdout envelopes without artifact dependence,contract_defined_not_acceptance_evidence

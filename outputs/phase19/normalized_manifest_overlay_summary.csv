@@ -29,6 +29,7 @@ phase20_m03,outputs/phase20_m03/predictive_validation_contract_manifest.json,out
 phase20_m04,outputs/phase20_m04/robustness_execution_contract_manifest.json,outputs\phase19\normalized_manifests\phase20_m04.normalized_manifest.json,True,10,10,0,10,True
 phase20_m05,outputs/phase20_m05/lifecycle_economic_replay_contract_manifest.json,outputs\phase19\normalized_manifests\phase20_m05.normalized_manifest.json,True,10,10,0,10,True
 phase20_m06,outputs/phase20_m06/realism_rerun_contract_manifest.json,outputs\phase19\normalized_manifests\phase20_m06.normalized_manifest.json,True,10,10,0,10,True
+phase20_m07,outputs/phase20_m07/real_multiday_acceptance_contract_manifest.json,outputs\phase19\normalized_manifests\phase20_m07.normalized_manifest.json,True,10,10,0,10,True
 horizon_readiness,outputs/horizon_readiness/horizon_readiness_manifest.json,outputs\phase19\normalized_manifests\horizon_readiness.normalized_manifest.json,True,10,10,0,10,True
 dashboard,outputs/dashboard/validation_dashboard_manifest.json,outputs\phase19\normalized_manifests\dashboard.normalized_manifest.json,True,10,10,0,10,True
 duckdb,outputs/duckdb/duckdb_workspace_manifest.json,outputs\phase19\normalized_manifests\duckdb.normalized_manifest.json,True,10,10,0,10,True

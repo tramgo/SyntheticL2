@@ -121,3 +121,9 @@ phase20_m06_feed_imperfection_required_rows,6,Phase 20 M06 rows requiring feed-i
 phase20_m06_pessimistic_execution_required_rows,6,Phase 20 M06 rows requiring pessimistic execution realism
 phase20_m06_artifact_control_required_rows,6,Phase 20 M06 rows requiring artifact-exploitation controls
 phase20_m06_realism_acceptance_met_rows,0,Phase 20 M06 rows that meet acceptance after contract
+phase20_m07_real_multiday_rows,39,Phase 20 M07 real multi-day acceptance rows
+phase20_m07_economic_real_validation_required_rows,11,Phase 20 M07 rows requiring real economic validation
+phase20_m07_predictive_real_holdout_required_rows,11,Phase 20 M07 rows requiring real predictive holdout
+phase20_m07_robustness_real_rerun_required_rows,11,Phase 20 M07 rows requiring real robustness rerun
+phase20_m07_realism_real_validation_required_rows,6,Phase 20 M07 rows requiring real realism validation
+phase20_m07_real_multiday_acceptance_met_rows,0,Phase 20 M07 rows that meet acceptance after contract
