@@ -1,0 +1,7 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+synthetic_quality_gates_pass,Synthetic quality gates pass without warning/failure.,phase14_fail_rows == 0 and phase14_warn_rows == 0,stage_e_readiness_gate_not_extension_run
+backtest_controls_pass,Backtest controls and promotion gates pass for at least one candidate.,promoted_strategies > 0 and acceptance_blockers == 0,stage_e_readiness_gate_not_extension_run
+storage_is_acceptable,Full-year storage estimate is within current research workstation/cloud budget.,full_year_conservative_total_gb <= 150,stage_e_readiness_gate_not_extension_run
+strategy_code_is_stable,Strategy modules are acceptance-grade and promotion-ready where applicable.,promotion_ready_modules > 0 and acceptance_grade_modules > 0,stage_e_readiness_gate_not_extension_run
+results_not_generator_artifacts,"Results survive anti-artifact checks, holdout reruns and real-data validation.",predictive_candidates > 0 and real_or_holdout_gaps_open == 0,stage_e_readiness_gate_not_extension_run
+full_year_extension_allowed,Full-year extension can start only after every prerequisite passes.,all prerequisites pass,stage_e_readiness_gate_not_extension_run

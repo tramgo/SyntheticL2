@@ -166,3 +166,7 @@ stage_d_control_strategy_rows,27,Stage D S09-S11 control/risk rows
 stage_d_check_rows,9,Stage D check rows
 stage_d_checks_passed,9,Stage D passed checks
 stage_d_checks_failed,0,Stage D failed checks
+stage_e_prerequisite_rows,7,Stage E prerequisite rows
+stage_e_passing_prerequisites,3,Stage E passing prerequisites
+stage_e_blocking_prerequisites,4,Stage E blocking prerequisites
+stage_e_extension_allowed_rows,0,Stage E extension allowed rows

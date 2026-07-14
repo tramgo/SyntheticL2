@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_stage_c_gross_proxy_no_execution_costs",
   "latency_model_version": "phase9_tier_c_feed_profiles_no_order_latency",
   "creation_timestamp": "2026-07-14T17:06:17.148214+00:00",
-  "normalization_timestamp": "2026-07-14T17:17:44.363340+00:00",
+  "normalization_timestamp": "2026-07-14T17:22:43.439864+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

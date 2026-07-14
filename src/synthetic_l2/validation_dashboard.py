@@ -183,6 +183,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     stage_d_dataset_summary = _read_csv(paths["stage_d_dataset_summary"])
     stage_d_check_ledger = _read_csv(paths["stage_d_check_ledger"])
     stage_d_strategy_summary = _read_csv(paths["stage_d_strategy_summary"])
+    stage_e_criteria = _read_csv(paths["stage_e_criteria"])
+    stage_e_prerequisite_ledger = _read_csv(paths["stage_e_prerequisite_ledger"])
+    stage_e_gap_summary = _read_csv(paths["stage_e_gap_summary"])
+    stage_e_action_plan = _read_csv(paths["stage_e_action_plan"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -317,6 +321,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     stage_d_check_status = (
         stage_d_check_ledger.groupby(["passed"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    stage_e_status = (
+        stage_e_prerequisite_ledger.groupby(["passes"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -491,6 +500,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("stage_d_check_rows", int(len(stage_d_check_ledger)), "Stage D check rows"),
         ("stage_d_checks_passed", int(stage_d_check_ledger["passed"].astype(bool).sum()), "Stage D passed checks"),
         ("stage_d_checks_failed", int((~stage_d_check_ledger["passed"].astype(bool)).sum()), "Stage D failed checks"),
+        ("stage_e_prerequisite_rows", int(len(stage_e_prerequisite_ledger)), "Stage E prerequisite rows"),
+        ("stage_e_passing_prerequisites", int(stage_e_prerequisite_ledger["passes"].astype(bool).sum()), "Stage E passing prerequisites"),
+        ("stage_e_blocking_prerequisites", int((~stage_e_prerequisite_ledger["passes"].astype(bool)).sum()), "Stage E blocking prerequisites"),
+        ("stage_e_extension_allowed_rows", int(stage_e_prerequisite_ledger.loc[stage_e_prerequisite_ledger["prerequisite_id"].eq("full_year_extension_allowed"), "passes"].astype(bool).sum()), "Stage E extension allowed rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -581,6 +594,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Stage B2 Event-Driven Synthetic Proof</h2>{_table(stage_b2_check_status, None, 5)}{_table(stage_b2_dataset_summary, None, 12)}{_table(stage_b2_readiness, ['symbol', 'instrument_class', 'window_name', 'event_rate_per_second', 'coverage_fraction', 'dense_1s_ready', 'event_driven_1s_ready', 'stage_b2_1s_action'], 10)}{_table(stage_b2_scenario_selection, ['stage_b2_bucket', 'scenario_day', 'trade_date', 'quarter_profile', 'regime_family', 'is_market_shock_day'], 10)}{_table(stage_b2_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(stage_b2_check_ledger, ['check_id', 'observed_value', 'expected_value', 'passed', 'detail'], 10)}</section>
   <section><h2>Stage C Medium Pilot</h2>{_table(stage_c_check_status, None, 5)}{_table(stage_c_dataset_summary, None, 12)}{_table(stage_c_selected_days, ['quarter_profile', 'scenario_day', 'trade_date', 'regime_family', 'is_market_shock_day'], 25)}{_table(stage_c_selected_seeds, None, 5)}{_table(stage_c_strategy_runs, ['model_id', 'model_name', 'simulation_seed', 'trades', 'signal_fraction', 'mean_gross_return_proxy', 'win_rate_proxy', 'pilot_status'], 20)}{_table(stage_c_baseline_runs, ['model_id', 'model_name', 'simulation_seed', 'trades', 'signal_fraction', 'mean_gross_return_proxy', 'win_rate_proxy', 'pilot_status'], 25)}{_table(stage_c_check_ledger, ['check_id', 'observed_value', 'expected_value', 'passed', 'detail'], 10)}</section>
   <section><h2>Stage D Three-Month Study Proxy</h2>{_table(stage_d_check_status, None, 5)}{_table(stage_d_dataset_summary, None, 15)}{_table(stage_d_profile_summary, None, 5)}{_table(stage_d_seed_summary, None, 5)}{_table(stage_d_data_inventory, ['data_product', 'path', 'rows', 'columns', 'present'], 5)}{_table(stage_d_strategy_summary, ['strategy_id', 'strategy_name', 'strategy_role', 'support_level', 'simulation_seed', 'trades', 'signal_fraction', 'mean_gross_return_proxy', 'control_or_risk_module', 'stage_d_status'], 35)}{_table(stage_d_check_ledger, ['check_id', 'observed_value', 'expected_value', 'passed', 'detail'], 12)}</section>
+  <section><h2>Stage E Full-Year Extension Readiness</h2>{_table(stage_e_status, None, 5)}{_table(stage_e_gap_summary, None, 5)}{_table(stage_e_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(stage_e_prerequisite_ledger, ['prerequisite_id', 'observed_value', 'passes', 'blocking_gap', 'required_next_action'], 12)}{_table(stage_e_action_plan, ['priority_rank', 'prerequisite_id', 'blocking_gap', 'required_next_action'], 10)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -901,6 +915,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(stage_d_check_ledger),
         "",
+        "## Stage E Full-Year Extension Readiness",
+        "",
+        _markdown_table(stage_e_status),
+        "",
+        _markdown_table(stage_e_gap_summary),
+        "",
+        _markdown_table(stage_e_criteria),
+        "",
+        _markdown_table(stage_e_prerequisite_ledger),
+        "",
+        _markdown_table(stage_e_action_plan),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1018,6 +1044,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--stage-d-dataset-summary", type=Path, default=Path("outputs/stage_d/stage_d_dataset_summary.csv"))
     parser.add_argument("--stage-d-check-ledger", type=Path, default=Path("outputs/stage_d/stage_d_check_ledger.csv"))
     parser.add_argument("--stage-d-strategy-summary", type=Path, default=Path("outputs/stage_d/stage_d_strategy_proxy_summary.csv"))
+    parser.add_argument("--stage-e-criteria", type=Path, default=Path("outputs/stage_e/stage_e_readiness_criteria.csv"))
+    parser.add_argument("--stage-e-prerequisite-ledger", type=Path, default=Path("outputs/stage_e/stage_e_prerequisite_ledger.csv"))
+    parser.add_argument("--stage-e-gap-summary", type=Path, default=Path("outputs/stage_e/stage_e_gap_summary.csv"))
+    parser.add_argument("--stage-e-action-plan", type=Path, default=Path("outputs/stage_e/stage_e_required_action_plan.csv"))
     return parser.parse_args()
 
 
@@ -1117,6 +1147,10 @@ def main() -> None:
         "stage_d_dataset_summary": args.stage_d_dataset_summary,
         "stage_d_check_ledger": args.stage_d_check_ledger,
         "stage_d_strategy_summary": args.stage_d_strategy_summary,
+        "stage_e_criteria": args.stage_e_criteria,
+        "stage_e_prerequisite_ledger": args.stage_e_prerequisite_ledger,
+        "stage_e_gap_summary": args.stage_e_gap_summary,
+        "stage_e_action_plan": args.stage_e_action_plan,
     }
     run_dashboard(args.output_dir, paths)
 

@@ -1,0 +1,5 @@
+priority_rank,prerequisite_id,blocking_gap,required_next_action,evidence_source
+1,backtest_controls_pass,No strategy is promoted and acceptance blockers remain.,"Clear predictive, economic, robustness, risk and realism acceptance blockers before full-year run.",outputs\phase15\strategy_acceptance_summary.csv; outputs\phase15\acceptance_blockers.csv
+2,strategy_code_is_stable,No strategy module is promotion-ready or acceptance-grade.,Upgrade strategy modules from proxy diagnostics to acceptance-grade implementations.,outputs\phase11\strategy_module_registry.csv
+3,results_not_generator_artifacts,No predictive promotion candidates exist and economic/robustness acceptance gaps remain open.,"Run holdout-generator, walk-forward, full-seed and real-data reruns before treating results as non-artifact.",outputs\phase16\predictive_promotion_falsification.csv; outputs\phase16\economic_acceptance_gap_ledger.csv; outputs\phase13\robustness_acceptance_gap_ledger.csv
+4,full_year_extension_allowed,One or more mandatory Stage E prerequisites are not satisfied.,Do not run full-year extension until all mandatory prerequisites pass.,stage_e_prerequisite_ledger
