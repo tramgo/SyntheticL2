@@ -1,0 +1,6 @@
+interface_method,collector_hook,stage_a2_evidence
+open_session,Call after websocket connection and subscription are established.,connection_session_ledger row opened
+enrich_ticks,Call as the first operation inside on_ticks before parquet writes.,collector_run_id/session_id/callback_batch_id/local_sequence_id/callback timestamps on every tick
+record_drop_counters,"Call when duplicate, stale, dropped or out-of-order symptoms/counters are detected.",drop_counter_ledger row per session/symbol observation
+close_session,"Call on normal close, reconnect, network fault, broker close or process stop.",connection_session_ledger row closed with reason
+flush,Call on shutdown and after close/reconnect boundaries.,CSV ledgers persisted for Stage A2 ingestion

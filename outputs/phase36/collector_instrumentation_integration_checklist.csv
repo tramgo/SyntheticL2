@@ -1,0 +1,7 @@
+priority,check_id,required_change,current_status
+1,import_helper,Import CollectorInstrumentation in the live Zerodha websocket collector.,pending_live_collector_integration
+2,session_boundaries,Wrap connect/reconnect/subscription lifecycle with open_session and close_session.,pending_live_collector_integration
+3,tick_enrichment,Call enrich_ticks at the start of on_ticks and persist returned tick rows.,pending_live_collector_integration
+4,drop_counters,Persist duplicate/stale/out-of-order/drop counters through record_drop_counters.,pending_live_collector_integration
+5,flush_ledgers,Flush ledgers at shutdown and reconnect boundaries beside raw parquet output.,pending_live_collector_integration
+6,stage_a2_ingestion,Point Stage A2/Phase 35 scanners at emitted ledgers for Class B promotion checks.,pending_after_live_capture

@@ -1,0 +1,22 @@
+artifact_name,field_name,field_type,required_status,field_purpose
+raw_tick_enrichment,collector_run_id,string,required,Stable process/run identifier for the collector instance.
+raw_tick_enrichment,session_id,string,required,Connection/session identifier attached to each tick.
+raw_tick_enrichment,callback_batch_id,integer,required,Monotonic callback batch number within a collector run.
+raw_tick_enrichment,local_sequence_id,integer,required,Monotonic callback-order tick sequence assigned before persistence.
+raw_tick_enrichment,callback_received_utc,timestamp,required,UTC timestamp captured once per websocket callback before persistence.
+raw_tick_enrichment,callback_received_monotonic_ns,integer,required,Monotonic clock captured once per websocket callback before persistence.
+connection_session_ledger,collector_run_id,string,required,Collector process/run identifier.
+connection_session_ledger,session_id,string,required,Connection/session identifier.
+connection_session_ledger,opened_utc,timestamp,required,Session open timestamp.
+connection_session_ledger,closed_utc,timestamp,required,Session close timestamp.
+connection_session_ledger,open_reason,string,required,Connect/reconnect/subscription reason.
+connection_session_ledger,close_reason,string,required,"Normal close, reconnect, network fault, broker close or process stop."
+connection_session_ledger,subscribed_symbols,string,required,Subscribed symbols joined by semicolon.
+connection_session_ledger,first_local_sequence_id,integer,required,First local sequence attached to the session.
+connection_session_ledger,last_local_sequence_id,integer,required,Last local sequence attached to the session.
+connection_session_ledger,tick_rows,integer,required,Ticks observed in the session.
+drop_counter_ledger,symbol,string,required,Instrument symbol.
+drop_counter_ledger,dropped_count,integer,required,Collector/session observed dropped-message count.
+drop_counter_ledger,duplicate_count,integer,required,Collector/session observed duplicate count.
+drop_counter_ledger,stale_count,integer,required,Collector/session observed stale-message count.
+drop_counter_ledger,out_of_order_count,integer,required,Collector/session observed out-of-order count.

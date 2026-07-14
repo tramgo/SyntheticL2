@@ -1,0 +1,3 @@
+collector_run_id,session_id,symbol,observed_utc,source,dropped_count,duplicate_count,stale_count,out_of_order_count
+phase36_dry_run,phase36_dry_run_session_0001,HDFCBANK,2026-07-14T19:20:49.304978+00:00,collector_callback,0,0,0,0
+phase36_dry_run,phase36_dry_run_session_0001,INFY,2026-07-14T19:20:49.304982+00:00,collector_callback,0,0,0,0

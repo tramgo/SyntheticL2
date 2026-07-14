@@ -250,3 +250,9 @@ phase35_explicit_local_sequence_symbols,0,Phase 35 explicit local-sequence symbo
 phase35_connection_boundary_ledger_symbols,0,Phase 35 connection-boundary ledger symbols
 phase35_computable_evidence_rows,96,Phase 35 computable evidence rows
 phase35_acceptance_met_rows,0,Phase 35 acceptance-met rows
+phase36_required_schema_fields,21,Phase 36 required collector schema fields
+phase36_dry_run_session_rows,1,Phase 36 dry-run session rows
+phase36_dry_run_sequence_rows,3,Phase 36 dry-run sequence rows
+phase36_dry_run_drop_counter_rows,2,Phase 36 dry-run drop-counter rows
+phase36_live_collector_integrated,0,Phase 36 live collector integrated
+phase36_class_b_capture_enabled,0,Phase 36 Class B capture enabled

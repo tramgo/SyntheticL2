@@ -1,0 +1,7 @@
+metric,value,description
+phase36_required_schema_fields,21,Required collector instrumentation schema fields
+phase36_dry_run_session_rows,1,Dry-run connection/session ledger rows
+phase36_dry_run_sequence_rows,3,Dry-run local sequence diagnostic rows
+phase36_dry_run_drop_counter_rows,2,Dry-run drop counter rows
+phase36_live_collector_integrated,0,Live collector integration status in this workspace
+phase36_class_b_capture_enabled,0,Whether new live captures can be marked Class B from this package alone

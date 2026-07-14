@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 54 phase/workspace/dashboard/decision manifests, producing 540 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 54 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 55 phase/workspace/dashboard/decision manifests, producing 550 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 55 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 540 field-level remediation rows. All 540 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 550 field-level remediation rows. All 550 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -2976,6 +2976,26 @@ Generated Phase 35 artifacts are under `outputs/phase35/`:
 The current Phase 35 run scans the audited Stage A1/Phase 1 evidence for the local raw day and covers 32 symbols, 620,853 raw rows and 50,205 source files. It finds 32/32 symbols with computable timestamp-semantics checks passing, 32/32 symbols with raw-to-Phase1/manifest reconciliation passing and 32/32 symbols where duplicate/stale symptom scanning is computable.
 
 Phase 35 also explains why the data still cannot be promoted to Class B acceptance evidence: 0 symbols have explicit callback-ingress local sequence IDs, 0 symbols have connection-boundary ledger evidence and 0 criterion rows are accepted for Class B promotion. The next implementation work is collector instrumentation: persist a session boundary ledger, persist a monotonic callback local sequence ID before parquet writes, persist broker/session dropped-message counters and rerun the computable diagnostics on every newly collected day.
+
+## Phase 36 — Collector Instrumentation Package
+
+**Current Phase 36 implementation status as of 2026-07-15:** Phase 36 now provides an importable collector instrumentation helper in `src/synthetic_l2/collector_instrumentation.py` and a runnable package generator in `scripts/run_phase36_collector_instrumentation_package.py`, backed by `src/synthetic_l2/phase36_collector_instrumentation_package.py`.
+
+Generated Phase 36 artifacts are under `outputs/phase36/`:
+
+- `collector_instrumentation_required_schema.csv`
+- `collector_instrumentation_interface_catalog.csv`
+- `collector_instrumentation_integration_checklist.csv`
+- `collector_instrumentation_package_summary.csv`
+- `dry_run_ledgers/session_ledger.csv`
+- `dry_run_ledgers/tick_sequence_diagnostics.csv`
+- `dry_run_ledgers/drop_counter_ledger.csv`
+- `phase36_collector_instrumentation_package_report.md`
+- `phase36_collector_instrumentation_package_manifest.json`
+
+The package directly targets the Phase 35 gaps. The `CollectorInstrumentation` helper exposes `open_session`, `enrich_ticks`, `record_drop_counters`, `close_session` and `flush` so the live Zerodha websocket collector can persist connection/session boundaries, callback-local tick sequence IDs, callback receive timestamps and per-symbol dropped/duplicate/stale/out-of-order counters.
+
+The current Phase 36 dry run produces 21 required schema fields, 1 session-ledger row, 3 local sequence diagnostic rows and 2 drop-counter rows. This is implementation scaffolding and dry-run proof only: `phase36_live_collector_integrated` remains 0 and `phase36_class_b_capture_enabled` remains 0 until the actual live collector imports this helper and emits these ledgers beside new raw parquet captures.
 
 ---
 

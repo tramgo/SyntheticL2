@@ -1,0 +1,4 @@
+collector_run_id,session_id,callback_batch_id,local_sequence_id,symbol,callback_received_utc,callback_received_monotonic_ns
+phase36_dry_run,phase36_dry_run_session_0001,1,1,HDFCBANK,2026-07-14T19:20:49.304961+00:00,135722986756500
+phase36_dry_run,phase36_dry_run_session_0001,1,2,INFY,2026-07-14T19:20:49.304961+00:00,135722986756500
+phase36_dry_run,phase36_dry_run_session_0001,1,3,HDFCBANK,2026-07-14T19:20:49.304961+00:00,135722986756500

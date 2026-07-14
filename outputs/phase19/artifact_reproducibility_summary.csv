@@ -40,6 +40,7 @@ phase32,outputs/phase32/phase32_contract_evidence_scanner_manifest.json,10,10,0,
 phase33,outputs/phase33/phase33_broker_evidence_intake_manifest.json,10,10,0,0,0,True
 phase34,outputs/phase34/phase34_real_data_multiday_readiness_manifest.json,10,10,0,0,0,True
 phase35,outputs/phase35/phase35_stage_a2_computable_diagnostics_manifest.json,10,10,0,0,0,True
+phase36,outputs/phase36/phase36_collector_instrumentation_package_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True

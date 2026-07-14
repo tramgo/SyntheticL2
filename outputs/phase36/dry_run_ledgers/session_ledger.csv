@@ -1,0 +1,2 @@
+collector_run_id,session_id,exchange,opened_utc,closed_utc,open_reason,close_reason,subscribed_symbols,subscribed_symbol_count,first_local_sequence_id,last_local_sequence_id,tick_rows
+phase36_dry_run,phase36_dry_run_session_0001,NSE,2026-07-14T19:20:49.304943+00:00,2026-07-14T19:20:49.304985+00:00,dry_run_connect,dry_run_normal_close,HDFCBANK;INFY,2,1,3,3

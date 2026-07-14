@@ -246,6 +246,13 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     phase35_contract_evidence_ledger = _read_csv(paths["phase35_contract_evidence_ledger"])
     phase35_diagnostics_summary = _read_csv(paths["phase35_diagnostics_summary"])
     phase35_action_plan = _read_csv(paths["phase35_action_plan"])
+    phase36_required_schema = _read_csv(paths["phase36_required_schema"])
+    phase36_interface_catalog = _read_csv(paths["phase36_interface_catalog"])
+    phase36_integration_checklist = _read_csv(paths["phase36_integration_checklist"])
+    phase36_package_summary = _read_csv(paths["phase36_package_summary"])
+    phase36_dry_run_session_ledger = _read_csv(paths["phase36_dry_run_session_ledger"])
+    phase36_dry_run_sequence = _read_csv(paths["phase36_dry_run_sequence"])
+    phase36_dry_run_drop_counters = _read_csv(paths["phase36_dry_run_drop_counters"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -513,6 +520,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .size()
         .reset_index(name="rows")
     )
+    phase36_checklist_status = (
+        phase36_integration_checklist.groupby(["current_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     top_risk_severity = lifecycle_risk_severity.sort_values("risk_severity_score", ascending=False)
     top_risk_limit_sensitivity = lifecycle_risk_limit_sensitivity.sort_values("risk_limit_severity_score", ascending=False)
 
@@ -768,6 +780,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase35_connection_boundary_ledger_symbols", int(phase35_diagnostics_summary.loc[phase35_diagnostics_summary["metric"].eq("phase35_connection_boundary_ledger_symbols"), "value"].iloc[0]), "Phase 35 connection-boundary ledger symbols"),
         ("phase35_computable_evidence_rows", int(phase35_diagnostics_summary.loc[phase35_diagnostics_summary["metric"].eq("phase35_computable_evidence_rows"), "value"].iloc[0]), "Phase 35 computable evidence rows"),
         ("phase35_acceptance_met_rows", int(phase35_diagnostics_summary.loc[phase35_diagnostics_summary["metric"].eq("phase35_acceptance_met_rows"), "value"].iloc[0]), "Phase 35 acceptance-met rows"),
+        ("phase36_required_schema_fields", int(phase36_package_summary.loc[phase36_package_summary["metric"].eq("phase36_required_schema_fields"), "value"].iloc[0]), "Phase 36 required collector schema fields"),
+        ("phase36_dry_run_session_rows", int(phase36_package_summary.loc[phase36_package_summary["metric"].eq("phase36_dry_run_session_rows"), "value"].iloc[0]), "Phase 36 dry-run session rows"),
+        ("phase36_dry_run_sequence_rows", int(phase36_package_summary.loc[phase36_package_summary["metric"].eq("phase36_dry_run_sequence_rows"), "value"].iloc[0]), "Phase 36 dry-run sequence rows"),
+        ("phase36_dry_run_drop_counter_rows", int(phase36_package_summary.loc[phase36_package_summary["metric"].eq("phase36_dry_run_drop_counter_rows"), "value"].iloc[0]), "Phase 36 dry-run drop-counter rows"),
+        ("phase36_live_collector_integrated", int(phase36_package_summary.loc[phase36_package_summary["metric"].eq("phase36_live_collector_integrated"), "value"].iloc[0]), "Phase 36 live collector integrated"),
+        ("phase36_class_b_capture_enabled", int(phase36_package_summary.loc[phase36_package_summary["metric"].eq("phase36_class_b_capture_enabled"), "value"].iloc[0]), "Phase 36 Class B capture enabled"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -792,7 +810,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_phase33_phase34_phase35_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_phase33_phase34_phase35_phase36_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -873,6 +891,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 33 Broker Evidence Intake</h2>{_table(phase33_file_status, None, 10)}{_table(phase33_test_status, None, 10)}{_table(phase33_overall_summary, None, 12)}{_table(phase33_template_inventory, ['evidence_file_id', 'template_path', 'expected_external_path', 'required_fields', 'total_fields', 'template_status'], 10)}{_table(phase33_file_validation, ['evidence_file_id', 'expected_external_path', 'file_exists_now', 'row_count', 'required_columns_present', 'schema_validation_status', 'acceptance_import_ready', 'next_action'], 10)}{_table(phase33_test_readiness, ['test_id', 'required_evidence_files', 'missing_or_not_ready_files', 'test_import_ready', 'current_status'], 10)}</section>
   <section><h2>Phase 34 Real Data Multi-Day Readiness</h2>{_table(phase34_day_status, None, 10)}{_table(phase34_symbol_status, None, 10)}{_table(phase34_readiness_summary, None, 12)}{_table(phase34_day_inventory, ['trade_date', 'exchange', 'symbols', 'parquet_files', 'phase1_delta_rows', 'full_universe_raw_day', 'class_b_event_grade_day', 'day_status'], 10)}{_table(phase34_acquisition_plan, ['priority', 'action_id', 'action', 'current_blocker', 'acceptance_effect'], 10)}{_table(phase34_symbol_day_coverage, ['trade_date', 'exchange', 'symbol', 'parquet_files', 'phase1_delta_rows', 'book_valid_fraction', 'stale_gap_gt_15s_count', 'class_b_event_grade_now'], 40)}</section>
   <section><h2>Phase 35 Stage A2 Computable Diagnostics</h2>{_table(phase35_diagnostic_status, None, 10)}{_table(phase35_contract_status, None, 20)}{_table(phase35_diagnostics_summary, None, 12)}{_table(phase35_action_plan, ['priority', 'action_id', 'action', 'current_evidence', 'acceptance_effect'], 10)}{_table(phase35_symbol_day_diagnostics, ['trade_date', 'exchange', 'symbol', 'raw_rows', 'source_files', 'phase1_delta_rows', 'timestamp_semantics_computable', 'lossless_compaction_computable', 'local_sequence_explicitly_available', 'connection_boundary_ledger_available', 'diagnostic_status'], 40)}{_table(phase35_contract_evidence_ledger, ['symbol', 'criterion_id', 'computable_evidence_available', 'acceptance_requirement_met', 'phase35_status', 'remaining_gap'], 70)}</section>
+  <section><h2>Phase 36 Collector Instrumentation Package</h2>{_table(phase36_checklist_status, None, 10)}{_table(phase36_package_summary, None, 10)}{_table(phase36_required_schema, ['artifact_name', 'field_name', 'field_type', 'required_status', 'field_purpose'], 30)}{_table(phase36_interface_catalog, None, 10)}{_table(phase36_integration_checklist, None, 10)}{_table(phase36_dry_run_session_ledger, None, 10)}{_table(phase36_dry_run_sequence, None, 10)}{_table(phase36_dry_run_drop_counters, None, 10)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -1387,6 +1406,24 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(phase35_contract_evidence_ledger.head(70)),
         "",
+        "## Phase 36 Collector Instrumentation Package",
+        "",
+        _markdown_table(phase36_checklist_status),
+        "",
+        _markdown_table(phase36_package_summary),
+        "",
+        _markdown_table(phase36_required_schema),
+        "",
+        _markdown_table(phase36_interface_catalog),
+        "",
+        _markdown_table(phase36_integration_checklist),
+        "",
+        _markdown_table(phase36_dry_run_session_ledger),
+        "",
+        _markdown_table(phase36_dry_run_sequence),
+        "",
+        _markdown_table(phase36_dry_run_drop_counters),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1567,6 +1604,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase35-contract-evidence-ledger", type=Path, default=Path("outputs/phase35/stage_a2_computable_contract_evidence_ledger.csv"))
     parser.add_argument("--phase35-diagnostics-summary", type=Path, default=Path("outputs/phase35/stage_a2_computable_diagnostics_summary.csv"))
     parser.add_argument("--phase35-action-plan", type=Path, default=Path("outputs/phase35/stage_a2_collector_instrumentation_action_plan.csv"))
+    parser.add_argument("--phase36-required-schema", type=Path, default=Path("outputs/phase36/collector_instrumentation_required_schema.csv"))
+    parser.add_argument("--phase36-interface-catalog", type=Path, default=Path("outputs/phase36/collector_instrumentation_interface_catalog.csv"))
+    parser.add_argument("--phase36-integration-checklist", type=Path, default=Path("outputs/phase36/collector_instrumentation_integration_checklist.csv"))
+    parser.add_argument("--phase36-package-summary", type=Path, default=Path("outputs/phase36/collector_instrumentation_package_summary.csv"))
+    parser.add_argument("--phase36-dry-run-session-ledger", type=Path, default=Path("outputs/phase36/dry_run_ledgers/session_ledger.csv"))
+    parser.add_argument("--phase36-dry-run-sequence", type=Path, default=Path("outputs/phase36/dry_run_ledgers/tick_sequence_diagnostics.csv"))
+    parser.add_argument("--phase36-dry-run-drop-counters", type=Path, default=Path("outputs/phase36/dry_run_ledgers/drop_counter_ledger.csv"))
     return parser.parse_args()
 
 
@@ -1729,6 +1773,13 @@ def main() -> None:
         "phase35_contract_evidence_ledger": args.phase35_contract_evidence_ledger,
         "phase35_diagnostics_summary": args.phase35_diagnostics_summary,
         "phase35_action_plan": args.phase35_action_plan,
+        "phase36_required_schema": args.phase36_required_schema,
+        "phase36_interface_catalog": args.phase36_interface_catalog,
+        "phase36_integration_checklist": args.phase36_integration_checklist,
+        "phase36_package_summary": args.phase36_package_summary,
+        "phase36_dry_run_session_ledger": args.phase36_dry_run_session_ledger,
+        "phase36_dry_run_sequence": args.phase36_dry_run_sequence,
+        "phase36_dry_run_drop_counters": args.phase36_dry_run_drop_counters,
     }
     run_dashboard(args.output_dir, paths)
 
