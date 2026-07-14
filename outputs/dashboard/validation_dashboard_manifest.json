@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T16:38:23.879872+00:00",
+  "generated_utc": "2026-07-14T16:46:50.126399+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -72,7 +72,11 @@
     "stage_a2_schema": "outputs\\stage_a2\\required_capture_schema.csv",
     "stage_a2_ledger": "outputs\\stage_a2\\capture_diagnostics_gap_ledger.csv",
     "stage_a2_gap_summary": "outputs\\stage_a2\\capture_diagnostics_gap_summary.csv",
-    "stage_a2_readiness_summary": "outputs\\stage_a2\\stage_a2_readiness_summary.csv"
+    "stage_a2_readiness_summary": "outputs\\stage_a2\\stage_a2_readiness_summary.csv",
+    "stage_b1_subset": "outputs\\stage_b1\\stage_b1_development_subset.csv",
+    "stage_b1_criteria": "outputs\\stage_b1\\stage_b1_structural_criteria.csv",
+    "stage_b1_scenario_summary": "outputs\\stage_b1\\stage_b1_scenario_coverage_summary.csv",
+    "stage_b1_check_ledger": "outputs\\stage_b1\\stage_b1_structural_check_ledger.csv"
   },
   "summary": {
     "quality_checks": 24,
@@ -208,13 +212,19 @@
     "stage_a2_symbols_evaluated": 32,
     "stage_a2_current_sample_days_available": 1,
     "stage_a2_open_contract_rows": 192,
-    "stage_a2_acceptance_met_rows": 0
+    "stage_a2_acceptance_met_rows": 0,
+    "stage_b1_development_symbols": 5,
+    "stage_b1_etf_symbols": 1,
+    "stage_b1_scenario_coverage_rows": 3,
+    "stage_b1_structural_check_rows": 7,
+    "stage_b1_structural_checks_passed": 7,
+    "stage_b1_structural_checks_failed": 0
   },
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "3bc3bc3d78718eb4d37df0633e2c8bd206d66bac",
-  "configuration_hash": "c61fa35dd3eaad972d7e00cef36779afeff3ae35abbe9274677e083789c806b8",
+  "generator_version": "560b27bb01e4d1c12914b843663c9cc93b116b7b",
+  "configuration_hash": "1bb99829aa4b2a1f93b11989279b3c28bf7f0c4e539ed810b5226a2b685e7f7e",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -222,5 +232,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T16:38:23.879872+00:00"
+  "creation_timestamp": "2026-07-14T16:46:50.126399+00:00"
 }

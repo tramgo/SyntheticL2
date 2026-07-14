@@ -1,0 +1,6 @@
+symbol,instrument_class,row_count,event_rate_per_second,median_interarrival_ms,p95_interarrival_ms,stale_gap_gt_15s_count,stage_b1_selected,selection_reason
+ADANIPORTS,equity,13886,0.6088482941308139,1000.0,5500.0,2,True,liquid_equity_development_subset
+AXISBANK,equity,18309,0.803904475652219,749.0,4913.649999999998,2,True,liquid_equity_development_subset
+BAJAJ-AUTO,equity,25141,1.1038618480081333,741.0,4410.049999999999,2,True,liquid_equity_development_subset
+BHARTIARTL,equity,19560,0.8576316169666368,749.0,4762.399999999994,2,True,liquid_equity_development_subset
+BANKBEES,etf,18916,0.8379597726150352,1000.0,4833.0,2,True,required_etf_in_development_subset

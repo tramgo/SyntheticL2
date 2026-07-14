@@ -1,0 +1,8 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+development_subset,Five instruments are included with at least one ETF.,5 symbols and ETF count >= 1,proof_check_not_strategy_acceptance
+scenario_coverage,Five normal/non-shock days plus explicit trend and shock scenarios are present.,normal_days >= 5 and trend_days >= 1 and shock_days >= 1,proof_check_not_strategy_acceptance
+five_level_book,"Five-level bid/ask prices, quantities and order counts are present.",L1-L5 price/quantity/order columns present,proof_check_not_strategy_acceptance
+cadence_not_finer_than_evidence,Synthetic proof cadence is no finer than validated real evidence used for this stage.,5-minute synthetic book cadence is coarser than measured real tick cadence,proof_check_not_strategy_acceptance
+price_grid,Bid/ask prices align to each symbol tick grid.,off-grid rows == 0,proof_check_not_strategy_acceptance
+spread_and_depth_ordering,Books have positive spreads and monotonic depth price ordering.,crossed/negative-spread/order-error rows == 0,proof_check_not_strategy_acceptance
+deterministic_replay_storage,Proof is deterministic and storage is compact parquet/csv with manifest.,row counts stable and manifest records inputs/outputs,proof_check_not_strategy_acceptance

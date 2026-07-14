@@ -1,0 +1,4 @@
+coverage_bucket,scenario_days,l2_rows,passes_stage_b1_requirement
+non_shock_normal_or_reference_days,164,69750,True
+explicit_trend_days,44,16500,True
+explicit_shock_days,25,9375,True

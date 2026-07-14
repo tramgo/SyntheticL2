@@ -1,0 +1,8 @@
+check_id,observed_value,expected_value,passed,detail,acceptance_scope
+development_subset,5,5,True,"symbols=ADANIPORTS,AXISBANK,BAJAJ-AUTO,BANKBEES,BHARTIARTL; etf_count=1",stage_b1_structural_proof_not_strategy_profitability
+scenario_coverage,3,3,True,normal/trend/shock coverage buckets,stage_b1_structural_proof_not_strategy_profitability
+five_level_book,0,0,True,missing_columns=,stage_b1_structural_proof_not_strategy_profitability
+cadence_not_finer_than_evidence,5,5,True,"Phase 6 proof uses 5-minute bars, coarser than measured real tick cadence",stage_b1_structural_proof_not_strategy_profitability
+price_grid,0,0,True,all L1-L5 prices checked against symbol tick_size,stage_b1_structural_proof_not_strategy_profitability
+spread_and_depth_ordering,0,0,True,crossed=0; nonpositive_spread=0; bid_order_errors=0; ask_order_errors=0; nonpositive_qty=0,stage_b1_structural_proof_not_strategy_profitability
+deterministic_replay_storage,70875,1,True,subset rows written as compact parquet plus csv ledgers and manifest,stage_b1_structural_proof_not_strategy_profitability

@@ -133,3 +133,9 @@ stage_a2_symbols_evaluated,32,Stage A2 symbols evaluated from current one-day sa
 stage_a2_current_sample_days_available,1,Stage A2 current real sample days available
 stage_a2_open_contract_rows,192,Stage A2 open capture contract rows
 stage_a2_acceptance_met_rows,0,Stage A2 capture contract rows that meet acceptance
+stage_b1_development_symbols,5,Stage B1 development subset symbols
+stage_b1_etf_symbols,1,Stage B1 ETF symbols in development subset
+stage_b1_scenario_coverage_rows,3,Stage B1 scenario coverage rows
+stage_b1_structural_check_rows,7,Stage B1 structural check rows
+stage_b1_structural_checks_passed,7,Stage B1 passed structural checks
+stage_b1_structural_checks_failed,0,Stage B1 failed structural checks

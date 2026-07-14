@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "stage_b1",
+  "source_manifest_path": "outputs/stage_b1/stage_b1_structural_synthetic_proof_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "560b27bb01e4d1c12914b843663c9cc93b116b7b",
+  "configuration_hash": "f4e516e1c8ebad872d812c0773981abf12a3f87c3773dfc462eb6bbe5833af8b",
+  "random_seed": "phase4_phase6_deterministic_scenario_and_book_generation",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "stage_b1_development_subset_all_phase6_scenarios",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_structural_book_proof",
+  "creation_timestamp": "2026-07-14T16:46:49.126370+00:00",
+  "normalization_timestamp": "2026-07-14T16:46:57.602662+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T16:38:23.879872+00:00
+Generated UTC: 2026-07-14T16:46:50.126399+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -142,6 +142,12 @@ This dashboard is static research traceability output, not strategy promotion ev
 | stage_a2_current_sample_days_available | 1 | Stage A2 current real sample days available |
 | stage_a2_open_contract_rows | 192 | Stage A2 open capture contract rows |
 | stage_a2_acceptance_met_rows | 0 | Stage A2 capture contract rows that meet acceptance |
+| stage_b1_development_symbols | 5 | Stage B1 development subset symbols |
+| stage_b1_etf_symbols | 1 | Stage B1 ETF symbols in development subset |
+| stage_b1_scenario_coverage_rows | 3 | Stage B1 scenario coverage rows |
+| stage_b1_structural_check_rows | 7 | Stage B1 structural check rows |
+| stage_b1_structural_checks_passed | 7 | Stage B1 passed structural checks |
+| stage_b1_structural_checks_failed | 0 | Stage B1 failed structural checks |
 
 ## Quality Status
 
@@ -2174,6 +2180,46 @@ This dashboard is static research traceability output, not strategy promotion ev
 | HDFCBANK | equity | 1 | 35959 | 1569 | 1.5788738347248972 | 2 | 2598 | 0 | dropped_message_diagnostics | drop/duplicate/stale counters are present per symbol/session/day | dropped_message_diagnostics_required | False | Duplicate/stale symptoms exist in Stage A1, but explicit dropped-message broker/session diagnostics are not available. | Persist dropped/duplicate/stale/out-of-order counters per connection session and symbol. |
 | HDFCBANK | equity | 1 | 35959 | 1569 | 1.5788738347248972 | 2 | 2598 | 0 | local_sequence_integrity | monotonic local sequence and no unaccounted sequence gaps | local_sequence_contract_required | False | Stage A1 verifies ordering after persistence but does not prove explicit callback local sequence IDs. | Persist monotonic local sequence IDs at callback ingress and audit gaps by session/day/symbol. |
 | HDFCBANK | equity | 1 | 35959 | 1569 | 1.5788738347248972 | 2 | 2598 | 0 | lossless_compaction | row counts and ordering reconcile raw files to compact parquet | lossless_multiday_compaction_required | False | One-day compaction reconciles current raw input, but Stage A2 requires repeatable multi-day lossless compaction. | Reconcile raw rows/files to compact parquet for every new Class B day without resampling. |
+
+## Stage B1 Structural Synthetic Proof
+
+| passed | rows |
+| --- | --- |
+| True | 7 |
+
+| symbol | instrument_class | row_count | event_rate_per_second | median_interarrival_ms | p95_interarrival_ms | stale_gap_gt_15s_count | stage_b1_selected | selection_reason |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ADANIPORTS | equity | 13886 | 0.6088482941308139 | 1000.0 | 5500.0 | 2 | True | liquid_equity_development_subset |
+| AXISBANK | equity | 18309 | 0.803904475652219 | 749.0 | 4913.649999999998 | 2 | True | liquid_equity_development_subset |
+| BAJAJ-AUTO | equity | 25141 | 1.1038618480081333 | 741.0 | 4410.049999999999 | 2 | True | liquid_equity_development_subset |
+| BHARTIARTL | equity | 19560 | 0.8576316169666368 | 749.0 | 4762.399999999994 | 2 | True | liquid_equity_development_subset |
+| BANKBEES | etf | 18916 | 0.8379597726150352 | 1000.0 | 4833.0 | 2 | True | required_etf_in_development_subset |
+
+| coverage_bucket | scenario_days | l2_rows | passes_stage_b1_requirement |
+| --- | --- | --- | --- |
+| non_shock_normal_or_reference_days | 164 | 69750 | True |
+| explicit_trend_days | 44 | 16500 | True |
+| explicit_shock_days | 25 | 9375 | True |
+
+| criterion_id | criterion_description | acceptance_threshold | current_status |
+| --- | --- | --- | --- |
+| development_subset | Five instruments are included with at least one ETF. | 5 symbols and ETF count >= 1 | proof_check_not_strategy_acceptance |
+| scenario_coverage | Five normal/non-shock days plus explicit trend and shock scenarios are present. | normal_days >= 5 and trend_days >= 1 and shock_days >= 1 | proof_check_not_strategy_acceptance |
+| five_level_book | Five-level bid/ask prices, quantities and order counts are present. | L1-L5 price/quantity/order columns present | proof_check_not_strategy_acceptance |
+| cadence_not_finer_than_evidence | Synthetic proof cadence is no finer than validated real evidence used for this stage. | 5-minute synthetic book cadence is coarser than measured real tick cadence | proof_check_not_strategy_acceptance |
+| price_grid | Bid/ask prices align to each symbol tick grid. | off-grid rows == 0 | proof_check_not_strategy_acceptance |
+| spread_and_depth_ordering | Books have positive spreads and monotonic depth price ordering. | crossed/negative-spread/order-error rows == 0 | proof_check_not_strategy_acceptance |
+| deterministic_replay_storage | Proof is deterministic and storage is compact parquet/csv with manifest. | row counts stable and manifest records inputs/outputs | proof_check_not_strategy_acceptance |
+
+| check_id | observed_value | expected_value | passed | detail | acceptance_scope |
+| --- | --- | --- | --- | --- | --- |
+| development_subset | 5 | 5 | True | symbols=ADANIPORTS,AXISBANK,BAJAJ-AUTO,BANKBEES,BHARTIARTL; etf_count=1 | stage_b1_structural_proof_not_strategy_profitability |
+| scenario_coverage | 3 | 3 | True | normal/trend/shock coverage buckets | stage_b1_structural_proof_not_strategy_profitability |
+| five_level_book | 0 | 0 | True | missing_columns= | stage_b1_structural_proof_not_strategy_profitability |
+| cadence_not_finer_than_evidence | 5 | 5 | True | Phase 6 proof uses 5-minute bars, coarser than measured real tick cadence | stage_b1_structural_proof_not_strategy_profitability |
+| price_grid | 0 | 0 | True | all L1-L5 prices checked against symbol tick_size | stage_b1_structural_proof_not_strategy_profitability |
+| spread_and_depth_ordering | 0 | 0 | True | crossed=0; nonpositive_spread=0; bid_order_errors=0; ask_order_errors=0; nonpositive_qty=0 | stage_b1_structural_proof_not_strategy_profitability |
+| deterministic_replay_storage | 70875 | 1 | True | subset rows written as compact parquet plus csv ledgers and manifest | stage_b1_structural_proof_not_strategy_profitability |
 
 ## Metric Status
 
