@@ -1,0 +1,23 @@
+{
+  "generated_utc": "2026-07-14T15:55:47.050444+00:00",
+  "broker_evidence_schema_rows": 40,
+  "broker_import_checklist_rows": 4,
+  "broker_import_files_available": 0,
+  "broker_reconciliation_test_rows": 5,
+  "broker_external_gap_rows": 44,
+  "broker_external_gap_summary_rows": 3,
+  "broker_external_gap_acceptance_met_rows": 0,
+  "scope": "phase20_m01_broker_external_evidence_contract_not_acceptance",
+  "not_acceptance_result": true,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "18208e0ff892a2c122bbcfd144778f8d7d7e91fa",
+  "configuration_hash": "92fd4b90dfe2aa85ebe68aed3f55d9e06d730076ce0e1329085879abec4b565d",
+  "random_seed": "not_applicable_deterministic_broker_evidence_contract",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase20_M01_broker_external_reconciliation_rows",
+  "cost_model_version": "outputs/phase12/cost_schedule.csv_and_outputs/phase16/broker_reconciliation_readiness.csv",
+  "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
+  "creation_timestamp": "2026-07-14T15:55:47.050444+00:00"
+}

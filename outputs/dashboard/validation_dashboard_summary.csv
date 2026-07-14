@@ -85,3 +85,8 @@ phase20_realism_hardening_proxy_rows,18,Phase 20 realism hardening rows with pro
 phase20_realism_hardening_missing_rows,30,Phase 20 realism hardening rows missing required evidence
 phase20_realism_hardening_met_rows,0,Phase 20 met realism hardening requirements
 phase20_acceptance_ready_rows,0,Phase 20 acceptance-ready queue rows
+phase20_m01_broker_required_external_files,4,Phase 20 M01 required broker/external evidence files
+phase20_m01_broker_available_external_files,0,Phase 20 M01 broker/external files currently available
+phase20_m01_broker_schema_rows,40,Phase 20 M01 broker evidence schema rows
+phase20_m01_broker_external_gap_rows,44,Phase 20 M01 broker/external gap rows
+phase20_m01_broker_external_gap_acceptance_met_rows,0,Phase 20 M01 broker/external gap rows that meet acceptance after contract

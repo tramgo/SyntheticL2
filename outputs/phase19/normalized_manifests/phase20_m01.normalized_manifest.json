@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase20_m01",
+  "source_manifest_path": "outputs/phase20_m01/broker_evidence_contract_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "18208e0ff892a2c122bbcfd144778f8d7d7e91fa",
+  "configuration_hash": "92fd4b90dfe2aa85ebe68aed3f55d9e06d730076ce0e1329085879abec4b565d",
+  "random_seed": "not_applicable_deterministic_broker_evidence_contract",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase20_M01_broker_external_reconciliation_rows",
+  "cost_model_version": "outputs/phase12/cost_schedule.csv_and_outputs/phase16/broker_reconciliation_readiness.csv",
+  "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
+  "creation_timestamp": "2026-07-14T15:55:47.050444+00:00",
+  "normalization_timestamp": "2026-07-14T15:55:55.012951+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

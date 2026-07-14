@@ -128,6 +128,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     robustness_hardening_action_summary = _read_csv(paths["robustness_hardening_action_summary"])
     realism_hardening_plan = _read_csv(paths["realism_hardening_plan"])
     realism_hardening_action_summary = _read_csv(paths["realism_hardening_action_summary"])
+    broker_import_checklist = _read_csv(paths["broker_import_checklist"])
+    broker_evidence_schema = _read_csv(paths["broker_evidence_schema"])
+    broker_external_gap_ledger = _read_csv(paths["broker_external_gap_ledger"])
+    broker_external_gap_summary = _read_csv(paths["broker_external_gap_summary"])
+    broker_reconciliation_test_catalog = _read_csv(paths["broker_reconciliation_test_catalog"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -202,6 +207,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     realism_hardening_status = (
         realism_hardening_plan.groupby(["realism_hardening_status", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    broker_external_status = (
+        broker_external_gap_ledger.groupby(["broker_evidence_status", "gate_id"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -295,6 +305,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_realism_hardening_missing_rows", int((~realism_hardening_plan["proxy_evidence_available"].astype(bool)).sum()), "Phase 20 realism hardening rows missing required evidence"),
         ("phase20_realism_hardening_met_rows", int(realism_hardening_plan["acceptance_requirement_met"].astype(bool).sum()), "Phase 20 met realism hardening requirements"),
         ("phase20_acceptance_ready_rows", int(hardening_queue["acceptance_ready_now"].astype(bool).sum()), "Phase 20 acceptance-ready queue rows"),
+        ("phase20_m01_broker_required_external_files", int(len(broker_import_checklist)), "Phase 20 M01 required broker/external evidence files"),
+        ("phase20_m01_broker_available_external_files", int(broker_import_checklist["file_exists_now"].astype(bool).sum()), "Phase 20 M01 broker/external files currently available"),
+        ("phase20_m01_broker_schema_rows", int(len(broker_evidence_schema)), "Phase 20 M01 broker evidence schema rows"),
+        ("phase20_m01_broker_external_gap_rows", int(len(broker_external_gap_ledger)), "Phase 20 M01 broker/external gap rows"),
+        ("phase20_m01_broker_external_gap_acceptance_met_rows", int(broker_external_gap_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M01 broker/external gap rows that meet acceptance after contract"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -319,7 +334,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -373,6 +388,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 Predictive Hardening Plan</h2>{_table(predictive_hardening_status, None, 10)}{_table(predictive_hardening_action_summary, ['action_class', 'dependency_type', 'predictive_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(predictive_hardening_plan, ['queue_rank', 'strategy_id', 'predictive_requirement', 'action_class', 'dependency_type', 'predictive_hardening_status', 'predictive_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 Robustness Hardening Plan</h2>{_table(robustness_hardening_status, None, 10)}{_table(robustness_hardening_action_summary, ['action_class', 'dependency_type', 'robustness_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(robustness_hardening_plan, ['queue_rank', 'strategy_id', 'robustness_requirement', 'action_class', 'dependency_type', 'robustness_hardening_status', 'robustness_evidence_summary', 'required_next_evidence'], 50)}</section>
   <section><h2>Phase 20 Realism Hardening Plan</h2>{_table(realism_hardening_status, None, 10)}{_table(realism_hardening_action_summary, ['action_class', 'dependency_type', 'realism_requirement_rows', 'strategies', 'proxy_evidence_rows', 'acceptance_met_rows', 'open_rows'], 20)}{_table(realism_hardening_plan, ['queue_rank', 'strategy_id', 'realism_requirement', 'action_class', 'dependency_type', 'realism_hardening_status', 'realism_evidence_summary', 'required_next_evidence'], 50)}</section>
+  <section><h2>Phase 20 M01 Broker Evidence Contract</h2>{_table(broker_import_checklist, ['evidence_file_id', 'expected_path', 'evidence_domain', 'file_exists_now', 'current_status', 'next_action'], 10)}{_table(broker_external_gap_summary, None, 10)}{_table(broker_external_status, None, 10)}{_table(broker_reconciliation_test_catalog, ['test_id', 'acceptance_threshold', 'current_status'], 10)}{_table(broker_external_gap_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'required_external_files', 'broker_evidence_status', 'acceptance_requirement_met_after_contract', 'blocking_gap_after_contract'], 60)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -537,6 +553,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(realism_hardening_plan.head(50)),
         "",
+        "## Phase 20 M01 Broker Evidence Contract",
+        "",
+        _markdown_table(broker_import_checklist),
+        "",
+        _markdown_table(broker_external_gap_summary),
+        "",
+        _markdown_table(broker_external_status),
+        "",
+        _markdown_table(broker_reconciliation_test_catalog),
+        "",
+        _markdown_table(broker_external_gap_ledger.head(60)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -599,6 +627,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--robustness-hardening-action-summary", type=Path, default=Path("outputs/phase20/robustness_hardening_action_summary.csv"))
     parser.add_argument("--realism-hardening-plan", type=Path, default=Path("outputs/phase20/realism_hardening_plan.csv"))
     parser.add_argument("--realism-hardening-action-summary", type=Path, default=Path("outputs/phase20/realism_hardening_action_summary.csv"))
+    parser.add_argument("--broker-import-checklist", type=Path, default=Path("outputs/phase20_m01/broker_evidence_import_checklist.csv"))
+    parser.add_argument("--broker-evidence-schema", type=Path, default=Path("outputs/phase20_m01/broker_evidence_schema.csv"))
+    parser.add_argument("--broker-external-gap-ledger", type=Path, default=Path("outputs/phase20_m01/broker_external_gap_ledger.csv"))
+    parser.add_argument("--broker-external-gap-summary", type=Path, default=Path("outputs/phase20_m01/broker_external_gap_summary.csv"))
+    parser.add_argument("--broker-reconciliation-test-catalog", type=Path, default=Path("outputs/phase20_m01/broker_reconciliation_test_catalog.csv"))
     return parser.parse_args()
 
 
@@ -643,6 +676,11 @@ def main() -> None:
         "robustness_hardening_action_summary": args.robustness_hardening_action_summary,
         "realism_hardening_plan": args.realism_hardening_plan,
         "realism_hardening_action_summary": args.realism_hardening_action_summary,
+        "broker_import_checklist": args.broker_import_checklist,
+        "broker_evidence_schema": args.broker_evidence_schema,
+        "broker_external_gap_ledger": args.broker_external_gap_ledger,
+        "broker_external_gap_summary": args.broker_external_gap_summary,
+        "broker_reconciliation_test_catalog": args.broker_reconciliation_test_catalog,
     }
     run_dashboard(args.output_dir, paths)
 

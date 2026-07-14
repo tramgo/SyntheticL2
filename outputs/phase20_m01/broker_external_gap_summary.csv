@@ -1,0 +1,4 @@
+broker_evidence_status,gate_id,rows,strategies,acceptance_met_rows
+external_broker_evidence_missing,G02_economic,11,11,0
+external_broker_evidence_missing,G04_risk,22,11,0
+proxy_formula_available_external_broker_evidence_missing,G02_economic,11,11,0

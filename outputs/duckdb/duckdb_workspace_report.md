@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T15:43:59.156770+00:00
+Generated UTC: 2026-07-14T15:56:00.507807+00:00
 
 ## Storage Decision
 
@@ -229,7 +229,13 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 realism hardening action rows: 8
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 86
+- Phase 20 M01 broker required external files: 4
+- Phase 20 M01 broker available external files: 0
+- Phase 20 M01 broker evidence schema rows: 40
+- Phase 20 M01 broker reconciliation test rows: 5
+- Phase 20 M01 broker external gap rows: 44
+- Phase 20 M01 broker external gap acceptance-met rows: 0
+- Validation dashboard summary rows: 91
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
@@ -244,18 +250,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Horizon readiness event-driven 1s symbols: 12
 - Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 27
-- Phase 19 field checks: 270
-- Phase 19 exact-regeneration-ready artifacts: 27
+- Phase 19 audited artifacts: 28
+- Phase 19 field checks: 280
+- Phase 19 exact-regeneration-ready artifacts: 28
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 270
+- Phase 19 remediation rows: 280
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 27
-- Phase 19 normalized overlay-ready artifacts: 27
+- Phase 19 normalized overlay artifacts: 28
+- Phase 19 normalized overlay-ready artifacts: 28
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 270
+- Phase 19 source-or-alias fields: 280
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0

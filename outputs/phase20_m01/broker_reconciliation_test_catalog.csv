@@ -1,0 +1,6 @@
+test_id,test_description,acceptance_threshold,current_status
+order_lineage_join,broker_order_fill_events joins strategy_order_linkage on broker_order_id,zero orphan accepted validation fills,blocked_until_external_broker_evidence_imported
+fill_quantity_match,filled quantities reconcile between broker records and internal lifecycle orders,zero unexplained quantity mismatch,blocked_until_external_broker_evidence_imported
+average_price_match,broker average prices reconcile to internal fill prices within tolerance,all tested fills within tolerance,blocked_until_external_broker_evidence_imported
+charge_component_match,contract-note charge components reconcile to Zerodha formula and internal costs,all charge components within predeclared tolerance,blocked_until_external_broker_evidence_imported
+net_obligation_match,contract-note net obligation reconciles to internal realized cash-flow,all reconciled orders within predeclared tolerance,blocked_until_external_broker_evidence_imported
