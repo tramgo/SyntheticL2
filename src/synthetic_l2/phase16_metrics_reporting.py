@@ -851,6 +851,189 @@ def predictive_promotion_falsification(
     ].sort_values(["predictive_promotion_candidate_proxy", "strategy_id"], ascending=[False, True], kind="mergesort")
 
 
+def predictive_acceptance_gap_ledger(
+    baseline_comparison: pd.DataFrame,
+    holdout_stability_summary: pd.DataFrame,
+    importance: pd.DataFrame,
+    predictive_falsification: pd.DataFrame,
+    acceptance_summary: pd.DataFrame,
+) -> pd.DataFrame:
+    columns = [
+        "strategy_id",
+        "predictive_requirement",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "blocking_gap",
+        "evidence_source",
+        "required_next_evidence",
+        "acceptance_eligible_now",
+    ]
+    evidence_source = (
+        "outputs/phase11/strategy_signal_diagnostics.csv; "
+        "outputs/phase16/predictive_baseline_comparison.csv; "
+        "outputs/phase16/predictive_holdout_stability_summary.csv; "
+        "outputs/phase16/feature_importance_stability_proxy.csv; "
+        "outputs/phase16/predictive_promotion_falsification.csv"
+    )
+    rows: list[dict] = []
+    feature_proxy_available = bool(len(importance))
+    stable_feature_count = 0
+    if len(importance):
+        stable_feature_count = int(
+            (
+                (importance["top3_frequency"].astype(float).fillna(0.0) >= 0.5)
+                & (
+                    importance["coefficient_of_variation"]
+                    .astype(float)
+                    .replace([np.inf, -np.inf], np.nan)
+                    .fillna(999.0)
+                    <= 1.5
+                )
+            ).sum()
+        )
+
+    for record in acceptance_summary.sort_values("strategy_id").to_dict("records"):
+        strategy_id = str(record["strategy_id"])
+        baseline = baseline_comparison[baseline_comparison["strategy_id"].astype(str) == strategy_id]
+        holdout = holdout_stability_summary[holdout_stability_summary["strategy_id"].astype(str) == strategy_id]
+        falsification = predictive_falsification[predictive_falsification["strategy_id"].astype(str) == strategy_id]
+        baseline_row = baseline.iloc[0] if len(baseline) else pd.Series(dtype="object")
+        holdout_row = holdout.iloc[0] if len(holdout) else pd.Series(dtype="object")
+        falsification_row = falsification.iloc[0] if len(falsification) else pd.Series(dtype="object")
+        support_level = str(baseline_row.get("support_level", record.get("support_level", "not_available")))
+        baseline_pass = bool(falsification_row.get("baseline_pass_proxy", False))
+        holdout_pass = bool(falsification_row.get("holdout_all_cell_pass_proxy", False))
+        untouched_pass = bool(falsification_row.get("untouched_test_pass_proxy", False))
+        feature_pass = bool(falsification_row.get("feature_stability_proxy_available", feature_proxy_available))
+        candidate_proxy = bool(falsification_row.get("predictive_promotion_candidate_proxy", False))
+        def as_int(value: object) -> int:
+            if pd.isna(value):
+                return 0
+            return int(float(value))
+
+        directional_rows = as_int(baseline_row.get("directional_eval_rows", 0)) if len(baseline) else 0
+        stability_cells = as_int(holdout_row.get("stability_cells", 0)) if len(holdout) else 0
+        cells_beating = as_int(holdout_row.get("cells_beating_local_majority", 0)) if len(holdout) else 0
+        untouched_cells = as_int(holdout_row.get("untouched_test_cells", 0)) if len(holdout) else 0
+        untouched_beating = as_int(holdout_row.get("untouched_test_cells_beating_local_majority", 0)) if len(holdout) else 0
+
+        def add(
+            predictive_requirement: str,
+            required_threshold: str,
+            observed_value: str,
+            current_evidence_status: str,
+            proxy_evidence_available: bool,
+            blocking_gap: str,
+            required_next_evidence: str,
+        ) -> None:
+            rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "predictive_requirement": predictive_requirement,
+                    "required_threshold": required_threshold,
+                    "observed_value": observed_value,
+                    "current_evidence_status": current_evidence_status,
+                    "proxy_evidence_available": bool(proxy_evidence_available),
+                    "acceptance_requirement_met": False,
+                    "blocking_gap": blocking_gap,
+                    "evidence_source": evidence_source,
+                    "required_next_evidence": required_next_evidence,
+                    "acceptance_eligible_now": False,
+                }
+            )
+
+        add(
+            "strategy_support_ready",
+            "strategy is runnable in the current feature product",
+            f"support_level={support_level}",
+            "runnable_proxy_not_acceptance" if support_level == "runnable_proxy" else "partial_or_unsupported_strategy",
+            support_level == "runnable_proxy",
+            "Runnable proxy support is necessary but not sufficient for predictive acceptance.",
+            "Implement missing required features/modules or explicitly classify the strategy as research-only before predictive promotion.",
+        )
+        add(
+            "baseline_outperformance",
+            "beats no-skill, local majority and Brier proxy baselines with enough rows",
+            (
+                f"rows={directional_rows}; baseline_pass_proxy={baseline_pass}; "
+                f"accuracy_excess_vs_majority={baseline_row.get('directional_accuracy_excess_vs_majority', 'NA')}; "
+                f"brier_skill={baseline_row.get('brier_skill_score_proxy', 'NA')}"
+            ),
+            "baseline_proxy_available_not_acceptance" if len(baseline) else "missing_baseline_proxy",
+            bool(len(baseline)),
+            "Current baseline comparison is proxy-only and does not clear all required baseline checks.",
+            "Run calibrated predictive validation and require positive accuracy/Brier skill versus no-skill and local-majority baselines.",
+        )
+        add(
+            "holdout_cell_stability",
+            "beats local-majority baseline in every quarter/feed/segment holdout cell",
+            f"{cells_beating}/{stability_cells} cells beating local majority; all_cell_pass={holdout_pass}",
+            "holdout_stability_proxy_available_not_acceptance" if len(holdout) else "missing_holdout_stability_proxy",
+            bool(len(holdout)),
+            "Current proxy holdout cells do not consistently beat local-majority baselines.",
+            "Run predeclared holdout-cell validation over multi-seed synthetic and untouched holdout-generator outputs.",
+        )
+        add(
+            "untouched_test_stability",
+            "all untouched-test cells beat local-majority baseline",
+            f"{untouched_beating}/{untouched_cells} untouched cells beating local majority; untouched_pass={untouched_pass}",
+            "untouched_test_proxy_available_not_acceptance" if len(holdout) else "missing_untouched_test_proxy",
+            bool(len(holdout) and untouched_cells > 0),
+            "Untouched-test stability is incomplete or failing in current proxy evidence.",
+            "Reserve untouched cells and require all to beat local-majority baselines without feature or threshold reuse.",
+        )
+        add(
+            "feature_stability",
+            "stable predictive feature importance across seed samples",
+            f"feature_proxy_available={feature_proxy_available}; stable_feature_count={stable_feature_count}; feature_pass={feature_pass}",
+            "feature_stability_proxy_available_not_acceptance" if feature_proxy_available else "missing_feature_stability_proxy",
+            feature_proxy_available,
+            "Feature stability is a seed-sampled association proxy, not calibrated model importance stability.",
+            "Train calibrated predictive models across registered seeds and require stable feature importance / attribution.",
+        )
+        add(
+            "multi_seed_walk_forward_validation",
+            "registered multi-seed and walk-forward predictive validation complete",
+            "not available in current proxy evidence",
+            "missing_multi_seed_walk_forward_predictive_validation",
+            False,
+            "Current predictive evidence is single current proxy diagnostics, not full registered multi-seed/walk-forward validation.",
+            "Execute the Phase 13 seed plan and walk-forward windows for predictive models without test reuse.",
+        )
+        add(
+            "calibrated_model_output",
+            "calibrated probability or score model with acceptance-grade calibration diagnostics",
+            "ternary pseudo-probability proxy only",
+            "missing_calibrated_model_output",
+            False,
+            "Current Brier/calibration rows are deterministic ternary-signal pseudo-probabilities, not calibrated model outputs.",
+            "Train and freeze calibrated probability models, then evaluate Brier, calibration curve and baseline lift out of sample.",
+        )
+        add(
+            "real_multi_day_holdout",
+            "predictive edge survives multi-day real market holdout",
+            "not available in current one-day/proxy evidence",
+            "missing_real_multi_day_predictive_holdout",
+            False,
+            "Current predictive evidence has no multi-day real holdout validation.",
+            "Collect/run multiple real market days and compare predictive stability against synthetic and holdout-generator results.",
+        )
+        add(
+            "promotion_falsification_clear",
+            "not falsified by baseline, holdout, untouched-test, feature-stability or support checks",
+            f"predictive_promotion_candidate_proxy={candidate_proxy}; status={falsification_row.get('falsification_status', 'missing')}",
+            "promotion_falsification_proxy_available_not_acceptance" if len(falsification) else "missing_promotion_falsification",
+            bool(len(falsification)),
+            "Current predictive promotion-falsification ledger marks no strategy as acceptance-ready.",
+            "Clear the full predictive promotion-falsification checklist after calibrated, multi-seed and real/holdout validation.",
+        )
+
+    return pd.DataFrame(rows, columns=columns).sort_values(["strategy_id", "predictive_requirement"], kind="mergesort")
+
+
 def _safe_div(num: float, den: float) -> float | None:
     if den == 0 or pd.isna(den):
         return None
@@ -1460,6 +1643,7 @@ def write_report(
     holdout_stability_summary: pd.DataFrame,
     importance: pd.DataFrame,
     predictive_falsification: pd.DataFrame,
+    predictive_gap: pd.DataFrame,
     trading: pd.DataFrame,
     economic_frontier: pd.DataFrame,
     risk_adjusted_frontier: pd.DataFrame,
@@ -1470,6 +1654,13 @@ def write_report(
 ) -> None:
     catalog_summary = catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
     breakdown_summary = breakdowns.groupby("current_status", sort=True).size().reset_index(name="breakdowns")
+    predictive_gap_summary = (
+        predictive_gap.groupby(["predictive_requirement", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+        if len(predictive_gap)
+        else pd.DataFrame(columns=["predictive_requirement", "proxy_evidence_available", "acceptance_requirement_met", "rows"])
+    )
     economic_gap_summary = (
         economic_gap.groupby(["economic_requirement", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
         .size()
@@ -1527,6 +1718,12 @@ def write_report(
         "",
         _markdown_table(predictive_falsification),
         "",
+        "## Predictive Acceptance Gap Ledger",
+        "",
+        _markdown_table(predictive_gap_summary),
+        "",
+        _markdown_table(predictive_gap),
+        "",
         "## Top Trading Proxy Rows",
         "",
         _markdown_table(trading.sort_values("mean_net_return", ascending=False).head(10)),
@@ -1579,6 +1776,13 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         importance,
         inputs["acceptance_summary"],
     )
+    predictive_gap = predictive_acceptance_gap_ledger(
+        baseline_comparison,
+        holdout_stability_summary,
+        importance,
+        predictive_falsification,
+        inputs["acceptance_summary"],
+    )
     markouts = markout_analysis(inputs["trade_sample"])
     inputs["markout_analysis"] = markouts
     trading = trading_scoreboard(inputs)
@@ -1612,6 +1816,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     holdout_stability_summary.to_csv(output_dir / "predictive_holdout_stability_summary.csv", index=False)
     importance.to_csv(output_dir / "feature_importance_stability_proxy.csv", index=False)
     predictive_falsification.to_csv(output_dir / "predictive_promotion_falsification.csv", index=False)
+    predictive_gap.to_csv(output_dir / "predictive_acceptance_gap_ledger.csv", index=False)
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     economic_frontier.to_csv(output_dir / "economic_viability_frontier.csv", index=False)
     risk_adjusted_frontier.to_csv(output_dir / "risk_adjusted_economic_frontier.csv", index=False)
@@ -1648,6 +1853,10 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "predictive_promotion_falsification_rows": int(len(predictive_falsification)),
         "predictive_promotion_candidate_proxy_rows": int(predictive_falsification["predictive_promotion_candidate_proxy"].astype(bool).sum()) if len(predictive_falsification) else 0,
         "predictive_promotion_falsified_rows": int((predictive_falsification["falsification_status"].astype(str) == "falsified_for_predictive_promotion_under_current_proxy_evidence").sum()) if len(predictive_falsification) else 0,
+        "predictive_acceptance_gap_rows": int(len(predictive_gap)),
+        "predictive_acceptance_gap_open_rows": int((~predictive_gap["acceptance_requirement_met"].astype(bool)).sum()) if len(predictive_gap) else 0,
+        "predictive_acceptance_gap_proxy_available_rows": int(predictive_gap["proxy_evidence_available"].astype(bool).sum()) if len(predictive_gap) else 0,
+        "predictive_acceptance_gap_met_rows": int(predictive_gap["acceptance_requirement_met"].astype(bool).sum()) if len(predictive_gap) else 0,
         "trading_scoreboard_rows": int(len(trading)),
         "economic_viability_frontier_rows": int(len(economic_frontier)),
         "economic_viability_net_positive_rows": int(economic_frontier["net_positive_proxy"].sum()) if len(economic_frontier) else 0,
@@ -1691,6 +1900,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "predictive_holdout_stability": str(output_dir / "predictive_holdout_stability.csv"),
                 "predictive_holdout_stability_summary": str(output_dir / "predictive_holdout_stability_summary.csv"),
                 "predictive_promotion_falsification": str(output_dir / "predictive_promotion_falsification.csv"),
+                "predictive_acceptance_gap_ledger": str(output_dir / "predictive_acceptance_gap_ledger.csv"),
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
                 "economic_viability_frontier": str(output_dir / "economic_viability_frontier.csv"),
                 "risk_adjusted_economic_frontier": str(output_dir / "risk_adjusted_economic_frontier.csv"),
@@ -1720,6 +1930,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         holdout_stability_summary,
         importance,
         predictive_falsification,
+        predictive_gap,
         trading,
         economic_frontier,
         risk_adjusted_frontier,

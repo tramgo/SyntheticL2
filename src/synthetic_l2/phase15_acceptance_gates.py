@@ -231,6 +231,12 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "No acceptance-level predictive evidence; Phase 16 baseline, holdout-stability and promotion-falsification diagnostics are proxy-only "
             "and current signals do not clear required baseline, untouched-test, feature-stability, multi-seed and support/readiness checks."
         )
+    if Path("outputs/phase16/predictive_acceptance_gap_ledger.csv").exists():
+        predictive_evidence_source += "; outputs/phase16/predictive_acceptance_gap_ledger.csv"
+        predictive_blocker = (
+            "No acceptance-level predictive evidence; Phase 16 baseline, holdout-stability, promotion-falsification and acceptance-gap diagnostics are proxy-only "
+            "and the gap ledger still shows missing baseline, holdout-cell, untouched-test, feature-stability, multi-seed, calibrated-model, real-holdout and support/readiness evidence."
+        )
     rows.append(
         {
             "strategy_id": sid,

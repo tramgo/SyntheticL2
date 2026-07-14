@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T14:49:43.341852+00:00",
+  "generated_utc": "2026-07-14T14:58:11.153858+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
@@ -15,6 +15,7 @@
     "predictive": "outputs\\phase16\\predictive_proxy_diagnostics.csv",
     "predictive_holdout": "outputs\\phase16\\predictive_holdout_stability_summary.csv",
     "predictive_falsification": "outputs\\phase16\\predictive_promotion_falsification.csv",
+    "predictive_gap": "outputs\\phase16\\predictive_acceptance_gap_ledger.csv",
     "trading": "outputs\\phase16\\trading_metric_scoreboard.csv",
     "economic": "outputs\\phase16\\economic_viability_frontier.csv",
     "risk_adjusted_economic": "outputs\\phase16\\risk_adjusted_economic_frontier.csv",
@@ -60,6 +61,10 @@
     "predictive_promotion_falsification_rows": 11,
     "predictive_promotion_candidate_proxy_rows": 0,
     "predictive_promotion_falsified_rows": 11,
+    "predictive_acceptance_gap_rows": 99,
+    "predictive_acceptance_gap_open_rows": 99,
+    "predictive_acceptance_gap_proxy_rows": 58,
+    "predictive_acceptance_gap_met_rows": 0,
     "economic_viability_rows": 27,
     "economic_viability_net_positive_rows": 4,
     "economic_viability_retail_stress_positive_rows": 2,
@@ -84,8 +89,8 @@
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "c99a8771962d9ebf968b5d671cb774a91c0cc59b",
-  "configuration_hash": "6b14350fed8abae1a10dd8e62bd39287513679cc84e130a7ad5ad267e5f5a449",
+  "generator_version": "5ddc2bfbe9caf15ffdcc74f03659cfbf00a3bf0b",
+  "configuration_hash": "9f7533b5ac611efa76626f0aed0c0419808fa2ec5d16eda7ea420d7acf97ef11",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -93,5 +98,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:49:43.341852+00:00"
+  "creation_timestamp": "2026-07-14T14:58:11.153858+00:00"
 }

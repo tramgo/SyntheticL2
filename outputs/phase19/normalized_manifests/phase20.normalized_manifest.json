@@ -3,7 +3,7 @@
   "artifact_id": "phase20",
   "source_manifest_path": "outputs/phase20/acceptance_hardening_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "c99a8771962d9ebf968b5d671cb774a91c0cc59b",
+  "generator_version": "5ddc2bfbe9caf15ffdcc74f03659cfbf00a3bf0b",
   "configuration_hash": "ee04214981ff24216d5df99c9dde86de653330ded073a07f2317c1f4326dd976",
   "random_seed": "not_applicable_deterministic_blocker_queue",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -12,7 +12,7 @@
   "scenario_ids": "phase15_blockers_by_strategy_gate",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:49:42.510891+00:00",
-  "normalization_timestamp": "2026-07-14T14:49:56.054187+00:00",
+  "creation_timestamp": "2026-07-14T14:58:10.311415+00:00",
+  "normalization_timestamp": "2026-07-14T14:58:23.839669+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
