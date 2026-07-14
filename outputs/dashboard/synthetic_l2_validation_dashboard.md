@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T17:42:36.439347+00:00
+Generated UTC: 2026-07-14T17:54:23.886840+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -190,6 +190,11 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase23_open_acceptance_blocking_risks | 5 | Phase 23 open acceptance-blocking risks |
 | phase23_mitigation_rows | 31 | Phase 23 mitigation rows |
 | phase23_promotion_ready | 0 | Phase 23 promotion-ready rows |
+| phase25_models_replayed | 8 | Phase 25 strategies/baselines replayed |
+| phase25_total_trades | 113848 | Phase 25 event-order replay trades |
+| phase25_positive_strategy_profile_rows | 0 | Phase 25 positive strategy/profile rows |
+| phase25_beats_best_baseline_rows | 3 | Phase 25 strategy/profile rows beating best baseline |
+| phase25_acceptance_ready | 0 | Phase 25 acceptance-ready rows |
 
 ## Quality Status
 
@@ -2733,6 +2738,79 @@ This dashboard is static research traceability output, not strategy promotion ev
 | P23_05 | 5 | Shadow execution | blocked_until_paper_trading | False |
 | P23_06 | 6 | Very small capital | blocked_until_shadow_execution | False |
 | P23_07 | 7 | Gradual scale-up | blocked_until_small_capital_risk_limits | False |
+
+## Phase 25 Event Replay Expansion
+
+| model_type | execution_profile | rows |
+| --- | --- | --- |
+| baseline | retail_marketable_default | 3 |
+| baseline | stressed_retail | 3 |
+| baseline | zero_latency_spread_only_control | 3 |
+| strategy | retail_marketable_default | 5 |
+| strategy | stressed_retail | 5 |
+| strategy | zero_latency_spread_only_control | 5 |
+
+| risk_status | rows |
+| --- | --- |
+| risk_breached_proxy | 12 |
+| risk_not_breached_proxy | 12 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase25_models_replayed | 8 | Strategies and baselines replayed |
+| phase25_strategy_models_replayed | 5 | Strategy models replayed |
+| phase25_baseline_models_replayed | 3 | Baseline models replayed |
+| phase25_execution_profiles | 3 | Execution profiles evaluated |
+| phase25_total_trades | 113848 | Total event-order replay trades |
+| phase25_positive_strategy_profile_rows | 0 | Strategy/profile rows with positive mean net return |
+| phase25_risk_breached_rows | 12 | Model/profile rows with proxy risk breaches |
+| phase25_beats_best_baseline_rows | 3 | Strategy/profile rows beating best baseline proxy |
+| phase25_acceptance_ready | 0 | Event replay is execution evidence, not acceptance evidence |
+
+| model_id | model_type | execution_profile | trades | symbols | scenario_days | mean_gross_return | mean_cost_return | mean_zerodha_charge_return | mean_net_return | win_rate_net | total_net_pnl_inr | market_shock_trade_fraction | disconnect_trade_fraction | acceptance_ready | replay_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B01 | baseline | retail_marketable_default | 2801 | 2 | 8 | 2.8590375865819133e-05 | 0.0019030062942774 | 0.0008268093461312 | -0.0018744159184116 | 0.1006783291681542 | -525023.8987471071 | 0.1245983577293823 | 0.0 | False | event_order_replay_not_acceptance |
+| B01 | baseline | stressed_retail | 2723 | 2 | 8 | 7.521667011607731e-05 | 0.0021358344965546 | 0.0008268080594744 | -0.0020606178264385 | 0.0822622107969151 | -561106.2341392278 | 0.1244950422328314 | 0.0 | False | event_order_replay_not_acceptance |
+| B01 | baseline | zero_latency_spread_only_control | 2951 | 2 | 8 | -2.2220987920273068e-05 | 0.0009439118268425 | 0.0 | -0.0009661328147627 | 0.2578786851914605 | -285105.7936364994 | 0.1253812267028126 | 0.0010166045408336 | False | event_order_replay_not_acceptance |
+| B03 | baseline | retail_marketable_default | 13873 | 5 | 8 | 3.0135062122311532e-05 | 0.0011345089135803 | 0.0008268125143476 | -0.001104373851458 | 0.2657680386361998 | -1532097.8441276848 | 0.1232610105961219 | 0.0 | False | event_order_replay_not_acceptance |
+| B03 | baseline | stressed_retail | 13475 | 5 | 8 | -2.138170967246449e-05 | 0.0013202472364486 | 0.0008268124963126 | -0.001341628946121 | 0.2306493506493506 | -1807845.0048981511 | 0.123191094619666 | 0.0 | False | event_order_replay_not_acceptance |
+| B03 | baseline | zero_latency_spread_only_control | 14547 | 5 | 8 | -0.0002502539195316 | 0.000222917961625 | 0.0 | -0.0004731718811567 | 0.4229738090327902 | -688323.135518703 | 0.1244242799202584 | 0.0009623977452395 | False | event_order_replay_not_acceptance |
+| B06 | baseline | retail_marketable_default | 2801 | 2 | 8 | 4.24572202107276e-05 | 0.0019030060862748 | 0.0008268091381286 | -0.001860548866064 | 0.1028204212781149 | -521139.7373845517 | 0.1245983577293823 | 0.0 | False | event_order_replay_not_acceptance |
+| B06 | baseline | stressed_retail | 2723 | 2 | 8 | 5.366323470808303e-05 | 0.0021358348198561 | 0.000826808382776 | -0.0020821715851481 | 0.0811604847594564 | -566975.3226358315 | 0.1244950422328314 | 0.0 | False | event_order_replay_not_acceptance |
+| B06 | baseline | zero_latency_spread_only_control | 2951 | 2 | 8 | 3.8008963284086245e-05 | 0.0009439118268425 | 0.0 | -0.0009059028635584 | 0.2656726533378515 | -267331.93503609294 | 0.1253812267028126 | 0.0010166045408336 | False | event_order_replay_not_acceptance |
+| S01 | strategy | retail_marketable_default | 1449 | 4 | 8 | -2.237557810132862e-05 | 0.0009535952236619 | 0.0008268216085627 | -0.0009759708017633 | 0.3229813664596273 | -141418.16917550302 | 0.2001380262249827 | 0.0 | False | event_order_replay_not_acceptance |
+| S01 | strategy | stressed_retail | 1404 | 4 | 8 | 7.232169008334176e-05 | 0.0011309399345806 | 0.0008268086291864 | -0.0010586182444973 | 0.2998575498575498 | -148630.00152742243 | 0.1987179487179487 | 0.0 | False | event_order_replay_not_acceptance |
+| S01 | strategy | zero_latency_spread_only_control | 1524 | 4 | 8 | -0.0004361598900468 | 4.869815713055817e-05 | 0.0 | -0.0004848580471773 | 0.4770341207349081 | -73892.3663898344 | 0.19750656167979 | 0.0 | False | event_order_replay_not_acceptance |
+| S02 | strategy | retail_marketable_default | 9035 | 5 | 8 | -5.265559765011318e-05 | 0.0011991037632937 | 0.0008268135403367 | -0.0012517593609438 | 0.2422800221361372 | -1130964.582612796 | 0.1358052019922523 | 0.0 | False | event_order_replay_not_acceptance |
+| S02 | strategy | stressed_retail | 8793 | 5 | 8 | 1.4771227626622702e-05 | 0.0013918046611406 | 0.0008268118592277 | -0.001377033433514 | 0.2116456272034573 | -1210825.498088927 | 0.1368133742749914 | 0.0 | False | event_order_replay_not_acceptance |
+| S02 | strategy | zero_latency_spread_only_control | 9493 | 5 | 8 | -5.53824664992368e-05 | 0.0002805333530526 | 0.0 | -0.0003359158195518 | 0.4204150426630148 | -318884.8875005669 | 0.137785736858738 | 0.0008427262193194 | False | event_order_replay_not_acceptance |
+| S05 | strategy | retail_marketable_default | 2801 | 2 | 8 | -4.675143614216988e-05 | 0.0019041411776472 | 0.0008268102512157 | -0.0019508926137893 | 0.0996072831131738 | -546445.0211224055 | 0.1263834344876829 | 0.0 | False | event_order_replay_not_acceptance |
+| S05 | strategy | stressed_retail | 2723 | 2 | 8 | -5.4371571302664144e-05 | 0.0021370146129086 | 0.000826809966177 | -0.0021913861842113 | 0.0657363202350348 | -596714.457960741 | 0.1263312522952625 | 0.0 | False | event_order_replay_not_acceptance |
+| S05 | strategy | zero_latency_spread_only_control | 2951 | 2 | 8 | -2.9675841369862625e-05 | 0.0009449791587132 | 0.0 | -0.0009746550000831 | 0.2653337851575737 | -287620.69052453164 | 0.1270755676042019 | 0.0010166045408336 | False | event_order_replay_not_acceptance |
+| S07 | strategy | retail_marketable_default | 2098 | 2 | 6 | 0.0001055998445475 | 0.0019331104028497 | 0.0008268048819368 | -0.0018275105583021 | 0.098188751191611 | -383411.71513179486 | 0.1663489037178265 | 0.0 | False | event_order_replay_not_acceptance |
+| S07 | strategy | stressed_retail | 2040 | 2 | 6 | 0.0001287488080867 | 0.0021660511225128 | 0.0008268033215578 | -0.0020373023144261 | 0.0745098039215686 | -415609.6721429283 | 0.1666666666666666 | 0.0 | False | event_order_replay_not_acceptance |
+| S07 | strategy | zero_latency_spread_only_control | 2217 | 2 | 6 | 9.96970647249907e-05 | 0.0009728797807839 | 0.0 | -0.0008731827160589 | 0.2516914749661705 | -193584.6081502629 | 0.1673432566531348 | 0.0009021199819576 | False | event_order_replay_not_acceptance |
+| S09 | strategy | retail_marketable_default | 2801 | 2 | 8 | -4.24572202107276e-05 | 0.0019030073599914 | 0.0008268104118452 | -0.0019454645802021 | 0.1010353445198143 | -544924.6289146228 | 0.1245983577293823 | 0.0 | False | event_order_replay_not_acceptance |
+| S09 | strategy | stressed_retail | 2723 | 2 | 8 | -5.366323470808303e-05 | 0.0021358364297532 | 0.000826809992673 | -0.0021894996644613 | 0.0657363202350348 | -596200.7586328179 | 0.1244950422328314 | 0.0 | False | event_order_replay_not_acceptance |
+| S09 | strategy | zero_latency_spread_only_control | 2951 | 2 | 8 | -3.8008963284086245e-05 | 0.0009439118268425 | 0.0 | -0.0009819207901266 | 0.2649949169772958 | -289764.82516636065 | 0.1253812267028126 | 0.0010166045408336 | False | event_order_replay_not_acceptance |
+
+| model_id | execution_profile | strategy_mean_net_return | best_baseline_mean_net_return | net_return_lift_vs_best_baseline | beats_best_baseline_proxy | comparison_scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| S01 | retail_marketable_default | -0.0009759708017633 | -0.001104373851458 | 0.0001284030496946 | True | stage_b2_event_replay_proxy |
+| S01 | stressed_retail | -0.0010586182444973 | -0.001341628946121 | 0.0002830107016237 | True | stage_b2_event_replay_proxy |
+| S01 | zero_latency_spread_only_control | -0.0004848580471773 | -0.0004731718811567 | -1.168616602065562e-05 | False | stage_b2_event_replay_proxy |
+| S02 | retail_marketable_default | -0.0012517593609438 | -0.001104373851458 | -0.0001473855094858 | False | stage_b2_event_replay_proxy |
+| S02 | stressed_retail | -0.001377033433514 | -0.001341628946121 | -3.5404487392998955e-05 | False | stage_b2_event_replay_proxy |
+| S02 | zero_latency_spread_only_control | -0.0003359158195518 | -0.0004731718811567 | 0.0001372560616048 | True | stage_b2_event_replay_proxy |
+| S05 | retail_marketable_default | -0.0019508926137893 | -0.001104373851458 | -0.0008465187623313 | False | stage_b2_event_replay_proxy |
+| S05 | stressed_retail | -0.0021913861842113 | -0.001341628946121 | -0.0008497572380902 | False | stage_b2_event_replay_proxy |
+| S05 | zero_latency_spread_only_control | -0.0009746550000831 | -0.0004731718811567 | -0.0005014831189263 | False | stage_b2_event_replay_proxy |
+| S07 | retail_marketable_default | -0.0018275105583021 | -0.001104373851458 | -0.0007231367068441 | False | stage_b2_event_replay_proxy |
+| S07 | stressed_retail | -0.0020373023144261 | -0.001341628946121 | -0.000695673368305 | False | stage_b2_event_replay_proxy |
+| S07 | zero_latency_spread_only_control | -0.0008731827160589 | -0.0004731718811567 | -0.0004000108349021 | False | stage_b2_event_replay_proxy |
+| S09 | retail_marketable_default | -0.0019454645802021 | -0.001104373851458 | -0.0008410907287441 | False | stage_b2_event_replay_proxy |
+| S09 | stressed_retail | -0.0021894996644613 | -0.001341628946121 | -0.0008478707183402 | False | stage_b2_event_replay_proxy |
+| S09 | zero_latency_spread_only_control | -0.0009819207901266 | -0.0004731718811567 | -0.0005087489089698 | False | stage_b2_event_replay_proxy |
 
 ## Metric Status
 

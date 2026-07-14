@@ -1,0 +1,10 @@
+metric,value,description
+phase25_models_replayed,8,Strategies and baselines replayed
+phase25_strategy_models_replayed,5,Strategy models replayed
+phase25_baseline_models_replayed,3,Baseline models replayed
+phase25_execution_profiles,3,Execution profiles evaluated
+phase25_total_trades,113848,Total event-order replay trades
+phase25_positive_strategy_profile_rows,0,Strategy/profile rows with positive mean net return
+phase25_risk_breached_rows,12,Model/profile rows with proxy risk breaches
+phase25_beats_best_baseline_rows,3,Strategy/profile rows beating best baseline proxy
+phase25_acceptance_ready,0,"Event replay is execution evidence, not acceptance evidence"

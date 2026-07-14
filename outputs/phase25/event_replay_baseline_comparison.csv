@@ -1,0 +1,16 @@
+model_id,execution_profile,strategy_mean_net_return,best_baseline_mean_net_return,net_return_lift_vs_best_baseline,beats_best_baseline_proxy,comparison_scope
+S01,retail_marketable_default,-0.000975970801763306,-0.001104373851458001,0.000128403049694695,True,stage_b2_event_replay_proxy
+S01,stressed_retail,-0.0010586182444973107,-0.001341628946121077,0.00028301070162376624,True,stage_b2_event_replay_proxy
+S01,zero_latency_spread_only_control,-0.0004848580471773911,-0.00047317188115673545,-1.168616602065562e-05,False,stage_b2_event_replay_proxy
+S02,retail_marketable_default,-0.0012517593609438805,-0.001104373851458001,-0.00014738550948587958,False,stage_b2_event_replay_proxy
+S02,stressed_retail,-0.001377033433514076,-0.001341628946121077,-3.5404487392998955e-05,False,stage_b2_event_replay_proxy
+S02,zero_latency_spread_only_control,-0.0003359158195518455,-0.00047317188115673545,0.00013725606160488996,True,stage_b2_event_replay_proxy
+S05,retail_marketable_default,-0.001950892613789381,-0.001104373851458001,-0.00084651876233138,False,stage_b2_event_replay_proxy
+S05,stressed_retail,-0.0021913861842113146,-0.001341628946121077,-0.0008497572380902377,False,stage_b2_event_replay_proxy
+S05,zero_latency_spread_only_control,-0.0009746550000831298,-0.00047317188115673545,-0.0005014831189263944,False,stage_b2_event_replay_proxy
+S07,retail_marketable_default,-0.0018275105583021682,-0.001104373851458001,-0.0007231367068441673,False,stage_b2_event_replay_proxy
+S07,stressed_retail,-0.002037302314426119,-0.001341628946121077,-0.0006956733683050422,False,stage_b2_event_replay_proxy
+S07,zero_latency_spread_only_control,-0.0008731827160589217,-0.00047317188115673545,-0.00040001083490218625,False,stage_b2_event_replay_proxy
+S09,retail_marketable_default,-0.001945464580202152,-0.001104373851458001,-0.000841090728744151,False,stage_b2_event_replay_proxy
+S09,stressed_retail,-0.0021894996644613216,-0.001341628946121077,-0.0008478707183402446,False,stage_b2_event_replay_proxy
+S09,zero_latency_spread_only_control,-0.0009819207901266033,-0.00047317188115673545,-0.0005087489089698679,False,stage_b2_event_replay_proxy

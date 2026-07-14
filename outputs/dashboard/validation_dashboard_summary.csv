@@ -181,3 +181,8 @@ phase23_key_risks,5,Phase 23 key risk rows
 phase23_open_acceptance_blocking_risks,5,Phase 23 open acceptance-blocking risks
 phase23_mitigation_rows,31,Phase 23 mitigation rows
 phase23_promotion_ready,0,Phase 23 promotion-ready rows
+phase25_models_replayed,8,Phase 25 strategies/baselines replayed
+phase25_total_trades,113848,Phase 25 event-order replay trades
+phase25_positive_strategy_profile_rows,0,Phase 25 positive strategy/profile rows
+phase25_beats_best_baseline_rows,3,Phase 25 strategy/profile rows beating best baseline
+phase25_acceptance_ready,0,Phase 25 acceptance-ready rows

@@ -13,6 +13,6 @@
   "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
   "latency_model_version": "phase12_execution_profiles_v1",
   "creation_timestamp": "2026-07-13T21:22:37.878090+00:00",
-  "normalization_timestamp": "2026-07-14T17:42:43.807319+00:00",
+  "normalization_timestamp": "2026-07-14T17:54:31.309182+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
