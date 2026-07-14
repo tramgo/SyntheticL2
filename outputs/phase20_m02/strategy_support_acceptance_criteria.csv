@@ -1,0 +1,5 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+feature_product_coverage,Every required strategy feature is present in the acceptance feature product at the intended horizon.,all required features present; no proxy-only substitute for required acceptance feature,contract_defined_not_acceptance_evidence
+module_registry_decision,Every S01-S11 module has an explicit acceptance path or explicit research/risk-only exclusion.,no strategy has ambiguous support status,contract_defined_not_acceptance_evidence
+alpha_registry_scope,Only alpha strategies enter predictive/robustness promotion grids; non-alpha/risk filters are excluded from alpha promotion.,S10/S11 excluded or separately registered as execution/risk controls,contract_defined_not_acceptance_evidence
+support_evidence_lineage,Feature/module support decisions cite current artifacts and missing-feature lists.,every M02 row has evidence_source and required_next_evidence,contract_defined_not_acceptance_evidence

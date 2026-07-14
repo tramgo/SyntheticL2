@@ -1,0 +1,9 @@
+support_contract_status,gate_id,rows,strategies,acceptance_met_rows
+partial_support_feature_engineering_required,G01_predictive,4,4,0
+partial_support_feature_engineering_required,G03_robustness,4,4,0
+partial_support_feature_engineering_required,G05_realism,4,4,0
+proxy_supported_acceptance_upgrade_required,G01_predictive,5,5,0
+proxy_supported_acceptance_upgrade_required,G03_robustness,5,5,0
+unsupported_requires_explicit_non_alpha_classification,G01_predictive,2,2,0
+unsupported_requires_explicit_non_alpha_classification,G03_robustness,2,2,0
+unsupported_requires_explicit_non_alpha_classification,G05_realism,2,2,0

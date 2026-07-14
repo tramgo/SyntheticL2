@@ -1,15 +1,15 @@
 # Phase 19 Reproducibility Gate Result
 
-Generated UTC: 2026-07-14T15:55:56.031319+00:00
+Generated UTC: 2026-07-14T16:01:45.283536+00:00
 Passed: True
-Audited artifacts: 28
-Field checks: 280
+Audited artifacts: 29
+Field checks: 290
 
 | gate | passed | observed | expected | detail |
 | --- | --- | --- | --- | --- |
-| all_audited_artifacts_native_exact_ready | True | 28/28 | 28/28 | Artifacts not exact-ready: none |
+| all_audited_artifacts_native_exact_ready | True | 29/29 | 29/29 | Artifacts not exact-ready: none |
 | no_missing_source_manifest_fields | True | 0 | 0 | Artifacts with missing fields: none |
 | no_missing_or_unreadable_manifests | True | 0 | 0 | Artifacts with missing/unreadable manifests: none |
-| all_normalized_overlays_ready | True | 28/28 | 28/28 | Overlay artifacts not ready: none |
+| all_normalized_overlays_ready | True | 29/29 | 29/29 | Overlay artifacts not ready: none |
 | no_normalizer_default_fields | True | 0 | 0 | All normalized overlay values should be sourced from exact or alias fields in source manifests. |
-| remediation_is_complete_exact_only | True | {'complete_exact': 280} | {'complete_exact': 280} | Remediation rows should not require add-field, alias-normalization or manifest recovery actions. |
+| remediation_is_complete_exact_only | True | {'complete_exact': 290} | {'complete_exact': 290} | Remediation rows should not require add-field, alias-normalization or manifest recovery actions. |
