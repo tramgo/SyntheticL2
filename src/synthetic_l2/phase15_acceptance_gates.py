@@ -260,6 +260,9 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
     if Path("outputs/phase16/risk_adjusted_economic_frontier.csv").exists():
         economic_evidence_source += "; outputs/phase16/risk_adjusted_economic_frontier.csv"
         economic_blocker.append("Phase 16 risk-adjusted economic frontier joins net edge to lifecycle risk severity, but it is proxy-only")
+    if Path("outputs/phase16/broker_reconciliation_readiness.csv").exists():
+        economic_evidence_source += "; outputs/phase16/broker_reconciliation_readiness.csv; outputs/phase16/economic_reconciliation_strategy_summary.csv"
+        economic_blocker.append("Phase 16 broker reconciliation readiness ledger shows Zerodha formula evidence exists but broker contract-note and actual fill reconciliation are still missing")
     rows.append(
         {
             "strategy_id": sid,

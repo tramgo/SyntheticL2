@@ -3,7 +3,7 @@
   "artifact_id": "phase15",
   "source_manifest_path": "outputs/phase15/acceptance_gates_manifest.json",
   "source_manifest_exists": true,
-  "generator_version": "20fec85486b1bc29e790caea06a870843e9802ab",
+  "generator_version": "05fbd6e86ebae5a2c5492844840b7f371cb19e29",
   "configuration_hash": "ff85acb5e6dd99dab703c00d324464048012ec99842dec13c373115b9e9b5b55",
   "random_seed": "not_applicable_deterministic_gate_evaluation",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -12,7 +12,7 @@
   "scenario_ids": "phase13_experiment_registry_and_phase15_all_s01_s11_strategies",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-13T22:54:00.590779+00:00",
-  "normalization_timestamp": "2026-07-13T22:54:20.960321+00:00",
+  "creation_timestamp": "2026-07-14T14:15:59.182560+00:00",
+  "normalization_timestamp": "2026-07-14T14:16:13.926477+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

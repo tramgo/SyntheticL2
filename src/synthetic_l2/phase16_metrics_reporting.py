@@ -10,6 +10,7 @@ import pandas as pd
 
 from synthetic_l2.phase11_strategy_validation_matrix import build_signals, load_features
 from synthetic_l2.reproducibility import reproducibility_fields
+from synthetic_l2.zerodha_costs import ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION
 
 
 PREDICTIVE_METRICS = [
@@ -160,6 +161,9 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "execution_summary": pd.read_csv(paths["execution_summary"]),
         "trade_sample": pd.read_parquet(paths["trade_sample"]),
         "risk_breach_severity": pd.read_csv(paths["risk_breach_severity"]),
+        "cost_schedule": pd.read_csv(paths["cost_schedule"]),
+        "charge_component_catalog": pd.read_csv(paths["charge_component_catalog"]),
+        "representative_charge_scenarios": pd.read_csv(paths["representative_charge_scenarios"]),
         "features": load_features(paths["features"]),
         "acceptance_summary": pd.read_csv(paths["acceptance_summary"]),
         "seed_plan": pd.read_csv(paths["seed_plan"]),
@@ -986,6 +990,115 @@ def risk_adjusted_economic_frontier(economic_frontier: pd.DataFrame, inputs: dic
     ].sort_values(["risk_adjusted_net_edge_bps", "strategy_id", "execution_profile", "fill_model"], ascending=[False, True, True, True], kind="mergesort")
 
 
+def broker_reconciliation_readiness_ledger(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    cost_schedule = inputs["cost_schedule"].copy()
+    component_catalog = inputs["charge_component_catalog"].copy()
+    scenario_count = int(len(inputs["representative_charge_scenarios"]))
+    modeled_components = set(component_catalog["component"].astype(str)) if "component" in component_catalog else set()
+    cost_components = set(cost_schedule["cost_component"].astype(str)) if "cost_component" in cost_schedule else set()
+
+    rows: list[dict] = []
+    formula_items = [
+        ("brokerage", "zerodha_brokerage_inr", "brokerage", "contract_note_brokerage"),
+        ("stt", "zerodha_stt_inr", "stt", "contract_note_stt"),
+        ("nse_transaction_charge", "zerodha_transaction_charge_inr", "nse_transaction_charge", "contract_note_exchange_transaction_charges"),
+        ("sebi_charge", "zerodha_sebi_charge_inr", "sebi_charge", "contract_note_sebi_turnover_fees"),
+        ("stamp_duty", "zerodha_stamp_duty_inr", "stamp_duty", "contract_note_stamp_duty"),
+        ("gst", "zerodha_gst_inr", "gst", "contract_note_gst"),
+        ("total_charges", "zerodha_total_charges_inr", "statutory_and_brokerage_charges", "contract_note_total_charges"),
+    ]
+    for item, proxy_field, evidence_key, broker_field in formula_items:
+        component_row = component_catalog[component_catalog.get("component", pd.Series(dtype=str)).astype(str) == evidence_key]
+        source_url = component_row["source_url"].iloc[0] if len(component_row) and "source_url" in component_row else ""
+        formula = component_row["formula"].iloc[0] if len(component_row) and "formula" in component_row else ""
+        proxy_available = evidence_key in modeled_components or evidence_key in cost_components
+        rows.append(
+            {
+                "reconciliation_domain": "charges",
+                "reconciliation_item": item,
+                "proxy_field_or_artifact": proxy_field,
+                "proxy_evidence": "outputs/phase12/cost_schedule.csv; outputs/phase12/charge_component_catalog.csv; outputs/phase12/representative_charge_scenarios.csv",
+                "zerodha_model_version": ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
+                "documented_formula_or_proxy_basis": formula or "Phase 12 cost schedule component",
+                "documented_source_url": source_url,
+                "representative_scenarios_available": scenario_count,
+                "broker_contract_note_field_required": broker_field,
+                "broker_contract_note_available_now": False,
+                "proxy_formula_available_now": bool(proxy_available),
+                "actual_fill_available_now": False,
+                "reconciliation_status": "proxy_formula_ready_broker_contract_note_missing" if proxy_available else "proxy_formula_missing_broker_contract_note_missing",
+                "acceptance_eligible_now": False,
+                "blocker": "Broker contract-note row and broker/exchange fill identifiers are required before economic acceptance.",
+            }
+        )
+
+    fill_items = [
+        ("exchange_order_id", "not_available_in_proxy", "contract_note_or_orderbook_exchange_order_id"),
+        ("exchange_trade_id", "not_available_in_proxy", "contract_note_trade_id"),
+        ("executed_quantity", "simulated_trade_quantity_proxy", "broker_fill_quantity"),
+        ("executed_price", "simulated_entry_exit_mid_price_proxy", "broker_fill_price"),
+        ("contract_note_number", "not_available_in_proxy", "contract_note_number"),
+        ("settlement_obligation", "simulated_net_pnl_after_formula_charges", "contract_note_net_obligation"),
+    ]
+    for item, proxy_field, broker_field in fill_items:
+        rows.append(
+            {
+                "reconciliation_domain": "fills_and_contract_note",
+                "reconciliation_item": item,
+                "proxy_field_or_artifact": proxy_field,
+                "proxy_evidence": "outputs/phase12/execution_summary.csv; outputs/phase12/trade_ledger_sample.parquet",
+                "zerodha_model_version": ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
+                "documented_formula_or_proxy_basis": "Simulated marketable-order proxy field; broker-confirmed source is not present.",
+                "documented_source_url": "",
+                "representative_scenarios_available": scenario_count,
+                "broker_contract_note_field_required": broker_field,
+                "broker_contract_note_available_now": False,
+                "proxy_formula_available_now": item in {"executed_quantity", "executed_price", "settlement_obligation"},
+                "actual_fill_available_now": False,
+                "reconciliation_status": "broker_fill_or_contract_note_missing",
+                "acceptance_eligible_now": False,
+                "blocker": "Actual broker/exchange fills and contract-note identifiers are required before economic acceptance.",
+            }
+        )
+    return pd.DataFrame(rows).sort_values(["reconciliation_domain", "reconciliation_item"], kind="mergesort")
+
+
+def economic_reconciliation_strategy_summary(
+    economic_frontier: pd.DataFrame,
+    risk_adjusted_frontier: pd.DataFrame,
+    readiness_ledger: pd.DataFrame,
+    acceptance_summary: pd.DataFrame,
+) -> pd.DataFrame:
+    broker_ready = bool(readiness_ledger["broker_contract_note_available_now"].all()) if len(readiness_ledger) else False
+    charge_rows = readiness_ledger[readiness_ledger["reconciliation_domain"].astype(str) == "charges"]
+    formula_ready = bool(charge_rows["proxy_formula_available_now"].all()) if len(charge_rows) else False
+    missing_items = int((~readiness_ledger["broker_contract_note_available_now"].astype(bool)).sum()) if len(readiness_ledger) else 0
+    rows = []
+    for record in acceptance_summary.sort_values("strategy_id").to_dict("records"):
+        strategy_id = record["strategy_id"]
+        group = economic_frontier[economic_frontier["strategy_id"].astype(str) == str(strategy_id)]
+        risk_group = risk_adjusted_frontier[risk_adjusted_frontier["strategy_id"].astype(str) == str(strategy_id)]
+        retail_stress = group[group["retail_or_stress_profile"].astype(bool)]
+        rows.append(
+            {
+                "strategy_id": strategy_id,
+                "acceptance_status": record.get("acceptance_status", ""),
+                "economic_frontier_rows": int(len(group)),
+                "retail_stress_rows": int(len(retail_stress)),
+                "net_positive_proxy_rows": int(group["net_positive_proxy"].astype(bool).sum()),
+                "retail_stress_net_positive_proxy_rows": int(retail_stress["net_positive_proxy"].astype(bool).sum()) if len(retail_stress) else 0,
+                "risk_adjusted_joint_pass_rows": int(risk_group["net_positive_and_risk_pass_proxy"].astype(bool).sum()) if len(risk_group) else 0,
+                "documented_zerodha_formula_ready": formula_ready,
+                "broker_contract_note_reconciliation_ready": broker_ready,
+                "missing_reconciliation_items": missing_items,
+                "economic_acceptance_ready_now": False,
+                "readiness_status": "blocked_broker_contract_note_and_actual_fill_reconciliation_missing",
+                "required_next_evidence": "Broker contract-note rows and broker/exchange fill records reconciled to Phase 12 order-formula charge components and net P&L.",
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def breakdown_coverage(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     sample_cols = set(inputs["trade_sample"].columns)
     rows = []
@@ -1037,6 +1150,8 @@ def write_report(
     trading: pd.DataFrame,
     economic_frontier: pd.DataFrame,
     risk_adjusted_frontier: pd.DataFrame,
+    broker_reconciliation: pd.DataFrame,
+    economic_reconciliation: pd.DataFrame,
     breakdowns: pd.DataFrame,
 ) -> None:
     catalog_summary = catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
@@ -1099,6 +1214,14 @@ def write_report(
         "",
         _markdown_table(risk_adjusted_frontier.sort_values("risk_adjusted_net_edge_bps", ascending=False).head(18)),
         "",
+        "## Broker Contract-Note Reconciliation Readiness",
+        "",
+        _markdown_table(broker_reconciliation),
+        "",
+        "## Economic Reconciliation Strategy Readiness",
+        "",
+        _markdown_table(economic_reconciliation),
+        "",
         "## Required Breakdown Coverage",
         "",
         _markdown_table(breakdown_summary),
@@ -1124,6 +1247,13 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     trading = trading_scoreboard(inputs)
     economic_frontier = economic_viability_frontier(inputs)
     risk_adjusted_frontier = risk_adjusted_economic_frontier(economic_frontier, inputs)
+    broker_reconciliation = broker_reconciliation_readiness_ledger(inputs)
+    economic_reconciliation = economic_reconciliation_strategy_summary(
+        economic_frontier,
+        risk_adjusted_frontier,
+        broker_reconciliation,
+        inputs["acceptance_summary"],
+    )
     breakdowns = breakdown_coverage(inputs)
     requirement_coverage = metric_requirement_coverage(inputs, catalog)
 
@@ -1140,6 +1270,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     trading.to_csv(output_dir / "trading_metric_scoreboard.csv", index=False)
     economic_frontier.to_csv(output_dir / "economic_viability_frontier.csv", index=False)
     risk_adjusted_frontier.to_csv(output_dir / "risk_adjusted_economic_frontier.csv", index=False)
+    broker_reconciliation.to_csv(output_dir / "broker_reconciliation_readiness.csv", index=False)
+    economic_reconciliation.to_csv(output_dir / "economic_reconciliation_strategy_summary.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
     requirement_coverage.to_csv(output_dir / "strategy_metric_requirement_coverage.csv", index=False)
@@ -1177,6 +1309,11 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "risk_adjusted_economic_joint_pass_rows": int(risk_adjusted_frontier["net_positive_and_risk_pass_proxy"].sum()) if len(risk_adjusted_frontier) else 0,
         "risk_adjusted_economic_retail_stress_joint_pass_rows": int(risk_adjusted_frontier["retail_stress_net_positive_and_risk_pass_proxy"].sum()) if len(risk_adjusted_frontier) else 0,
         "risk_adjusted_economic_risk_blocked_positive_rows": int((risk_adjusted_frontier["risk_adjusted_frontier_status"].astype(str) == "economic_positive_but_risk_blocked_proxy").sum()) if len(risk_adjusted_frontier) else 0,
+        "broker_reconciliation_readiness_rows": int(len(broker_reconciliation)),
+        "broker_reconciliation_proxy_formula_ready_rows": int(broker_reconciliation["proxy_formula_available_now"].astype(bool).sum()) if len(broker_reconciliation) else 0,
+        "broker_reconciliation_contract_note_ready_rows": int(broker_reconciliation["broker_contract_note_available_now"].astype(bool).sum()) if len(broker_reconciliation) else 0,
+        "economic_reconciliation_strategy_rows": int(len(economic_reconciliation)),
+        "economic_reconciliation_ready_strategies": int(economic_reconciliation["economic_acceptance_ready_now"].astype(bool).sum()) if len(economic_reconciliation) else 0,
         "markout_summary_rows": int(len(markouts)),
         "markout_horizons_bars": [1, 3, 6],
         "breakdown_rows": int(len(breakdowns)),
@@ -1203,6 +1340,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "trading_metric_scoreboard": str(output_dir / "trading_metric_scoreboard.csv"),
                 "economic_viability_frontier": str(output_dir / "economic_viability_frontier.csv"),
                 "risk_adjusted_economic_frontier": str(output_dir / "risk_adjusted_economic_frontier.csv"),
+                "broker_reconciliation_readiness": str(output_dir / "broker_reconciliation_readiness.csv"),
+                "economic_reconciliation_strategy_summary": str(output_dir / "economic_reconciliation_strategy_summary.csv"),
                 "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
                 "strategy_metric_requirement_coverage": str(output_dir / "strategy_metric_requirement_coverage.csv"),
                 "report": str(output_dir / "phase16_metrics_reporting_report.md"),
@@ -1228,6 +1367,8 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         trading,
         economic_frontier,
         risk_adjusted_frontier,
+        broker_reconciliation,
+        economic_reconciliation,
         breakdowns,
     )
 
@@ -1240,6 +1381,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--execution-summary", type=Path, default=Path("outputs/phase12/execution_summary.csv"))
     parser.add_argument("--trade-sample", type=Path, default=Path("outputs/phase12/trade_ledger_sample.parquet"))
     parser.add_argument("--risk-breach-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
+    parser.add_argument("--cost-schedule", type=Path, default=Path("outputs/phase12/cost_schedule.csv"))
+    parser.add_argument("--charge-component-catalog", type=Path, default=Path("outputs/phase12/charge_component_catalog.csv"))
+    parser.add_argument("--representative-charge-scenarios", type=Path, default=Path("outputs/phase12/representative_charge_scenarios.csv"))
     parser.add_argument("--features", type=Path, default=Path("outputs/phase9/tier_c/features_5m.parquet"))
     parser.add_argument("--acceptance-summary", type=Path, default=Path("outputs/phase15/strategy_acceptance_summary.csv"))
     parser.add_argument("--seed-plan", type=Path, default=Path("outputs/phase13/seed_plan.csv"))
@@ -1254,6 +1398,9 @@ def main() -> None:
         "execution_summary": args.execution_summary,
         "trade_sample": args.trade_sample,
         "risk_breach_severity": args.risk_breach_severity,
+        "cost_schedule": args.cost_schedule,
+        "charge_component_catalog": args.charge_component_catalog,
+        "representative_charge_scenarios": args.representative_charge_scenarios,
         "features": args.features,
         "acceptance_summary": args.acceptance_summary,
         "seed_plan": args.seed_plan,
