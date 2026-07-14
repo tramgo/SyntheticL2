@@ -1,0 +1,11 @@
+metric,value,description
+phase26_variants_registered,120,Strategy parameter/filter variants registered
+phase26_variant_profile_rows,282,Variant/profile replay summary rows
+phase26_total_replay_trades,542406,Total trades across all variant/profile replays
+phase26_positive_after_cost_rows,17,Variant/profile rows with positive mean net return after costs
+phase26_realistic_positive_after_cost_rows,0,Retail/stressed rows with positive mean net return after Zerodha-style costs
+phase26_zero_latency_positive_control_rows,17,Frictionless control rows that are positive but not retail survivors
+phase26_beats_best_baseline_rows,204,Variant/profile rows beating best baseline proxy
+phase26_salvage_candidate_rows,0,"Rows passing positive net, baseline, trade-count and proxy-risk filters"
+phase26_rejected_rows,282,Variant/profile rows rejected by at least one diagnostic
+phase26_acceptance_ready,0,"Parameter scan is execution diagnostic evidence, not acceptance evidence"

@@ -30,10 +30,10 @@ The current workspace contains:
 - 32 symbol partitions;
 - 50,205 Parquet batch files containing 620,853 tick rows;
 - approximately 1.764 GB of Parquet data;
-- 1–31 rows per Parquet file, with all files readable and using the same 54-column schema;
+- 1â€“31 rows per Parquet file, with all files readable and using the same 54-column schema;
 - 1,569 batch files for most symbols and 1,568 for GOLDBEES, JUNIORBEES and NIFTYBEES;
 - WebSocket-based tick-wise Zerodha updates inside the files;
-- typical observed per-symbol receive intervals of approximately 0.5–2 seconds, varying with symbol activity;
+- typical observed per-symbol receive intervals of approximately 0.5â€“2 seconds, varying with symbol activity;
 - an approximately 14-second file-flush cadence, which must not be confused with tick sampling cadence.
 
 The Azure manifest and local file counts agree. The three 1,568-row partitions are therefore treated as source-side capture differences, not incomplete downloads.
@@ -134,25 +134,25 @@ Use a hierarchical, regime-conditioned simulator rather than duplicating and per
 
 ```text
 Trading calendar
-    ↓
+    â†“
 Daily market regime
-    ↓
+    â†“
 Intraday regime schedule
-    ↓
+    â†“
 Market/index latent process
-    ↓
+    â†“
 Sector latent processes
-    ↓
+    â†“
 Ticker latent efficient prices
-    ↓
+    â†“
 Liquidity/spread/depth state
-    ↓
+    â†“
 Order-flow and trade events
-    ↓
+    â†“
 Top-five L2 snapshots/events
-    ↓
+    â†“
 Retail receive latency and data imperfections
-    ↓
+    â†“
 Parquet output
 ```
 
@@ -178,7 +178,7 @@ A simpler transparent simulator should be built before attempting deep generativ
 
 ## 4. Project Phases
 
-## Phase 0 — Intake Contract for the Real Sample Data
+## Phase 0 â€” Intake Contract for the Real Sample Data
 
 Before generation, establish a strict input contract.
 
@@ -186,7 +186,7 @@ Before generation, establish a strict input contract.
 
 Maintain two explicit intake classes.
 
-**Class A — periodic polling snapshot input:**
+**Class A â€” periodic polling snapshot input:**
 
 - one complete NSE trading day where possible;
 - clearly identifiable symbol and instrument token;
@@ -195,7 +195,7 @@ Maintain two explicit intake classes.
 - known polling/sampling cadence;
 - no claim that changes between snapshots were observed.
 
-**Class B — received WebSocket tick input (the current sample):**
+**Class B â€” received WebSocket tick input (the current sample):**
 
 - subscription-driven output containing every callback/update received by the collector;
 - raw receive ordering preserved with a strictly increasing local sequence;
@@ -247,7 +247,7 @@ Output an automated `data_quality_report.parquet` and human-readable Markdown re
 | All 32 requested symbols represented | Pass | Cross-sectional snapshot work may proceed |
 | Local files match source manifest | Pass | No download repair is currently required |
 | Five-level price/quantity/order fields present | Pass on inspected schema | Structural L2 profiling may proceed after full audit |
-| One or more rows per source file | Pass: 1–31 rows per file | Compaction is strongly recommended before repeated analysis |
+| One or more rows per source file | Pass: 1â€“31 rows per file | Compaction is strongly recommended before repeated analysis |
 | WebSocket tick-wise capture | Pass | Received-event profiling may proceed |
 | Receive ordering | Partial pass: receive UTC milliseconds plus monotonic nanoseconds are present | Verify ties and monotonicity before event reconstruction |
 | Connection/reconnect diagnostics in row schema | Not present in inspected 54-column schema | Gap/reconnect attribution remains limited |
@@ -257,7 +257,7 @@ No downstream work package may silently convert a failed or partial gate into a 
 
 ---
 
-## Phase 1 — Normalize and Reconstruct the Real Day
+## Phase 1 â€” Normalize and Reconstruct the Real Day
 
 ### 5.1 Canonical normalized schema
 
@@ -350,7 +350,7 @@ Important Phase 1 caveat: all 32 symbols have at least two receive gaps greater 
 
 ---
 
-## Phase 2 — Empirical Calibration from the Real Day
+## Phase 2 â€” Empirical Calibration from the Real Day
 
 For each ticker estimate the following from received ticks, while attaching uncertainty and one-day scope labels to every parameter.
 
@@ -453,7 +453,7 @@ Important Phase 2 caveat: regime-transition probabilities, shock frequencies and
 
 ---
 
-## Phase 3 — Regime Taxonomy
+## Phase 3 â€” Regime Taxonomy
 
 Use regimes at three levels:
 
@@ -548,7 +548,7 @@ Important Phase 3 caveat: these regime labels are engineering inputs for synthet
 
 ---
 
-## Phase 4 — Three-Month Synthetic Scenario Calendar
+## Phase 4 â€” Three-Month Synthetic Scenario Calendar
 
 Assume approximately 63 trading days.
 
@@ -591,7 +591,7 @@ The later 252-day synthetic year should include:
 - bull, bear and range-bound blocks;
 - multiple transitions;
 - at least 15 market-wide shocks;
-- at least 2–4 ticker-specific shocks per ticker;
+- at least 2â€“4 ticker-specific shocks per ticker;
 - several low-liquidity weeks;
 - expiry-like sessions;
 - event clusters;
@@ -617,7 +617,7 @@ Important Phase 4 caveat: this phase designs scenario coverage only. It does not
 
 ---
 
-## Phase 5 — Price Process
+## Phase 5 â€” Price Process
 
 ### 11.1 Hierarchical return model
 
@@ -684,7 +684,7 @@ The first completed run generated deterministic 5-minute OHLC synthetic price pa
 
 Important Phase 5 caveat: this is a price-path layer only. It does not yet generate executable L2 events, five-level market depth, retail feed batching, latency, fills or strategy PnL.
 
-## Phase 6 — Limit Order Book Generator
+## Phase 6 â€” Limit Order Book Generator
 
 ## 12. Recommended baseline L2 engine
 
@@ -795,7 +795,7 @@ Important Phase 6 caveat: this is a compact market-by-price state generator, not
 
 ---
 
-## Phase 7 — Synthetic Event and Shock Library
+## Phase 7 â€” Synthetic Event and Shock Library
 
 ## 13. Market-wide shocks
 
@@ -875,7 +875,7 @@ Important Phase 7 caveat: this phase defines the shock/event schedule and requir
 
 ---
 
-## Phase 8 — Simulate Zerodha Retail Feed Characteristics
+## Phase 8 â€” Simulate Zerodha Retail Feed Characteristics
 
 The output should resemble what a retail client receives, not an ideal exchange feed.
 
@@ -900,10 +900,10 @@ Support configurable:
 | Profile | Median | Tail behaviour |
 |---|---:|---|
 | Ideal research | 0 ms | no jitter |
-| Good retail | 50–100 ms | moderate tail |
-| Normal retail | 150–300 ms | occasional 500–1000 ms |
-| Stressed retail | 300–700 ms | long tail and bursts |
-| Disconnect scenario | N/A | 2–30 second gaps |
+| Good retail | 50â€“100 ms | moderate tail |
+| Normal retail | 150â€“300 ms | occasional 500â€“1000 ms |
+| Stressed retail | 300â€“700 ms | long tail and bursts |
+| Disconnect scenario | N/A | 2â€“30 second gaps |
 
 Do not claim these are measured Zerodha production latencies. They are test profiles and must later be calibrated from order and receive logs.
 
@@ -923,7 +923,7 @@ Important Phase 8 caveat: latency, batching, drop, duplicate, disconnect and out
 
 ---
 
-## Phase 9 — Data Products
+## Phase 9 â€” Data Products
 
 Generate three tiers.
 
@@ -989,7 +989,7 @@ The horizon-readiness gate in `outputs/horizon_readiness/` converts the Stage A1
 
 ---
 
-## Phase 10 — Storage and Size Optimization
+## Phase 10 â€” Storage and Size Optimization
 
 ## 19. Do not store expanded JSON
 
@@ -1053,7 +1053,7 @@ dataset/
         part-*.parquet
 ```
 
-Avoid excessive tiny files. Aim for approximately 128–512 MB Parquet files where practical.
+Avoid excessive tiny files. Aim for approximately 128â€“512 MB Parquet files where practical.
 
 **Current storage/query decision as of 2026-07-13:** keep Parquet/Zstandard as the durable storage format and use DuckDB as the local analytic query layer over Parquet/CSV views. Do not load high-volume tick or depth data into SQLite. SQLite may be introduced later only for a small transactional run registry, manual annotations or experiment metadata.
 
@@ -1065,7 +1065,7 @@ Generated artifacts are under `outputs/duckdb/`:
 - `duckdb_workspace_report.md`;
 - `duckdb_workspace_manifest.json`.
 
-The current DuckDB validation registers views over Stage A1 through Phase 25 outputs. SQL validation confirms the core row-count invariants across the compact real tick data, normalized/delta feature products, synthetic generation layers, execution/risk/metrics outputs, Phase 15 acceptance gates, Phase 16 metric and acceptance-gap ledgers, Phase 17 traceability, Phase 19 reproducibility artifacts, Phase 20 hardening outputs, the Phase 21 decision framework, the Phase 22 real-data integration roadmap, the Phase 23 key-risk register and the Phase 25 event replay expansion. Current headline counts include 620,853 compact tick rows, 620,853 normalized rows, 620,853 received-delta rows, 2,276,143 Phase 9 Tier A events, 2,259,039 Phase 9 Tier B/C rows, 756,000 Phase 9 Tier D 15-minute rows, 0 promoted Phase 15 strategies, 50 Phase 20 acceptance-hardening queue rows, 411 Phase 20 acceptance execution-roadmap rows, 7 Phase 20 acceptance execution milestones, 259 Phase 20 execution-roadmap rows with proxy evidence, 152 Phase 20 execution-roadmap rows missing required evidence, 9 met Phase 20 execution-roadmap proxy-registration rows, 88 Phase 20 risk-hardening rows, 88 Phase 20 economic-hardening rows, 99 Phase 20 predictive-hardening rows, 88 Phase 20 robustness-hardening rows, 48 Phase 20 realism-hardening rows, 4 Phase 20 M01 required broker/external evidence files, 0 currently available broker/external files, 40 Phase 20 M01 broker evidence schema rows, 5 Phase 20 M01 broker reconciliation tests, 44 Phase 20 M01 broker/external gap rows, 28 Phase 20 M02 strategy-support closure rows, 12 Phase 20 M02 feature-engineering rows, 6 Phase 20 M02 explicit non-alpha classification rows, 10 Phase 20 M02 proxy-to-acceptance upgrade rows, 66 Phase 20 M03 predictive-validation rows, 11 Phase 20 M03 calibrated-model-required rows, 22 Phase 20 M03 holdout/untouched-test rows, 11 Phase 20 M03 promotion-falsification rows, 0 Phase 20 M03 acceptance-met rows, 66 Phase 20 M04 robustness-execution rows, 22 Phase 20 M04 full-seed-required rows, 22 Phase 20 M04 walk-forward-required rows, 11 Phase 20 M04 parameter-smoothness-required rows, 11 Phase 20 M04 execution-profile-required rows, 11 Phase 20 M04 negative-control-required rows, 0 Phase 20 M04 acceptance-met rows, 121 Phase 20 M05 lifecycle/economic replay rows, 66 Phase 20 M05 risk-replay-required rows, 55 Phase 20 M05 economic-replay-required rows, 11 Phase 20 M05 broker-reconciliation-required rows, 33 Phase 20 M05 guardrail-validation-required rows, 0 Phase 20 M05 acceptance-met rows, 47 Phase 20 M06 holdout/realism rerun rows, 17 Phase 20 M06 holdout-rerun-required rows, 6 Phase 20 M06 quality-gate-required rows, 6 Phase 20 M06 feed-imperfection-required rows, 6 Phase 20 M06 pessimistic-execution-required rows, 6 Phase 20 M06 artifact-control-required rows, 0 Phase 20 M06 acceptance-met rows, 39 Phase 20 M07 real multi-day acceptance rows, 11 Phase 20 M07 economic-real-validation rows, 11 Phase 20 M07 predictive-real-holdout rows, 11 Phase 20 M07 robustness-real-rerun rows, 6 Phase 20 M07 realism-real-validation rows, 0 Phase 20 M07 acceptance-met rows, 192 Stage A2 capture-diagnostics rows, 17 Stage A2 required capture schema rows, 32 Stage A2 symbols evaluated, 1 current sample day available, 192 Stage A2 open contract rows, 0 Stage A2 acceptance-met rows, 5 Stage B1 development symbols, 1 Stage B1 ETF symbol, 70,875 Stage B1 L2 subset rows, 7 Stage B1 structural-check rows, 7 Stage B1 passed structural checks, 0 Stage B1 failed structural checks, 5 Stage B2 development symbols, 1 Stage B2 event-driven 1s-ready symbol, 8 Stage B2 selected scenario days, 15,061 Stage B2 raw-event rows, 14,952 Stage B2 event-feature rows, 2,400 Stage B2 event-driven 1s feature rows, 7 Stage B2 proof-check rows, 7 Stage B2 passed proof checks, 0 Stage B2 failed proof checks, 32 Stage C symbols, 20 Stage C selected trading days, 3 Stage C selected seed rows, 239,173 Stage C feature rows, 15 Stage C strategy proxy run rows, 21 Stage C baseline proxy run rows, 7 Stage C check rows, 7 Stage C passed checks, 0 Stage C failed checks, 32 Stage D symbols, 3 Stage D quarter profiles, 63 Stage D minimum days per profile, 2,259,228 Stage D feature rows, 99 Stage D strategy proxy rows, 27 Stage D control/risk rows, 9 Stage D check rows, 9 Stage D passed checks, 0 Stage D failed checks, 7 Stage E prerequisite rows, 3 Stage E passing prerequisites, 4 Stage E blocking prerequisites, 0 Stage E extension-allowed rows, 9 Phase 21 decision rules, 1 Phase 21 active current decision, 0 Phase 21 extension/paper-ready rows, 6 Phase 22 real-data milestone rows, 0 Phase 22 Class B event-grade days, 54 Phase 22 recalibration task rows, 0 Phase 22 ready recalibration tasks, 0 Phase 22 extension/paper-ready rows, 5 Phase 23 key risks, 5 Phase 23 open acceptance-blocking risks, 31 Phase 23 mitigation rows, 7 Phase 23 promotion-path steps, 0 Phase 23 promotion-ready rows, 113,848 Phase 25 event replay trade rows, 24 Phase 25 model/profile rows, 5 Phase 25 strategy models replayed, 0 Phase 25 positive strategy/profile rows, 3 Phase 25 beats-best-baseline rows and 0 Phase 25 acceptance-ready rows. The full current SQL rollup is preserved in `outputs/duckdb/duckdb_workspace_report.md`.
+The current DuckDB validation registers views over Stage A1 through Phase 26 outputs. SQL validation confirms the core row-count invariants across the compact real tick data, normalized/delta feature products, synthetic generation layers, execution/risk/metrics outputs, Phase 15 acceptance gates, Phase 16 metric and acceptance-gap ledgers, Phase 17 traceability, Phase 19 reproducibility artifacts, Phase 20 hardening outputs, the Phase 21 decision framework, the Phase 22 real-data integration roadmap, the Phase 23 key-risk register, the Phase 25 event replay expansion and the Phase 26 strategy-salvage scan. Current headline counts include 620,853 compact tick rows, 620,853 normalized rows, 620,853 received-delta rows, 2,276,143 Phase 9 Tier A events, 2,259,039 Phase 9 Tier B/C rows, 756,000 Phase 9 Tier D 15-minute rows, 0 promoted Phase 15 strategies, 50 Phase 20 acceptance-hardening queue rows, 411 Phase 20 acceptance execution-roadmap rows, 7 Phase 20 acceptance execution milestones, 259 Phase 20 execution-roadmap rows with proxy evidence, 152 Phase 20 execution-roadmap rows missing required evidence, 9 met Phase 20 execution-roadmap proxy-registration rows, 88 Phase 20 risk-hardening rows, 88 Phase 20 economic-hardening rows, 99 Phase 20 predictive-hardening rows, 88 Phase 20 robustness-hardening rows, 48 Phase 20 realism-hardening rows, 4 Phase 20 M01 required broker/external evidence files, 0 currently available broker/external files, 40 Phase 20 M01 broker evidence schema rows, 5 Phase 20 M01 broker reconciliation tests, 44 Phase 20 M01 broker/external gap rows, 28 Phase 20 M02 strategy-support closure rows, 12 Phase 20 M02 feature-engineering rows, 6 Phase 20 M02 explicit non-alpha classification rows, 10 Phase 20 M02 proxy-to-acceptance upgrade rows, 66 Phase 20 M03 predictive-validation rows, 11 Phase 20 M03 calibrated-model-required rows, 22 Phase 20 M03 holdout/untouched-test rows, 11 Phase 20 M03 promotion-falsification rows, 0 Phase 20 M03 acceptance-met rows, 66 Phase 20 M04 robustness-execution rows, 22 Phase 20 M04 full-seed-required rows, 22 Phase 20 M04 walk-forward-required rows, 11 Phase 20 M04 parameter-smoothness-required rows, 11 Phase 20 M04 execution-profile-required rows, 11 Phase 20 M04 negative-control-required rows, 0 Phase 20 M04 acceptance-met rows, 121 Phase 20 M05 lifecycle/economic replay rows, 66 Phase 20 M05 risk-replay-required rows, 55 Phase 20 M05 economic-replay-required rows, 11 Phase 20 M05 broker-reconciliation-required rows, 33 Phase 20 M05 guardrail-validation-required rows, 0 Phase 20 M05 acceptance-met rows, 47 Phase 20 M06 holdout/realism rerun rows, 17 Phase 20 M06 holdout-rerun-required rows, 6 Phase 20 M06 quality-gate-required rows, 6 Phase 20 M06 feed-imperfection-required rows, 6 Phase 20 M06 pessimistic-execution-required rows, 6 Phase 20 M06 artifact-control-required rows, 0 Phase 20 M06 acceptance-met rows, 39 Phase 20 M07 real multi-day acceptance rows, 11 Phase 20 M07 economic-real-validation rows, 11 Phase 20 M07 predictive-real-holdout rows, 11 Phase 20 M07 robustness-real-rerun rows, 6 Phase 20 M07 realism-real-validation rows, 0 Phase 20 M07 acceptance-met rows, 192 Stage A2 capture-diagnostics rows, 17 Stage A2 required capture schema rows, 32 Stage A2 symbols evaluated, 1 current sample day available, 192 Stage A2 open contract rows, 0 Stage A2 acceptance-met rows, 5 Stage B1 development symbols, 1 Stage B1 ETF symbol, 70,875 Stage B1 L2 subset rows, 7 Stage B1 structural-check rows, 7 Stage B1 passed structural checks, 0 Stage B1 failed structural checks, 5 Stage B2 development symbols, 1 Stage B2 event-driven 1s-ready symbol, 8 Stage B2 selected scenario days, 15,061 Stage B2 raw-event rows, 14,952 Stage B2 event-feature rows, 2,400 Stage B2 event-driven 1s feature rows, 7 Stage B2 proof-check rows, 7 Stage B2 passed proof checks, 0 Stage B2 failed proof checks, 32 Stage C symbols, 20 Stage C selected trading days, 3 Stage C selected seed rows, 239,173 Stage C feature rows, 15 Stage C strategy proxy run rows, 21 Stage C baseline proxy run rows, 7 Stage C check rows, 7 Stage C passed checks, 0 Stage C failed checks, 32 Stage D symbols, 3 Stage D quarter profiles, 63 Stage D minimum days per profile, 2,259,228 Stage D feature rows, 99 Stage D strategy proxy rows, 27 Stage D control/risk rows, 9 Stage D check rows, 9 Stage D passed checks, 0 Stage D failed checks, 7 Stage E prerequisite rows, 3 Stage E passing prerequisites, 4 Stage E blocking prerequisites, 0 Stage E extension-allowed rows, 9 Phase 21 decision rules, 1 Phase 21 active current decision, 0 Phase 21 extension/paper-ready rows, 6 Phase 22 real-data milestone rows, 0 Phase 22 Class B event-grade days, 54 Phase 22 recalibration task rows, 0 Phase 22 ready recalibration tasks, 0 Phase 22 extension/paper-ready rows, 5 Phase 23 key risks, 5 Phase 23 open acceptance-blocking risks, 31 Phase 23 mitigation rows, 7 Phase 23 promotion-path steps, 0 Phase 23 promotion-ready rows, 113,848 Phase 25 event replay trade rows, 24 Phase 25 model/profile rows, 5 Phase 25 strategy models replayed, 0 Phase 25 positive strategy/profile rows, 3 Phase 25 beats-best-baseline rows, 0 Phase 25 acceptance-ready rows, 542,406 Phase 26 strategy-salvage trade rows, 120 Phase 26 registered variants, 282 Phase 26 variant/profile rows, 0 Phase 26 realistic positive rows after costs, 17 Phase 26 zero-latency positive control rows, 0 Phase 26 salvage candidate rows, 282 Phase 26 rejected variant/profile rows and 0 Phase 26 acceptance-ready rows. The full current SQL rollup is preserved in `outputs/duckdb/duckdb_workspace_report.md`.
 
 **Current implementation status as of 2026-07-13:** Phase 10 has an initial runnable storage optimizer in `scripts/run_phase10_storage_optimizer.py`, backed by `src/synthetic_l2/phase10_storage_optimizer.py`. The older `scripts/run_phase10_storage_size_estimator.py` entrypoint remains as a compatibility wrapper.
 
@@ -1095,7 +1095,7 @@ For maximum compression, store:
 
 - full snapshot at session start;
 - then only changed fields;
-- periodic full checkpoint every 30–300 seconds;
+- periodic full checkpoint every 30â€“300 seconds;
 - full checkpoint after reconnect.
 
 Advantages:
@@ -1144,17 +1144,17 @@ Produce conservative, expected and aggressive estimates.
 
 | Profile | Purpose | Approximate event retention |
 |---|---|---|
-| Small | unit/integration tests | 1–5 tickers, 5–10 days |
+| Small | unit/integration tests | 1â€“5 tickers, 5â€“10 days |
 | Medium | initial strategy screening | 32 instruments, 63 days, controlled event rates |
 | Full | annual stress study | 32 instruments, 252 days |
-| Dense | microstructure stress | selected 5–10 tickers at high event rate |
+| Dense | microstructure stress | selected 5â€“10 tickers at high event rate |
 | Feature-only | rapid ML experiments | resampled feature tables, no raw replay |
 
 ---
 
-## Phase 11 — Strategy Validation Matrix
+## Phase 11 â€” Strategy Validation Matrix
 
-This phase defines the eventual experiments. The current tick-wise day supports feature engineering, pipeline tests and within-day falsification, but not robust strategy acceptance. S01–S11 promotion decisions require multiple real days plus multi-seed synthetic controls; any result based primarily on this one day must be labelled preliminary and day-specific.
+This phase defines the eventual experiments. The current tick-wise day supports feature engineering, pipeline tests and within-day falsification, but not robust strategy acceptance. S01â€“S11 promotion decisions require multiple real days plus multi-seed synthetic controls; any result based primarily on this one day must be labelled preliminary and day-specific.
 
 **Current implementation status as of 2026-07-14:** Phase 11 has an initial runnable strategy validation matrix and signal-diagnostics implementation in `scripts/run_phase11_strategy_validation_matrix.py`, backed by `src/synthetic_l2/phase11_strategy_validation_matrix.py`, plus an S01-S11 module registry in `scripts/run_phase11_strategy_modules.py`, backed by `src/synthetic_l2/phase11_strategy_modules.py`.
 
@@ -1171,7 +1171,7 @@ Generated artifacts are under `outputs/phase11/`:
 - `strategy_module_registry_report.md`;
 - `strategy_module_registry_manifest.json`.
 
-The first completed run emitted 11 strategy rows covering S01â€“S11, 77 baseline-requirement rows, 65 scenario-requirement rows and 59 metric-requirement rows. All strategies are explicitly marked `promotion_allowed_now = false` with the evidence label `engineering_and_within_day_falsification_only`.
+The first completed run emitted 11 strategy rows covering S01Ã¢â‚¬â€œS11, 77 baseline-requirement rows, 65 scenario-requirement rows and 59 metric-requirement rows. All strategies are explicitly marked `promotion_allowed_now = false` with the evidence label `engineering_and_within_day_falsification_only`.
 
 Important Phase 11 caveat: this is an experiment-control matrix, not a backtest. It defines what must be tested and which baselines/scenarios/metrics are required before any promotion decision.
 
@@ -1213,7 +1213,7 @@ The key test is whether L2 improves performance over these baselines.
 
 ---
 
-## 27. S01 — Momentum/Breakout + MLOFI
+## 27. S01 â€” Momentum/Breakout + MLOFI
 
 ### Hypothesis
 
@@ -1257,7 +1257,7 @@ Price breakouts confirmed by persistent five-level OFI have:
 
 ---
 
-## 28. S02 — Pure Multi-Level OFI
+## 28. S02 â€” Pure Multi-Level OFI
 
 ### Hypothesis
 
@@ -1290,12 +1290,12 @@ MLOFI predicts future mid-price movement beyond static imbalance.
 - calibration;
 - return by signal decile;
 - net edge after crossing spread;
-- incremental value of levels 2–5;
+- incremental value of levels 2â€“5;
 - feature stability across regimes.
 
 ---
 
-## 29. S03 — Liquidity-Vacuum Breakout
+## 29. S03 â€” Liquidity-Vacuum Breakout
 
 ### Hypothesis
 
@@ -1331,7 +1331,7 @@ Reject if profitability depends mainly on:
 
 ---
 
-## 30. S04 — Trade-Flow + Depth Confirmation
+## 30. S04 â€” Trade-Flow + Depth Confirmation
 
 ### Hypothesis
 
@@ -1355,7 +1355,7 @@ Validate each interpretation separately by regime.
 
 ---
 
-## 31. S05 — Microprice Filter
+## 31. S05 â€” Microprice Filter
 
 ### Hypothesis
 
@@ -1380,7 +1380,7 @@ Do not prioritize microprice as a standalone annual-return strategy.
 
 ---
 
-## 32. S06 — Absorption and Exhaustion
+## 32. S06 â€” Absorption and Exhaustion
 
 ### Hypothesis
 
@@ -1399,7 +1399,7 @@ Because top-five retail depth cannot identify individual orders, label this as *
 
 ---
 
-## 33. S07 — Mean Reversion after Imbalance
+## 33. S07 â€” Mean Reversion after Imbalance
 
 ### Hypothesis
 
@@ -1414,7 +1414,7 @@ Compare regime-aware versus regime-unaware performance.
 
 ---
 
-## 34. S08 — Cross-Ticker/Market Lead-Lag OFI
+## 34. S08 â€” Cross-Ticker/Market Lead-Lag OFI
 
 ### Hypothesis
 
@@ -1424,9 +1424,9 @@ Possible hierarchy:
 
 ```text
 market latent factor
-  → sector factor
-    → leader ticker
-      → follower ticker
+  â†’ sector factor
+    â†’ leader ticker
+      â†’ follower ticker
 ```
 
 Synthetic test sets must include:
@@ -1442,7 +1442,7 @@ A strategy that profits only when the simulator explicitly embeds lead-lag is no
 
 ---
 
-## 35. S09 — Queue-Imbalance Scalping
+## 35. S09 â€” Queue-Imbalance Scalping
 
 Use as a benchmark.
 
@@ -1456,7 +1456,7 @@ Do not advance merely because classification accuracy is above 50%.
 
 ---
 
-## 36. S10 — Passive Market Making
+## 36. S10 â€” Passive Market Making
 
 Synthetic testing can help develop inventory/risk logic but cannot validate real queue fills from shallow market-by-price data.
 
@@ -1481,7 +1481,7 @@ Treat the pessimistic model as the decision model.
 
 ---
 
-## 37. S11 — Spoof-Like Wall Filter
+## 37. S11 â€” Spoof-Like Wall Filter
 
 Use only as a risk feature:
 
@@ -1495,7 +1495,7 @@ Do not classify participants or assert market manipulation.
 
 ---
 
-## Phase 12 — Backtest and Execution Simulator
+## Phase 12 â€” Backtest and Execution Simulator
 
 **Current implementation status as of 2026-07-14:** Phase 12 has an initial runnable marketable-order execution simulator in `scripts/run_phase12_execution_simulator.py`, backed by `src/synthetic_l2/phase12_execution_simulator.py`, a sampled order-lifecycle and risk-control proxy in `scripts/run_phase12_order_lifecycle_risk.py`, backed by `src/synthetic_l2/phase12_order_lifecycle_risk.py`, and an event-driven order-lifecycle backtester proxy in `scripts/run_phase12_event_backtester.py`, backed by `src/synthetic_l2/phase12_event_backtester.py`.
 
@@ -1599,7 +1599,7 @@ Use at least:
 
 ---
 
-## Phase 13 — Experiment Design
+## Phase 13 â€” Experiment Design
 
 Superseded Phase 13 note: an older artifact list remains below for continuity, but the authoritative current Phase 13 implementation status is recorded after the negative-control requirements.
 
@@ -1614,7 +1614,7 @@ Generated artifacts are under `outputs/phase13/`:
 - `negative_control_registry.csv`;
 - `experiment_registry.csv`.
 
-The first completed run created the planned 30/15/18 day split for each 63-day quarter profile, producing 189 split rows with `no_shuffle = true`. It created 30 seed-plan rows: 10 target seeds per quarter profile, with the first 3 seeds marked as initial engineering seeds. It also generated 48 walk-forward folds, 33 strategy/profile experiment-registry rows, 33 predeclared parameter-grid rows and 99 mandatory negative-control rows across S01â€“S11.
+The first completed run created the planned 30/15/18 day split for each 63-day quarter profile, producing 189 split rows with `no_shuffle = true`. It created 30 seed-plan rows: 10 target seeds per quarter profile, with the first 3 seeds marked as initial engineering seeds. It also generated 48 walk-forward folds, 33 strategy/profile experiment-registry rows, 33 predeclared parameter-grid rows and 99 mandatory negative-control rows across S01Ã¢â‚¬â€œS11.
 
 Superseded Phase 13 caveat: see the current Phase 13 implementation block below for the active artifact names and counts.
 
@@ -1713,7 +1713,7 @@ Important Phase 13 caveat: the run ledgers close the bookkeeping gap between a p
 
 ---
 
-## Phase 14 — Validation of Synthetic Data Quality
+## Phase 14 â€” Validation of Synthetic Data Quality
 
 Synthetic data must be validated before strategy results are examined.
 
@@ -1838,7 +1838,7 @@ When regime controls are changed, verify expected changes:
 
 ---
 
-## Phase 15 — Strategy Acceptance Gates
+## Phase 15 â€” Strategy Acceptance Gates
 
 A strategy may advance from synthetic screening only if it passes all applicable gates.
 
@@ -1853,7 +1853,7 @@ A strategy may advance from synthetic screening only if it passes all applicable
 ## 55. Economic gate
 
 - positive after realistic costs;
-- survives 25–50% slippage increase;
+- survives 25â€“50% slippage increase;
 - survives retail latency;
 - sufficient expected move relative to spread;
 - acceptable turnover.
@@ -1899,7 +1899,7 @@ Important Phase 15 caveat: this phase is the promotion gate. A strategy may only
 
 ---
 
-## Phase 16 — Metrics and Reporting
+## Phase 16 â€” Metrics and Reporting
 
 ## 59. Predictive metrics
 
@@ -1981,9 +1981,9 @@ Important Phase 16 caveat: these reports are current-evidence scoreboards, not p
 
 ---
 
-## Phase 17 — Implementation Work Packages
+## Phase 17 â€” Implementation Work Packages
 
-## WP1 — Data intake and audit
+## WP1 â€” Data intake and audit
 
 Deliverables:
 
@@ -1993,7 +1993,7 @@ Deliverables:
 - size report;
 - canonical Parquet conversion.
 
-## WP2 — Feature and event reconstruction
+## WP2 â€” Feature and event reconstruction
 
 Deliverables:
 
@@ -2006,7 +2006,7 @@ Deliverables:
 - book shape;
 - regime-independent baseline features.
 
-## WP3 — Regime/scenario framework
+## WP3 â€” Regime/scenario framework
 
 Deliverables:
 
@@ -2016,7 +2016,7 @@ Deliverables:
 - intraday state generator;
 - shock injector.
 
-## WP4 — Price and cross-ticker simulator
+## WP4 â€” Price and cross-ticker simulator
 
 Deliverables:
 
@@ -2026,7 +2026,7 @@ Deliverables:
 - correlation controls;
 - price-grid enforcement.
 
-## WP5 — L2 event simulator
+## WP5 â€” L2 event simulator
 
 Deliverables:
 
@@ -2036,7 +2036,7 @@ Deliverables:
 - spread/depth dynamics;
 - activity seasonality.
 
-## WP6 — Retail feed emulator
+## WP6 â€” Retail feed emulator
 
 Deliverables:
 
@@ -2047,7 +2047,7 @@ Deliverables:
 - reconnects;
 - asynchronous ticker stream.
 
-## WP7 — Storage pipeline
+## WP7 â€” Storage pipeline
 
 Deliverables:
 
@@ -2057,7 +2057,7 @@ Deliverables:
 - replay tool;
 - metadata manifest.
 
-## WP8 — Backtester
+## WP8 â€” Backtester
 
 Deliverables:
 
@@ -2069,7 +2069,7 @@ Deliverables:
 - fees;
 - risk controls.
 
-## WP9 — Strategy suite
+## WP9 â€” Strategy suite
 
 Deliverables:
 
@@ -2078,7 +2078,7 @@ Deliverables:
 - baseline strategies;
 - parameter registry.
 
-## WP10 — Validation and reporting
+## WP10 â€” Validation and reporting
 
 Deliverables:
 
@@ -2106,7 +2106,7 @@ Important Phase 17 caveat: this is a traceability and implementation-backlog lay
 
 ---
 
-## Phase 18 — Suggested Technology Stack
+## Phase 18 â€” Suggested Technology Stack
 
 | Component | Suggested options |
 |---|---|
@@ -2141,7 +2141,7 @@ Important Phase 18 caveat: this phase deliberately keeps the stack single-machin
 
 ---
 
-## Phase 19 — Reproducibility
+## Phase 19 â€” Reproducibility
 
 Every generated partition must record:
 
@@ -2178,13 +2178,13 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 44 phase/workspace/dashboard/decision manifests, producing 440 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 44 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 45 phase/workspace/dashboard/decision manifests, producing 450 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 45 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 440 field-level remediation rows. All 440 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 450 field-level remediation rows. All 450 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
-The normalized manifest overlay still creates exact-field manifest overlays for all 44 audited artifacts. The overlay now has 44 exact-field-ready artifacts and 440 normalized field rows, with all 440 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
+The normalized manifest overlay still creates exact-field manifest overlays for all 45 audited artifacts. The overlay now has 45 exact-field-ready artifacts and 450 normalized field rows, with all 450 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
-Important Phase 19 caveat: this phase now proves native reproducibility metadata coverage for the 44 audited manifests, not byte-for-byte deterministic regeneration of every large Parquet/table artifact and not coverage for future artifact classes that are not yet registered in the Phase 19 manifest-candidate list. New phases or dashboards must be added to the audit candidate list and emit the same normalized manifest schema before they can be treated as exact-regeneration-ready.
+Important Phase 19 caveat: this phase now proves native reproducibility metadata coverage for the 45 audited manifests, not byte-for-byte deterministic regeneration of every large Parquet/table artifact and not coverage for future artifact classes that are not yet registered in the Phase 19 manifest-candidate list. New phases or dashboards must be added to the audit candidate list and emit the same normalized manifest schema before they can be treated as exact-regeneration-ready.
 
 The regression guardrail is `python scripts/run_reproducibility_gate.py`. It fails if the 44/44 native exact-ready invariant, zero missing/unreadable manifests, 44/44 normalized-overlay readiness, zero normalizer-default fields, or `complete_exact`-only remediation state regresses.
 
@@ -2214,7 +2214,7 @@ The current completed Phase 20 run converts the 50 Phase 15 blocker rows and Pha
 
 Important Phase 20 caveat: the ranking is deterministic blocker triage based on current evidence, not an optimization proof. It should guide the next implementation sequence, but it does not relax any Phase 15 acceptance gate.
 
-### Phase 20 M01 — Broker/external evidence contract
+### Phase 20 M01 â€” Broker/external evidence contract
 
 **Current implementation status as of 2026-07-14:** the first Phase 20 execution milestone now has a runnable broker/external evidence intake contract in `scripts/run_phase20_m01_broker_evidence_contract.py`, backed by `src/synthetic_l2/phase20_m01_broker_evidence_contract.py`. This milestone translates the M01 broker/external reconciliation roadmap rows into required files, required fields, reconciliation tests and gap ledgers. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2232,7 +2232,7 @@ The current completed run defines 4 required broker/external evidence files: bro
 
 Important Phase 20 M01 caveat: the contract is an intake and validation specification. Broker/exchange records, contract notes and strategy-order linkage must still be captured or imported before the risk and economic gates can use this milestone as acceptance evidence.
 
-### Phase 20 M02 — Strategy support and registry closure contract
+### Phase 20 M02 â€” Strategy support and registry closure contract
 
 **Current implementation status as of 2026-07-14:** the second Phase 20 execution milestone now has a runnable strategy-support and registry closure contract in `scripts/run_phase20_m02_strategy_support_contract.py`, backed by `src/synthetic_l2/phase20_m02_strategy_support_contract.py`. This milestone translates M02 roadmap rows into explicit strategy support decisions, acceptance criteria, support-gap summaries and per-strategy required actions. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2249,7 +2249,7 @@ The current completed run defines 4 strategy-support acceptance criteria coverin
 
 Important Phase 20 M02 caveat: this contract clarifies the support work and classification decisions required before acceptance reruns. It does not implement the missing features, does not register S10/S11 as alpha strategies, and does not relax the Phase 15 promotion gate.
 
-### Phase 20 M03 — Predictive validation contract
+### Phase 20 M03 â€” Predictive validation contract
 
 **Current implementation status as of 2026-07-14:** the third Phase 20 execution milestone now has a runnable predictive validation contract in `scripts/run_phase20_m03_predictive_validation_contract.py`, backed by `src/synthetic_l2/phase20_m03_predictive_validation_contract.py`. This milestone consolidates current Phase 16 baseline, holdout, feature-stability and promotion-falsification proxy diagnostics into an explicit predictive acceptance contract. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2266,7 +2266,7 @@ The current completed run defines 6 predictive acceptance criteria covering cali
 
 Important Phase 20 M03 caveat: this contract records predictive validation requirements and current blocker evidence. It does not train calibrated models, does not rerun multi-seed/walk-forward holdouts, does not clear the predictive promotion-falsification checklist and does not relax the Phase 15 promotion gate.
 
-### Phase 20 M04 — Robustness execution contract
+### Phase 20 M04 â€” Robustness execution contract
 
 **Current implementation status as of 2026-07-14:** the fourth Phase 20 execution milestone now has a runnable robustness execution contract in `scripts/run_phase20_m04_robustness_execution_contract.py`, backed by `src/synthetic_l2/phase20_m04_robustness_execution_contract.py`. This milestone joins the M04 roadmap rows to current Phase 13 seed, walk-forward, parameter, execution-profile and negative-control proxy evidence. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2283,7 +2283,7 @@ The current completed run defines 5 robustness execution acceptance criteria cov
 
 Important Phase 20 M04 caveat: this contract records robustness execution requirements and current blocker evidence. It does not execute the full Phase 13 seed plan, does not run the walk-forward windows, does not expand parameter neighborhoods, does not replace proxy fills/costs with acceptance-grade execution evidence and does not relax the Phase 15 promotion gate.
 
-### Phase 20 M05 — Lifecycle risk and economic replay contract
+### Phase 20 M05 â€” Lifecycle risk and economic replay contract
 
 **Current implementation status as of 2026-07-14:** the fifth Phase 20 execution milestone now has a runnable lifecycle risk and economic replay contract in `scripts/run_phase20_m05_lifecycle_economic_replay_contract.py`, backed by `src/synthetic_l2/phase20_m05_lifecycle_economic_replay_contract.py`. This milestone joins the M05 roadmap rows to current Phase 12 lifecycle risk, risk-limit, cost and execution proxy evidence plus Phase 16 economic frontier and reconciliation summaries. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2300,7 +2300,7 @@ The current completed run defines 8 lifecycle/economic acceptance criteria cover
 
 Important Phase 20 M05 caveat: this contract records lifecycle risk and economic replay requirements and current blocker evidence. It does not run an acceptance-grade event/tick lifecycle engine, does not reconcile broker/exchange fills or contract notes, does not convert proxy risk/economic rows into acceptance evidence and does not relax the Phase 15 promotion gate.
 
-### Phase 20 M06 — Holdout generator and realism rerun contract
+### Phase 20 M06 â€” Holdout generator and realism rerun contract
 
 **Current implementation status as of 2026-07-14:** the sixth Phase 20 execution milestone now has a runnable holdout-generator and realism rerun contract in `scripts/run_phase20_m06_realism_rerun_contract.py`, backed by `src/synthetic_l2/phase20_m06_realism_rerun_contract.py`. This milestone joins the M06 roadmap rows to current Phase 14 quality/holdout realism diagnostics, Phase 13 robustness proxy evidence and Phase 11 strategy support metadata. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2317,7 +2317,7 @@ The current completed run defines 6 holdout/realism rerun acceptance criteria co
 
 Important Phase 20 M06 caveat: this contract records holdout-generator and realism rerun requirements and current blocker evidence. It does not run strategy P&L/signal/risk reruns on holdout generator profiles, does not run pessimistic execution realism, does not run artifact controls and does not relax the Phase 15 promotion gate.
 
-### Phase 20 M07 — Real multi-day acceptance validation contract
+### Phase 20 M07 â€” Real multi-day acceptance validation contract
 
 **Current implementation status as of 2026-07-14:** the seventh Phase 20 execution milestone now has a runnable real multi-day acceptance validation contract in `scripts/run_phase20_m07_real_multiday_acceptance_contract.py`, backed by `src/synthetic_l2/phase20_m07_real_multiday_acceptance_contract.py`. This milestone joins the M07 roadmap rows to current one-day real sample diagnostics, horizon-readiness evidence, Phase 16 economic/predictive summaries, Phase 13 robustness evidence, Phase 14 holdout realism evidence and Phase 20 M02 strategy-support decisions. It is not acceptance evidence and does not make any strategy promotion-ready.
 
@@ -2336,9 +2336,9 @@ Important Phase 20 M07 caveat: this contract records final real multi-day accept
 
 ---
 
-## Phase 20 — Initial Execution Sequence
+## Phase 20 â€” Initial Execution Sequence
 
-### Stage A1 — Current one-day tick-stream audit
+### Stage A1 â€” Current one-day tick-stream audit
 
 1. ingest the supplied Parquet files;
 2. infer and document schema;
@@ -2369,7 +2369,7 @@ The first completed run produced 32 compact per-symbol files with 620,853 total 
 
 Important Stage A1 caveat: under the current dense full-session 90% bin-coverage rule, all symbols are below the 1-second regular-panel gate, while 30 of 32 pass the 5-second gate. This does not mean 1-second/sub-second ticks are absent. One-second features are conditionally supported by symbol and time window, especially active/open windows; they must use event-driven ticks or window-specific coverage/staleness labels rather than a blanket full-session dense-panel assumption.
 
-### Stage A2 — Capture-diagnostics and multi-day expansion
+### Stage A2 â€” Capture-diagnostics and multi-day expansion
 
 In parallel with initial one-day engineering:
 
@@ -2377,9 +2377,9 @@ In parallel with initial one-day engineering:
 2. add or verify local sequences, connection boundaries and dropped-message diagnostics;
 3. confirm actual callback cadence and timestamp semantics;
 4. compact without resampling or losing event order;
-5. capture at least 5–10 complete days for initial normal-day event calibration.
+5. capture at least 5â€“10 complete days for initial normal-day event calibration.
 
-**Stage A2 exit gate:** at least 5–10 complete, diagnostically sound days are available for initial normal-day variability and event-model calibration. One-day feature/pipeline work may proceed before this gate, but strategy robustness or promotion claims may not.
+**Stage A2 exit gate:** at least 5â€“10 complete, diagnostically sound days are available for initial normal-day variability and event-model calibration. One-day feature/pipeline work may proceed before this gate, but strategy robustness or promotion claims may not.
 
 **Current implementation status as of 2026-07-14:** Stage A2 now has a runnable capture-diagnostics and multi-day expansion contract in `scripts/run_stage_a2_capture_diagnostics_contract.py`, backed by `src/synthetic_l2/stage_a2_capture_diagnostics_contract.py`. This is a capture/readiness contract, not evidence that the multi-day gate has passed.
 
@@ -2397,7 +2397,7 @@ The current completed run defines 6 capture-diagnostic criteria covering multi-d
 
 Important Stage A2 caveat: this contract does not collect additional days and does not make strategy robustness or promotion claims. It makes the capture-side diagnostics explicit so future Class B days can be accepted or rejected consistently before recalibration and real multi-day validation.
 
-### Stage B1 — Received-tick structural synthetic proof
+### Stage B1 â€” Received-tick structural synthetic proof
 
 Using the current Class B evidence, generate a small proof for:
 
@@ -2406,7 +2406,7 @@ Using the current Class B evidence, generate a small proof for:
 - five-level book states at a cadence no finer than the real evidence used for validation;
 - deterministic replay, price-grid, spread, depth-ordering and storage checks.
 
-Do not use Stage B1 to accept or reject S01–S11 profitability. Its purpose is generator engineering, received-tick feature verification and falsification of structural defects.
+Do not use Stage B1 to accept or reject S01â€“S11 profitability. Its purpose is generator engineering, received-tick feature verification and falsification of structural defects.
 
 **Current implementation status as of 2026-07-14:** Stage B1 now has a runnable received-tick structural synthetic proof in `scripts/run_stage_b1_structural_synthetic_proof.py`, backed by `src/synthetic_l2/stage_b1_structural_synthetic_proof.py`. This is a generator-engineering structural proof, not profitability, robustness or strategy-promotion evidence.
 
@@ -2424,7 +2424,7 @@ The current completed run selects 5 development instruments: `ADANIPORTS`, `AXIS
 
 Important Stage B1 caveat: this proof only verifies structural generator mechanics over a small development subset. It does not use Stage B1 to accept or reject S01-S11 profitability, and it does not replace the Stage A2 multi-day capture gate, Stage B2 event-driven proof, medium pilot, three-month study or real holdout gates.
 
-### Stage B2 — Event-driven synthetic proof
+### Stage B2 â€” Event-driven synthetic proof
 
 Generate:
 
@@ -2457,7 +2457,7 @@ Important Stage B2 caveat: this proof validates event-driven artifact mechanics 
 
 This stage may start after Stage A1. Validate event-level and statistical realism against the current Class B day, but keep all strategy results preliminary and day-specific until Stage A2 and later holdout gates pass.
 
-### Stage C — Medium pilot
+### Stage C â€” Medium pilot
 
 Generate:
 
@@ -2486,7 +2486,7 @@ The current completed run uses the Q-A medium-pilot slice with all 32 instrument
 
 Important Stage C caveat: the current pilot uses 5-minute feature proxies and gross-return summaries. It does not replace full execution/cost/risk replay, multi-profile robustness, walk-forward validation, negative-control acceptance evidence, broker/exchange fill reconciliation or multi-day real holdout evidence.
 
-### Stage D — Three-month study
+### Stage D â€” Three-month study
 
 Generate:
 
@@ -2518,7 +2518,7 @@ All 9 Stage D checks pass: all-32 instrument coverage, 63 days per profile, 3 qu
 
 Important Stage D caveat: the current study is still a 5-minute proxy/control study. It does not replace full 10-seed execution, walk-forward result generation, parameter-neighborhood smoothness, full lifecycle execution/cost/risk replay, broker/exchange fill reconciliation, contract-note reconciliation, holdout-generator strategy reruns or multi-day real-data reruns.
 
-### Stage E — Full-year extension
+### Stage E â€” Full-year extension
 
 Only after:
 
@@ -2547,7 +2547,7 @@ Important Stage E caveat: this is a readiness and blocker contract. It intention
 
 ---
 
-## Phase 21 — Decision Framework after Three Months
+## Phase 21 â€” Decision Framework after Three Months
 
 | Outcome | Decision |
 |---|---|
@@ -2577,7 +2577,7 @@ Important Phase 21 caveat: this is a decision-framework artifact, not strategy-p
 
 ---
 
-## Phase 22 — Real Data Integration Roadmap
+## Phase 22 â€” Real Data Integration Roadmap
 
 Synthetic testing should run in parallel with continued real capture.
 
@@ -2602,10 +2602,10 @@ Re-estimate:
 | Real-data availability | Recalibration use |
 |---|---|
 | 1 day | schema, scale and pipeline |
-| 5–10 days | normal intraday variation |
-| 20–30 days | basic regime calibration |
+| 5â€“10 days | normal intraday variation |
+| 20â€“30 days | basic regime calibration |
 | 60 days | preliminary out-of-sample comparison |
-| 3–6 months | meaningful strategy screening |
+| 3â€“6 months | meaningful strategy screening |
 | 12+ months | stronger regime and robustness assessment |
 
 Synthetic data should progressively become less assumption-driven as the real dataset grows.
@@ -2627,7 +2627,7 @@ Important Phase 22 caveat: Class B event-grade milestones require diagnostically
 
 ---
 
-## Phase 23 — Key Risks
+## Phase 23 â€” Key Risks
 
 ### 23.1 Synthetic alpha
 
@@ -2685,12 +2685,12 @@ Promotion path:
 
 ```text
 Synthetic engineering test
-→ synthetic multi-regime stress test
-→ real-data historical test
-→ live paper trading
-→ shadow execution
-→ very small capital
-→ gradual scale-up
+â†’ synthetic multi-regime stress test
+â†’ real-data historical test
+â†’ live paper trading
+â†’ shadow execution
+â†’ very small capital
+â†’ gradual scale-up
 ```
 
 **Current Phase 23 implementation status as of 2026-07-14:** Phase 23 now has a runnable key-risk register in `scripts/run_phase23_key_risk_register.py`, backed by `src/synthetic_l2/phase23_key_risk_register.py`.
@@ -2726,19 +2726,19 @@ Important Phase 23 caveat: this is a governance/risk-control artifact. It does n
 - a 5-instrument event-driven proof using horizons supported by observed density;
 - automated quality reporting and a parameter-evidence ledger.
 
-Do not assume uniform 100 ms, 250 ms, 500 ms or 1 s support across symbols. Measure it. The sample may be used for day-specific S01–S11 falsification and pipeline tests, but not for robust acceptance or profitability claims.
+Do not assume uniform 100 ms, 250 ms, 500 ms or 1 s support across symbols. Measure it. The sample may be used for day-specific S01â€“S11 falsification and pipeline tests, but not for robust acceptance or profitability claims.
 
 ### 24.2 Scope after the Class B multi-day gate passes
 
 - all 32 instruments;
-- at least 5–10 event-grade days for initial calibration, with continued collection;
+- at least 5â€“10 event-grade days for initial calibration, with continued collection;
 - 63 synthetic trading days;
 - three quarter profiles and three seeds per profile initially;
 - state-changing event storage;
 - 250 ms, 1 s and 5 s feature views only where supported by observed event density;
-- S01–S08 as primary research;
+- S01â€“S08 as primary research;
 - S09 as a latency benchmark;
-- S10–S11 as experimental/risk-only modules;
+- S10â€“S11 as experimental/risk-only modules;
 - pessimistic execution assumptions;
 - automated quality and strategy reports.
 
@@ -2746,7 +2746,7 @@ This staged scope preserves useful work from the current day without granting it
 
 ---
 
-## Phase 25 — Event Replay Expansion
+## Phase 25 â€” Event Replay Expansion
 
 **Current Phase 25 implementation status as of 2026-07-14:** Phase 25 now has a runnable event-order strategy replay expansion in `scripts/run_phase25_event_replay_expansion.py`, backed by `src/synthetic_l2/phase25_event_replay_expansion.py`.
 
@@ -2763,6 +2763,29 @@ Generated Phase 25 artifacts are under `outputs/phase25/`:
 The current completed run replays S01, S02, S05, S07 and S09 plus baselines B01, B03 and B06 over the Stage B2 event-ordered feature product. It evaluates zero-latency control, retail-marketable-default and stressed-retail profiles with Zerodha equity-intraday order-formula charges applied where relevant. The run emits 113,848 event-order replay trade rows, 24 model/profile summary rows, 12 proxy risk-breach rows, 3 strategy/profile rows beating the best baseline proxy and 0 positive strategy/profile rows after costs. No row is acceptance-ready.
 
 Important Phase 25 caveat: this is materially more execution-heavy than the prior contracts, but it is still an engineering replay over the Stage B2 development subset, not multi-day acceptance evidence and not a promotion result.
+
+---
+
+## Phase 26 â€” Strategy Salvage Scan
+
+**Current Phase 26 implementation status as of 2026-07-14:** Phase 26 now has a runnable event-order parameter/filter salvage scan in `scripts/run_phase26_strategy_salvage_scan.py`, backed by `src/synthetic_l2/phase26_strategy_salvage_scan.py`.
+
+Generated Phase 26 artifacts are under `outputs/phase26/`:
+
+- `phase26_strategy_salvage_scan_report.md`;
+- `phase26_strategy_salvage_scan_manifest.json`;
+- `strategy_salvage_variant_catalog.csv`;
+- `strategy_salvage_summary.csv`;
+- `strategy_salvage_risk_summary.csv`;
+- `strategy_salvage_baseline_comparison.csv`;
+- `strategy_salvage_candidate_summary.csv`;
+- `strategy_salvage_rejection_ledger.csv`;
+- `strategy_salvage_overall_summary.csv`;
+- local ignored heavy artifact: `strategy_salvage_trade_ledger.parquet`.
+
+The current completed run registers 120 threshold/spread/liquidity variants across S01, S02, S05, S07 and S09, then replays them across the zero-latency, retail-marketable-default and stressed-retail execution profiles. It emits 542,406 local event-order replay trades and 282 variant/profile summary rows. The scan finds 17 positive rows only in the zero-latency control, 0 retail/stressed rows with positive mean net return after Zerodha-style costs, 204 rows that beat the best baseline proxy but still do not survive the realistic cost/risk filter, 0 realistic salvage-candidate rows and 282 rejected variant/profile rows.
+
+Important Phase 26 caveat: this is useful execution-heavy rejection evidence, not acceptance evidence. The immediate implication is that simple threshold, spread and liquidity filtering does not currently rescue the Stage B2 event-order strategies under retail/stressed cost assumptions; deeper work should either redesign the signal family or obtain stronger real multi-day event data before promoting any variant.
 
 ---
 

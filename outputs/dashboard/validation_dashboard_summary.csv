@@ -186,3 +186,9 @@ phase25_total_trades,113848,Phase 25 event-order replay trades
 phase25_positive_strategy_profile_rows,0,Phase 25 positive strategy/profile rows
 phase25_beats_best_baseline_rows,3,Phase 25 strategy/profile rows beating best baseline
 phase25_acceptance_ready,0,Phase 25 acceptance-ready rows
+phase26_variants_registered,120,Phase 26 parameter/filter variants registered
+phase26_total_replay_trades,542406,Phase 26 strategy-salvage replay trades
+phase26_realistic_positive_after_cost_rows,0,Phase 26 retail/stressed positive rows after costs
+phase26_zero_latency_positive_control_rows,17,Phase 26 frictionless positive control rows
+phase26_salvage_candidate_rows,0,Phase 26 realistic salvage candidate rows
+phase26_acceptance_ready,0,Phase 26 acceptance-ready rows

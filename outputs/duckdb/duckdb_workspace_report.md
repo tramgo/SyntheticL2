@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T17:54:37.175383+00:00
+Generated UTC: 2026-07-14T18:03:36.593202+00:00
 
 ## Storage Decision
 
@@ -341,7 +341,15 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 25 positive strategy/profile rows: 0
 - Phase 25 beats-best-baseline rows: 3
 - Phase 25 acceptance-ready rows: 0
-- Validation dashboard summary rows: 187
+- Phase 26 strategy salvage trade rows: 542406
+- Phase 26 registered variants: 120
+- Phase 26 variant/profile rows: 282
+- Phase 26 realistic positive rows after costs: 0
+- Phase 26 zero-latency positive control rows: 17
+- Phase 26 salvage candidate rows: 0
+- Phase 26 rejected variant/profile rows: 282
+- Phase 26 acceptance-ready rows: 0
+- Validation dashboard summary rows: 193
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
@@ -356,18 +364,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Horizon readiness event-driven 1s symbols: 12
 - Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 44
-- Phase 19 field checks: 440
-- Phase 19 exact-regeneration-ready artifacts: 44
+- Phase 19 audited artifacts: 45
+- Phase 19 field checks: 450
+- Phase 19 exact-regeneration-ready artifacts: 45
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 440
+- Phase 19 remediation rows: 450
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 44
-- Phase 19 normalized overlay-ready artifacts: 44
+- Phase 19 normalized overlay artifacts: 45
+- Phase 19 normalized overlay-ready artifacts: 45
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 440
+- Phase 19 source-or-alias fields: 450
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0

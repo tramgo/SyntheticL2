@@ -1,15 +1,15 @@
 {
-  "generated_utc": "2026-07-14T17:54:32.305758+00:00",
+  "generated_utc": "2026-07-14T18:03:31.455316+00:00",
   "phase19_dir": "outputs\\phase19",
-  "artifact_count": 44,
-  "field_check_count": 440,
+  "artifact_count": 45,
+  "field_check_count": 450,
   "passed": true,
   "results": [
     {
       "name": "all_audited_artifacts_native_exact_ready",
       "passed": true,
-      "observed": "44/44",
-      "expected": "44/44",
+      "observed": "45/45",
+      "expected": "45/45",
       "detail": "Artifacts not exact-ready: none"
     },
     {
@@ -29,8 +29,8 @@
     {
       "name": "all_normalized_overlays_ready",
       "passed": true,
-      "observed": "44/44",
-      "expected": "44/44",
+      "observed": "45/45",
+      "expected": "45/45",
       "detail": "Overlay artifacts not ready: none"
     },
     {
@@ -44,10 +44,10 @@
       "name": "remediation_is_complete_exact_only",
       "passed": true,
       "observed": {
-        "complete_exact": 440
+        "complete_exact": 450
       },
       "expected": {
-        "complete_exact": 440
+        "complete_exact": 450
       },
       "detail": "Remediation rows should not require add-field, alias-normalization or manifest recovery actions."
     }
