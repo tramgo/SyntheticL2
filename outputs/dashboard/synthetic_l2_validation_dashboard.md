@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T18:26:37.312342+00:00
+Generated UTC: 2026-07-14T18:36:54.781594+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -218,6 +218,14 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase29_realistic_positive_rows | 0 | Phase 29 retail/stressed positive rows |
 | phase29_proxy_candidate_rows | 0 | Phase 29 proxy candidate rows |
 | phase29_acceptance_ready | 0 | Phase 29 acceptance-ready rows |
+| phase30_strategy_families_triaged | 11 | Phase 30 strategy/control families triaged |
+| phase30_alpha_families_triaged | 9 | Phase 30 alpha strategy families triaged |
+| phase30_reject_or_redesign_rows | 9 | Phase 30 reject/redesign rows |
+| phase30_non_alpha_control_rows | 2 | Phase 30 non-alpha control rows |
+| phase30_promotion_ready_rows | 0 | Phase 30 promotion-ready rows |
+| phase30_acceptance_ready_rows | 0 | Phase 30 acceptance-ready rows |
+| phase30_realistic_positive_execution_rows | 0 | Phase 30 realistic positive execution rows |
+| phase30_candidate_rows | 0 | Phase 30 candidate rows |
 
 ## Quality Status
 
@@ -4307,6 +4315,74 @@ This dashboard is static research traceability output, not strategy promotion ev
 | S04 | stressed_retail | 37253 | -0.0012055452890491 | -0.0011419744348798 | -6.357085416933161e-05 | False | False | True | risk_breached_proxy | True | False | False |
 | S06 | stressed_retail | 69008 | -0.0012522164850737 | -0.0011419744348798 | -0.0001102420501938 | False | False | True | risk_breached_proxy | True | False | False |
 | S08 | stressed_retail | 132860 | -0.0012664866787724 | -0.0011419744348798 | -0.0001245122438925 | False | False | True | risk_breached_proxy | True | False | False |
+
+## Phase 30 Strategy Decision Triage
+
+| current_decision | promotion_ready | acceptance_ready | rows |
+| --- | --- | --- | --- |
+| non_alpha_control_do_not_promote | False | False | 2 |
+| reject_current_proxy_label_execution_form | False | False | 4 |
+| reject_current_signal_form_redesign_required | False | False | 5 |
+
+| redesign_priority | rows |
+| --- | --- |
+| exclude | 2 |
+| low | 2 |
+| medium | 7 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase30_strategy_families_triaged | 11 | Strategy/control families given an execution-evidence decision |
+| phase30_alpha_families_triaged | 9 | Alpha strategy families triaged |
+| phase30_reject_or_redesign_rows | 9 | Rows rejected in current form or redesign-only |
+| phase30_non_alpha_control_rows | 2 | Rows classified as non-alpha/risk-only controls |
+| phase30_promotion_ready_rows | 0 | Rows ready for promotion |
+| phase30_acceptance_ready_rows | 0 | Rows with acceptance-ready evidence |
+| phase30_realistic_positive_execution_rows | 0 | Realistic charged execution rows across triaged families |
+| phase30_candidate_rows | 0 | Salvage/proxy candidate rows across triaged families |
+| phase30_proxy_label_only_families | 4 | Families supported only by weak proxy labels |
+
+| strategy_id | strategy_name | evidence_scope | current_decision | promotion_ready | acceptance_ready | realistic_positive_execution_rows | candidate_rows | acceptance_ready_rows | blocking_reason | next_action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S01 | Momentum/breakout filtered by MLOFI | runnable_proxy_event_replay_salvage_feature_edge | reject_current_signal_form_redesign_required | False | False | 0 | 0 | 0 | No realistic positive rows in Phase25/26/27 execution evidence. | Do not spend more compute promoting the current proxy signal. Redesign only if a new event-level hypothesis can clear spread, Zerodha charges, and latency. |
+| S02 | Pure multi-level OFI directional model | runnable_proxy_event_replay_salvage_feature_edge | reject_current_signal_form_redesign_required | False | False | 0 | 0 | 0 | No realistic positive rows in Phase25/26/27 execution evidence. | Do not spend more compute promoting the current proxy signal. Redesign only if a new event-level hypothesis can clear spread, Zerodha charges, and latency. |
+| S03 | Liquidity-vacuum breakout | partial_proxy_label_replay | reject_current_proxy_label_execution_form | False | False | 0 | 0 | 0 | Weak proxy labels plus Phase29 no positive/candidate rows after costs. | Keep only as a research hypothesis until multi-day Class B labels and broker/exchange reconciliation exist; redesign label logic before more promotion work. |
+| S04 | Trade-flow plus depth confirmation | partial_proxy_label_replay | reject_current_proxy_label_execution_form | False | False | 0 | 0 | 0 | Weak proxy labels plus Phase29 no positive/candidate rows after costs. | Keep only as a research hypothesis until multi-day Class B labels and broker/exchange reconciliation exist; redesign label logic before more promotion work. |
+| S05 | Microprice entry/exit filter | runnable_proxy_event_replay_salvage_feature_edge | reject_current_signal_form_redesign_required | False | False | 0 | 0 | 0 | No realistic positive rows in Phase25/26/27 execution evidence. | Do not spend more compute promoting the current proxy signal. Redesign only if a new event-level hypothesis can clear spread, Zerodha charges, and latency. |
+| S06 | Absorption and exhaustion reversal | partial_proxy_label_replay | reject_current_proxy_label_execution_form | False | False | 0 | 0 | 0 | Weak proxy labels plus Phase29 no positive/candidate rows after costs. | Keep only as a research hypothesis until multi-day Class B labels and broker/exchange reconciliation exist; redesign label logic before more promotion work. |
+| S07 | Mean reversion after imbalance | runnable_proxy_event_replay_salvage_feature_edge | reject_current_signal_form_redesign_required | False | False | 0 | 0 | 0 | No realistic positive rows in Phase25/26/27 execution evidence. | Do not spend more compute promoting the current proxy signal. Redesign only if a new event-level hypothesis can clear spread, Zerodha charges, and latency. |
+| S08 | Cross-ticker/index lead-lag OFI | partial_proxy_label_replay | reject_current_proxy_label_execution_form | False | False | 0 | 0 | 0 | Weak proxy labels plus Phase29 no positive/candidate rows after costs. | Keep only as a research hypothesis until multi-day Class B labels and broker/exchange reconciliation exist; redesign label logic before more promotion work. |
+| S09 | Pure queue-imbalance scalping | runnable_proxy_event_replay_salvage_feature_edge | reject_current_signal_form_redesign_required | False | False | 0 | 0 | 0 | No realistic positive rows in Phase25/26/27 execution evidence. | Do not spend more compute promoting the current proxy signal. Redesign only if a new event-level hypothesis can clear spread, Zerodha charges, and latency. |
+| S10 | Passive market making | non_alpha_control_or_risk_filter | non_alpha_control_do_not_promote | False | False | 0 | 0 | 0 | Not an alpha strategy under current product evidence. | Keep as execution/risk plumbing or risk filter only; exclude from alpha promotion queue. |
+| S11 | Spoof-like wall filter | non_alpha_control_or_risk_filter | non_alpha_control_do_not_promote | False | False | 0 | 0 | 0 | Not an alpha strategy under current product evidence. | Keep as execution/risk plumbing or risk filter only; exclude from alpha promotion queue. |
+
+| strategy_id | evidence_scope | phase25_profile_rows | phase25_trades | phase25_best_mean_net_return | phase25_positive_after_cost_rows | phase25_acceptance_ready_rows | phase26_variant_profile_rows | phase26_realistic_positive_rows | phase26_zero_latency_positive_control_rows | phase26_salvage_candidate_rows | phase27_candidate_profile_rows | phase27_realistic_cost_clearing_rows | phase28_proxy_rows | phase29_profile_rows | phase29_trades | phase29_realistic_positive_rows | phase29_proxy_candidate_rows | acceptance_ready_rows | evidence_note | total_execution_profile_rows | total_replay_trades_directly_attributed | realistic_positive_execution_rows | candidate_rows | source_totals_note |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S01 | runnable_proxy_event_replay_salvage_feature_edge | 3 | 4377 | -0.0004848580471773 | 0 | 0 | 72 | 0 | 0 | 0 | 336 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Phase25 direct event replay found no positive strategy/profile rows; Phase26 found no realistic salvage rows; Phase27 found no feature family clearing costs. | 411 | 4377 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S02 | runnable_proxy_event_replay_salvage_feature_edge | 3 | 27321 | -0.0003359158195518 | 0 | 0 | 72 | 0 | 0 | 0 | 336 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Phase25 direct event replay found no positive strategy/profile rows; Phase26 found no realistic salvage rows; Phase27 found no feature family clearing costs. | 411 | 27321 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S03 | partial_proxy_label_replay | 0 | 0 |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 47449 | 3 | 22469 | 0 | 0 | 0 | Phase28 engineered weak proxy labels; Phase29 replay found no positive rows after costs and no proxy candidates, so labels are diagnostic only. | 3 | 22469 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S04 | partial_proxy_label_replay | 0 | 0 |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 38481 | 3 | 112654 | 0 | 0 | 0 | Phase28 engineered weak proxy labels; Phase29 replay found no positive rows after costs and no proxy candidates, so labels are diagnostic only. | 3 | 112654 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S05 | runnable_proxy_event_replay_salvage_feature_edge | 3 | 8475 | -0.0009746550000831 | 0 | 0 | 48 | 0 | 2 | 0 | 336 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Phase25 direct event replay found no positive strategy/profile rows; Phase26 found no realistic salvage rows; Phase27 found no feature family clearing costs. | 387 | 8475 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S06 | partial_proxy_label_replay | 0 | 0 |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 71244 | 3 | 208728 | 0 | 0 | 0 | Phase28 engineered weak proxy labels; Phase29 replay found no positive rows after costs and no proxy candidates, so labels are diagnostic only. | 3 | 208728 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S07 | runnable_proxy_event_replay_salvage_feature_edge | 3 | 6355 | -0.0008731827160589 | 0 | 0 | 42 | 0 | 10 | 0 | 336 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Phase25 direct event replay found no positive strategy/profile rows; Phase26 found no realistic salvage rows; Phase27 found no feature family clearing costs. | 381 | 6355 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S08 | partial_proxy_label_replay | 0 | 0 |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 132988 | 3 | 398772 | 0 | 0 | 0 | Phase28 engineered weak proxy labels; Phase29 replay found no positive rows after costs and no proxy candidates, so labels are diagnostic only. | 3 | 398772 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S09 | runnable_proxy_event_replay_salvage_feature_edge | 3 | 8475 | -0.0009819207901266 | 0 | 0 | 48 | 0 | 5 | 0 | 336 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Phase25 direct event replay found no positive strategy/profile rows; Phase26 found no realistic salvage rows; Phase27 found no feature family clearing costs. | 387 | 8475 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S10 | non_alpha_control_or_risk_filter | 0 | 0 |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Classified as research/risk plumbing, not an alpha candidate for promotion. | 0 | 0 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+| S11 | non_alpha_control_or_risk_filter | 0 | 0 |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Classified as research/risk plumbing, not an alpha candidate for promotion. | 0 | 0 | 0 | 0 | Workspace-level execution totals: Phase25=113848, Phase26=542406, Phase27=1213296, Phase28_proxy_labels=290162, Phase29=742623. |
+
+| strategy_id | strategy_name | redesign_priority | redesign_theme | required_evidence_before_next_execution_expansion |
+| --- | --- | --- | --- | --- |
+| S10 | Passive market making | exclude | Do not redesign as alpha in this lane. | None for alpha promotion; maintain only if execution/risk plumbing remains useful. |
+| S11 | Spoof-like wall filter | exclude | Do not redesign as alpha in this lane. | None for alpha promotion; maintain only if execution/risk plumbing remains useful. |
+| S01 | Momentum/breakout filtered by MLOFI | low | Do not iterate current signal without a materially new hypothesis. | A new signal thesis that forecasts beyond spread and fee hurdle before full execution replay. |
+| S02 | Pure multi-level OFI directional model | low | Do not iterate current signal without a materially new hypothesis. | A new signal thesis that forecasts beyond spread and fee hurdle before full execution replay. |
+| S03 | Liquidity-vacuum breakout | medium | Replace weak market-by-price proxy labels with acceptance-grade event labels before more replay expansion. | Multi-day Class B labels, timestamp-skew/common-shock controls, and broker/exchange fill-cost reconciliation. |
+| S04 | Trade-flow plus depth confirmation | medium | Replace weak market-by-price proxy labels with acceptance-grade event labels before more replay expansion. | Multi-day Class B labels, timestamp-skew/common-shock controls, and broker/exchange fill-cost reconciliation. |
+| S05 | Microprice entry/exit filter | medium | Cost-aware trigger redesign around the tiny zero-latency edge; explicitly test whether edge survives spread, latency, and Zerodha charges. | New event-level feature definition, charged retail/stressed replay, and multi-day real tick validation. |
+| S06 | Absorption and exhaustion reversal | medium | Replace weak market-by-price proxy labels with acceptance-grade event labels before more replay expansion. | Multi-day Class B labels, timestamp-skew/common-shock controls, and broker/exchange fill-cost reconciliation. |
+| S07 | Mean reversion after imbalance | medium | Cost-aware trigger redesign around the tiny zero-latency edge; explicitly test whether edge survives spread, latency, and Zerodha charges. | New event-level feature definition, charged retail/stressed replay, and multi-day real tick validation. |
+| S08 | Cross-ticker/index lead-lag OFI | medium | Replace weak market-by-price proxy labels with acceptance-grade event labels before more replay expansion. | Multi-day Class B labels, timestamp-skew/common-shock controls, and broker/exchange fill-cost reconciliation. |
+| S09 | Pure queue-imbalance scalping | medium | Cost-aware trigger redesign around the tiny zero-latency edge; explicitly test whether edge survives spread, latency, and Zerodha charges. | New event-level feature definition, charged retail/stressed replay, and multi-day real tick validation. |
 
 ## Metric Status
 

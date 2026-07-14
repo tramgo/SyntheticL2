@@ -55,6 +55,7 @@ MANIFEST_CANDIDATES = [
     ("phase27", "outputs/phase27/phase27_feature_edge_scan_manifest.json"),
     ("phase28", "outputs/phase28/phase28_richer_event_label_support_manifest.json"),
     ("phase29", "outputs/phase29/phase29_partial_strategy_proxy_replay_manifest.json"),
+    ("phase30", "outputs/phase30/phase30_strategy_decision_triage_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

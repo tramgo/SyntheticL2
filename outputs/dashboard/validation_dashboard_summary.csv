@@ -209,3 +209,11 @@ phase29_positive_after_cost_rows,0,Phase 29 positive rows after costs
 phase29_realistic_positive_rows,0,Phase 29 retail/stressed positive rows
 phase29_proxy_candidate_rows,0,Phase 29 proxy candidate rows
 phase29_acceptance_ready,0,Phase 29 acceptance-ready rows
+phase30_strategy_families_triaged,11,Phase 30 strategy/control families triaged
+phase30_alpha_families_triaged,9,Phase 30 alpha strategy families triaged
+phase30_reject_or_redesign_rows,9,Phase 30 reject/redesign rows
+phase30_non_alpha_control_rows,2,Phase 30 non-alpha control rows
+phase30_promotion_ready_rows,0,Phase 30 promotion-ready rows
+phase30_acceptance_ready_rows,0,Phase 30 acceptance-ready rows
+phase30_realistic_positive_execution_rows,0,Phase 30 realistic positive execution rows
+phase30_candidate_rows,0,Phase 30 candidate rows

@@ -1,0 +1,10 @@
+metric,value,description
+phase30_strategy_families_triaged,11,Strategy/control families given an execution-evidence decision
+phase30_alpha_families_triaged,9,Alpha strategy families triaged
+phase30_reject_or_redesign_rows,9,Rows rejected in current form or redesign-only
+phase30_non_alpha_control_rows,2,Rows classified as non-alpha/risk-only controls
+phase30_promotion_ready_rows,0,Rows ready for promotion
+phase30_acceptance_ready_rows,0,Rows with acceptance-ready evidence
+phase30_realistic_positive_execution_rows,0,Realistic charged execution rows across triaged families
+phase30_candidate_rows,0,Salvage/proxy candidate rows across triaged families
+phase30_proxy_label_only_families,4,Families supported only by weak proxy labels

@@ -34,6 +34,7 @@ phase27,outputs/phase27/phase27_feature_edge_scan_manifest.json,10,10,0,0,0,True
 phase28,outputs/phase28/phase28_richer_event_label_support_manifest.json,10,10,0,0,0,True
 phase29,outputs/phase29/phase29_partial_strategy_proxy_replay_manifest.json,10,10,0,0,0,True
 phase3,outputs/phase3/regime_manifest.json,10,10,0,0,0,True
+phase30,outputs/phase30/phase30_strategy_decision_triage_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True
