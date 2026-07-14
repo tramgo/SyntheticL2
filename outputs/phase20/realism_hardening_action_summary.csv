@@ -1,0 +1,9 @@
+action_class,dependency_type,realism_requirement_rows,strategies,proxy_evidence_rows,acceptance_met_rows,open_rows
+artifact_exploitation_control,artifact_control_and_negative_template_reruns,6,6,0,0,6
+feed_imperfection_coverage_validation,phase8_feed_profiles_and_holdout_generator,6,6,6,0,6
+holdout_generator_coverage_validation,phase14_holdout_generator_profiles,6,6,6,0,6
+holdout_generator_strategy_rerun,untouched_holdout_generator_strategy_outputs,6,6,0,0,6
+pessimistic_execution_realism_rerun,stressed_retail_latency_slippage_and_fill_controls,6,6,0,0,6
+real_multiday_realism_validation,multi_day_real_data_validation,6,6,0,0,6
+strategy_support_closure,strategy_feature_product_or_module_support,6,6,0,0,6
+synthetic_quality_gate_validation,phase14_quality_gates_and_warning_triage,6,6,6,0,6

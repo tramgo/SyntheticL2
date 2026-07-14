@@ -177,6 +177,39 @@ ROBUSTNESS_DEPENDENCY_TYPE = {
     "real_data_rerun": "multi_day_real_data_rerun",
 }
 
+REALISM_REQUIREMENT_PRIORITY = {
+    "synthetic_quality_gate_clear": 1,
+    "strategy_support_ready": 2,
+    "holdout_generator_coverage": 3,
+    "feed_imperfection_coverage": 4,
+    "holdout_strategy_rerun": 5,
+    "pessimistic_execution_realism": 6,
+    "artifact_exploitation_rejection": 7,
+    "real_multi_day_realism_validation": 8,
+}
+
+REALISM_ACTION_CLASS = {
+    "synthetic_quality_gate_clear": "synthetic_quality_gate_validation",
+    "strategy_support_ready": "strategy_support_closure",
+    "holdout_generator_coverage": "holdout_generator_coverage_validation",
+    "feed_imperfection_coverage": "feed_imperfection_coverage_validation",
+    "holdout_strategy_rerun": "holdout_generator_strategy_rerun",
+    "pessimistic_execution_realism": "pessimistic_execution_realism_rerun",
+    "artifact_exploitation_rejection": "artifact_exploitation_control",
+    "real_multi_day_realism_validation": "real_multiday_realism_validation",
+}
+
+REALISM_DEPENDENCY_TYPE = {
+    "synthetic_quality_gate_clear": "phase14_quality_gates_and_warning_triage",
+    "strategy_support_ready": "strategy_feature_product_or_module_support",
+    "holdout_generator_coverage": "phase14_holdout_generator_profiles",
+    "feed_imperfection_coverage": "phase8_feed_profiles_and_holdout_generator",
+    "holdout_strategy_rerun": "untouched_holdout_generator_strategy_outputs",
+    "pessimistic_execution_realism": "stressed_retail_latency_slippage_and_fill_controls",
+    "artifact_exploitation_rejection": "artifact_control_and_negative_template_reruns",
+    "real_multi_day_realism_validation": "multi_day_real_data_validation",
+}
+
 
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
@@ -214,6 +247,10 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "experiment_profile_robustness_summary": pd.read_csv(paths["experiment_profile_robustness_summary"]),
         "experiment_run_summary": pd.read_csv(paths["experiment_run_summary"]),
         "experiment_registry": pd.read_csv(paths["experiment_registry"]),
+        "realism_acceptance_gap": pd.read_csv(paths["realism_acceptance_gap"]),
+        "quality_gate_summary": pd.read_csv(paths["quality_gate_summary"]),
+        "quality_warning_triage": pd.read_csv(paths["quality_warning_triage"]),
+        "holdout_generator_realism_summary": pd.read_csv(paths["holdout_generator_realism_summary"]),
     }
 
 
@@ -1128,6 +1165,138 @@ def build_robustness_action_summary(robustness_plan: pd.DataFrame) -> pd.DataFra
     return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
 
 
+def _realism_global_summary(
+    quality: pd.DataFrame,
+    warning_triage: pd.DataFrame,
+    holdout: pd.DataFrame,
+) -> dict[str, object]:
+    quality_status = quality["status"].astype(str) if "status" in quality else pd.Series(dtype=str)
+    holdout_status = holdout["realism_status"].astype(str) if "realism_status" in holdout else pd.Series(dtype=str)
+    feed_profiles = sorted(holdout["feed_profile"].dropna().astype(str).unique()) if "feed_profile" in holdout else []
+    quarter_profiles = sorted(holdout["quarter_profile"].dropna().astype(str).unique()) if "quarter_profile" in holdout else []
+    return {
+        "quality_gate_rows": int(len(quality)),
+        "quality_pass_rows": int((quality_status == "pass").sum()),
+        "quality_warn_rows": int((quality_status == "warn").sum()),
+        "quality_fail_rows": int((quality_status == "fail").sum()),
+        "warning_triage_rows": int(len(warning_triage)),
+        "holdout_generator_rows": int(len(holdout)),
+        "holdout_proxy_available_rows": int((holdout_status == "holdout_proxy_available_not_acceptance").sum()),
+        "holdout_structural_ready_rows": int(holdout["structural_ready_for_holdout_proxy"].astype(bool).sum())
+        if "structural_ready_for_holdout_proxy" in holdout
+        else 0,
+        "feed_profiles": ";".join(feed_profiles),
+        "quarter_profiles": ";".join(quarter_profiles),
+        "feed_profile_count": int(len(feed_profiles)),
+        "quarter_profile_count": int(len(quarter_profiles)),
+    }
+
+
+def build_realism_hardening_plan(
+    queue: pd.DataFrame,
+    realism_gap: pd.DataFrame,
+    quality: pd.DataFrame,
+    warning_triage: pd.DataFrame,
+    holdout: pd.DataFrame,
+) -> pd.DataFrame:
+    realism_queue = queue[queue["gate_id"].astype(str) == "G05_realism"][
+        ["queue_rank", "priority_band", "strategy_id", "strategy_support_level", "strategy_role"]
+    ].copy()
+    rows = realism_gap.merge(realism_queue, on="strategy_id", how="inner")
+    summary = _realism_global_summary(quality, warning_triage, holdout)
+    for key, value in summary.items():
+        rows[key] = value
+    rows["requirement_priority"] = rows["realism_requirement"].map(REALISM_REQUIREMENT_PRIORITY).fillna(99).astype(int)
+    rows["action_class"] = rows["realism_requirement"].map(REALISM_ACTION_CLASS).fillna("unmapped_realism_action")
+    rows["dependency_type"] = rows["realism_requirement"].map(REALISM_DEPENDENCY_TYPE).fillna("unmapped_dependency")
+    rows["proxy_evidence_available"] = rows["proxy_evidence_available"].astype(bool)
+    rows["acceptance_requirement_met"] = rows["acceptance_requirement_met"].astype(bool)
+    rows["acceptance_ready_now"] = False
+    rows["realism_hardening_status"] = rows.apply(
+        lambda row: "acceptance_met"
+        if row["acceptance_requirement_met"]
+        else "proxy_evidence_needs_acceptance_upgrade"
+        if row["proxy_evidence_available"]
+        else "missing_required_acceptance_evidence",
+        axis=1,
+    )
+    rows["realism_evidence_summary"] = rows.apply(
+        lambda row: (
+            f"quality_pass={int(row.get('quality_pass_rows', 0))}/{int(row.get('quality_gate_rows', 0))}; "
+            f"warnings={int(row.get('quality_warn_rows', 0))}; "
+            f"fails={int(row.get('quality_fail_rows', 0))}; "
+            f"holdout_rows={int(row.get('holdout_generator_rows', 0))}; "
+            f"holdout_proxy_rows={int(row.get('holdout_proxy_available_rows', 0))}; "
+            f"feed_profiles={int(row.get('feed_profile_count', 0))}; "
+            f"quarters={int(row.get('quarter_profile_count', 0))}"
+        ),
+        axis=1,
+    )
+    output_columns = [
+        "queue_rank",
+        "priority_band",
+        "strategy_id",
+        "strategy_support_level",
+        "strategy_role",
+        "realism_requirement",
+        "requirement_priority",
+        "action_class",
+        "dependency_type",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "realism_hardening_status",
+        "blocking_gap",
+        "required_next_evidence",
+        "realism_evidence_summary",
+        "quality_gate_rows",
+        "quality_pass_rows",
+        "quality_warn_rows",
+        "quality_fail_rows",
+        "warning_triage_rows",
+        "holdout_generator_rows",
+        "holdout_proxy_available_rows",
+        "holdout_structural_ready_rows",
+        "feed_profile_count",
+        "quarter_profile_count",
+        "acceptance_ready_now",
+        "evidence_source",
+    ]
+    for column in output_columns:
+        if column not in rows:
+            rows[column] = 0 if column.endswith("_rows") or column.endswith("_count") else ""
+    return rows[output_columns].sort_values(["queue_rank", "requirement_priority"], kind="mergesort")
+
+
+def build_realism_action_summary(realism_plan: pd.DataFrame) -> pd.DataFrame:
+    if realism_plan.empty:
+        return pd.DataFrame(
+            columns=[
+                "action_class",
+                "dependency_type",
+                "realism_requirement_rows",
+                "strategies",
+                "proxy_evidence_rows",
+                "acceptance_met_rows",
+                "open_rows",
+            ]
+        )
+    grouped = (
+        realism_plan.groupby(["action_class", "dependency_type"], sort=True)
+        .agg(
+            realism_requirement_rows=("realism_requirement", "count"),
+            strategies=("strategy_id", "nunique"),
+            proxy_evidence_rows=("proxy_evidence_available", lambda values: int(values.astype(bool).sum())),
+            acceptance_met_rows=("acceptance_requirement_met", lambda values: int(values.astype(bool).sum())),
+        )
+        .reset_index()
+    )
+    grouped["open_rows"] = grouped["realism_requirement_rows"] - grouped["acceptance_met_rows"]
+    return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
+
+
 def write_report(
     output_dir: Path,
     queue: pd.DataFrame,
@@ -1141,6 +1310,8 @@ def write_report(
     predictive_action_summary: pd.DataFrame,
     robustness_plan: pd.DataFrame,
     robustness_action_summary: pd.DataFrame,
+    realism_plan: pd.DataFrame,
+    realism_action_summary: pd.DataFrame,
 ) -> None:
     priority_summary = queue.groupby(["priority_band", "gate_id", "acceptance_milestone"], sort=True).size().reset_index(name="queue_items")
     lines = [
@@ -1249,6 +1420,26 @@ def write_report(
             ].head(40)
         ),
         "",
+        "## Realism Hardening Action Summary",
+        "",
+        _markdown_table(realism_action_summary),
+        "",
+        "## Top Realism Hardening Requirements",
+        "",
+        _markdown_table(
+            realism_plan[
+                [
+                    "queue_rank",
+                    "strategy_id",
+                    "realism_requirement",
+                    "action_class",
+                    "realism_hardening_status",
+                    "realism_evidence_summary",
+                    "required_next_evidence",
+                ]
+            ].head(40)
+        ),
+        "",
     ]
     (output_dir / "phase20_acceptance_hardening_report.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -1298,6 +1489,14 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         inputs["experiment_registry"],
     )
     robustness_action_summary = build_robustness_action_summary(robustness_plan)
+    realism_plan = build_realism_hardening_plan(
+        queue,
+        inputs["realism_acceptance_gap"],
+        inputs["quality_gate_summary"],
+        inputs["quality_warning_triage"],
+        inputs["holdout_generator_realism_summary"],
+    )
+    realism_action_summary = build_realism_action_summary(realism_plan)
 
     queue.to_csv(output_dir / "acceptance_hardening_queue.csv", index=False)
     gate_summary.to_csv(output_dir / "acceptance_hardening_gate_summary.csv", index=False)
@@ -1310,6 +1509,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
     predictive_action_summary.to_csv(output_dir / "predictive_hardening_action_summary.csv", index=False)
     robustness_plan.to_csv(output_dir / "robustness_hardening_plan.csv", index=False)
     robustness_action_summary.to_csv(output_dir / "robustness_hardening_action_summary.csv", index=False)
+    realism_plan.to_csv(output_dir / "realism_hardening_plan.csv", index=False)
+    realism_action_summary.to_csv(output_dir / "realism_hardening_action_summary.csv", index=False)
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": generated_utc,
@@ -1332,6 +1533,10 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         "robustness_hardening_open_rows": int((~robustness_plan["acceptance_requirement_met"].astype(bool)).sum()),
         "robustness_hardening_proxy_rows": int(robustness_plan["proxy_evidence_available"].astype(bool).sum()),
         "robustness_hardening_action_summary_rows": int(len(robustness_action_summary)),
+        "realism_hardening_plan_rows": int(len(realism_plan)),
+        "realism_hardening_open_rows": int((~realism_plan["acceptance_requirement_met"].astype(bool)).sum()),
+        "realism_hardening_proxy_rows": int(realism_plan["proxy_evidence_available"].astype(bool).sum()),
+        "realism_hardening_action_summary_rows": int(len(realism_action_summary)),
         "acceptance_ready_queue_rows": int(queue["acceptance_ready_now"].sum()),
         "top_priority_gate": gate_summary.iloc[0]["gate_id"] if len(gate_summary) else "",
         "scope": "phase20_acceptance_hardening_queue",
@@ -1358,6 +1563,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
                 "predictive_hardening_action_summary": str(output_dir / "predictive_hardening_action_summary.csv"),
                 "robustness_hardening_plan": str(output_dir / "robustness_hardening_plan.csv"),
                 "robustness_hardening_action_summary": str(output_dir / "robustness_hardening_action_summary.csv"),
+                "realism_hardening_plan": str(output_dir / "realism_hardening_plan.csv"),
+                "realism_hardening_action_summary": str(output_dir / "realism_hardening_action_summary.csv"),
                 "report": str(output_dir / "phase20_acceptance_hardening_report.md"),
             },
             random_seed="not_applicable_deterministic_blocker_queue",
@@ -1381,6 +1588,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         predictive_action_summary,
         robustness_plan,
         robustness_action_summary,
+        realism_plan,
+        realism_action_summary,
     )
 
 
@@ -1409,6 +1618,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--experiment-profile-robustness-summary", type=Path, default=Path("outputs/phase13/experiment_profile_robustness_summary.csv"))
     parser.add_argument("--experiment-run-summary", type=Path, default=Path("outputs/phase13/experiment_run_summary.csv"))
     parser.add_argument("--experiment-registry", type=Path, default=Path("outputs/phase13/experiment_registry.csv"))
+    parser.add_argument("--realism-acceptance-gap", type=Path, default=Path("outputs/phase14/realism_acceptance_gap_ledger.csv"))
+    parser.add_argument("--quality-gate-summary", type=Path, default=Path("outputs/phase14/quality_gate_summary.csv"))
+    parser.add_argument("--quality-warning-triage", type=Path, default=Path("outputs/phase14/quality_warning_triage.csv"))
+    parser.add_argument("--holdout-generator-realism-summary", type=Path, default=Path("outputs/phase14/holdout_generator_realism_summary.csv"))
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     return parser.parse_args()
 
@@ -1438,6 +1651,10 @@ def main() -> None:
         "experiment_profile_robustness_summary": args.experiment_profile_robustness_summary,
         "experiment_run_summary": args.experiment_run_summary,
         "experiment_registry": args.experiment_registry,
+        "realism_acceptance_gap": args.realism_acceptance_gap,
+        "quality_gate_summary": args.quality_gate_summary,
+        "quality_warning_triage": args.quality_warning_triage,
+        "holdout_generator_realism_summary": args.holdout_generator_realism_summary,
     }
     run_phase20(paths, args.output_dir, args.base_dir)
 
