@@ -15,6 +15,7 @@ phase25,outputs/phase25/phase25_event_replay_manifest.json,outputs\phase19\norma
 phase26,outputs/phase26/phase26_strategy_salvage_scan_manifest.json,outputs\phase19\normalized_manifests\phase26.normalized_manifest.json,True,10,10,0,10,True
 phase27,outputs/phase27/phase27_feature_edge_scan_manifest.json,outputs\phase19\normalized_manifests\phase27.normalized_manifest.json,True,10,10,0,10,True
 phase28,outputs/phase28/phase28_richer_event_label_support_manifest.json,outputs\phase19\normalized_manifests\phase28.normalized_manifest.json,True,10,10,0,10,True
+phase29,outputs/phase29/phase29_partial_strategy_proxy_replay_manifest.json,outputs\phase19\normalized_manifests\phase29.normalized_manifest.json,True,10,10,0,10,True
 phase2,outputs/phase2/calibration_manifest.json,outputs\phase19\normalized_manifests\phase2.normalized_manifest.json,True,10,10,0,10,True
 phase3,outputs/phase3/regime_manifest.json,outputs\phase19\normalized_manifests\phase3.normalized_manifest.json,True,10,10,0,10,True
 phase4,outputs/phase4/scenario_manifest.json,outputs\phase19\normalized_manifests\phase4.normalized_manifest.json,True,10,10,0,10,True

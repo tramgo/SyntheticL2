@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T18:20:28.375271+00:00
+Generated UTC: 2026-07-14T18:26:37.312342+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -212,6 +212,12 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase28_proxy_feature_engineered_families | 4 | Phase 28 partial families with proxy labels |
 | phase28_total_proxy_label_rows | 290162 | Phase 28 proxy label rows/buckets |
 | phase28_acceptance_ready | 0 | Phase 28 acceptance-ready rows |
+| phase29_partial_strategies_replayed | 4 | Phase 29 partial strategies replayed |
+| phase29_total_replay_trades | 742623 | Phase 29 partial-strategy replay trades |
+| phase29_positive_after_cost_rows | 0 | Phase 29 positive rows after costs |
+| phase29_realistic_positive_rows | 0 | Phase 29 retail/stressed positive rows |
+| phase29_proxy_candidate_rows | 0 | Phase 29 proxy candidate rows |
+| phase29_acceptance_ready | 0 | Phase 29 acceptance-ready rows |
 
 ## Quality Status
 
@@ -4248,6 +4254,59 @@ This dashboard is static research traceability output, not strategy promotion ev
 | TECHM | 4139 | 0.0045452364731621 | -0.0045452364731621 | True | False | One-day receive-bucket lead-lag proxy; not causal and not exchange-synchronized. |
 | ULTRACEMCO | 3723 | 0.0046229006376948 | -0.0046229006376948 | True | False | One-day receive-bucket lead-lag proxy; not causal and not exchange-synchronized. |
 | WIPRO | 4166 | 0.0098388895243851 | -0.0098388895243851 | True | False | One-day receive-bucket lead-lag proxy; not causal and not exchange-synchronized. |
+
+## Phase 29 Partial Strategy Proxy Replay
+
+| execution_profile | positive_after_costs | partial_proxy_candidate | rows |
+| --- | --- | --- | --- |
+| retail_marketable_default | False | False | 4 |
+| stressed_retail | False | False | 4 |
+| zero_latency_spread_only_control | False | False | 4 |
+
+| risk_status | rows |
+| --- | --- |
+| risk_breached_proxy | 11 |
+| risk_not_breached_proxy | 1 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase29_partial_strategies_replayed | 4 | Partial strategy proxy families replayed |
+| phase29_strategy_profile_rows | 12 | Strategy/profile summary rows |
+| phase29_total_replay_trades | 742623 | Total partial-strategy proxy replay trades |
+| phase29_positive_after_cost_rows | 0 | Rows with positive mean net return after costs |
+| phase29_realistic_positive_rows | 0 | Retail/stressed rows positive after costs |
+| phase29_proxy_candidate_rows | 0 | Rows passing realistic, positive, trade-count and proxy-risk checks |
+| phase29_acceptance_ready | 0 | Partial strategy replay uses weak proxy labels, not acceptance evidence |
+
+| model_id | model_type | execution_profile | trades | symbols | scenario_days | mean_gross_return | mean_cost_return | mean_zerodha_charge_return | mean_net_return | win_rate_net | total_net_pnl_inr | market_shock_trade_fraction | disconnect_trade_fraction | acceptance_ready | replay_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S03 | partial_strategy_proxy | retail_marketable_default | 7424 | 30 | 1 | -5.5491036070119666e-08 | 0.0009649451414663 | 0.0008268120945826 | -0.0009650006325024 | 0.0008081896551724 | -716416.4695698295 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S03 | partial_strategy_proxy | stressed_retail | 7452 | 30 | 1 | 7.945661900746224e-07 | 0.0011427690010699 | 0.0008268120651771 | -0.0011419744348798 | 0.0005367686527106 | -850999.3488724648 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S03 | partial_strategy_proxy | zero_latency_spread_only_control | 7593 | 30 | 1 | 9.156113026593588e-06 | 8.823646379925146e-05 | 0.0 | -7.908035077265789e-05 | 0.2932964572632688 | -60045.71034167913 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S04 | partial_strategy_proxy | retail_marketable_default | 36920 | 32 | 1 | 3.1265726477926977e-06 | 0.0010099077168093 | 0.0008268120015732 | -0.0010067811441615 | 0.0004604550379198 | -3717035.984244291 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S04 | partial_strategy_proxy | stressed_retail | 37253 | 32 | 1 | -6.009173971678759e-08 | 0.0012054851973094 | 0.000826812051481 | -0.0012055452890491 | 0.0001610608541593 | -4491017.865294918 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S04 | partial_strategy_proxy | zero_latency_spread_only_control | 38481 | 32 | 1 | 4.323513332204671e-06 | 8.880670321259208e-05 | 0.0 | -8.448318988038741e-05 | 0.063226007640134 | -325099.7629787188 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S06 | partial_strategy_proxy | retail_marketable_default | 68476 | 32 | 1 | -7.634348182924628e-08 | 0.0010430086223188 | 0.0008268120309477 | -0.0010430849658006 | 0.0001752438810678 | -7142628.611816802 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S06 | partial_strategy_proxy | stressed_retail | 69008 | 32 | 1 | -2.974530713332709e-07 | 0.0012519190320023 | 0.0008268120145487 | -0.0012522164850737 | 7.245536749362393e-05 | -8641295.520196669 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S06 | partial_strategy_proxy | zero_latency_spread_only_control | 71244 | 32 | 1 | -2.598542977941981e-07 | 0.0001087781114041 | 0.0 | -0.0001090379657019 | 0.0349643478749087 | -776830.0828467455 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S08 | partial_strategy_proxy | retail_marketable_default | 132924 | 32 | 1 | 5.918013567716734e-07 | 0.001057666280296 | 0.0008268121298427 | -0.0010570744789393 | 0.0023020673467545 | -14051056.803852992 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S08 | partial_strategy_proxy | stressed_retail | 132860 | 32 | 1 | 9.392352759568224e-07 | 0.0012674259140484 | 0.0008268121192473 | -0.0012664866787724 | 0.001422550052687 | -16826542.014170747 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+| S08 | partial_strategy_proxy | zero_latency_spread_only_control | 132988 | 32 | 1 | -2.095307490054687e-07 | 0.0001211908160111 | 0.0 | -0.0001214003467601 | 0.2046801215147231 | -1614478.9314940723 | 0.0 | 0.0 | False | event_order_replay_not_acceptance |
+
+| model_id | execution_profile | trades | mean_net_return | best_peer_partial_strategy_mean_net_return | lift_vs_best_peer_partial_strategy | positive_after_costs | beats_peer_proxy | enough_trades_for_proxy_candidate | risk_status | realistic_charged_profile | risk_not_breached_proxy | partial_proxy_candidate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S03 | zero_latency_spread_only_control | 7593 | -7.908035077265789e-05 | -8.448318988038741e-05 | 5.402839107729521e-06 | False | True | True | risk_not_breached_proxy | False | True | False |
+| S04 | zero_latency_spread_only_control | 38481 | -8.448318988038741e-05 | -7.908035077265789e-05 | -5.402839107729521e-06 | False | False | True | risk_breached_proxy | False | False | False |
+| S06 | zero_latency_spread_only_control | 71244 | -0.0001090379657019 | -7.908035077265789e-05 | -2.9957614929260247e-05 | False | False | True | risk_breached_proxy | False | False | False |
+| S08 | zero_latency_spread_only_control | 132988 | -0.0001214003467601 | -7.908035077265789e-05 | -4.231999598750636e-05 | False | False | True | risk_breached_proxy | False | False | False |
+| S03 | retail_marketable_default | 7424 | -0.0009650006325024 | -0.0010067811441615 | 4.178051165904483e-05 | False | True | True | risk_breached_proxy | True | False | False |
+| S04 | retail_marketable_default | 36920 | -0.0010067811441615 | -0.0009650006325024 | -4.178051165904483e-05 | False | False | True | risk_breached_proxy | True | False | False |
+| S06 | retail_marketable_default | 68476 | -0.0010430849658006 | -0.0009650006325024 | -7.808433329822525e-05 | False | False | True | risk_breached_proxy | True | False | False |
+| S08 | retail_marketable_default | 132924 | -0.0010570744789393 | -0.0009650006325024 | -9.20738464368539e-05 | False | False | True | risk_breached_proxy | True | False | False |
+| S03 | stressed_retail | 7452 | -0.0011419744348798 | -0.0012055452890491 | 6.357085416933161e-05 | False | True | True | risk_breached_proxy | True | False | False |
+| S04 | stressed_retail | 37253 | -0.0012055452890491 | -0.0011419744348798 | -6.357085416933161e-05 | False | False | True | risk_breached_proxy | True | False | False |
+| S06 | stressed_retail | 69008 | -0.0012522164850737 | -0.0011419744348798 | -0.0001102420501938 | False | False | True | risk_breached_proxy | True | False | False |
+| S08 | stressed_retail | 132860 | -0.0012664866787724 | -0.0011419744348798 | -0.0001245122438925 | False | False | True | risk_breached_proxy | True | False | False |
 
 ## Metric Status
 

@@ -1,0 +1,13 @@
+model_id,model_type,execution_profile,trade_dates,worst_daily_net_pnl_inr,tail_loss_1pct_trade_pnl_inr,max_intraday_drawdown_inr,daily_loss_breach_days,drawdown_breach_days,risk_status
+S03,partial_strategy_proxy,retail_marketable_default,1,-716416.4695698295,-174.17479187235557,-716349.6182026212,1,1,risk_breached_proxy
+S03,partial_strategy_proxy,stressed_retail,1,-850999.3488724648,-188.20103279387573,-850831.8220860176,1,1,risk_breached_proxy
+S03,partial_strategy_proxy,zero_latency_spread_only_control,1,-60045.71034167913,-107.83125480880088,-60041.89799255873,0,0,risk_not_breached_proxy
+S04,partial_strategy_proxy,retail_marketable_default,1,-3717035.984244291,-200.13458343625354,-3716893.6770301694,1,1,risk_breached_proxy
+S04,partial_strategy_proxy,stressed_retail,1,-4491017.865294918,-226.34566298130434,-4490861.653677454,1,1,risk_breached_proxy
+S04,partial_strategy_proxy,zero_latency_spread_only_control,1,-325099.7629787188,-100.31700181099534,-325042.1450677796,1,1,risk_breached_proxy
+S06,partial_strategy_proxy,retail_marketable_default,1,-7142628.611816802,-207.93265043119823,-7142493.84594026,1,1,risk_breached_proxy
+S06,partial_strategy_proxy,stressed_retail,1,-8641295.520196669,-234.50930387541896,-8641155.577968838,1,1,risk_breached_proxy
+S06,partial_strategy_proxy,zero_latency_spread_only_control,1,-776830.0828467455,-109.45309934703356,-776835.8161342125,1,1,risk_breached_proxy
+S08,partial_strategy_proxy,retail_marketable_default,1,-14051056.803852992,-221.38221111399156,-14051179.684242832,1,1,risk_breached_proxy
+S08,partial_strategy_proxy,stressed_retail,1,-16826542.014170747,-244.67631492157398,-16826433.64706612,1,1,risk_breached_proxy
+S08,partial_strategy_proxy,zero_latency_spread_only_control,1,-1614478.9314940725,-126.77291590350457,-1614698.7000933117,1,1,risk_breached_proxy

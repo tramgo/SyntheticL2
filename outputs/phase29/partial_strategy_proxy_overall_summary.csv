@@ -1,0 +1,8 @@
+metric,value,description
+phase29_partial_strategies_replayed,4,Partial strategy proxy families replayed
+phase29_strategy_profile_rows,12,Strategy/profile summary rows
+phase29_total_replay_trades,742623,Total partial-strategy proxy replay trades
+phase29_positive_after_cost_rows,0,Rows with positive mean net return after costs
+phase29_realistic_positive_rows,0,Retail/stressed rows positive after costs
+phase29_proxy_candidate_rows,0,"Rows passing realistic, positive, trade-count and proxy-risk checks"
+phase29_acceptance_ready,0,"Partial strategy replay uses weak proxy labels, not acceptance evidence"

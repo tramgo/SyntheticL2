@@ -203,3 +203,9 @@ phase28_symbols_evaluated,32,Phase 28 symbols evaluated
 phase28_proxy_feature_engineered_families,4,Phase 28 partial families with proxy labels
 phase28_total_proxy_label_rows,290162,Phase 28 proxy label rows/buckets
 phase28_acceptance_ready,0,Phase 28 acceptance-ready rows
+phase29_partial_strategies_replayed,4,Phase 29 partial strategies replayed
+phase29_total_replay_trades,742623,Phase 29 partial-strategy replay trades
+phase29_positive_after_cost_rows,0,Phase 29 positive rows after costs
+phase29_realistic_positive_rows,0,Phase 29 retail/stressed positive rows
+phase29_proxy_candidate_rows,0,Phase 29 proxy candidate rows
+phase29_acceptance_ready,0,Phase 29 acceptance-ready rows
