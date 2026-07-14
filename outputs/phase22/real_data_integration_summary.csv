@@ -1,0 +1,9 @@
+metric,value,description
+sample_days_available,1,Current real sample trading days available
+class_b_event_grade_days,0,Complete Class B event-grade real days counted for Phase 22 milestones
+milestones_reached,0,Phase 22 Class B milestones reached
+next_milestone_min_days,1,M22_01_one_day_schema_pipeline
+recalibration_tasks,54,Milestone/domain recalibration task rows
+schema_smoke_tasks_only,9,Tasks supported only for schema/scale smoke checks by the current sample
+ready_recalibration_tasks,0,Tasks ready for event-flow recalibration
+phase22_extension_or_paper_ready,0,Phase 22 does not permit extension or paper testing under current evidence

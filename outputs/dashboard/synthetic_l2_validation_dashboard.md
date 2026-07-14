@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T17:30:15.529448+00:00
+Generated UTC: 2026-07-14T17:36:04.947680+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -182,6 +182,10 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase21_decision_rules | 9 | Phase 21 decision rules |
 | phase21_active_current_decisions | 1 | Phase 21 active current decisions |
 | phase21_extension_or_paper_ready | 0 | Phase 21 extension/paper-ready rows |
+| phase22_class_b_event_grade_days | 0 | Phase 22 complete Class B event-grade days |
+| phase22_recalibration_tasks | 54 | Phase 22 milestone/domain recalibration tasks |
+| phase22_ready_recalibration_tasks | 0 | Phase 22 tasks ready for event-flow recalibration |
+| phase22_extension_or_paper_ready | 0 | Phase 22 extension/paper-ready rows |
 
 ## Quality Status
 
@@ -2644,6 +2648,45 @@ This dashboard is static research traceability output, not strategy promotion ev
 | D21_07_across_generators_seeds | False | stage_d_positive_noncontrol_strategies=2; predictive_candidates=0; stage_e_blocking_prereqs=4 | Candidate for real-data paper testing | outputs\stage_d\stage_d_strategy_proxy_summary.csv; outputs\phase16\predictive_promotion_falsification.csv; outputs\stage_e\stage_e_prerequisite_ledger.csv | Do not paper-test yet; full readiness blockers remain. | blocked_not_current_decision |
 | D21_08_synthetic_not_real | False | Real multi-day strategy comparison does not exist yet. | Treat as generator artifact and investigate | outputs\stage_e\stage_e_prerequisite_ledger.csv | Collect/import multi-day real holdout before classifying synthetic-vs-real divergence. | not_testable_currently |
 | D21_09_wild_seed_variation | False | wild_seed_variation_rows=0; note=Stage D current seed summaries are proxy/static by seed | Insufficient robustness or unstable scenario design | outputs\stage_d\stage_d_strategy_proxy_summary.csv | Run true full-seed stochastic execution before using seed variation as an acceptance decision. | not_proven_currently |
+
+## Phase 22 Real Data Integration Roadmap
+
+| current_status | rows |
+| --- | --- |
+| blocked_until_more_class_b_event_grade_days | 5 |
+| sample_day_smoke_available_not_class_b | 1 |
+
+| current_status | rows |
+| --- | --- |
+| blocked_waiting_for_class_b_days | 45 |
+| schema_smoke_only_not_event_flow_recalibration | 9 |
+
+| metric | value | description |
+| --- | --- | --- |
+| sample_days_available | 1 | Current real sample trading days available |
+| class_b_event_grade_days | 0 | Complete Class B event-grade real days counted for Phase 22 milestones |
+| milestones_reached | 0 | Phase 22 Class B milestones reached |
+| next_milestone_min_days | 1 | M22_01_one_day_schema_pipeline |
+| recalibration_tasks | 54 | Milestone/domain recalibration task rows |
+| schema_smoke_tasks_only | 9 | Tasks supported only for schema/scale smoke checks by the current sample |
+| ready_recalibration_tasks | 0 | Tasks ready for event-flow recalibration |
+| phase22_extension_or_paper_ready | 0 | Phase 22 does not permit extension or paper testing under current evidence |
+
+| milestone_id | real_data_availability | class_b_min_days | class_b_target_days | current_class_b_event_grade_days | current_sample_days_available | days_needed_for_min | days_needed_for_target | recalibration_use | current_status | acceptance_permission |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| M22_01_one_day_schema_pipeline | 1 day | 1 | 1 | 0 | 1 | 1 | 1 | schema, scale and pipeline | sample_day_smoke_available_not_class_b | False |
+| M22_02_five_to_ten_days_intraday | 5-10 days | 5 | 10 | 0 | 1 | 5 | 10 | normal intraday variation | blocked_until_more_class_b_event_grade_days | False |
+| M22_03_twenty_to_thirty_days_regime | 20-30 days | 20 | 30 | 0 | 1 | 20 | 30 | basic regime calibration | blocked_until_more_class_b_event_grade_days | False |
+| M22_04_sixty_days_oos | 60 days | 60 | 60 | 0 | 1 | 60 | 60 | preliminary out-of-sample comparison | blocked_until_more_class_b_event_grade_days | False |
+| M22_05_three_to_six_months_screening | 3-6 months | 63 | 126 | 0 | 1 | 63 | 126 | meaningful strategy screening | blocked_until_more_class_b_event_grade_days | False |
+| M22_06_twelve_months_robustness | 12+ months | 252 | 252 | 0 | 1 | 252 | 252 | stronger regime and robustness assessment | blocked_until_more_class_b_event_grade_days | False |
+
+| priority_rank | workstream | current_state | target_state | blocking_gap | required_next_action |
+| --- | --- | --- | --- | --- | --- |
+| 1 | class_b_event_grade_capture | sample_days=1; class_b_event_grade_days=0 | 1 Class B event-grade day(s) for 1 day milestone | Current one-day sample is not accepted as complete Class B event-grade evidence. | Collect/import diagnostically complete multi-day websocket L2 data and rerun Stage A2 capture diagnostics. |
+| 2 | capture_contract_closure | stage_a2_open_contract_rows=192; stage_a2_acceptance_met_rows=0 | 0 open Stage A2 capture-contract rows and nonzero acceptance-met rows | blocked_until_multiday_class_b_capture_and_diagnostics_exist | Close timestamp semantics, sequencing, dropped-message, compaction and stale-gap diagnostics before counting days as Class B. |
+| 3 | real_multiday_acceptance_inputs | phase20_m07_acceptance_met_rows=0 | Real multi-day predictive, economic and robustness validation rows become acceptance-grade. | Phase 20 M07 real multi-day acceptance contract has 0 acceptance-met rows. | After Class B capture exists, run strategy real-holdout, real economic and real robustness validations. |
+| 4 | phase21_decision_guardrail | Improve or reject strategies; do not tune generator to create profit | Decision framework permits extension/paper testing only after evidence gates pass. | Current Phase 21 decision blocks extension/paper testing. | Do not tune generator to create profit; use new real days to reduce assumptions and retest blockers. |
 
 ## Metric Status
 

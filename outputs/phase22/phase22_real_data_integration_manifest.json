@@ -1,0 +1,20 @@
+{
+  "generated_utc": "2026-07-14T17:36:03.874655+00:00",
+  "sample_days_available": 1,
+  "class_b_event_grade_days": 0,
+  "milestone_rows": 6,
+  "recalibration_task_rows": 54,
+  "scope": "phase22_real_data_integration_roadmap_not_promotion_evidence",
+  "not_acceptance_result": true,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "3eec2a47b9a3a308f980fa16c721eb2a68d96aaf",
+  "configuration_hash": "b230235319b9deff98dabe47e27a1f99341c9c814a3b06323d7a5477d577a74b",
+  "random_seed": "not_applicable_real_data_roadmap",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase22_real_data_availability_milestones_current_workspace",
+  "cost_model_version": "phase20_m07_real_multiday_economic_contract_not_acceptance",
+  "latency_model_version": "stage_a2_capture_diagnostics_and_phase8_feed_profiles",
+  "creation_timestamp": "2026-07-14T17:36:03.874655+00:00"
+}

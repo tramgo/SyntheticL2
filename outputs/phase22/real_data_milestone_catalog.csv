@@ -1,0 +1,7 @@
+milestone_id,real_data_availability,class_b_min_days,class_b_target_days,current_class_b_event_grade_days,current_sample_days_available,days_needed_for_min,days_needed_for_target,recalibration_use,current_status,acceptance_permission
+M22_01_one_day_schema_pipeline,1 day,1,1,0,1,1,1,"schema, scale and pipeline",sample_day_smoke_available_not_class_b,False
+M22_02_five_to_ten_days_intraday,5-10 days,5,10,0,1,5,10,normal intraday variation,blocked_until_more_class_b_event_grade_days,False
+M22_03_twenty_to_thirty_days_regime,20-30 days,20,30,0,1,20,30,basic regime calibration,blocked_until_more_class_b_event_grade_days,False
+M22_04_sixty_days_oos,60 days,60,60,0,1,60,60,preliminary out-of-sample comparison,blocked_until_more_class_b_event_grade_days,False
+M22_05_three_to_six_months_screening,3-6 months,63,126,0,1,63,126,meaningful strategy screening,blocked_until_more_class_b_event_grade_days,False
+M22_06_twelve_months_robustness,12+ months,252,252,0,1,252,252,stronger regime and robustness assessment,blocked_until_more_class_b_event_grade_days,False

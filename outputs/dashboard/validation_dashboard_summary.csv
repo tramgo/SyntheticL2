@@ -173,3 +173,7 @@ stage_e_extension_allowed_rows,0,Stage E extension allowed rows
 phase21_decision_rules,9,Phase 21 decision rules
 phase21_active_current_decisions,1,Phase 21 active current decisions
 phase21_extension_or_paper_ready,0,Phase 21 extension/paper-ready rows
+phase22_class_b_event_grade_days,0,Phase 22 complete Class B event-grade days
+phase22_recalibration_tasks,54,Phase 22 milestone/domain recalibration tasks
+phase22_ready_recalibration_tasks,0,Phase 22 tasks ready for event-flow recalibration
+phase22_extension_or_paper_ready,0,Phase 22 extension/paper-ready rows
