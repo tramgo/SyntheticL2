@@ -1,0 +1,13 @@
+metric,value,description
+symbols,32,instrument count in three-month feature product
+quarter_profiles,3,quarter profiles represented
+total_trading_days,63,unique calendar dates across profiles
+min_days_per_profile,63,minimum trading days per quarter profile
+feature_rows,2259228,Phase 9 Tier C feature rows
+raw_event_rows,2276282,Phase 9 Tier A raw event rows
+compact_l2_rows,2259228,Phase 9 Tier B compact L2 rows
+initial_seed_rows,9,initial engineering seeds across profiles
+full_seed_rows,30,full validation seed target rows
+strategy_run_rows,99,S01-S11 x initial seeds
+control_strategy_rows,27,S09-S11 control/non-alpha rows
+acceptance_ready_rows,0,promotion-ready rows

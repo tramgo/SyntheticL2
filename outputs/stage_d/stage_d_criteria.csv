@@ -1,0 +1,10 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+all_32_instruments,Three-month study covers all 32 current instruments.,symbol_count == 32,proxy_study_check_not_strategy_acceptance
+sixty_three_days_per_profile,Each Q-A/Q-B/Q-C profile contributes 63 trading days.,min_days_per_profile == 63,proxy_study_check_not_strategy_acceptance
+three_profiles,Three quarter profiles are present.,quarter_profile_count == 3,proxy_study_check_not_strategy_acceptance
+initial_three_seeds_per_profile,At least 3 initial engineering seeds per profile are present.,initial_seed_rows == 9,proxy_study_check_not_strategy_acceptance
+ten_seed_expansion_tracked,Later 10-seed expansion is tracked as a remaining validation gap.,full_seed_rows == 30 and initial_seed_rows < full_seed_rows,proxy_study_check_not_strategy_acceptance
+raw_compact_feature_inventory,"Raw events, compact L2 states and feature datasets are inventoried.",all three Phase 9 data products present,proxy_study_check_not_strategy_acceptance
+all_strategy_proxy_runs,S01-S11 have proxy/control summaries over the three-month feature product.,strategy_run_rows == 99,proxy_study_check_not_strategy_acceptance
+controls_labelled,S09-S11 are treated as controls/non-alpha or risk-only modules.,control_strategy_rows == 27,proxy_study_check_not_strategy_acceptance
+non_acceptance_scope,No Stage D row is strategy-promotion evidence.,acceptance_ready_rows == 0,proxy_study_check_not_strategy_acceptance

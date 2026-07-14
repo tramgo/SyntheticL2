@@ -1,0 +1,10 @@
+check_id,observed_value,expected_value,passed,detail,acceptance_scope
+all_32_instruments,32,32,True,all current symbols represented,stage_d_three_month_proxy_not_strategy_promotion
+sixty_three_days_per_profile,63,63,True,Q-A/Q-B/Q-C each cover 63 days,stage_d_three_month_proxy_not_strategy_promotion
+three_profiles,3,3,True,Q-A/Q-B/Q-C present,stage_d_three_month_proxy_not_strategy_promotion
+initial_three_seeds_per_profile,9,9,True,3 initial engineering seeds x 3 profiles,stage_d_three_month_proxy_not_strategy_promotion
+ten_seed_expansion_tracked,30,30,True,remaining 21 full-seed rows are tracked as expansion gap,stage_d_three_month_proxy_not_strategy_promotion
+raw_compact_feature_inventory,1,1,True,Phase 9 Tier A/B/C products present,stage_d_three_month_proxy_not_strategy_promotion
+all_strategy_proxy_runs,99,99,True,S01-S11 x 9 initial seeds,stage_d_three_month_proxy_not_strategy_promotion
+controls_labelled,27,27,True,S09-S11 x 9 seeds,stage_d_three_month_proxy_not_strategy_promotion
+non_acceptance_scope,0,0,True,Stage D remains proxy evidence,stage_d_three_month_proxy_not_strategy_promotion

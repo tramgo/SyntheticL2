@@ -1,0 +1,4 @@
+quarter_profile,initial_engineering_seed_rows,full_validation_seed_rows,initial_seed_list,full_seed_expansion_gap_rows
+Q-A,3,10,910001|910002|910003,7
+Q-B,3,10,920001|920002|920003,7
+Q-C,3,10,930001|930002|930003,7

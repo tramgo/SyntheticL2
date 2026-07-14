@@ -37,3 +37,4 @@ stage_a2,outputs/stage_a2/stage_a2_capture_diagnostics_contract_manifest.json,10
 stage_b1,outputs/stage_b1/stage_b1_structural_synthetic_proof_manifest.json,10,10,0,0,0,True
 stage_b2,outputs/stage_b2/stage_b2_event_driven_synthetic_proof_manifest.json,10,10,0,0,0,True
 stage_c,outputs/stage_c/stage_c_medium_pilot_manifest.json,10,10,0,0,0,True
+stage_d,outputs/stage_d/stage_d_three_month_study_manifest.json,10,10,0,0,0,True

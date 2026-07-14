@@ -1,0 +1,22 @@
+{
+  "generated_utc": "2026-07-14T17:17:32.496537+00:00",
+  "symbol_count": 32,
+  "quarter_profiles": 3,
+  "feature_rows": 2259228,
+  "strategy_run_rows": 99,
+  "passed_checks": 9,
+  "failed_checks": 0,
+  "scope": "stage_d_three_month_study_proxy_not_acceptance",
+  "not_acceptance_result": true,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "bb32f61afad93e30730ad6b037f59732cc6aceee",
+  "configuration_hash": "fecfc026fdc8dac650ed1760bfd0e42d53b6e29087dd6a438580a85bf30e0adb",
+  "random_seed": "phase13_initial_engineering_seeds_for_stage_d_proxy",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase4_QA_QB_QC_all_63_day_profiles",
+  "cost_model_version": "not_applicable_stage_d_gross_proxy_no_execution_costs",
+  "latency_model_version": "phase9_tier_c_feed_profiles_no_order_latency",
+  "creation_timestamp": "2026-07-14T17:17:32.496537+00:00"
+}
