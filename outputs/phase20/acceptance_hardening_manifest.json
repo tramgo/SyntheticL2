@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T15:14:48.548946+00:00",
+  "generated_utc": "2026-07-14T15:19:40.766162+00:00",
   "queue_rows": 50,
   "gate_summary_rows": 5,
   "strategy_summary_rows": 11,
@@ -7,12 +7,16 @@
   "risk_hardening_open_rows": 88,
   "risk_hardening_proxy_rows": 54,
   "risk_hardening_action_summary_rows": 6,
+  "economic_hardening_plan_rows": 88,
+  "economic_hardening_open_rows": 88,
+  "economic_hardening_proxy_rows": 58,
+  "economic_hardening_action_summary_rows": 8,
   "acceptance_ready_queue_rows": 0,
   "top_priority_gate": "G04_risk",
   "scope": "phase20_acceptance_hardening_queue",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "119398a2381883d1aa858d364302f1fb1dc4f997",
-  "configuration_hash": "93a8c2896bd26829c13f7b5a591bf225b87b480d1866befeef3e02c87d441444",
+  "generator_version": "fff7b10fea602195ff8c133d212497a3c3c4d5a6",
+  "configuration_hash": "066f9fe9de63f666f04c257597174ddb2d1372f19fd60e53c1114cf46db430d6",
   "random_seed": "not_applicable_deterministic_blocker_queue",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -20,5 +24,5 @@
   "scenario_ids": "phase15_blockers_by_strategy_gate",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-14T15:14:48.548946+00:00"
+  "creation_timestamp": "2026-07-14T15:19:40.766162+00:00"
 }

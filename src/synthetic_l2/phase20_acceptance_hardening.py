@@ -75,6 +75,39 @@ RISK_DEPENDENCY_TYPE = {
     "tail_loss_validation": "internal_tail_risk_replay_plus_acceptance_thresholds",
 }
 
+ECONOMIC_REQUIREMENT_PRIORITY = {
+    "broker_exchange_fill_provenance": 1,
+    "contract_note_reconciliation": 2,
+    "zerodha_order_formula_ready": 3,
+    "latency_slippage_stress_confirmation": 4,
+    "retail_and_stress_net_positive": 5,
+    "stressed_profile_net_positive": 6,
+    "risk_adjusted_economic_joint_pass": 7,
+    "multi_day_real_or_holdout_economic_validation": 8,
+}
+
+ECONOMIC_ACTION_CLASS = {
+    "broker_exchange_fill_provenance": "broker_or_exchange_fill_reconciliation",
+    "contract_note_reconciliation": "broker_contract_note_reconciliation",
+    "zerodha_order_formula_ready": "documented_cost_formula_validation",
+    "latency_slippage_stress_confirmation": "latency_slippage_acceptance_run",
+    "retail_and_stress_net_positive": "net_profitability_validation",
+    "stressed_profile_net_positive": "net_profitability_validation",
+    "risk_adjusted_economic_joint_pass": "risk_adjusted_economic_validation",
+    "multi_day_real_or_holdout_economic_validation": "holdout_or_real_multiday_economic_validation",
+}
+
+ECONOMIC_DEPENDENCY_TYPE = {
+    "broker_exchange_fill_provenance": "external_broker_or_exchange_records",
+    "contract_note_reconciliation": "external_broker_contract_notes_or_documented_synthetic_substitute",
+    "zerodha_order_formula_ready": "documented_zerodha_charge_formula_and_cost_catalog",
+    "latency_slippage_stress_confirmation": "internal_event_lifecycle_latency_slippage_replay",
+    "retail_and_stress_net_positive": "internal_full_run_economic_replay_plus_acceptance_thresholds",
+    "stressed_profile_net_positive": "internal_stress_profile_economic_replay",
+    "risk_adjusted_economic_joint_pass": "internal_joined_economic_and_risk_acceptance_evidence",
+    "multi_day_real_or_holdout_economic_validation": "multi_day_real_data_or_untouched_holdout_generator",
+}
+
 
 def _markdown_table(frame: pd.DataFrame) -> str:
     if frame.empty:
@@ -97,6 +130,11 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, pd.DataFrame]:
         "risk_acceptance_readiness": pd.read_csv(paths["risk_acceptance_readiness"]),
         "risk_breach_severity": pd.read_csv(paths["risk_breach_severity"]),
         "risk_limit_sensitivity": pd.read_csv(paths["risk_limit_sensitivity"]),
+        "economic_acceptance_gap": pd.read_csv(paths["economic_acceptance_gap"]),
+        "economic_viability_frontier": pd.read_csv(paths["economic_viability_frontier"]),
+        "risk_adjusted_economic_frontier": pd.read_csv(paths["risk_adjusted_economic_frontier"]),
+        "broker_reconciliation_readiness": pd.read_csv(paths["broker_reconciliation_readiness"]),
+        "economic_reconciliation_strategy_summary": pd.read_csv(paths["economic_reconciliation_strategy_summary"]),
     }
 
 
@@ -375,6 +413,234 @@ def build_risk_action_summary(risk_plan: pd.DataFrame) -> pd.DataFrame:
     return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
 
 
+def _economic_strategy_summary(
+    economic: pd.DataFrame,
+    risk_adjusted: pd.DataFrame,
+    reconciliation: pd.DataFrame,
+) -> pd.DataFrame:
+    if economic.empty:
+        economic_summary = pd.DataFrame(columns=["strategy_id"])
+    else:
+        stressed = economic[economic["execution_profile"].astype(str) == "stressed_retail"]
+        economic_summary = (
+            economic.groupby("strategy_id", sort=True)
+            .agg(
+                economic_frontier_rows=("strategy_id", "count"),
+                net_positive_proxy_rows=("net_positive_proxy", lambda values: int(values.astype(bool).sum())),
+                retail_stress_rows=("retail_or_stress_profile", lambda values: int(values.astype(bool).sum())),
+                retail_stress_net_positive_rows=(
+                    "net_positive_proxy",
+                    lambda values: 0,
+                ),
+                best_net_edge_bps=("net_edge_bps", "max"),
+                worst_net_edge_bps=("net_edge_bps", "min"),
+                max_additional_gross_edge_needed_bps=("additional_gross_edge_needed_bps", "max"),
+                max_cost_reduction_needed_bps=("cost_reduction_needed_bps", "max"),
+            )
+            .reset_index()
+        )
+        retail_stress_positive = (
+            economic[economic["retail_or_stress_profile"].astype(bool)]
+            .groupby("strategy_id", sort=True)["net_positive_proxy"]
+            .agg(lambda values: int(values.astype(bool).sum()))
+            .reset_index(name="retail_stress_net_positive_rows")
+        )
+        stressed_positive = (
+            stressed.groupby("strategy_id", sort=True)["net_positive_proxy"]
+            .agg(lambda values: int(values.astype(bool).sum()))
+            .reset_index(name="stressed_net_positive_rows")
+        )
+        economic_summary = economic_summary.drop(columns=["retail_stress_net_positive_rows"]).merge(
+            retail_stress_positive,
+            on="strategy_id",
+            how="left",
+        ).merge(stressed_positive, on="strategy_id", how="left")
+    if risk_adjusted.empty:
+        risk_adjusted_summary = pd.DataFrame(columns=["strategy_id"])
+    else:
+        risk_adjusted_summary = (
+            risk_adjusted.groupby("strategy_id", sort=True)
+            .agg(
+                risk_adjusted_rows=("strategy_id", "count"),
+                risk_adjusted_joint_pass_rows=("net_positive_and_risk_pass_proxy", lambda values: int(values.astype(bool).sum())),
+                retail_stress_joint_pass_rows=(
+                    "retail_stress_net_positive_and_risk_pass_proxy",
+                    lambda values: int(values.astype(bool).sum()),
+                ),
+                economic_positive_but_risk_blocked_rows=(
+                    "risk_adjusted_frontier_status",
+                    lambda values: int((values.astype(str) == "economic_positive_but_risk_blocked_proxy").sum()),
+                ),
+                best_risk_adjusted_net_edge_bps=("risk_adjusted_net_edge_bps", "max"),
+                worst_risk_adjusted_net_edge_bps=("risk_adjusted_net_edge_bps", "min"),
+            )
+            .reset_index()
+        )
+    if reconciliation.empty:
+        reconciliation_summary = pd.DataFrame(columns=["strategy_id"])
+    else:
+        reconciliation_summary = reconciliation[
+            [
+                "strategy_id",
+                "documented_zerodha_formula_ready",
+                "broker_contract_note_reconciliation_ready",
+                "missing_reconciliation_items",
+                "economic_acceptance_ready_now",
+            ]
+        ].copy()
+    return (
+        economic_summary.merge(risk_adjusted_summary, on="strategy_id", how="outer")
+        .merge(reconciliation_summary, on="strategy_id", how="outer")
+        .fillna(0)
+    )
+
+
+def build_economic_hardening_plan(
+    queue: pd.DataFrame,
+    economic_gap: pd.DataFrame,
+    economic: pd.DataFrame,
+    risk_adjusted: pd.DataFrame,
+    broker_reconciliation: pd.DataFrame,
+    reconciliation: pd.DataFrame,
+) -> pd.DataFrame:
+    economic_queue = queue[queue["gate_id"].astype(str) == "G02_economic"][
+        ["queue_rank", "priority_band", "strategy_id", "strategy_support_level", "strategy_role"]
+    ].copy()
+    economic_summary = _economic_strategy_summary(economic, risk_adjusted, reconciliation)
+    broker_reconciliation_summary = {
+        "broker_reconciliation_items": int(len(broker_reconciliation)),
+        "proxy_formula_ready_items": int(broker_reconciliation["proxy_formula_available_now"].astype(bool).sum())
+        if "proxy_formula_available_now" in broker_reconciliation
+        else 0,
+        "contract_note_ready_items": int(broker_reconciliation["broker_contract_note_available_now"].astype(bool).sum())
+        if "broker_contract_note_available_now" in broker_reconciliation
+        else 0,
+        "actual_fill_ready_items": int(broker_reconciliation["actual_fill_available_now"].astype(bool).sum())
+        if "actual_fill_available_now" in broker_reconciliation
+        else 0,
+    }
+    rows = economic_gap.merge(economic_queue, on="strategy_id", how="left").merge(economic_summary, on="strategy_id", how="left")
+    rows = rows[rows["queue_rank"].notna()].copy()
+    for key, value in broker_reconciliation_summary.items():
+        rows[key] = value
+    rows["requirement_priority"] = rows["economic_requirement"].map(ECONOMIC_REQUIREMENT_PRIORITY).fillna(99).astype(int)
+    rows["action_class"] = rows["economic_requirement"].map(ECONOMIC_ACTION_CLASS).fillna("unmapped_economic_action")
+    rows["dependency_type"] = rows["economic_requirement"].map(ECONOMIC_DEPENDENCY_TYPE).fillna("unmapped_dependency")
+    rows["proxy_evidence_available"] = rows["proxy_evidence_available"].astype(bool)
+    rows["acceptance_requirement_met"] = rows["acceptance_requirement_met"].astype(bool)
+    rows["acceptance_ready_now"] = False
+    rows["economic_hardening_status"] = rows.apply(
+        lambda row: "acceptance_met"
+        if row["acceptance_requirement_met"]
+        else "proxy_evidence_needs_acceptance_upgrade"
+        if row["proxy_evidence_available"]
+        else "missing_required_acceptance_evidence",
+        axis=1,
+    )
+    numeric_summary_columns = [
+        "economic_frontier_rows",
+        "net_positive_proxy_rows",
+        "retail_stress_rows",
+        "retail_stress_net_positive_rows",
+        "stressed_net_positive_rows",
+        "risk_adjusted_rows",
+        "risk_adjusted_joint_pass_rows",
+        "retail_stress_joint_pass_rows",
+        "economic_positive_but_risk_blocked_rows",
+        "missing_reconciliation_items",
+        "broker_reconciliation_items",
+        "proxy_formula_ready_items",
+        "contract_note_ready_items",
+        "actual_fill_ready_items",
+        "best_net_edge_bps",
+        "worst_net_edge_bps",
+        "best_risk_adjusted_net_edge_bps",
+        "worst_risk_adjusted_net_edge_bps",
+        "max_additional_gross_edge_needed_bps",
+        "max_cost_reduction_needed_bps",
+    ]
+    for column in numeric_summary_columns:
+        if column in rows:
+            rows[column] = rows[column].fillna(0)
+    rows["economic_evidence_summary"] = rows.apply(
+        lambda row: (
+            f"net_positive_rows={int(row.get('net_positive_proxy_rows', 0))}; "
+            f"retail_stress_positive_rows={int(row.get('retail_stress_net_positive_rows', 0))}; "
+            f"stressed_positive_rows={int(row.get('stressed_net_positive_rows', 0))}; "
+            f"risk_adjusted_joint_pass_rows={int(row.get('risk_adjusted_joint_pass_rows', 0))}; "
+            f"missing_reconciliation_items={int(row.get('missing_reconciliation_items', 0))}"
+        ),
+        axis=1,
+    )
+    output_columns = [
+        "queue_rank",
+        "priority_band",
+        "strategy_id",
+        "strategy_support_level",
+        "strategy_role",
+        "economic_requirement",
+        "requirement_priority",
+        "action_class",
+        "dependency_type",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "economic_hardening_status",
+        "blocking_gap",
+        "required_next_evidence",
+        "economic_evidence_summary",
+        "economic_frontier_rows",
+        "net_positive_proxy_rows",
+        "retail_stress_net_positive_rows",
+        "stressed_net_positive_rows",
+        "risk_adjusted_joint_pass_rows",
+        "retail_stress_joint_pass_rows",
+        "economic_positive_but_risk_blocked_rows",
+        "best_net_edge_bps",
+        "best_risk_adjusted_net_edge_bps",
+        "broker_reconciliation_items",
+        "proxy_formula_ready_items",
+        "contract_note_ready_items",
+        "actual_fill_ready_items",
+        "missing_reconciliation_items",
+        "acceptance_ready_now",
+        "evidence_source",
+    ]
+    for column in output_columns:
+        if column not in rows:
+            rows[column] = 0 if column.endswith("_rows") or column.endswith("_items") or column.endswith("_bps") else ""
+    return rows[output_columns].sort_values(["queue_rank", "requirement_priority"], kind="mergesort")
+
+
+def build_economic_action_summary(economic_plan: pd.DataFrame) -> pd.DataFrame:
+    if economic_plan.empty:
+        return pd.DataFrame(
+            columns=[
+                "action_class",
+                "dependency_type",
+                "economic_requirement_rows",
+                "strategies",
+                "proxy_evidence_rows",
+                "acceptance_met_rows",
+                "open_rows",
+            ]
+        )
+    grouped = (
+        economic_plan.groupby(["action_class", "dependency_type"], sort=True)
+        .agg(
+            economic_requirement_rows=("economic_requirement", "count"),
+            strategies=("strategy_id", "nunique"),
+            proxy_evidence_rows=("proxy_evidence_available", lambda values: int(values.astype(bool).sum())),
+            acceptance_met_rows=("acceptance_requirement_met", lambda values: int(values.astype(bool).sum())),
+        )
+        .reset_index()
+    )
+    grouped["open_rows"] = grouped["economic_requirement_rows"] - grouped["acceptance_met_rows"]
+    return grouped.sort_values(["open_rows", "action_class"], ascending=[False, True], kind="mergesort")
+
+
 def write_report(
     output_dir: Path,
     queue: pd.DataFrame,
@@ -382,6 +648,8 @@ def write_report(
     strategy_summary: pd.DataFrame,
     risk_plan: pd.DataFrame,
     risk_action_summary: pd.DataFrame,
+    economic_plan: pd.DataFrame,
+    economic_action_summary: pd.DataFrame,
 ) -> None:
     priority_summary = queue.groupby(["priority_band", "gate_id", "acceptance_milestone"], sort=True).size().reset_index(name="queue_items")
     lines = [
@@ -430,6 +698,26 @@ def write_report(
             ].head(40)
         ),
         "",
+        "## Economic Hardening Action Summary",
+        "",
+        _markdown_table(economic_action_summary),
+        "",
+        "## Top Economic Hardening Requirements",
+        "",
+        _markdown_table(
+            economic_plan[
+                [
+                    "queue_rank",
+                    "strategy_id",
+                    "economic_requirement",
+                    "action_class",
+                    "economic_hardening_status",
+                    "economic_evidence_summary",
+                    "required_next_evidence",
+                ]
+            ].head(40)
+        ),
+        "",
     ]
     (output_dir / "phase20_acceptance_hardening_report.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -452,12 +740,23 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         inputs["risk_limit_sensitivity"],
     )
     risk_action_summary = build_risk_action_summary(risk_plan)
+    economic_plan = build_economic_hardening_plan(
+        queue,
+        inputs["economic_acceptance_gap"],
+        inputs["economic_viability_frontier"],
+        inputs["risk_adjusted_economic_frontier"],
+        inputs["broker_reconciliation_readiness"],
+        inputs["economic_reconciliation_strategy_summary"],
+    )
+    economic_action_summary = build_economic_action_summary(economic_plan)
 
     queue.to_csv(output_dir / "acceptance_hardening_queue.csv", index=False)
     gate_summary.to_csv(output_dir / "acceptance_hardening_gate_summary.csv", index=False)
     strategy_queue.to_csv(output_dir / "acceptance_hardening_strategy_summary.csv", index=False)
     risk_plan.to_csv(output_dir / "risk_hardening_plan.csv", index=False)
     risk_action_summary.to_csv(output_dir / "risk_hardening_action_summary.csv", index=False)
+    economic_plan.to_csv(output_dir / "economic_hardening_plan.csv", index=False)
+    economic_action_summary.to_csv(output_dir / "economic_hardening_action_summary.csv", index=False)
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": generated_utc,
@@ -468,6 +767,10 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         "risk_hardening_open_rows": int((~risk_plan["acceptance_requirement_met"].astype(bool)).sum()),
         "risk_hardening_proxy_rows": int(risk_plan["proxy_evidence_available"].astype(bool).sum()),
         "risk_hardening_action_summary_rows": int(len(risk_action_summary)),
+        "economic_hardening_plan_rows": int(len(economic_plan)),
+        "economic_hardening_open_rows": int((~economic_plan["acceptance_requirement_met"].astype(bool)).sum()),
+        "economic_hardening_proxy_rows": int(economic_plan["proxy_evidence_available"].astype(bool).sum()),
+        "economic_hardening_action_summary_rows": int(len(economic_action_summary)),
         "acceptance_ready_queue_rows": int(queue["acceptance_ready_now"].sum()),
         "top_priority_gate": gate_summary.iloc[0]["gate_id"] if len(gate_summary) else "",
         "scope": "phase20_acceptance_hardening_queue",
@@ -488,6 +791,8 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
                 "acceptance_hardening_strategy_summary": str(output_dir / "acceptance_hardening_strategy_summary.csv"),
                 "risk_hardening_plan": str(output_dir / "risk_hardening_plan.csv"),
                 "risk_hardening_action_summary": str(output_dir / "risk_hardening_action_summary.csv"),
+                "economic_hardening_plan": str(output_dir / "economic_hardening_plan.csv"),
+                "economic_hardening_action_summary": str(output_dir / "economic_hardening_action_summary.csv"),
                 "report": str(output_dir / "phase20_acceptance_hardening_report.md"),
             },
             random_seed="not_applicable_deterministic_blocker_queue",
@@ -498,7 +803,7 @@ def run_phase20(paths: dict[str, Path], output_dir: Path, base_dir: Path) -> Non
         )
     )
     (output_dir / "acceptance_hardening_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, queue, gate_summary, strategy_queue, risk_plan, risk_action_summary)
+    write_report(output_dir, queue, gate_summary, strategy_queue, risk_plan, risk_action_summary, economic_plan, economic_action_summary)
 
 
 def parse_args() -> argparse.Namespace:
@@ -511,6 +816,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--risk-acceptance-readiness", type=Path, default=Path("outputs/phase12/full_run_risk_acceptance_readiness.csv"))
     parser.add_argument("--risk-breach-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
     parser.add_argument("--risk-limit-sensitivity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv"))
+    parser.add_argument("--economic-acceptance-gap", type=Path, default=Path("outputs/phase16/economic_acceptance_gap_ledger.csv"))
+    parser.add_argument("--economic-viability-frontier", type=Path, default=Path("outputs/phase16/economic_viability_frontier.csv"))
+    parser.add_argument("--risk-adjusted-economic-frontier", type=Path, default=Path("outputs/phase16/risk_adjusted_economic_frontier.csv"))
+    parser.add_argument("--broker-reconciliation-readiness", type=Path, default=Path("outputs/phase16/broker_reconciliation_readiness.csv"))
+    parser.add_argument("--economic-reconciliation-strategy-summary", type=Path, default=Path("outputs/phase16/economic_reconciliation_strategy_summary.csv"))
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     return parser.parse_args()
 
@@ -525,6 +835,11 @@ def main() -> None:
         "risk_acceptance_readiness": args.risk_acceptance_readiness,
         "risk_breach_severity": args.risk_breach_severity,
         "risk_limit_sensitivity": args.risk_limit_sensitivity,
+        "economic_acceptance_gap": args.economic_acceptance_gap,
+        "economic_viability_frontier": args.economic_viability_frontier,
+        "risk_adjusted_economic_frontier": args.risk_adjusted_economic_frontier,
+        "broker_reconciliation_readiness": args.broker_reconciliation_readiness,
+        "economic_reconciliation_strategy_summary": args.economic_reconciliation_strategy_summary,
     }
     run_phase20(paths, args.output_dir, args.base_dir)
 
