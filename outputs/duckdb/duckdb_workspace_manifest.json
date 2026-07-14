@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T14:42:49.726320+00:00",
+  "generated_utc": "2026-07-14T14:49:54.519533+00:00",
   "duckdb_database": "outputs\\duckdb\\synthetic_l2.duckdb",
   "storage_decision": "Parquet remains the durable storage; DuckDB is the analytic query layer over Parquet views.",
   "validation": {
@@ -164,6 +164,10 @@
     "phase16_broker_reconciliation_contract_note_ready_rows": 0,
     "phase16_economic_reconciliation_strategy_rows": 11,
     "phase16_economic_reconciliation_ready_strategies": 0,
+    "phase16_economic_acceptance_gap_rows": 88,
+    "phase16_economic_acceptance_gap_open_rows": 88,
+    "phase16_economic_acceptance_gap_proxy_rows": 58,
+    "phase16_economic_acceptance_gap_met_rows": 0,
     "phase16_markout_summary_rows": 27,
     "phase16_markout_sample_trades": 243973,
     "phase16_adverse_selection_metric_status": "sample_proxy",
@@ -183,7 +187,7 @@
     "phase20_hardening_strategy_rows": 11,
     "phase20_acceptance_ready_rows": 0,
     "phase20_top_priority_gate_rows": 11,
-    "validation_dashboard_summary_rows": 49,
+    "validation_dashboard_summary_rows": 53,
     "validation_dashboard_promoted_strategies": 0,
     "validation_dashboard_p1_gaps": 0,
     "replay_validation_tiers": 3,
@@ -302,6 +306,7 @@
     "phase15_strategy_gate_results",
     "phase16_breakdown_coverage",
     "phase16_broker_reconciliation_readiness",
+    "phase16_economic_acceptance_gap_ledger",
     "phase16_economic_reconciliation_strategy_summary",
     "phase16_economic_viability_frontier",
     "phase16_feature_importance_stability_proxy",
@@ -370,8 +375,8 @@
     "validation_dashboard_summary"
   ],
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "e31293c924d397019316c2f809f1f8ee2766a09a",
-  "configuration_hash": "77d6138db0618ef67f3a1b2b595ea031ad35997265d0fc3efcd52188938c5b55",
+  "generator_version": "c99a8771962d9ebf968b5d671cb774a91c0cc59b",
+  "configuration_hash": "020657b65c3317acc65375d6f2c071b54a93b9a9f6322920510555786e697f2a",
   "random_seed": "not_applicable_deterministic_duckdb_view_registration",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -379,5 +384,5 @@
   "scenario_ids": "current_workspace_registered_phase_views",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:42:49.726320+00:00"
+  "creation_timestamp": "2026-07-14T14:49:54.519533+00:00"
 }

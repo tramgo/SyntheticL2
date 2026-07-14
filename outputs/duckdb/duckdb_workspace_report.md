@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T14:42:49.726320+00:00
+Generated UTC: 2026-07-14T14:49:54.519533+00:00
 
 ## Storage Decision
 
@@ -168,6 +168,10 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 16 broker reconciliation contract-note-ready rows: 0
 - Phase 16 economic reconciliation strategy rows: 11
 - Phase 16 economic reconciliation ready strategies: 0
+- Phase 16 economic acceptance gap rows: 88
+- Phase 16 open economic acceptance gap rows: 88
+- Phase 16 economic acceptance gap rows with proxy evidence: 58
+- Phase 16 met economic acceptance gap rows: 0
 - Phase 16 markout/MAE/MFE summary rows: 27
 - Phase 16 markout sample trades: 243973
 - Phase 16 adverse-selection metric status: sample_proxy
@@ -187,7 +191,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 acceptance hardening strategy rows: 11
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 49
+- Validation dashboard summary rows: 53
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

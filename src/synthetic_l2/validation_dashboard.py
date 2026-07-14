@@ -109,6 +109,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     risk_adjusted_economic = _read_csv(paths["risk_adjusted_economic"])
     broker_reconciliation = _read_csv(paths["broker_reconciliation"])
     economic_reconciliation = _read_csv(paths["economic_reconciliation"])
+    economic_gap = _read_csv(paths["economic_gap"])
     markout = _read_csv(paths["markout"])
     gaps = _read_csv(paths["gaps"])
     hardening_queue = _read_csv(paths["hardening_queue"])
@@ -124,6 +125,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     top_trading = trading.sort_values("mean_net_return", ascending=False)
     top_economic = economic.sort_values("net_edge_bps", ascending=False)
     top_risk_adjusted_economic = risk_adjusted_economic.sort_values("risk_adjusted_net_edge_bps", ascending=False)
+    economic_gap_status = (
+        economic_gap.groupby(["proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     top_markout = markout.sort_values("adverse_selection_rate_6bar_proxy", ascending=True)
     lifecycle_overview = (
         lifecycle_risk.groupby("fill_model", sort=True)
@@ -192,6 +198,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("broker_reconciliation_proxy_formula_ready_rows", int(broker_reconciliation["proxy_formula_available_now"].astype(bool).sum()), "Readiness rows with documented/proxy formula evidence"),
         ("broker_reconciliation_contract_note_ready_rows", int(broker_reconciliation["broker_contract_note_available_now"].astype(bool).sum()), "Readiness rows with broker contract-note evidence"),
         ("economic_reconciliation_ready_strategies", int(economic_reconciliation["economic_acceptance_ready_now"].astype(bool).sum()), "Strategies economically ready after broker reconciliation"),
+        ("economic_acceptance_gap_rows", int(len(economic_gap)), "Phase 16 economic acceptance gap rows"),
+        ("economic_acceptance_gap_open_rows", int((~economic_gap["acceptance_requirement_met"].astype(bool)).sum()), "Phase 16 open economic acceptance gaps"),
+        ("economic_acceptance_gap_proxy_rows", int(economic_gap["proxy_evidence_available"].astype(bool).sum()), "Phase 16 economic gaps with proxy evidence"),
+        ("economic_acceptance_gap_met_rows", int(economic_gap["acceptance_requirement_met"].astype(bool).sum()), "Phase 16 met economic acceptance requirements"),
         ("acceptance_grade_metrics", int(metric_catalog["acceptance_eligible_now"].astype(bool).sum()), "Acceptance-grade metrics"),
         ("missing_metrics", int((metric_catalog["current_status"].astype(str) == "missing").sum()), "Missing metric rows"),
         ("p1_gaps", int((gaps["priority"].astype(str) == "P1").sum()), "Phase 17 P1 backlog rows"),
@@ -277,6 +287,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 16 Economic Viability Frontier</h2>{_table(top_economic, ['strategy_id', 'execution_profile', 'gross_edge_bps', 'cost_drag_bps', 'net_edge_bps', 'additional_gross_edge_needed_bps', 'cost_reduction_needed_bps', 'economic_frontier_status'], 18)}</section>
   <section><h2>Phase 16 Risk-Adjusted Economic Frontier</h2>{_table(top_risk_adjusted_economic, ['strategy_id', 'execution_profile', 'fill_model', 'net_edge_bps', 'risk_penalty_bps', 'risk_adjusted_net_edge_bps', 'net_positive_proxy', 'risk_pass_candidate_proxy', 'net_positive_and_risk_pass_proxy', 'risk_severity_band', 'risk_adjusted_frontier_status'], 25)}</section>
   <section><h2>Phase 16 Broker Reconciliation Readiness</h2>{_table(broker_reconciliation, ['reconciliation_domain', 'reconciliation_item', 'proxy_formula_available_now', 'broker_contract_note_available_now', 'actual_fill_available_now', 'reconciliation_status', 'blocker'], 25)}{_table(economic_reconciliation, ['strategy_id', 'net_positive_proxy_rows', 'retail_stress_net_positive_proxy_rows', 'risk_adjusted_joint_pass_rows', 'documented_zerodha_formula_ready', 'broker_contract_note_reconciliation_ready', 'economic_acceptance_ready_now', 'readiness_status'], 15)}</section>
+  <section><h2>Phase 16 Economic Acceptance Gap Ledger</h2>{_table(economic_gap_status, None, 10)}{_table(economic_gap, ['strategy_id', 'economic_requirement', 'observed_value', 'current_evidence_status', 'proxy_evidence_available', 'acceptance_requirement_met', 'blocking_gap'], 50)}</section>
   <section><h2>Top Trading Proxy Rows</h2>{_table(top_trading, ['strategy_id', 'execution_profile', 'trades', 'mean_net_return', 'win_rate_net', 'sample_max_drawdown_units', 'sample_profit_factor'], 15)}</section>
   <section><h2>Best Lower-Adverse-Selection Markout Rows</h2>{_table(top_markout, ['strategy_id', 'execution_profile', 'markout_sample_trades', 'adverse_selection_rate_6bar_proxy', 'mean_mae_proxy', 'mean_mfe_proxy'], 15)}</section>
   <section><h2>Phase 20 Acceptance Hardening Queue</h2>{_bar_rows(hardening_priority, 'priority_band', 'queue_items')}{_table(hardening_gate_summary, ['priority_rank', 'gate_id', 'gate_name', 'blocked_strategies', 'work_package_focus', 'acceptance_milestone'], 10)}{_table(hardening_queue, ['queue_rank', 'priority_band', 'gate_id', 'strategy_id', 'strategy_support_level', 'work_package_focus', 'acceptance_milestone', 'next_required_evidence'], 25)}</section>
@@ -347,6 +358,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(economic_reconciliation),
         "",
+        "## Economic Acceptance Gap Ledger",
+        "",
+        _markdown_table(economic_gap_status),
+        "",
+        _markdown_table(economic_gap),
+        "",
         "## Predictive Holdout Stability",
         "",
         _markdown_table(top_predictive_holdout),
@@ -408,6 +425,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--risk-adjusted-economic", type=Path, default=Path("outputs/phase16/risk_adjusted_economic_frontier.csv"))
     parser.add_argument("--broker-reconciliation", type=Path, default=Path("outputs/phase16/broker_reconciliation_readiness.csv"))
     parser.add_argument("--economic-reconciliation", type=Path, default=Path("outputs/phase16/economic_reconciliation_strategy_summary.csv"))
+    parser.add_argument("--economic-gap", type=Path, default=Path("outputs/phase16/economic_acceptance_gap_ledger.csv"))
     parser.add_argument("--markout", type=Path, default=Path("outputs/phase16/markout_mae_mfe_summary.csv"))
     parser.add_argument("--gaps", type=Path, default=Path("outputs/phase17/implementation_gap_backlog.csv"))
     parser.add_argument("--hardening-queue", type=Path, default=Path("outputs/phase20/acceptance_hardening_queue.csv"))
@@ -437,6 +455,7 @@ def main() -> None:
         "risk_adjusted_economic": args.risk_adjusted_economic,
         "broker_reconciliation": args.broker_reconciliation,
         "economic_reconciliation": args.economic_reconciliation,
+        "economic_gap": args.economic_gap,
         "markout": args.markout,
         "gaps": args.gaps,
         "hardening_queue": args.hardening_queue,

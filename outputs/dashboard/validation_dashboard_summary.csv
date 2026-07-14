@@ -42,6 +42,10 @@ broker_reconciliation_readiness_rows,13,Broker reconciliation readiness rows
 broker_reconciliation_proxy_formula_ready_rows,10,Readiness rows with documented/proxy formula evidence
 broker_reconciliation_contract_note_ready_rows,0,Readiness rows with broker contract-note evidence
 economic_reconciliation_ready_strategies,0,Strategies economically ready after broker reconciliation
+economic_acceptance_gap_rows,88,Phase 16 economic acceptance gap rows
+economic_acceptance_gap_open_rows,88,Phase 16 open economic acceptance gaps
+economic_acceptance_gap_proxy_rows,58,Phase 16 economic gaps with proxy evidence
+economic_acceptance_gap_met_rows,0,Phase 16 met economic acceptance requirements
 acceptance_grade_metrics,0,Acceptance-grade metrics
 missing_metrics,0,Missing metric rows
 p1_gaps,0,Phase 17 P1 backlog rows

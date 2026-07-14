@@ -282,6 +282,9 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
     if Path("outputs/phase16/broker_reconciliation_readiness.csv").exists():
         economic_evidence_source += "; outputs/phase16/broker_reconciliation_readiness.csv; outputs/phase16/economic_reconciliation_strategy_summary.csv"
         economic_blocker.append("Phase 16 broker reconciliation readiness ledger shows Zerodha formula evidence exists but broker contract-note and actual fill reconciliation are still missing")
+    if Path("outputs/phase16/economic_acceptance_gap_ledger.csv").exists():
+        economic_evidence_source += "; outputs/phase16/economic_acceptance_gap_ledger.csv"
+        economic_blocker.append("Phase 16 economic acceptance-gap ledger makes the remaining net-positive, risk-adjusted, broker-fill, contract-note, stress and holdout economic gaps explicit")
     rows.append(
         {
             "strategy_id": sid,

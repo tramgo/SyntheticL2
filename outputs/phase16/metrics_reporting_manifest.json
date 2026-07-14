@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-14T14:23:10.968862+00:00",
+  "generated_utc": "2026-07-14T14:49:22.714770+00:00",
   "inputs": {
     "signal_diagnostics": "outputs\\phase11\\strategy_signal_diagnostics.csv",
     "metric_requirements": "outputs\\phase11\\strategy_metric_requirements.csv",
@@ -41,6 +41,10 @@
   "broker_reconciliation_contract_note_ready_rows": 0,
   "economic_reconciliation_strategy_rows": 11,
   "economic_reconciliation_ready_strategies": 0,
+  "economic_acceptance_gap_rows": 88,
+  "economic_acceptance_gap_open_rows": 88,
+  "economic_acceptance_gap_proxy_available_rows": 58,
+  "economic_acceptance_gap_met_rows": 0,
   "markout_summary_rows": 27,
   "markout_horizons_bars": [
     1,
@@ -51,8 +55,8 @@
   "acceptance_grade_metrics": 0,
   "scope": "metrics_reporting_catalog_and_proxy_scoreboards",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "8fa56081ccdcf64f2146a35be0c8ddd008d511c1",
-  "configuration_hash": "fb0b74021ac0b259a769c16119a083a3ef7ca73f7744b91795f176c6bf0c153e",
+  "generator_version": "c99a8771962d9ebf968b5d671cb774a91c0cc59b",
+  "configuration_hash": "90bd1d233409194bfda57908b56ab1f60fd71a3f8019f2f5b4288b0b9b45f551",
   "random_seed": "outputs/phase13/seed_plan.csv",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -60,5 +64,5 @@
   "scenario_ids": "phase11_strategy_metric_requirements_and_phase12_seeded_trade_sample",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
-  "creation_timestamp": "2026-07-14T14:23:10.968862+00:00"
+  "creation_timestamp": "2026-07-14T14:49:22.714770+00:00"
 }

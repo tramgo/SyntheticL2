@@ -1256,6 +1256,161 @@ def economic_reconciliation_strategy_summary(
     return pd.DataFrame(rows)
 
 
+def economic_acceptance_gap_ledger(
+    economic_frontier: pd.DataFrame,
+    risk_adjusted_frontier: pd.DataFrame,
+    broker_readiness: pd.DataFrame,
+    economic_reconciliation: pd.DataFrame,
+    acceptance_summary: pd.DataFrame,
+) -> pd.DataFrame:
+    columns = [
+        "strategy_id",
+        "economic_requirement",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "blocking_gap",
+        "evidence_source",
+        "required_next_evidence",
+        "acceptance_eligible_now",
+    ]
+    evidence_source = (
+        "outputs/phase12/execution_summary.csv; outputs/phase12/cost_schedule.csv; "
+        "outputs/phase16/economic_viability_frontier.csv; outputs/phase16/risk_adjusted_economic_frontier.csv; "
+        "outputs/phase16/broker_reconciliation_readiness.csv; outputs/phase16/economic_reconciliation_strategy_summary.csv"
+    )
+    rows: list[dict] = []
+    charge_rows = broker_readiness[broker_readiness["reconciliation_domain"].astype(str) == "charges"]
+    formula_ready = bool(charge_rows["proxy_formula_available_now"].astype(bool).all()) if len(charge_rows) else False
+    broker_contract_ready = bool(broker_readiness["broker_contract_note_available_now"].astype(bool).all()) if len(broker_readiness) else False
+    actual_fill_ready = bool(broker_readiness["actual_fill_available_now"].astype(bool).all()) if len(broker_readiness) else False
+    missing_reconciliation_items = int((~broker_readiness["broker_contract_note_available_now"].astype(bool)).sum()) if len(broker_readiness) else 0
+
+    for record in acceptance_summary.sort_values("strategy_id").to_dict("records"):
+        strategy_id = str(record["strategy_id"])
+        frontier = economic_frontier[economic_frontier["strategy_id"].astype(str) == strategy_id]
+        risk_frontier = risk_adjusted_frontier[risk_adjusted_frontier["strategy_id"].astype(str) == strategy_id]
+        reconciliation = economic_reconciliation[economic_reconciliation["strategy_id"].astype(str) == strategy_id]
+        retail_stress = frontier[frontier["retail_or_stress_profile"].astype(bool)] if len(frontier) else pd.DataFrame()
+        stressed = frontier[frontier["execution_profile"].astype(str) == "stressed_retail"] if len(frontier) else pd.DataFrame()
+        retail_stress_positive = int(retail_stress["net_positive_proxy"].astype(bool).sum()) if len(retail_stress) else 0
+        stressed_positive = int(stressed["net_positive_proxy"].astype(bool).sum()) if len(stressed) else 0
+        joint_pass = int(risk_frontier["net_positive_and_risk_pass_proxy"].astype(bool).sum()) if len(risk_frontier) else 0
+        retail_stress_joint_pass = (
+            int(risk_frontier["retail_stress_net_positive_and_risk_pass_proxy"].astype(bool).sum())
+            if len(risk_frontier)
+            else 0
+        )
+        profiles_present = sorted(set(map(str, frontier["execution_profile"].dropna().unique()))) if len(frontier) else []
+        reconciliation_ready = (
+            bool(reconciliation["economic_acceptance_ready_now"].astype(bool).all())
+            if len(reconciliation)
+            else False
+        )
+
+        def add(
+            economic_requirement: str,
+            required_threshold: str,
+            observed_value: str,
+            current_evidence_status: str,
+            proxy_evidence_available: bool,
+            blocking_gap: str,
+            required_next_evidence: str,
+        ) -> None:
+            rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "economic_requirement": economic_requirement,
+                    "required_threshold": required_threshold,
+                    "observed_value": observed_value,
+                    "current_evidence_status": current_evidence_status,
+                    "proxy_evidence_available": bool(proxy_evidence_available),
+                    "acceptance_requirement_met": False,
+                    "blocking_gap": blocking_gap,
+                    "evidence_source": evidence_source,
+                    "required_next_evidence": required_next_evidence,
+                    "acceptance_eligible_now": False,
+                }
+            )
+
+        add(
+            "retail_and_stress_net_positive",
+            "net-positive after costs in retail and stressed deployable profiles",
+            f"{retail_stress_positive}/2 retail/stress profile rows net-positive",
+            "proxy_frontier_available_not_acceptance" if len(retail_stress) else "missing_retail_stress_proxy_rows",
+            bool(len(retail_stress) == 2),
+            "Current proxy does not prove persistent positive economics after realistic costs, slippage and latency.",
+            "Run acceptance-grade event/tick P&L with deployable retail and stressed profiles, then require positive net results.",
+        )
+        add(
+            "stressed_profile_net_positive",
+            "stressed retail profile net-positive after all costs",
+            f"{stressed_positive}/1 stressed profile rows net-positive",
+            "proxy_stress_row_available_not_acceptance" if len(stressed) else "missing_stressed_profile_proxy_row",
+            bool(len(stressed)),
+            "Stressed-profile economics are proxy-only and may be nonpositive.",
+            "Require stressed-profile net profitability under acceptance fills, costs and latency.",
+        )
+        add(
+            "risk_adjusted_economic_joint_pass",
+            "net-positive economics jointly clears lifecycle risk-pass criteria",
+            f"{joint_pass} all-profile joint-pass rows; {retail_stress_joint_pass} retail/stress joint-pass rows",
+            "risk_adjusted_proxy_available_not_acceptance" if len(risk_frontier) else "missing_risk_adjusted_frontier",
+            bool(len(risk_frontier)),
+            "Risk-adjusted frontier is proxy-only and currently has no retail/stress joint pass.",
+            "Join acceptance-grade economic P&L to acceptance-grade risk state and require joint pass.",
+        )
+        add(
+            "zerodha_order_formula_ready",
+            "documented Zerodha equity-intraday charge formulas applied to P&L proxy",
+            f"formula_ready={formula_ready}",
+            "zerodha_formula_proxy_ready_not_acceptance" if formula_ready else "zerodha_formula_missing",
+            formula_ready,
+            "Documented formulas exist, but formula evidence alone is not broker reconciliation.",
+            "Retain Zerodha formula evidence and reconcile charges against broker contract notes where available.",
+        )
+        add(
+            "broker_exchange_fill_provenance",
+            "actual broker/exchange order and fill identifiers available and reconciled",
+            f"actual_fill_ready={actual_fill_ready}",
+            "missing_actual_fill_provenance",
+            False,
+            "No actual broker/exchange fill identifiers, prices or quantities are present in current proxy evidence.",
+            "Capture/import broker order/fill records and map them to strategy decisions and lifecycle state.",
+        )
+        add(
+            "contract_note_reconciliation",
+            "broker contract-note charges and net obligation reconcile to strategy P&L",
+            f"broker_contract_ready={broker_contract_ready}; missing_items={missing_reconciliation_items}; strategy_ready={reconciliation_ready}",
+            "proxy_formula_ready_contract_note_missing" if formula_ready else "contract_note_and_formula_missing",
+            formula_ready,
+            "Contract-note fields are missing, so realized cost/P&L reconciliation is not acceptance-grade.",
+            "Reconcile brokerage, STT, exchange transaction charge, SEBI charge, stamp duty, GST and net obligation to broker notes.",
+        )
+        add(
+            "latency_slippage_stress_confirmation",
+            "retail and stressed latency/slippage profiles evaluated and economically viable",
+            f"profiles_present={';'.join(profiles_present) if profiles_present else 'none'}; retail_stress_positive={retail_stress_positive}/2",
+            "latency_slippage_proxy_profiles_available_not_acceptance" if len(frontier) else "missing_latency_slippage_profiles",
+            bool({"retail_marketable_default", "stressed_retail"}.issubset(set(profiles_present))),
+            "Latency and slippage stress exists as Phase 12 proxy settings, not acceptance-grade execution evidence.",
+            "Run tick/event lifecycle execution with calibrated retail latency, slippage stress and cancel/reject behavior.",
+        )
+        add(
+            "multi_day_real_or_holdout_economic_validation",
+            "positive economics survive multi-day real-data or untouched holdout-generator reruns",
+            "not available in current one-day/proxy evidence",
+            "missing_multi_day_real_or_holdout_economic_validation",
+            False,
+            "Current economic evidence is synthetic/proxy and does not include multi-day real or untouched economic holdout validation.",
+            "Run economic validation on multi-day real data and/or untouched holdout-generator configurations before promotion.",
+        )
+
+    return pd.DataFrame(rows, columns=columns).sort_values(["strategy_id", "economic_requirement"], kind="mergesort")
+
+
 def breakdown_coverage(inputs: dict[str, pd.DataFrame]) -> pd.DataFrame:
     sample_cols = set(inputs["trade_sample"].columns)
     rows = []
@@ -1310,10 +1465,18 @@ def write_report(
     risk_adjusted_frontier: pd.DataFrame,
     broker_reconciliation: pd.DataFrame,
     economic_reconciliation: pd.DataFrame,
+    economic_gap: pd.DataFrame,
     breakdowns: pd.DataFrame,
 ) -> None:
     catalog_summary = catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
     breakdown_summary = breakdowns.groupby("current_status", sort=True).size().reset_index(name="breakdowns")
+    economic_gap_summary = (
+        economic_gap.groupby(["economic_requirement", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+        if len(economic_gap)
+        else pd.DataFrame(columns=["economic_requirement", "proxy_evidence_available", "acceptance_requirement_met", "rows"])
+    )
     lines = [
         "# Phase 16 Metrics and Reporting Report",
         "",
@@ -1384,6 +1547,12 @@ def write_report(
         "",
         _markdown_table(economic_reconciliation),
         "",
+        "## Economic Acceptance Gap Ledger",
+        "",
+        _markdown_table(economic_gap_summary),
+        "",
+        _markdown_table(economic_gap),
+        "",
         "## Required Breakdown Coverage",
         "",
         _markdown_table(breakdown_summary),
@@ -1422,6 +1591,13 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         broker_reconciliation,
         inputs["acceptance_summary"],
     )
+    economic_gap = economic_acceptance_gap_ledger(
+        economic_frontier,
+        risk_adjusted_frontier,
+        broker_reconciliation,
+        economic_reconciliation,
+        inputs["acceptance_summary"],
+    )
     breakdowns = breakdown_coverage(inputs)
     requirement_coverage = metric_requirement_coverage(inputs, catalog)
 
@@ -1441,6 +1617,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
     risk_adjusted_frontier.to_csv(output_dir / "risk_adjusted_economic_frontier.csv", index=False)
     broker_reconciliation.to_csv(output_dir / "broker_reconciliation_readiness.csv", index=False)
     economic_reconciliation.to_csv(output_dir / "economic_reconciliation_strategy_summary.csv", index=False)
+    economic_gap.to_csv(output_dir / "economic_acceptance_gap_ledger.csv", index=False)
     markouts.to_csv(output_dir / "markout_mae_mfe_summary.csv", index=False)
     breakdowns.to_csv(output_dir / "breakdown_coverage.csv", index=False)
     requirement_coverage.to_csv(output_dir / "strategy_metric_requirement_coverage.csv", index=False)
@@ -1486,6 +1663,10 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         "broker_reconciliation_contract_note_ready_rows": int(broker_reconciliation["broker_contract_note_available_now"].astype(bool).sum()) if len(broker_reconciliation) else 0,
         "economic_reconciliation_strategy_rows": int(len(economic_reconciliation)),
         "economic_reconciliation_ready_strategies": int(economic_reconciliation["economic_acceptance_ready_now"].astype(bool).sum()) if len(economic_reconciliation) else 0,
+        "economic_acceptance_gap_rows": int(len(economic_gap)),
+        "economic_acceptance_gap_open_rows": int((~economic_gap["acceptance_requirement_met"].astype(bool)).sum()) if len(economic_gap) else 0,
+        "economic_acceptance_gap_proxy_available_rows": int(economic_gap["proxy_evidence_available"].astype(bool).sum()) if len(economic_gap) else 0,
+        "economic_acceptance_gap_met_rows": int(economic_gap["acceptance_requirement_met"].astype(bool).sum()) if len(economic_gap) else 0,
         "markout_summary_rows": int(len(markouts)),
         "markout_horizons_bars": [1, 3, 6],
         "breakdown_rows": int(len(breakdowns)),
@@ -1515,6 +1696,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
                 "risk_adjusted_economic_frontier": str(output_dir / "risk_adjusted_economic_frontier.csv"),
                 "broker_reconciliation_readiness": str(output_dir / "broker_reconciliation_readiness.csv"),
                 "economic_reconciliation_strategy_summary": str(output_dir / "economic_reconciliation_strategy_summary.csv"),
+                "economic_acceptance_gap_ledger": str(output_dir / "economic_acceptance_gap_ledger.csv"),
                 "breakdown_coverage": str(output_dir / "breakdown_coverage.csv"),
                 "strategy_metric_requirement_coverage": str(output_dir / "strategy_metric_requirement_coverage.csv"),
                 "report": str(output_dir / "phase16_metrics_reporting_report.md"),
@@ -1543,6 +1725,7 @@ def run_phase16(output_dir: Path, paths: dict[str, Path]) -> None:
         risk_adjusted_frontier,
         broker_reconciliation,
         economic_reconciliation,
+        economic_gap,
         breakdowns,
     )
 
