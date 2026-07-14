@@ -1,0 +1,11 @@
+metric,value,description
+phase34_raw_trade_days_available,1,Unique raw trade dates detected in local real-data manifest
+phase34_full_universe_raw_days,1,Raw days covering the current required symbol universe
+phase34_class_b_event_grade_days,0,Days currently passing Class B event-grade readiness
+phase34_required_complete_days_min,5,Minimum complete days required by Stage A2
+phase34_required_complete_days_target,10,Target complete days required by Stage A2
+phase34_days_needed_for_min,5,Additional Class B days needed for minimum
+phase34_days_needed_for_target,10,Additional Class B days needed for target
+phase34_stage_a2_open_contract_rows,192,Open Stage A2 capture contract rows
+phase34_phase22_milestones_extension_ready,0,Phase 22 real-data milestones currently allowed for extension/paper use
+phase34_replay_allowed_rows,0,Replay rows enabled by current multi-day real-data readiness

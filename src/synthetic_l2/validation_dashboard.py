@@ -238,6 +238,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     phase33_file_validation = _read_csv(paths["phase33_file_validation"])
     phase33_test_readiness = _read_csv(paths["phase33_test_readiness"])
     phase33_overall_summary = _read_csv(paths["phase33_overall_summary"])
+    phase34_symbol_day_coverage = _read_csv(paths["phase34_symbol_day_coverage"])
+    phase34_day_inventory = _read_csv(paths["phase34_day_inventory"])
+    phase34_readiness_summary = _read_csv(paths["phase34_readiness_summary"])
+    phase34_acquisition_plan = _read_csv(paths["phase34_acquisition_plan"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -485,6 +489,16 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .size()
         .reset_index(name="rows")
     )
+    phase34_day_status = (
+        phase34_day_inventory.groupby(["day_status", "class_b_event_grade_day"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    phase34_symbol_status = (
+        phase34_symbol_day_coverage.groupby(["raw_file_coverage_status", "phase1_delta_available", "class_b_event_grade_now"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     top_risk_severity = lifecycle_risk_severity.sort_values("risk_severity_score", ascending=False)
     top_risk_limit_sensitivity = lifecycle_risk_limit_sensitivity.sort_values("risk_limit_severity_score", ascending=False)
 
@@ -725,6 +739,13 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase33_acceptance_import_ready_files", int(phase33_overall_summary.loc[phase33_overall_summary["metric"].eq("phase33_acceptance_import_ready_files"), "value"].iloc[0]), "Phase 33 acceptance import-ready files"),
         ("phase33_missing_external_files", int(phase33_overall_summary.loc[phase33_overall_summary["metric"].eq("phase33_missing_external_files"), "value"].iloc[0]), "Phase 33 missing external files"),
         ("phase33_reconciliation_tests_ready", int(phase33_overall_summary.loc[phase33_overall_summary["metric"].eq("phase33_reconciliation_tests_ready"), "value"].iloc[0]), "Phase 33 reconciliation tests ready"),
+        ("phase34_raw_trade_days_available", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_raw_trade_days_available"), "value"].iloc[0]), "Phase 34 raw trade days available"),
+        ("phase34_full_universe_raw_days", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_full_universe_raw_days"), "value"].iloc[0]), "Phase 34 full-universe raw days"),
+        ("phase34_class_b_event_grade_days", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_class_b_event_grade_days"), "value"].iloc[0]), "Phase 34 Class B event-grade days"),
+        ("phase34_days_needed_for_min", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_days_needed_for_min"), "value"].iloc[0]), "Phase 34 additional Class B days needed for minimum"),
+        ("phase34_days_needed_for_target", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_days_needed_for_target"), "value"].iloc[0]), "Phase 34 additional Class B days needed for target"),
+        ("phase34_stage_a2_open_contract_rows", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_stage_a2_open_contract_rows"), "value"].iloc[0]), "Phase 34 Stage A2 open contract rows"),
+        ("phase34_replay_allowed_rows", int(phase34_readiness_summary.loc[phase34_readiness_summary["metric"].eq("phase34_replay_allowed_rows"), "value"].iloc[0]), "Phase 34 replay-allowed rows"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -749,7 +770,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_phase33_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_phase33_phase34_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -828,6 +849,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 31 Redesign Evidence Contract</h2>{_table(phase31_contract_status, None, 10)}{_table(phase31_evidence_domain_status, None, 20)}{_table(phase31_overall_summary, None, 12)}{_table(phase31_replay_gate, ['strategy_id', 'strategy_name', 'redesign_priority', 'contract_requirements', 'open_requirements', 'replay_expansion_allowed', 'redesign_contract_status', 'next_action'], 20)}{_table(phase31_spec_catalog, ['strategy_id', 'strategy_name', 'redesign_priority', 'contract_requirements', 'evidence_domains', 'open_requirements', 'replay_expansion_allowed'], 20)}{_table(phase31_contract_ledger, ['strategy_id', 'contract_requirement_id', 'evidence_domain', 'required_artifact_or_test', 'current_evidence_status', 'acceptance_requirement_met', 'replay_expansion_allowed'], 60)}</section>
   <section><h2>Phase 32 Contract Evidence Scanner</h2>{_table(phase32_scanner_status, None, 12)}{_table(phase32_overall_summary, None, 12)}{_table(phase32_availability_summary, None, 20)}{_table(phase32_strategy_summary, ['strategy_id', 'strategy_name', 'requirement_rows', 'proxy_or_partial_available_rows', 'external_missing_rows', 'acceptance_met_rows', 'replay_allowed_rows', 'evidence_scan_status'], 20)}{_table(phase32_acquisition_queue, ['scanner_evidence_status', 'evidence_domain', 'requirement_rows', 'strategies', 'next_action'], 20)}{_table(phase32_scan_ledger, ['strategy_id', 'contract_requirement_id', 'evidence_domain', 'scanner_evidence_status', 'available_evidence_source', 'scanner_acceptance_requirement_met', 'scanner_replay_expansion_allowed'], 70)}</section>
   <section><h2>Phase 33 Broker Evidence Intake</h2>{_table(phase33_file_status, None, 10)}{_table(phase33_test_status, None, 10)}{_table(phase33_overall_summary, None, 12)}{_table(phase33_template_inventory, ['evidence_file_id', 'template_path', 'expected_external_path', 'required_fields', 'total_fields', 'template_status'], 10)}{_table(phase33_file_validation, ['evidence_file_id', 'expected_external_path', 'file_exists_now', 'row_count', 'required_columns_present', 'schema_validation_status', 'acceptance_import_ready', 'next_action'], 10)}{_table(phase33_test_readiness, ['test_id', 'required_evidence_files', 'missing_or_not_ready_files', 'test_import_ready', 'current_status'], 10)}</section>
+  <section><h2>Phase 34 Real Data Multi-Day Readiness</h2>{_table(phase34_day_status, None, 10)}{_table(phase34_symbol_status, None, 10)}{_table(phase34_readiness_summary, None, 12)}{_table(phase34_day_inventory, ['trade_date', 'exchange', 'symbols', 'parquet_files', 'phase1_delta_rows', 'full_universe_raw_day', 'class_b_event_grade_day', 'day_status'], 10)}{_table(phase34_acquisition_plan, ['priority', 'action_id', 'action', 'current_blocker', 'acceptance_effect'], 10)}{_table(phase34_symbol_day_coverage, ['trade_date', 'exchange', 'symbol', 'parquet_files', 'phase1_delta_rows', 'book_valid_fraction', 'stale_gap_gt_15s_count', 'class_b_event_grade_now'], 40)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -1314,6 +1336,20 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(phase33_test_readiness),
         "",
+        "## Phase 34 Real Data Multi-Day Readiness",
+        "",
+        _markdown_table(phase34_day_status),
+        "",
+        _markdown_table(phase34_symbol_status),
+        "",
+        _markdown_table(phase34_readiness_summary),
+        "",
+        _markdown_table(phase34_day_inventory),
+        "",
+        _markdown_table(phase34_acquisition_plan),
+        "",
+        _markdown_table(phase34_symbol_day_coverage.head(40)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1486,6 +1522,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase33-file-validation", type=Path, default=Path("outputs/phase33/broker_evidence_file_validation.csv"))
     parser.add_argument("--phase33-test-readiness", type=Path, default=Path("outputs/phase33/broker_reconciliation_test_readiness.csv"))
     parser.add_argument("--phase33-overall-summary", type=Path, default=Path("outputs/phase33/broker_evidence_intake_overall_summary.csv"))
+    parser.add_argument("--phase34-symbol-day-coverage", type=Path, default=Path("outputs/phase34/symbol_day_real_data_coverage.csv"))
+    parser.add_argument("--phase34-day-inventory", type=Path, default=Path("outputs/phase34/real_data_day_inventory.csv"))
+    parser.add_argument("--phase34-readiness-summary", type=Path, default=Path("outputs/phase34/multiday_real_data_readiness_summary.csv"))
+    parser.add_argument("--phase34-acquisition-plan", type=Path, default=Path("outputs/phase34/multiday_real_data_acquisition_plan.csv"))
     return parser.parse_args()
 
 
@@ -1640,6 +1680,10 @@ def main() -> None:
         "phase33_file_validation": args.phase33_file_validation,
         "phase33_test_readiness": args.phase33_test_readiness,
         "phase33_overall_summary": args.phase33_overall_summary,
+        "phase34_symbol_day_coverage": args.phase34_symbol_day_coverage,
+        "phase34_day_inventory": args.phase34_day_inventory,
+        "phase34_readiness_summary": args.phase34_readiness_summary,
+        "phase34_acquisition_plan": args.phase34_acquisition_plan,
     }
     run_dashboard(args.output_dir, paths)
 

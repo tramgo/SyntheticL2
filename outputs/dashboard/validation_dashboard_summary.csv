@@ -235,3 +235,10 @@ phase33_external_files_present,0,Phase 33 external files present
 phase33_acceptance_import_ready_files,0,Phase 33 acceptance import-ready files
 phase33_missing_external_files,4,Phase 33 missing external files
 phase33_reconciliation_tests_ready,0,Phase 33 reconciliation tests ready
+phase34_raw_trade_days_available,1,Phase 34 raw trade days available
+phase34_full_universe_raw_days,1,Phase 34 full-universe raw days
+phase34_class_b_event_grade_days,0,Phase 34 Class B event-grade days
+phase34_days_needed_for_min,5,Phase 34 additional Class B days needed for minimum
+phase34_days_needed_for_target,10,Phase 34 additional Class B days needed for target
+phase34_stage_a2_open_contract_rows,192,Phase 34 Stage A2 open contract rows
+phase34_replay_allowed_rows,0,Phase 34 replay-allowed rows

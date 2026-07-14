@@ -1,6 +1,6 @@
 # SyntheticL2 Validation Dashboard Summary
 
-Generated UTC: 2026-07-14T18:52:47.922450+00:00
+Generated UTC: 2026-07-14T19:03:19.232372+00:00
 
 This dashboard is static research traceability output, not strategy promotion evidence.
 
@@ -244,6 +244,13 @@ This dashboard is static research traceability output, not strategy promotion ev
 | phase33_acceptance_import_ready_files | 0 | Phase 33 acceptance import-ready files |
 | phase33_missing_external_files | 4 | Phase 33 missing external files |
 | phase33_reconciliation_tests_ready | 0 | Phase 33 reconciliation tests ready |
+| phase34_raw_trade_days_available | 1 | Phase 34 raw trade days available |
+| phase34_full_universe_raw_days | 1 | Phase 34 full-universe raw days |
+| phase34_class_b_event_grade_days | 0 | Phase 34 Class B event-grade days |
+| phase34_days_needed_for_min | 5 | Phase 34 additional Class B days needed for minimum |
+| phase34_days_needed_for_target | 10 | Phase 34 additional Class B days needed for target |
+| phase34_stage_a2_open_contract_rows | 192 | Phase 34 Stage A2 open contract rows |
+| phase34_replay_allowed_rows | 0 | Phase 34 replay-allowed rows |
 
 ## Quality Status
 
@@ -4649,6 +4656,75 @@ This dashboard is static research traceability output, not strategy promotion ev
 | average_price_match | broker average prices reconcile to internal fill prices within tolerance | all tested fills within tolerance | broker_order_fill_events;strategy_order_linkage | broker_order_fill_events;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
 | charge_component_match | contract-note charge components reconcile to Zerodha formula and internal costs | all charge components within predeclared tolerance | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
 | net_obligation_match | contract-note net obligation reconciles to internal realized cash-flow | all reconciled orders within predeclared tolerance | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | broker_contract_note_charges;broker_order_fill_events;broker_reconciliation_tolerances;strategy_order_linkage | False | blocked_until_required_evidence_files_import_ready |
+
+## Phase 34 Real Data Multi-Day Readiness
+
+| day_status | class_b_event_grade_day | rows |
+| --- | --- | --- |
+| raw_full_universe_day_not_class_b | False | 1 |
+
+| raw_file_coverage_status | phase1_delta_available | class_b_event_grade_now | rows |
+| --- | --- | --- | --- |
+| raw_files_present | True | False | 32 |
+
+| metric | value | description |
+| --- | --- | --- |
+| phase34_raw_trade_days_available | 1 | Unique raw trade dates detected in local real-data manifest |
+| phase34_full_universe_raw_days | 1 | Raw days covering the current required symbol universe |
+| phase34_class_b_event_grade_days | 0 | Days currently passing Class B event-grade readiness |
+| phase34_required_complete_days_min | 5 | Minimum complete days required by Stage A2 |
+| phase34_required_complete_days_target | 10 | Target complete days required by Stage A2 |
+| phase34_days_needed_for_min | 5 | Additional Class B days needed for minimum |
+| phase34_days_needed_for_target | 10 | Additional Class B days needed for target |
+| phase34_stage_a2_open_contract_rows | 192 | Open Stage A2 capture contract rows |
+| phase34_phase22_milestones_extension_ready | 0 | Phase 22 real-data milestones currently allowed for extension/paper use |
+| phase34_replay_allowed_rows | 0 | Replay rows enabled by current multi-day real-data readiness |
+
+| trade_date | exchange | symbols | parquet_files | bytes | phase1_delta_rows | symbols_with_phase1_delta | required_symbols | full_universe_raw_day | class_b_event_grade_day | day_status | blocking_reason |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-13 | NSE | 32 | 50205 | 1764005784 | 620853 | 32 | 32 | True | False | raw_full_universe_day_not_class_b | Stage A2 reports 0 acceptance-met rows and requires multi-day capture diagnostics. |
+
+| priority | action_id | action | current_blocker | acceptance_effect |
+| --- | --- | --- | --- | --- |
+| 1 | collect_class_b_days_minimum | Collect or import 5 additional Class B event-grade trading days. | Minimum Class B day count is not met. | Unlocks minimum multi-day real-data requirement only after Stage A2 diagnostics also pass. |
+| 2 | close_stage_a2_capture_contracts | Produce connection-boundary, dropped-message, local-sequence, lossless-compaction and timestamp-semantics diagnostics for each collected day/symbol. | 192 Stage A2 contract rows remain open. | Converts raw days into Class B event-grade days when all diagnostics pass. |
+| 3 | expand_to_target_days | Collect or import 10 Class B event-grade days for target coverage. | Target Class B day count is not met. | Supports stronger holdout, label stability and acceptance-grade replay prerequisites. |
+| 4 | preserve_current_raw_day | Keep the current full-universe raw sample day as a smoke/regression day, but do not treat it as Class B acceptance evidence. | Current day is raw/full-universe but not Stage A2 accepted. | Maintains schema and pipeline regression coverage without overstating acceptance readiness. |
+
+| trade_date | exchange | symbol | parquet_files | bytes | phase1_delta_rows | book_valid_fraction | stale_gap_gt_15s_count | median_elapsed_ms | p95_elapsed_ms | raw_file_coverage_status | phase1_delta_available | class_b_event_grade_now | blocking_reason |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-13 | NSE | ADANIPORTS | 1569 | 54744007 | 13886 | 0.9999279850208844 | 2 | 1000.0 | 5500.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | AXISBANK | 1569 | 55030126 | 18309 | 0.9999453820525424 | 2 | 749.0 | 4913.649999999998 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | BAJAJ-AUTO | 1569 | 55531219 | 25141 | 0.999960224334752 | 2 | 741.0 | 4410.049999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | BANKBEES | 1569 | 54858026 | 18916 | 0.9999471347007824 | 2 | 1000.0 | 4833.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | BHARTIARTL | 1569 | 55190740 | 19560 | 0.9999488752556236 | 2 | 749.0 | 4762.399999999994 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | BPCL | 1569 | 54256472 | 10684 | 0.999906402096593 | 2 | 1602.0 | 6081.699999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | BRITANNIA | 1569 | 54177058 | 8526 | 0.9998827117053718 | 2 | 2000.0 | 7000.799999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | CIPLA | 1569 | 54425687 | 11664 | 0.99991426611797 | 2 | 1194.0 | 5953.9 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | DRREDDY | 1569 | 54592935 | 12257 | 0.9999184139675288 | 2 | 1250.0 | 5750.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | GOLDBEES | 1568 | 54501651 | 12982 | 0.9998459405330458 | 2 | 1000.0 | 5680.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | HCLTECH | 1569 | 56185830 | 29266 | 0.9999658306567348 | 2 | 500.0 | 4158.799999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | HDFCBANK | 1569 | 56719345 | 35959 | 0.999972190550349 | 2 | 500.0 | 1250.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | HINDUNILVR | 1569 | 54585232 | 12173 | 0.9999178509816808 | 2 | 1001.0 | 5859.449999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | ICICIBANK | 1569 | 55797042 | 26474 | 0.9999622270907306 | 2 | 500.0 | 4201.399999999998 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | INFY | 1569 | 56702770 | 34511 | 0.999971023731564 | 2 | 500.0 | 2627.099999999992 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | ITBEES | 1569 | 54430478 | 11481 | 0.9998257991464158 | 2 | 1250.0 | 5993.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | ITC | 1569 | 54356124 | 12379 | 0.9999192180305356 | 2 | 1250.0 | 5750.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | JUNIORBEES | 1568 | 54832707 | 17442 | 0.9998853342506592 | 2 | 999.0 | 5021.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | KOTAKBANK | 1569 | 54705403 | 14091 | 0.999929032715918 | 2 | 1000.0 | 5475.549999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | LT | 1569 | 55064314 | 19466 | 0.9999486283776842 | 2 | 749.0 | 4750.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | M&M | 1569 | 55603819 | 25699 | 0.9999610879800772 | 2 | 501.0 | 4285.449999999993 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | MARUTI | 1569 | 55534811 | 27645 | 0.999963827093507 | 2 | 502.0 | 4139.699999999997 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | NESTLEIND | 1569 | 54577884 | 12918 | 0.9999225886360118 | 2 | 1000.0 | 5800.199999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | NIFTYBEES | 1568 | 55113499 | 22414 | 0.9999107700544304 | 2 | 749.0 | 4542.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | ONGC | 1569 | 54856635 | 17305 | 0.9999422132331696 | 2 | 750.0 | 5000.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | RELIANCE | 1569 | 55637533 | 26056 | 0.9999616211237335 | 2 | 500.0 | 4324.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | SBIN | 1569 | 55549327 | 24728 | 0.9999595600129408 | 2 | 500.0 | 4329.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | SUNPHARMA | 1569 | 54762618 | 14610 | 0.9999315537303216 | 2 | 982.0 | 5483.999999999993 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | TCS | 1569 | 56845524 | 36467 | 0.9999725779471852 | 2 | 500.0 | 1250.0 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | TECHM | 1569 | 55179402 | 19124 | 0.9999477096841664 | 2 | 749.0 | 4856.699999999993 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | ULTRACEMCO | 1569 | 54242826 | 8386 | 0.999880753637014 | 2 | 2245.0 | 6772.599999999999 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
+| 2026-07-13 | NSE | WIPRO | 1569 | 55414740 | 20334 | 0.999950821284548 | 2 | 524.0 | 4730.799999999996 | raw_files_present | True | False | Only one raw sample day is available and Stage A2 capture diagnostics remain open. |
 
 ## Metric Status
 

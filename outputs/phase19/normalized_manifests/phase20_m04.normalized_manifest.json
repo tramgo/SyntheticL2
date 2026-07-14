@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_execution_profiles_proxy_not_acceptance_grade",
   "latency_model_version": "phase12_execution_profiles_proxy_not_acceptance_grade",
   "creation_timestamp": "2026-07-14T16:15:29.899983+00:00",
-  "normalization_timestamp": "2026-07-14T18:52:55.836138+00:00",
+  "normalization_timestamp": "2026-07-14T19:04:07.769232+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

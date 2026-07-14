@@ -1,0 +1,5 @@
+priority,action_id,action,current_blocker,acceptance_effect
+1,collect_class_b_days_minimum,Collect or import 5 additional Class B event-grade trading days.,Minimum Class B day count is not met.,Unlocks minimum multi-day real-data requirement only after Stage A2 diagnostics also pass.
+2,close_stage_a2_capture_contracts,"Produce connection-boundary, dropped-message, local-sequence, lossless-compaction and timestamp-semantics diagnostics for each collected day/symbol.",192 Stage A2 contract rows remain open.,Converts raw days into Class B event-grade days when all diagnostics pass.
+3,expand_to_target_days,Collect or import 10 Class B event-grade days for target coverage.,Target Class B day count is not met.,"Supports stronger holdout, label stability and acceptance-grade replay prerequisites."
+4,preserve_current_raw_day,"Keep the current full-universe raw sample day as a smoke/regression day, but do not treat it as Class B acceptance evidence.",Current day is raw/full-universe but not Stage A2 accepted.,Maintains schema and pipeline regression coverage without overstating acceptance readiness.

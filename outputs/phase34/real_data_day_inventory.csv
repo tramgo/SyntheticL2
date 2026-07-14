@@ -1,0 +1,2 @@
+trade_date,exchange,symbols,parquet_files,bytes,phase1_delta_rows,symbols_with_phase1_delta,required_symbols,full_universe_raw_day,class_b_event_grade_day,day_status,blocking_reason
+2026-07-13,NSE,32,50205,1764005784,620853,32,32,True,False,raw_full_universe_day_not_class_b,Stage A2 reports 0 acceptance-met rows and requires multi-day capture diagnostics.
