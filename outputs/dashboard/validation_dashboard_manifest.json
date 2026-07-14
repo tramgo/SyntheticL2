@@ -1,8 +1,9 @@
 {
-  "generated_utc": "2026-07-14T14:58:11.153858+00:00",
+  "generated_utc": "2026-07-14T15:05:17.883547+00:00",
   "inputs": {
     "quality": "outputs\\phase14\\quality_gate_summary.csv",
     "holdout": "outputs\\phase14\\holdout_generator_realism_summary.csv",
+    "realism_gap": "outputs\\phase14\\realism_acceptance_gap_ledger.csv",
     "lifecycle_risk": "outputs\\phase12\\full_run_lifecycle_risk_summary.csv",
     "lifecycle_risk_severity": "outputs\\phase12\\full_run_lifecycle_risk_breach_severity.csv",
     "lifecycle_risk_limit_sensitivity": "outputs\\phase12\\full_run_lifecycle_risk_limit_sensitivity.csv",
@@ -33,6 +34,10 @@
     "quality_fail_checks": 0,
     "holdout_proxy_rows": 15,
     "holdout_proxy_available_rows": 15,
+    "realism_acceptance_gap_rows": 88,
+    "realism_acceptance_gap_open_rows": 88,
+    "realism_acceptance_gap_proxy_rows": 38,
+    "realism_acceptance_gap_met_rows": 0,
     "full_run_lifecycle_risk_rows": 81,
     "full_run_lifecycle_fill_models": 3,
     "full_run_lifecycle_daily_halt_rows": 21299578,
@@ -89,8 +94,8 @@
   "scope": "static_validation_dashboard_not_promotion_evidence",
   "not_acceptance_result": true,
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "5ddc2bfbe9caf15ffdcc74f03659cfbf00a3bf0b",
-  "configuration_hash": "9f7533b5ac611efa76626f0aed0c0419808fa2ec5d16eda7ea420d7acf97ef11",
+  "generator_version": "0619fb76cdcecd5536f871c8f738d2ec95815df7",
+  "configuration_hash": "12996d7037587bb7476da88164b71c6d549cd78c8900df93728162ba23c2e193",
   "random_seed": "not_applicable_deterministic_static_dashboard",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -98,5 +103,5 @@
   "scenario_ids": "current_workspace_phase14_phase15_phase16_phase17_phase20_evidence",
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
   "latency_model_version": "outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
-  "creation_timestamp": "2026-07-14T14:58:11.153858+00:00"
+  "creation_timestamp": "2026-07-14T15:05:17.883547+00:00"
 }

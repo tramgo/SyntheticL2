@@ -369,6 +369,12 @@ def evaluate_strategy(strategy: pd.Series, inputs: dict[str, pd.DataFrame]) -> l
             "holdout generator coverage exists as proxy evidence but has not been rerun as acceptance-grade strategy evidence"
         )
         realism_blocker = "; ".join(realism_reasons)
+    if Path("outputs/phase14/realism_acceptance_gap_ledger.csv").exists():
+        realism_evidence_source += "; outputs/phase14/realism_acceptance_gap_ledger.csv"
+        realism_reasons.append(
+            "Phase 14 realism acceptance-gap ledger shows remaining strategy support, holdout-rerun, pessimistic-execution, artifact-control and real multi-day validation gaps"
+        )
+        realism_blocker = "; ".join(realism_reasons)
     rows.append(
         {
             "strategy_id": sid,

@@ -38,6 +38,7 @@ def load_inputs(paths: dict[str, Path]) -> dict[str, object]:
         "phase5_daily": pd.read_csv(paths["phase5_daily"]),
         "phase6_summary": pd.read_csv(paths["phase6_summary"]),
         "phase9_features": pq.read_table(paths["phase9_features"]).to_pandas(),
+        "strategy_matrix": pd.read_csv(paths["strategy_matrix"]),
     }
 
 
@@ -502,12 +503,155 @@ def warning_triage(summary: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=columns)
 
 
+def realism_acceptance_gap_ledger(
+    quality_summary: pd.DataFrame,
+    triage: pd.DataFrame,
+    holdout: pd.DataFrame,
+    strategy_matrix: pd.DataFrame,
+) -> pd.DataFrame:
+    columns = [
+        "strategy_id",
+        "realism_requirement",
+        "required_threshold",
+        "observed_value",
+        "current_evidence_status",
+        "proxy_evidence_available",
+        "acceptance_requirement_met",
+        "blocking_gap",
+        "evidence_source",
+        "required_next_evidence",
+        "acceptance_eligible_now",
+    ]
+    evidence_source = (
+        "outputs/phase14/quality_gate_summary.csv; outputs/phase14/quality_warning_triage.csv; "
+        "outputs/phase14/holdout_generator_realism_summary.csv; outputs/phase11/strategy_validation_matrix.csv"
+    )
+    quality_fail = int((quality_summary["status"].astype(str) == "fail").sum()) if len(quality_summary) else 0
+    quality_warn = int((quality_summary["status"].astype(str) == "warn").sum()) if len(quality_summary) else 0
+    quality_pass = int((quality_summary["status"].astype(str) == "pass").sum()) if len(quality_summary) else 0
+    triage_rows = int(len(triage))
+    holdout_rows = int(len(holdout))
+    holdout_proxy_rows = int((holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()) if len(holdout) else 0
+    structural_ready_rows = int(holdout["structural_ready_for_holdout_proxy"].astype(bool).sum()) if len(holdout) else 0
+    feed_profiles = set(map(str, holdout["feed_profile"].dropna().unique())) if len(holdout) else set()
+    quarter_profiles = set(map(str, holdout["quarter_profile"].dropna().unique())) if len(holdout) else set()
+    has_feed_imperfections = bool({"disconnect_scenario", "stressed_retail"}.issubset(feed_profiles))
+    has_holdout_quarters = bool({"Q-B", "Q-C"}.issubset(quarter_profiles))
+
+    rows: list[dict] = []
+    for record in strategy_matrix.sort_values("strategy_id").to_dict("records"):
+        strategy_id = str(record["strategy_id"])
+        support_level = str(record.get("support_level", "unknown"))
+        runnable_proxy = support_level == "runnable_proxy"
+
+        def add(
+            realism_requirement: str,
+            required_threshold: str,
+            observed_value: str,
+            current_evidence_status: str,
+            proxy_evidence_available: bool,
+            blocking_gap: str,
+            required_next_evidence: str,
+        ) -> None:
+            rows.append(
+                {
+                    "strategy_id": strategy_id,
+                    "realism_requirement": realism_requirement,
+                    "required_threshold": required_threshold,
+                    "observed_value": observed_value,
+                    "current_evidence_status": current_evidence_status,
+                    "proxy_evidence_available": bool(proxy_evidence_available),
+                    "acceptance_requirement_met": False,
+                    "blocking_gap": blocking_gap,
+                    "evidence_source": evidence_source,
+                    "required_next_evidence": required_next_evidence,
+                    "acceptance_eligible_now": False,
+                }
+            )
+
+        add(
+            "synthetic_quality_gate_clear",
+            "no failing or warning quality checks before strategy realism acceptance",
+            f"pass={quality_pass}; warn={quality_warn}; fail={quality_fail}; triage_rows={triage_rows}",
+            "quality_proxy_clear_not_acceptance" if quality_fail == 0 and quality_warn == 0 else "quality_warnings_or_failures_present",
+            bool(len(quality_summary) and quality_fail == 0 and quality_warn == 0),
+            "Quality checks are current synthetic diagnostics over one-day calibration and generated scenarios, not strategy rerun evidence.",
+            "Keep quality gates green after any generator changes and rerun strategy realism checks on the accepted generator version.",
+        )
+        add(
+            "holdout_generator_coverage",
+            "structurally ready holdout-generator profiles exist for development and holdout quarters",
+            f"{holdout_proxy_rows}/{holdout_rows} holdout proxy rows; structural_ready={structural_ready_rows}; quarters={';'.join(sorted(quarter_profiles))}",
+            "holdout_generator_proxy_available_not_acceptance" if holdout_proxy_rows else "missing_holdout_generator_proxy",
+            bool(holdout_proxy_rows and has_holdout_quarters),
+            "Holdout-generator coverage exists as structural proxy evidence, but strategies have not been rerun as acceptance tests.",
+            "Run every candidate strategy on predeclared holdout-generator profiles and compare against development/calibration results.",
+        )
+        add(
+            "feed_imperfection_coverage",
+            "holdout evidence includes disconnect and stressed-retail feed profiles",
+            f"feed_profiles={';'.join(sorted(feed_profiles)) if feed_profiles else 'none'}",
+            "feed_imperfection_proxy_available_not_acceptance" if has_feed_imperfections else "missing_feed_imperfection_proxy",
+            has_feed_imperfections,
+            "Feed imperfections exist as generated profiles, not acceptance-grade strategy reruns.",
+            "Rerun strategies on disconnect/stressed feed profiles with full lifecycle execution and verify performance does not depend on ideal feed assumptions.",
+        )
+        add(
+            "strategy_support_ready",
+            "strategy is runnable in the current feature and execution product",
+            f"support_level={support_level}",
+            "runnable_proxy_not_acceptance" if runnable_proxy else "partial_or_unsupported_strategy",
+            runnable_proxy,
+            "Partial or unsupported strategies cannot pass realism until required features/modules exist.",
+            "Implement missing strategy features/modules or mark the strategy as research-only before realism acceptance.",
+        )
+        add(
+            "holdout_strategy_rerun",
+            "strategy rerun on holdout-generator configurations with no development leakage",
+            "not available in current Phase 14 evidence",
+            "missing_holdout_strategy_rerun",
+            False,
+            "Current Phase 14 holdout rows are generator/profile diagnostics, not strategy P&L or signal reruns.",
+            "Run Phase 11/12/13 strategy evaluation on Q-B/Q-C holdout profiles and preserve leakage checks.",
+        )
+        add(
+            "pessimistic_execution_realism",
+            "holdout strategy rerun uses stressed retail latency/slippage/fill assumptions",
+            "not available in current Phase 14 evidence",
+            "missing_pessimistic_execution_holdout_rerun",
+            False,
+            "Strategies have not been rerun on holdout generator outputs with pessimistic execution controls.",
+            "Evaluate holdout-generator strategy results with stressed retail, partial-fill and risk-control assumptions.",
+        )
+        add(
+            "artifact_exploitation_rejection",
+            "strategy does not exploit generator artifacts or synthetic-only templates",
+            "not available in current Phase 14 evidence",
+            "missing_artifact_exploitation_rejection",
+            False,
+            "No negative-control or artifact-exploitation rerun exists for realism acceptance.",
+            "Run artifact/control templates and reject strategies whose edge disappears or depends on generator-specific artifacts.",
+        )
+        add(
+            "real_multi_day_realism_validation",
+            "realism and strategy behavior validated on multiple real market days",
+            "not available in current one-day/proxy evidence",
+            "missing_multi_day_real_realism_validation",
+            False,
+            "Real calibration uses a one-day sample and no multi-day strategy validation.",
+            "Collect and validate multiple real market days, then compare strategy behavior against synthetic and holdout-generator results.",
+        )
+
+    return pd.DataFrame(rows, columns=columns).sort_values(["strategy_id", "realism_requirement"], kind="mergesort")
+
+
 def write_report(
     output_dir: Path,
     frames: dict[str, pd.DataFrame],
     triage: pd.DataFrame,
     holdout: pd.DataFrame,
     real_5m: pd.DataFrame,
+    realism_gap: pd.DataFrame,
 ) -> None:
     summary = pd.concat(
         [
@@ -519,6 +663,13 @@ def write_report(
         sort=False,
     )
     status_summary = summary.groupby(["level", "status"], dropna=False).size().reset_index(name="checks")
+    realism_gap_summary = (
+        realism_gap.groupby(["realism_requirement", "proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+        if len(realism_gap)
+        else pd.DataFrame(columns=["realism_requirement", "proxy_evidence_available", "acceptance_requirement_met", "rows"])
+    )
     lines = [
         "# Phase 14 Synthetic Data Quality Validation Report",
         "",
@@ -553,6 +704,12 @@ def write_report(
         "",
         _markdown_table(holdout),
         "",
+        "## Realism Acceptance Gap Ledger",
+        "",
+        _markdown_table(realism_gap_summary),
+        "",
+        _markdown_table(realism_gap),
+        "",
         "## Caveats",
         "",
         "- Real evidence is still a one-day sample.",
@@ -586,9 +743,11 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
     )
     triage = warning_triage(summary)
     holdout = holdout_generator_realism(inputs)
+    realism_gap = realism_acceptance_gap_ledger(summary, triage, holdout, inputs["strategy_matrix"])
     summary.to_csv(output_dir / "quality_gate_summary.csv", index=False)
     triage.to_csv(output_dir / "quality_warning_triage.csv", index=False)
     holdout.to_csv(output_dir / "holdout_generator_realism_summary.csv", index=False)
+    realism_gap.to_csv(output_dir / "realism_acceptance_gap_ledger.csv", index=False)
     inputs_manifest = {key: str(value) for key, value in paths.items()}
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
@@ -602,6 +761,10 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         "holdout_proxy_available_rows": int(
             (holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()
         ),
+        "realism_acceptance_gap_rows": int(len(realism_gap)),
+        "realism_acceptance_gap_open_rows": int((~realism_gap["acceptance_requirement_met"].astype(bool)).sum()) if len(realism_gap) else 0,
+        "realism_acceptance_gap_proxy_available_rows": int(realism_gap["proxy_evidence_available"].astype(bool).sum()) if len(realism_gap) else 0,
+        "realism_acceptance_gap_met_rows": int(realism_gap["acceptance_requirement_met"].astype(bool).sum()) if len(realism_gap) else 0,
         "status_counts": summary["status"].value_counts(dropna=False).to_dict(),
         "not_strategy_acceptance": True,
     }
@@ -616,6 +779,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
                 "quality_warning_triage": str(output_dir / "quality_warning_triage.csv"),
                 "real_5m_symbol_marginals": str(output_dir / "real_5m_symbol_marginals.csv"),
                 "holdout_generator_realism_summary": str(output_dir / "holdout_generator_realism_summary.csv"),
+                "realism_acceptance_gap_ledger": str(output_dir / "realism_acceptance_gap_ledger.csv"),
                 "report": str(output_dir / "phase14_quality_validation_report.md"),
                 "manifest": str(output_dir / "quality_validation_manifest.json"),
                 **{name: str(output_dir / f"{name}.csv") for name in frames},
@@ -627,7 +791,7 @@ def run_phase14(output_dir: Path, paths: dict[str, Path]) -> None:
         )
     )
     (output_dir / "quality_validation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    write_report(output_dir, frames, triage, holdout, real_5m)
+    write_report(output_dir, frames, triage, holdout, real_5m, realism_gap)
 
 
 def parse_args() -> argparse.Namespace:
@@ -641,6 +805,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase5-daily", type=Path, default=Path("outputs/phase5/daily_price_summary.csv"))
     parser.add_argument("--phase6-summary", type=Path, default=Path("outputs/phase6/l2_book_summary.csv"))
     parser.add_argument("--phase9-features", type=Path, default=Path("outputs/phase9/tier_c/features_5m.parquet"))
+    parser.add_argument("--strategy-matrix", type=Path, default=Path("outputs/phase11/strategy_validation_matrix.csv"))
     return parser.parse_args()
 
 
@@ -655,6 +820,7 @@ def main() -> None:
         "phase5_daily": args.phase5_daily,
         "phase6_summary": args.phase6_summary,
         "phase9_features": args.phase9_features,
+        "strategy_matrix": args.strategy_matrix,
     }
     run_phase14(args.output_dir, paths)
 

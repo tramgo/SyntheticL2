@@ -4,6 +4,10 @@ quality_warn_checks,0,Current quality warnings
 quality_fail_checks,0,Current quality failures
 holdout_proxy_rows,15,Phase 14 holdout generator proxy rows
 holdout_proxy_available_rows,15,Holdout proxy rows structurally available
+realism_acceptance_gap_rows,88,Phase 14 realism acceptance gap rows
+realism_acceptance_gap_open_rows,88,Phase 14 open realism acceptance gaps
+realism_acceptance_gap_proxy_rows,38,Phase 14 realism gaps with proxy evidence
+realism_acceptance_gap_met_rows,0,Phase 14 met realism acceptance requirements
 full_run_lifecycle_risk_rows,81,Phase 12 full-run fill-adjusted risk rows
 full_run_lifecycle_fill_models,3,Phase 12 full-run fill models
 full_run_lifecycle_daily_halt_rows,21299578,Phase 12 full-run lifecycle halt rows

@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T14:58:22.293988+00:00
+Generated UTC: 2026-07-14T15:05:28.937329+00:00
 
 ## Storage Decision
 
@@ -133,6 +133,10 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 14 realism-blocking warnings: 0
 - Phase 14 holdout generator rows: 15
 - Phase 14 holdout proxy available rows: 15
+- Phase 14 realism acceptance gap rows: 88
+- Phase 14 open realism acceptance gap rows: 88
+- Phase 14 realism acceptance gap rows with proxy evidence: 38
+- Phase 14 met realism acceptance gap rows: 0
 - Phase 14 real 5-minute symbol marginal rows: 32
 - Phase 15 gate rows: 55
 - Phase 15 promoted strategies: 0
@@ -195,7 +199,7 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 20 acceptance hardening strategy rows: 11
 - Phase 20 acceptance-ready queue rows: 0
 - Phase 20 top-priority gate blocked strategies: 11
-- Validation dashboard summary rows: 57
+- Validation dashboard summary rows: 61
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3

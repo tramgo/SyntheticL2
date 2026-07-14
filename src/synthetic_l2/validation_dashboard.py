@@ -92,6 +92,7 @@ def _bar_rows(frame: pd.DataFrame, label_col: str, value_col: str) -> str:
 def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dict]:
     quality = _read_csv(paths["quality"])
     holdout = _read_csv(paths["holdout"])
+    realism_gap = _read_csv(paths["realism_gap"])
     lifecycle_risk = _read_csv(paths["lifecycle_risk"])
     lifecycle_risk_severity = _read_csv(paths["lifecycle_risk_severity"])
     lifecycle_risk_limit_sensitivity = _read_csv(paths["lifecycle_risk_limit_sensitivity"])
@@ -117,6 +118,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     hardening_gate_summary = _read_csv(paths["hardening_gate_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
+    realism_gap_status = (
+        realism_gap.groupby(["proxy_evidence_available", "acceptance_requirement_met"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     gate_blockers = blockers["gate_id"].value_counts().rename_axis("gate_id").reset_index(name="blockers").sort_values("gate_id")
     metric_status = metric_catalog.groupby(["metric_category", "current_status"], sort=True).size().reset_index(name="metrics")
     gap_priority = gaps["priority"].value_counts().rename_axis("priority").reset_index(name="gaps").sort_values("priority")
@@ -166,6 +172,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("quality_fail_checks", int((quality["status"].astype(str) == "fail").sum()), "Current quality failures"),
         ("holdout_proxy_rows", int(len(holdout)), "Phase 14 holdout generator proxy rows"),
         ("holdout_proxy_available_rows", int((holdout["realism_status"].astype(str) == "holdout_proxy_available_not_acceptance").sum()), "Holdout proxy rows structurally available"),
+        ("realism_acceptance_gap_rows", int(len(realism_gap)), "Phase 14 realism acceptance gap rows"),
+        ("realism_acceptance_gap_open_rows", int((~realism_gap["acceptance_requirement_met"].astype(bool)).sum()), "Phase 14 open realism acceptance gaps"),
+        ("realism_acceptance_gap_proxy_rows", int(realism_gap["proxy_evidence_available"].astype(bool).sum()), "Phase 14 realism gaps with proxy evidence"),
+        ("realism_acceptance_gap_met_rows", int(realism_gap["acceptance_requirement_met"].astype(bool).sum()), "Phase 14 met realism acceptance requirements"),
         ("full_run_lifecycle_risk_rows", int(len(lifecycle_risk)), "Phase 12 full-run fill-adjusted risk rows"),
         ("full_run_lifecycle_fill_models", int(lifecycle_risk["fill_model"].nunique()), "Phase 12 full-run fill models"),
         ("full_run_lifecycle_daily_halt_rows", int(lifecycle_risk["daily_halt_rows"].sum()), "Phase 12 full-run lifecycle halt rows"),
@@ -283,6 +293,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <div class="cards">{cards}</div>
   <section><h2>Phase 14 Quality Status</h2>{_bar_rows(quality_status, 'status', 'checks')}{_table(quality, ['level', 'check_name', 'value', 'status', 'evidence'], 24)}</section>
   <section><h2>Phase 14 Holdout Generator Realism Proxy</h2>{_table(holdout, ['quarter_profile', 'feed_profile', 'holdout_role', 'scenario_days', 'symbols', 'regimes', 'realism_status', 'acceptance_eligible_now'], 20)}</section>
+  <section><h2>Phase 14 Realism Acceptance Gap Ledger</h2>{_table(realism_gap_status, None, 10)}{_table(realism_gap, ['strategy_id', 'realism_requirement', 'observed_value', 'current_evidence_status', 'proxy_evidence_available', 'acceptance_requirement_met', 'blocking_gap'], 50)}</section>
   <section><h2>Phase 13 Robustness Dimension Proxy</h2>{_table(robustness_status, None, 10)}{_table(robustness_dimension, ['strategy_id', 'registered_for_phase13_proxy', 'initial_engineering_seeds_run', 'required_full_validation_seeds', 'execution_profiles_evaluated', 'parameter_sets_run', 'parameter_sets_planned', 'walk_forward_status', 'holdout_status', 'dimension_status'], 14)}</section>
   <section><h2>Phase 13 Robustness Acceptance Gap Ledger</h2>{_table(robustness_gap_status, None, 10)}{_table(robustness_gap, ['strategy_id', 'robustness_requirement', 'required_threshold', 'observed_value', 'current_evidence_status', 'acceptance_requirement_met', 'blocking_gap'], 40)}</section>
   <section><h2>Phase 12 Full-Run Lifecycle Risk Proxy</h2>{_table(lifecycle_overview, ['fill_model', 'strategy_profiles', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'daily_halt_rows', 'position_limit_breach_rows'], 10)}{_table(lifecycle_risk, ['strategy_id', 'execution_profile', 'fill_model', 'orders', 'mean_fill_ratio', 'risk_adjusted_net_pnl_inr', 'max_intraday_drawdown_inr', 'daily_halt_rows'], 18)}</section>
@@ -324,6 +335,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "## Holdout Generator Realism Proxy",
         "",
         _markdown_table(holdout),
+        "",
+        "## Realism Acceptance Gap Ledger",
+        "",
+        _markdown_table(realism_gap_status),
+        "",
+        _markdown_table(realism_gap),
         "",
         "## Phase 12 Full-Run Lifecycle Risk Proxy",
         "",
@@ -425,6 +442,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/dashboard"))
     parser.add_argument("--quality", type=Path, default=Path("outputs/phase14/quality_gate_summary.csv"))
     parser.add_argument("--holdout", type=Path, default=Path("outputs/phase14/holdout_generator_realism_summary.csv"))
+    parser.add_argument("--realism-gap", type=Path, default=Path("outputs/phase14/realism_acceptance_gap_ledger.csv"))
     parser.add_argument("--lifecycle-risk", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_summary.csv"))
     parser.add_argument("--lifecycle-risk-severity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_breach_severity.csv"))
     parser.add_argument("--lifecycle-risk-limit-sensitivity", type=Path, default=Path("outputs/phase12/full_run_lifecycle_risk_limit_sensitivity.csv"))
@@ -456,6 +474,7 @@ def main() -> None:
     paths = {
         "quality": args.quality,
         "holdout": args.holdout,
+        "realism_gap": args.realism_gap,
         "lifecycle_risk": args.lifecycle_risk,
         "lifecycle_risk_severity": args.lifecycle_risk_severity,
         "lifecycle_risk_limit_sensitivity": args.lifecycle_risk_limit_sensitivity,
