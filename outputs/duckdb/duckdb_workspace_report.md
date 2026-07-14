@@ -1,6 +1,6 @@
 # DuckDB Workspace Report
 
-Generated UTC: 2026-07-14T18:37:13.987030+00:00
+Generated UTC: 2026-07-14T18:42:39.958935+00:00
 
 ## Storage Decision
 
@@ -380,7 +380,16 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Phase 30 realistic positive execution rows: 0
 - Phase 30 candidate rows: 0
 - Phase 30 proxy-label-only families: 4
-- Validation dashboard summary rows: 218
+- Phase 31 strategy redesign specs: 9
+- Phase 31 contract requirement rows: 44
+- Phase 31 open contract requirements: 44
+- Phase 31 replay-allowed rows: 0
+- Phase 31 replay-blocked rows: 9
+- Phase 31 acceptance-ready rows: 0
+- Phase 31 label-engineering requirements: 7
+- Phase 31 broker-evidence requirements: 3
+- Phase 31 execution-economics requirements: 9
+- Validation dashboard summary rows: 224
 - Validation dashboard promoted strategies: 0
 - Validation dashboard P1 gaps: 0
 - Replay validation tiers: 3
@@ -395,18 +404,18 @@ Use SQLite only later if we need a small transactional run registry or manual an
 - Horizon readiness event-driven 1s symbols: 12
 - Horizon readiness dense 1s symbols: 0
 - Phase 19 required fields: 10
-- Phase 19 audited artifacts: 49
-- Phase 19 field checks: 490
-- Phase 19 exact-regeneration-ready artifacts: 49
+- Phase 19 audited artifacts: 50
+- Phase 19 field checks: 500
+- Phase 19 exact-regeneration-ready artifacts: 50
 - Phase 19 artifacts with missing fields: 0
 - Phase 19 manifest-missing/unreadable artifacts: 0
 - Phase 19 gap rows: 0
-- Phase 19 remediation rows: 490
+- Phase 19 remediation rows: 500
 - Phase 19 remediation summary rows: 1
-- Phase 19 normalized overlay artifacts: 49
-- Phase 19 normalized overlay-ready artifacts: 49
+- Phase 19 normalized overlay artifacts: 50
+- Phase 19 normalized overlay-ready artifacts: 50
 - Phase 19 normalizer-default fields: 0
-- Phase 19 source-or-alias fields: 490
+- Phase 19 source-or-alias fields: 500
 - Phase 19 add-field-in-generator rows: 0
 - Phase 19 alias-normalization rows: 0
 - Phase 19 recover/rerun-manifest rows: 0

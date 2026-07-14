@@ -1,0 +1,10 @@
+strategy_id,strategy_name,redesign_priority,contract_requirements,open_requirements,replay_expansion_allowed,redesign_contract_status,next_action
+S01,Momentum/breakout filtered by MLOFI,low,5,5,False,blocked_no_replay_until_contract_evidence,Write a materially new event-level signal thesis with explicit fee/spread hurdle before replay expansion.
+S02,Pure multi-level OFI directional model,low,5,5,False,blocked_no_replay_until_contract_evidence,Write a materially new event-level signal thesis with explicit fee/spread hurdle before replay expansion.
+S03,Liquidity-vacuum breakout,medium,5,5,False,blocked_no_replay_until_contract_evidence,Build acceptance-grade event labels and multi-day/broker evidence before another replay expansion.
+S04,Trade-flow plus depth confirmation,medium,5,5,False,blocked_no_replay_until_contract_evidence,Build acceptance-grade event labels and multi-day/broker evidence before another replay expansion.
+S05,Microprice entry/exit filter,medium,4,4,False,blocked_no_replay_until_contract_evidence,Bridge the zero-latency diagnostic edge into charged retail/stressed execution before replay expansion.
+S06,Absorption and exhaustion reversal,medium,5,5,False,blocked_no_replay_until_contract_evidence,Build acceptance-grade event labels and multi-day/broker evidence before another replay expansion.
+S07,Mean reversion after imbalance,medium,5,5,False,blocked_no_replay_until_contract_evidence,Bridge the zero-latency diagnostic edge into charged retail/stressed execution before replay expansion.
+S08,Cross-ticker/index lead-lag OFI,medium,5,5,False,blocked_no_replay_until_contract_evidence,Build acceptance-grade event labels and multi-day/broker evidence before another replay expansion.
+S09,Pure queue-imbalance scalping,medium,5,5,False,blocked_no_replay_until_contract_evidence,Bridge the zero-latency diagnostic edge into charged retail/stressed execution before replay expansion.

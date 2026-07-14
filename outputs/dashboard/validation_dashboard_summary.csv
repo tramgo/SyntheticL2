@@ -217,3 +217,9 @@ phase30_promotion_ready_rows,0,Phase 30 promotion-ready rows
 phase30_acceptance_ready_rows,0,Phase 30 acceptance-ready rows
 phase30_realistic_positive_execution_rows,0,Phase 30 realistic positive execution rows
 phase30_candidate_rows,0,Phase 30 candidate rows
+phase31_strategy_redesign_specs,9,Phase 31 strategy redesign specs
+phase31_contract_requirement_rows,44,Phase 31 contract requirement rows
+phase31_open_contract_requirements,44,Phase 31 open contract requirements
+phase31_replay_allowed_rows,0,Phase 31 replay-allowed rows
+phase31_replay_blocked_rows,9,Phase 31 replay-blocked rows
+phase31_acceptance_ready_rows,0,Phase 31 acceptance-ready rows

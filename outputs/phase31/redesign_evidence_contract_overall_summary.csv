@@ -1,0 +1,10 @@
+metric,value,description
+phase31_strategy_redesign_specs,9,Alpha strategy families with redesign evidence specs
+phase31_contract_requirement_rows,44,Requirement rows that must be met before replay expansion
+phase31_open_contract_requirements,44,Currently open requirement rows
+phase31_replay_allowed_rows,0,Strategy rows allowed back into replay expansion now
+phase31_replay_blocked_rows,9,Strategy rows blocked from more replay compute
+phase31_acceptance_ready_rows,0,Rows with all redesign evidence satisfied
+phase31_label_engineering_requirements,7,Acceptance-grade label requirements
+phase31_broker_evidence_requirements,3,Broker/fill/cost reconciliation requirements
+phase31_execution_economics_requirements,9,Cost-survival execution requirements
