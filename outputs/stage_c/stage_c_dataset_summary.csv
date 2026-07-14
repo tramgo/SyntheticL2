@@ -1,0 +1,11 @@
+metric,value,description
+symbols,32,instrument count in pilot feature subset
+selected_trading_days,20,selected Q-A pilot trading days
+selected_seed_rows,3,initial engineering seed rows
+regime_families,10,regime families in selected days
+shock_days,2,selected market shock days
+feature_rows,239173,Phase 9 Tier C rows in pilot feature subset
+feed_profiles,5,feed profiles represented
+strategy_run_rows,15,S01-S05 strategy/seed proxy run summaries
+baseline_run_rows,21,baseline/seed proxy run summaries
+acceptance_ready_rows,0,promotion-ready rows

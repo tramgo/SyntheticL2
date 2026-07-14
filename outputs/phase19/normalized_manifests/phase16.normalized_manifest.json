@@ -13,6 +13,6 @@
   "cost_model_version": "outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2",
   "latency_model_version": "outputs/phase12/execution_profiles.csv",
   "creation_timestamp": "2026-07-14T14:57:44.617363+00:00",
-  "normalization_timestamp": "2026-07-14T16:58:31.868590+00:00",
+  "normalization_timestamp": "2026-07-14T17:06:26.006071+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

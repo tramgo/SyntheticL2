@@ -1,0 +1,8 @@
+check_id,observed_value,expected_value,passed,detail,acceptance_scope
+all_32_instruments,32,32,True,all current Stage A1 symbols represented,stage_c_medium_pilot_proxy_not_strategy_promotion
+twenty_trading_days,20,20,True,Q-A first 20 scenario days selected,stage_c_medium_pilot_proxy_not_strategy_promotion
+three_initial_seeds,3,3,True,Q-A initial engineering seeds selected,stage_c_medium_pilot_proxy_not_strategy_promotion
+multiple_regimes,10,3,True,shock_days=2,stage_c_medium_pilot_proxy_not_strategy_promotion
+strategy_proxy_runs,15,15,True,S01-S05 x 3 seeds,stage_c_medium_pilot_proxy_not_strategy_promotion
+baseline_proxy_runs,21,21,True,B01-B07 x 3 seeds,stage_c_medium_pilot_proxy_not_strategy_promotion
+non_acceptance_scope,0,0,True,medium pilot is not strategy promotion evidence,stage_c_medium_pilot_proxy_not_strategy_promotion

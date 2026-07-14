@@ -148,3 +148,12 @@ stage_b2_one_second_event_feature_rows,2400,Stage B2 event-driven 1s proof rows
 stage_b2_proof_check_rows,7,Stage B2 proof check rows
 stage_b2_proof_checks_passed,7,Stage B2 passed proof checks
 stage_b2_proof_checks_failed,0,Stage B2 failed proof checks
+stage_c_symbols,32,Stage C pilot symbols
+stage_c_selected_trading_days,20,Stage C selected trading days
+stage_c_selected_seed_rows,3,Stage C selected seed rows
+stage_c_feature_rows,239173,Stage C pilot feature rows
+stage_c_strategy_run_rows,15,Stage C S01-S05 strategy proxy run rows
+stage_c_baseline_run_rows,21,Stage C baseline proxy run rows
+stage_c_check_rows,7,Stage C check rows
+stage_c_checks_passed,7,Stage C passed checks
+stage_c_checks_failed,0,Stage C failed checks
