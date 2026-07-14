@@ -1,0 +1,9 @@
+criterion_id,criterion_description,acceptance_threshold,current_status
+strategy_full_run_coverage,Full event/tick lifecycle replay covers every supported strategy/profile/fill model.,all supported strategies have preserved order/fill lineage,contract_defined_not_acceptance_evidence
+daily_equity_curve_and_halt_coverage,"Daily equity, halt, resume and blocked-trading state is persisted from the replay engine.",daily risk state is complete and reconciled to lifecycle fills,contract_defined_not_acceptance_evidence
+guardrail_validation,"Daily loss, drawdown and position guardrails are enforced and validated on replay state.",no unresolved deployable guardrail breach before promotion,contract_defined_not_acceptance_evidence
+tail_loss_validation,Tail-loss distribution is computed from replay fills under current and strict profiles.,tail loss remains within approved capital limits,contract_defined_not_acceptance_evidence
+documented_cost_formula_validation,Documented Zerodha formula evidence is retained and reconciled to broker notes where available.,documented formula plus broker contract-note reconciliation clears,contract_defined_not_acceptance_evidence
+latency_slippage_acceptance_run,Latency/slippage stress is replayed through the event lifecycle engine.,retail and stressed profiles pass under calibrated latency/slippage,contract_defined_not_acceptance_evidence
+net_profitability_validation,Retail and stressed profiles remain net-positive after realistic costs.,retail/stress and stressed-only net profitability pass,contract_defined_not_acceptance_evidence
+risk_adjusted_economic_validation,Economic P&L and lifecycle risk state jointly pass.,risk-adjusted economic joint pass clears for deployable profiles,contract_defined_not_acceptance_evidence

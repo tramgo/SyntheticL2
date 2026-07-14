@@ -1,0 +1,8 @@
+lifecycle_economic_status,rows,strategies,acceptance_met_rows
+blocked_by_partial_strategy_support,44,4,0
+lifecycle_risk_proxy_not_acceptance_grade,30,5,0
+blocked_by_unsupported_strategy_scope,22,2,0
+net_profitability_proxy_not_acceptance_grade,10,5,0
+latency_slippage_proxy_not_acceptance_replay,5,5,0
+risk_adjusted_joint_pass_proxy_failed_or_missing,5,5,0
+zerodha_formula_proxy_contract_note_missing,5,5,0

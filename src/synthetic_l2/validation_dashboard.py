@@ -145,6 +145,10 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     robustness_execution_ledger = _read_csv(paths["robustness_execution_ledger"])
     robustness_execution_gap_summary = _read_csv(paths["robustness_execution_gap_summary"])
     robustness_execution_strategy_summary = _read_csv(paths["robustness_execution_strategy_summary"])
+    lifecycle_economic_criteria = _read_csv(paths["lifecycle_economic_criteria"])
+    lifecycle_economic_ledger = _read_csv(paths["lifecycle_economic_ledger"])
+    lifecycle_economic_gap_summary = _read_csv(paths["lifecycle_economic_gap_summary"])
+    lifecycle_economic_strategy_summary = _read_csv(paths["lifecycle_economic_strategy_summary"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -239,6 +243,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     )
     robustness_execution_status = (
         robustness_execution_ledger.groupby(["robustness_execution_status"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    lifecycle_economic_status = (
+        lifecycle_economic_ledger.groupby(["lifecycle_economic_status"], sort=True)
         .size()
         .reset_index(name="rows")
     )
@@ -355,6 +364,12 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase20_m04_execution_profile_required_rows", int(robustness_execution_ledger["execution_profile_required"].astype(bool).sum()), "Phase 20 M04 rows requiring execution-profile robustness"),
         ("phase20_m04_negative_control_required_rows", int(robustness_execution_ledger["negative_control_required"].astype(bool).sum()), "Phase 20 M04 rows requiring negative-control rejection"),
         ("phase20_m04_robustness_acceptance_met_rows", int(robustness_execution_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M04 rows that meet acceptance after contract"),
+        ("phase20_m05_lifecycle_economic_rows", int(len(lifecycle_economic_ledger)), "Phase 20 M05 lifecycle/economic replay rows"),
+        ("phase20_m05_risk_replay_required_rows", int(lifecycle_economic_ledger["risk_replay_required"].astype(bool).sum()), "Phase 20 M05 rows requiring lifecycle risk replay"),
+        ("phase20_m05_economic_replay_required_rows", int(lifecycle_economic_ledger["economic_replay_required"].astype(bool).sum()), "Phase 20 M05 rows requiring economic replay"),
+        ("phase20_m05_broker_reconciliation_required_rows", int(lifecycle_economic_ledger["broker_reconciliation_required"].astype(bool).sum()), "Phase 20 M05 rows requiring broker/contract-note reconciliation"),
+        ("phase20_m05_guardrail_validation_required_rows", int(lifecycle_economic_ledger["guardrail_validation_required"].astype(bool).sum()), "Phase 20 M05 rows requiring guardrail validation"),
+        ("phase20_m05_lifecycle_economic_acceptance_met_rows", int(lifecycle_economic_ledger["acceptance_requirement_met_after_contract"].astype(bool).sum()), "Phase 20 M05 rows that meet acceptance after contract"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -437,6 +452,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 20 M02 Strategy Support Contract</h2>{_table(strategy_support_gap_summary, None, 10)}{_table(strategy_support_status, None, 20)}{_table(strategy_support_decision_summary, ['strategy_id', 'strategy_support_closure_status', 'm02_rows', 'required_support_action'], 15)}{_table(strategy_support_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(strategy_support_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'strategy_support_level', 'hardening_requirement', 'support_contract_status', 'alpha_promotion_scope', 'acceptance_requirement_met_after_contract', 'required_support_action'], 60)}</section>
   <section><h2>Phase 20 M03 Predictive Validation Contract</h2>{_table(predictive_validation_gap_summary, None, 12)}{_table(predictive_validation_status, None, 12)}{_table(predictive_validation_strategy_summary, ['strategy_id', 'strategy_support_level', 'm03_rows', 'baseline_pass_proxy', 'predictive_promotion_candidate_proxy', 'predictive_validation_status'], 15)}{_table(predictive_validation_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(predictive_validation_ledger, ['execution_rank', 'strategy_id', 'hardening_requirement', 'predictive_contract_status', 'observed_predictive_metric', 'acceptance_requirement_met_after_contract', 'required_predictive_action'], 70)}</section>
   <section><h2>Phase 20 M04 Robustness Execution Contract</h2>{_table(robustness_execution_gap_summary, None, 12)}{_table(robustness_execution_status, None, 12)}{_table(robustness_execution_strategy_summary, ['strategy_id', 'strategy_support_level', 'm04_rows', 'seed_rows_requiring_execution', 'walk_forward_rows_requiring_execution', 'robustness_execution_contract_status'], 15)}{_table(robustness_execution_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(robustness_execution_ledger, ['execution_rank', 'strategy_id', 'hardening_requirement', 'robustness_execution_status', 'observed_robustness_metric', 'acceptance_requirement_met_after_contract', 'required_robustness_action'], 70)}</section>
+  <section><h2>Phase 20 M05 Lifecycle/Economic Replay Contract</h2>{_table(lifecycle_economic_gap_summary, None, 12)}{_table(lifecycle_economic_status, None, 12)}{_table(lifecycle_economic_strategy_summary, ['strategy_id', 'strategy_support_level', 'm05_rows', 'risk_replay_rows', 'economic_replay_rows', 'lifecycle_economic_contract_status'], 15)}{_table(lifecycle_economic_criteria, ['criterion_id', 'acceptance_threshold', 'current_status'], 10)}{_table(lifecycle_economic_ledger, ['execution_rank', 'gate_id', 'strategy_id', 'hardening_requirement', 'lifecycle_economic_status', 'observed_lifecycle_economic_metric', 'acceptance_requirement_met_after_contract', 'required_lifecycle_economic_action'], 90)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -649,6 +665,18 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(robustness_execution_ledger.head(70)),
         "",
+        "## Phase 20 M05 Lifecycle/Economic Replay Contract",
+        "",
+        _markdown_table(lifecycle_economic_gap_summary),
+        "",
+        _markdown_table(lifecycle_economic_status),
+        "",
+        _markdown_table(lifecycle_economic_strategy_summary),
+        "",
+        _markdown_table(lifecycle_economic_criteria),
+        "",
+        _markdown_table(lifecycle_economic_ledger.head(90)),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -728,6 +756,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--robustness-execution-ledger", type=Path, default=Path("outputs/phase20_m04/robustness_execution_ledger.csv"))
     parser.add_argument("--robustness-execution-gap-summary", type=Path, default=Path("outputs/phase20_m04/robustness_execution_gap_summary.csv"))
     parser.add_argument("--robustness-execution-strategy-summary", type=Path, default=Path("outputs/phase20_m04/robustness_execution_strategy_summary.csv"))
+    parser.add_argument("--lifecycle-economic-criteria", type=Path, default=Path("outputs/phase20_m05/lifecycle_economic_acceptance_criteria.csv"))
+    parser.add_argument("--lifecycle-economic-ledger", type=Path, default=Path("outputs/phase20_m05/lifecycle_economic_replay_ledger.csv"))
+    parser.add_argument("--lifecycle-economic-gap-summary", type=Path, default=Path("outputs/phase20_m05/lifecycle_economic_gap_summary.csv"))
+    parser.add_argument("--lifecycle-economic-strategy-summary", type=Path, default=Path("outputs/phase20_m05/lifecycle_economic_strategy_summary.csv"))
     return parser.parse_args()
 
 
@@ -789,6 +821,10 @@ def main() -> None:
         "robustness_execution_ledger": args.robustness_execution_ledger,
         "robustness_execution_gap_summary": args.robustness_execution_gap_summary,
         "robustness_execution_strategy_summary": args.robustness_execution_strategy_summary,
+        "lifecycle_economic_criteria": args.lifecycle_economic_criteria,
+        "lifecycle_economic_ledger": args.lifecycle_economic_ledger,
+        "lifecycle_economic_gap_summary": args.lifecycle_economic_gap_summary,
+        "lifecycle_economic_strategy_summary": args.lifecycle_economic_strategy_summary,
     }
     run_dashboard(args.output_dir, paths)
 

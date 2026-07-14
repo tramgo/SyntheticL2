@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-14T16:15:38.152966+00:00
+Generated UTC: 2026-07-14T16:21:25.177471+00:00
 
 ## Scope
 
@@ -11,7 +11,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 
 | coverage_status | field_checks |
 | --- | --- |
-| present_exact | 310 |
+| present_exact | 320 |
 
 ## Artifact Summary
 
@@ -40,6 +40,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | phase20_m02 | outputs/phase20_m02/strategy_support_contract_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase20_m03 | outputs/phase20_m03/predictive_validation_contract_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase20_m04 | outputs/phase20_m04/robustness_execution_contract_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase20_m05 | outputs/phase20_m05/lifecycle_economic_replay_contract_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase3 | outputs/phase3/regime_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase4 | outputs/phase4/scenario_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase5 | outputs/phase5/price_process_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
@@ -57,7 +58,7 @@ _No rows._
 
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
-| complete_exact | 310 | 31 |
+| complete_exact | 320 | 32 |
 
 ## Normalized Manifest Overlay
 
@@ -66,11 +67,11 @@ It is a reproducibility bridge, not proof that every original phase generator al
 
 | overlay_metric | value |
 | --- | --- |
-| normalized_overlay_artifacts | 31 |
-| exact_field_overlay_ready_artifacts | 31 |
+| normalized_overlay_artifacts | 32 |
+| exact_field_overlay_ready_artifacts | 32 |
 | normalizer_default_fields | 0 |
-| source_manifest_exact_or_alias_fields | 310 |
-| normalized_field_rows | 310 |
+| source_manifest_exact_or_alias_fields | 320 |
+| normalized_field_rows | 320 |
 
 | artifact_id | source_manifest_path | normalized_manifest_path | source_manifest_exists | required_fields | normalized_fields_present | normalizer_default_fields | source_manifest_exact_or_alias_fields | exact_field_overlay_ready |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -102,6 +103,7 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | phase20_m02 | outputs/phase20_m02/strategy_support_contract_manifest.json | outputs\phase19\normalized_manifests\phase20_m02.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase20_m03 | outputs/phase20_m03/predictive_validation_contract_manifest.json | outputs\phase19\normalized_manifests\phase20_m03.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase20_m04 | outputs/phase20_m04/robustness_execution_contract_manifest.json | outputs\phase19\normalized_manifests\phase20_m04.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase20_m05 | outputs/phase20_m05/lifecycle_economic_replay_contract_manifest.json | outputs\phase19\normalized_manifests\phase20_m05.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | horizon_readiness | outputs/horizon_readiness/horizon_readiness_manifest.json | outputs\phase19\normalized_manifests\horizon_readiness.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | dashboard | outputs/dashboard/validation_dashboard_manifest.json | outputs\phase19\normalized_manifests\dashboard.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | duckdb | outputs/duckdb/duckdb_workspace_manifest.json | outputs\phase19\normalized_manifests\duckdb.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |

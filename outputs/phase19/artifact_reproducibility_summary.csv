@@ -22,6 +22,7 @@ phase20_m01,outputs/phase20_m01/broker_evidence_contract_manifest.json,10,10,0,0
 phase20_m02,outputs/phase20_m02/strategy_support_contract_manifest.json,10,10,0,0,0,True
 phase20_m03,outputs/phase20_m03/predictive_validation_contract_manifest.json,10,10,0,0,0,True
 phase20_m04,outputs/phase20_m04/robustness_execution_contract_manifest.json,10,10,0,0,0,True
+phase20_m05,outputs/phase20_m05/lifecycle_economic_replay_contract_manifest.json,10,10,0,0,0,True
 phase3,outputs/phase3/regime_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True

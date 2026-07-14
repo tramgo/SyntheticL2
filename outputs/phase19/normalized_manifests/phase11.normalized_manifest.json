@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_no_execution_costs",
   "latency_model_version": "phase8_feed_profiles_v1",
   "creation_timestamp": "2026-07-13T20:47:00.252098+00:00",
-  "normalization_timestamp": "2026-07-14T16:15:37.319263+00:00",
+  "normalization_timestamp": "2026-07-14T16:21:24.341325+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

@@ -1,0 +1,12 @@
+strategy_id,strategy_support_level,strategy_role,m05_rows,risk_replay_rows,economic_replay_rows,broker_reconciliation_rows,guardrail_validation_rows,acceptance_met_rows,first_required_action,lifecycle_economic_contract_status
+S01,runnable_proxy,priority,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S02,runnable_proxy,priority,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S03,partial_missing_required_features,priority,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S04,partial_missing_required_features,priority,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S05,runnable_proxy,filter,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S06,partial_missing_required_features,priority,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S07,runnable_proxy,priority,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S08,partial_missing_required_features,research,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S09,runnable_proxy,benchmark,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S10,not_supported_by_current_product,research_only,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance
+S11,not_supported_by_current_product,risk_filter_only,11,6,5,1,3,0,Run acceptance-grade lifecycle risk replay with preserved order/fill/equity-state lineage.,proxy_or_support_blocked_not_acceptance

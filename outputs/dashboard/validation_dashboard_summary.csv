@@ -108,3 +108,9 @@ phase20_m04_parameter_smoothness_required_rows,11,Phase 20 M04 rows requiring pa
 phase20_m04_execution_profile_required_rows,11,Phase 20 M04 rows requiring execution-profile robustness
 phase20_m04_negative_control_required_rows,11,Phase 20 M04 rows requiring negative-control rejection
 phase20_m04_robustness_acceptance_met_rows,0,Phase 20 M04 rows that meet acceptance after contract
+phase20_m05_lifecycle_economic_rows,121,Phase 20 M05 lifecycle/economic replay rows
+phase20_m05_risk_replay_required_rows,66,Phase 20 M05 rows requiring lifecycle risk replay
+phase20_m05_economic_replay_required_rows,55,Phase 20 M05 rows requiring economic replay
+phase20_m05_broker_reconciliation_required_rows,11,Phase 20 M05 rows requiring broker/contract-note reconciliation
+phase20_m05_guardrail_validation_required_rows,33,Phase 20 M05 rows requiring guardrail validation
+phase20_m05_lifecycle_economic_acceptance_met_rows,0,Phase 20 M05 rows that meet acceptance after contract
