@@ -3267,6 +3267,25 @@ The current Phase 50 run creates a 384-row target schedule covering 32 symbols x
 
 The immediate conclusion is that the dense target is now schedulable rather than hand-wavy. The next run can choose between a larger bounded tranche or the full 384-shard schedule, but it should preserve this shard manifest so partial progress and disk usage remain auditable.
 
+## Phase 51 — Full Dense Lake Materializer
+
+**Current Phase 51 implementation status as of 2026-07-16:** Phase 51 now has a runnable full dense lake materializer in `scripts/run_phase51_full_dense_lake_materializer.py`, backed by `src/synthetic_l2/phase51_full_dense_lake_materializer.py`.
+
+Planned/generated Phase 51 artifacts are under `outputs/phase51/`:
+
+- `full_dense_lake_inventory.csv`
+- `full_dense_lake_summary.csv`
+- `phase51_full_dense_lake_materializer_report.md`
+- `phase51_full_dense_lake_materializer_manifest.json`
+
+The full dense lake itself is local and ignored by Git under `raw_synthetic_l2_dense_full_year/`, partitioned as:
+
+`trade_month=YYYY-MM/symbol=SYMBOL/part-00000.parquet`
+
+This phase consumes the Phase 50 384-shard target schedule and materializes every symbol-month shard to its scheduled dense row count. Because the Phase 50 target multiplier is fractional at approximately 1,983.414x, Phase 51 writes 1,983 subticks for every source tick plus one extra subtick for the first required source rows in each shard so the final row count matches the target schedule. It streams each shard through bounded source-row chunks rather than building the full multi-billion-row lake in memory.
+
+The completion gate for this phase is intentionally mechanical: `phase51_full_80gb_dense_lake_materialized` is `1` only when all scheduled symbol-month parquet files exist and total materialized dense rows match the Phase 50 scheduled dense rows. `phase51_synthetic_full_year_acceptance_ready` remains `0` until strategies are actually replayed on the dense lake with the synthetic-only acceptance criteria.
+
 ---
 
 ## 25. Final Principle
