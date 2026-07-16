@@ -1,0 +1,16 @@
+metric,value,description
+phase50_target_dense_raw_gb,83.24,Target compressed dense raw lake size
+phase50_target_dense_rows,5974626965.79257,Dense rows implied by Phase49 measured compression
+phase50_target_full_universe_multiplier,1983.4142901697412,Full-universe multiplier implied by target dense rows
+phase50_schedule_shards,384,Symbol-month shards in full dense target schedule
+phase50_schedule_source_rows,3012294,Current compact monthly source rows covered by schedule
+phase50_schedule_estimated_dense_bytes,89378269358.06488,Estimated compressed bytes for target schedule
+phase50_schedule_estimated_runtime_hours,4.302250737106377,Estimated runtime hours at Phase49 measured throughput
+phase50_selected_symbols,HDFCBANK;INFY;RELIANCE,Symbols selected for bounded materialization
+phase50_selected_shards,36,Selected symbol-month shards for bounded materialization
+phase50_materialized_dense_rows,18068416,Dense rows materialized in bounded multi-symbol run
+phase50_materialized_dense_bytes,269683823,Compressed bytes materialized in bounded multi-symbol run
+phase50_materialized_partition_files,36,Dense parquet files written in bounded run
+phase50_dense_output_root,raw_synthetic_l2_dense_phase50_multisymbol_x64,Local bounded dense output root; ignored by Git
+phase50_full_80gb_dense_lake_materialized,0,80GB-class dense full-universe lake not materialized by Phase50
+phase50_synthetic_full_year_acceptance_ready,0,"Dense shard planning is storage/input evidence, not strategy acceptance"

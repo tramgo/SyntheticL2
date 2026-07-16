@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase50",
+  "source_manifest_path": "outputs/phase50/phase50_dense_lake_shard_planner_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "0dcaaabc3bb1208817284090bde7b5bfa3769d3e",
+  "configuration_hash": "8cf1e3e8177aceb6bb1e4d8cf6d98844ac955e60d24cd722485ce732be29099a",
+  "random_seed": "none_deterministic_dense_shard_planner",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase48_compact_monthly_raw_lake_dense_shard_schedule",
+  "cost_model_version": "not_applicable_dense_storage_planning_no_execution_costs",
+  "latency_model_version": "phase45_raw_callback_sequence_plus_dense_subticks",
+  "creation_timestamp": "2026-07-16T15:22:11.282057+00:00",
+  "normalization_timestamp": "2026-07-16T15:23:12.578123+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

@@ -74,6 +74,7 @@ MANIFEST_CANDIDATES = [
     ("phase47", "outputs/phase47/phase47_raw_lake_duckdb_catalog_manifest.json"),
     ("phase48", "outputs/phase48/phase48_raw_lake_compaction_benchmark_manifest.json"),
     ("phase49", "outputs/phase49/phase49_dense_tick_rate_expansion_manifest.json"),
+    ("phase50", "outputs/phase50/phase50_dense_lake_shard_planner_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),
