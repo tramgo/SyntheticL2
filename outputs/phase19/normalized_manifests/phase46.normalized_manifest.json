@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_zerodha_equity_intraday_cost_model_retail_hurdle",
   "latency_model_version": "phase45_raw_callback_sequence_and_l1_l5_depth_schema",
   "creation_timestamp": "2026-07-16T14:52:40.834721+00:00",
-  "normalization_timestamp": "2026-07-16T15:14:55.815055+00:00",
+  "normalization_timestamp": "2026-07-16T15:19:03.464922+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

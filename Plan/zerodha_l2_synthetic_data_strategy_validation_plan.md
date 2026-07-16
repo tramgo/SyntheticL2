@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 66 phase/workspace/dashboard/decision manifests, producing 660 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 66 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase44`, `phase45`, `phase46`, `phase47`, `phase48`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 67 phase/workspace/dashboard/decision manifests, producing 670 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 67 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase44`, `phase45`, `phase46`, `phase47`, `phase48`, `phase49`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 660 field-level remediation rows. All 660 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 670 field-level remediation rows. All 670 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -3224,6 +3224,27 @@ This phase compacts the Phase 45 date/exchange/symbol raw parquet lake into larg
 The current Phase 48 run reduces the raw lake from 8,064 symbol-day parquet files to 12 monthly parquet files, a 672x file-count reduction. Row counts match exactly: both layouts contain 3,012,294 rows. Compressed parquet bytes fall from 491,002,806 bytes to 177,847,919 bytes. DuckDB benchmark speedups are material: total row count improves from approximately 14.4 seconds to 25 ms, HDFCBANK row count from approximately 17.0 seconds to 55 ms, and the L1/L5 completeness scan from approximately 90.2 seconds to 1.57 seconds. The best query speedup is approximately 572x and the median query speedup is approximately 185x. `phase48_synthetic_full_year_acceptance_ready` remains 0.
 
 The immediate conclusion is that the compact monthly layout should be the default query source for repeated experiments, while the original date/exchange/symbol raw lake remains the audit/source-of-truth layout. This also sets the storage pattern for any future 80GB-class dense tick expansion: generate raw partitions for auditability, then compact into larger query row groups before running expensive experiments.
+
+## Phase 49 — Dense Tick-Rate Expansion Calibration
+
+**Current Phase 49 implementation status as of 2026-07-16:** Phase 49 now has a runnable dense tick-rate expansion calibration workflow in `scripts/run_phase49_dense_tick_rate_expansion.py`, backed by `src/synthetic_l2/phase49_dense_tick_rate_expansion.py`.
+
+Generated Phase 49 artifacts are under `outputs/phase49/`:
+
+- `dense_tick_shard_inventory.csv`
+- `dense_tick_expansion_summary.csv`
+- `phase49_dense_tick_rate_expansion_report.md`
+- `phase49_dense_tick_rate_expansion_manifest.json`
+
+The dense calibration shard itself is local and ignored by Git under `raw_synthetic_l2_dense_phase49_hdfcbank_x64/`, partitioned as:
+
+`trade_month=YYYY-MM/symbol=HDFCBANK/part-00000.parquet`
+
+This phase deliberately separates raw persistence from tick-rate density. Earlier phases proved the raw websocket-like L2 pipe and query layer; Phase 49 turns up the event-rate faucet for one full-year HDFCBANK shard to measure dense compression, throughput and the real multiplier needed for an 80GB-class compressed raw lake.
+
+The current Phase 49 run densifies all HDFCBANK full-year compact-raw rows with a 64x subtick multiplier. It converts 94,110 source rows into 6,023,040 dense raw rows across 12 monthly parquet files. The dense shard is 90,102,511 compressed bytes, or approximately 14.96 compressed bytes per row, and was generated in approximately 15.6 seconds at roughly 385,756 rows/second. Because dense subticks compress much more strongly than the earlier raw-row estimate, an 83.240 GB compressed dense lake now implies approximately 5.97 billion rows and an estimated full-universe source-row multiplier of approximately 1,983x at this encoding. At the measured shard throughput, that target would take roughly 4.3 hours before accounting for full-universe skew and I/O contention. `phase49_full_80gb_dense_lake_materialized` remains 0.
+
+The immediate conclusion is that the next dense expansion step should be a controlled multi-symbol or full-universe shard plan using the compact monthly layout, not a blind one-shot write. The target is now quantified in compressed-row terms: the 80GB-class lake is closer to a multi-billion-row synthetic tick process than a 500M-row process under the current Zstandard/Parquet encoding.
 
 ---
 

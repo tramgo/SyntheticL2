@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_storage_materialization_no_execution_costs",
   "latency_model_version": "phase36_raw_tick_enrichment_callback_sequence_schema",
   "creation_timestamp": "2026-07-16T14:41:28.624083+00:00",
-  "normalization_timestamp": "2026-07-16T15:14:55.814159+00:00",
+  "normalization_timestamp": "2026-07-16T15:19:03.464018+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

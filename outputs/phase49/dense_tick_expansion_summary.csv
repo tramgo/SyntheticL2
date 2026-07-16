@@ -1,0 +1,18 @@
+metric,value,description
+phase49_dense_shard_symbols,HDFCBANK,Symbols included in dense calibration shard
+phase49_dense_multiplier,64,Dense subticks generated per source raw event
+phase49_source_rows_densified,94110,Source compact-raw rows densified
+phase49_dense_rows_materialized,6023040,Dense raw rows materialized
+phase49_dense_partition_files,12,Dense shard parquet files written
+phase49_dense_bytes,90102511,Compressed dense shard bytes
+phase49_dense_bytes_per_row,14.95964014849644,Measured compressed dense bytes per row
+phase49_elapsed_seconds,15.61360440000135,Dense shard materialization elapsed seconds
+phase49_rows_per_second,385755.8988749247,Dense materialization throughput
+phase49_target_dense_raw_gb,83.24,Dense raw target size
+phase49_estimated_rows_for_target_dense_lake,5974626965.79257,Rows implied by target GB at measured dense compression
+phase49_estimated_full_universe_multiplier_for_target,1983.4142901697412,Full-universe source-row multiplier implied by target dense size
+phase49_estimated_hours_for_target_at_measured_rate,4.302250740557444,Rough runtime estimate for target rows at measured shard throughput
+phase49_available_disk_gb,169.91250610351562,Free disk after dense shard
+phase49_dense_output_root,raw_synthetic_l2_dense_phase49_hdfcbank_x64,Local dense shard root; ignored by Git
+phase49_full_80gb_dense_lake_materialized,0,80GB-class dense full-universe lake not yet materialized
+phase49_synthetic_full_year_acceptance_ready,0,"Dense generation calibration is storage/input evidence, not strategy acceptance"

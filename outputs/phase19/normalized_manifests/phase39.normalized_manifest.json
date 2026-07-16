@@ -13,6 +13,6 @@
   "cost_model_version": "existing_phase25_phase29_zerodha_cost_profiles",
   "latency_model_version": "existing_phase25_phase29_execution_profiles",
   "creation_timestamp": "2026-07-16T13:57:46.886055+00:00",
-  "normalization_timestamp": "2026-07-16T15:14:55.809741+00:00",
+  "normalization_timestamp": "2026-07-16T15:19:03.460365+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

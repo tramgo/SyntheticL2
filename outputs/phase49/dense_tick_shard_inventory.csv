@@ -1,0 +1,13 @@
+trade_month,symbol,source_rows,dense_rows,multiplier,file_path,bytes
+2026-01,HDFCBANK,8220,526080,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-01\symbol=HDFCBANK\part-00000.parquet,7746199
+2026-02,HDFCBANK,7476,478464,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-02\symbol=HDFCBANK\part-00000.parquet,7252358
+2026-03,HDFCBANK,8220,526080,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-03\symbol=HDFCBANK\part-00000.parquet,7781793
+2026-04,HDFCBANK,8212,525568,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-04\symbol=HDFCBANK\part-00000.parquet,7785363
+2026-05,HDFCBANK,7848,502272,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-05\symbol=HDFCBANK\part-00000.parquet,7516891
+2026-06,HDFCBANK,8198,524672,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-06\symbol=HDFCBANK\part-00000.parquet,7724067
+2026-07,HDFCBANK,8587,549568,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-07\symbol=HDFCBANK\part-00000.parquet,8029165
+2026-08,HDFCBANK,7841,501824,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-08\symbol=HDFCBANK\part-00000.parquet,7459772
+2026-09,HDFCBANK,8208,525312,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-09\symbol=HDFCBANK\part-00000.parquet,7872523
+2026-10,HDFCBANK,8212,525568,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-10\symbol=HDFCBANK\part-00000.parquet,7769526
+2026-11,HDFCBANK,7858,502912,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-11\symbol=HDFCBANK\part-00000.parquet,7523741
+2026-12,HDFCBANK,5230,334720,64,raw_synthetic_l2_dense_phase49_hdfcbank_x64\trade_month=2026-12\symbol=HDFCBANK\part-00000.parquet,5641113

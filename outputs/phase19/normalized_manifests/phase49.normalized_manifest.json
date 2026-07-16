@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase49",
+  "source_manifest_path": "outputs/phase49/phase49_dense_tick_rate_expansion_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "e7dac7a27f2393879890d6af88b80214abbf5635",
+  "configuration_hash": "9f56c1c356a2f82b76e1dbdd6652801f8444351dbe62e766911647a621bf6032",
+  "random_seed": "none_deterministic_dense_subtick_expansion",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase48_compact_monthly_raw_lake_dense_hdfcbank_calibration",
+  "cost_model_version": "not_applicable_dense_storage_generation_no_execution_costs",
+  "latency_model_version": "phase45_raw_callback_sequence_plus_dense_subticks",
+  "creation_timestamp": "2026-07-16T15:17:58.953510+00:00",
+  "normalization_timestamp": "2026-07-16T15:19:03.467167+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}
