@@ -52,6 +52,7 @@ phase44,outputs/phase44/phase44_native_full_year_forward_edge_label_mining_manif
 phase45,outputs/phase45/phase45_raw_tick_lake_materialization_manifest.json,10,10,0,0,0,True
 phase46,outputs/phase46/phase46_raw_tick_lake_replay_diagnostics_manifest.json,10,10,0,0,0,True
 phase47,outputs/phase47/phase47_raw_lake_duckdb_catalog_manifest.json,10,10,0,0,0,True
+phase48,outputs/phase48/phase48_raw_lake_compaction_benchmark_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True
 phase7,outputs/phase7/shock_library_manifest.json,10,10,0,0,0,True

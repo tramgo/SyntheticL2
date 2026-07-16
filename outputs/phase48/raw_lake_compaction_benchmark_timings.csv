@@ -1,0 +1,15 @@
+lake_layout,query_id,elapsed_ms,result_rows,description,sql
+raw_symbol_day,total_rows,14424.418599999626,1,Total rows,select count(*)::bigint as value from raw_l2_ticks
+raw_symbol_day,distinct_symbols,23022.295600007055,1,Distinct symbols,select count(distinct symbol)::bigint as value from raw_l2_ticks
+raw_symbol_day,distinct_trade_dates,21177.986599999713,1,Distinct trade dates,select count(distinct trade_date)::bigint as value from raw_l2_ticks
+raw_symbol_day,distinct_feed_profiles,25045.41920000338,1,Distinct feed profiles,select count(distinct feed_profile)::bigint as value from raw_l2_ticks
+raw_symbol_day,l1_l5_complete_rows,90192.19729999895,1,Rows with complete L1/L5 price/quantity state,select count(*)::bigint as value from raw_l2_ticks where buy_1_price is not null and sell_1_price is not null and buy_5_price is not null and sell_5_price is not null and buy_1_quantity > 0 and sell_1_quantity > 0 and buy_5_quantity > 0 and sell_5_quantity > 0
+raw_symbol_day,hdfcbank_rows,16980.14269999112,1,HDFCBANK row count,select count(*)::bigint as value from raw_l2_ticks where symbol = 'HDFCBANK'
+raw_symbol_day,sample_microstructure_agg,16847.94619999593,1,HDFCBANK microstructure aggregate,"select count(*)::bigint as rows, avg((sell_1_price + buy_1_price) / 2.0) as avg_mid, avg(sell_1_price - buy_1_price) as avg_spread, avg((buy_1_quantity - sell_1_quantity)::double / nullif((buy_1_quantity + sell_1_quantity), 0)) as avg_l1_imbalance from raw_l2_ticks where symbol = 'HDFCBANK'"
+compact_monthly,total_rows,25.22520000638906,1,Total rows,select count(*)::bigint as value from compact_l2_ticks
+compact_monthly,distinct_symbols,121.33049999829382,1,Distinct symbols,select count(distinct symbol)::bigint as value from compact_l2_ticks
+compact_monthly,distinct_trade_dates,124.51320000400301,1,Distinct trade dates,select count(distinct trade_date)::bigint as value from compact_l2_ticks
+compact_monthly,distinct_feed_profiles,135.53440000396222,1,Distinct feed profiles,select count(distinct feed_profile)::bigint as value from compact_l2_ticks
+compact_monthly,l1_l5_complete_rows,1565.6731000053696,1,Rows with complete L1/L5 price/quantity state,select count(*)::bigint as value from compact_l2_ticks where buy_1_price is not null and sell_1_price is not null and buy_5_price is not null and sell_5_price is not null and buy_1_quantity > 0 and sell_1_quantity > 0 and buy_5_quantity > 0 and sell_5_quantity > 0
+compact_monthly,hdfcbank_rows,55.41700001049321,1,HDFCBANK row count,select count(*)::bigint as value from compact_l2_ticks where symbol = 'HDFCBANK'
+compact_monthly,sample_microstructure_agg,833.4495000017341,1,HDFCBANK microstructure aggregate,"select count(*)::bigint as rows, avg((sell_1_price + buy_1_price) / 2.0) as avg_mid, avg(sell_1_price - buy_1_price) as avg_spread, avg((buy_1_quantity - sell_1_quantity)::double / nullif((buy_1_quantity + sell_1_quantity), 0)) as avg_l1_imbalance from compact_l2_ticks where symbol = 'HDFCBANK'"

@@ -1,0 +1,14 @@
+metric,value,description
+phase48_raw_partition_files,8064,Original raw date/exchange/symbol parquet files
+phase48_compact_partition_files,12,Compacted monthly parquet files
+phase48_file_count_reduction_ratio,672.0,Original file count divided by compact file count
+phase48_raw_rows,3012294,Rows counted through original raw DuckDB view
+phase48_compact_rows,3012294,Rows counted through compact DuckDB view
+phase48_row_count_match,1,Compacted row count matches raw row count
+phase48_raw_bytes,491002806,Original raw parquet bytes from Phase45 inventory
+phase48_compact_bytes,177847919,Compacted parquet bytes
+phase48_best_query_speedup_ratio,571.8257376094618,Best raw-to-compact query speedup ratio
+phase48_median_query_speedup_ratio,184.79012855239114,Median raw-to-compact query speedup ratio
+phase48_compact_root,raw_synthetic_l2_full_year_compact_monthly,Local compacted raw lake root; ignored by Git
+phase48_duckdb_database,outputs\phase48\raw_lake_compaction.duckdb,Local DuckDB database path; ignored by Git
+phase48_synthetic_full_year_acceptance_ready,0,"Compaction benchmark is storage/query infrastructure evidence, not strategy acceptance"

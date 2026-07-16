@@ -1,0 +1,13 @@
+trade_month,file_path,rows,bytes
+2026-01,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-01\part-00000.parquet,263102,15531396
+2026-02,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-02\part-00000.parquet,238970,14154209
+2026-03,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-03\part-00000.parquet,262973,15265252
+2026-04,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-04\part-00000.parquet,262883,15488920
+2026-05,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-05\part-00000.parquet,251038,15121943
+2026-06,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-06\part-00000.parquet,262929,15612191
+2026-07,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-07\part-00000.parquet,275062,16242543
+2026-08,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-08\part-00000.parquet,251003,14836075
+2026-09,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-09\part-00000.parquet,262989,15914700
+2026-10,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-10\part-00000.parquet,263098,15061201
+2026-11,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-11\part-00000.parquet,250973,14768780
+2026-12,raw_synthetic_l2_full_year_compact_monthly\trade_month=2026-12\part-00000.parquet,167274,9850709

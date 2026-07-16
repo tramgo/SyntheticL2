@@ -1,0 +1,21 @@
+lake_layout,query_id,metric,value,description
+raw_symbol_day,total_rows,value,3012294.0,Total rows
+raw_symbol_day,distinct_symbols,value,32.0,Distinct symbols
+raw_symbol_day,distinct_trade_dates,value,252.0,Distinct trade dates
+raw_symbol_day,distinct_feed_profiles,value,5.0,Distinct feed profiles
+raw_symbol_day,l1_l5_complete_rows,value,3012294.0,Rows with complete L1/L5 price/quantity state
+raw_symbol_day,hdfcbank_rows,value,94110.0,HDFCBANK row count
+raw_symbol_day,sample_microstructure_agg,rows,94110.0,HDFCBANK microstructure aggregate
+raw_symbol_day,sample_microstructure_agg,avg_mid,819.0750589735436,HDFCBANK microstructure aggregate
+raw_symbol_day,sample_microstructure_agg,avg_spread,0.12497237275524672,HDFCBANK microstructure aggregate
+raw_symbol_day,sample_microstructure_agg,avg_l1_imbalance,-0.5723814666710353,HDFCBANK microstructure aggregate
+compact_monthly,total_rows,value,3012294.0,Total rows
+compact_monthly,distinct_symbols,value,32.0,Distinct symbols
+compact_monthly,distinct_trade_dates,value,252.0,Distinct trade dates
+compact_monthly,distinct_feed_profiles,value,5.0,Distinct feed profiles
+compact_monthly,l1_l5_complete_rows,value,3012294.0,Rows with complete L1/L5 price/quantity state
+compact_monthly,hdfcbank_rows,value,94110.0,HDFCBANK row count
+compact_monthly,sample_microstructure_agg,rows,94110.0,HDFCBANK microstructure aggregate
+compact_monthly,sample_microstructure_agg,avg_mid,819.0750589735424,HDFCBANK microstructure aggregate
+compact_monthly,sample_microstructure_agg,avg_spread,0.12497237275524796,HDFCBANK microstructure aggregate
+compact_monthly,sample_microstructure_agg,avg_l1_imbalance,-0.5723814666710336,HDFCBANK microstructure aggregate

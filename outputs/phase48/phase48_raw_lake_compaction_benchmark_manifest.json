@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-07-16T15:13:48.297626+00:00",
+  "scope": "phase48_raw_lake_compaction_benchmark_not_acceptance",
+  "raw_files": 8064,
+  "compact_files": 12,
+  "benchmark_queries_per_layout": 7,
+  "synthetic_full_year_acceptance_ready": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "83a97e299ba9c72ded1611f69e7220602fc37efa",
+  "configuration_hash": "99e98e992d336acb15057f19a0bf2fac0ebb25414d4768d18de5dc1581cbc9c5",
+  "random_seed": "none_deterministic_duckdb_raw_lake_compaction",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase45_raw_full_year_l2_tick_lake_compacted_monthly",
+  "cost_model_version": "not_applicable_storage_query_no_execution_costs",
+  "latency_model_version": "phase45_raw_callback_sequence_and_l1_l5_depth_schema",
+  "creation_timestamp": "2026-07-16T15:13:48.297626+00:00"
+}
