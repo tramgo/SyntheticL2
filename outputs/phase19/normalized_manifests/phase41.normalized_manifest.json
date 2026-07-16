@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase41",
+  "source_manifest_path": "outputs/phase41/phase41_full_year_synthetic_tick_experiment_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "21c3ed32cb703cfd099414f000c75d5f01b5a3ee",
+  "configuration_hash": "8b2b6b02437158f8a6f2e48cd385820cada265c3d74aa7c01ccc99a8dcd971bb",
+  "random_seed": "none_deterministic_annual_cycle_replay",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase25_phase26_phase27_phase29_tick_trade_ledgers_expanded_to_252_days",
+  "cost_model_version": "source_replay_zerodha_cost_profiles_preserved",
+  "latency_model_version": "source_replay_execution_profiles_preserved",
+  "creation_timestamp": "2026-07-16T14:08:32.341528+00:00",
+  "normalization_timestamp": "2026-07-16T14:08:40.327059+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

@@ -1,0 +1,11 @@
+metric,value,description
+phase41_trade_rows_loaded,2612173.0,Tick/event trade rows loaded from synthetic replay ledgers
+phase41_source_phase_count,4.0,Replay sources included
+phase41_daily_source_rows,4865.0,Daily source rows before deterministic annual expansion
+phase41_model_profile_rows,654.0,Model/profile full-year experiment rows
+phase41_synthetic_year_days,252.0,Trading days per deterministic synthetic year
+phase41_profitable_model_profile_rows,17.0,All-profile annualized positive P&L rows
+phase41_profitable_realistic_model_profile_rows,0.0,Retail/stressed annualized positive P&L rows
+phase41_best_annualized_net_pnl_inr,1185737.541758729,Best annualized net P&L across all profiles
+phase41_best_realistic_annualized_net_pnl_inr,-32855.63838149869,Best annualized net P&L across retail/stressed profiles
+phase41_synthetic_full_year_acceptance_ready,0.0,Immediate full-year replay is not acceptance or broker readiness

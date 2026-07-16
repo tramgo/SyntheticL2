@@ -3062,6 +3062,25 @@ The active acceptance semantics are therefore:
 
 This phase is the executable boundary that prevents missing broker evidence from freezing synthetic research while also preventing synthetic fills from being reported as real broker acceptance evidence.
 
+## Phase 41 — Immediate Full-Year Synthetic Tick Experiment
+
+**Current Phase 41 implementation status as of 2026-07-16:** Phase 41 now has a runnable immediate full-year synthetic tick/event trade-ledger experiment in `scripts/run_phase41_full_year_synthetic_tick_experiment.py`, backed by `src/synthetic_l2/phase41_full_year_synthetic_tick_experiment.py`.
+
+Generated Phase 41 artifacts are under `outputs/phase41/`:
+
+- `full_year_synthetic_tick_experiment_summary.csv`
+- `full_year_synthetic_tick_experiment_results.csv`
+- `full_year_synthetic_tick_experiment_realistic_results.csv`
+- `full_year_synthetic_tick_experiment_daily_path_sample.csv`
+- `phase41_full_year_synthetic_tick_experiment_report.md`
+- `phase41_full_year_synthetic_tick_experiment_manifest.json`
+
+This phase was added to answer the immediate execution question: what do the existing synthetic tick/event replay ledgers imply at a 252-trading-day full-year horizon? It loads the Phase 25, Phase 26, Phase 27 and Phase 29 synthetic trade ledgers, aggregates daily P&L by model/profile, and deterministically cycles the observed daily tick-ledger paths into a 252-day synthetic year. It is therefore a full-year tick-trade-ledger replay result, not a newly generated independent 252-day L2 universe and not acceptance evidence.
+
+The current Phase 41 run loads 2,612,173 synthetic tick/event trade rows across 4 replay sources, builds 4,865 daily source rows and evaluates 654 model/profile full-year experiment rows. It finds 17 annualized positive rows across all profiles, but all profitable rows are zero-latency/control-like profiles. Under realistic retail/stressed profiles, 0 model/profile rows are profitable. The best all-profile annualized net P&L is approximately `1185737.54` INR, while the best realistic retail/stressed annualized net P&L remains negative at approximately `-32855.64` INR. `phase41_synthetic_full_year_acceptance_ready` remains 0.
+
+The immediate interpretation is blunt: synthetic-only full-year replay can now produce annual-scale results, but the current strategy forms still do not clear realistic Zerodha-style cost/latency profiles.
+
 ---
 
 ## 25. Final Principle

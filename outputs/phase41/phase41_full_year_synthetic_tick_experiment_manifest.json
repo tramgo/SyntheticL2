@@ -1,0 +1,20 @@
+{
+  "generated_utc": "2026-07-16T14:08:32.341528+00:00",
+  "scope": "phase41_immediate_full_year_synthetic_tick_trade_ledger_replay_not_acceptance",
+  "trade_rows_loaded": 2612173,
+  "model_profile_rows": 654,
+  "synthetic_year_days": 252,
+  "synthetic_full_year_acceptance_ready": 0,
+  "not_independent_new_252_day_l2_universe": true,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "21c3ed32cb703cfd099414f000c75d5f01b5a3ee",
+  "configuration_hash": "8b2b6b02437158f8a6f2e48cd385820cada265c3d74aa7c01ccc99a8dcd971bb",
+  "random_seed": "none_deterministic_annual_cycle_replay",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase25_phase26_phase27_phase29_tick_trade_ledgers_expanded_to_252_days",
+  "cost_model_version": "source_replay_zerodha_cost_profiles_preserved",
+  "latency_model_version": "source_replay_execution_profiles_preserved",
+  "creation_timestamp": "2026-07-16T14:08:32.341528+00:00"
+}
