@@ -1,0 +1,8 @@
+query_id,elapsed_ms,result_rows,description,sql
+total_rows,5867.964299992309,1,Total rows query over raw L2 parquet view,select count(*)::bigint as value from raw_l2_ticks
+distinct_symbols,8577.256100004888,1,Distinct symbols query over raw L2 parquet view,select count(distinct symbol)::bigint as value from raw_l2_ticks
+distinct_trade_dates,8379.31540000136,1,Distinct trade dates query over raw L2 parquet view,select count(distinct trade_date)::bigint as value from raw_l2_ticks
+distinct_feed_profiles,8633.36559999152,1,Distinct feed profiles query over raw L2 parquet view,select count(distinct feed_profile)::bigint as value from raw_l2_ticks
+l1_l5_complete_rows,19746.078500000294,1,Rows with complete L1 and L5 price/quantity state,select count(*)::bigint as value from raw_l2_ticks where buy_1_price is not null and sell_1_price is not null and buy_5_price is not null and sell_5_price is not null and buy_1_quantity > 0 and sell_1_quantity > 0 and buy_5_quantity > 0 and sell_5_quantity > 0
+hdfcbank_rows,7811.5147999924375,1,Ticker-filtered raw-row count for HDFCBANK,select count(*)::bigint as value from raw_l2_ticks where symbol = 'HDFCBANK'
+sample_microstructure_agg,7499.777200006065,1,Ticker-filtered microstructure aggregate for HDFCBANK,"select count(*)::bigint as rows, avg((sell_1_price + buy_1_price) / 2.0) as avg_mid, avg(sell_1_price - buy_1_price) as avg_spread, avg((buy_1_quantity - sell_1_quantity)::double / nullif((buy_1_quantity + sell_1_quantity), 0)) as avg_l1_imbalance from raw_l2_ticks where symbol = 'HDFCBANK'"

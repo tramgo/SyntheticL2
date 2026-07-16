@@ -1,0 +1,13 @@
+metric,value,description
+phase47_inventory_partitions,8064,Raw parquet partitions in Phase45 inventory
+phase47_inventory_rows,3012294,Raw rows declared by Phase45 inventory
+phase47_duckdb_total_rows,3012294,Rows counted through DuckDB raw view
+phase47_duckdb_distinct_symbols,32,Distinct symbols counted through DuckDB raw view
+phase47_duckdb_distinct_trade_dates,252,Distinct trade dates counted through DuckDB raw view
+phase47_duckdb_distinct_feed_profiles,5,Distinct feed profiles counted through DuckDB raw view
+phase47_duckdb_l1_l5_complete_rows,3012294,Rows with complete L1/L5 state through DuckDB raw view
+phase47_benchmark_query_rows,7,DuckDB benchmark queries executed
+phase47_max_query_elapsed_ms,19746.078500000294,Slowest benchmark query elapsed milliseconds
+phase47_raw_root,raw_synthetic_l2_full_year,Raw parquet lake root queried by DuckDB
+phase47_duckdb_database,outputs\phase47\raw_lake.duckdb,Local DuckDB database path; ignored by Git
+phase47_synthetic_full_year_acceptance_ready,0,"DuckDB catalog is storage/query infrastructure evidence, not strategy acceptance"

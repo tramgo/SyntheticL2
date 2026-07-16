@@ -1,0 +1,11 @@
+query_id,metric,value,description
+total_rows,value,3012294.0,Total rows query over raw L2 parquet view
+distinct_symbols,value,32.0,Distinct symbols query over raw L2 parquet view
+distinct_trade_dates,value,252.0,Distinct trade dates query over raw L2 parquet view
+distinct_feed_profiles,value,5.0,Distinct feed profiles query over raw L2 parquet view
+l1_l5_complete_rows,value,3012294.0,Rows with complete L1 and L5 price/quantity state
+hdfcbank_rows,value,94110.0,Ticker-filtered raw-row count for HDFCBANK
+sample_microstructure_agg,rows,94110.0,Ticker-filtered microstructure aggregate for HDFCBANK
+sample_microstructure_agg,avg_mid,819.0750589735391,Ticker-filtered microstructure aggregate for HDFCBANK
+sample_microstructure_agg,avg_spread,0.12497237275524953,Ticker-filtered microstructure aggregate for HDFCBANK
+sample_microstructure_agg,avg_l1_imbalance,-0.5723814666710346,Ticker-filtered microstructure aggregate for HDFCBANK

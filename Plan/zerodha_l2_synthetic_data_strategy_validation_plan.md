@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 64 phase/workspace/dashboard/decision manifests, producing 640 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 64 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase44`, `phase45`, `phase46`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 65 phase/workspace/dashboard/decision manifests, producing 650 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 65 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase44`, `phase45`, `phase46`, `phase47`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 640 field-level remediation rows. All 640 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 650 field-level remediation rows. All 650 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -3179,6 +3179,27 @@ This phase proves the Phase 45 raw lake is not just storage decoration. It reads
 The current Phase 46 run scans all 8,064 raw partitions and loads all 3,012,294 raw websocket-like L2 rows. It confirms 32 symbols, 252 trade dates, 5 feed profiles, complete nonzero L1-L5 depth fields, exact inventory row-count match and 0 reconstructed mid-price null rows. It evaluates 72 raw-derived forward-edge candidates and 11,333,962 raw-derived feature-threshold signals. No raw replay candidate passes the conservative pre-replay rule. The best raw-derived mean net edge return is approximately `0.002731`, the best raw directional precision is approximately `0.52537`, and the best raw precision lift versus baseline is approximately `0.87609`. `phase46_synthetic_full_year_acceptance_ready` remains 0.
 
 The immediate conclusion is that downstream experiments can now source from the raw partitioned L2 lake itself. The raw-derived economics still do not justify promotion, but Phase 46 closes the infrastructure gap between raw tick storage and executable replay diagnostics.
+
+## Phase 47 — Raw Lake DuckDB Catalog
+
+**Current Phase 47 implementation status as of 2026-07-16:** Phase 47 now has a runnable DuckDB catalog and benchmark layer in `scripts/run_phase47_raw_lake_duckdb_catalog.py`, backed by `src/synthetic_l2/phase47_raw_lake_duckdb_catalog.py`.
+
+Generated Phase 47 artifacts are under `outputs/phase47/`:
+
+- `raw_lake_duckdb_catalog_summary.csv`
+- `raw_lake_duckdb_schema.csv`
+- `raw_lake_duckdb_benchmark_timings.csv`
+- `raw_lake_duckdb_benchmark_results.csv`
+- `phase47_raw_lake_duckdb_catalog_report.md`
+- `phase47_raw_lake_duckdb_catalog_manifest.json`
+
+The local DuckDB file `outputs/phase47/raw_lake.duckdb` is intentionally ignored by Git. The committed artifacts capture the query evidence and reproducibility manifest.
+
+This phase registers the Phase 45 raw partitioned websocket-like L2 parquet lake as a DuckDB view and runs SQL integrity/benchmark queries. It uses `read_parquet(..., hive_partitioning=false, union_by_name=true)` so the physical `trade_date`, `exchange` and `symbol` columns remain authoritative and do not collide with hive partition inference.
+
+The current Phase 47 run queries 8,064 raw parquet partitions and confirms via DuckDB SQL that the raw lake has 3,012,294 rows, 32 symbols, 252 trade dates, 5 feed profiles and 3,012,294 rows with complete L1/L5 price and quantity state. HDFCBANK has 94,110 raw rows in the lake. The benchmark set executed 7 SQL queries; full-scan timings ranged from approximately 5.9 seconds for total row count to approximately 19.7 seconds for the L1/L5 completeness scan.
+
+The immediate conclusion is that the raw lake is queryable through DuckDB and ready for SQL-driven experiment filters. The benchmark also exposes a concrete optimization target: 8,064 tiny symbol-day parquet files work functionally, but the next storage-performance improvement should compact them into larger monthly or symbol-bucket row groups before scaling toward the 80GB-class dense lake.
 
 ---
 
