@@ -263,6 +263,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
     phase38_day_decision = _read_csv(paths["phase38_day_decision"])
     phase38_gate_ledger = _read_csv(paths["phase38_gate_ledger"])
     phase38_action_plan = _read_csv(paths["phase38_action_plan"])
+    phase39_acceptance_summary = _read_csv(paths["phase39_acceptance_summary"])
+    phase39_acceptance_policy = _read_csv(paths["phase39_acceptance_policy"])
+    phase39_gate_ledger = _read_csv(paths["phase39_gate_ledger"])
+    phase39_strategy_decision = _read_csv(paths["phase39_strategy_decision"])
+    phase39_experiment_queue = _read_csv(paths["phase39_experiment_queue"])
 
     quality_status = quality["status"].value_counts().rename_axis("status").reset_index(name="checks")
     realism_gap_status = (
@@ -545,6 +550,16 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         .size()
         .reset_index(name="rows")
     )
+    phase39_policy_status = (
+        phase39_acceptance_policy.groupby(["acceptance_scope", "allowed"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
+    phase39_gate_status = (
+        phase39_gate_ledger.groupby(["gate_group", "passed_for_synthetic_experiments", "passed_for_strategy_acceptance"], sort=True)
+        .size()
+        .reset_index(name="rows")
+    )
     top_risk_severity = lifecycle_risk_severity.sort_values("risk_severity_score", ascending=False)
     top_risk_limit_sensitivity = lifecycle_risk_limit_sensitivity.sort_values("risk_limit_severity_score", ascending=False)
 
@@ -819,6 +834,11 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         ("phase38_days_needed_for_min", int(phase38_promotion_summary.loc[phase38_promotion_summary["metric"].eq("phase38_days_needed_for_min"), "value"].iloc[0]), "Phase 38 days needed for minimum"),
         ("phase38_days_needed_for_target", int(phase38_promotion_summary.loc[phase38_promotion_summary["metric"].eq("phase38_days_needed_for_target"), "value"].iloc[0]), "Phase 38 days needed for target"),
         ("phase38_replay_allowed_rows", int(phase38_promotion_summary.loc[phase38_promotion_summary["metric"].eq("phase38_replay_allowed_rows"), "value"].iloc[0]), "Phase 38 replay-allowed rows"),
+        ("phase39_synthetic_experiment_allowed_strategies", int(phase39_acceptance_summary.loc[phase39_acceptance_summary["metric"].eq("phase39_synthetic_experiment_allowed_strategies"), "value"].iloc[0]), "Phase 39 synthetic-only experiment-allowed families"),
+        ("phase39_synthetic_strategy_acceptance_ready", int(phase39_acceptance_summary.loc[phase39_acceptance_summary["metric"].eq("phase39_synthetic_strategy_acceptance_ready"), "value"].iloc[0]), "Phase 39 synthetic strategy acceptance-ready families"),
+        ("phase39_paper_or_live_acceptance_ready", int(phase39_acceptance_summary.loc[phase39_acceptance_summary["metric"].eq("phase39_paper_or_live_acceptance_ready"), "value"].iloc[0]), "Phase 39 paper/live broker-ready families"),
+        ("phase39_broker_blockers_deferred_for_synthetic_only", int(phase39_acceptance_summary.loc[phase39_acceptance_summary["metric"].eq("phase39_broker_blockers_deferred_for_synthetic_only"), "value"].iloc[0]), "Phase 39 broker blockers deferred only for synthetic experiments"),
+        ("phase39_total_existing_synthetic_replay_trades", int(phase39_acceptance_summary.loc[phase39_acceptance_summary["metric"].eq("phase39_total_existing_synthetic_replay_trades"), "value"].iloc[0]), "Phase 39 existing strategy/control synthetic replay trades"),
     ]
     summary = pd.DataFrame(summary_rows, columns=["metric", "value", "note"])
     inputs_manifest = {key: str(value) for key, value in paths.items()}
@@ -843,7 +863,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
                 "manifest": "outputs/dashboard/validation_dashboard_manifest.json",
             },
             random_seed="not_applicable_deterministic_static_dashboard",
-            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_phase33_phase34_phase35_phase36_phase37_phase38_evidence",
+            scenario_ids="current_workspace_phase14_phase15_phase16_phase17_phase20_phase20_m01_stage_a_to_e_phase21_phase22_phase23_phase25_phase26_phase27_phase28_phase29_phase30_phase31_phase32_phase33_phase34_phase35_phase36_phase37_phase38_phase39_evidence",
             cost_model_version="outputs/phase12/cost_schedule.csv_and_zerodha_order_formula_v2_or_not_applicable",
             latency_model_version="outputs/phase12/execution_profiles.csv_or_phase8_feed_profiles_v1_or_not_applicable",
         )
@@ -927,6 +947,7 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
   <section><h2>Phase 36 Collector Instrumentation Package</h2>{_table(phase36_checklist_status, None, 10)}{_table(phase36_package_summary, None, 10)}{_table(phase36_required_schema, ['artifact_name', 'field_name', 'field_type', 'required_status', 'field_purpose'], 30)}{_table(phase36_interface_catalog, None, 10)}{_table(phase36_integration_checklist, None, 10)}{_table(phase36_dry_run_session_ledger, None, 10)}{_table(phase36_dry_run_sequence, None, 10)}{_table(phase36_dry_run_drop_counters, None, 10)}</section>
   <section><h2>Phase 37 Collector Ledger Verifier</h2>{_table(phase37_gate_status, None, 10)}{_table(phase37_summary, None, 12)}{_table(phase37_promotion_gate, None, 10)}{_table(phase37_schema_validation, None, 10)}{_table(phase37_session_validation, None, 10)}{_table(phase37_sequence_validation, None, 10)}{_table(phase37_drop_counter_validation, None, 10)}</section>
   <section><h2>Phase 38 Class B Day Promotion Gate</h2>{_table(phase38_gate_status, None, 10)}{_table(phase38_promotion_summary, None, 10)}{_table(phase38_day_decision, None, 10)}{_table(phase38_gate_ledger, None, 20)}{_table(phase38_action_plan, None, 10)}</section>
+  <section><h2>Phase 39 Synthetic-Only Acceptance Path</h2>{_table(phase39_policy_status, None, 10)}{_table(phase39_gate_status, None, 10)}{_table(phase39_acceptance_summary, None, 12)}{_table(phase39_acceptance_policy, None, 10)}{_table(phase39_strategy_decision, ['strategy_id', 'strategy_name', 'synthetic_experiment_allowed', 'synthetic_strategy_acceptance_ready', 'paper_or_live_acceptance_ready', 'synthetic_trade_rows', 'realistic_positive_profiles', 'experiment_status'], 20)}{_table(phase39_experiment_queue, ['priority', 'strategy_id', 'experiment_track', 'allowed_scope', 'must_not_claim', 'synthetic_trade_rows'], 20)}{_table(phase39_gate_ledger, None, 20)}</section>
   <section><h2>Phase 15 Acceptance Blockers</h2>{_bar_rows(gate_blockers, 'gate_id', 'blockers')}{_table(acceptance, ['strategy_id', 'passed_gates', 'blocked_gates', 'promotion_allowed', 'acceptance_status', 'support_level'], 20)}</section>
   <section><h2>Phase 16 Metric Coverage</h2>{_table(metric_status, None, 20)}{_table(metric_catalog, ['metric_category', 'metric_name', 'current_status', 'acceptance_eligible_now', 'evidence_note'], 40)}</section>
   <section><h2>Top Predictive Proxy Diagnostics</h2>{_table(top_predictive, ['strategy_id', 'balanced_accuracy_proxy', 'precision_long_proxy', 'precision_short_proxy', 'rank_auc_proxy', 'incremental_r2_proxy'], 12)}</section>
@@ -1487,6 +1508,22 @@ def build_dashboard(paths: dict[str, Path]) -> tuple[str, str, pd.DataFrame, dic
         "",
         _markdown_table(phase38_action_plan),
         "",
+        "## Phase 39 Synthetic-Only Acceptance Path",
+        "",
+        _markdown_table(phase39_policy_status),
+        "",
+        _markdown_table(phase39_gate_status),
+        "",
+        _markdown_table(phase39_acceptance_summary),
+        "",
+        _markdown_table(phase39_acceptance_policy),
+        "",
+        _markdown_table(phase39_strategy_decision),
+        "",
+        _markdown_table(phase39_experiment_queue),
+        "",
+        _markdown_table(phase39_gate_ledger),
+        "",
         "## Metric Status",
         "",
         _markdown_table(metric_status),
@@ -1684,6 +1721,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--phase38-day-decision", type=Path, default=Path("outputs/phase38/class_b_day_decision.csv"))
     parser.add_argument("--phase38-gate-ledger", type=Path, default=Path("outputs/phase38/class_b_promotion_gate_ledger.csv"))
     parser.add_argument("--phase38-action-plan", type=Path, default=Path("outputs/phase38/class_b_promotion_action_plan.csv"))
+    parser.add_argument("--phase39-acceptance-summary", type=Path, default=Path("outputs/phase39/synthetic_only_acceptance_summary.csv"))
+    parser.add_argument("--phase39-acceptance-policy", type=Path, default=Path("outputs/phase39/synthetic_only_acceptance_policy.csv"))
+    parser.add_argument("--phase39-gate-ledger", type=Path, default=Path("outputs/phase39/synthetic_only_gate_ledger.csv"))
+    parser.add_argument("--phase39-strategy-decision", type=Path, default=Path("outputs/phase39/synthetic_only_strategy_decision.csv"))
+    parser.add_argument("--phase39-experiment-queue", type=Path, default=Path("outputs/phase39/synthetic_only_experiment_queue.csv"))
     return parser.parse_args()
 
 
@@ -1863,6 +1905,11 @@ def main() -> None:
         "phase38_day_decision": args.phase38_day_decision,
         "phase38_gate_ledger": args.phase38_gate_ledger,
         "phase38_action_plan": args.phase38_action_plan,
+        "phase39_acceptance_summary": args.phase39_acceptance_summary,
+        "phase39_acceptance_policy": args.phase39_acceptance_policy,
+        "phase39_gate_ledger": args.phase39_gate_ledger,
+        "phase39_strategy_decision": args.phase39_strategy_decision,
+        "phase39_experiment_queue": args.phase39_experiment_queue,
     }
     run_dashboard(args.output_dir, paths)
 

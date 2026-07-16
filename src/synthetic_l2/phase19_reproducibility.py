@@ -64,6 +64,7 @@ MANIFEST_CANDIDATES = [
     ("phase36", "outputs/phase36/phase36_collector_instrumentation_package_manifest.json"),
     ("phase37", "outputs/phase37/phase37_collector_ledger_verifier_manifest.json"),
     ("phase38", "outputs/phase38/phase38_class_b_promotion_gate_manifest.json"),
+    ("phase39", "outputs/phase39/phase39_synthetic_only_acceptance_path_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

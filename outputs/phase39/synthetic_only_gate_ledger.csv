@@ -1,0 +1,8 @@
+gate_id,gate_group,passed_for_synthetic_experiments,passed_for_strategy_acceptance,observed_value,required_next_action
+synthetic_only_scope_declared,scope,True,False,synthetic-only acceptance path selected because Zerodha fills/contract notes are unavailable,
+synthetic_event_replay_available,synthetic_evidence,True,False,phase25_trades=113848; phase29_trades=742623,
+positive_after_cost_economics,economics,True,False,phase25_positive_profiles=0; phase29_realistic_positive_profiles=0,Redesign strategy signals/labels until synthetic replay clears after-cost economics.
+zerodha_real_fill_required_for_synthetic_only,broker_evidence_deferred,True,False,deferred only inside synthetic-only experiment scope,"Provide Zerodha fill/contract-note/reconciliation evidence before broker, paper, or live readiness."
+contract_note_required_for_synthetic_only,broker_evidence_deferred,True,False,deferred only inside synthetic-only experiment scope,"Provide Zerodha fill/contract-note/reconciliation evidence before broker, paper, or live readiness."
+broker_reconciliation_required_for_synthetic_only,broker_evidence_deferred,True,False,deferred only inside synthetic-only experiment scope,"Provide Zerodha fill/contract-note/reconciliation evidence before broker, paper, or live readiness."
+real_broker_or_paper_acceptance_closed,broker_boundary,True,False,synthetic-only path does not claim real fill quality or contract-note cost reconciliation,Keep broker acceptance closed until real execution artifacts exist.

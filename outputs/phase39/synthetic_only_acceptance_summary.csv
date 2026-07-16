@@ -1,0 +1,12 @@
+metric,value,description
+phase39_policy_rows,4,Synthetic-only acceptance policy rows
+phase39_gate_rows,7,Synthetic-only gate ledger rows
+phase39_broker_blockers_deferred_for_synthetic_only,3,Broker evidence gates deferred only for synthetic-only experiments
+phase39_strategies_evaluated,11,Strategy/control families evaluated
+phase39_alpha_strategies_evaluated,9,Alpha strategy families evaluated
+phase39_synthetic_experiment_allowed_strategies,11,Families allowed to continue in synthetic-only experiments
+phase39_synthetic_strategy_acceptance_ready,0,Families accepted for synthetic-only strategy promotion
+phase39_paper_or_live_acceptance_ready,0,Families ready for paper/live broker acceptance
+phase39_synthetic_replay_available_strategies,9,Families with current synthetic replay artifacts
+phase39_total_existing_synthetic_replay_trades,797626,Existing strategy/control synthetic/proxy replay trade rows available
+phase39_realistic_positive_strategy_rows,0,Families with at least one realistic positive profile

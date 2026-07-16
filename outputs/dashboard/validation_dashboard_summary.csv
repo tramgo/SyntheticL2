@@ -269,3 +269,8 @@ phase38_failed_gate_rows,2,Phase 38 failed gate rows
 phase38_days_needed_for_min,5,Phase 38 days needed for minimum
 phase38_days_needed_for_target,10,Phase 38 days needed for target
 phase38_replay_allowed_rows,0,Phase 38 replay-allowed rows
+phase39_synthetic_experiment_allowed_strategies,11,Phase 39 synthetic-only experiment-allowed families
+phase39_synthetic_strategy_acceptance_ready,0,Phase 39 synthetic strategy acceptance-ready families
+phase39_paper_or_live_acceptance_ready,0,Phase 39 paper/live broker-ready families
+phase39_broker_blockers_deferred_for_synthetic_only,3,Phase 39 broker blockers deferred only for synthetic experiments
+phase39_total_existing_synthetic_replay_trades,797626,Phase 39 existing strategy/control synthetic replay trades

@@ -1,0 +1,5 @@
+policy_id,allowed,acceptance_scope,evidence_status,observed_value,boundary
+synthetic_experiment_continuation,True,synthetic_only_experiment,allowed_without_zerodha_fills_or_contract_notes,856471 synthetic/proxy replay trade rows available,May run experiments/redesign diagnostics; does not promote strategies or imply broker readiness.
+synthetic_strategy_acceptance,False,synthetic_only_strategy_promotion,blocked_by_current_strategy_economics,phase25_positive_profiles=0; phase29_realistic_positive_profiles=0,No current alpha strategy may be accepted until synthetic replay clears positive after-cost economics.
+paper_or_live_broker_acceptance,False,real_broker_or_paper_live,blocked_by_missing_zerodha_fills_and_contract_notes,Zerodha fills/contract notes are unavailable for this experiment path,Broker/paper/live readiness remains closed; broker reconciliation is not waived outside synthetic-only scope.
+class_b_real_data_replay_acceptance,False,real_l2_multiday_acceptance,blocked_by_phase38_class_b_gate,phase38_class_b_promoted_days=0,Real-data acceptance replay still requires promoted Class B days and remains separate from synthetic-only experiments.
