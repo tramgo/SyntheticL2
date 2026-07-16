@@ -1,0 +1,2 @@
+trade_date,exchange,class_b_promotion_allowed,passed_gates,failed_gates,blocking_gates,promotion_status
+2026-07-13,NSE,False,4,2,collector_live_evidence;collector_stage_a2_evidence_ready,blocked_until_live_collector_evidence_and_all_diagnostics_pass

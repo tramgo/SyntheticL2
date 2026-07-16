@@ -42,6 +42,7 @@ phase34,outputs/phase34/phase34_real_data_multiday_readiness_manifest.json,10,10
 phase35,outputs/phase35/phase35_stage_a2_computable_diagnostics_manifest.json,10,10,0,0,0,True
 phase36,outputs/phase36/phase36_collector_instrumentation_package_manifest.json,10,10,0,0,0,True
 phase37,outputs/phase37/phase37_collector_ledger_verifier_manifest.json,10,10,0,0,0,True
+phase38,outputs/phase38/phase38_class_b_promotion_gate_manifest.json,10,10,0,0,0,True
 phase4,outputs/phase4/scenario_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True

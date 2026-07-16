@@ -1,0 +1,3 @@
+priority,gate_id,failed_rows,required_next_action,acceptance_effect
+1,collector_live_evidence,1,Run Phase 37 against actual live collector ledgers with --collector-source live_collector.,Required before any day can be counted as Class B event-grade evidence.
+2,collector_stage_a2_evidence_ready,1,Pass Phase 37 schema/session/sequence/drop-counter gates on live collector ledgers.,Required before any day can be counted as Class B event-grade evidence.

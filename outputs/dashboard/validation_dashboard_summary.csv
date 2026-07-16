@@ -263,3 +263,9 @@ phase37_local_sequence_pass,1,Phase 37 local-sequence pass
 phase37_drop_counter_coverage_pass,1,Phase 37 drop-counter coverage pass
 phase37_live_collector_evidence,0,Phase 37 live collector evidence
 phase37_stage_a2_collector_evidence_ready,0,Phase 37 Stage A2 collector evidence ready
+phase38_days_evaluated,1,Phase 38 days evaluated
+phase38_class_b_promoted_days,0,Phase 38 Class B promoted days
+phase38_failed_gate_rows,2,Phase 38 failed gate rows
+phase38_days_needed_for_min,5,Phase 38 days needed for minimum
+phase38_days_needed_for_target,10,Phase 38 days needed for target
+phase38_replay_allowed_rows,0,Phase 38 replay-allowed rows

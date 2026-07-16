@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 56 phase/workspace/dashboard/decision manifests, producing 560 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 56 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 57 phase/workspace/dashboard/decision manifests, producing 570 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 57 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 560 field-level remediation rows. All 560 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 570 field-level remediation rows. All 570 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -3015,6 +3015,23 @@ Generated Phase 37 artifacts are under `outputs/phase37/`:
 The current Phase 37 run verifies the Phase 36 dry-run ledgers and proves the verifier mechanics: 0 schema columns are missing, the session-boundary gate passes, the local-sequence gate passes and the drop-counter coverage gate passes. The live-evidence gate remains 0 because the input is dry-run scaffolding, not actual Zerodha collector output; therefore `phase37_stage_a2_collector_evidence_ready` remains 0.
 
 This phase gives the future live collector a deterministic acceptance harness: once real collector ledgers are emitted beside new raw parquet captures, rerun Phase 37 with `--collector-source live_collector` and the live ledger paths. Only then can the collector-side Stage A2 evidence become eligible for Class B promotion checks.
+
+## Phase 38 — Class B Day Promotion Gate
+
+**Current Phase 38 implementation status as of 2026-07-16:** Phase 38 now has a runnable Class B day promotion gate in `scripts/run_phase38_class_b_promotion_gate.py`, backed by `src/synthetic_l2/phase38_class_b_promotion_gate.py`.
+
+Generated Phase 38 artifacts are under `outputs/phase38/`:
+
+- `class_b_promotion_summary.csv`
+- `class_b_day_decision.csv`
+- `class_b_promotion_gate_ledger.csv`
+- `class_b_promotion_action_plan.csv`
+- `phase38_class_b_promotion_gate_report.md`
+- `phase38_class_b_promotion_gate_manifest.json`
+
+The current Phase 38 run evaluates the `2026-07-13` `NSE` raw full-universe day against six promotion gates. Four gates pass: raw full-universe coverage, computable timestamp semantics, computable lossless compaction and computable duplicate/stale symptom scanning. Two gates fail: live collector evidence and collector Stage A2 evidence readiness. Therefore the day remains blocked with `class_b_promotion_allowed=False`, 4 passed gates, 2 failed gates, 0 promoted Class B days, 5 days still needed for the minimum and 10 days still needed for the target.
+
+This is now the executable boundary between real-data capture and strategy replay: strategy replay remains blocked until live collector ledgers pass Phase 37 and this Phase 38 gate promotes enough Class B days.
 
 ---
 

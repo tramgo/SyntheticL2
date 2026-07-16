@@ -1,0 +1,9 @@
+metric,value,description
+phase38_days_evaluated,1,Trade-date/exchange days evaluated for Class B promotion
+phase38_class_b_promoted_days,0,Days promoted to Class B by the Phase 38 gate
+phase38_failed_gate_rows,2,Failed Class B promotion gate rows
+phase38_required_complete_days_min,5,Minimum complete Class B days required
+phase38_required_complete_days_target,10,Target complete Class B days required
+phase38_days_needed_for_min,5,Additional promoted Class B days needed for minimum
+phase38_days_needed_for_target,10,Additional promoted Class B days needed for target
+phase38_replay_allowed_rows,0,Replay rows unlocked by Class B promotion gate

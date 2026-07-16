@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase38",
+  "source_manifest_path": "outputs/phase38/phase38_class_b_promotion_gate_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "6a2a77bbf8aaa119a215f1b719c6017b5e0f9208",
+  "configuration_hash": "6f9ab6a606340b22c6882ad7e42461273bbecddda7d5d86dbecb6e90bfb1724a",
+  "random_seed": "none_deterministic_class_b_gate",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_real_data_class_b_promotion_gate",
+  "cost_model_version": "not_applicable_class_b_data_gate",
+  "latency_model_version": "phase35_phase37_collector_diagnostics_gate",
+  "creation_timestamp": "2026-07-16T13:46:56.668669+00:00",
+  "normalization_timestamp": "2026-07-16T13:47:11.771789+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}
