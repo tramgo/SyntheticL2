@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_zerodha_order_formula_proxy_contract_note_missing",
   "latency_model_version": "phase12_execution_profiles_proxy_not_acceptance_grade",
   "creation_timestamp": "2026-07-14T16:21:16.798443+00:00",
-  "normalization_timestamp": "2026-07-16T14:08:40.349483+00:00",
+  "normalization_timestamp": "2026-07-16T14:16:07.173818+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

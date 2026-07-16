@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 58 phase/workspace/dashboard/decision manifests, producing 580 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 58 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 60 phase/workspace/dashboard/decision manifests, producing 600 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 60 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 580 field-level remediation rows. All 580 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 600 field-level remediation rows. All 600 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -3080,6 +3080,26 @@ This phase was added to answer the immediate execution question: what do the exi
 The current Phase 41 run loads 2,612,173 synthetic tick/event trade rows across 4 replay sources, builds 4,865 daily source rows and evaluates 654 model/profile full-year experiment rows. It finds 17 annualized positive rows across all profiles, but all profitable rows are zero-latency/control-like profiles. Under realistic retail/stressed profiles, 0 model/profile rows are profitable. The best all-profile annualized net P&L is approximately `1185737.54` INR, while the best realistic retail/stressed annualized net P&L remains negative at approximately `-32855.64` INR. `phase41_synthetic_full_year_acceptance_ready` remains 0.
 
 The immediate interpretation is blunt: synthetic-only full-year replay can now produce annual-scale results, but the current strategy forms still do not clear realistic Zerodha-style cost/latency profiles.
+
+## Phase 42 — Native Full-Year Synthetic L2 Experiment
+
+**Current Phase 42 implementation status as of 2026-07-16:** Phase 42 now has a runnable native 252-trading-day synthetic L2 experiment in `scripts/run_phase42_native_full_year_l2_experiment.py`, backed by `src/synthetic_l2/phase42_native_full_year_l2_experiment.py`.
+
+Generated Phase 42 artifacts are under `outputs/phase42/`:
+
+- `native_full_year_l2_event_state.parquet`
+- `native_full_year_l2_experiment_summary.csv`
+- `native_full_year_strategy_results.csv`
+- `native_full_year_daily_pnl.csv`
+- `native_full_year_trade_sample.parquet`
+- `phase42_native_full_year_l2_experiment_report.md`
+- `phase42_native_full_year_l2_experiment_manifest.json`
+
+This phase is the native full-year run that supersedes the Phase 41 annualized replay for the immediate experiment question. It expands the existing 189-day Phase 9 Tier B compact L2 event-state universe into a deterministic 252-trading-day synthetic year, recomputes event features on the annual event stream and runs S01/S02/S05/S07/S09 directly over the generated tick/event rows using the Phase 12 execution profiles and Zerodha-style cost model.
+
+The current Phase 42 run generates 3,012,294 synthetic L2 event-state rows across 252 synthetic trading days, 32 symbols and 5 feed profiles. It evaluates 15 strategy/profile rows and simulates 6,846,221 strategy trades. No strategy/profile row is annual-P&L positive, including zero-latency controls. Under realistic retail/stressed profiles, 0 rows are profitable. The best all-profile annual net P&L is approximately `-4337116.65` INR, and the best realistic retail/stressed annual net P&L is approximately `-22101469.61` INR. `phase42_synthetic_full_year_acceptance_ready` remains 0.
+
+This result is the strongest current synthetic-only evidence: at native full-year L2 event scale, the current strategy forms are rejected economically under the configured cost/latency model.
 
 ---
 

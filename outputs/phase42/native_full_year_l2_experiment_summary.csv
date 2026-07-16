@@ -1,0 +1,13 @@
+metric,value,description
+phase42_native_full_year_event_rows,3012294.0,Native 252-day synthetic L2 event-state rows generated
+phase42_synthetic_year_days,252.0,Synthetic trading days generated
+phase42_symbols,32.0,Symbols represented
+phase42_feed_profiles,5.0,Feed profiles represented
+phase42_strategy_profile_rows,15.0,Strategy/profile rows evaluated
+phase42_total_strategy_trades,6846221.0,Total simulated strategy trades across profiles
+phase42_profitable_strategy_profile_rows,0.0,Annual positive P&L rows across all profiles
+phase42_profitable_realistic_strategy_profile_rows,0.0,Annual positive P&L rows under retail/stressed profiles
+phase42_best_annual_net_pnl_inr,-4337116.648081242,Best annual net P&L across all profiles
+phase42_best_realistic_annual_net_pnl_inr,-22101469.61314376,Best annual net P&L under retail/stressed profiles
+phase42_sample_trade_rows,30000.0,Persisted deterministic sample trade rows
+phase42_synthetic_full_year_acceptance_ready,0.0,"Native full-year synthetic run is experiment evidence, not acceptance"
