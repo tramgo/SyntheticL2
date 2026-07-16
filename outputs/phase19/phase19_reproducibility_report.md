@@ -1,6 +1,6 @@
 # Phase 19 Reproducibility Report
 
-Generated UTC: 2026-07-16T15:23:13.520861+00:00
+Generated UTC: 2026-07-16T19:07:32.742543+00:00
 
 ## Scope
 
@@ -11,7 +11,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 
 | coverage_status | field_checks |
 | --- | --- |
-| present_exact | 680 |
+| present_exact | 690 |
 
 ## Artifact Summary
 
@@ -74,6 +74,7 @@ It treats aliases and inferred references as useful but not as strong as exact v
 | phase49 | outputs/phase49/phase49_dense_tick_rate_expansion_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase5 | outputs/phase5/price_process_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase50 | outputs/phase50/phase50_dense_lake_shard_planner_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
+| phase51 | outputs/phase51/phase51_full_dense_lake_materializer_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase6 | outputs/phase6/l2_book_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase7 | outputs/phase7/shock_library_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
 | phase8 | outputs/phase8/retail_feed_manifest.json | 10 | 10 | 0 | 0 | 0 | True |
@@ -94,7 +95,7 @@ _No rows._
 
 | remediation_status | field_checks | artifacts |
 | --- | --- | --- |
-| complete_exact | 680 | 68 |
+| complete_exact | 690 | 69 |
 
 ## Normalized Manifest Overlay
 
@@ -103,11 +104,11 @@ It is a reproducibility bridge, not proof that every original phase generator al
 
 | overlay_metric | value |
 | --- | --- |
-| normalized_overlay_artifacts | 68 |
-| exact_field_overlay_ready_artifacts | 68 |
+| normalized_overlay_artifacts | 69 |
+| exact_field_overlay_ready_artifacts | 69 |
 | normalizer_default_fields | 0 |
-| source_manifest_exact_or_alias_fields | 680 |
-| normalized_field_rows | 680 |
+| source_manifest_exact_or_alias_fields | 690 |
+| normalized_field_rows | 690 |
 
 | artifact_id | source_manifest_path | normalized_manifest_path | source_manifest_exists | required_fields | normalized_fields_present | normalizer_default_fields | source_manifest_exact_or_alias_fields | exact_field_overlay_ready |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -148,6 +149,7 @@ It is a reproducibility bridge, not proof that every original phase generator al
 | phase48 | outputs/phase48/phase48_raw_lake_compaction_benchmark_manifest.json | outputs\phase19\normalized_manifests\phase48.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase49 | outputs/phase49/phase49_dense_tick_rate_expansion_manifest.json | outputs\phase19\normalized_manifests\phase49.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase50 | outputs/phase50/phase50_dense_lake_shard_planner_manifest.json | outputs\phase19\normalized_manifests\phase50.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
+| phase51 | outputs/phase51/phase51_full_dense_lake_materializer_manifest.json | outputs\phase19\normalized_manifests\phase51.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase2 | outputs/phase2/calibration_manifest.json | outputs\phase19\normalized_manifests\phase2.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase3 | outputs/phase3/regime_manifest.json | outputs\phase19\normalized_manifests\phase3.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |
 | phase4 | outputs/phase4/scenario_manifest.json | outputs\phase19\normalized_manifests\phase4.normalized_manifest.json | True | 10 | 10 | 0 | 10 | True |

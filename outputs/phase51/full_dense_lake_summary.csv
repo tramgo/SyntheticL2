@@ -1,0 +1,15 @@
+metric,value,description
+phase51_schedule_shards,384,Scheduled symbol-month dense shards
+phase51_source_rows,3012294,Source compact monthly rows materialized
+phase51_target_dense_rows,5974626961,Target dense rows from Phase50 schedule
+phase51_materialized_dense_rows,5974626961,Dense rows actually materialized
+phase51_materialized_partition_files,384,Dense parquet files written
+phase51_materialized_dense_bytes,70591392905,Compressed bytes actually written
+phase51_estimated_dense_bytes,89378269358.06488,Phase50 estimated compressed bytes
+phase51_bytes_vs_estimate_ratio,0.7898048755251527,Actual compressed bytes divided by estimate
+phase51_elapsed_seconds,13100.395753300007,Elapsed materialization seconds
+phase51_rows_per_second,456064.6161773383,Observed materialization throughput
+phase51_available_disk_gb_after_run,99.20110321044922,Free disk after materialization
+phase51_dense_output_root,raw_synthetic_l2_dense_full_year,Local full dense lake root; ignored by Git
+phase51_full_80gb_dense_lake_materialized,1,Full 80GB-class dense full-year lake materialized
+phase51_synthetic_full_year_acceptance_ready,0,Dense input lake materialized; strategy acceptance still requires replay results

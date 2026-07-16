@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-07-16T19:06:57.687996+00:00",
+  "scope": "phase51_full_dense_lake_materialization_not_acceptance",
+  "schedule_shards": 384,
+  "materialized_partition_files": 384,
+  "materialized_dense_rows": 5974626961,
+  "materialized_dense_bytes": 70591392905,
+  "full_80gb_dense_lake_materialized": 1,
+  "synthetic_full_year_acceptance_ready": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "4dc528aea0bb0711c57692b925c58908b4909952",
+  "configuration_hash": "2e8c79250d18de9b3e4eec096f52d7137261c5ae00035d17644f0cd715510d2e",
+  "random_seed": "none_deterministic_phase50_schedule_materialization",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase50_full_symbol_month_dense_target_schedule",
+  "cost_model_version": "not_applicable_dense_storage_generation_no_execution_costs",
+  "latency_model_version": "phase45_raw_callback_sequence_plus_phase51_dense_subticks",
+  "creation_timestamp": "2026-07-16T19:06:57.687996+00:00"
+}

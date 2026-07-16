@@ -56,6 +56,7 @@ phase48,outputs/phase48/phase48_raw_lake_compaction_benchmark_manifest.json,10,1
 phase49,outputs/phase49/phase49_dense_tick_rate_expansion_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase50,outputs/phase50/phase50_dense_lake_shard_planner_manifest.json,10,10,0,0,0,True
+phase51,outputs/phase51/phase51_full_dense_lake_materializer_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True
 phase7,outputs/phase7/shock_library_manifest.json,10,10,0,0,0,True
 phase8,outputs/phase8/retail_feed_manifest.json,10,10,0,0,0,True

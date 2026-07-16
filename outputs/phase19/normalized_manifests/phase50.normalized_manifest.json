@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_dense_storage_planning_no_execution_costs",
   "latency_model_version": "phase45_raw_callback_sequence_plus_dense_subticks",
   "creation_timestamp": "2026-07-16T15:22:11.282057+00:00",
-  "normalization_timestamp": "2026-07-16T15:23:12.578123+00:00",
+  "normalization_timestamp": "2026-07-16T19:07:31.891593+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
