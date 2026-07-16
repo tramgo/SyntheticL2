@@ -31,6 +31,7 @@ phase42,outputs/phase42/phase42_native_full_year_l2_experiment_manifest.json,out
 phase43,outputs/phase43/phase43_native_full_year_cost_salvage_scan_manifest.json,outputs\phase19\normalized_manifests\phase43.normalized_manifest.json,True,10,10,0,10,True
 phase44,outputs/phase44/phase44_native_full_year_forward_edge_label_mining_manifest.json,outputs\phase19\normalized_manifests\phase44.normalized_manifest.json,True,10,10,0,10,True
 phase45,outputs/phase45/phase45_raw_tick_lake_materialization_manifest.json,outputs\phase19\normalized_manifests\phase45.normalized_manifest.json,True,10,10,0,10,True
+phase46,outputs/phase46/phase46_raw_tick_lake_replay_diagnostics_manifest.json,outputs\phase19\normalized_manifests\phase46.normalized_manifest.json,True,10,10,0,10,True
 phase2,outputs/phase2/calibration_manifest.json,outputs\phase19\normalized_manifests\phase2.normalized_manifest.json,True,10,10,0,10,True
 phase3,outputs/phase3/regime_manifest.json,outputs\phase19\normalized_manifests\phase3.normalized_manifest.json,True,10,10,0,10,True
 phase4,outputs/phase4/scenario_manifest.json,outputs\phase19\normalized_manifests\phase4.normalized_manifest.json,True,10,10,0,10,True

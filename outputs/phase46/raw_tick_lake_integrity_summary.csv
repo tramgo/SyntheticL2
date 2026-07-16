@@ -1,0 +1,12 @@
+metric,value,description
+phase46_partition_rows,8064,Raw date/exchange/symbol partitions scanned
+phase46_inventory_rows,3012294,Rows declared by Phase45 inventory
+phase46_raw_rows_loaded,3012294,Raw rows loaded from partitioned parquet lake
+phase46_symbols,32,Symbols loaded from raw lake
+phase46_trade_dates,252,Trade dates loaded from raw lake
+phase46_feed_profiles,5,Feed profiles loaded from raw lake
+phase46_l1_l5_depth_complete,1,All L1-L5 price and quantity fields present/nonzero
+phase46_inventory_row_match,1,Loaded row count matches inventory
+phase46_feature_rows_reconstructed,3012294,Rows with raw-derived feature reconstruction
+phase46_mid_price_null_rows,0,Rows with missing reconstructed mid price
+phase46_synthetic_full_year_acceptance_ready,0,"Raw-lake replay diagnostic is experiment plumbing, not acceptance"

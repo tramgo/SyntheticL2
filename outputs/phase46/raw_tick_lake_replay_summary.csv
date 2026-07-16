@@ -1,0 +1,7 @@
+metric,value,description
+phase46_raw_edge_candidate_rows,72.0,Raw-derived forward-edge candidates evaluated
+phase46_total_raw_edge_signals,11333962.0,Total raw-derived feature-threshold signals evaluated
+phase46_raw_replay_candidate_rows,0.0,Raw-derived rows passing pre-replay screen
+phase46_best_raw_mean_net_edge_return,0.00273093990037245,Best raw-derived mean net edge return
+phase46_best_raw_precision_lift_vs_baseline,0.8760903139862454,Best raw-derived precision lift
+phase46_best_raw_directional_precision,0.5253725672309706,Best raw-derived directional precision

@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 63 phase/workspace/dashboard/decision manifests, producing 630 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 63 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase44`, `phase45`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 64 phase/workspace/dashboard/decision manifests, producing 640 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 64 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase44`, `phase45`, `phase46`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 630 field-level remediation rows. All 630 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 640 field-level remediation rows. All 640 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -3160,6 +3160,25 @@ Each persisted row is a Zerodha-websocket-like tick update with collector/sessio
 The current Phase 45 full run materialized the complete current synthetic event universe: 3,012,294 raw websocket-like L2 rows across 8,064 date/exchange/symbol parquet partitions. The compressed materialized raw lake is 491,002,806 bytes, or approximately 0.457 GB, with a measured compressed density of approximately 163 bytes per row. This is full-year for the current synthetic tick/event universe, but it is not an 80GB-class dense stress archive. At the measured compression rate, an 83.240 GB dense raw lake would require approximately 548,334,188 rows.
 
 The immediate conclusion is that the requested raw full-year L2 partitioned lake now exists for every current synthetic tick update, and the storage gap is quantified rather than hidden: the next storage milestone, if required, should deliberately densify the synthetic tick process toward the 548M-row/83GB-class stress lake instead of calling the compact 3.0M-row event universe equivalent to that larger target.
+
+## Phase 46 — Raw Tick-Lake Replay Diagnostics
+
+**Current Phase 46 implementation status as of 2026-07-16:** Phase 46 now has a runnable raw-lake replay diagnostic in `scripts/run_phase46_raw_tick_lake_replay_diagnostics.py`, backed by `src/synthetic_l2/phase46_raw_tick_lake_replay_diagnostics.py`.
+
+Generated Phase 46 artifacts are under `outputs/phase46/`:
+
+- `raw_tick_lake_integrity_summary.csv`
+- `raw_tick_lake_replay_summary.csv`
+- `raw_tick_lake_forward_edge_results.csv`
+- `raw_tick_lake_feature_sample.csv`
+- `phase46_raw_tick_lake_replay_diagnostics_report.md`
+- `phase46_raw_tick_lake_replay_diagnostics_manifest.json`
+
+This phase proves the Phase 45 raw lake is not just storage decoration. It reads the partition inventory, loads the date/exchange/symbol parquet files directly, reconstructs event features from raw L1-L5 depth fields and runs a raw-source forward-edge diagnostic without using the compact Phase 42 event-state parquet as the experiment source.
+
+The current Phase 46 run scans all 8,064 raw partitions and loads all 3,012,294 raw websocket-like L2 rows. It confirms 32 symbols, 252 trade dates, 5 feed profiles, complete nonzero L1-L5 depth fields, exact inventory row-count match and 0 reconstructed mid-price null rows. It evaluates 72 raw-derived forward-edge candidates and 11,333,962 raw-derived feature-threshold signals. No raw replay candidate passes the conservative pre-replay rule. The best raw-derived mean net edge return is approximately `0.002731`, the best raw directional precision is approximately `0.52537`, and the best raw precision lift versus baseline is approximately `0.87609`. `phase46_synthetic_full_year_acceptance_ready` remains 0.
+
+The immediate conclusion is that downstream experiments can now source from the raw partitioned L2 lake itself. The raw-derived economics still do not justify promotion, but Phase 46 closes the infrastructure gap between raw tick storage and executable replay diagnostics.
 
 ---
 

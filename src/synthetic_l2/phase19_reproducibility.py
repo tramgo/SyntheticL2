@@ -70,6 +70,7 @@ MANIFEST_CANDIDATES = [
     ("phase43", "outputs/phase43/phase43_native_full_year_cost_salvage_scan_manifest.json"),
     ("phase44", "outputs/phase44/phase44_native_full_year_forward_edge_label_mining_manifest.json"),
     ("phase45", "outputs/phase45/phase45_raw_tick_lake_materialization_manifest.json"),
+    ("phase46", "outputs/phase46/phase46_raw_tick_lake_replay_diagnostics_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

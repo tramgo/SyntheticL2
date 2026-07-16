@@ -13,6 +13,6 @@
   "cost_model_version": "source_replay_zerodha_cost_profiles_preserved",
   "latency_model_version": "source_replay_execution_profiles_preserved",
   "creation_timestamp": "2026-07-16T14:08:32.341528+00:00",
-  "normalization_timestamp": "2026-07-16T14:42:37.431800+00:00",
+  "normalization_timestamp": "2026-07-16T14:52:44.429988+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
