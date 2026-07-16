@@ -14,6 +14,7 @@ __pycache__/
 # Raw/private market data samples
 real_data_sample/
 scratch*/
+raw_synthetic_l2*/
 
 # Large generated analytical data products
 *.duckdb

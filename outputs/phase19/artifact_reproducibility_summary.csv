@@ -49,6 +49,7 @@ phase41,outputs/phase41/phase41_full_year_synthetic_tick_experiment_manifest.jso
 phase42,outputs/phase42/phase42_native_full_year_l2_experiment_manifest.json,10,10,0,0,0,True
 phase43,outputs/phase43/phase43_native_full_year_cost_salvage_scan_manifest.json,10,10,0,0,0,True
 phase44,outputs/phase44/phase44_native_full_year_forward_edge_label_mining_manifest.json,10,10,0,0,0,True
+phase45,outputs/phase45/phase45_raw_tick_lake_materialization_manifest.json,10,10,0,0,0,True
 phase5,outputs/phase5/price_process_manifest.json,10,10,0,0,0,True
 phase6,outputs/phase6/l2_book_manifest.json,10,10,0,0,0,True
 phase7,outputs/phase7/shock_library_manifest.json,10,10,0,0,0,True

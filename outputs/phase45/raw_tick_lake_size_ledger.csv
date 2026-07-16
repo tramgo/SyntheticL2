@@ -1,0 +1,13 @@
+metric,value,description
+phase45_source_compact_event_rows,3012294,Rows available in Phase 42 compact event-state source
+phase45_materialized_raw_rows,3012294,Rows materialized into raw websocket-like partitions
+phase45_materialized_raw_bytes,491002806,Compressed parquet bytes written for the materialized raw lake
+phase45_measured_compressed_bytes_per_row,162.9996295182343,Measured raw-lake compressed bytes per row
+phase45_estimated_current_event_state_raw_gb,0.4572819974273444,Estimated raw-lake GB if materializing only current 3.0M event rows
+phase45_target_full_raw_lake_gb,83.24,Target 80GB-class full-year raw lake size from risk-register expectation
+phase45_estimated_rows_for_target_full_raw_lake,548334187.5925032,Rows implied by target GB at measured raw-lake compression
+phase45_available_disk_gb,137.83914947509766,Free disk on current workspace drive after materialization
+phase45_raw_lake_root,raw_synthetic_l2_full_year,Local raw-lake root; intentionally ignored by git
+phase45_full_current_event_lake_materialized,1,Full current synthetic event universe was materialized as raw websocket-like L2 rows
+phase45_full_80gb_dense_lake_materialized,0,80GB-class densified raw lake was not materialized by Phase45
+phase45_synthetic_full_year_acceptance_ready,0,"Raw materialization is storage/infrastructure evidence, not strategy acceptance"

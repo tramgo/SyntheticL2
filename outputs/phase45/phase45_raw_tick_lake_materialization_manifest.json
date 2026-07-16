@@ -1,0 +1,22 @@
+{
+  "generated_utc": "2026-07-16T14:41:28.624083+00:00",
+  "scope": "phase45_raw_synthetic_l2_tick_lake_materialization_not_acceptance",
+  "mode": "full",
+  "source_event_rows": 3012294,
+  "materialized_rows": 3012294,
+  "materialized_bytes": 491002806,
+  "target_full_raw_lake_gb": 83.24,
+  "full_raw_lake_materialized": 1,
+  "synthetic_full_year_acceptance_ready": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "04829a381293f797c8e5f4a840f16cc14d05e4cf",
+  "configuration_hash": "9af266781c4d1be06aef5e89910f3f6d3368414855428ce79dc443c453f7ee20",
+  "random_seed": "none_deterministic_raw_tick_lake_materialization",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase42_native_252_day_l2_event_state_raw_tick_lake_materialization",
+  "cost_model_version": "not_applicable_storage_materialization_no_execution_costs",
+  "latency_model_version": "phase36_raw_tick_enrichment_callback_sequence_schema",
+  "creation_timestamp": "2026-07-16T14:41:28.624083+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase45",
+  "source_manifest_path": "outputs/phase45/phase45_raw_tick_lake_materialization_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "04829a381293f797c8e5f4a840f16cc14d05e4cf",
+  "configuration_hash": "9af266781c4d1be06aef5e89910f3f6d3368414855428ce79dc443c453f7ee20",
+  "random_seed": "none_deterministic_raw_tick_lake_materialization",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase42_native_252_day_l2_event_state_raw_tick_lake_materialization",
+  "cost_model_version": "not_applicable_storage_materialization_no_execution_costs",
+  "latency_model_version": "phase36_raw_tick_enrichment_callback_sequence_schema",
+  "creation_timestamp": "2026-07-16T14:41:28.624083+00:00",
+  "normalization_timestamp": "2026-07-16T14:42:37.436627+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

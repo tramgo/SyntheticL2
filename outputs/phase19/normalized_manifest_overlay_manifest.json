@@ -1,15 +1,15 @@
 {
-  "generated_utc": "2026-07-16T14:29:09.957733+00:00",
-  "git_sha_used": "cd3f3afe16615e35efaba1ad796d0272e1cd7dcd",
-  "artifacts_normalized": 62,
-  "field_rows": 620,
-  "exact_field_overlay_ready_artifacts": 62,
+  "generated_utc": "2026-07-16T14:42:37.483565+00:00",
+  "git_sha_used": "04829a381293f797c8e5f4a840f16cc14d05e4cf",
+  "artifacts_normalized": 63,
+  "field_rows": 630,
+  "exact_field_overlay_ready_artifacts": 63,
   "normalizer_default_fields": 0,
-  "source_manifest_exact_or_alias_fields": 620,
+  "source_manifest_exact_or_alias_fields": 630,
   "scope": "phase19_normalized_manifest_overlay_not_source_manifest_rewrite",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "cd3f3afe16615e35efaba1ad796d0272e1cd7dcd",
-  "configuration_hash": "e5b66df4c6b61fa4f6205780afbb53d6030c00181d1a8e03382e2da949887b60",
+  "generator_version": "04829a381293f797c8e5f4a840f16cc14d05e4cf",
+  "configuration_hash": "fa50aad996157874ed9a0522da99f7b725a26a1ea0d79c79f029af4356b68f3c",
   "random_seed": "not_applicable_deterministic",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
@@ -17,5 +17,5 @@
   "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
   "cost_model_version": "not_applicable_no_execution_costs",
   "latency_model_version": "not_applicable_no_latency_model",
-  "creation_timestamp": "2026-07-16T14:29:09.957733+00:00"
+  "creation_timestamp": "2026-07-16T14:42:37.483565+00:00"
 }
