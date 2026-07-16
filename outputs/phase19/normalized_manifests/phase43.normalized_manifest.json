@@ -13,6 +13,6 @@
   "cost_model_version": "phase12_zerodha_equity_intraday_cost_model",
   "latency_model_version": "phase12_execution_profiles",
   "creation_timestamp": "2026-07-16T14:21:11.692498+00:00",
-  "normalization_timestamp": "2026-07-16T14:22:59.379747+00:00",
+  "normalization_timestamp": "2026-07-16T14:29:09.907975+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

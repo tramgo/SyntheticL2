@@ -1,0 +1,241 @@
+label_candidate_id,thesis_id,feature_column,direction_multiplier,thesis,abs_threshold_quantile,abs_threshold_value,spread_quantile,spread_tick_limit,forward_horizon_events,label_scope
+F01_momentum_follow_q90_sp50_1e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp50_3e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp50_6e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp50_12e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp75_1e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp75_3e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp75_6e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q90_sp75_12e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.9,0.006725309414563396,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp50_1e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp50_3e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp50_6e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp50_12e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp75_1e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp75_3e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp75_6e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q95_sp75_12e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.95,0.00910506370341638,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp50_1e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp50_3e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp50_6e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp50_12e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp75_1e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp75_3e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp75_6e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F01_momentum_follow_q98_sp75_12e,F01_momentum_follow,momentum_3_event,1,follow recent event momentum,0.98,0.013006646304000391,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp50_1e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp50_3e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp50_6e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp50_12e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp75_1e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp75_3e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp75_6e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q90_sp75_12e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.9,0.006725309414563396,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp50_1e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp50_3e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp50_6e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp50_12e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp75_1e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp75_3e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp75_6e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q95_sp75_12e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.95,0.00910506370341638,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp50_1e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp50_3e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp50_6e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp50_12e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp75_1e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp75_3e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp75_6e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F02_momentum_fade_q98_sp75_12e,F02_momentum_fade,momentum_3_event,-1,fade recent event momentum,0.98,0.013006646304000391,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp50_1e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp50_3e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp50_6e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp50_12e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp75_1e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp75_3e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp75_6e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q90_sp75_12e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp50_1e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp50_3e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp50_6e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp50_12e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp75_1e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp75_3e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp75_6e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q95_sp75_12e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp50_1e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp50_3e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp50_6e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp50_12e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp75_1e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp75_3e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp75_6e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F03_mlofi_follow_q98_sp75_12e,F03_mlofi_follow,mlofi_qty_event,1,follow multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp50_1e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp50_3e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp50_6e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp50_12e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp75_1e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp75_3e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp75_6e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q90_sp75_12e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.9,0.027402017112009146,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp50_1e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp50_3e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp50_6e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp50_12e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp75_1e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp75_3e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp75_6e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q95_sp75_12e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.95,0.03979558662992651,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp50_1e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp50_3e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp50_6e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp50_12e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp75_1e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp75_3e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp75_6e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F04_mlofi_fade_q98_sp75_12e,F04_mlofi_fade,mlofi_qty_event,-1,fade multi-level order-flow imbalance,0.98,0.062254395796167955,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp50_1e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp50_3e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp50_6e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp50_12e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp75_1e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp75_3e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp75_6e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q90_sp75_12e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.9,0.00012666710985181337,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp50_1e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp50_3e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp50_6e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp50_12e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp75_1e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp75_3e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp75_6e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q95_sp75_12e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.95,0.0001508632092536177,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp50_1e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp50_3e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp50_6e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp50_12e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp75_1e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp75_3e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp75_6e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F05_microprice_follow_q98_sp75_12e,F05_microprice_follow,microprice_dev,1,follow microprice deviation,0.98,0.0002697495588308682,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp50_1e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp50_3e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp50_6e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp50_12e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp75_1e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp75_3e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp75_6e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q90_sp75_12e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.9,0.00012666710985181337,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp50_1e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp50_3e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp50_6e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp50_12e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp75_1e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp75_3e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp75_6e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q95_sp75_12e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.95,0.0001508632092536177,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp50_1e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp50_3e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp50_6e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp50_12e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp75_1e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp75_3e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp75_6e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F06_microprice_fade_q98_sp75_12e,F06_microprice_fade,microprice_dev,-1,fade microprice deviation,0.98,0.0002697495588308682,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp50_1e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp50_3e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp50_6e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp50_12e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp75_1e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp75_3e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp75_6e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q90_sp75_12e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp50_1e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp50_3e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp50_6e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp50_12e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp75_1e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp75_3e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp75_6e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q95_sp75_12e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp50_1e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp50_3e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp50_6e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp50_12e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp75_1e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp75_3e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp75_6e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F07_l1_imbalance_follow_q98_sp75_12e,F07_l1_imbalance_follow,l1_imbalance,1,follow level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp50_1e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp50_3e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp50_6e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp50_12e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp75_1e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp75_3e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp75_6e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q90_sp75_12e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.9,0.5782312925170068,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp50_1e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp50_3e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp50_6e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp50_12e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp75_1e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp75_3e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp75_6e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q95_sp75_12e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.95,0.696969696969697,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp50_1e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp50_3e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp50_6e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp50_12e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp75_1e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp75_3e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp75_6e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F08_l1_imbalance_fade_q98_sp75_12e,F08_l1_imbalance_fade,l1_imbalance,-1,fade level-1 queue imbalance,0.98,0.7395540956279799,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp50_1e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp50_3e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp50_6e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp50_12e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp75_1e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp75_3e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp75_6e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q90_sp75_12e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp50_1e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp50_3e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp50_6e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp50_12e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp75_1e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp75_3e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp75_6e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q95_sp75_12e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp50_1e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp50_3e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp50_6e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp50_12e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp75_1e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp75_3e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp75_6e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F09_l5_imbalance_follow_q98_sp75_12e,F09_l5_imbalance_follow,l5_imbalance,1,follow level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp50_1e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp50_3e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp50_6e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp50_12e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp75_1e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp75_3e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp75_6e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q90_sp75_12e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.9,0.5779522335249889,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp50_1e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp50_3e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp50_6e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp50_12e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp75_1e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp75_3e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp75_6e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q95_sp75_12e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.95,0.6971240263630917,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp50_1e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp50_3e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp50_6e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp50_12e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.5,4.0,12,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp75_1e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,1,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp75_3e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,3,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp75_6e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,6,native_full_year_forward_edge_label_mining_not_acceptance
+F10_l5_imbalance_fade_q98_sp75_12e,F10_l5_imbalance_fade,l5_imbalance,-1,fade level-5 queue imbalance,0.98,0.7395537042629196,0.75,5.0,12,native_full_year_forward_edge_label_mining_not_acceptance

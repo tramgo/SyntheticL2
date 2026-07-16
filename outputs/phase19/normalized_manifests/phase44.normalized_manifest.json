@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase44",
+  "source_manifest_path": "outputs/phase44/phase44_native_full_year_forward_edge_label_mining_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "cd3f3afe16615e35efaba1ad796d0272e1cd7dcd",
+  "configuration_hash": "2b5602b5cbe76a58507bcbd38c8523a830341f2937cc239039ad77bcd5d63f54",
+  "random_seed": "none_deterministic_native_full_year_forward_label_mining",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase42_native_252_day_l2_event_state_forward_edge_labels",
+  "cost_model_version": "phase12_zerodha_equity_intraday_cost_model_retail_hurdle",
+  "latency_model_version": "phase12_retail_marketable_default_pre_replay_hurdle",
+  "creation_timestamp": "2026-07-16T14:28:06.424412+00:00",
+  "normalization_timestamp": "2026-07-16T14:29:09.909519+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

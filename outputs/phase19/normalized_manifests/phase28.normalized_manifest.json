@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_feature_label_support",
   "latency_model_version": "receive_timestamp_bucket_5s_for_lead_lag_proxy",
   "creation_timestamp": "2026-07-14T18:19:00.666258+00:00",
-  "normalization_timestamp": "2026-07-16T14:22:59.360333+00:00",
+  "normalization_timestamp": "2026-07-16T14:29:09.893535+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

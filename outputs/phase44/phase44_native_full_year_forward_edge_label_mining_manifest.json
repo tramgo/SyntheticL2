@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-07-16T14:28:06.424412+00:00",
+  "scope": "phase44_native_full_year_forward_edge_label_mining_not_acceptance",
+  "label_candidates_registered": 240,
+  "label_candidate_rows_evaluated": 240,
+  "replay_candidate_rows": 0,
+  "synthetic_full_year_acceptance_ready": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "cd3f3afe16615e35efaba1ad796d0272e1cd7dcd",
+  "configuration_hash": "2b5602b5cbe76a58507bcbd38c8523a830341f2937cc239039ad77bcd5d63f54",
+  "random_seed": "none_deterministic_native_full_year_forward_label_mining",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase42_native_252_day_l2_event_state_forward_edge_labels",
+  "cost_model_version": "phase12_zerodha_equity_intraday_cost_model_retail_hurdle",
+  "latency_model_version": "phase12_retail_marketable_default_pre_replay_hurdle",
+  "creation_timestamp": "2026-07-16T14:28:06.424412+00:00"
+}

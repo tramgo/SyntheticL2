@@ -1,0 +1,10 @@
+metric,value,description
+phase44_input_event_rows,3012294.0,Native full-year L2 event rows labelled
+phase44_label_candidates_registered,240.0,Forward-edge feature/threshold/horizon candidates registered
+phase44_label_candidate_rows_evaluated,240.0,Candidate rows evaluated
+phase44_replay_candidate_rows,0.0,Rows that clear the pre-replay label edge screen
+phase44_total_signals_evaluated,21863842.0,Total feature-threshold signals evaluated
+phase44_best_mean_net_edge_return,0.003143012818805097,Best mean signed forward return after retail hurdle
+phase44_best_precision_lift_vs_baseline,1.0244788996185827,Best directional precision lift against baseline any-edge rate
+phase44_best_directional_precision,0.5412298895678009,Best directional cost-clear precision
+phase44_synthetic_full_year_acceptance_ready,0.0,"Forward label mining is pre-replay redesign evidence, not acceptance"
