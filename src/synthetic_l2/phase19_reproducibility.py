@@ -67,6 +67,7 @@ MANIFEST_CANDIDATES = [
     ("phase39", "outputs/phase39/phase39_synthetic_only_acceptance_path_manifest.json"),
     ("phase41", "outputs/phase41/phase41_full_year_synthetic_tick_experiment_manifest.json"),
     ("phase42", "outputs/phase42/phase42_native_full_year_l2_experiment_manifest.json"),
+    ("phase43", "outputs/phase43/phase43_native_full_year_cost_salvage_scan_manifest.json"),
     ("phase2", "outputs/phase2/calibration_manifest.json"),
     ("phase3", "outputs/phase3/regime_manifest.json"),
     ("phase4", "outputs/phase4/scenario_manifest.json"),

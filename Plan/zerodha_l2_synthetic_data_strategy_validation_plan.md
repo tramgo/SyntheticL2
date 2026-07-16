@@ -2178,9 +2178,9 @@ Generated artifacts are under `outputs/phase19/`:
 - `reproducibility_gate_result.json`;
 - `reproducibility_gate_report.md`.
 
-The current completed run audits 10 required reproducibility fields across 60 phase/workspace/dashboard/decision manifests, producing 600 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 60 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
+The current completed run audits 10 required reproducibility fields across 61 phase/workspace/dashboard/decision manifests, producing 610 field checks. Current native source-manifest coverage is complete for the audited artifact set: all 61 artifacts are exact-regeneration-ready at the source-manifest level, 0 artifacts have missing fields and 0 artifact groups have a missing/unreadable manifest. The exact-ready source manifests now include `stage_a1`, `phase1`, `phase1_event_reconstruction`, `stage_a2`, `stage_b1`, `stage_b2`, `stage_c`, `stage_d`, `stage_e`, `phase21`, `phase22`, `phase23`, `phase25`, `phase26`, `phase27`, `phase28`, `phase29`, `phase30`, `phase31`, `phase32`, `phase33`, `phase34`, `phase35`, `phase36`, `phase37`, `phase38`, `phase39`, `phase41`, `phase42`, `phase43`, `phase2`, `phase3`, `phase4`, `phase5`, `phase6`, `phase7`, `phase8`, `phase9`, `phase10`, `phase11`, `phase11_strategy_modules`, `phase12`, `phase12_event_backtest`, `phase13`, `phase13_smoke_run`, `phase14`, `phase15`, `phase16`, `phase17`, `phase18`, `phase20`, `phase20_m01`, `phase20_m02`, `phase20_m03`, `phase20_m04`, `phase20_m05`, `phase20_m06`, `phase20_m07`, `horizon_readiness`, `dashboard` and `duckdb`.
 
-The remediation layer now emits a normalized reproducibility manifest template and 600 field-level remediation rows. All 600 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
+The remediation layer now emits a normalized reproducibility manifest template and 610 field-level remediation rows. All 610 rows are `complete_exact`, confirming that the audited source manifests now expose the exact required fields without generator-field, alias-normalization or recover/rerun gaps.
 
 The normalized manifest overlay still creates exact-field manifest overlays for all 48 audited artifacts. The overlay now has 48 exact-field-ready artifacts and 480 normalized field rows, with all 480 values coming from exact/alias fields already present in source manifests and 0 values supplied by normalizer defaults. It is retained as an audit/inspection bridge, not as a substitute for source-manifest metadata.
 
@@ -3100,6 +3100,25 @@ This phase is the native full-year run that supersedes the Phase 41 annualized r
 The current Phase 42 run generates 3,012,294 synthetic L2 event-state rows across 252 synthetic trading days, 32 symbols and 5 feed profiles. It evaluates 15 strategy/profile rows and simulates 6,846,221 strategy trades. No strategy/profile row is annual-P&L positive, including zero-latency controls. Under realistic retail/stressed profiles, 0 rows are profitable. The best all-profile annual net P&L is approximately `-4337116.65` INR, and the best realistic retail/stressed annual net P&L is approximately `-22101469.61` INR. `phase42_synthetic_full_year_acceptance_ready` remains 0.
 
 This result is the strongest current synthetic-only evidence: at native full-year L2 event scale, the current strategy forms are rejected economically under the configured cost/latency model.
+
+## Phase 43 — Native Full-Year Cost-Aware Salvage Scan
+
+**Current Phase 43 implementation status as of 2026-07-16:** Phase 43 now has a runnable native full-year cost-aware salvage scan in `scripts/run_phase43_native_full_year_cost_salvage_scan.py`, backed by `src/synthetic_l2/phase43_native_full_year_cost_salvage_scan.py`.
+
+Generated Phase 43 artifacts are under `outputs/phase43/`:
+
+- `cost_salvage_summary.csv`
+- `cost_salvage_variant_catalog.csv`
+- `cost_salvage_variant_results.csv`
+- `cost_salvage_strategy_rollup.csv`
+- `phase43_native_full_year_cost_salvage_scan_report.md`
+- `phase43_native_full_year_cost_salvage_scan_manifest.json`
+
+This phase scans sparse/high-confidence variants over the Phase 42 native 252-day synthetic L2 event stream. It varies signal thresholds, spread gates and liquidity floors for S01/S02/S05/S07/S09 and reruns the Phase 12 execution profiles and Zerodha-style costs. The goal is to test whether churn reduction and tighter entry filters can rescue the full-year economics after Phase 42 rejected the base strategy forms.
+
+The current Phase 43 run scans 60 variants and 180 variant/profile rows over 3,012,294 native full-year L2 event rows. It simulates 5,027,566 variant trades. Four annual-positive rows appear, but all four are zero-latency/control rows. Under realistic retail/stressed profiles, 0 rows are annual-positive and 0 rows qualify for deeper synthetic replay. The best all-profile annual net P&L is approximately `85087.07` INR, while the best realistic retail/stressed annual net P&L remains negative at approximately `-184924.47` INR. `phase43_synthetic_full_year_acceptance_ready` remains 0.
+
+The immediate conclusion is that tighter thresholds and cost-aware filters reduce losses materially, but they do not produce a realistic-cost survivor. The next research move should be new signal/label design rather than more promotion work on the current signal families.
 
 ---
 

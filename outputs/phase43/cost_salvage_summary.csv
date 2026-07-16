@@ -1,0 +1,11 @@
+metric,value,description
+phase43_input_event_rows,3012294.0,Native full-year L2 event rows scanned
+phase43_variants_registered,60.0,Cost-aware strategy variants registered
+phase43_variant_profile_rows,180.0,Variant/profile rows evaluated
+phase43_total_variant_trades,5027566.0,Total simulated trades across variant/profile rows
+phase43_positive_variant_profile_rows,4.0,Annual positive P&L variant/profile rows
+phase43_positive_realistic_variant_profile_rows,0.0,Annual positive P&L retail/stressed rows
+phase43_deeper_synthetic_candidate_rows,0.0,Realistic positive rows with enough trades
+phase43_best_annual_net_pnl_inr,85087.07496908131,Best annual net P&L across all variant profiles
+phase43_best_realistic_annual_net_pnl_inr,-184924.47465172023,Best annual net P&L across retail/stressed variant profiles
+phase43_synthetic_full_year_acceptance_ready,0.0,"Cost-aware salvage scan is experiment evidence, not acceptance"

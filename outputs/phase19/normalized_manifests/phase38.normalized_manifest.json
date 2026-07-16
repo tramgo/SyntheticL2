@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_class_b_data_gate",
   "latency_model_version": "phase35_phase37_collector_diagnostics_gate",
   "creation_timestamp": "2026-07-16T13:46:56.668669+00:00",
-  "normalization_timestamp": "2026-07-16T14:16:07.144532+00:00",
+  "normalization_timestamp": "2026-07-16T14:22:59.373801+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }
