@@ -3286,6 +3286,22 @@ This phase consumes the Phase 50 384-shard target schedule and materializes ever
 
 The completed Phase 51 run materialized all 384 scheduled symbol-month shards and matched the Phase 50 row schedule exactly: 5,974,626,961 dense rows written versus 5,974,626,961 scheduled rows, with 0 row difference. It consumed all 3,012,294 compact monthly source rows and wrote 384 parquet files under `raw_synthetic_l2_dense_full_year/`. The actual compressed lake size is 70,591,392,905 bytes, or approximately 65.743 GiB, which is below the Phase 50 83.240 GiB target estimate because the full dense lake compressed more strongly than the calibration estimate: actual bytes were approximately 78.98% of the estimated 89,378,269,358 bytes. The observed materialization throughput was approximately 456,065 dense rows/second over 13,100.4 seconds. The completion flag `phase51_full_80gb_dense_lake_materialized` is now `1`; `phase51_synthetic_full_year_acceptance_ready` remains `0` until strategies are actually replayed on the dense lake with the synthetic-only acceptance criteria.
 
+## Phase 52 — Dense Lake Strategy Replay
+
+**Current Phase 52 implementation status as of 2026-07-16:** Phase 52 now has a runnable dense-lake strategy replay workflow in `scripts/run_phase52_dense_lake_strategy_replay.py`, backed by `src/synthetic_l2/phase52_dense_lake_strategy_replay.py`.
+
+Planned/generated Phase 52 artifacts are under `outputs/phase52/`:
+
+- `dense_replay_daily_symbol.csv`
+- `dense_replay_strategy_summary.csv`
+- `dense_replay_acceptance_summary.csv`
+- `phase52_dense_lake_strategy_replay_report.md`
+- `phase52_dense_lake_strategy_replay_manifest.json`
+
+This phase scans the Phase 51 dense parquet lake shard-by-shard with DuckDB rather than loading the full 5.97B-row lake into memory. It computes L1 imbalance, microprice deviation and one-tick momentum proxy signals, applies the Phase 12 execution latency profiles, and deducts spread, slippage, impact and Zerodha equity-intraday NSE cost-model charges. Results are aggregated to daily-symbol and strategy-profile ledgers without persisting billions of individual trade rows.
+
+The acceptance boundary remains strict: Phase 52 can produce dense synthetic-only replay evidence and candidate rows, but `phase52_synthetic_full_year_acceptance_ready` remains `0` unless a candidate clears the synthetic-only acceptance gates and subsequent evidence contracts.
+
 ---
 
 ## 25. Final Principle
