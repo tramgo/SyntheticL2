@@ -347,6 +347,30 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame]) -> None:
     (output_dir / "phase52_dense_lake_strategy_replay_report.md").write_text("\n".join(lines), encoding="utf-8")
 
 
+def write_progress(
+    output_dir: Path,
+    *,
+    status: str,
+    shard_index: int,
+    total_shards: int,
+    path: Path,
+    completed_shards: int,
+    started: float,
+) -> None:
+    elapsed = time.perf_counter() - started
+    progress = {
+        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "status": status,
+        "current_shard_index": shard_index,
+        "total_shards": total_shards,
+        "completed_shards": completed_shards,
+        "pct_complete": completed_shards / total_shards if total_shards else 0.0,
+        "current_shard_path": str(path),
+        "elapsed_seconds": elapsed,
+    }
+    (output_dir / "dense_replay_progress.json").write_text(json.dumps(progress, indent=2), encoding="utf-8")
+
+
 def run_phase52(dense_root: Path, output_dir: Path, base_dir: Path, threshold_quantile: float, limit_shards: int | None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     files = parquet_files(dense_root, limit_shards=limit_shards)
@@ -359,11 +383,29 @@ def run_phase52(dense_root: Path, output_dir: Path, base_dir: Path, threshold_qu
     for shard_index, path in enumerate(files, start=1):
         if str(path) in completed_paths:
             continue
+        write_progress(
+            output_dir,
+            status="running",
+            shard_index=shard_index,
+            total_shards=len(files),
+            path=path,
+            completed_shards=len(completed_paths),
+            started=started,
+        )
         shard_frame = query_shard_all(path, threshold_quantile)
         shard_frame.insert(0, "shard_index", shard_index)
         shard_frame.insert(1, "shard_path", str(path))
         shard_frame.to_csv(daily_path, mode="a", header=not daily_path.exists(), index=False)
         completed_paths.add(str(path))
+        write_progress(
+            output_dir,
+            status="checkpointed",
+            shard_index=shard_index,
+            total_shards=len(files),
+            path=path,
+            completed_shards=len(completed_paths),
+            started=started,
+        )
         if shard_index % 8 == 0:
             elapsed_partial = time.perf_counter() - started
             current = pd.read_csv(daily_path)
@@ -391,6 +433,16 @@ def run_phase52(dense_root: Path, output_dir: Path, base_dir: Path, threshold_qu
         "strategy_profile_rows": int(len(summary)),
         "synthetic_full_year_acceptance_ready": 0,
     }
+    if files:
+        write_progress(
+            output_dir,
+            status="complete",
+            shard_index=len(files),
+            total_shards=len(files),
+            path=files[-1],
+            completed_shards=len(files),
+            started=started,
+        )
     manifest.update(
         reproducibility_fields(
             artifact_id="phase52",
