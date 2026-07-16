@@ -256,3 +256,10 @@ phase36_dry_run_sequence_rows,3,Phase 36 dry-run sequence rows
 phase36_dry_run_drop_counter_rows,2,Phase 36 dry-run drop-counter rows
 phase36_live_collector_integrated,0,Phase 36 live collector integrated
 phase36_class_b_capture_enabled,0,Phase 36 Class B capture enabled
+phase37_schema_missing_columns,0,Phase 37 schema missing columns
+phase37_schema_pass,1,Phase 37 schema pass
+phase37_session_boundary_pass,1,Phase 37 session-boundary pass
+phase37_local_sequence_pass,1,Phase 37 local-sequence pass
+phase37_drop_counter_coverage_pass,1,Phase 37 drop-counter coverage pass
+phase37_live_collector_evidence,0,Phase 37 live collector evidence
+phase37_stage_a2_collector_evidence_ready,0,Phase 37 Stage A2 collector evidence ready

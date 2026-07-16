@@ -1,0 +1,18 @@
+{
+  "schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "artifact_id": "phase37",
+  "source_manifest_path": "outputs/phase37/phase37_collector_ledger_verifier_manifest.json",
+  "source_manifest_exists": true,
+  "generator_version": "84c681ecdc04d6040d268a27196130dc8c92dddc",
+  "configuration_hash": "9c8510fe6c49bef7d6529eb4be84d30435c55412940f680943a9771ad2466010",
+  "random_seed": "none_deterministic_collector_ledger_verification",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "collector_ledger_verification_for_stage_a2",
+  "cost_model_version": "not_applicable_collector_evidence_gate",
+  "latency_model_version": "callback_local_sequence_and_session_ledger",
+  "creation_timestamp": "2026-07-16T13:42:04.550143+00:00",
+  "normalization_timestamp": "2026-07-16T13:42:18.674309+00:00",
+  "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
+}

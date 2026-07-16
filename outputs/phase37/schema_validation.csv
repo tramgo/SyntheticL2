@@ -1,0 +1,4 @@
+artifact_name,required_columns,missing_columns,missing_column_names,schema_valid
+session_ledger,10,0,,True
+tick_sequence_diagnostics,7,0,,True
+drop_counter_ledger,9,0,,True

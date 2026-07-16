@@ -13,6 +13,6 @@
   "cost_model_version": "not_applicable_capture_diagnostics",
   "latency_model_version": "collector_receive_and_monotonic_timestamp_scan",
   "creation_timestamp": "2026-07-14T19:15:31.817756+00:00",
-  "normalization_timestamp": "2026-07-14T19:20:58.573331+00:00",
+  "normalization_timestamp": "2026-07-16T13:42:18.672407+00:00",
   "normalization_scope": "exact_field_overlay_for_reproducibility_audit_not_source_manifest_rewrite"
 }

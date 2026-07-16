@@ -1,0 +1,2 @@
+collector_run_id,session_id,opened_utc_present,closed_utc_present,close_reason_present,tick_rows,sequence_rows,session_sequence_count_match,session_sequence_bounds_match,session_valid
+phase36_dry_run,phase36_dry_run_session_0001,True,True,True,3,3,True,True,True

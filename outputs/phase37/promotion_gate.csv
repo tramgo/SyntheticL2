@@ -1,0 +1,7 @@
+gate,passed,description
+schema_pass,1,All required collector-ledger columns are present
+session_boundary_pass,1,Session rows reconcile to sequence rows and sequence bounds
+local_sequence_pass,1,Local sequence IDs are contiguous and non-duplicated per session
+drop_counter_coverage_pass,1,Drop-counter rows cover all subscribed session symbols
+live_collector_evidence,0,Ledgers come from live collector output rather than dry-run scaffolding
+stage_a2_collector_evidence_ready,0,Collector-side Stage A2 evidence can be consumed for Class B promotion checks

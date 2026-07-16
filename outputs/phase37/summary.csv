@@ -1,0 +1,12 @@
+metric,value,description
+phase37_schema_artifacts_checked,3,Collector ledger artifacts checked for required schema
+phase37_schema_missing_columns,0,Missing required collector-ledger columns
+phase37_session_rows_verified,1,Session ledger rows verified
+phase37_sequence_sessions_verified,1,Sessions with sequence diagnostics verified
+phase37_drop_counter_sessions_verified,1,Sessions with drop-counter coverage verified
+phase37_schema_pass,1,Schema gate pass flag
+phase37_session_boundary_pass,1,Session-boundary gate pass flag
+phase37_local_sequence_pass,1,Local-sequence gate pass flag
+phase37_drop_counter_coverage_pass,1,Drop-counter coverage gate pass flag
+phase37_live_collector_evidence,0,Live collector evidence flag
+phase37_stage_a2_collector_evidence_ready,0,Collector evidence ready for Class B checks
