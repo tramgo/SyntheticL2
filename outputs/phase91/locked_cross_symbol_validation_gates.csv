@@ -1,0 +1,8 @@
+gate_id,requirement,pass_threshold
+P90_NO_LABEL_INSPECTION,Phase90 may compute cross-symbol features and train-period feature thresholds only; directional P&L and next_bar_return labels are reserved for replay.,No candidate is selected or edited using replay P&L.
+P90_SPLIT_LOCK,Train months are 2026-01 through 2026-06; test months are 2026-07 through 2026-12.,Splits appear in every candidate spec and cannot be changed in replay.
+P90_COST_BUDGET,Replay may only trade rows at or below the train-period p60 taker round-trip cost floor for the relevant cached bars.,taker_round_trip_cost_floor_bps <= max_taker_round_trip_cost_floor_bps
+P90_TURNOVER_BREADTH,Replay candidate must have 500 to 8000 trades per split and at least 20 target symbols in both train and test.,500<=train_trades<=8000; 500<=test_trades<=8000; train_symbols>=20; test_symbols>=20
+P90_AFTER_COST_SURVIVAL,Replay must produce positive after-cost net P&L in both train and test with precision_cost_clear >= 0.55.,train_net_pnl_inr>0; test_net_pnl_inr>0; train_precision>=0.55; test_precision>=0.55
+P90_CONCENTRATION,No single symbol or month may contribute more than 35% of absolute positive test net P&L.,max_symbol_contribution_abs<=0.35; max_month_contribution_abs<=0.35
+P90_RETIREMENT,"If no precommitted candidate passes, do not widen thresholds in the same family; move to P91 event-window low-turnover design.",No post-hoc threshold widening.
