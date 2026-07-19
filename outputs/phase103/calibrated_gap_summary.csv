@@ -1,0 +1,9 @@
+category,metric,symbol_metrics,gap_count,gap_fraction,median_synthetic_to_real_ratio,min_synthetic_to_real_ratio,max_synthetic_to_real_ratio
+L1 imbalance scale,median_abs_l1_imbalance,1,0,0.0,0.8572268278240273,0.8572268278240273,0.8572268278240273
+displayed L1 depth scale,median_l1_depth,1,0,0.0,0.8055832502492523,0.8055832502492523,0.8055832502492523
+displayed L5 depth scale,median_l5_depth,1,0,0.0,0.429062285250203,0.429062285250203,0.429062285250203
+median spread scale,median_spread_bps,1,0,0.0,1.0030013475449358,1.0030013475449358,1.0030013475449358
+one-tick volatility scale,one_tick_return_std,1,1,1.0,13.405226502043819,13.405226502043819,13.405226502043819
+received tick cadence,median_gap_ms,1,1,1.0,0.008,0.008,0.008
+tail received tick cadence,p90_gap_ms,1,1,1.0,0.195,0.195,0.195
+tail spread scale,p90_spread_bps,1,0,0.0,0.9833513318934486,0.9833513318934486,0.9833513318934486

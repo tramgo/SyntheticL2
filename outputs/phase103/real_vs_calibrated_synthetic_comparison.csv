@@ -1,0 +1,9 @@
+symbol,category,metric,real_value,synthetic_value,synthetic_to_real_ratio,lower_ratio_gate,upper_ratio_gate,calibration_gap
+HDFCBANK,received tick cadence,median_gap_ms,500.0,4.0,0.008,0.2,5.0,True
+HDFCBANK,tail received tick cadence,p90_gap_ms,1000.0,195.0,0.195,0.2,5.0,True
+HDFCBANK,median spread scale,median_spread_bps,1.2213740458004159,1.225039813794227,1.0030013475449358,0.25,4.0,False
+HDFCBANK,tail spread scale,p90_spread_bps,3.0505475732894056,2.9997600191984644,0.9833513318934486,0.25,4.0,False
+HDFCBANK,displayed L1 depth scale,median_l1_depth,1003.0,808.0,0.8055832502492523,0.1,10.0,False
+HDFCBANK,displayed L5 depth scale,median_l5_depth,16007.0,6868.0,0.429062285250203,0.1,10.0,False
+HDFCBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6676977463543968,0.5723684210526315,0.8572268278240273,0.25,4.0,False
+HDFCBANK,one-tick volatility scale,one_tick_return_std,0.00012354983059774405,0.0016562134634519029,13.405226502043819,0.1,10.0,True

@@ -1,0 +1,12 @@
+metric,value,description
+phase103_profile_id,P98_FULL_BOOK_REBALANCE_BASE,Calibrated synthetic profile audited
+phase103_real_symbols_profiled,1,Real WebSocket symbols profiled
+phase103_synthetic_symbols_profiled,1,Synthetic dense symbols profiled
+phase103_compared_symbols,1,Symbols present in both real and synthetic profiles
+phase103_symbol_metric_anchor_rows,8,Symbol/metric calibration anchors compared
+phase103_calibration_gap_rows,3,Anchor rows outside ratio gates
+phase103_calibration_gap_fraction,0.375,Fraction of compared symbol/metric anchors outside gates
+phase103_severe_metric_gap_count,3,Metrics where more than half of symbols fail calibration gates
+phase103_calibrated_realism_patch_pass,0,1 means patched calibrated HDFCBANK shard passes one-symbol realism readout
+phase103_strategy_replay_allowed,0,Strategy replay remains closed until multiday and broader-symbol realism gates pass
+phase103_recommend_next_action,expand_calibrated_realism_rerun_to_32_symbols_or_collect_multiday_real_panel,Recommended next milestone
