@@ -1,0 +1,13 @@
+month_index,trade_month,shard_path
+1,2026-01,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=KOTAKBANK\part-00000.parquet
+2,2026-02,raw_synthetic_l2_dense_full_year\trade_month=2026-02\symbol=KOTAKBANK\part-00000.parquet
+3,2026-03,raw_synthetic_l2_dense_full_year\trade_month=2026-03\symbol=KOTAKBANK\part-00000.parquet
+4,2026-04,raw_synthetic_l2_dense_full_year\trade_month=2026-04\symbol=KOTAKBANK\part-00000.parquet
+5,2026-05,raw_synthetic_l2_dense_full_year\trade_month=2026-05\symbol=KOTAKBANK\part-00000.parquet
+6,2026-06,raw_synthetic_l2_dense_full_year\trade_month=2026-06\symbol=KOTAKBANK\part-00000.parquet
+7,2026-07,raw_synthetic_l2_dense_full_year\trade_month=2026-07\symbol=KOTAKBANK\part-00000.parquet
+8,2026-08,raw_synthetic_l2_dense_full_year\trade_month=2026-08\symbol=KOTAKBANK\part-00000.parquet
+9,2026-09,raw_synthetic_l2_dense_full_year\trade_month=2026-09\symbol=KOTAKBANK\part-00000.parquet
+10,2026-10,raw_synthetic_l2_dense_full_year\trade_month=2026-10\symbol=KOTAKBANK\part-00000.parquet
+11,2026-11,raw_synthetic_l2_dense_full_year\trade_month=2026-11\symbol=KOTAKBANK\part-00000.parquet
+12,2026-12,raw_synthetic_l2_dense_full_year\trade_month=2026-12\symbol=KOTAKBANK\part-00000.parquet
