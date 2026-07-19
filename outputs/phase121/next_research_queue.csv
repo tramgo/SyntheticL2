@@ -1,0 +1,4 @@
+priority,next_item,phase_reference,why,allowed_now,forbidden
+1,real_anchor_data_acquisition,Phase117,The current synthetic strategy families are falsified or replay-locked; adding real WebSocket L2 days is the cleanest source of new evidence.,True,Do not claim profitability from synthetic-only pockets.
+2,new_non_passive_non_taker_feature_source_precommit,new_phase,Both taker and passive-simple mechanisms failed; a new branch must use a genuinely different edge source before replay.,True,No threshold widening of P66/P68/P69/P118 candidates.
+3,full_year_passive_label_stage03,Phase120 Stage03,"Only useful as final confirmation/negative-control, not as a path to replay after Stage02 hard failures.",False,Do not run unless explicitly needed for audit completeness.

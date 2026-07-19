@@ -1,0 +1,5 @@
+family_id,decision,replay_allowed,full_year_label_stage03_allowed,resume_condition
+P66_NAIVE_PASSIVE_IMBALANCE,retired,False,False,Only as a negative-control label family.
+P68_REPLENISHMENT_AFTER_TOUCH,retired_as_standalone_alpha,False,False,Only if a future non-P&L label source reduces adverse-selection rate below 0.45 across at least 20 symbols.
+P69_SPREAD_TRANSITION,retired_as_standalone_alpha,False,False,"Only as context inside a new non-toxic feature class, not as standalone spread-transition replay."
+P118_RICHER_PASSIVE_LABEL_COMPOSITE,retired_pending_new_feature_source,False,False,Requires a materially new feature source that passes adverse-selection and breadth gates before any bounded replay.

@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-07-19T23:23:52.061853+00:00",
+  "scope": "phase121_passive_branch_retirement_gate",
+  "passive_replay_allowed": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "a33ced4a9ee55ceb6917a1f7260b519a81eecf1c",
+  "configuration_hash": "6e3eb0c60d9bd40856d7ceb9535b88fc3d93748fa2e706df68eac70137d1af68",
+  "random_seed": "none_deterministic_decision_gate",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase121_passive_retirement_after_phase120_stage02",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "not_applicable_decision_gate",
+  "creation_timestamp": "2026-07-19T23:23:52.061853+00:00"
+}

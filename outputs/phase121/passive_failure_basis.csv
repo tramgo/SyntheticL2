@@ -1,0 +1,6 @@
+failure_id,evidence,decision,why_it_matters
+P121_ADVERSE_SELECTION_TOXICITY,best_train_half_replenishment_adverse_selection_rate=0.9708333333333334,hard_fail,Passive fills are expected to be toxic if nearly all inferred touches are followed by adverse markout.
+P121_NO_LABEL_CANDIDATES,phase66=0; phase68=0; phase69=0,hard_fail,The component label gates produced no candidate buckets even before replay.
+P121_NO_JOINED_PRE_REPLAY_CANDIDATES,phase119_pre_replay_candidate_rows=0,hard_fail,The richer composite label builder could form candidates but none passed all feasibility gates.
+P121_SYMBOL_BREADTH_SHORTFALL,max_joined_symbols=4; required_symbols=20,hard_fail,A passive label pocket across four symbols is not broad enough to justify replay.
+P121_AFTER_COST_LABEL_NEGATIVE,best_phase66_bps=-21.276485937116394; best_phase68_bps=-18.28774559151268; best_phase69_bps=-10.066955534890022,hard_fail,The best label buckets remain negative after the Zerodha cost floor.

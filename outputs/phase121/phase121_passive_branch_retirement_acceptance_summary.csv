@@ -1,0 +1,12 @@
+metric,value,description
+phase121_stage_rows_reviewed,2,Phase120 passive label expansion stages reviewed
+phase121_max_shards_reviewed,192,Largest label-only expansion reviewed
+phase121_train_half_candidate_orders,34124776,Train-half hypothetical passive candidate orders reviewed
+phase121_train_half_inferred_touches,405440,Train-half inferred passive touches reviewed
+phase121_train_half_pre_replay_candidates,0,Train-half richer passive pre-replay candidates
+phase121_hard_failure_rows,5,Hard failure bases recorded
+phase121_retired_family_rows,4,Passive families retired or blocked
+phase121_passive_replay_allowed,0,1 means passive bounded replay may run
+phase121_stage03_full_year_label_allowed,0,1 means full-year passive label Stage03 should run now
+phase121_next_best_action,return_to_real_anchor_acquisition_or_precommit_new_non_passive_feature_source,Recommended next milestone
+phase121_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model used by passive label evidence
