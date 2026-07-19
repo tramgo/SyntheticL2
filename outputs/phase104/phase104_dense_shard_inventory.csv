@@ -1,0 +1,13 @@
+trade_month,symbol,source_rows,dense_rows,multiplier,file_path,bytes
+2026-01,HDFCBANK,8220,65760,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-01\symbol=HDFCBANK\part-00000.parquet,2395882
+2026-02,HDFCBANK,7476,59808,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-02\symbol=HDFCBANK\part-00000.parquet,2149327
+2026-03,HDFCBANK,8220,65760,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-03\symbol=HDFCBANK\part-00000.parquet,2348378
+2026-04,HDFCBANK,8212,65696,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-04\symbol=HDFCBANK\part-00000.parquet,2385881
+2026-05,HDFCBANK,7848,62784,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-05\symbol=HDFCBANK\part-00000.parquet,2292085
+2026-06,HDFCBANK,8198,65584,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-06\symbol=HDFCBANK\part-00000.parquet,2352466
+2026-07,HDFCBANK,8587,68696,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-07\symbol=HDFCBANK\part-00000.parquet,2493324
+2026-08,HDFCBANK,7841,62728,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-08\symbol=HDFCBANK\part-00000.parquet,2252826
+2026-09,HDFCBANK,8208,65664,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-09\symbol=HDFCBANK\part-00000.parquet,2396363
+2026-10,HDFCBANK,8212,65696,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-10\symbol=HDFCBANK\part-00000.parquet,2329018
+2026-11,HDFCBANK,7858,62864,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-11\symbol=HDFCBANK\part-00000.parquet,2259433
+2026-12,HDFCBANK,5230,41840,8,raw_synthetic_l2_phase104_real_anchor_cadence\profile=P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL\trade_month=2026-12\symbol=HDFCBANK\part-00000.parquet,1536615

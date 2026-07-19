@@ -1,0 +1,17 @@
+metric,value,description
+phase104_profile_id,P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL,Real-anchor cadence calibration profile materialized
+phase104_source_rows_densified,94110,Source compact rows densified
+phase104_dense_rows_materialized,752880,Dense rows materialized for audit
+phase104_dense_bytes,27191598,Local dense parquet bytes materialized
+phase104_dense_elapsed_seconds,7.392213599996467,Dense materialization elapsed seconds
+phase103_profile_id,P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL,Calibrated synthetic profile audited
+phase103_real_symbols_profiled,1,Real WebSocket symbols profiled
+phase103_synthetic_symbols_profiled,1,Synthetic dense symbols profiled
+phase103_compared_symbols,1,Symbols present in both real and synthetic profiles
+phase103_symbol_metric_anchor_rows,8,Symbol/metric calibration anchors compared
+phase103_calibration_gap_rows,1,Anchor rows outside ratio gates
+phase103_calibration_gap_fraction,0.125,Fraction of compared symbol/metric anchors outside gates
+phase103_severe_metric_gap_count,1,Metrics where more than half of symbols fail calibration gates
+phase103_calibrated_realism_patch_pass,0,1 means patched calibrated HDFCBANK shard passes one-symbol realism readout
+phase103_strategy_replay_allowed,0,Strategy replay remains closed until multiday and broader-symbol realism gates pass
+phase103_recommend_next_action,expand_calibrated_realism_rerun_to_32_symbols_or_collect_multiday_real_panel,Recommended next milestone

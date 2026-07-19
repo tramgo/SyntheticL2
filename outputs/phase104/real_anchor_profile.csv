@@ -1,0 +1,2 @@
+symbol,trade_date,rows,sampled_files,first_ts_ms,last_ts_ms,window_seconds,median_gap_ms,p90_gap_ms,p95_gap_ms,gap_le_1s_fraction,median_spread_bps,p90_spread_bps,median_l1_depth,median_l5_depth,median_abs_l1_imbalance,one_tick_return_std
+HDFCBANK,2026-07-13,6890,299,1783914093966.0,1783936752212.0,22658.246,500.0,1000.0,1250.0,0.9249637155297533,1.2213740458004159,3.0505475732894056,1003.0,16007.0,0.6676977463543968,0.00012354983059774405

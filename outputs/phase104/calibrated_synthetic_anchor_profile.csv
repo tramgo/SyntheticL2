@@ -1,0 +1,2 @@
+symbol,rows,months,dates,regimes,feed_profiles,market_shock_row_fraction,symbol_shock_row_fraction,median_gap_ms,p90_gap_ms,p95_gap_ms,gap_le_1s_fraction,median_spread_bps,p90_spread_bps,median_l1_depth,median_l5_depth,median_abs_l1_imbalance,one_tick_return_std
+HDFCBANK,752880,12,252,18,5,0.1268090532355754,0.0,500.0,692.0,792.0,0.9919482520454787,1.225039813794227,2.9997600191984644,808.0,6868.0,0.5723684210526315,0.0016562134634519037

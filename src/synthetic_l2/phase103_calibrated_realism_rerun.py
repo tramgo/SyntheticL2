@@ -104,7 +104,13 @@ def real_anchor_profile_for_symbols(real_root: Path, symbols: list[str], max_fil
     return pd.DataFrame(rows)
 
 
-def summarize_phase103(real: pd.DataFrame, synthetic: pd.DataFrame, comparison: pd.DataFrame, gaps: pd.DataFrame) -> pd.DataFrame:
+def summarize_phase103(
+    real: pd.DataFrame,
+    synthetic: pd.DataFrame,
+    comparison: pd.DataFrame,
+    gaps: pd.DataFrame,
+    profile_id: str = DEFAULT_PROFILE_ID,
+) -> pd.DataFrame:
     compared_symbols = int(comparison["symbol"].nunique()) if not comparison.empty else 0
     gap_rows = int(len(comparison))
     gap_count = int(comparison["calibration_gap"].sum()) if not comparison.empty else 0
@@ -113,7 +119,7 @@ def summarize_phase103(real: pd.DataFrame, synthetic: pd.DataFrame, comparison: 
     calibration_pass = bool(compared_symbols >= 1 and gap_fraction <= 0.25 and severe_metric_count == 0)
     return pd.DataFrame(
         [
-            ("phase103_profile_id", DEFAULT_PROFILE_ID, "Calibrated synthetic profile audited"),
+            ("phase103_profile_id", profile_id, "Calibrated synthetic profile audited"),
             ("phase103_real_symbols_profiled", int(real["symbol"].nunique()) if not real.empty else 0, "Real WebSocket symbols profiled"),
             ("phase103_synthetic_symbols_profiled", int(synthetic["symbol"].nunique()) if not synthetic.empty else 0, "Synthetic dense symbols profiled"),
             ("phase103_compared_symbols", compared_symbols, "Symbols present in both real and synthetic profiles"),
@@ -155,6 +161,7 @@ def run_phase103(
     base_dir: Path,
     symbols: list[str],
     max_real_files_per_symbol: int,
+    profile_id: str = DEFAULT_PROFILE_ID,
 ) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     real = real_anchor_profile_for_symbols(real_root, symbols, max_real_files_per_symbol)
@@ -164,7 +171,7 @@ def run_phase103(
     gaps = build_gap_summary(comparison)
     context = build_audit_context(phase79_dir, phase80_dir, phase83_dir, phase93_dir, comparison)
     remediation = build_remediation_queue(gaps, context)
-    acceptance = summarize_phase103(real, synthetic, comparison, gaps)
+    acceptance = summarize_phase103(real, synthetic, comparison, gaps, profile_id=profile_id)
 
     real.to_csv(output_dir / "real_anchor_profile.csv", index=False)
     synthetic.to_csv(output_dir / "calibrated_synthetic_anchor_profile.csv", index=False)
@@ -196,7 +203,7 @@ def run_phase103(
             },
             parameters={
                 "symbols": symbols,
-                "profile_id": DEFAULT_PROFILE_ID,
+                "profile_id": profile_id,
                 "max_real_files_per_symbol": max_real_files_per_symbol,
                 "strategy_replay_policy": "closed",
                 "scope_limitation": "one_symbol_calibrated_dense_readout",

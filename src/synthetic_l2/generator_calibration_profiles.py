@@ -61,6 +61,17 @@ PROFILES: dict[str, GeneratorCalibrationProfile] = {
         book_depth_ladder_multiplier=0.65,
         book_l1_l5_share_ratio=0.85,
     ),
+    "P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL": GeneratorCalibrationProfile(
+        profile_id="P103_HDFCBANK_REAL_ANCHOR_CADENCE_VOL",
+        event_timing_tail_gap_multiplier=500.0,
+        event_timing_burst_throttle_fraction=0.0,
+        price_micro_step_spread_fraction=0.0,
+        price_jump_size_scale=0.50,
+        price_anchor_source_events=True,
+        book_l1_quantity_skew_scale=1.50,
+        book_depth_ladder_multiplier=0.80,
+        book_l1_l5_share_ratio=0.85,
+    ),
 }
 
 
