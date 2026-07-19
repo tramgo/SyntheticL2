@@ -64,6 +64,18 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
     repeated["exchange_timestamp_ms"] = repeated["exchange_timestamp_ms"].astype("int64") + timing_offset
     repeated["last_trade_time_ms"] = repeated["exchange_timestamp_ms"]
 
+    if float(profile.source_mid_return_scale) != 1.0:
+        original_mid = (repeated["buy_1_price"].astype(float) + repeated["sell_1_price"].astype(float)) / 2.0
+        anchor_mid = original_mid.groupby([repeated["trade_date"], repeated["symbol"]], sort=False).transform("first")
+        scaled_mid = anchor_mid + (original_mid - anchor_mid) * float(profile.source_mid_return_scale)
+        price_delta = scaled_mid - original_mid
+        price_columns = ["last_price"]
+        for level in range(1, 6):
+            price_columns.extend([f"buy_{level}_price", f"sell_{level}_price"])
+        for column in price_columns:
+            if column in repeated.columns:
+                repeated[column] = (repeated[column].astype(float) + price_delta).round(4)
+
     phase = (repeated["dense_subtick_id"].astype(float) / max(multiplier - 1, 1)) - 0.5
     micro_step = (
         (repeated["sell_1_price"].astype(float) - repeated["buy_1_price"].astype(float)).abs().clip(lower=0.01)

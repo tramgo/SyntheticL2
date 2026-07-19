@@ -14,6 +14,7 @@ class GeneratorCalibrationProfile:
     price_micro_step_spread_fraction: float = 0.08
     price_jump_size_scale: float = 1.0
     price_anchor_source_events: bool = False
+    source_mid_return_scale: float = 1.0
     book_l1_quantity_skew_scale: float = 1.0
     book_depth_ladder_multiplier: float = 1.0
     book_l1_l5_share_ratio: float = 1.0
@@ -68,6 +69,18 @@ PROFILES: dict[str, GeneratorCalibrationProfile] = {
         price_micro_step_spread_fraction=0.0,
         price_jump_size_scale=0.50,
         price_anchor_source_events=True,
+        book_l1_quantity_skew_scale=1.50,
+        book_depth_ladder_multiplier=0.80,
+        book_l1_l5_share_ratio=0.85,
+    ),
+    "P104_HDFCBANK_REAL_ANCHOR_CADENCE_VOL_PRICE_SCALE": GeneratorCalibrationProfile(
+        profile_id="P104_HDFCBANK_REAL_ANCHOR_CADENCE_VOL_PRICE_SCALE",
+        event_timing_tail_gap_multiplier=500.0,
+        event_timing_burst_throttle_fraction=0.0,
+        price_micro_step_spread_fraction=0.0,
+        price_jump_size_scale=0.50,
+        price_anchor_source_events=True,
+        source_mid_return_scale=0.075,
         book_l1_quantity_skew_scale=1.50,
         book_depth_ladder_multiplier=0.80,
         book_l1_l5_share_ratio=0.85,
