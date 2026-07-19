@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-19T22:34:43.713074+00:00",
+  "scope": "phase103_calibrated_realism_rerun",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "3355521c5bbb46a1e8f92ff06faf5108debf812b",
+  "configuration_hash": "85e2b44c8302d7b3690334516362dca21b5c6d84ae8f059a131abed1478c1df8",
+  "random_seed": "none_deterministic_phase103_calibrated_realism_rerun",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase103_hdfcbank_p98_full_book_rebalance_base",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase102_anchored_calibrated_dense_price_path",
+  "creation_timestamp": "2026-07-19T22:34:43.713074+00:00"
+}

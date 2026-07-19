@@ -129,6 +129,7 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
     imbalance_overrides = profile.symbol_l1_imbalance_scale_overrides or {}
     if imbalance_overrides and {"buy_1_quantity", "sell_1_quantity"}.issubset(repeated.columns):
         symbol_series = repeated["symbol"].astype(str)
+        imbalance_floor_overrides = profile.symbol_l1_imbalance_min_abs_overrides or {}
         for symbol, scale in imbalance_overrides.items():
             mask = symbol_series.eq(str(symbol))
             if not bool(mask.any()):
@@ -140,6 +141,13 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
             deterministic_sign = np.where((repeated.loc[mask, "annual_event_id"].astype("int64") % 2) == 0, 1.0, -1.0)
             seeded = np.where(current.abs() < 1e-9, 0.35 * deterministic_sign, current)
             target = pd.Series(seeded, index=current.index).mul(float(scale)).clip(-0.98, 0.98)
+            floor = float(imbalance_floor_overrides.get(str(symbol), 0.0))
+            if floor > 0:
+                sign = np.where(target.abs() < 1e-9, deterministic_sign, np.sign(target.to_numpy()))
+                target = pd.Series(
+                    np.where(target.abs().to_numpy() < floor, sign * floor, target.to_numpy()),
+                    index=target.index,
+                ).clip(-0.98, 0.98)
             repeated.loc[mask, "buy_1_quantity"] = np.maximum(1, (total * (1.0 + target) / 2.0).round()).astype("int64")
             repeated.loc[mask, "sell_1_quantity"] = np.maximum(1, (total * (1.0 - target) / 2.0).round()).astype("int64")
     repeated["last_traded_quantity"] = np.maximum(1, (repeated["last_traded_quantity"].astype(float) / math.sqrt(multiplier)).round()).astype("int64")
