@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence
+P128_ALLOWED_FEATURE_SNAPSHOT_EXISTS,1,snapshot_rows=228
+P128_ALL_SNAPSHOT_ROWS_ALLOWED,1,candidate_generation_allowed=1 for every snapshot row
+P128_BLOCKED_ROWS_EXCLUDED,1,excluded_blocked_rows=156
+P128_LABEL_DESIGNS_DECLARED,1,label_design_specs=3
+P128_NO_REPLAY,1,all replay-permission fields remain 0
+P128_REAL_ANCHOR_STILL_PRIMARY,1,ready_real_anchor_days=1; days_needed=4

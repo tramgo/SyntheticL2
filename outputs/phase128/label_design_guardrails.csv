@@ -1,0 +1,6 @@
+guardrail_id,requirement,enforcement
+P128_ALLOWED_CONTEXTS_ONLY,Phase128 may consume only Phase127 allowed-context rows for label design.,Feature snapshot is an inner design set derived from allowed_context_precommit_queue.csv.
+P128_BLOCKED_CONTEXTS_EXCLUDED,Phase127 blocked rows cannot enter Phase128 label design.,Blocked rows are emitted only in an exclusion ledger with can_enter_label_design=0.
+P128_NO_TRADING_OUTPUTS,"Phase128 cannot emit buy/sell signals, order models, fills, P&L, or profitability claims.",Every spec records forbidden inputs and outputs: buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim.
+P128_REALISM_REVIEW_PRESERVED,Allowed contexts with realism-review warnings must remain separated.,Specs and snapshot preserve priority_bucket and realism_review_flag.
+P128_REAL_ANCHOR_REMAINS_PRIMARY,More real Zerodha L2 days remain the primary unlock for future replay.,Acceptance summary carries Phase117 ready-day blocker forward.

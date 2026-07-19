@@ -1,0 +1,13 @@
+metric,value,description
+phase128_allowed_feature_snapshot_rows,228,Allowed context rows joined to Phase123 feature diagnostics
+phase128_clean_allowed_context_rows,141,Allowed feature rows without realism-review warning
+phase128_realism_review_context_rows,87,Allowed feature rows retaining realism-review warning
+phase128_blocked_exclusion_rows,156,Phase127 blocked rows excluded from label design
+phase128_label_design_spec_rows,3,Next label designs declared
+phase128_gate_rows,6,Gates evaluated
+phase128_all_gates_pass,1,1 means Phase128 obeys no-replay guardrails
+phase128_strategy_replay_allowed,0,Strategy replay remains closed
+phase128_current_ready_real_anchor_days,1,Real anchor days currently ready from Phase117
+phase128_additional_real_anchor_days_needed,4,Additional real anchor days needed before replay unlock
+phase128_next_best_action,build_phase129_allowed_context_label_matrix_no_replay_or_continue_real_anchor_acquisition,Recommended next milestone
+phase128_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity
