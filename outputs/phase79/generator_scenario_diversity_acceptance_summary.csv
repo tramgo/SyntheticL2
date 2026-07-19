@@ -1,0 +1,15 @@
+metric,value,description
+phase79_months_audited,12,Distinct synthetic months audited
+phase79_complete_month_fraction,1.0,Fraction of months with all expected symbols
+phase79_min_regime_codes_per_month,1,Minimum distinct regime codes in any month
+phase79_median_regime_entropy_bits,0.0,Median monthly regime entropy
+phase79_min_feed_profiles_per_month,2,Minimum feed-profile count in any month
+phase79_market_shock_months,1,Months where market shock flag appears broadly across symbols
+phase79_symbol_shock_months,1,Months with at least one symbol shock
+phase79_median_spread_cross_symbol_cv,0.3495845210400612,Median monthly cross-symbol coefficient of variation for mean spread bps
+phase79_corr_months,12,Months with cross-symbol correlation diagnostics
+phase79_median_corr_pair_std,0.22093801130068602,Median monthly standard deviation of pairwise correlations
+phase79_negative_corr_months,2,Months with more than 5 percent negative pair correlations
+phase79_generator_scenario_diversity_pass,0,1 means generator diversity gate passes
+phase79_recommend_next_action,generator_scenario_recalibration_before_new_strategy_mining,Recommended next milestone
+phase79_elapsed_seconds,181.64947750000283,Elapsed seconds
