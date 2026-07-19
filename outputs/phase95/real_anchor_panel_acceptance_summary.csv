@@ -1,0 +1,10 @@
+metric,value,description
+phase95_real_panel_roots_found,1,Real-data panel roots with Parquet files discovered
+phase95_schema_anchor_panel_roots,1,Panel roots usable for schema/single-day anchors
+phase95_multi_day_calibration_panel_roots,0,Panel roots meeting the multi-day calibration gate
+phase95_max_inferred_real_dates,1,Maximum inferred real date count across panel roots
+phase95_max_expected_symbol_fraction,1.0,Best expected-symbol coverage fraction across panel roots
+phase95_phase94_generator_calibration_pass,0,Phase94 generator calibration pass flag
+phase95_phase94_strategy_resume_allowed,0,Phase94 strategy replay resume flag
+phase95_real_anchor_panel_ready,0,1 means real anchor panel is ready and strategy replay may reopen
+phase95_recommend_next_action,collect_5_to_10_real_websocket_l2_days_then_rerun_phase94,Recommended next milestone

@@ -1,0 +1,9 @@
+field,required,example,description
+trade_date,True,2026-07-20,NSE trading date represented by the captured WebSocket ticks.
+session_label,True,normal|volatile|shock_like|expiry|event,Human or rule-based context label for calibration stratification.
+symbols_expected,True,ADANIPORTS|AXISBANK|BAJAJ-AUTO|BANKBEES|BHARTIARTL|BPCL|BRITANNIA|CIPLA|DRREDDY|GOLDBEES|HCLTECH|HDFCBANK|HINDUNILVR|ICICIBANK|INFY|ITBEES|ITC|JUNIORBEES|KOTAKBANK|LT|M&M|MARUTI|NESTLEIND|NIFTYBEES|ONGC|RELIANCE|SBIN|SUNPHARMA|TCS|TECHM|ULTRACEMCO|WIPRO,Expected fixed universe for the capture day.
+symbols_observed,True,ADANIPORTS|AXISBANK|...,Observed symbols with at least one readable L2 tick.
+capture_start_ist,True,09:15:00,Intended market-open capture start in IST.
+capture_end_ist,True,15:30:00,Intended market-close capture end in IST.
+collector_version,True,zerodha_websocket_l2_collector_vX,Collector/script version or git commit used for capture.
+known_incidents,False,disconnect 10:42-10:44; reconnect ok,"Disconnects, subscription failures, parser issues, or machine/network incidents."

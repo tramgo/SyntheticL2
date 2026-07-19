@@ -1,0 +1,2 @@
+panel_root,panel_name,parquet_files,symbol_partitions,expected_symbol_fraction,missing_expected_symbols,inferred_dates,inferred_date_count,usable_for_schema_anchor,usable_for_multi_day_calibration
+real_data_sample\l2_single_day,l2_single_day,50205,32,1.0,,unknown_single_day,1,True,False
