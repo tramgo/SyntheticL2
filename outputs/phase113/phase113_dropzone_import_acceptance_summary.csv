@@ -1,0 +1,10 @@
+metric,value,description
+phase113_source_symbol_partitions,32.0,Source symbol partitions inspected
+phase113_ready_symbol_partitions,32.0,Source symbol partitions ready for import
+phase113_ready_trade_dates,1.0,Distinct ready trade dates inferred
+phase113_ready_symbols,32.0,Distinct ready symbols inferred
+phase113_ready_expected_symbol_fraction,1.0,Expected universe fraction ready in source
+phase113_import_plan_rows,32.0,Import plan rows emitted
+phase113_execute_mode,0.0,1 means files were copied into the drop-zone
+phase113_copied_files,0.0,Parquet files copied when execute mode is enabled
+phase113_strategy_replay_allowed,0.0,Strategy replay remains closed
