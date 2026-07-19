@@ -1,0 +1,11 @@
+metric,value,description
+phase61_wider_sweep_shards,48,Dense shards scanned after Phase60 discovery/validation windows
+phase61_trade_rows,645,Candidate trades in wider sweep
+phase61_net_pnl_inr,-88748.03142050511,After-cost net P&L in wider sweep
+phase61_positive_symbol_fraction,0.03125,Fraction of symbols positive after costs
+phase61_positive_shard_fraction,0.14583333333333334,Fraction of shards positive after costs
+phase61_precision_cost_clear,0.30697674418604654,Trade-weighted cost-clearing precision
+phase61_survives_wider_sweep,0,1 means the Phase60 candidate survived the wider sweep
+phase61_elapsed_seconds,8.799635499999567,Elapsed seconds
+phase61_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase61_recommend_full_month_replay,0,1 means promote to broader full-month/full-row replay

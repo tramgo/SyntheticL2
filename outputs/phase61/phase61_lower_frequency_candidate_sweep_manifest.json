@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-07-19T19:15:45.909657+00:00",
+  "scope": "phase61_lower_frequency_candidate_wider_sweep",
+  "start_shard": 16,
+  "dense_shards_scanned": 48,
+  "max_rows_per_shard": 250000,
+  "survives_wider_sweep": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "440cb04bd44892dad829b5c9e03fc046dd3d5d14",
+  "configuration_hash": "860bd7daab9032d0980003632ee654406be7f15b5464408b373c96a62ea6627a",
+  "random_seed": "none_deterministic_lower_frequency_candidate_replay",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase61_later_shards_after_phase60_windows",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase61_fixed_phase60_event_bar_candidate",
+  "creation_timestamp": "2026-07-19T19:15:45.909657+00:00"
+}
