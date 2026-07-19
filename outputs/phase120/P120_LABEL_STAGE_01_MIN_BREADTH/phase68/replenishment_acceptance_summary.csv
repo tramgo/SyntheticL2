@@ -1,0 +1,13 @@
+metric,value,description
+phase68_shards_scanned,128,Dense shards scanned
+phase68_label_rows,236,Shard/symbol/strategy/side/replenishment bucket rows
+phase68_inferred_touches,274244,Inferred passive touch opportunities labeled with replenishment
+phase68_bucket_rollup_rows,56,Aggregated replenishment bucket rows
+phase68_label_candidate_rows,0,Replenishment bucket rows passing label gate
+phase68_best_mean_after_cost_bps_if_touched,-19.169204784719323,Best bucket mean after-cost bps conditional on touch
+phase68_best_cost_clearing_rate,0.0,Best bucket cost-clearing rate conditional on touch
+phase68_best_adverse_selection_rate,0.9762020398251579,Lowest bucket adverse-selection rate conditional on touch
+phase68_survives_replenishment_gate,0,1 means a replenishment bucket deserves targeted replay
+phase68_elapsed_seconds,54.476655499995104,Elapsed seconds
+phase68_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase68_recommend_next_action,advance_to_spread_transition_feature_family,Recommended next action

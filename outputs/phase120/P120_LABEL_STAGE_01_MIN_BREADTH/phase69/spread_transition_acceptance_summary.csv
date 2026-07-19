@@ -1,0 +1,12 @@
+metric,value,description
+phase69_shards_scanned,128,Dense shards scanned
+phase69_label_rows,1254,Shard/symbol/spread-transition label rows
+phase69_signal_rows,1312100,No-lookahead spread-transition signal rows
+phase69_bucket_rollup_rows,46,Aggregated spread-transition bucket rows
+phase69_label_candidate_rows,0,Bucket rows passing spread-transition label gate
+phase69_best_mean_after_cost_bps,-10.038242330183849,Best bucket mean after-cost bps
+phase69_best_cost_clearing_rate,0.0,Best bucket cost-clearing rate
+phase69_survives_spread_transition_gate,0,1 means a spread-transition bucket deserves targeted replay
+phase69_elapsed_seconds,25.00733190000028,Elapsed seconds
+phase69_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase69_recommend_next_action,advance_to_cross_symbol_lead_lag_feature_family,Recommended next action
