@@ -1,0 +1,13 @@
+metric,value,description
+phase70_trade_month,2026-01,Dense trade-month partition scanned
+phase70_symbols_loaded,32,Symbols loaded into event-bar matrix
+phase70_bar_rows,1597,Symbol event-bar rows
+phase70_pair_rows,16280,Leader-target pair rows before thresholding
+phase70_rule_rows,48,Lead-lag threshold rules evaluated
+phase70_label_candidate_rows,0,Rules passing cross-symbol lead-lag gate
+phase70_best_net_pnl_inr,38915.74717800456,Best after-cost rule P&L
+phase70_best_precision_cost_clear,0.4948453608247423,Best cost-clearing precision
+phase70_survives_cross_symbol_gate,0,1 means a lead-lag rule deserves disjoint-month replay
+phase70_elapsed_seconds,5.937854399999196,Elapsed seconds
+phase70_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase70_recommend_next_action,advance_to_shock_resilience_feature_family,Recommended next action
