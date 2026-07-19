@@ -1,0 +1,14 @@
+metric,value,description
+phase66_shards_scanned,32,Dense shards scanned
+phase66_label_rows,28,Shard/symbol/strategy/side/bucket rows with inferred touches
+phase66_candidate_orders,5681976,Hypothetical passive order candidates in labeled rows
+phase66_inferred_touches,68850,Inferred passive touch opportunities
+phase66_strategy_rollup_rows,4,Strategy/side rollup rows
+phase66_bucket_rollup_rows,16,Strategy/side/spread/imbalance bucket rollup rows
+phase66_label_candidate_rows,0,Bucket rows passing adverse-selection label gate
+phase66_best_mean_after_cost_bps_if_touched,-17.0135044621871,Best bucket mean after-cost bps conditional on touch
+phase66_best_cost_clearing_rate,0.0,Best bucket cost-clearing rate conditional on touch
+phase66_survives_label_gate,0,1 means at least one passive label bucket deserves targeted replay
+phase66_elapsed_seconds,13.144828399999824,Elapsed seconds
+phase66_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase66_recommend_next_action,retire_naive_passive_imbalance_and_return_to_feature_design,Recommended next action
