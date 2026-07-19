@@ -1,0 +1,7 @@
+metric,value,description
+phase74_source_phase73_allow_replay_expansion,0,Phase73 replay-expansion gate
+phase74_remediation_actions,4,Concrete remediation actions declared
+phase74_retest_queue_items,2,Near-miss retests queued behind remediation gates
+phase74_allow_replay_expansion_now,0,0 means no near-miss replay expansion before remediation gates pass
+phase74_next_implementation,timestamp_unit_contract_and_synchronous_matrix_validator,Next implementation step
+phase74_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for future gates

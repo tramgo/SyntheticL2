@@ -1,0 +1,3 @@
+retest_id,source_near_miss,allowed_after,experiment,not_allowed_yet
+RT74_hdfcbank_timestamp_refinement,NM70_HDFCBANK_LEAD_LAG,"R74_timestamp_unit_contract,R74_synchronous_cross_symbol_bars,R74_cost_drag_filter","Refine HDFCBANK lead-lag with timestamp bars, staleness filtering, lower-turnover thresholds and disjoint-month validation.",No direct full-year replay from Phase70/73 because precision is below gate.
+RT74_market_shock_mean_reversion,NM71_MARKET_SHOCK_MEAN_REVERSION,"R74_shock_panel_balance,R74_cost_drag_filter",Retest market-shock mean reversion on a balanced shock panel with enough trade count and matched no-shock controls.,No direct replay from Phase71 because trade count was below the predeclared minimum.
