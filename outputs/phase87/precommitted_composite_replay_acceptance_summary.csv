@@ -1,0 +1,8 @@
+metric,value,description
+phase87_precommitted_candidate_rows,18,Precommitted candidates replayed
+phase87_train_pass_candidates,0,Candidates passing train gates
+phase87_test_pass_candidates,0,Candidates passing test gates
+phase87_full_pass_candidates,0,Candidates passing both train and test gates
+phase87_best_test_net_pnl_inr,61590.7593547854,Best test after-cost net P&L
+phase87_composite_signal_replay_pass,0,1 means at least one precommitted family survives
+phase87_recommend_next_action,retire_precommitted_composite_family_or_design_new_feature_class,Recommended next milestone
