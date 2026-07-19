@@ -59,6 +59,21 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
     if float(profile.event_timing_burst_throttle_fraction) > 0:
         throttle_step = max(1, int(round(1.0 / float(profile.event_timing_burst_throttle_fraction))))
         timing_offset = timing_offset + (repeated["dense_subtick_id"].astype("int64") // throttle_step)
+    tail_overrides = profile.symbol_tail_gap_multiplier_overrides or {}
+    if tail_overrides:
+        symbol_values = frame["symbol"].astype(str).to_numpy()
+        source_extra = np.zeros(len(frame), dtype=np.int64)
+        for symbol, raw_multiplier in tail_overrides.items():
+            mask = symbol_values == str(symbol)
+            positions = np.flatnonzero(mask)
+            if len(positions) == 0:
+                continue
+            target_extra = max(0, int(round(692.0 * (float(raw_multiplier) - 1.0))))
+            if target_extra <= 0:
+                continue
+            source_extra[positions[1:]] = target_extra
+        cumulative_extra = np.cumsum(source_extra)
+        timing_offset = timing_offset + np.repeat(cumulative_extra, multiplier)
     repeated["callback_received_utc_ms"] = repeated["callback_received_utc_ms"].astype("int64") + timing_offset
     repeated["callback_received_monotonic_ns"] = repeated["callback_received_utc_ms"].astype("int64") * 1_000_000
     repeated["exchange_timestamp_ms"] = repeated["exchange_timestamp_ms"].astype("int64") + timing_offset
@@ -94,6 +109,39 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
         direction = np.where((repeated["dense_subtick_id"].astype(int) % 2) == 0, 1.0, -1.0)
         price_delta = direction * phase.abs() * micro_step
     repeated["last_price"] = (repeated["last_price"].astype(float) + price_delta).round(4)
+    depth_overrides = profile.symbol_depth_scale_overrides or {}
+    if depth_overrides:
+        symbol_series = repeated["symbol"].astype(str)
+        for symbol, scale in depth_overrides.items():
+            mask = symbol_series.eq(str(symbol))
+            if not bool(mask.any()):
+                continue
+            scale_value = float(scale)
+            quantity_columns = ["total_buy_quantity", "total_sell_quantity"]
+            for level in range(1, 6):
+                quantity_columns.extend([f"buy_{level}_quantity", f"sell_{level}_quantity"])
+            for column in quantity_columns:
+                if column in repeated.columns:
+                    repeated.loc[mask, column] = np.maximum(
+                        1,
+                        (repeated.loc[mask, column].astype(float) * scale_value).round(),
+                    ).astype("int64")
+    imbalance_overrides = profile.symbol_l1_imbalance_scale_overrides or {}
+    if imbalance_overrides and {"buy_1_quantity", "sell_1_quantity"}.issubset(repeated.columns):
+        symbol_series = repeated["symbol"].astype(str)
+        for symbol, scale in imbalance_overrides.items():
+            mask = symbol_series.eq(str(symbol))
+            if not bool(mask.any()):
+                continue
+            bid = repeated.loc[mask, "buy_1_quantity"].astype(float)
+            ask = repeated.loc[mask, "sell_1_quantity"].astype(float)
+            total = (bid + ask).clip(lower=2.0)
+            current = (bid - ask) / total
+            deterministic_sign = np.where((repeated.loc[mask, "annual_event_id"].astype("int64") % 2) == 0, 1.0, -1.0)
+            seeded = np.where(current.abs() < 1e-9, 0.35 * deterministic_sign, current)
+            target = pd.Series(seeded, index=current.index).mul(float(scale)).clip(-0.98, 0.98)
+            repeated.loc[mask, "buy_1_quantity"] = np.maximum(1, (total * (1.0 + target) / 2.0).round()).astype("int64")
+            repeated.loc[mask, "sell_1_quantity"] = np.maximum(1, (total * (1.0 - target) / 2.0).round()).astype("int64")
     repeated["last_traded_quantity"] = np.maximum(1, (repeated["last_traded_quantity"].astype(float) / math.sqrt(multiplier)).round()).astype("int64")
     repeated["volume_traded"] = repeated.groupby(["trade_date", "symbol"], sort=False)["last_traded_quantity"].cumsum().astype("int64")
     return repeated

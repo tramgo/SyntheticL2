@@ -1,0 +1,257 @@
+symbol,category,metric,real_value,synthetic_value,synthetic_to_real_ratio,lower_ratio_gate,upper_ratio_gate,calibration_gap
+ADANIPORTS,received tick cadence,median_gap_ms,1000.0,500.0,0.5,0.2,5.0,False
+ADANIPORTS,tail received tick cadence,p90_gap_ms,439477.0,439477.0,1.0,0.2,5.0,False
+ADANIPORTS,median spread scale,median_spread_bps,2.207261891623943,2.2129860789349505,1.0025933430612513,0.25,4.0,False
+ADANIPORTS,tail spread scale,p90_spread_bps,3.8593258401394497,4.40100893129725,1.1403569207668216,0.25,4.0,False
+ADANIPORTS,displayed L1 depth scale,median_l1_depth,131.0,806.0,6.152671755725191,0.1,10.0,False
+ADANIPORTS,displayed L5 depth scale,median_l5_depth,1088.0,6851.0,6.296875,0.1,10.0,False
+ADANIPORTS,L1 imbalance scale,median_abs_l1_imbalance,0.6296296296296297,0.21285140562248997,0.33805811481218995,0.25,4.0,False
+ADANIPORTS,one-tick volatility scale,one_tick_return_std,0.0004411553501896168,0.00012959971462430747,0.2937734169348804,0.1,10.0,False
+AXISBANK,received tick cadence,median_gap_ms,750.0,500.0,0.6666666666666666,0.2,5.0,False
+AXISBANK,tail received tick cadence,p90_gap_ms,305452.6999999952,305453.0,1.0000009821488067,0.2,5.0,False
+AXISBANK,median spread scale,median_spread_bps,1.5143484515790528,1.5166883110731175,1.0015451262169053,0.25,4.0,False
+AXISBANK,tail spread scale,p90_spread_bps,3.025947499809846,3.764046952721688,1.2439234167011244,0.25,4.0,False
+AXISBANK,displayed L1 depth scale,median_l1_depth,249.0,808.0,3.244979919678715,0.1,10.0,False
+AXISBANK,displayed L5 depth scale,median_l5_depth,3048.0,6870.0,2.2539370078740157,0.1,10.0,False
+AXISBANK,L1 imbalance scale,median_abs_l1_imbalance,0.5495978552278821,0.09009009009009009,0.16392001757855415,0.25,4.0,True
+AXISBANK,one-tick volatility scale,one_tick_return_std,0.0004231706657462332,0.00012102563493712421,0.28599722224059076,0.1,10.0,False
+BAJAJ-AUTO,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+BAJAJ-AUTO,tail received tick cadence,p90_gap_ms,1250.0,692.0,0.5536,0.2,5.0,False
+BAJAJ-AUTO,median spread scale,median_spread_bps,2.466273707056009,3.344931085556668,1.3562692072606621,0.25,4.0,False
+BAJAJ-AUTO,tail spread scale,p90_spread_bps,4.374433608466025,4.895361644841513,1.1190846822700233,0.25,4.0,False
+BAJAJ-AUTO,displayed L1 depth scale,median_l1_depth,61.0,52.0,0.8524590163934426,0.1,10.0,False
+BAJAJ-AUTO,displayed L5 depth scale,median_l5_depth,366.0,443.0,1.210382513661202,0.1,10.0,False
+BAJAJ-AUTO,L1 imbalance scale,median_abs_l1_imbalance,0.5789473684210527,0.9512195121951219,1.6430155210643014,0.25,4.0,False
+BAJAJ-AUTO,one-tick volatility scale,one_tick_return_std,0.0007120099059319438,0.00012123672577868084,0.1702739312594185,0.1,10.0,False
+BANKBEES,received tick cadence,median_gap_ms,1000.0,500.0,0.5,0.2,5.0,False
+BANKBEES,tail received tick cadence,p90_gap_ms,2351.6000000000226,692.0,0.2942677326075835,0.2,5.0,False
+BANKBEES,median spread scale,median_spread_bps,3.3338889814976747,3.82299722317458,1.1467080170909545,0.25,4.0,False
+BANKBEES,tail spread scale,p90_spread_bps,5.6550400307047,5.861777609182269,1.036558110527081,0.25,4.0,False
+BANKBEES,displayed L1 depth scale,median_l1_depth,403.0,800.0,1.9851116625310175,0.1,10.0,False
+BANKBEES,displayed L5 depth scale,median_l5_depth,5262.0,6800.0,1.2922843025465602,0.1,10.0,False
+BANKBEES,L1 imbalance scale,median_abs_l1_imbalance,0.8080307101727447,0.32792207792207795,0.4058287312520253,0.25,4.0,False
+BANKBEES,one-tick volatility scale,one_tick_return_std,0.0002176645338790533,0.0001056741829357451,0.48549104924215003,0.1,10.0,False
+BHARTIARTL,received tick cadence,median_gap_ms,750.0,500.0,0.6666666666666666,0.2,5.0,False
+BHARTIARTL,tail received tick cadence,p90_gap_ms,3949.100000000017,3949.0,0.9999746777746785,0.2,5.0,False
+BHARTIARTL,median spread scale,median_spread_bps,2.0929259104232467,1.5769347017619852,0.7534594005017053,0.25,4.0,False
+BHARTIARTL,tail spread scale,p90_spread_bps,3.1563664413141352,3.6575919198571736,1.1587982535812147,0.25,4.0,False
+BHARTIARTL,displayed L1 depth scale,median_l1_depth,415.0,806.0,1.9421686746987952,0.1,10.0,False
+BHARTIARTL,displayed L5 depth scale,median_l5_depth,3715.0,6851.0,1.8441453566621804,0.1,10.0,False
+BHARTIARTL,L1 imbalance scale,median_abs_l1_imbalance,0.5478260869565217,0.3190883190883191,0.582462804685027,0.25,4.0,False
+BHARTIARTL,one-tick volatility scale,one_tick_return_std,0.00043747989030047397,0.00012018861265523139,0.27472945687328015,0.1,10.0,False
+BPCL,received tick cadence,median_gap_ms,1750.0,500.0,0.2857142857142857,0.2,5.0,False
+BPCL,tail received tick cadence,p90_gap_ms,448824.0,448824.0,1.0,0.2,5.0,False
+BPCL,median spread scale,median_spread_bps,1.639209900828174,1.6358446274776541,0.9979470149925158,0.25,4.0,False
+BPCL,tail spread scale,p90_spread_bps,4.899959167006198,4.889956420707637,0.9979586061929018,0.25,4.0,False
+BPCL,displayed L1 depth scale,median_l1_depth,2059.0,810.0,0.39339485186983975,0.1,10.0,False
+BPCL,displayed L5 depth scale,median_l5_depth,19762.0,6885.0,0.3483959113450056,0.1,10.0,False
+BPCL,L1 imbalance scale,median_abs_l1_imbalance,0.6534859521331946,0.21122112211221122,0.32322213113031045,0.25,4.0,False
+BPCL,one-tick volatility scale,one_tick_return_std,0.0006153089784578416,0.00012968616350882449,0.21076592094244898,0.1,10.0,False
+BRITANNIA,received tick cadence,median_gap_ms,1750.0,500.0,0.2857142857142857,0.2,5.0,False
+BRITANNIA,tail received tick cadence,p90_gap_ms,450022.8,450023.0,1.000000444421927,0.2,5.0,False
+BRITANNIA,median spread scale,median_spread_bps,2.817562808170932,3.746247898589069,1.329605816674237,0.25,4.0,False
+BRITANNIA,tail spread scale,p90_spread_bps,5.5975370836831795,5.630207942346671,1.0058366489002328,0.25,4.0,False
+BRITANNIA,displayed L1 depth scale,median_l1_depth,35.0,42.0,1.2,0.1,10.0,False
+BRITANNIA,displayed L5 depth scale,median_l5_depth,406.5,352.0,0.8659286592865929,0.1,10.0,False
+BRITANNIA,L1 imbalance scale,median_abs_l1_imbalance,0.5420363329108576,0.9512195121951219,1.7548999106514838,0.25,4.0,False
+BRITANNIA,one-tick volatility scale,one_tick_return_std,0.0004900395431743122,0.00010393536364813798,0.2120958708247899,0.1,10.0,False
+CIPLA,received tick cadence,median_gap_ms,1500.0,500.0,0.3333333333333333,0.2,5.0,False
+CIPLA,tail received tick cadence,p90_gap_ms,447131.60000000003,447132.0,1.000000894591212,0.2,5.0,False
+CIPLA,median spread scale,median_spread_bps,2.803869339687814,2.8100938571354668,1.002219974147706,0.25,4.0,False
+CIPLA,tail spread scale,p90_spread_bps,4.90069113575094,4.922081688977493,1.0043648033785495,0.25,4.0,False
+CIPLA,displayed L1 depth scale,median_l1_depth,136.0,802.0,5.897058823529412,0.1,10.0,False
+CIPLA,displayed L5 depth scale,median_l5_depth,1594.0,6816.0,4.27603513174404,0.1,10.0,False
+CIPLA,L1 imbalance scale,median_abs_l1_imbalance,0.6756756756756757,0.5685279187817259,0.8414213197969544,0.25,4.0,False
+CIPLA,one-tick volatility scale,one_tick_return_std,0.0004395412175018055,0.0001038905887669157,0.23636142557322043,0.1,10.0,False
+DRREDDY,received tick cadence,median_gap_ms,1749.0,500.0,0.2858776443682104,0.2,5.0,False
+DRREDDY,tail received tick cadence,p90_gap_ms,446827.0,446827.0,1.0,0.2,5.0,False
+DRREDDY,median spread scale,median_spread_bps,3.2464897329751126,2.4386873358962946,0.7511766666397123,0.25,4.0,False
+DRREDDY,tail spread scale,p90_spread_bps,4.86933939295495,4.86512455732545,0.9991344132562213,0.25,4.0,False
+DRREDDY,displayed L1 depth scale,median_l1_depth,271.5,802.0,2.9539594843462247,0.1,10.0,False
+DRREDDY,displayed L5 depth scale,median_l5_depth,2642.0,6816.0,2.579863739591219,0.1,10.0,False
+DRREDDY,L1 imbalance scale,median_abs_l1_imbalance,0.6188312886265104,0.20725388601036268,0.33491177614881196,0.25,4.0,False
+DRREDDY,one-tick volatility scale,one_tick_return_std,0.0005422428372631224,0.00010033423109760238,0.18503560435029842,0.1,10.0,False
+GOLDBEES,received tick cadence,median_gap_ms,1000.0,500.0,0.5,0.2,5.0,False
+GOLDBEES,tail received tick cadence,p90_gap_ms,439314.2,439314.0,0.9999995447449683,0.2,5.0,False
+GOLDBEES,median spread scale,median_spread_bps,0.8570816370263652,0.8562670183062101,0.9990495436082595,0.25,4.0,False
+GOLDBEES,tail spread scale,p90_spread_bps,2.56486983285608,2.5559758715878687,0.9965323927342123,0.25,4.0,False
+GOLDBEES,displayed L1 depth scale,median_l1_depth,11211.5,11235.0,1.0020960620791153,0.1,10.0,False
+GOLDBEES,displayed L5 depth scale,median_l5_depth,95705.5,95501.0,0.9978632367000851,0.1,10.0,False
+GOLDBEES,L1 imbalance scale,median_abs_l1_imbalance,0.7474247686637312,0.20235317983568313,0.2707338428153195,0.25,4.0,False
+GOLDBEES,one-tick volatility scale,one_tick_return_std,0.0002850981786107784,0.000103334991037727,0.36245405544593795,0.1,10.0,False
+HCLTECH,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+HCLTECH,tail received tick cadence,p90_gap_ms,1214.7999999999988,692.0,0.5696410931840638,0.2,5.0,False
+HCLTECH,median spread scale,median_spread_bps,3.2557382386445024,2.4614021377273834,0.7560196666032236,0.25,4.0,False
+HCLTECH,tail spread scale,p90_spread_bps,4.262175318971785,4.886984413028124,1.1465939449452467,0.25,4.0,False
+HCLTECH,displayed L1 depth scale,median_l1_depth,339.5,810.0,2.385861561119293,0.1,10.0,False
+HCLTECH,displayed L5 depth scale,median_l5_depth,4819.0,6885.0,1.4287196513799543,0.1,10.0,False
+HCLTECH,L1 imbalance scale,median_abs_l1_imbalance,0.6606060606060606,0.29396325459317585,0.44499024777866064,0.25,4.0,False
+HCLTECH,one-tick volatility scale,one_tick_return_std,0.0009230660025647796,0.00012517490967594333,0.13560775646393575,0.1,10.0,False
+HDFCBANK,received tick cadence,median_gap_ms,499.0,500.0,1.002004008016032,0.2,5.0,False
+HDFCBANK,tail received tick cadence,p90_gap_ms,1000.0,692.0,0.692,0.2,5.0,False
+HDFCBANK,median spread scale,median_spread_bps,1.220479648502139,1.2229947472378389,1.0020607461490951,0.25,4.0,False
+HDFCBANK,tail spread scale,p90_spread_bps,2.4508455616850657,3.037187321565245,1.2392405988556223,0.25,4.0,False
+HDFCBANK,displayed L1 depth scale,median_l1_depth,1010.0,808.0,0.8,0.1,10.0,False
+HDFCBANK,displayed L5 depth scale,median_l5_depth,15104.0,6868.0,0.4547139830508475,0.1,10.0,False
+HDFCBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6221233709952622,0.5723684210526315,0.9200239819587013,0.25,4.0,False
+HDFCBANK,one-tick volatility scale,one_tick_return_std,0.0002661320563781602,0.00012154440469128039,0.4567071188093626,0.1,10.0,False
+HINDUNILVR,received tick cadence,median_gap_ms,1000.0,500.0,0.5,0.2,5.0,False
+HINDUNILVR,tail received tick cadence,p90_gap_ms,442440.00000000006,442440.0,0.9999999999999999,0.2,5.0,False
+HINDUNILVR,median spread scale,median_spread_bps,1.410304626579205,1.8845367867474232,1.3362622168506264,0.25,4.0,False
+HINDUNILVR,tail spread scale,p90_spread_bps,3.52031676225702,4.2064182932462035,1.1948976689669528,0.25,4.0,False
+HINDUNILVR,displayed L1 depth scale,median_l1_depth,188.5,802.0,4.254641909814324,0.1,10.0,False
+HINDUNILVR,displayed L5 depth scale,median_l5_depth,1287.0,6816.0,5.296037296037296,0.1,10.0,False
+HINDUNILVR,L1 imbalance scale,median_abs_l1_imbalance,0.6277653381101658,0.2924731182795699,0.46589561500804644,0.25,4.0,False
+HINDUNILVR,one-tick volatility scale,one_tick_return_std,0.00044918707262581214,0.00010566452121244453,0.23523500040809636,0.1,10.0,False
+ICICIBANK,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+ICICIBANK,tail received tick cadence,p90_gap_ms,2000.0,692.0,0.346,0.2,5.0,False
+ICICIBANK,median spread scale,median_spread_bps,1.4178363816818766,1.4257708073414228,1.0055961504176767,0.25,4.0,False
+ICICIBANK,tail spread scale,p90_spread_bps,2.8435345134008028,3.5390337729992956,1.2445897021192442,0.25,4.0,False
+ICICIBANK,displayed L1 depth scale,median_l1_depth,580.0,810.0,1.396551724137931,0.1,10.0,False
+ICICIBANK,displayed L5 depth scale,median_l5_depth,6394.0,6884.0,1.0766343446981546,0.1,10.0,False
+ICICIBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6189433235605364,0.3687707641196013,0.5958069989320004,0.25,4.0,False
+ICICIBANK,one-tick volatility scale,one_tick_return_std,0.0002723495224193186,0.00012014139561304032,0.44112945213124527,0.1,10.0,False
+INFY,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+INFY,tail received tick cadence,p90_gap_ms,1000.0,692.0,0.692,0.2,5.0,False
+INFY,median spread scale,median_spread_bps,1.8142235123371322,1.8159778813898175,1.00096700822184,0.25,4.0,False
+INFY,tail spread scale,p90_spread_bps,3.66367466569052,4.5082512268078645,1.2305271723569269,0.25,4.0,False
+INFY,displayed L1 depth scale,median_l1_depth,613.0,810.0,1.3213703099510603,0.1,10.0,False
+INFY,displayed L5 depth scale,median_l5_depth,9352.0,6885.0,0.7362061591103507,0.1,10.0,False
+INFY,L1 imbalance scale,median_abs_l1_imbalance,0.7581573896353166,0.75,0.989240506329114,0.25,4.0,False
+INFY,one-tick volatility scale,one_tick_return_std,0.0006784295765149681,0.0001241827718092192,0.1830444545875122,0.1,10.0,False
+ITBEES,received tick cadence,median_gap_ms,1250.0,500.0,0.4,0.2,5.0,False
+ITBEES,tail received tick cadence,p90_gap_ms,446257.60000000003,446258.0,1.0000008963432778,0.2,5.0,False
+ITBEES,median spread scale,median_spread_bps,3.127941694266626,3.114294612271914,0.9956370407991536,0.25,4.0,False
+ITBEES,tail spread scale,p90_spread_bps,6.297229219143444,6.203993510623756,0.9851941694870734,0.25,4.0,False
+ITBEES,displayed L1 depth scale,median_l1_depth,134432.0,193832.0,1.4418590811711498,0.1,10.0,False
+ITBEES,displayed L5 depth scale,median_l5_depth,2152154.5,1647329.0,0.7654325003153817,0.1,10.0,False
+ITBEES,L1 imbalance scale,median_abs_l1_imbalance,0.6847403586078421,0.7403360384043891,1.0811923513747306,0.25,4.0,False
+ITBEES,one-tick volatility scale,one_tick_return_std,0.0008419522636051179,0.0001024943476622879,0.12173415535866834,0.1,10.0,False
+ITC,received tick cadence,median_gap_ms,1254.5,500.0,0.3985651654045436,0.2,5.0,False
+ITC,tail received tick cadence,p90_gap_ms,443821.10000000003,443821.0,0.9999997746839886,0.2,5.0,False
+ITC,median spread scale,median_spread_bps,1.7871503887056162,1.7860370481312915,0.9993770302816368,0.25,4.0,False
+ITC,tail spread scale,p90_spread_bps,3.9255538375853747,5.329117409339602,1.357545362979295,0.25,4.0,False
+ITC,displayed L1 depth scale,median_l1_depth,5559.0,13371.0,2.4052887209929845,0.1,10.0,False
+ITC,displayed L5 depth scale,median_l5_depth,113657.0,113657.0,1.0,0.1,10.0,False
+ITC,L1 imbalance scale,median_abs_l1_imbalance,0.5893918609967993,0.5099049128367671,0.8651373501737856,0.25,4.0,False
+ITC,one-tick volatility scale,one_tick_return_std,0.00035381346381810726,0.00010529686627195734,0.29760559458554026,0.1,10.0,False
+JUNIORBEES,received tick cadence,median_gap_ms,999.0,500.0,0.5005005005005005,0.2,5.0,False
+JUNIORBEES,tail received tick cadence,p90_gap_ms,4750.0,4750.0,1.0,0.2,5.0,False
+JUNIORBEES,median spread scale,median_spread_bps,3.6007767389819154,3.965496597859059,1.1012892176648155,0.25,4.0,False
+JUNIORBEES,tail spread scale,p90_spread_bps,5.535779804703658,6.039543590404753,1.0910014132558263,0.25,4.0,False
+JUNIORBEES,displayed L1 depth scale,median_l1_depth,417.0,798.0,1.9136690647482015,0.1,10.0,False
+JUNIORBEES,displayed L5 depth scale,median_l5_depth,8912.0,6784.0,0.7612208258527827,0.1,10.0,False
+JUNIORBEES,L1 imbalance scale,median_abs_l1_imbalance,0.8632375189107413,0.6977401129943502,0.8082828858907563,0.25,4.0,False
+JUNIORBEES,one-tick volatility scale,one_tick_return_std,0.0002105588049157738,9.608197023518793e-05,0.4563189379500038,0.1,10.0,False
+KOTAKBANK,received tick cadence,median_gap_ms,750.0,500.0,0.6666666666666666,0.2,5.0,False
+KOTAKBANK,tail received tick cadence,p90_gap_ms,6375.0,6375.0,1.0,0.2,5.0,False
+KOTAKBANK,median spread scale,median_spread_bps,2.623294858342674,2.636235371530523,1.0049329236272069,0.25,4.0,False
+KOTAKBANK,tail spread scale,p90_spread_bps,3.96432111000931,4.033517996749986,1.0174549146803382,0.25,4.0,False
+KOTAKBANK,displayed L1 depth scale,median_l1_depth,1719.0,808.0,0.4700407213496219,0.1,10.0,False
+KOTAKBANK,displayed L5 depth scale,median_l5_depth,25525.0,6870.0,0.2691478942213516,0.1,10.0,False
+KOTAKBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6708571428571428,0.6022727272727273,0.8977659903980177,0.25,4.0,False
+KOTAKBANK,one-tick volatility scale,one_tick_return_std,0.0004387580939967396,0.00012056015152363438,0.27477590310739713,0.1,10.0,False
+LT,received tick cadence,median_gap_ms,749.0,500.0,0.6675567423230975,0.2,5.0,False
+LT,tail received tick cadence,p90_gap_ms,3750.7,3751.0,1.0000799850694537,0.2,5.0,False
+LT,median spread scale,median_spread_bps,1.2775471095496647,1.503406154569857,1.1767911674895555,0.25,4.0,False
+LT,tail spread scale,p90_spread_bps,2.8017982450552315,3.5468157511556373,1.2659069072568854,0.25,4.0,False
+LT,displayed L1 depth scale,median_l1_depth,106.0,56.0,0.5283018867924528,0.1,10.0,False
+LT,displayed L5 depth scale,median_l5_depth,481.0,481.0,1.0,0.1,10.0,False
+LT,L1 imbalance scale,median_abs_l1_imbalance,0.5492957746478874,0.45714285714285713,0.8322344322344322,0.25,4.0,False
+LT,one-tick volatility scale,one_tick_return_std,0.0003339160897955575,0.00011417436418234592,0.34192531498631884,0.1,10.0,False
+M&M,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+M&M,tail received tick cadence,p90_gap_ms,1250.0,692.0,0.5536,0.2,5.0,False
+M&M,median spread scale,median_spread_bps,1.2672263583071004,1.274666794133636,1.0058714339216204,0.25,4.0,False
+M&M,tail spread scale,p90_spread_bps,2.8643906801859527,3.4667370519337988,1.2102877850827047,0.25,4.0,False
+M&M,displayed L1 depth scale,median_l1_depth,47.0,50.0,1.0638297872340425,0.1,10.0,False
+M&M,displayed L5 depth scale,median_l5_depth,447.0,424.0,0.9485458612975392,0.1,10.0,False
+M&M,L1 imbalance scale,median_abs_l1_imbalance,0.6765475152571927,0.1891891891891892,0.27963917525773196,0.25,4.0,False
+M&M,one-tick volatility scale,one_tick_return_std,0.00042012921386494836,0.0001123359792219271,0.2673843558473365,0.1,10.0,False
+MARUTI,received tick cadence,median_gap_ms,749.0,500.0,0.6675567423230975,0.2,5.0,False
+MARUTI,tail received tick cadence,p90_gap_ms,1250.0,692.0,0.5536,0.2,5.0,False
+MARUTI,median spread scale,median_spread_bps,2.911530203192002,2.9304888055327627,1.0065115595640999,0.25,4.0,False
+MARUTI,tail spread scale,p90_spread_bps,4.362050163576881,4.369440569621128,1.0016942505856437,0.25,4.0,False
+MARUTI,displayed L1 depth scale,median_l1_depth,40.0,44.0,1.1,0.1,10.0,False
+MARUTI,displayed L5 depth scale,median_l5_depth,411.0,375.0,0.9124087591240876,0.1,10.0,False
+MARUTI,L1 imbalance scale,median_abs_l1_imbalance,0.592948717948718,0.5,0.8432432432432433,0.25,4.0,False
+MARUTI,one-tick volatility scale,one_tick_return_std,0.00042889714699494066,0.00011112515189126683,0.2590951062973093,0.1,10.0,False
+NESTLEIND,received tick cadence,median_gap_ms,1000.0,500.0,0.5,0.2,5.0,False
+NESTLEIND,tail received tick cadence,p90_gap_ms,443603.8,443604.0,1.0000004508527656,0.2,5.0,False
+NESTLEIND,median spread scale,median_spread_bps,2.4406884964413553,2.7965378860960577,1.1457987736548718,0.25,4.0,False
+NESTLEIND,tail spread scale,p90_spread_bps,4.188189306157591,4.877530436661228,1.1645916839265475,0.25,4.0,False
+NESTLEIND,displayed L1 depth scale,median_l1_depth,349.0,802.0,2.297994269340974,0.1,10.0,False
+NESTLEIND,displayed L5 depth scale,median_l5_depth,2850.0,6817.0,2.3919298245614034,0.1,10.0,False
+NESTLEIND,L1 imbalance scale,median_abs_l1_imbalance,0.6190476190476191,0.4119601328903654,0.665474060822898,0.25,4.0,False
+NESTLEIND,one-tick volatility scale,one_tick_return_std,0.0006511569426619996,0.00010029785415425016,0.15403023078310696,0.1,10.0,False
+NIFTYBEES,received tick cadence,median_gap_ms,501.0,500.0,0.998003992015968,0.2,5.0,False
+NIFTYBEES,tail received tick cadence,p90_gap_ms,2320.200000000001,692.0,0.2982501508490646,0.2,5.0,False
+NIFTYBEES,median spread scale,median_spread_bps,1.4575665925723724,1.4588647552141822,1.0008906369344805,0.25,4.0,False
+NIFTYBEES,tail spread scale,p90_spread_bps,3.6411964983767007,3.625647540649523,0.995729711996013,0.25,4.0,False
+NIFTYBEES,displayed L1 depth scale,median_l1_depth,2941.0,798.0,0.2713362801768106,0.1,10.0,False
+NIFTYBEES,displayed L5 depth scale,median_l5_depth,51029.5,6783.0,0.13292311310124535,0.1,10.0,False
+NIFTYBEES,L1 imbalance scale,median_abs_l1_imbalance,0.8034544371649791,0.6209150326797386,0.7728067752922766,0.25,4.0,False
+NIFTYBEES,one-tick volatility scale,one_tick_return_std,0.0001498300794340265,8.835800929659555e-05,0.5897214339761566,0.1,10.0,False
+ONGC,received tick cadence,median_gap_ms,749.0,500.0,0.6675567423230975,0.2,5.0,False
+ONGC,tail received tick cadence,p90_gap_ms,4016.999999999999,4017.0,1.0000000000000002,0.2,5.0,False
+ONGC,median spread scale,median_spread_bps,1.6212053661894394,2.3810969475528583,1.468720124674584,0.25,4.0,False
+ONGC,tail spread scale,p90_spread_bps,3.6357025995274963,4.0281844006151335,1.1079521193891506,0.25,4.0,False
+ONGC,displayed L1 depth scale,median_l1_depth,1042.0,810.0,0.7773512476007678,0.1,10.0,False
+ONGC,displayed L5 depth scale,median_l5_depth,7000.5,6884.0,0.9833583315477465,0.1,10.0,False
+ONGC,L1 imbalance scale,median_abs_l1_imbalance,0.6120805369127517,0.19090909090909092,0.3119019138755981,0.25,4.0,False
+ONGC,one-tick volatility scale,one_tick_return_std,0.0005115545132356549,0.00012229845544236903,0.23907218542323852,0.1,10.0,False
+RELIANCE,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+RELIANCE,tail received tick cadence,p90_gap_ms,2142.399999999999,692.0,0.32300224047796877,0.2,5.0,False
+RELIANCE,median spread scale,median_spread_bps,0.7711586658948066,1.5419962683676283,1.9995836610075406,0.25,4.0,False
+RELIANCE,tail spread scale,p90_spread_bps,3.0788177339908476,3.0728869580922824,0.9980736839881464,0.25,4.0,False
+RELIANCE,displayed L1 depth scale,median_l1_depth,986.0,810.0,0.821501014198783,0.1,10.0,False
+RELIANCE,displayed L5 depth scale,median_l5_depth,11881.5,6885.0,0.5794722888524176,0.1,10.0,False
+RELIANCE,L1 imbalance scale,median_abs_l1_imbalance,0.7167036670286846,0.44358974358974357,0.6189304785181039,0.25,4.0,False
+RELIANCE,one-tick volatility scale,one_tick_return_std,0.000201419896687226,0.00012023252017786321,0.5969247435597971,0.1,10.0,False
+SBIN,received tick cadence,median_gap_ms,500.0,500.0,1.0,0.2,5.0,False
+SBIN,tail received tick cadence,p90_gap_ms,1750.0,692.0,0.3954285714285714,0.2,5.0,False
+SBIN,median spread scale,median_spread_bps,1.9254837777996103,1.928849561789929,1.0017480199153717,0.25,4.0,False
+SBIN,tail spread scale,p90_spread_bps,3.844972239728642,3.8302069269279215,0.996159838906467,0.25,4.0,False
+SBIN,displayed L1 depth scale,median_l1_depth,1048.0,808.0,0.7709923664122137,0.1,10.0,False
+SBIN,displayed L5 depth scale,median_l5_depth,13743.5,6868.0,0.4997271437406774,0.1,10.0,False
+SBIN,L1 imbalance scale,median_abs_l1_imbalance,0.6489188956738625,0.19047619047619047,0.2935285006277905,0.25,4.0,False
+SBIN,one-tick volatility scale,one_tick_return_std,0.0003895484406278971,0.00012049890049613508,0.3093296954337896,0.1,10.0,False
+SUNPHARMA,received tick cadence,median_gap_ms,751.0,500.0,0.6657789613848203,0.2,5.0,False
+SUNPHARMA,tail received tick cadence,p90_gap_ms,436729.0,436729.0,1.0,0.2,5.0,False
+SUNPHARMA,median spread scale,median_spread_bps,1.5569452733734048,2.0816203332667054,1.3369900463851865,0.25,4.0,False
+SUNPHARMA,tail spread scale,p90_spread_bps,3.1282586027106833,4.14542675225222,1.3251547518034938,0.25,4.0,False
+SUNPHARMA,displayed L1 depth scale,median_l1_depth,113.0,802.0,7.097345132743363,0.1,10.0,False
+SUNPHARMA,displayed L5 depth scale,median_l5_depth,986.0,6816.0,6.9127789046653145,0.1,10.0,False
+SUNPHARMA,L1 imbalance scale,median_abs_l1_imbalance,0.6103896103896104,0.2948717948717949,0.48308783415166395,0.25,4.0,False
+SUNPHARMA,one-tick volatility scale,one_tick_return_std,0.0003448151930137831,9.591121528261899e-05,0.27815252119353445,0.1,10.0,False
+TCS,received tick cadence,median_gap_ms,499.0,500.0,1.002004008016032,0.2,5.0,False
+TCS,tail received tick cadence,p90_gap_ms,1000.0,692.0,0.692,0.2,5.0,False
+TCS,median spread scale,median_spread_bps,1.8300773207672187,1.8392622719031582,1.0050188869244545,0.25,4.0,False
+TCS,tail spread scale,p90_spread_bps,3.214444927692387,3.6555135425361587,1.1372145501837574,0.25,4.0,False
+TCS,displayed L1 depth scale,median_l1_depth,231.0,810.0,3.5064935064935066,0.1,10.0,False
+TCS,displayed L5 depth scale,median_l5_depth,2997.0,6885.0,2.2972972972972974,0.1,10.0,False
+TCS,L1 imbalance scale,median_abs_l1_imbalance,0.6826086956521739,0.05221932114882506,0.07649964244732335,0.25,4.0,True
+TCS,one-tick volatility scale,one_tick_return_std,0.0006492641320056243,0.00012317317483342413,0.1897119658419035,0.1,10.0,False
+TECHM,received tick cadence,median_gap_ms,501.0,500.0,0.998003992015968,0.2,5.0,False
+TECHM,tail received tick cadence,p90_gap_ms,3499.7,3500.0,1.0000857216332828,0.2,5.0,False
+TECHM,median spread scale,median_spread_bps,3.28655470470306,3.931596768883616,1.1962669488682178,0.25,4.0,False
+TECHM,tail spread scale,p90_spread_bps,4.671653778297445,5.3053564204757215,1.1356484603208814,0.25,4.0,False
+TECHM,displayed L1 depth scale,median_l1_depth,137.0,810.0,5.912408759124087,0.1,10.0,False
+TECHM,displayed L5 depth scale,median_l5_depth,1436.0,6886.0,4.795264623955432,0.1,10.0,False
+TECHM,L1 imbalance scale,median_abs_l1_imbalance,0.6256684491978609,0.5,0.7991452991452992,0.25,4.0,False
+TECHM,one-tick volatility scale,one_tick_return_std,0.0008667501064612425,0.00012406303861786332,0.14313587929557517,0.1,10.0,False
+ULTRACEMCO,received tick cadence,median_gap_ms,2140.5,500.0,0.233590282644242,0.2,5.0,False
+ULTRACEMCO,tail received tick cadence,p90_gap_ms,450515.3,450515.0,0.9999993340958676,0.2,5.0,False
+ULTRACEMCO,median spread scale,median_spread_bps,2.584981258885873,2.5894213506421764,1.001717649495926,0.25,4.0,False
+ULTRACEMCO,tail spread scale,p90_spread_bps,4.316112046268722,5.155801888312441,1.1945477395031092,0.25,4.0,False
+ULTRACEMCO,displayed L1 depth scale,median_l1_depth,30.0,33.0,1.1,0.1,10.0,False
+ULTRACEMCO,displayed L5 depth scale,median_l5_depth,309.0,282.0,0.912621359223301,0.1,10.0,False
+ULTRACEMCO,L1 imbalance scale,median_abs_l1_imbalance,0.6666666666666666,0.42105263157894735,0.631578947368421,0.25,4.0,False
+ULTRACEMCO,one-tick volatility scale,one_tick_return_std,0.00044190390590710937,0.00011679380082615461,0.2642968284844835,0.1,10.0,False
+WIPRO,received tick cadence,median_gap_ms,501.0,500.0,0.998003992015968,0.2,5.0,False
+WIPRO,tail received tick cadence,p90_gap_ms,3459.200000000001,692.0,0.20004625346901012,0.2,5.0,False
+WIPRO,median spread scale,median_spread_bps,2.2278537569527366,2.2480902473344417,1.009083401600554,0.25,4.0,False
+WIPRO,tail spread scale,p90_spread_bps,3.4081226924170562,3.909118577527213,1.147000542622733,0.25,4.0,False
+WIPRO,displayed L1 depth scale,median_l1_depth,1427.0,810.0,0.5676243868255081,0.1,10.0,False
+WIPRO,displayed L5 depth scale,median_l5_depth,14713.0,6885.0,0.46795351050091755,0.1,10.0,False
+WIPRO,L1 imbalance scale,median_abs_l1_imbalance,0.7019619685292031,0.384180790960452,0.5472957342196371,0.25,4.0,False
+WIPRO,one-tick volatility scale,one_tick_return_std,0.0005066272743296041,0.00012120047541358952,0.23923006429918006,0.1,10.0,False

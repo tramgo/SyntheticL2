@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict
+from typing import Mapping
 
 
 DEFAULT_PROFILE_ID = "P98_LEGACY_DEFAULT"
@@ -19,6 +20,9 @@ class GeneratorCalibrationProfile:
     book_depth_ladder_multiplier: float = 1.0
     book_l1_l5_share_ratio: float = 1.0
     spread_preserve_current_scale: float = 1.0
+    symbol_depth_scale_overrides: Mapping[str, float] | None = None
+    symbol_l1_imbalance_scale_overrides: Mapping[str, float] | None = None
+    symbol_tail_gap_multiplier_overrides: Mapping[str, float] | None = None
 
     def to_manifest(self) -> dict[str, float | str]:
         return asdict(self)
@@ -84,6 +88,67 @@ PROFILES: dict[str, GeneratorCalibrationProfile] = {
         book_l1_quantity_skew_scale=1.50,
         book_depth_ladder_multiplier=0.80,
         book_l1_l5_share_ratio=0.85,
+    ),
+    "P108_SYMBOL_AWARE_CADENCE_DEPTH_IMBALANCE": GeneratorCalibrationProfile(
+        profile_id="P108_SYMBOL_AWARE_CADENCE_DEPTH_IMBALANCE",
+        event_timing_tail_gap_multiplier=500.0,
+        event_timing_burst_throttle_fraction=0.0,
+        price_micro_step_spread_fraction=0.0,
+        price_jump_size_scale=0.50,
+        price_anchor_source_events=True,
+        source_mid_return_scale=0.075,
+        book_l1_quantity_skew_scale=1.50,
+        book_depth_ladder_multiplier=0.80,
+        book_l1_l5_share_ratio=0.85,
+        symbol_depth_scale_overrides={
+            "BAJAJ-AUTO": 0.06454677297141195,
+            "BRITANNIA": 0.05163999113132655,
+            "GOLDBEES": 14.044356617647058,
+            "ITBEES": 241.68565720748018,
+            "ITC": 16.714264705882353,
+            "LT": 0.0702189781021897,
+            "M&M": 0.06178406476970165,
+            "MARUTI": 0.0548095168588527,
+            "ULTRACEMCO": 0.0410599883517763,
+        },
+        symbol_l1_imbalance_scale_overrides={
+            "AXISBANK": 4.0,
+            "BAJAJ-AUTO": 4.0,
+            "BHARTIARTL": 4.0,
+            "BPCL": 4.0,
+            "BRITANNIA": 4.0,
+            "HINDUNILVR": 4.0,
+            "INFY": 4.0,
+            "KOTAKBANK": 4.0,
+            "LT": 4.0,
+            "MARUTI": 4.0,
+            "ONGC": 4.0,
+            "SBIN": 4.0,
+            "TCS": 4.0,
+            "TECHM": 4.0,
+            "WIPRO": 4.0,
+        },
+        symbol_tail_gap_multiplier_overrides={
+            "ADANIPORTS": 635.0823699421966,
+            "AXISBANK": 441.4056358381433,
+            "BHARTIARTL": 5.706791907514476,
+            "BPCL": 648.5895953757225,
+            "BRITANNIA": 650.3219653179191,
+            "CIPLA": 646.1439306358382,
+            "DRREDDY": 645.7037572254335,
+            "GOLDBEES": 634.8471098265896,
+            "HINDUNILVR": 639.3641618497111,
+            "ITBEES": 644.8809248554913,
+            "ITC": 641.3599710982659,
+            "JUNIORBEES": 6.864161849710983,
+            "KOTAKBANK": 9.21242774566474,
+            "LT": 5.420086705202312,
+            "NESTLEIND": 641.0459537572254,
+            "ONGC": 5.804913294797687,
+            "SUNPHARMA": 631.1112716763006,
+            "TECHM": 5.057369942196532,
+            "ULTRACEMCO": 651.0336705202312,
+        },
     ),
 }
 
