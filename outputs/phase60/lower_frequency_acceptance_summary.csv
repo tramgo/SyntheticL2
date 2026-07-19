@@ -1,0 +1,12 @@
+metric,value,description
+phase60_discovery_shards,8,Dense shards used for lower-frequency threshold discovery
+phase60_validation_shards,8,Disjoint dense shards used for validation
+phase60_discovery_bar_rows,2534,Discovery event-bar rows
+phase60_validation_bar_rows,2512,Validation event-bar rows
+phase60_rule_rows,36,Lower-frequency rule rows evaluated
+phase60_validation_positive_rows,4,Rules positive after retail costs on validation
+phase60_scale_candidate_rows,1,Rules passing lower-frequency scale gate
+phase60_best_traded_validation_net_pnl_inr,4938.997877421615,Best validation net P&L among rows that emitted validation trades
+phase60_elapsed_seconds,9.743046899999172,Elapsed seconds
+phase60_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase60_recommend_scale_to_month_sweep,1,1 means at least one lower-frequency rule deserves a broader month/symbol sweep
