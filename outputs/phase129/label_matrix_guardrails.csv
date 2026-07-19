@@ -1,0 +1,5 @@
+guardrail_id,requirement,enforcement
+P129_ALLOWED_CONTEXTS_ONLY,The label matrix may contain only rows from the Phase128 allowed feature snapshot.,Rows inherit candidate_generation_allowed=1 and are audited against the blocked exclusion ledger.
+P129_LABELS_NOT_SIGNALS,"Labels describe context diagnostics, not orders, sides, fills, or P&L.",forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim
+P129_CLASS_VARIATION_REQUIRED,Every binary Phase129 diagnostic label should have class variation before future baseline modeling.,label_summary records has_class_variation for all emitted labels.
+P129_NO_REPLAY,Strategy replay remains closed.,strategy_replay_allowed=0 across label matrix and summaries.

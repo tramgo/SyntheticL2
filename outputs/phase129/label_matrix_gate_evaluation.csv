@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence
+P129_LABEL_MATRIX_EXISTS,1,label_matrix_rows=228
+P129_ALL_ROWS_ALLOWED,1,candidate_generation_allowed=1 for every matrix row
+P129_BLOCKED_CONTEXTS_EXCLUDED,1,overlap_rows=0
+P129_BINARY_LABEL_CLASS_VARIATION,1,binary_labels_checked=3
+P129_NO_REPLAY,1,strategy_replay_allowed remains 0
+P129_REAL_ANCHOR_STILL_PRIMARY,1,ready_real_anchor_days=1; days_needed=4

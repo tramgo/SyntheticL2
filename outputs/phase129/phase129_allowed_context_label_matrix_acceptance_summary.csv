@@ -1,0 +1,13 @@
+metric,value,description
+phase129_label_matrix_rows,228,Allowed-context no-replay label matrix rows
+phase129_symbols,32,Symbols represented in Phase129
+phase129_months,8,Months represented in Phase129
+phase129_label_summary_rows,4,Label summary rows emitted
+phase129_binary_labels_with_variation,3,Binary diagnostic labels with both classes
+phase129_gate_rows,6,Gates evaluated
+phase129_all_gates_pass,1,1 means Phase129 obeys no-replay guardrails
+phase129_strategy_replay_allowed,0,Strategy replay remains closed
+phase129_current_ready_real_anchor_days,1,Real anchor days currently ready from Phase117
+phase129_additional_real_anchor_days_needed,4,Additional real anchor days needed before replay unlock
+phase129_next_best_action,fit_phase130_no_replay_diagnostic_baselines_or_continue_real_anchor_acquisition,Recommended next milestone
+phase129_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

@@ -1,0 +1,12 @@
+threshold_name,value
+feed_imperfection_median,0.015872
+p90_spread_median,2.212818493411464
+p90_spread_q75,2.9292316939122074
+l1_depth_median,793.21632
+l5_depth_median,6742.372448
+one_tick_return_std_median,7.206365464339982e-05
+passive_min_adverse_rate_median,0.0
+passive_min_adverse_rate_q75,0.990990990990991
+regime_stability_rule,feed_imperfection<=median and p90_spread<=q75 and regime_realism_risk_label=0 and realism_review_flag=0
+liquidity_opportunity_rule,l1_depth>=median and l5_depth>=median and one_tick_return_std>=median and p90_spread>=median
+cost_toxicity_refinement_rule,bucket broad universal cost-toxicity using passive_min_adverse_rate and p90_spread

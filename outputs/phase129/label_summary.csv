@@ -1,0 +1,5 @@
+label_id,rows,positive_rows,negative_rows,positive_rate,has_class_variation,strategy_replay_allowed,value_counts
+p129_regime_stability_label,228,116,112,0.5087719298245614,1,0,"{""0"": 112, ""1"": 116}"
+p129_liquidity_opportunity_label,228,44,184,0.19298245614035087,1,0,"{""0"": 184, ""1"": 44}"
+p129_cost_toxicity_refinement_label,228,84,144,0.3684210526315789,1,0,"{""0"": 144, ""1"": 84}"
+p129_cost_toxicity_refinement_bucket,228,,,,1,0,"{""adverse_touch_cost_toxic"": 47, ""broad_cost_toxic_no_adverse_touch"": 144, ""high_adverse_wide_spread_cost_toxic"": 37}"
