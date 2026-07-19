@@ -1,0 +1,5 @@
+guardrail_id,requirement,enforcement
+P125_NO_TRADE_SIGNAL,Integrated filters may only emit diagnostic or abstention flags.,"No side, order model, order quantity, or entry/exit field is emitted."
+P125_NO_REPLAY_OPEN,Filter integration cannot open strategy replay.,may_open_replay is false for every rule and strategy_replay_allowed remains 0.
+P125_NO_PROFITABILITY_CLAIM,Filter holdout calibration does not imply trading profitability.,Reports call the filters diagnostics/abstention only.
+P125_REAL_ANCHOR_PRECEDENCE,Real-anchor acquisition remains the higher-priority path for strategy evidence.,Phase117-ready-day blocker is carried into acceptance summary.

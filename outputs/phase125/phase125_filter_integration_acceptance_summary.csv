@@ -1,0 +1,13 @@
+metric,value,description
+phase125_filter_rules,2,Selected non-trading filter rules integrated
+phase125_abstention_filter_rules,1,Rules allowed to block future candidate generation only
+phase125_filter_flag_rows,768,Symbol/month filter flag rows emitted
+phase125_flagged_symbol_month_rows,277,Total flagged symbol/month rows across all filters
+phase125_filter_impact_rows,2,Filter impact summary rows
+phase125_gate_rows,4,Integration gates evaluated
+phase125_all_gates_pass,1,1 means integration contract is internally consistent
+phase125_strategy_replay_allowed,0,Strategy replay remains closed
+phase125_ready_real_anchor_days,1,Real-anchor days still available
+phase125_real_anchor_days_needed_for_min,4,Additional real days still needed for minimum strategy replay gate
+phase125_next_best_action,use_filters_as_diagnostics_only_and_continue_real_anchor_acquisition,Recommended next milestone
+phase125_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity
