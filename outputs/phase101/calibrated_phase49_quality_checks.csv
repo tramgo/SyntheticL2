@@ -1,0 +1,6 @@
+check_id,passed,detail
+P101_PHASE100_PASS,True,phase100_quality_smoke_pass=1.0
+P101_REPLAY_LOCK_PRESERVED,True,phase100_strategy_replay_allowed=0.0
+P101_TIMING_PROFILE_IMPROVES_ALL_MONTHS,True,P98_TIMING_VOL_MODERATE should improve p90 gap for every HDFCBANK month in shard audit.
+P101_BOOK_PROFILE_REDUCES_OR_PRESERVES_VOL_ALL_MONTHS,False,P98_FULL_BOOK_REBALANCE_BASE should not increase one-tick volatility in any audited month.
+P101_SPREAD_PRESERVED,True,All calibrated profiles must preserve median spread within 5% for every audited month.

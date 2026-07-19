@@ -1,0 +1,3 @@
+profile_id,month_rows,median_p90_gap_ratio,median_one_tick_vol_ratio,median_l1_imbalance_ratio,median_l5_depth_ratio,median_spread_ratio,tail_gap_improved_month_fraction,volatility_not_increased_month_fraction,spread_preserved_month_fraction
+P98_FULL_BOOK_REBALANCE_BASE,12,1.0103626943005182,0.9999870594886129,1.0,1.0,1.0,1.0,0.5833333333333334,1.0
+P98_TIMING_VOL_MODERATE,12,1.0103626943005182,0.9999870594886129,1.0,1.0,1.0,1.0,0.5833333333333334,1.0

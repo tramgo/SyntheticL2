@@ -1,0 +1,12 @@
+metric,value,description
+phase101_profiles_audited,3,Calibration profiles materialized in shard audit
+phase101_symbols_audited,1,Symbols audited
+phase101_months_audited,12,Months audited
+phase101_dense_multiplier,8,Dense multiplier used for bounded quality audit
+phase101_dense_rows_materialized,2258640,Dense rows materialized locally for quality audit
+phase101_quality_rows,36,Profile/month quality rows
+phase101_quality_check_rows,5,Quality checks executed
+phase101_quality_checks_passed,4,Quality checks passed
+phase101_quality_audit_pass,0,1 means small calibrated Phase49 quality audit passed
+phase101_strategy_replay_allowed,0,Strategy replay remains closed
+phase101_recommend_next_action,rerun_phase94_on_multiday_real_panel_when_available,Recommended next milestone
