@@ -1,0 +1,5 @@
+check_id,passed,detail
+P114_PHASE113_PLAN_AVAILABLE,True,planned_rows=32
+P114_DRY_RUN_STATE_RECOGNIZED,True,phase113_execute_mode=0; target_rows=0
+P114_EXECUTED_IMPORT_FULLY_VERIFIED,True,phase113_execute_mode=0; verified_rows=0; planned_rows=32
+P114_REPLAY_LOCK_PRESERVED,True,Phase114 verifies import integrity only and does not unlock strategy replay.
