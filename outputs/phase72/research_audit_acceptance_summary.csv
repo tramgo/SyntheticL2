@@ -1,0 +1,8 @@
+metric,value,description
+phase72_families_reviewed,12,Strategy families reviewed across Phase52-71
+phase72_scale_ready_family_count,0,Families currently allowed to scale
+phase72_near_miss_count,2,Positive but non-scaling near misses
+phase72_generator_assumption_items,5,Generator/execution assumption areas requiring review
+phase72_allow_more_full_year_strategy_replay_now,0,0 means do not launch another full-year strategy replay now
+phase72_recommend_next_action,timestamp_aligned_cross_symbol_matrix_and_shock_panel_audit,Next implementation focus
+phase72_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for future gates

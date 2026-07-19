@@ -1,0 +1,3 @@
+near_miss_id,phase,rule_id,net_pnl_inr,failed_gate,diagnosis,allowed_next_action
+NM70_HDFCBANK_LEAD_LAG,70,P70_MEGA_HDFCBANK_MOMENTUM_Q70,38915.74717800456,precision_cost_clear_lt_0_55_and_cost_drag_gt_0_50_abs_gross,Positive P&L exists but is too dependent on large winners and too expensive relative to gross edge.,feature_refinement_only_no_disjoint_replay_yet
+NM71_MARKET_SHOCK_MEAN_REVERSION,71,P71_SHOCK_MEAN_REVERSION_B10000_market_shock_Q90,13311.377520269712,trades_lt_100,Positive shock mean-reversion row passes several quality tests but has only 72 trades.,generator_shock_frequency_audit_before_replay
