@@ -1,0 +1,9 @@
+metric,value,description
+phase88_profitability_evidence_rows,12,Profitability evidence rows reviewed
+phase88_positive_pocket_rows,8,Rows where some positive synthetic P&L pocket was observed
+phase88_accepted_survivor_rows,0,Rows accepted as robust retail-cost survivors
+phase88_retired_family_rows,4,Strategy families retired by cumulative evidence
+phase88_more_same_family_shards_allowed,0,1 means continuing same-family shard replay is allowed
+phase88_next_best_action,P89_passive_queue_capture_cost_floor,Recommended next milestone
+phase88_strategy_pivot_required,1,1 means pivot to a new feature class before more replay scale
+phase88_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model used by cited evidence

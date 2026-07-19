@@ -1,0 +1,13 @@
+evidence_id,source_phase,strategy_scope,positive_pocket_observed,accepted_survivor,best_net_pnl_inr,realistic_or_retail_positive_rows,total_trades_or_rows,failure_mode,decision
+P41_all_profile_synthetic_positive,41,deterministic full-year expansion across all model/profile rows,True,False,1185737.541758729,0,2612173,positive only outside realistic retail/stressed profiles,not_deployable_evidence
+P42_native_full_year_l2_negative,42,native full-year L2 event-state strategy/profile replay,False,False,-4337116.648081242,0,6846221,all annual strategy/profile rows negative after costs,retired
+P43_cost_salvage_oracle_like_positive,43,cost-aware salvage variants across profiles,True,False,85087.07496908131,0,5027566,positive variants did not survive realistic retail profiles,retired
+P52_dense_replay_checkpoint_negative,52,dense tick replay checkpoint,False,False,,0,14530597,zero positive strategy/profile rows after Zerodha retail costs,do_not_continue_dense_bruteforce
+P54_selective_control_positive,54,bounded selective dense replay,True,False,7856.210041387097,0,456,positive only under nondeployable zero-latency/spread-only control,control_only
+P55_cost_aware_oracle_positive,55,cost-aware edge mining,True,False,65110.50576890321,0,490,oracle ceiling positive but deployable candidate negative,retired
+P56_no_lookahead_rules_negative,56,no-lookahead cost-clearing rule discovery,False,False,-4829.703281628985,0,180,zero positive no-lookahead test rules after retail costs,retired
+P60_to_P61_lower_frequency_failed_wider_sweep,"60,61",lower-frequency event-bar continuation candidate,True,False,4938.997877421615,1,645,initial validation candidate failed wider sweep with net_pnl_inr=-88748.03,retired
+P63_kotakbank_falsification,63,KOTAKBANK-only follow-up from Phase62 clue,False,False,-24100.25762526291,0,155,single-symbol clue negative after costs,retire_phase60_candidate_family
+P77_HDFCBANK_disjoint_month_failed,77,HDFCBANK lead-lag disjoint-month retest,True,False,-130842.33360683327,0,624,only 3 of 10 valid months positive and aggregate net P&L negative,retire_or_redesign_hdfcbank_lead_lag_before_more_shards
+P84_HDFCBANK_cached_stratified_full_year_failed,84,cached stratified HDFCBANK full-year retest,True,False,-6977461.708801747,0,58988,full-year cached stratified retest lost materially after costs,retire_hdfcbank_lead_lag_after_cached_stratified_falsification
+P87_precommitted_composite_family_failed,87,Phase86-precommitted composite event-intensity/absolute-move families,True,False,61590.7593547854,0,18,best test pocket failed train gates and no precommitted candidate passed both splits,retire_precommitted_composite_family_or_design_new_feature_class
