@@ -1,0 +1,13 @@
+metric,value,description
+phase54_dense_shards_scanned,8,Dense parquet shards scanned for bounded redesign validation
+phase54_strategy_profile_rows,4,Selective variant/profile result rows
+phase54_trade_rows,456,Aggregated simulated trade rows
+phase54_positive_after_cost_rows,1,Variant/profile rows positive after costs
+phase54_deployable_positive_after_cost_rows,0,Deployable retail variant/profile rows positive after costs
+phase54_bounded_replay_candidate_rows,0,"Deployable retail rows passing positive, persistence and proxy-risk screens"
+phase54_positive_daily_symbol_rows,6,Daily-symbol variant/profile rows positive after costs
+phase54_best_net_pnl_inr,7856.210041387097,Best aggregate variant/profile net P&L
+phase54_elapsed_seconds,9.804443200002424,Replay elapsed seconds
+phase54_dense_output_root,raw_synthetic_l2_dense_full_year,Dense input lake root
+phase54_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha cost model used for charge bps
+phase54_recommend_scale_to_full_year,0,1 means at least one deployable retail bounded candidate deserves a larger dense replay
