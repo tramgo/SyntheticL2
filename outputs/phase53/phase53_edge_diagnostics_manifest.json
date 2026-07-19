@@ -1,0 +1,11 @@
+{
+  "generated_utc": "2026-07-19T18:32:02.217531+00:00",
+  "phase": "phase53_edge_diagnostics",
+  "source_phase52_daily": "outputs\\phase52\\dense_replay_daily_symbol.csv",
+  "outputs": {
+    "summary": "outputs\\phase53\\edge_diagnostics_summary.csv",
+    "strategy_profiles": "outputs\\phase53\\edge_diagnostics_strategy_profiles.csv",
+    "report": "outputs\\phase53\\phase53_edge_diagnostics_report.md",
+    "manifest": "outputs\\phase53\\phase53_edge_diagnostics_manifest.json"
+  }
+}

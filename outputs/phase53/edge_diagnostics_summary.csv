@@ -1,0 +1,12 @@
+metric,value,description
+phase53_phase52_shards_observed,116,Unique Phase52 dense shards in the checkpoint ledger
+phase53_phase52_max_shard_index,116,Highest shard index observed in the checkpoint ledger
+phase53_dense_trade_rows_observed,826538294,Aggregated dense tick trade count in the checkpoint ledger
+phase53_strategy_profile_rows,9,Strategy/profile rows analyzed
+phase53_profitable_strategy_profiles,0,Aggregate strategy/profile rows with positive net P&L
+phase53_positive_daily_symbol_rows,0,Daily-symbol strategy/profile rows with positive net P&L
+phase53_gross_positive_strategy_profiles,3,Aggregate strategy/profile rows with positive gross return before costs
+phase53_positive_gross_daily_symbol_rows,3116,Daily-symbol rows with positive gross return before costs
+phase53_best_net_daily_symbol_pnl_inr,-201.0034256410256,Best single daily-symbol net P&L row
+phase53_best_net_daily_symbol_key,2026-02-10|GOLDBEES|DENSE_S01_L1_IMBALANCE|retail_marketable_default,Best single daily-symbol row key
+phase53_recommend_continue_phase52_bruteforce,0,0 means pause brute-force shard replay and pivot to edge diagnostics/design
