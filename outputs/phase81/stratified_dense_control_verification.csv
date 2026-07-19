@@ -1,0 +1,13 @@
+trade_month,control_symbol,dense_path_exists,expected_selected_trade_dates,expected_selected_regime_codes,expected_feed_profiles,selected_dense_rows_found,selected_trade_dates_found,selected_regime_codes_found,selected_feed_profiles_found,min_local_sequence_id,max_local_sequence_id,dense_control_pass
+2026-01,HDFCBANK,True,11,11,5,8146420,11,11,5,1,16303665,True
+2026-02,HDFCBANK,True,12,12,5,8902807,12,12,5,1488001,14828005,True
+2026-03,HDFCBANK,True,12,12,5,8900007,12,12,5,1,16303665,True
+2026-04,HDFCBANK,True,11,11,5,8132581,11,11,5,1,15548139,True
+2026-05,HDFCBANK,True,12,12,5,8886830,12,12,5,1482049,14830142,True
+2026-06,HDFCBANK,True,13,13,5,9623423,13,13,5,740033,16260030,True
+2026-07,HDFCBANK,True,12,12,5,8887892,12,12,5,1,15542346,True
+2026-08,HDFCBANK,True,13,13,5,9628845,13,13,5,2218113,15551951,True
+2026-09,HDFCBANK,True,11,11,5,8153281,11,11,5,1,16279864,True
+2026-10,HDFCBANK,True,11,11,5,8144480,11,11,5,1,16287798,True
+2026-11,HDFCBANK,True,14,14,5,10390692,14,14,5,2230017,14104368,True
+2026-12,HDFCBANK,True,7,7,5,5190634,7,7,5,738049,10373257,True

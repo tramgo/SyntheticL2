@@ -1,0 +1,8 @@
+metric,value,description
+phase81_months_planned,12,Months with stratified dense-window plans
+phase81_plan_pass_fraction,1.0,Fraction of month plans passing compact diversity capture gates
+phase81_dense_control_pass_fraction,1.0,Fraction of month plans verified on dense control symbol
+phase81_min_selected_days,7,Minimum selected source days per month
+phase81_max_selected_days,14,Maximum selected source days per month
+phase81_stratified_dense_window_reader_pass,1,1 means stratified reader contract is ready for replay use
+phase81_recommend_next_action,rerun_hdfcbank_disjoint_retest_with_stratified_windows,Recommended next milestone
