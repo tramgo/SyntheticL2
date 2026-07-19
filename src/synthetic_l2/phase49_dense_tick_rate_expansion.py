@@ -70,8 +70,18 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
         * float(profile.price_micro_step_spread_fraction)
         * float(profile.price_jump_size_scale)
     )
-    direction = np.where((repeated["dense_subtick_id"].astype(int) % 2) == 0, 1.0, -1.0)
-    repeated["last_price"] = (repeated["last_price"].astype(float) + direction * phase.abs() * micro_step).round(4)
+    if bool(profile.price_anchor_source_events):
+        # Calibrated profiles should preserve the source event price at the
+        # first dense subtick and damp only generated in-between microstructure
+        # noise.  This keeps real source moves intact while making volatility
+        # calibration measurable against the legacy synthetic oscillation.
+        anchored_phase = np.sin(np.pi * repeated["dense_subtick_id"].astype(float) / max(multiplier - 1, 1))
+        direction = np.where((repeated["dense_subtick_id"].astype(int) % 2) == 0, 1.0, -1.0)
+        price_delta = direction * anchored_phase * micro_step
+    else:
+        direction = np.where((repeated["dense_subtick_id"].astype(int) % 2) == 0, 1.0, -1.0)
+        price_delta = direction * phase.abs() * micro_step
+    repeated["last_price"] = (repeated["last_price"].astype(float) + price_delta).round(4)
     repeated["last_traded_quantity"] = np.maximum(1, (repeated["last_traded_quantity"].astype(float) / math.sqrt(multiplier)).round()).astype("int64")
     repeated["volume_traded"] = repeated.groupby(["trade_date", "symbol"], sort=False)["last_traded_quantity"].cumsum().astype("int64")
     return repeated

@@ -13,6 +13,7 @@ class GeneratorCalibrationProfile:
     event_timing_burst_throttle_fraction: float = 0.0
     price_micro_step_spread_fraction: float = 0.08
     price_jump_size_scale: float = 1.0
+    price_anchor_source_events: bool = False
     book_l1_quantity_skew_scale: float = 1.0
     book_depth_ladder_multiplier: float = 1.0
     book_l1_l5_share_ratio: float = 1.0
@@ -28,20 +29,23 @@ PROFILES: dict[str, GeneratorCalibrationProfile] = {
         profile_id="P98_TIMING_ONLY_CONSERVATIVE",
         event_timing_tail_gap_multiplier=2.0,
         event_timing_burst_throttle_fraction=0.10,
+        price_anchor_source_events=True,
     ),
     "P98_TIMING_VOL_MODERATE": GeneratorCalibrationProfile(
         profile_id="P98_TIMING_VOL_MODERATE",
         event_timing_tail_gap_multiplier=4.0,
         event_timing_burst_throttle_fraction=0.20,
-        price_micro_step_spread_fraction=0.04,
+        price_micro_step_spread_fraction=0.0,
         price_jump_size_scale=0.75,
+        price_anchor_source_events=True,
     ),
     "P98_FULL_BOOK_REBALANCE_BASE": GeneratorCalibrationProfile(
         profile_id="P98_FULL_BOOK_REBALANCE_BASE",
         event_timing_tail_gap_multiplier=4.0,
         event_timing_burst_throttle_fraction=0.20,
-        price_micro_step_spread_fraction=0.04,
+        price_micro_step_spread_fraction=0.0,
         price_jump_size_scale=0.75,
+        price_anchor_source_events=True,
         book_l1_quantity_skew_scale=1.50,
         book_depth_ladder_multiplier=0.80,
         book_l1_l5_share_ratio=0.85,
@@ -50,8 +54,9 @@ PROFILES: dict[str, GeneratorCalibrationProfile] = {
         profile_id="P98_FULL_BOOK_REBALANCE_STRONG",
         event_timing_tail_gap_multiplier=6.0,
         event_timing_burst_throttle_fraction=0.35,
-        price_micro_step_spread_fraction=0.03,
+        price_micro_step_spread_fraction=0.0,
         price_jump_size_scale=0.60,
+        price_anchor_source_events=True,
         book_l1_quantity_skew_scale=1.75,
         book_depth_ladder_multiplier=0.65,
         book_l1_l5_share_ratio=0.85,

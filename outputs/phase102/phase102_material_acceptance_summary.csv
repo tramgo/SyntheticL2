@@ -1,0 +1,10 @@
+metric,value,description
+phase102_profiles_audited,2,Calibrated profiles compared to legacy
+phase102_strict_failed_checks,P101_BOOK_PROFILE_REDUCES_OR_PRESERVES_VOL_ALL_MONTHS,Strict Phase101-style checks still failing
+phase102_max_median_one_tick_vol_ratio,0.999988873381236,Maximum median profile/legacy one-tick volatility ratio
+phase102_min_strict_volatility_month_fraction,0.5,Worst strict month non-increase fraction
+phase102_material_quality_check_rows,4,Phase102 material checks executed
+phase102_material_quality_checks_passed,4,Phase102 material checks passed
+phase102_material_quality_audit_pass,1,1 means post-patch material quality audit passed
+phase102_strategy_replay_allowed,0,Strategy replay remains closed until Phase94-style realism calibration passes
+phase102_recommend_next_action,rerun_phase94_realism_calibration_with_patched_profiles,Recommended next milestone

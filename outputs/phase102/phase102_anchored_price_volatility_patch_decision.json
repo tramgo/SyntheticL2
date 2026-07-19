@@ -1,0 +1,44 @@
+{
+  "generated_utc": "2026-07-19T21:58:06.776705+00:00",
+  "scope": "phase102_anchored_price_volatility_patch_audit",
+  "patched_behavior": "calibrated_profiles_anchor_source_event_prices_and_damp_generated_subtick_noise",
+  "baseline_profile_id": "P98_LEGACY_DEFAULT",
+  "strict_quality_audit_pass": 0,
+  "material_quality_audit_pass": 1,
+  "strategy_replay_allowed": 0,
+  "strict_failed_checks": [
+    "P101_BOOK_PROFILE_REDUCES_OR_PRESERVES_VOL_ALL_MONTHS"
+  ],
+  "max_median_one_tick_vol_ratio": 0.999988873381236,
+  "min_strict_volatility_month_fraction": 0.5,
+  "profile_comparison_rows": [
+    {
+      "profile_id": "P98_FULL_BOOK_REBALANCE_BASE",
+      "month_rows": 12,
+      "median_p90_gap_ratio": 1.0103626943005182,
+      "median_one_tick_vol_ratio": 0.999988873381236,
+      "median_l1_imbalance_ratio": 1.0,
+      "median_l5_depth_ratio": 1.0,
+      "median_spread_ratio": 1.0,
+      "tail_gap_improved_month_fraction": 1.0,
+      "volatility_not_increased_month_fraction": 0.5,
+      "spread_preserved_month_fraction": 1.0
+    },
+    {
+      "profile_id": "P98_TIMING_VOL_MODERATE",
+      "month_rows": 12,
+      "median_p90_gap_ratio": 1.0103626943005182,
+      "median_one_tick_vol_ratio": 0.999988873381236,
+      "median_l1_imbalance_ratio": 1.0,
+      "median_l5_depth_ratio": 1.0,
+      "median_spread_ratio": 1.0,
+      "tail_gap_improved_month_fraction": 1.0,
+      "volatility_not_increased_month_fraction": 0.5,
+      "spread_preserved_month_fraction": 1.0
+    }
+  ],
+  "phase101_style_manifest": "outputs\\phase102\\phase101_calibrated_phase49_shard_quality_audit_manifest.json",
+  "material_checks": "outputs\\phase102\\phase102_material_quality_checks.csv",
+  "material_acceptance": "outputs\\phase102\\phase102_material_acceptance_summary.csv",
+  "next_action": "rerun_phase94_realism_calibration_with_patched_profiles"
+}

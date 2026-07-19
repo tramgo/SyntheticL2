@@ -1,0 +1,5 @@
+check_id,passed,detail
+P102_PHASE101_NON_VOL_STRICT_GATES_PASS,True,"Phase100 inheritance, replay-lock, timing and spread checks must remain strict-pass."
+P102_VOLATILITY_MATERIALITY_GATE_PASS,True,One-tick volatility max median profile/legacy ratio must be <= 1.001 and at least half of audited months must be non-increasing under the strict month rule.
+P102_TIMING_GAP_EXTENSION_PRESERVED,True,max_median_p90_gap_ratio=1.0103626943005182
+P102_SPREAD_PRESERVATION_PRESERVED,True,min_spread_preserved_month_fraction=1.0
