@@ -1,0 +1,6 @@
+gate_id,rule,required_evidence,failure_action
+G67_01_small_before_large,No feature family may request a full-year replay before passing a bounded small-sample discovery and disjoint validation.,"Discovery artifact, disjoint validation artifact, acceptance summary and manifest.",retire_or_redesign_feature_family
+G67_02_no_oracle_promotion,"Oracle, zero-latency, zero-cost or hindsight-positive rows cannot be promoted to deployable candidates.",Candidate catalog must mark deployable=false for oracle/control rows.,keep_as_control_only
+G67_03_cost_drag_limit,A candidate cannot scale if cost drag consumes more than 50% of gross edge on validation.,"gross_pnl_proxy_inr, cost_pnl_drag_proxy_inr and net_pnl_inr reported on validation.",reduce_turnover_or_retire
+G67_04_stability,"A candidate cannot scale if it is positive only in one symbol, one month, or one sparse interaction cell.","Symbol, month and bucket/stability rollups.",falsification_probe_or_retire
+G67_05_passive_fill_honesty,"Passive results must be reported as assumption sensitivity until real fills, contract notes or true queue data are available.",Queue profile catalog and pessimistic/base/optimistic sensitivity outputs.,do_not_claim_live_fill_profitability

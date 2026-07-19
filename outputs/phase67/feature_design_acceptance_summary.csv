@@ -1,0 +1,9 @@
+metric,value,description
+phase67_source_phase66_survives_label_gate,0,Phase66 passive imbalance label gate
+phase67_source_phase66_best_after_cost_bps,-17.0135044621871,Best Phase66 after-cost touch label
+phase67_feature_families_queued,4,New feature families queued for bounded testing
+phase67_budget_gates_declared,5,Predeclared gates before large replay
+phase67_allow_full_year_replay_now,0,0 means no new full-year replay until a new family passes the declared gates
+phase67_next_priority_feature_family,F67_replenishment_after_touch,Highest-priority next feature family
+phase67_next_priority_experiment,No-lookahead label discovery for post-touch depth replenishment and next-100-tick mid outcome.,Next bounded experiment
+phase67_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model to preserve in next experiments
