@@ -1,0 +1,19 @@
+candidate_id,feature_name,feature_column,direction_rule,feature_abs_quantile,feature_abs_threshold,event_intensity_quantile,event_intensity_threshold
+P89_L1_IMBALANCE_Q0_5_I0_5,l1_imbalance,avg_l1_imbalance,side = sign(avg_l1_imbalance),0.5,0.19974923134379705,0.5,126.3
+P89_L1_IMBALANCE_Q0_5_I0_75,l1_imbalance,avg_l1_imbalance,side = sign(avg_l1_imbalance),0.5,0.19974923134379705,0.75,145.1
+P89_L1_IMBALANCE_Q0_75_I0_5,l1_imbalance,avg_l1_imbalance,side = sign(avg_l1_imbalance),0.75,0.4140160808321364,0.5,126.3
+P89_L1_IMBALANCE_Q0_75_I0_75,l1_imbalance,avg_l1_imbalance,side = sign(avg_l1_imbalance),0.75,0.4140160808321364,0.75,145.1
+P89_L1_IMBALANCE_Q0_9_I0_5,l1_imbalance,avg_l1_imbalance,side = sign(avg_l1_imbalance),0.9,0.5739214516995192,0.5,126.3
+P89_L1_IMBALANCE_Q0_9_I0_75,l1_imbalance,avg_l1_imbalance,side = sign(avg_l1_imbalance),0.9,0.5739214516995192,0.75,145.1
+P89_L5_IMBALANCE_Q0_5_I0_5,l5_imbalance,avg_l5_imbalance,side = sign(avg_l5_imbalance),0.5,0.19820623076287644,0.5,126.3
+P89_L5_IMBALANCE_Q0_5_I0_75,l5_imbalance,avg_l5_imbalance,side = sign(avg_l5_imbalance),0.5,0.19820623076287644,0.75,145.1
+P89_L5_IMBALANCE_Q0_75_I0_5,l5_imbalance,avg_l5_imbalance,side = sign(avg_l5_imbalance),0.75,0.4149279930667177,0.5,126.3
+P89_L5_IMBALANCE_Q0_75_I0_75,l5_imbalance,avg_l5_imbalance,side = sign(avg_l5_imbalance),0.75,0.4149279930667177,0.75,145.1
+P89_L5_IMBALANCE_Q0_9_I0_5,l5_imbalance,avg_l5_imbalance,side = sign(avg_l5_imbalance),0.9,0.5738467624146132,0.5,126.3
+P89_L5_IMBALANCE_Q0_9_I0_75,l5_imbalance,avg_l5_imbalance,side = sign(avg_l5_imbalance),0.9,0.5738467624146132,0.75,145.1
+P89_MICROPRICE_DEV_Q0_5_I0_5,microprice_dev,avg_microprice_dev,side = sign(avg_microprice_dev),0.5,2.5130818431459663e-05,0.5,126.3
+P89_MICROPRICE_DEV_Q0_5_I0_75,microprice_dev,avg_microprice_dev,side = sign(avg_microprice_dev),0.5,2.5130818431459663e-05,0.75,145.1
+P89_MICROPRICE_DEV_Q0_75_I0_5,microprice_dev,avg_microprice_dev,side = sign(avg_microprice_dev),0.75,5.204773859470677e-05,0.5,126.3
+P89_MICROPRICE_DEV_Q0_75_I0_75,microprice_dev,avg_microprice_dev,side = sign(avg_microprice_dev),0.75,5.204773859470677e-05,0.75,145.1
+P89_MICROPRICE_DEV_Q0_9_I0_5,microprice_dev,avg_microprice_dev,side = sign(avg_microprice_dev),0.9,0.00010051431577481006,0.5,126.3
+P89_MICROPRICE_DEV_Q0_9_I0_75,microprice_dev,avg_microprice_dev,side = sign(avg_microprice_dev),0.9,0.00010051431577481006,0.75,145.1

@@ -1,0 +1,9 @@
+metric,value,description
+phase89_candidate_specs,18,Passive feature candidates evaluated
+phase89_fill_assumption_rows,54,Candidate/fill-assumption rows evaluated
+phase89_assumption_pass_rows,0,Candidate/fill rows passing train and test gates
+phase89_all_assumption_survivor_candidates,0,"Candidates passing pessimistic, base and optimistic fill assumptions"
+phase89_best_test_expected_net_pnl_inr,-187945.7105576788,Best test expected net P&L under any fill assumption
+phase89_best_worst_case_test_expected_net_pnl_inr,-265254.42212627473,Best candidate worst-case test expected net P&L across assumptions
+phase89_passive_queue_cost_floor_pass,0,1 means a passive candidate clears the cost floor under all fill assumptions
+phase89_recommend_next_action,retire_simple_passive_imbalance_or_design_richer_passive_features,Recommended next milestone
