@@ -1,0 +1,6 @@
+gate_id,candidate_rows_passing,gate_pass,requirement
+P119_ADVERSE_SELECTION_CEILING,0,0,All joined label components must have adverse-selection/direction rate <= 0.45.
+P119_REPLENISHMENT_CONFIRMATION,144,1,Mean same-side post-touch replenishment ratio must be >= 1.0.
+P119_SPREAD_CONFIRMATION,144,1,Matched spread-transition context must be compression/non-expansion.
+P119_BREADTH_BEFORE_REPLAY,0,0,Joined labels must span at least 20 symbols and 4 trade dates.
+P119_PRE_REPLAY_LABEL_GATE,0,0,At least one candidate must pass all Phase118-derived pre-replay gates.

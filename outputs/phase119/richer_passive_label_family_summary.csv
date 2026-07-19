@@ -1,0 +1,2 @@
+feature_family_id,candidate_rows,pre_replay_candidate_rows,best_label_quality_score,max_symbols,max_trade_dates,dominant_failure_reason
+P118_RICHER_PASSIVE_LABEL_COMPOSITE,288,0,1.5058948979576554,3,1,adverse_selection_gate_failed|breadth_gate_failed

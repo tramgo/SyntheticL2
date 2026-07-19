@@ -1,0 +1,11 @@
+metric,value,description
+phase119_joined_label_candidate_rows,288,Richer passive joined label candidates constructed from Phase66/68/69 labels
+phase119_pre_replay_candidate_rows,0,Joined candidates passing all pre-replay label gates
+phase119_max_candidate_symbols,3,Maximum symbols covered by a joined candidate
+phase119_max_candidate_trade_dates,1,Maximum trade dates covered by a joined candidate
+phase119_gate_rows,5,Gate evaluations emitted
+phase119_all_gates_pass,0,1 means every Phase119 gate has at least one passing row
+phase119_phase118_pilot_replay_allowed_input,0,Inherited Phase118 bounded replay permission
+phase119_bounded_pilot_replay_allowed,0,Bounded replay remains closed unless Phase118 and Phase119 both allow it
+phase119_full_year_replay_allowed,0,Full-year replay remains closed
+phase119_next_best_action,collect_more_label_coverage_or_redesign_passive_features_no_replay,Recommended next milestone
