@@ -1,0 +1,12 @@
+metric,value,description
+phase65_shards_scanned,16,Dense shards scanned
+phase65_strategy_profile_rows,6,Strategy/queue-profile rows evaluated
+phase65_unique_candidate_orders,2558352,Unique hypothetical passive order placements before queue-profile expansion
+phase65_unique_inferred_touch_orders,61696,Unique orders whose limit price was touched within the horizon
+phase65_strategy_profile_expected_fills,61696.0,Expected fills summed across strategy/profile rows
+phase65_best_expected_net_pnl_inr,-1020667.8859458851,Best expected after-cost P&L across strategy/profile rows
+phase65_surviving_strategy_count,0,"Strategies positive under pessimistic, base and optimistic queue assumptions"
+phase65_survives_passive_sensitivity,0,1 means at least one passive strategy survived all queue assumptions
+phase65_elapsed_seconds,6.019621300001745,Elapsed seconds
+phase65_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase65_recommend_next_action,build_passive_adverse_selection_labels,Recommended next action

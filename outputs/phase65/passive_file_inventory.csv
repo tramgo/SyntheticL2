@@ -1,0 +1,17 @@
+shard_index,shard_path
+1,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=ADANIPORTS\part-00000.parquet
+2,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=AXISBANK\part-00000.parquet
+3,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=BAJAJ-AUTO\part-00000.parquet
+4,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=BANKBEES\part-00000.parquet
+5,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=BHARTIARTL\part-00000.parquet
+6,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=BPCL\part-00000.parquet
+7,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=BRITANNIA\part-00000.parquet
+8,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=CIPLA\part-00000.parquet
+9,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=DRREDDY\part-00000.parquet
+10,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=GOLDBEES\part-00000.parquet
+11,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=HCLTECH\part-00000.parquet
+12,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=HDFCBANK\part-00000.parquet
+13,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=HINDUNILVR\part-00000.parquet
+14,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=ICICIBANK\part-00000.parquet
+15,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=INFY\part-00000.parquet
+16,raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=ITBEES\part-00000.parquet

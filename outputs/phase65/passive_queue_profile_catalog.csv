@@ -1,0 +1,4 @@
+queue_profile,fill_weight,adverse_selection_bps,description
+pessimistic_back_of_queue,0.1,5.0,Assume only 10% of inferred touches fill and filled orders suffer 5 bps adverse selection.
+base_mid_queue,0.3,2.0,Assume 30% of inferred touches fill and filled orders suffer 2 bps adverse selection.
+optimistic_front_queue,0.6,0.0,Assume 60% of inferred touches fill with no extra adverse-selection haircut.
