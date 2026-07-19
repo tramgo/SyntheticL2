@@ -1,0 +1,7 @@
+metric,value,description
+phase78_decision_rows,3,Research branch decisions recorded
+phase78_retired_or_closed_rows,2,Branches retired or closed to blind replay
+phase78_active_research_rows,1,Branches allowed as next active research work
+phase78_next_queue_rows,3,Prioritized next actions
+phase78_broad_shard_replay_allowed,0,1 means more broad shard replay is allowed immediately
+phase78_recommend_next_action,P79_generator_scenario_diversity_audit,Recommended next milestone
