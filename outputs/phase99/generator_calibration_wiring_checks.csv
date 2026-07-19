@@ -1,0 +1,6 @@
+check_id,passed,detail
+P99_PHASE98_READY,True,phase98_ready_for_generator_patch_wiring=1.0
+P99_REPLAY_LOCK_PRESERVED,True,phase98_strategy_replay_allowed=0.0
+P99_DEFAULT_PROFILE_IDENTITY,True,build_raw_ticks(events) equals explicit P98_LEGACY_DEFAULT output
+P99_BOOK_PROFILE_HAS_EFFECT,True,P98_FULL_BOOK_REBALANCE_BASE changes depth metrics on fixture
+P99_DENSE_PROFILE_HAS_EFFECT,True,P98_FULL_BOOK_REBALANCE_STRONG changes dense timing metrics on fixture

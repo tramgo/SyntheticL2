@@ -1,0 +1,6 @@
+profile_id,event_timing_tail_gap_multiplier,event_timing_burst_throttle_fraction,price_micro_step_spread_fraction,price_jump_size_scale,book_l1_quantity_skew_scale,book_depth_ladder_multiplier,book_l1_l5_share_ratio,spread_preserve_current_scale
+P98_FULL_BOOK_REBALANCE_BASE,4.0,0.2,0.04,0.75,1.5,0.8,0.85,1.0
+P98_FULL_BOOK_REBALANCE_STRONG,6.0,0.35,0.03,0.6,1.75,0.65,0.85,1.0
+P98_LEGACY_DEFAULT,1.0,0.0,0.08,1.0,1.0,1.0,1.0,1.0
+P98_TIMING_ONLY_CONSERVATIVE,2.0,0.1,0.08,1.0,1.0,1.0,1.0,1.0
+P98_TIMING_VOL_MODERATE,4.0,0.2,0.04,0.75,1.0,1.0,1.0,1.0

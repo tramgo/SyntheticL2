@@ -14,6 +14,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from synthetic_l2.phase25_event_replay_expansion import _markdown_table
+from synthetic_l2.generator_calibration_profiles import GeneratorCalibrationProfile, get_calibration_profile
 from synthetic_l2.reproducibility import reproducibility_fields
 
 
@@ -38,7 +39,8 @@ def read_month(path: Path, symbols: list[str]) -> pd.DataFrame:
     return frame.sort_values(["trade_date", "exchange", "symbol", "feed_profile", "annual_event_id"], kind="mergesort").reset_index(drop=True)
 
 
-def densify_frame(frame: pd.DataFrame, multiplier: int) -> pd.DataFrame:
+def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: GeneratorCalibrationProfile | None = None) -> pd.DataFrame:
+    profile = calibration_profile or get_calibration_profile(None)
     if frame.empty:
         return frame.copy()
     repeated = frame.loc[frame.index.repeat(multiplier)].copy().reset_index(drop=True)
@@ -49,13 +51,21 @@ def densify_frame(frame: pd.DataFrame, multiplier: int) -> pd.DataFrame:
     repeated["annual_event_id"] = repeated["annual_event_id"].astype("int64") * multiplier + repeated["dense_subtick_id"].astype("int64")
     repeated["local_sequence_id"] = np.arange(1, len(repeated) + 1, dtype=np.int64)
     repeated["callback_batch_id"] = repeated["local_sequence_id"].floordiv(32).astype("int64")
-    repeated["callback_received_utc_ms"] = repeated["callback_received_utc_ms"].astype("int64") + repeated["dense_subtick_id"].astype("int64")
+    timing_offset = (repeated["dense_subtick_id"].astype(float) * float(profile.event_timing_tail_gap_multiplier)).round().astype("int64")
+    if float(profile.event_timing_burst_throttle_fraction) > 0:
+        throttle_step = max(1, int(round(1.0 / float(profile.event_timing_burst_throttle_fraction))))
+        timing_offset = timing_offset + (repeated["dense_subtick_id"].astype("int64") // throttle_step)
+    repeated["callback_received_utc_ms"] = repeated["callback_received_utc_ms"].astype("int64") + timing_offset
     repeated["callback_received_monotonic_ns"] = repeated["callback_received_utc_ms"].astype("int64") * 1_000_000
-    repeated["exchange_timestamp_ms"] = repeated["exchange_timestamp_ms"].astype("int64") + repeated["dense_subtick_id"].astype("int64")
+    repeated["exchange_timestamp_ms"] = repeated["exchange_timestamp_ms"].astype("int64") + timing_offset
     repeated["last_trade_time_ms"] = repeated["exchange_timestamp_ms"]
 
     phase = (repeated["dense_subtick_id"].astype(float) / max(multiplier - 1, 1)) - 0.5
-    micro_step = (repeated["sell_1_price"].astype(float) - repeated["buy_1_price"].astype(float)).abs().clip(lower=0.01) * 0.08
+    micro_step = (
+        (repeated["sell_1_price"].astype(float) - repeated["buy_1_price"].astype(float)).abs().clip(lower=0.01)
+        * float(profile.price_micro_step_spread_fraction)
+        * float(profile.price_jump_size_scale)
+    )
     direction = np.where((repeated["dense_subtick_id"].astype(int) % 2) == 0, 1.0, -1.0)
     repeated["last_price"] = (repeated["last_price"].astype(float) + direction * phase.abs() * micro_step).round(4)
     repeated["last_traded_quantity"] = np.maximum(1, (repeated["last_traded_quantity"].astype(float) / math.sqrt(multiplier)).round()).astype("int64")
@@ -71,7 +81,7 @@ def write_dense_shard(dense: pd.DataFrame, output_root: Path, trade_month: str, 
     return target_file
 
 
-def run_dense_expansion(compact_root: Path, output_root: Path, symbols: list[str], multiplier: int) -> tuple[pd.DataFrame, float]:
+def run_dense_expansion(compact_root: Path, output_root: Path, symbols: list[str], multiplier: int, calibration_profile: GeneratorCalibrationProfile | None = None) -> tuple[pd.DataFrame, float]:
     if output_root.exists():
         shutil.rmtree(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
@@ -81,7 +91,7 @@ def run_dense_expansion(compact_root: Path, output_root: Path, symbols: list[str
         trade_month = path.parent.name.split("=", 1)[1]
         month = read_month(path, symbols)
         for symbol, symbol_frame in month.groupby("symbol", sort=True):
-            dense = densify_frame(symbol_frame, multiplier)
+            dense = densify_frame(symbol_frame, multiplier, calibration_profile=calibration_profile)
             target_file = write_dense_shard(dense, output_root, trade_month, str(symbol))
             rows.append(
                 {
@@ -146,9 +156,10 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame]) -> None:
     (output_dir / "phase49_dense_tick_rate_expansion_report.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def run_phase49(compact_root: Path, output_root: Path, output_dir: Path, base_dir: Path, symbols: list[str], multiplier: int) -> None:
+def run_phase49(compact_root: Path, output_root: Path, output_dir: Path, base_dir: Path, symbols: list[str], multiplier: int, calibration_profile_id: str | None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    inventory, elapsed_seconds = run_dense_expansion(compact_root, output_root, symbols, multiplier)
+    calibration_profile = get_calibration_profile(calibration_profile_id)
+    inventory, elapsed_seconds = run_dense_expansion(compact_root, output_root, symbols, multiplier, calibration_profile=calibration_profile)
     summary = build_summary(inventory, elapsed_seconds, output_root, multiplier, symbols)
     inventory.to_csv(output_dir / "dense_tick_shard_inventory.csv", index=False)
     summary.to_csv(output_dir / "dense_tick_expansion_summary.csv", index=False)
@@ -162,6 +173,7 @@ def run_phase49(compact_root: Path, output_root: Path, output_dir: Path, base_di
         "dense_rows": int(inventory["dense_rows"].sum()) if len(inventory) else 0,
         "dense_bytes": int(inventory["bytes"].sum()) if len(inventory) else 0,
         "synthetic_full_year_acceptance_ready": 0,
+        "generator_calibration_profile": calibration_profile.to_manifest(),
     }
     manifest.update(
         reproducibility_fields(
@@ -174,6 +186,7 @@ def run_phase49(compact_root: Path, output_root: Path, output_dir: Path, base_di
                 "target_dense_raw_gb": TARGET_DENSE_RAW_GB,
                 "source_rows": SOURCE_ROWS,
                 "acceptance_boundary": "dense_tick_generation_calibration_not_acceptance",
+                "generator_calibration_profile_id": calibration_profile.profile_id,
             },
             outputs={
                 "dense_output_root": str(output_root),
@@ -200,12 +213,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     parser.add_argument("--symbols", nargs="+", default=DEFAULT_SYMBOLS)
     parser.add_argument("--multiplier", type=int, default=DEFAULT_DENSE_MULTIPLIER)
+    parser.add_argument("--calibration-profile-id", default=None)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    run_phase49(args.compact_root, args.output_root, args.output_dir, args.base_dir, args.symbols, args.multiplier)
+    run_phase49(args.compact_root, args.output_root, args.output_dir, args.base_dir, args.symbols, args.multiplier, args.calibration_profile_id)
 
 
 if __name__ == "__main__":

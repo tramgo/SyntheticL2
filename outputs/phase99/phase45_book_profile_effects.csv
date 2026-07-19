@@ -1,0 +1,4 @@
+profile_id,rows,median_l1_depth,median_l5_depth,median_abs_l1_imbalance_proxy,schema_columns,default_matches_legacy_explicit
+P98_LEGACY_DEFAULT,8,2950.0,25075.0,0.1,61,True
+P98_FULL_BOOK_REBALANCE_BASE,8,2006.0,19706.0,0.1497962821492233,61,True
+P98_FULL_BOOK_REBALANCE_STRONG,8,1630.5,16015.5,0.17515432098765432,61,True

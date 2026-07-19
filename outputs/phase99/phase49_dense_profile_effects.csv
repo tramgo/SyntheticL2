@@ -1,0 +1,4 @@
+profile_id,source_rows,dense_rows,median_callback_gap_ms,p90_callback_gap_ms,last_price_std,max_dense_subtick_id
+P98_LEGACY_DEFAULT,8,32,1.0,97.0,2.3279527420100816,3
+P98_TIMING_VOL_MODERATE,8,32,4.0,88.0,2.3279510581264926,3
+P98_FULL_BOOK_REBALANCE_STRONG,8,32,6.0,81.0,2.327950880758829,3

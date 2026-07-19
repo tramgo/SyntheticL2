@@ -1,0 +1,7 @@
+metric,value,description
+phase99_profile_rows,5,Generator calibration profiles available in code
+phase99_wiring_check_rows,5,Wiring checks executed
+phase99_wiring_checks_passed,5,Wiring checks passed
+phase99_wiring_pass,1,1 means calibration profiles are wired and replay lock is preserved
+phase99_strategy_replay_allowed,0,Strategy replay remains closed
+phase99_recommend_next_action,run_calibrated_generator_quality_smoke_no_strategy_replay,Recommended next milestone

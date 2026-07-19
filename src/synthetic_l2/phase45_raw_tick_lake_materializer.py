@@ -12,6 +12,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from synthetic_l2.phase25_event_replay_expansion import _markdown_table
+from synthetic_l2.generator_calibration_profiles import GeneratorCalibrationProfile, get_calibration_profile
 from synthetic_l2.reproducibility import reproducibility_fields
 
 
@@ -65,17 +66,18 @@ def select_sample(events: pd.DataFrame, sample_days: int, sample_symbols: int, s
     return sample.reset_index(drop=True)
 
 
-def add_depth_levels(raw: pd.DataFrame) -> pd.DataFrame:
+def add_depth_levels(raw: pd.DataFrame, calibration_profile: GeneratorCalibrationProfile | None = None) -> pd.DataFrame:
+    profile = calibration_profile or get_calibration_profile(None)
     mid = raw["mid_price"].astype(float)
     tick = raw["tick_size"].astype(float).replace(0.0, 0.05)
-    spread_ticks = raw["spread_ticks"].astype(float).clip(lower=1)
+    spread_ticks = raw["spread_ticks"].astype(float).clip(lower=1) * float(profile.spread_preserve_current_scale)
     half_spread = spread_ticks * tick / 2.0
-    l1_imb = raw["l1_imbalance"].astype(float).clip(-0.98, 0.98).fillna(0.0)
+    l1_imb = (raw["l1_imbalance"].astype(float) * float(profile.book_l1_quantity_skew_scale)).clip(-0.98, 0.98).fillna(0.0)
     l5_imb = raw["l5_imbalance"].astype(float).clip(-0.98, 0.98).fillna(0.0)
     intensity = raw["event_intensity_proxy"].astype(float).clip(lower=0.1).fillna(1.0)
-    base_qty = (100 + intensity * 250).round().astype("int64")
+    base_qty = ((100 + intensity * 250) * float(profile.book_depth_ladder_multiplier)).round().astype("int64")
     for level in range(1, 6):
-        level_weight = 1.0 + 0.35 * (level - 1)
+        level_weight = (1.0 + 0.35 * (level - 1)) * (float(profile.book_l1_l5_share_ratio) if level == 1 else 1.0)
         imb = l1_imb if level == 1 else (l1_imb * (6 - level) + l5_imb * (level - 1)) / 5.0
         bid_qty = (base_qty * level_weight * (1.0 + imb)).clip(lower=1).round().astype("int64")
         ask_qty = (base_qty * level_weight * (1.0 - imb)).clip(lower=1).round().astype("int64")
@@ -88,7 +90,7 @@ def add_depth_levels(raw: pd.DataFrame) -> pd.DataFrame:
     return raw
 
 
-def build_raw_ticks(events: pd.DataFrame) -> pd.DataFrame:
+def build_raw_ticks(events: pd.DataFrame, calibration_profile: GeneratorCalibrationProfile | None = None) -> pd.DataFrame:
     raw = events.copy()
     raw["exchange"] = "NSE"
     raw["instrument_token"] = raw["symbol"].astype("category").cat.codes.astype("int64") + 10_000_000
@@ -109,7 +111,7 @@ def build_raw_ticks(events: pd.DataFrame) -> pd.DataFrame:
     raw["oi_day_high"] = 0
     raw["oi_day_low"] = 0
     raw["average_traded_price"] = raw.groupby(["synthetic_trade_date", "symbol"], sort=False)["last_price"].expanding().mean().reset_index(level=[0, 1], drop=True)
-    raw = add_depth_levels(raw)
+    raw = add_depth_levels(raw, calibration_profile=calibration_profile)
     output_columns = [
         "collector_run_id",
         "session_id",
@@ -246,11 +248,13 @@ def run_phase45(
     sample_feed_profiles: int,
     sample_max_events: int,
     target_full_raw_gb: float,
+    calibration_profile_id: str | None,
 ) -> None:
     if mode == "full" and not confirm_full_materialization:
         raise ValueError("Full raw tick-lake materialization requires --confirm-full-materialization.")
     output_dir.mkdir(parents=True, exist_ok=True)
     raw_root.mkdir(parents=True, exist_ok=True)
+    calibration_profile = get_calibration_profile(calibration_profile_id)
     events = load_events(events_path)
     source_rows = int(len(events))
     if mode == "estimate":
@@ -259,7 +263,7 @@ def run_phase45(
         selected = select_sample(events, sample_days, sample_symbols, sample_feed_profiles, sample_max_events)
     else:
         selected = events.copy()
-    raw = build_raw_ticks(selected) if len(selected) else pd.DataFrame()
+    raw = build_raw_ticks(selected, calibration_profile=calibration_profile) if len(selected) else pd.DataFrame()
     inventory = write_partitioned_raw(raw, raw_root) if len(raw) else pd.DataFrame(columns=["trade_date", "exchange", "symbol", "file_path", "rows", "bytes"])
     materialized_rows = int(inventory["rows"].sum()) if len(inventory) else 0
     materialized_bytes = int(inventory["bytes"].sum()) if len(inventory) else 0
@@ -297,6 +301,7 @@ def run_phase45(
         "target_full_raw_lake_gb": target_full_raw_gb,
         "full_raw_lake_materialized": int(mode == "full"),
         "synthetic_full_year_acceptance_ready": 0,
+        "generator_calibration_profile": calibration_profile.to_manifest(),
     }
     manifest.update(
         reproducibility_fields(
@@ -312,6 +317,7 @@ def run_phase45(
                 "target_full_raw_gb": target_full_raw_gb,
                 "raw_partition_layout": "trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/part-*.parquet",
                 "full_materialization_requires_confirmation": True,
+                "generator_calibration_profile_id": calibration_profile.profile_id,
             },
             outputs={
                 "raw_root": str(raw_root),
@@ -344,6 +350,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--sample-feed-profiles", type=int, default=1)
     parser.add_argument("--sample-max-events", type=int, default=DEFAULT_SAMPLE_MAX_EVENTS)
     parser.add_argument("--target-full-raw-gb", type=float, default=DEFAULT_TARGET_FULL_RAW_GB)
+    parser.add_argument("--calibration-profile-id", default=None)
     return parser.parse_args()
 
 
@@ -361,6 +368,7 @@ def main() -> None:
         args.sample_feed_profiles,
         args.sample_max_events,
         args.target_full_raw_gb,
+        args.calibration_profile_id,
     )
 
 
