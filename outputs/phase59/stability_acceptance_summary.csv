@@ -1,0 +1,14 @@
+metric,value,description
+phase59_discovery_shards,8,Dense shards used to discover stable cells
+phase59_validation_shards,8,Disjoint dense shards used for validation
+phase59_discovery_observation_rows,785944,Discovery observation rows
+phase59_validation_observation_rows,783961,Validation observation rows
+phase59_train_positive_cell_rows,17,Discovery train-positive cell rows
+phase59_discovery_stable_cell_rows,2,Cells recurring across multiple discovery shards and symbols
+phase59_validation_result_rows,34,Exact and relaxed validation result rows
+phase59_positive_validation_rows,0,Validation rows positive after retail costs
+phase59_scale_candidate_rows,0,Stable cells passing disjoint validation gate
+phase59_best_traded_validation_net_pnl_inr,-785961.890750619,Best validation net P&L among rows that emitted at least one trade
+phase59_elapsed_seconds,53.83018159999847,Elapsed seconds
+phase59_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase59_recommend_scale_to_month_sweep,0,1 means at least one stable candidate deserves month/symbol sweep
