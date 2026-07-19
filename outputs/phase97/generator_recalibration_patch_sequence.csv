@@ -1,0 +1,7 @@
+sequence,stage,action,exit_gate
+1,real_anchor_extension,"Collect or ingest at least 5 ready real L2 days, 10 preferred, then rerun Phase96 and Phase94.",phase96_panels_ready_for_phase94_rerun=1
+2,timing_patch,Patch p90_gap_ms first because event cadence affects all replay horizons and forward-fill/staleness assumptions.,p90_gap_ms gap_fraction <= 0.25 without breaking median_gap_ms
+3,volatility_patch,Patch one_tick_return_std after timing because current synthetic one-tick volatility is too high relative to the real anchor.,one_tick_return_std gap_fraction <= 0.25
+4,book_shape_patch,Patch L1 imbalance and L1/L5 depth scales together so the book ladder remains internally consistent.,"median_abs_l1_imbalance, median_l1_depth, and median_l5_depth gap_fraction <= 0.25"
+5,preserve_passing_spread_anchor,Keep median and p90 spread calibration within current passing gates while other patches are applied.,median_spread_bps and p90_spread_bps gap_fraction remain <= 0.25
+6,replay_gate_review,Only after Phase94 passes on multi-day anchors may a new strategy-family precommit be created.,phase94_strategy_replay_resume_allowed=1

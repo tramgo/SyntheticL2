@@ -1,0 +1,7 @@
+metric,value,description
+phase97_patch_metric_rows,8,Calibration metrics mapped into generator patch plan
+phase97_severe_patch_rows,2,Metrics with >=50% symbol-anchor gap fraction
+phase97_material_or_severe_patch_rows,4,Metrics with >=25% symbol-anchor gap fraction
+phase97_strategy_replay_allowed,0,1 means strategy replay may resume
+phase97_generator_recalibration_required,1,1 means generator/data calibration work remains required
+phase97_recommend_next_action,extend_real_anchor_panel_then_patch_timing_volatility_book_shape,Recommended next milestone
