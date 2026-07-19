@@ -1,0 +1,12 @@
+retest_trade_month,contract_id,partitions_checked,symbols_checked,mode_inferred_timestamp_unit,mismatched_unit_partitions,median_positive_delta_min,median_positive_delta_max,timestamp_contract_pass
+2026-02,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-03,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-04,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-05,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-06,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-07,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-08,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-09,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-10,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-11,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True
+2026-12,P75_timestamp_unit_contract,32,32,seconds_in_ms_named_column,0,1.0,1.0,True

@@ -1,0 +1,11 @@
+metric,value,description
+phase77_disjoint_months_tested,11,Non-January months retested
+phase77_valid_months,10,Months with timestamp/common-overlap/recheck evidence
+phase77_positive_months,3,Valid months with positive synthetic net P&L
+phase77_pass_months,2,Valid months passing per-month HDFCBANK quality gates
+phase77_total_trades,624,Aggregate HDFCBANK target trades across valid months
+phase77_total_net_pnl_inr,-130842.33360683327,Aggregate after-cost synthetic net P&L across valid months
+phase77_positive_month_fraction,0.3,Positive valid-month fraction
+phase77_pass_month_fraction,0.2,Per-month gate pass fraction
+phase77_hdfcbank_disjoint_retest_pass,0,1 means HDFCBANK lead-lag survives disjoint-month falsification
+phase77_recommend_next_action,retire_or_redesign_hdfcbank_lead_lag_before_more_shards,Recommended next action
