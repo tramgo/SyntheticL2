@@ -1,0 +1,6 @@
+audit_item,evidence,decision,required_action
+strategy_mining_status,Phase93 pass=0.0,strategy_mining_stopped_until_generator_audit,Do not run new strategy replay until calibration gaps are triaged.
+compact_generator_diversity,Phase80 compact diversity pass=1.0,compact_scenario_diversity_acceptable,Keep compact regime/feed diversity design; do not revert to prefix-only sampling.
+dense_prefix_sampling_bias,Phase80 biased months=12.0,prefix_sampling_not_allowed_for_acceptance,Require stratified windows/cached bars for any replay evidence.
+stratified_replay_cache,Phase83 pass=1.0,coverage_cache_usable,Use Phase83-like coverage tables for future replay audits.
+real_anchor_calibration,50/256 symbol-metric anchors outside ratio gates,calibration_triage_required,Rank spread/depth/cadence/volatility gaps and collect more real days before restarting strategy mining.
