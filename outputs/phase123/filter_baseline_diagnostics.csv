@@ -1,0 +1,4 @@
+label,train_positive_rate,holdout_positive_rate,absolute_train_holdout_rate_gap,baseline_model,model_fit_allowed_next
+cost_toxicity_label,1.0,1.0,0.0,train_prior_probability,False
+regime_realism_risk_label,0.375,0.2604166666666667,0.11458333333333331,train_prior_probability,True
+opportunity_abstention_label,0.53125,0.5364583333333334,0.00520833333333337,train_prior_probability,True

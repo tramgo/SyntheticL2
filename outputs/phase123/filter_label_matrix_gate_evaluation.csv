@@ -1,0 +1,5 @@
+gate_id,gate_pass,evidence
+P123_LABEL_MATRIX_EXISTS,1,rows=384
+P123_BREADTH,1,symbols=32; months=12
+P123_LABEL_VARIATION,1,labels_with_class_variation=2
+P123_NO_REPLAY,1,phase122_strategy_replay_allowed=0

@@ -1,0 +1,4 @@
+label,rows,positive_rows,positive_rate,symbols,months,train_rows,holdout_rows,has_class_variation
+cost_toxicity_label,384,384,1.0,32,12,192,192,False
+regime_realism_risk_label,384,122,0.3177083333333333,32,12,192,192,True
+opportunity_abstention_label,384,205,0.5338541666666666,32,12,192,192,True
