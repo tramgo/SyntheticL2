@@ -1,0 +1,12 @@
+metric,value,description
+phase130_label_matrix_rows,228,Phase129 rows split for no-replay diagnostic baselines
+phase130_baseline_result_rows,237,Prior and threshold baseline evaluations emitted
+phase130_selection_rows,3,Label-level model selection rows emitted
+phase130_selected_diagnostic_models,3,Labels with material holdout Brier improvement over prior
+phase130_gate_rows,6,Gates evaluated
+phase130_all_gates_pass,1,1 means Phase130 obeys no-replay guardrails
+phase130_strategy_replay_allowed,0,Strategy replay remains closed
+phase130_current_ready_real_anchor_days,1,Real anchor days currently ready from Phase117
+phase130_additional_real_anchor_days_needed,4,Additional real anchor days needed before replay unlock
+phase130_next_best_action,promote_selected_diagnostics_to_phase131_permission_update_or_continue_real_anchor_acquisition,Recommended next milestone
+phase130_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

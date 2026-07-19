@@ -1,0 +1,3 @@
+phase130_split,rows,symbols,months,trade_months,strategy_replay_allowed,p129_regime_stability_label_positive_rate,p129_liquidity_opportunity_label_positive_rate,p129_cost_toxicity_refinement_label_positive_rate
+holdout,56,32,2,2026-08;2026-11,0,0.625,0.05357142857142857,0.35714285714285715
+train,172,32,6,2026-01;2026-02;2026-03;2026-04;2026-05;2026-07,0,0.47093023255813954,0.23837209302325582,0.37209302325581395

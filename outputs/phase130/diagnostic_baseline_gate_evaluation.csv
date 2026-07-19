@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence
+P130_SPLIT_EXISTS,1,split_rows=2; holdout_rows=56
+P130_BASELINE_RESULTS_EXIST,1,baseline_result_rows=237
+P130_SELECTION_ROWS_EXIST,1,selection_rows=3
+P130_MATERIAL_DIAGNOSTIC_SIGNAL,1,selected_models=3
+P130_NO_REPLAY,1,strategy_replay_allowed remains 0
+P130_REAL_ANCHOR_STILL_PRIMARY,1,ready_real_anchor_days=1; days_needed=4

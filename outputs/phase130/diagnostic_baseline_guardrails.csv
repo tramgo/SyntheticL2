@@ -1,0 +1,5 @@
+guardrail_id,requirement,enforcement
+P130_NO_REPLAY,Phase130 fits diagnostic label baselines only and cannot emit strategy replay artifacts.,strategy_replay_allowed=0 and forbidden_outputs carried through every model row.
+P130_CHRONOLOGICAL_HOLDOUT,Model diagnostics must be evaluated on later months than the fit set.,phase130_split assigns the final two trade months to holdout.
+P130_BASELINES_NOT_TRADING_RULES,"Selected models are screeners for label quality, not buy/sell rules.",Forbidden outputs remain buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim.
+P130_REAL_ANCHOR_REMAINS_PRIMARY,More real Zerodha L2 days remain the primary path to future replay unlock.,Phase117 real-anchor blocker is carried into the acceptance summary.
