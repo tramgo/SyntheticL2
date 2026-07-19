@@ -1,0 +1,10 @@
+metric,value,description
+phase58_disjoint_shards_scanned,24,Dense shards scanned outside Phase57 discovery shard window
+phase58_trade_rows,0,Candidate trade rows on disjoint validation shards
+phase58_net_pnl_inr,0.0,After-cost net P&L on disjoint validation shards
+phase58_positive_symbol_fraction,0.0,Fraction of shard-symbol rows positive after costs
+phase58_precision_cost_clear,0.0,Trade-weighted cost-clearing precision
+phase58_survives_disjoint_validation,0,1 means the Phase57 candidate survived disjoint validation
+phase58_elapsed_seconds,14.619087899998704,Elapsed seconds
+phase58_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase58_recommend_scale_to_month_sweep,0,1 means move to broader month/symbol sweep

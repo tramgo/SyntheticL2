@@ -1,0 +1,2 @@
+candidate_source,horizon_events,side,cell_key,symbols,trade_dates,trades,net_pnl_inr,gross_pnl_proxy_inr,cost_pnl_drag_proxy_inr,positive_symbol_fraction,precision_cost_clear,mean_net_return,phase58_survives_disjoint_validation
+phase57,100,-1,abs_ret_bin=5|micro_bin=1|imb_bin=2|spread_bin=0|depth_bin=2,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,False

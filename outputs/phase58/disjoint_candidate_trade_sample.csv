@@ -1,0 +1,1 @@
+shard_index,trade_date,symbol,local_sequence_id,split,one_tick_return,l1_imbalance,microprice_dev,spread_bps,l1_depth_notional,retail_cost_return,future_return_h20,future_return_h50,future_return_h100,abs_one_tick_return,abs_microprice_dev,abs_ret_bin,micro_bin,abs_micro_bin,imb_bin,spread_bin,depth_bin
