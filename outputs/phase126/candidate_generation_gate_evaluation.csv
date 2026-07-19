@@ -1,0 +1,6 @@
+gate_id,gate_pass,evidence
+P126_PERMISSION_LEDGER_EXISTS,1,rows=384
+P126_ABSTENTION_ENFORCED,1,opportunity-abstention rows have candidate_generation_allowed=0
+P126_ROW_REPLAY_LOCK,1,all row-level strategy_replay_allowed values are 0
+P126_GLOBAL_REPLAY_LOCK,1,phase116_same_family_shard_continuation_allowed=0
+P126_REAL_ANCHOR_STILL_BLOCKED,1,ready_real_anchor_days=1; days_needed=4

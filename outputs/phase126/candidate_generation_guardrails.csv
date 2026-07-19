@@ -1,0 +1,5 @@
+guardrail_id,requirement,enforcement
+P126_PRECOMMIT_ONLY,Allowed rows may be used only for future feature-label/precommit design.,candidate_generation_status never implies replay or profitability.
+P126_ABSTENTION_BLOCKS_GENERATION,Opportunity-abstention rows block future candidate generation.,candidate_generation_allowed is 0 when opportunity_abstention_flag is 1.
+P126_REALISM_REVIEW_WARNING,Realism-risk rows must be marked for generator/evidence review.,realism_review_flag is retained even when candidate generation is allowed.
+P126_REPLAY_CLOSED,No row may open strategy replay.,strategy_replay_allowed is 0 for all symbol/month permissions.

@@ -1,0 +1,10 @@
+metric,value,description
+phase126_symbol_month_rows,384,Symbol/month permission rows
+phase126_candidate_generation_allowed_rows,228,Rows allowed for future precommit/label design only
+phase126_opportunity_blocked_rows,156,Rows blocked by opportunity-abstention filter
+phase126_realism_review_rows,121,Rows flagged for realism review
+phase126_gate_rows,5,Gates evaluated
+phase126_all_gates_pass,1,1 means permission ledger obeys guardrails
+phase126_strategy_replay_allowed,0,Strategy replay remains closed
+phase126_next_best_action,use_permission_ledger_for_future_precommit_design_and_continue_real_anchor_acquisition,Recommended next milestone
+phase126_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

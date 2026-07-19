@@ -1,0 +1,385 @@
+trade_month,symbol,realism_review_flag,opportunity_abstention_flag,candidate_generation_allowed,candidate_generation_status,strategy_replay_allowed,why
+2026-01,ADANIPORTS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,AXISBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,BAJAJ-AUTO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,BANKBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,BRITANNIA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,CIPLA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,DRREDDY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,GOLDBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,HCLTECH,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,HDFCBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,HINDUNILVR,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,ICICIBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,INFY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-01,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,JUNIORBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-01,KOTAKBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,LT,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,M&M,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,MARUTI,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,NESTLEIND,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,NIFTYBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,ONGC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,RELIANCE,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,SBIN,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,SUNPHARMA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,TCS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,TECHM,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-01,ULTRACEMCO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-01,WIPRO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,ADANIPORTS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,AXISBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,BAJAJ-AUTO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,BANKBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,BRITANNIA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,CIPLA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,DRREDDY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,GOLDBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,HCLTECH,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,HDFCBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,HINDUNILVR,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,ICICIBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,INFY,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,ITBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,JUNIORBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,KOTAKBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,LT,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,M&M,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,MARUTI,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,NESTLEIND,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,NIFTYBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,ONGC,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,RELIANCE,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,SBIN,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,SUNPHARMA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,TCS,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-02,TECHM,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,ULTRACEMCO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-02,WIPRO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,ADANIPORTS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,AXISBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-03,BAJAJ-AUTO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,BRITANNIA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,CIPLA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,GOLDBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,HCLTECH,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,HDFCBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-03,HINDUNILVR,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,ICICIBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-03,INFY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,ITBEES,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,ITC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,JUNIORBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,KOTAKBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,LT,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,M&M,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,MARUTI,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,NESTLEIND,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,NIFTYBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,ONGC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,RELIANCE,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-03,SBIN,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-03,SUNPHARMA,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-03,TCS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,TECHM,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-03,ULTRACEMCO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-03,WIPRO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,ADANIPORTS,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,AXISBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,BAJAJ-AUTO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,BANKBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,BPCL,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,BRITANNIA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,CIPLA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,DRREDDY,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,GOLDBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,HCLTECH,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,HDFCBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,HINDUNILVR,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,ICICIBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,INFY,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,ITBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,JUNIORBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,KOTAKBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,LT,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,M&M,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,MARUTI,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,NESTLEIND,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,NIFTYBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,ONGC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,RELIANCE,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-04,SBIN,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,SUNPHARMA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,TCS,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,TECHM,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,ULTRACEMCO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-04,WIPRO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,ADANIPORTS,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,AXISBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,BAJAJ-AUTO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-05,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,BRITANNIA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,CIPLA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-05,GOLDBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,HCLTECH,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,HDFCBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,HINDUNILVR,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,ICICIBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,INFY,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-05,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,JUNIORBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,KOTAKBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,LT,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,M&M,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,MARUTI,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,NESTLEIND,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,NIFTYBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,ONGC,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,RELIANCE,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,SBIN,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-05,SUNPHARMA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,TCS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,TECHM,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,ULTRACEMCO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-05,WIPRO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-06,ADANIPORTS,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,AXISBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,BAJAJ-AUTO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,BHARTIARTL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,BPCL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,BRITANNIA,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,CIPLA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,GOLDBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,HCLTECH,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,HDFCBANK,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,HINDUNILVR,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,ICICIBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,INFY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,ITC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,JUNIORBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,KOTAKBANK,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,LT,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,M&M,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,MARUTI,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,NESTLEIND,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,NIFTYBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,ONGC,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,RELIANCE,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,SBIN,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,SUNPHARMA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,TCS,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,TECHM,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,ULTRACEMCO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-06,WIPRO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-07,ADANIPORTS,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,AXISBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,BAJAJ-AUTO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,BANKBEES,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-07,BHARTIARTL,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,BRITANNIA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,CIPLA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,DRREDDY,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,GOLDBEES,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-07,HCLTECH,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,HDFCBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,HINDUNILVR,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,ICICIBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,INFY,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-07,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,JUNIORBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,KOTAKBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,LT,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,M&M,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,MARUTI,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,NESTLEIND,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,NIFTYBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-07,ONGC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,RELIANCE,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,SBIN,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,SUNPHARMA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,TCS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,TECHM,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-07,ULTRACEMCO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-07,WIPRO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,ADANIPORTS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,AXISBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,BAJAJ-AUTO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,BANKBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,BRITANNIA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,CIPLA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,DRREDDY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,GOLDBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,HCLTECH,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,HDFCBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,HINDUNILVR,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,ICICIBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,INFY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,ITBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,JUNIORBEES,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,KOTAKBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,LT,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,M&M,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,MARUTI,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,NESTLEIND,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,NIFTYBEES,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,ONGC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,RELIANCE,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,SBIN,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,SUNPHARMA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,TCS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,TECHM,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-08,ULTRACEMCO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-08,WIPRO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-09,ADANIPORTS,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,AXISBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,BAJAJ-AUTO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,BHARTIARTL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,BPCL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,BRITANNIA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,CIPLA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,GOLDBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,HCLTECH,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,HDFCBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,HINDUNILVR,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,ICICIBANK,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,INFY,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,ITC,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,JUNIORBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,KOTAKBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,LT,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,M&M,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,MARUTI,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,NESTLEIND,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,NIFTYBEES,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,ONGC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,RELIANCE,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,SBIN,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,SUNPHARMA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,TCS,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,TECHM,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,ULTRACEMCO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-09,WIPRO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,ADANIPORTS,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,AXISBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,BAJAJ-AUTO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,BHARTIARTL,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,BPCL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,BRITANNIA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,CIPLA,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,GOLDBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,HCLTECH,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,HDFCBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,HINDUNILVR,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,ICICIBANK,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,INFY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,ITC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,JUNIORBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,KOTAKBANK,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,LT,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,M&M,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,MARUTI,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,NESTLEIND,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,NIFTYBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,ONGC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,RELIANCE,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,SBIN,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,SUNPHARMA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,TCS,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,TECHM,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,ULTRACEMCO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-10,WIPRO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,ADANIPORTS,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,AXISBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,BAJAJ-AUTO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,BHARTIARTL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,BPCL,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,BRITANNIA,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,CIPLA,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,GOLDBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,HCLTECH,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,HDFCBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,HINDUNILVR,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,ICICIBANK,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,INFY,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,ITC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,JUNIORBEES,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,KOTAKBANK,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,LT,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,M&M,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,MARUTI,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,NESTLEIND,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,NIFTYBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,ONGC,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,RELIANCE,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,SBIN,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,SUNPHARMA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-11,TCS,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,TECHM,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-11,ULTRACEMCO,0,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design only; replay still closed
+2026-11,WIPRO,1,0,1,allowed_for_precommit_design_only,0,allowed for label/precommit design with realism-review warning; replay still closed
+2026-12,ADANIPORTS,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,AXISBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,BAJAJ-AUTO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,BANKBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,BHARTIARTL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,BPCL,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,BRITANNIA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,CIPLA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,DRREDDY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,GOLDBEES,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,HCLTECH,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,HDFCBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,HINDUNILVR,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,ICICIBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,INFY,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,ITBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,ITC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,JUNIORBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,KOTAKBANK,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,LT,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,M&M,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,MARUTI,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,NESTLEIND,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,NIFTYBEES,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,ONGC,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,RELIANCE,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,SBIN,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,SUNPHARMA,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,TCS,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,TECHM,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,ULTRACEMCO,1,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
+2026-12,WIPRO,0,1,0,blocked_by_opportunity_abstention_filter,0,blocked: low-opportunity symbol/month; no candidate generation or replay
