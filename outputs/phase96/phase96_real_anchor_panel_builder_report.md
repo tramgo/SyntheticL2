@@ -1,6 +1,6 @@
 # Phase96 Real Anchor Panel Builder
 
-Generated UTC: 2026-07-19T21:35:50.897586+00:00
+Generated UTC: 2026-07-19T22:45:13.282733+00:00
 
 Phase96 validates available real Zerodha WebSocket L2 data against the Phase95 multi-day panel contract.
 It uses deterministic per-symbol file sampling so the current 50k tiny-file one-day archive can be checked quickly, while preserving the replay lock until enough real days exist.

@@ -1,0 +1,3 @@
+panel_name,symbol,file,column_count,missing_required_columns,required_schema_pass
+l2_multiday_panel,HDFCBANK,.tmp\phase112_dropzone_fixture\l2_multiday_panel\trade_date=2026-07-20\exchange=NSE\symbol=HDFCBANK\part-00000.parquet,46,,True
+l2_multiday_panel,INFY,.tmp\phase112_dropzone_fixture\l2_multiday_panel\trade_date=2026-07-20\exchange=NSE\symbol=INFY\part-00000.parquet,46,,True

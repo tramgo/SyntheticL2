@@ -95,12 +95,23 @@ def select_files(files: list[Path], limit: int) -> list[Path]:
 def discover_symbol_files(real_root: Path) -> pd.DataFrame:
     rows: list[dict[str, Any]] = []
     for panel_root in sorted(path for path in real_root.iterdir() if path.is_dir()) if real_root.exists() else []:
-        for symbol_dir in sorted(path for path in panel_root.glob("symbol=*") if path.is_dir()):
+        for symbol_dir in sorted(path for path in panel_root.rglob("symbol=*") if path.is_dir()):
             files = sorted(symbol_dir.glob("*.parquet"))
+            relative_parts = symbol_dir.relative_to(panel_root).parts
+            inferred_trade_dates = sorted(
+                part.split("=", 1)[1] for part in relative_parts if part.startswith("trade_date=")
+            )
+            inferred_exchanges = sorted(
+                part.split("=", 1)[1] for part in relative_parts if part.startswith("exchange=")
+            )
             rows.append(
                 {
                     "panel_name": panel_root.name,
                     "panel_root": str(panel_root),
+                    "symbol_dir": str(symbol_dir),
+                    "layout_path": str(symbol_dir.relative_to(panel_root)),
+                    "inferred_trade_date": inferred_trade_dates[0] if inferred_trade_dates else "",
+                    "inferred_exchange": inferred_exchanges[0] if inferred_exchanges else "",
                     "symbol": symbol_dir.name.replace("symbol=", ""),
                     "parquet_files": int(len(files)),
                     "first_file": str(files[0]) if files else "",
@@ -114,7 +125,8 @@ def sampled_symbol_day_diagnostics(symbol_files: pd.DataFrame, max_files_per_sym
     rows: list[dict[str, Any]] = []
     schema_rows: list[dict[str, Any]] = []
     for item in symbol_files.to_dict("records"):
-        files = [path for path in Path(item["panel_root"]).joinpath(f"symbol={item['symbol']}").glob("*.parquet")]
+        symbol_dir = Path(str(item.get("symbol_dir") or Path(item["panel_root"]).joinpath(f"symbol={item['symbol']}")))
+        files = [path for path in symbol_dir.glob("*.parquet")]
         sampled = select_files(files, max_files_per_symbol)
         frames = []
         for path in sampled:
@@ -162,6 +174,11 @@ def sampled_symbol_day_diagnostics(symbol_files: pd.DataFrame, max_files_per_sym
             continue
         data = pd.concat(frames, ignore_index=True)
         data["trade_date"] = data["trade_date"].astype(str) if "trade_date" in data.columns else "unknown"
+        inferred_trade_date = str(item.get("inferred_trade_date") or "")
+        if inferred_trade_date and inferred_trade_date.lower() != "nan" and "trade_date" in data.columns:
+            data["trade_date"] = data["trade_date"].replace({"": inferred_trade_date, "unknown": inferred_trade_date, "None": inferred_trade_date})
+        elif inferred_trade_date and inferred_trade_date.lower() != "nan":
+            data["trade_date"] = inferred_trade_date
         if "collector_received_utc_ms" in data.columns:
             data["collector_received_utc_ms"] = pd.to_numeric(data["collector_received_utc_ms"], errors="coerce")
         for trade_date, group in data.groupby("trade_date", sort=True):

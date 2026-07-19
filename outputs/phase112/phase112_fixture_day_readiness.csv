@@ -1,0 +1,2 @@
+panel_name,trade_date,symbols_observed,expected_symbol_fraction,missing_expected_symbols,sampled_rows,schema_pass,l1_book_pass,timing_pass,day_ready_for_anchor_panel
+l2_multiday_panel,2026-07-20,2,0.0625,ADANIPORTS|AXISBANK|BAJAJ-AUTO|BANKBEES|BHARTIARTL|BPCL|BRITANNIA|CIPLA|DRREDDY|GOLDBEES|HCLTECH|HINDUNILVR|ICICIBANK|ITBEES|ITC|JUNIORBEES|KOTAKBANK|LT|M&M|MARUTI|NESTLEIND|NIFTYBEES|ONGC|RELIANCE|SBIN|SUNPHARMA|TCS|TECHM|ULTRACEMCO|WIPRO,6,True,True,True,False

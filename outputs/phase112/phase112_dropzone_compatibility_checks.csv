@@ -1,0 +1,7 @@
+check_id,passed,detail
+P112_NESTED_SYMBOL_DIRS_DISCOVERED,True,discovered_symbol_rows=2
+P112_TRADE_DATE_INFERRED_FROM_PATH,True,inferred_trade_dates=2026-07-20
+P112_EXCHANGE_INFERRED_FROM_PATH,True,inferred_exchanges=NSE
+P112_REQUIRED_SCHEMA_VALID,True,schema_rows=2
+P112_SYMBOL_DAY_DIAGNOSTICS_BUILT,True,diagnostic_rows=2
+P112_DAY_READINESS_BUILT,True,day_readiness_rows=1

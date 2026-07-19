@@ -1,0 +1,7 @@
+metric,value,description
+phase112_check_rows,6,Drop-zone compatibility checks executed
+phase112_checks_passed,6,Drop-zone compatibility checks passing
+phase112_dropzone_compatibility_pass,1,1 means Phase96 can scan the Phase111 drop-zone layout
+phase112_fixture_symbol_rows,2,Fixture symbol partitions discovered
+phase112_fixture_day_rows,1,Fixture day readiness rows built
+phase112_strategy_replay_allowed,0,Strategy replay remains closed
