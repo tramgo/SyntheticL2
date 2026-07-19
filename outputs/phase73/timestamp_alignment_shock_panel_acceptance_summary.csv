@@ -1,0 +1,10 @@
+metric,value,description
+phase73_symbols_loaded,32,Symbols loaded for timestamp matrix
+phase73_timestamp_bar_rows,192,Timestamp-aligned symbol bar rows
+phase73_hdfcbank_recheck_positive,1,1 means HDFCBANK lead-lag near-miss remains positive under timestamp alignment
+phase73_hdfcbank_recheck_passes_gate,0,1 means timestamp-aligned HDFCBANK recheck passes quality gates
+phase73_shock_months_audited,4,Trade-month partitions included in shock-panel audit
+phase73_balanced_shock_months,1,Months with broad market shock or meaningful symbol-shock coverage
+phase73_allow_replay_expansion,0,1 means near-miss replay expansion is allowed
+phase73_elapsed_seconds,15.949379300000146,Elapsed seconds
+phase73_recommend_next_action,generator_alignment_remediation_plan,Recommended next action

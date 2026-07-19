@@ -1,0 +1,2 @@
+rule_id,phase70_reference_rule_id,leader_symbol,alignment,threshold,trades,target_symbols,net_pnl_inr,gross_pnl_proxy_inr,cost_pnl_drag_proxy_inr,precision_cost_clear,positive_target_fraction,cost_drag_to_abs_gross_ratio
+P73_TIMESTAMP_HDFCBANK_MOMENTUM_Q70_RECHECK,P70_MEGA_HDFCBANK_MOMENTUM_Q70,HDFCBANK,timestamp_bucket,0.00428699,70,26,10434.612477654115,18822.871332344715,8388.2588546906,0.4714285714285714,0.7692307692307693,0.4456418315029569

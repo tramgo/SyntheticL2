@@ -1,0 +1,5 @@
+trade_month,shard_count,symbols,row_count,market_shock_rows,symbol_shock_rows,market_shock_symbols,symbol_shock_symbols,regimes,feed_profiles,market_shock_symbol_fraction,symbol_shock_symbol_fraction
+2026-01,32,32,8000000,0,0,0,0,1,1,0.0,0.0
+2026-02,32,32,8000000,0,0,0,0,1,1,0.0,0.0
+2026-03,32,32,8000000,0,0,0,0,1,1,0.0,0.0
+2026-04,32,32,8000000,8000000,250000,32,1,1,1,1.0,0.03125
