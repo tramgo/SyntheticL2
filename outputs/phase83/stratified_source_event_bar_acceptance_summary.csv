@@ -1,0 +1,11 @@
+metric,value,description
+phase83_raw_candidate_bar_rows,167215,Raw stratified source-event bars before core coverage trimming
+phase83_cached_bar_rows,160150,Stratified source-event bars materialized
+phase83_core_bar_retained_fraction,0.9577490057710134,Fraction of raw candidate bars retained after core coverage trimming
+phase83_months_cached,12,Months represented in cached bars
+phase83_coverage_bucket_rows,5005,Cross-symbol event-bar coverage rows
+phase83_mean_monthly_coverage_pass_fraction,1.0,Mean monthly coverage pass fraction
+phase83_min_monthly_coverage_pass_fraction,1.0,Worst monthly coverage pass fraction
+phase83_stratified_bar_cache_pass,1,1 means cache is ready for full stratified replay
+phase83_elapsed_seconds,2.544397999998182,Elapsed seconds
+phase83_recommend_next_action,rerun_hdfcbank_on_cached_stratified_event_bars,Recommended next milestone
