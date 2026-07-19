@@ -1,0 +1,12 @@
+metric,value,description
+phase82_months_tested,2,Stratified months retested
+phase82_valid_months,0,Months with coverage/freshness/recheck evidence
+phase82_positive_months,0,Valid months with positive synthetic net P&L
+phase82_pass_months,0,Valid months passing per-month HDFCBANK gates
+phase82_total_trades,0,Aggregate stratified HDFCBANK trades
+phase82_total_net_pnl_inr,0.0,Aggregate after-cost synthetic net P&L
+phase82_positive_month_fraction,0.0,Positive valid-month fraction
+phase82_pass_month_fraction,0.0,Per-month pass fraction
+phase82_median_coverage_pass_fraction,0.3419000354484225,Median monthly timestamp bucket coverage pass fraction
+phase82_stratified_hdfcbank_retest_pass,0,1 means HDFCBANK survives stratified disjoint retest
+phase82_recommend_next_action,materialize_cached_stratified_bars_and_fix_alignment_coverage,Recommended next milestone

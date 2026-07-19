@@ -1,0 +1,3 @@
+trade_month,matrix_rows,coverage_bucket_rows,coverage_pass_fraction,fresh_cell_fraction,recheck_rows,hdfcbank_recheck_pass,trades,target_symbols,net_pnl_inr,gross_pnl_proxy_inr,cost_pnl_drag_proxy_inr,precision_cost_clear,positive_target_fraction,cost_drag_to_abs_gross_ratio,elapsed_seconds
+2026-02,2853,93,0.3870967741935484,0.4612688398177357,1,0,134,26,-28783.954915599665,-12276.038608617135,16507.91630698253,0.20149253731343283,0.038461538461538464,1.3447266527326527,59.79883830000472
+2026-03,2701,91,0.2967032967032967,0.36319881525360975,0,0,0,0,0.0,0.0,0.0,0.0,0.0,,64.19642500000191
