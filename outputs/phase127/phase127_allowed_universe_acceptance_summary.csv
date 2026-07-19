@@ -1,0 +1,11 @@
+metric,value,description
+phase127_allowed_context_rows,228,Symbol/month contexts allowed for precommit design only
+phase127_clean_allowed_context_rows,141,Allowed contexts without realism-review warning
+phase127_realism_review_context_rows,87,Allowed contexts retaining realism-review warning
+phase127_blocked_context_rows,156,Contexts blocked from candidate generation
+phase127_work_package_rows,2,Precommit-design work packages emitted
+phase127_gate_rows,5,Gates evaluated
+phase127_all_gates_pass,1,1 means queue obeys guardrails
+phase127_strategy_replay_allowed,0,Strategy replay remains closed
+phase127_next_best_action,design_next_label_matrix_only_from_phase127_allowed_contexts_or_continue_real_anchor_acquisition,Recommended next milestone
+phase127_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

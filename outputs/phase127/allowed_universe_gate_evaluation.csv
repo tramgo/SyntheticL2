@@ -1,0 +1,6 @@
+gate_id,gate_pass,evidence
+P127_ALLOWED_QUEUE_EXISTS,1,allowed_rows=228
+P127_BLOCKED_LEDGER_EXISTS,1,blocked_rows=156
+P127_WORK_PACKAGES_DECLARED,1,work_packages=2
+P127_NO_REPLAY,1,all emitted strategy_replay_allowed fields are 0
+P127_REAL_ANCHOR_STILL_PRIMARY,1,ready_real_anchor_days=1; days_needed=4

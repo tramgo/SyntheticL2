@@ -1,0 +1,229 @@
+queue_rank,trade_month,symbol,priority_bucket,realism_review_flag,opportunity_abstention_flag,candidate_generation_allowed,precommit_scope,strategy_replay_allowed,must_include_guardrail,why
+1,2026-01,ADANIPORTS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+2,2026-01,AXISBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+3,2026-01,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+4,2026-01,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+5,2026-01,BRITANNIA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+6,2026-01,CIPLA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+7,2026-01,DRREDDY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+8,2026-01,HINDUNILVR,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+9,2026-01,ICICIBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+10,2026-01,INFY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+11,2026-01,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+12,2026-01,KOTAKBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+13,2026-01,LT,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+14,2026-01,MARUTI,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+15,2026-01,NESTLEIND,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+16,2026-01,NIFTYBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+17,2026-01,ONGC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+18,2026-01,RELIANCE,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+19,2026-01,SBIN,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+20,2026-01,SUNPHARMA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+21,2026-01,TCS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+22,2026-01,TECHM,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+23,2026-02,ADANIPORTS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+24,2026-02,BAJAJ-AUTO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+25,2026-02,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+26,2026-02,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+27,2026-02,DRREDDY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+28,2026-02,GOLDBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+29,2026-02,HCLTECH,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+30,2026-02,HINDUNILVR,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+31,2026-02,ITBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+32,2026-02,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+33,2026-02,JUNIORBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+34,2026-02,KOTAKBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+35,2026-02,LT,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+36,2026-02,M&M,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+37,2026-02,NESTLEIND,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+38,2026-02,NIFTYBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+39,2026-02,RELIANCE,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+40,2026-02,SBIN,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+41,2026-02,SUNPHARMA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+42,2026-02,TECHM,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+43,2026-02,ULTRACEMCO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+44,2026-02,WIPRO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+45,2026-03,ADANIPORTS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+46,2026-03,BAJAJ-AUTO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+47,2026-03,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+48,2026-03,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+49,2026-03,HCLTECH,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+50,2026-03,INFY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+51,2026-03,KOTAKBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+52,2026-03,LT,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+53,2026-03,M&M,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+54,2026-03,MARUTI,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+55,2026-03,NESTLEIND,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+56,2026-03,ONGC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+57,2026-03,TCS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+58,2026-03,TECHM,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+59,2026-03,WIPRO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+60,2026-04,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+61,2026-04,BRITANNIA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+62,2026-04,HCLTECH,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+63,2026-04,HDFCBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+64,2026-04,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+65,2026-04,JUNIORBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+66,2026-04,MARUTI,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+67,2026-04,ONGC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+68,2026-04,RELIANCE,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+69,2026-05,AXISBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+70,2026-05,BAJAJ-AUTO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+71,2026-05,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+72,2026-05,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+73,2026-05,BRITANNIA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+74,2026-05,CIPLA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+75,2026-05,HCLTECH,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+76,2026-05,HINDUNILVR,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+77,2026-05,ICICIBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+78,2026-05,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+79,2026-05,KOTAKBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+80,2026-05,LT,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+81,2026-05,NIFTYBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+82,2026-05,RELIANCE,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+83,2026-05,SUNPHARMA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+84,2026-05,TCS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+85,2026-05,TECHM,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+86,2026-05,ULTRACEMCO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+87,2026-05,WIPRO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+88,2026-07,AXISBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+89,2026-07,BAJAJ-AUTO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+90,2026-07,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+91,2026-07,BRITANNIA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+92,2026-07,HCLTECH,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+93,2026-07,HDFCBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+94,2026-07,HINDUNILVR,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+95,2026-07,ICICIBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+96,2026-07,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+97,2026-07,M&M,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+98,2026-07,NESTLEIND,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+99,2026-07,ONGC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+100,2026-07,RELIANCE,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+101,2026-07,TCS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+102,2026-07,TECHM,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+103,2026-08,ADANIPORTS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+104,2026-08,AXISBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+105,2026-08,BAJAJ-AUTO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+106,2026-08,BANKBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+107,2026-08,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+108,2026-08,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+109,2026-08,BRITANNIA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+110,2026-08,CIPLA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+111,2026-08,DRREDDY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+112,2026-08,HDFCBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+113,2026-08,ICICIBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+114,2026-08,INFY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+115,2026-08,ITBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+116,2026-08,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+117,2026-08,KOTAKBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+118,2026-08,M&M,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+119,2026-08,MARUTI,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+120,2026-08,NESTLEIND,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+121,2026-08,NIFTYBEES,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+122,2026-08,ONGC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+123,2026-08,TCS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+124,2026-08,TECHM,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+125,2026-08,WIPRO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+126,2026-11,ADANIPORTS,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+127,2026-11,AXISBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+128,2026-11,BAJAJ-AUTO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+129,2026-11,BHARTIARTL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+130,2026-11,BPCL,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+131,2026-11,CIPLA,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+132,2026-11,HCLTECH,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+133,2026-11,HDFCBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+134,2026-11,HINDUNILVR,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+135,2026-11,INFY,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+136,2026-11,ITC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+137,2026-11,KOTAKBANK,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+138,2026-11,MARUTI,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+139,2026-11,ONGC,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+140,2026-11,SBIN,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+141,2026-11,ULTRACEMCO,P1_clean_allowed,0,0,1,label_or_feature_design_only,0,standard_no_replay_guardrail,allowed for label/precommit design only; replay still closed
+142,2026-01,BAJAJ-AUTO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+143,2026-01,BANKBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+144,2026-01,GOLDBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+145,2026-01,HCLTECH,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+146,2026-01,HDFCBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+147,2026-01,M&M,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+148,2026-01,ULTRACEMCO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+149,2026-01,WIPRO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+150,2026-02,AXISBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+151,2026-02,BANKBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+152,2026-02,BRITANNIA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+153,2026-02,CIPLA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+154,2026-02,HDFCBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+155,2026-02,ICICIBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+156,2026-02,INFY,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+157,2026-02,MARUTI,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+158,2026-02,ONGC,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+159,2026-02,TCS,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+160,2026-03,AXISBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+161,2026-03,HDFCBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+162,2026-03,ICICIBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+163,2026-03,RELIANCE,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+164,2026-03,SBIN,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+165,2026-03,ULTRACEMCO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+166,2026-04,ADANIPORTS,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+167,2026-04,AXISBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+168,2026-04,BAJAJ-AUTO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+169,2026-04,BANKBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+170,2026-04,BPCL,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+171,2026-04,CIPLA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+172,2026-04,DRREDDY,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+173,2026-04,GOLDBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+174,2026-04,HINDUNILVR,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+175,2026-04,ICICIBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+176,2026-04,INFY,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+177,2026-04,ITBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+178,2026-04,KOTAKBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+179,2026-04,LT,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+180,2026-04,M&M,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+181,2026-04,NESTLEIND,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+182,2026-04,NIFTYBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+183,2026-04,SBIN,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+184,2026-04,SUNPHARMA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+185,2026-04,TCS,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+186,2026-04,TECHM,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+187,2026-04,ULTRACEMCO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+188,2026-04,WIPRO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+189,2026-05,ADANIPORTS,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+190,2026-05,GOLDBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+191,2026-05,HDFCBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+192,2026-05,INFY,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+193,2026-05,JUNIORBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+194,2026-05,M&M,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+195,2026-05,MARUTI,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+196,2026-05,NESTLEIND,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+197,2026-05,ONGC,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+198,2026-05,SBIN,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+199,2026-07,ADANIPORTS,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+200,2026-07,BHARTIARTL,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+201,2026-07,CIPLA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+202,2026-07,DRREDDY,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+203,2026-07,INFY,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+204,2026-07,JUNIORBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+205,2026-07,KOTAKBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+206,2026-07,LT,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+207,2026-07,MARUTI,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+208,2026-07,SBIN,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+209,2026-07,SUNPHARMA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+210,2026-07,ULTRACEMCO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+211,2026-07,WIPRO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+212,2026-08,GOLDBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+213,2026-08,HCLTECH,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+214,2026-08,HINDUNILVR,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+215,2026-08,JUNIORBEES,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+216,2026-08,LT,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+217,2026-08,RELIANCE,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+218,2026-08,SBIN,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+219,2026-08,SUNPHARMA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+220,2026-08,ULTRACEMCO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+221,2026-11,BRITANNIA,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+222,2026-11,ICICIBANK,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+223,2026-11,LT,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+224,2026-11,M&M,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+225,2026-11,RELIANCE,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+226,2026-11,TCS,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+227,2026-11,TECHM,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
+228,2026-11,WIPRO,P2_allowed_with_realism_review,1,0,1,label_or_feature_design_only,0,realism_review_required_before_any_future_replay_gate,allowed for label/precommit design with realism-review warning; replay still closed
