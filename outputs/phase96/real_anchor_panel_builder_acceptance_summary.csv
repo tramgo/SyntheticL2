@@ -1,0 +1,9 @@
+metric,value,description
+phase96_symbol_partitions_found,32,Symbol partitions discovered under real-data roots
+phase96_total_real_parquet_files,50205,Total real Parquet files inventoried
+phase96_day_readiness_rows,1,Panel/day readiness rows built from deterministic samples
+phase96_ready_anchor_days,1,Days passing schema/L1/timing/symbol-coverage sample gates
+phase96_max_ready_dates_in_panel,1,Maximum ready trade-date count in any panel
+phase96_panels_ready_for_phase94_rerun,0,Panels with enough ready days for Phase94 rerun
+phase96_strategy_replay_unlocked,0,1 means strategy replay gate is reopened
+phase96_recommend_next_action,collect_more_real_websocket_l2_days,Recommended next milestone
