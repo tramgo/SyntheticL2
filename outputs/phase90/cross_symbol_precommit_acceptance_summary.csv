@@ -1,0 +1,11 @@
+metric,value,description
+phase90_feature_rows,160150,Cross-symbol feature rows materialized from Phase83 cached bars
+phase90_train_feature_rows,81818,Train rows available for feature-threshold calibration
+phase90_test_feature_rows,78332,Test rows locked for replay evaluation
+phase90_signal_family_rows,3,Cross-symbol/regime signal families precommitted
+phase90_candidate_spec_rows,12,Candidate threshold specs precommitted
+phase90_validation_gate_rows,7,Replay validation gates locked
+phase90_phase88_same_family_shards_allowed,0,Must be 0 before pivoting to a new family
+phase90_phase89_passive_queue_pass,0,Phase89 simple passive result used only as pivot context
+phase90_ready_for_replay,1,1 means Phase91 cross-symbol replay may run without changing thresholds
+phase90_recommend_next_action,run_precommitted_cross_symbol_regime_imbalance_replay,Recommended next milestone
