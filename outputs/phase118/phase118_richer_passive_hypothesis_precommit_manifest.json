@@ -1,0 +1,17 @@
+{
+  "generated_utc": "2026-07-19T23:07:02.561285+00:00",
+  "scope": "phase118_richer_passive_hypothesis_precommit",
+  "bounded_pilot_replay_allowed": 0,
+  "full_year_replay_allowed": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "4629dea0227db5a1c0f5802d29af0be5d9f63990",
+  "configuration_hash": "7fa2e1679a8f400df6729d2807a49ebc5439ede73f071037ed9889a4fb05fc26",
+  "random_seed": "none_deterministic_precommit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase118_richer_passive_precommit_after_simple_passive_failure",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "not_applicable_pre_replay_design_gate",
+  "creation_timestamp": "2026-07-19T23:07:02.561285+00:00"
+}

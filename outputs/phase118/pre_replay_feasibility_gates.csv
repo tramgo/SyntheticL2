@@ -1,0 +1,7 @@
+gate_id,stage,requirement,pass_threshold,failure_action
+P118_NO_PNL_SELECTION,pre_replay,"Candidate filters must be selected from label quality and train-only feature distributions, not directional P&L.",no test P&L field used in candidate construction,discard candidate spec and rewrite precommit
+P118_ADVERSE_SELECTION_CEILING,pre_replay,Candidate buckets must show materially lower adverse-selection risk than simple Phase66/68 labels.,train adverse-selection rate <= 0.45 and at least 10 percentage points below simple passive baseline,do not run replay
+P118_REPLENISHMENT_AND_SPREAD_CONFIRMATION,pre_replay,Candidate must combine replenishment and non-expanding/compressing spread context.,replenishment stability pass == 1 and spread non-expansion/compression pass == 1,keep as label research only
+P118_BREADTH_BEFORE_REPLAY,pre_replay,Candidate label rows must span enough symbols and months to avoid a one-pocket illusion.,symbols >= 20 and train months >= 4 before replay,collect more real/synthetic label coverage before replay
+P118_FILL_MODEL_CONSERVATISM,replay_gate,"Replay, if later allowed, must pass pessimistic, base and optimistic fill models separately.",all_fill_assumptions_pass == 1; optimistic-only success rejected,retire feature family
+P118_COMPUTE_BUDGET,replay_gate,No large dense replay is allowed until pre-replay label gates pass.,bounded pilot first; full-year replay only after pilot pass and Phase117/115 real-anchor path reviewed,block same-family shard continuation

@@ -1,0 +1,5 @@
+permission_id,permission,evidence
+P118_LABEL_ONLY_DESIGN,allowed,Richer passive feature contract and gates may be designed without replay.
+P118_BOUNDED_PILOT_REPLAY,closed,current_label_candidate_rows=0; requires label gates to pass first
+P118_FULL_YEAR_REPLAY,closed,phase116_accepted_strategy_rows=0; same_family_allowed=0; phase117_strategy_replay_allowed=0
+P118_SAME_FAMILY_DENSE_SHARDS,blocked,Phase116 blocks continuation of current failed dense/cross-symbol/event-window families.

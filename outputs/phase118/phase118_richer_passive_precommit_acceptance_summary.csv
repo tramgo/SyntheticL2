@@ -1,0 +1,11 @@
+metric,value,description
+phase118_prior_label_evidence_rows,5,Prior passive/liquidity label and replay evidence rows reviewed
+phase118_prior_surviving_gate_rows,0,Prior passive/liquidity rows that survived their gate
+phase118_prior_candidate_rows,0,Candidate rows found by prior passive/liquidity gates
+phase118_feature_family_rows,3,New richer passive feature families precommitted
+phase118_candidate_template_rows,3,Candidate templates emitted for future label construction
+phase118_pre_replay_gate_rows,6,Pre-replay and replay gates locked
+phase118_bounded_pilot_replay_allowed,0,1 means a bounded replay may run immediately
+phase118_full_year_replay_allowed,0,Full-year replay remains closed
+phase118_next_best_action,implement_label_builder_for_p118_richer_passive_features_before_any_replay,Recommended next milestone
+phase118_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model version carried into any future replay

@@ -1,0 +1,6 @@
+evidence_id,scope,rows_or_candidates,candidate_rows,best_after_cost_bps,survives_gate,decision,best_expected_net_pnl_inr
+P66_PASSIVE_ADVERSE_SELECTION_LABELS,simple join/fade passive imbalance labels,5681976,0,-17.0135044621871,0,simple_passive_imbalance_labels_failed,
+P67_FEATURE_DESIGN_BUDGET,post-Phase66 feature-design budget gate,4,0,-17.0135044621871,0,full_year_replay_blocked_by_budget_gate,
+P68_REPLENISHMENT_AFTER_TOUCH,post-touch replenishment labels,68850,0,-13.236017781047423,0,replenishment_label_gate_failed,
+P69_SPREAD_TRANSITION_LABELS,spread compression/expansion transition labels,319500,0,-10.030543656207985,0,spread_transition_label_gate_failed,
+P89_SIMPLE_PASSIVE_QUEUE_COST_FLOOR,simple passive queue expected-value replay under pessimistic/base/optimistic fills,54,0,,0,simple_passive_queue_replay_failed,-187945.7105576788

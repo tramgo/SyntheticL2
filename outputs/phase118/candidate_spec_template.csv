@@ -1,0 +1,4 @@
+candidate_template_id,feature_family_id,threshold_policy,adverse_selection_rate_max,symbols_min,train_months_min,replenishment_required,spread_non_expansion_required,max_daily_orders_per_symbol,pilot_replay_allowed_now,why_not_allowed_now
+P118_QUEUE_RECOVERY_AFTER_ADVERSE_TOUCH_STRICT,P118_QUEUE_RECOVERY_AFTER_ADVERSE_TOUCH,train_only_strict,0.45,20,4,True,True,20,False,Phase66/68/69/89 current labels have zero candidate rows and Phase116/117 keep replay gates closed.
+P118_SPREAD_COMPRESSION_MAKER_ONLY_STRICT,P118_SPREAD_COMPRESSION_MAKER_ONLY,train_only_strict,0.45,20,4,True,True,20,False,Phase66/68/69/89 current labels have zero candidate rows and Phase116/117 keep replay gates closed.
+P118_REPLENISHMENT_STABILITY_FILTER_STRICT,P118_REPLENISHMENT_STABILITY_FILTER,train_only_strict,0.45,20,4,True,True,20,False,Phase66/68/69/89 current labels have zero candidate rows and Phase116/117 keep replay gates closed.
