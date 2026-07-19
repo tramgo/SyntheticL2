@@ -1,0 +1,9 @@
+metric,value,description
+phase107_phase106_gap_rows,50,Phase106 failed symbol-metric anchors triaged
+phase107_override_rows,50,Concrete symbol/metric override proposals emitted
+phase107_patch_items,3,Distinct implementation patch items required
+phase107_all_gaps_have_actions,1,1 means every Phase106 gap has a proposed action
+phase107_phase106_gap_fraction,0.1953125,Inherited Phase106 full-symbol gap fraction
+phase107_phase106_severe_metric_gap_count,1,Inherited Phase106 severe metric count
+phase107_ready_for_symbol_aware_generator_patch,1,1 means Phase108 can implement overrides
+phase107_strategy_replay_allowed,0,Strategy replay remains closed

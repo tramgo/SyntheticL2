@@ -1,0 +1,4 @@
+priority,patch_item,symbols_affected,failed_metric_rows,representative_symbols,acceptance_gate
+1,add_symbol_depth_scale_override,9,16,BAJAJ-AUTO;BRITANNIA;GOLDBEES;ITBEES;ITC;LT;M&M;MARUTI,"Rerun Phase106-style 32-symbol calibrated realism audit; target <=25% total gaps, no severe metric gap, and strategy replay still locked."
+2,add_symbol_l1_imbalance_skew_override,15,15,AXISBANK;BAJAJ-AUTO;BHARTIARTL;BPCL;BRITANNIA;HINDUNILVR;INFY;KOTAKBANK,"Rerun Phase106-style 32-symbol calibrated realism audit; target <=25% total gaps, no severe metric gap, and strategy replay still locked."
+3,add_symbol_tail_idle_cadence_model,19,19,ADANIPORTS;AXISBANK;BHARTIARTL;BPCL;BRITANNIA;CIPLA;DRREDDY;GOLDBEES,"Rerun Phase106-style 32-symbol calibrated realism audit; target <=25% total gaps, no severe metric gap, and strategy replay still locked."
