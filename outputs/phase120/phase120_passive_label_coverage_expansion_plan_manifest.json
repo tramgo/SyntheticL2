@@ -1,0 +1,17 @@
+{
+  "generated_utc": "2026-07-19T23:12:54.644162+00:00",
+  "scope": "phase120_passive_label_coverage_expansion_plan",
+  "dense_shards_available": 384,
+  "replay_allowed": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "15e4a452b0a10c8087baa03b2ddf9e7657da3e60",
+  "configuration_hash": "ec35b0f5d93e509afb6d128e539896313005bef20aa12665649ea917113b2bde",
+  "random_seed": "none_deterministic_coverage_plan",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase120_passive_label_coverage_expansion_after_phase119_breadth_failure",
+  "cost_model_version": "not_applicable_label_coverage_plan",
+  "latency_model_version": "not_applicable_label_coverage_plan",
+  "creation_timestamp": "2026-07-19T23:12:54.644162+00:00"
+}

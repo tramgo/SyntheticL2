@@ -1,0 +1,10 @@
+metric,value,description
+phase120_dense_shards_available,384,Dense full-year symbol/month shards available
+phase120_current_label_months,1,Months currently covered by passive labels
+phase120_dense_months_available,12,Months available in dense lake
+phase120_phase119_pre_replay_candidate_rows,0,Current Phase119 pre-replay candidates passing all gates
+phase120_stage_plan_rows,3,Label-only expansion stages emitted
+phase120_next_stage_limit_shards,128,Recommended next label-only expansion shard limit
+phase120_label_expansion_allowed,1,1 means label coverage can expand without replay
+phase120_replay_allowed,0,Replay remains closed
+phase120_next_best_action,run_phase120_stage_01_label_only_expansion_then_rerun_phase119_on_expanded_labels,Recommended next milestone

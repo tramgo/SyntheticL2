@@ -1,0 +1,11 @@
+metric,value,description
+phase120_dense_shard_rows,384,Dense full-year symbol/month parquet shards available
+phase120_dense_months,12,Distinct dense trade_month partitions available
+phase120_dense_symbols,32,Distinct dense symbols available
+phase120_current_label_source_rows,96,Current passive label inventory rows across Phase66/68/69
+phase120_current_label_months,1,Distinct trade_month partitions already labeled by passive label stages
+phase120_current_label_symbols,32,Distinct symbols already labeled by passive label stages
+phase120_phase119_max_joined_symbols,3,Max symbols in Phase119 joined candidates
+phase120_phase119_max_joined_trade_dates,1,Max trade dates in Phase119 joined candidates
+phase120_label_breadth_gap_symbols,17,Additional joined-candidate symbol breadth needed for Phase119 gate
+phase120_label_breadth_gap_trade_dates,3,Additional joined-candidate trade-date breadth needed for Phase119 gate
