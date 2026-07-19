@@ -1,0 +1,8 @@
+metric,value,description
+phase86_selected_filter_seed_rows,6,Phase85 filter seeds selected for precommit
+phase86_precommitted_family_rows,3,Composite signal families precommitted
+phase86_validation_gate_rows,6,Validation gates locked before P&L replay
+phase86_train_months,2026-01|2026-02|2026-03|2026-04|2026-05|2026-06,Train months for family selection
+phase86_test_months,2026-07|2026-08|2026-09|2026-10|2026-11|2026-12,Untouched test months for final evaluation
+phase86_ready_for_replay,1,1 means Phase87 replay may run
+phase86_recommend_next_action,run_precommitted_composite_signal_replay,Recommended next milestone

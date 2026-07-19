@@ -1,0 +1,7 @@
+gate_id,requirement,pass_threshold
+P86_SPLIT_LOCK,Use train months 2026-01 through 2026-06 only for selecting among precommitted families; test months 2026-07 through 2026-12 are untouched until final evaluation.,No thresholds may be changed after Phase86.
+P86_COST_CLEARANCE,A candidate must have positive after-cost net P&L and precision_cost_clear >= 0.55 on both train and test.,train_pass=1 and test_pass=1
+P86_BREADTH,"A candidate must trade at least 1000 bars in train and 1000 bars in test, with at least 20 symbols represented.",train_trades>=1000; test_trades>=1000; train_symbols>=20; test_symbols>=20
+P86_MONTH_STABILITY,"At least 4/6 test months must be after-cost positive, and no single month may contribute more than 50% of total test net P&L.",test_positive_months>=4 and max_month_contribution_abs<=0.50
+P86_COST_DRAG,Cost drag divided by absolute gross P&L must be <= 0.60 on test.,test_cost_drag_to_abs_gross_ratio<=0.60
+P86_RETIREMENT,"If no precommitted family passes, retire this composite family class rather than widening thresholds in the same run.",No in-run threshold widening allowed
