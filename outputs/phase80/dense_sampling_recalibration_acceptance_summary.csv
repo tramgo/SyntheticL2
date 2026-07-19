@@ -1,0 +1,10 @@
+metric,value,description
+phase80_compact_months_audited,12,Compact monthly source months audited
+phase80_compact_min_regime_codes,7,Minimum compact regime codes per month
+phase80_compact_median_regime_entropy_bits,3.3976810036505833,Median compact regime entropy
+phase80_compact_min_feed_profiles,5,Minimum compact feed profiles per month
+phase80_compact_generator_diversity_pass,1,1 means compact source generator diversity is acceptable
+phase80_dense_prefix_biased_months,12,Months where dense-prefix windows under-capture compact diversity
+phase80_dense_prefix_capture_pass,0,1 means dense-prefix scan windows capture compact diversity
+phase80_replay_sampling_recalibration_required,1,1 means replay/audit sampling must be recalibrated before new mining
+phase80_recommend_next_action,implement_stratified_dense_window_reader,Recommended next milestone
