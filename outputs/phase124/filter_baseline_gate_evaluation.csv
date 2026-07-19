@@ -1,0 +1,5 @@
+gate_id,gate_pass,evidence
+P124_NON_TRADING_ONLY,1,All model outputs are label probabilities/screeners; strategy_replay_allowed remains 0.
+P124_BASELINE_FIT_EXISTS,1,selection_rows=2
+P124_MATERIAL_CALIBRATION_IMPROVEMENT,1,selected_models=2
+P124_REPLAY_LOCK,1,No buy/sell signal or replay artifact emitted.

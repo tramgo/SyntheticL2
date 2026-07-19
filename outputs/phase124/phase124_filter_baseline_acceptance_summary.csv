@@ -1,0 +1,10 @@
+metric,value,description
+phase124_model_result_rows,82,Baseline model rows evaluated
+phase124_label_selection_rows,2,Labels with model selection rows
+phase124_selected_filter_models,2,Non-trading filter models materially improving over train-prior baseline
+phase124_gate_rows,4,Gates evaluated
+phase124_all_gates_pass,1,1 means all Phase124 gates pass
+phase124_filter_integration_allowed_next,2,1+ means selected non-trading filter(s) can be prepared for integration as abstention/diagnostic layers
+phase124_strategy_replay_allowed,0,Strategy replay remains closed
+phase124_next_best_action,prepare_phase125_filter_integration_contract_if_selected_models_exist,Recommended next milestone
+phase124_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for future filter validation
