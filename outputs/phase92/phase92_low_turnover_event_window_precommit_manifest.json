@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-19T21:17:45.133029+00:00",
+  "scope": "phase92_low_turnover_event_window_precommit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "19a0fcaca41b463596fe5afa0ed42744670bdae8",
+  "configuration_hash": "11aa0b95469ec4d113d2723a97e042b5fc9a548bb278067359d43944b9eadd65",
+  "random_seed": "none_deterministic_event_window_precommit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase92_post_phase91_low_turnover_event_window",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase83_source_event_ordinal_alignment",
+  "creation_timestamp": "2026-07-19T21:17:45.133029+00:00"
+}

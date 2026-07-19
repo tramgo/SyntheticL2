@@ -1,0 +1,10 @@
+metric,value,description
+phase92_event_feature_rows,160150,Event-window design rows built from Phase83 cached bars
+phase92_train_rows,81818,Train rows used for feature thresholds
+phase92_test_rows,78332,Locked test rows reserved for Phase93 replay
+phase92_signal_family_rows,3,Low-turnover event-window families precommitted
+phase92_candidate_spec_rows,12,Candidate specs precommitted
+phase92_validation_gate_rows,6,Validation gates locked
+phase92_phase91_cross_symbol_pass,0,Phase91 pass flag used only as pivot context
+phase92_ready_for_replay,1,1 means Phase93 low-turnover event replay may run
+phase92_recommend_next_action,run_precommitted_low_turnover_event_window_replay,Recommended next milestone

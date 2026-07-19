@@ -1,0 +1,7 @@
+gate_id,requirement,pass_threshold
+P92_NO_LABEL_INSPECTION,Phase92 may compute event-window features and train thresholds only; no directional P&L or next_bar_return replay is evaluated.,No candidate selected using replay P&L.
+P92_LOW_TURNOVER,"Replay must be low turnover: 50 to 1500 trades per split, at least 10 symbols, and no daily burst over 10% of split trades.",50<=trades<=1500; symbols>=10; max_day_trade_fraction<=0.10
+P92_COST_FLOOR,"Only rows below the train p50 taker round-trip cost floor may trade, and gross edge must clear at least 1.5x realized cost drag on test.",cost_floor_filter=1; test_abs_gross_to_cost_drag_ratio>=1.5
+P92_AFTER_COST_SURVIVAL,After-cost net P&L must be positive in train and test with precision_cost_clear >= 0.56.,train_net>0; test_net>0; train_precision>=0.56; test_precision>=0.56
+P92_MONTH_AND_SYMBOL_BREADTH,At least 4 test months positive; no single month or symbol may contribute more than 40% of absolute test net P&L.,test_positive_months>=4; max_month_contribution_abs<=0.40; max_symbol_contribution_abs<=0.40
+P92_RETIREMENT,"If no low-turnover event-window candidate passes, stop strategy mining and return to generator realism/calibration audit.",No threshold widening in Phase93.
