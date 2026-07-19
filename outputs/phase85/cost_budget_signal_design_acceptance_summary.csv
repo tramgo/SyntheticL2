@@ -1,0 +1,8 @@
+metric,value,description
+phase85_symbol_month_rows,384,Symbol-month cost budget rows
+phase85_tail_edge_available_symbol_month_fraction,1.0,Fraction of symbol-months with tail edge available
+phase85_feature_filter_rows,35,Feature filter budget rows
+phase85_eligible_filter_seeds,35,Feature filters passing cost-budget eligibility
+phase85_allowed_precommit_contracts,10,Allowed precommit filter contracts
+phase85_cost_budget_signal_design_pass,1,1 means at least one filter seed can move to precommitted signal design
+phase85_recommend_next_action,precommit_composite_regime_conditioned_signal_family,Recommended next milestone
