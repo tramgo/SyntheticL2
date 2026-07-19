@@ -1,0 +1,12 @@
+metric,value,description
+phase84_cached_bar_rows,160150,Cached stratified bars read
+phase84_months_tested,12,Months represented in cached bars
+phase84_valid_months,12,Months with HDFCBANK recheck trades
+phase84_positive_months,3,Valid months with positive after-cost synthetic P&L
+phase84_pass_months,0,Valid months passing quality gates
+phase84_total_trades,58988,Aggregate HDFCBANK target trades
+phase84_total_net_pnl_inr,-6977461.708801747,Aggregate after-cost synthetic net P&L
+phase84_positive_month_fraction,0.25,Positive valid-month fraction
+phase84_pass_month_fraction,0.0,Per-month gate pass fraction
+phase84_cached_stratified_hdfcbank_pass,0,1 means HDFCBANK survives cached stratified retest
+phase84_recommend_next_action,retire_hdfcbank_lead_lag_after_cached_stratified_falsification,Recommended next milestone
