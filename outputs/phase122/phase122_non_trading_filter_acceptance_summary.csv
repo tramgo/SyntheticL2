@@ -1,0 +1,10 @@
+metric,value,description
+phase122_prior_evidence_rows,6,Prior evidence rows reviewed
+phase122_prior_surviving_replay_rows,0,Prior rows currently allowing replay
+phase122_feature_source_rows,3,Non-trading feature sources precommitted
+phase122_validation_gate_rows,5,Validation gates locked
+phase122_model_queue_rows,3,Future model work items queued
+phase122_filter_design_allowed,1,1 means filter design may continue
+phase122_strategy_replay_allowed,0,1 means strategy replay may run
+phase122_next_best_action,build_phase123_filter_label_matrix_no_replay,Recommended next milestone
+phase122_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for future cost/toxicity filters

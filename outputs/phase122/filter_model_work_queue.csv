@@ -1,0 +1,4 @@
+priority,model_work_item,first_deliverable,model_type_allowed,pilot_replay_allowed,full_year_replay_allowed,why
+1,P122_COST_TOXICITY_FORECAST_FILTER,label_matrix_and_baseline_diagnostics,calibrated_logistic_or_tree_model_only_after_label_matrix,False,False,"Predict when spread, costs and adverse-selection risk are too high, so future strategies can abstain rather than trade."
+2,P122_REGIME_REALISM_FILTER,label_matrix_and_baseline_diagnostics,calibrated_logistic_or_tree_model_only_after_label_matrix,False,False,Classify synthetic regimes where generator assumptions are unreliable before using them for strategy evidence.
+3,P122_OPPORTUNITY_ABSTENTION_FILTER,label_matrix_and_baseline_diagnostics,calibrated_logistic_or_tree_model_only_after_label_matrix,False,False,Predict low-opportunity periods where any future strategy family should be disabled before execution modeling.

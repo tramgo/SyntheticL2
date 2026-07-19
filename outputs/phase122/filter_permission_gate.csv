@@ -1,0 +1,5 @@
+permission_id,permission,evidence
+P122_FILTER_DESIGN,allowed,Designing non-trading filters is allowed because it does not reopen replay.
+P122_FILTER_MODEL_FIT,closed_until_label_matrix_exists,No Phase122 label matrix has been built yet.
+P122_STRATEGY_REPLAY,closed,accepted_strategies=0; passive_replay_allowed=0
+P122_REAL_ANCHOR_REPLAY,closed,ready_real_anchor_days=1; additional_days_needed_for_min=4

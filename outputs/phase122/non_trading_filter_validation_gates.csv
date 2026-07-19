@@ -1,0 +1,6 @@
+gate_id,stage,requirement,pass_threshold
+P122_NO_DIRECT_TRADING,pre_model,Phase122 feature sources must not emit buy/sell signals or open replay.,strategy_replay_allowed == 0 and outputs are filters/scores only
+P122_NO_PNL_SELECTION,pre_model,Feature filters cannot be selected or tuned using strategy P&L.,"threshold policy uses train-only labels and calibration metrics, not replay P&L"
+P122_CALIBRATION_VALUE,model_gate,A future model must improve calibration of cost/toxicity/realism labels over naive baselines.,holdout Brier/log-loss improvement and monotonic risk buckets
+P122_BREADTH,model_gate,"A future filter must be valid across symbols and months, not a pocket.",>=20 symbols and >=4 train months before pilot integration
+P122_INTEGRATION_ONLY_AFTER_FILTER_PASS,integration_gate,Only after filter validation may future strategy candidates use it as a risk/abstention layer.,filter_validation_pass == 1; still no profitability claim without downstream gates

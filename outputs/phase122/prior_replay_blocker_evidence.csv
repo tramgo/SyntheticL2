@@ -1,0 +1,7 @@
+evidence_id,scope,rows_reviewed,candidate_rows,best_net_pnl_inr,survives_gate,decision_use
+P70_CROSS_SYMBOL_LEAD_LAG,cross-symbol lead-lag labels,48,0,38915.74717800456,0,feature_context_only_not_replay
+P71_SHOCK_RESILIENCE,shock/control event-bar labels,36,0,13311.377520269712,0,regime_risk_context_only_not_replay
+P72_RESEARCH_AUDIT,strategy family audit across Phase52-71,12,0,,0,blocks_more_strategy_replay
+P116_PROFITABILITY_VERDICT,latest strategy profitability verdict,6,0,,0,current_families_not_profitable
+P121_PASSIVE_RETIREMENT,passive branch train-half retirement gate,34124776,0,,0,passive_branch_replay_closed
+P117_REAL_ANCHOR_GATE,real-anchor acquisition status,1,0,,0,real_replay_locked_until_more_days
