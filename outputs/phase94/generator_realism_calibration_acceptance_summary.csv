@@ -1,0 +1,11 @@
+metric,value,description
+phase94_real_symbols_profiled,32,Real one-day WebSocket symbols profiled
+phase94_synthetic_symbols_profiled,32,Synthetic compact symbols profiled
+phase94_compared_symbols,32,Symbols present in both real and synthetic profiles
+phase94_symbol_metric_anchor_rows,256,Symbol/metric calibration anchors compared
+phase94_calibration_gap_rows,72,Anchor rows outside ratio gates
+phase94_calibration_gap_fraction,0.28125,Fraction of compared symbol/metric anchors outside gates
+phase94_severe_metric_gap_count,2,Metrics where more than half of symbols fail calibration gates
+phase94_generator_calibration_pass,0,1 means current generator calibration is strong enough to reopen strategy mining
+phase94_strategy_replay_resume_allowed,0,1 means strategy mining may resume immediately
+phase94_recommend_next_action,collect_multi_day_real_anchor_panel_and_calibrate_gaps,Recommended next milestone
