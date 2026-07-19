@@ -1,0 +1,8 @@
+check_id,passed,detail
+P100_PHASE99_WIRING_PASS,True,phase99_wiring_pass=1.0
+P100_REPLAY_LOCK_PRESERVED,True,phase99_strategy_replay_allowed=0.0
+P100_SEVERE_GAPS_PRESENT_FOR_SMOKE,True,phase97_severe_patch_rows=2.0
+P100_TIMING_PROFILE_MOVES_TAIL_GAP,True,P98_TIMING_VOL_MODERATE should increase p90 callback gap vs legacy on fixture.
+P100_FULL_PROFILE_REDUCES_OR_PRESERVES_VOL,True,P98_FULL_BOOK_REBALANCE_BASE should not increase last-price fixture volatility vs legacy.
+P100_FULL_PROFILE_INCREASES_L1_IMBALANCE,True,P98_FULL_BOOK_REBALANCE_BASE should increase L1 imbalance dispersion vs legacy.
+P100_SPREAD_ANCHOR_PRESERVED,True,All calibrated profiles should preserve median spread proxy within 5%.

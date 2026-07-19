@@ -1,0 +1,5 @@
+profile_id,p90_gap_ms_ratio_vs_legacy,last_price_std_ratio_vs_legacy,median_abs_l1_imbalance_ratio_vs_legacy,median_l5_depth_ratio_vs_legacy,spread_bps_ratio_vs_legacy,tail_gap_improves,volatility_not_increased,l1_imbalance_increases,spread_preserved
+P98_FULL_BOOK_REBALANCE_BASE,1.0321715817694368,0.999999433333919,1.497962821492233,0.7858823529411765,1.0,True,True,True,True
+P98_FULL_BOOK_REBALANCE_STRONG,1.048257372654155,0.9999993733339622,1.751543209876543,0.638703888334995,1.0,True,True,True,True
+P98_TIMING_ONLY_CONSERVATIVE,1.0134048257372654,1.0,1.0,1.0,1.0,True,True,True,True
+P98_TIMING_VOL_MODERATE,1.0321715817694368,0.999999433333919,1.0,1.0,1.0,True,True,True,True

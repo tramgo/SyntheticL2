@@ -1,0 +1,9 @@
+metric,value,description
+phase100_profiles_smoked,5,Profiles evaluated in generator quality smoke
+phase100_dense_multiplier,8,Dense multiplier used for fixture smoke
+phase100_profile_comparison_rows,4,Non-legacy profiles compared with legacy
+phase100_quality_check_rows,7,Quality smoke checks executed
+phase100_quality_checks_passed,7,Quality smoke checks passed
+phase100_quality_smoke_pass,1,1 means calibrated generator quality smoke passed
+phase100_strategy_replay_allowed,0,Strategy replay remains closed
+phase100_recommend_next_action,run_small_calibrated_phase49_shard_quality_audit_no_strategy_replay,Recommended next milestone

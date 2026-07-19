@@ -1,6 +1,6 @@
 # Phase99 Generator Calibration Wiring Verifier
 
-Generated UTC: 2026-07-19T21:44:02.582187+00:00
+Generated UTC: 2026-07-19T21:47:10.005942+00:00
 
 Phase99 verifies that Phase98 calibration profiles are available in code and affect generator outputs when explicitly selected.
 It also checks that legacy default behavior is preserved and strategy replay remains locked.
@@ -49,5 +49,5 @@ It also checks that legacy default behavior is preserved and strategy replay rem
 | profile_id | source_rows | dense_rows | median_callback_gap_ms | p90_callback_gap_ms | last_price_std | max_dense_subtick_id |
 | --- | --- | --- | --- | --- | --- | --- |
 | P98_LEGACY_DEFAULT | 8 | 32 | 1 | 97 | 2.32795 | 3 |
-| P98_TIMING_VOL_MODERATE | 8 | 32 | 4 | 88 | 2.32795 | 3 |
-| P98_FULL_BOOK_REBALANCE_STRONG | 8 | 32 | 6 | 81 | 2.32795 | 3 |
+| P98_TIMING_VOL_MODERATE | 8 | 32 | 4 | 100 | 2.32795 | 3 |
+| P98_FULL_BOOK_REBALANCE_STRONG | 8 | 32 | 6 | 101 | 2.32795 | 3 |

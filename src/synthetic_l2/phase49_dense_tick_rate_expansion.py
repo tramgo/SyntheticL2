@@ -51,7 +51,11 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
     repeated["annual_event_id"] = repeated["annual_event_id"].astype("int64") * multiplier + repeated["dense_subtick_id"].astype("int64")
     repeated["local_sequence_id"] = np.arange(1, len(repeated) + 1, dtype=np.int64)
     repeated["callback_batch_id"] = repeated["local_sequence_id"].floordiv(32).astype("int64")
-    timing_offset = (repeated["dense_subtick_id"].astype(float) * float(profile.event_timing_tail_gap_multiplier)).round().astype("int64")
+    source_timing_rank = np.repeat(np.arange(len(frame), dtype=np.int64), multiplier)
+    timing_offset = (
+        source_timing_rank.astype(float) * float(multiplier) * (float(profile.event_timing_tail_gap_multiplier) - 1.0)
+        + repeated["dense_subtick_id"].astype(float) * float(profile.event_timing_tail_gap_multiplier)
+    ).round().astype("int64")
     if float(profile.event_timing_burst_throttle_fraction) > 0:
         throttle_step = max(1, int(round(1.0 / float(profile.event_timing_burst_throttle_fraction))))
         timing_offset = timing_offset + (repeated["dense_subtick_id"].astype("int64") // throttle_step)

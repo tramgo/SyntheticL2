@@ -81,6 +81,7 @@ def _densify_chunk(
     local_offset: int,
     cumulative_volume: dict[object, int],
     calibration_profile: GeneratorCalibrationProfile | None = None,
+    source_offset: int = 0,
 ) -> pd.DataFrame:
     profile = calibration_profile or get_calibration_profile(None)
     if chunk.empty:
@@ -97,7 +98,13 @@ def _densify_chunk(
     )
     repeated["local_sequence_id"] = np.arange(local_offset + 1, local_offset + len(repeated) + 1, dtype=np.int64)
     repeated["callback_batch_id"] = repeated["local_sequence_id"].floordiv(32).astype("int64")
-    timing_offset = (repeated["dense_subtick_id"].astype(float) * float(profile.event_timing_tail_gap_multiplier)).round().astype("int64")
+    source_timing_rank = np.concatenate(
+        [np.full(count, source_offset + idx, dtype=np.int64) for idx, count in enumerate(repeat_counts)]
+    )
+    timing_offset = (
+        source_timing_rank.astype(float) * float(max_repeats) * (float(profile.event_timing_tail_gap_multiplier) - 1.0)
+        + repeated["dense_subtick_id"].astype(float) * float(profile.event_timing_tail_gap_multiplier)
+    ).round().astype("int64")
     if float(profile.event_timing_burst_throttle_fraction) > 0:
         throttle_step = max(1, int(round(1.0 / float(profile.event_timing_burst_throttle_fraction))))
         timing_offset = timing_offset + (repeated["dense_subtick_id"].astype("int64") // throttle_step)
@@ -163,6 +170,7 @@ def _write_dense_shard_chunked(
                 local_offset=local_offset,
                 cumulative_volume=cumulative_volume,
                 calibration_profile=calibration_profile,
+                source_offset=start,
             )
             table = pa.Table.from_pandas(dense, preserve_index=False)
             if writer is None:

@@ -1,15 +1,15 @@
 {
-  "generated_utc": "2026-07-19T21:47:10.020564+00:00",
-  "scope": "phase99_generator_calibration_wiring_verifier",
+  "generated_utc": "2026-07-19T21:47:11.965094+00:00",
+  "scope": "phase100_calibrated_generator_quality_smoke",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
   "generator_version": "51e3b5b8266cc27711f9f48a6cd0e80f859a9b34",
-  "configuration_hash": "e49533a917c25725bd765dfa527556dfdbaac6a35972ce84ced2d960b3cf2ad7",
-  "random_seed": "none_deterministic_fixture",
+  "configuration_hash": "87793e0dc86a6b2808a721a96022c918e59c23a92b3297640c628ac69956059e",
+  "random_seed": "none_deterministic_fixture_smoke",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
-  "scenario_ids": "phase99_generator_profile_fixture",
+  "scenario_ids": "phase100_generator_profile_fixture_quality_smoke",
   "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
-  "latency_model_version": "phase98_generator_calibration_profile_wiring",
-  "creation_timestamp": "2026-07-19T21:47:10.020564+00:00"
+  "latency_model_version": "phase98_phase99_generator_profile_wiring",
+  "creation_timestamp": "2026-07-19T21:47:11.965094+00:00"
 }
