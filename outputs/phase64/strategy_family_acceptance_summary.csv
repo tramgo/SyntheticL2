@@ -1,0 +1,10 @@
+metric,value,description
+phase64_strategy_families_reviewed,7,Strategy families in the decision ledger
+phase64_retired_family_count,6,Families explicitly retired by evidence
+phase64_active_next_branch_count,1,New active research branches
+phase64_marketable_taker_family_retired_count,6,Retired marketable/taker-like families
+phase64_continue_phase60_shard_by_shard,0,0 means do not continue Phase60 shard-by-shard replay
+phase64_next_priority_research_item,passive_limit_queue_capture_sensitivity,Highest-priority next experiment
+phase64_next_priority_phase,65,Suggested next phase number
+phase64_requires_passive_assumption_sensitivity,1,Passive fills require assumption sensitivity because true queue position is unavailable
+phase64_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model used by retired taker-family evidence
