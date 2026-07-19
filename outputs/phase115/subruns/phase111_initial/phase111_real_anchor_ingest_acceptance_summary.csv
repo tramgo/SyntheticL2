@@ -1,0 +1,10 @@
+metric,value,description
+phase111_candidate_rows,4,Candidate real panel roots discovered or checked
+phase111_ready_candidate_roots,1,Candidate roots ready for Phase96 scan
+phase111_current_ready_real_days,1,Ready real days currently proven by Phase110/Phase96
+phase111_max_candidate_trade_dates,1,Maximum distinct trade dates discovered in any candidate root
+phase111_additional_real_dates_found,0,1 means a candidate root appears to contain more dates than current Phase96 evidence
+phase111_days_needed_for_min,4,Additional ready real days still required for minimum replay-unlock consideration
+phase111_import_plan_rows,1,Import/validation plan rows emitted
+phase111_strategy_replay_allowed,0,Strategy replay remains closed
+phase111_recommend_next_action,drop_or_ingest_4_more_real_l2_days_then_rerun_phase96_phase110,Recommended next milestone

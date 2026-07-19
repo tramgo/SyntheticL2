@@ -1,0 +1,7 @@
+step_id,description,status,started_utc,ended_utc,elapsed_seconds,error
+P115_PHASE111_INITIAL_DISCOVERY,Discover candidate real panels before import.,completed,2026-07-19T22:53:22.401780+00:00,2026-07-19T22:53:45.509785+00:00,23.108005,
+P115_PHASE113_IMPORT_PLAN_OR_EXECUTE,Create or execute drop-zone import plan.,completed,2026-07-19T22:53:45.509856+00:00,2026-07-19T22:53:46.895604+00:00,1.385748,
+P115_PHASE114_IMPORT_INTEGRITY,Verify drop-zone import integrity or dry-run readiness.,completed,2026-07-19T22:53:46.895655+00:00,2026-07-19T22:53:54.078550+00:00,7.182895,
+P115_PHASE96_PANEL_READINESS,Rebuild real anchor panel readiness after import step.,completed,2026-07-19T22:53:54.078613+00:00,2026-07-19T22:54:18.698488+00:00,24.619875,
+P115_PHASE110_REPLAY_UNLOCK_GATE,Re-evaluate replay unlock gate after readiness refresh.,completed,2026-07-19T22:54:18.698555+00:00,2026-07-19T22:54:18.796661+00:00,0.098106,
+P115_PHASE111_FINAL_DISCOVERY,Refresh candidate discovery after import/readiness/gate run.,completed,2026-07-19T22:54:18.796711+00:00,2026-07-19T22:54:44.143129+00:00,25.346418,

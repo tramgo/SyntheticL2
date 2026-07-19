@@ -1,0 +1,2 @@
+panel_name,distinct_trade_dates,ready_trade_dates,ready_trade_date_list,min_expected_symbol_fraction,all_days_schema_pass,all_days_l1_book_pass,all_days_timing_pass,panel_ready_for_phase94_rerun
+l2_single_day,1,1,2026-07-13,1.0,True,True,True,False
