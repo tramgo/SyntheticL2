@@ -1,0 +1,11 @@
+metric,value,description
+phase117_current_ready_real_anchor_days,1,Ready real anchor days proven by latest Phase115/Phase110 evidence
+phase117_additional_days_needed_for_min,4,Additional ready real days needed for minimum replay unlock consideration
+phase117_additional_days_needed_for_target,9,Additional ready real days needed for preferred 10-day target
+phase117_local_candidate_panel_rows,4,Local candidate panel roots/files inventoried
+phase117_ready_candidate_panel_rows,1,Candidate panels with broad enough symbol coverage for import validation
+phase117_minimum_unlock_acquisition_slots,4,Concrete missing day slots required for minimum unlock
+phase117_strategy_replay_allowed,0,Current replay allowed flag inherited from Phase115
+phase117_same_family_shard_continuation_allowed,0,Current failed-family compute gate inherited from Phase116
+phase117_acquisition_gate_status,open,Whether additional real data must be acquired before replay work
+phase117_next_best_action,drop_or_sync_4_more_real_l2_days_then_run_phase115_with_execute_import,Recommended next milestone

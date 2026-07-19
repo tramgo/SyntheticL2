@@ -1,0 +1,5 @@
+candidate_root,panel_root,status,layout_type,parquet_files,bytes,symbols_observed,expected_symbol_fraction,trade_dates_observed,trade_date_list,ready_candidate,recommended_action
+real_data_sample,real_data_sample,found_parquet,symbol_only_or_unknown_date,50205,1764005784,32,1.0,0,,False,validate_with_phase115_execute_import
+real_data_sample,real_data_sample\l2_single_day,found_parquet,trade_date_symbol,50205,1764005784,32,1.0,1,unknown_single_day,True,validate_with_phase115_execute_import
+raw_l2,,missing_root,missing,0,0,0,0.0,0,,False,create_this_root_or_place_exported_real_l2_partitions_here
+scratch_l2_sample_20260710_HDFCBANK,,missing_root,missing,0,0,0,0.0,0,,False,create_this_root_or_place_exported_real_l2_partitions_here
