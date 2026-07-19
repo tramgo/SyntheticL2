@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-07-19T20:03:13.506147+00:00",
+  "scope": "phase76_common_overlap_matrix_validator",
+  "allow_hdfcbank_retest_expansion": 1,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "7353c529d588a6f415676646248e834c0a2a8af0",
+  "configuration_hash": "fe64a14c8622806737ded77715404c8b46bfccc7e0d657120bbd3d87b02c156c",
+  "random_seed": "none_deterministic_common_overlap_validator",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase76_common_overlap_timestamp_matrix",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase76_common_overlap_timestamp_bucket_alignment",
+  "creation_timestamp": "2026-07-19T20:03:13.506147+00:00"
+}

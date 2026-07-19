@@ -1,0 +1,9 @@
+metric,value,description
+phase76_common_overlap_bucket_count,5,Contiguous passing timestamp buckets selected from Phase75
+phase76_trimmed_matrix_rows,160,Common-overlap matrix rows
+phase76_coverage_pass_fraction,1.0,Fraction of common-overlap buckets passing coverage/freshness
+phase76_fresh_cell_fraction,1.0,Fraction of common-overlap cells fresh
+phase76_common_overlap_matrix_pass,1,1 means synchronous matrix remediation passes on common overlap
+phase76_hdfcbank_recheck_passes_gate,1,1 means HDFCBANK near-miss passes after common-overlap remediation
+phase76_allow_hdfcbank_retest_expansion,1,1 means HDFCBANK retest can expand
+phase76_recommend_next_action,hdfcbank_disjoint_month_retest,Recommended next action

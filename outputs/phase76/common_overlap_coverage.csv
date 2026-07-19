@@ -1,0 +1,6 @@
+trade_date,global_time_bucket_id,symbols_present,fresh_symbols,total_rows,max_staleness_seconds,median_staleness_seconds,expected_symbols,coverage_fraction,fresh_fraction,coverage_pass
+2026-01-01,356804,32,32,1426414,1.0,1.0,32,1.0,1.0,True
+2026-01-01,356805,32,32,2032340,1.0,1.0,32,1.0,1.0,True
+2026-01-01,356806,32,32,2063860,1.0,1.0,32,1.0,1.0,True
+2026-01-01,356807,32,32,1437114,1.0,1.0,32,1.0,1.0,True
+2026-01-01,356808,32,32,836532,517.0,17.0,32,1.0,1.0,True
