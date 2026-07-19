@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-07-19T19:49:22.150793+00:00",
+  "scope": "phase71_shock_resilience_labels",
+  "survives_shock_resilience_gate": 0,
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "c1c801124e7a94b7288f57dc3bd338b66f785802",
+  "configuration_hash": "7fd80607d703c1b95914af3aa2f11bfe93a3afdf69d1cad942727466bc9b428a",
+  "random_seed": "none_deterministic_shock_label_scan",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase71_shock_resilience_event_bar_labels",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase71_event_bar_shock_momentum_mean_reversion",
+  "creation_timestamp": "2026-07-19T19:49:22.150793+00:00"
+}

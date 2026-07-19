@@ -1,0 +1,11 @@
+metric,value,description
+phase71_shards_scanned,128,Dense shards scanned
+phase71_bar_rows,9072,Shock/control event-bar rows
+phase71_shock_bar_rows,2265,Event-bar rows with market or symbol shock tags
+phase71_rule_rows,36,Shock resilience rules evaluated
+phase71_label_candidate_rows,0,Shock rules passing label gate
+phase71_best_net_pnl_inr,13311.377520269712,Best after-cost rule P&L
+phase71_survives_shock_resilience_gate,0,1 means a shock-resilience rule deserves replay
+phase71_elapsed_seconds,54.931590300002426,Elapsed seconds
+phase71_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
+phase71_recommend_next_action,research_audit_and_generator_assumption_review,Recommended next action
