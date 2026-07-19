@@ -1,0 +1,12 @@
+metric,value,description
+phase55_dense_shards_scanned,8,Dense parquet shards scanned
+phase55_trade_rows,490,Aggregated candidate trade rows
+phase55_candidate_rows,6,Candidate result rows
+phase55_deployable_positive_after_cost_rows,0,Deployable candidates positive after retail costs
+phase55_cost_aware_scale_candidate_rows,0,Deployable candidates passing cost-aware scale gate
+phase55_non_deployable_oracle_positive_rows,1,Oracle ceiling rows positive after costs
+phase55_best_traded_deployable_net_pnl_inr,-13367.64891944802,Best deployable candidate net P&L among candidates that emitted at least one trade
+phase55_best_any_net_pnl_inr,65110.50576890321,Best candidate net P&L including nondeployable oracle ceilings
+phase55_elapsed_seconds,7.113224600001558,Replay elapsed seconds
+phase55_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha cost model used
+phase55_recommend_scale_deployable_to_full_year,0,1 means at least one deployable cost-aware candidate deserves a wider dense replay
