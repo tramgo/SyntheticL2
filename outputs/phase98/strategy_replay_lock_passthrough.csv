@@ -1,0 +1,2 @@
+lock_id,strategy_replay_allowed,phase94_strategy_resume_allowed,phase96_strategy_replay_unlocked,decision,allowed_next_action
+P97_STRATEGY_REPLAY_LOCK,False,0,0,replay_closed,generator_recalibration_and_real_panel_collection

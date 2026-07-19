@@ -1,0 +1,9 @@
+metric,value,description
+phase98_patch_metric_rows,8,Phase97 patch metrics consumed
+phase98_severe_metric_rows,2,Severe Phase97 metrics requiring calibration
+phase98_generator_knob_rows,8,Generator knobs cataloged for calibration wiring
+phase98_candidate_profile_rows,4,Candidate calibration profiles defined
+phase98_validation_gate_rows,7,Validation gates locked before generator patch execution
+phase98_strategy_replay_allowed,0,1 means strategy replay may resume now
+phase98_ready_for_generator_patch_wiring,1,1 means Phase99 may wire calibration profiles into generator code
+phase98_recommend_next_action,wire_calibration_profiles_into_generator_then_rerun_phase94_quality_only,Recommended next milestone
