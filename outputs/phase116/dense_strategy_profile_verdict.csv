@@ -1,0 +1,10 @@
+strategy_id,execution_profile,trade_dates,trades,annual_net_pnl_inr,mean_net_return_per_trade,after_cost_profitable,decision
+DENSE_S01_L1_IMBALANCE,zero_latency_spread_only_control,84,90068501,-1546766171.0846543,-0.0001717321987055,False,retired_negative_after_costs
+DENSE_S03_1T_MOMENTUM,zero_latency_spread_only_control,86,88584746,-2071472217.9809637,-0.000233840735738,False,retired_negative_after_costs
+DENSE_S02_MICROPRICE,zero_latency_spread_only_control,33,89084762,-2203270237.307283,-0.0002473229077389,False,retired_negative_after_costs
+DENSE_S01_L1_IMBALANCE,retail_marketable_default,85,89100465,-12394755228.791576,-0.0013910988263406,False,retired_negative_after_costs
+DENSE_S03_1T_MOMENTUM,retail_marketable_default,86,87500212,-13810649253.642817,-0.0015783560905704,False,retired_negative_after_costs
+DENSE_S02_MICROPRICE,retail_marketable_default,43,88045262,-14251396619.83268,-0.0016186443536089,False,retired_negative_after_costs
+DENSE_S01_L1_IMBALANCE,stressed_retail,85,89100367,-16784152074.385622,-0.0018837354591798,False,retired_negative_after_costs
+DENSE_S03_1T_MOMENTUM,stressed_retail,86,87500146,-19215592511.41863,-0.0021960640513009,False,retired_negative_after_costs
+DENSE_S02_MICROPRICE,stressed_retail,43,88045104,-19925530601.936504,-0.002263104897001,False,retired_negative_after_costs

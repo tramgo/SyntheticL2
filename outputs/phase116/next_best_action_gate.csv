@@ -1,0 +1,5 @@
+gate_id,gate_status,evidence,policy
+P116_NO_ACCEPTED_PROFITABILITY,closed,accepted_strategy_rows=0,synthetic positive pockets are not profitability proof
+P116_REAL_REPLAY_UNLOCK,closed,ready_real_anchor_days=1; days_needed_for_min=4,real-anchor replay stays closed until Phase115/Phase110 unlocks it
+P116_COMPUTE_BUDGET,no_more_large_dense_strategy_shards,Phase52 scanned 797M+ dense simulated trades with zero positive-after-cost rows,large shard continuation requires a materially new precommitted edge hypothesis
+P116_NEXT_BEST_ACTION,collect_or_import_more_real_l2_days_then_run_phase115_with_execute_import,latest evidence favors real-anchor expansion and hypothesis redesign over brute-force shard replay,"spend next milestone on data unlock or new-feature precommit, not repeated failed-family replay"

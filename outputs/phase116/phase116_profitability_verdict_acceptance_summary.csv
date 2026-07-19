@@ -1,0 +1,11 @@
+metric,value,description
+phase116_profitability_evidence_rows,6,Latest profitability and replay-lock evidence rows reviewed
+phase116_dense_strategy_profile_rows,9,Dense strategy/profile rows reviewed from Phase52
+phase116_dense_positive_after_cost_rows,0,Dense strategy/profile rows positive after costs
+phase116_positive_pocket_evidence_rows,3,Evidence rows with isolated positive pockets
+phase116_accepted_strategy_rows,0,Accepted profitable strategy rows across reviewed evidence
+phase116_blocklisted_family_rows,6,Strategy families blocked from same-shard continuation
+phase116_same_family_shard_continuation_allowed,0,1 means more same-family shard replay is allowed
+phase116_strategy_replay_gate,closed,Profitability gate for current strategy families
+phase116_next_best_action,collect_or_import_more_real_l2_days_then_run_phase115_with_execute_import,Recommended next milestone
+phase116_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha equity intraday NSE cost model version
