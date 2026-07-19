@@ -1,0 +1,9 @@
+metric,value,description
+phase75_timestamp_contract_pass,1,1 means timestamp unit inferred consistently and not unknown
+phase75_matrix_bar_rows,197,Synchronous timestamp-bar matrix rows
+phase75_coverage_bucket_rows,9,Global timestamp buckets audited
+phase75_coverage_pass_fraction,0.5555555555555556,Fraction of buckets passing symbol coverage and freshness
+phase75_fresh_cell_fraction,0.8934010152284264,Fraction of symbol/bucket matrix cells within staleness limit
+phase75_synchronous_matrix_validator_pass,0,1 means Phase74 alignment remediation gate passes
+phase75_elapsed_seconds,13.82204179999826,Elapsed seconds
+phase75_recommend_next_action,fix_synchronous_matrix_coverage_or_staleness,Recommended next action
