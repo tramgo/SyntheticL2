@@ -1,0 +1,3 @@
+trade_month_partition,shard_symbol_rows,symbols,trade_dates,trades,net_pnl_inr,gross_pnl_proxy_inr,cost_pnl_drag_proxy_inr,positive_rows,mean_precision_cost_clear,positive_row_fraction,mean_net_pnl_per_trade_inr,cost_drag_to_abs_gross_ratio
+2026-01,16,16,1,259,-13330.134056581113,17722.924054678024,31053.058111259135,7,0.4229547603991296,0.4375,-51.467699060158736,1.7521407875729502
+2026-02,32,32,1,386,-75417.89736392398,-29269.06465250576,46148.832711418225,0,0.20954954246604787,0.0,-195.3831537925492,1.576710197586289

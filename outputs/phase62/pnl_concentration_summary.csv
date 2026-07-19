@@ -1,0 +1,8 @@
+metric,value,description
+total_net_pnl_inr,-88748.03142050511,Total Phase61 wider-sweep net P&L
+positive_rows,7.0,Shard-symbol rows positive after costs
+negative_rows,41.0,Shard-symbol rows negative after costs
+positive_net_pnl_inr,6290.529311444921,Sum of positive shard-symbol net P&L
+negative_net_pnl_inr,-95038.56073195003,Sum of negative shard-symbol net P&L
+top_5_rows_net_pnl_inr,5915.206068832811,Net P&L concentration in best five shard-symbol rows
+worst_5_rows_net_pnl_inr,-21073.04140358219,Net P&L concentration in worst five shard-symbol rows

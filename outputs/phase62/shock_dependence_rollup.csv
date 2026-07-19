@@ -1,0 +1,2 @@
+market_shock_bucket,symbol_shock_bucket,shard_symbol_rows,symbols,trade_dates,trades,net_pnl_inr,gross_pnl_proxy_inr,cost_pnl_drag_proxy_inr,positive_rows,mean_precision_cost_clear,positive_row_fraction,mean_net_pnl_per_trade_inr,cost_drag_to_abs_gross_ratio
+no_market_shock_rows,no_symbol_shock_rows,48,32,2,645,-88748.0314205051,-11546.140597827733,77201.89082267736,7,0.28068461511040843,0.14583333333333334,-137.5938471635738,6.68638062810373

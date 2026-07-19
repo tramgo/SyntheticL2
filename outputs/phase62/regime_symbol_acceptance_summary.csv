@@ -1,0 +1,12 @@
+metric,value,description
+phase62_source_rows,48,Phase61 shard-symbol rows diagnosed
+phase62_total_trades,645,Total candidate trades diagnosed
+phase62_total_net_pnl_inr,-88748.03142050511,Total Phase61 wider-sweep net P&L
+phase62_positive_symbol_rows,7,Shard-symbol rows positive after costs
+phase62_positive_symbol_fraction,0.14583333333333334,Fraction of shard-symbol rows positive
+phase62_viable_symbol_count,1,Symbols with positive aggregate P&L and at least 10 trades
+phase62_viable_month_count,0,Trade-month partitions with positive aggregate P&L and at least 50 trades
+phase62_viable_regime_count,0,Dominant regimes with positive aggregate P&L and at least 50 trades
+phase62_viable_feed_profile_count,0,Dominant feed profiles with positive aggregate P&L and at least 50 trades
+phase62_recommend_regime_symbol_specialization,1,1 means a narrower specialization deserves a follow-up bounded replay
+phase62_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha retail intraday cost model
