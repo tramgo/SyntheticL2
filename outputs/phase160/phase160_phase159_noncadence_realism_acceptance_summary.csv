@@ -1,0 +1,10 @@
+metric,value,description
+phase160_symbols_compared,32,Symbols compared
+phase160_anchor_metric_rows,192,Non-cadence symbol/metric rows compared
+phase160_calibration_gap_rows,0,Non-cadence rows outside gates
+phase160_calibration_gap_fraction,0.0,Fraction of non-cadence rows outside gates
+phase160_severe_metric_gap_count,0,Non-cadence metrics with gap_fraction > 50%
+phase160_phase159_dense_rows_profiled,16838528,Phase159 dense rows profiled
+phase160_generated_noncadence_realism_pass,1,1 means generated Phase159 non-cadence profile passes Phase106-style gate
+phase160_strategy_replay_allowed,0,Strategy replay remains closed
+phase160_next_best_action,combine_phase159_cadence_and_phase160_noncadence_acceptance_then_plan_broader_materialization,Recommended next milestone

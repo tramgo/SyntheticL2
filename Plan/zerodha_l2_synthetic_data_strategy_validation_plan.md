@@ -4013,6 +4013,35 @@ Current Phase159 gap summary:
 
 Current Phase159 interpretation: the distributional cadence model substantially repairs the cadence blocker and clears the Phase158-style full rewired realism threshold in a bounded one-month, 32-symbol smoke. This still does not open strategy replay: the next milestone should address remaining depth/imbalance and slow-symbol median-cadence gaps, then rerun a broader full-audit materialization before any synthetic-only strategy experiment is re-enabled.
 
+Phase160 Phase159 generated non-cadence realism audit is implemented under `outputs/phase160/`.
+
+**Runner:** `python scripts/run_phase160_phase159_noncadence_realism_audit.py`
+
+**Purpose:** profile spread, visible depth, L1 imbalance, and one-tick volatility from the actual Phase159 generated dense parquet shards, then compare them to the existing real non-cadence anchors. Phase160 replaces stale non-cadence assumptions from older Phase106 comparison rows with generated-shard evidence. It is local-only and still does not run strategy replay, fills, P&L, or Azure reads.
+
+Current Phase160 evidence records:
+
+- symbols compared: 32;
+- non-cadence symbol/metric rows compared: 192;
+- calibration gap rows: 0;
+- calibration gap fraction: 0.0;
+- severe metric gap count: 0;
+- Phase159 dense rows profiled: 16,838,528;
+- generated non-cadence realism pass: 1;
+- strategy replay allowed: 0;
+- next best action: `combine_phase159_cadence_and_phase160_noncadence_acceptance_then_plan_broader_materialization`.
+
+Current Phase160 generated non-cadence gap summary:
+
+- `median_spread_bps`: 0 / 32 gaps;
+- `p90_spread_bps`: 0 / 32 gaps;
+- `median_l1_depth`: 0 / 32 gaps;
+- `median_l5_depth`: 0 / 32 gaps;
+- `median_abs_l1_imbalance`: 0 / 32 gaps;
+- `one_tick_return_std`: 0 / 32 gaps.
+
+Current Phase160 interpretation: the apparent Phase159 depth/imbalance blockers were stale inherited Phase106 comparison rows, not failures in the actual Phase159 generated dense shard. The generated Phase159 non-cadence profile passes all preserved non-cadence gates in the bounded 32-symbol smoke. Strategy replay still remains closed because the combined proof is bounded to one generated month and the Phase159 cadence audit still has 8 / 32 median-gap edge cases. The next milestone should produce a combined Phase159+Phase160 acceptance gate and decide whether to broaden materialization before any synthetic-only strategy replay is reconsidered.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`
