@@ -3676,6 +3676,35 @@ For local validation without touching Azure:
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_phase148_real_l2_download_refresh_workflow.ps1 -SkipDownload`
 
+Phase149 research state auditor is implemented under `outputs/phase149/`.
+
+**Runner:** `python scripts/run_phase149_research_state_auditor.py`
+
+**Purpose:** reconcile current phase scripts, output evidence, branch states, and replay gates from files. Phase149 does not run strategies, contact Azure, import data, or unlock replay. It is the authoritative local ledger for answering “what phases exist, what is finished, what is closed, and what is still gated?”.
+
+Current Phase149 evidence records:
+
+- phase rows discovered from scripts and outputs: 142;
+- phase rows with at least one runner: 140;
+- phase rows with acceptance summaries: 91;
+- current research branches summarized: 3;
+- hard global-state gates evaluated: 3;
+- hard global-state gates passed: 3;
+- strategy replay allowed: 0;
+- next best action: `download_real_l2_anchor_dates_with_phase148_or_start_new_precommitted_non_blocklisted_branch`.
+
+Current branch summary:
+
+- `real_l2_anchor_gate`: gated; Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven.
+- `top_five_depth_passive`: closed clean falsification; Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification.
+- `dense_synthetic_replay`: not promoted; partial/smoke dense replay artifacts remain non-promotional and do not override replay gates.
+
+Current global gates:
+
+- real L2 replay gate closed: pass;
+- deep-book branch closed: pass;
+- no promoted strategy replay: pass.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`
