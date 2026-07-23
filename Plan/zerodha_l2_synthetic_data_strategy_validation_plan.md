@@ -69,6 +69,29 @@ The retail top-five market-by-price feed also cannot directly identify individua
 
 Feature horizons must be gated by observed per-symbol update density. The data may support 500 ms or 1 second work for active symbols, but 100 ms and 250 ms views will often be sparse or forward-filled and cannot automatically be treated as equally evidenced across the universe.
 
+### 1.4 Terminology: market-data levels versus book-depth levels
+
+This project must use the terms **L1-L5** carefully because they can mean different things in market-data conversations.
+
+General market-data terminology is not universal across exchanges and vendors, but the common distinction is:
+
+| Term | Typical meaning | Typical use |
+| --- | --- | --- |
+| Level 1 / L1 market data | Last traded price, best bid, best ask, bid/ask quantity, volume and OHLC-style quote fields | Basic quotes, investing, simple order placement and top-of-book logic |
+| Level 2 / L2 market data | Aggregated bid/ask market-by-price depth, often top 5 or top 10 visible price levels | Liquidity analysis, spread and slippage estimation |
+| Level 3 / L3 market data | Deeper or order-level book detail where available | Scalping, execution planning and order-flow analysis |
+| Level 4 / L4 market data | Vendor-specific enriched microstructure data such as full-depth/order-by-order events or participant information | Institutional execution and deeper market-microstructure research |
+| Level 5 / L5 market data | Vendor-specific analytics derived from order-book state rather than a universal exchange standard | Advanced imbalance, liquidity and derived-feature modelling |
+
+For this repository:
+
+- **Zerodha L2** means Zerodha's retail WebSocket market-depth feed with **top-five visible market-by-price depth**, not exchange order-by-order L3/L4/L5 data.
+- **Depth level 1** means the best bid or best ask row inside that top-five book snapshot.
+- **Depth levels 2-5** mean the second through fifth visible bid/ask price levels inside the same Zerodha L2/top-five market-by-price snapshot.
+- References to `bid_level_1` through `bid_level_5` and `ask_level_1` through `ask_level_5` are **book-depth rows**, not market-data product tiers.
+- The plan should prefer phrases such as **top-five depth**, **depth levels 1-5**, **depth levels 2-5**, and **top-of-book/best-bid-offer** when describing features.
+- The plan should avoid using **L2-L5** to describe features, because that can incorrectly imply multiple market-data product tiers. If the phrase appears in older phase history, it should be read as historical shorthand for visible book-depth fields, not as a claim that Zerodha provides L3/L4/L5 market-data tiers.
+
 ---
 
 ## 2. Important Constraints
@@ -3301,6 +3324,229 @@ Planned/generated Phase 52 artifacts are under `outputs/phase52/`:
 This phase scans the Phase 51 dense parquet lake shard-by-shard with DuckDB rather than loading the full 5.97B-row lake into memory. It computes L1 imbalance, microprice deviation and one-tick momentum proxy signals, applies the Phase 12 execution latency profiles, and deducts spread, slippage, impact and Zerodha equity-intraday NSE cost-model charges. Results are aggregated to daily-symbol and strategy-profile ledgers without persisting billions of individual trade rows.
 
 The acceptance boundary remains strict: Phase 52 can produce dense synthetic-only replay evidence and candidate rows, but `phase52_synthetic_full_year_acceptance_ready` remains `0` unless a candidate clears the synthetic-only acceptance gates and subsequent evidence contracts.
+
+---
+
+## Phase 131-136 — Post-Phase130 Top-Five-Depth Passive Continuation
+
+**Continuation source:** `Plan/Plan continuation2.txt`, imported into this main plan on 2026-07-23 with corrected terminology.
+
+This continuation begins from the Phase130 state: no-replay diagnostic baselines over the Phase129 allowed-context matrix. It deliberately does **not** reopen the failed Level-1/top-of-book taker branch. Its only remaining synthetic strategy surface is the Zerodha Level-2 **top-five market-by-price depth** passive surface.
+
+### Standing constraints for Phase131-136
+
+These constraints govern every phase in this continuation and must not be relaxed:
+
+1. **Retail cash equity only.** No futures, options, derivative synthetics or expanded symbol universe. All instruments remain the current 32-symbol NSE cash-equity/ETF panel.
+2. **Top-five market-by-price depth only.** Zerodha WebSocket depth is treated as Level-2/top-five visible book depth: best bid/ask plus depth levels 2-5. No phase may use hidden-order models, full order-book reconstruction, participant information, exchange-side queue snapshots or order-by-order L3/L4/L5 data.
+3. **Pinned Zerodha cost model.** The base cost model remains `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`. This continuation may add a precommitted harsh-stress regime, but it may not edit the pinned base formula.
+4. **No profitability or replay unlock inside the continuation.** `strategy_replay_allowed = 0` remains the default. No phase may emit promoted buy/sell signals, order-arrival streams, live-tagged fill models, P&L replay or deployable profitability claims.
+5. **Positive pockets do not rescue a failed family.** Full-sample verdicts and harsh-regime gates decide outcomes.
+
+### Established state as of Phase130
+
+The repository has already established:
+
+- Level-1/top-of-book taker families do not clear retail costs on synthetic data. Phase52/Phase116 reviewed roughly 800 million dense replay observations across L1 imbalance, microprice and one-tick momentum families under multiple execution profiles, with no accepted profitable survivor.
+- Same-family rescues and related strategy branches failed: HDFCBANK lead-lag, cross-symbol regime imbalance, low-turnover event windows, composite signals, passive queue-capture probes and lower-frequency meta replays did not survive precommitted gates.
+- Isolated positive pockets were observed in some failed branches, but none became accepted strategies.
+- Generator realism has improved through Phases79 and 94-109, but real anchor L2 remains insufficient. Phase117 still records 1 candidate day and 4 additional ready real-anchor days needed for minimum replay unlock.
+- Phase130 diagnostic baselines are the current frontier:
+  - `feed_imperfection_rate <= 0.015872` for regime stability, holdout AUC approximately 0.9048;
+  - `passive_min_adverse_rate >= 0.99099099` for cost-toxicity refinement, holdout AUC approximately 0.85;
+  - `median_spread_bps >= 4.0782951` for liquidity opportunity, weak/degenerate holdout AUC 0.5 despite Brier improvement.
+
+### Continuation objective
+
+Exhaust the **top-five-depth passive surface** on synthetic data under realistic Zerodha retail cost stress and end in exactly one of three clean states:
+
+1. **Falsified.** Update the Phase116 blocklist with a deep-book/top-five-depth passive entry and formally close synthetic strategy hunting.
+2. **Marginal handoff.** Emit a machine-readable feature and strategy specification that can be re-evaluated when real Zerodha L2 data arrives through the Phase113-115 drop-zone.
+3. **Clean synthetic survivor with advisory.** Emit the same handoff artifact plus an explicit advisory that synthetic-only survival is not deployable evidence and must be re-tested on real L2 before any replay unlock.
+
+The continuation is intentionally bounded to six phases. If the Phase132 kill-switch fires, the continuation terminates at Phase132 and skips Phases133-136.
+
+### Phase 131 — Top-Five-Depth Feature and Cost-Stress Precommit
+
+**Runner:** `scripts/run_phase131_deep_book_feature_precommit.py`
+
+**Outputs:** `outputs/phase131/`
+
+**Purpose:** lock the feature catalog, cost regimes and evaluation rules before Phase132 diagnostics touch data.
+
+**Current implementation status as of 2026-07-23:** Phase131 is implemented and committed. The current artifacts are:
+
+- `phase131_feature_catalog.csv`
+- `phase131_cost_regimes.csv`
+- `phase131_evaluation_rules.md`
+- `phase131_phase130_baseline_reference.csv`
+- `phase131_guardrails.csv`
+- `phase131_gate_evaluation.csv`
+- `phase131_deep_book_feature_precommit_acceptance_summary.csv`
+- `phase131_deep_book_feature_precommit_report.md`
+- `phase131_precommit_manifest.json`
+
+Phase131 precommits 10 top-five depth-level feature definitions. Feature catalog references such as `depth_level_1` through `depth_level_5` are book-depth rows in the Zerodha Level-2/top-five market-by-price feed, not L1-L5 market-data product tiers.
+
+The Phase131 cost regimes are:
+
+- `base`: the pinned Zerodha cost model unchanged;
+- `harsh`: the pinned Zerodha cost model plus 25% uplift to spread-cross cost and all per-leg fee components.
+
+The Phase131 acceptance summary currently records:
+
+- feature catalog rows: 10;
+- top-of-book-only feature rows: 0;
+- cost regime rows: 2;
+- Phase130 baseline reference rows: 3;
+- allowed Phase129 context rows: 228;
+- Phase132 Brier lift margin: 0.005;
+- gate rows: 7;
+- all gates passed: 1;
+- strategy replay allowed: 0;
+- pinned cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`.
+
+### Phase 132 — Top-Five-Depth Feature Diagnostics
+
+**Runner:** `scripts/run_phase132_deep_book_feature_diagnostics.py`
+
+**Outputs:** `outputs/phase132/`
+
+**Purpose:** evaluate Phase131 top-five-depth features as label predictors only against the three Phase129 diagnostic labels:
+
+- `p129_regime_stability_label`;
+- `p129_liquidity_opportunity_label`;
+- `p129_cost_toxicity_refinement_label`.
+
+**Method:**
+
+- Reuse the Phase130 chronological split: 172 train rows and 56 holdout rows.
+- Fit single-feature threshold baselines and simple two-feature threshold combinations for Phase131 features.
+- Report Brier, log-loss, accuracy and AUC.
+- Do not fit models more complex than the precommitted threshold families.
+- Do not emit strategy code, buy/sell signals, order-arrival streams, live-tagged fill models, P&L replay or profitability claims.
+
+**Kill-switch:** if no Phase131 feature beats the corresponding Phase130 top-of-book/context baseline by more than the precommitted 0.005 Brier margin on any of the three labels, the branch closes at Phase132. Phase133-136 are skipped, and the Phase116 blocklist is updated with `DEEP_BOOK_LABEL_LIFT = falsified`.
+
+If at least one Phase131 feature clears the lift requirement, the surviving features are promoted to Phase133.
+
+### Phase 133 — Retail Passive Execution Model Upgrade
+
+**Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`
+
+**Outputs:** `outputs/phase133/`
+
+**Purpose:** upgrade the passive fill model before any passive strategy precommit. Deep visible-book information can only matter economically for retail if passive posting is modelled realistically.
+
+**Required deliverables:**
+
+- `phase133_execution_contract.json`, pinned and immutable for later phases in this continuation.
+- A fill-probability model of `P(fill | queue_position, depth_level, cancel_intensity, latency_ms)` derived from Phase6 generator add/cancel statistics and Phase131 depth-level features.
+- A retail latency jitter distribution with 50-350 ms central mass and a fat right tail, pinned in the contract file.
+- Per-depth-level cancel-intensity inputs from Phase131 features.
+- A sanity replay of the Phase89 passive queue-capture cost-floor experiment under the new fill model.
+
+**Acceptance:** no new strategies. The phase ships the execution model and validates that its Phase89 sanity replay remains directionally consistent with prior passive-expense evidence. If the sanity replay contradicts Phase89 directionally, Phase134 must not open.
+
+### Phase 134 — Precommitted Top-Five-Depth Passive Strategy Family
+
+**Runner:** `scripts/run_phase134_deep_book_passive_strategy_precommit.py`
+
+**Outputs:** `outputs/phase134/`
+
+**Purpose:** register 2-3 passive strategy definitions before any bounded replay.
+
+**Rules:**
+
+- 2-3 strategies maximum.
+- Each strategy must consume at least one Phase132 surviving top-five-depth feature.
+- Entry must be passive/post-only; marketable entry orders are forbidden.
+- Gates must be pre-registered per strategy:
+  - minimum 5,000 trades across the allowed-context matrix;
+  - minimum out-of-sample Sharpe under both `base` and `harsh` cost regimes;
+  - failure if either cost regime is negative;
+  - no cost-stress ordering reversal;
+  - at least 50% of months net positive under `harsh`;
+  - no positive-pockets exception;
+  - explicit blocklist unlock condition if falsified.
+
+**Acceptance:** manifest locks strategy IDs, gates, allowed datasets and forbidden outputs. No replay is executed in Phase134.
+
+### Phase 135 — Bounded Synthetic Replay
+
+**Runner:** `scripts/run_phase135_deep_book_passive_bounded_replay.py`
+
+**Outputs:** `outputs/phase135/`
+
+**Purpose:** run exactly one bounded synthetic replay of the Phase134 strategies over the recalibrated dense lake, using the Phase133 execution model and both Phase131 cost regimes.
+
+**Rules:**
+
+- Single run only.
+- No parameter sweeps.
+- No re-fits after seeing results.
+- Full trade-level output plus per-symbol and per-month decomposition under `base` and `harsh` regimes side by side.
+- `strategy_replay_allowed` remains `0`.
+- No promoted profitability claim in any report.
+
+**Acceptance:** every Phase134 gate is evaluated exactly as written, including explicit cost-stress ordering-reversal checks.
+
+### Phase 136 — Verdict, Blocklist Update and Handoff Artifact
+
+**Runner:** `scripts/run_phase136_deep_book_verdict_and_handoff.py`
+
+**Outputs:** `outputs/phase136/`
+
+**Purpose:** close the top-five-depth passive branch cleanly with exactly one outcome.
+
+**Outcome A — Falsified:**
+
+- Triggered by any Phase134 gate failure under `harsh`, any cost-stress ordering reversal, or the Phase132 kill-switch.
+- Append/update the Phase116 strategy replay blocklist with the relevant deep-book/top-five-depth passive falsification entry.
+- Write a markdown verdict declaring synthetic-only strategy hunting terminated. Further strategy work waits on real anchor L2 through Phases113-115.
+
+**Outcome B — Marginal handoff:**
+
+- Triggered if all gates pass under both regimes but effect size or coverage is thin.
+- Emit `phase136_real_l2_precommit_handoff.json` containing:
+  - Phase131 surviving feature definitions;
+  - Phase133 execution-model parameters;
+  - Phase134 strategy definitions and gates unchanged;
+  - `base` and `harsh` cost regimes;
+  - the ordering-reversal rule.
+- Do not change `strategy_replay_allowed`.
+
+**Outcome C — Clean synthetic survivor with advisory:**
+
+- Triggered if all gates pass with margin under `harsh` and no ordering reversal occurs.
+- Emit the same handoff artifact as Outcome B.
+- Add `phase136_synthetic_survivor_advisory.md` explaining that synthetic-only survival is not deployable evidence and must be re-tested on real Zerodha L2 before any replay unlock.
+- Do not change `strategy_replay_allowed`.
+
+**Acceptance:** exactly one outcome document is produced. Outcome A verifies the blocklist update against Phase116. Outcomes B and C validate the handoff JSON against the real-anchor schema so it can be re-evaluated once real L2 lands through the Phase113-115 drop-zone pipeline.
+
+### Forbidden actions inside Phase131-136
+
+The continuation forbids:
+
+- reopening Level-1/top-of-book-only taker families;
+- vendor backfill of historical L2 data;
+- expanding beyond the current 32-symbol universe;
+- changing the pinned Zerodha base cost model or editing the harsh-regime factors after Phase131;
+- flipping `strategy_replay_allowed` from any phase in this continuation;
+- emitting promoted buy/sell signals, order-arrival streams, live-tagged fill models, P&L replay or deployable profitability claims;
+- RL, meta-learning or ensembles on top of Phase134 strategies before Phase136 verdict;
+- adding new synthetic scenario diversity beyond the existing realism audit while this continuation is running.
+
+### Success definition for Phase131-136
+
+Success is not a profitable synthetic strategy. Success is one clean conclusion:
+
+1. **Clean falsification:** Phase132 kill-switch or Phase136 Outcome A closes the synthetic top-five-depth passive branch and updates the blocklist.
+2. **Marginal handoff:** Outcome B produces a dormant real-L2 precommit artifact.
+3. **Synthetic survivor with advisory:** Outcome C produces the same handoff plus an explicit warning that synthetic evidence alone is not deployable.
+
+Prolonging the branch to force a positive result is explicitly not success.
 
 ---
 
