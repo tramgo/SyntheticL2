@@ -1,0 +1,5 @@
+template_id,description,sql_template
+read_one_symbol_day,Read one symbol/day directly from local partitioned Parquet.,"SELECT * FROM parquet_scan('<root>/trade_date=<date>/exchange=NSE/symbol=<symbol>/*.parquet', union_by_name=true, filename=true) ORDER BY collector_received_utc_ms LIMIT 100;"
+count_one_symbol_day,Count rows for one symbol/day by scanning only that partition.,"SELECT count(*) AS rows FROM parquet_scan('<root>/trade_date=<date>/exchange=NSE/symbol=<symbol>/*.parquet', union_by_name=true);"
+best_bid_ask_sample,Sample L1 book columns from one symbol/day without scanning the full lake.,"SELECT trade_date, exchange, tradingsymbol, collector_received_utc_ms, last_price, buy_1_price, buy_1_quantity, sell_1_price, sell_1_quantity FROM parquet_scan('<root>/trade_date=<date>/exchange=NSE/symbol=<symbol>/*.parquet', union_by_name=true) ORDER BY collector_received_utc_ms LIMIT 100;"
+all_panel_glob,Full local panel glob for deliberate analytical scans; avoid for quick metadata checks.,"SELECT * FROM parquet_scan('real_data_sample/l2_multiday_panel/**/*.parquet', hive_partitioning=true, union_by_name=true, filename=true);"

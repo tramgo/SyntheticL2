@@ -3705,6 +3705,49 @@ Current global gates:
 - deep-book branch closed: pass;
 - no promoted strategy replay: pass.
 
+Phase150 real L2 DuckDB catalog is implemented under `outputs/phase150/`.
+
+**Runner:** `python scripts/run_phase150_real_l2_duckdb_catalog.py`
+
+**Purpose:** build a metadata-first DuckDB catalog for the local real Zerodha WebSocket Level-2/top-five market-by-price Parquet panel. The catalog keeps the canonical data in partitioned Parquet and does not copy all tick rows into DuckDB. DuckDB stores file inventory, date/symbol summaries, sampled schema, query templates, and a sample-file smoke view.
+
+This confirms the storage decision for this project:
+
+- use DuckDB for local multi-GB/multi-day Parquet analytics and ad hoc tick queries;
+- avoid SQLite for tick L2 storage because it is row-store oriented and would require inefficient row ingestion/duplication;
+- keep raw and canonical tick data in partitioned Parquet by `trade_date/exchange/symbol`;
+- let DuckDB query Parquet locally after AzCopy downloads complete.
+
+Current Phase150 evidence records:
+
+- DuckDB available: 1;
+- catalog database created: 1;
+- Parquet files cataloged: 99,272;
+- cataloged bytes: 3,490,276,400;
+- trade dates cataloged: 3 (`2026-07-08`, `2026-07-09`, `2026-07-13`);
+- date/exchange/symbol partitions cataloged: 96;
+- sampled schema columns: 54;
+- top-five book depth columns present: 30 (`buy/sell` levels 1-5, price/quantity/orders);
+- DuckDB sample-file query rows: 5;
+- strategy replay allowed: 0;
+- next best action: `use_duckdb_catalog_for_local_real_l2_queries_after_phase148_downloads`.
+
+Current catalog database:
+
+`outputs/phase150/real_l2_catalog.duckdb`
+
+Current catalog tables:
+
+- `real_l2_parquet_files`;
+- `real_l2_date_symbol_summary`;
+- `real_l2_date_summary`;
+- `real_l2_schema_columns`;
+- `real_l2_query_templates`.
+
+Current sample view:
+
+- `real_l2_sample_ticks`.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

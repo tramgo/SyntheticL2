@@ -1,0 +1,2 @@
+rows,min_received_ms,max_received_ms,sample_file,catalog_tables
+5,1783496075001,1783496081751,real_data_sample/l2_multiday_panel/trade_date=2026-07-08/exchange=NSE/symbol=ADANIPORTS/part-073443_831343-000001.parquet,columns_df|date_summary_df|date_symbol_summary_df|files_df|query_templates_df|real_l2_date_summary|real_l2_date_symbol_summary|real_l2_parquet_files|real_l2_query_templates|real_l2_sample_ticks|real_l2_schema_columns

@@ -1,0 +1,12 @@
+metric,value,description
+phase150_duckdb_available,1,DuckDB import and connection succeeded
+phase150_catalog_db_created,1,Persistent DuckDB metadata catalog exists
+phase150_parquet_files_cataloged,99272,Local real L2 Parquet files cataloged without row-copy ingest
+phase150_cataloged_bytes,3490276400,Cataloged local Parquet bytes
+phase150_trade_dates,3,Distinct trade dates cataloged
+phase150_date_symbol_partitions,96,Date/exchange/symbol partitions cataloged
+phase150_schema_columns,54,Columns in sampled Parquet schema
+phase150_depth_columns_present,30,buy/sell level 1-5 price/quantity/orders columns present in sampled schema
+phase150_sample_query_rows,5,Rows returned by DuckDB sample-file smoke query
+phase150_strategy_replay_allowed,0,Cataloging local Parquet does not unlock strategy replay
+phase150_next_best_action,use_duckdb_catalog_for_local_real_l2_queries_after_phase148_downloads,Recommended next milestone
