@@ -1,0 +1,15 @@
+metric,value,description
+phase157_phase154_anchor_available,1,Phase154 full-partition anchor exists
+phase157_phase155_contract_available,1,Phase155 full-partition cadence contract exists
+phase157_phase156_smoke_available,1,Phase156 regenerated synthetic cadence profile exists
+phase157_phase106_legacy_profile_available,1,Legacy Phase106 synthetic profile exists for comparison
+phase157_symbols_audited,32,Symbols audited for cadence rewire
+phase157_p95_contract_pass_symbols,32,Symbols whose Phase156 p95 gap is inside the full-partition target band
+phase157_p95_exact_target_pass_symbols,32,Symbols whose Phase156 p95 gap is within 1 ms of the Phase154/155 target
+phase157_cadence_rewire_pass_symbols,32,Symbols passing all cadence-rewire checks
+phase157_legacy_sampled_anchor_stale_symbols,32,Symbols for which legacy sampled cadence anchors must not be used
+phase157_inherited_phase154_sample_bias_flag_rows,42,Inherited Phase154 sample-bias rows
+phase157_inherited_phase156_dense_rows,16838528,Inherited Phase156 dense smoke rows
+phase157_full_partition_cadence_rewire_ready,1,1 means cadence-slice anchor rewire is ready for Phase106-style audits
+phase157_strategy_replay_allowed,0,Strategy replay remains closed
+phase157_next_best_action,run_phase106_style_full_realism_audit_with_phase157_cadence_contract_and_non_cadence_gates,Recommended next milestone

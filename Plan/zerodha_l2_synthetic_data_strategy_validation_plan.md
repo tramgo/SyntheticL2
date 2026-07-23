@@ -3912,6 +3912,39 @@ Current Phase156 evidence records:
 
 Current Phase156 interpretation: the original source-boundary-only tail-gap hook was insufficient because source-boundary gaps are too rare in a 64x dense expansion to move p95. The Phase156 implementation now injects deterministic intra-source idle gaps at enough dense subtick transitions for p95 to match the full-partition targets. In the one-month, 32-symbol smoke, p95 ratios versus Phase155 targets were approximately 1.0 for every symbol, including HDFCBANK preservation at 1,250 ms. This is generator-calibration evidence only; strategy replay remains closed until Phase156 is expanded into the full-symbol/full-audit cadence-anchor rewire and the broader realism gates pass.
 
+Phase157 full-partition cadence rewire audit is implemented under `outputs/phase157/`.
+
+**Runner:** `python scripts/run_phase157_full_partition_cadence_rewire_audit.py`
+
+**Purpose:** verify the cadence slice of future Phase106-style realism audits can be rewired from stale sampled-file cadence anchors to Phase154 full-local-partition cadence anchors. Phase157 is cadence-only: it does not claim spread, depth, imbalance, volatility, execution, fill, P&L, or strategy readiness.
+
+Current Phase157 evidence records:
+
+- Phase154 full-partition anchor available: 1;
+- Phase155 cadence contract available: 1;
+- Phase156 regenerated synthetic cadence profile available: 1;
+- legacy Phase106 synthetic profile available for comparison: 1;
+- symbols audited: 32;
+- Phase156 p95 contract-band pass symbols: 32;
+- Phase156 p95 exact-target pass symbols within 1 ms: 32;
+- cadence-rewire pass symbols: 32;
+- legacy sampled cadence-anchor stale symbols: 32;
+- inherited Phase154 sample-bias rows: 42;
+- inherited Phase156 dense smoke rows: 16,838,528;
+- full-partition cadence rewire ready: 1;
+- strategy replay allowed: 0;
+- next best action: `run_phase106_style_full_realism_audit_with_phase157_cadence_contract_and_non_cadence_gates`.
+
+Current Phase157 cadence metric source contract:
+
+- `median_gap_ms`: anchor source `phase154_symbol_cadence_anchor.target_median_gap_ms`, ratio gate `[0.5,2.0]`;
+- `p90_gap_ms`: anchor source `phase154_partition_cadence_profiles.target_median_p90_gap_ms`, ratio gate `[0.5,2.0]`;
+- `p95_gap_ms`: anchor source `phase154_symbol_cadence_anchor.target_median_p95_gap_ms`, ratio gate `[0.5,2.0]`;
+- `gap_le_1s_fraction`: anchor source `phase154_symbol_cadence_anchor.target_median_gap_le_1s_fraction`, diagnostic gate `absolute_delta <= 0.20`;
+- non-cadence spread/depth/imbalance/volatility gates remain unchanged and outside the Phase157 cadence rewire.
+
+Current Phase157 interpretation: the cadence rewire is ready for future Phase106-style audits, but only for cadence metrics. The old sampled Phase106 cadence anchor remains stale and must not be used for future cadence calibration. The next milestone should run a Phase106-style full realism audit using the Phase157 cadence contract while preserving the existing non-cadence gates.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`
