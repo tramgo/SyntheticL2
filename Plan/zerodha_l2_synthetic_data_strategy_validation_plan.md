@@ -4177,10 +4177,10 @@ Phase164 synthetic-only full-year replay is started under `outputs/phase164/`.
 
 Current Phase164 checkpoint evidence records:
 
-- Phase162 dense shards scanned: 256 / 384;
+- Phase162 dense shards scanned: 320 / 384;
 - full-year replay complete: 0;
 - strategy/profile rows: 24;
-- aggregate synthetic-only replay trade count: 5,213,646;
+- aggregate synthetic-only replay trade count: 6,810,963;
 - positive-after-cost strategy/profile rows: 0;
 - synthetic replay candidate rows: 0;
 - cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
@@ -4205,7 +4205,7 @@ Current Phase164 strategy catalog:
 
 Current Phase164 implementation note: the resumable runner now normalizes shard paths before comparing the existing aggregate ledger to the Phase162 inventory and de-duplicates aggregate ledger keys before summarizing. This fixed the Windows path separator mismatch that initially caused a same-64-shard replay attempt.
 
-Current Phase164 interpretation: the first 256 Phase162 shards show no positive-after-cost strategy/profile rows and no synthetic replay candidates. This is not yet a full-year verdict because 128 Phase162 shards remain. Continue the resumable Phase164 run to 384 / 384 shards, then issue the Phase164 verdict from complete full-year evidence.
+Current Phase164 interpretation: the first 320 Phase162 shards show no positive-after-cost strategy/profile rows and no synthetic replay candidates. This is not yet a full-year verdict because 64 Phase162 shards remain. Continue the resumable Phase164 run to 384 / 384 shards, then issue the Phase164 verdict from complete full-year evidence.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
