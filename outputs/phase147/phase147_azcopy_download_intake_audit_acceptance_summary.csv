@@ -1,0 +1,11 @@
+metric,value,description
+phase147_required_date_rows,2,Required dates checked in scratch and target
+phase147_required_dates_satisfied,0,Required dates complete in scratch or target
+phase147_required_dates_ready_for_import,0,Required dates complete in scratch but not target
+phase147_required_dates_already_in_target,0,Required dates complete in canonical target
+phase147_scratch_complete_dates,0,Scratch required dates complete for Phase145
+phase147_target_complete_dates,0,Target required dates already complete
+phase147_nested_trade_date_symbol_dirs,0,Nested duplicate trade_date symbol dirs across checked roots
+phase147_can_run_phase145_now,0,1 means Phase145 should be run now
+phase147_strategy_replay_allowed,0,Download intake never unlocks strategy replay
+phase147_next_best_action,download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase147,Recommended next milestone

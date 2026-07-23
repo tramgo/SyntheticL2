@@ -3627,9 +3627,34 @@ Phase146 gate evaluation currently confirms:
 - the configured required-date gate fails because `0 / 2` required dates are locally ready;
 - replay remains closed.
 
+Phase147 AzCopy download intake audit is implemented under `outputs/phase147/`.
+
+**Runner:** `python scripts/run_phase147_azcopy_download_intake_audit.py`
+
+**Purpose:** validate the local AzCopy landing zone immediately after a bulk date download and before Phase145 import/refresh is attempted. This keeps Azure I/O in AzCopy and keeps Python on local inspection only. Phase147 checks the configured required dates across scratch and canonical target, verifies 32-symbol coverage, sampled required Zerodha top-five market-by-price schema, file/byte counts, target-vs-scratch state, and duplicate nested `trade_date` layouts.
+
+Current Phase147 evidence records:
+
+- required date rows checked: 2 (`2026-07-10`, `2026-07-14`);
+- required dates satisfied in scratch or target: 0;
+- required dates ready for import from scratch: 0;
+- required dates already complete in target: 0;
+- scratch complete dates: 0;
+- target complete dates: 0;
+- nested duplicate `trade_date` symbol directories across checked required dates: 0;
+- can run Phase145 now: 0;
+- strategy replay allowed: 0;
+- next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase147`.
+
+Phase147 specifically confirms that the current empty/partial `scratch_azcopy_selected/raw_l2/trade_date=2026-07-10` folder is not import-ready: it has a date root but `0 / 32` expected symbol partitions with Parquet files. This prevents an empty local date folder from being mistaken for a complete Zerodha WebSocket top-five market-by-price L2 date.
+
 The next operational path remains AzCopy-first, local-analysis-second:
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -AccountKey "<storage_account_key>"`
+
+Then rerun:
+
+`python scripts/run_phase147_azcopy_download_intake_audit.py`
 
 Then rerun:
 
