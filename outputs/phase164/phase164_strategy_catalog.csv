@@ -1,0 +1,12 @@
+strategy_id,source_strategy_id,feature_family,signal_sql,feature_status
+P164_S01_MLOFI_BREAKOUT,S01,momentum_breakout_mlofi,case when abs(composite_flow) >= composite_flow_threshold and abs(one_tick_return) >= return_threshold then sign(composite_flow + one_tick_return * 100.0) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S02_MULTI_LEVEL_OFI,S02,multi_level_order_flow_imbalance,case when abs(l5_imbalance) >= l5_imbalance_threshold and spread_bps <= spread_bps_p75 then sign(l5_imbalance) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S03_LIQUIDITY_VACUUM,S03,liquidity_vacuum_breakout,case when l5_depth <= l5_depth_p10 and abs(one_tick_return) >= return_threshold then sign(one_tick_return) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S04_TRADE_FLOW_DEPTH,S04,trade_flow_depth_confirmation,case when abs(one_tick_return) >= return_threshold and sign(one_tick_return) = sign(l5_imbalance) and abs(l5_imbalance) >= l5_imbalance_threshold then sign(one_tick_return) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S05_MICROPRICE_FILTER,S05,microprice_with_depth_filter,case when abs(microprice_dev) >= microprice_threshold and abs(l1_imbalance) >= l1_imbalance_threshold and spread_bps <= spread_bps_p75 then sign(microprice_dev) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S06_ABSORPTION_REVERSAL,S06,absorption_exhaustion_reversal,case when abs(one_tick_return) >= return_threshold and sign(one_tick_return) != sign(l1_imbalance) and abs(l1_imbalance) >= l1_imbalance_threshold then -sign(one_tick_return) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S07_IMBALANCE_MEAN_REVERSION,S07,imbalance_mean_reversion,case when abs(l1_imbalance) >= l1_imbalance_threshold and spread_bps <= spread_bps_p75 then -sign(l1_imbalance) else 0 end,replayable_from_local_l1_l5_book_state
+P164_S08_CROSS_SYMBOL_LEAD_LAG_PLACEHOLDER,S08,cross_symbol_lead_lag,0,not_replayable_in_isolated_symbol_shard_requires_cross_symbol_month_cache
+P164_S09_QUEUE_IMBALANCE_SCALP,S09,queue_imbalance_scalping_guarded,"case when abs(l1_imbalance) >= greatest(l1_imbalance_threshold, 0.85) and spread_bps <= spread_bps_median then sign(l1_imbalance) else 0 end",replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id
+P164_S10_PASSIVE_CONTROL_NO_ALPHA,S10,control_risk_plumbing,0,control_only_no_alpha_replay
+P164_S11_RISK_FILTER_CONTROL_NO_ALPHA,S11,control_risk_plumbing,0,control_only_no_alpha_replay

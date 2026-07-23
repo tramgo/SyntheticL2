@@ -1,0 +1,15 @@
+metric,value,description
+phase164_contract_id,P164_SYNTHETIC_ONLY_FULL_YEAR_REPLAY,Replay contract id inherited from Phase163
+phase164_shards_scanned,64,Phase162 dense parquet shards scanned in current completed ledger
+phase164_expected_shards,384,Expected Phase162 inventory shards
+phase164_full_year_replay_complete,0,1 means all Phase162 shards are represented
+phase164_strategy_profile_rows,24,Strategy/profile summary rows
+phase164_replay_trade_rows,1518812,Aggregate synthetic-only replay trade count
+phase164_positive_after_cost_rows,0,Strategy/profile rows positive after costs
+phase164_synthetic_replay_candidate_rows,0,Rows positive after costs and risk proxy pass
+phase164_elapsed_seconds,590.889994600002,Elapsed seconds for this runner invocation
+phase164_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha equity intraday NSE charge formula
+phase164_strategy_promotion_allowed,0,Strategy promotion remains closed
+phase164_paper_or_live_acceptance_allowed,0,Broker/paper/live acceptance remains closed
+phase164_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic-only replay
+phase164_next_best_action,continue_phase164_until_full_year_complete_then_verdict,Recommended next milestone
