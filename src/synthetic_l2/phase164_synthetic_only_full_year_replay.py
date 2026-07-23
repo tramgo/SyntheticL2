@@ -108,10 +108,16 @@ def load_inventory(path: Path, limit_shards: int | None, stop_after_new_shards: 
     inventory = inventory.sort_values(["trade_month", "symbol"], kind="mergesort").reset_index(drop=True)
     if limit_shards is not None:
         inventory = inventory.head(limit_shards).copy()
-    pending = inventory[~inventory["file_path"].astype(str).isin(completed_paths)].copy()
+    inventory["_normalized_file_path"] = inventory["file_path"].astype(str).map(normalize_shard_path)
+    pending = inventory[~inventory["_normalized_file_path"].isin(completed_paths)].copy()
     if stop_after_new_shards is not None:
         pending = pending.head(stop_after_new_shards).copy()
+    pending = pending.drop(columns=["_normalized_file_path"])
     return pending.to_dict("records")
+
+
+def normalize_shard_path(path: str | Path) -> str:
+    return str(path).replace("\\", "/")
 
 
 def write_progress(
@@ -214,7 +220,7 @@ def query_shard(path: Path, shard_index: int, threshold_quantile: float) -> pd.D
                     f"""
                     select
                         {shard_index}::integer as shard_index,
-                        '{_safe_path(path)}' as shard_path,
+                        '{normalize_shard_path(path)}' as shard_path,
                         trade_date,
                         symbol,
                         '{strategy["strategy_id"]}' as strategy_id,
@@ -395,7 +401,7 @@ def run_phase164(
     completed_paths: set[str] = set()
     if ledger_path.exists():
         completed = pd.read_csv(ledger_path, usecols=["shard_path"])
-        completed_paths = set(completed["shard_path"].astype(str).unique())
+        completed_paths = set(completed["shard_path"].astype(str).map(normalize_shard_path).unique())
     shards = load_inventory(inventory_path, limit_shards, stop_after_new_shards, completed_paths)
     started = time.perf_counter()
     completed_new = 0
@@ -409,6 +415,15 @@ def run_phase164(
         write_progress(output_dir, status="checkpointed", current_shard_index=shard_index, completed_new_shards=completed_new, path=str(record["file_path"]), started=started)
 
     trade_ledger = pd.read_csv(ledger_path) if ledger_path.exists() else pd.DataFrame()
+    if not trade_ledger.empty:
+        trade_ledger["shard_path"] = trade_ledger["shard_path"].astype(str).map(normalize_shard_path)
+        before = len(trade_ledger)
+        trade_ledger = trade_ledger.drop_duplicates(
+            subset=["shard_path", "trade_date", "symbol", "strategy_id", "execution_profile"],
+            keep="last",
+        ).sort_values(["shard_index", "trade_date", "symbol", "strategy_id", "execution_profile"], kind="mergesort")
+        if len(trade_ledger) != before:
+            trade_ledger.to_csv(ledger_path, index=False)
     elapsed = time.perf_counter() - started
     summary, risk, acceptance = summarize(trade_ledger, inventory_scope, elapsed, output_dir)
     summary.to_csv(output_dir / "phase164_strategy_profile_summary.csv", index=False)
