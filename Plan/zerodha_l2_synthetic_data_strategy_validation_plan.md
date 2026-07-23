@@ -3501,6 +3501,39 @@ Each new real day should cover at least 95% of the 32-symbol universe and includ
 
 Replay remains closed until Phase115/Phase110 prove enough ready real-anchor days and downstream realism gates are refreshed.
 
+**Current continuation status as of 2026-07-23 after Azure real-data sync:** Azure Files account `stctrade1ramic`, share `ctrade1-l2-data`, path `raw_l2/` was live-checked and showed real L2 date partitions including:
+
+- `trade_date=2026-07-08`;
+- `trade_date=2026-07-09`;
+- `trade_date=2026-07-10`;
+- `trade_date=2026-07-13`;
+- `trade_date=2026-07-14`;
+- `trade_date=2026-07-15`;
+- `trade_date=2026-07-16`;
+- `trade_date=2026-07-17`;
+- `trade_date=2026-07-20`;
+- `trade_date=2026-07-21`;
+- `trade_date=2026-07-22`;
+- `trade_date=2026-07-23`;
+- plus a small anomaly partition `trade_date=1970-01-01`.
+
+AzCopy was installed locally from Microsoft's official Windows v10 package and used as the practical transfer path because direct Python Azure Files inventory/download and Azure CLI `download-batch --pattern` were too slow for the tiny-file archive. The local sync/import result currently is:
+
+- `2026-07-08` downloaded under `scratch_azcopy_selected/raw_l2/trade_date=2026-07-08` and imported into `real_data_sample/l2_multiday_panel`;
+- `2026-07-09` downloaded under `scratch_azcopy_selected/raw_l2/trade_date=2026-07-09` and imported into `real_data_sample/l2_multiday_panel`;
+- `2026-07-13` already present from `real_data_sample/l2_single_day` and imported into `real_data_sample/l2_multiday_panel`;
+- canonical multiday panel size after import: 3 date partitions, 99,272 parquet files, 3,490,276,400 bytes;
+- Phase115 copied 49,067 new files from the AzCopy scratch source in the latest import;
+- Phase114 executed-import integrity passed;
+- Phase96 now reports `phase96_ready_anchor_days = 3` using the maximum distinct ready trade dates in any one panel, so duplicate copies of the same date across `l2_single_day` and `l2_multiday_panel` cannot inflate the gate;
+- Phase110 reports `phase110_ready_real_anchor_days = 3`, `phase110_days_needed_for_min = 2`, and `phase110_replay_unlock_allowed = 0`.
+
+The immediate next operational action is to download and import two more Azure real L2 dates, preferably from the already-observed available set such as `2026-07-10` and `2026-07-14`, then rerun:
+
+`python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import`
+
+If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session or repair the Azure CLI CA chain before continuing the AzCopy downloads.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

@@ -1,14 +1,14 @@
 metric,value,description
 phase115_steps,6,Refresh orchestration steps executed
 phase115_failed_steps,0,Refresh orchestration steps failed
-phase115_execute_import,0,1 means Phase113 copied files into the drop-zone
+phase115_execute_import,1,1 means Phase113 copied files into the drop-zone
 phase115_phase111_additional_real_dates_found,0.0,Final Phase111 additional-date discovery flag
 phase115_phase113_copied_files,0.0,Files copied by Phase113
-phase115_phase114_dry_run_integrity_ready,1.0,Dry-run integrity-ready flag
-phase115_phase114_executed_import_integrity_pass,0.0,Executed import integrity pass flag
-phase115_phase96_ready_anchor_days,1.0,Ready real anchor days after refresh
-phase115_phase110_ready_real_anchor_days,1,Ready real anchor days in replay unlock gate
-phase115_phase110_days_needed_for_min,4,Additional ready days needed for minimum unlock
+phase115_phase114_dry_run_integrity_ready,0.0,Dry-run integrity-ready flag
+phase115_phase114_executed_import_integrity_pass,1.0,Executed import integrity pass flag
+phase115_phase96_ready_anchor_days,3.0,Ready real anchor days after refresh
+phase115_phase110_ready_real_anchor_days,3,Ready real anchor days in replay unlock gate
+phase115_phase110_days_needed_for_min,2,Additional ready days needed for minimum unlock
 phase115_replay_unlock_allowed,0,1 means strategy replay may reopen
 phase115_strategy_replay_allowed,0,Compatibility alias for replay unlock decision
 phase115_recommend_next_action,collect_or_import_more_real_l2_days_then_run_phase115_with_execute_import,Recommended next milestone

@@ -1,6 +1,6 @@
 field,value,why
 recommended_root,real_data_sample/l2_multiday_panel/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet,A trade_date/exchange/symbol partitioned layout lets Phase111 discover distinct dates and lets Phase96 validate each day.
-minimum_additional_ready_days_needed,4,Phase110 requires at least 5 ready real anchor days before replay can even be considered.
-target_additional_ready_days_needed,9,10 ready real days is the preferred target for more stable calibration evidence.
+minimum_additional_ready_days_needed,2,Phase110 requires at least 5 ready real anchor days before replay can even be considered.
+target_additional_ready_days_needed,7,10 ready real days is the preferred target for more stable calibration evidence.
 required_symbol_universe,ADANIPORTS|AXISBANK|BAJAJ-AUTO|BANKBEES|BHARTIARTL|BPCL|BRITANNIA|CIPLA|DRREDDY|GOLDBEES|HCLTECH|HDFCBANK|HINDUNILVR|ICICIBANK|INFY|ITBEES|ITC|JUNIORBEES|KOTAKBANK|LT|M&M|MARUTI|NESTLEIND|NIFTYBEES|ONGC|RELIANCE|SBIN|SUNPHARMA|TCS|TECHM|ULTRACEMCO|WIPRO,The full-symbol realism gate compares the fixed 32-symbol universe.
 post_ingest_commands,python scripts/run_phase111_real_anchor_ingest_discovery.py; python scripts/run_phase96_real_anchor_panel_builder.py; python scripts/run_phase110_multiday_replay_unlock_gate.py,"Discovery, readiness validation, and replay-unlock status must be refreshed after new real data arrives."

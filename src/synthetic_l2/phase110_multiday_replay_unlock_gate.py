@@ -78,10 +78,30 @@ def build_gate_rows(phase96_dir: Path, phase109_dir: Path) -> pd.DataFrame:
 
 def build_acquisition_queue(phase96_dir: Path) -> pd.DataFrame:
     readiness = pd.read_csv(phase96_dir / "real_day_readiness.csv")
-    ready_days = int(readiness["day_ready_for_anchor_panel"].astype(bool).sum()) if not readiness.empty else 0
+    ready_days = int(
+        float(
+            metric_value(
+                phase96_dir / "real_anchor_panel_builder_acceptance_summary.csv",
+                "phase96_ready_anchor_days",
+                0,
+            )
+        )
+    )
     days_needed_min = max(0, MIN_READY_REAL_DAYS - ready_days)
     days_needed_target = max(0, TARGET_READY_REAL_DAYS - ready_days)
-    observed_dates = ";".join(readiness.loc[readiness["day_ready_for_anchor_panel"].astype(bool), "trade_date"].astype(str).tolist())
+    ready = readiness[readiness["day_ready_for_anchor_panel"].astype(bool)] if not readiness.empty else pd.DataFrame()
+    if ready.empty:
+        observed_dates = ""
+    else:
+        best_panel = (
+            ready.groupby("panel_name", sort=True)["trade_date"]
+            .nunique()
+            .sort_values(ascending=False)
+            .index[0]
+        )
+        observed_dates = ";".join(
+            sorted(ready.loc[ready["panel_name"].astype(str).eq(str(best_panel)), "trade_date"].astype(str).unique().tolist())
+        )
     return pd.DataFrame(
         [
             {
@@ -126,6 +146,11 @@ def summarize(gates: pd.DataFrame, acquisition: pd.DataFrame) -> pd.DataFrame:
     ready_days = int(acquisition["current_ready_days"].iloc[0]) if not acquisition.empty else 0
     days_needed_min = int(acquisition["days_needed_for_min"].iloc[0]) if not acquisition.empty else MIN_READY_REAL_DAYS
     replay_unlock_allowed = bool(gates["gate_pass"].astype(bool).all())
+    next_action = (
+        "rerun_phase96_and_multiday_realism"
+        if days_needed_min <= 0
+        else f"collect_{days_needed_min}_more_ready_real_websocket_l2_days_then_rerun_phase96_and_multiday_realism"
+    )
     return pd.DataFrame(
         [
             ("phase110_gate_rows", int(len(gates)), "Replay unlock gates evaluated"),
@@ -137,7 +162,7 @@ def summarize(gates: pd.DataFrame, acquisition: pd.DataFrame) -> pd.DataFrame:
             ("phase110_days_needed_for_min", days_needed_min, "Additional ready days required for minimum multiday unlock"),
             ("phase110_replay_unlock_allowed", int(replay_unlock_allowed), "1 means strategy replay may reopen"),
             ("phase110_strategy_replay_allowed", int(replay_unlock_allowed), "Compatibility alias for replay unlock decision"),
-            ("phase110_recommend_next_action", "collect_4_more_ready_real_websocket_l2_days_then_rerun_phase96_and_multiday_realism", "Recommended next milestone"),
+            ("phase110_recommend_next_action", next_action, "Recommended next milestone"),
         ],
         columns=["metric", "value", "description"],
     )

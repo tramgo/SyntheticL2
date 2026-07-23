@@ -1,6 +1,6 @@
 # Phase96 Real Anchor Panel Builder
 
-Generated UTC: 2026-07-19T22:54:18.635876+00:00
+Generated UTC: 2026-07-23T07:52:36.465967+00:00
 
 Phase96 validates available real Zerodha WebSocket L2 data against the Phase95 multi-day panel contract.
 It uses deterministic per-symbol file sampling so the current 50k tiny-file one-day archive can be checked quickly, while preserving the replay lock until enough real days exist.
@@ -9,11 +9,12 @@ It uses deterministic per-symbol file sampling so the current 50k tiny-file one-
 
 | metric | value | description |
 | --- | --- | --- |
-| phase96_symbol_partitions_found | 32 | Symbol partitions discovered under real-data roots |
-| phase96_total_real_parquet_files | 50205 | Total real Parquet files inventoried |
-| phase96_day_readiness_rows | 1 | Panel/day readiness rows built from deterministic samples |
-| phase96_ready_anchor_days | 1 | Days passing schema/L1/timing/symbol-coverage sample gates |
-| phase96_max_ready_dates_in_panel | 1 | Maximum ready trade-date count in any panel |
+| phase96_symbol_partitions_found | 128 | Symbol partitions discovered under real-data roots |
+| phase96_total_real_parquet_files | 149477 | Total real Parquet files inventoried |
+| phase96_day_readiness_rows | 4 | Panel/day readiness rows built from deterministic samples |
+| phase96_ready_anchor_days | 3 | Maximum distinct ready trade dates in any one real-data panel; duplicate copies of the same trade date across panels do not compound. |
+| phase96_ready_panel_day_rows | 4 | Diagnostic count of ready panel/day rows before single-panel distinct-date de-duplication. |
+| phase96_max_ready_dates_in_panel | 3 | Maximum ready trade-date count in any panel |
 | phase96_panels_ready_for_phase94_rerun | 0 | Panels with enough ready days for Phase94 rerun |
 | phase96_strategy_replay_unlocked | 0 | 1 means strategy replay gate is reopened |
 | phase96_recommend_next_action | collect_more_real_websocket_l2_days | Recommended next milestone |
@@ -22,6 +23,7 @@ It uses deterministic per-symbol file sampling so the current 50k tiny-file one-
 
 | panel_name | distinct_trade_dates | ready_trade_dates | ready_trade_date_list | min_expected_symbol_fraction | all_days_schema_pass | all_days_l1_book_pass | all_days_timing_pass | panel_ready_for_phase94_rerun |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| l2_multiday_panel | 3 | 3 | 2026-07-08\|2026-07-09\|2026-07-13 | 1 | True | True | True | False |
 | l2_single_day | 1 | 1 | 2026-07-13 | 1 | True | True | True | False |
 
 ## Replay Gate
@@ -35,4 +37,7 @@ It uses deterministic per-symbol file sampling so the current 50k tiny-file one-
 
 | panel_name | trade_date | symbols_observed | expected_symbol_fraction | missing_expected_symbols | sampled_rows | schema_pass | l1_book_pass | timing_pass | day_ready_for_anchor_panel |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| l2_multiday_panel | 2026-07-08 | 32 | 1 |  | 17125 | True | True | True | True |
+| l2_multiday_panel | 2026-07-09 | 32 | 1 |  | 21682 | True | True | True | True |
+| l2_multiday_panel | 2026-07-13 | 32 | 1 |  | 19237 | True | True | True | True |
 | l2_single_day | 2026-07-13 | 32 | 1 |  | 19237 | True | True | True | True |

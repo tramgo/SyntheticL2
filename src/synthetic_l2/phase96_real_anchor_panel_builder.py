@@ -293,7 +293,7 @@ def build_replay_gate(panel_manifest: pd.DataFrame, phase95_dir: Path) -> pd.Dat
 
 
 def summarize(symbol_files: pd.DataFrame, day_readiness: pd.DataFrame, panel_manifest: pd.DataFrame, replay_gate: pd.DataFrame) -> pd.DataFrame:
-    ready_days = int(day_readiness["day_ready_for_anchor_panel"].sum()) if not day_readiness.empty else 0
+    ready_panel_day_rows = int(day_readiness["day_ready_for_anchor_panel"].sum()) if not day_readiness.empty else 0
     max_ready_dates = int(panel_manifest["ready_trade_dates"].max()) if not panel_manifest.empty else 0
     ready_panels = int(panel_manifest["panel_ready_for_phase94_rerun"].sum()) if not panel_manifest.empty else 0
     replay_lock_pass = bool(replay_gate.loc[replay_gate["gate_id"].eq("P96_STRATEGY_REPLAY_LOCK"), "gate_pass"].iloc[0])
@@ -302,7 +302,16 @@ def summarize(symbol_files: pd.DataFrame, day_readiness: pd.DataFrame, panel_man
             ("phase96_symbol_partitions_found", int(len(symbol_files)), "Symbol partitions discovered under real-data roots"),
             ("phase96_total_real_parquet_files", int(symbol_files["parquet_files"].sum()) if not symbol_files.empty else 0, "Total real Parquet files inventoried"),
             ("phase96_day_readiness_rows", int(len(day_readiness)), "Panel/day readiness rows built from deterministic samples"),
-            ("phase96_ready_anchor_days", ready_days, "Days passing schema/L1/timing/symbol-coverage sample gates"),
+            (
+                "phase96_ready_anchor_days",
+                max_ready_dates,
+                "Maximum distinct ready trade dates in any one real-data panel; duplicate copies of the same trade date across panels do not compound.",
+            ),
+            (
+                "phase96_ready_panel_day_rows",
+                ready_panel_day_rows,
+                "Diagnostic count of ready panel/day rows before single-panel distinct-date de-duplication.",
+            ),
             ("phase96_max_ready_dates_in_panel", max_ready_dates, "Maximum ready trade-date count in any panel"),
             ("phase96_panels_ready_for_phase94_rerun", ready_panels, "Panels with enough ready days for Phase94 rerun"),
             ("phase96_strategy_replay_unlocked", int(replay_lock_pass), "1 means strategy replay gate is reopened"),

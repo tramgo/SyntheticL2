@@ -1,2 +1,5 @@
 panel_name,trade_date,symbols_observed,expected_symbol_fraction,missing_expected_symbols,sampled_rows,schema_pass,l1_book_pass,timing_pass,day_ready_for_anchor_panel
+l2_multiday_panel,2026-07-08,32,1.0,,17125,True,True,True,True
+l2_multiday_panel,2026-07-09,32,1.0,,21682,True,True,True,True
+l2_multiday_panel,2026-07-13,32,1.0,,19237,True,True,True,True
 l2_single_day,2026-07-13,32,1.0,,19237,True,True,True,True

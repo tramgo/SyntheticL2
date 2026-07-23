@@ -1,4 +1,4 @@
 priority,work_item,current_ready_days,required_ready_days,target_ready_days,days_needed_for_min,days_needed_for_target,observed_ready_dates,acceptance_gate
-1,collect_minimum_multiday_real_anchor_panel,1,5,10,4,9,2026-07-13,Phase96 ready_anchor_days >= 5 and panels_ready_for_phase94_rerun >= 1.
-2,rerun_phase109_style_calibrated_realism_on_multiday_panel,1,5,10,4,9,2026-07-13,0 severe metric gaps and acceptable total gap fraction on the multiday panel.
-3,only_then_consider_strategy_replay,1,5,10,4,9,2026-07-13,Phase110 replay_unlock_allowed=1.
+1,collect_minimum_multiday_real_anchor_panel,3,5,10,2,7,2026-07-08;2026-07-09;2026-07-13,Phase96 ready_anchor_days >= 5 and panels_ready_for_phase94_rerun >= 1.
+2,rerun_phase109_style_calibrated_realism_on_multiday_panel,3,5,10,2,7,2026-07-08;2026-07-09;2026-07-13,0 severe metric gaps and acceptable total gap fraction on the multiday panel.
+3,only_then_consider_strategy_replay,3,5,10,2,7,2026-07-08;2026-07-09;2026-07-13,Phase110 replay_unlock_allowed=1.

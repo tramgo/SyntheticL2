@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-19T22:53:54.025085+00:00",
+  "generated_utc": "2026-07-23T07:51:31.184130+00:00",
   "scope": "phase114_dropzone_import_integrity_verifier",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "c30aed4b5f19c8f1fe2249f1641d7ecb9ff37c90",
+  "generator_version": "e6194063e7eb83a31d0575bc71c4117489f5ab05",
   "configuration_hash": "2e7f19335a924eeb21607ceaf985985a68e8257b884b0a7706557ee96ad4aecb",
   "random_seed": "none_deterministic_phase114_integrity",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase114_post_phase113_import_integrity",
   "cost_model_version": "not_applicable",
   "latency_model_version": "phase113_dropzone_importer",
-  "creation_timestamp": "2026-07-19T22:53:54.025085+00:00"
+  "creation_timestamp": "2026-07-23T07:51:31.184130+00:00"
 }
