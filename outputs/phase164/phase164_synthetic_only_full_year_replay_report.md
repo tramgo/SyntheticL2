@@ -1,6 +1,6 @@
 # Phase164 Synthetic-only Full-year Replay
 
-Generated UTC: 2026-07-23T12:04:30.572049+00:00
+Generated UTC: 2026-07-23T12:13:47.713274+00:00
 
 Phase164 replays guarded S01-S11 diagnostic strategies over the Phase162 full-year dense L2 lake.
 This is synthetic-only diagnostic evidence. It is not broker, paper/live, contract-note, promoted-signal, or deployable profitability evidence.
@@ -10,14 +10,14 @@ This is synthetic-only diagnostic evidence. It is not broker, paper/live, contra
 | metric | value | description |
 | --- | --- | --- |
 | phase164_contract_id | P164_SYNTHETIC_ONLY_FULL_YEAR_REPLAY | Replay contract id inherited from Phase163 |
-| phase164_shards_scanned | 320 | Phase162 dense parquet shards scanned in current completed ledger |
+| phase164_shards_scanned | 384 | Phase162 dense parquet shards scanned in current completed ledger |
 | phase164_expected_shards | 384 | Expected Phase162 inventory shards |
-| phase164_full_year_replay_complete | 0 | 1 means all Phase162 shards are represented |
+| phase164_full_year_replay_complete | 1 | 1 means all Phase162 shards are represented |
 | phase164_strategy_profile_rows | 24 | Strategy/profile summary rows |
-| phase164_replay_trade_rows | 6810963 | Aggregate synthetic-only replay trade count |
+| phase164_replay_trade_rows | 7611950 | Aggregate synthetic-only replay trade count |
 | phase164_positive_after_cost_rows | 0 | Strategy/profile rows positive after costs |
 | phase164_synthetic_replay_candidate_rows | 0 | Rows positive after costs and risk proxy pass |
-| phase164_elapsed_seconds | 697.718 | Elapsed seconds for this runner invocation |
+| phase164_elapsed_seconds | 430.34 | Elapsed seconds for this runner invocation |
 | phase164_cost_model_version | zerodha_equity_intraday_nse_order_formula_v2_2026_07_14 | Zerodha equity intraday NSE charge formula |
 | phase164_strategy_promotion_allowed | 0 | Strategy promotion remains closed |
 | phase164_paper_or_live_acceptance_allowed | 0 | Broker/paper/live acceptance remains closed |
@@ -28,43 +28,43 @@ This is synthetic-only diagnostic evidence. It is not broker, paper/live, contra
 
 | strategy_id | source_strategy_id | feature_family | feature_status | execution_profile | trade_dates | trades | annual_net_pnl_inr | mean_net_return_per_trade | mean_gross_return_per_trade | mean_cost_return_per_trade | worst_daily_net_pnl_inr | max_drawdown_inr | worst_trade_pnl_inr | positive_day_fraction | annualized_sharpe_proxy | positive_after_costs | risk_proxy_pass | synthetic_replay_candidate |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P164_S06_ABSORPTION_REVERSAL | S06 | absorption_exhaustion_reversal | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 199 | 8302 | -162156 | -0.000195321 | 0 | 0.000195321 | -13555.1 | -162148 | -43.1143 | 0 | -6.53552 | False | True | False |
-| P164_S05_MICROPRICE_FILTER | S05 | microprice_with_depth_filter | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 55 | 33342 | -306766 | -9.20057e-05 | -4.44727e-07 | 9.1561e-05 | -45908.3 | -304220 | -1793.05 | 0 | -11.1261 | False | False | False |
-| P164_S09_QUEUE_IMBALANCE_SCALP | S09 | queue_imbalance_scalping_guarded | replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id | zero_latency_spread_only_control | 83 | 70336 | -614756 | -8.74028e-05 | 8.27089e-07 | 8.82299e-05 | -34334.6 | -610435 | -741.707 | 0 | -21.3384 | False | False | False |
-| P164_S04_TRADE_FLOW_DEPTH | S04 | trade_flow_depth_confirmation | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 196 | 35968 | -686957 | -0.000190991 | 0 | 0.000190991 | -41666.2 | -686136 | -51.471 | 0 | -7.9001 | False | False | False |
-| P164_S06_ABSORPTION_REVERSAL | S06 | absorption_exhaustion_reversal | replayable_from_local_l1_l5_book_state | retail_marketable_default | 199 | 8146 | -1.1908e+06 | -0.00146183 | 0 | 0.00146183 | -81625 | -1.19069e+06 | -217.024 | 0 | -8.03691 | False | False | False |
-| P164_S06_ABSORPTION_REVERSAL | S06 | absorption_exhaustion_reversal | replayable_from_local_l1_l5_book_state | stressed_retail | 199 | 8146 | -1.63069e+06 | -0.00200183 | 0 | 0.00200183 | -115444 | -1.63056e+06 | -318.253 | 0 | -7.78423 | False | False | False |
-| P164_S03_LIQUIDITY_VACUUM | S03 | liquidity_vacuum_breakout | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 50 | 235377 | -2.86754e+06 | -0.000121827 | 0 | 0.000121827 | -278691 | -2.79138e+06 | -51.5187 | 0 | -12.7993 | False | False | False |
-| P164_S05_MICROPRICE_FILTER | S05 | microprice_with_depth_filter | replayable_from_local_l1_l5_book_state | retail_marketable_default | 59 | 33077 | -3.80626e+06 | -0.00115073 | -5.09474e-07 | 0.00115022 | -434670 | -3.7708e+06 | -1896.16 | 0 | -13.3058 | False | False | False |
-| P164_S01_MLOFI_BREAKOUT | S01 | momentum_breakout_mlofi | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 208 | 188222 | -3.87647e+06 | -0.000205952 | -1.07634e-06 | 0.000204876 | -235125 | -3.87594e+06 | -755.755 | 0 | -6.99262 | False | False | False |
-| P164_S05_MICROPRICE_FILTER | S05 | microprice_with_depth_filter | replayable_from_local_l1_l5_book_state | stressed_retail | 59 | 33067 | -4.90408e+06 | -0.00148307 | -5.09629e-07 | 0.00148256 | -573650 | -4.85895e+06 | -1926.59 | 0 | -13.0642 | False | False | False |
-| P164_S04_TRADE_FLOW_DEPTH | S04 | trade_flow_depth_confirmation | replayable_from_local_l1_l5_book_state | retail_marketable_default | 196 | 35646 | -5.16711e+06 | -0.00144956 | 0 | 0.00144956 | -275080 | -5.15921e+06 | -242.094 | 0 | -9.01489 | False | False | False |
-| P164_S04_TRADE_FLOW_DEPTH | S04 | trade_flow_depth_confirmation | replayable_from_local_l1_l5_book_state | stressed_retail | 196 | 35646 | -7.06289e+06 | -0.0019814 | 0 | 0.0019814 | -383596 | -7.05242e+06 | -360.036 | 0 | -8.84455 | False | False | False |
-| P164_S09_QUEUE_IMBALANCE_SCALP | S09 | queue_imbalance_scalping_guarded | replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id | retail_marketable_default | 88 | 70192 | -8.00697e+06 | -0.00114072 | 8.40604e-07 | 0.00114156 | -426719 | -7.93771e+06 | -847.756 | 0 | -21.3969 | False | False | False |
-| P164_S02_MULTI_LEVEL_OFI | S02 | multi_level_order_flow_imbalance | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 183 | 777433 | -9.5223e+06 | -0.000122484 | -1.0571e-06 | 0.000121427 | -329721 | -9.48048e+06 | -1793.05 | 0 | -12.3851 | False | False | False |
-| P164_S09_QUEUE_IMBALANCE_SCALP | S09 | queue_imbalance_scalping_guarded | replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id | stressed_retail | 88 | 70176 | -1.02966e+07 | -0.00146726 | 8.40796e-07 | 0.0014681 | -549309 | -1.02089e+07 | -881.123 | 0 | -21.3412 | False | False | False |
-| P164_S07_IMBALANCE_MEAN_REVERSION | S07 | imbalance_mean_reversion | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 176 | 934138 | -1.05618e+07 | -0.000113065 | 6.4327e-07 | 0.000113708 | -370151 | -1.05364e+07 | -3251.44 | 0 | -15.0417 | False | False | False |
-| P164_S01_MLOFI_BREAKOUT | S01 | momentum_breakout_mlofi | replayable_from_local_l1_l5_book_state | retail_marketable_default | 208 | 186393 | -2.78151e+07 | -0.00149228 | -1.06996e-06 | 0.00149121 | -1.38432e+06 | -2.78091e+07 | -896.846 | 0 | -8.15489 | False | False | False |
-| P164_S03_LIQUIDITY_VACUUM | S03 | liquidity_vacuum_breakout | replayable_from_local_l1_l5_book_state | retail_marketable_default | 50 | 233243 | -2.89714e+07 | -0.00124211 | 0 | 0.00124211 | -1.81802e+06 | -2.80576e+07 | -242.237 | 0 | -15.0928 | False | False | False |
-| P164_S03_LIQUIDITY_VACUUM | S03 | liquidity_vacuum_breakout | replayable_from_local_l1_l5_book_state | stressed_retail | 50 | 233243 | -3.81503e+07 | -0.00163565 | 0 | 0.00163565 | -2.5387e+06 | -3.69681e+07 | -360.275 | 0 | -14.9195 | False | False | False |
-| P164_S01_MLOFI_BREAKOUT | S01 | momentum_breakout_mlofi | replayable_from_local_l1_l5_book_state | stressed_retail | 208 | 186379 | -3.82416e+07 | -0.00205182 | -1.07004e-06 | 0.00205075 | -1.95695e+06 | -3.82338e+07 | -965.257 | 0 | -7.97238 | False | False | False |
-| P164_S02_MULTI_LEVEL_OFI | S02 | multi_level_order_flow_imbalance | replayable_from_local_l1_l5_book_state | retail_marketable_default | 187 | 770810 | -9.57393e+07 | -0.00124206 | -1.04923e-06 | 0.00124101 | -3.49757e+06 | -9.53194e+07 | -1896.16 | 0 | -11.8712 | False | False | False |
-| P164_S07_IMBALANCE_MEAN_REVERSION | S07 | imbalance_mean_reversion | replayable_from_local_l1_l5_book_state | retail_marketable_default | 185 | 926444 | -1.12758e+08 | -0.00121711 | 6.31873e-07 | 0.00121774 | -3.71707e+06 | -1.12458e+08 | -3361.85 | 0 | -15.2088 | False | False | False |
-| P164_S02_MULTI_LEVEL_OFI | S02 | multi_level_order_flow_imbalance | replayable_from_local_l1_l5_book_state | stressed_retail | 187 | 770809 | -1.26018e+08 | -0.00163488 | -1.04923e-06 | 0.00163383 | -4.57532e+06 | -1.25464e+08 | -1926.59 | 0 | -11.9129 | False | False | False |
-| P164_S07_IMBALANCE_MEAN_REVERSION | S07 | imbalance_mean_reversion | replayable_from_local_l1_l5_book_state | stressed_retail | 185 | 926428 | -1.47712e+08 | -0.00159442 | 6.31884e-07 | 0.00159505 | -4.90239e+06 | -1.47321e+08 | -3399.59 | 0 | -15.1285 | False | False | False |
+| P164_S06_ABSORPTION_REVERSAL | S06 | absorption_exhaustion_reversal | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 233 | 9603 | -189513 | -0.000197347 | 0 | 0.000197347 | -13555.1 | -189505 | -43.1143 | 0 | -6.52241 | False | True | False |
+| P164_S05_MICROPRICE_FILTER | S05 | microprice_with_depth_filter | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 61 | 35518 | -320466 | -9.02264e-05 | 3.32689e-07 | 9.05591e-05 | -45908.3 | -317921 | -1793.05 | 0 | -10.9357 | False | False | False |
+| P164_S09_QUEUE_IMBALANCE_SCALP | S09 | queue_imbalance_scalping_guarded | replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id | zero_latency_spread_only_control | 95 | 79552 | -692233 | -8.70165e-05 | 1.03155e-06 | 8.8048e-05 | -34334.6 | -687912 | -741.707 | 0 | -21.182 | False | False | False |
+| P164_S04_TRADE_FLOW_DEPTH | S04 | trade_flow_depth_confirmation | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 225 | 41762 | -809134 | -0.000193749 | 0 | 0.000193749 | -41666.2 | -808314 | -51.471 | 0 | -7.80341 | False | False | False |
+| P164_S06_ABSORPTION_REVERSAL | S06 | absorption_exhaustion_reversal | replayable_from_local_l1_l5_book_state | retail_marketable_default | 233 | 9417 | -1.38206e+06 | -0.00146762 | 0 | 0.00146762 | -81625 | -1.38195e+06 | -217.024 | 0 | -7.96365 | False | False | False |
+| P164_S06_ABSORPTION_REVERSAL | S06 | absorption_exhaustion_reversal | replayable_from_local_l1_l5_book_state | stressed_retail | 233 | 9417 | -1.89422e+06 | -0.00201149 | 0 | 0.00201149 | -115444 | -1.89408e+06 | -318.253 | 0 | -7.72096 | False | False | False |
+| P164_S03_LIQUIDITY_VACUUM | S03 | liquidity_vacuum_breakout | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 55 | 274177 | -3.3266e+06 | -0.00012133 | 0 | 0.00012133 | -278691 | -3.25044e+06 | -51.5187 | 0 | -13.9373 | False | False | False |
+| P164_S05_MICROPRICE_FILTER | S05 | microprice_with_depth_filter | replayable_from_local_l1_l5_book_state | retail_marketable_default | 67 | 35249 | -4.04311e+06 | -0.00114701 | 2.77814e-07 | 0.00114729 | -434670 | -4.00765e+06 | -1896.16 | 0 | -13.0501 | False | False | False |
+| P164_S01_MLOFI_BREAKOUT | S01 | momentum_breakout_mlofi | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 240 | 224845 | -4.73255e+06 | -0.000210481 | -9.95981e-07 | 0.000209485 | -334617 | -4.73202e+06 | -755.755 | 0 | -6.68854 | False | False | False |
+| P164_S05_MICROPRICE_FILTER | S05 | microprice_with_depth_filter | replayable_from_local_l1_l5_book_state | stressed_retail | 67 | 35235 | -5.20578e+06 | -0.00147745 | 2.77925e-07 | 0.00147772 | -573650 | -5.16066e+06 | -1926.59 | 0 | -12.8122 | False | False | False |
+| P164_S04_TRADE_FLOW_DEPTH | S04 | trade_flow_depth_confirmation | replayable_from_local_l1_l5_book_state | retail_marketable_default | 225 | 41392 | -6.03399e+06 | -0.00145777 | 0 | 0.00145777 | -275080 | -6.02609e+06 | -242.094 | 0 | -8.85837 | False | False | False |
+| P164_S04_TRADE_FLOW_DEPTH | S04 | trade_flow_depth_confirmation | replayable_from_local_l1_l5_book_state | stressed_retail | 225 | 41392 | -8.258e+06 | -0.00199507 | 0 | 0.00199507 | -383596 | -8.24753e+06 | -360.036 | 0 | -8.69616 | False | False | False |
+| P164_S09_QUEUE_IMBALANCE_SCALP | S09 | queue_imbalance_scalping_guarded | replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id | retail_marketable_default | 102 | 79404 | -9.05188e+06 | -0.00113998 | 1.04392e-06 | 0.00114102 | -426719 | -8.98262e+06 | -847.756 | 0 | -21.0213 | False | False | False |
+| P164_S02_MULTI_LEVEL_OFI | S02 | multi_level_order_flow_imbalance | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 211 | 851193 | -1.04276e+07 | -0.000122506 | -1.17587e-06 | 0.00012133 | -329721 | -1.03858e+07 | -1793.05 | 0 | -12.266 | False | False | False |
+| P164_S07_IMBALANCE_MEAN_REVERSION | S07 | imbalance_mean_reversion | replayable_from_local_l1_l5_book_state | zero_latency_spread_only_control | 205 | 1034938 | -1.15997e+07 | -0.000112081 | 7.01067e-07 | 0.000112782 | -370151 | -1.15743e+07 | -3251.44 | 0 | -14.8963 | False | False | False |
+| P164_S09_QUEUE_IMBALANCE_SCALP | S09 | queue_imbalance_scalping_guarded | replayable_from_local_l1_l5_book_state_guarded_not_phase52_dense_id | stressed_retail | 102 | 79384 | -1.1639e+07 | -0.00146616 | 1.04418e-06 | 0.00146721 | -549309 | -1.15513e+07 | -881.123 | 0 | -20.9647 | False | False | False |
+| P164_S01_MLOFI_BREAKOUT | S01 | momentum_breakout_mlofi | replayable_from_local_l1_l5_book_state | retail_marketable_default | 240 | 222626 | -3.35295e+07 | -0.00150609 | -1.00643e-06 | 0.00150508 | -2.08476e+06 | -3.35235e+07 | -896.846 | 0 | -7.70636 | False | False | False |
+| P164_S03_LIQUIDITY_VACUUM | S03 | liquidity_vacuum_breakout | replayable_from_local_l1_l5_book_state | retail_marketable_default | 55 | 271703 | -3.37073e+07 | -0.00124059 | 0 | 0.00124059 | -1.81802e+06 | -3.27935e+07 | -242.237 | 0 | -16.4724 | False | False | False |
+| P164_S03_LIQUIDITY_VACUUM | S03 | liquidity_vacuum_breakout | replayable_from_local_l1_l5_book_state | stressed_retail | 55 | 271703 | -4.43722e+07 | -0.00163312 | 0 | 0.00163312 | -2.5387e+06 | -4.31901e+07 | -360.275 | 0 | -16.2898 | False | False | False |
+| P164_S01_MLOFI_BREAKOUT | S01 | momentum_breakout_mlofi | replayable_from_local_l1_l5_book_state | stressed_retail | 240 | 222610 | -4.61887e+07 | -0.00207487 | -1.0065e-06 | 0.00207387 | -2.93467e+06 | -4.6181e+07 | -965.257 | 0 | -7.54174 | False | False | False |
+| P164_S02_MULTI_LEVEL_OFI | S02 | multi_level_order_flow_imbalance | replayable_from_local_l1_l5_book_state | retail_marketable_default | 218 | 844099 | -1.04826e+08 | -0.00124187 | -1.16599e-06 | 0.00124071 | -3.49757e+06 | -1.04407e+08 | -1896.16 | 0 | -11.6637 | False | False | False |
+| P164_S07_IMBALANCE_MEAN_REVERSION | S07 | imbalance_mean_reversion | replayable_from_local_l1_l5_book_state | retail_marketable_default | 217 | 1026340 | -1.24628e+08 | -0.0012143 | 6.88635e-07 | 0.00121499 | -3.71707e+06 | -1.24328e+08 | -3361.85 | 0 | -15.0182 | False | False | False |
+| P164_S02_MULTI_LEVEL_OFI | S02 | multi_level_order_flow_imbalance | replayable_from_local_l1_l5_book_state | stressed_retail | 218 | 844075 | -1.37964e+08 | -0.0016345 | -1.16603e-06 | 0.00163334 | -4.57532e+06 | -1.3741e+08 | -1926.59 | 0 | -11.7037 | False | False | False |
+| P164_S07_IMBALANCE_MEAN_REVERSION | S07 | imbalance_mean_reversion | replayable_from_local_l1_l5_book_state | stressed_retail | 217 | 1026316 | -1.63162e+08 | -0.00158978 | 6.88651e-07 | 0.00159047 | -4.90239e+06 | -1.62772e+08 | -3399.59 | 0 | -14.9347 | False | False | False |
 
 ## Risk Summary
 
 | source_strategy_id | feature_family | profile_rows | positive_after_cost_rows | candidate_rows | best_annual_net_pnl_inr | worst_max_drawdown_inr | max_trade_count |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| S01 | momentum_breakout_mlofi | 3 | 0 | 0 | -3.87647e+06 | -3.82338e+07 | 188222 |
-| S02 | multi_level_order_flow_imbalance | 3 | 0 | 0 | -9.5223e+06 | -1.25464e+08 | 777433 |
-| S03 | liquidity_vacuum_breakout | 3 | 0 | 0 | -2.86754e+06 | -3.69681e+07 | 235377 |
-| S04 | trade_flow_depth_confirmation | 3 | 0 | 0 | -686957 | -7.05242e+06 | 35968 |
-| S05 | microprice_with_depth_filter | 3 | 0 | 0 | -306766 | -4.85895e+06 | 33342 |
-| S06 | absorption_exhaustion_reversal | 3 | 0 | 0 | -162156 | -1.63056e+06 | 8302 |
-| S07 | imbalance_mean_reversion | 3 | 0 | 0 | -1.05618e+07 | -1.47321e+08 | 934138 |
-| S09 | queue_imbalance_scalping_guarded | 3 | 0 | 0 | -614756 | -1.02089e+07 | 70336 |
+| S01 | momentum_breakout_mlofi | 3 | 0 | 0 | -4.73255e+06 | -4.6181e+07 | 224845 |
+| S02 | multi_level_order_flow_imbalance | 3 | 0 | 0 | -1.04276e+07 | -1.3741e+08 | 851193 |
+| S03 | liquidity_vacuum_breakout | 3 | 0 | 0 | -3.3266e+06 | -4.31901e+07 | 274177 |
+| S04 | trade_flow_depth_confirmation | 3 | 0 | 0 | -809134 | -8.24753e+06 | 41762 |
+| S05 | microprice_with_depth_filter | 3 | 0 | 0 | -320466 | -5.16066e+06 | 35518 |
+| S06 | absorption_exhaustion_reversal | 3 | 0 | 0 | -189513 | -1.89408e+06 | 9603 |
+| S07 | imbalance_mean_reversion | 3 | 0 | 0 | -1.15997e+07 | -1.62772e+08 | 1034938 |
+| S09 | queue_imbalance_scalping_guarded | 3 | 0 | 0 | -692233 | -1.15513e+07 | 79552 |
 
 ## Strategy Catalog
 

@@ -1,0 +1,10 @@
+metric,value,description
+phase165_outcome,A_SYNTHETIC_FULL_YEAR_REPLAY_FALSIFIED,Selected Phase165 outcome
+phase165_full_year_complete,1,Inherited Phase164 full-year completion
+phase165_positive_after_cost_rows,0,Inherited Phase164 positive rows
+phase165_synthetic_replay_candidate_rows,0,Inherited Phase164 candidate rows
+phase165_best_strategy_id,P164_S06_ABSORPTION_REVERSAL,Best Phase164 strategy/profile by annual net P&L
+phase165_best_annual_net_pnl_inr,-189512.60575493483,Best annual net P&L remains synthetic-only
+phase165_strategy_promotion_allowed,0,Strategy promotion remains closed
+phase165_paper_or_live_acceptance_allowed,0,Paper/live broker acceptance remains closed
+phase165_next_best_action,stop_current_phase164_strategy_forms_or_design_new_precommitted_non_blocklisted_hypothesis,Recommended next milestone

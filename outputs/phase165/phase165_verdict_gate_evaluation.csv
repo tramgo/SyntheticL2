@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,interpretation
+P165_FULL_YEAR_REPLAY_COMPLETE,True,384,384,Phase164 covered every Phase162 dense month/symbol shard.
+P165_POSITIVE_AFTER_COST_ECONOMICS,False,0,>0 strategy/profile rows,At least one strategy/profile must be net-positive after Zerodha-style costs to continue as a candidate.
+P165_SYNTHETIC_REPLAY_CANDIDATE,False,0,>0 positive plus risk-proxy-pass rows,A replay candidate must clear both economics and risk proxy screens.
+P165_BEST_PROFILE_NET_POSITIVE,False,-189512.60575493483,>0 INR annual net P&L,Best observed Phase164 strategy/profile is still negative if this gate fails.
+P165_PROMOTION_BOUNDARY_CLOSED,True,0,0,Synthetic replay verdict must not promote a strategy.
+P165_BROKER_BOUNDARY_CLOSED,True,0,0,Synthetic replay verdict must not claim paper/live or broker readiness.
+P165_DEPLOYABLE_CLAIM_CLOSED,True,0,0,Synthetic replay verdict must not make a deployable profitability claim.

@@ -4177,10 +4177,10 @@ Phase164 synthetic-only full-year replay is started under `outputs/phase164/`.
 
 Current Phase164 checkpoint evidence records:
 
-- Phase162 dense shards scanned: 320 / 384;
-- full-year replay complete: 0;
+- Phase162 dense shards scanned: 384 / 384;
+- full-year replay complete: 1;
 - strategy/profile rows: 24;
-- aggregate synthetic-only replay trade count: 6,810,963;
+- aggregate synthetic-only replay trade count: 7,611,950;
 - positive-after-cost strategy/profile rows: 0;
 - synthetic replay candidate rows: 0;
 - cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
@@ -4205,7 +4205,39 @@ Current Phase164 strategy catalog:
 
 Current Phase164 implementation note: the resumable runner now normalizes shard paths before comparing the existing aggregate ledger to the Phase162 inventory and de-duplicates aggregate ledger keys before summarizing. This fixed the Windows path separator mismatch that initially caused a same-64-shard replay attempt.
 
-Current Phase164 interpretation: the first 320 Phase162 shards show no positive-after-cost strategy/profile rows and no synthetic replay candidates. This is not yet a full-year verdict because 64 Phase162 shards remain. Continue the resumable Phase164 run to 384 / 384 shards, then issue the Phase164 verdict from complete full-year evidence.
+Current Phase164 interpretation: the completed 384 / 384 Phase162 shard replay shows no positive-after-cost strategy/profile rows and no synthetic replay candidates. The best observed Phase164 profile is `P164_S06_ABSORPTION_REVERSAL` under `zero_latency_spread_only_control`, with annual net P&L of -189,512.606 INR. This completes the Phase164 full-year replay evidence and requires a verdict phase rather than continued replay of the same forms.
+
+Phase165 Phase164 full-year replay verdict is implemented under `outputs/phase165/`.
+
+**Runner:** `python scripts/run_phase165_phase164_full_year_replay_verdict.py`
+
+**Purpose:** convert completed Phase164 full-year synthetic-only replay evidence into a decision. Phase165 does not promote strategies, does not claim paper/live readiness, and does not claim deployable profitability.
+
+Current Phase165 evidence records:
+
+- outcome: `A_SYNTHETIC_FULL_YEAR_REPLAY_FALSIFIED`;
+- decision: `close_phase164_current_guarded_diagnostic_forms`;
+- inherited Phase164 full-year complete: 1;
+- inherited Phase164 positive-after-cost rows: 0;
+- inherited Phase164 synthetic replay candidate rows: 0;
+- best strategy/profile: `P164_S06_ABSORPTION_REVERSAL` / `zero_latency_spread_only_control`;
+- best annual net P&L: -189,512.606 INR;
+- strategy promotion allowed: 0;
+- paper/live broker acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- next best action: `stop_current_phase164_strategy_forms_or_design_new_precommitted_non_blocklisted_hypothesis`.
+
+Current Phase165 gate evaluation:
+
+- `P165_FULL_YEAR_REPLAY_COMPLETE`: pass, observed 384 / required 384;
+- `P165_POSITIVE_AFTER_COST_ECONOMICS`: fail, observed 0 / required >0 strategy/profile rows;
+- `P165_SYNTHETIC_REPLAY_CANDIDATE`: fail, observed 0 / required >0 positive plus risk-proxy-pass rows;
+- `P165_BEST_PROFILE_NET_POSITIVE`: fail, observed -189,512.606 INR / required >0 INR annual net P&L;
+- `P165_PROMOTION_BOUNDARY_CLOSED`: pass;
+- `P165_BROKER_BOUNDARY_CLOSED`: pass;
+- `P165_DEPLOYABLE_CLAIM_CLOSED`: pass.
+
+Current Phase165 blocklist-candidate update marks current Phase164 forms for S01, S02, S03, S04, S05, S06, S07 and S09 as `block_current_phase164_form`. S08 was not replayable in the isolated symbol-shard scan and requires a cross-symbol month cache before any valid lead-lag replay. S10 and S11 remain non-alpha control/risk-plumbing rows.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 

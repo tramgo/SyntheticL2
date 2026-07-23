@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-23T12:04:30.674903+00:00",
-  "status": "partial",
-  "current_shard_index": 320,
+  "generated_utc": "2026-07-23T12:13:47.800713+00:00",
+  "status": "complete",
+  "current_shard_index": 384,
   "completed_new_shards_this_run": 64,
-  "current_shard_path": "raw_synthetic_l2_phase162_distributional_full_year\\profile=P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE\\trade_month=2026-10\\symbol=WIPRO\\part-00000.parquet",
-  "elapsed_seconds_this_run": 698.0341662999999
+  "current_shard_path": "raw_synthetic_l2_phase162_distributional_full_year\\profile=P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE\\trade_month=2026-12\\symbol=WIPRO\\part-00000.parquet",
+  "elapsed_seconds_this_run": 430.5780439999944
 }
