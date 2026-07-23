@@ -3532,11 +3532,27 @@ The immediate next operational action is to download and import two more Azure r
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -ShareSasToken "<read_list_share_sas>"`
 
+Then verify local download/import readiness without contacting Azure:
+
+`python scripts/run_phase142_local_real_l2_download_verifier.py --roots scratch_azcopy_selected/raw_l2 real_data_sample/l2_multiday_panel`
+
 Then import/refresh:
 
 `python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import`
 
-If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session or repair the Azure CLI CA chain before continuing the AzCopy downloads. The helper script accepts the SAS as a parameter or via `AZURE_STORAGE_SAS_TOKEN`; it redacts `sig=` in dry-run command output and does not persist credentials.
+If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session or repair the Azure CLI CA chain before continuing the AzCopy downloads. The helper script accepts the SAS as a parameter or via `AZURE_STORAGE_SAS_TOKEN`; it redacts `sig=` in dry-run command output and does not persist credentials. The helper copies date URLs into the raw root `scratch_azcopy_selected/raw_l2` so future downloads should land as a single `trade_date=YYYY-MM-DD` partition rather than nesting duplicate date folders.
+
+Phase142 local verification is implemented under `outputs/phase142/` and currently records:
+
+- roots checked: 2 (`scratch_azcopy_selected/raw_l2` and `real_data_sample/l2_multiday_panel`);
+- root/date readiness rows: 5;
+- ready root/date rows for Phase115 import: 5;
+- maximum ready dates in one root: 3;
+- total checked parquet files: 148,339;
+- total checked bytes: 5,216,547,016;
+- strategy replay allowed: 0.
+
+Phase142 is an import/download preflight, not a market-quality gate. It checks coverage, required schema, readable first/last samples, parquet counts and bytes. Its L1 book sample status is diagnostic only; Phase96 remains the authoritative real-anchor market-quality gate.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 

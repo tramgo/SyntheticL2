@@ -62,10 +62,11 @@ $rows = New-Object System.Collections.Generic.List[object]
 
 foreach ($date in $Dates) {
     $source = "https://$StorageAccount.file.core.windows.net/$ShareName/$RemoteRoot/trade_date=$date`?$sas"
-    $destination = Join-Path $DestinationRoot "trade_date=$date"
+    $destination = $DestinationRoot
+    $dateDestination = Join-Path $DestinationRoot "trade_date=$date"
     New-Item -ItemType Directory -Force -Path $destination | Out-Null
 
-    $before = Get-ParquetSummary -Path $destination
+    $before = Get-ParquetSummary -Path $dateDestination
     $status = "not_started"
     $exitCode = 0
     $started = Get-Date
@@ -73,7 +74,7 @@ foreach ($date in $Dates) {
         $status = "dry_run"
         Write-Host "[DRY-RUN] azcopy copy $(Protect-Url $source) $destination --recursive=true --from-to=FileLocal --check-md5=NoCheck --overwrite=ifSourceNewer --log-level=ERROR"
     } else {
-        Write-Host "[AZCOPY] trade_date=$date -> $destination"
+        Write-Host "[AZCOPY] trade_date=$date -> $dateDestination"
         & $azcopy copy $source $destination --recursive=true --from-to=FileLocal --check-md5=NoCheck --overwrite=ifSourceNewer --log-level=ERROR
         $exitCode = $LASTEXITCODE
         if ($exitCode -eq 0) {
@@ -83,12 +84,12 @@ foreach ($date in $Dates) {
         }
     }
     $ended = Get-Date
-    $after = Get-ParquetSummary -Path $destination
+    $after = Get-ParquetSummary -Path $dateDestination
     $rows.Add([pscustomobject]@{
         trade_date = $date
         status = $status
         exit_code = $exitCode
-        destination = $destination
+        destination = $dateDestination
         parquet_files_before = $before.Count
         bytes_before = $before.Bytes
         parquet_files_after = $after.Count

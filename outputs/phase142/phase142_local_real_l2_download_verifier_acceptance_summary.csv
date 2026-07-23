@@ -1,0 +1,10 @@
+metric,value,description
+phase142_roots_checked,2,Distinct local roots inspected
+phase142_symbol_partition_rows,160,Symbol partition rows discovered
+phase142_sample_files_checked,320,First/last parquet samples read for schema and L1 book checks
+phase142_date_rows,5,Root/date readiness rows emitted
+phase142_ready_date_rows,5,Root/date rows ready for Phase115 import
+phase142_max_ready_dates_in_one_root,3,Maximum ready dates in any one checked root
+phase142_total_parquet_files,148339,Total parquet files across checked roots
+phase142_total_bytes,5216547016,Total bytes across checked roots
+phase142_strategy_replay_allowed,0,Local download verification does not unlock strategy replay
