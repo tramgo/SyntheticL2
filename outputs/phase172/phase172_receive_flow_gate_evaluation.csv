@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P172_LOCAL_PANEL_DISCOVERED,1,trade_dates=3,hard
+P172_DOWNLOAD_FIRST_LOCAL_ONLY,1,audited local real_data_sample/l2_multiday_panel paths only,hard
+P172_ALL_EXPECTED_SYMBOLS_PRESENT_PER_READY_DATE,1,max_ready_symbols=32,hard
+P172_RECEIVE_FLOW_COLUMNS_PRESENT,1,schema_pass_symbols=96/96,hard
+P172_MINIMUM_SOURCE_DAYS_FOR_PHASE171,0,ready_dates=3;minimum=5,unlock
+P172_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,availability/cadence/churn/synchrony audit only,hard

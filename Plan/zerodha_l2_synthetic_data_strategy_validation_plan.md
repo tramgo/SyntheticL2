@@ -4721,6 +4721,59 @@ Current Phase171 evidence records:
 
 Current Phase171 interpretation: the plan now has a concrete bridge out of the falsified synthetic-only replay loop. The next action is not another strategy shard. It is a download-first/local-first real L2 receive-flow availability audit, or a broker-order telemetry collection path if actual broker logs become available.
 
+### Phase172 — Real L2 Receive-flow Availability Audit
+
+**Runner:** `scripts/run_phase172_real_l2_receive_flow_availability_audit.py`
+
+**Implementation:** `src/synthetic_l2/phase172_real_l2_receive_flow_availability_audit.py`
+
+**Outputs:** `outputs/phase172/`
+
+Phase172 executes the Phase171 next-best action against the currently downloaded local real L2 panel. It is a local-only audit over `real_data_sample/l2_multiday_panel`; it does not contact Azure, stream-scan remote storage, emit buy/sell signals, create order-arrival streams, run fills, compute strategy P&L or open paper/live acceptance.
+
+The audit uses the selected Phase171 source `P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW` and measures:
+
+- local date/symbol/file/byte/row availability;
+- required Zerodha WebSocket top-five market-by-price receive-flow columns;
+- per-symbol receive cadence during the NSE session;
+- receive gap quantiles and sub-second update counts;
+- L1/top-of-book state-change availability;
+- top-five depth quantity-change availability;
+- 1-second cross-symbol bucket synchrony as a source-feature availability proxy.
+
+Current Phase172 outputs include:
+
+- `phase172_date_receive_flow_audit.csv`;
+- `phase172_symbol_day_receive_flow_audit.csv`;
+- `phase172_symbol_1s_bucket_presence.csv`;
+- `phase172_receive_flow_gate_evaluation.csv`;
+- `phase172_real_l2_receive_flow_availability_acceptance_summary.csv`;
+- `phase172_real_l2_receive_flow_availability_audit_report.md`;
+- `phase172_real_l2_receive_flow_availability_audit_manifest.json`.
+
+Current Phase172 evidence records:
+
+- local trade dates discovered: 3 (`2026-07-08`, `2026-07-09`, `2026-07-13`);
+- ready receive-flow dates: 3;
+- minimum ready dates required by the Phase171 source contract: 5;
+- additional ready dates needed: 2;
+- symbol/day partitions audited: 96;
+- total local Parquet files audited: 99,272;
+- total local rows scanned: 1,238,275;
+- total compressed local bytes audited: 3,490,276,400;
+- median symbol session receive tick rate: approximately 0.835 ticks/sec;
+- median symbol receive gap: approximately 0.75 sec;
+- median L1/top-of-book state-change fraction: approximately 0.541;
+- median top-five depth quantity-change fraction: approximately 0.570;
+- hard gates passed: 5 / 5;
+- unlock gates passed: 0 / 1;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- next best action: `download_at_least_2_additional_real_l2_dates_then_rerun_phase172`.
+
+Current Phase172 interpretation: the local real L2 receive-flow source is structurally usable and more than minute-level; all currently available local dates have all 32 symbols and required receive/depth fields. However, only 3 ready dates are available versus the 5-date minimum required by the Phase171 source contract, so no strategy replay or paper/live path opens. The next correct action is to download or import at least two additional complete real L2 dates locally, then rerun Phase172 and the downstream real-anchor gates.
+
 ---
 
 ## 25. Final Principle

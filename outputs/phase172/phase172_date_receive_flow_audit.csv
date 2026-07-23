@@ -1,0 +1,4 @@
+trade_date,expected_symbols,symbols_with_files,schema_pass_symbols,receive_flow_ready_symbols,parquet_files,rows,bytes,median_symbol_tick_rate_per_sec,median_symbol_gap_sec,median_l1_state_change_fraction,median_depth_qty_change_fraction,active_1s_buckets,cross_symbol_sync_1s_buckets,median_symbols_per_1s_bucket,p90_symbols_per_1s_bucket,date_receive_flow_ready
+2026-07-08,32,32,32,32,20507,226430,719892449,0.7500295129278085,0.75,0.5531448027216119,0.5747298392054127,135594,6999,19.0,26.0,True
+2026-07-09,32,32,32,32,28560,390992,1006378167,1.016150059961114,0.74,0.5413617804979661,0.5737505512034606,222075,9806,23.0,29.0,True
+2026-07-13,32,32,32,32,50205,620853,1764005784,0.8274065438265779,0.7495,0.5257886722712053,0.5583959299608184,363714,17286,21.0,29.0,True

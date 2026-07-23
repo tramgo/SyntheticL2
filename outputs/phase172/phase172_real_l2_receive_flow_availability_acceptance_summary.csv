@@ -1,0 +1,22 @@
+metric,value,description
+phase172_selected_phase171_source_id,P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,Phase171 source this audit supports
+phase172_trade_dates_discovered,3,Local trade_date partitions discovered
+phase172_ready_receive_flow_dates,3,Dates with all 32 symbols receive-flow ready
+phase172_minimum_ready_dates_required,5,Minimum days required by Phase171 source contract
+phase172_additional_dates_needed,2,Additional ready real L2 dates required
+phase172_symbol_day_rows,96,Symbol/day partitions audited
+phase172_total_parquet_files,99272,Local Parquet files audited
+phase172_total_rows,1238275,Rows scanned from local Parquet
+phase172_total_bytes,3490276400,Compressed local Parquet bytes
+phase172_median_symbol_tick_rate_per_sec,0.8353747845606725,Median symbol session receive tick rate
+phase172_median_symbol_gap_sec,0.75,Median symbol receive gap
+phase172_median_l1_state_change_fraction,0.5412450459566573,Median L1 state change fraction
+phase172_median_depth_qty_change_fraction,0.5704957353221594,Median top-five depth quantity change fraction
+phase172_hard_gate_rows,5,Hard gates evaluated
+phase172_hard_gate_pass_rows,5,Hard gates passed
+phase172_unlock_gate_rows,1,Unlock gates evaluated
+phase172_unlock_gate_pass_rows,0,Unlock gates passed
+phase172_strategy_replay_allowed,0,Strategy replay remains closed unless minimum real-source days pass
+phase172_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase172_azure_read_policy,forbidden_for_analysis_download_first_then_local,Audit uses local downloaded Parquet only
+phase172_next_best_action,download_at_least_2_additional_real_l2_dates_then_rerun_phase172,Recommended next milestone
