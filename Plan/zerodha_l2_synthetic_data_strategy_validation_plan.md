@@ -4452,6 +4452,80 @@ Prolonging the branch to force a positive result is explicitly not success.
 
 ---
 
+## 24A. Synthetic-only Continuation After Phase165
+
+Phase165 closed the Phase164 full-year synthetic-only replay as falsified. The current Phase164 strategy forms produced no positive after-cost rows and no synthetic replay candidates, so those forms must not be kept alive by shard-after-shard reruns.
+
+The next non-blocklisted path is the previously incomplete cross-symbol lead-lag branch. Phase164 could not fairly test S08 in isolated symbol/month shards because S08 needs a synchronized cross-symbol feature view. The continuation therefore proceeds through a cache-preparation milestone first, not through an immediate profitability verdict.
+
+### Data-access rule for Azure and real L2
+
+Heavy L2 analysis must be download-first/local-first:
+
+- Azure storage may be used as a source of raw real L2 files.
+- Python strategy/cache/replay code must not stream-scan Azure directly for heavy experiments.
+- Downloaded or already materialized local Parquet is the analysis substrate.
+- DuckDB is the preferred local scan/cache engine for dense tick/L2 experiments.
+
+This avoids turning every experiment into remote object-store latency and keeps replay evidence reproducible from local paths.
+
+### Phase166 — Cross-symbol Lead-lag Cache for S08
+
+**Runner:** `scripts/run_phase166_cross_symbol_lead_lag_cache.py`
+
+**Implementation:** `src/synthetic_l2/phase166_cross_symbol_lead_lag_cache.py`
+
+**Outputs:** `outputs/phase166/`
+
+**Local cache root:** `raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache/`
+
+**Purpose:** build a synchronized local feature cache from the Phase162 full-year dense L2 lake so S08 cross-symbol lead-lag can be tested without pretending isolated symbol shards contain cross-symbol information.
+
+**Important terminology:** the Phase166 `5000 ms` bucket is a synchronization/alignment device. It is not a claim that the native Zerodha-like websocket feed is uniformly sampled at 5 seconds. Native tick rows remain event/tick updates; Phase166 aggregates them into cross-symbol buckets for lagged feature construction.
+
+**Current implementation evidence:** Phase166 is implemented and executed.
+
+Current outputs include:
+
+- `phase166_cross_symbol_cache_acceptance_summary.csv`;
+- `phase166_cross_symbol_cache_inventory.csv`;
+- `phase166_cross_symbol_cache_sample.csv`;
+- `phase166_cross_symbol_lead_lag_cache_manifest.json`;
+- `phase166_cross_symbol_lead_lag_cache_report.md`.
+
+Current Phase166 evidence records:
+
+- bucket size: `5000 ms`;
+- months cached: `12`;
+- monthly cache files: `12`;
+- symbols cached: `32`;
+- source dense rows represented: `192,786,816`;
+- synchronized symbol/bucket rows: `77,944,215`;
+- compressed cache bytes: `4,635,703,054`;
+- median lag-1 feature coverage: `0.9929824537245444`;
+- S08 cache ready: `1`;
+- strategy replay allowed: `0`;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- next best action: `precommit_and_run_s08_cross_symbol_lead_lag_replay_using_phase166_cache`.
+
+Phase166 does not produce a P&L result, promoted signal, order-arrival stream, fill verdict, or deployable profitability claim. It only prepares the synchronized local feature substrate required for a fair S08 replay.
+
+### Phase167 — Precommitted S08 Cross-symbol Replay
+
+Phase167 should use the Phase166 local cache to run exactly one precommitted cross-symbol lead-lag replay branch. It must:
+
+- read from `raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache/`, not Azure;
+- preserve the Zerodha equity intraday NSE cost model used by Phase164 for execution-cost accounting;
+- model feed event, feature update, signal, latency, order arrival, fill, costs, and P&L/risk update before any verdict;
+- report base and adverse latency/cost variants side by side;
+- emit full trade-level, symbol-level, month-level, and strategy/profile-level evidence;
+- keep paper/live acceptance and strategy promotion closed unless the precommitted gates explicitly pass;
+- update the blocklist if S08 is falsified.
+
+Success is not a positive synthetic chart. Success is a clean Phase167 verdict: S08 either survives a precommitted full-year synthetic-only replay as a dormant real-L2 handoff candidate, or it is falsified and blocked like the earlier Phase164 forms.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
