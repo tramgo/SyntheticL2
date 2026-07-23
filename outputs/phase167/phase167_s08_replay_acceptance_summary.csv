@@ -1,0 +1,18 @@
+metric,value,description
+phase167_source_cache_ready,1,Inherited Phase166 S08 cache-ready flag
+phase167_cache_files_scanned,12,Phase166 monthly cache files scanned
+phase167_strategy_id,P167_S08_CROSS_SYMBOL_LEAD_LAG_CONTINUATION,Exactly one precommitted S08 alpha branch
+phase167_score_threshold,0.42,Fixed absolute score threshold set before replay
+phase167_execution_profile_rows,3,Execution profile variants replayed side by side
+phase167_trade_rows,817814,Full trade-level rows written to parquet
+phase167_positive_after_cost_profile_rows,0,Profile rows positive after all costs
+phase167_candidate_profile_rows,0,"Rows passing positive, coverage, stability and precision gates"
+phase167_best_execution_profile,zero_latency_spread_only_control,Best profile by annual net P&L
+phase167_best_annual_net_pnl_inr,-4143898.966113758,Best annual after-cost net P&L
+phase167_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha equity intraday NSE charge formula reused
+phase167_strategy_promotion_allowed,0,Synthetic-only promotion gate; paper/live remains closed regardless
+phase167_paper_or_live_acceptance_allowed,0,Broker/paper/live acceptance remains closed
+phase167_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic-only replay
+phase167_azure_read_policy,forbidden_for_analysis_download_first_then_local,No direct Python Azure scanning
+phase167_next_best_action,close_s08_current_form_and_update_blocklist_candidate,Recommended next milestone
+phase167_elapsed_seconds,198.82730420000735,Runner elapsed seconds

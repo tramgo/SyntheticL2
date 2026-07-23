@@ -1,0 +1,4 @@
+execution_profile,decision_latency_buckets,broker_latency_buckets,total_latency_buckets,fixed_slippage_ticks,internal_impact_bps,zerodha_charge_bps,apply_zerodha_equity_intraday_charges,order_notional_inr,cancel_on_stale_or_disconnect,fill_model,fill_ratio,description
+zero_latency_spread_only_control,0,0,0,0.0,0.0,0.0,False,100000.0,False,marketable_full_fill_proxy,1.0,Leakage/control profile with zero latency and spread/slippage controls only. Not deployable and excludes statutory/brokerage charges.
+retail_marketable_default,1,1,2,1.0,0.5,8.26812,True,100000.0,True,marketable_full_fill_proxy,1.0,"Default marketable retail proxy with next-event latency, Zerodha equity-intraday charge estimate, and internal impact/slippage assumptions."
+stressed_retail,2,2,4,2.0,2.0,8.26812,True,100000.0,True,marketable_full_fill_proxy,1.0,"Stress proxy with longer event latency, Zerodha equity-intraday charge estimate, and higher internal impact/slippage assumptions."

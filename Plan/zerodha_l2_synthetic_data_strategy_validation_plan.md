@@ -4512,7 +4512,13 @@ Phase166 does not produce a P&L result, promoted signal, order-arrival stream, f
 
 ### Phase167 — Precommitted S08 Cross-symbol Replay
 
-Phase167 should use the Phase166 local cache to run exactly one precommitted cross-symbol lead-lag replay branch. It must:
+**Runner:** `scripts/run_phase167_s08_cross_symbol_lead_lag_replay.py`
+
+**Implementation:** `src/synthetic_l2/phase167_s08_cross_symbol_lead_lag_replay.py`
+
+**Outputs:** `outputs/phase167/`
+
+Phase167 uses the Phase166 local cache to run exactly one precommitted cross-symbol lead-lag replay branch. It must:
 
 - read from `raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache/`, not Azure;
 - preserve the Zerodha equity intraday NSE cost model used by Phase164 for execution-cost accounting;
@@ -4523,6 +4529,43 @@ Phase167 should use the Phase166 local cache to run exactly one precommitted cro
 - update the blocklist if S08 is falsified.
 
 Success is not a positive synthetic chart. Success is a clean Phase167 verdict: S08 either survives a precommitted full-year synthetic-only replay as a dormant real-L2 handoff candidate, or it is falsified and blocked like the earlier Phase164 forms.
+
+Current Phase167 outputs include:
+
+- `phase167_s08_cross_symbol_trade_ledger.parquet`;
+- `phase167_s08_replay_acceptance_summary.csv`;
+- `phase167_s08_strategy_profile_summary.csv`;
+- `phase167_s08_gate_evaluation.csv`;
+- `phase167_s08_split_summary.csv`;
+- `phase167_s08_monthly_summary.csv`;
+- `phase167_s08_symbol_summary.csv`;
+- `phase167_execution_profile_catalog.csv`;
+- `phase167_zerodha_charge_component_catalog.csv`;
+- `phase167_s08_cross_symbol_replay_report.md`;
+- `phase167_s08_cross_symbol_replay_manifest.json`.
+
+Current Phase167 evidence records:
+
+- source cache ready: 1;
+- cache files scanned: 12;
+- strategy id: `P167_S08_CROSS_SYMBOL_LEAD_LAG_CONTINUATION`;
+- score threshold: 0.42 fixed before replay;
+- execution profile rows: 3;
+- full trade-level rows: 817,814;
+- positive-after-cost profile rows: 0;
+- candidate profile rows: 0;
+- best execution profile: `zero_latency_spread_only_control`;
+- best annual net P&L: -4,143,898.966 INR;
+- Zerodha-cost retail default annual net P&L: -28,251,117.745 INR;
+- stressed retail annual net P&L: -32,502,523.595 INR;
+- cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- strategy promotion allowed: 0;
+- paper/live broker acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- next best action: `close_s08_current_form_and_update_blocklist_candidate`.
+
+Current Phase167 gate interpretation: S08 fails even under the zero-latency spread-only control and fails all realistic Zerodha-cost execution profiles by a larger margin. The replay has no positive train split, no positive test split, no positive test months, no candidate profile rows and no promotion path. The current S08 form should therefore be closed by a follow-on blocklist/verdict ledger rather than rerun.
 
 ---
 

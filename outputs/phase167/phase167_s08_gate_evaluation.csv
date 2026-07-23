@@ -1,0 +1,4 @@
+strategy_id,execution_profile,train_net_pnl_inr,test_net_pnl_inr,test_trades,test_symbols,test_positive_months,test_precision_cost_clear,test_max_month_contribution_abs,test_max_symbol_contribution_abs,train_positive_after_costs,test_positive_after_costs,coverage_pass,stability_pass,precision_pass,phase167_profile_pass
+P167_S08_CROSS_SYMBOL_LEAD_LAG_CONTINUATION,zero_latency_spread_only_control,-2129754.724793854,-2014144.241319878,132263,5,0,1.5121386933609551e-05,0.1881643862468624,0.9394718194043844,False,False,False,False,False,False
+P167_S08_CROSS_SYMBOL_LEAD_LAG_CONTINUATION,retail_marketable_default,-14559646.954310337,-13691470.790436521,132037,5,0,7.573634663011126e-06,0.19505245825779255,0.9557934074068191,False,False,False,False,False,False
+P167_S08_CROSS_SYMBOL_LEAD_LAG_CONTINUATION,stressed_retail,-16751995.217174057,-15750528.37791338,131822,5,0,0.0,0.19526950990800743,0.9563761142711387,False,False,False,False,False,False
