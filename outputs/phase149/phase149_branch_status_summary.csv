@@ -1,5 +1,5 @@
 branch,status,evidence,current_next_action
 real_l2_anchor_gate,gated,Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven.,use_phase174_secure_download_orchestrator_for_required_real_l2_dates
-real_receive_flow_source,gated_waiting_for_two_more_real_l2_dates,"Phase172 ready_dates=3, additional_dates_needed=2; Phase174 download_ran=0.",add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_to_env_or_process_then_rerun_phase174
+real_receive_flow_source,gated_waiting_for_two_more_real_l2_dates,"Phase172 ready_dates=3, additional_dates_needed=2; Phase174 download_ran=0; Phase175 activation_ready=0.",add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176
 top_five_depth_passive,closed_clean_falsification,Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification.,do_not_open_phase134_or_phase135_for_this_branch
 dense_synthetic_replay,not_promoted,Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates.,only_continue_if_precommitted_and_not_blocklisted

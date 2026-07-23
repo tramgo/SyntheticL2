@@ -1,0 +1,13 @@
+metric,value,description
+phase175_feature_schema_rows,6,Precommitted receive-flow feature rows
+phase175_feature_quality_gate_rows,12,Feature quality gates declared
+phase175_activation_gate_rows,6,Activation gates evaluated
+phase175_hard_gate_rows,5,Hard gates evaluated
+phase175_hard_gate_pass_rows,5,Hard gates passed
+phase175_activation_ready,0,1 means feature materialization may open
+phase175_ready_receive_flow_dates,3,Ready receive-flow dates inherited from Phase172
+phase175_additional_dates_needed,2,Additional real L2 dates still needed
+phase175_strategy_replay_allowed,0,No strategy replay opened
+phase175_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase175_forbidden_outputs,buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase175_next_best_action,add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176,Recommended next milestone

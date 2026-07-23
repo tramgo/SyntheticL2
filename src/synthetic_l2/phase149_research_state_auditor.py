@@ -112,6 +112,7 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         172: Path("outputs/phase172/phase172_real_l2_receive_flow_availability_acceptance_summary.csv"),
         173: Path("outputs/phase173/phase173_real_l2_download_credential_preflight_acceptance_summary.csv"),
         174: Path("outputs/phase174/phase174_secure_real_l2_download_orchestrator_acceptance_summary.csv"),
+        175: Path("outputs/phase175/phase175_receive_flow_feature_schema_precommit_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -217,6 +218,17 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "strategy_replay_allowed": as_int(metric_value(path, "phase174_strategy_replay_allowed", 0)),
             "next_action": metric_value(path, "phase174_next_best_action", ""),
         }
+    if phase == 175:
+        activation_ready = as_int(metric_value(path, "phase175_activation_ready", 0))
+        return {
+            "branch": "real_receive_flow_source",
+            "state": "receive_flow_feature_schema_activation_ready" if activation_ready else "receive_flow_feature_schema_precommitted_gated",
+            "feature_schema_rows": as_int(metric_value(path, "phase175_feature_schema_rows", 0)),
+            "activation_ready": activation_ready,
+            "additional_dates_needed": as_int(metric_value(path, "phase175_additional_dates_needed", 0)),
+            "strategy_replay_allowed": as_int(metric_value(path, "phase175_strategy_replay_allowed", 0)),
+            "next_action": metric_value(path, "phase175_next_best_action", ""),
+        }
     return {}
 
 
@@ -259,11 +271,13 @@ def build_phase_ledger(scripts: pd.DataFrame, outputs: pd.DataFrame) -> pd.DataF
 
 def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase174 = phase_status_from_metrics(174)
+    phase175 = phase_status_from_metrics(175)
     phase172 = phase_status_from_metrics(172)
-    real_receive_next = phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_next = phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
     real_receive_evidence = (
         f"Phase172 ready_dates={phase172.get('ready_receive_flow_dates', '')}, additional_dates_needed={phase172.get('additional_dates_needed', '')}; "
-        f"Phase174 download_ran={phase174.get('download_ran', '')}."
+        f"Phase174 download_ran={phase174.get('download_ran', '')}; "
+        f"Phase175 activation_ready={phase175.get('activation_ready', '')}."
     )
     branches = [
         {
@@ -299,16 +313,21 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     phase148 = phase_ledger[phase_ledger["phase"].astype(int).eq(148)] if not phase_ledger.empty else pd.DataFrame()
     phase172 = phase_ledger[phase_ledger["phase"].astype(int).eq(172)] if not phase_ledger.empty else pd.DataFrame()
     phase174 = phase_ledger[phase_ledger["phase"].astype(int).eq(174)] if not phase_ledger.empty else pd.DataFrame()
+    phase175 = phase_ledger[phase_ledger["phase"].astype(int).eq(175)] if not phase_ledger.empty else pd.DataFrame()
     real_replay_allowed = int(phase148["strategy_replay_allowed"].iloc[0]) if not phase148.empty and str(phase148["strategy_replay_allowed"].iloc[0]) != "" else 0
     receive_replay_allowed = int(phase172["strategy_replay_allowed"].iloc[0]) if not phase172.empty and str(phase172["strategy_replay_allowed"].iloc[0]) != "" else 0
     secure_replay_allowed = int(phase174["strategy_replay_allowed"].iloc[0]) if not phase174.empty and str(phase174["strategy_replay_allowed"].iloc[0]) != "" else 0
+    schema_replay_allowed = int(phase175["strategy_replay_allowed"].iloc[0]) if not phase175.empty and str(phase175["strategy_replay_allowed"].iloc[0]) != "" else 0
     secure_download_recorded = bool(not phase174.empty and "secure_download" in str(phase174["status"].iloc[0]))
+    feature_schema_recorded = bool(not phase175.empty and "feature_schema" in str(phase175["status"].iloc[0]))
     branch_closed = bool(not phase136.empty and "closed_clean_falsification" in str(phase136["status"].iloc[0]))
     rows = [
         ("phase149_real_l2_replay_gate_closed", bool(real_replay_allowed == 0), real_replay_allowed, 0, "hard"),
         ("phase149_real_receive_flow_replay_gate_closed", bool(receive_replay_allowed == 0), receive_replay_allowed, 0, "hard"),
         ("phase149_secure_download_gate_recorded", secure_download_recorded, int(secure_download_recorded), 1, "hard"),
         ("phase149_secure_orchestrator_replay_gate_closed", bool(secure_replay_allowed == 0), secure_replay_allowed, 0, "hard"),
+        ("phase149_receive_flow_feature_schema_recorded", feature_schema_recorded, int(feature_schema_recorded), 1, "hard"),
+        ("phase149_receive_flow_feature_schema_replay_gate_closed", bool(schema_replay_allowed == 0), schema_replay_allowed, 0, "hard"),
         ("phase149_deep_book_branch_closed", branch_closed, int(branch_closed), 1, "hard"),
         ("phase149_no_promoted_strategy_replay", True, 0, 0, "hard"),
     ]

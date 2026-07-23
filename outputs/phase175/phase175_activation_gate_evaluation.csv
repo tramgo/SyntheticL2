@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P175_SOURCE_IS_PHASE171_REAL_RECEIVE_FLOW,1,phase171_selected_source_id=P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,hard
+P175_PHASE172_STRUCTURAL_GATES_PASS,1,phase172_hard_gate_pass_rows=5/5,hard
+P175_MINIMUM_REAL_DAYS_AVAILABLE,0,ready_dates=3;minimum=5;additional_needed=2,activation
+P175_SECURE_DOWNLOAD_PATH_EXISTS,1,phase174_download_ran=0;runner=scripts/run_phase174_secure_real_l2_download_orchestrator.ps1,hard
+P175_FEATURE_SCHEMA_DECLARED,1,feature_rows=6,hard
+P175_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,schema and gates only; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard

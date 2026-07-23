@@ -1,0 +1,4 @@
+blocked_family,phase175_action,overlap_allowed
+PHASE164_S01_TO_S07_S09_SYNTHETIC_FORMS,do_not_reuse_signal_formula_or_threshold,0
+PHASE167_S08_FIXED_CROSS_SYMBOL_LEAD_LAG_FORM,"cross-symbol synchrony may be a source feature, but Phase167 fixed S08 score is forbidden",0
+PHASE131_TO_136_TOP_FIVE_DEPTH_PASSIVE_BRANCH,"top-five depth churn may be audited as source quality, but passive queue/fill claims remain closed",0

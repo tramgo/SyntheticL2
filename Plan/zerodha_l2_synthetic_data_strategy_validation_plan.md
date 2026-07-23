@@ -3684,19 +3684,19 @@ Phase149 research state auditor is implemented under `outputs/phase149/`.
 
 Current Phase149 evidence records:
 
-- phase rows discovered from scripts and outputs: 167;
-- phase rows with at least one runner: 165;
-- phase rows with acceptance summaries: 117;
+- phase rows discovered from scripts and outputs: 168;
+- phase rows with at least one runner: 166;
+- phase rows with acceptance summaries: 118;
 - current research branches summarized: 4;
-- hard global-state gates evaluated: 6;
-- hard global-state gates passed: 6;
+- hard global-state gates evaluated: 8;
+- hard global-state gates passed: 8;
 - strategy replay allowed: 0;
 - next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174`.
 
 Current branch summary:
 
 - `real_l2_anchor_gate`: gated; Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. Use Phase174 as the secure download orchestrator for the required dates.
-- `real_receive_flow_source`: gated waiting for two more real L2 dates; Phase172 has 3 ready receive-flow dates and needs 2 more, while Phase174 records that no download ran because no SAS/key was available.
+- `real_receive_flow_source`: gated waiting for two more real L2 dates; Phase172 has 3 ready receive-flow dates and needs 2 more, Phase174 records that no download ran because no SAS/key was available, and Phase175 has precommitted the feature schema with activation still closed.
 - `top_five_depth_passive`: closed clean falsification; Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification.
 - `dense_synthetic_replay`: not promoted; partial/smoke dense replay artifacts remain non-promotional and do not override replay gates.
 
@@ -3706,6 +3706,8 @@ Current global gates:
 - real receive-flow replay gate closed: pass;
 - secure download gate recorded: pass;
 - secure orchestrator replay gate closed: pass;
+- receive-flow feature schema recorded: pass;
+- receive-flow feature schema replay gate closed: pass;
 - deep-book branch closed: pass;
 - no promoted strategy replay: pass.
 
@@ -4851,6 +4853,51 @@ Current Phase174 evidence records:
 - next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_to_env_or_process_then_rerun_phase174`.
 
 Current Phase174 interpretation: the download path is now executable and secret-safe. The user can add a read/list share SAS or storage account key to `.env` or the process environment, then rerun Phase174. Until that happens, the plan remains correctly gated with no replay, no paper/live acceptance and no Azure data movement attempted.
+
+### Phase175 — Receive-flow Feature Schema Precommit
+
+**Runner:** `scripts/run_phase175_receive_flow_feature_schema_precommit.py`
+
+**Implementation:** `src/synthetic_l2/phase175_receive_flow_feature_schema_precommit.py`
+
+**Outputs:** `outputs/phase175/`
+
+Phase175 precommits the real receive-flow feature schema and activation gates before any feature materialization or strategy replay. It uses Phase171, Phase172 and Phase174 evidence. It does not emit buy/sell signals, order side, order-arrival streams, fill models, P&L replay, profitability claims, or paper/live acceptance.
+
+The precommitted feature schema rows are:
+
+- `P175_RECEIVE_EVENT_RATE_ZSCORE`;
+- `P175_QUOTE_CHURN_RATE`;
+- `P175_DEPTH_REFRESH_INTENSITY`;
+- `P175_STALE_QUOTE_DURATION`;
+- `P175_CROSS_SYMBOL_ARRIVAL_SYNCHRONY`;
+- `P175_RECEIVE_FLOW_REGIME_STATE`.
+
+Current Phase175 outputs include:
+
+- `phase175_receive_flow_feature_schema.csv`;
+- `phase175_receive_flow_feature_quality_gate_catalog.csv`;
+- `phase175_forbidden_overlap_ledger.csv`;
+- `phase175_activation_gate_evaluation.csv`;
+- `phase175_receive_flow_feature_schema_precommit_acceptance_summary.csv`;
+- `phase175_receive_flow_feature_schema_precommit_report.md`;
+- `phase175_receive_flow_feature_schema_precommit_manifest.json`.
+
+Current Phase175 evidence records:
+
+- feature schema rows: 6;
+- feature quality gate rows: 12;
+- activation gates evaluated: 6;
+- hard gates passed: 5 / 5;
+- activation ready: 0;
+- ready receive-flow dates inherited from Phase172: 3;
+- additional real L2 dates still needed: 2;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`;
+- next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176`.
+
+Current Phase175 interpretation: the receive-flow feature source is now precommitted, so once the two missing real L2 dates are downloaded and Phase172 shows at least 5 ready dates, the next phase can materialize features without reopening old falsified strategy families. Until then, Phase175 remains a schema contract only.
 
 ---
 
