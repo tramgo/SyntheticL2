@@ -1,0 +1,13 @@
+metric,value,description
+phase169_closure_rows,5,Closure evidence rows consolidated
+phase169_forbidden_family_rows,9,Blocked strategy-family/form rows carried forward
+phase169_candidate_source_rows,3,Candidate next-source rows evaluated
+phase169_selected_synthetic_source,P130_FILTER_CONDITIONED_DIAGNOSTICS,"Selected synthetic-only source, if any"
+phase169_next_queue_rows,2,Next work-queue rows emitted
+phase169_gate_rows,5,Gates evaluated
+phase169_all_gates_pass,1,1 means queue obeys closure guardrails
+phase169_strategy_replay_allowed,0,No strategy replay is opened by Phase169
+phase169_paper_or_live_acceptance_allowed,0,Paper/live acceptance remains closed
+phase169_azure_read_policy,forbidden_for_analysis_download_first_then_local,No direct Python Azure scanning
+phase169_next_best_action,implement_phase170_filter_conditioned_feasibility_matrix_no_replay,Recommended next milestone
+phase169_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

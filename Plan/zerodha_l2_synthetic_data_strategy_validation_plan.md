@@ -4605,6 +4605,42 @@ Current Phase168 evidence records:
 
 Current Phase168 interpretation: the current S08 cross-symbol lead-lag form is now closed. It must not be rerun shard-after-shard in the same form hoping for profit. Reopening cross-symbol work requires a new precommitted feature form, a materially different label/execution contract, or real-anchor evidence.
 
+### Phase169 — Post-S08 Research Queue
+
+**Runner:** `scripts/run_phase169_post_s08_research_queue.py`
+
+**Implementation:** `src/synthetic_l2/phase169_post_s08_research_queue.py`
+
+**Outputs:** `outputs/phase169/`
+
+Phase169 consolidates the current closure state and emits the next safe research queue. It is a guardrail/queue phase only: it does not run a strategy, does not open replay, and does not create a profitability claim.
+
+Current Phase169 outputs include:
+
+- `phase169_post_s08_research_queue_acceptance_summary.csv`;
+- `phase169_closure_evidence_ledger.csv`;
+- `phase169_forbidden_family_ledger.csv`;
+- `phase169_candidate_source_evaluation.csv`;
+- `phase169_next_research_queue.csv`;
+- `phase169_research_queue_gate_evaluation.csv`;
+- `phase169_post_s08_research_queue_report.md`;
+- `phase169_post_s08_research_queue_manifest.json`.
+
+Current Phase169 evidence records:
+
+- closure rows consolidated: 5;
+- forbidden family/form rows: 9;
+- candidate source rows evaluated: 3;
+- selected synthetic source: `P130_FILTER_CONDITIONED_DIAGNOSTICS`;
+- next queue rows: 2;
+- gates passed: 5 / 5;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- next best action: `implement_phase170_filter_conditioned_feasibility_matrix_no_replay`.
+
+Current Phase169 interpretation: the only synthetic-only continuation allowed after Phase168 is a no-replay, filter-conditioned feasibility matrix using the Phase130 diagnostic filter source. The parallel priority remains real-anchor acquisition using download-first/local-first data handling. Reopening Phase164 or Phase167 forms is explicitly blocked.
+
 ---
 
 ## 25. Final Principle

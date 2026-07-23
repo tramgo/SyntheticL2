@@ -1,0 +1,4 @@
+candidate_source_id,priority,source_type,allowed_next_step,why,strategy_replay_allowed,selected_for_synthetic_continuation
+REAL_L2_ANCHOR_ACQUISITION,1,external_real_data,download_first_local_catalog_refresh,Real Zerodha L2 remains the strongest unlock for calibration and acceptance.,0,0
+P130_FILTER_CONDITIONED_DIAGNOSTICS,2,non_trading_diagnostic_feature_source,phase170_filter_conditioned_feasibility_matrix_no_replay,It is not a blocked taker/passive/cross-symbol trading form and can gate future hypotheses without emitting orders.,0,1
+REOPEN_PHASE164_OR_PHASE167_FORMS,99,blocked_replay_family,none,Phase165 and Phase168 closed these forms with full-year negative after-cost evidence.,0,0
