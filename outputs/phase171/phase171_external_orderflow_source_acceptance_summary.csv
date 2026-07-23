@@ -1,0 +1,12 @@
+metric,value,description
+phase171_source_contract_rows,3,External/order-flow source candidates declared
+phase171_selected_source_id,P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,Highest-priority allowed next data axis
+phase171_work_order_rows,3,Work-order rows emitted
+phase171_overlap_audit_rows,3,Blocked-family overlap audit rows
+phase171_gate_rows,6,Gates evaluated
+phase171_all_gates_pass,1,1 means contract obeys guardrails
+phase171_strategy_replay_allowed,0,No strategy replay opened
+phase171_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase171_azure_read_policy,forbidden_for_analysis_download_first_then_local,No direct Python Azure strategy scans
+phase171_next_best_action,run_download_first_real_l2_receive_flow_availability_audit_or_collect_broker_order_telemetry,Recommended next milestone
+phase171_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

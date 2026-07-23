@@ -4678,6 +4678,49 @@ Current Phase170 evidence records:
 
 Current Phase170 interpretation: the Phase130 diagnostic filter source is useful as a context-quality filter, but its strict replay-safe subset is too narrow to justify another synthetic-only replay. The plan should not promote filter-only contexts into signals. The next synthetic research step must either introduce a genuinely new external/order-flow feature source under precommit, or remain on real-anchor acquisition.
 
+### Phase171 — External/Order-flow Feature Source Contract
+
+**Runner:** `scripts/run_phase171_external_orderflow_source_contract.py`
+
+**Implementation:** `src/synthetic_l2/phase171_external_orderflow_source_contract.py`
+
+**Outputs:** `outputs/phase171/`
+
+Phase171 implements the Phase170 continuation decision by creating a no-replay source contract for the next genuinely new research axis. It does not emit buy/sell signals, order-arrival streams, fill models, P&L replay, profitability claims, or broker/paper-live acceptance.
+
+The declared candidate source axes are:
+
+1. `P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW` — multiday real Zerodha L2 receive-event cadence, quote churn, depth refresh intensity, stale-quote duration and cross-symbol arrival synchrony;
+2. `P171_BROKER_ORDER_TELEMETRY` — own decision/order/ack/fill/reject/cancel timing, if actual broker logs become available;
+3. `P171_EXTERNAL_REGIME_CONTEXT` — timestamped external regime/context series with provenance and no future leakage.
+
+The selected next source is `P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW`. This keeps the next milestone aligned with the user's Azure guidance: heavy L2 data should be downloaded or imported into local Parquet first, then scanned locally with DuckDB or equivalent local tooling. Python strategy/cache/replay code must not stream-scan Azure directly for heavy experiments.
+
+Current Phase171 outputs include:
+
+- `phase171_external_orderflow_source_contract.csv`;
+- `phase171_selected_source_work_order.csv`;
+- `phase171_blocked_family_overlap_audit.csv`;
+- `phase171_source_contract_gate_evaluation.csv`;
+- `phase171_external_orderflow_source_acceptance_summary.csv`;
+- `phase171_external_orderflow_source_contract_report.md`;
+- `phase171_external_orderflow_source_contract_manifest.json`.
+
+Current Phase171 evidence records:
+
+- source contract rows: 3;
+- selected source id: `P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW`;
+- work-order rows: 3;
+- blocked-family overlap audit rows: 3;
+- gates passed: 6 / 6;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- cost model version retained for audit continuity: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- next best action: `run_download_first_real_l2_receive_flow_availability_audit_or_collect_broker_order_telemetry`.
+
+Current Phase171 interpretation: the plan now has a concrete bridge out of the falsified synthetic-only replay loop. The next action is not another strategy shard. It is a download-first/local-first real L2 receive-flow availability audit, or a broker-order telemetry collection path if actual broker logs become available.
+
 ---
 
 ## 25. Final Principle

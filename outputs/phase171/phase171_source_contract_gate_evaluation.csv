@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence
+P171_PHASE170_REPLAY_BLOCK_CONFIRMED,1,phase170_replay_ready=0
+P171_SOURCE_CONTRACT_ROWS,1,source_rows=3
+P171_SELECTED_SOURCE_IS_NEW_AXIS,1,"Uses multiday real receive-event cadence, quote-churn and cross-symbol synchrony rather than synthetic depth-price twitch signals."
+P171_BLOCKED_OVERLAP_AUDITED,1,overlap_rows=3
+P171_NO_REPLAY,1,all strategy_replay_allowed fields are 0
+P171_DOWNLOAD_FIRST_LOCAL_FIRST,1,work order requires download-first local analysis

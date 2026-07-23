@@ -1,0 +1,4 @@
+source_id,blocked_family_rows_checked,overlaps_blocked_current_form,overlap_detail,strategy_replay_allowed
+P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,9,0,none_detected_by_contract_scope,0
+P171_BROKER_ORDER_TELEMETRY,9,0,none_detected_by_contract_scope,0
+P171_EXTERNAL_REGIME_CONTEXT,9,0,none_detected_by_contract_scope,0

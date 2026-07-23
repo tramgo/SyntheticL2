@@ -1,0 +1,4 @@
+work_order_id,selected_source_id,step,action,required_before_execution,local_only_command_family,strategy_replay_allowed
+P171_WO01_DOWNLOAD_FIRST_REAL_RECEIVE_FLOW_SOURCE,P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,1,refresh_real_l2_local_panel,download/import at least 2 additional ready real L2 day(s),"AzCopy download first, then Phase147/Phase145/Phase146 local verification",0
+P171_WO02_RECEIVE_FLOW_SCHEMA_AUDIT,P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,2,build_receive_event_flow_feature_schema,Phase146 real-anchor unlock audit must show local ready dates; otherwise emit missing-evidence ledger only,DuckDB scans over downloaded local Parquet,0
+P171_WO03_NO_REPLAY_PRECOMMIT_GATE,P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW,3,precommit_feature_quality_gates_before_any_signal,feature schema coverage >=5 days and no blocked-family overlap,no strategy command allowed,0
