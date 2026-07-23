@@ -1,0 +1,201 @@
+SyntheticL2 Post-Phase130 Continuation Plan
+Date: 2026-07-23 Scope: equity intraday, Zerodha retail top-5 depth, synthetic data only. Supersedes: nothing. Extends
+Plan/zerodha 12 .md from Phase 130 onward.
+1. Context and Standing Constraints
+This plan continues SyntheticL2 from the state locked in as of Phase 130 (no-replay diagnostic baselines, 2026-07-19). It is written to stand on its own;
+every claim below is supported by evidence already inside this repository.
+Four standing constraints govern every phase and must not be relaxed:
+1. Instrument scope is retail cash equity only. No futures, no options, no derivative-instrument synthetics. All strategies must be expressible as
+marketable or passive orders on NSE cash equity in the current 32-symbol Phase 96 panel.
+2. Depth ceiling is 5 levels. Zerodha WebSocket exposes Ll—L5 only. Phase 6 generator produces Ll—L5. No phase may use hidden-order models,
+full order-book reconstruction, or exchange-side queue snapshots.
+3. Costs are calibrated and are not the bottleneck. Phase 116 blocklisted all three Ll taker families ( DENSE ,
+DENSE_se2 MICROPRICE, DENSE se3 IT MOMENTUM) as negative under every tested execution profile —
+zero_latency_spread_only_control, retail marketable default , and stressed_retail . Signal weakness at Ll is the binding
+constraint. This plan therefore places the burden of proof on the signal side (L2—L5 information content), not on execution cheapening.
+o Pinned cost model: zerodha_equity_intraday_nse_order_formu1a_v2 2926 07 14 . Not editable within this plan.
+o A harsh-stress variant of the cost model is added in Phase 131 so any surviving strategy is robust to plausible cost increases rather than
+balanced on the base assumption.
+4. No profitability or replay unlock inside this plan. strategy_replay_allowed = e remains the default. Only real-anchor gates (Phase
+110/115/117) may unlock replay, and none are executed here. No phase may emit buy/sell signals, order arrival streams, fill models tagged as live,
+or PnL replay tagged as promoted.
+
+2. What The Repository Has Established
+Distilled from Phases 41—130. This is the honest state of knowledge this plan builds on.
+• Ll taker strategies do not clear retail cost on synthetic data. Roughly 800 million simulated trades across three families and three execution
+profiles (Phase 52). Losses ranged from {1.5 B to {20 B annualized. Blocklisted in Phase 116.
+• Same-family variants and rescue attempts also failed. Cross-symbol lead-lag (Phases 63, 77, 82, 84), cross-symbol regime imbalance (Phase 91),
+low-turnover event windows (Phase 93), precommitted composite signals (Phase 87), passive queue capture (Phase 89), and lower-frequency meta
+replays (Phases 60—61). None survived precommitted gates.
+• Isolated "positive pockets" are not edges. Every failed rescue produced some months or symbols with positive PnL, but none produced an
+accepted survivor under precommitted gates. This is now a standing rule: positive pockets do not rescue a full-sample negative verdict.
+• The synthetic generator was rebuilt to be more realistic (Phases 79, 94—109) with symbol-aware calibration, anchor cadence and volatility
+patches, and a residual-imbalance floor. Realism is asserted; it has not been adversarially audited.
+• Real anchor L2 is not available. Phase 117 records 1 candidate day of unverified provenance and 4 more required for minimum unlock. The
+drop-zone importer (Phases 113—115) is built but idle.
+• Phase 130 diagnostic filters are the current frontier. Three single-feature threshold baselines beat prior Briers materially:
+o
+o
+feed_imperfection_rate S e.e159 -+ regime stability (AUC 0.90).
+passive min_adverse_rate 2 e. 991 -4 cost toxicity (AUC 0.85).
+median_spread_bps 2 4.e8 -+ liquidity opportunity (degenerate AUC 0.5, technically passes but flagged). All three are diagnostics only,
+not strategies.
+
+3. Diagnosis of the Remaining Surface
+Two surfaces have never been genuinely tested on synthetic data:
+• L2—L5 features used inside trading logic. The generator produces them; Phase 130 baselines occasionally read mean_15_depth as an input; but
+no precommitted strategy family reads dynamic L2—L5 structure. Every falsified strategy so far consumed Ll only.
+• Realistic passive/queue-capture execution. Phase 65 and Phase 89 probed this surface, but without a full queue-position x depth-level fill
+model, per-level cancel intensity, or fat-tail latency jitter.
+These are the only two axes where richer information could plausibly change the outcome for retail cash equity. Everything else at Ll is closed.
+4. Objective
+Exhaust the L2—L5 passive surface on synthetic data under realistic Zerodha retail cost stress, and end in one of three well-defined states:
+• Falsified. Update the Phase 116 blocklist with a new deep-book passive entry and formally close synthetic strategy hunting.
+• Marginal. Emit a machine-readable feature and strategy specification that can be re-evaluated the day real L2 data becomes available through the
+Phase 113—115 drop-zone.
+• Clean synthetic survivor. Same handoff artifact as marginal, plus an explicit advisory that a synthetic-only survivor is not deployable evidence and
+must be re-tested on real L2 before any replay unlock is considered.
+The plan is deliberately six phases, not sixty. Prior branch trees produced audit debt, not edge.
+
+5. Phase-by-Phase Plan
+Phase 131 Deep-Book Feature and Cost-Stress Precommit
+Runner. scripts/run_phase131_deep book_feature_precommit.py Outputs: outputs/phase131/
+Purpose: register, in writing and before any code touches data, the feature catalog, the cost regimes, and the ordering-reversal rule this branch will be
+judged against.
+Deliverables:
+• phase131_feature_cata10g. csv — 8—10 candidate features that require L2—L5. Suggested initial set (final list is a precommit output):
+o
+o
+o
+o
+12 15_depth_ratio_bid, 12 15_depth_ratio_ask
+cumulative notional _ imbalance_top5
+book thinning_event_rate Is
+level_crossing_hazard bid, level_crossing_hazard_ask
+, depth_s10pe_top5_ask
+mean cancel intensity 12 15
+deep_book_pressure signed
+• phase131_cost_regimes.csv —two immutable cost regimes:
+— the pinned Zerodha cost model unchanged.
+base
+o
+— base plus a stress uplift (proportional widening of spread-cross cost and per-leg fees). Exact factors precommitted here and
+o harsh
+immutable for the rest of the plan.
+— three rules that apply to every later phase in this plan:
+• phase131 evaluation rules . md
+1. A feature or strategy "clears" only if it clears both cost regimes.
+2. No cost-stress ordering reversal. A candidate that ranks above the Phase 130 Ll baselines under base but falls below them under harsh
+is rejected outright. A candidate whose ordering flips with cost regime is brittle by definition and does not survive.
+3. Positive-pockets exception is disallowed. Full-sample verdict under harsh decides the outcome.
+
+• phase131 precommit manifest.json
+matrix only), and forbidden outputs.
+Acceptance:
+— locks feature definitions, cost regimes, evaluation rules, allowed dataset (Phase 129 allowed-context
+• Manifest is self-consistent; pinned cost model version matches.
+• No feature depends only on Ll.
+• Report explicitly forbids strategy code, order simulation, and PnL claims. This phase ships specifications only.
+Phase 132 — Deep-Book Feature Diagnostics
+Runner. scripts/run_phase132_deep book_feature_diagnostics.py Outputs: outputs/phase132/
+Purpose: evaluate the Phase 131 features as label predictors only, against the three Phase 129 diagnostic labels ( regime_stability ,
+liquidity_opportunity, cost_toxicity_refinement ).
+Method:
+• Reuse Phase 1301s chronological train/holdout split (172/56).
+• Fit single-feature threshold baselines and simple two-feature threshold combinations for each Phase 131 feature.
+• Report Brier, log-loss, accuracy, AUC. No models more complex.
+Acceptance and kill-switch:
+• Kill-switch: if no Phase 131 feature beats the corresponding Phase 130 Ll baseline by at least the precommitted Brier margin on any of the three
+labels, close this branch at Phase 132 and skip 133—136. Update the Phase 116 blocklist with a new entry: DEEP_BOOK_LABEL_LIFT = falsified. The
+plan terminates cleanly.
+• Otherwise, promote the surviving features to Phase 133.
+
+Phase 133 — Retail Passive Execution Model Upgrade
+Runner. scripts/run_phase133_passive execution_model_upgrade.py Outputs: outputs/phase133/
+Purpose: fix the one execution assumption that has never been stressed on synthetic data. Deep-book information is only economically useful for retail if
+we can post passively, which requires a realistic fill model.
+Deliverables:
+• Extension of src/synthetic_12/ retail feed emulator (Phase 8) with:
+o Fill probability P(fill I queue_position, depth _ level, cancel_intensity, latency_ms) derived from the Phase 6 generator's
+cancel/add statistics.
+o Latency jitter distribution: retail 50—350 ms, fat right tail. Parameters pinned in a contract file, no live tuning.
+o Per-level cancel intensity read from Phase 131 features.
+• Sanity replay of Phase 89 passive queue-capture cost-floor experiment under the new fill model. New results must remain directionally consistent
+with Phase 89 (passive is expensive on synthetic). If they disagree, the model is wrong and Phase 134 does not open.
+Acceptance:
+• No new strategies. This phase ships the execution model and its reproduction of Phase 89.
+• Contract file ( phase133_execution_contract.json ) is precommitted and cannot be edited by later phases in this plan.
+
+Phase 134 — Precommitted Deep-Book Passive Strategy Family
+Runner. scripts/run_phase134_deep_book_passive_strategy_precommit.py Outputs: outputs/phase134/
+Purpose: register the strategy family before any replay.
+Rules for the precommit:
+• 2—3 strategies maximum.
+• Each strategy must consume at least one Phase 132 surviving feature and must be passive (post-only, no marketable orders on entry).
+• Pre-registered gates, per strategy:
+Minimum trades: 5,000 across the allowed-context matrix.
+Minimum out-of-sample Sharpe under both base and harsh cost regimes. Strategy fails if either regime is negative.
+No cost-stress ordering reversal. Same rule as Phase 131, applied at the strategy level.
+Minimum monthly hit rate 50% of months net positive under harsh .
+No positive-pockets exception.
+Explicit blocklist unlock condition if falsified.
+Acceptance:
+• Manifest locks strategy IDs, gates, allowed datasets, forbidden outputs.
+• No replay executed in this phase.
+
+Phase 135 — Bounded Synthetic Replay
+Runner. scripts/run_phase135_deep_book_passive_bounded_rep1ay.py Outputs: outputs/phase135/
+Purpose: one bounded replay of the Phase 134 strategies over the recalibrated dense lake (post-Phase 109), using the Phase 133 execution model and
+both cost regimes.
+Rules:
+• Single run. No parameter sweeps. No re-fits after seeing results.
+• Full trade-level output, per-symbol and per-month decomposition, reported under base and harsh regimes side by side.
+• Same acceptance guardrails as Phase 130: strategy _ replay _ allowed remains 0; no profitability claim in any report.
+Acceptance:
+• Every Phase 134 gate is evaluated exactly as written.
+• Report emits pass/fail per strategy against the precommitted gates, and per strategy the explicit cost-stress ordering-reversal check
+Phase 136 Verdict, Blocklist Update, Handoff Artifact
+Runner. scripts/run_phase136_deep_book_verdict_and_handoff.py Outputs: outputs/phase136/
+Purpose: close the branch cleanly with one of three outcomes.
+Outcome A— Falsified (any Phase 134 gate fails under harsh , or cost-stress ordering reversal observed):
+• Append to the Phase 116 strategy replay blocklist.
+• Write md declaring synthetic-only strategy hunting terminated. Further strategy work waits
+on real anchor L2 arriving through Phases 113—115.
+
+Outcome B — Marginal (all gates pass under both regimes but effect size is small or coverage thin):
+• Emit phase136_rea1_12_precommit_handoff.json
+— a machine-readable spec containing:
+o Phase 131 surviving feature definitions.
+o Phase 133 execution-model parameters.
+o Phase 134 strategy definitions and gates unchanged.
+o The base/ harsh cost regimes and the ordering-reversal rule.
+• No strategy_replay_allowed change. The spec is dormant until real L2 is available and can be re-evaluated under the same gates.
+Outcome C — Clean synthetic survivor (all gates pass with margin under harsh , no ordering reversal):
+• Same handoff artifact as Outcome B.
+• Plus phase136_synthetic_survivor_advisory.md explaining that a synthetic-only survivor is not deployable evidence and must be re-tested
+on real L2 before any replay unlock is considered.
+• No blocklist change. No strategy _ replay _ allowed change.
+Acceptance:
+• Exactly one outcome document is produced.
+• If Outcome A, the blocklist update is verified against Phase 116.
+• If Outcome B or C, the handoff JSON validates against the Phase 96 real anchor schema so it will apply cleanly once real L2 lands through the
+Phase 113—115 drop-zone pipeline.
+
+6. Forbidden Actions Inside This Plan
+Reopening Ll -only taker strategy families. Phase 116 blocklist stands.
+Vendor backfill of any historical L2 data.
+Expanding the symbol universe beyond the current 32-symbol Phase 96 panel.
+Changing the pinned Zerodha cost model or editing the harsh regime factors after Phase 131.
+Flipping strategy _ replay _ allowed from any phase in this plan.
+Emitting buy/sell signals, order arrival streams, live-tagged fill models, or promoted PnL replay.
+Any RL, meta-learning, or ensemble on top of the Phase 134 strategies before Phase 136 verdict.
+Adding new synthetic scenario diversity beyond Phase 791s audit while this plan is running.
+7. Success Definition
+Success is not a profitable synthetic strategy. Success is concluding the L2—L5 passive surface with one of the following clean outcomes:
+1. Clean falsification (Phase 132 kill-switch, or Phase 135 verdict Outcome A) — synthetic deep-book passive research is formally closed and the
+Phase 116 blocklist is updated. The correct next move is to wait on real anchor L2 acquisition rather than invent new synthetic branches.
+2. Marginal handoff (Outcome B) — a precommit artifact exists that will be re-evaluated on real L2 the moment enough anchor days arrive.
+3. Synthetic survivor with explicit advisory (Outcome C) — same handoff artifact plus a written statement that synthetic evidence alone is not
+deployable.
+If Phase 132 kill-switch fires, the plan terminates at Phase 132. That is a legitimate and preferred early-exit outcome. Both a clean falsification and a clean
+handoff are equally valid successes; prolonging the branch to force a positive result is not.

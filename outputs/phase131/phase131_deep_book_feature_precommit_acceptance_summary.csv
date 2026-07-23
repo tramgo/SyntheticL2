@@ -1,0 +1,12 @@
+metric,value,description
+phase131_feature_catalog_rows,10,Precommitted L2-L5 feature definitions
+phase131_l1_only_feature_rows,0,Feature definitions incorrectly depending only on L1
+phase131_cost_regime_rows,2,Immutable cost regimes declared
+phase131_phase130_baseline_reference_rows,3,Phase130 baseline references for Phase132 ordering/lift checks
+phase131_allowed_context_rows,228,Allowed Phase129 contexts locked as Phase132 dataset
+phase131_brier_lift_margin,0.005,Minimum Brier lift over Phase130 baseline required in Phase132
+phase131_gate_rows,7,Gates evaluated
+phase131_all_gates_pass,1,1 means Phase131 precommit is self-consistent
+phase131_strategy_replay_allowed,0,Strategy replay remains closed
+phase131_next_best_action,run_phase132_deep_book_feature_diagnostics_or_stop_if_precommit_fails,Recommended next milestone
+phase131_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha model retained unchanged

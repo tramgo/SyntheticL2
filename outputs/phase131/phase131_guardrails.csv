@@ -1,0 +1,6 @@
+guardrail_id,requirement,enforcement
+P131_RETAIL_CASH_EQUITY_ONLY,Instrument scope remains NSE cash equity in the 32-symbol Phase96/Phase129 panel.,Allowed dataset is locked to Phase129 allowed_context_label_matrix.csv.
+P131_DEPTH_REQUIRES_L2_L5,No precommitted feature may depend only on L1.,Feature catalog must set minimum_depth_level >= 2 for every feature.
+P131_COST_MODEL_PINNED,Base regime must preserve the pinned Zerodha equity intraday NSE model exactly.,cost_model_version must equal zerodha_equity_intraday_nse_order_formula_v2_2026_07_14.
+P131_HARSH_REGIME_IMMUTABLE,Harsh stress factors are declared once and cannot be edited by later phases in this plan.,phase131_cost_regimes.csv records immutable_after_phase131=1 for base and harsh.
+P131_NO_REPLAY_OR_PROFIT_CLAIMS,Phase131 ships specifications only.,Forbidden outputs: strategy_code;buy_sell_signal;order_arrival_stream;live_tagged_fill_model;pnl_replay;profitability_claim.

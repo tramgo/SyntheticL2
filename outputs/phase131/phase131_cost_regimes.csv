@@ -1,0 +1,3 @@
+cost_regime_id,cost_model_version,zerodha_formula_edit_allowed,spread_cross_cost_multiplier,brokerage_multiplier,stt_multiplier,transaction_charge_multiplier,sebi_charge_multiplier,stamp_duty_multiplier,gst_multiplier,description,immutable_after_phase131
+base,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,Pinned Zerodha equity intraday NSE retail cash cost model unchanged.,1
+harsh,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,0,1.25,1.25,1.25,1.25,1.25,1.25,1.25,Pinned Zerodha formula plus 25 percent uplift to spread-cross cost and every per-leg fee component.,1

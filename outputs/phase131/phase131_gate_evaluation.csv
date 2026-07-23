@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence
+P131_FEATURE_CATALOG_SIZE,1,feature_rows=10
+P131_NO_L1_ONLY_FEATURES,1,minimum_depth_level>=2 for every feature
+P131_COST_REGIMES_LOCKED,1,cost_regimes=base;harsh
+P131_PINNED_COST_MODEL_MATCH,1,repo_cost_model=zerodha_equity_intraday_nse_order_formula_v2_2026_07_14
+P131_ALLOWED_DATASET_EXISTS,1,allowed_context_rows=228
+P131_PHASE130_BASELINE_REFERENCE_EXISTS,1,baseline_reference_rows=3
+P131_NO_REPLAY,1,feature and baseline artifacts keep strategy_replay_allowed=0
