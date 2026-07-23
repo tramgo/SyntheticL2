@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-23T09:52:53.295736+00:00",
+  "scope": "phase156_symbol_aware_tail_cadence_smoke",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "ec6568585f8a8a3dcda622d3434e311e2dc0d81b",
+  "configuration_hash": "96f6da72e89163d92e24e24a9acd2f4c7462369e9e7c47c0fe61d419dc571f42",
+  "random_seed": "none_deterministic_phase156_dense_smoke",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase156_representative_high_tail_gap_symbols",
+  "cost_model_version": "not_applicable",
+  "latency_model_version": "not_applicable_no_execution",
+  "creation_timestamp": "2026-07-23T09:52:53.295736+00:00"
+}

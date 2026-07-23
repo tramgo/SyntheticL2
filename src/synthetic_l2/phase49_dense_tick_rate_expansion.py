@@ -74,6 +74,28 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
             source_extra[positions[1:]] = target_extra
         cumulative_extra = np.cumsum(source_extra)
         timing_offset = timing_offset + np.repeat(cumulative_extra, multiplier)
+    dense_p95_overrides = profile.symbol_dense_p95_gap_ms_overrides or {}
+    if dense_p95_overrides:
+        symbol_values = repeated["symbol"].astype(str)
+        dense_extra = np.zeros(len(repeated), dtype=np.int64)
+        idle_subticks = repeated["dense_subtick_id"].astype("int64").isin([15, 31, 47, 63])
+        base_gap_ms = max(1.0, float(profile.event_timing_tail_gap_multiplier))
+        for symbol, target_p95_gap_ms in dense_p95_overrides.items():
+            mask = symbol_values.eq(str(symbol)) & idle_subticks
+            if not bool(mask.any()):
+                continue
+            target_extra = max(0, int(round(float(target_p95_gap_ms) - base_gap_ms)))
+            if target_extra <= 0:
+                continue
+            dense_extra[mask.to_numpy()] = target_extra
+        if dense_extra.any():
+            cumulative_dense_extra = (
+                pd.Series(dense_extra)
+                .groupby([repeated["trade_date"].astype(str), repeated["symbol"].astype(str)], sort=False)
+                .cumsum()
+                .to_numpy(dtype=np.int64)
+            )
+            timing_offset = timing_offset + cumulative_dense_extra
     repeated["callback_received_utc_ms"] = repeated["callback_received_utc_ms"].astype("int64") + timing_offset
     repeated["callback_received_monotonic_ns"] = repeated["callback_received_utc_ms"].astype("int64") * 1_000_000
     repeated["exchange_timestamp_ms"] = repeated["exchange_timestamp_ms"].astype("int64") + timing_offset

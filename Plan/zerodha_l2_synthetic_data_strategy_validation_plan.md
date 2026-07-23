@@ -3891,6 +3891,27 @@ Current Phase155 patch contract:
 
 Current Phase155 interpretation: the existing synthetic cadence is still too uniformly dense. HDFCBANK is the only symbol that passes the current Phase155 cadence contract without a cadence patch. The next generator milestone should implement a symbol-aware idle/tail inter-update gap model and then rerun Phase155 before any dense strategy replay gate is considered.
 
+Phase156 symbol-aware tail cadence smoke is implemented under `outputs/phase156/`.
+
+**Runner:** `python scripts/run_phase156_symbol_aware_tail_cadence_smoke.py --symbols ADANIPORTS AXISBANK BAJAJ-AUTO BANKBEES BHARTIARTL BPCL BRITANNIA CIPLA DRREDDY GOLDBEES HCLTECH HDFCBANK HINDUNILVR ICICIBANK INFY ITBEES ITC JUNIORBEES KOTAKBANK LT "M&M" MARUTI NESTLEIND NIFTYBEES ONGC RELIANCE SBIN SUNPHARMA TCS TECHM ULTRACEMCO WIPRO`
+
+**Purpose:** implement and smoke-test `P156_FULL_PARTITION_SYMBOL_TAIL_CADENCE`, a generator calibration profile that uses Phase155/Phase154 full-partition symbol p95 gap targets. Phase156 patches the dense materializer so symbol-specific p95 targets affect intra-source dense subtick gaps, not only sparse source-boundary gaps. It is a bounded local dense-materialization smoke: no Azure reads, no order stream, no fills, no P&L, and no replay unlock.
+
+Current Phase156 evidence records:
+
+- profile smoke-tested: `P156_FULL_PARTITION_SYMBOL_TAIL_CADENCE`;
+- smoke symbols: 32;
+- dense smoke partition files materialized: 32;
+- dense rows materialized: 16,838,528;
+- compressed dense smoke bytes: 357,833,393;
+- elapsed seconds: 50.910705;
+- symbols whose p95 synthetic gap improved above Phase106 synthetic p95: 32;
+- symbols within the Phase155 p95 target band `[0.5, 2.0]`: 32;
+- strategy replay allowed: 0;
+- next best action: `expand_phase156_profile_to_full_symbol_audit_then_rewire_phase106_cadence_anchors`.
+
+Current Phase156 interpretation: the original source-boundary-only tail-gap hook was insufficient because source-boundary gaps are too rare in a 64x dense expansion to move p95. The Phase156 implementation now injects deterministic intra-source idle gaps at enough dense subtick transitions for p95 to match the full-partition targets. In the one-month, 32-symbol smoke, p95 ratios versus Phase155 targets were approximately 1.0 for every symbol, including HDFCBANK preservation at 1,250 ms. This is generator-calibration evidence only; strategy replay remains closed until Phase156 is expanded into the full-symbol/full-audit cadence-anchor rewire and the broader realism gates pass.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

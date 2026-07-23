@@ -1,0 +1,11 @@
+metric,value,description
+phase156_profile_id,P156_FULL_PARTITION_SYMBOL_TAIL_CADENCE,Generator calibration profile smoke-tested
+phase156_smoke_symbols,32,Representative high-multiplier symbols in bounded smoke
+phase156_smoke_partition_files,32,Dense smoke partition files materialized
+phase156_smoke_dense_rows,16838528,Dense rows materialized
+phase156_smoke_bytes,357833393,Compressed dense smoke bytes
+phase156_elapsed_seconds,50.91070469999977,Smoke materialization/profile elapsed seconds
+phase156_p95_improved_symbols,32,Smoke symbols whose p95 synthetic gap moved above Phase106 synthetic p95
+phase156_p95_contract_band_pass_symbols,32,"Smoke symbols whose p95 synthetic gap is within [0.5,2.0] of Phase155 target"
+phase156_strategy_replay_allowed,0,Strategy replay remains closed
+phase156_next_best_action,expand_phase156_profile_to_full_symbol_audit_then_rewire_phase106_cadence_anchors,Recommended next milestone
