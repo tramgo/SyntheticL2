@@ -1,0 +1,9 @@
+gate_id,gate_group,required_for_replay_execution,observed_value,passed,failure_action
+phase162_full_year_materialization_passed,realism_materialization,True,1,True,Rerun/fix Phase162 before any synthetic-only replay execution.
+phase162_full_year_scope_complete,realism_materialization,True,months=12; symbols=32; missing_shards=0,True,Complete all month/symbol shards before replay.
+phase162_dense_parquet_root_present,local_storage,True,root=raw_synthetic_l2_phase162_distributional_full_year; parquet_files=384; expected_files=384,True,Regenerate or restore the local Phase162 dense parquet lake.
+phase39_synthetic_only_experiment_policy_open,synthetic_only_policy,True,True,True,Revisit Phase39 synthetic-only acceptance path before replay.
+broker_paper_live_acceptance_remains_closed,broker_boundary,True,False,True,Do not run this preflight if it would imply broker/paper/live readiness.
+strategy_promotion_still_not_open,promotion_boundary,True,False,True,Separate replay diagnostics from promotion/acceptance claims.
+phase116_blocklist_present_and_enforced,blocklist,True,blocked_families=7,True,Do not open replay until closed strategy families can be excluded.
+phase136_deep_book_branch_closed,blocklist,True,A_CLEAN_FALSIFICATION,True,Do not reopen the closed top-five-depth passive branch inside this replay.

@@ -4118,6 +4118,57 @@ Current Phase162 combined metric gate:
 
 Current Phase162 interpretation: the broader 12-month local materialization replaces the Phase161 one-month smoke with full-year generated parquet evidence. The broader realism audit passes with a 3.75% combined gap fraction and zero severe metric gaps. This is a generator/materialization acceptance result only. It keeps `strategy_replay_allowed=0`; the next milestone should be a review/preflight checkpoint that decides whether a synthetic-only strategy replay may be opened under the already-agreed synthetic-only acceptance path.
 
+Phase163 synthetic-only replay preflight is implemented under `outputs/phase163/`.
+
+**Runner:** `python scripts/run_phase163_synthetic_only_replay_preflight.py`
+
+**Purpose:** decide whether the Phase162 full-year generated L2 lake can be used for guarded synthetic-only replay diagnostics. Phase163 does not run P&L replay itself. It opens only synthetic-only replay execution for the next phase, enforces the Phase116 blocklist, excludes the closed Phase136 top-five-depth passive branch, keeps strategy promotion closed, keeps broker/paper/live acceptance closed and preserves the download-first/local-only Azure boundary.
+
+Current Phase163 evidence records:
+
+- required preflight gate rows: 8;
+- required preflight gates passed: 8;
+- synthetic-only replay preflight pass: 1;
+- synthetic-only replay execution allowed: 1;
+- Phase162 months available: 12;
+- Phase162 dense rows available: 192,786,816;
+- Phase162 dense bytes available: 4,141,341,739;
+- replay work queue rows: 11;
+- alpha replay diagnostic rows allowed: 9;
+- control/risk-plumbing rows allowed: 2;
+- Phase116 blocklisted family rows enforced: 7;
+- strategy promotion allowed: 0;
+- paper/live broker acceptance allowed: 0;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- next best action: `implement_phase164_synthetic_only_full_year_replay_on_phase162_data`.
+
+Current Phase163 required gate ledger:
+
+- `phase162_full_year_materialization_passed`: pass;
+- `phase162_full_year_scope_complete`: pass;
+- `phase162_dense_parquet_root_present`: pass;
+- `phase39_synthetic_only_experiment_policy_open`: pass;
+- `broker_paper_live_acceptance_remains_closed`: pass;
+- `strategy_promotion_still_not_open`: pass;
+- `phase116_blocklist_present_and_enforced`: pass;
+- `phase136_deep_book_branch_closed`: pass.
+
+Current Phase163 replay contract:
+
+- contract id: `P164_SYNTHETIC_ONLY_FULL_YEAR_REPLAY`;
+- contract status: `open_for_implementation`;
+- input dense root: `raw_synthetic_l2_phase162_distributional_full_year`;
+- input inventory: `outputs/phase162/phase162_dense_full_year_inventory.csv`;
+- allowed scope: `synthetic_only_replay_diagnostics`;
+- allowed strategy rows: 9;
+- control rows: 2;
+- excluded blocklist rows: 7;
+- required cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14_or_successor_with_documented_components`;
+- required execution profiles: `zero_latency_control;retail_marketable_default;stressed_retail`;
+- forbidden outputs: broker acceptance, paper/live readiness, contract-note reconciliation claims, promoted buy/sell signals and deployable profitability claims.
+
+Current Phase163 interpretation: the full-year generated dataset is now accepted for guarded synthetic-only replay diagnostics. This is the first post-Phase162 unlock: it opens implementation of Phase164 synthetic-only full-year replay on Phase162 data, while explicitly excluding the old blocklisted dense-market-form continuation and preserving all no-promotion/no-broker boundaries.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

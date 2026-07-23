@@ -1,0 +1,16 @@
+metric,value,description
+phase163_required_gate_rows,8,Required synthetic-only replay preflight gates
+phase163_required_gate_pass_rows,8,Required preflight gates passed
+phase163_synthetic_only_replay_preflight_pass,1,1 means guarded synthetic-only replay may be implemented next
+phase163_synthetic_only_replay_execution_allowed,1,1 means Phase164 synthetic-only replay execution may open
+phase163_phase162_months,12,Phase162 months available
+phase163_phase162_dense_rows,192786816,Phase162 dense rows available
+phase163_phase162_dense_bytes,4141341739,Phase162 dense bytes available
+phase163_work_queue_rows,11,Rows in Phase163 replay work queue
+phase163_alpha_replay_allowed_rows,9,Alpha strategy rows allowed for synthetic-only replay diagnostics
+phase163_control_replay_allowed_rows,2,Control/risk-plumbing rows allowed only as diagnostics
+phase163_blocklisted_family_rows,7,Phase116 blocklisted family rows enforced
+phase163_strategy_promotion_allowed,0,Strategy promotion remains closed
+phase163_paper_or_live_acceptance_allowed,0,Broker/paper/live acceptance remains closed
+phase163_azure_read_policy,forbidden_for_analysis_download_first_then_local,No direct Python Azure scanning for replay inputs
+phase163_next_best_action,implement_phase164_synthetic_only_full_year_replay_on_phase162_data,Recommended next milestone
