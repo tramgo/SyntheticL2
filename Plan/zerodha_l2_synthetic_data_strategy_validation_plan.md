@@ -4567,6 +4567,44 @@ Current Phase167 evidence records:
 
 Current Phase167 gate interpretation: S08 fails even under the zero-latency spread-only control and fails all realistic Zerodha-cost execution profiles by a larger margin. The replay has no positive train split, no positive test split, no positive test months, no candidate profile rows and no promotion path. The current S08 form should therefore be closed by a follow-on blocklist/verdict ledger rather than rerun.
 
+### Phase168 — S08 Closure Verdict and Blocklist Candidate
+
+**Runner:** `scripts/run_phase168_s08_closure_verdict.py`
+
+**Implementation:** `src/synthetic_l2/phase168_s08_closure_verdict.py`
+
+**Outputs:** `outputs/phase168/`
+
+Phase168 converts the Phase167 full-year S08 replay evidence into a closure decision. It does not run a new strategy and does not alter the Phase167 replay result.
+
+Current Phase168 outputs include:
+
+- `phase168_s08_closure_acceptance_summary.csv`;
+- `phase168_s08_closure_gate_evaluation.csv`;
+- `phase168_s08_closure_verdict.csv`;
+- `phase168_s08_blocklist_candidate_update.csv`;
+- `phase168_s08_closure_verdict_report.md`;
+- `phase168_s08_closure_manifest.json`.
+
+Current Phase168 evidence records:
+
+- outcome: `A_S08_CURRENT_FORM_FALSIFIED`;
+- decision: `close_s08_current_cross_symbol_lead_lag_form`;
+- closure gates passed: 10 / 10;
+- blocklist candidate rows: 1;
+- inherited Phase167 trade rows: 817,814;
+- inherited Phase167 positive-after-cost profile rows: 0;
+- inherited Phase167 candidate profile rows: 0;
+- best execution profile: `zero_latency_spread_only_control`;
+- best annual net P&L: -4,143,898.966 INR;
+- recommended status: `block_current_phase167_s08_form`;
+- strategy promotion allowed: 0;
+- paper/live broker acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- next best action: `design_new_precommitted_non_blocklisted_hypothesis_or_wait_for_real_l2_anchor`.
+
+Current Phase168 interpretation: the current S08 cross-symbol lead-lag form is now closed. It must not be rerun shard-after-shard in the same form hoping for profit. Reopening cross-symbol work requires a new precommitted feature form, a materially different label/execution contract, or real-anchor evidence.
+
 ---
 
 ## 25. Final Principle

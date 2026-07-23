@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,interpretation
+P168_PHASE166_CACHE_READY,True,1.0,1,S08 closure is based on a ready full-year Phase166 cache.
+P168_FULL_YEAR_SCOPE,True,12.0,>=12 monthly cache files,Phase167 used the full local Phase166 cache scope.
+P168_TRADE_LEDGER_PRESENT,True,817814.0,>0 trade rows,"The S08 closure is based on actual replay trades, not a dry verdict."
+P168_NO_POSITIVE_PROFILE_ROWS,True,0.0,0,No execution profile is positive after costs.
+P168_NO_CANDIDATE_PROFILE_ROWS,True,0.0,0,"No profile passes the positive, coverage, stability and precision gates."
+P168_BEST_PROFILE_NEGATIVE,True,-4143898.966113758,<0 INR annual net P&L,Even the best observed S08 profile is negative.
+P168_ALL_PROFILE_GATES_FAIL,True,1.0,1,All Phase167 execution-profile gate rows fail.
+P168_PROMOTION_BOUNDARY_CLOSED,True,0.0,0,S08 closure must not promote a strategy.
+P168_BROKER_BOUNDARY_CLOSED,True,0.0,0,S08 closure must not claim broker/paper/live readiness.
+P168_DEPLOYABLE_CLAIM_CLOSED,True,0.0,0,S08 closure must not make a deployable profitability claim.

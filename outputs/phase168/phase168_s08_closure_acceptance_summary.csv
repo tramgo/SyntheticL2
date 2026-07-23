@@ -1,0 +1,12 @@
+metric,value,description
+phase168_outcome,A_S08_CURRENT_FORM_FALSIFIED,Selected Phase168 outcome
+phase168_decision,close_s08_current_cross_symbol_lead_lag_form,S08 current-form decision
+phase168_closure_gates_passed,10,Closure gates passed
+phase168_closure_gates_total,10,Closure gates evaluated
+phase168_blocklist_rows,1,Blocklist-candidate rows emitted
+phase168_best_annual_net_pnl_inr,-4143898.966113758,Inherited best Phase167 annual net P&L
+phase168_strategy_promotion_allowed,0,Strategy promotion remains closed
+phase168_paper_or_live_acceptance_allowed,0,Paper/live broker acceptance remains closed
+phase168_deployable_profitability_claim_allowed,0,Deployable claim remains closed
+phase168_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Inherited Zerodha equity intraday NSE formula
+phase168_next_best_action,design_new_precommitted_non_blocklisted_hypothesis_or_wait_for_real_l2_anchor,Recommended next milestone
