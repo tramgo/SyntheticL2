@@ -1,0 +1,12 @@
+metric,value,description
+phase146_hard_gate_rows,6,Hard unlock-audit gates evaluated
+phase146_hard_gate_pass_rows,4,Hard unlock-audit gates passed
+phase146_minimum_ready_real_days,5,Minimum ready real-anchor days required before replay unlock
+phase146_phase115_ready_real_anchor_days,3,Ready real-anchor days reported by Phase115/110
+phase146_days_needed_for_min,2,Additional ready real-anchor days still needed
+phase146_required_date_rows,2,Required download/import dates checked by Phase143
+phase146_required_dates_satisfied,0,Required dates ready in scratch or target
+phase146_phase145_import_executed,0,Whether Phase145 ran Phase115 import on this pass
+phase146_minimum_unlock_audit_pass,0,1 means all hard audit gates passed
+phase146_strategy_replay_allowed,0,1 means downstream strategy replay can open under this audit
+phase146_next_best_action,download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase145_phase146,Recommended next milestone

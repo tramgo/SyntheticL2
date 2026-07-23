@@ -3597,6 +3597,48 @@ Phase145 post-download refresh orchestration is implemented under `outputs/phase
 - replay unlock allowed: 0;
 - next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase145`.
 
+Phase146 real-anchor minimum unlock audit is implemented under `outputs/phase146/`.
+
+**Runner:** `python scripts/run_phase146_real_anchor_minimum_unlock_audit.py`
+
+**Purpose:** provide a read-only, local-only final audit before any strategy replay is allowed to reopen after new real L2 anchor dates are downloaded and imported. Phase146 reconciles Phase96, Phase110, Phase115, Phase143 and Phase145 evidence. It does not contact Azure, does not import data, and does not infer readiness from partial folders.
+
+Current Phase146 evidence records:
+
+- hard unlock-audit gates evaluated: 6;
+- hard unlock-audit gates passed: 4;
+- minimum ready real-anchor days required: 5;
+- Phase115/110 ready real-anchor days: 3;
+- days still needed for minimum: 2;
+- Phase143 required date rows checked: 2 (`2026-07-10`, `2026-07-14`);
+- Phase143 required dates satisfied: 0 of 2;
+- Phase145 Phase115 import executed: 0;
+- minimum unlock audit pass: 0;
+- strategy replay allowed: 0;
+- next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase145_phase146`.
+
+Phase146 gate evaluation currently confirms:
+
+- Phase96/Phase110/Phase115 ready-day counts are internally consistent (`3 / 3 / 3`);
+- Phase115 days-needed arithmetic is consistent (`2`);
+- replay unlock flags are internally consistent (`0 / 0 / 0`);
+- Phase145 completed cleanly with zero failed steps;
+- the minimum-ready-real-anchor-days gate fails because `3 < 5`;
+- the configured required-date gate fails because `0 / 2` required dates are locally ready;
+- replay remains closed.
+
+The next operational path remains AzCopy-first, local-analysis-second:
+
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -AccountKey "<storage_account_key>"`
+
+Then rerun:
+
+`python scripts/run_phase145_real_l2_post_download_refresh.py`
+
+Then rerun:
+
+`python scripts/run_phase146_real_anchor_minimum_unlock_audit.py`
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

@@ -1,0 +1,9 @@
+gate,pass,observed,required,severity
+phase96_phase110_phase115_ready_day_consistency,True,phase96=3;phase110=3;phase115=3,all_ready_day_counts_equal,hard
+minimum_ready_real_anchor_days,False,3,5,hard
+phase115_days_needed_arithmetic,True,2,2,hard
+replay_unlock_flag_consistency,True,phase96=0;phase110=0;phase115=0,all_unlock_flags_equal,hard
+phase145_post_download_refresh_clean,True,0,0,hard
+configured_required_dates_satisfied,False,0/2,all_required_dates_ready_in_scratch_or_target,diagnostic_until_minimum_days_pass
+phase115_import_ran_after_download,False,0,1,diagnostic_until_required_dates_satisfied
+phase146_strategy_replay_can_open,False,0,1,hard
