@@ -1,6 +1,6 @@
 # Phase147 AzCopy Download Intake Audit
 
-Generated UTC: 2026-07-23T08:26:32.379868+00:00
+Generated UTC: 2026-07-23T08:33:42.475390+00:00
 
 Phase147 validates local AzCopy landing-zone contents for configured required real L2 dates before Phase145 import/refresh is attempted.
 It is local-only: AzCopy owns Azure I/O; Python only inspects downloaded Parquet partitions.

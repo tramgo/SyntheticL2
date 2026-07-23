@@ -3648,21 +3648,33 @@ Current Phase147 evidence records:
 
 Phase147 specifically confirms that the current empty/partial `scratch_azcopy_selected/raw_l2/trade_date=2026-07-10` folder is not import-ready: it has a date root but `0 / 32` expected symbol partitions with Parquet files. This prevents an empty local date folder from being mistaken for a complete Zerodha WebSocket top-five market-by-price L2 date.
 
+Phase147 symbol-intake output is deterministic: expected symbols are emitted in sorted order so reruns do not churn evidence solely because of Python set ordering.
+
+Phase148 real L2 download refresh workflow is implemented under `outputs/phase148/`.
+
+**Runner:** `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_phase148_real_l2_download_refresh_workflow.ps1`
+
+**Purpose:** make the AzCopy-first real L2 path executable as one workflow. Phase148 optionally runs the AzCopy download helper, always runs Phase147 local intake, conditionally runs Phase145 only when Phase147 reports a required date is ready for import, and always runs Phase146 final unlock audit. Python remains local-only; Azure bulk I/O remains in AzCopy.
+
+Current Phase148 local skip-download validation records:
+
+- workflow steps: 4;
+- failed steps: 0;
+- AzCopy download ran: 0, because validation used `-SkipDownload`;
+- Phase147 says Phase145 can run now: 0;
+- Phase145 ran: 0, correctly skipped because no required date is import-ready;
+- Phase146 strategy replay allowed: 0;
+- Phase146 days still needed for minimum: 2;
+- workflow strategy replay allowed: 0;
+- next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase148`.
+
 The next operational path remains AzCopy-first, local-analysis-second:
 
-`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -AccountKey "<storage_account_key>"`
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_phase148_real_l2_download_refresh_workflow.ps1 -Dates 2026-07-10,2026-07-14 -AccountKey "<storage_account_key>"`
 
-Then rerun:
+For local validation without touching Azure:
 
-`python scripts/run_phase147_azcopy_download_intake_audit.py`
-
-Then rerun:
-
-`python scripts/run_phase145_real_l2_post_download_refresh.py`
-
-Then rerun:
-
-`python scripts/run_phase146_real_anchor_minimum_unlock_audit.py`
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_phase148_real_l2_download_refresh_workflow.ps1 -SkipDownload`
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 

@@ -115,7 +115,7 @@ def build_intake(
     for trade_date in required_dates:
         for location, root in [("scratch", scratch_root), ("target", target_root)]:
             rows_for_date: list[dict[str, Any]] = []
-            for symbol in EXPECTED_SYMBOLS:
+            for symbol in sorted(EXPECTED_SYMBOLS):
                 row, samples = inspect_symbol_partition(root, trade_date, exchange, symbol, location)
                 rows_for_date.append(row)
                 partition_rows.append(row)
