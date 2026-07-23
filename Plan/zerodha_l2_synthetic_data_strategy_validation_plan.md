@@ -3776,6 +3776,37 @@ Current benchmark partitions were all from `2026-07-13` because it is the larges
 
 Phase151 confirms DuckDB should be used for local real L2 Parquet analytics. It still does not unlock strategy replay.
 
+Phase152 real L2 microstructure profile is implemented under `outputs/phase152/`.
+
+**Runner:** `python scripts/run_phase152_real_l2_microstructure_profile.py`
+
+**Purpose:** profile bounded local real L2 partitions for received update cadence, inter-update gaps, L1 spread sanity, and visible depth-level-5 presence. Phase152 is diagnostics-only: no signals, no order-arrival stream, no fills, no P&L, no Azure I/O, and no replay unlock.
+
+Current Phase152 evidence records:
+
+- Phase150 catalog DB exists locally: 1;
+- bounded date/symbol partitions profiled: 6;
+- failed partition profiles: 0;
+- total profile elapsed seconds: 10.312931;
+- maximum bounded profile query elapsed seconds: 2.794497;
+- minimum observed tick/update rate across profiled partitions: 0.608848 ticks/sec;
+- maximum p95 inter-update gap across profiled partitions: 5,500 ms;
+- minimum valid L1 book fraction: 0.999928;
+- minimum visible depth-level-5 presence fraction: 0.999928;
+- strategy replay allowed: 0;
+- next best action: `use_profiles_for_real_anchor_diagnostics_after_phase148_downloads_not_strategy_replay`.
+
+Current profiled partitions are all from `2026-07-13`:
+
+- ADANIPORTS: 13,886 rows, 0.608848 ticks/sec, median gap 1,000 ms, p95 gap 5,500 ms;
+- HCLTECH: 29,266 rows, 1.284992 ticks/sec, median gap 500 ms, p95 gap 4,158.8 ms;
+- HDFCBANK: 35,959 rows, 1.578874 ticks/sec, median gap 500 ms, p95 gap 1,250 ms;
+- INFY: 34,511 rows, 1.515286 ticks/sec, median gap 500 ms, p95 gap 2,627.1 ms;
+- RELIANCE: 26,056 rows, 1.144087 ticks/sec, median gap 500 ms, p95 gap 4,324 ms;
+- TCS: 36,467 rows, 1.601221 ticks/sec, median gap 500 ms, p95 gap 1,250 ms.
+
+Phase152 confirms that the current real Zerodha WebSocket top-five market-by-price L2 panel is suitable for local microstructure diagnostics, while the strategy replay gate remains closed.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

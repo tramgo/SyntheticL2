@@ -1,0 +1,12 @@
+metric,value,description
+phase152_catalog_db_exists,1,Phase150 DuckDB catalog database exists locally
+phase152_profile_partitions,6,Bounded date/symbol partitions profiled
+phase152_failed_partition_profiles,0,Partition profile queries failed
+phase152_total_profile_elapsed_seconds,10.312930700019933,Total elapsed seconds across profile queries
+phase152_max_profile_elapsed_seconds,2.794496500006062,Slowest bounded profile query elapsed seconds
+phase152_min_ticks_per_second,0.6088482941308139,Minimum observed tick/update rate among profiled partitions
+phase152_max_p95_gap_ms,5500.0,Maximum p95 inter-update gap among profiled partitions
+phase152_min_l1_book_valid_fraction,0.9999279850208843,Minimum valid L1 book fraction among profiled partitions
+phase152_min_depth_level_5_present_fraction,0.9999279850208843,Minimum visible level-5 presence among profiled partitions
+phase152_strategy_replay_allowed,0,Microstructure profiling does not unlock strategy replay
+phase152_next_best_action,use_profiles_for_real_anchor_diagnostics_after_phase148_downloads_not_strategy_replay,Recommended next milestone

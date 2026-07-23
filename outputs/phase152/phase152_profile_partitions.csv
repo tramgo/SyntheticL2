@@ -1,0 +1,7 @@
+trade_date,exchange,symbol,parquet_files,bytes,selection_reason
+2026-07-13,NSE,ADANIPORTS,1569,54744007,phase151_benchmark_partition
+2026-07-13,NSE,HCLTECH,1569,56185830,top_byte_partition_from_phase150_catalog
+2026-07-13,NSE,HDFCBANK,1569,56719345,phase151_benchmark_partition
+2026-07-13,NSE,INFY,1569,56702770,top_byte_partition_from_phase150_catalog
+2026-07-13,NSE,RELIANCE,1569,55637533,phase151_benchmark_partition
+2026-07-13,NSE,TCS,1569,56845524,phase151_benchmark_partition
