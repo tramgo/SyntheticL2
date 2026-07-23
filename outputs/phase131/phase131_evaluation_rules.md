@@ -1,9 +1,11 @@
 # Phase131 Evaluation Rules
 
-These rules are immutable for Phases 132-136 of the deep-book passive branch.
+These rules are immutable for Phases 132-136 of the top-five-depth passive branch.
+
+Zerodha feed scope is Level-2/top-five market-by-price depth. Catalog references to depth_level_1..depth_level_5 are book-price levels, not L1-L5 data tiers.
 
 1. A feature or strategy clears only if it clears both cost regimes: `base` and `harsh`.
-2. No cost-stress ordering reversal is allowed. A candidate that ranks above the Phase130 L1/context baselines under `base` but falls below them under `harsh` is rejected as brittle.
+2. No cost-stress ordering reversal is allowed. A candidate that ranks above the Phase130 top-of-book/context baselines under `base` but falls below them under `harsh` is rejected as brittle.
 3. Positive-pockets exception is disallowed. Full-sample verdict under `harsh` decides the outcome.
 4. `strategy_replay_allowed` remains `0` throughout this plan unless separate real-anchor gates outside this plan unlock replay.
 5. Phase131 and Phase132 may emit feature diagnostics only. They may not emit strategy code, buy/sell signals, order-arrival streams, live-tagged fill models, P&L replay, or profitability claims.

@@ -1,6 +1,7 @@
 metric,value,description
-phase131_feature_catalog_rows,10,Precommitted L2-L5 feature definitions
-phase131_l1_only_feature_rows,0,Feature definitions incorrectly depending only on L1
+phase131_feature_catalog_rows,10,Precommitted top-five depth-level feature definitions
+phase131_depth_terminology_note,"Zerodha feed scope is Level-2/top-five market-by-price depth. Catalog references to depth_level_1..depth_level_5 are book-price levels, not L1-L5 data tiers.",Clarifies that depth levels are not L1-L5 market-data tiers
+phase131_top_of_book_only_feature_rows,0,Feature definitions incorrectly depending only on top-of-book/best-bid-offer fields
 phase131_cost_regime_rows,2,Immutable cost regimes declared
 phase131_phase130_baseline_reference_rows,3,Phase130 baseline references for Phase132 ordering/lift checks
 phase131_allowed_context_rows,228,Allowed Phase129 contexts locked as Phase132 dataset

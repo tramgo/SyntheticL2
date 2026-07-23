@@ -7,12 +7,12 @@ every claim below is supported by evidence already inside this repository.
 Four standing constraints govern every phase and must not be relaxed:
 1. Instrument scope is retail cash equity only. No futures, no options, no derivative-instrument synthetics. All strategies must be expressible as
 marketable or passive orders on NSE cash equity in the current 32-symbol Phase 96 panel.
-2. Depth ceiling is 5 levels. Zerodha WebSocket exposes Ll—L5 only. Phase 6 generator produces Ll—L5. No phase may use hidden-order models,
+2. Depth ceiling is five visible market-by-price levels. Zerodha WebSocket exposes Level-2/top-five depth snapshots: best bid/ask plus depth levels 2-5. Phase 6 generator produces the same top-five depth schema. No phase may use hidden-order models,
 full order-book reconstruction, or exchange-side queue snapshots.
 3. Costs are calibrated and are not the bottleneck. Phase 116 blocklisted all three Ll taker families ( DENSE ,
 DENSE_se2 MICROPRICE, DENSE se3 IT MOMENTUM) as negative under every tested execution profile —
 zero_latency_spread_only_control, retail marketable default , and stressed_retail . Signal weakness at Ll is the binding
-constraint. This plan therefore places the burden of proof on the signal side (L2—L5 information content), not on execution cheapening.
+constraint. This plan therefore places the burden of proof on the signal side (top-five depth information beyond best bid/offer), not on execution cheapening.
 o Pinned cost model: zerodha_equity_intraday_nse_order_formu1a_v2 2926 07 14 . Not editable within this plan.
 o A harsh-stress variant of the cost model is added in Phase 131 so any surviving strategy is robust to plausible cost increases rather than
 balanced on the base assumption.
@@ -43,13 +43,13 @@ not strategies.
 
 3. Diagnosis of the Remaining Surface
 Two surfaces have never been genuinely tested on synthetic data:
-• L2—L5 features used inside trading logic. The generator produces them; Phase 130 baselines occasionally read mean_15_depth as an input; but
-no precommitted strategy family reads dynamic L2—L5 structure. Every falsified strategy so far consumed Ll only.
+• Top-five depth-level features used inside trading logic. The generator produces visible market-by-price depth levels 1-5; Phase 130 baselines occasionally read mean_l5_depth as an input; but
+no precommitted strategy family reads dynamic depth-levels-2-through-5 structure. Every falsified strategy so far consumed top-of-book/best-bid-offer context only.
 • Realistic passive/queue-capture execution. Phase 65 and Phase 89 probed this surface, but without a full queue-position x depth-level fill
 model, per-level cancel intensity, or fat-tail latency jitter.
 These are the only two axes where richer information could plausibly change the outcome for retail cash equity. Everything else at Ll is closed.
 4. Objective
-Exhaust the L2—L5 passive surface on synthetic data under realistic Zerodha retail cost stress, and end in one of three well-defined states:
+Exhaust the top-five-depth passive surface on synthetic data under realistic Zerodha retail cost stress, and end in one of three well-defined states:
 • Falsified. Update the Phase 116 blocklist with a new deep-book passive entry and formally close synthetic strategy hunting.
 • Marginal. Emit a machine-readable feature and strategy specification that can be re-evaluated the day real L2 data becomes available through the
 Phase 113—115 drop-zone.
@@ -63,7 +63,7 @@ Runner. scripts/run_phase131_deep book_feature_precommit.py Outputs: outputs/pha
 Purpose: register, in writing and before any code touches data, the feature catalog, the cost regimes, and the ordering-reversal rule this branch will be
 judged against.
 Deliverables:
-• phase131_feature_cata10g. csv — 8—10 candidate features that require L2—L5. Suggested initial set (final list is a precommit output):
+• phase131_feature_cata10g. csv — 8—10 candidate features that require Zerodha Level-2 top-five market-by-price depth beyond best bid/offer. Suggested initial set (final list is a precommit output):
 o
 o
 o
@@ -94,7 +94,7 @@ matrix only), and forbidden outputs.
 Acceptance:
 — locks feature definitions, cost regimes, evaluation rules, allowed dataset (Phase 129 allowed-context
 • Manifest is self-consistent; pinned cost model version matches.
-• No feature depends only on Ll.
+• No feature depends only on top-of-book/best-bid-offer fields.
 • Report explicitly forbids strategy code, order simulation, and PnL claims. This phase ships specifications only.
 Phase 132 — Deep-Book Feature Diagnostics
 Runner. scripts/run_phase132_deep book_feature_diagnostics.py Outputs: outputs/phase132/
@@ -105,7 +105,7 @@ Method:
 • Fit single-feature threshold baselines and simple two-feature threshold combinations for each Phase 131 feature.
 • Report Brier, log-loss, accuracy, AUC. No models more complex.
 Acceptance and kill-switch:
-• Kill-switch: if no Phase 131 feature beats the corresponding Phase 130 Ll baseline by at least the precommitted Brier margin on any of the three
+• Kill-switch: if no Phase 131 feature beats the corresponding Phase 130 top-of-book/context baseline by at least the precommitted Brier margin on any of the three
 labels, close this branch at Phase 132 and skip 133—136. Update the Phase 116 blocklist with a new entry: DEEP_BOOK_LABEL_LIFT = falsified. The
 plan terminates cleanly.
 • Otherwise, promote the surviving features to Phase 133.

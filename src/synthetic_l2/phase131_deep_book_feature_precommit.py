@@ -19,6 +19,10 @@ DEFAULT_PHASE130_DIR = Path("outputs/phase130")
 PINNED_COST_MODEL_VERSION = "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14"
 ALLOWED_DATASET = "outputs/phase129/allowed_context_label_matrix.csv"
 FORBIDDEN_OUTPUTS = "strategy_code;buy_sell_signal;order_arrival_stream;live_tagged_fill_model;pnl_replay;profitability_claim"
+DEPTH_TERMINOLOGY_NOTE = (
+    "Zerodha feed scope is Level-2/top-five market-by-price depth. "
+    "Catalog references to depth_level_1..depth_level_5 are book-price levels, not L1-L5 data tiers."
+)
 BASELINE_BRIER_MARGIN = 0.005
 
 
@@ -31,9 +35,9 @@ def read_csv(path: Path) -> pd.DataFrame:
 def build_feature_catalog() -> pd.DataFrame:
     rows = [
         {
-            "feature_id": "p131_l2_l5_depth_ratio_bid",
+            "feature_id": "p131_depth_levels_2_5_ratio_bid",
             "definition": "bid_level_2_quantity / max(sum(bid_level_2_quantity..bid_level_5_quantity), 1)",
-            "required_depth_levels": "L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "bid_resilience_context",
@@ -43,9 +47,9 @@ def build_feature_catalog() -> pd.DataFrame:
             "strategy_replay_allowed": 0,
         },
         {
-            "feature_id": "p131_l2_l5_depth_ratio_ask",
+            "feature_id": "p131_depth_levels_2_5_ratio_ask",
             "definition": "ask_level_2_quantity / max(sum(ask_level_2_quantity..ask_level_5_quantity), 1)",
-            "required_depth_levels": "L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "ask_resilience_context",
@@ -57,7 +61,7 @@ def build_feature_catalog() -> pd.DataFrame:
         {
             "feature_id": "p131_cumulative_notional_imbalance_top5",
             "definition": "(sum(bid_level_1_notional..bid_level_5_notional) - sum(ask_level_1_notional..ask_level_5_notional)) / max(total_top5_notional, 1)",
-            "required_depth_levels": "L1,L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_1,depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "deep_book_pressure_context",
@@ -69,7 +73,7 @@ def build_feature_catalog() -> pd.DataFrame:
         {
             "feature_id": "p131_book_thinning_event_rate_1s",
             "definition": "rolling_1s_count(sum_top5_depth_t < 0.75 * rolling_5s_median_sum_top5_depth)",
-            "required_depth_levels": "L1,L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_1,depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "liquidity_withdrawal_context",
@@ -81,7 +85,7 @@ def build_feature_catalog() -> pd.DataFrame:
         {
             "feature_id": "p131_level_crossing_hazard_bid",
             "definition": "rolling_1s_rate(best_bid_price moves through prior bid_level_2_price or deeper bid levels)",
-            "required_depth_levels": "L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "bid_queue_depletion_context",
@@ -93,7 +97,7 @@ def build_feature_catalog() -> pd.DataFrame:
         {
             "feature_id": "p131_level_crossing_hazard_ask",
             "definition": "rolling_1s_rate(best_ask_price moves through prior ask_level_2_price or deeper ask levels)",
-            "required_depth_levels": "L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "ask_queue_depletion_context",
@@ -105,7 +109,7 @@ def build_feature_catalog() -> pd.DataFrame:
         {
             "feature_id": "p131_depth_slope_top5_bid",
             "definition": "linear_slope(level_index, bid_level_1_quantity..bid_level_5_quantity)",
-            "required_depth_levels": "L1,L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_1,depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "bid_depth_shape_context",
@@ -117,7 +121,7 @@ def build_feature_catalog() -> pd.DataFrame:
         {
             "feature_id": "p131_depth_slope_top5_ask",
             "definition": "linear_slope(level_index, ask_level_1_quantity..ask_level_5_quantity)",
-            "required_depth_levels": "L1,L2,L3,L4,L5",
+            "required_book_depth_levels": "depth_level_1,depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "ask_depth_shape_context",
@@ -127,9 +131,9 @@ def build_feature_catalog() -> pd.DataFrame:
             "strategy_replay_allowed": 0,
         },
         {
-            "feature_id": "p131_mean_cancel_intensity_l2_l5",
-            "definition": "rolling_mean(abs(delta_depth_l2..delta_depth_l5) where price level persists and depth decreases)",
-            "required_depth_levels": "L2,L3,L4,L5",
+            "feature_id": "p131_mean_cancel_intensity_depth_levels_2_5",
+            "definition": "rolling_mean(abs(delta_depth_level_2..delta_depth_level_5) where price level persists and depth decreases)",
+            "required_book_depth_levels": "depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "passive_fill_realism_context",
@@ -140,8 +144,8 @@ def build_feature_catalog() -> pd.DataFrame:
         },
         {
             "feature_id": "p131_deep_book_pressure_signed",
-            "definition": "signed combination of top5 notional imbalance, bid/ask depth slopes, and l2_l5 cancel-intensity asymmetry",
-            "required_depth_levels": "L2,L3,L4,L5",
+            "definition": "signed combination of top5 notional imbalance, bid/ask depth slopes, and depth-levels-2-to-5 cancel-intensity asymmetry",
+            "required_book_depth_levels": "depth_level_2,depth_level_3,depth_level_4,depth_level_5",
             "minimum_depth_level": 2,
             "maximum_depth_level": 5,
             "directional_use": "deep_book_context_only",
@@ -218,8 +222,8 @@ def build_guardrails() -> pd.DataFrame:
                 "enforcement": "Allowed dataset is locked to Phase129 allowed_context_label_matrix.csv.",
             },
             {
-                "guardrail_id": "P131_DEPTH_REQUIRES_L2_L5",
-                "requirement": "No precommitted feature may depend only on L1.",
+                "guardrail_id": "P131_DEPTH_REQUIRES_TOP5_LEVELS_BEYOND_BBO",
+                "requirement": "No precommitted feature may depend only on top-of-book/best-bid-offer fields.",
                 "enforcement": "Feature catalog must set minimum_depth_level >= 2 for every feature.",
             },
             {
@@ -252,9 +256,9 @@ def build_gate_evaluation(features: pd.DataFrame, costs: pd.DataFrame, baseline:
                 "evidence": f"feature_rows={len(features)}",
             },
             {
-                "gate_id": "P131_NO_L1_ONLY_FEATURES",
+                "gate_id": "P131_NO_TOP_OF_BOOK_ONLY_FEATURES",
                 "gate_pass": int(not features.empty and pd.to_numeric(features["minimum_depth_level"], errors="coerce").ge(2).all()),
-                "evidence": "minimum_depth_level>=2 for every feature",
+                "evidence": "minimum_depth_level>=2 for every feature; no feature is top-of-book-only",
             },
             {
                 "gate_id": "P131_COST_REGIMES_LOCKED",
@@ -302,8 +306,9 @@ def build_gate_evaluation(features: pd.DataFrame, costs: pd.DataFrame, baseline:
 def build_acceptance_summary(features: pd.DataFrame, costs: pd.DataFrame, baseline: pd.DataFrame, gates: pd.DataFrame, allowed_matrix: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(
         [
-            ("phase131_feature_catalog_rows", int(len(features)), "Precommitted L2-L5 feature definitions"),
-            ("phase131_l1_only_feature_rows", int(pd.to_numeric(features["minimum_depth_level"], errors="coerce").lt(2).sum()) if not features.empty else 0, "Feature definitions incorrectly depending only on L1"),
+            ("phase131_feature_catalog_rows", int(len(features)), "Precommitted top-five depth-level feature definitions"),
+            ("phase131_depth_terminology_note", DEPTH_TERMINOLOGY_NOTE, "Clarifies that depth levels are not L1-L5 market-data tiers"),
+            ("phase131_top_of_book_only_feature_rows", int(pd.to_numeric(features["minimum_depth_level"], errors="coerce").lt(2).sum()) if not features.empty else 0, "Feature definitions incorrectly depending only on top-of-book/best-bid-offer fields"),
             ("phase131_cost_regime_rows", int(len(costs)), "Immutable cost regimes declared"),
             ("phase131_phase130_baseline_reference_rows", int(len(baseline)), "Phase130 baseline references for Phase132 ordering/lift checks"),
             ("phase131_allowed_context_rows", int(len(allowed_matrix)), "Allowed Phase129 contexts locked as Phase132 dataset"),
@@ -323,10 +328,12 @@ def evaluation_rules_markdown() -> str:
         [
             "# Phase131 Evaluation Rules",
             "",
-            "These rules are immutable for Phases 132-136 of the deep-book passive branch.",
+            "These rules are immutable for Phases 132-136 of the top-five-depth passive branch.",
+            "",
+            DEPTH_TERMINOLOGY_NOTE,
             "",
             "1. A feature or strategy clears only if it clears both cost regimes: `base` and `harsh`.",
-            "2. No cost-stress ordering reversal is allowed. A candidate that ranks above the Phase130 L1/context baselines under `base` but falls below them under `harsh` is rejected as brittle.",
+            "2. No cost-stress ordering reversal is allowed. A candidate that ranks above the Phase130 top-of-book/context baselines under `base` but falls below them under `harsh` is rejected as brittle.",
             "3. Positive-pockets exception is disallowed. Full-sample verdict under `harsh` decides the outcome.",
             "4. `strategy_replay_allowed` remains `0` throughout this plan unless separate real-anchor gates outside this plan unlock replay.",
             "5. Phase131 and Phase132 may emit feature diagnostics only. They may not emit strategy code, buy/sell signals, order-arrival streams, live-tagged fill models, P&L replay, or profitability claims.",
@@ -345,7 +352,8 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame]) -> None:
         "",
         f"Generated UTC: {datetime.now(timezone.utc).isoformat()}",
         "",
-        "Phase131 locks the deep-book feature catalog, base/harsh cost regimes, and evaluation rules before Phase132 diagnostics touch data.",
+        "Phase131 locks the top-five-depth feature catalog, base/harsh cost regimes, and evaluation rules before Phase132 diagnostics touch data.",
+        DEPTH_TERMINOLOGY_NOTE,
         "It emits specifications only and explicitly forbids strategy code, order simulation, P&L replay, and profitability claims.",
         "",
     ]
@@ -387,7 +395,7 @@ def run_phase131(base_dir: Path, output_dir: Path, phase129_dir: Path, phase130_
     generated_utc = datetime.now(timezone.utc).isoformat()
     manifest: dict[str, Any] = {
         "generated_utc": generated_utc,
-        "scope": "phase131_deep_book_feature_and_cost_stress_precommit",
+        "scope": "phase131_top5_depth_feature_and_cost_stress_precommit",
         "allowed_dataset": ALLOWED_DATASET,
         "feature_count": int(len(features)),
         "cost_regimes": costs["cost_regime_id"].astype(str).tolist(),
@@ -405,7 +413,8 @@ def run_phase131(base_dir: Path, output_dir: Path, phase129_dir: Path, phase130_
                 "continuation_plan": "Plan/Plan continuation2.txt",
             },
             parameters={
-                "feature_scope": "requires_l2_l5_top5_depth",
+                "feature_scope": "requires_zerodha_level2_top5_market_by_price_depth_levels_beyond_best_bid_offer",
+                "depth_terminology_note": DEPTH_TERMINOLOGY_NOTE,
                 "cost_regimes": "base_and_harsh_immutable",
                 "harsh_uplift": "1.25x_spread_cross_and_all_per_leg_fee_components",
                 "phase132_model_family": "single_feature_threshold_and_two_feature_threshold_combos",
@@ -424,7 +433,7 @@ def run_phase131(base_dir: Path, output_dir: Path, phase129_dir: Path, phase130_
                 "manifest": str(output_dir / "phase131_precommit_manifest.json"),
             },
             random_seed="none_precommit_specification",
-            scenario_ids="phase131_deep_book_passive_surface_precommit",
+            scenario_ids="phase131_top5_depth_passive_surface_precommit",
             cost_model_version=ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
             latency_model_version="not_applicable_precommit",
             base_dir=base_dir,
@@ -434,7 +443,7 @@ def run_phase131(base_dir: Path, output_dir: Path, phase129_dir: Path, phase130_
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Precommit Phase131 deep-book L2-L5 feature catalog and cost-stress regimes.")
+    parser = argparse.ArgumentParser(description="Precommit Phase131 Zerodha Level-2 top-five-depth feature catalog and cost-stress regimes.")
     parser.add_argument("--base-dir", type=Path, default=Path("."))
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--phase129-dir", type=Path, default=DEFAULT_PHASE129_DIR)

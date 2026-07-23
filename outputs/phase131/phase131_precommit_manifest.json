@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-07-23T05:58:29.603307+00:00",
-  "scope": "phase131_deep_book_feature_and_cost_stress_precommit",
+  "generated_utc": "2026-07-23T06:03:19.869251+00:00",
+  "scope": "phase131_top5_depth_feature_and_cost_stress_precommit",
   "allowed_dataset": "outputs/phase129/allowed_context_label_matrix.csv",
   "feature_count": 10,
   "cost_regimes": [
@@ -11,14 +11,14 @@
   "strategy_replay_allowed": 0,
   "forbidden_outputs": "strategy_code;buy_sell_signal;order_arrival_stream;live_tagged_fill_model;pnl_replay;profitability_claim",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "ce594106bdf56634d5808e4e55142792fd1f4e79",
-  "configuration_hash": "46d64f22f3a2bc187ffab27381544ba312f04c9f44656009503c6f3ea846f027",
+  "generator_version": "9db9b276253f8f8d2867636642f75f4dd03f1ab6",
+  "configuration_hash": "0fb09dcf481d4ba40972f969fdf38017b1a5c01a47b5672cb455d1f79b8ac4bd",
   "random_seed": "none_precommit_specification",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
   "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
   "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
-  "scenario_ids": "phase131_deep_book_passive_surface_precommit",
+  "scenario_ids": "phase131_top5_depth_passive_surface_precommit",
   "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
   "latency_model_version": "not_applicable_precommit",
-  "creation_timestamp": "2026-07-23T05:58:29.603307+00:00"
+  "creation_timestamp": "2026-07-23T06:03:19.869251+00:00"
 }
