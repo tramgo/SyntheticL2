@@ -3530,9 +3530,13 @@ AzCopy was installed locally from Microsoft's official Windows v10 package and u
 
 The immediate next operational action is to download and import two more Azure real L2 dates, preferably from the already-observed available set such as `2026-07-10` and `2026-07-14`, then rerun:
 
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -ShareSasToken "<read_list_share_sas>"`
+
+Then import/refresh:
+
 `python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import`
 
-If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session or repair the Azure CLI CA chain before continuing the AzCopy downloads.
+If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session or repair the Azure CLI CA chain before continuing the AzCopy downloads. The helper script accepts the SAS as a parameter or via `AZURE_STORAGE_SAS_TOKEN`; it redacts `sig=` in dry-run command output and does not persist credentials.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
