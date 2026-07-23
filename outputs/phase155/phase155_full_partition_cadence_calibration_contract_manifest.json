@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-23T09:45:41.319043+00:00",
+  "scope": "phase155_full_partition_cadence_calibration_contract",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "60c112c137119e868aef95237a3097b3c30fcf77",
+  "configuration_hash": "2fa425ef95b461f59463e858338bec99db6802089a5f1f632e1c0c12ed3607ff",
+  "random_seed": "none_deterministic_phase155_contract",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase155_from_phase154_full_partition_cadence_anchors",
+  "cost_model_version": "not_applicable",
+  "latency_model_version": "not_applicable_no_execution",
+  "creation_timestamp": "2026-07-23T09:45:41.319043+00:00"
+}

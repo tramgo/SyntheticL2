@@ -3864,6 +3864,33 @@ Current Phase154 date-level anchors:
 
 Current Phase154 interpretation: the older sampled-file cadence anchors are not safe calibration targets for tail inter-update gaps. All 42 sample-bias flags are `sampled_high_vs_full`, meaning sampled Phase106 p90/p95 gap values can greatly overstate full-partition p90/p95 gaps. Future generator cadence calibration should use the Phase154 full-partition cadence anchors, not the sampled Phase106 cadence rows.
 
+Phase155 full-partition cadence calibration contract is implemented under `outputs/phase155/`.
+
+**Runner:** `python scripts/run_phase155_full_partition_cadence_calibration_contract.py`
+
+**Purpose:** convert Phase154 full-local-partition cadence anchors into an executable generator calibration contract. Phase155 supersedes sampled-file Phase106 cadence targets for cadence calibration only. It is local-only CSV contract work: no Azure read path, no synthetic shard generation, no order stream, no fills, no P&L, and no replay unlock.
+
+Current Phase155 evidence records:
+
+- Phase154 full-partition symbol cadence anchors available: 1;
+- Phase106 calibrated synthetic anchor profile available: 1;
+- symbols in cadence contract: 32;
+- symbols requiring a cadence patch versus current Phase106 synthetic cadence: 31;
+- symbols whose existing Phase106 synthetic cadence passes the Phase154 full-partition contract: 1;
+- patch contract items emitted: 2;
+- median required p95-gap multiplier versus Phase106 synthetic cadence: 6.315657;
+- maximum required p95-gap multiplier versus Phase106 synthetic cadence: 8.839394;
+- inherited Phase154 sample-bias rows: 42;
+- strategy replay allowed: 0;
+- next best action: `implement_symbol_aware_idle_tail_gap_model_then_rerun_phase155_contract`.
+
+Current Phase155 patch contract:
+
+- `symbol_aware_idle_tail_gap_model`: priority 1, affects 31 symbols, representative highest-multiplier symbols include `BRITANNIA`, `ITBEES`, `ULTRACEMCO`, `NESTLEIND`, `BPCL`, `CIPLA`, `BAJAJ-AUTO`, and `HINDUNILVR`.
+- `phase106_cadence_anchor_source_rewire`: priority 2, affects all 32 symbols. Future Phase106-style cadence audits must use Phase154 full-partition cadence anchors rather than sampled Phase106 `real_anchor_profile` cadence rows.
+
+Current Phase155 interpretation: the existing synthetic cadence is still too uniformly dense. HDFCBANK is the only symbol that passes the current Phase155 cadence contract without a cadence patch. The next generator milestone should implement a symbol-aware idle/tail inter-update gap model and then rerun Phase155 before any dense strategy replay gate is considered.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

@@ -1,0 +1,3 @@
+priority,patch_item,symbols_affected,median_required_p95_multiplier_vs_phase106,max_required_p95_multiplier_vs_phase106,representative_symbols,acceptance_gate
+1,symbol_aware_idle_tail_gap_model,31,6.315656565656566,8.839393939393938,BRITANNIA;ITBEES;ULTRACEMCO;NESTLEIND;BPCL;CIPLA;BAJAJ-AUTO;HINDUNILVR,Phase155 cadence contract passes after rerun from regenerated synthetic cadence profile; replay remains closed.
+2,phase106_cadence_anchor_source_rewire,32,,,all_symbols,Future Phase106-style audits must use Phase154 full-partition cadence anchors instead of sampled Phase106 real_anchor_profile cadence rows.

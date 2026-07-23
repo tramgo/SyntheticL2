@@ -1,0 +1,12 @@
+metric,value,description
+phase155_phase154_anchor_available,1,Phase154 full-partition symbol cadence anchors available
+phase155_phase106_synthetic_profile_available,1,Phase106 calibrated synthetic anchor profile available
+phase155_symbols_in_contract,32,Symbols with full-partition cadence contract rows
+phase155_cadence_patch_required_symbols,31,Symbols whose existing Phase106 synthetic cadence fails the Phase154 contract
+phase155_contract_pass_symbols,1,Symbols whose existing Phase106 cadence already passes the full-partition contract
+phase155_patch_items,2,Patch contract items emitted
+phase155_median_required_p95_multiplier_vs_phase106,6.315656565656566,Median p95 gap multiplier required versus the existing Phase106 synthetic cadence profile
+phase155_max_required_p95_multiplier_vs_phase106,8.839393939393938,Maximum p95 gap multiplier required versus the existing Phase106 synthetic cadence profile
+phase155_inherited_phase154_sample_bias_flag_rows,42,Inherited Phase154 sample-bias rows showing sampled Phase106 cadence anchors are not safe targets
+phase155_strategy_replay_allowed,0,Strategy replay remains closed
+phase155_next_best_action,implement_symbol_aware_idle_tail_gap_model_then_rerun_phase155_contract,Recommended next milestone
