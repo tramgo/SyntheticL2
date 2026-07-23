@@ -1,0 +1,4 @@
+priority,work_item,current_smoke_months,current_smoke_symbols,current_smoke_rows,current_smoke_bytes,estimated_12m_rows,estimated_12m_compressed_bytes,acceptance_gate
+1,materialize_phase159_distributional_profile_all_12_months,1,32,16838528,357615839,202062336,4291390068,All 12 synthetic months materialized locally with P159 distributional cadence profile and no missing symbol/month shards.
+2,rerun_phase159_phase160_style_audits_on_broader_materialization,1,32,16838528,357615839,202062336,4291390068,Combined cadence and generated non-cadence gap fraction remains <=0.25 with zero severe metric gaps across broader materialization.
+3,only_then_prepare_synthetic_only_strategy_replay_preflight,1,32,16838528,357615839,202062336,4291390068,Replay preflight may be considered only after broader materialization/audit passes; this phase itself keeps replay closed.

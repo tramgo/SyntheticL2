@@ -1,0 +1,11 @@
+metric_family,category,metric,symbol_metrics,gap_count,gap_fraction,median_synthetic_to_real_ratio,min_synthetic_to_real_ratio,max_synthetic_to_real_ratio,evidence_source,metric_gate_pass
+cadence,rewired received tick cadence,median_gap_ms,32,8,0.25,1.0,1.0,4.164668265387689,phase159_distributional_generated_cadence,1
+cadence,rewired received tick cadence distribution,gap_le_1s_fraction,32,0,0.0,0.9752990348048384,0.9507303281303728,1.016608409352472,phase159_distributional_generated_cadence,1
+generated_non_cadence,L1 imbalance scale,median_abs_l1_imbalance,32,0,0.0,0.6381031155995288,0.2707338428153195,1.7502847892559503,phase160_generated_phase159_parquet,1
+generated_non_cadence,displayed L1 depth scale,median_l1_depth,32,0,0.0,1.3286690667716712,0.2658959537572254,6.938053097345133,phase160_generated_phase159_parquet,1
+generated_non_cadence,displayed L5 depth scale,median_l5_depth,32,0,0.0,0.978390753920896,0.1302579880265336,6.758620689655173,phase160_generated_phase159_parquet,1
+generated_non_cadence,median spread scale,median_spread_bps,32,0,0.0,1.0013166147497308,0.7491836871197277,1.993573827956115,phase160_generated_phase159_parquet,1
+generated_non_cadence,one-tick volatility scale,one_tick_return_std,32,0,0.0,0.2606549025272742,0.1062751368246192,1.227169454384542,phase160_generated_phase159_parquet,1
+cadence,rewired tail received tick cadence,p90_gap_ms,32,0,0.0,1.0,0.5,1.0000896137646738,phase159_distributional_generated_cadence,1
+generated_non_cadence,tail spread scale,p90_spread_bps,32,0,0.0,0.7687815054693588,0.3403544467048775,1.0228668006429564,phase160_generated_phase159_parquet,1
+cadence,rewired tail received tick cadence,p95_gap_ms,32,0,0.0,1.0,0.9998949935246022,1.0000705766109117,phase159_distributional_generated_cadence,1

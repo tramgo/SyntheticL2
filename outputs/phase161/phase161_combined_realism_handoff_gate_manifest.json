@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-23T10:14:51.915121+00:00",
+  "scope": "phase161_combined_realism_handoff_gate",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "5b4e84601e81b056fe07f65d9aa328ac51703b32",
+  "configuration_hash": "0758610a5017ce5d9d3d3a218a684df1e90fb8345f8e600c306388007c8fb7ce",
+  "random_seed": "none_deterministic_phase161_gate",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase161_phase159_phase160_bounded_handoff",
+  "cost_model_version": "not_applicable",
+  "latency_model_version": "not_applicable_no_execution",
+  "creation_timestamp": "2026-07-23T10:14:51.915121+00:00"
+}

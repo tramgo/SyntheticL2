@@ -4042,6 +4042,39 @@ Current Phase160 generated non-cadence gap summary:
 
 Current Phase160 interpretation: the apparent Phase159 depth/imbalance blockers were stale inherited Phase106 comparison rows, not failures in the actual Phase159 generated dense shard. The generated Phase159 non-cadence profile passes all preserved non-cadence gates in the bounded 32-symbol smoke. Strategy replay still remains closed because the combined proof is bounded to one generated month and the Phase159 cadence audit still has 8 / 32 median-gap edge cases. The next milestone should produce a combined Phase159+Phase160 acceptance gate and decide whether to broaden materialization before any synthetic-only strategy replay is reconsidered.
 
+Phase161 combined realism handoff gate is implemented under `outputs/phase161/`.
+
+**Runner:** `python scripts/run_phase161_combined_realism_handoff_gate.py`
+
+**Purpose:** combine Phase159 distributional cadence evidence with Phase160 generated non-cadence evidence and decide whether the bounded generated shard is ready for broader materialization/audit. Phase161 is a handoff gate only: it does not run strategy replay, fills, P&L, or Azure reads.
+
+Current Phase161 evidence records:
+
+- inherited Phase159 Phase158-style full rewired realism pass: 1;
+- inherited Phase160 generated non-cadence realism pass: 1;
+- combined symbols: 32;
+- combined cadence plus generated non-cadence anchor rows: 320;
+- combined gap rows: 8;
+- combined gap fraction: 0.025;
+- combined severe metric gap count: 0;
+- cadence gap rows: 8;
+- generated non-cadence gap rows: 0;
+- bounded realism handoff pass: 1;
+- smoke months materialized: 1;
+- broader materialization required: 1;
+- strategy replay allowed: 0;
+- next best action: `materialize_phase159_distributional_profile_all_12_months_then_rerun_combined_audit`.
+
+Current Phase161 broader materialization plan:
+
+- materialize `P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE` for all 12 synthetic months and all 32 symbols;
+- current bounded smoke size: 1 month, 32 symbols, 16,838,528 rows, 357,615,839 compressed bytes;
+- estimated 12-month generated profile size: 202,062,336 rows and 4,291,390,068 compressed bytes;
+- rerun Phase159/Phase160-style audits on the broader materialization;
+- consider synthetic-only strategy replay preflight only after the broader materialization and combined audit pass.
+
+Current Phase161 interpretation: the bounded generated shard passes the combined realism handoff gate, but it is not enough to reopen strategy replay. The next milestone is broader 12-month materialization with the Phase159 distributional cadence profile, followed by rerunning the combined audit on that broader generated dataset.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

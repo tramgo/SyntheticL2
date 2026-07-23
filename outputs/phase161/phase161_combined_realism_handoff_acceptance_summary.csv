@@ -1,0 +1,15 @@
+metric,value,description
+phase161_phase159_full_rewired_realism_pass,1,Inherited Phase159 Phase158-style pass
+phase161_phase160_generated_noncadence_realism_pass,1,Inherited Phase160 generated non-cadence pass
+phase161_combined_symbols,32,Symbols in combined bounded handoff
+phase161_combined_anchor_metric_rows,320,Combined cadence plus generated non-cadence rows
+phase161_combined_gap_rows,8,Combined rows outside gates
+phase161_combined_gap_fraction,0.025,Combined bounded gap fraction
+phase161_combined_severe_metric_gap_count,0,Combined metrics with gap_fraction > 0.50
+phase161_cadence_gap_rows,8,Cadence gaps from Phase159 distributional audit
+phase161_generated_noncadence_gap_rows,0,Generated non-cadence gaps from Phase160 audit
+phase161_bounded_realism_handoff_pass,1,1 means bounded realism handoff gate passes
+phase161_smoke_months_materialized,1,Synthetic months materialized in current bounded smoke
+phase161_broader_materialization_required,1,1 means all-12-month materialization still required
+phase161_strategy_replay_allowed,0,Strategy replay remains closed
+phase161_next_best_action,materialize_phase159_distributional_profile_all_12_months_then_rerun_combined_audit,Recommended next milestone
