@@ -1,0 +1,193 @@
+symbol,category,metric,real_value,synthetic_value,synthetic_to_real_ratio,lower_ratio_gate,upper_ratio_gate,calibration_gap
+ADANIPORTS,median spread scale,median_spread_bps,2.207261891623943,2.2129860789349505,1.0025933430612513,0.25,4.0,False
+ADANIPORTS,tail spread scale,p90_spread_bps,3.8593258401394497,4.40100893129725,1.1403569207668216,0.25,4.0,False
+ADANIPORTS,displayed L1 depth scale,median_l1_depth,131.0,806.0,6.152671755725191,0.1,10.0,False
+ADANIPORTS,displayed L5 depth scale,median_l5_depth,1088.0,6851.0,6.296875,0.1,10.0,False
+ADANIPORTS,L1 imbalance scale,median_abs_l1_imbalance,0.6296296296296297,0.21285140562248997,0.33805811481218995,0.25,4.0,False
+ADANIPORTS,one-tick volatility scale,one_tick_return_std,0.0004411553501896,9.111124372586232e-05,0.20652870624079356,0.1,10.0,False
+AXISBANK,median spread scale,median_spread_bps,1.5143484515790528,1.5166883110731175,1.0015451262169053,0.25,4.0,False
+AXISBANK,tail spread scale,p90_spread_bps,3.025947499809846,3.764046952721688,1.2439234167011244,0.25,4.0,False
+AXISBANK,displayed L1 depth scale,median_l1_depth,249.0,808.0,3.244979919678715,0.1,10.0,False
+AXISBANK,displayed L5 depth scale,median_l5_depth,3048.0,6870.0,2.2539370078740157,0.1,10.0,False
+AXISBANK,L1 imbalance scale,median_abs_l1_imbalance,0.5495978552278821,0.35,0.6368292682926828,0.25,4.0,False
+AXISBANK,one-tick volatility scale,one_tick_return_std,0.0004231706657462,9.27206611434195e-05,0.21910937748938739,0.1,10.0,False
+BAJAJ-AUTO,median spread scale,median_spread_bps,2.466273707056009,3.344931085556668,1.3562692072606621,0.25,4.0,False
+BAJAJ-AUTO,tail spread scale,p90_spread_bps,4.374433608466025,4.895361644841513,1.1190846822700233,0.25,4.0,False
+BAJAJ-AUTO,displayed L1 depth scale,median_l1_depth,61.0,52.0,0.8524590163934426,0.1,10.0,False
+BAJAJ-AUTO,displayed L5 depth scale,median_l5_depth,366.0,443.0,1.210382513661202,0.1,10.0,False
+BAJAJ-AUTO,L1 imbalance scale,median_abs_l1_imbalance,0.5789473684210527,0.9512195121951219,1.6430155210643014,0.25,4.0,False
+BAJAJ-AUTO,one-tick volatility scale,one_tick_return_std,0.0007120099059319,7.46560926993091e-05,0.10485260398392485,0.1,10.0,False
+BANKBEES,median spread scale,median_spread_bps,3.3338889814976747,3.82299722317458,1.1467080170909545,0.25,4.0,False
+BANKBEES,tail spread scale,p90_spread_bps,5.6550400307047,5.861777609182269,1.036558110527081,0.25,4.0,False
+BANKBEES,displayed L1 depth scale,median_l1_depth,403.0,800.0,1.9851116625310175,0.1,10.0,False
+BANKBEES,displayed L5 depth scale,median_l5_depth,5262.0,6800.0,1.2922843025465602,0.1,10.0,False
+BANKBEES,L1 imbalance scale,median_abs_l1_imbalance,0.8080307101727447,0.32792207792207795,0.4058287312520253,0.25,4.0,False
+BANKBEES,one-tick volatility scale,one_tick_return_std,0.000217664533879,8.51549714537886e-05,0.3912211600863114,0.1,10.0,False
+BHARTIARTL,median spread scale,median_spread_bps,2.0929259104232467,1.5769347017619852,0.7534594005017053,0.25,4.0,False
+BHARTIARTL,tail spread scale,p90_spread_bps,3.1563664413141352,3.6575919198571736,1.1587982535812147,0.25,4.0,False
+BHARTIARTL,displayed L1 depth scale,median_l1_depth,415.0,806.0,1.9421686746987952,0.1,10.0,False
+BHARTIARTL,displayed L5 depth scale,median_l5_depth,3715.0,6851.0,1.8441453566621804,0.1,10.0,False
+BHARTIARTL,L1 imbalance scale,median_abs_l1_imbalance,0.5478260869565217,0.3502824858757062,0.6394045377096225,0.25,4.0,False
+BHARTIARTL,one-tick volatility scale,one_tick_return_std,0.0004374798903004,8.410435816826472e-05,0.19224736961169486,0.1,10.0,False
+BPCL,median spread scale,median_spread_bps,1.639209900828174,1.6358446274776541,0.9979470149925158,0.25,4.0,False
+BPCL,tail spread scale,p90_spread_bps,4.899959167006198,4.889956420707637,0.9979586061929018,0.25,4.0,False
+BPCL,displayed L1 depth scale,median_l1_depth,2059.0,810.0,0.39339485186983975,0.1,10.0,False
+BPCL,displayed L5 depth scale,median_l5_depth,19762.0,6885.0,0.3483959113450056,0.1,10.0,False
+BPCL,L1 imbalance scale,median_abs_l1_imbalance,0.6534859521331946,0.35,0.5355891719745223,0.25,4.0,False
+BPCL,one-tick volatility scale,one_tick_return_std,0.0006153089784578,8.280485184950154e-05,0.13457442479880957,0.1,10.0,False
+BRITANNIA,median spread scale,median_spread_bps,2.817562808170932,3.746247898589069,1.329605816674237,0.25,4.0,False
+BRITANNIA,tail spread scale,p90_spread_bps,5.59753708368318,5.630207942346671,1.0058366489002326,0.25,4.0,False
+BRITANNIA,displayed L1 depth scale,median_l1_depth,35.0,42.0,1.2,0.1,10.0,False
+BRITANNIA,displayed L5 depth scale,median_l5_depth,406.5,352.0,0.8659286592865929,0.1,10.0,False
+BRITANNIA,L1 imbalance scale,median_abs_l1_imbalance,0.5420363329108576,0.9512195121951219,1.7548999106514838,0.25,4.0,False
+BRITANNIA,one-tick volatility scale,one_tick_return_std,0.0004900395431743,6.646983113273073e-05,0.1356417702583001,0.1,10.0,False
+CIPLA,median spread scale,median_spread_bps,2.803869339687814,2.8100938571354668,1.002219974147706,0.25,4.0,False
+CIPLA,tail spread scale,p90_spread_bps,4.90069113575094,4.922081688977493,1.0043648033785495,0.25,4.0,False
+CIPLA,displayed L1 depth scale,median_l1_depth,136.0,802.0,5.897058823529412,0.1,10.0,False
+CIPLA,displayed L5 depth scale,median_l5_depth,1594.0,6816.0,4.27603513174404,0.1,10.0,False
+CIPLA,L1 imbalance scale,median_abs_l1_imbalance,0.6756756756756757,0.5685279187817259,0.8414213197969544,0.25,4.0,False
+CIPLA,one-tick volatility scale,one_tick_return_std,0.0004395412175018,6.751679389405176e-05,0.15360742338976496,0.1,10.0,False
+DRREDDY,median spread scale,median_spread_bps,3.246489732975113,2.4386873358962946,0.7511766666397122,0.25,4.0,False
+DRREDDY,tail spread scale,p90_spread_bps,4.86933939295495,4.86512455732545,0.9991344132562213,0.25,4.0,False
+DRREDDY,displayed L1 depth scale,median_l1_depth,271.5,802.0,2.9539594843462247,0.1,10.0,False
+DRREDDY,displayed L5 depth scale,median_l5_depth,2642.0,6816.0,2.579863739591219,0.1,10.0,False
+DRREDDY,L1 imbalance scale,median_abs_l1_imbalance,0.6188312886265104,0.20725388601036268,0.33491177614881196,0.25,4.0,False
+DRREDDY,one-tick volatility scale,one_tick_return_std,0.0005422428372631,6.385689277739587e-05,0.11776438228249397,0.1,10.0,False
+GOLDBEES,median spread scale,median_spread_bps,0.8570816370263652,0.8562670183062101,0.9990495436082595,0.25,4.0,False
+GOLDBEES,tail spread scale,p90_spread_bps,2.56486983285608,2.555975871587869,0.9965323927342126,0.25,4.0,False
+GOLDBEES,displayed L1 depth scale,median_l1_depth,11211.5,11235.0,1.0020960620791153,0.1,10.0,False
+GOLDBEES,displayed L5 depth scale,median_l5_depth,95705.5,95501.0,0.9978632367000851,0.1,10.0,False
+GOLDBEES,L1 imbalance scale,median_abs_l1_imbalance,0.7474247686637312,0.20235317983568313,0.2707338428153195,0.25,4.0,False
+GOLDBEES,one-tick volatility scale,one_tick_return_std,0.0002850981786107,7.06842134168935e-05,0.24792937563242873,0.1,10.0,False
+HCLTECH,median spread scale,median_spread_bps,3.2557382386445024,2.4614021377273834,0.7560196666032236,0.25,4.0,False
+HCLTECH,tail spread scale,p90_spread_bps,4.262175318971785,4.886984413028159,1.146593944945255,0.25,4.0,False
+HCLTECH,displayed L1 depth scale,median_l1_depth,339.5,810.0,2.385861561119293,0.1,10.0,False
+HCLTECH,displayed L5 depth scale,median_l5_depth,4819.0,6885.0,1.4287196513799543,0.1,10.0,False
+HCLTECH,L1 imbalance scale,median_abs_l1_imbalance,0.6606060606060606,0.29396325459317585,0.44499024777866064,0.25,4.0,False
+HCLTECH,one-tick volatility scale,one_tick_return_std,0.0009230660025647,9.124502936950745e-05,0.09884995126674255,0.1,10.0,True
+HDFCBANK,median spread scale,median_spread_bps,1.220479648502139,1.2229947472378389,1.0020607461490951,0.25,4.0,False
+HDFCBANK,tail spread scale,p90_spread_bps,2.4508455616850657,3.037187321565245,1.2392405988556223,0.25,4.0,False
+HDFCBANK,displayed L1 depth scale,median_l1_depth,1010.0,808.0,0.8,0.1,10.0,False
+HDFCBANK,displayed L5 depth scale,median_l5_depth,15104.0,6868.0,0.4547139830508475,0.1,10.0,False
+HDFCBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6221233709952622,0.5723684210526315,0.9200239819587013,0.25,4.0,False
+HDFCBANK,one-tick volatility scale,one_tick_return_std,0.0002661320563781,0.00022484461834411393,0.8448610866504258,0.1,10.0,False
+HINDUNILVR,median spread scale,median_spread_bps,1.410304626579205,1.8845367867474232,1.3362622168506264,0.25,4.0,False
+HINDUNILVR,tail spread scale,p90_spread_bps,3.52031676225702,4.2064182932462035,1.1948976689669528,0.25,4.0,False
+HINDUNILVR,displayed L1 depth scale,median_l1_depth,188.5,802.0,4.254641909814324,0.1,10.0,False
+HINDUNILVR,displayed L5 depth scale,median_l5_depth,1287.0,6816.0,5.296037296037296,0.1,10.0,False
+HINDUNILVR,L1 imbalance scale,median_abs_l1_imbalance,0.6277653381101658,0.35,0.5575331716364673,0.25,4.0,False
+HINDUNILVR,one-tick volatility scale,one_tick_return_std,0.0004491870726258,6.879910191475703e-05,0.15316358396643096,0.1,10.0,False
+ICICIBANK,median spread scale,median_spread_bps,1.4178363816818766,1.4257708073414228,1.0055961504176767,0.25,4.0,False
+ICICIBANK,tail spread scale,p90_spread_bps,2.8435345134008028,3.5390337729992956,1.2445897021192442,0.25,4.0,False
+ICICIBANK,displayed L1 depth scale,median_l1_depth,580.0,810.0,1.396551724137931,0.1,10.0,False
+ICICIBANK,displayed L5 depth scale,median_l5_depth,6394.0,6884.0,1.0766343446981546,0.1,10.0,False
+ICICIBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6189433235605364,0.3687707641196013,0.5958069989320004,0.25,4.0,False
+ICICIBANK,one-tick volatility scale,one_tick_return_std,0.0002723495224193,0.00014415063684123202,0.5292854401238958,0.1,10.0,False
+INFY,median spread scale,median_spread_bps,1.814223512337132,1.8159778813898175,1.00096700822184,0.25,4.0,False
+INFY,tail spread scale,p90_spread_bps,3.66367466569052,4.5082512268078645,1.2305271723569269,0.25,4.0,False
+INFY,displayed L1 depth scale,median_l1_depth,613.0,810.0,1.3213703099510603,0.1,10.0,False
+INFY,displayed L5 depth scale,median_l5_depth,9352.0,6885.0,0.7362061591103507,0.1,10.0,False
+INFY,L1 imbalance scale,median_abs_l1_imbalance,0.7581573896353166,0.75,0.989240506329114,0.25,4.0,False
+INFY,one-tick volatility scale,one_tick_return_std,0.0006784295765149,0.00010591907134024284,0.15612389996961842,0.1,10.0,False
+ITBEES,median spread scale,median_spread_bps,3.127941694266626,3.114294612271914,0.9956370407991536,0.25,4.0,False
+ITBEES,tail spread scale,p90_spread_bps,6.297229219143444,6.203993510623756,0.9851941694870734,0.25,4.0,False
+ITBEES,displayed L1 depth scale,median_l1_depth,134432.0,193832.0,1.4418590811711498,0.1,10.0,False
+ITBEES,displayed L5 depth scale,median_l5_depth,2152154.5,1647329.0,0.7654325003153817,0.1,10.0,False
+ITBEES,L1 imbalance scale,median_abs_l1_imbalance,0.6847403586078421,0.7403360384043891,1.0811923513747306,0.25,4.0,False
+ITBEES,one-tick volatility scale,one_tick_return_std,0.0008419522636051,6.541040020221199e-05,0.07768896531275479,0.1,10.0,True
+ITC,median spread scale,median_spread_bps,1.7871503887056162,1.7860370481312915,0.9993770302816368,0.25,4.0,False
+ITC,tail spread scale,p90_spread_bps,3.925553837585375,5.329117409339602,1.3575453629792948,0.25,4.0,False
+ITC,displayed L1 depth scale,median_l1_depth,5559.0,13371.0,2.4052887209929845,0.1,10.0,False
+ITC,displayed L5 depth scale,median_l5_depth,113657.0,113657.0,1.0,0.1,10.0,False
+ITC,L1 imbalance scale,median_abs_l1_imbalance,0.5893918609967993,0.5099049128367671,0.8651373501737856,0.25,4.0,False
+ITC,one-tick volatility scale,one_tick_return_std,0.0003538134638181,7.440294810372251e-05,0.21028862864860906,0.1,10.0,False
+JUNIORBEES,median spread scale,median_spread_bps,3.6007767389819154,3.965496597859059,1.1012892176648155,0.25,4.0,False
+JUNIORBEES,tail spread scale,p90_spread_bps,5.535779804703658,6.039543590404753,1.0910014132558263,0.25,4.0,False
+JUNIORBEES,displayed L1 depth scale,median_l1_depth,417.0,798.0,1.9136690647482015,0.1,10.0,False
+JUNIORBEES,displayed L5 depth scale,median_l5_depth,8912.0,6784.0,0.7612208258527827,0.1,10.0,False
+JUNIORBEES,L1 imbalance scale,median_abs_l1_imbalance,0.8632375189107413,0.6977401129943502,0.8082828858907563,0.25,4.0,False
+JUNIORBEES,one-tick volatility scale,one_tick_return_std,0.0002105588049157,7.128626854269509e-05,0.3385575282460189,0.1,10.0,False
+KOTAKBANK,median spread scale,median_spread_bps,2.623294858342674,2.636235371530523,1.0049329236272069,0.25,4.0,False
+KOTAKBANK,tail spread scale,p90_spread_bps,3.96432111000931,4.033517996749986,1.0174549146803382,0.25,4.0,False
+KOTAKBANK,displayed L1 depth scale,median_l1_depth,1719.0,808.0,0.4700407213496219,0.1,10.0,False
+KOTAKBANK,displayed L5 depth scale,median_l5_depth,25525.0,6870.0,0.2691478942213516,0.1,10.0,False
+KOTAKBANK,L1 imbalance scale,median_abs_l1_imbalance,0.6708571428571428,0.6022727272727273,0.8977659903980177,0.25,4.0,False
+KOTAKBANK,one-tick volatility scale,one_tick_return_std,0.0004387580939967,9.31038037188541e-05,0.21219848703133978,0.1,10.0,False
+LT,median spread scale,median_spread_bps,1.2775471095496649,1.503406154569857,1.1767911674895553,0.25,4.0,False
+LT,tail spread scale,p90_spread_bps,2.8017982450552315,3.5468157511556373,1.2659069072568854,0.25,4.0,False
+LT,displayed L1 depth scale,median_l1_depth,106.0,56.0,0.5283018867924528,0.1,10.0,False
+LT,displayed L5 depth scale,median_l5_depth,481.0,481.0,1.0,0.1,10.0,False
+LT,L1 imbalance scale,median_abs_l1_imbalance,0.5492957746478874,0.45714285714285713,0.8322344322344322,0.25,4.0,False
+LT,one-tick volatility scale,one_tick_return_std,0.0003339160897955,0.00013820021739501347,0.4138770835500959,0.1,10.0,False
+M&M,median spread scale,median_spread_bps,1.2672263583071004,1.274666794133636,1.0058714339216204,0.25,4.0,False
+M&M,tail spread scale,p90_spread_bps,2.8643906801859527,3.4667370519337983,1.2102877850827045,0.25,4.0,False
+M&M,displayed L1 depth scale,median_l1_depth,47.0,50.0,1.0638297872340425,0.1,10.0,False
+M&M,displayed L5 depth scale,median_l5_depth,447.0,424.0,0.9485458612975392,0.1,10.0,False
+M&M,L1 imbalance scale,median_abs_l1_imbalance,0.6765475152571927,0.1891891891891892,0.27963917525773196,0.25,4.0,False
+M&M,one-tick volatility scale,one_tick_return_std,0.0004201292138649,9.090938703598263e-05,0.21638435042323945,0.1,10.0,False
+MARUTI,median spread scale,median_spread_bps,2.911530203192002,2.9304888055327627,1.0065115595640999,0.25,4.0,False
+MARUTI,tail spread scale,p90_spread_bps,4.362050163576881,4.369443751604405,1.0016949800553099,0.25,4.0,False
+MARUTI,displayed L1 depth scale,median_l1_depth,40.0,44.0,1.1,0.1,10.0,False
+MARUTI,displayed L5 depth scale,median_l5_depth,411.0,375.0,0.9124087591240876,0.1,10.0,False
+MARUTI,L1 imbalance scale,median_abs_l1_imbalance,0.592948717948718,0.5,0.8432432432432433,0.25,4.0,False
+MARUTI,one-tick volatility scale,one_tick_return_std,0.0004288971469949,8.541818163165221e-05,0.19915772867723905,0.1,10.0,False
+NESTLEIND,median spread scale,median_spread_bps,2.4406884964413558,2.7965378860960577,1.1457987736548716,0.25,4.0,False
+NESTLEIND,tail spread scale,p90_spread_bps,4.188189306157591,4.877530436661228,1.1645916839265475,0.25,4.0,False
+NESTLEIND,displayed L1 depth scale,median_l1_depth,349.0,802.0,2.297994269340974,0.1,10.0,False
+NESTLEIND,displayed L5 depth scale,median_l5_depth,2850.0,6817.0,2.3919298245614034,0.1,10.0,False
+NESTLEIND,L1 imbalance scale,median_abs_l1_imbalance,0.6190476190476191,0.4119601328903654,0.665474060822898,0.25,4.0,False
+NESTLEIND,one-tick volatility scale,one_tick_return_std,0.0006511569426619,6.194153844941664e-05,0.09512535978838288,0.1,10.0,True
+NIFTYBEES,median spread scale,median_spread_bps,1.4575665925723724,1.4588647552141822,1.0008906369344805,0.25,4.0,False
+NIFTYBEES,tail spread scale,p90_spread_bps,3.6411964983767007,3.625647540649523,0.995729711996013,0.25,4.0,False
+NIFTYBEES,displayed L1 depth scale,median_l1_depth,2941.0,798.0,0.2713362801768106,0.1,10.0,False
+NIFTYBEES,displayed L5 depth scale,median_l5_depth,51029.5,6783.0,0.13292311310124535,0.1,10.0,False
+NIFTYBEES,L1 imbalance scale,median_abs_l1_imbalance,0.8034544371649791,0.6209150326797386,0.7728067752922766,0.25,4.0,False
+NIFTYBEES,one-tick volatility scale,one_tick_return_std,0.000149830079434,6.694493267109788e-05,0.44680569431712175,0.1,10.0,False
+ONGC,median spread scale,median_spread_bps,1.6212053661894394,2.3810969475528583,1.468720124674584,0.25,4.0,False
+ONGC,tail spread scale,p90_spread_bps,3.635702599527496,4.0281844006151335,1.1079521193891506,0.25,4.0,False
+ONGC,displayed L1 depth scale,median_l1_depth,1042.0,810.0,0.7773512476007678,0.1,10.0,False
+ONGC,displayed L5 depth scale,median_l5_depth,7000.5,6884.0,0.9833583315477465,0.1,10.0,False
+ONGC,L1 imbalance scale,median_abs_l1_imbalance,0.6120805369127517,0.35,0.5718201754385964,0.25,4.0,False
+ONGC,one-tick volatility scale,one_tick_return_std,0.0005115545132356,8.501774307934887e-05,0.16619488418078596,0.1,10.0,False
+RELIANCE,median spread scale,median_spread_bps,0.7711586658948066,1.5419962683676283,1.9995836610075406,0.25,4.0,False
+RELIANCE,tail spread scale,p90_spread_bps,3.078817733990848,3.0728869580922824,0.9980736839881463,0.25,4.0,False
+RELIANCE,displayed L1 depth scale,median_l1_depth,986.0,810.0,0.821501014198783,0.1,10.0,False
+RELIANCE,displayed L5 depth scale,median_l5_depth,11881.5,6885.0,0.5794722888524176,0.1,10.0,False
+RELIANCE,L1 imbalance scale,median_abs_l1_imbalance,0.7167036670286846,0.44358974358974357,0.6189304785181039,0.25,4.0,False
+RELIANCE,one-tick volatility scale,one_tick_return_std,0.0002014198966872,0.00015630038160534338,0.7759927602786627,0.1,10.0,False
+SBIN,median spread scale,median_spread_bps,1.9254837777996103,1.928849561789929,1.0017480199153717,0.25,4.0,False
+SBIN,tail spread scale,p90_spread_bps,3.844972239728642,3.8302069269279215,0.996159838906467,0.25,4.0,False
+SBIN,displayed L1 depth scale,median_l1_depth,1048.0,808.0,0.7709923664122137,0.1,10.0,False
+SBIN,displayed L5 depth scale,median_l5_depth,13743.5,6868.0,0.4997271437406774,0.1,10.0,False
+SBIN,L1 imbalance scale,median_abs_l1_imbalance,0.6489188956738625,0.35,0.539358619903565,0.25,4.0,False
+SBIN,one-tick volatility scale,one_tick_return_std,0.0003895484406278,9.333808176005327e-05,0.23960584108520297,0.1,10.0,False
+SUNPHARMA,median spread scale,median_spread_bps,1.5569452733734048,2.0816203332667054,1.3369900463851865,0.25,4.0,False
+SUNPHARMA,tail spread scale,p90_spread_bps,3.128258602710684,4.14542675225222,1.3251547518034936,0.25,4.0,False
+SUNPHARMA,displayed L1 depth scale,median_l1_depth,113.0,802.0,7.097345132743363,0.1,10.0,False
+SUNPHARMA,displayed L5 depth scale,median_l5_depth,986.0,6816.0,6.9127789046653145,0.1,10.0,False
+SUNPHARMA,L1 imbalance scale,median_abs_l1_imbalance,0.6103896103896104,0.2948717948717949,0.48308783415166395,0.25,4.0,False
+SUNPHARMA,one-tick volatility scale,one_tick_return_std,0.0003448151930137,6.633235009106138e-05,0.19237072911815084,0.1,10.0,False
+TCS,median spread scale,median_spread_bps,1.8300773207672187,1.8392622719031582,1.0050188869244545,0.25,4.0,False
+TCS,tail spread scale,p90_spread_bps,3.214444927692387,3.6555135425361587,1.1372145501837574,0.25,4.0,False
+TCS,displayed L1 depth scale,median_l1_depth,231.0,810.0,3.5064935064935066,0.1,10.0,False
+TCS,displayed L5 depth scale,median_l5_depth,2997.0,6885.0,2.2972972972972974,0.1,10.0,False
+TCS,L1 imbalance scale,median_abs_l1_imbalance,0.6826086956521739,0.35038363171355497,0.5133008617459723,0.25,4.0,False
+TCS,one-tick volatility scale,one_tick_return_std,0.0006492641320056,0.00010046928092519239,0.15474331011454337,0.1,10.0,False
+TECHM,median spread scale,median_spread_bps,3.28655470470306,3.931596768883616,1.1962669488682178,0.25,4.0,False
+TECHM,tail spread scale,p90_spread_bps,4.671653778297445,5.3053564204757215,1.1356484603208814,0.25,4.0,False
+TECHM,displayed L1 depth scale,median_l1_depth,137.0,810.0,5.912408759124087,0.1,10.0,False
+TECHM,displayed L5 depth scale,median_l5_depth,1436.0,6886.0,4.795264623955432,0.1,10.0,False
+TECHM,L1 imbalance scale,median_abs_l1_imbalance,0.6256684491978609,0.5,0.7991452991452992,0.25,4.0,False
+TECHM,one-tick volatility scale,one_tick_return_std,0.0008667501064612,7.934774170661476e-05,0.09154627281279343,0.1,10.0,True
+ULTRACEMCO,median spread scale,median_spread_bps,2.584981258885873,2.5894213506421764,1.001717649495926,0.25,4.0,False
+ULTRACEMCO,tail spread scale,p90_spread_bps,4.316112046268722,5.155801888312441,1.1945477395031092,0.25,4.0,False
+ULTRACEMCO,displayed L1 depth scale,median_l1_depth,30.0,33.0,1.1,0.1,10.0,False
+ULTRACEMCO,displayed L5 depth scale,median_l5_depth,309.0,282.0,0.912621359223301,0.1,10.0,False
+ULTRACEMCO,L1 imbalance scale,median_abs_l1_imbalance,0.6666666666666666,0.42105263157894735,0.631578947368421,0.25,4.0,False
+ULTRACEMCO,one-tick volatility scale,one_tick_return_std,0.0004419039059071,7.263320683629e-05,0.16436425626787612,0.1,10.0,False
+WIPRO,median spread scale,median_spread_bps,2.227853756952737,2.2480902473344417,1.009083401600554,0.25,4.0,False
+WIPRO,tail spread scale,p90_spread_bps,3.408122692417056,3.909118577527213,1.147000542622733,0.25,4.0,False
+WIPRO,displayed L1 depth scale,median_l1_depth,1427.0,810.0,0.5676243868255081,0.1,10.0,False
+WIPRO,displayed L5 depth scale,median_l5_depth,14713.0,6885.0,0.46795351050091755,0.1,10.0,False
+WIPRO,L1 imbalance scale,median_abs_l1_imbalance,0.7019619685292031,0.384180790960452,0.5472957342196371,0.25,4.0,False
+WIPRO,one-tick volatility scale,one_tick_return_std,0.0005066272743296,8.569371121311648e-05,0.1691454754908559,0.1,10.0,False

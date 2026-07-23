@@ -1,0 +1,129 @@
+symbol,category,metric,real_value,synthetic_value,synthetic_to_real_ratio,lower_ratio_gate,upper_ratio_gate,calibration_gap,anchor_source,synthetic_source,gate_type,absolute_delta
+ADANIPORTS,rewired received tick cadence,median_gap_ms,1000.0,1000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ADANIPORTS,rewired tail received tick cadence,p90_gap_ms,4500.0,4500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ADANIPORTS,rewired tail received tick cadence,p95_gap_ms,5500.0,5500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ADANIPORTS,rewired received tick cadence distribution,gap_le_1s_fraction,0.5463449765934462,0.5320103032198558,0.9737625969163851,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.0143346733735904
+AXISBANK,rewired received tick cadence,median_gap_ms,501.0,501.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+AXISBANK,rewired tail received tick cadence,p90_gap_ms,2001.0,2001.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+AXISBANK,rewired tail received tick cadence,p95_gap_ms,4380.75,4381.0,1.000057067853678,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+AXISBANK,rewired received tick cadence distribution,gap_le_1s_fraction,0.7732668913967463,0.7511423770604446,0.9713882560051958,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.022124514336301693
+BAJAJ-AUTO,rewired received tick cadence,median_gap_ms,1000.0,1000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BAJAJ-AUTO,rewired tail received tick cadence,p90_gap_ms,4910.5,4910.0,0.9998981773750127,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BAJAJ-AUTO,rewired tail received tick cadence,p95_gap_ms,5939.25,5939.0,0.9999579071431578,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BAJAJ-AUTO,rewired received tick cadence distribution,gap_le_1s_fraction,0.5367063492063492,0.5162791979028161,0.9619397994196647,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.02042715130353312
+BANKBEES,rewired received tick cadence,median_gap_ms,999.0,999.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BANKBEES,rewired tail received tick cadence,p90_gap_ms,1255.0,1255.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BANKBEES,rewired tail received tick cadence,p95_gap_ms,4450.0,4450.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BANKBEES,rewired received tick cadence distribution,gap_le_1s_fraction,0.7697158486552196,0.7512449529606974,0.9760029682034053,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.018470895694522205
+BHARTIARTL,rewired received tick cadence,median_gap_ms,749.0,749.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BHARTIARTL,rewired tail received tick cadence,p90_gap_ms,3250.0,3250.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BHARTIARTL,rewired tail received tick cadence,p95_gap_ms,4762.399999999994,4762.0,0.9999160087350928,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BHARTIARTL,rewired received tick cadence distribution,gap_le_1s_fraction,0.7087785674114219,0.6883712013415829,0.9712076986972531,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.02040736606983895
+BPCL,rewired received tick cadence,median_gap_ms,1635.5,5239.0,3.203301742586365,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BPCL,rewired tail received tick cadence,p90_gap_ms,5239.400000000003,5239.0,0.9999236553803864,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BPCL,rewired tail received tick cadence,p95_gap_ms,6081.699999999999,6082.0,1.0000493283128074,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BPCL,rewired received tick cadence distribution,gap_le_1s_fraction,0.3921183188243003,0.3755820550849566,0.9578283825429915,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.016536263739343693
+BRITANNIA,rewired received tick cadence,median_gap_ms,2000.0,5923.0,2.9615,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BRITANNIA,rewired tail received tick cadence,p90_gap_ms,5923.0,5923.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BRITANNIA,rewired tail received tick cadence,p95_gap_ms,7000.799999999999,7001.0,1.0000285681636385,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+BRITANNIA,rewired received tick cadence distribution,gap_le_1s_fraction,0.3456891495601173,0.32867049623960287,0.9507689109068932,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.017018653320514443
+CIPLA,rewired received tick cadence,median_gap_ms,1378.0,5000.0,3.6284470246734397,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+CIPLA,rewired tail received tick cadence,p90_gap_ms,5000.0,5000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+CIPLA,rewired tail received tick cadence,p95_gap_ms,5953.9,5954.0,1.0000167957137338,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+CIPLA,rewired received tick cadence distribution,gap_le_1s_fraction,0.4382368016401845,0.42247797952834854,0.9640403953915883,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.01575882211183599
+DRREDDY,rewired received tick cadence,median_gap_ms,1250.0,4792.0,3.8336,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+DRREDDY,rewired tail received tick cadence,p90_gap_ms,4792.5,4792.0,0.9998956703182055,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+DRREDDY,rewired tail received tick cadence,p95_gap_ms,5750.0,5750.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+DRREDDY,rewired received tick cadence distribution,gap_le_1s_fraction,0.4612434725848564,0.4538589784728714,0.9839900301014527,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.007384494111984996
+GOLDBEES,rewired received tick cadence,median_gap_ms,750.0,750.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+GOLDBEES,rewired tail received tick cadence,p90_gap_ms,3999.0,3999.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+GOLDBEES,rewired tail received tick cadence,p95_gap_ms,5250.0,5250.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+GOLDBEES,rewired received tick cadence distribution,gap_le_1s_fraction,0.6672162948593598,0.6570343742800099,0.9847397003673356,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.010181920579349968
+HCLTECH,rewired received tick cadence,median_gap_ms,1000.0,1000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HCLTECH,rewired tail received tick cadence,p90_gap_ms,4500.0,4500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HCLTECH,rewired tail received tick cadence,p95_gap_ms,5324.849999999999,5325.0,1.0000281698076003,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HCLTECH,rewired received tick cadence distribution,gap_le_1s_fraction,0.5206416314349664,0.5007661750086495,0.9618250727058895,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.01987545642631694
+HINDUNILVR,rewired received tick cadence,median_gap_ms,1000.0,1000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HINDUNILVR,rewired tail received tick cadence,p90_gap_ms,4750.0,4750.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HINDUNILVR,rewired tail received tick cadence,p95_gap_ms,5859.449999999999,5859.0,0.9999232009830276,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HINDUNILVR,rewired received tick cadence distribution,gap_le_1s_fraction,0.5779003348434114,0.5632240218999292,0.9746040760688277,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.014676312943482261
+ICICIBANK,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ICICIBANK,rewired tail received tick cadence,p90_gap_ms,1001.0,1001.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ICICIBANK,rewired tail received tick cadence,p95_gap_ms,3403.0,3403.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ICICIBANK,rewired received tick cadence distribution,gap_le_1s_fraction,0.8969552609776305,0.8763802375671572,0.977061260125675,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.020575023410473237
+INFY,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+INFY,rewired tail received tick cadence,p90_gap_ms,2001.0,2001.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+INFY,rewired tail received tick cadence,p95_gap_ms,3922.15,3922.0,0.9999617556697219,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+INFY,rewired received tick cadence distribution,gap_le_1s_fraction,0.8290536342928142,0.8138287309732997,0.9816358041388945,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.015224903319514538
+ITBEES,rewired received tick cadence,median_gap_ms,2001.0,5829.0,2.9130434782608696,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ITBEES,rewired tail received tick cadence,p90_gap_ms,5828.900000000001,5829.0,1.0000171558956235,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ITBEES,rewired tail received tick cadence,p95_gap_ms,6911.049999999997,6911.0,0.999992765209339,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ITBEES,rewired received tick cadence distribution,gap_le_1s_fraction,0.3066136458769359,0.29741131246859437,0.9699872020306786,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.009202333408341534
+ITC,rewired received tick cadence,median_gap_ms,749.0,749.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ITC,rewired tail received tick cadence,p90_gap_ms,3752.800000000001,3753.0,1.0000532935408226,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ITC,rewired tail received tick cadence,p95_gap_ms,4815.399999999987,4815.0,0.9999169331727402,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ITC,rewired received tick cadence distribution,gap_le_1s_fraction,0.7275742916378715,0.7195701526421125,0.9889988705101984,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.008004138995758914
+JUNIORBEES,rewired received tick cadence,median_gap_ms,999.0,999.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+JUNIORBEES,rewired tail received tick cadence,p90_gap_ms,3347.7000000000016,3348.0,1.0000896137646738,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+JUNIORBEES,rewired tail received tick cadence,p95_gap_ms,4511.0,4511.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+JUNIORBEES,rewired received tick cadence distribution,gap_le_1s_fraction,0.7607160253287871,0.7509863976068819,0.9872099082996181,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.00972962772190522
+KOTAKBANK,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+KOTAKBANK,rewired tail received tick cadence,p90_gap_ms,3000.0,3000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+KOTAKBANK,rewired tail received tick cadence,p95_gap_ms,4051.2999999999993,4051.0,0.9999259496951598,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+KOTAKBANK,rewired received tick cadence distribution,gap_le_1s_fraction,0.8332975986277873,0.8136349327682149,0.976403789124136,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.019662665859572437
+LT,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+LT,rewired tail received tick cadence,p90_gap_ms,1001.0,1001.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+LT,rewired tail received tick cadence,p95_gap_ms,3367.0,3367.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+LT,rewired received tick cadence distribution,gap_le_1s_fraction,0.8857976338393387,0.8763850698455871,0.989373911563802,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.009412563993751677
+M&M,rewired received tick cadence,median_gap_ms,501.0,501.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+M&M,rewired tail received tick cadence,p90_gap_ms,1750.0,1750.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+M&M,rewired tail received tick cadence,p95_gap_ms,4285.449999999993,4285.0,0.9998949935246022,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+M&M,rewired received tick cadence distribution,gap_le_1s_fraction,0.8254338859055179,0.8137173974399415,0.9858056609188959,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.01171648846557638
+MARUTI,rewired received tick cadence,median_gap_ms,683.0,683.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+MARUTI,rewired tail received tick cadence,p90_gap_ms,2502.0,2502.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+MARUTI,rewired tail received tick cadence,p95_gap_ms,4212.0,4212.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+MARUTI,rewired received tick cadence distribution,gap_le_1s_fraction,0.7746207746207746,0.7667725755505127,0.9898683338642653,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.007848199070261908
+NESTLEIND,rewired received tick cadence,median_gap_ms,1251.0,5210.0,4.164668265387689,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+NESTLEIND,rewired tail received tick cadence,p90_gap_ms,5209.8,5210.0,1.000038389189604,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+NESTLEIND,rewired tail received tick cadence,p95_gap_ms,6232.4,6232.0,0.9999358192670561,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+NESTLEIND,rewired received tick cadence distribution,gap_le_1s_fraction,0.4375650364203954,0.42246094333670914,0.9654814900037515,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.015104093083686265
+NIFTYBEES,rewired received tick cadence,median_gap_ms,749.0,749.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+NIFTYBEES,rewired tail received tick cadence,p90_gap_ms,2751.8,2752.0,1.0000726797005595,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+NIFTYBEES,rewired tail received tick cadence,p95_gap_ms,4467.049999999999,4467.0,0.9999888069307487,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+NIFTYBEES,rewired received tick cadence distribution,gap_le_1s_fraction,0.7907018248338018,0.7822573954069391,0.9893203364888684,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.008444429426862743
+ONGC,rewired received tick cadence,median_gap_ms,750.0,750.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ONGC,rewired tail received tick cadence,p90_gap_ms,4001.0,4001.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ONGC,rewired tail received tick cadence,p95_gap_ms,5002.0,5002.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ONGC,rewired received tick cadence distribution,gap_le_1s_fraction,0.6639505316689782,0.641430138725721,0.9660812186012601,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.02252039294325725
+RELIANCE,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+RELIANCE,rewired tail received tick cadence,p90_gap_ms,1001.0,1001.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+RELIANCE,rewired tail received tick cadence,p95_gap_ms,2999.0,2999.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+RELIANCE,rewired received tick cadence distribution,gap_le_1s_fraction,0.8903781713738631,0.8763906463279764,0.9842903549350229,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.01398752504588674
+SBIN,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+SBIN,rewired tail received tick cadence,p90_gap_ms,2000.0,2000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+SBIN,rewired tail received tick cadence,p95_gap_ms,4257.699999999999,4258.0,1.0000704605773072,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+SBIN,rewired received tick cadence distribution,gap_le_1s_fraction,0.8250144908868423,0.8136941924335409,0.9862786671284612,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.011320298453301403
+SUNPHARMA,rewired received tick cadence,median_gap_ms,982.0,982.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+SUNPHARMA,rewired tail received tick cadence,p90_gap_ms,4577.0,4577.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+SUNPHARMA,rewired tail received tick cadence,p95_gap_ms,5483.999999999993,5484.0,1.0000000000000013,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+SUNPHARMA,rewired received tick cadence distribution,gap_le_1s_fraction,0.6000410705729345,0.5788906235790863,0.9647516677922509,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.02115044699384827
+TCS,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+TCS,rewired tail received tick cadence,p90_gap_ms,2000.0,2000.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+TCS,rewired tail received tick cadence,p95_gap_ms,4250.699999999999,4251.0,1.0000705766109115,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+TCS,rewired received tick cadence distribution,gap_le_1s_fraction,0.8194144232658676,0.7980948000114167,0.9739818794383932,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.021319623254450804
+TECHM,rewired received tick cadence,median_gap_ms,1238.5,4764.0,3.8465886152603956,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+TECHM,rewired tail received tick cadence,p90_gap_ms,4764.200000000001,4764.0,0.999958020234247,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+TECHM,rewired tail received tick cadence,p95_gap_ms,5806.099999999999,5806.0,0.9999827767348135,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+TECHM,rewired received tick cadence distribution,gap_le_1s_fraction,0.4718614718614718,0.4538567543449906,0.9618432133366316,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.018004717516481195
+ULTRACEMCO,rewired received tick cadence,median_gap_ms,2000.0,5569.0,2.7845,0.5,2.0,True,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ULTRACEMCO,rewired tail received tick cadence,p90_gap_ms,5569.4,5569.0,0.9999281789779869,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ULTRACEMCO,rewired tail received tick cadence,p95_gap_ms,6772.599999999999,6773.0,1.0000590615125655,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+ULTRACEMCO,rewired received tick cadence distribution,gap_le_1s_fraction,0.3112397684168497,0.29741619319218804,0.9555854468888196,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.013823575224661655
+WIPRO,rewired received tick cadence,median_gap_ms,751.0,751.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+WIPRO,rewired tail received tick cadence,p90_gap_ms,4227.0,4227.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+WIPRO,rewired tail received tick cadence,p95_gap_ms,5142.199999999997,5142.0,0.9999611061413408,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+WIPRO,rewired received tick cadence distribution,gap_le_1s_fraction,0.6017467248908297,0.5945329460824363,0.9880119350716831,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,-0.007213778808393356
+HDFCBANK,rewired received tick cadence,median_gap_ms,500.0,500.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HDFCBANK,rewired tail received tick cadence,p90_gap_ms,1000.0,500.0,0.5,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HDFCBANK,rewired tail received tick cadence,p95_gap_ms,1250.0,1250.0,1.0,0.5,2.0,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,ratio,
+HDFCBANK,rewired received tick cadence distribution,gap_le_1s_fraction,0.9219645141554036,0.9372873493139722,1.0166197667299652,-0.2,0.2,False,phase154_full_partition_via_phase155_phase157,phase156_symbol_tail_cadence_smoke,absolute_delta,0.015322835158568582

@@ -1,0 +1,21 @@
+metric,value,description
+phase162_profile_id,P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE,Distributional cadence profile materialized
+phase162_requested_max_months,0,0 means all local compact months
+phase162_months_materialized,12,Synthetic months materialized locally
+phase162_symbols_materialized,32,Symbols materialized
+phase162_partition_files,384,Dense partition files written
+phase162_expected_partition_files,384,Expected month/symbol shards from observed scope
+phase162_missing_partition_files,0,Missing month/symbol shards
+phase162_dense_rows,192786816,Dense rows materialized
+phase162_dense_bytes,4141341739,Compressed dense bytes
+phase162_elapsed_seconds,610.8194764999935,Materialization and audit elapsed seconds
+phase162_combined_anchor_metric_rows,320,Combined cadence plus generated non-cadence rows
+phase162_combined_gap_rows,12,Combined rows outside gates
+phase162_combined_gap_fraction,0.0375,Combined full-year gap fraction
+phase162_combined_severe_metric_gap_count,0,Combined metrics with gap_fraction > 0.50
+phase162_cadence_gap_rows,8,Cadence gaps from full-year distributional audit
+phase162_generated_noncadence_gap_rows,4,Generated non-cadence gaps from full-year parquet
+phase162_full_year_realism_audit_pass,1,1 means full-year materialization/audit passes
+phase162_strategy_replay_allowed,0,Strategy replay remains closed
+phase162_azure_read_policy,forbidden_for_analysis_download_first_then_local,No Python direct Azure scanning in this phase
+phase162_next_best_action,review_full_year_materialization_then_prepare_synthetic_only_replay_preflight_if_accepted,Recommended next milestone

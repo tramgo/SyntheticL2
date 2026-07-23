@@ -1,0 +1,5 @@
+category,metric,anchor_source,symbol_metrics,gap_count,gap_fraction,median_synthetic_to_real_ratio,min_synthetic_to_real_ratio,max_synthetic_to_real_ratio
+rewired received tick cadence,median_gap_ms,phase154_full_partition_via_phase155_phase157,32,8,0.25,1.0,1.0,4.164668265387689
+rewired received tick cadence distribution,gap_le_1s_fraction,phase154_full_partition_via_phase155_phase157,32,0,0.0,0.9753035221361165,0.9507689109068932,1.0166197667299652
+rewired tail received tick cadence,p90_gap_ms,phase154_full_partition_via_phase155_phase157,32,0,0.0,1.0,0.5,1.0000896137646738
+rewired tail received tick cadence,p95_gap_ms,phase154_full_partition_via_phase155_phase157,32,0,0.0,1.0,0.9998949935246022,1.0000705766109115

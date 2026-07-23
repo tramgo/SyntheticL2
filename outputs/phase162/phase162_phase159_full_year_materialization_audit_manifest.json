@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-23T10:37:17.230550+00:00",
+  "scope": "phase162_phase159_full_year_materialization_audit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "33d4bf942377c97592a929d741e6c818be7be4eb",
+  "configuration_hash": "e8c68d1b2f2be79f34e33a4f638f828e9b0367fbcf8fcea8f411e455dbe58897",
+  "random_seed": "none_deterministic_phase162_full_year_distributional",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase162_phase159_distributional_full_year_materialization",
+  "cost_model_version": "not_applicable",
+  "latency_model_version": "not_applicable_no_execution",
+  "creation_timestamp": "2026-07-23T10:37:17.230550+00:00"
+}

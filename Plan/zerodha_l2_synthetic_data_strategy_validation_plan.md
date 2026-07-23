@@ -4075,6 +4075,49 @@ Current Phase161 broader materialization plan:
 
 Current Phase161 interpretation: the bounded generated shard passes the combined realism handoff gate, but it is not enough to reopen strategy replay. The next milestone is broader 12-month materialization with the Phase159 distributional cadence profile, followed by rerunning the combined audit on that broader generated dataset.
 
+Phase162 Phase159 full-year materialization audit is implemented under `outputs/phase162/`.
+
+**Runner:** `python scripts/run_phase162_phase159_full_year_materialization_audit.py --max-months 0`
+
+**Purpose:** materialize the Phase159 distributional cadence profile across the full local compact synthetic year, then rerun cadence plus generated non-cadence realism checks on the broader generated parquet dataset. Phase162 is explicitly local/download-first: it does not stream Azure files through Python, does not run strategy replay, does not simulate fills or P&L, and does not make profitability claims.
+
+Current Phase162 evidence records:
+
+- profile id: `P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE`;
+- months materialized: 12;
+- symbols materialized: 32;
+- dense month/symbol partition files: 384;
+- expected partition files: 384;
+- missing partition files: 0;
+- dense rows materialized: 192,786,816;
+- compressed dense bytes: 4,141,341,739;
+- elapsed seconds: 610.819;
+- combined cadence plus generated non-cadence anchor rows: 320;
+- combined gap rows: 12;
+- combined gap fraction: 0.0375;
+- combined severe metric gap count: 0;
+- cadence gap rows: 8;
+- generated non-cadence gap rows: 4;
+- full-year realism audit pass: 1;
+- strategy replay allowed: 0;
+- Azure read policy: `forbidden_for_analysis_download_first_then_local`;
+- next best action: `review_full_year_materialization_then_prepare_synthetic_only_replay_preflight_if_accepted`.
+
+Current Phase162 combined metric gate:
+
+- `median_gap_ms`: 8 / 32 cadence gaps, gap fraction 0.25, metric gate pass 1;
+- `one_tick_return_std`: 4 / 32 generated non-cadence gaps, gap fraction 0.125, metric gate pass 1;
+- `gap_le_1s_fraction`: 0 / 32 cadence gaps;
+- `p90_gap_ms`: 0 / 32 cadence gaps;
+- `p95_gap_ms`: 0 / 32 cadence gaps;
+- `median_spread_bps`: 0 / 32 generated non-cadence gaps;
+- `p90_spread_bps`: 0 / 32 generated non-cadence gaps;
+- `median_l1_depth`: 0 / 32 generated non-cadence gaps;
+- `median_l5_depth`: 0 / 32 generated non-cadence gaps;
+- `median_abs_l1_imbalance`: 0 / 32 generated non-cadence gaps.
+
+Current Phase162 interpretation: the broader 12-month local materialization replaces the Phase161 one-month smoke with full-year generated parquet evidence. The broader realism audit passes with a 3.75% combined gap fraction and zero severe metric gaps. This is a generator/materialization acceptance result only. It keeps `strategy_replay_allowed=0`; the next milestone should be a review/preflight checkpoint that decides whether a synthetic-only strategy replay may be opened under the already-agreed synthetic-only acceptance path.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`
