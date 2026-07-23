@@ -1,0 +1,6 @@
+guardrail_id,requirement,enforcement
+P132_PHASE131_FEATURES_ONLY,Only Phase131 precommitted top-five-depth features may be evaluated.,Feature list is fixed in source from phase131_feature_catalog.csv.
+P132_PHASE130_SPLIT_REUSED,Use the Phase130 chronological train/holdout split.,phase130_split is carried from outputs/phase130/phase130_split_label_matrix.csv.
+P132_SIMPLE_MODELS_ONLY,Fit only single-feature thresholds and simple two-feature threshold combinations.,No model family outside prior/single_feature_threshold/two_feature_threshold_combo is emitted.
+P132_KILL_SWITCH,Close branch if no feature beats Phase130 baseline by the Phase131 Brier margin.,kill_switch_summary.csv records the branch outcome.
+P132_NO_REPLAY,"No strategy code, order simulation, P&L replay or profitability claim.",forbidden_outputs=strategy_code;buy_sell_signal;order_arrival_stream;live_tagged_fill_model;pnl_replay;profitability_claim; strategy_replay_allowed=0.

@@ -1,0 +1,10 @@
+gate_id,gate_pass,evidence
+P132_FEATURE_MATRIX_EXISTS,1,feature_matrix_rows=228
+P132_RAW_DEPTH_COVERAGE,1,contexts_with_raw_rows=228
+P132_PHASE130_SPLIT_PRESENT,1,splits=holdout;train
+P132_RESULTS_EXIST,1,diagnostic_result_rows=711
+P132_MODEL_FAMILIES_ALLOWED,1,model_families=prior;single_feature_threshold;two_feature_threshold_combo
+P132_SELECTION_ROWS_EXIST,1,selection_rows=3
+P132_BRANCH_OUTCOME_DECLARED,1,kill_switch_fired=1
+P132_PHASE116_BLOCKLIST_UPDATED_IF_KILLED,1,blocklist_entry_present=1
+P132_NO_REPLAY,1,strategy_replay_allowed remains 0

@@ -1,0 +1,2 @@
+branch_id,kill_switch_fired,surviving_feature_rows,labels_cleared,blocklist_entry_required,next_phase_allowed,strategy_replay_allowed,why
+PHASE132_TOP_FIVE_DEPTH_LABEL_LIFT,1,0,0,DEEP_BOOK_LABEL_LIFT = falsified,none_skip_phase133_136,0,no top-five-depth feature beat Phase130 baseline by the precommitted Brier margin

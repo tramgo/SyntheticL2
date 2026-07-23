@@ -3430,6 +3430,37 @@ The Phase131 acceptance summary currently records:
 
 If at least one Phase131 feature clears the lift requirement, the surviving features are promoted to Phase133.
 
+**Current implementation status as of 2026-07-23:** Phase132 is implemented and the kill-switch fired. Generated artifacts are under `outputs/phase132/`:
+
+- `top_five_depth_feature_matrix.csv`
+- `feature_diagnostic_results.csv`
+- `feature_model_selection.csv`
+- `surviving_features.csv`
+- `kill_switch_summary.csv`
+- `phase116_blocklist_update_verification.csv`
+- `phase132_guardrails.csv`
+- `phase132_gate_evaluation.csv`
+- `phase132_deep_book_feature_diagnostics_acceptance_summary.csv`
+- `phase132_deep_book_feature_diagnostics_report.md`
+- `phase132_deep_book_feature_diagnostics_manifest.json`
+
+The Phase132 run scanned the compact monthly raw top-five-depth lake, aggregated the Phase131 feature catalog by the 228 allowed Phase129 symbol-month contexts, reused the Phase130 172/56 chronological split, and evaluated 711 prior/single-feature/two-feature diagnostic rows. No Phase131 top-five-depth feature beat the corresponding Phase130 top-of-book/context baseline by the precommitted Brier margin of 0.005:
+
+- regime stability: best Phase132 Brier `0.254286` versus Phase130 reference `0.082857`;
+- liquidity opportunity: best Phase132 Brier `0.072143` versus Phase130 reference `0.072143`;
+- cost-toxicity refinement: best Phase132 Brier `0.147143` versus Phase130 reference `0.104286`.
+
+Therefore:
+
+- `phase132_surviving_feature_rows = 0`;
+- `phase132_labels_cleared_brier_lift = 0`;
+- `phase132_kill_switch_fired = 1`;
+- Phase133-136 are skipped for this branch;
+- `outputs/phase116/strategy_replay_blocklist.csv` now includes `DEEP_BOOK_LABEL_LIFT`;
+- `strategy_replay_allowed` remains `0`.
+
+The branch conclusion is clean falsification of the synthetic-only top-five-depth label-lift surface. The correct next action is not another synthetic strategy branch; further strategy work waits on real Zerodha L2 anchor acquisition through Phases113-115 or a separately precommitted plan outside this closed branch.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

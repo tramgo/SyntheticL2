@@ -1,0 +1,18 @@
+{
+  "generated_utc": "2026-07-23T06:17:44.290615+00:00",
+  "scope": "phase132_top_five_depth_feature_diagnostics",
+  "strategy_replay_allowed": 0,
+  "kill_switch_fired": 1,
+  "forbidden_outputs": "strategy_code;buy_sell_signal;order_arrival_stream;live_tagged_fill_model;pnl_replay;profitability_claim",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "889b7262d5f48963cdacada21f0c4c824dd6dce7",
+  "configuration_hash": "7d070485d7753440a7b87f71939869a8d5e75127714c71e527dab83938db9071",
+  "random_seed": "none_deterministic_threshold_diagnostics",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase132_top_five_depth_label_diagnostics",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "not_applicable_label_diagnostics",
+  "creation_timestamp": "2026-07-23T06:17:44.290615+00:00"
+}

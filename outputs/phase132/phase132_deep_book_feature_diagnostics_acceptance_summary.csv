@@ -1,0 +1,14 @@
+metric,value,description
+phase132_feature_matrix_rows,228,Allowed Phase129 contexts with top-five-depth feature aggregates
+phase132_diagnostic_result_rows,711,Prior/single-feature/two-feature diagnostic evaluations
+phase132_selection_rows,3,Label-level model selection rows
+phase132_surviving_feature_rows,0,Feature/label rows promoted to Phase133 if kill-switch is false
+phase132_labels_cleared_brier_lift,0,Labels where Phase131 feature diagnostics beat Phase130 baseline by margin
+phase132_brier_lift_margin,0.005,Precommitted Brier lift margin from Phase131
+phase132_kill_switch_fired,1,1 means close branch at Phase132 and skip Phase133-136
+phase132_phase116_blocklist_entry_present,1,1 means Phase116 blocklist contains the Phase132 deep-book label-lift falsification row
+phase132_gate_rows,9,Gates evaluated
+phase132_all_gates_pass,1,1 means Phase132 diagnostics are self-consistent
+phase132_strategy_replay_allowed,0,Strategy replay remains closed
+phase132_next_best_action,stop_update_phase116_blocklist,Recommended next milestone
+phase132_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned cost model retained for audit continuity
