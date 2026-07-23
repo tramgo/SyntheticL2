@@ -1,0 +1,12 @@
+metric,value,description
+phase158_phase157_rewire_ready,1,Inherited Phase157 cadence rewire readiness
+phase158_symbols_compared,32,Symbols present in full rewired realism audit
+phase158_anchor_metric_rows,320,Symbol/metric anchor rows compared
+phase158_calibration_gap_rows,87,Rows outside Phase158 gates
+phase158_calibration_gap_fraction,0.271875,Fraction of rows outside Phase158 gates
+phase158_severe_metric_gap_count,2,Metrics with gap_fraction > 50%
+phase158_cadence_gap_rows,56,Cadence rows outside full-partition cadence gates
+phase158_non_cadence_gap_rows,31,Preserved non-cadence rows outside existing gates
+phase158_full_rewired_realism_pass,0,1 means full rewired realism audit passes
+phase158_strategy_replay_allowed,0,Strategy replay remains closed
+phase158_next_best_action,fix_phase158_remaining_distributional_cadence_depth_imbalance_gaps_before_strategy_replay,Recommended next milestone

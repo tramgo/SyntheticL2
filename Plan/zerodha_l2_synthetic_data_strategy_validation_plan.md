@@ -3945,6 +3945,39 @@ Current Phase157 cadence metric source contract:
 
 Current Phase157 interpretation: the cadence rewire is ready for future Phase106-style audits, but only for cadence metrics. The old sampled Phase106 cadence anchor remains stale and must not be used for future cadence calibration. The next milestone should run a Phase106-style full realism audit using the Phase157 cadence contract while preserving the existing non-cadence gates.
 
+Phase158 Phase106-style full realism audit with rewired cadence is implemented under `outputs/phase158/`.
+
+**Runner:** `python scripts/run_phase158_phase106_style_full_realism_audit.py`
+
+**Purpose:** rerun the Phase106-style realism decision using Phase157 full-partition cadence anchors for cadence metrics and preserving the existing Phase106 non-cadence gates for spread, depth, imbalance, and one-tick volatility. Phase158 is an audit only: no Azure reads, no strategy replay, no fills, and no P&L.
+
+Current Phase158 evidence records:
+
+- inherited Phase157 cadence rewire ready: 1;
+- symbols compared: 32;
+- symbol/metric anchor rows compared: 320;
+- calibration gap rows: 87;
+- calibration gap fraction: 0.271875;
+- severe metric gap count: 2;
+- cadence gap rows: 56;
+- preserved non-cadence gap rows: 31;
+- full rewired realism pass: 0;
+- strategy replay allowed: 0;
+- next best action: `fix_phase158_remaining_distributional_cadence_depth_imbalance_gaps_before_strategy_replay`.
+
+Current Phase158 gap summary:
+
+- `p95_gap_ms`: 0 / 32 gaps after Phase156/157, confirming the p95 full-partition cadence target was fixed;
+- `p90_gap_ms`: 31 / 32 gaps, meaning Phase156 pins p95 but leaves the p90 cadence distribution too dense;
+- `gap_le_1s_fraction`: 17 / 32 gaps, meaning the frequency of sub-1-second updates is still not distributionally realistic;
+- `median_gap_ms`: 8 / 32 gaps, mainly slower symbols still pinned too close to the 500 ms dense baseline;
+- `median_abs_l1_imbalance`: 15 / 32 gaps;
+- `median_l5_depth`: 9 / 32 gaps;
+- `median_l1_depth`: 7 / 32 gaps;
+- `median_spread_bps`, `p90_spread_bps`, and `one_tick_return_std`: 0 / 32 gaps under preserved gates.
+
+Current Phase158 interpretation: the p95 cadence repair worked, but full realism still fails. The next generator milestone should implement a distributional cadence model that matches p90, p95, median gap, and gap<=1s frequency together, while preserving the p95 repair and then revisiting the remaining depth/imbalance blockers. Strategy replay remains closed.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

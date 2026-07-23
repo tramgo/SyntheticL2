@@ -1,0 +1,7 @@
+priority,metric,work_item,gap_count,gap_fraction,rationale
+1,p90_gap_ms,add_distributional_tail_cadence_model_not_only_p95_point_target,31,0.96875,Phase156 pins p95 but leaves p90 too dense for many symbols.
+2,gap_le_1s_fraction,calibrate_idle_gap_frequency_to_match_gap_distribution,17,0.53125,Phase156 p95 idle gaps reduce dense-overstatement but the <=1s fraction remains too high/low for part of the universe.
+3,median_abs_l1_imbalance,revisit_l1_imbalance_floor_and_side_skew_model,15,0.46875,Existing imbalance gates are preserved and remain a broad non-cadence blocker.
+4,median_l5_depth,revisit_symbol_depth_scale_overrides_with_full_partition_non_cadence_anchors,9,0.28125,Existing non-cadence depth gates are preserved and still show symbol failures.
+5,median_gap_ms,calibrate_symbol_median_cadence_without_breaking_p95_targets,8,0.25,Phase156 pins p95 but keeps median gaps at the dense 500ms baseline for slower symbols.
+6,median_l1_depth,revisit_symbol_depth_scale_overrides_with_full_partition_non_cadence_anchors,7,0.21875,Existing non-cadence depth gates are preserved and still show symbol failures.
