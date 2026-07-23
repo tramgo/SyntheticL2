@@ -1,0 +1,12 @@
+metric,value,description
+phase133_hard_gate_rows,5,Hard execution-model gates evaluated
+phase133_hard_gate_pass_rows,5,Hard execution-model gates passed
+phase133_contract_created,1,Pinned execution contract emitted
+phase133_phase132_kill_switch_fired,1,Inherited Phase132 kill-switch flag
+phase133_phase132_surviving_feature_rows,0,Inherited Phase132 surviving feature rows
+phase133_phase89_sanity_rows,54,Phase89 fill-assumption rows re-evaluated under Phase133 fill model
+phase133_best_sanity_test_expected_net_pnl_inr,-23942.05700950801,Best Phase133 sanity replay expected test PnL
+phase133_worst_sanity_test_expected_net_pnl_inr,-2245206.1422007717,Worst Phase133 sanity replay expected test PnL
+phase133_phase134_open_allowed,0,1 means Phase134 precommit may open
+phase133_strategy_replay_allowed,0,Phase133 never unlocks strategy replay
+phase133_next_best_action,stop_update_phase116_blocklist_do_not_open_phase134,Recommended next milestone

@@ -1,0 +1,124 @@
+{
+  "contract_version": "phase133_retail_passive_visible_depth_fill_model_v1_2026_07_23",
+  "created_utc": "2026-07-23T08:39:33.569024+00:00",
+  "scope": "retail_passive_visible_top_five_market_by_price_execution_model",
+  "terminology": {
+    "market_data_scope": "Zerodha WebSocket Level-2/top-five market-by-price depth",
+    "book_depth_levels": "depth_level_1..depth_level_5 are visible aggregated bid/ask price levels, not market-data L1-L5 tiers",
+    "queue_position_limit": "true exchange queue position is unobserved and modelled conservatively"
+  },
+  "zerodha_cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "phase132_kill_switch_fired": 1,
+  "phase132_surviving_feature_rows": 0,
+  "phase134_open_allowed": false,
+  "model_inputs": {
+    "phase6_generator_anchor_source": "outputs/phase133/phase133_phase6_generator_anchor.csv",
+    "cancel_intensity_source": "outputs/phase132/top_five_depth_feature_matrix.csv",
+    "latency_distribution_source": "phase133_contract_static_retail_distribution",
+    "fill_probability_catalog_source": "outputs/phase133/phase133_fill_probability_catalog.csv"
+  },
+  "phase6_generator_anchor": [
+    {
+      "anchor_id": "phase6_generator_event_depth_anchor",
+      "source_rows": 453600,
+      "book_state_update_fraction": 0.8740630511463845,
+      "spread_widening_fraction": 0.08574514991181657,
+      "best_price_shift_fraction": 0.025081569664903,
+      "median_event_intensity_proxy": 1.4008182596910008,
+      "median_l5_quantity": 398.5,
+      "fill_probability_scale": 1.25
+    }
+  ],
+  "latency_distribution": [
+    {
+      "quantile": "p01",
+      "latency_ms": 25,
+      "description": "best_case_local_stack_but_not_zero_latency"
+    },
+    {
+      "quantile": "p05",
+      "latency_ms": 50,
+      "description": "lower_tail_retail_websocket_to_order_path"
+    },
+    {
+      "quantile": "p25",
+      "latency_ms": 90,
+      "description": "fast_retail_path"
+    },
+    {
+      "quantile": "p50",
+      "latency_ms": 175,
+      "description": "central_mass"
+    },
+    {
+      "quantile": "p75",
+      "latency_ms": 300,
+      "description": "central_mass_upper"
+    },
+    {
+      "quantile": "p90",
+      "latency_ms": 550,
+      "description": "fat_right_tail"
+    },
+    {
+      "quantile": "p95",
+      "latency_ms": 900,
+      "description": "fat_right_tail"
+    },
+    {
+      "quantile": "p99",
+      "latency_ms": 1750,
+      "description": "pathological_retail_network_or_app_delay"
+    }
+  ],
+  "cancel_intensity_by_depth_level": [
+    {
+      "depth_level": 1,
+      "cancel_intensity_source": "phase132_top_five_depth_feature_matrix.p131_mean_cancel_intensity_depth_levels_2_5",
+      "cancel_intensity_mean": 0.5366685584796768,
+      "cancel_intensity_p50": 0.48688526447303604,
+      "cancel_intensity_p90": 0.938666424468179,
+      "cancel_intensity_multiplier": 1.4138524748020806
+    },
+    {
+      "depth_level": 2,
+      "cancel_intensity_source": "phase132_top_five_depth_feature_matrix.p131_mean_cancel_intensity_depth_levels_2_5",
+      "cancel_intensity_mean": 0.5366685584796768,
+      "cancel_intensity_p50": 0.48688526447303604,
+      "cancel_intensity_p90": 0.938666424468179,
+      "cancel_intensity_multiplier": 1.486885264473036
+    },
+    {
+      "depth_level": 3,
+      "cancel_intensity_source": "phase132_top_five_depth_feature_matrix.p131_mean_cancel_intensity_depth_levels_2_5",
+      "cancel_intensity_mean": 0.5366685584796768,
+      "cancel_intensity_p50": 0.48688526447303604,
+      "cancel_intensity_p90": 0.938666424468179,
+      "cancel_intensity_multiplier": 1.5
+    },
+    {
+      "depth_level": 4,
+      "cancel_intensity_source": "phase132_top_five_depth_feature_matrix.p131_mean_cancel_intensity_depth_levels_2_5",
+      "cancel_intensity_mean": 0.5366685584796768,
+      "cancel_intensity_p50": 0.48688526447303604,
+      "cancel_intensity_p90": 0.938666424468179,
+      "cancel_intensity_multiplier": 1.5
+    },
+    {
+      "depth_level": 5,
+      "cancel_intensity_source": "phase132_top_five_depth_feature_matrix.p131_mean_cancel_intensity_depth_levels_2_5",
+      "cancel_intensity_mean": 0.5366685584796768,
+      "cancel_intensity_p50": 0.48688526447303604,
+      "cancel_intensity_p90": 0.938666424468179,
+      "cancel_intensity_multiplier": 1.5
+    }
+  ],
+  "fill_probability_formula": "clip(0.65*phase6_fill_probability_scale*queue_factor*exp(-latency_ms/(325+40*depth_level))*depth_factor*cancel_intensity_multiplier,0.005,0.60)",
+  "guardrails": [
+    "no_new_strategies",
+    "no_order_arrival_stream",
+    "no_live_tagged_fill_model",
+    "no_pnl_replay_promotion",
+    "phase134_remains_closed_when_phase132_kill_switch_fired"
+  ]
+}

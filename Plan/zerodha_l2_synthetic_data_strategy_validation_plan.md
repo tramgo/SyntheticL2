@@ -3694,6 +3694,49 @@ For local validation without touching Azure:
 
 **Acceptance:** no new strategies. The phase ships the execution model and validates that its Phase89 sanity replay remains directionally consistent with prior passive-expense evidence. If the sanity replay contradicts Phase89 directionally, Phase134 must not open.
 
+**Current implementation evidence:** Phase133 is implemented and executed under `outputs/phase133/`.
+
+Current outputs include:
+
+- `phase133_execution_contract.json`;
+- `phase133_phase6_generator_anchor.csv`;
+- `phase133_latency_distribution.csv`;
+- `phase133_cancel_intensity_inputs.csv`;
+- `phase133_fill_probability_catalog.csv`;
+- `phase133_phase89_sanity_replay.csv`;
+- `phase133_gate_evaluation.csv`;
+- `phase133_passive_execution_model_upgrade_acceptance_summary.csv`;
+- `phase133_passive_execution_model_upgrade_report.md`;
+- `phase133_passive_execution_model_upgrade_manifest.json`.
+
+Current Phase133 evidence records:
+
+- hard gates evaluated: 5;
+- hard gates passed: 5;
+- pinned execution contract created: 1;
+- inherited Phase132 kill-switch fired: 1;
+- inherited Phase132 surviving feature rows: 0;
+- Phase89 sanity rows re-evaluated: 54;
+- best Phase133 sanity test expected net P&L: `-23,942.0570 INR`;
+- worst Phase133 sanity test expected net P&L: `-2,245,206.1422 INR`;
+- Phase134 open allowed: 0;
+- strategy replay allowed: 0;
+- next best action: `stop_update_phase116_blocklist_do_not_open_phase134`.
+
+The contract explicitly uses the correct terminology: Zerodha scope is Level-2/top-five market-by-price data, while `depth_level_1..depth_level_5` are visible aggregated book price levels, not L1-L5 market-data tiers.
+
+The Phase6 generator anchor records:
+
+- source rows: 453,600;
+- book-state-update fraction: 0.874063;
+- spread-widening fraction: 0.085745;
+- best-price-shift fraction: 0.025082;
+- median event-intensity proxy: 1.400818;
+- median L5 quantity: 398.5;
+- capped fill-probability scale: 1.25.
+
+Phase133 therefore improves the simulator execution contract, but it does **not** revive the Phase132-killed deep-book strategy branch.
+
 ### Phase 134 — Precommitted Top-Five-Depth Passive Strategy Family
 
 **Runner:** `scripts/run_phase134_deep_book_passive_strategy_precommit.py`

@@ -1,0 +1,9 @@
+quantile,latency_ms,description
+p01,25,best_case_local_stack_but_not_zero_latency
+p05,50,lower_tail_retail_websocket_to_order_path
+p25,90,fast_retail_path
+p50,175,central_mass
+p75,300,central_mass_upper
+p90,550,fat_right_tail
+p95,900,fat_right_tail
+p99,1750,pathological_retail_network_or_app_delay
