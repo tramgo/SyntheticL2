@@ -1,0 +1,11 @@
+category,metric,anchor_source,symbol_metrics,gap_count,gap_fraction,median_synthetic_to_real_ratio,min_synthetic_to_real_ratio,max_synthetic_to_real_ratio
+L1 imbalance scale,median_abs_l1_imbalance,phase106_existing_non_cadence_real_anchor,32,15,0.46875,0.27286865428951584,0.0,1.081185711351801
+displayed L1 depth scale,median_l1_depth,phase106_existing_non_cadence_real_anchor,32,7,0.21875,2.1415529659359955,0.0059658414663175,26.933333333333334
+displayed L5 depth scale,median_l5_depth,phase106_existing_non_cadence_real_anchor,32,9,0.28125,1.6364325040210674,0.0031670588705411,22.22653721682848
+median spread scale,median_spread_bps,phase106_existing_non_cadence_real_anchor,32,0,0.0,1.0049759052758307,0.7511766666397123,1.9995836610075408
+one-tick volatility scale,one_tick_return_std,phase106_existing_non_cadence_real_anchor,32,0,0.0,0.26584059216591,0.1217341553586687,0.5969247435597921
+rewired received tick cadence,median_gap_ms,phase154_full_partition_via_phase155_phase157,32,8,0.25,1.0,1.0,4.164668265387689
+rewired received tick cadence distribution,gap_le_1s_fraction,phase154_full_partition_via_phase155_phase157,32,0,0.0,0.9752990348048384,0.9507303281303728,1.016608409352472
+rewired tail received tick cadence,p90_gap_ms,phase154_full_partition_via_phase155_phase157,32,0,0.0,1.0,0.5,1.0000896137646738
+rewired tail received tick cadence,p95_gap_ms,phase154_full_partition_via_phase155_phase157,32,0,0.0,1.0,0.9998949935246022,1.0000705766109115
+tail spread scale,p90_spread_bps,phase106_existing_non_cadence_real_anchor,32,0,0.0,1.1364315052523195,0.9851941694870734,1.357545362979295

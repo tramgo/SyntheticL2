@@ -1,0 +1,18 @@
+metric,value,description
+phase159_profile_id,P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE,Distributional cadence profile smoke-tested
+phase159_base_profile_id,P156_FULL_PARTITION_SYMBOL_TAIL_CADENCE,Base generator profile inherited
+phase159_smoke_symbols,32,Symbols in distributional cadence smoke
+phase159_smoke_dense_rows,16838528,Dense rows materialized
+phase159_smoke_bytes,357615839,Compressed dense smoke bytes
+phase159_elapsed_seconds,52.2428685999912,Dense smoke elapsed seconds
+phase158_phase157_rewire_ready,1,Inherited Phase157 cadence rewire readiness
+phase158_symbols_compared,32,Symbols present in full rewired realism audit
+phase158_anchor_metric_rows,320,Symbol/metric anchor rows compared
+phase158_calibration_gap_rows,39,Rows outside Phase158 gates
+phase158_calibration_gap_fraction,0.121875,Fraction of rows outside Phase158 gates
+phase158_severe_metric_gap_count,0,Metrics with gap_fraction > 50%
+phase158_cadence_gap_rows,8,Cadence rows outside full-partition cadence gates
+phase158_non_cadence_gap_rows,31,Preserved non-cadence rows outside existing gates
+phase158_full_rewired_realism_pass,1,1 means full rewired realism audit passes
+phase158_strategy_replay_allowed,0,Strategy replay remains closed
+phase158_next_best_action,fix_phase158_remaining_distributional_cadence_depth_imbalance_gaps_before_strategy_replay,Recommended next milestone

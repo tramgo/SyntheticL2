@@ -25,6 +25,7 @@ class GeneratorCalibrationProfile:
     symbol_l1_imbalance_min_abs_overrides: Mapping[str, float] | None = None
     symbol_tail_gap_multiplier_overrides: Mapping[str, float] | None = None
     symbol_dense_p95_gap_ms_overrides: Mapping[str, float] | None = None
+    symbol_dense_gap_distribution_overrides: Mapping[str, Mapping[str, float]] | None = None
 
     def to_manifest(self) -> dict[str, float | str]:
         return asdict(self)

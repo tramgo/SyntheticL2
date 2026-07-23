@@ -14,6 +14,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from synthetic_l2.generator_calibration_profiles import get_calibration_profile
+from synthetic_l2.generator_calibration_profiles import GeneratorCalibrationProfile
 from synthetic_l2.phase25_event_replay_expansion import _markdown_table
 from synthetic_l2.phase49_dense_tick_rate_expansion import compact_files, densify_frame, read_month
 from synthetic_l2.reproducibility import reproducibility_fields
@@ -67,11 +68,12 @@ def materialize_smoke(
     multiplier: int,
     max_months: int,
     profile_id: str,
+    calibration_profile: GeneratorCalibrationProfile | None = None,
 ) -> tuple[pd.DataFrame, float]:
     if output_root.exists():
         shutil.rmtree(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
-    profile = get_calibration_profile(profile_id)
+    profile = calibration_profile or get_calibration_profile(profile_id)
     selected_files = compact_files(compact_root)
     if max_months > 0:
         selected_files = selected_files[:max_months]

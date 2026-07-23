@@ -3978,6 +3978,41 @@ Current Phase158 gap summary:
 
 Current Phase158 interpretation: the p95 cadence repair worked, but full realism still fails. The next generator milestone should implement a distributional cadence model that matches p90, p95, median gap, and gap<=1s frequency together, while preserving the p95 repair and then revisiting the remaining depth/imbalance blockers. Strategy replay remains closed.
 
+Phase159 distributional cadence smoke is implemented under `outputs/phase159/`.
+
+**Runner:** `python scripts/run_phase159_distributional_cadence_smoke.py`
+
+**Purpose:** implement and bounded-smoke a distributional cadence model that allocates deterministic dense subtick gaps to Phase155 median, p90, p95, and gap<=1s targets, instead of pinning p95 alone. Phase159 inherits the Phase156 profile as its base, adds `symbol_dense_gap_distribution_overrides`, and keeps the audit local-only: no Azure reads, no strategy replay, no fills, and no P&L.
+
+Current Phase159 evidence records:
+
+- profile smoke-tested: `P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE`;
+- base profile: `P156_FULL_PARTITION_SYMBOL_TAIL_CADENCE`;
+- smoke symbols: 32;
+- dense rows materialized: 16,838,528;
+- compressed dense smoke bytes: 357,615,839;
+- elapsed seconds: 52.242869;
+- inherited Phase157 cadence rewire ready: 1;
+- symbol/metric anchor rows compared through the Phase158-style audit: 320;
+- calibration gap rows: 39;
+- calibration gap fraction: 0.121875;
+- severe metric gap count: 0;
+- cadence gap rows: 8;
+- preserved non-cadence gap rows: 31;
+- Phase158-style full rewired realism pass: 1;
+- strategy replay allowed: 0.
+
+Current Phase159 gap summary:
+
+- `p90_gap_ms`: 0 / 32 gaps, improved from Phase158's 31 / 32;
+- `p95_gap_ms`: 0 / 32 gaps, preserving the Phase156 p95 repair;
+- `gap_le_1s_fraction`: 0 / 32 gaps, improved from Phase158's 17 / 32;
+- `median_gap_ms`: 8 / 32 gaps remain, with median synthetic/real ratio median 1.0 but slow-symbol overshoots still present;
+- preserved non-cadence blockers remain: `median_abs_l1_imbalance` 15 / 32, `median_l5_depth` 9 / 32, and `median_l1_depth` 7 / 32;
+- `median_spread_bps`, `p90_spread_bps`, and `one_tick_return_std`: 0 / 32 gaps.
+
+Current Phase159 interpretation: the distributional cadence model substantially repairs the cadence blocker and clears the Phase158-style full rewired realism threshold in a bounded one-month, 32-symbol smoke. This still does not open strategy replay: the next milestone should address remaining depth/imbalance and slow-symbol median-cadence gaps, then rerun a broader full-audit materialization before any synthetic-only strategy experiment is re-enabled.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

@@ -39,6 +39,36 @@ def read_month(path: Path, symbols: list[str]) -> pd.DataFrame:
     return frame.sort_values(["trade_date", "exchange", "symbol", "feed_profile", "annual_event_id"], kind="mergesort").reset_index(drop=True)
 
 
+def dense_gap_distribution_by_subtick(targets: dict[str, float], multiplier: int, base_gap_ms: float) -> dict[int, int]:
+    slots = max(1, int(multiplier))
+    median_gap = max(base_gap_ms, float(targets.get("median_gap_ms", base_gap_ms)))
+    p90_gap = max(median_gap, float(targets.get("p90_gap_ms", median_gap)))
+    p95_gap = max(p90_gap, float(targets.get("p95_gap_ms", p90_gap)))
+    gap_le_1s_fraction = float(np.clip(float(targets.get("gap_le_1s_fraction", 0.90)), 0.0, 1.0))
+
+    p95_slots = min(slots, max(1, int(math.ceil(slots * 0.05))))
+    tail_slots = slots - int(round(gap_le_1s_fraction * slots))
+    if p90_gap > 1000.0:
+        tail_slots = max(tail_slots, int(math.ceil(slots * 0.10)))
+    tail_slots = int(np.clip(tail_slots, p95_slots, slots))
+    p90_slots = max(0, tail_slots - p95_slots)
+    body_slots = slots - tail_slots
+
+    body_gap = min(max(base_gap_ms, median_gap), 1000.0)
+    values: list[float] = [body_gap] * body_slots
+    if median_gap > 1000.0 and body_slots < slots // 2:
+        median_slots = min(slots - len(values) - p90_slots - p95_slots, (slots // 2 + 1) - body_slots)
+        if median_slots > 0:
+            values.extend([median_gap] * median_slots)
+    values.extend([p90_gap] * p90_slots)
+    values.extend([p95_gap] * p95_slots)
+    if len(values) < slots:
+        fill_value = median_gap if median_gap > 1000.0 else body_gap
+        values.extend([fill_value] * (slots - len(values)))
+    values = sorted(values[:slots])
+    return {subtick_id: max(0, int(round(values[subtick_id] - base_gap_ms))) for subtick_id in range(slots)}
+
+
 def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: GeneratorCalibrationProfile | None = None) -> pd.DataFrame:
     profile = calibration_profile or get_calibration_profile(None)
     if frame.empty:
@@ -74,8 +104,28 @@ def densify_frame(frame: pd.DataFrame, multiplier: int, calibration_profile: Gen
             source_extra[positions[1:]] = target_extra
         cumulative_extra = np.cumsum(source_extra)
         timing_offset = timing_offset + np.repeat(cumulative_extra, multiplier)
-    dense_p95_overrides = profile.symbol_dense_p95_gap_ms_overrides or {}
-    if dense_p95_overrides:
+    dense_distribution_overrides = profile.symbol_dense_gap_distribution_overrides or {}
+    dense_p95_overrides = {} if dense_distribution_overrides else (profile.symbol_dense_p95_gap_ms_overrides or {})
+    if dense_distribution_overrides:
+        symbol_values = repeated["symbol"].astype(str)
+        dense_extra = np.zeros(len(repeated), dtype=np.int64)
+        base_gap_ms = max(1.0, float(profile.event_timing_tail_gap_multiplier))
+        for symbol, targets in dense_distribution_overrides.items():
+            mask = symbol_values.eq(str(symbol))
+            if not bool(mask.any()):
+                continue
+            subtick_extra = dense_gap_distribution_by_subtick(dict(targets), multiplier, base_gap_ms)
+            subtick_series = repeated.loc[mask, "dense_subtick_id"].astype("int64")
+            dense_extra[mask.to_numpy()] = subtick_series.map(subtick_extra).fillna(0).astype("int64").to_numpy()
+        if dense_extra.any():
+            cumulative_dense_extra = (
+                pd.Series(dense_extra)
+                .groupby([repeated["trade_date"].astype(str), repeated["symbol"].astype(str)], sort=False)
+                .cumsum()
+                .to_numpy(dtype=np.int64)
+            )
+            timing_offset = timing_offset + cumulative_dense_extra
+    elif dense_p95_overrides:
         symbol_values = repeated["symbol"].astype(str)
         dense_extra = np.zeros(len(repeated), dtype=np.int64)
         idle_subticks = repeated["dense_subtick_id"].astype("int64").isin([15, 31, 47, 63])
