@@ -3832,6 +3832,38 @@ Current Phase153 diagnostic recommendations:
 
 Important interpretation: Phase153 does not say the synthetic generator is ready. It says the next calibration work should first recompute real-anchor cadence profiles from full local partitions, because the older sampled-file Phase106 p95 gap can overstate real tail gaps for some symbols.
 
+Phase154 full-partition real cadence anchor is implemented under `outputs/phase154/`.
+
+**Runner:** `python scripts/run_phase154_full_partition_real_cadence_anchor.py --all-dates`
+
+**Purpose:** recompute Zerodha WebSocket received-cadence anchors from the full downloaded local Parquet partitions using DuckDB. Phase154 intentionally does not connect Python directly to Azure for data scans. The required operational pattern remains: bulk download Azure Files data first, then run local Parquet/DuckDB analytics. Phase154 scans only cadence columns and partition metadata; it does not generate signals, model fills, run P&L, contact Azure, or unlock strategy replay.
+
+Current Phase154 evidence records:
+
+- Phase150 local DuckDB catalog DB exists: 1;
+- selected full local date/symbol partitions: 96;
+- completed partition cadence profiles: 96;
+- failed partition cadence profiles: 0;
+- trade dates profiled: 3 (`2026-07-08`, `2026-07-09`, `2026-07-13`);
+- symbols profiled: 32;
+- total tick/update rows profiled: 1,238,275;
+- total partition-profile elapsed seconds: 561.826513;
+- slowest partition-profile elapsed seconds: 22.361562;
+- median symbol-level tick/update rate: 0.791127 ticks/sec;
+- median symbol-level p95 inter-update gap: 4,908.7 ms;
+- maximum symbol-level p95 inter-update gap: 7,565.7 ms;
+- Phase106 sampled-file cadence rows outside sampled/full comparison bands: 42;
+- strategy replay allowed: 0;
+- next best action: `use_phase154_full_partition_cadence_anchors_for_generator_calibration_contract`.
+
+Current Phase154 date-level anchors:
+
+- `2026-07-08`: 32 symbols, 226,430 rows, median symbol tick/update rate 0.744352/sec, min 0.270623/sec, max 1.606119/sec;
+- `2026-07-09`: 32 symbols, 390,992 rows, median symbol tick/update rate 1.010363/sec, min 0.369570/sec, max 1.603423/sec;
+- `2026-07-13`: 32 symbols, 620,853 rows, median symbol tick/update rate 0.820932/sec, min 0.368191/sec, max 1.601221/sec.
+
+Current Phase154 interpretation: the older sampled-file cadence anchors are not safe calibration targets for tail inter-update gaps. All 42 sample-bias flags are `sampled_high_vs_full`, meaning sampled Phase106 p90/p95 gap values can greatly overstate full-partition p90/p95 gaps. Future generator cadence calibration should use the Phase154 full-partition cadence anchors, not the sampled Phase106 cadence rows.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

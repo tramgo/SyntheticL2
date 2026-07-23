@@ -1,0 +1,16 @@
+metric,value,description
+phase154_catalog_db_exists,1,Phase150 DuckDB catalog database exists locally
+phase154_partitions_selected,96,Date/symbol partitions selected for full-partition cadence profiling
+phase154_partition_profiles_completed,96,Partition cadence profiles completed
+phase154_failed_partition_profiles,0,Partition cadence profiles failed
+phase154_trade_dates_profiled,3,Trade dates profiled
+phase154_symbols_profiled,32,Symbols profiled
+phase154_total_rows_profiled,1238275,Tick/update rows profiled
+phase154_total_elapsed_seconds,561.8265131999942,Total elapsed seconds across partition cadence profiles
+phase154_max_partition_elapsed_seconds,22.36156159998791,Slowest partition cadence profile elapsed seconds
+phase154_median_symbol_ticks_per_second,0.7911273592869436,Median symbol-level tick/update rate across full partitions
+phase154_median_symbol_p95_gap_ms,4908.699999999993,Median symbol-level p95 inter-update gap
+phase154_max_symbol_p95_gap_ms,7565.699999999991,Maximum symbol-level p95 inter-update gap
+phase154_sample_bias_flag_rows,42,Phase106 sampled-file cadence rows outside sampled/full comparison bands
+phase154_strategy_replay_allowed,0,Cadence anchor profiling does not unlock strategy replay
+phase154_next_best_action,use_phase154_full_partition_cadence_anchors_for_generator_calibration_contract,Recommended next milestone
