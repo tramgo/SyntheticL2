@@ -1,0 +1,109 @@
+query_id,status,elapsed_seconds,result_rows,sql,error
+count_2026-07-13_ADANIPORTS,completed,0.6569107999966945,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'ADANIPORTS' AS symbol,
+                count(*) AS rows,
+                min(collector_received_utc_ms) AS min_received_ms,
+                max(collector_received_utc_ms) AS max_received_ms,
+                min(last_price) AS min_last_price,
+                max(last_price) AS max_last_price
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=ADANIPORTS/*.parquet', union_by_name=true)
+            ",
+spread_depth_2026-07-13_ADANIPORTS,completed,0.666746199989575,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'ADANIPORTS' AS symbol,
+                count(*) AS rows,
+                avg(sell_1_price - buy_1_price) AS avg_l1_spread_abs,
+                avg(CASE WHEN buy_1_price > 0 AND sell_1_price >= buy_1_price THEN 1 ELSE 0 END) AS l1_book_valid_fraction,
+                avg(CASE WHEN buy_5_quantity > 0 OR sell_5_quantity > 0 THEN 1 ELSE 0 END) AS depth_level_5_present_fraction,
+                avg(total_buy_quantity) AS avg_total_buy_quantity,
+                avg(total_sell_quantity) AS avg_total_sell_quantity
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=ADANIPORTS/*.parquet', union_by_name=true)
+            ",
+count_2026-07-13_HDFCBANK,completed,0.7810458999883849,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'HDFCBANK' AS symbol,
+                count(*) AS rows,
+                min(collector_received_utc_ms) AS min_received_ms,
+                max(collector_received_utc_ms) AS max_received_ms,
+                min(last_price) AS min_last_price,
+                max(last_price) AS max_last_price
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=HDFCBANK/*.parquet', union_by_name=true)
+            ",
+spread_depth_2026-07-13_HDFCBANK,completed,0.7245591999962926,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'HDFCBANK' AS symbol,
+                count(*) AS rows,
+                avg(sell_1_price - buy_1_price) AS avg_l1_spread_abs,
+                avg(CASE WHEN buy_1_price > 0 AND sell_1_price >= buy_1_price THEN 1 ELSE 0 END) AS l1_book_valid_fraction,
+                avg(CASE WHEN buy_5_quantity > 0 OR sell_5_quantity > 0 THEN 1 ELSE 0 END) AS depth_level_5_present_fraction,
+                avg(total_buy_quantity) AS avg_total_buy_quantity,
+                avg(total_sell_quantity) AS avg_total_sell_quantity
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=HDFCBANK/*.parquet', union_by_name=true)
+            ",
+count_2026-07-13_RELIANCE,completed,0.8308840999961831,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'RELIANCE' AS symbol,
+                count(*) AS rows,
+                min(collector_received_utc_ms) AS min_received_ms,
+                max(collector_received_utc_ms) AS max_received_ms,
+                min(last_price) AS min_last_price,
+                max(last_price) AS max_last_price
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=RELIANCE/*.parquet', union_by_name=true)
+            ",
+spread_depth_2026-07-13_RELIANCE,completed,1.1378444000001764,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'RELIANCE' AS symbol,
+                count(*) AS rows,
+                avg(sell_1_price - buy_1_price) AS avg_l1_spread_abs,
+                avg(CASE WHEN buy_1_price > 0 AND sell_1_price >= buy_1_price THEN 1 ELSE 0 END) AS l1_book_valid_fraction,
+                avg(CASE WHEN buy_5_quantity > 0 OR sell_5_quantity > 0 THEN 1 ELSE 0 END) AS depth_level_5_present_fraction,
+                avg(total_buy_quantity) AS avg_total_buy_quantity,
+                avg(total_sell_quantity) AS avg_total_sell_quantity
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=RELIANCE/*.parquet', union_by_name=true)
+            ",
+count_2026-07-13_TCS,completed,0.9705957999976818,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'TCS' AS symbol,
+                count(*) AS rows,
+                min(collector_received_utc_ms) AS min_received_ms,
+                max(collector_received_utc_ms) AS max_received_ms,
+                min(last_price) AS min_last_price,
+                max(last_price) AS max_last_price
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=TCS/*.parquet', union_by_name=true)
+            ",
+spread_depth_2026-07-13_TCS,completed,1.4233752000000095,1,"
+            SELECT
+                '2026-07-13' AS trade_date,
+                'NSE' AS exchange,
+                'TCS' AS symbol,
+                count(*) AS rows,
+                avg(sell_1_price - buy_1_price) AS avg_l1_spread_abs,
+                avg(CASE WHEN buy_1_price > 0 AND sell_1_price >= buy_1_price THEN 1 ELSE 0 END) AS l1_book_valid_fraction,
+                avg(CASE WHEN buy_5_quantity > 0 OR sell_5_quantity > 0 THEN 1 ELSE 0 END) AS depth_level_5_present_fraction,
+                avg(total_buy_quantity) AS avg_total_buy_quantity,
+                avg(total_sell_quantity) AS avg_total_sell_quantity
+            FROM parquet_scan('real_data_sample/l2_multiday_panel/trade_date=2026-07-13/exchange=NSE/symbol=TCS/*.parquet', union_by_name=true)
+            ",
+metadata_catalog_summary,completed,0.03151630000502337,1,"
+        SELECT
+            count(*) AS cataloged_files,
+            sum(bytes) AS cataloged_bytes,
+            count(DISTINCT trade_date) AS cataloged_trade_dates,
+            count(DISTINCT symbol) AS cataloged_symbols
+        FROM real_l2_parquet_files
+        ",

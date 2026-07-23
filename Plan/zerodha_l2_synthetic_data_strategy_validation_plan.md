@@ -3748,6 +3748,34 @@ Current sample view:
 
 - `real_l2_sample_ticks`.
 
+Phase151 real L2 DuckDB query benchmark is implemented under `outputs/phase151/`.
+
+**Runner:** `python scripts/run_phase151_real_l2_duckdb_query_benchmark.py`
+
+**Purpose:** prove that bounded local DuckDB queries over the Phase150 catalog and partitioned Parquet panel work without Azure I/O and without copying all tick rows into DuckDB. Phase151 uses partition-scoped Parquet scans plus catalog metadata queries only.
+
+Current Phase151 evidence records:
+
+- Phase150 catalog DB exists locally: 1;
+- benchmark partitions selected: 4;
+- DuckDB queries attempted: 9;
+- failed queries: 0;
+- total query elapsed seconds: 7.223478;
+- maximum bounded query elapsed seconds: 1.423375;
+- minimum valid L1 book fraction across spread/depth queries: 0.999928;
+- minimum visible depth-level-5 presence fraction: 0.999928;
+- strategy replay allowed: 0;
+- next best action: `use_partition_scoped_duckdb_queries_for_local_real_l2_analysis_after_phase148_downloads`.
+
+Current benchmark partitions were all from `2026-07-13` because it is the largest currently cataloged date:
+
+- ADANIPORTS: 1,569 files, 54,744,007 bytes, 13,886 queried rows;
+- HDFCBANK: 1,569 files, 56,719,345 bytes, 35,959 queried rows;
+- RELIANCE: 1,569 files, 55,637,533 bytes, 26,056 queried rows;
+- TCS: 1,569 files, 56,845,524 bytes, 36,467 queried rows.
+
+Phase151 confirms DuckDB should be used for local real L2 Parquet analytics. It still does not unlock strategy replay.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

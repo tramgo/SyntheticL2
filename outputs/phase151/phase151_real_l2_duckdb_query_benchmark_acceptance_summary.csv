@@ -1,0 +1,11 @@
+metric,value,description
+phase151_catalog_db_exists,1,Phase150 DuckDB catalog database exists locally
+phase151_benchmark_partitions,4,Date/symbol partitions selected for bounded benchmark queries
+phase151_queries_attempted,9,DuckDB queries attempted
+phase151_failed_queries,0,DuckDB queries failed
+phase151_total_query_elapsed_seconds,7.223477899970021,Total elapsed seconds across benchmark queries
+phase151_max_query_elapsed_seconds,1.4233752000000095,Slowest bounded benchmark query elapsed seconds
+phase151_min_l1_book_valid_fraction,0.9999279850208843,Minimum valid L1 book fraction among spread/depth benchmark partitions
+phase151_min_depth_level_5_present_fraction,0.9999279850208843,Minimum visible level-5 presence among benchmark partitions
+phase151_strategy_replay_allowed,0,Query benchmark does not unlock strategy replay
+phase151_next_best_action,use_partition_scoped_duckdb_queries_for_local_real_l2_analysis_after_phase148_downloads,Recommended next milestone

@@ -1,0 +1,5 @@
+trade_date,exchange,symbol,parquet_files,bytes,selection_reason
+2026-07-13,NSE,ADANIPORTS,1569,54744007,largest_partition_for_requested_symbol
+2026-07-13,NSE,HDFCBANK,1569,56719345,largest_partition_for_requested_symbol
+2026-07-13,NSE,RELIANCE,1569,55637533,largest_partition_for_requested_symbol
+2026-07-13,NSE,TCS,1569,56845524,largest_partition_overall
