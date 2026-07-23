@@ -1,0 +1,14 @@
+metric,value,description
+phase170_matrix_rows,228,Filter-conditioned context rows
+phase170_strict_context_rows,6,"Stable, liquid and non-toxic rows"
+phase170_strict_context_symbols,3,Strict-tier symbols
+phase170_strict_context_months,5,Strict-tier months
+phase170_stable_non_toxic_rows,75,Stable and non-toxic rows
+phase170_liquid_non_toxic_rows,29,Liquid and non-toxic rows
+phase170_gate_rows,6,Gates evaluated
+phase170_all_gates_pass,1,1 means matrix obeys no-replay guardrails
+phase170_replay_ready,0,1 means context matrix alone is broad enough to request replay precommit
+phase170_strategy_replay_allowed,0,Strategy replay remains closed
+phase170_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase170_next_best_action,do_not_replay_filter_only_contexts_design_new_external_or_orderflow_feature_source,Recommended next milestone
+phase170_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model retained for audit continuity

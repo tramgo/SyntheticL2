@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence
+P170_PHASE169_SOURCE_MATCH,1,P130_FILTER_CONDITIONED_DIAGNOSTICS
+P170_MATRIX_PRESENT,1,matrix_rows=228
+P170_DIAGNOSTIC_MODELS_PRESENT,1,selected_models=3
+P170_STRICT_TIER_TOO_NARROW_FOR_REPLAY,1,strict_rows=6; strict_symbols=3; strict_months=5
+P170_BLOCKED_FAMILY_OVERLAP_AUDITED,1,overlap audit includes safe context-only row and blocked reopen row
+P170_NO_REPLAY,1,all replay flags are 0

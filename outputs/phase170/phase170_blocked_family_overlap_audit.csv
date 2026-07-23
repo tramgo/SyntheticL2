@@ -1,0 +1,3 @@
+candidate_design_id,overlaps_blocked_trade_family,blocked_reference_tokens,why
+P170_FILTER_CONTEXT_ONLY,0,S01;S02;S03;S04;S05;S06;S07;S09;S08,Phase170 emits context filters only and no side/order/P&L replay.
+P170_REOPEN_TAKER_PASSIVE_OR_S08,1,S01;S02;S03;S04;S05;S06;S07;S09;S08,"Any replay using closed Phase164, simple passive or Phase167 S08 forms is forbidden."

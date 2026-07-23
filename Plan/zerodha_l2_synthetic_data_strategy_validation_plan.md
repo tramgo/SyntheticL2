@@ -4641,6 +4641,43 @@ Current Phase169 evidence records:
 
 Current Phase169 interpretation: the only synthetic-only continuation allowed after Phase168 is a no-replay, filter-conditioned feasibility matrix using the Phase130 diagnostic filter source. The parallel priority remains real-anchor acquisition using download-first/local-first data handling. Reopening Phase164 or Phase167 forms is explicitly blocked.
 
+### Phase170 — Filter-conditioned Feasibility Matrix
+
+**Runner:** `scripts/run_phase170_filter_conditioned_feasibility_matrix.py`
+
+**Implementation:** `src/synthetic_l2/phase170_filter_conditioned_feasibility_matrix.py`
+
+**Outputs:** `outputs/phase170/`
+
+Phase170 converts the Phase129/Phase130 diagnostic-filter artifacts into a no-replay context feasibility matrix. It emits context tiers only. It does not emit buy/sell signals, order-arrival streams, fill models, P&L replay, or profitability claims.
+
+Current Phase170 outputs include:
+
+- `phase170_filter_conditioned_feasibility_acceptance_summary.csv`;
+- `phase170_filter_conditioned_context_matrix.csv`;
+- `phase170_context_tier_summary.csv`;
+- `phase170_diagnostic_model_evidence.csv`;
+- `phase170_blocked_family_overlap_audit.csv`;
+- `phase170_feasibility_gate_evaluation.csv`;
+- `phase170_filter_conditioned_feasibility_matrix_report.md`;
+- `phase170_filter_conditioned_feasibility_matrix_manifest.json`.
+
+Current Phase170 evidence records:
+
+- context matrix rows: 228;
+- strict stable + liquid + non-toxic context rows: 6;
+- strict context symbols: 3;
+- strict context months: 5;
+- stable + non-toxic rows: 75;
+- liquid + non-toxic rows: 29;
+- gates passed: 6 / 6;
+- replay ready: 0;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `do_not_replay_filter_only_contexts_design_new_external_or_orderflow_feature_source`.
+
+Current Phase170 interpretation: the Phase130 diagnostic filter source is useful as a context-quality filter, but its strict replay-safe subset is too narrow to justify another synthetic-only replay. The plan should not promote filter-only contexts into signals. The next synthetic research step must either introduce a genuinely new external/order-flow feature source under precommit, or remain on real-anchor acquisition.
+
 ---
 
 ## 25. Final Principle

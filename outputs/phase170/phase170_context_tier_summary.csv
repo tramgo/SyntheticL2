@@ -1,0 +1,4 @@
+tier_id,rows,symbols,months,median_spread_bps,median_feed_imperfection_rate,strategy_replay_allowed,interpretation
+strict_stable_liquid_non_toxic,6,3,5,2.6047041190450555,0.011904000000000001,0,context_filter_only_not_signal
+stable_non_toxic,75,17,7,1.8551154809391104,0.007936,0,context_filter_only_not_signal
+liquid_non_toxic,29,19,7,3.6023054755045574,0.023808,0,context_filter_only_not_signal
