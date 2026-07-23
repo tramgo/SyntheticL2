@@ -26,6 +26,10 @@ def infer_part(path: Path, prefix: str) -> str:
     return ""
 
 
+def count_parts(path: Path, prefix: str) -> int:
+    return sum(1 for part in path.parts if part.startswith(prefix + "="))
+
+
 def select_sample_files(files: list[Path]) -> list[Path]:
     if not files:
         return []
@@ -63,6 +67,14 @@ def discover_symbol_partitions(roots: list[Path], default_exchange: str) -> pd.D
                     "exchange": infer_part(symbol_dir, "exchange") or default_exchange,
                     "symbol": symbol_dir.name.split("=", 1)[1],
                     "symbol_dir": str(symbol_dir),
+                    "trade_date_path_parts": int(count_parts(symbol_dir, "trade_date")),
+                    "exchange_path_parts": int(count_parts(symbol_dir, "exchange")),
+                    "nested_trade_date_layout": bool(count_parts(symbol_dir, "trade_date") > 1),
+                    "canonical_partition_layout": bool(
+                        count_parts(symbol_dir, "trade_date") == 1
+                        and count_parts(symbol_dir, "exchange") == 1
+                        and symbol_dir.name.startswith("symbol=")
+                    ),
                     "parquet_files": int(len(files)),
                     "bytes": int(sum(path.stat().st_size for path in files)),
                     "first_file": str(files[0]) if files else "",
@@ -170,6 +182,8 @@ def build_date_readiness(symbol_inventory: pd.DataFrame, sample_checks: pd.DataF
                 "trade_date": trade_date,
                 "exchange": exchange,
                 "symbol_directories": int(len(symbols)),
+                "nested_trade_date_symbol_dirs": int(group["nested_trade_date_layout"].astype(bool).sum()),
+                "canonical_symbol_dirs": int(group["canonical_partition_layout"].astype(bool).sum()),
                 "expected_symbols_with_files": int(len(expected_symbols_with_files)),
                 "expected_symbol_fraction": float(expected_fraction),
                 "missing_expected_symbols": "|".join(missing_expected),
@@ -192,10 +206,22 @@ def summarize(symbol_inventory: pd.DataFrame, sample_checks: pd.DataFrame, date_
         else pd.DataFrame(columns=["root", "ready_dates"])
     )
     max_ready_dates = int(roots_ready["ready_dates"].max()) if not roots_ready.empty else 0
+    nested_symbol_dirs = (
+        int(symbol_inventory["nested_trade_date_layout"].astype(bool).sum())
+        if not symbol_inventory.empty and "nested_trade_date_layout" in symbol_inventory.columns
+        else 0
+    )
+    canonical_symbol_dirs = (
+        int(symbol_inventory["canonical_partition_layout"].astype(bool).sum())
+        if not symbol_inventory.empty and "canonical_partition_layout" in symbol_inventory.columns
+        else 0
+    )
     return pd.DataFrame(
         [
             ("phase142_roots_checked", int(symbol_inventory["root"].nunique()) if not symbol_inventory.empty else 0, "Distinct local roots inspected"),
             ("phase142_symbol_partition_rows", int(len(symbol_inventory)), "Symbol partition rows discovered"),
+            ("phase142_canonical_symbol_partition_rows", canonical_symbol_dirs, "Symbol partitions with canonical trade_date/exchange/symbol layout"),
+            ("phase142_nested_trade_date_symbol_partition_rows", nested_symbol_dirs, "Symbol partitions with duplicate nested trade_date path parts"),
             ("phase142_sample_files_checked", int(len(sample_checks)), "First/last parquet samples read for schema and L1 book checks"),
             ("phase142_date_rows", int(len(date_readiness)), "Root/date readiness rows emitted"),
             ("phase142_ready_date_rows", int(len(ready)), "Root/date rows ready for Phase115 import"),
@@ -216,6 +242,7 @@ def write_report(output_dir: Path, frames: dict[str, pd.DataFrame]) -> None:
         "",
         "Phase142 verifies local AzCopy/downloaded real Zerodha WebSocket top-five market-by-price partitions before or after Phase115 import.",
         "It checks date/symbol coverage, parquet counts/bytes, sampled required schema, and sampled L1 book sanity.",
+        "It also reports whether downloaded scratch paths use canonical `trade_date/exchange/symbol` layout or contain duplicate nested `trade_date` path parts from older AzCopy destination usage.",
         "Phase142 readiness is intentionally an import/download readiness flag: L1 book sample status is diagnostic here; Phase96 remains the authoritative real-anchor market-quality gate.",
         "It does not contact Azure and does not unlock strategy replay.",
         "",

@@ -3545,6 +3545,9 @@ If Azure CLI token refresh again hits local TLS certificate failures, generate a
 Phase142 local verification is implemented under `outputs/phase142/` and currently records:
 
 - roots checked: 2 (`scratch_azcopy_selected/raw_l2` and `real_data_sample/l2_multiday_panel`);
+- symbol partition rows: 160;
+- canonical symbol partition rows: 96;
+- nested trade-date symbol partition rows: 64, all in the historical AzCopy scratch root from the earlier date-URL-to-date-folder copy style;
 - root/date readiness rows: 5;
 - ready root/date rows for Phase115 import: 5;
 - maximum ready dates in one root: 3;
@@ -3553,6 +3556,8 @@ Phase142 local verification is implemented under `outputs/phase142/` and current
 - strategy replay allowed: 0.
 
 Phase142 is an import/download preflight, not a market-quality gate. It checks coverage, required schema, readable first/last samples, parquet counts and bytes. Its L1 book sample status is diagnostic only; Phase96 remains the authoritative real-anchor market-quality gate.
+
+The canonical imported panel is clean: `real_data_sample/l2_multiday_panel` contains 96 canonical symbol partitions across the three ready dates (`2026-07-08`, `2026-07-09`, `2026-07-13`) and zero nested duplicate `trade_date` symbol partitions. The nested scratch layout is tolerated for import discovery but should not be produced by future downloads now that the AzCopy helper copies date URLs into the raw root.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
