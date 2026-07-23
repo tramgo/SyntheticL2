@@ -1,0 +1,15 @@
+metric,value,description
+phase166_bucket_ms,5000,Synchronization bucket size; not a claim that native data is uniformly sampled
+phase166_months_cached,12,Synthetic months cached
+phase166_cache_files,12,Monthly cache parquet files
+phase166_symbols_cached,32,Maximum symbols per monthly cache
+phase166_min_market_symbol_count,1,Minimum symbols observed in any synchronization bucket
+phase166_median_lag1_feature_coverage,0.9929824537245444,Median monthly lag-1 feature availability fraction
+phase166_bucket_symbol_rows,77944215,Cached symbol/bucket rows
+phase166_source_dense_rows_represented,192786816,Dense input rows represented by monthly cache
+phase166_cache_bytes,4635703054,Compressed cache bytes
+phase166_elapsed_seconds,1848.5742699999973,Cache materialization elapsed seconds
+phase166_s08_cache_ready,1,1 means S08 cross-symbol replay cache is ready
+phase166_strategy_replay_allowed,0,Phase166 prepares cache only; replay remains for a later phase
+phase166_azure_read_policy,forbidden_for_analysis_download_first_then_local,No direct Python Azure scanning
+phase166_next_best_action,precommit_and_run_s08_cross_symbol_lead_lag_replay_using_phase166_cache,Recommended next milestone

@@ -4239,6 +4239,30 @@ Current Phase165 gate evaluation:
 
 Current Phase165 blocklist-candidate update marks current Phase164 forms for S01, S02, S03, S04, S05, S06, S07 and S09 as `block_current_phase164_form`. S08 was not replayable in the isolated symbol-shard scan and requires a cross-symbol month cache before any valid lead-lag replay. S10 and S11 remain non-alpha control/risk-plumbing rows.
 
+Phase166 cross-symbol lead-lag cache is implemented under `outputs/phase166/`.
+
+**Runner:** `python scripts/run_phase166_cross_symbol_lead_lag_cache.py --output-root raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache --output-dir outputs/phase166`
+
+**Purpose:** materialize the missing local cross-symbol month cache required before any valid S08 lead-lag replay. Phase166 reads the already-materialized Phase162 dense synthetic L2 Parquet locally and writes month-partitioned synchronized feature-cache Parquet. It does not scan Azure directly, does not run a strategy, does not emit P&L, and does not unlock broker/paper/live acceptance.
+
+Current Phase166 evidence records:
+
+- source data policy: `forbidden_for_analysis_download_first_then_local`;
+- synchronization bucket: 5,000 ms;
+- bucket interpretation: alignment device only, not a claim that native tick data is uniformly sampled;
+- months cached: 12;
+- cache files: 12;
+- symbols cached: 32;
+- source dense rows represented: 192,786,816;
+- synchronized symbol/bucket rows: 77,944,215;
+- compressed cache bytes: 4,635,703,054;
+- median lag-1 feature coverage: 0.9929824537245444;
+- S08 cache ready: 1;
+- strategy replay allowed: 0;
+- next best action: `precommit_and_run_s08_cross_symbol_lead_lag_replay_using_phase166_cache`.
+
+Current Phase166 interpretation: the S08 blocker identified by Phase165 is now removed at the data-cache level. The local cache contains market ex-target, sector ex-target, ETF pressure/return, lag-1/lag-2 bucket features and next-bucket target returns across the 32-symbol full-year synthetic L2 lake. This is not a profitability result; it is a prerequisite artifact for a later precommitted S08 replay phase.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`
