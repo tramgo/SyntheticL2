@@ -1,0 +1,5 @@
+gate_id,gate_pass,evidence,severity
+P176_PHASE175_ACTIVATION_READY,0,phase175_activation_ready=0;ready_dates=3;additional_needed=2,activation
+P176_SCHEMA_AVAILABLE,1,feature_schema_rows=6,hard
+P176_LOCAL_REAL_ROOT_EXISTS,1,real_data_sample\l2_multiday_panel,hard
+P176_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,materializer scaffold only while activation gate is closed; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard

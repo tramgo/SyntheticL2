@@ -1,0 +1,12 @@
+metric,value,description
+phase176_materialization_plan_rows,6,Feature materialization plan rows
+phase176_sql_template_rows,3,DuckDB/local SQL templates declared
+phase176_gate_rows,4,Gates evaluated
+phase176_hard_gate_rows,3,Hard gates evaluated
+phase176_hard_gate_pass_rows,3,Hard gates passed
+phase176_activation_ready,0,Inherited Phase175 activation gate
+phase176_features_materialized,0,1 means feature parquet was materialized
+phase176_strategy_replay_allowed,0,No strategy replay opened
+phase176_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase176_forbidden_outputs,buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase176_next_best_action,add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization,Recommended next milestone

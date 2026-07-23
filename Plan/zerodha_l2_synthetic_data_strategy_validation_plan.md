@@ -3684,19 +3684,19 @@ Phase149 research state auditor is implemented under `outputs/phase149/`.
 
 Current Phase149 evidence records:
 
-- phase rows discovered from scripts and outputs: 168;
-- phase rows with at least one runner: 166;
-- phase rows with acceptance summaries: 118;
+- phase rows discovered from scripts and outputs: 169;
+- phase rows with at least one runner: 167;
+- phase rows with acceptance summaries: 119;
 - current research branches summarized: 4;
-- hard global-state gates evaluated: 8;
-- hard global-state gates passed: 8;
+- hard global-state gates evaluated: 10;
+- hard global-state gates passed: 10;
 - strategy replay allowed: 0;
 - next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174`.
 
 Current branch summary:
 
 - `real_l2_anchor_gate`: gated; Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. Use Phase174 as the secure download orchestrator for the required dates.
-- `real_receive_flow_source`: gated waiting for two more real L2 dates; Phase172 has 3 ready receive-flow dates and needs 2 more, Phase174 records that no download ran because no SAS/key was available, and Phase175 has precommitted the feature schema with activation still closed.
+- `real_receive_flow_source`: gated waiting for two more real L2 dates; Phase172 has 3 ready receive-flow dates and needs 2 more, Phase174 records that no download ran because no SAS/key was available, Phase175 has precommitted the feature schema with activation still closed, and Phase176 has a gated materializer scaffold with zero feature parquet materialized.
 - `top_five_depth_passive`: closed clean falsification; Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification.
 - `dense_synthetic_replay`: not promoted; partial/smoke dense replay artifacts remain non-promotional and do not override replay gates.
 
@@ -3708,6 +3708,8 @@ Current global gates:
 - secure orchestrator replay gate closed: pass;
 - receive-flow feature schema recorded: pass;
 - receive-flow feature schema replay gate closed: pass;
+- receive-flow materializer recorded: pass;
+- receive-flow materializer replay gate closed: pass;
 - deep-book branch closed: pass;
 - no promoted strategy replay: pass.
 
@@ -4898,6 +4900,42 @@ Current Phase175 evidence records:
 - next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176`.
 
 Current Phase175 interpretation: the receive-flow feature source is now precommitted, so once the two missing real L2 dates are downloaded and Phase172 shows at least 5 ready dates, the next phase can materialize features without reopening old falsified strategy families. Until then, Phase175 remains a schema contract only.
+
+### Phase176 — Receive-flow Feature Materializer
+
+**Runner:** `scripts/run_phase176_receive_flow_feature_materializer.py`
+
+**Implementation:** `src/synthetic_l2/phase176_receive_flow_feature_materializer.py`
+
+**Outputs:** `outputs/phase176/`
+
+**Future feature root:** `derived_real_l2_receive_flow_features_phase176/`
+
+Phase176 is the executable materialization scaffold for the Phase175 receive-flow feature schema. It is gate-respecting: when `phase175_activation_ready = 0`, it writes the materialization plan, local DuckDB SQL templates and gate evidence, but it does not create feature Parquet. It does not emit buy/sell signals, order side, order-arrival streams, fill models, P&L replay, profitability claims or paper/live acceptance.
+
+Current Phase176 outputs include:
+
+- `phase176_materialization_plan.csv`;
+- `phase176_duckdb_sql_templates.csv`;
+- `phase176_materialization_gate_evaluation.csv`;
+- `phase176_receive_flow_feature_materializer_acceptance_summary.csv`;
+- `phase176_receive_flow_feature_materializer_report.md`;
+- `phase176_receive_flow_feature_materializer_manifest.json`.
+
+Current Phase176 evidence records:
+
+- materialization plan rows: 6;
+- local DuckDB SQL template rows: 3;
+- gates evaluated: 4;
+- hard gates passed: 3 / 3;
+- activation ready inherited from Phase175: 0;
+- features materialized: 0;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`;
+- next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization`.
+
+Current Phase176 interpretation: the feature materialization code path is now staged, but it correctly refuses to produce derived feature data until the two missing real L2 dates are downloaded/imported and the Phase175 activation gate opens. This avoids creating a partial 3-day feature set that could later be mistaken for acceptance-grade real-anchor evidence.
 
 ---
 
