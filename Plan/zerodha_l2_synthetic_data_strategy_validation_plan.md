@@ -4774,6 +4774,44 @@ Current Phase172 evidence records:
 
 Current Phase172 interpretation: the local real L2 receive-flow source is structurally usable and more than minute-level; all currently available local dates have all 32 symbols and required receive/depth fields. However, only 3 ready dates are available versus the 5-date minimum required by the Phase171 source contract, so no strategy replay or paper/live path opens. The next correct action is to download or import at least two additional complete real L2 dates locally, then rerun Phase172 and the downstream real-anchor gates.
 
+### Phase173 — Real L2 Download Credential Preflight
+
+**Runner:** `scripts/run_phase173_real_l2_download_credential_preflight.py`
+
+**Implementation:** `src/synthetic_l2/phase173_real_l2_download_credential_preflight.py`
+
+**Outputs:** `outputs/phase173/`
+
+Phase173 records whether the next two-date real L2 download can be executed immediately. It is a credential/readiness preflight only. It never records SAS signatures, storage account keys, broker credentials or passwords, and it does not contact Azure, run AzCopy, import data, unlock replay or run strategy P&L.
+
+Current Phase173 outputs include:
+
+- `phase173_download_preflight_evidence.csv`;
+- `phase173_download_preflight_gate_evaluation.csv`;
+- `phase173_real_l2_download_credential_preflight_acceptance_summary.csv`;
+- `phase173_real_l2_download_credential_preflight_report.md`;
+- `phase173_real_l2_download_credential_preflight_manifest.json`.
+
+Current Phase173 evidence records:
+
+- required next download dates: `2026-07-10`, `2026-07-14`;
+- AzCopy available: 1;
+- SAS token available in environment: 0;
+- storage account key available in environment: 0;
+- Azure CLI account login probe: account context is available;
+- Azure CLI storage metadata/token-refresh probe: blocked by local TLS certificate verification failure;
+- Phase172 ready receive-flow dates: 3;
+- additional complete real L2 dates still needed: 2;
+- latest Phase148 download ran: 0;
+- latest Phase147 required dates satisfied: 0;
+- latest Phase146 strategy replay allowed: 0;
+- Phase173 download ready now: 0;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `provide_share_sas_or_storage_key_or_repair_azure_cli_tls_then_run_phase148_download`.
+
+Current Phase173 interpretation: the next blocked item is not strategy logic. The plan needs a credential/trust fix for the download leg: provide a read/list share SAS, provide the storage account key through `AZURE_STORAGE_KEY` or `-AccountKey`, or repair Azure CLI certificate trust so a fresh SAS/key path can be generated. Once that is available, rerun Phase148 with download enabled for `2026-07-10` and `2026-07-14`, then rerun Phase172.
+
 ---
 
 ## 25. Final Principle
