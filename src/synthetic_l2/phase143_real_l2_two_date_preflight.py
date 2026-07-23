@@ -128,7 +128,8 @@ def build_command_plan(status: pd.DataFrame, scratch_root: Path, target_root: Pa
                 "runs_now": False,
                 "command": (
                     "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync_azure_real_l2_dates_azcopy.ps1 "
-                    f"-Dates {','.join(missing_dates)} -ShareSasToken \"<read_list_share_sas>\""
+                    f"-Dates {','.join(missing_dates)} -ShareSasToken \"<read_list_share_sas>\" "
+                    "# or use -AccountKey \"<storage_account_key>\" / AZURE_STORAGE_KEY"
                 ),
                 "why": "At least one required date is not locally ready in scratch or target.",
             }
@@ -195,7 +196,7 @@ def summarize(phase115: pd.DataFrame, status: pd.DataFrame) -> pd.DataFrame:
             ("phase143_strategy_replay_allowed", 0, "Preflight never unlocks strategy replay"),
             (
                 "phase143_next_best_action",
-                "run_phase115_execute_import" if can_run_phase115_import else "download_missing_required_dates_with_azcopy_sas_then_rerun_phase142_phase143",
+                "run_phase115_execute_import" if can_run_phase115_import else "download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase142_phase143",
                 "Recommended next milestone",
             ),
         ],
@@ -265,6 +266,7 @@ def run_phase143(
                 "minimum_ready_real_days": 5,
                 "strategy_replay_policy": "closed",
                 "preflight_policy": "do_not_run_phase115_import_until_required_dates_are_ready_in_scratch_or_target",
+                "download_auth_policy": "AzCopy helper accepts ShareSasToken or AccountKey; generated signatures are not persisted",
             },
             outputs={
                 "required_date_status": str(output_dir / "required_real_l2_date_status.csv"),

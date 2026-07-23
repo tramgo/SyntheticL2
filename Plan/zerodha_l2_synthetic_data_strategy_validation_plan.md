@@ -3532,6 +3532,10 @@ The immediate next operational action is to download and import two more Azure r
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -ShareSasToken "<read_list_share_sas>"`
 
+or, when a storage account key is available but Azure CLI token refresh is blocked locally:
+
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -AccountKey "<storage_account_key>"`
+
 Then verify local download/import readiness without contacting Azure:
 
 `python scripts/run_phase142_local_real_l2_download_verifier.py --roots scratch_azcopy_selected/raw_l2 real_data_sample/l2_multiday_panel`
@@ -3544,7 +3548,7 @@ Then import/refresh:
 
 `python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import`
 
-If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session or repair the Azure CLI CA chain before continuing the AzCopy downloads. The helper script accepts the SAS as a parameter or via `AZURE_STORAGE_SAS_TOKEN`; it redacts `sig=` in dry-run command output and does not persist credentials. The helper copies date URLs into the raw root `scratch_azcopy_selected/raw_l2` so future downloads should land as a single `trade_date=YYYY-MM-DD` partition rather than nesting duplicate date folders.
+If Azure CLI token refresh again hits local TLS certificate failures, generate a fresh read/list SAS from an already-authenticated PowerShell session, provide the storage account key directly to the helper, or repair the Azure CLI CA chain before continuing the AzCopy downloads. The helper script accepts the SAS as a parameter or via `AZURE_STORAGE_SAS_TOKEN`; it also accepts the account key as `-AccountKey` or via `AZURE_STORAGE_KEY` and generates a short-lived read/list share SAS locally. It redacts `sig=` in dry-run command output and does not persist credentials. The helper normalizes comma-separated date arguments, so `-Dates 2026-07-10,2026-07-14` emits separate AzCopy transfers for both dates. The helper copies date URLs into the raw root `scratch_azcopy_selected/raw_l2` so future downloads should land as a single `trade_date=YYYY-MM-DD` partition rather than nesting duplicate date folders.
 
 Phase142 local verification is implemented under `outputs/phase142/` and currently records:
 
@@ -3573,7 +3577,7 @@ Phase143 two-date preflight is implemented under `outputs/phase143/`. Its curren
 - required dates ready in scratch for import: 0;
 - can run Phase115 import now: 0;
 - strategy replay allowed: 0;
-- next best action: `download_missing_required_dates_with_azcopy_sas_then_rerun_phase142_phase143`.
+- next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase142_phase143`.
 
 Phase143 is the guard that prevents a premature Phase115 rerun when an empty or partial date folder exists locally but does not yet contain a complete import-ready 32-symbol real L2 partition.
 
