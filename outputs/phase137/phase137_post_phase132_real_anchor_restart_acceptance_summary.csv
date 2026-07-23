@@ -1,0 +1,13 @@
+metric,value,description
+phase137_closed_branch_rows,1,Closed synthetic top-five-depth branch ledger rows
+phase137_phase132_kill_switch_fired,1,Phase132 kill-switch flag carried forward
+phase137_phase116_deep_book_blocklist_present,1,Phase116 DEEP_BOOK_LABEL_LIFT row present
+phase137_current_ready_real_anchor_days,1,Ready real-anchor days currently proven
+phase137_additional_days_needed_for_min,4,Additional ready real days needed for minimum replay-unlock review
+phase137_additional_days_needed_for_target,9,Additional ready real days needed for preferred 10-day target
+phase137_real_anchor_requirement_rows,9,Real-anchor acquisition requirement rows emitted
+phase137_gate_rows,5,Gates evaluated
+phase137_all_gates_pass,1,1 means Phase137 restart work order is self-consistent
+phase137_strategy_replay_allowed,0,Replay flag remains inherited from Phase115
+phase137_next_best_action,drop_or_sync_4_more_real_l2_days_then_run_phase115_execute_import,Recommended next milestone
+phase137_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned cost model retained for audit continuity

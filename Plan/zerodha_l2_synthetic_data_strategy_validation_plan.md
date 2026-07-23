@@ -3461,6 +3461,46 @@ Therefore:
 
 The branch conclusion is clean falsification of the synthetic-only top-five-depth label-lift surface. The correct next action is not another synthetic strategy branch; further strategy work waits on real Zerodha L2 anchor acquisition through Phases113-115 or a separately precommitted plan outside this closed branch.
 
+### Phase 137 — Post-Phase132 Real-Anchor Restart
+
+**Runner:** `scripts/run_phase137_post_phase132_real_anchor_restart.py`
+
+**Outputs:** `outputs/phase137/`
+
+**Purpose:** convert the Phase132 clean falsification into the next operational path: real Zerodha L2 anchor acquisition. This phase does not reopen synthetic strategy work, run Phase133-136, emit order simulations or change replay permissions.
+
+**Current implementation status as of 2026-07-23:** Phase137 is implemented and generated:
+
+- `closed_synthetic_branch_ledger.csv`
+- `real_anchor_acquisition_requirements.csv`
+- `real_anchor_operational_runbook.csv`
+- `phase137_gate_evaluation.csv`
+- `phase137_post_phase132_real_anchor_restart_acceptance_summary.csv`
+- `phase137_post_phase132_real_anchor_restart_report.md`
+- `phase137_post_phase132_real_anchor_restart_manifest.json`
+
+The Phase137 acceptance summary records:
+
+- closed branch rows: 1;
+- Phase132 kill-switch fired: 1;
+- Phase116 `DEEP_BOOK_LABEL_LIFT` blocklist row present: 1;
+- current ready real-anchor days: 1;
+- additional days needed for minimum replay-unlock review: 4;
+- additional days needed for preferred 10-day target: 9;
+- real-anchor requirement rows: 9;
+- all gates passed: 1;
+- strategy replay allowed: 0.
+
+The next concrete milestone is `drop_or_sync_4_more_real_l2_days_then_run_phase115_execute_import`. New real data should be placed under:
+
+`real_data_sample/l2_multiday_panel/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet`
+
+Each new real day should cover at least 95% of the 32-symbol universe and include raw Zerodha Level-2/top-five market-by-price WebSocket updates with depth levels 1-5 bid/ask price, quantity and order-count fields. After the data lands, run:
+
+`python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root real_data_sample/l2_multiday_panel --execute-import`
+
+Replay remains closed until Phase115/Phase110 prove enough ready real-anchor days and downstream realism gates are refreshed.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

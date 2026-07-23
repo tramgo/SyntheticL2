@@ -1,0 +1,2 @@
+closed_branch_id,phase132_kill_switch_fired,phase132_surviving_feature_rows,phase132_labels_cleared_brier_lift,phase116_blocklist_entry_present,phase133_136_allowed,synthetic_strategy_branch_allowed,strategy_replay_allowed,closure_verdict,why
+PHASE131_132_TOP_FIVE_DEPTH_LABEL_LIFT,1,0,0,1,0,0,0,falsified,Phase132 found no top-five-depth diagnostic lift over Phase130 baselines; continuation plan says skip Phase133-136.
