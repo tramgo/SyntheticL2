@@ -1,0 +1,11 @@
+metric,value,description
+phase143_current_ready_real_anchor_days,3,Ready real-anchor days from latest Phase115/110
+phase143_days_needed_for_min,2,Additional ready real days needed for minimum unlock before this preflight
+phase143_required_date_rows,2,Required next-date rows checked
+phase143_required_dates_satisfied,0,Required dates already ready in scratch or target
+phase143_required_dates_target_ready,0,Required dates already ready in canonical target
+phase143_required_dates_scratch_ready,0,Required dates ready in scratch for Phase115 import
+phase143_all_required_dates_satisfied,0,1 means configured required dates are locally ready in scratch or target
+phase143_can_run_phase115_import_now,0,1 means at least one required date is ready in scratch but not yet imported
+phase143_strategy_replay_allowed,0,Preflight never unlocks strategy replay
+phase143_next_best_action,download_missing_required_dates_with_azcopy_sas_then_rerun_phase142_phase143,Recommended next milestone

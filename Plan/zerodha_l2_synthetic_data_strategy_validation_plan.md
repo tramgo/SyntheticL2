@@ -3536,6 +3536,10 @@ Then verify local download/import readiness without contacting Azure:
 
 `python scripts/run_phase142_local_real_l2_download_verifier.py --roots scratch_azcopy_selected/raw_l2 real_data_sample/l2_multiday_panel`
 
+Then run the two-date acquisition preflight:
+
+`python scripts/run_phase143_real_l2_two_date_preflight.py`
+
 Then import/refresh:
 
 `python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import`
@@ -3558,6 +3562,20 @@ Phase142 local verification is implemented under `outputs/phase142/` and current
 Phase142 is an import/download preflight, not a market-quality gate. It checks coverage, required schema, readable first/last samples, parquet counts and bytes. Its L1 book sample status is diagnostic only; Phase96 remains the authoritative real-anchor market-quality gate.
 
 The canonical imported panel is clean: `real_data_sample/l2_multiday_panel` contains 96 canonical symbol partitions across the three ready dates (`2026-07-08`, `2026-07-09`, `2026-07-13`) and zero nested duplicate `trade_date` symbol partitions. The nested scratch layout is tolerated for import discovery but should not be produced by future downloads now that the AzCopy helper copies date URLs into the raw root.
+
+Phase143 two-date preflight is implemented under `outputs/phase143/`. Its current evidence records:
+
+- current ready real-anchor days: 3;
+- days needed for minimum: 2;
+- required next-date rows checked: 2 (`2026-07-10`, `2026-07-14`);
+- required dates satisfied in scratch or target: 0;
+- required dates ready in canonical target: 0;
+- required dates ready in scratch for import: 0;
+- can run Phase115 import now: 0;
+- strategy replay allowed: 0;
+- next best action: `download_missing_required_dates_with_azcopy_sas_then_rerun_phase142_phase143`.
+
+Phase143 is the guard that prevents a premature Phase115 rerun when an empty or partial date folder exists locally but does not yet contain a complete import-ready 32-symbol real L2 partition.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 

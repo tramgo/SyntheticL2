@@ -1,0 +1,5 @@
+step,action,runs_now,command,why
+1,download_missing_required_dates,False,"powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync_azure_real_l2_dates_azcopy.ps1 -Dates 2026-07-10,2026-07-14 -ShareSasToken ""<read_list_share_sas>""",At least one required date is not locally ready in scratch or target.
+2,verify_local_downloads,True,python scripts/run_phase142_local_real_l2_download_verifier.py --roots scratch_azcopy_selected/raw_l2 real_data_sample/l2_multiday_panel,Confirms local coverage/schema/readability before Phase115 import.
+3,import_ready_scratch_dates,False,python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import,No required date is locally ready in scratch but missing from target.
+4,review_phase115_unlock_state,True,Import-Csv outputs/phase115/phase115_real_panel_refresh_acceptance_summary.csv,Replay remains closed unless Phase110/Phase115 explicitly prove the minimum real-anchor gate.
