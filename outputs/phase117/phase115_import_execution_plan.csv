@@ -1,5 +1,5 @@
 step,action,command,runs_now,why
 1,drop_or_sync_real_l2_exports,Place each new day under real_data_sample/l2_multiday_panel/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet,False,The current workspace has only one ready real anchor day; new external data must arrive before replay can unlock.
 2,dry_run_discovery,python scripts/run_phase115_real_panel_refresh_orchestrator.py,True,Confirms candidate inventory without copying files.
-3,execute_import_and_refresh_gates,python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root real_data_sample/l2_multiday_panel --execute-import,False,"Copies normalized drop-zone files, verifies integrity, rebuilds Phase96 readiness and Phase110 replay-unlock evidence."
+3,execute_import_and_refresh_gates,python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root real_data_sample/l2_multiday_panel --execute-import,True,"Copies normalized drop-zone files, verifies integrity, rebuilds Phase96 readiness and Phase110 replay-unlock evidence."
 4,review_unlock,Import-Csv outputs/phase115/phase115_real_panel_refresh_acceptance_summary.csv,True,Replay remains closed unless ready real anchor days reach the required gate and downstream realism gates are refreshed.

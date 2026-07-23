@@ -1,0 +1,5 @@
+step_id,description,status,started_utc,ended_utc,elapsed_seconds,error
+P145_PHASE142_VERIFY_LOCAL_DOWNLOADS_INITIAL,Verify scratch and canonical real L2 date partitions.,completed,2026-07-23T08:15:27.732886+00:00,2026-07-23T08:15:49.731643+00:00,21.998757,
+P145_PHASE143_PREFLIGHT_REQUIRED_DATES_INITIAL,Check whether configured required dates are locally ready.,completed,2026-07-23T08:15:49.731666+00:00,2026-07-23T08:15:49.789185+00:00,0.057519,
+P145_PHASE117_REFRESH_WORK_ORDER,Refresh real-anchor acquisition work order.,completed,2026-07-23T08:15:49.791216+00:00,2026-07-23T08:17:21.670012+00:00,91.878796,
+P145_PHASE137_REFRESH_RESTART_HANDOFF,Refresh post-Phase132 real-anchor restart handoff.,completed,2026-07-23T08:17:21.670034+00:00,2026-07-23T08:17:21.735943+00:00,0.065909,

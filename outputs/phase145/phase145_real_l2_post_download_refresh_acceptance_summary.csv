@@ -1,0 +1,12 @@
+metric,value,description
+phase145_steps,4,Post-download refresh steps attempted
+phase145_failed_steps,0,Post-download refresh steps failed
+phase145_phase115_import_executed,0,1 means Phase115 import/refresh was run because Phase143 allowed it
+phase145_phase142_ready_date_rows,5,Root/date rows ready in Phase142 local verifier
+phase145_phase143_required_date_rows,2,Configured required dates checked by Phase143
+phase145_phase143_required_dates_satisfied,0,Configured required dates ready in scratch or target
+phase145_ready_real_anchor_days,3,Ready real-anchor days after this orchestrator
+phase145_days_needed_for_min,2,Additional ready real-anchor days needed for minimum unlock
+phase145_phase137_days_needed_for_min,2,Phase137 refreshed additional-days-needed metric
+phase145_replay_unlock_allowed,0,Replay unlock flag remains inherited from Phase115
+phase145_next_best_action,download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase145,Recommended next milestone

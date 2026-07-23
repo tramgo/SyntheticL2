@@ -1,6 +1,6 @@
 gate_id,gate_pass,evidence
 P137_PHASE132_BRANCH_CLOSED,1,closure_verdict=falsified
 P137_PHASE133_136_SKIPPED,1,phase133_136_allowed=0
-P137_REAL_ANCHOR_DEFICIT_DECLARED,1,ready_real_anchor_days=1; days_needed_for_min=4
+P137_REAL_ANCHOR_DEFICIT_DECLARED,1,ready_real_anchor_days=3; days_needed_for_min=2
 P137_OPERATIONAL_RUNBOOK_DECLARED,1,post-Phase132 real-anchor acquisition runbook emitted
 P137_REPLAY_REMAINS_CLOSED,1,phase115_strategy_replay_allowed=0

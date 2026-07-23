@@ -1,6 +1,6 @@
 # Phase142 Local Real L2 Download Verifier
 
-Generated UTC: 2026-07-23T08:04:58.336425+00:00
+Generated UTC: 2026-07-23T08:15:49.680190+00:00
 
 Phase142 verifies local AzCopy/downloaded real Zerodha WebSocket top-five market-by-price partitions before or after Phase115 import.
 It checks date/symbol coverage, parquet counts/bytes, sampled required schema, and sampled L1 book sanity.

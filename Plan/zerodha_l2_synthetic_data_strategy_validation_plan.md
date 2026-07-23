@@ -3544,6 +3544,10 @@ Then run the two-date acquisition preflight:
 
 `python scripts/run_phase143_real_l2_two_date_preflight.py`
 
+Optionally run the post-download refresh orchestrator, which stitches Phase142, Phase143, conditional Phase115 import, Phase117 and Phase137 together:
+
+`python scripts/run_phase145_real_l2_post_download_refresh.py`
+
 Then import/refresh:
 
 `python scripts/run_phase115_real_panel_refresh_orchestrator.py --source-root scratch_azcopy_selected/raw_l2 --target-root real_data_sample/l2_multiday_panel --execute-import`
@@ -3580,6 +3584,18 @@ Phase143 two-date preflight is implemented under `outputs/phase143/`. Its curren
 - next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase142_phase143`.
 
 Phase143 is the guard that prevents a premature Phase115 rerun when an empty or partial date folder exists locally but does not yet contain a complete import-ready 32-symbol real L2 partition.
+
+Phase145 post-download refresh orchestration is implemented under `outputs/phase145/`. It always refreshes Phase142 and Phase143, runs Phase115 only when Phase143 reports `phase143_can_run_phase115_import_now = 1`, and then refreshes Phase117/137 handoff evidence. Its current run records:
+
+- steps attempted: 4;
+- failed steps: 0;
+- Phase115 import executed: 0, correctly skipped because the required dates are not locally ready;
+- Phase143 required dates satisfied: 0 of 2;
+- ready real-anchor days: 3;
+- days needed for minimum: 2;
+- Phase137 refreshed days needed for minimum: 2;
+- replay unlock allowed: 0;
+- next best action: `download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase145`.
 
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
