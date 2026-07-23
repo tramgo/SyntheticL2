@@ -1,0 +1,10 @@
+metric,value,description
+phase136_hard_gate_rows,8,Hard closure-verdict gates evaluated
+phase136_hard_gate_pass_rows,8,Hard closure-verdict gates passed
+phase136_outcome,A_CLEAN_FALSIFICATION,Selected Phase136 outcome
+phase136_clean_falsification_selected,1,1 means Outcome A closes the branch
+phase136_phase132_kill_switch_fired,1,Inherited Phase132 kill-switch flag
+phase136_phase132_surviving_feature_rows,0,Inherited Phase132 surviving feature rows
+phase136_phase133_phase134_open_allowed,0,Inherited Phase133 Phase134-open flag
+phase136_strategy_replay_allowed,0,Phase136 never unlocks strategy replay
+phase136_next_best_action,wait_for_real_l2_anchor_unlock_or_start_new_precommitted_non_blocklisted_research_branch,Recommended next milestone

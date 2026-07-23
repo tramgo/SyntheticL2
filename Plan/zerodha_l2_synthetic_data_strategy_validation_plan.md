@@ -3814,6 +3814,32 @@ Phase133 therefore improves the simulator execution contract, but it does **not*
 
 **Acceptance:** exactly one outcome document is produced. Outcome A verifies the blocklist update against Phase116. Outcomes B and C validate the handoff JSON against the real-anchor schema so it can be re-evaluated once real L2 lands through the Phase113-115 drop-zone pipeline.
 
+**Current implementation evidence:** Phase136 is implemented and executed under `outputs/phase136/`.
+
+Current outputs include:
+
+- `phase136_deep_book_verdict.json`;
+- `phase136_deep_book_clean_falsification_verdict.md`;
+- `phase136_blocklist_verification.csv`;
+- `phase136_gate_evaluation.csv`;
+- `phase136_deep_book_verdict_acceptance_summary.csv`;
+- `phase136_deep_book_verdict_manifest.json`.
+
+Current Phase136 evidence records:
+
+- hard closure-verdict gates evaluated: 8;
+- hard closure-verdict gates passed: 8;
+- selected outcome: `A_CLEAN_FALSIFICATION`;
+- clean falsification selected: 1;
+- inherited Phase132 kill-switch fired: 1;
+- inherited Phase132 surviving feature rows: 0;
+- inherited Phase133 Phase134-open flag: 0;
+- Phase116 blocklist entry `DEEP_BOOK_LABEL_LIFT` verified with blocked strategy id `phase131_phase132_top_five_depth_feature_diagnostics`;
+- strategy replay allowed: 0;
+- next best action: `wait_for_real_l2_anchor_unlock_or_start_new_precommitted_non_blocklisted_research_branch`.
+
+Phase136 therefore closes the Phase131-136 top-five-depth passive branch. It emits no Phase134 precommit, no Phase135 replay, no buy/sell signal, no order-arrival stream, no live-tagged fill model, and no deployable profitability claim.
+
 ### Forbidden actions inside Phase131-136
 
 The continuation forbids:

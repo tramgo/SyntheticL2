@@ -1,0 +1,22 @@
+{
+  "verdict_id": "phase136_deep_book_verdict",
+  "generated_utc": "2026-07-23T08:43:15.991038+00:00",
+  "outcome": "A_CLEAN_FALSIFICATION",
+  "decision": "deep_book_top_five_passive_branch_closed",
+  "reason": "Phase132 fired the kill-switch with zero surviving top-five-depth feature rows; Phase133 respected the kill-switch and kept Phase134 closed.",
+  "phase132": {
+    "kill_switch_fired": 1,
+    "surviving_feature_rows": 0,
+    "blocklist_entry_present": 1,
+    "strategy_replay_allowed": 0
+  },
+  "phase133": {
+    "contract_version": "phase133_retail_passive_visible_depth_fill_model_v1_2026_07_23",
+    "hard_gate_rows": 5,
+    "hard_gate_pass_rows": 5,
+    "phase134_open_allowed": 0,
+    "strategy_replay_allowed": 0
+  },
+  "forbidden_outputs": "strategy_code;buy_sell_signal;order_arrival_stream;live_tagged_fill_model;pnl_replay;profitability_claim",
+  "next_best_action": "wait_for_real_l2_anchor_unlock_or_start_new_precommitted_non_blocklisted_research_branch"
+}

@@ -1,0 +1,9 @@
+gate,pass,observed,required,severity
+phase136_phase132_kill_switch_fired,True,1,1,hard
+phase136_no_surviving_phase132_features,True,0,0,hard
+phase136_phase132_blocklist_evidence_present,True,1,1,hard
+phase136_phase116_blocklist_entry_verified,True,1,1,hard
+phase136_phase133_contract_gates_passed,True,5/5,all_phase133_hard_gates,hard
+phase136_phase134_not_opened,True,0,0,hard
+phase136_strategy_replay_remains_closed,True,0,0,hard
+phase136_outcome_a_selected,True,A_CLEAN_FALSIFICATION,A_CLEAN_FALSIFICATION,hard
