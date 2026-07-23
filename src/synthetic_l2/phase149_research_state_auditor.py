@@ -108,6 +108,10 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         146: Path("outputs/phase146/phase146_real_anchor_minimum_unlock_audit_acceptance_summary.csv"),
         147: Path("outputs/phase147/phase147_azcopy_download_intake_audit_acceptance_summary.csv"),
         148: Path("outputs/phase148/phase148_real_l2_download_refresh_workflow_acceptance_summary.csv"),
+        171: Path("outputs/phase171/phase171_external_orderflow_source_acceptance_summary.csv"),
+        172: Path("outputs/phase172/phase172_real_l2_receive_flow_availability_acceptance_summary.csv"),
+        173: Path("outputs/phase173/phase173_real_l2_download_credential_preflight_acceptance_summary.csv"),
+        174: Path("outputs/phase174/phase174_secure_real_l2_download_orchestrator_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -173,6 +177,46 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "strategy_replay_allowed": as_int(strategy_allowed, 0),
             "next_action": metric_value(path, f"phase{phase}_next_best_action", ""),
         }
+    if phase == 171:
+        return {
+            "branch": "real_receive_flow_source",
+            "state": "source_contract_declared_no_replay",
+            "selected_source_id": metric_value(path, "phase171_selected_source_id", ""),
+            "source_contract_rows": as_int(metric_value(path, "phase171_source_contract_rows", 0)),
+            "strategy_replay_allowed": as_int(metric_value(path, "phase171_strategy_replay_allowed", 0)),
+            "next_action": metric_value(path, "phase171_next_best_action", ""),
+        }
+    if phase == 172:
+        return {
+            "branch": "real_receive_flow_source",
+            "state": "local_receive_flow_structural_ready_but_day_count_gated",
+            "ready_receive_flow_dates": as_int(metric_value(path, "phase172_ready_receive_flow_dates", 0)),
+            "additional_dates_needed": as_int(metric_value(path, "phase172_additional_dates_needed", 0)),
+            "hard_gate_pass_rows": as_int(metric_value(path, "phase172_hard_gate_pass_rows", 0)),
+            "unlock_gate_pass_rows": as_int(metric_value(path, "phase172_unlock_gate_pass_rows", 0)),
+            "strategy_replay_allowed": as_int(metric_value(path, "phase172_strategy_replay_allowed", 0)),
+            "next_action": metric_value(path, "phase172_next_best_action", ""),
+        }
+    if phase == 173:
+        download_ready = as_int(metric_value(path, "phase173_download_ready_now", 0))
+        return {
+            "branch": "real_receive_flow_download_gate",
+            "state": "download_preflight_ready" if download_ready else "download_preflight_waiting_for_sas_or_key_or_tls_fix",
+            "download_ready_now": download_ready,
+            "additional_dates_needed": as_int(metric_value(path, "phase173_additional_dates_needed", 0)),
+            "strategy_replay_allowed": as_int(metric_value(path, "phase173_strategy_replay_allowed", 0)),
+            "next_action": metric_value(path, "phase173_next_best_action", ""),
+        }
+    if phase == 174:
+        download_ran = as_int(metric_value(path, "phase174_download_ran", 0))
+        return {
+            "branch": "real_receive_flow_download_gate",
+            "state": "secure_download_executed" if download_ran else "secure_download_skipped_no_credential",
+            "download_ran": download_ran,
+            "additional_dates_needed": as_int(metric_value(path, "phase174_phase172_additional_dates_needed", 0)),
+            "strategy_replay_allowed": as_int(metric_value(path, "phase174_strategy_replay_allowed", 0)),
+            "next_action": metric_value(path, "phase174_next_best_action", ""),
+        }
     return {}
 
 
@@ -214,12 +258,25 @@ def build_phase_ledger(scripts: pd.DataFrame, outputs: pd.DataFrame) -> pd.DataF
 
 
 def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
+    phase174 = phase_status_from_metrics(174)
+    phase172 = phase_status_from_metrics(172)
+    real_receive_next = phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_evidence = (
+        f"Phase172 ready_dates={phase172.get('ready_receive_flow_dates', '')}, additional_dates_needed={phase172.get('additional_dates_needed', '')}; "
+        f"Phase174 download_ran={phase174.get('download_ran', '')}."
+    )
     branches = [
         {
             "branch": "real_l2_anchor_gate",
             "status": "gated",
             "evidence": "Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven.",
-            "current_next_action": "download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase148",
+            "current_next_action": "use_phase174_secure_download_orchestrator_for_required_real_l2_dates",
+        },
+        {
+            "branch": "real_receive_flow_source",
+            "status": "gated_waiting_for_two_more_real_l2_dates",
+            "evidence": real_receive_evidence,
+            "current_next_action": real_receive_next,
         },
         {
             "branch": "top_five_depth_passive",
@@ -240,10 +297,18 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
 def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     phase136 = phase_ledger[phase_ledger["phase"].astype(int).eq(136)] if not phase_ledger.empty else pd.DataFrame()
     phase148 = phase_ledger[phase_ledger["phase"].astype(int).eq(148)] if not phase_ledger.empty else pd.DataFrame()
+    phase172 = phase_ledger[phase_ledger["phase"].astype(int).eq(172)] if not phase_ledger.empty else pd.DataFrame()
+    phase174 = phase_ledger[phase_ledger["phase"].astype(int).eq(174)] if not phase_ledger.empty else pd.DataFrame()
     real_replay_allowed = int(phase148["strategy_replay_allowed"].iloc[0]) if not phase148.empty and str(phase148["strategy_replay_allowed"].iloc[0]) != "" else 0
+    receive_replay_allowed = int(phase172["strategy_replay_allowed"].iloc[0]) if not phase172.empty and str(phase172["strategy_replay_allowed"].iloc[0]) != "" else 0
+    secure_replay_allowed = int(phase174["strategy_replay_allowed"].iloc[0]) if not phase174.empty and str(phase174["strategy_replay_allowed"].iloc[0]) != "" else 0
+    secure_download_recorded = bool(not phase174.empty and "secure_download" in str(phase174["status"].iloc[0]))
     branch_closed = bool(not phase136.empty and "closed_clean_falsification" in str(phase136["status"].iloc[0]))
     rows = [
         ("phase149_real_l2_replay_gate_closed", bool(real_replay_allowed == 0), real_replay_allowed, 0, "hard"),
+        ("phase149_real_receive_flow_replay_gate_closed", bool(receive_replay_allowed == 0), receive_replay_allowed, 0, "hard"),
+        ("phase149_secure_download_gate_recorded", secure_download_recorded, int(secure_download_recorded), 1, "hard"),
+        ("phase149_secure_orchestrator_replay_gate_closed", bool(secure_replay_allowed == 0), secure_replay_allowed, 0, "hard"),
         ("phase149_deep_book_branch_closed", branch_closed, int(branch_closed), 1, "hard"),
         ("phase149_no_promoted_strategy_replay", True, 0, 0, "hard"),
     ]
@@ -263,7 +328,7 @@ def summarize(phase_ledger: pd.DataFrame, branch_summary: pd.DataFrame, gates: p
             ("phase149_hard_gate_rows", int(len(hard)), "Hard global-state gates evaluated"),
             ("phase149_hard_gate_pass_rows", int(hard["pass"].astype(bool).sum()) if not hard.empty else 0, "Hard global-state gates passed"),
             ("phase149_strategy_replay_allowed", 0, "Phase149 never unlocks strategy replay"),
-            ("phase149_next_best_action", "download_real_l2_anchor_dates_with_phase148_or_start_new_precommitted_non_blocklisted_branch", "Recommended next milestone"),
+            ("phase149_next_best_action", "add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174", "Recommended next milestone"),
         ],
         columns=["metric", "value", "description"],
     )

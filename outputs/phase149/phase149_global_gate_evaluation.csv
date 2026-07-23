@@ -1,4 +1,7 @@
 gate,pass,observed,required,severity
 phase149_real_l2_replay_gate_closed,True,0,0,hard
+phase149_real_receive_flow_replay_gate_closed,True,0,0,hard
+phase149_secure_download_gate_recorded,True,1,1,hard
+phase149_secure_orchestrator_replay_gate_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard

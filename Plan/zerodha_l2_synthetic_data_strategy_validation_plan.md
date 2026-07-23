@@ -3684,24 +3684,28 @@ Phase149 research state auditor is implemented under `outputs/phase149/`.
 
 Current Phase149 evidence records:
 
-- phase rows discovered from scripts and outputs: 142;
-- phase rows with at least one runner: 140;
-- phase rows with acceptance summaries: 91;
-- current research branches summarized: 3;
-- hard global-state gates evaluated: 3;
-- hard global-state gates passed: 3;
+- phase rows discovered from scripts and outputs: 167;
+- phase rows with at least one runner: 165;
+- phase rows with acceptance summaries: 117;
+- current research branches summarized: 4;
+- hard global-state gates evaluated: 6;
+- hard global-state gates passed: 6;
 - strategy replay allowed: 0;
-- next best action: `download_real_l2_anchor_dates_with_phase148_or_start_new_precommitted_non_blocklisted_branch`.
+- next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174`.
 
 Current branch summary:
 
-- `real_l2_anchor_gate`: gated; Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven.
+- `real_l2_anchor_gate`: gated; Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. Use Phase174 as the secure download orchestrator for the required dates.
+- `real_receive_flow_source`: gated waiting for two more real L2 dates; Phase172 has 3 ready receive-flow dates and needs 2 more, while Phase174 records that no download ran because no SAS/key was available.
 - `top_five_depth_passive`: closed clean falsification; Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification.
 - `dense_synthetic_replay`: not promoted; partial/smoke dense replay artifacts remain non-promotional and do not override replay gates.
 
 Current global gates:
 
 - real L2 replay gate closed: pass;
+- real receive-flow replay gate closed: pass;
+- secure download gate recorded: pass;
+- secure orchestrator replay gate closed: pass;
 - deep-book branch closed: pass;
 - no promoted strategy replay: pass.
 
