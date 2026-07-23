@@ -1,0 +1,22 @@
+﻿{
+    "generated_utc":  "2026-07-23T18:52:12.7414299Z",
+    "scope":  "phase174_secure_real_l2_download_orchestrator",
+    "dates":  [
+                  "2026-07-10",
+                  "2026-07-14"
+              ],
+    "env_path_checked":  ".env",
+    "loaded_credential_names":  [
+
+                                ],
+    "secrets_recorded":  "none",
+    "download_ran":  false,
+    "phase172_reran":  false,
+    "strategy_replay_policy":  "closed",
+    "outputs":  {
+                    "step_ledger":  "outputs\\phase174\\phase174_secure_download_step_ledger.csv",
+                    "acceptance_summary":  "outputs\\phase174\\phase174_secure_real_l2_download_orchestrator_acceptance_summary.csv",
+                    "report":  "outputs\\phase174\\phase174_secure_real_l2_download_orchestrator_report.md",
+                    "manifest":  "outputs\\phase174\\phase174_secure_real_l2_download_orchestrator_manifest.json"
+                }
+}

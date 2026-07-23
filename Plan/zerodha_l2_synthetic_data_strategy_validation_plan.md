@@ -4812,6 +4812,42 @@ Current Phase173 evidence records:
 
 Current Phase173 interpretation: the next blocked item is not strategy logic. The plan needs a credential/trust fix for the download leg: provide a read/list share SAS, provide the storage account key through `AZURE_STORAGE_KEY` or `-AccountKey`, or repair Azure CLI certificate trust so a fresh SAS/key path can be generated. Once that is available, rerun Phase148 with download enabled for `2026-07-10` and `2026-07-14`, then rerun Phase172.
 
+### Phase174 — Secure Real L2 Download Orchestrator
+
+**Runner:** `scripts/run_phase174_secure_real_l2_download_orchestrator.ps1`
+
+**Outputs:** `outputs/phase174/`
+
+Phase174 makes the Phase173 next action executable without exposing secrets. It checks `.env` and the current process environment for `AZURE_STORAGE_SAS_TOKEN` or `AZURE_STORAGE_KEY`, records only the credential variable names that were loaded, and never prints or persists the secret values.
+
+If a SAS token or storage account key is present, Phase174 runs Phase148 with download enabled for the configured dates and then reruns Phase172. If neither credential is available, it refreshes Phase173 and writes a skipped-download ledger instead of attempting Azure access.
+
+Current Phase174 outputs include:
+
+- `phase174_secure_download_step_ledger.csv`;
+- `phase174_secure_real_l2_download_orchestrator_acceptance_summary.csv`;
+- `phase174_secure_real_l2_download_orchestrator_report.md`;
+- `phase174_secure_real_l2_download_orchestrator_manifest.json`.
+
+Current Phase174 evidence records:
+
+- required dates: `2026-07-10`, `2026-07-14`;
+- `.env` checked: 1;
+- Azure credential variable names loaded from `.env`: none;
+- SAS available in process environment: 0;
+- storage account key available in process environment: 0;
+- Phase173 refreshed after `.env` load: 1;
+- Phase148 download ran: 0;
+- Phase172 reran: 0;
+- failed workflow steps: 0;
+- Phase173 download ready now: 0;
+- Phase172 additional dates still needed: 2;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_to_env_or_process_then_rerun_phase174`.
+
+Current Phase174 interpretation: the download path is now executable and secret-safe. The user can add a read/list share SAS or storage account key to `.env` or the process environment, then rerun Phase174. Until that happens, the plan remains correctly gated with no replay, no paper/live acceptance and no Azure data movement attempted.
+
 ---
 
 ## 25. Final Principle

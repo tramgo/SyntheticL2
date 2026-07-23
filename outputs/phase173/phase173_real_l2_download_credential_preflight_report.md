@@ -1,6 +1,6 @@
 # Phase173 Real L2 Download Credential Preflight
 
-Generated UTC: 2026-07-23T18:49:12.346556+00:00
+Generated UTC: 2026-07-23T18:52:12.430376+00:00
 
 Phase173 records whether the next two-date real L2 download can be executed now.
 It never records SAS signatures, account keys, passwords, or broker credentials.
@@ -31,8 +31,8 @@ It does not contact Azure, run AzCopy, import data, unlock replay, or run strate
 | phase173_azcopy_available | 1 | 1 means AzCopy can be launched |
 | phase173_sas_token_available_in_env | 0 | 1 means AZURE_STORAGE_SAS_TOKEN is set; value is never recorded |
 | phase173_account_key_available_in_env | 0 | 1 means AZURE_STORAGE_KEY is set; value is never recorded |
-| phase173_azure_cli_probe_status | tls_blocked | Current Azure CLI metadata/auth probe result |
-| phase173_azure_cli_probe_evidence | az_account_show_ok_but_storage_account_list_token_refresh_ssl_cert_verify_failed | Redacted CLI evidence captured outside secret values |
+| phase173_azure_cli_probe_status | not_reprobed_by_phase174 | Current Azure CLI metadata/auth probe result |
+| phase173_azure_cli_probe_evidence | phase174_uses_env_credential_path_first_to_avoid_secret_leakage | Redacted CLI evidence captured outside secret values |
 | phase173_phase172_ready_receive_flow_dates | 3 | Ready local receive-flow dates from Phase172 |
 | phase173_phase172_additional_dates_needed | 2 | Additional complete local real L2 dates needed |
 | phase173_phase148_download_ran | 0 | Latest Phase148 download flag |
@@ -46,6 +46,6 @@ It does not contact Azure, run AzCopy, import data, unlock replay, or run strate
 | --- | --- | --- | --- |
 | P173_AZCOPY_AVAILABLE | 1 | azcopy resolved | hard_for_download |
 | P173_DOWNLOAD_CREDENTIAL_AVAILABLE | 0 | sas_env=0;account_key_env=0 | hard_for_download |
-| P173_AZURE_CLI_USABLE_FOR_SAS | 0 | az_account_show_ok_but_storage_account_list_token_refresh_ssl_cert_verify_failed | alternative_path |
+| P173_AZURE_CLI_USABLE_FOR_SAS | 0 | phase174_uses_env_credential_path_first_to_avoid_secret_leakage | alternative_path |
 | P173_TWO_DATES_STILL_REQUIRED | 1 | phase172_needed=2;phase146_needed=2 | status |
 | P173_REPLAY_REMAINS_CLOSED | 1 | phase146_strategy_replay_allowed=0 | safety |
