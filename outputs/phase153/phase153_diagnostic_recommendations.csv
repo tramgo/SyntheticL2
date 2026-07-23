@@ -1,0 +1,3 @@
+recommendation_id,priority,evidence,action
+P153_RECOMPUTE_REAL_CADENCE_ANCHORS_FROM_FULL_PARTITIONS,high,3 profiled symbols show older sampled p95 gap much higher than Phase152 full partition p95 gap.,Use Phase152-style full-partition DuckDB profiles for future cadence calibration before changing generator cadence parameters.
+P153_KEEP_REPLAY_CLOSED_USE_GAPS_FOR_GENERATOR_DIAGNOSTICS,high,tail cadence synthetic_low_vs_real rows=6; displayed depth synthetic_high_vs_real proxy rows=1.,Treat gaps as generator diagnostics only; do not open strategy replay or tune strategies to these selected partitions.

@@ -3807,6 +3807,31 @@ Current profiled partitions are all from `2026-07-13`:
 
 Phase152 confirms that the current real Zerodha WebSocket top-five market-by-price L2 panel is suitable for local microstructure diagnostics, while the strategy replay gate remains closed.
 
+Phase153 real-vs-synthetic microstructure gap audit is implemented under `outputs/phase153/`.
+
+**Runner:** `python scripts/run_phase153_real_synthetic_microstructure_gap_audit.py`
+
+**Purpose:** compare bounded Phase152 full-partition real microstructure profiles against Phase106 calibrated synthetic anchor metrics, and audit whether older sampled real-anchor cadence profiles may be biased. Phase153 is diagnostic-only: no strategy, no replay unlock, no P&L, and no Azure I/O.
+
+Current Phase153 evidence records:
+
+- overlap symbols compared: 6;
+- real-vs-synthetic gap rows: 18;
+- real-vs-synthetic rows outside the 0.80-1.25 ratio band or missing: 11;
+- Phase152 full-partition vs Phase106 sampled-anchor rows: 12;
+- sample-bias rows outside the 0.50-2.00 sampled/full ratio band or missing: 3;
+- inherited Phase106 severe metric gap count: 1;
+- diagnostic recommendation rows: 2;
+- strategy replay allowed: 0;
+- next best action: `recompute_real_anchor_cadence_profiles_from_full_partitions_after_phase148_downloads`.
+
+Current Phase153 diagnostic recommendations:
+
+- `P153_RECOMPUTE_REAL_CADENCE_ANCHORS_FROM_FULL_PARTITIONS`: high priority. Three profiled symbols show older sampled p95 gap much higher than Phase152 full-partition p95 gap, so future cadence calibration should use Phase152-style full-partition DuckDB profiles before changing generator cadence parameters.
+- `P153_KEEP_REPLAY_CLOSED_USE_GAPS_FOR_GENERATOR_DIAGNOSTICS`: high priority. Tail-cadence synthetic-low-vs-real rows and displayed-depth proxy gaps are generator diagnostics only; they must not open strategy replay or tune strategies to selected partitions.
+
+Important interpretation: Phase153 does not say the synthetic generator is ready. It says the next calibration work should first recompute real-anchor cadence profiles from full local partitions, because the older sampled-file Phase106 p95 gap can overstate real tail gaps for some symbols.
+
 ### Phase 133 — Retail Passive Execution Model Upgrade
 
 **Runner:** `scripts/run_phase133_passive_execution_model_upgrade.py`

@@ -1,0 +1,10 @@
+metric,value,description
+phase153_overlap_symbols,6,Symbols compared between Phase152 full real profiles and Phase106 synthetic anchor
+phase153_real_synthetic_gap_rows,18,Real-vs-synthetic metric comparison rows
+phase153_real_synthetic_gap_flag_rows,11,Real-vs-synthetic rows outside the 0.80-1.25 ratio band or missing
+phase153_sample_bias_rows,12,Phase152 full-partition vs Phase106 sampled-anchor comparison rows
+phase153_sample_bias_flag_rows,3,Sample-bias rows outside the 0.50-2.00 sampled/full ratio band or missing
+phase153_phase106_severe_metric_gap_count,1.0,Inherited Phase106 severe metric gap count
+phase153_recommendation_rows,2,Generated diagnostic recommendations
+phase153_strategy_replay_allowed,0,Gap audit does not unlock strategy replay
+phase153_next_best_action,recompute_real_anchor_cadence_profiles_from_full_partitions_after_phase148_downloads,Recommended next milestone

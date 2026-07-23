@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-23T09:07:20.994031+00:00",
+  "scope": "phase153_real_synthetic_microstructure_gap_audit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "2d8adbfaef5c7f18beaebdbd98bd32714fba6da8",
+  "configuration_hash": "92069157844d61797856a971444f9cf851b2e84047c4a310f53036c732809177",
+  "random_seed": "none_deterministic_gap_audit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase153_real_synthetic_microstructure_gap_audit",
+  "cost_model_version": "not_applicable",
+  "latency_model_version": "not_applicable",
+  "creation_timestamp": "2026-07-23T09:07:20.994031+00:00"
+}
