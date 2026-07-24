@@ -1,0 +1,5 @@
+gate_id,gate_pass,evidence,severity
+P177_PHASE176_FEATURES_MATERIALIZED,0,phase176_features_materialized=0,activation
+P177_FEATURE_ROOT_HAS_PARQUET,0,feature_root=derived_real_l2_receive_flow_features_phase176;parquet_files=0,activation
+P177_SCHEMA_AVAILABLE,1,feature_schema_rows=6,hard
+P177_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,feature-quality scaffold only while materialization gate is closed; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard

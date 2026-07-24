@@ -1,6 +1,6 @@
 # Phase149 Research State Auditor
 
-Generated UTC: 2026-07-23T19:02:06.943476+00:00
+Generated UTC: 2026-07-24T11:08:03.119606+00:00
 
 Phase149 reconciles current phase scripts, output evidence, branch states, and replay gates.
 It does not run strategies, contact Azure, import data, or unlock replay.
@@ -9,12 +9,12 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | metric | value | description |
 | --- | --- | --- |
-| phase149_phase_rows | 169 | Phase rows discovered from scripts and outputs |
-| phase149_runner_phase_rows | 167 | Phase rows with at least one runner |
-| phase149_acceptance_phase_rows | 119 | Phase rows with acceptance summaries |
+| phase149_phase_rows | 170 | Phase rows discovered from scripts and outputs |
+| phase149_runner_phase_rows | 168 | Phase rows with at least one runner |
+| phase149_acceptance_phase_rows | 120 | Phase rows with acceptance summaries |
 | phase149_branch_rows | 4 | Current research branches summarized |
-| phase149_hard_gate_rows | 10 | Hard global-state gates evaluated |
-| phase149_hard_gate_pass_rows | 10 | Hard global-state gates passed |
+| phase149_hard_gate_rows | 12 | Hard global-state gates evaluated |
+| phase149_hard_gate_pass_rows | 12 | Hard global-state gates passed |
 | phase149_strategy_replay_allowed | 0 | Phase149 never unlocks strategy replay |
 | phase149_next_best_action | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174 | Recommended next milestone |
 
@@ -23,7 +23,7 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | branch | status | evidence | current_next_action |
 | --- | --- | --- | --- |
 | real_l2_anchor_gate | gated | Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. | use_phase174_secure_download_orchestrator_for_required_real_l2_dates |
-| real_receive_flow_source | gated_waiting_for_two_more_real_l2_dates | Phase172 ready_dates=3, additional_dates_needed=2; Phase174 download_ran=0; Phase175 activation_ready=0; Phase176 features_materialized=0. | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization |
+| real_receive_flow_source | gated_waiting_for_two_more_real_l2_dates | Phase172 ready_dates=3, additional_dates_needed=2; Phase174 download_ran=0; Phase175 activation_ready=0; Phase176 features_materialized=0; Phase177 quality_audit_ran=0. | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177 |
 | top_five_depth_passive | closed_clean_falsification | Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification. | do_not_open_phase134_or_phase135_for_this_branch |
 | dense_synthetic_replay | not_promoted | Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates. | only_continue_if_precommitted_and_not_blocklisted |
 
@@ -39,6 +39,8 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | phase149_receive_flow_feature_schema_replay_gate_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_materializer_recorded | True | 1 | 1 | hard |
 | phase149_receive_flow_materializer_replay_gate_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_quality_audit_recorded | True | 1 | 1 | hard |
+| phase149_receive_flow_quality_audit_replay_gate_closed | True | 0 | 0 | hard |
 | phase149_deep_book_branch_closed | True | 1 | 1 | hard |
 | phase149_no_promoted_strategy_replay | True | 0 | 0 | hard |
 
@@ -46,7 +48,6 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | phase | runner_count | output_rows | has_runner | has_outputs | has_acceptance_summary | status | branch | strategy_replay_allowed | next_action | runner | output_dir |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 92 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase92_low_turnover_event_window_precommit.py | outputs\phase92 |
 | 93 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase93_low_turnover_event_window_replay.py | outputs\phase93 |
 | 94 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase94_generator_realism_calibration_audit.py | outputs\phase94 |
 | 95 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase95_real_anchor_panel_contract.py | outputs\phase95 |
@@ -126,3 +127,4 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | 174 | 1 | 1 | True | True | True | secure_download_skipped_no_credential | real_receive_flow_download_gate | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_to_env_or_process_then_rerun_phase174 | scripts\run_phase174_secure_real_l2_download_orchestrator.ps1 | outputs\phase174 |
 | 175 | 1 | 1 | True | True | True | receive_flow_feature_schema_precommitted_gated | real_receive_flow_source | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176 | scripts\run_phase175_receive_flow_feature_schema_precommit.py | outputs\phase175 |
 | 176 | 1 | 1 | True | True | True | receive_flow_feature_materializer_ready_gated | real_receive_flow_source | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization | scripts\run_phase176_receive_flow_feature_materializer.py | outputs\phase176 |
+| 177 | 1 | 1 | True | True | True | receive_flow_feature_quality_audit_scaffold_gated | real_receive_flow_source | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177 | scripts\run_phase177_receive_flow_feature_quality_audit.py | outputs\phase177 |

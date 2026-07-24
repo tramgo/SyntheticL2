@@ -1,9 +1,9 @@
 metric,value,description
-phase149_phase_rows,169,Phase rows discovered from scripts and outputs
-phase149_runner_phase_rows,167,Phase rows with at least one runner
-phase149_acceptance_phase_rows,119,Phase rows with acceptance summaries
+phase149_phase_rows,170,Phase rows discovered from scripts and outputs
+phase149_runner_phase_rows,168,Phase rows with at least one runner
+phase149_acceptance_phase_rows,120,Phase rows with acceptance summaries
 phase149_branch_rows,4,Current research branches summarized
-phase149_hard_gate_rows,10,Hard global-state gates evaluated
-phase149_hard_gate_pass_rows,10,Hard global-state gates passed
+phase149_hard_gate_rows,12,Hard global-state gates evaluated
+phase149_hard_gate_pass_rows,12,Hard global-state gates passed
 phase149_strategy_replay_allowed,0,Phase149 never unlocks strategy replay
 phase149_next_best_action,add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174,Recommended next milestone

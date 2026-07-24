@@ -81,6 +81,7 @@ phase,runner,runner_exists,runner_suffix
 174,scripts\run_phase174_secure_real_l2_download_orchestrator.ps1,True,.ps1
 175,scripts\run_phase175_receive_flow_feature_schema_precommit.py,True,.py
 176,scripts\run_phase176_receive_flow_feature_materializer.py,True,.py
+177,scripts\run_phase177_receive_flow_feature_quality_audit.py,True,.py
 17,scripts\run_phase17_work_packages.py,True,.py
 18,scripts\run_phase18_technology_stack.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py

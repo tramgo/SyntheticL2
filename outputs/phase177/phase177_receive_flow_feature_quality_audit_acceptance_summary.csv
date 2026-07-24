@@ -1,0 +1,11 @@
+metric,value,description
+phase177_quality_check_rows,30,Predeclared feature-quality checks
+phase177_gate_rows,4,Gates evaluated
+phase177_hard_gate_rows,2,Hard gates evaluated
+phase177_hard_gate_pass_rows,2,Hard gates passed
+phase177_features_materialized,0,Inherited Phase176 feature materialization flag
+phase177_feature_quality_audit_ran,0,1 means feature-quality metrics were computed
+phase177_strategy_replay_allowed,0,No strategy replay opened
+phase177_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase177_forbidden_outputs,buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase177_next_best_action,add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177,Recommended next milestone
