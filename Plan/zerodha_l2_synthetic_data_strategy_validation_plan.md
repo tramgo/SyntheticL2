@@ -6184,6 +6184,46 @@ Current Phase149 evidence after Phase195:
 
 Current interpretation: the active receive-flow line should move beyond this simple imbalance/cadence grid. The next useful research move is to expand the feature family or alter the model class while preserving the Phase195 gates: train-only selection, validation-extension rejection, no untouched test replay, no promotion, and no paper/live acceptance.
 
+### Phase196 - Expanded receive-flow feature/model search
+
+Phase196 expands the receive-flow search beyond direct imbalance threshold rules into train-fitted linear feature-family scores.
+
+Search discipline:
+
+- fitting split: train only;
+- validation screen: original validation plus validation-extension dates;
+- excluded split: `test_untouched`;
+- maximum decision-rate budget: 1%;
+- order/fill/PnL/test replay/promotion/paper-live outputs: forbidden.
+
+The expanded feature families include interaction terms across top-five imbalance, L1 imbalance, receive-event cadence, quote churn, depth refresh, stale-quote age and liquidity tightness. This was designed to answer a sharper question: whether the receive-flow branch failed merely because the earlier threshold grid was too simple, or whether the available real receive-flow features still cannot produce a cost-aware train survivor under the current gates.
+
+Phase196 results:
+
+- expanded model grid rows: 64;
+- train-selected model rows: 0;
+- model decision rows: 0;
+- models passing extension gates: 0;
+- hard gates: 6 / 6 passed;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Interpretation:
+
+The expanded receive-flow model search did not even produce a train-selected survivor under cost and decision-rate constraints. This is an earlier and cleaner rejection than Phase195: the branch did not reach validation-extension judgment because no fitted feature-family model met the train-only acceptance screen.
+
+Current Phase149 evidence after Phase196:
+
+- phase rows discovered: 189;
+- runner phase rows: 187;
+- acceptance phase rows: 139;
+- hard global-state gates: 86 / 86 passed;
+- real receive-flow branch status: `expanded_feature_model_search_no_train_survivor_no_test`;
+- next best action: `expand_non_receive_flow_features_or_pause_this_branch_no_test`.
+
+Current interpretation: continuing to search the same receive-flow-only idea is becoming low-yield. The next best milestone should either introduce non-receive-flow explanatory features, such as broader regime/liquidity/volatility context, or formally pause this branch before spending the untouched test split.
+
 ---
 
 ## 25. Final Principle

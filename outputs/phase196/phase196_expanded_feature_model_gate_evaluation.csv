@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P196_PHASE195_COMPLETE,1,phase195_redesign_search_complete=1,hard
+P196_TRAIN_ONLY_FIT,1,train_summary_rows=128; selected_model_rows=0,hard
+P196_EVALUATION_EXCLUDES_TEST,1,test_partitions_used=0,hard
+P196_EXTENSION_BREADTH_GATES_APPLIED,1,selected_model_rows=0; decision_rows=0,hard
+P196_PASSING_MODEL_RECORDED,1,passing_models=0,hard
+P196_NO_TEST_REPLAY_OR_PROMOTION,1,test_replay_allowed_next=0; promotion_allowed=0,hard
