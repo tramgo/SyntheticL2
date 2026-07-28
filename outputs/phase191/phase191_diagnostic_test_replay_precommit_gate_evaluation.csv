@@ -1,0 +1,6 @@
+gate_id,gate_pass,evidence,severity
+P191_PREVIOUS_PRECOMMIT_CHAIN_PASS,1,matrix_pass_rows=6/6,hard
+P191_CANDIDATE_HASH_DECLARED,1,candidate_rows=1,hard
+P191_FUTURE_COMMAND_CONTRACT_DECLARED,1,command_rows=1,hard
+P191_TEST_REPLAY_EXECUTION_CLOSED,1,test_replay_execution=0,hard
+P191_PROMOTION_AND_PAPER_LIVE_CLOSED,1,promotion_allowed=0; paper_live_acceptance_allowed=0,hard

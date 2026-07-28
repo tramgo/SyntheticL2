@@ -1,0 +1,7 @@
+precommit_item,observed,required,pass
+phase189_decision_complete,1,1,1
+phase190_diagnostic_spec_written,1,1,1
+candidate_frozen,1,1,1
+future_command_declared,1,1,1
+abort_rules_declared,5,5,1
+phase191_test_execution_closed,0,0,1

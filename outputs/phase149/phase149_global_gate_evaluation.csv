@@ -55,5 +55,11 @@ phase149_receive_flow_phase190_test_replay_not_executed,True,0,0,hard
 phase149_receive_flow_phase190_test_replay_closed,True,0,0,hard
 phase149_receive_flow_phase190_promotion_closed,True,0,0,hard
 phase149_receive_flow_phase190_paper_live_closed,True,0,0,hard
+phase149_receive_flow_phase191_diagnostic_precommit_recorded,True,1,1,hard
+phase149_receive_flow_phase191_test_replay_not_executed,True,0,0,hard
+phase149_receive_flow_phase191_test_result_closed,True,0,0,hard
+phase149_receive_flow_phase191_test_replay_closed,True,0,0,hard
+phase149_receive_flow_phase191_promotion_closed,True,0,0,hard
+phase149_receive_flow_phase191_paper_live_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard

@@ -5852,6 +5852,83 @@ Current interpretation: the test set remains untouched. The next best action is 
 
 ---
 
+### Phase191 - Diagnostic Test Replay Precommit, No Execution
+
+**Date:** 2026-07-28
+
+Phase191 freezes the diagnostic-test replay contract for the sparse candidate while still not executing the untouched test. It records a candidate hash, a future command contract and abort rules so any later diagnostic test run cannot silently reselect thresholds, switch profiles, emit orders/fills, or open promotion.
+
+Phase191 does not run test replay, emit test results, open promotion, open paper/live acceptance, emit orders/fills, calculate P&L or claim profitability.
+
+Phase191 outputs:
+
+- `outputs/phase191/phase191_frozen_candidate_contract.csv`;
+- `outputs/phase191/phase191_future_command_contract.csv`;
+- `outputs/phase191/phase191_abort_rules.csv`;
+- `outputs/phase191/phase191_precommit_matrix.csv`;
+- `outputs/phase191/phase191_diagnostic_test_replay_precommit_gate_evaluation.csv`;
+- `outputs/phase191/phase191_diagnostic_test_replay_precommit_acceptance_summary.csv`;
+- `outputs/phase191/phase191_diagnostic_test_replay_precommit_report.md`;
+- `outputs/phase191/phase191_diagnostic_test_replay_precommit_manifest.json`.
+
+Current Phase191 evidence:
+
+- frozen candidate contract rows: 1;
+- future command contract rows: 1;
+- abort rule rows: 5;
+- precommit matrix rows: 6;
+- frozen candidate: `P187_TOP5_I85_S2p5_Z1_R100`;
+- candidate contract hash: `6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1`;
+- gates evaluated: 5;
+- hard gates passed: 5 / 5;
+- diagnostic test precommit complete: 1;
+- test replay execution: 0;
+- test result allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `either_add_real_validation_date_or_explicitly_authorize_phase192_diagnostic_test_replay`.
+
+Frozen candidate contract:
+
+- imbalance source: `top5`;
+- minimum absolute imbalance: 0.85;
+- maximum spread: 2.5 bps;
+- minimum absolute receive-event z-score: 1.0;
+- maximum decision-rate budget: 1%;
+- allowed latency profiles: `P180_RETAIL_MARKETABLE_DEFAULT;P180_STRESSED_RETAIL`;
+- candidate may not change before any later diagnostic test replay.
+
+Future command contract:
+
+- future runner: `scripts/run_phase192_diagnostic_test_replay.py`;
+- allowed phase: `phase192_or_later_only`;
+- required split role: `test_untouched`;
+- required candidate contract hash: `6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1`;
+- negative controls required: shuffled-time and shuffled-symbol;
+- Phase191 may not emit test results, orders/fills or promotion.
+
+Abort rules:
+
+- abort on candidate hash mismatch before reading test rows;
+- abort if any input row is not `test_untouched`;
+- invalidate if cost/latency binding is missing;
+- block interpretation if negative controls are missing;
+- invalidate if any paper/live or promotion attempt is made from diagnostic test output.
+
+Current Phase149 evidence after Phase191:
+
+- phase rows discovered: 184;
+- runner phase rows: 182;
+- acceptance phase rows: 134;
+- hard global-state gates: 64 / 64 passed;
+- real receive-flow branch status: `diagnostic_test_replay_precommitted_no_execution`;
+- next best action: `either_add_real_validation_date_or_explicitly_authorize_phase192_diagnostic_test_replay`.
+
+Current interpretation: the sparse candidate is fully frozen for a future diagnostic test run, but the untouched test still has not been spent. The next step requires either adding real validation breadth, or an explicit decision to proceed to Phase192 diagnostic test replay under the frozen hash and abort rules.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

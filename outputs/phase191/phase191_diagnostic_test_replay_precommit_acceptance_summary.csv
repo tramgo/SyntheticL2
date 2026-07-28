@@ -1,0 +1,18 @@
+metric,value,description
+phase191_candidate_contract_rows,1,Frozen candidate contract rows
+phase191_future_command_contract_rows,1,Future command contract rows
+phase191_abort_rule_rows,5,Abort rule rows
+phase191_precommit_matrix_rows,6,Precommit matrix rows
+phase191_candidate_id,P187_TOP5_I85_S2p5_Z1_R100,Frozen candidate
+phase191_candidate_contract_hash,6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1,Frozen candidate hash
+phase191_gate_rows,5,Gates evaluated
+phase191_hard_gate_rows,5,Hard gates evaluated
+phase191_hard_gate_pass_rows,5,Hard gates passed
+phase191_diagnostic_test_precommit_complete,1,1 means diagnostic precommit completed
+phase191_test_replay_execution,0,No test replay executed
+phase191_test_result_allowed,0,No test result emitted
+phase191_test_replay_allowed_next,0,No test replay opened by Phase191
+phase191_promotion_allowed,0,No promotion opened
+phase191_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase191_forbidden_outputs,test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase191_next_best_action,either_add_real_validation_date_or_explicitly_authorize_phase192_diagnostic_test_replay,Recommended next milestone
