@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P207_PHASE206_COMPLETE,True,phase206_complete=1,hard
+P207_FEATURE_MATRIX_RECORDED,True,matrix_rows=24,hard
+P207_FEATURE_AVAILABILITY_POSITIVE,True,available_rows=24,hard
+P207_TARGET_EXCLUSION_ABLATION_SPEC_RECORDED,True,ablation_rows=3,hard
+P207_LEAKAGE_TERMINOLOGY_AUDIT_PASSED,True,audit_pass_rows=3,hard
+P207_NO_MODEL_FIT_REPLAY_OR_PROMOTION,True,forbidden_flag_sum=0,hard

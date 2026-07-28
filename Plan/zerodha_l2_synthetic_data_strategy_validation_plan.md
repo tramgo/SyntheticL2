@@ -6758,6 +6758,63 @@ Current interpretation: Phase206 allows the receive-flow context source to move 
 
 ---
 
+### Phase207 - Allowed feature matrix precommit
+
+Phase207 builds the allowed feature/horizon availability matrix from the Phase206 catalog and the Phase176 materialized receive-flow feature partitions. It does not fit models, run strategy replay, run test replay, emit orders/fills/P&L, promote anything, or open paper/live acceptance.
+
+Phase207 feature matrix source:
+
+- Phase206 feature catalog rows: 6;
+- Phase176 materialized feature partition inventory rows: 896;
+- materialized horizons: 1s, 5s, 15s, 60s;
+- maximum coverage: 7 trade dates and 32 symbols.
+
+Phase207 allowed feature/horizon matrix:
+
+- `P206_RECEIVE_EVENT_RATE_ZSCORE`: available at 1s, 5s, 15s, 60s;
+- `P206_QUOTE_CHURN_RATE`: available at 1s, 5s, 15s, 60s;
+- `P206_DEPTH_REFRESH_INTENSITY`: available at 1s, 5s, 15s, 60s;
+- `P206_STALE_QUOTE_DURATION`: available at 1s, 5s, 15s, 60s;
+- `P206_CROSS_SYMBOL_ARRIVAL_SYNCHRONY`: available at 1s, 5s, 15s, 60s;
+- `P206_RECEIVE_FLOW_REGIME_STATE`: available at 1s, 5s, 15s, 60s as a future context/regime feature input bundle.
+
+Phase207 guardrail artifacts:
+
+- target-symbol exclusion ablation spec for cross-symbol synchrony;
+- shuffled-time/date negative-control spec;
+- blocked-form overlap-control spec;
+- leakage-control audit;
+- top-five market-by-price terminology audit.
+
+Phase207 results:
+
+- feature matrix rows: 24;
+- available feature/horizon rows: 24;
+- max trade-date coverage: 7;
+- max symbol coverage: 32;
+- target-exclusion/negative-control ablation rows: 3;
+- leakage/terminology audit rows: 3;
+- hard gates: 6 / 6 passed;
+- model fitting allowed: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase208_feature_matrix_quality_gate_no_model_no_replay`.
+
+Current Phase149 evidence after Phase207:
+
+- phase rows discovered: 200;
+- runner phase rows: 198;
+- acceptance phase rows: 150;
+- hard global-state gates: 143 / 143 passed;
+- real receive-flow branch status: `allowed_feature_matrix_precommitted_phase208_quality_gate_pending_no_model_no_replay`;
+- next best action: `run_phase208_feature_matrix_quality_gate_no_model_no_replay`.
+
+Current interpretation: Phase207 confirms the selected receive-flow context source has broad feature/horizon availability, but it still only opens a quality-gate step. Phase208 should audit feature matrix quality before any model fitting or replay is considered.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

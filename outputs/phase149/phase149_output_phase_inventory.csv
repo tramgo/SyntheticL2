@@ -120,6 +120,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 204,outputs\phase204,True,8,outputs\phase204\phase204_passive_redesign_closure_acceptance_summary.csv,outputs\phase204\phase204_passive_redesign_closure_manifest.json,False
 205,outputs\phase205,True,8,outputs\phase205\phase205_material_new_source_acceptance_summary.csv,outputs\phase205\phase205_material_new_source_manifest.json,False
 206,outputs\phase206,True,9,outputs\phase206\phase206_nonoverlap_feature_acceptance_summary.csv,outputs\phase206\phase206_nonoverlap_feature_manifest.json,False
+207,outputs\phase207,True,7,outputs\phase207\phase207_feature_matrix_acceptance_summary.csv,outputs\phase207\phase207_feature_matrix_manifest.json,False
 20,outputs\phase20_m01,True,7,,outputs\phase20_m01\broker_evidence_contract_manifest.json,False
 20,outputs\phase20_m02,True,6,,outputs\phase20_m02\strategy_support_contract_manifest.json,False
 20,outputs\phase20_m03,True,6,,outputs\phase20_m03\predictive_validation_contract_manifest.json,False

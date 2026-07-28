@@ -1,0 +1,18 @@
+metric,value,description
+phase207_feature_matrix_rows,24,Feature/horizon matrix rows
+phase207_feature_available_rows,24,Available feature/horizon rows
+phase207_trade_dates_max,7,Maximum trade-date coverage
+phase207_symbols_max,32,Maximum symbol coverage
+phase207_target_exclusion_ablation_rows,3,Ablation spec rows
+phase207_leakage_terminology_audit_rows,3,Leakage/terminology audit rows
+phase207_gate_rows,6,Gates evaluated
+phase207_hard_gate_rows,6,Hard gates evaluated
+phase207_hard_gate_pass_rows,6,Hard gates passed
+phase207_feature_matrix_precommit_complete,1,1 means Phase207 completed
+phase207_model_fit_allowed,0,No model fitting opened
+phase207_strategy_replay_allowed,0,No strategy replay opened
+phase207_test_replay_allowed_next,0,No test replay opened
+phase207_promotion_allowed,0,No promotion opened
+phase207_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase207_forbidden_outputs,model_fit;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening,Outputs forbidden in this phase
+phase207_next_best_action,run_phase208_feature_matrix_quality_gate_no_model_no_replay,Recommended next milestone

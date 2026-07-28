@@ -1,0 +1,4 @@
+ablation_id,feature_id,required_before_model_fit,spec,matrix_rows_available,model_fit_allowed,strategy_replay_allowed
+P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY,P206_CROSS_SYMBOL_ARRIVAL_SYNCHRONY,1,Future synchrony features must recompute cross_symbol_arrival_count/share excluding the target symbol before any model fitting.,4,0,0
+P207_SHUFFLED_TIME_NEGATIVE_CONTROL,all_phase206_features,1,Any future model phase must include shuffled-time/date negative controls before edge interpretation.,24,0,0
+P207_BLOCKED_FORM_OVERLAP_CONTROL,all_phase206_features,1,"Any future model phase must prove no reuse of Phase164 forms, fixed Phase167 S08 score, or passive queue replay.",24,0,0

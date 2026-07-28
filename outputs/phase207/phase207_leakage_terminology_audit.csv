@@ -1,0 +1,4 @@
+audit_id,audit_pass,evidence,model_fit_allowed
+P207_LEAKAGE_CONTROLS_PRESENT,1,leakage_rows=6; feature_rows=6,0
+P207_TOP_FIVE_TERMINOLOGY_CORRECT,1,"depth features are top-five market-by-price, not L3/L4 order-by-order",0
+P207_MATRIX_NO_MODEL_OR_REPLAY_FLAGS,1,all matrix model/replay flags are 0,0
