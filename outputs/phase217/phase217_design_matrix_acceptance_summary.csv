@@ -1,0 +1,21 @@
+metric,value,description
+phase217_target_scope_rows,7,Event-only target scope rows
+phase217_feature_binding_rows,42,Same-horizon target-feature binding rows
+phase217_control_plan_rows,3,Required control plan rows
+phase217_design_matrix_contract_rows,1,Design-matrix contract rows
+phase217_phase218_work_order_rows,1,Phase218 work-order rows
+phase217_target_row_observation_scope,384282,Target-row event-only observations across allowed targets
+phase217_forbidden_execution_rows,14,Forbidden execution rows
+phase217_gate_rows,7,Gates evaluated
+phase217_hard_gate_rows,7,Hard gates evaluated
+phase217_hard_gate_pass_rows,7,Hard gates passed
+phase217_event_only_design_matrix_precommit_complete,1,1 means Phase217 completed
+phase217_row_level_design_matrix_export_allowed,0,No row-level design matrix export opened
+phase217_model_fit_allowed_next,0,No model fit opened
+phase217_strategy_replay_allowed,0,No strategy replay opened
+phase217_test_replay_allowed_next,0,No test replay opened
+phase217_promotion_allowed,0,No promotion opened
+phase217_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase217_profitability_claim_allowed,0,No profitability claim is allowed
+phase217_forbidden_outputs,model_fit;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_design_matrix_export;row_level_prediction_export,Outputs forbidden in this phase
+phase217_next_best_action,run_phase218_event_only_model_fit_precommit_or_stop_no_replay_no_test,Recommended next milestone

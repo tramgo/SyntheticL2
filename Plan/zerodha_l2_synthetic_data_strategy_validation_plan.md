@@ -7268,6 +7268,59 @@ Current interpretation: Phase216 keeps the branch alive but tightens it again. T
 
 ---
 
+### Phase217 - Event-only design-matrix precommit, no model/no replay/no test
+
+Phase217 binds the Phase216 event-only target allowlist to same-horizon Phase207 receive-flow features. It records the design-matrix scope, feature bindings, required controls, and Phase218 work order, but does not export row-level design matrices and does not fit models.
+
+Phase217 design-matrix contract:
+
+- event-only filter: `event_surprise_bucket == 1`;
+- allowed targets: Phase216 target allowlist only;
+- allowed split roles: train and validation only;
+- sealed test policy: inventory only, zero rows used;
+- feature binding: same-horizon Phase207 features only;
+- target columns are explicitly excluded from features;
+- row-level design-matrix export allowed: 0.
+
+Phase217 results:
+
+- event-only target scope rows: 7;
+- same-horizon target-feature binding rows: 42;
+- required control plan rows: 3;
+- design-matrix contract rows: 1;
+- Phase218 work-order rows: 1;
+- target-row event-only observation scope: 384,282;
+- forbidden execution rows: 14;
+- hard gates: 7 / 7 passed;
+- row-level design-matrix export allowed: 0;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase218_event_only_model_fit_precommit_or_stop_no_replay_no_test`.
+
+Phase217 decision:
+
+- `event_only_design_matrix_contract_precommitted_no_model_fit`;
+- the branch now has enough train/validation event-only design-matrix scope to support a Phase218 model-fit precommit decision;
+- Phase218 must decide whether to precommit a model-fit dry run or stop/redesign; it still must not run strategy replay or sealed test replay;
+- no Phase217 artifact opens row-level matrix export, model fitting, prediction export, strategy replay, sealed test replay, order/fill/P&L simulation, promotion, paper/live acceptance, threshold widening, or profitability claims.
+
+Current Phase149 evidence after Phase217:
+
+- phase rows discovered: 210;
+- runner phase rows: 208;
+- acceptance phase rows: 160;
+- hard global-state gates: 215 / 215 passed;
+- real receive-flow branch status: `event_only_design_matrix_precommit_complete_phase218_model_fit_precommit_or_stop_pending_no_replay_no_test`;
+- next best action: `run_phase218_event_only_model_fit_precommit_or_stop_no_replay_no_test`.
+
+Current interpretation: Phase217 finally turns the narrowed event-surprise idea into a bounded design-matrix contract. That is still not a trading result. It is a controlled doorway to a Phase218 decision about whether a train/validation model-fit precommit is justified, with replay and test still locked.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

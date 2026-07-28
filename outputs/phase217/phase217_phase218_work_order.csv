@@ -1,0 +1,2 @@
+phase218_work_order_id,work_order,phase217_contract_rows,target_scope_rows,feature_binding_rows,control_plan_rows,phase217_contract_ok,allowed_next_scope,model_fit_execution_allowed_next,strategy_replay_allowed,test_replay_allowed_next
+P218_EVENT_ONLY_MODEL_FIT_PRECOMMIT_OR_STOP,"Decide whether the Phase217 event-only design-matrix contract is strong enough to precommit a train/validation model fit, or stop/redesign without replay.",1,7,42,3,1,model_fit_precommit_decision_only_no_strategy_replay_no_test,0,0,0

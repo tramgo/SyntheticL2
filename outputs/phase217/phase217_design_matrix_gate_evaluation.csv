@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P217_PHASE216_COMPLETE,True,phase216_complete=1,hard
+P217_ALLOWED_TARGETS_MATCH_PHASE216,True,allowlist=7; target_scope=7; phase216_allowed=7; target_scope_pass=7,hard
+P217_SAME_HORIZON_FEATURE_BINDINGS_RECORDED,True,bindings=42; same_horizon=42; available=42,hard
+P217_REQUIRED_CONTROLS_RECORDED,True,controls=3,hard
+P217_DESIGN_MATRIX_CONTRACT_RECORDED,True,contract=1; target_scope=7; bindings=42,hard
+P217_PHASE218_WORK_ORDER_RECORDED,True,work_order=1,hard
+P217_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard
