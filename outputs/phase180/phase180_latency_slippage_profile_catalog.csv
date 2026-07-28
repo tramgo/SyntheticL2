@@ -1,0 +1,4 @@
+profile_id,decision_latency_ms,broker_network_latency_ms,slippage_ticks,spread_cross_multiplier,allowed_for_promotion,purpose
+P180_ZERO_LATENCY_CONTROL_DIAGNOSTIC_ONLY,0,0,0,1.0,0,diagnostic lower-bound only; cannot support profitability acceptance
+P180_RETAIL_MARKETABLE_DEFAULT,100,250,1,1.0,1,base retail stress before any future replay
+P180_STRESSED_RETAIL,250,750,2,1.25,1,adverse retail latency/slippage stress before any future replay

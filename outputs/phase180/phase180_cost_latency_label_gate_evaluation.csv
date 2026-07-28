@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P180_PHASE179_PRECOMMIT_READY,1,phase179_precommit_ready=1,hard
+P180_ZERODHA_COST_COMPONENTS_PINNED,1,observed_components=brokerage;dp_charges;gst;sebi_charges;stamp_duty;stt;transaction_charges,hard
+P180_OFFICIAL_COST_SOURCE_RECORDED,1,official Zerodha charge and STT URLs recorded,hard
+P180_LATENCY_STRESS_PROFILES_DECLARED,1,profiles=3;promotion_eligible_profiles=2,hard
+P180_LABEL_FAMILIES_PRECOMMITTED,1,label_rows=3;replay_allowed_sum=0,hard
+P180_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,cost/latency/label precommit only; forbidden_outputs=signal;order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard

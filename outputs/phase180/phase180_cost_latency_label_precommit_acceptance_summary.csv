@@ -1,0 +1,12 @@
+metric,value,description
+phase180_cost_component_rows,26,Zerodha cost component rows pinned
+phase180_latency_profile_rows,3,Latency/slippage profiles declared
+phase180_label_family_rows,3,Label families precommitted
+phase180_gate_rows,6,Gates evaluated
+phase180_hard_gate_rows,6,Hard gates evaluated
+phase180_hard_gate_pass_rows,6,Hard gates passed
+phase180_precommit_ready,1,1 means label materialization phase may be built
+phase180_strategy_replay_allowed,0,No strategy replay opened
+phase180_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase180_forbidden_outputs,signal;order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase180_next_best_action,build_phase181_label_materialization_no_replay,Recommended next milestone

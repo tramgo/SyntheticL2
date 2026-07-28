@@ -1,0 +1,27 @@
+segment,exchange,component,applicable_side,formula,unit,note,official_source_url,verified_utc
+equity_delivery,NSE,brokerage,both,0,inr_per_executed_order,Zero brokerage for resident retail equity delivery,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,brokerage,both,0,inr_per_executed_order,Zero brokerage for resident retail equity delivery,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,NSE,brokerage,both,"min(0.0003 * turnover, 20)",inr_per_executed_order,"0.03 percent or Rs 20 per executed order, whichever is lower",https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,BSE,brokerage,both,"min(0.0003 * turnover, 20)",inr_per_executed_order,"0.03 percent or Rs 20 per executed order, whichever is lower",https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,NSE,stt,buy_and_sell,0.001 * turnover,inr,0.1 percent on buy and sell,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,stt,buy_and_sell,0.001 * turnover,inr,0.1 percent on buy and sell,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,NSE,stt,sell,0.00025 * sell_turnover,inr,0.025 percent on sell side only,https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/how-is-the-securities-transaction-tax-stt-calculated,2026-07-28T16:22:26.344990+00:00
+equity_intraday,BSE,stt,sell,0.00025 * sell_turnover,inr,0.025 percent on sell side only,https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/how-is-the-securities-transaction-tax-stt-calculated,2026-07-28T16:22:26.344990+00:00
+equity_delivery,NSE,transaction_charges,both,0.0000307 * turnover,inr,NSE equity transaction charges 0.00307 percent,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,NSE,transaction_charges,both,0.0000307 * turnover,inr,NSE equity transaction charges 0.00307 percent,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,transaction_charges,both,0.0000375 * turnover,inr,BSE equity transaction charges 0.00375 percent,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,BSE,transaction_charges,both,0.0000375 * turnover,inr,BSE equity transaction charges 0.00375 percent,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,NSE,sebi_charges,both,10 / 10000000 * turnover,inr,SEBI charges Rs 10 per crore,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,NSE,sebi_charges,both,10 / 10000000 * turnover,inr,SEBI charges Rs 10 per crore,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,sebi_charges,both,10 / 10000000 * turnover,inr,SEBI charges Rs 10 per crore,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,BSE,sebi_charges,both,10 / 10000000 * turnover,inr,SEBI charges Rs 10 per crore,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,NSE,stamp_duty,buy,0.00015 * buy_turnover,inr,0.015 percent or Rs 1500 per crore on buy side,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,stamp_duty,buy,0.00015 * buy_turnover,inr,0.015 percent or Rs 1500 per crore on buy side,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,NSE,stamp_duty,buy,0.00003 * buy_turnover,inr,0.003 percent or Rs 300 per crore on buy side,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,BSE,stamp_duty,buy,0.00003 * buy_turnover,inr,0.003 percent or Rs 300 per crore on buy side,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,NSE,gst,both,0.18 * (brokerage + sebi_charges + transaction_charges),inr,GST on brokerage plus SEBI plus transaction charges,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,NSE,gst,both,0.18 * (brokerage + sebi_charges + transaction_charges),inr,GST on brokerage plus SEBI plus transaction charges,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,gst,both,0.18 * (brokerage + sebi_charges + transaction_charges),inr,GST on brokerage plus SEBI plus transaction charges,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_intraday,BSE,gst,both,0.18 * (brokerage + sebi_charges + transaction_charges),inr,GST on brokerage plus SEBI plus transaction charges,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,NSE,dp_charges,sell,15.34 per scrip debit transaction when delivery holding is sold,inr,DP charges are delivery-sale only and not intraday,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00
+equity_delivery,BSE,dp_charges,sell,15.34 per scrip debit transaction when delivery holding is sold,inr,DP charges are delivery-sale only and not intraday,https://zerodha.com/charges,2026-07-28T16:22:26.344990+00:00

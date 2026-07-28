@@ -85,6 +85,7 @@ phase,runner,runner_exists,runner_suffix
 178,scripts\run_phase178_receive_flow_feature_handoff_precommit.py,True,.py
 179,scripts\run_phase179_strategy_family_precommit.py,True,.py
 17,scripts\run_phase17_work_packages.py,True,.py
+180,scripts\run_phase180_cost_latency_label_precommit.py,True,.py
 18,scripts\run_phase18_technology_stack.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py

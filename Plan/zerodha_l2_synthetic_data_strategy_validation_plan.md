@@ -5163,6 +5163,77 @@ Current interpretation: the project now has a controlled candidate-family precom
 
 ---
 
+### Phase180 - Cost/Latency-bound Label Precommit, No Replay
+
+**Date:** 2026-07-28
+
+Phase180 pins the cost, latency/slippage and label-family prerequisites that must exist before any event replay or P&L calculation can be considered. It uses the current official Zerodha charges page and Zerodha STT support article as the source for the equity cost catalog. It does not materialize labels yet, does not generate signals, does not simulate orders/fills and does not compute P&L.
+
+Phase180 outputs:
+
+- `outputs/phase180/phase180_zerodha_equity_cost_component_catalog.csv`;
+- `outputs/phase180/phase180_latency_slippage_profile_catalog.csv`;
+- `outputs/phase180/phase180_label_family_precommit.csv`;
+- `outputs/phase180/phase180_cost_latency_label_gate_evaluation.csv`;
+- `outputs/phase180/phase180_cost_latency_label_precommit_acceptance_summary.csv`;
+- `outputs/phase180/phase180_cost_latency_label_precommit_report.md`;
+- `outputs/phase180/phase180_cost_latency_label_precommit_manifest.json`.
+
+Pinned official sources:
+
+- Zerodha charges page: `https://zerodha.com/charges`;
+- Zerodha STT support article: `https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/how-is-the-securities-transaction-tax-stt-calculated`.
+
+Pinned equity cost components:
+
+- brokerage;
+- STT;
+- exchange transaction charges;
+- SEBI charges;
+- stamp duty;
+- GST;
+- DP charges for delivery-sale contexts only.
+
+Phase180 records equity delivery and equity intraday formulas for NSE and BSE. The immediate future replay path remains equity-intraday focused, but delivery rows are included so any accidental delivery interpretation is explicit rather than implicit.
+
+Latency/slippage profiles:
+
+- `P180_ZERO_LATENCY_CONTROL_DIAGNOSTIC_ONLY`: diagnostic lower-bound only, not promotion eligible;
+- `P180_RETAIL_MARKETABLE_DEFAULT`: 100 ms decision latency, 250 ms broker/network latency, 1 tick slippage;
+- `P180_STRESSED_RETAIL`: 250 ms decision latency, 750 ms broker/network latency, 2 tick slippage and 1.25x spread-cross multiplier.
+
+Precommitted label families:
+
+- future mid/spread-adjusted return label for source-quality regime filtering;
+- execution-risk/spread-transition label for liquidity/churn context;
+- short-horizon direction or volatility label for receive-cadence shock context.
+
+Current Phase180 evidence:
+
+- cost component rows: 26;
+- latency/slippage profiles: 3;
+- label family rows: 3;
+- gates evaluated: 6;
+- hard gates passed: 6 / 6;
+- precommit ready: 1;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `signal;order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`;
+- next best action: `build_phase181_label_materialization_no_replay`.
+
+Current Phase149 evidence after Phase180:
+
+- phase rows discovered: 173;
+- runner phase rows: 171;
+- acceptance phase rows: 123;
+- hard global-state gates: 18 / 18 passed;
+- real receive-flow branch status: `cost_latency_label_precommitted_label_materialization_pending`;
+- next best action: `build_phase181_label_materialization_no_replay`.
+
+Current interpretation: the project now has a source-verified Zerodha cost catalog and predeclared latency/slippage and label families. Phase181 may materialize labels, but still must not run strategy replay or P&L. Replay remains a later gate after labels, leakage tests, blocklist overlap checks and cost/latency bindings are proven.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

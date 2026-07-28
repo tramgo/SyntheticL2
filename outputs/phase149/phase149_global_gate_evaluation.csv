@@ -13,5 +13,7 @@ phase149_receive_flow_handoff_precommit_recorded,True,1,1,hard
 phase149_receive_flow_handoff_replay_gate_closed,True,0,0,hard
 phase149_receive_flow_strategy_family_precommit_recorded,True,1,1,hard
 phase149_receive_flow_strategy_family_replay_gate_closed,True,0,0,hard
+phase149_receive_flow_cost_latency_label_precommit_recorded,True,1,1,hard
+phase149_receive_flow_cost_latency_label_replay_gate_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard
