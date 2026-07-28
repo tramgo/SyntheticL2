@@ -6024,6 +6024,123 @@ Current Phase149 evidence after Phase193:
 
 Current interpretation: the new real day weakened the candidate rather than confirming it. The untouched test split still must not be spent on this candidate unless the user explicitly chooses to run a diagnostic test despite the mixed validation-extension evidence. The research-forward path is to add more post-`2026-07-15` validation dates and/or redesign the sparse receive-flow candidate before any test replay.
 
+### Phase193 refresh - second validation-extension date
+
+The next continuation followed the same no-test path and added one more post-test real date, `2026-07-16`, from Azure.
+
+Phase192 was rerun as the operational downloader for the latest selected date:
+
+- selected new validation date: `2026-07-16`;
+- selected remote files: 50,283;
+- selected remote bytes: 1,763,034,702;
+- downloaded files: 50,283;
+- failed files/dates: 0;
+- final local partition size: 50,283 parquet files and 1,763,034,702 bytes;
+- target partition: `real_data_sample/l2_multiday_panel/trade_date=2026-07-16`;
+- test replay execution: 0;
+- test result allowed: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+After adding `2026-07-16`, the local stack was refreshed again:
+
+- Phase172 ready real receive-flow dates: 7;
+- Phase172 audited symbol-days: 224;
+- Phase172 audited raw rows: 3,654,137;
+- Phase172 audited compressed raw bytes: 10,525,885,744;
+- Phase176 feature partition rows: 896;
+- Phase176 feature rows across horizons: 3,343,256;
+- Phase181 label partition rows: 896;
+- Phase182 label/leakage audit hard gates: 7 / 7 passed.
+
+Phase193 was rerun cumulatively over original validation plus both unassigned validation-extension dates:
+
+- original validation date with events: `2026-07-13`;
+- validation-extension dates with events: `2026-07-15;2026-07-16`;
+- validation/extension dates with events: 3;
+- dry decision events: 7,002;
+- evaluation rows: 1,695,162;
+- decision rate: approximately 0.4131%, still under the 1% budget;
+- symbols with events: 31;
+- hard gates: 7 / 7 passed;
+- test replay execution: 0;
+- test result allowed: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Updated aggregate Phase193 result:
+
+- overall net proxy mean: 10.0573 bps;
+- minimum profile net proxy mean: 9.0853 bps;
+- minimum edge over shuffled-time control: 17.2761 bps;
+- minimum edge over shuffled-symbol control: 28.7247 bps;
+- date-positive fraction: 0.3333;
+- symbol-positive fraction: 0.0645;
+- breadth warning: 1;
+- date-count warning: 0;
+- concentration warning: 0.
+
+Updated per-date evidence:
+
+| Latency profile | Split role | Trade date | Decision events | Net proxy mean | Edge over shuffled time | Edge over shuffled symbol |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| `P180_RETAIL_MARKETABLE_DEFAULT` | validation | 2026-07-13 | 1,323 | 48.3994 bps | 45.4896 bps | 60.5983 bps |
+| `P180_STRESSED_RETAIL` | validation | 2026-07-13 | 1,323 | 46.3309 bps | 60.6039 bps | 60.5983 bps |
+| `P180_RETAIL_MARKETABLE_DEFAULT` | unassigned | 2026-07-15 | 1,189 | -11.7868 bps | 0.1979 bps | 16.9930 bps |
+| `P180_STRESSED_RETAIL` | unassigned | 2026-07-15 | 1,189 | -13.7838 bps | -25.0252 bps | 16.9930 bps |
+| `P180_RETAIL_MARKETABLE_DEFAULT` | unassigned | 2026-07-16 | 989 | -11.5314 bps | 0.0663 bps | 0.1910 bps |
+| `P180_STRESSED_RETAIL` | unassigned | 2026-07-16 | 989 | -13.2449 bps | 30.4704 bps | 0.1910 bps |
+
+Updated interpretation: the second validation-extension date confirms the fragility rather than rescuing the candidate. The aggregate remains positive only because the original `2026-07-13` validation date was extremely strong. Both newly added extension dates are negative after cost under both retail latency profiles. The candidate should remain blocked from untouched test replay unless the research objective is explicitly diagnostic; the better next action is redesign, or a broader validation-date pull to determine whether the signal is a one-day artifact.
+
+### Phase194 - Sparse candidate fragility decision and redesign gate
+
+Phase194 converts the Phase193 broadened-validation evidence into a research decision instead of continuing shard-after-shard without a decision.
+
+Evidence used:
+
+- candidate: `P187_TOP5_I85_S2p5_Z1_R100`;
+- candidate contract hash: `6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1`;
+- original validation date: `2026-07-13`;
+- validation-extension dates: `2026-07-15;2026-07-16`;
+- latency profiles evaluated: `P180_RETAIL_MARKETABLE_DEFAULT;P180_STRESSED_RETAIL`;
+- extension profile/date rows: 4;
+- negative extension profile/date rows: 4;
+- all extension profile/date rows negative: 1;
+- original validation positive under all evaluated profiles: 1.
+
+Phase194 decision:
+
+`close_frozen_sparse_candidate_for_test_replay_redesign_required`
+
+The candidate is now closed for untouched test replay. This is not a claim that all receive-flow strategies are impossible; it is a claim that this frozen sparse candidate did not survive the required validation-extension discipline.
+
+Phase194 redesign blueprint:
+
+| Blueprint | Required change | Required gate before test |
+| --- | --- | --- |
+| `P194_REGIME_CONSISTENT_RECEIVE_FLOW` | Require candidates to be net-positive by date under both retail latency profiles before any test precommit | `date_positive_fraction_equals_1_before_test_precommit` |
+| `P194_SYMBOL_BREADTH_FILTER` | Penalize or reject candidates with symbol-positive fraction below 25%, even when aggregate net is positive | `symbol_positive_fraction_ge_0p25` |
+| `P194_EXTENSION_FIRST_SELECTION_DISCIPLINE` | Use train-only selection, validation for screening, validation-extension for rejection, and keep test untouched until all extension gates pass | `test_replay_allowed_next_equals_0_until_extension_pass` |
+
+Safety gates:
+
+- Phase194 hard gates: 6 / 6 passed;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Current Phase149 evidence after Phase194:
+
+- phase rows discovered: 187;
+- runner phase rows: 185;
+- acceptance phase rows: 137;
+- hard global-state gates: 78 / 78 passed;
+- real receive-flow branch status: `frozen_sparse_candidate_closed_for_test_replay_redesign_required`;
+- next best action: `redesign_receive_flow_candidate_with_date_and_symbol_breadth_gates_before_test`.
+
+Current interpretation: the plan should stop treating the Phase187 sparse candidate as a likely test candidate. The next implementation milestone should redesign the receive-flow family with explicit date-consistency and symbol-breadth gates, or run a broader diagnostic data pull only to inform redesign, not to rescue this closed candidate.
+
 ---
 
 ## 25. Final Principle

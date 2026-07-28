@@ -1,2 +1,2 @@
 trade_date,remote_partition,target_partition,status,remote_files,remote_bytes,local_parquet_files_after,local_bytes_after,error
-2026-07-15,raw_l2/trade_date=2026-07-15,real_data_sample\l2_multiday_panel\trade_date=2026-07-15,downloaded_or_skipped,50010,1756113023,50010,1756113023,
+2026-07-16,raw_l2/trade_date=2026-07-16,real_data_sample\l2_multiday_panel\trade_date=2026-07-16,downloaded_or_skipped,50283,1763034702,50283,1763034702,

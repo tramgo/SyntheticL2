@@ -105,6 +105,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 191,outputs\phase191,True,8,outputs\phase191\phase191_diagnostic_test_replay_precommit_acceptance_summary.csv,outputs\phase191\phase191_diagnostic_test_replay_precommit_manifest.json,False
 192,outputs\phase192,True,6,outputs\phase192\phase192_real_validation_date_download_acceptance_summary.csv,outputs\phase192\phase192_real_validation_date_download_manifest.json,False
 193,outputs\phase193,True,9,outputs\phase193\phase193_validation_breadth_extension_acceptance_summary.csv,outputs\phase193\phase193_validation_breadth_extension_manifest.json,False
+194,outputs\phase194,True,6,outputs\phase194\phase194_sparse_candidate_fragility_acceptance_summary.csv,outputs\phase194\phase194_sparse_candidate_fragility_manifest.json,False
 2,outputs\phase2,True,9,,outputs\phase2\calibration_manifest.json,False
 20,outputs\phase20,True,17,,outputs\phase20\acceptance_hardening_manifest.json,False
 20,outputs\phase20_m01,True,7,,outputs\phase20_m01\broker_evidence_contract_manifest.json,False

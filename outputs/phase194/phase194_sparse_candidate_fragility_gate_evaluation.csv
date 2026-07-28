@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P194_PHASE193_EVIDENCE_PRESENT,1,decision_rows=1,hard
+P194_EXTENSION_NEGATIVE_RECORDED,1,negative_extension_profile_date_rows=4; extension_profile_date_rows=4,hard
+P194_TEST_REPLAY_CLOSED,1,test_replay_allowed_next=0,hard
+P194_PROMOTION_CLOSED,1,promotion_allowed=0,hard
+P194_PAPER_LIVE_CLOSED,1,paper_or_live_acceptance_allowed=0,hard
+P194_REDESIGN_BLUEPRINT_WRITTEN,1,blueprint_rows=3,hard

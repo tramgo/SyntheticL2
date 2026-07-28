@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-28T18:53:03.622216+00:00",
+  "scope": "phase194_sparse_candidate_fragility_decision_no_test",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "131e1bf0f91e6679f7fd526ae00b392650306c16",
+  "configuration_hash": "8e50c176cc1af318053cdc26bb61e0ffaf4975e8f657bb164486ef3127ee4c28",
+  "random_seed": "none_deterministic_decision",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase194_sparse_candidate_fragility_decision_no_test",
+  "cost_model_version": "phase180_inherited_via_phase193",
+  "latency_model_version": "phase180_inherited_via_phase193",
+  "creation_timestamp": "2026-07-28T18:53:03.622216+00:00"
+}

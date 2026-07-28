@@ -1,8 +1,8 @@
 gate_id,gate_pass,evidence,severity
 P193_PHASE191_HASH_MATCH,1,candidate_contract_hash=6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1,hard
-P193_EXTENSION_ROWS_PRESENT,1,unassigned_extension_rows=562911,hard
+P193_EXTENSION_ROWS_PRESENT,1,unassigned_extension_rows=1133776,hard
 P193_TEST_UNTOUCHED_EXCLUDED,1,test_partitions_used=0,hard
-P193_DATE_SYMBOL_AUDITS_PRESENT,1,date_rows=4; symbol_rows=62,hard
+P193_DATE_SYMBOL_AUDITS_PRESENT,1,date_rows=6; symbol_rows=62,hard
 P193_NEGATIVE_CONTROLS_PRESENT,1,shuffled_time;shuffled_symbol,hard
-P193_DECISION_RATE_BUDGET_RESPECTED,1,decision_rate=0.004468570137605988; max_decision_rate=0.01,hard
+P193_DECISION_RATE_BUDGET_RESPECTED,1,decision_rate=0.004130578670357169; max_decision_rate=0.01,hard
 P193_NO_TEST_REPLAY_OR_PROMOTION,1,test_replay_allowed_by_phase193=0; promotion_allowed=0,hard

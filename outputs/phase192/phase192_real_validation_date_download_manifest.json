@@ -1,12 +1,12 @@
 {
-  "generated_utc": "2026-07-28T17:45:54.282948+00:00",
+  "generated_utc": "2026-07-28T18:15:50.895231+00:00",
   "scope": "phase192_azure_real_validation_date_download",
   "requested_dates": [
-    "2026-07-15"
+    "2026-07-16"
   ],
   "target_root": "real_data_sample\\l2_multiday_panel",
   "sas_policy": "read_from_environment_only_not_persisted",
-  "elapsed_seconds": 165.064,
+  "elapsed_seconds": 732.977,
   "forbidden_outputs": "test_replay_execution;test_result;promotion;paper_live_acceptance;orders;fills;pnl_replay;profitability_claim",
   "outputs": {
     "available_dates": "outputs\\phase192\\phase192_azure_available_dates.csv",

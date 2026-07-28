@@ -1,23 +1,23 @@
 # Phase192 Azure Real Validation-Date Download
 
-Generated UTC: 2026-07-28T17:45:54.282948+00:00
+Generated UTC: 2026-07-28T18:15:50.895231+00:00
 
 Phase192 downloads additional real Zerodha top-five market-by-price WebSocket L2 date partitions for validation breadth.
 It does not run untouched test replay, emit a test result, open promotion, or make paper/live claims.
 
 ## Requested Dates
 
-2026-07-15
+2026-07-16
 
 ## Acceptance Summary
 
 phase192_requested_date_rows,1,Dates requested for Phase192 download
 phase192_azure_available_date_rows,16,Dates listed under Azure Files raw_l2
 phase192_new_remote_dates_beyond_existing_split,11,Azure dates not in the pre-Phase192 local split
-phase192_remote_files_selected,50010,Remote files listed for requested dates
-phase192_remote_bytes_selected,1756113023,Remote bytes listed for requested dates
-phase192_downloaded_files,9091,Files downloaded in this run
-phase192_skipped_existing_files,40919,Files already present with matching size
+phase192_remote_files_selected,50283,Remote files listed for requested dates
+phase192_remote_bytes_selected,1763034702,Remote bytes listed for requested dates
+phase192_downloaded_files,50283,Files downloaded in this run
+phase192_skipped_existing_files,0,Files already present with matching size
 phase192_failed_files_or_dates,0,Failed file/date operations
 phase192_list_only,0,1 means no files were downloaded
 phase192_test_replay_execution,0,Phase192 does not execute untouched test replay

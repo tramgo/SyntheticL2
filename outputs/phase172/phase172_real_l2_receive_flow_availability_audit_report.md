@@ -1,6 +1,6 @@
 # Phase172 Real L2 Receive-flow Availability Audit
 
-Generated UTC: 2026-07-28T17:55:43.411319+00:00
+Generated UTC: 2026-07-28T18:36:49.315773+00:00
 
 Phase172 audits the Phase171 selected source using downloaded local Zerodha top-five market-by-price Parquet only.
 It measures local coverage, receive cadence, quote/depth churn availability and cross-symbol 1-second synchrony.
@@ -11,18 +11,18 @@ It does not scan Azure, emit signals, simulate orders, run fills, compute P&L, o
 | metric | value | description |
 | --- | --- | --- |
 | phase172_selected_phase171_source_id | P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW | Phase171 source this audit supports |
-| phase172_trade_dates_discovered | 6 | Local trade_date partitions discovered |
-| phase172_ready_receive_flow_dates | 6 | Dates with all 32 symbols receive-flow ready |
+| phase172_trade_dates_discovered | 7 | Local trade_date partitions discovered |
+| phase172_ready_receive_flow_dates | 7 | Dates with all 32 symbols receive-flow ready |
 | phase172_minimum_ready_dates_required | 5 | Minimum days required by Phase171 source contract |
 | phase172_additional_dates_needed | 0 | Additional ready real L2 dates required |
-| phase172_symbol_day_rows | 192 | Symbol/day partitions audited |
-| phase172_total_parquet_files | 249523 | Local Parquet files audited |
-| phase172_total_rows | 3036117 | Rows scanned from local Parquet |
-| phase172_total_bytes | 8762851042 | Compressed local Parquet bytes |
+| phase172_symbol_day_rows | 224 | Symbol/day partitions audited |
+| phase172_total_parquet_files | 299806 | Local Parquet files audited |
+| phase172_total_rows | 3654137 | Rows scanned from local Parquet |
+| phase172_total_bytes | 10525885744 | Compressed local Parquet bytes |
 | phase172_median_symbol_tick_rate_per_sec | 0.798375 | Median symbol session receive tick rate |
 | phase172_median_symbol_gap_sec | 0.75 | Median symbol receive gap |
-| phase172_median_l1_state_change_fraction | 0.540871 | Median L1 state change fraction |
-| phase172_median_depth_qty_change_fraction | 0.573751 | Median top-five depth quantity change fraction |
+| phase172_median_l1_state_change_fraction | 0.537076 | Median L1 state change fraction |
+| phase172_median_depth_qty_change_fraction | 0.570481 | Median top-five depth quantity change fraction |
 | phase172_hard_gate_rows | 5 | Hard gates evaluated |
 | phase172_hard_gate_pass_rows | 5 | Hard gates passed |
 | phase172_unlock_gate_rows | 1 | Unlock gates evaluated |
@@ -42,6 +42,7 @@ It does not scan Azure, emit signals, simulate orders, run fills, compute P&L, o
 | 2026-07-13 | 32 | 32 | 32 | 32 | 50205 | 620853 | 1764005784 | 0.827407 | 0.7495 | 0.525789 | 0.558396 | 363714 | 17286 | 21 | 29 | True |
 | 2026-07-14 | 32 | 32 | 32 | 32 | 49732 | 631316 | 1750854292 | 0.822975 | 0.75 | 0.587497 | 0.613187 | 370444 | 17393 | 22 | 29 | True |
 | 2026-07-15 | 32 | 32 | 32 | 32 | 50010 | 627538 | 1756113023 | 0.80457 | 0.75 | 0.53242 | 0.572356 | 365627 | 17191 | 21 | 29 | True |
+| 2026-07-16 | 32 | 32 | 32 | 32 | 50283 | 618020 | 1763034702 | 0.822041 | 0.792 | 0.500754 | 0.546822 | 371823 | 17571 | 21 | 28 | True |
 
 ## Symbol-day Receive-flow Audit Sample
 
@@ -132,9 +133,9 @@ It does not scan Azure, emit signals, simulate orders, run fills, compute P&L, o
 
 | gate_id | gate_pass | evidence | severity |
 | --- | --- | --- | --- |
-| P172_LOCAL_PANEL_DISCOVERED | 1 | trade_dates=6 | hard |
+| P172_LOCAL_PANEL_DISCOVERED | 1 | trade_dates=7 | hard |
 | P172_DOWNLOAD_FIRST_LOCAL_ONLY | 1 | audited local real_data_sample/l2_multiday_panel paths only | hard |
 | P172_ALL_EXPECTED_SYMBOLS_PRESENT_PER_READY_DATE | 1 | max_ready_symbols=32 | hard |
-| P172_RECEIVE_FLOW_COLUMNS_PRESENT | 1 | schema_pass_symbols=192/192 | hard |
-| P172_MINIMUM_SOURCE_DAYS_FOR_PHASE171 | 1 | ready_dates=6;minimum=5 | unlock |
+| P172_RECEIVE_FLOW_COLUMNS_PRESENT | 1 | schema_pass_symbols=224/224 | hard |
+| P172_MINIMUM_SOURCE_DAYS_FOR_PHASE171 | 1 | ready_dates=7;minimum=5 | unlock |
 | P172_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | availability/cadence/churn/synchrony audit only | hard |

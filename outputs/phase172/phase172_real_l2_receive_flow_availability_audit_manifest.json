@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-28T17:55:43.430135+00:00",
+  "generated_utc": "2026-07-28T18:36:49.333096+00:00",
   "scope": "phase172_real_l2_receive_flow_availability_audit",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "9cdbc08acecd686d056ba9ace822afeb0d11a9eb",
+  "generator_version": "131e1bf0f91e6679f7fd526ae00b392650306c16",
   "configuration_hash": "a74ea23778c677197eb9d1aa28f5cadd870ce1931cebe2f1eff28c925220ad15",
   "random_seed": "none_deterministic_local_audit",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase171_selected_real_multiday_receive_event_flow_source",
   "cost_model_version": "not_applicable_no_replay",
   "latency_model_version": "not_applicable_no_replay",
-  "creation_timestamp": "2026-07-28T17:55:43.430135+00:00"
+  "creation_timestamp": "2026-07-28T18:36:49.333096+00:00"
 }

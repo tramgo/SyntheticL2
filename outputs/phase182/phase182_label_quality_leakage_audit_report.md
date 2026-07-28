@@ -1,6 +1,6 @@
 # Phase182 Label Quality and Leakage Audit
 
-Generated UTC: 2026-07-28T18:07:23.351058+00:00
+Generated UTC: 2026-07-28T18:50:18.839735+00:00
 
 Phase182 audits Phase181 labels for quality, split integrity, leakage boundaries, and forbidden output columns.
 It does not run strategies, emit orders, compute fills, calculate P&L, claim profitability, or open paper/live acceptance.
@@ -9,7 +9,7 @@ It does not run strategies, emit orders, compute fills, calculate P&L, claim pro
 
 | metric | value | description |
 | --- | --- | --- |
-| phase182_partition_audit_rows | 768 | Label partitions audited |
+| phase182_partition_audit_rows | 896 | Label partitions audited |
 | phase182_split_audit_rows | 4 | Split leakage audit rows |
 | phase182_failed_partitions | 0 | Failed label partitions |
 | phase182_forbidden_column_partitions | 0 | Partitions with forbidden output columns |
@@ -28,7 +28,7 @@ It does not run strategies, emit orders, compute fills, calculate P&L, claim pro
 | --- | --- | --- | --- | --- | --- | --- |
 | test_untouched | 128 | 567640 | 567640 | 0 | 0.994695 | test_untouched rows may exist as labels but must not be used for selection before replay precommit |
 | train | 384 | 1080009 | 0 | 0 | 0.993243 | test_untouched rows may exist as labels but must not be used for selection before replay precommit |
-| unassigned | 128 | 563069 | 0 | 0 | 0.994709 | test_untouched rows may exist as labels but must not be used for selection before replay precommit |
+| unassigned | 256 | 1134092 | 0 | 0 | 0.994709 | test_untouched rows may exist as labels but must not be used for selection before replay precommit |
 | validation | 128 | 561515 | 0 | 0 | 0.997347 | test_untouched rows may exist as labels but must not be used for selection before replay precommit |
 
 ## Gate Evaluation
@@ -37,7 +37,7 @@ It does not run strategies, emit orders, compute fills, calculate P&L, claim pro
 | --- | --- | --- | --- |
 | P182_PHASE181_LABELS_MATERIALIZED | 1 | phase181_labels_materialized=1 | hard |
 | P182_PHASE180_PRECOMMIT_READY | 1 | phase180_precommit_ready=1 | hard |
-| P182_ALL_LABEL_PARTITIONS_PASS | 1 | partitions=768;failed_partitions=0 | hard |
+| P182_ALL_LABEL_PARTITIONS_PASS | 1 | partitions=896;failed_partitions=0 | hard |
 | P182_NO_FORBIDDEN_OUTPUT_COLUMNS | 1 | forbidden_column_partitions=0 | hard |
 | P182_SPLIT_ROLES_AND_TEST_UNTOUCHED_PRESENT | 1 | split_roles=test_untouched;train;unassigned;validation | hard |
 | P182_LABEL_AVAILABILITY_THRESHOLD | 1 | min_label_available_fraction=0.993243 | hard |
@@ -239,11 +239,11 @@ It does not run strategies, emit orders, compute fills, calculate P&L, claim pro
 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=TECHM\receive_flow_labels.parquet | ok | 1 | 2026-07-15 | NSE | TECHM | unassigned | 12409 |  |  | 0 | 0 | 0 | 0 | 0.999919 | 1 |
 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ULTRACEMCO\receive_flow_labels.parquet | ok | 1 | 2026-07-15 | NSE | ULTRACEMCO | unassigned | 9876 |  |  | 0 | 0 | 0 | 0 | 0.999899 | 1 |
 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=WIPRO\receive_flow_labels.parquet | ok | 1 | 2026-07-15 | NSE | WIPRO | unassigned | 9447 |  |  | 0 | 0 | 0 | 0 | 0.999894 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ADANIPORTS\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | ADANIPORTS | train | 1618 |  |  | 0 | 0 | 0 | 0 | 0.999382 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=AXISBANK\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | AXISBANK | train | 1700 |  |  | 0 | 0 | 0 | 0 | 0.999412 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | BAJAJ-AUTO | train | 1595 |  |  | 0 | 0 | 0 | 0 | 0.999373 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BANKBEES\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | BANKBEES | train | 1694 |  |  | 0 | 0 | 0 | 0 | 0.99941 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BHARTIARTL\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | BHARTIARTL | train | 1617 |  |  | 0 | 0 | 0 | 0 | 0.999382 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BPCL\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | BPCL | train | 1579 |  |  | 0 | 0 | 0 | 0 | 0.999367 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BRITANNIA\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | BRITANNIA | train | 1526 |  |  | 0 | 0 | 0 | 0 | 0.999345 | 1 |
-| derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=CIPLA\receive_flow_labels.parquet | ok | 5 | 2026-07-08 | NSE | CIPLA | train | 1573 |  |  | 0 | 0 | 0 | 0 | 0.999364 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=ADANIPORTS\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | ADANIPORTS | unassigned | 10221 |  |  | 0 | 0 | 0 | 0 | 0.999902 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=AXISBANK\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | AXISBANK | unassigned | 10954 |  |  | 0 | 0 | 0 | 0 | 0.999909 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | BAJAJ-AUTO | unassigned | 11216 |  |  | 0 | 0 | 0 | 0 | 0.999911 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BANKBEES\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | BANKBEES | unassigned | 13926 |  |  | 0 | 0 | 0 | 0 | 0.999785 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BHARTIARTL\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | BHARTIARTL | unassigned | 11104 |  |  | 0 | 0 | 0 | 0 | 0.99991 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BPCL\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | BPCL | unassigned | 8956 |  |  | 0 | 0 | 0 | 0 | 0.999888 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BRITANNIA\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | BRITANNIA | unassigned | 8889 |  |  | 0 | 0 | 0 | 0 | 0.999888 | 1 |
+| derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=CIPLA\receive_flow_labels.parquet | ok | 1 | 2026-07-16 | NSE | CIPLA | unassigned | 7853 |  |  | 0 | 0 | 0 | 0 | 0.999873 | 1 |

@@ -1,0 +1,16 @@
+metric,value,description
+phase194_decision_rows,1,Fragility decision rows
+phase194_blueprint_rows,3,Redesign blueprint rows
+phase194_gate_rows,6,Gates evaluated
+phase194_hard_gate_rows,6,Hard gates evaluated
+phase194_hard_gate_pass_rows,6,Hard gates passed
+phase194_candidate_id,P187_TOP5_I85_S2p5_Z1_R100,Candidate assessed
+phase194_extension_validation_dates,2026-07-15;2026-07-16,Extension dates in decision
+phase194_all_extension_profile_dates_negative,1,1 means every extension profile/date row is net negative
+phase194_decision,close_frozen_sparse_candidate_for_test_replay_redesign_required,Decision
+phase194_fragility_decision_complete,1,1 means Phase194 completed
+phase194_test_replay_allowed_next,0,No test replay opened
+phase194_promotion_allowed,0,No promotion opened
+phase194_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase194_forbidden_outputs,test_result;test_replay_execution;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase194_next_best_action,redesign_receive_flow_candidate_with_date_and_symbol_breadth_gates_before_test,Recommended next milestone

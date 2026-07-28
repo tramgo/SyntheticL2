@@ -1,6 +1,6 @@
 # Phase176 Receive-flow Feature Materializer
 
-Generated UTC: 2026-07-28T18:06:38.535396+00:00
+Generated UTC: 2026-07-28T18:49:34.091090+00:00
 
 Phase176 is the executable materialization scaffold for the Phase175 feature schema.
 When Phase175 activation is closed, Phase176 writes plan/templates/gates only and materializes no feature parquet.
@@ -16,9 +16,9 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | phase176_hard_gate_rows | 3 | Hard gates evaluated |
 | phase176_hard_gate_pass_rows | 3 | Hard gates passed |
 | phase176_activation_ready | 1 | Inherited Phase175 activation gate |
-| phase176_materialized_partition_rows | 768 | Feature partition rows written to inventory |
-| phase176_materialized_feature_rows | 2772233 | Feature rows written across all horizons |
-| phase176_feature_parquet_files | 768 | Feature parquet files present under feature root |
+| phase176_materialized_partition_rows | 896 | Feature partition rows written to inventory |
+| phase176_materialized_feature_rows | 3343256 | Feature rows written across all horizons |
+| phase176_feature_parquet_files | 896 | Feature parquet files present under feature root |
 | phase176_features_materialized | 1 | 1 means feature parquet was materialized |
 | phase176_strategy_replay_allowed | 0 | No strategy replay opened |
 | phase176_paper_or_live_acceptance_allowed | 0 | Paper/live remains closed |
@@ -48,7 +48,7 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 
 | gate_id | gate_pass | evidence | severity |
 | --- | --- | --- | --- |
-| P176_PHASE175_ACTIVATION_READY | 1 | phase175_activation_ready=1;ready_dates=6;additional_needed=0 | activation |
+| P176_PHASE175_ACTIVATION_READY | 1 | phase175_activation_ready=1;ready_dates=7;additional_needed=0 | activation |
 | P176_SCHEMA_AVAILABLE | 1 | feature_schema_rows=6 | hard |
 | P176_LOCAL_REAL_ROOT_EXISTS | 1 | real_data_sample\l2_multiday_panel | hard |
 | P176_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | materializer scaffold only while activation gate is closed; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | hard |
@@ -249,11 +249,11 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | 1 | 2026-07-15 | NSE | TECHM | 12409 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=TECHM\receive_flow_features.parquet | 599398 |
 | 1 | 2026-07-15 | NSE | ULTRACEMCO | 9876 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ULTRACEMCO\receive_flow_features.parquet | 428147 |
 | 1 | 2026-07-15 | NSE | WIPRO | 9447 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=WIPRO\receive_flow_features.parquet | 456743 |
-| 5 | 2026-07-08 | NSE | ADANIPORTS | 1618 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ADANIPORTS\receive_flow_features.parquet | 98415 |
-| 5 | 2026-07-08 | NSE | AXISBANK | 1700 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=AXISBANK\receive_flow_features.parquet | 106193 |
-| 5 | 2026-07-08 | NSE | BAJAJ-AUTO | 1595 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_features.parquet | 89620 |
-| 5 | 2026-07-08 | NSE | BANKBEES | 1694 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BANKBEES\receive_flow_features.parquet | 107210 |
-| 5 | 2026-07-08 | NSE | BHARTIARTL | 1617 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BHARTIARTL\receive_flow_features.parquet | 99817 |
-| 5 | 2026-07-08 | NSE | BPCL | 1579 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BPCL\receive_flow_features.parquet | 94496 |
-| 5 | 2026-07-08 | NSE | BRITANNIA | 1526 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BRITANNIA\receive_flow_features.parquet | 86013 |
-| 5 | 2026-07-08 | NSE | CIPLA | 1573 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=CIPLA\receive_flow_features.parquet | 92188 |
+| 1 | 2026-07-16 | NSE | ADANIPORTS | 10221 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=ADANIPORTS\receive_flow_features.parquet | 491948 |
+| 1 | 2026-07-16 | NSE | AXISBANK | 10954 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=AXISBANK\receive_flow_features.parquet | 525153 |
+| 1 | 2026-07-16 | NSE | BAJAJ-AUTO | 11216 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_features.parquet | 473598 |
+| 1 | 2026-07-16 | NSE | BANKBEES | 13926 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BANKBEES\receive_flow_features.parquet | 649660 |
+| 1 | 2026-07-16 | NSE | BHARTIARTL | 11104 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BHARTIARTL\receive_flow_features.parquet | 532560 |
+| 1 | 2026-07-16 | NSE | BPCL | 8956 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BPCL\receive_flow_features.parquet | 419127 |
+| 1 | 2026-07-16 | NSE | BRITANNIA | 8889 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BRITANNIA\receive_flow_features.parquet | 394099 |
+| 1 | 2026-07-16 | NSE | CIPLA | 7853 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=CIPLA\receive_flow_features.parquet | 356638 |

@@ -5,9 +5,9 @@ phase176_gate_rows,4,Gates evaluated
 phase176_hard_gate_rows,3,Hard gates evaluated
 phase176_hard_gate_pass_rows,3,Hard gates passed
 phase176_activation_ready,1,Inherited Phase175 activation gate
-phase176_materialized_partition_rows,768,Feature partition rows written to inventory
-phase176_materialized_feature_rows,2772233,Feature rows written across all horizons
-phase176_feature_parquet_files,768,Feature parquet files present under feature root
+phase176_materialized_partition_rows,896,Feature partition rows written to inventory
+phase176_materialized_feature_rows,3343256,Feature rows written across all horizons
+phase176_feature_parquet_files,896,Feature parquet files present under feature root
 phase176_features_materialized,1,1 means feature parquet was materialized
 phase176_strategy_replay_allowed,0,No strategy replay opened
 phase176_paper_or_live_acceptance_allowed,0,Paper/live remains closed

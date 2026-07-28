@@ -1,6 +1,6 @@
 # Phase149 Research State Auditor
 
-Generated UTC: 2026-07-28T18:12:34.376888+00:00
+Generated UTC: 2026-07-28T18:54:08.039873+00:00
 
 Phase149 reconciles current phase scripts, output evidence, branch states, and replay gates.
 It does not run strategies, contact Azure, import data, or unlock replay.
@@ -9,21 +9,21 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | metric | value | description |
 | --- | --- | --- |
-| phase149_phase_rows | 186 | Phase rows discovered from scripts and outputs |
-| phase149_runner_phase_rows | 184 | Phase rows with at least one runner |
-| phase149_acceptance_phase_rows | 136 | Phase rows with acceptance summaries |
+| phase149_phase_rows | 187 | Phase rows discovered from scripts and outputs |
+| phase149_runner_phase_rows | 185 | Phase rows with at least one runner |
+| phase149_acceptance_phase_rows | 137 | Phase rows with acceptance summaries |
 | phase149_branch_rows | 4 | Current research branches summarized |
-| phase149_hard_gate_rows | 74 | Hard global-state gates evaluated |
-| phase149_hard_gate_pass_rows | 74 | Hard global-state gates passed |
+| phase149_hard_gate_rows | 78 | Hard global-state gates evaluated |
+| phase149_hard_gate_pass_rows | 78 | Hard global-state gates passed |
 | phase149_strategy_replay_allowed | 0 | Phase149 never unlocks strategy replay |
-| phase149_next_best_action | add_more_validation_dates_or_redesign_before_any_test_replay | Recommended next milestone |
+| phase149_next_best_action | redesign_receive_flow_candidate_with_date_and_symbol_breadth_gates_before_test | Recommended next milestone |
 
 ## Branch Status Summary
 
 | branch | status | evidence | current_next_action |
 | --- | --- | --- | --- |
 | real_l2_anchor_gate | gated | Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. | use_phase174_secure_download_orchestrator_for_required_real_l2_dates |
-| real_receive_flow_source | validation_breadth_extended_mixed_negative_by_date_no_test | Phase172 ready_dates=6, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1; Phase178 handoff_ready=1; Phase179 precommit_ready=1; Phase180 precommit_ready=1; Phase181 labels_materialized=1; Phase182 label_audit_pass=1; Phase183 replay_readiness=1; Phase184 dry_run_complete=1, test_rows_used=0, promotion_allowed=0; Phase185 interpretation_complete=1, cost_dominates=1, test_replay_allowed_next=0; Phase186 family_set_closed=1, reuse_without_redesign_allowed=0, test_replay_allowed_next=0; Phase187 candidate_complete=1, validation_positive_all_profiles=1, test_replay_allowed_next=0; Phase188 interpretation_complete=1, breadth_warning=1, date_count_warning=1, test_replay_allowed_next=0; Phase189 decision_complete=1, test_precommit_allowed=0, test_replay_allowed_next=0; Phase190 decision_complete=1, additional_validation_breadth_available_now=0, test_replay_execution=0; Phase191 precommit_complete=1, test_replay_execution=0, test_result_allowed=0; Phase192 download_complete=1, test_replay_execution=0; Phase193 extension_complete=1, extension_dates=2026-07-15, min_profile_net=17.876935392919567, breadth_warning=1, test_replay_execution=0. | add_more_validation_dates_or_redesign_before_any_test_replay |
+| real_receive_flow_source | frozen_sparse_candidate_closed_for_test_replay_redesign_required | Phase172 ready_dates=7, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1; Phase178 handoff_ready=1; Phase179 precommit_ready=1; Phase180 precommit_ready=1; Phase181 labels_materialized=1; Phase182 label_audit_pass=1; Phase183 replay_readiness=1; Phase184 dry_run_complete=1, test_rows_used=0, promotion_allowed=0; Phase185 interpretation_complete=1, cost_dominates=1, test_replay_allowed_next=0; Phase186 family_set_closed=1, reuse_without_redesign_allowed=0, test_replay_allowed_next=0; Phase187 candidate_complete=1, validation_positive_all_profiles=1, test_replay_allowed_next=0; Phase188 interpretation_complete=1, breadth_warning=1, date_count_warning=1, test_replay_allowed_next=0; Phase189 decision_complete=1, test_precommit_allowed=0, test_replay_allowed_next=0; Phase190 decision_complete=1, additional_validation_breadth_available_now=0, test_replay_execution=0; Phase191 precommit_complete=1, test_replay_execution=0, test_result_allowed=0; Phase192 download_complete=1, test_replay_execution=0; Phase193 extension_complete=1, extension_dates=2026-07-15;2026-07-16, min_profile_net=9.085299933825853, breadth_warning=1, test_replay_execution=0; Phase194 fragility_decision_complete=1, all_extension_profile_dates_negative=1, test_replay_allowed_next=0. | redesign_receive_flow_candidate_with_date_and_symbol_breadth_gates_before_test |
 | top_five_depth_passive | closed_clean_falsification | Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification. | do_not_open_phase134_or_phase135_for_this_branch |
 | dense_synthetic_replay | not_promoted | Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates. | only_continue_if_precommitted_and_not_blocklisted |
 
@@ -103,6 +103,10 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | phase149_receive_flow_phase193_test_result_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_phase193_promotion_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_phase193_paper_live_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_phase194_fragility_decision_recorded | True | 1 | 1 | hard |
+| phase149_receive_flow_phase194_test_replay_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_phase194_promotion_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_phase194_paper_live_closed | True | 0 | 0 | hard |
 | phase149_deep_book_branch_closed | True | 1 | 1 | hard |
 | phase149_no_promoted_strategy_replay | True | 0 | 0 | hard |
 
@@ -110,7 +114,6 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | phase | runner_count | output_rows | has_runner | has_outputs | has_acceptance_summary | status | branch | strategy_replay_allowed | pnl_allowed | test_rows_used | test_replay_execution | test_result_allowed | test_replay_allowed_next | untouched_test_replay_precommit_allowed | reuse_without_redesign_allowed | additional_validation_breadth_available_now | may_relabel_test_as_validation | breadth_warning | date_count_warning | promotion_allowed | paper_or_live_acceptance_allowed | next_action | runner | output_dir |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 109 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | scripts\run_phase109_residual_imbalance_floor_audit.py | outputs\phase109 |
 | 110 | 1 | 1 | True | True | True | gated_waiting_for_more_real_anchor_days | real_l2_anchor_gate | 0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | scripts\run_phase110_multiday_replay_unlock_gate.py | outputs\phase110 |
 | 111 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | scripts\run_phase111_real_anchor_ingest_discovery.py | outputs\phase111 |
 | 112 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | scripts\run_phase112_dropzone_phase96_compatibility.py | outputs\phase112 |
@@ -190,3 +193,4 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | 191 | 1 | 1 | True | True | True | diagnostic_test_replay_precommitted_no_execution | real_receive_flow_source |  |  |  | 0 | 0 | 0 |  |  |  |  |  |  | 0 | 0 | either_add_real_validation_date_or_explicitly_authorize_phase192_diagnostic_test_replay | scripts\run_phase191_diagnostic_test_replay_precommit.py | outputs\phase191 |
 | 192 | 1 | 1 | True | True | True | real_validation_date_downloaded_no_test | real_receive_flow_source |  |  |  | 0 | 0 |  |  |  |  |  |  |  | 0 | 0 | run_phase172_phase176_phase181_then_validation_breadth_replay | scripts\run_phase192_azure_real_validation_date_download.py | outputs\phase192 |
 | 193 | 1 | 1 | True | True | True | validation_breadth_extended_mixed_negative_by_date_no_test | real_receive_flow_source |  |  |  | 0 | 0 |  |  |  |  |  | 1 | 0 | 0 | 0 | add_more_validation_dates_or_redesign_before_any_test_replay | scripts\run_phase193_validation_breadth_extension_replay.py | outputs\phase193 |
+| 194 | 1 | 1 | True | True | True | frozen_sparse_candidate_closed_for_test_replay_redesign_required | real_receive_flow_source |  |  |  |  |  | 0 |  |  |  |  |  |  | 0 | 0 | redesign_receive_flow_candidate_with_date_and_symbol_breadth_gates_before_test | scripts\run_phase194_sparse_candidate_fragility_decision.py | outputs\phase194 |

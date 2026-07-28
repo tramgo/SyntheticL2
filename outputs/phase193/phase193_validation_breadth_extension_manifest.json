@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-28T18:10:52.526320+00:00",
+  "generated_utc": "2026-07-28T18:50:47.654319+00:00",
   "scope": "phase193_validation_breadth_extension_replay_no_test",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "9cdbc08acecd686d056ba9ace822afeb0d11a9eb",
+  "generator_version": "131e1bf0f91e6679f7fd526ae00b392650306c16",
   "configuration_hash": "71d40284c7a7823367712d3f24cd39c9aa95bc8972b2dbf72219ee46104b2119",
   "random_seed": "193",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase193_validation_breadth_extension_replay_no_test",
   "cost_model_version": "phase180_latency_slippage_profile_catalog",
   "latency_model_version": "phase180_latency_slippage_profile_catalog",
-  "creation_timestamp": "2026-07-28T18:10:52.526320+00:00"
+  "creation_timestamp": "2026-07-28T18:50:47.654319+00:00"
 }

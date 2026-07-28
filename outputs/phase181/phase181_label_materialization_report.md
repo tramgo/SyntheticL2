@@ -1,6 +1,6 @@
 # Phase181 Label Materialization
 
-Generated UTC: 2026-07-28T18:07:08.278152+00:00
+Generated UTC: 2026-07-28T18:50:07.358253+00:00
 
 Phase181 materializes future receive-flow labels from Phase176 features under the Phase180 precommit.
 It does not emit signals, sides, orders, fills, P&L, profitability claims, or paper/live acceptance.
@@ -9,10 +9,10 @@ It does not emit signals, sides, orders, fills, P&L, profitability claims, or pa
 
 | metric | value | description |
 | --- | --- | --- |
-| phase181_label_partition_rows | 768 | Label partitions materialized |
-| phase181_label_rows | 2772233 | Label rows written |
-| phase181_label_available_rows | 2771375 | Rows with primary labels available |
-| phase181_quality_rows | 24 | Horizon/date/split quality rows |
+| phase181_label_partition_rows | 896 | Label partitions materialized |
+| phase181_label_rows | 3343256 | Label rows written |
+| phase181_label_available_rows | 3342240 | Rows with primary labels available |
+| phase181_quality_rows | 28 | Horizon/date/split quality rows |
 | phase181_gate_rows | 5 | Gates evaluated |
 | phase181_hard_gate_rows | 5 | Hard gates evaluated |
 | phase181_hard_gate_pass_rows | 5 | Hard gates passed |
@@ -32,31 +32,35 @@ It does not emit signals, sides, orders, fills, P&L, profitability claims, or pa
 | 1 | 2026-07-13 | validation | 32 | 363819 | 363786 | 0.999909 |
 | 1 | 2026-07-14 | test_untouched | 32 | 370549 | 370500 | 0.999868 |
 | 1 | 2026-07-15 | unassigned | 32 | 365743 | 365701 | 0.999885 |
+| 1 | 2026-07-16 | unassigned | 32 | 371937 | 371895 | 0.999887 |
 | 5 | 2026-07-08 | train | 32 | 52467 | 52435 | 0.99939 |
 | 5 | 2026-07-09 | train | 32 | 79436 | 79404 | 0.999597 |
 | 5 | 2026-07-10 | train | 32 | 136471 | 136434 | 0.999729 |
 | 5 | 2026-07-13 | validation | 32 | 137509 | 137477 | 0.999767 |
 | 5 | 2026-07-14 | test_untouched | 32 | 136919 | 136873 | 0.999664 |
 | 5 | 2026-07-15 | unassigned | 32 | 137136 | 137094 | 0.999694 |
+| 5 | 2026-07-16 | unassigned | 32 | 138894 | 138852 | 0.999698 |
 | 15 | 2026-07-08 | train | 32 | 18688 | 18656 | 0.998288 |
 | 15 | 2026-07-09 | train | 32 | 27492 | 27460 | 0.998836 |
 | 15 | 2026-07-10 | train | 32 | 48085 | 48053 | 0.999335 |
 | 15 | 2026-07-13 | validation | 32 | 48096 | 48064 | 0.999335 |
 | 15 | 2026-07-14 | test_untouched | 32 | 48081 | 48036 | 0.999064 |
 | 15 | 2026-07-15 | unassigned | 32 | 48095 | 48058 | 0.999231 |
+| 15 | 2026-07-16 | unassigned | 32 | 48096 | 48059 | 0.999231 |
 | 60 | 2026-07-08 | train | 32 | 4736 | 4704 | 0.993243 |
 | 60 | 2026-07-09 | train | 32 | 6943 | 6911 | 0.995391 |
 | 60 | 2026-07-10 | train | 32 | 12087 | 12055 | 0.997353 |
 | 60 | 2026-07-13 | validation | 32 | 12091 | 12059 | 0.997353 |
 | 60 | 2026-07-14 | test_untouched | 32 | 12091 | 12054 | 0.99694 |
 | 60 | 2026-07-15 | unassigned | 32 | 12095 | 12058 | 0.996941 |
+| 60 | 2026-07-16 | unassigned | 32 | 12096 | 12059 | 0.996941 |
 
 ## Gate Evaluation
 
 | gate_id | gate_pass | evidence | severity |
 | --- | --- | --- | --- |
 | P181_PHASE180_PRECOMMIT_READY | 1 | phase180_precommit_ready=1 | hard |
-| P181_LABEL_PARTITIONS_WRITTEN | 1 | label_partitions=768 | hard |
+| P181_LABEL_PARTITIONS_WRITTEN | 1 | label_partitions=896 | hard |
 | P181_SPLIT_ROLES_PRESENT | 1 | split_roles=test_untouched;train;unassigned;validation | hard |
 | P181_LABEL_AVAILABILITY_NONZERO | 1 | min_availability_fraction=0.993243 | hard |
 | P181_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | label materialization only; forbidden_outputs=signal;side;order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | hard |
@@ -257,11 +261,11 @@ It does not emit signals, sides, orders, fills, P&L, profitability claims, or pa
 | 1 | 2026-07-15 | NSE | TECHM | unassigned | 12409 | 12408 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=TECHM\receive_flow_labels.parquet | 321223 |
 | 1 | 2026-07-15 | NSE | ULTRACEMCO | unassigned | 9876 | 9875 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ULTRACEMCO\receive_flow_labels.parquet | 185980 |
 | 1 | 2026-07-15 | NSE | WIPRO | unassigned | 9447 | 9446 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=WIPRO\receive_flow_labels.parquet | 224579 |
-| 5 | 2026-07-08 | NSE | ADANIPORTS | train | 1618 | 1617 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ADANIPORTS\receive_flow_labels.parquet | 67719 |
-| 5 | 2026-07-08 | NSE | AXISBANK | train | 1700 | 1699 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=AXISBANK\receive_flow_labels.parquet | 72802 |
-| 5 | 2026-07-08 | NSE | BAJAJ-AUTO | train | 1595 | 1594 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_labels.parquet | 63720 |
-| 5 | 2026-07-08 | NSE | BANKBEES | train | 1694 | 1693 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BANKBEES\receive_flow_labels.parquet | 69154 |
-| 5 | 2026-07-08 | NSE | BHARTIARTL | train | 1617 | 1616 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BHARTIARTL\receive_flow_labels.parquet | 61736 |
-| 5 | 2026-07-08 | NSE | BPCL | train | 1579 | 1578 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BPCL\receive_flow_labels.parquet | 44613 |
-| 5 | 2026-07-08 | NSE | BRITANNIA | train | 1526 | 1525 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BRITANNIA\receive_flow_labels.parquet | 46569 |
-| 5 | 2026-07-08 | NSE | CIPLA | train | 1573 | 1572 | derived_real_l2_receive_flow_labels_phase181\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=CIPLA\receive_flow_labels.parquet | 61206 |
+| 1 | 2026-07-16 | NSE | ADANIPORTS | unassigned | 10221 | 10220 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=ADANIPORTS\receive_flow_labels.parquet | 257520 |
+| 1 | 2026-07-16 | NSE | AXISBANK | unassigned | 10954 | 10953 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=AXISBANK\receive_flow_labels.parquet | 207086 |
+| 1 | 2026-07-16 | NSE | BAJAJ-AUTO | unassigned | 11216 | 11215 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_labels.parquet | 220928 |
+| 1 | 2026-07-16 | NSE | BANKBEES | unassigned | 13926 | 13923 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BANKBEES\receive_flow_labels.parquet | 322090 |
+| 1 | 2026-07-16 | NSE | BHARTIARTL | unassigned | 11104 | 11103 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BHARTIARTL\receive_flow_labels.parquet | 224620 |
+| 1 | 2026-07-16 | NSE | BPCL | unassigned | 8956 | 8955 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BPCL\receive_flow_labels.parquet | 164156 |
+| 1 | 2026-07-16 | NSE | BRITANNIA | unassigned | 8889 | 8888 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=BRITANNIA\receive_flow_labels.parquet | 167081 |
+| 1 | 2026-07-16 | NSE | CIPLA | unassigned | 7853 | 7852 | derived_real_l2_receive_flow_labels_phase181\horizon=1s\trade_date=2026-07-16\exchange=NSE\symbol=CIPLA\receive_flow_labels.parquet | 153322 |

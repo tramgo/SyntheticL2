@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-28T18:07:08.285291+00:00",
+  "generated_utc": "2026-07-28T18:50:07.366290+00:00",
   "scope": "phase181_label_materialization",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "9cdbc08acecd686d056ba9ace822afeb0d11a9eb",
+  "generator_version": "131e1bf0f91e6679f7fd526ae00b392650306c16",
   "configuration_hash": "ef2eb05c7ce8cbf304d701b0b5156f01e33cf280120f2291c13cc5a983679c7e",
   "random_seed": "none_deterministic_label_materialization",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase181_label_materialization",
   "cost_model_version": "phase180_pinned_not_applied_no_pnl",
   "latency_model_version": "phase180_pinned_not_applied_no_replay",
-  "creation_timestamp": "2026-07-28T18:07:08.285291+00:00"
+  "creation_timestamp": "2026-07-28T18:50:07.366290+00:00"
 }

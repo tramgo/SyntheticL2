@@ -100,6 +100,7 @@ phase,runner,runner_exists,runner_suffix
 191,scripts\run_phase191_diagnostic_test_replay_precommit.py,True,.py
 192,scripts\run_phase192_azure_real_validation_date_download.py,True,.py
 193,scripts\run_phase193_validation_breadth_extension_replay.py,True,.py
+194,scripts\run_phase194_sparse_candidate_fragility_decision.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py
 1,scripts\run_phase1_event_reconstruction.py,True,.py
