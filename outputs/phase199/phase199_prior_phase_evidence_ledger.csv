@@ -1,0 +1,6 @@
+phase,milestone,status,key_evidence,survivor_count,test_replay_allowed_next
+194,sparse_candidate_fragility_decision,closed_for_test_replay,all_extension_profile_dates_negative=1; test_replay_allowed_next=0,0,0
+195,receive_flow_redesign_candidate_search,no_extension_gate_survivor,grid_rows=576; train_selected=22; passing=0,0,0
+196,expanded_receive_flow_feature_model_search,no_train_survivor,grid_rows=64; train_selected=0; passing=0,0,0
+197,non_receive_flow_feature_expansion_precommit,feature_expansion_ready,ready_feature_families=5; strategy_replay_allowed=0,5,0
+198,non_receive_flow_context_model_search,no_train_survivor,grid_rows=88; train_selected=0; passing=0,0,0

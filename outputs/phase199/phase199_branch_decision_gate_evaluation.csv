@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P199_DECISION_EVIDENCE_RECORDED,1,evidence_rows=5,hard
+P199_PRIOR_SEARCHES_COMPLETE_OR_CLOSED,1,no_survivor_or_closed=1,hard
+P199_TEST_REPLAY_CLOSED,1,all_test_replay_gates_closed=1,hard
+P199_BRANCH_PAUSE_RECORDED,1,current_branch_paused=1,hard
+P199_MATERIAL_REDESIGN_CONTRACT_RECORDED,1,contract_rows=6,hard
+P199_NEXT_HYPOTHESIS_QUEUE_RECORDED,1,queue_rows=3,hard
+P199_PROMOTION_AND_PAPER_LIVE_CLOSED,1,promotion_allowed=0; paper_live=0,hard

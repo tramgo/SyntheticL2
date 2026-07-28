@@ -1,0 +1,7 @@
+contract_id,requirement,required_before_phase200_search
+P199_NEW_DATA_AXIS_REQUIRED,"Any continuation must introduce a materially new data axis or target design, not another near-variant of receive cadence, imbalance, or first-pass context scoring.",1
+P199_TRAIN_ONLY_SELECTION_REQUIRED,Model/threshold selection must remain train-only; validation and validation-extension may reject candidates but may not fit or select them.,1
+P199_UNTOUCHED_TEST_STAYS_CLOSED,The untouched test split stays closed until a future precommit phase records a single frozen candidate and all branch-specific gates.,1
+P199_COST_LATENCY_BINDING_REQUIRED,Any future search must bind Phase180 cost and latency profiles before net metrics or acceptance interpretation.,1
+P199_NEGATIVE_CONTROLS_REQUIRED,Any future search must include shuffled-time or equivalent negative controls before interpreting edge.,1
+P199_DECISION_RATE_BUDGET_REQUIRED,Any future high-frequency strategy search must precommit a decision-rate budget and may not relax it after seeing validation results.,1

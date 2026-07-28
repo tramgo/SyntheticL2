@@ -6317,6 +6317,57 @@ Current Phase149 evidence after Phase198:
 
 Current interpretation: both receive-flow-only and first-pass broader-context searches have failed to produce a gated survivor. The next best action should be an explicit branch decision: either expand the feature/search design with a materially different hypothesis, or pause this branch rather than spending the untouched test split.
 
+### Phase199 - Branch pause or material redesign decision
+
+Phase199 converts the Phase198 `expand_or_pause` instruction into an explicit branch decision. It does not run a strategy, does not open test replay, and does not create any order/fill/P&L artifacts.
+
+Decision:
+
+`pause_current_receive_flow_context_branch_require_material_new_hypothesis`
+
+Reason:
+
+The current receive-flow/context line has now failed several increasingly strict gates:
+
+- Phase194 closed the frozen sparse candidate for test replay after extension fragility;
+- Phase195 found no extension-gate survivor in the redesigned receive-flow threshold grid;
+- Phase196 found no train-selected survivor in expanded receive-flow feature/model scores;
+- Phase198 found no train-selected survivor in broader first-pass context models.
+
+Phase199 outputs:
+
+- prior phase evidence rows: 5;
+- branch decision rows: 1;
+- material redesign contract rows: 6;
+- next hypothesis queue rows: 3;
+- hard gates: 7 / 7 passed;
+- current branch paused: 1;
+- material redesign required: 1;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- untouched test replay precommit allowed: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+The Phase199 material redesign contract requires any continuation to introduce a materially new data axis or target design, preserve train-only selection, keep the untouched test split closed, bind Phase180 costs/latency before net metrics, include negative controls, and precommit the decision-rate budget before seeing validation results.
+
+Phase199 next hypothesis queue:
+
+- `P200_QUEUE_PASSIVE_QUEUE_POSITION_PROXY`: passive queue-position and adverse-selection survival labels;
+- `P200_QUEUE_EVENT_SHOCK_ABSORPTION`: post-shock spread/depth recovery regimes;
+- `P200_QUEUE_CROSS_SYMBOL_LEAD_LAG_CAUSAL`: lagged cross-symbol causal ordering with target-symbol exclusion.
+
+Current Phase149 evidence after Phase199:
+
+- phase rows discovered: 192;
+- runner phase rows: 190;
+- acceptance phase rows: 142;
+- hard global-state gates: 101 / 101 passed;
+- real receive-flow branch status: `current_receive_flow_context_branch_paused_material_redesign_required_no_test`;
+- next best action: `run_phase200_material_new_hypothesis_precommit_no_test`.
+
+Current interpretation: this branch should not spend the untouched test split. The next implementation milestone should precommit one materially different Phase200 hypothesis, with passive queue-position/adverse-selection survival as the highest-priority queue item.
+
 ---
 
 ## 25. Final Principle

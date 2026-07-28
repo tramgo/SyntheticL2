@@ -105,6 +105,7 @@ phase,runner,runner_exists,runner_suffix
 196,scripts\run_phase196_expanded_feature_model_search.py,True,.py
 197,scripts\run_phase197_non_receive_flow_feature_expansion_precommit.py,True,.py
 198,scripts\run_phase198_non_receive_flow_context_model_search.py,True,.py
+199,scripts\run_phase199_branch_pause_or_material_redesign_decision.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py
 1,scripts\run_phase1_event_reconstruction.py,True,.py

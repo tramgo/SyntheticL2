@@ -1,0 +1,4 @@
+hypothesis_id,hypothesis_family,material_difference,recommended_next_action,priority,test_replay_allowed_next
+P200_QUEUE_PASSIVE_QUEUE_POSITION_PROXY,passive_execution_microstructure,Switch from marketable receive-flow/context signals to passive queue-position and adverse-selection survival labels.,precommit_passive_queue_position_label_contract_no_test,1,0
+P200_QUEUE_EVENT_SHOCK_ABSORPTION,event_shock_resilience,Model post-shock spread/depth recovery regimes rather than immediate receive-flow imbalance.,precommit_event_shock_absorption_feature_label_contract_no_test,2,0
+P200_QUEUE_CROSS_SYMBOL_LEAD_LAG_CAUSAL,cross_symbol_lead_lag,Use lagged cross-symbol causal ordering with target-symbol exclusion instead of contemporaneous cross-sectional context.,precommit_causal_lead_lag_feature_contract_no_test,3,0

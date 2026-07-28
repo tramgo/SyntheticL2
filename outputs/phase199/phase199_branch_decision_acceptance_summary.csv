@@ -1,0 +1,19 @@
+metric,value,description
+phase199_decision_rows,1,Decision rows
+phase199_evidence_rows,5,Prior phase evidence rows
+phase199_material_redesign_contract_rows,6,Material redesign contract rows
+phase199_next_hypothesis_queue_rows,3,Next hypothesis queue rows
+phase199_decision,pause_current_receive_flow_context_branch_require_material_new_hypothesis,Branch decision
+phase199_current_branch_paused,1,1 means current branch paused
+phase199_material_redesign_required,1,1 means materially new hypothesis required
+phase199_strategy_replay_allowed,0,No strategy replay opened
+phase199_test_replay_allowed_next,0,No test replay opened
+phase199_untouched_test_replay_precommit_allowed,0,No untouched test precommit opened
+phase199_promotion_allowed,0,No promotion opened
+phase199_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase199_gate_rows,7,Gates evaluated
+phase199_hard_gate_rows,7,Hard gates evaluated
+phase199_hard_gate_pass_rows,7,Hard gates passed
+phase199_branch_decision_complete,1,1 means Phase199 completed
+phase199_forbidden_outputs,test_result;test_replay_execution;strategy_replay;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase199_next_best_action,run_phase200_material_new_hypothesis_precommit_no_test,Recommended next milestone

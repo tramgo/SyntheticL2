@@ -92,5 +92,11 @@ phase149_receive_flow_phase198_context_model_search_recorded,True,1,1,hard
 phase149_receive_flow_phase198_test_replay_closed,True,0,0,hard
 phase149_receive_flow_phase198_promotion_closed,True,0,0,hard
 phase149_receive_flow_phase198_paper_live_closed,True,0,0,hard
+phase149_receive_flow_phase199_branch_decision_recorded,True,1,1,hard
+phase149_receive_flow_phase199_strategy_replay_closed,True,0,0,hard
+phase149_receive_flow_phase199_test_precommit_closed,True,0,0,hard
+phase149_receive_flow_phase199_test_replay_closed,True,0,0,hard
+phase149_receive_flow_phase199_promotion_closed,True,0,0,hard
+phase149_receive_flow_phase199_paper_live_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard
