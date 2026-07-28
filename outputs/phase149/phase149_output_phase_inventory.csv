@@ -136,6 +136,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 212,outputs\phase212,True,9,outputs\phase212\phase212_model_family_closure_acceptance_summary.csv,outputs\phase212\phase212_model_family_closure_manifest.json,False
 213,outputs\phase213,True,10,outputs\phase213\phase213_material_new_source_acceptance_summary.csv,outputs\phase213\phase213_material_new_source_manifest.json,False
 214,outputs\phase214,True,10,outputs\phase214\phase214_event_surprise_label_acceptance_summary.csv,outputs\phase214\phase214_event_surprise_label_materialization_manifest.json,False
+215,outputs\phase215,True,9,outputs\phase215\phase215_label_quality_interpretation_acceptance_summary.csv,outputs\phase215\phase215_label_quality_interpretation_manifest.json,False
 22,outputs\phase22,True,6,,outputs\phase22\phase22_real_data_integration_manifest.json,False
 23,outputs\phase23,True,6,,outputs\phase23\phase23_key_risk_register_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False

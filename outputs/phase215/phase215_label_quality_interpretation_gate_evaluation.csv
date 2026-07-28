@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P215_PHASE214_COMPLETE,True,phase214_complete=1,hard
+P215_SEALED_TEST_STILL_UNUSED,True,sealed_test_rows_used=0,hard
+P215_INTERPRETATION_ROWS_RECORDED,True,interpretation_rows=24,hard
+P215_LABEL_FAMILY_SUMMARY_RECORDED,True,family_rows=3,hard
+P215_DECISION_LEDGER_RECORDED,True,decision_rows=1,hard
+P215_PHASE216_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P215_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

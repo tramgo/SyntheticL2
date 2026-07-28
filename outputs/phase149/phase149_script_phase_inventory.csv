@@ -133,6 +133,7 @@ phase,runner,runner_exists,runner_suffix
 212,scripts\run_phase212_model_family_closure_or_redesign_precommit.py,True,.py
 213,scripts\run_phase213_material_new_model_source_precommit.py,True,.py
 214,scripts\run_phase214_event_surprise_label_materialization.py,True,.py
+215,scripts\run_phase215_event_surprise_label_quality_interpretation.py,True,.py
 21,scripts\run_phase21_decision_framework.py,True,.py
 22,scripts\run_phase22_real_data_integration_roadmap.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py

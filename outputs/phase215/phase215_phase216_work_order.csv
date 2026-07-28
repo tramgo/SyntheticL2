@@ -1,0 +1,2 @@
+phase216_work_order_id,decision,required_action,allowed_next_scope,model_fit_allowed_next,strategy_replay_allowed,test_replay_allowed_next
+P216_EVENT_ONLY_TARGET_OR_LABEL_REDESIGN_PRECOMMIT,event_only_target_precommit_required_no_model_fit,Precommit whether Phase214 labels should be narrowed to event-only rows or redesigned for better class balance before any model fit.,precommit_only_no_model_no_replay_no_test,0,0,0

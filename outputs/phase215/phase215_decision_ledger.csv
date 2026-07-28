@@ -1,0 +1,2 @@
+phase215_decision_id,passing_interpretation_rows,label_families_with_interpretable_rows,decision,rationale,model_fit_allowed_next,strategy_replay_allowed,test_replay_allowed_next,promotion_allowed,paper_or_live_acceptance_allowed,profitability_claim_allowed
+P215_EVENT_SURPRISE_LABEL_QUALITY_DECISION,14,3,event_only_target_precommit_required_no_model_fit,"Phase214 labels are materialized, but positive rates are sparse and must be interpreted as event-only targets before any model-fit precommit.",0,0,0,0,0,0

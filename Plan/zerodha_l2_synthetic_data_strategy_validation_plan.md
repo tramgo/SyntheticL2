@@ -7166,6 +7166,55 @@ Current interpretation: Phase214 proves the event-surprise conditional labels ca
 
 ---
 
+### Phase215 - Event-surprise label quality interpretation, no model/no replay/no test
+
+Phase215 interprets Phase214 event-surprise label balance and sparsity before any model-fit precommit. It keeps model fitting, predictions, strategy replay, sealed test replay, promotion, paper/live acceptance, and profitability claims closed.
+
+Phase215 interpretation scope:
+
+- interpret split/horizon/label balance across train and validation only;
+- treat the Phase214 labels as event-only candidate targets, not general all-row direction labels;
+- require event-surprise density of at least 0.5% for a split/horizon/label row to be interpretable;
+- require event-only positive rate between 1% and 20%;
+- preserve the finding that many partitions are sparse and should not be fed directly into all-row model fitting.
+
+Phase215 results:
+
+- split/horizon/label interpretation rows: 24;
+- passing event-only interpretation rows: 14;
+- label-family summary rows: 3;
+- label families with at least one interpretable row: 3;
+- decision rows: 1;
+- Phase216 work-order rows: 1;
+- hard gates: 7 / 7 passed;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase216_event_surprise_label_redesign_or_event_only_target_precommit_no_model_no_replay_no_test`.
+
+Phase215 decision:
+
+- `event_only_target_precommit_required_no_model_fit`;
+- all three event-surprise label families have at least one interpretable split/horizon row;
+- positive rates remain sparse enough that Phase216 must explicitly precommit event-only target construction or redesign before any model fitting;
+- no Phase215 artifact opens model fitting or replay.
+
+Current Phase149 evidence after Phase215:
+
+- phase rows discovered: 208;
+- runner phase rows: 206;
+- acceptance phase rows: 158;
+- hard global-state gates: 200 / 200 passed;
+- real receive-flow branch status: `event_surprise_label_quality_interpretation_complete_phase216_event_only_target_precommit_pending_no_model_no_replay_no_test`;
+- next best action: `run_phase216_event_surprise_label_redesign_or_event_only_target_precommit_no_model_no_replay_no_test`.
+
+Current interpretation: Phase215 keeps the materialized event-surprise label branch alive, but narrows it. The next step is not model fitting; Phase216 must precommit an event-only target construction or label redesign boundary so the sparse labels are not misused as all-row predictors.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

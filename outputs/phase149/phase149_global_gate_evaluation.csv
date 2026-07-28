@@ -190,5 +190,12 @@ phase149_receive_flow_phase214_test_replay_closed,True,0,0,hard
 phase149_receive_flow_phase214_promotion_closed,True,0,0,hard
 phase149_receive_flow_phase214_paper_live_closed,True,0,0,hard
 phase149_receive_flow_phase214_profitability_claim_closed,True,0,0,hard
+phase149_receive_flow_phase215_label_quality_interpretation_recorded,True,1,1,hard
+phase149_receive_flow_phase215_model_fit_closed,True,0,0,hard
+phase149_receive_flow_phase215_strategy_replay_closed,True,0,0,hard
+phase149_receive_flow_phase215_test_replay_closed,True,0,0,hard
+phase149_receive_flow_phase215_promotion_closed,True,0,0,hard
+phase149_receive_flow_phase215_paper_live_closed,True,0,0,hard
+phase149_receive_flow_phase215_profitability_claim_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard
