@@ -1,8 +1,8 @@
 metric,value,description
-phase181_label_partition_rows,640,Label partitions materialized
-phase181_label_rows,2209164,Label rows written
-phase181_label_available_rows,2208464,Rows with primary labels available
-phase181_quality_rows,20,Horizon/date/split quality rows
+phase181_label_partition_rows,768,Label partitions materialized
+phase181_label_rows,2772233,Label rows written
+phase181_label_available_rows,2771375,Rows with primary labels available
+phase181_quality_rows,24,Horizon/date/split quality rows
 phase181_gate_rows,5,Gates evaluated
 phase181_hard_gate_rows,5,Hard gates evaluated
 phase181_hard_gate_pass_rows,5,Hard gates passed

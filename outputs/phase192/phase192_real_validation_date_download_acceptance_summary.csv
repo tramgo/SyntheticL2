@@ -1,0 +1,16 @@
+metric,value,description
+phase192_requested_date_rows,1,Dates requested for Phase192 download
+phase192_azure_available_date_rows,16,Dates listed under Azure Files raw_l2
+phase192_new_remote_dates_beyond_existing_split,11,Azure dates not in the pre-Phase192 local split
+phase192_remote_files_selected,50010,Remote files listed for requested dates
+phase192_remote_bytes_selected,1756113023,Remote bytes listed for requested dates
+phase192_downloaded_files,9091,Files downloaded in this run
+phase192_skipped_existing_files,40919,Files already present with matching size
+phase192_failed_files_or_dates,0,Failed file/date operations
+phase192_list_only,0,1 means no files were downloaded
+phase192_test_replay_execution,0,Phase192 does not execute untouched test replay
+phase192_test_result_allowed,0,Phase192 does not emit a test result
+phase192_promotion_allowed,0,Phase192 does not open promotion
+phase192_paper_or_live_acceptance_allowed,0,Phase192 keeps paper/live closed
+phase192_forbidden_outputs,test_replay_execution;test_result;promotion;paper_live_acceptance;orders;fills;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase192_next_best_action,run_phase172_phase176_phase181_then_validation_breadth_replay,Recommended next milestone

@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-28T16:31:12.862487+00:00",
+  "generated_utc": "2026-07-28T18:07:23.360880+00:00",
   "scope": "phase182_label_quality_leakage_audit",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "c4f438266dff039482f5dd51313a187eed6b028b",
+  "generator_version": "9cdbc08acecd686d056ba9ace822afeb0d11a9eb",
   "configuration_hash": "8ee8bbca6e00331b3317613eaee8d117fc36cc9bbd7eac33acb807f135f794ed",
   "random_seed": "none_deterministic_label_quality_leakage_audit",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase182_label_quality_leakage_audit",
   "cost_model_version": "not_applicable_no_replay",
   "latency_model_version": "not_applicable_no_replay",
-  "creation_timestamp": "2026-07-28T16:31:12.862487+00:00"
+  "creation_timestamp": "2026-07-28T18:07:23.360880+00:00"
 }

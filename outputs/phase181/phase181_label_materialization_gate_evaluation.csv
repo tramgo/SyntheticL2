@@ -1,6 +1,6 @@
 gate_id,gate_pass,evidence,severity
 P181_PHASE180_PRECOMMIT_READY,1,phase180_precommit_ready=1,hard
-P181_LABEL_PARTITIONS_WRITTEN,1,label_partitions=640,hard
-P181_SPLIT_ROLES_PRESENT,1,split_roles=test_untouched;train;validation,hard
+P181_LABEL_PARTITIONS_WRITTEN,1,label_partitions=768,hard
+P181_SPLIT_ROLES_PRESENT,1,split_roles=test_untouched;train;unassigned;validation,hard
 P181_LABEL_AVAILABILITY_NONZERO,1,min_availability_fraction=0.993243,hard
 P181_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,label materialization only; forbidden_outputs=signal;side;order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard

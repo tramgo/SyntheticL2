@@ -98,6 +98,8 @@ phase,runner,runner_exists,runner_suffix
 18,scripts\run_phase18_technology_stack.py,True,.py
 190,scripts\run_phase190_validation_breadth_or_diagnostic_test_spec.py,True,.py
 191,scripts\run_phase191_diagnostic_test_replay_precommit.py,True,.py
+192,scripts\run_phase192_azure_real_validation_date_download.py,True,.py
+193,scripts\run_phase193_validation_breadth_extension_replay.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py
 1,scripts\run_phase1_event_reconstruction.py,True,.py

@@ -5925,7 +5925,104 @@ Current Phase149 evidence after Phase191:
 - real receive-flow branch status: `diagnostic_test_replay_precommitted_no_execution`;
 - next best action: `either_add_real_validation_date_or_explicitly_authorize_phase192_diagnostic_test_replay`.
 
-Current interpretation: the sparse candidate is fully frozen for a future diagnostic test run, but the untouched test still has not been spent. The next step requires either adding real validation breadth, or an explicit decision to proceed to Phase192 diagnostic test replay under the frozen hash and abort rules.
+Current interpretation after Phase191: the sparse candidate was fully frozen for a future diagnostic test run, but the untouched test still had not been spent. The next step required either adding real validation breadth, or an explicit decision to proceed to a later diagnostic test replay under the frozen hash and abort rules.
+
+### Phase192 - Azure real validation-date download without test replay
+
+Phase192 followed the preferred branch from Phase191: add real validation breadth before spending the untouched test date.
+
+The user-provided Azure Files SAS was used only as a transient process credential. It was not added to `.env`, committed, or persisted in any repository artifact. Because AzCopy was not installed on the machine, Phase192 added a Python HTTPS downloader using `truststore` and Azure Files REST listing/download calls. The downloader writes only redacted/no-secret ledgers and acceptance summaries.
+
+Azure availability under `raw_l2`:
+
+- available remote date directories: 16;
+- dates beyond the pre-Phase192 local split: 11;
+- selected new validation date: `2026-07-15`;
+- selected remote files: 50,010;
+- selected remote bytes: 1,756,113,023.
+
+Download result for `2026-07-15`:
+
+- first attempt timed out after landing 40,919 files;
+- resumable rerun skipped the 40,919 complete files and downloaded the remaining 9,091;
+- failed files/dates: 0;
+- final local partition size: 50,010 parquet files and 1,756,113,023 bytes;
+- target partition: `real_data_sample/l2_multiday_panel/trade_date=2026-07-15`.
+
+Safety gates:
+
+- test replay execution: 0;
+- test result allowed: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+After Phase192, Phase172/176/181/182 were refreshed locally:
+
+- Phase172 ready real receive-flow dates: 6;
+- Phase172 audited symbol-days: 192;
+- Phase172 audited raw rows: 3,036,117;
+- Phase172 audited compressed raw bytes: 8,762,851,042;
+- Phase176 feature partition rows: 768;
+- Phase176 feature rows across horizons: 2,772,233;
+- Phase181 label partition rows: 768;
+- Phase181 label rows: 2,772,233;
+- Phase182 hard gates: 7 / 7 passed;
+- `2026-07-15` remained `unassigned`, so it could be used as validation-extension evidence without relabelling or touching `test_untouched`.
+
+### Phase193 - Frozen-candidate validation-breadth extension replay
+
+Phase193 evaluated the Phase191 frozen candidate on original validation plus the newly downloaded unassigned date:
+
+- candidate: `P187_TOP5_I85_S2p5_Z1_R100`;
+- frozen contract hash: `6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1`;
+- evaluation roles: `validation;unassigned`;
+- excluded role: `test_untouched`;
+- original validation date with events: `2026-07-13`;
+- validation-extension date with events: `2026-07-15`;
+- validation/extension dates with events: 2;
+- dry decision events: 5,024;
+- decision rate: approximately 0.4469%, under the 1% budget;
+- symbols with events: 31;
+- hard gates: 7 / 7 passed;
+- test replay execution: 0;
+- test result allowed: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Aggregate Phase193 result:
+
+- overall net proxy mean: 18.8942 bps;
+- minimum profile net proxy mean: 17.8769 bps;
+- minimum edge over shuffled-time control: 32.0118 bps;
+- minimum edge over shuffled-symbol control: 16.0748 bps;
+- symbol-positive fraction: 0.0645;
+- breadth warning: 1;
+- date-count warning: 0;
+- concentration warning: 0.
+
+Per-date evidence is materially mixed:
+
+| Latency profile | Split role | Trade date | Decision events | Net proxy mean | Edge over shuffled time | Edge over shuffled symbol |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| `P180_RETAIL_MARKETABLE_DEFAULT` | validation | 2026-07-13 | 1,323 | 48.3994 bps | 83.2672 bps | 53.0293 bps |
+| `P180_STRESSED_RETAIL` | validation | 2026-07-13 | 1,323 | 46.3309 bps | 68.1783 bps | 53.0293 bps |
+| `P180_RETAIL_MARKETABLE_DEFAULT` | unassigned | 2026-07-15 | 1,189 | -11.7868 bps | -25.0201 bps | -25.0445 bps |
+| `P180_STRESSED_RETAIL` | unassigned | 2026-07-15 | 1,189 | -13.7838 bps | 8.5785 bps | -25.0445 bps |
+
+Phase193 verdict:
+
+`validation_extension_mixed_or_negative_by_date_add_more_validation_or_redesign_before_test`
+
+Current Phase149 evidence after Phase193:
+
+- phase rows discovered: 186;
+- runner phase rows: 184;
+- acceptance phase rows: 136;
+- hard global-state gates: 74 / 74 passed;
+- real receive-flow branch status: `validation_breadth_extended_mixed_negative_by_date_no_test`;
+- next best action: `add_more_validation_dates_or_redesign_before_any_test_replay`.
+
+Current interpretation: the new real day weakened the candidate rather than confirming it. The untouched test split still must not be spent on this candidate unless the user explicitly chooses to run a diagnostic test despite the mixed validation-extension evidence. The research-forward path is to add more post-`2026-07-15` validation dates and/or redesign the sparse receive-flow candidate before any test replay.
 
 ---
 

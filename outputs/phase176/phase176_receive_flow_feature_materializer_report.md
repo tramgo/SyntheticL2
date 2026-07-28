@@ -1,6 +1,6 @@
 # Phase176 Receive-flow Feature Materializer
 
-Generated UTC: 2026-07-28T16:04:39.149822+00:00
+Generated UTC: 2026-07-28T18:06:38.535396+00:00
 
 Phase176 is the executable materialization scaffold for the Phase175 feature schema.
 When Phase175 activation is closed, Phase176 writes plan/templates/gates only and materializes no feature parquet.
@@ -16,9 +16,9 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | phase176_hard_gate_rows | 3 | Hard gates evaluated |
 | phase176_hard_gate_pass_rows | 3 | Hard gates passed |
 | phase176_activation_ready | 1 | Inherited Phase175 activation gate |
-| phase176_materialized_partition_rows | 640 | Feature partition rows written to inventory |
-| phase176_materialized_feature_rows | 2209164 | Feature rows written across all horizons |
-| phase176_feature_parquet_files | 640 | Feature parquet files present under feature root |
+| phase176_materialized_partition_rows | 768 | Feature partition rows written to inventory |
+| phase176_materialized_feature_rows | 2772233 | Feature rows written across all horizons |
+| phase176_feature_parquet_files | 768 | Feature parquet files present under feature root |
 | phase176_features_materialized | 1 | 1 means feature parquet was materialized |
 | phase176_strategy_replay_allowed | 0 | No strategy replay opened |
 | phase176_paper_or_live_acceptance_allowed | 0 | Paper/live remains closed |
@@ -48,7 +48,7 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 
 | gate_id | gate_pass | evidence | severity |
 | --- | --- | --- | --- |
-| P176_PHASE175_ACTIVATION_READY | 1 | phase175_activation_ready=1;ready_dates=5;additional_needed=0 | activation |
+| P176_PHASE175_ACTIVATION_READY | 1 | phase175_activation_ready=1;ready_dates=6;additional_needed=0 | activation |
 | P176_SCHEMA_AVAILABLE | 1 | feature_schema_rows=6 | hard |
 | P176_LOCAL_REAL_ROOT_EXISTS | 1 | real_data_sample\l2_multiday_panel | hard |
 | P176_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | materializer scaffold only while activation gate is closed; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | hard |
@@ -217,6 +217,38 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | 1 | 2026-07-14 | NSE | TECHM | 11095 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-14\exchange=NSE\symbol=TECHM\receive_flow_features.parquet | 539034 |
 | 1 | 2026-07-14 | NSE | ULTRACEMCO | 7965 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-14\exchange=NSE\symbol=ULTRACEMCO\receive_flow_features.parquet | 351136 |
 | 1 | 2026-07-14 | NSE | WIPRO | 9396 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-14\exchange=NSE\symbol=WIPRO\receive_flow_features.parquet | 465864 |
+| 1 | 2026-07-15 | NSE | ADANIPORTS | 10123 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ADANIPORTS\receive_flow_features.parquet | 472714 |
+| 1 | 2026-07-15 | NSE | AXISBANK | 15634 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=AXISBANK\receive_flow_features.parquet | 798386 |
+| 1 | 2026-07-15 | NSE | BAJAJ-AUTO | 14797 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_features.parquet | 645291 |
+| 1 | 2026-07-15 | NSE | BANKBEES | 12146 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=BANKBEES\receive_flow_features.parquet | 571406 |
+| 1 | 2026-07-15 | NSE | BHARTIARTL | 11420 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=BHARTIARTL\receive_flow_features.parquet | 566257 |
+| 1 | 2026-07-15 | NSE | BPCL | 8175 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=BPCL\receive_flow_features.parquet | 379887 |
+| 1 | 2026-07-15 | NSE | BRITANNIA | 6463 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=BRITANNIA\receive_flow_features.parquet | 289260 |
+| 1 | 2026-07-15 | NSE | CIPLA | 8702 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=CIPLA\receive_flow_features.parquet | 397186 |
+| 1 | 2026-07-15 | NSE | DRREDDY | 7818 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=DRREDDY\receive_flow_features.parquet | 361693 |
+| 1 | 2026-07-15 | NSE | GOLDBEES | 9171 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=GOLDBEES\receive_flow_features.parquet | 432442 |
+| 1 | 2026-07-15 | NSE | HCLTECH | 10358 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=HCLTECH\receive_flow_features.parquet | 505694 |
+| 1 | 2026-07-15 | NSE | HDFCBANK | 15203 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=HDFCBANK\receive_flow_features.parquet | 784054 |
+| 1 | 2026-07-15 | NSE | HINDUNILVR | 9061 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=HINDUNILVR\receive_flow_features.parquet | 435468 |
+| 1 | 2026-07-15 | NSE | ICICIBANK | 14980 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ICICIBANK\receive_flow_features.parquet | 765364 |
+| 1 | 2026-07-15 | NSE | INFY | 15271 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=INFY\receive_flow_features.parquet | 777802 |
+| 1 | 2026-07-15 | NSE | ITBEES | 6727 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ITBEES\receive_flow_features.parquet | 318365 |
+| 1 | 2026-07-15 | NSE | ITC | 9670 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ITC\receive_flow_features.parquet | 444035 |
+| 1 | 2026-07-15 | NSE | JUNIORBEES | 14353 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=JUNIORBEES\receive_flow_features.parquet | 675000 |
+| 1 | 2026-07-15 | NSE | KOTAKBANK | 9572 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=KOTAKBANK\receive_flow_features.parquet | 458713 |
+| 1 | 2026-07-15 | NSE | LT | 13054 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=LT\receive_flow_features.parquet | 649653 |
+| 1 | 2026-07-15 | NSE | M&M | 14536 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=M&M\receive_flow_features.parquet | 701724 |
+| 1 | 2026-07-15 | NSE | MARUTI | 11030 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=MARUTI\receive_flow_features.parquet | 487882 |
+| 1 | 2026-07-15 | NSE | NESTLEIND | 7020 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=NESTLEIND\receive_flow_features.parquet | 330877 |
+| 1 | 2026-07-15 | NSE | NIFTYBEES | 13048 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=NIFTYBEES\receive_flow_features.parquet | 635291 |
+| 1 | 2026-07-15 | NSE | ONGC | 10933 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ONGC\receive_flow_features.parquet | 540854 |
+| 1 | 2026-07-15 | NSE | RELIANCE | 13692 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=RELIANCE\receive_flow_features.parquet | 687058 |
+| 1 | 2026-07-15 | NSE | SBIN | 14130 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=SBIN\receive_flow_features.parquet | 721112 |
+| 1 | 2026-07-15 | NSE | SUNPHARMA | 11790 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=SUNPHARMA\receive_flow_features.parquet | 558880 |
+| 1 | 2026-07-15 | NSE | TCS | 15134 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=TCS\receive_flow_features.parquet | 744065 |
+| 1 | 2026-07-15 | NSE | TECHM | 12409 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=TECHM\receive_flow_features.parquet | 599398 |
+| 1 | 2026-07-15 | NSE | ULTRACEMCO | 9876 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=ULTRACEMCO\receive_flow_features.parquet | 428147 |
+| 1 | 2026-07-15 | NSE | WIPRO | 9447 | derived_real_l2_receive_flow_features_phase176\horizon=1s\trade_date=2026-07-15\exchange=NSE\symbol=WIPRO\receive_flow_features.parquet | 456743 |
 | 5 | 2026-07-08 | NSE | ADANIPORTS | 1618 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ADANIPORTS\receive_flow_features.parquet | 98415 |
 | 5 | 2026-07-08 | NSE | AXISBANK | 1700 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=AXISBANK\receive_flow_features.parquet | 106193 |
 | 5 | 2026-07-08 | NSE | BAJAJ-AUTO | 1595 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_features.parquet | 89620 |
@@ -225,35 +257,3 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | 5 | 2026-07-08 | NSE | BPCL | 1579 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BPCL\receive_flow_features.parquet | 94496 |
 | 5 | 2026-07-08 | NSE | BRITANNIA | 1526 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=BRITANNIA\receive_flow_features.parquet | 86013 |
 | 5 | 2026-07-08 | NSE | CIPLA | 1573 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=CIPLA\receive_flow_features.parquet | 92188 |
-| 5 | 2026-07-08 | NSE | DRREDDY | 1583 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=DRREDDY\receive_flow_features.parquet | 95120 |
-| 5 | 2026-07-08 | NSE | GOLDBEES | 1643 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=GOLDBEES\receive_flow_features.parquet | 100815 |
-| 5 | 2026-07-08 | NSE | HCLTECH | 1565 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=HCLTECH\receive_flow_features.parquet | 94556 |
-| 5 | 2026-07-08 | NSE | HDFCBANK | 1746 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=HDFCBANK\receive_flow_features.parquet | 111542 |
-| 5 | 2026-07-08 | NSE | HINDUNILVR | 1619 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=HINDUNILVR\receive_flow_features.parquet | 98971 |
-| 5 | 2026-07-08 | NSE | ICICIBANK | 1723 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ICICIBANK\receive_flow_features.parquet | 107127 |
-| 5 | 2026-07-08 | NSE | INFY | 1683 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=INFY\receive_flow_features.parquet | 102832 |
-| 5 | 2026-07-08 | NSE | ITBEES | 1586 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ITBEES\receive_flow_features.parquet | 92281 |
-| 5 | 2026-07-08 | NSE | ITC | 1644 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ITC\receive_flow_features.parquet | 100054 |
-| 5 | 2026-07-08 | NSE | JUNIORBEES | 1686 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=JUNIORBEES\receive_flow_features.parquet | 107430 |
-| 5 | 2026-07-08 | NSE | KOTAKBANK | 1665 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=KOTAKBANK\receive_flow_features.parquet | 102539 |
-| 5 | 2026-07-08 | NSE | LT | 1734 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=LT\receive_flow_features.parquet | 108071 |
-| 5 | 2026-07-08 | NSE | M&M | 1715 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=M&M\receive_flow_features.parquet | 108525 |
-| 5 | 2026-07-08 | NSE | MARUTI | 1680 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=MARUTI\receive_flow_features.parquet | 98295 |
-| 5 | 2026-07-08 | NSE | NESTLEIND | 1581 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=NESTLEIND\receive_flow_features.parquet | 94349 |
-| 5 | 2026-07-08 | NSE | NIFTYBEES | 1688 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=NIFTYBEES\receive_flow_features.parquet | 106580 |
-| 5 | 2026-07-08 | NSE | ONGC | 1629 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ONGC\receive_flow_features.parquet | 103657 |
-| 5 | 2026-07-08 | NSE | RELIANCE | 1732 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=RELIANCE\receive_flow_features.parquet | 107613 |
-| 5 | 2026-07-08 | NSE | SBIN | 1687 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=SBIN\receive_flow_features.parquet | 105449 |
-| 5 | 2026-07-08 | NSE | SUNPHARMA | 1601 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=SUNPHARMA\receive_flow_features.parquet | 94680 |
-| 5 | 2026-07-08 | NSE | TCS | 1652 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=TCS\receive_flow_features.parquet | 100411 |
-| 5 | 2026-07-08 | NSE | TECHM | 1575 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=TECHM\receive_flow_features.parquet | 93652 |
-| 5 | 2026-07-08 | NSE | ULTRACEMCO | 1578 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=ULTRACEMCO\receive_flow_features.parquet | 88770 |
-| 5 | 2026-07-08 | NSE | WIPRO | 1570 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-08\exchange=NSE\symbol=WIPRO\receive_flow_features.parquet | 97238 |
-| 5 | 2026-07-09 | NSE | ADANIPORTS | 2449 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=ADANIPORTS\receive_flow_features.parquet | 139827 |
-| 5 | 2026-07-09 | NSE | AXISBANK | 2523 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=AXISBANK\receive_flow_features.parquet | 149799 |
-| 5 | 2026-07-09 | NSE | BAJAJ-AUTO | 2391 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=BAJAJ-AUTO\receive_flow_features.parquet | 128057 |
-| 5 | 2026-07-09 | NSE | BANKBEES | 2538 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=BANKBEES\receive_flow_features.parquet | 147233 |
-| 5 | 2026-07-09 | NSE | BHARTIARTL | 2559 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=BHARTIARTL\receive_flow_features.parquet | 151734 |
-| 5 | 2026-07-09 | NSE | BPCL | 2422 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=BPCL\receive_flow_features.parquet | 139531 |
-| 5 | 2026-07-09 | NSE | BRITANNIA | 2365 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=BRITANNIA\receive_flow_features.parquet | 125708 |
-| 5 | 2026-07-09 | NSE | CIPLA | 2408 | derived_real_l2_receive_flow_features_phase176\horizon=5s\trade_date=2026-07-09\exchange=NSE\symbol=CIPLA\receive_flow_features.parquet | 136590 |

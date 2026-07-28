@@ -1,6 +1,6 @@
 metric,value,description
-phase182_partition_audit_rows,640,Label partitions audited
-phase182_split_audit_rows,3,Split leakage audit rows
+phase182_partition_audit_rows,768,Label partitions audited
+phase182_split_audit_rows,4,Split leakage audit rows
 phase182_failed_partitions,0,Failed label partitions
 phase182_forbidden_column_partitions,0,Partitions with forbidden output columns
 phase182_min_label_available_fraction,0.9932432432432432,Minimum partition label availability

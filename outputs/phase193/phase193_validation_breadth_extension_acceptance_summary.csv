@@ -1,0 +1,27 @@
+metric,value,description
+phase193_interpretation_rows,1,Interpretation rows
+phase193_gate_rows,7,Gates evaluated
+phase193_hard_gate_rows,7,Hard gates evaluated
+phase193_hard_gate_pass_rows,7,Hard gates passed
+phase193_candidate_id,P187_TOP5_I85_S2p5_Z1_R100,Frozen candidate evaluated
+phase193_candidate_contract_hash,6aec9abe7f1da4c49372eb44b3fa050e44c1b8105dd4bc0c47efd9357af697d1,Frozen contract hash
+phase193_original_validation_dates,2026-07-13,Original validation dates represented in events
+phase193_extension_validation_dates,2026-07-15,Added validation-extension dates represented in events
+phase193_validation_dates_with_events,2,Validation/extension dates with decision events
+phase193_validation_extension_decision_events,5024,Dry decision events across validation plus extension
+phase193_decision_rate,0.004468570137605988,Decision-event rate over evaluation rows
+phase193_min_profile_net_bps_proxy_mean,17.876935392919567,Minimum profile net bps
+phase193_min_profile_edge_over_shuffled_time_bps,32.01177089819598,Minimum profile edge over shuffled-time control
+phase193_min_profile_edge_over_shuffled_symbol_bps,16.07478717762574,Minimum profile edge over shuffled-symbol control
+phase193_symbol_positive_fraction,0.06451612903225806,Fraction of symbol/profile groups net positive
+phase193_breadth_warning,1,1 means symbol breadth remains weak
+phase193_date_count_warning,0,1 means fewer than two validation dates
+phase193_concentration_warning,0,1 means event concentration warning
+phase193_verdict,validation_extension_mixed_or_negative_by_date_add_more_validation_or_redesign_before_test,Validation-breadth verdict
+phase193_validation_breadth_extension_complete,1,1 means Phase193 completed
+phase193_test_replay_execution,0,No untouched test replay executed
+phase193_test_result_allowed,0,No test result emitted
+phase193_promotion_allowed,0,No promotion opened
+phase193_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase193_forbidden_outputs,test_result;test_replay_execution;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase193_next_best_action,add_more_validation_dates_or_redesign_before_any_test_replay,Recommended next milestone
