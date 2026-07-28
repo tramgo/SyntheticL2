@@ -5604,6 +5604,69 @@ Current interpretation: the current family set is closed cleanly. The next usefu
 
 ---
 
+### Phase187 - Cost-aware Sparse Receive-flow Candidate, No Test
+
+**Date:** 2026-07-28
+
+Phase187 implements the first redesigned cost-aware sparse receive-flow candidate after Phase186 closed the previous Phase179 family set. It searches a train-only sparse threshold grid over top-five or L1 imbalance, spread bounds and receive-event z-score bounds, then evaluates the selected candidates on validation only under Phase180 retail/default and stressed-retail cost/latency profiles.
+
+Phase187 does not use test rows, open test replay, open promotion, open paper/live acceptance, emit orders/fills, calculate P&L or claim profitability.
+
+Phase187 outputs:
+
+- `outputs/phase187/phase187_sparse_candidate_grid.csv`;
+- `outputs/phase187/phase187_partition_use_audit.csv`;
+- `outputs/phase187/phase187_train_candidate_summary.csv`;
+- `outputs/phase187/phase187_train_selected_candidates.csv`;
+- `outputs/phase187/phase187_validation_candidate_summary.csv`;
+- `outputs/phase187/phase187_cost_aware_sparse_candidate_gate_evaluation.csv`;
+- `outputs/phase187/phase187_cost_aware_sparse_candidate_acceptance_summary.csv`;
+- `outputs/phase187/phase187_cost_aware_sparse_candidate_report.md`;
+- `outputs/phase187/phase187_cost_aware_sparse_candidate_manifest.json`.
+
+Current Phase187 evidence:
+
+- sparse candidate grid rows: 216;
+- train-selected candidate rows: 12;
+- validation summary rows: 24;
+- best validation candidate: `P187_TOP5_I85_S2p5_Z1_R100`;
+- best validation latency profile: `P180_RETAIL_MARKETABLE_DEFAULT`;
+- best validation net return-bps proxy mean: 48.399355982925655;
+- validation-positive under all promotion-eligible profiles: 1;
+- gates evaluated: 7;
+- hard gates passed: 7 / 7;
+- cost-aware sparse candidate complete: 1;
+- test rows used: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `build_phase188_cost_aware_sparse_candidate_interpretation_no_test`.
+
+Best validation candidate details:
+
+- candidate: `P187_TOP5_I85_S2p5_Z1_R100`;
+- rule shape: top-five quantity imbalance absolute value at least 0.85, spread at most 2.5 bps, absolute receive-event-rate z-score at least 1.0, train-selected maximum decision-rate budget 1%;
+- validation decision events: 1,323;
+- validation decision rate: 0.2357%;
+- retail/default gross return-bps proxy mean: 60.5943;
+- retail/default cost-bound mean: 12.1950;
+- retail/default net return-bps proxy mean: 48.3994;
+- stressed-retail cost-bound mean: 14.2634;
+- stressed-retail net return-bps proxy mean: 46.3309.
+
+Current Phase149 evidence after Phase187:
+
+- phase rows discovered: 180;
+- runner phase rows: 178;
+- acceptance phase rows: 130;
+- hard global-state gates: 44 / 44 passed;
+- real receive-flow branch status: `cost_aware_sparse_candidate_validation_interpretation_pending`;
+- next best action: `build_phase188_cost_aware_sparse_candidate_interpretation_no_test`.
+
+Current interpretation: Phase187 is the first redesigned candidate to produce validation-positive cost-bound evidence under both allowed retail latency profiles. However, this is not yet a promotion or test-unlock result. The result needs Phase188 interpretation: concentration by date/symbol, outlier dependence, negative-control margin robustness, train-vs-validation stability, and a decision on whether an untouched-test replay precommit is justified.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

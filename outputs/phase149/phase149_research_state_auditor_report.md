@@ -1,6 +1,6 @@
 # Phase149 Research State Auditor
 
-Generated UTC: 2026-07-28T16:53:05.655337+00:00
+Generated UTC: 2026-07-28T16:58:30.242731+00:00
 
 Phase149 reconciles current phase scripts, output evidence, branch states, and replay gates.
 It does not run strategies, contact Azure, import data, or unlock replay.
@@ -9,21 +9,21 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | metric | value | description |
 | --- | --- | --- |
-| phase149_phase_rows | 179 | Phase rows discovered from scripts and outputs |
-| phase149_runner_phase_rows | 177 | Phase rows with at least one runner |
-| phase149_acceptance_phase_rows | 129 | Phase rows with acceptance summaries |
+| phase149_phase_rows | 180 | Phase rows discovered from scripts and outputs |
+| phase149_runner_phase_rows | 178 | Phase rows with at least one runner |
+| phase149_acceptance_phase_rows | 130 | Phase rows with acceptance summaries |
 | phase149_branch_rows | 4 | Current research branches summarized |
-| phase149_hard_gate_rows | 39 | Hard global-state gates evaluated |
-| phase149_hard_gate_pass_rows | 39 | Hard global-state gates passed |
+| phase149_hard_gate_rows | 44 | Hard global-state gates evaluated |
+| phase149_hard_gate_pass_rows | 44 | Hard global-state gates passed |
 | phase149_strategy_replay_allowed | 0 | Phase149 never unlocks strategy replay |
-| phase149_next_best_action | build_phase187_cost_aware_sparse_receive_flow_candidate_no_test | Recommended next milestone |
+| phase149_next_best_action | build_phase188_cost_aware_sparse_candidate_interpretation_no_test | Recommended next milestone |
 
 ## Branch Status Summary
 
 | branch | status | evidence | current_next_action |
 | --- | --- | --- | --- |
 | real_l2_anchor_gate | gated | Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. | use_phase174_secure_download_orchestrator_for_required_real_l2_dates |
-| real_receive_flow_source | current_family_set_closed_cost_aware_redesign_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1; Phase178 handoff_ready=1; Phase179 precommit_ready=1; Phase180 precommit_ready=1; Phase181 labels_materialized=1; Phase182 label_audit_pass=1; Phase183 replay_readiness=1; Phase184 dry_run_complete=1, test_rows_used=0, promotion_allowed=0; Phase185 interpretation_complete=1, cost_dominates=1, test_replay_allowed_next=0; Phase186 family_set_closed=1, reuse_without_redesign_allowed=0, test_replay_allowed_next=0. | build_phase187_cost_aware_sparse_receive_flow_candidate_no_test |
+| real_receive_flow_source | cost_aware_sparse_candidate_validation_interpretation_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1; Phase178 handoff_ready=1; Phase179 precommit_ready=1; Phase180 precommit_ready=1; Phase181 labels_materialized=1; Phase182 label_audit_pass=1; Phase183 replay_readiness=1; Phase184 dry_run_complete=1, test_rows_used=0, promotion_allowed=0; Phase185 interpretation_complete=1, cost_dominates=1, test_replay_allowed_next=0; Phase186 family_set_closed=1, reuse_without_redesign_allowed=0, test_replay_allowed_next=0; Phase187 candidate_complete=1, validation_positive_all_profiles=1, test_replay_allowed_next=0. | build_phase188_cost_aware_sparse_candidate_interpretation_no_test |
 | top_five_depth_passive | closed_clean_falsification | Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification. | do_not_open_phase134_or_phase135_for_this_branch |
 | dense_synthetic_replay | not_promoted | Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates. | only_continue_if_precommitted_and_not_blocklisted |
 
@@ -68,6 +68,11 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | phase149_receive_flow_current_family_closure_test_replay_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_current_family_closure_promotion_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_current_family_closure_paper_live_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_cost_aware_sparse_candidate_recorded | True | 1 | 1 | hard |
+| phase149_receive_flow_cost_aware_sparse_candidate_test_rows_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_cost_aware_sparse_candidate_test_replay_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_cost_aware_sparse_candidate_promotion_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_cost_aware_sparse_candidate_paper_live_closed | True | 0 | 0 | hard |
 | phase149_deep_book_branch_closed | True | 1 | 1 | hard |
 | phase149_no_promoted_strategy_replay | True | 0 | 0 | hard |
 
@@ -75,7 +80,6 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | phase | runner_count | output_rows | has_runner | has_outputs | has_acceptance_summary | status | branch | strategy_replay_allowed | pnl_allowed | test_rows_used | test_replay_allowed_next | reuse_without_redesign_allowed | promotion_allowed | paper_or_live_acceptance_allowed | next_action | runner | output_dir |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 102 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  | scripts\run_phase102_anchored_price_volatility_patch_audit.py | outputs\phase102 |
 | 103 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  | scripts\run_phase103_calibrated_realism_rerun.py | outputs\phase103 |
 | 104 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  | scripts\run_phase104_real_anchor_cadence_profile_audit.py | outputs\phase104 |
 | 105 | 1 | 1 | True | True | True | evidence_present |  |  |  |  |  |  |  |  |  | scripts\run_phase105_source_mid_volatility_scale_audit.py | outputs\phase105 |
@@ -155,3 +159,4 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | 184 | 1 | 1 | True | True | True | train_validation_replay_dry_run_complete_no_test_no_promotion | real_receive_flow_source |  |  | 0 |  |  | 0 | 0 | build_phase185_validation_replay_interpretation_and_kill_switch_audit_no_test | scripts\run_phase184_train_validation_replay_dry_run.py | outputs\phase184 |
 | 185 | 1 | 1 | True | True | True | validation_interpretation_cost_dominated_no_test_no_promotion | real_receive_flow_source |  |  | 0 | 0 |  | 0 | 0 | redesign_cost_aware_receive_flow_family_or_close_current_family_set_before_test_replay | scripts\run_phase185_validation_replay_interpretation.py | outputs\phase185 |
 | 186 | 1 | 1 | True | True | True | current_family_set_closed_cost_aware_redesign_pending | real_receive_flow_source |  |  |  | 0 | 0 | 0 | 0 | build_phase187_cost_aware_sparse_receive_flow_candidate_no_test | scripts\run_phase186_cost_aware_family_closure_precommit.py | outputs\phase186 |
+| 187 | 1 | 1 | True | True | True | cost_aware_sparse_candidate_validation_interpretation_pending | real_receive_flow_source |  |  | 0 | 0 |  | 0 | 0 | build_phase188_cost_aware_sparse_candidate_interpretation_no_test | scripts\run_phase187_cost_aware_sparse_candidate.py | outputs\phase187 |

@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P187_PHASE186_FAMILY_SET_CLOSED,1,phase186_current_family_set_closed=1,hard
+P187_TRAIN_ONLY_SELECTION,1,selected_candidate_rows=12,hard
+P187_VALIDATION_EVALUATED_NO_TEST,1,validation_rows=24; test_rows_used=0,hard
+P187_COST_LATENCY_BOUND,1,validation_summary_rows=24,hard
+P187_NEGATIVE_CONTROL_MARGIN_RECORDED,1,shuffled-time control edge column present,hard
+P187_NO_TEST_REPLAY_OR_PROMOTION,1,test_rows_used=0; promotion_allowed=0,hard
+P187_VALIDATION_PASS_RECORDED,1,validation_positive_all_profiles=1,hard

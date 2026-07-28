@@ -1,0 +1,18 @@
+metric,value,description
+phase187_candidate_grid_rows,216,Sparse candidate grid rows
+phase187_train_selected_candidate_rows,12,Train-selected candidate rows
+phase187_validation_summary_rows,24,Validation summary rows
+phase187_best_validation_candidate_id,P187_TOP5_I85_S2p5_Z1_R100,Best validation candidate
+phase187_best_validation_latency_profile,P180_RETAIL_MARKETABLE_DEFAULT,Best validation latency profile
+phase187_best_validation_net_bps_proxy_mean,48.399355982925655,Best validation net return-bps proxy mean
+phase187_validation_positive_all_profiles,1,1 means at least one candidate is net positive under all allowed profiles
+phase187_gate_rows,7,Gates evaluated
+phase187_hard_gate_rows,7,Hard gates evaluated
+phase187_hard_gate_pass_rows,7,Hard gates passed
+phase187_cost_aware_sparse_candidate_complete,1,1 means Phase187 completed
+phase187_test_rows_used,0,Test rows remain untouched
+phase187_test_replay_allowed_next,0,No test replay opened by Phase187
+phase187_promotion_allowed,0,No promotion opened
+phase187_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase187_forbidden_outputs,test_result;test_replay;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase187_next_best_action,build_phase188_cost_aware_sparse_candidate_interpretation_no_test,Recommended next milestone
