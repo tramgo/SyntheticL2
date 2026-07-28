@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P219_PHASE218_COMPLETE_AND_PRECOMMITTED,True,phase218_complete=1; dry_run_precommitted=1,hard
+P219_EVENT_ONLY_DESIGN_MATRIX_JOINED,True,event_only_joined_rows=129852,hard
+P219_MODEL_FITS_RECORDED,True,model_fit_rows=21,hard
+P219_VALIDATION_METRICS_RECORDED,True,validation_metric_rows=21,hard
+P219_CONTROLS_RECORDED,True,control_rows=42,hard
+P219_TEST_REPLAY_AND_TEST_ROWS_CLOSED,True,test_rows_used=0,hard
+P219_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

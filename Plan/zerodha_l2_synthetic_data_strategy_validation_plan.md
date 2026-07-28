@@ -7380,6 +7380,62 @@ Current interpretation: Phase218 opens only a narrow Phase219 dry-run doorway. W
 
 ---
 
+### Phase219 - Event-only train/validation model-fit dry run, no replay/no test
+
+Phase219 executes the Phase218-precommitted event-only model-fit dry run. It joins Phase176 receive-flow features with Phase214 event-surprise conditional labels, filters rows to `event_surprise_bucket == 1`, fits train-only diagnostic models, scores train/validation aggregates, and records base-rate plus shuffled-event controls.
+
+Phase219 execution boundaries:
+
+- allowed splits: train and validation only;
+- sealed test rows used: 0;
+- row-level design-matrix export: 0;
+- row-level prediction export: 0;
+- strategy replay allowed: 0;
+- order/fill/P&L simulation: 0;
+- promotion and paper/live acceptance: 0;
+- profitability claim allowed: 0.
+
+Phase219 results:
+
+- event-only joined partition rows: 384;
+- event-only joined design-matrix rows: 129,852;
+- unique model/target/horizon fits: 21;
+- train/validation metric rows: 42;
+- validation metric rows: 21;
+- coefficient rows: 231;
+- base-rate and shuffled-control rows: 42;
+- forbidden execution rows: 12;
+- hard gates: 7 / 7 passed;
+- model-fit execution: 1;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- sealed test rows used: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase220_event_only_model_fit_validation_interpretation_no_replay_no_test`.
+
+Phase219 validation diagnostics:
+
+- best validation MSE improvement versus event-only base rate: 0.010093;
+- worst validation MSE improvement versus event-only base rate: -0.041269;
+- best validation correlation: 0.220575;
+- best validation binary accuracy: 0.815176;
+- strongest row by MSE improvement: `P218_EVENT_ONLY_TREE_STUMP_DIAGNOSTIC`, H1 `event_surprise_vol_expansion_conditional_label`.
+
+Current Phase149 evidence after Phase219:
+
+- phase rows discovered: 212;
+- runner phase rows: 210;
+- acceptance phase rows: 162;
+- hard global-state gates: 231 / 231 passed;
+- real receive-flow branch status: `event_only_train_validation_model_fit_dry_run_complete_phase220_validation_interpretation_pending_no_replay_no_test`;
+- next best action: `run_phase220_event_only_model_fit_validation_interpretation_no_replay_no_test`.
+
+Current interpretation: Phase219 gives us the first real model-fit evidence in the event-only branch, but still no replay, no sealed test, and no trading-result claim. Phase220 must interpret validation strength against the base-rate and shuffled controls before any replay precommit can even be discussed. The model has knocked politely; it has not earned the keys to the car.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

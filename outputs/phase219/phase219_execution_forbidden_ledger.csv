@@ -1,0 +1,13 @@
+forbidden_output,emitted_in_phase219,allowed_in_phase219,rationale
+strategy_replay,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+test_replay_execution,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+test_result,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+promotion,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+paper_live_acceptance,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+order_arrival,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+fill_model,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+pnl_replay,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+profitability_claim,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+threshold_widening,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+row_level_design_matrix_export,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."
+row_level_prediction_export,0,0,"Phase219 fits train/validation event-only dry-run models and emits aggregate diagnostics only; no replay, sealed test, fills, P&L, promotion, or paper/live artifact is allowed."

@@ -1,0 +1,22 @@
+metric,value,description
+phase219_event_only_partition_rows,384,Train/validation event-only joined partition rows
+phase219_event_only_joined_rows,129852,Joined event-only design-matrix rows across partition inventory
+phase219_model_fit_rows,21,Unique model/target/horizon fits
+phase219_metric_rows,42,Train/validation metric rows
+phase219_validation_metric_rows,21,Validation metric rows
+phase219_coefficient_rows,231,Coefficient rows
+phase219_control_rows,42,Base-rate and shuffled-control rows
+phase219_forbidden_execution_rows,12,Forbidden execution rows
+phase219_gate_rows,7,Gates evaluated
+phase219_hard_gate_rows,7,Hard gates evaluated
+phase219_hard_gate_pass_rows,7,Hard gates passed
+phase219_event_only_train_validation_model_fit_dry_run_complete,1,1 means Phase219 completed
+phase219_model_fit_execution,1,Train/validation event-only model fitting executed
+phase219_strategy_replay_allowed,0,No strategy replay opened
+phase219_test_replay_allowed_next,0,No test replay opened
+phase219_test_rows_used,0,No sealed test rows used
+phase219_promotion_allowed,0,No promotion opened
+phase219_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase219_profitability_claim_allowed,0,No profitability claim is allowed
+phase219_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_design_matrix_export;row_level_prediction_export,Outputs forbidden in this phase
+phase219_next_best_action,run_phase220_event_only_model_fit_validation_interpretation_no_replay_no_test,Recommended next milestone
