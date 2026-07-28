@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P218_PHASE217_COMPLETE,True,phase217_complete=1,hard
+P218_DECISION_RECORDED,True,decision_rows=1; dry_run_precommitted=1,hard
+P218_MODEL_SPECS_RECORDED,True,model_specs=3,hard
+P218_TARGET_AND_FEATURE_CONTRACTS_RECORDED,True,targets=7; eligible_targets=7; features=18; eligible_features=18,hard
+P218_CONTROLS_RECORDED,True,controls=3; required=3,hard
+P218_PHASE219_WORK_ORDER_RECORDED,True,work_order=1; phase219_fit_allowed=1,hard
+P218_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; phase218_execution_flags=0,hard

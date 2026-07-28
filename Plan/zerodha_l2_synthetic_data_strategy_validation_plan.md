@@ -7321,6 +7321,65 @@ Current interpretation: Phase217 finally turns the narrowed event-surprise idea 
 
 ---
 
+### Phase218 - Event-only model-fit precommit-or-stop, no execution/no replay/no test
+
+Phase218 decides whether the Phase217 event-only design-matrix contract is strong enough to precommit a train/validation model-fit dry run, or whether the branch should stop/redesign. It precommits Phase219 model-fit dry-run execution because Phase217 passed the minimum scope checks, but Phase218 itself does not execute model fitting and does not emit predictions.
+
+Phase218 precommit decision:
+
+- decision: `precommit_phase219_event_only_train_validation_model_fit_dry_run`;
+- Phase217 complete: 1;
+- event-only target scope rows: 7;
+- same-horizon target-feature binding rows: 42;
+- control plan rows: 3;
+- target-row event-only observation scope: 384,282;
+- minimum target scope rows: 3;
+- minimum feature binding rows: 18;
+- minimum event-only observations: 10,000;
+- Phase219 model-fit dry run precommitted: 1;
+- Phase218 model-fit execution allowed: 0.
+
+Phase218 results:
+
+- decision rows: 1;
+- model-family spec rows: 3;
+- event-only target contract rows: 7;
+- event-only feature contract rows: 18;
+- control contract rows: 3;
+- Phase219 work-order rows: 1;
+- forbidden execution rows: 14;
+- hard gates: 7 / 7 passed;
+- model-fit dry run precommitted for Phase219: 1;
+- model-fit execution allowed in Phase218: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase219_event_only_train_validation_model_fit_dry_run_no_replay_no_test`.
+
+Phase218 model-family precommit:
+
+- class-weighted regularized logistic classification;
+- event-only sparse-classification diagnostic;
+- low-depth tree/stump diagnostic;
+- all families use train-only fit and validation-only scoring;
+- all families require base-rate and event-time-shuffle controls;
+- sealed test remains unused and replay remains closed.
+
+Current Phase149 evidence after Phase218:
+
+- phase rows discovered: 211;
+- runner phase rows: 209;
+- acceptance phase rows: 161;
+- hard global-state gates: 223 / 223 passed;
+- real receive-flow branch status: `event_only_model_fit_precommit_complete_phase219_train_validation_fit_dry_run_pending_no_replay_no_test`;
+- next best action: `run_phase219_event_only_train_validation_model_fit_dry_run_no_replay_no_test`.
+
+Current interpretation: Phase218 opens only a narrow Phase219 dry-run doorway. We still do not have a trading result, replay result, or profitability claim. The next valid step is a train/validation event-only model-fit dry run with controls, not strategy replay and not sealed test. The research gremlin gets one lab bench, not the whole exchange.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

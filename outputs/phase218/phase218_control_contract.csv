@@ -1,0 +1,4 @@
+phase218_control_id,control_type,contract,required_for_phase219_fit_dry_run,target_scope_rows_covered,event_only_rows_covered,sealed_test_rows_used,model_fit_execution_allowed_phase218,strategy_replay_allowed,test_replay_allowed_next
+P218_EVENT_ONLY_BASE_RATE_CONTROL,base_rate,Phase217 must compute event-only base-rate controls for each allowed label/horizon before any future fit.,1,7,384282,0,0,0,0
+P218_EVENT_TIME_SHUFFLE_CONTROL,time_shuffle,Phase217 must preserve a shuffled event-time control to test whether event timing matters beyond label base rates.,1,7,384282,0,0,0,0
+P218_SEALED_TEST_ZERO_USE_CONTROL,sealed_test,Phase217 may inventory sealed test rows but must use zero sealed test rows.,1,7,0,0,0,0,0

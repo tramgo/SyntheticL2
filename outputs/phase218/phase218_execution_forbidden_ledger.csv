@@ -1,0 +1,15 @@
+forbidden_output,emitted_in_phase218,allowed_in_phase218,rationale
+model_fit_execution,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+model_prediction,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+strategy_replay,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+test_replay_execution,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+test_result,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+promotion,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+paper_live_acceptance,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+order_arrival,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+fill_model,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+pnl_replay,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+profitability_claim,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+threshold_widening,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+row_level_design_matrix_export,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.
+row_level_prediction_export,0,0,Phase218 is a model-fit precommit decision only; model execution can happen only in a later gated dry-run phase.

@@ -1,0 +1,21 @@
+metric,value,description
+phase218_decision_rows,1,Decision ledger rows
+phase218_model_spec_rows,3,Model-family specification rows
+phase218_target_contract_rows,7,Event-only target contract rows
+phase218_feature_contract_rows,18,Event-only feature contract rows
+phase218_control_contract_rows,3,Control contract rows
+phase218_phase219_work_order_rows,1,Phase219 work-order rows
+phase218_forbidden_execution_rows,14,Forbidden execution rows
+phase218_gate_rows,7,Gates evaluated
+phase218_hard_gate_rows,7,Hard gates evaluated
+phase218_hard_gate_pass_rows,7,Hard gates passed
+phase218_event_only_model_fit_precommit_or_stop_complete,1,1 means Phase218 completed
+phase218_model_fit_dry_run_precommitted_for_phase219,1,1 means Phase219 may execute train/validation fit dry run
+phase218_model_fit_execution_allowed,0,No model fit execution in Phase218
+phase218_strategy_replay_allowed,0,No strategy replay opened
+phase218_test_replay_allowed_next,0,No test replay opened
+phase218_promotion_allowed,0,No promotion opened
+phase218_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase218_profitability_claim_allowed,0,No profitability claim is allowed
+phase218_forbidden_outputs,model_fit_execution;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_design_matrix_export;row_level_prediction_export,Outputs forbidden in this phase
+phase218_next_best_action,run_phase219_event_only_train_validation_model_fit_dry_run_no_replay_no_test,Recommended next milestone
