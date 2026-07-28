@@ -174,3 +174,8 @@ foreach ($date in $normalizedDates) {
 }
 
 $rows | Format-Table -AutoSize
+
+$failedRows = @($rows | Where-Object { $_.exit_code -ne 0 }).Count
+if ($failedRows -gt 0) {
+    exit 1
+}

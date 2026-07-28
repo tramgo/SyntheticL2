@@ -20,6 +20,18 @@ DEFAULT_SCRATCH_ROOT = Path("scratch_azcopy_selected/raw_l2")
 DEFAULT_TARGET_ROOT = Path("real_data_sample/l2_multiday_panel")
 
 
+def normalize_required_dates(required_dates: list[str]) -> list[str]:
+    normalized: list[str] = []
+    for item in required_dates:
+        for part in str(item).split(","):
+            date = part.strip()
+            if date:
+                normalized.append(date)
+    if not normalized:
+        raise ValueError("At least one required date is needed.")
+    return normalized
+
+
 def read_metric_table(path: Path) -> pd.DataFrame:
     if not path.exists():
         return pd.DataFrame(columns=["metric", "value", "description"])
@@ -299,12 +311,13 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    required_dates = normalize_required_dates(args.required_dates)
     run_phase143(
         phase115_dir=args.phase115_dir,
         phase142_dir=args.phase142_dir,
         output_dir=args.output_dir,
         base_dir=args.base_dir,
-        required_dates=args.required_dates,
+        required_dates=required_dates,
         scratch_root=args.scratch_root,
         target_root=args.target_root,
     )

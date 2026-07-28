@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-07-24T11:07:19.667370+00:00",
+  "generated_utc": "2026-07-28T15:23:07.297659+00:00",
   "scope": "phase177_receive_flow_feature_quality_audit",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "689456a102931a6b869260f5e8410c804052287e",
+  "generator_version": "522a010e5b68898e06deba3890b4561e35801fc5",
   "configuration_hash": "9994f40cc4801b516e72117ac5ca9d4f02ee64e963cf676d68cfe4daefbe84a2",
   "random_seed": "none_deterministic_quality_audit_scaffold",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase177_gated_receive_flow_feature_quality_audit",
   "cost_model_version": "not_applicable_no_replay",
   "latency_model_version": "not_applicable_no_replay",
-  "creation_timestamp": "2026-07-24T11:07:19.667370+00:00"
+  "creation_timestamp": "2026-07-28T15:23:07.297659+00:00"
 }

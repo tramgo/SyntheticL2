@@ -1,6 +1,6 @@
 # Phase175 Receive-flow Feature Schema Precommit
 
-Generated UTC: 2026-07-23T18:57:48.679306+00:00
+Generated UTC: 2026-07-28T15:21:26.863982+00:00
 
 Phase175 precommits the real receive-flow feature schema and activation gates before any materialization or strategy replay.
 It is not a strategy phase: no signals, orders, fills, P&L, profitability claims, or paper/live acceptance are emitted.
@@ -14,13 +14,13 @@ It is not a strategy phase: no signals, orders, fills, P&L, profitability claims
 | phase175_activation_gate_rows | 6 | Activation gates evaluated |
 | phase175_hard_gate_rows | 5 | Hard gates evaluated |
 | phase175_hard_gate_pass_rows | 5 | Hard gates passed |
-| phase175_activation_ready | 0 | 1 means feature materialization may open |
-| phase175_ready_receive_flow_dates | 3 | Ready receive-flow dates inherited from Phase172 |
-| phase175_additional_dates_needed | 2 | Additional real L2 dates still needed |
+| phase175_activation_ready | 1 | 1 means feature materialization may open |
+| phase175_ready_receive_flow_dates | 5 | Ready receive-flow dates inherited from Phase172 |
+| phase175_additional_dates_needed | 0 | Additional real L2 dates still needed |
 | phase175_strategy_replay_allowed | 0 | No strategy replay opened |
 | phase175_paper_or_live_acceptance_allowed | 0 | Paper/live remains closed |
 | phase175_forbidden_outputs | buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | Outputs forbidden in this phase |
-| phase175_next_best_action | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176 | Recommended next milestone |
+| phase175_next_best_action | run_phase176_receive_flow_feature_materialization_no_strategy | Recommended next milestone |
 
 ## Feature Schema
 
@@ -64,7 +64,7 @@ It is not a strategy phase: no signals, orders, fills, P&L, profitability claims
 | --- | --- | --- | --- |
 | P175_SOURCE_IS_PHASE171_REAL_RECEIVE_FLOW | 1 | phase171_selected_source_id=P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW | hard |
 | P175_PHASE172_STRUCTURAL_GATES_PASS | 1 | phase172_hard_gate_pass_rows=5/5 | hard |
-| P175_MINIMUM_REAL_DAYS_AVAILABLE | 0 | ready_dates=3;minimum=5;additional_needed=2 | activation |
-| P175_SECURE_DOWNLOAD_PATH_EXISTS | 1 | phase174_download_ran=0;runner=scripts/run_phase174_secure_real_l2_download_orchestrator.ps1 | hard |
+| P175_MINIMUM_REAL_DAYS_AVAILABLE | 1 | ready_dates=5;minimum=5;additional_needed=0 | activation |
+| P175_SECURE_DOWNLOAD_PATH_EXISTS | 1 | phase174_download_ran=1;runner=scripts/run_phase174_secure_real_l2_download_orchestrator.ps1 | hard |
 | P175_FEATURE_SCHEMA_DECLARED | 1 | feature_rows=6 | hard |
 | P175_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | schema and gates only; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | hard |

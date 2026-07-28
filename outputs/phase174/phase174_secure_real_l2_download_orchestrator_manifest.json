@@ -1,5 +1,5 @@
 ﻿{
-    "generated_utc":  "2026-07-23T18:52:12.7414299Z",
+    "generated_utc":  "2026-07-28T14:58:15.5030292Z",
     "scope":  "phase174_secure_real_l2_download_orchestrator",
     "dates":  [
                   "2026-07-10",
@@ -10,8 +10,8 @@
 
                                 ],
     "secrets_recorded":  "none",
-    "download_ran":  false,
-    "phase172_reran":  false,
+    "download_ran":  true,
+    "phase172_reran":  true,
     "strategy_replay_policy":  "closed",
     "outputs":  {
                     "step_ledger":  "outputs\\phase174\\phase174_secure_download_step_ledger.csv",

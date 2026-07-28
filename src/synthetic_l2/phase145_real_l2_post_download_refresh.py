@@ -35,6 +35,18 @@ DEFAULT_PHASE132_DIR = Path("outputs/phase132")
 DEFAULT_REQUIRED_DATES = ["2026-07-10", "2026-07-14"]
 
 
+def normalize_required_dates(required_dates: list[str]) -> list[str]:
+    normalized: list[str] = []
+    for item in required_dates:
+        for part in str(item).split(","):
+            date = part.strip()
+            if date:
+                normalized.append(date)
+    if not normalized:
+        raise ValueError("At least one required date is needed.")
+    return normalized
+
+
 def metric_value(path: Path, metric: str, default: Any = None) -> Any:
     if not path.exists():
         return default
@@ -322,12 +334,13 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    required_dates = normalize_required_dates(args.required_dates)
     run_phase145(
         output_dir=args.output_dir,
         base_dir=args.base_dir,
         scratch_root=args.scratch_root,
         target_root=args.target_root,
-        required_dates=args.required_dates,
+        required_dates=required_dates,
         phase142_dir=args.phase142_dir,
         phase143_dir=args.phase143_dir,
         phase115_dir=args.phase115_dir,

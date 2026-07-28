@@ -1,6 +1,6 @@
 # Phase149 Research State Auditor
 
-Generated UTC: 2026-07-24T11:08:03.119606+00:00
+Generated UTC: 2026-07-28T15:24:10.326089+00:00
 
 Phase149 reconciles current phase scripts, output evidence, branch states, and replay gates.
 It does not run strategies, contact Azure, import data, or unlock replay.
@@ -16,14 +16,14 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | phase149_hard_gate_rows | 12 | Hard global-state gates evaluated |
 | phase149_hard_gate_pass_rows | 12 | Hard global-state gates passed |
 | phase149_strategy_replay_allowed | 0 | Phase149 never unlocks strategy replay |
-| phase149_next_best_action | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174 | Recommended next milestone |
+| phase149_next_best_action | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | Recommended next milestone |
 
 ## Branch Status Summary
 
 | branch | status | evidence | current_next_action |
 | --- | --- | --- | --- |
 | real_l2_anchor_gate | gated | Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. | use_phase174_secure_download_orchestrator_for_required_real_l2_dates |
-| real_receive_flow_source | gated_waiting_for_two_more_real_l2_dates | Phase172 ready_dates=3, additional_dates_needed=2; Phase174 download_ran=0; Phase175 activation_ready=0; Phase176 features_materialized=0; Phase177 quality_audit_ran=0. | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177 |
+| real_receive_flow_source | source_gate_open_feature_materialization_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=0; Phase177 quality_audit_ran=0. | implement_phase176_parquet_materialization_now_that_activation_gate_is_open |
 | top_five_depth_passive | closed_clean_falsification | Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification. | do_not_open_phase134_or_phase135_for_this_branch |
 | dense_synthetic_replay | not_promoted | Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates. | only_continue_if_precommitted_and_not_blocklisted |
 
@@ -32,7 +32,7 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | gate | pass | observed | required | severity |
 | --- | --- | --- | --- | --- |
 | phase149_real_l2_replay_gate_closed | True | 0 | 0 | hard |
-| phase149_real_receive_flow_replay_gate_closed | True | 0 | 0 | hard |
+| phase149_real_receive_flow_source_gate_open_or_explicitly_blocked | True | 1 | 0_or_1_tracked_by_phase172 | hard |
 | phase149_secure_download_gate_recorded | True | 1 | 1 | hard |
 | phase149_secure_orchestrator_replay_gate_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_feature_schema_recorded | True | 1 | 1 | hard |
@@ -122,9 +122,9 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | 169 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase169_post_s08_research_queue.py | outputs\phase169 |
 | 170 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase170_filter_conditioned_feasibility_matrix.py | outputs\phase170 |
 | 171 | 1 | 1 | True | True | True | source_contract_declared_no_replay | real_receive_flow_source | 0 | run_download_first_real_l2_receive_flow_availability_audit_or_collect_broker_order_telemetry | scripts\run_phase171_external_orderflow_source_contract.py | outputs\phase171 |
-| 172 | 1 | 1 | True | True | True | local_receive_flow_structural_ready_but_day_count_gated | real_receive_flow_source | 0 | download_at_least_2_additional_real_l2_dates_then_rerun_phase172 | scripts\run_phase172_real_l2_receive_flow_availability_audit.py | outputs\phase172 |
-| 173 | 1 | 1 | True | True | True | download_preflight_waiting_for_sas_or_key_or_tls_fix | real_receive_flow_download_gate | 0 | provide_share_sas_or_storage_key_or_repair_azure_cli_tls_then_run_phase148_download | scripts\run_phase173_real_l2_download_credential_preflight.py | outputs\phase173 |
-| 174 | 1 | 1 | True | True | True | secure_download_skipped_no_credential | real_receive_flow_download_gate | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_to_env_or_process_then_rerun_phase174 | scripts\run_phase174_secure_real_l2_download_orchestrator.ps1 | outputs\phase174 |
-| 175 | 1 | 1 | True | True | True | receive_flow_feature_schema_precommitted_gated | real_receive_flow_source | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_before_phase176 | scripts\run_phase175_receive_flow_feature_schema_precommit.py | outputs\phase175 |
-| 176 | 1 | 1 | True | True | True | receive_flow_feature_materializer_ready_gated | real_receive_flow_source | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization | scripts\run_phase176_receive_flow_feature_materializer.py | outputs\phase176 |
-| 177 | 1 | 1 | True | True | True | receive_flow_feature_quality_audit_scaffold_gated | real_receive_flow_source | 0 | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177 | scripts\run_phase177_receive_flow_feature_quality_audit.py | outputs\phase177 |
+| 172 | 1 | 1 | True | True | True | local_receive_flow_structural_ready_but_day_count_gated | real_receive_flow_source | 1 | build_phase173_receive_flow_feature_schema_no_replay | scripts\run_phase172_real_l2_receive_flow_availability_audit.py | outputs\phase172 |
+| 173 | 1 | 1 | True | True | True | download_preflight_ready | real_receive_flow_download_gate | 0 | run_phase148_with_download_for_required_dates_then_rerun_phase172 | scripts\run_phase173_real_l2_download_credential_preflight.py | outputs\phase173 |
+| 174 | 1 | 1 | True | True | True | secure_download_executed | real_receive_flow_download_gate | 0 | inspect_phase148_phase172_outputs_then_download_remaining_dates_if_needed | scripts\run_phase174_secure_real_l2_download_orchestrator.ps1 | outputs\phase174 |
+| 175 | 1 | 1 | True | True | True | receive_flow_feature_schema_activation_ready | real_receive_flow_source | 0 | run_phase176_receive_flow_feature_materialization_no_strategy | scripts\run_phase175_receive_flow_feature_schema_precommit.py | outputs\phase175 |
+| 176 | 1 | 1 | True | True | True | receive_flow_feature_materializer_ready_gated | real_receive_flow_source | 0 | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | scripts\run_phase176_receive_flow_feature_materializer.py | outputs\phase176 |
+| 177 | 1 | 1 | True | True | True | receive_flow_feature_quality_audit_scaffold_gated | real_receive_flow_source | 0 | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | scripts\run_phase177_receive_flow_feature_quality_audit.py | outputs\phase177 |

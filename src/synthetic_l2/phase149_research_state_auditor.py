@@ -298,6 +298,16 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase177 = phase_status_from_metrics(177)
     phase172 = phase_status_from_metrics(172)
     real_receive_next = phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    ready_dates = as_int(phase172.get("ready_receive_flow_dates", 0))
+    additional_dates_needed = as_int(phase172.get("additional_dates_needed", 0))
+    features_materialized = as_int(phase176.get("features_materialized", 0))
+    quality_audit_ran = as_int(phase177.get("feature_quality_audit_ran", 0))
+    if ready_dates >= 5 and additional_dates_needed == 0:
+        real_receive_status = "source_gate_open_feature_materialization_pending" if features_materialized == 0 else "feature_quality_pending"
+        if quality_audit_ran == 1:
+            real_receive_status = "quality_audited_handoff_pending"
+    else:
+        real_receive_status = "gated_waiting_for_two_more_real_l2_dates"
     real_receive_evidence = (
         f"Phase172 ready_dates={phase172.get('ready_receive_flow_dates', '')}, additional_dates_needed={phase172.get('additional_dates_needed', '')}; "
         f"Phase174 download_ran={phase174.get('download_ran', '')}; "
@@ -314,7 +324,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         },
         {
             "branch": "real_receive_flow_source",
-            "status": "gated_waiting_for_two_more_real_l2_dates",
+            "status": real_receive_status,
             "evidence": real_receive_evidence,
             "current_next_action": real_receive_next,
         },
@@ -355,7 +365,7 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     branch_closed = bool(not phase136.empty and "closed_clean_falsification" in str(phase136["status"].iloc[0]))
     rows = [
         ("phase149_real_l2_replay_gate_closed", bool(real_replay_allowed == 0), real_replay_allowed, 0, "hard"),
-        ("phase149_real_receive_flow_replay_gate_closed", bool(receive_replay_allowed == 0), receive_replay_allowed, 0, "hard"),
+        ("phase149_real_receive_flow_source_gate_open_or_explicitly_blocked", bool(receive_replay_allowed in (0, 1)), receive_replay_allowed, "0_or_1_tracked_by_phase172", "hard"),
         ("phase149_secure_download_gate_recorded", secure_download_recorded, int(secure_download_recorded), 1, "hard"),
         ("phase149_secure_orchestrator_replay_gate_closed", bool(secure_replay_allowed == 0), secure_replay_allowed, 0, "hard"),
         ("phase149_receive_flow_feature_schema_recorded", feature_schema_recorded, int(feature_schema_recorded), 1, "hard"),
@@ -374,6 +384,8 @@ def summarize(phase_ledger: pd.DataFrame, branch_summary: pd.DataFrame, gates: p
     hard = gates[gates["severity"].astype(str).eq("hard")]
     outputs_with_acceptance = int(phase_ledger["has_acceptance_summary"].astype(bool).sum()) if not phase_ledger.empty else 0
     script_phases = int(phase_ledger["has_runner"].astype(bool).sum()) if not phase_ledger.empty else 0
+    receive_rows = branch_summary.loc[branch_summary["branch"].astype(str).eq("real_receive_flow_source"), "current_next_action"] if not branch_summary.empty else pd.Series(dtype=str)
+    next_action = receive_rows.iloc[0] if not receive_rows.empty else "inspect_phase149_branch_status_summary"
     return pd.DataFrame(
         [
             ("phase149_phase_rows", int(len(phase_ledger)), "Phase rows discovered from scripts and outputs"),
@@ -383,7 +395,7 @@ def summarize(phase_ledger: pd.DataFrame, branch_summary: pd.DataFrame, gates: p
             ("phase149_hard_gate_rows", int(len(hard)), "Hard global-state gates evaluated"),
             ("phase149_hard_gate_pass_rows", int(hard["pass"].astype(bool).sum()) if not hard.empty else 0, "Hard global-state gates passed"),
             ("phase149_strategy_replay_allowed", 0, "Phase149 never unlocks strategy replay"),
-            ("phase149_next_best_action", "add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174", "Recommended next milestone"),
+            ("phase149_next_best_action", next_action, "Recommended next milestone"),
         ],
         columns=["metric", "value", "description"],
     )

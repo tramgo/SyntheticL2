@@ -137,15 +137,31 @@ def build_gate_evaluation(phase175: pd.DataFrame, phase172: pd.DataFrame, schema
     )
 
 
-def build_acceptance_summary(plan: pd.DataFrame, templates: pd.DataFrame, gates: pd.DataFrame, phase175: pd.DataFrame) -> pd.DataFrame:
+def build_acceptance_summary(
+    plan: pd.DataFrame,
+    templates: pd.DataFrame,
+    gates: pd.DataFrame,
+    phase175: pd.DataFrame,
+    feature_root: Path,
+) -> pd.DataFrame:
     activation_ready = as_int(metric_value(phase175, "phase175_activation_ready", 0))
     hard = gates[gates["severity"].astype(str).eq("hard")]
     activation = gates[gates["severity"].astype(str).eq("activation")]
-    materialized = int(activation_ready == 1 and not activation.empty and activation["gate_pass"].astype(bool).all())
+    feature_files = list(feature_root.rglob("*.parquet")) if feature_root.exists() else []
+    materialized = int(
+        activation_ready == 1
+        and not activation.empty
+        and activation["gate_pass"].astype(bool).all()
+        and len(feature_files) > 0
+    )
     next_action = (
-        "run_phase176_materialization_after_gate_open_then_phase177_feature_quality_audit"
+        "run_phase177_feature_quality_audit"
         if materialized
-        else "add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization"
+        else (
+            "implement_phase176_parquet_materialization_now_that_activation_gate_is_open"
+            if activation_ready == 1
+            else "add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization"
+        )
     )
     return pd.DataFrame(
         [
@@ -155,6 +171,7 @@ def build_acceptance_summary(plan: pd.DataFrame, templates: pd.DataFrame, gates:
             ("phase176_hard_gate_rows", int(len(hard)), "Hard gates evaluated"),
             ("phase176_hard_gate_pass_rows", int(hard["gate_pass"].astype(bool).sum()) if not hard.empty else 0, "Hard gates passed"),
             ("phase176_activation_ready", activation_ready, "Inherited Phase175 activation gate"),
+            ("phase176_feature_parquet_files", len(feature_files), "Feature parquet files present under feature root"),
             ("phase176_features_materialized", materialized, "1 means feature parquet was materialized"),
             ("phase176_strategy_replay_allowed", 0, "No strategy replay opened"),
             ("phase176_paper_or_live_acceptance_allowed", 0, "Paper/live remains closed"),
@@ -189,7 +206,7 @@ def run_phase176(phase175_dir: Path, phase172_dir: Path, real_root: Path, output
     materialization_plan = build_materialization_plan(schema, feature_root)
     templates = build_sql_templates(feature_root, real_root)
     gates = build_gate_evaluation(phase175, phase172, schema, real_root)
-    acceptance = build_acceptance_summary(materialization_plan, templates, gates, phase175)
+    acceptance = build_acceptance_summary(materialization_plan, templates, gates, phase175, feature_root)
 
     materialization_plan.to_csv(output_dir / "phase176_materialization_plan.csv", index=False)
     templates.to_csv(output_dir / "phase176_duckdb_sql_templates.csv", index=False)

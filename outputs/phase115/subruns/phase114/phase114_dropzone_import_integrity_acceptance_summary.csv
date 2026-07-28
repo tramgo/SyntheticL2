@@ -1,7 +1,7 @@
 metric,value,description
-phase114_integrity_rows,64,Import-plan rows checked for source/target integrity
-phase114_target_rows_present,64,Rows where target symbol directory exists
-phase114_integrity_verified_rows,64,Rows with matching source/target file counts and bytes
+phase114_integrity_rows,128,Import-plan rows checked for source/target integrity
+phase114_target_rows_present,128,Rows where target symbol directory exists
+phase114_integrity_verified_rows,128,Rows with matching source/target file counts and bytes
 phase114_phase113_execute_mode,1,Inherited Phase113 execute mode
 phase114_dry_run_integrity_ready,0,1 means dry-run plan is ready and no copied target exists yet
 phase114_executed_import_integrity_pass,1,1 means executed import has full source/target integrity

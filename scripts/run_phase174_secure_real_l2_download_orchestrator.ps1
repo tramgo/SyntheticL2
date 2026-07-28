@@ -103,6 +103,26 @@ function Add-Step {
     })
 }
 
+function Protect-CommandForLedger {
+    param([string[]]$Command)
+    $protected = New-Object System.Collections.Generic.List[string]
+    $redactNext = $false
+    foreach ($part in $Command) {
+        if ($redactNext) {
+            $protected.Add("<REDACTED_SECRET>")
+            $redactNext = $false
+            continue
+        }
+        if ($part -in @("-ShareSasToken", "-AccountKey")) {
+            $protected.Add($part)
+            $redactNext = $true
+            continue
+        }
+        $protected.Add(($part -replace 'sig=[^&\s]+', 'sig=REDACTED'))
+    }
+    return ($protected.ToArray() -join " ")
+}
+
 function Invoke-Step {
     param(
         [System.Collections.Generic.List[object]]$Rows,
@@ -130,13 +150,14 @@ function Invoke-Step {
         $errorText = $_.Exception.Message
     }
     $ended = Get-Date
-    Add-Step -Rows $Rows -StepId $StepId -Description $Description -Status $status -Started $started -Ended $ended -ExitCode $exitCode -Command ($Command -join " ") -ErrorText $errorText
+    Add-Step -Rows $Rows -StepId $StepId -Description $Description -Status $status -Started $started -Ended $ended -ExitCode $exitCode -Command (Protect-CommandForLedger -Command $Command) -ErrorText $errorText
     if ($status -eq "failed") {
         throw "$StepId failed: $errorText"
     }
 }
 
 $normalizedDates = Normalize-Dates -InputDates $Dates
+$datesArgument = $normalizedDates -join ","
 New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
 
 $steps = New-Object System.Collections.Generic.List[object]
@@ -154,7 +175,8 @@ $phase173Command = @(
     $Python,
     "scripts\run_phase173_real_l2_download_credential_preflight.py",
     "--dates"
-) + $normalizedDates + @(
+) + @(
+    $datesArgument,
     "--storage-account",
     $StorageAccount,
     "--share-name",
@@ -167,7 +189,7 @@ $phase173Command = @(
 Invoke-Step -Rows $steps -StepId "P174_PHASE173_PREFLIGHT" -Description "Refresh no-secret credential/download preflight after loading .env." -Command $phase173Command
 
 if ($credentialAvailable -or $ForceDownload) {
-    $downloadRan = $true
+    $downloadRan = -not $DryRun
     $phase148Command = @(
         "powershell",
         "-NoProfile",
@@ -176,7 +198,8 @@ if ($credentialAvailable -or $ForceDownload) {
         "-File",
         "scripts\run_phase148_real_l2_download_refresh_workflow.ps1",
         "-Dates"
-    ) + $normalizedDates + @(
+    ) + @(
+        $datesArgument,
         "-StorageAccount",
         $StorageAccount,
         "-ShareName",
@@ -195,12 +218,17 @@ if ($credentialAvailable -or $ForceDownload) {
     }
     Invoke-Step -Rows $steps -StepId "P174_PHASE148_DOWNLOAD_REFRESH" -Description "Run Phase148 with download enabled using inherited environment credentials." -Command $phase148Command
 
-    $phase172Ran = $true
-    $phase172Command = @(
-        $Python,
-        "scripts\run_phase172_real_l2_receive_flow_availability_audit.py"
-    )
-    Invoke-Step -Rows $steps -StepId "P174_PHASE172_RERUN" -Description "Rerun Phase172 after download/import refresh." -Command $phase172Command
+    if ($DryRun) {
+        $skipPhase172Started = Get-Date
+        Add-Step -Rows $steps -StepId "P174_PHASE172_SKIPPED_DRY_RUN" -Description "Skip Phase172 because dry-run does not change local data." -Status "skipped" -Started $skipPhase172Started -Ended (Get-Date) -ExitCode 0 -Command "DryRun" -ErrorText ""
+    } else {
+        $phase172Ran = $true
+        $phase172Command = @(
+            $Python,
+            "scripts\run_phase172_real_l2_receive_flow_availability_audit.py"
+        )
+        Invoke-Step -Rows $steps -StepId "P174_PHASE172_RERUN" -Description "Rerun Phase172 after download/import refresh." -Command $phase172Command
+    }
 } else {
     $skipStarted = Get-Date
     Add-Step -Rows $steps -StepId "P174_DOWNLOAD_SKIPPED_NO_CREDENTIAL" -Description "Skip Phase148 download because neither SAS nor account key is available in .env or process environment." -Status "skipped" -Started $skipStarted -Ended (Get-Date) -ExitCode 0 -Command "credential_available=0" -ErrorText ""
@@ -235,7 +263,8 @@ $summaryRows.Add([pscustomobject]@{ metric = "phase174_env_path_checked"; value 
 $summaryRows.Add([pscustomobject]@{ metric = "phase174_azure_credential_names_loaded"; value = ($loadedCredentialNames -join ","); description = "Loaded Azure credential variable names only; secret values are not recorded" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase174_sas_available"; value = if ($sasPresent) { "1" } else { "0" }; description = "1 means SAS is present in process environment" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase174_account_key_available"; value = if ($keyPresent) { "1" } else { "0" }; description = "1 means account key is present in process environment" })
-$summaryRows.Add([pscustomobject]@{ metric = "phase174_download_ran"; value = if ($downloadRan) { "1" } else { "0" }; description = "1 means Phase148 was invoked with download enabled" })
+$summaryRows.Add([pscustomobject]@{ metric = "phase174_dry_run"; value = if ($DryRun) { "1" } else { "0" }; description = "1 means download workflow was rendered without real transfer" })
+$summaryRows.Add([pscustomobject]@{ metric = "phase174_download_ran"; value = if ($downloadRan) { "1" } else { "0" }; description = "1 means Phase148 was invoked for a real transfer" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase174_phase172_reran"; value = if ($phase172Ran) { "1" } else { "0" }; description = "1 means Phase172 was rerun after download/import" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase174_failed_steps"; value = [string]$failedSteps; description = "Workflow steps failed" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase174_phase173_download_ready_now"; value = $downloadReadyNow; description = "Phase173 download readiness after .env load" })

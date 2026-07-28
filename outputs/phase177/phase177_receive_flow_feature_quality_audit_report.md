@@ -1,6 +1,6 @@
 # Phase177 Receive-flow Feature Quality Audit
 
-Generated UTC: 2026-07-24T11:07:19.663310+00:00
+Generated UTC: 2026-07-28T15:23:07.292781+00:00
 
 Phase177 is the quality-audit scaffold for Phase176 materialized receive-flow features.
 When no feature parquet exists, Phase177 writes check catalog and gates only.
@@ -19,7 +19,7 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | phase177_strategy_replay_allowed | 0 | No strategy replay opened |
 | phase177_paper_or_live_acceptance_allowed | 0 | Paper/live remains closed |
 | phase177_forbidden_outputs | buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | Outputs forbidden in this phase |
-| phase177_next_best_action | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177 | Recommended next milestone |
+| phase177_next_best_action | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | Recommended next milestone |
 
 ## Quality Check Catalog
 

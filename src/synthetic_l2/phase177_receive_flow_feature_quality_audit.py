@@ -102,13 +102,18 @@ def build_gate_evaluation(phase176: pd.DataFrame, schema: pd.DataFrame, feature_
 
 def build_acceptance_summary(catalog: pd.DataFrame, gates: pd.DataFrame, phase176: pd.DataFrame) -> pd.DataFrame:
     materialized = as_int(metric_value(phase176, "phase176_features_materialized", 0))
+    phase176_activation_ready = as_int(metric_value(phase176, "phase176_activation_ready", 0))
     activation = gates[gates["severity"].astype(str).eq("activation")]
     hard = gates[gates["severity"].astype(str).eq("hard")]
     audit_ran = int(materialized == 1 and not activation.empty and activation["gate_pass"].astype(bool).all())
     next_action = (
         "run_phase178_receive_flow_feature_handoff_precommit_no_strategy"
         if audit_ran
-        else "add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177"
+        else (
+            "implement_phase176_parquet_materialization_now_that_activation_gate_is_open"
+            if phase176_activation_ready == 1
+            else "add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_phase176_before_phase177"
+        )
     )
     return pd.DataFrame(
         [

@@ -79,6 +79,26 @@ function Add-Step {
     })
 }
 
+function Protect-CommandForLedger {
+    param([string[]]$Command)
+    $protected = New-Object System.Collections.Generic.List[string]
+    $redactNext = $false
+    foreach ($part in $Command) {
+        if ($redactNext) {
+            $protected.Add("<REDACTED_SECRET>")
+            $redactNext = $false
+            continue
+        }
+        if ($part -in @("-ShareSasToken", "-AccountKey")) {
+            $protected.Add($part)
+            $redactNext = $true
+            continue
+        }
+        $protected.Add(($part -replace 'sig=[^&\s]+', 'sig=REDACTED'))
+    }
+    return ($protected.ToArray() -join " ")
+}
+
 function Run-ExternalStep {
     param(
         [System.Collections.Generic.List[object]]$Rows,
@@ -106,13 +126,14 @@ function Run-ExternalStep {
         $errorText = $_.Exception.Message
     }
     $ended = Get-Date
-    Add-Step -Rows $Rows -StepId $StepId -Description $Description -Status $status -Started $started -Ended $ended -ExitCode $exitCode -Command ($Command -join " ") -ErrorText $errorText
+    Add-Step -Rows $Rows -StepId $StepId -Description $Description -Status $status -Started $started -Ended $ended -ExitCode $exitCode -Command (Protect-CommandForLedger -Command $Command) -ErrorText $errorText
     if ($status -eq "failed") {
         throw "$StepId failed: $errorText"
     }
 }
 
 $normalizedDates = Normalize-Dates -InputDates $Dates
+$datesArgument = $normalizedDates -join ","
 New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
 
 $steps = New-Object System.Collections.Generic.List[object]
@@ -123,7 +144,7 @@ if ($SkipDownload) {
     $now = Get-Date
     Add-Step -Rows $steps -StepId "P148_DOWNLOAD_SKIPPED" -Description "Skip AzCopy download and validate current local landing zone." -Status "skipped" -Started $now -Ended $now -ExitCode 0 -Command "SkipDownload"
 } else {
-    $downloadRan = $true
+    $downloadRan = -not $DryRun
     $downloadCommand = @(
         "powershell",
         "-NoProfile",
@@ -132,7 +153,8 @@ if ($SkipDownload) {
         "-File",
         "scripts\sync_azure_real_l2_dates_azcopy.ps1",
         "-Dates"
-    ) + $normalizedDates + @(
+    ) + @(
+        $datesArgument,
         "-StorageAccount",
         $StorageAccount,
         "-ShareName",
@@ -183,7 +205,7 @@ if (($canRunPhase145 -eq 1) -or $ForcePhase145) {
         "--target-root",
         $TargetRoot,
         "--required-dates"
-    ) + $normalizedDates
+    ) + @($datesArgument)
     Run-ExternalStep -Rows $steps -StepId "P148_PHASE145_REFRESH" -Description "Run conditional import/refresh workflow after intake readiness." -Command $phase145Command
 } else {
     $now = Get-Date
@@ -227,7 +249,8 @@ $nextActionValue = [string]$nextAction
 $summaryRows = New-Object System.Collections.Generic.List[object]
 $summaryRows.Add([pscustomobject]@{ metric = "phase148_steps"; value = $stepCountValue; description = "Workflow steps attempted or skipped" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase148_failed_steps"; value = $failedStepsValue; description = "Workflow steps failed" })
-$summaryRows.Add([pscustomobject]@{ metric = "phase148_download_ran"; value = $downloadRanValue; description = "1 means AzCopy helper was executed by this workflow" })
+$summaryRows.Add([pscustomobject]@{ metric = "phase148_dry_run"; value = if ($DryRun) { "1" } else { "0" }; description = "1 means AzCopy was rendered but not executed" })
+$summaryRows.Add([pscustomobject]@{ metric = "phase148_download_ran"; value = $downloadRanValue; description = "1 means AzCopy helper executed a real transfer" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase148_phase147_can_run_phase145_now"; value = $canRunPhase145Value; description = "Phase147 intake readiness flag" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase148_phase145_ran"; value = $phase145RanValue; description = "1 means Phase145 was run by this workflow" })
 $summaryRows.Add([pscustomobject]@{ metric = "phase148_phase146_strategy_replay_allowed"; value = $phase146ReplayAllowedValue; description = "Phase146 final replay gate" })

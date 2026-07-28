@@ -4973,6 +4973,38 @@ Current Phase177 interpretation: the feature-quality audit is predeclared and re
 
 ---
 
+### Phase178-prep - Azure SAS real receive-flow unlock and materialization handoff
+
+**Date:** 2026-07-28
+
+This milestone used the user-provided Azure SAS only as a transient process credential, not as a persisted repo secret. The download-first policy remained intact: AzCopy handled Azure bulk I/O, then Python audited only local Parquet.
+
+Implementation and evidence updates:
+
+- fixed PowerShell date passing so `2026-07-10,2026-07-14` remains two required dates through Phase148/174/145/143/147;
+- fixed AzCopy helper failure propagation so failed per-date transfers exit non-zero;
+- added command-ledger redaction for SAS/account-key arguments;
+- corrected dry-run semantics so dry-runs do not claim real downloads or rerun Phase172 as if data changed;
+- imported the downloaded `2026-07-10` and `2026-07-14` partitions into `real_data_sample/l2_multiday_panel`;
+- refreshed Phase146, Phase172, Phase175, Phase176, Phase177 and Phase149 state evidence.
+
+Current local real receive-flow evidence:
+
+- canonical dates: `2026-07-08`, `2026-07-09`, `2026-07-10`, `2026-07-13`, `2026-07-14`;
+- canonical Parquet files by date: 20,507; 28,560; 50,509; 50,205; 49,732;
+- Phase172 discovered 5 trade dates and 160 symbol/day partitions;
+- Phase172 scanned 199,513 Parquet files, 2,408,579 rows and 7,006,738,019 compressed bytes;
+- Phase172 hard gates passed 5 / 5 and unlock gates passed 1 / 1;
+- Phase172 `phase172_strategy_replay_allowed = 1` for the real receive-flow source gate;
+- Phase175 `phase175_activation_ready = 1`, so receive-flow feature materialization may now open;
+- Phase176 intentionally reports `phase176_features_materialized = 0` because no derived feature Parquet files exist yet;
+- Phase177 intentionally reports `phase177_feature_quality_audit_ran = 0` until Phase176 writes actual feature Parquet;
+- Phase149 hard global-state gates pass 12 / 12.
+
+Current interpretation: the missing-real-data blocker is resolved for the Phase171/172 receive-flow branch. The next best action is no longer another Azure download. It is to implement Phase176 Parquet feature materialization from the 5-date canonical real L2 panel, then rerun Phase177 quality metrics before any strategy replay, P&L, profitability claim or paper/live acceptance.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

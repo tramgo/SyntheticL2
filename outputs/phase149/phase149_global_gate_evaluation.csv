@@ -1,6 +1,6 @@
 gate,pass,observed,required,severity
 phase149_real_l2_replay_gate_closed,True,0,0,hard
-phase149_real_receive_flow_replay_gate_closed,True,0,0,hard
+phase149_real_receive_flow_source_gate_open_or_explicitly_blocked,True,1,0_or_1_tracked_by_phase172,hard
 phase149_secure_download_gate_recorded,True,1,1,hard
 phase149_secure_orchestrator_replay_gate_closed,True,0,0,hard
 phase149_receive_flow_feature_schema_recorded,True,1,1,hard

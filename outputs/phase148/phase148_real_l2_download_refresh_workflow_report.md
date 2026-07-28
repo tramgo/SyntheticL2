@@ -1,6 +1,6 @@
 ﻿# Phase148 Real L2 Download Refresh Workflow
 
-Generated UTC: 2026-07-23T18:47:36.6044628Z
+Generated UTC: 2026-07-28T15:22:31.8860433Z
 
 Phase148 is an operational wrapper for the AzCopy-first real L2 path.
 It optionally runs the AzCopy download helper, always runs Phase147 local intake, conditionally runs Phase145 only when Phase147 says a required date is ready for import, and then runs Phase146.
@@ -11,18 +11,19 @@ Python remains local-only; Azure bulk I/O remains in AzCopy.
 "metric","value","description"
 "phase148_steps","4","Workflow steps attempted or skipped"
 "phase148_failed_steps","0","Workflow steps failed"
-"phase148_download_ran","0","1 means AzCopy helper was executed by this workflow"
+"phase148_dry_run","0","1 means AzCopy was rendered but not executed"
+"phase148_download_ran","0","1 means AzCopy helper executed a real transfer"
 "phase148_phase147_can_run_phase145_now","0","Phase147 intake readiness flag"
 "phase148_phase145_ran","0","1 means Phase145 was run by this workflow"
 "phase148_phase146_strategy_replay_allowed","0","Phase146 final replay gate"
-"phase148_phase146_days_needed_for_min","2","Additional ready real-anchor days still needed"
+"phase148_phase146_days_needed_for_min","0","Additional ready real-anchor days still needed"
 "phase148_strategy_replay_allowed","0","Workflow never overrides Phase146"
 "phase148_next_best_action","download_missing_required_dates_with_azcopy_sas_or_account_key_then_rerun_phase148","Recommended next milestone"
 
 ## Step Ledger
 
 "step_id","description","status","started_utc","ended_utc","elapsed_seconds","exit_code","command","error"
-"P148_DOWNLOAD_SKIPPED","Skip AzCopy download and validate current local landing zone.","skipped","2026-07-23T18:47:33.6550038Z","2026-07-23T18:47:33.6550038Z","0","0","SkipDownload",""
-"P148_PHASE147_INTAKE_AUDIT","Audit local AzCopy landing-zone completeness.","completed","2026-07-23T18:47:33.7170155Z","2026-07-23T18:47:35.6780579Z","1.961","0","python scripts\run_phase147_azcopy_download_intake_audit.py --scratch-root scratch_azcopy_selected\raw_l2 --target-root real_data_sample\l2_multiday_panel --required-dates 2026-07-10 2026-07-14",""
-"P148_PHASE145_SKIPPED","Skip Phase145 because Phase147 says no required date is ready for import.","skipped","2026-07-23T18:47:35.7282636Z","2026-07-23T18:47:35.7282636Z","0","0","phase147_can_run_phase145_now=0",""
-"P148_PHASE146_UNLOCK_AUDIT","Run final real-anchor minimum unlock audit.","completed","2026-07-23T18:47:35.7282636Z","2026-07-23T18:47:36.5674688Z","0.839","0","python scripts\run_phase146_real_anchor_minimum_unlock_audit.py",""
+"P148_DOWNLOAD_SKIPPED","Skip AzCopy download and validate current local landing zone.","skipped","2026-07-28T15:21:51.7607999Z","2026-07-28T15:21:51.7607999Z","0","0","SkipDownload",""
+"P148_PHASE147_INTAKE_AUDIT","Audit local AzCopy landing-zone completeness.","completed","2026-07-28T15:21:51.8124332Z","2026-07-28T15:22:30.4292308Z","38.617","0","python scripts\run_phase147_azcopy_download_intake_audit.py --scratch-root scratch_azcopy_selected\raw_l2 --target-root real_data_sample\l2_multiday_panel --required-dates 2026-07-10 2026-07-14",""
+"P148_PHASE145_SKIPPED","Skip Phase145 because Phase147 says no required date is ready for import.","skipped","2026-07-28T15:22:30.5704637Z","2026-07-28T15:22:30.5704637Z","0","0","phase147_can_run_phase145_now=0",""
+"P148_PHASE146_UNLOCK_AUDIT","Run final real-anchor minimum unlock audit.","completed","2026-07-28T15:22:30.5704637Z","2026-07-28T15:22:31.8151841Z","1.245","0","python scripts\run_phase146_real_anchor_minimum_unlock_audit.py",""

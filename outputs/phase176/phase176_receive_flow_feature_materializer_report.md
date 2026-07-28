@@ -1,6 +1,6 @@
 # Phase176 Receive-flow Feature Materializer
 
-Generated UTC: 2026-07-23T19:01:26.367624+00:00
+Generated UTC: 2026-07-28T15:21:33.406401+00:00
 
 Phase176 is the executable materialization scaffold for the Phase175 feature schema.
 When Phase175 activation is closed, Phase176 writes plan/templates/gates only and materializes no feature parquet.
@@ -15,12 +15,13 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 | phase176_gate_rows | 4 | Gates evaluated |
 | phase176_hard_gate_rows | 3 | Hard gates evaluated |
 | phase176_hard_gate_pass_rows | 3 | Hard gates passed |
-| phase176_activation_ready | 0 | Inherited Phase175 activation gate |
+| phase176_activation_ready | 1 | Inherited Phase175 activation gate |
+| phase176_feature_parquet_files | 0 | Feature parquet files present under feature root |
 | phase176_features_materialized | 0 | 1 means feature parquet was materialized |
 | phase176_strategy_replay_allowed | 0 | No strategy replay opened |
 | phase176_paper_or_live_acceptance_allowed | 0 | Paper/live remains closed |
 | phase176_forbidden_outputs | buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | Outputs forbidden in this phase |
-| phase176_next_best_action | add_AZURE_STORAGE_SAS_TOKEN_or_AZURE_STORAGE_KEY_then_rerun_phase174_phase172_phase175_before_phase176_materialization | Recommended next milestone |
+| phase176_next_best_action | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | Recommended next milestone |
 
 ## Materialization Plan
 
@@ -45,7 +46,7 @@ It does not emit signals, orders, fills, P&L, profitability claims, or paper/liv
 
 | gate_id | gate_pass | evidence | severity |
 | --- | --- | --- | --- |
-| P176_PHASE175_ACTIVATION_READY | 0 | phase175_activation_ready=0;ready_dates=3;additional_needed=2 | activation |
+| P176_PHASE175_ACTIVATION_READY | 1 | phase175_activation_ready=1;ready_dates=5;additional_needed=0 | activation |
 | P176_SCHEMA_AVAILABLE | 1 | feature_schema_rows=6 | hard |
 | P176_LOCAL_REAL_ROOT_EXISTS | 1 | real_data_sample\l2_multiday_panel | hard |
 | P176_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | materializer scaffold only while activation gate is closed; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance | hard |

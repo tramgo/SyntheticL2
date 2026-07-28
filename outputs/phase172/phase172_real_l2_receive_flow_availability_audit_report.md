@@ -1,6 +1,6 @@
 # Phase172 Real L2 Receive-flow Availability Audit
 
-Generated UTC: 2026-07-23T16:46:32.088696+00:00
+Generated UTC: 2026-07-28T15:21:01.896275+00:00
 
 Phase172 audits the Phase171 selected source using downloaded local Zerodha top-five market-by-price Parquet only.
 It measures local coverage, receive cadence, quote/depth churn availability and cross-symbol 1-second synchrony.
@@ -11,26 +11,26 @@ It does not scan Azure, emit signals, simulate orders, run fills, compute P&L, o
 | metric | value | description |
 | --- | --- | --- |
 | phase172_selected_phase171_source_id | P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW | Phase171 source this audit supports |
-| phase172_trade_dates_discovered | 3 | Local trade_date partitions discovered |
-| phase172_ready_receive_flow_dates | 3 | Dates with all 32 symbols receive-flow ready |
+| phase172_trade_dates_discovered | 5 | Local trade_date partitions discovered |
+| phase172_ready_receive_flow_dates | 5 | Dates with all 32 symbols receive-flow ready |
 | phase172_minimum_ready_dates_required | 5 | Minimum days required by Phase171 source contract |
-| phase172_additional_dates_needed | 2 | Additional ready real L2 dates required |
-| phase172_symbol_day_rows | 96 | Symbol/day partitions audited |
-| phase172_total_parquet_files | 99272 | Local Parquet files audited |
-| phase172_total_rows | 1238275 | Rows scanned from local Parquet |
-| phase172_total_bytes | 3490276400 | Compressed local Parquet bytes |
-| phase172_median_symbol_tick_rate_per_sec | 0.835375 | Median symbol session receive tick rate |
+| phase172_additional_dates_needed | 0 | Additional ready real L2 dates required |
+| phase172_symbol_day_rows | 160 | Symbol/day partitions audited |
+| phase172_total_parquet_files | 199513 | Local Parquet files audited |
+| phase172_total_rows | 2408579 | Rows scanned from local Parquet |
+| phase172_total_bytes | 7006738019 | Compressed local Parquet bytes |
+| phase172_median_symbol_tick_rate_per_sec | 0.795831 | Median symbol session receive tick rate |
 | phase172_median_symbol_gap_sec | 0.75 | Median symbol receive gap |
-| phase172_median_l1_state_change_fraction | 0.541245 | Median L1 state change fraction |
-| phase172_median_depth_qty_change_fraction | 0.570496 | Median top-five depth quantity change fraction |
+| phase172_median_l1_state_change_fraction | 0.542993 | Median L1 state change fraction |
+| phase172_median_depth_qty_change_fraction | 0.573751 | Median top-five depth quantity change fraction |
 | phase172_hard_gate_rows | 5 | Hard gates evaluated |
 | phase172_hard_gate_pass_rows | 5 | Hard gates passed |
 | phase172_unlock_gate_rows | 1 | Unlock gates evaluated |
-| phase172_unlock_gate_pass_rows | 0 | Unlock gates passed |
-| phase172_strategy_replay_allowed | 0 | Strategy replay remains closed unless minimum real-source days pass |
+| phase172_unlock_gate_pass_rows | 1 | Unlock gates passed |
+| phase172_strategy_replay_allowed | 1 | Strategy replay remains closed unless minimum real-source days pass |
 | phase172_paper_or_live_acceptance_allowed | 0 | Paper/live remains closed |
 | phase172_azure_read_policy | forbidden_for_analysis_download_first_then_local | Audit uses local downloaded Parquet only |
-| phase172_next_best_action | download_at_least_2_additional_real_l2_dates_then_rerun_phase172 | Recommended next milestone |
+| phase172_next_best_action | build_phase173_receive_flow_feature_schema_no_replay | Recommended next milestone |
 
 ## Date Receive-flow Audit
 
@@ -38,7 +38,9 @@ It does not scan Azure, emit signals, simulate orders, run fills, compute P&L, o
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-07-08 | 32 | 32 | 32 | 32 | 20507 | 226430 | 719892449 | 0.75003 | 0.75 | 0.553145 | 0.57473 | 135594 | 6999 | 19 | 26 | True |
 | 2026-07-09 | 32 | 32 | 32 | 32 | 28560 | 390992 | 1006378167 | 1.01615 | 0.74 | 0.541362 | 0.573751 | 222075 | 9806 | 23 | 29 | True |
+| 2026-07-10 | 32 | 32 | 32 | 32 | 50509 | 538988 | 1765607327 | 0.698023 | 0.91975 | 0.522737 | 0.556743 | 335672 | 17412 | 19 | 26 | True |
 | 2026-07-13 | 32 | 32 | 32 | 32 | 50205 | 620853 | 1764005784 | 0.827407 | 0.7495 | 0.525789 | 0.558396 | 363714 | 17286 | 21 | 29 | True |
+| 2026-07-14 | 32 | 32 | 32 | 32 | 49732 | 631316 | 1750854292 | 0.822975 | 0.75 | 0.587497 | 0.613187 | 370444 | 17393 | 22 | 29 | True |
 
 ## Symbol-day Receive-flow Audit Sample
 
@@ -108,30 +110,30 @@ It does not scan Azure, emit signals, simulate orders, run fills, compute P&L, o
 | 2026-07-09 | NSE | TECHM | real_data_sample\l2_multiday_panel\trade_date=2026-07-09\exchange=NSE\symbol=TECHM | True | 893 | 31017941 | ok |  | True |  | 6931 | 1783578354738 | 1783591274477 | 6928 | 12844.7 | 1.236 | 4.7612 | 5.7908 | 1182 | 2056 | 3270 | 609 | 131 | 0 | 3253 | 3361 | 4927 | ok |  | 2026-07-09 06:25:54.738000+00:00 | 2026-07-09 10:01:14.477000+00:00 | 0.539365 | 0.469341 | 0.484923 | True |
 | 2026-07-09 | NSE | ULTRACEMCO | real_data_sample\l2_multiday_panel\trade_date=2026-07-09\exchange=NSE\symbol=ULTRACEMCO | True | 893 | 30888286 | ok |  | True |  | 5010 | 1783578354738 | 1783591273851 | 5007 | 12844.5 | 2 | 5.566 | 6.8605 | 654 | 1039 | 1559 | 723 | 45 | 0 | 2468 | 2599 | 3977 | ok |  | 2026-07-09 06:25:54.738000+00:00 | 2026-07-09 10:01:13.851000+00:00 | 0.389817 | 0.492615 | 0.518762 | True |
 | 2026-07-09 | NSE | WIPRO | real_data_sample\l2_multiday_panel\trade_date=2026-07-09\exchange=NSE\symbol=WIPRO | True | 893 | 31225283 | ok |  | True |  | 9161 | 1783578354738 | 1783591273852 | 9158 | 12844.7 | 0.751 | 4.2248 | 5.138 | 1862 | 3531 | 5512 | 516 | 252 | 0 | 4383 | 4419 | 5786 | ok |  | 2026-07-09 06:25:54.738000+00:00 | 2026-07-09 10:01:13.852000+00:00 | 0.712977 | 0.478441 | 0.482371 | True |
-| 2026-07-13 | NSE | ADANIPORTS | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=ADANIPORTS | True | 1569 | 54744007 | ok |  | True |  | 13886 | 1783914093966 | 1783936900961 | 13881 | 22492.3 | 1 | 4.553 | 5.5 | 2570 | 4625 | 7585 | 1016 | 372 | 0 | 6816 | 7175 | 9450 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:40.961000+00:00 | 0.617145 | 0.490854 | 0.516707 | True |
-| 2026-07-13 | NSE | AXISBANK | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=AXISBANK | True | 1569 | 55030126 | ok |  | True |  | 18309 | 1783914093966 | 1783936869060 | 18302 | 22492.8 | 0.749 | 3.8769 | 4.912 | 3837 | 8091 | 12765 | 838 | 785 | 0 | 9628 | 9807 | 10795 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.060000+00:00 | 0.813684 | 0.525862 | 0.535638 | True |
-| 2026-07-13 | NSE | BAJAJ-AUTO | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=BAJAJ-AUTO | True | 1569 | 55531219 | ok |  | True |  | 25141 | 1783914093966 | 1783936869461 | 25135 | 22492.5 | 0.741 | 1.251 | 4.409 | 5917 | 11485 | 20775 | 547 | 1172 | 0 | 14805 | 17239 | 14296 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.461000+00:00 | 1.11748 | 0.588879 | 0.685693 | True |
-| 2026-07-13 | NSE | BANKBEES | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=BANKBEES | True | 1569 | 54858026 | ok |  | True |  | 18916 | 1783914311961 | 1783936885837 | 18913 | 22485.2 | 1 | 3.9042 | 4.831 | 4010 | 5763 | 13884 | 747 | 352 | 0 | 8771 | 13732 | 13181 | ok |  | 2026-07-13 03:45:11.961000+00:00 | 2026-07-13 10:01:25.837000+00:00 | 0.841129 | 0.463682 | 0.725946 | True |
-| 2026-07-13 | NSE | BHARTIARTL | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=BHARTIARTL | True | 1569 | 55190740 | ok |  | True |  | 19560 | 1783914093966 | 1783936900961 | 19554 | 22492 | 0.749 | 3.25 | 4.76035 | 4241 | 8604 | 13860 | 786 | 878 | 0 | 10283 | 10787 | 11536 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:40.961000+00:00 | 0.869375 | 0.525716 | 0.551483 | True |
-| 2026-07-13 | NSE | BPCL | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=BPCL | True | 1569 | 54256472 | ok |  | True |  | 10684 | 1783914093966 | 1783936869060 | 10679 | 22485 | 1.602 | 5.2362 | 6.0781 | 1661 | 2734 | 4188 | 1241 | 176 | 0 | 4617 | 4708 | 8031 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.060000+00:00 | 0.474939 | 0.432142 | 0.440659 | True |
-| 2026-07-13 | NSE | BRITANNIA | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=BRITANNIA | True | 1569 | 54177058 | ok |  | True |  | 8526 | 1783914093966 | 1783936870211 | 8521 | 22487 | 2 | 5.92 | 7 | 1062 | 1835 | 2946 | 1461 | 117 | 0 | 4179 | 4649 | 6756 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:10.211000+00:00 | 0.37893 | 0.490148 | 0.545273 | True |
-| 2026-07-13 | NSE | CIPLA | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=CIPLA | True | 1569 | 54425687 | ok |  | True |  | 11664 | 1783914093966 | 1783936900961 | 11658 | 22492 | 1.193 | 5 | 5.9462 | 1908 | 3411 | 5549 | 1129 | 219 | 0 | 5535 | 5936 | 8384 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:40.961000+00:00 | 0.518317 | 0.474537 | 0.508916 | True |
-| 2026-07-13 | NSE | DRREDDY | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=DRREDDY | True | 1569 | 54592935 | ok |  | True |  | 12257 | 1783914093966 | 1783936869211 | 12248 | 22492.5 | 1.25 | 4.7913 | 5.75 | 2089 | 3668 | 5647 | 1063 | 263 | 0 | 5388 | 5470 | 8733 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.211000+00:00 | 0.544537 | 0.439586 | 0.446276 | True |
-| 2026-07-13 | NSE | GOLDBEES | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=GOLDBEES | True | 1568 | 54501651 | ok |  | True |  | 12982 | 1783914310711 | 1783936882210 | 12977 | 22485.8 | 1 | 4.6965 | 5.67425 | 2265 | 4338 | 6600 | 1039 | 361 | 0 | 5799 | 5963 | 8945 | ok |  | 2026-07-13 03:45:10.711000+00:00 | 2026-07-13 10:01:22.210000+00:00 | 0.577121 | 0.446695 | 0.459328 | True |
-| 2026-07-13 | NSE | HCLTECH | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=HCLTECH | True | 1569 | 56185830 | ok |  | True |  | 29266 | 1783914093966 | 1783936869211 | 29258 | 22492.3 | 0.5 | 1.25 | 4.158 | 7096 | 16423 | 25587 | 485 | 1869 | 0 | 17240 | 17376 | 14294 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.211000+00:00 | 1.3008 | 0.589079 | 0.593727 | True |
-| 2026-07-13 | NSE | HDFCBANK | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=HDFCBANK | True | 1569 | 56719345 | ok |  | True |  | 35959 | 1783914093966 | 1783936869060 | 35950 | 22492.3 | 0.5 | 1 | 1.25 | 8991 | 21220 | 33146 | 210 | 2598 | 0 | 21409 | 21494 | 16563 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.060000+00:00 | 1.59833 | 0.595373 | 0.597736 | True |
-| 2026-07-13 | NSE | HINDUNILVR | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=HINDUNILVR | True | 1569 | 54585232 | ok |  | True |  | 12173 | 1783914093966 | 1783936869060 | 12166 | 22492.3 | 1.001 | 4.907 | 5.8585 | 2111 | 3778 | 6035 | 1100 | 262 | 0 | 5856 | 6152 | 8589 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.060000+00:00 | 0.540897 | 0.481065 | 0.505381 | True |
-| 2026-07-13 | NSE | ICICIBANK | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=ICICIBANK | True | 1569 | 55797042 | ok |  | True |  | 26474 | 1783914093966 | 1783936869060 | 26468 | 22492.8 | 0.5 | 2 | 4.19965 | 6213 | 13904 | 21939 | 529 | 1538 | 0 | 15021 | 15271 | 13714 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.060000+00:00 | 1.17673 | 0.567387 | 0.57683 | True |
-| 2026-07-13 | NSE | INFY | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=INFY | True | 1569 | 56702770 | ok |  | True |  | 34511 | 1783914093966 | 1783936869211 | 34502 | 22492 | 0.5 | 1 | 2.6165 | 8569 | 20054 | 31474 | 255 | 2399 | 0 | 20817 | 20894 | 16204 | ok |  | 2026-07-13 03:41:33.966000+00:00 | 2026-07-13 10:01:09.211000+00:00 | 1.53397 | 0.603199 | 0.60543 | True |
-| 2026-07-13 | NSE | ITBEES | real_data_sample\l2_multiday_panel\trade_date=2026-07-13\exchange=NSE\symbol=ITBEES | True | 1569 | 54430478 | ok |  | True |  | 11481 | 1783914310462 | 1783936882210 | 11477 | 22486 | 1.25 | 5 | 5.99025 | 1884 | 3404 | 5280 | 1140 | 274 | 0 | 5428 | 5625 | 8302 | ok |  | 2026-07-13 03:45:10.462000+00:00 | 2026-07-13 10:01:22.210000+00:00 | 0.510406 | 0.472781 | 0.48994 | True |
+| 2026-07-10 | NSE | ADANIPORTS | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=ADANIPORTS | True | 1579 | 55060838 | ok |  | True |  | 13987 | 1783654893914 | 1783677679388 | 13979 | 22492.9 | 1 | 4.5 | 5.3871 | 2559 | 4802 | 8027 | 928 | 460 | 0 | 7235 | 7796 | 9544 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.621486 | 0.517266 | 0.557375 | True |
+| 2026-07-10 | NSE | AXISBANK | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=AXISBANK | True | 1579 | 55290497 | ok |  | True |  | 17557 | 1783654893914 | 1783677679388 | 17552 | 22492.9 | 0.75 | 4 | 4.87445 | 3534 | 7457 | 11687 | 768 | 703 | 0 | 9264 | 9459 | 10799 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.780336 | 0.527653 | 0.538759 | True |
+| 2026-07-10 | NSE | BAJAJ-AUTO | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=BAJAJ-AUTO | True | 1579 | 55000795 | ok |  | True |  | 13944 | 1783654893914 | 1783677679388 | 13938 | 22492.9 | 1 | 4.7196 | 5.5206 | 2559 | 4431 | 8679 | 1011 | 390 | 0 | 7535 | 9330 | 9725 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.619663 | 0.540376 | 0.669105 | True |
+| 2026-07-10 | NSE | BANKBEES | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=BANKBEES | True | 1577 | 54695905 | ok |  | True |  | 12272 | 1783655109413 | 1783677689205 | 12269 | 22485 | 1 | 5 | 6.0751 | 2141 | 3054 | 7368 | 1206 | 195 | 0 | 6193 | 8719 | 9229 | ok |  | 2026-07-10 03:45:09.413000+00:00 | 2026-07-10 10:01:29.205000+00:00 | 0.545652 | 0.504645 | 0.710479 | True |
+| 2026-07-10 | NSE | BHARTIARTL | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=BHARTIARTL | True | 1578 | 55406003 | ok |  | True |  | 19046 | 1783654893914 | 1783677679388 | 19042 | 22490.6 | 0.75 | 3.5 | 4.7168 | 4030 | 8464 | 13137 | 699 | 934 | 0 | 9941 | 10122 | 11362 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.846664 | 0.521947 | 0.53145 | True |
+| 2026-07-10 | NSE | BPCL | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=BPCL | True | 1579 | 54466671 | ok |  | True |  | 8432 | 1783654893914 | 1783677679388 | 8429 | 22491.1 | 2 | 5.7762 | 6.916 | 1043 | 1723 | 2539 | 1317 | 87 | 0 | 4146 | 4364 | 6756 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.37477 | 0.491698 | 0.517552 | True |
+| 2026-07-10 | NSE | BRITANNIA | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=BRITANNIA | True | 1579 | 54448444 | ok |  | True |  | 7283 | 1783654893914 | 1783677679388 | 7279 | 22491.4 | 2.5 | 6.5812 | 7.8044 | 766 | 1318 | 2315 | 1592 | 87 | 0 | 4096 | 4892 | 6026 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.323635 | 0.562406 | 0.671701 | True |
+| 2026-07-10 | NSE | CIPLA | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=CIPLA | True | 1579 | 54661231 | ok |  | True |  | 10486 | 1783654893914 | 1783677679388 | 10482 | 22491.6 | 1.5 | 5.1938 | 6.1829 | 1536 | 2725 | 4313 | 1163 | 181 | 0 | 5093 | 5279 | 7904 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.46604 | 0.485695 | 0.503433 | True |
+| 2026-07-10 | NSE | DRREDDY | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=DRREDDY | True | 1578 | 55865869 | ok |  | True |  | 24028 | 1783654893914 | 1783677675205 | 24024 | 22492.4 | 0.5 | 2.002 | 4.24455 | 5300 | 12244 | 19086 | 508 | 1535 | 0 | 13335 | 13612 | 13139 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:15.205000+00:00 | 1.0681 | 0.554978 | 0.566506 | True |
+| 2026-07-10 | NSE | GOLDBEES | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=GOLDBEES | True | 1578 | 54830631 | ok |  | True |  | 13278 | 1783655109413 | 1783677688955 | 13273 | 22488.3 | 1 | 4.5929 | 5.527 | 2366 | 4427 | 6885 | 998 | 468 | 0 | 6158 | 6442 | 9148 | ok |  | 2026-07-10 03:45:09.413000+00:00 | 2026-07-10 10:01:28.955000+00:00 | 0.590218 | 0.463775 | 0.485163 | True |
+| 2026-07-10 | NSE | HCLTECH | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=HCLTECH | True | 1578 | 55728587 | ok |  | True |  | 24469 | 1783654893914 | 1783677675205 | 24465 | 22491.6 | 0.75 | 1.999 | 4.2826 | 5532 | 11135 | 20113 | 454 | 1251 | 0 | 13754 | 16345 | 14314 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:15.205000+00:00 | 1.08774 | 0.562099 | 0.667988 | True |
+| 2026-07-10 | NSE | HDFCBANK | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=HDFCBANK | True | 1578 | 56202239 | ok |  | True |  | 30668 | 1783654893914 | 1783677675205 | 30659 | 22492.4 | 0.5 | 1.249 | 3.8901 | 7383 | 17804 | 27023 | 350 | 2410 | 0 | 18030 | 18047 | 15041 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:15.205000+00:00 | 1.36308 | 0.587909 | 0.588464 | True |
+| 2026-07-10 | NSE | HINDUNILVR | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=HINDUNILVR | True | 1579 | 54889846 | ok |  | True |  | 12162 | 1783654893914 | 1783677679388 | 12158 | 22492.1 | 1 | 4.9126 | 5.883 | 1995 | 3815 | 6303 | 1091 | 345 | 0 | 6259 | 6603 | 8658 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:19.388000+00:00 | 0.540545 | 0.514636 | 0.542921 | True |
+| 2026-07-10 | NSE | ICICIBANK | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=ICICIBANK | True | 1578 | 55362428 | ok |  | True |  | 18844 | 1783654893914 | 1783677675205 | 18839 | 22492.9 | 0.75 | 3.5714 | 4.7561 | 3941 | 8443 | 12961 | 740 | 916 | 0 | 9841 | 9920 | 11234 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:01:15.205000+00:00 | 0.837554 | 0.522235 | 0.526428 | True |
+| 2026-07-10 | NSE | INFY | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=INFY | True | 1578 | 56296176 | ok |  | True |  | 30396 | 1783654893914 | 1783677602195 | 30389 | 22492.9 | 0.5 | 1.25 | 3.8154 | 7216 | 17225 | 26527 | 267 | 2291 | 0 | 17856 | 17909 | 15209 | ok |  | 2026-07-10 03:41:33.914000+00:00 | 2026-07-10 10:00:02.195000+00:00 | 1.35105 | 0.587446 | 0.589189 | True |
+| 2026-07-10 | NSE | ITBEES | real_data_sample\l2_multiday_panel\trade_date=2026-07-10\exchange=NSE\symbol=ITBEES | True | 1578 | 54423682 | ok |  | True |  | 8419 | 1783655109413 | 1783677688705 | 8416 | 22484.8 | 2 | 5.8966 | 7.0296 | 996 | 1678 | 2664 | 1356 | 155 | 0 | 4211 | 4592 | 6822 | ok |  | 2026-07-10 03:45:09.413000+00:00 | 2026-07-10 10:01:28.705000+00:00 | 0.374297 | 0.500178 | 0.545433 | True |
 
 ## Gate Evaluation
 
 | gate_id | gate_pass | evidence | severity |
 | --- | --- | --- | --- |
-| P172_LOCAL_PANEL_DISCOVERED | 1 | trade_dates=3 | hard |
+| P172_LOCAL_PANEL_DISCOVERED | 1 | trade_dates=5 | hard |
 | P172_DOWNLOAD_FIRST_LOCAL_ONLY | 1 | audited local real_data_sample/l2_multiday_panel paths only | hard |
 | P172_ALL_EXPECTED_SYMBOLS_PRESENT_PER_READY_DATE | 1 | max_ready_symbols=32 | hard |
-| P172_RECEIVE_FLOW_COLUMNS_PRESENT | 1 | schema_pass_symbols=96/96 | hard |
-| P172_MINIMUM_SOURCE_DAYS_FOR_PHASE171 | 0 | ready_dates=3;minimum=5 | unlock |
+| P172_RECEIVE_FLOW_COLUMNS_PRESENT | 1 | schema_pass_symbols=160/160 | hard |
+| P172_MINIMUM_SOURCE_DAYS_FOR_PHASE171 | 1 | ready_dates=5;minimum=5 | unlock |
 | P172_NO_REPLAY_OR_PROFITABILITY_OUTPUTS | 1 | availability/cadence/churn/synchrony audit only | hard |

@@ -1,6 +1,6 @@
 # Phase142 Local Real L2 Download Verifier
 
-Generated UTC: 2026-07-23T08:15:49.680190+00:00
+Generated UTC: 2026-07-28T15:11:58.000228+00:00
 
 Phase142 verifies local AzCopy/downloaded real Zerodha WebSocket top-five market-by-price partitions before or after Phase115 import.
 It checks date/symbol coverage, parquet counts/bytes, sampled required schema, and sampled L1 book sanity.
@@ -13,15 +13,15 @@ It does not contact Azure and does not unlock strategy replay.
 | metric | value | description |
 | --- | --- | --- |
 | phase142_roots_checked | 2 | Distinct local roots inspected |
-| phase142_symbol_partition_rows | 160 | Symbol partition rows discovered |
-| phase142_canonical_symbol_partition_rows | 96 | Symbol partitions with canonical trade_date/exchange/symbol layout |
+| phase142_symbol_partition_rows | 288 | Symbol partition rows discovered |
+| phase142_canonical_symbol_partition_rows | 224 | Symbol partitions with canonical trade_date/exchange/symbol layout |
 | phase142_nested_trade_date_symbol_partition_rows | 64 | Symbol partitions with duplicate nested trade_date path parts |
-| phase142_sample_files_checked | 320 | First/last parquet samples read for schema and L1 book checks |
-| phase142_date_rows | 5 | Root/date readiness rows emitted |
-| phase142_ready_date_rows | 5 | Root/date rows ready for Phase115 import |
-| phase142_max_ready_dates_in_one_root | 3 | Maximum ready dates in any one checked root |
-| phase142_total_parquet_files | 148339 | Total parquet files across checked roots |
-| phase142_total_bytes | 5216547016 | Total bytes across checked roots |
+| phase142_sample_files_checked | 576 | First/last parquet samples read for schema and L1 book checks |
+| phase142_date_rows | 9 | Root/date readiness rows emitted |
+| phase142_ready_date_rows | 9 | Root/date rows ready for Phase115 import |
+| phase142_max_ready_dates_in_one_root | 5 | Maximum ready dates in any one checked root |
+| phase142_total_parquet_files | 348821 | Total parquet files across checked roots |
+| phase142_total_bytes | 12249470254 | Total bytes across checked roots |
 | phase142_strategy_replay_allowed | 0 | Local download verification does not unlock strategy replay |
 
 ## Date Readiness
@@ -30,9 +30,13 @@ It does not contact Azure and does not unlock strategy replay.
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | real_data_sample\l2_multiday_panel | 2026-07-08 | NSE | 32 | 0 | 32 | 32 | 1 |  | 20507 | 719892449 | True | False | 0 | True |
 | real_data_sample\l2_multiday_panel | 2026-07-09 | NSE | 32 | 0 | 32 | 32 | 1 |  | 28560 | 1006378167 | True | False | 0 | True |
+| real_data_sample\l2_multiday_panel | 2026-07-10 | NSE | 32 | 0 | 32 | 32 | 1 |  | 50509 | 1765607327 | True | False | 0 | True |
 | real_data_sample\l2_multiday_panel | 2026-07-13 | NSE | 32 | 0 | 32 | 32 | 1 |  | 50205 | 1764005784 | True | False | 0 | True |
+| real_data_sample\l2_multiday_panel | 2026-07-14 | NSE | 32 | 0 | 32 | 32 | 1 |  | 49732 | 1750854292 | True | False | 0 | True |
 | scratch_azcopy_selected\raw_l2 | 2026-07-08 | NSE | 32 | 32 | 0 | 32 | 1 |  | 20507 | 719892449 | True | False | 0 | True |
 | scratch_azcopy_selected\raw_l2 | 2026-07-09 | NSE | 32 | 32 | 0 | 32 | 1 |  | 28560 | 1006378167 | True | False | 0 | True |
+| scratch_azcopy_selected\raw_l2 | 2026-07-10 | NSE | 32 | 0 | 32 | 32 | 1 |  | 50509 | 1765607327 | True | False | 0 | True |
+| scratch_azcopy_selected\raw_l2 | 2026-07-14 | NSE | 32 | 0 | 32 | 32 | 1 |  | 49732 | 1750854292 | True | False | 0 | True |
 
 ## Sample Schema Checks
 
