@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P209_PHASE208_COMPLETE,True,phase208_complete=1,hard
+P209_MODEL_SPECS_RECORDED,True,model_spec_rows=3,hard
+P209_FEATURE_SET_CONTRACT_RECORDED,True,allowed_feature_rows=24,hard
+P209_LABEL_TARGET_CONTRACT_RECORDED,True,label_rows=3; columns_seen=3,hard
+P209_SPLIT_AND_CONTROL_CONTRACT_RECORDED,True,split_control_rows=4; required_controls=4,hard
+P209_FORBIDDEN_EXECUTION_LEDGER_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

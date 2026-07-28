@@ -1,0 +1,13 @@
+forbidden_output,emitted_in_phase209,allowed_in_phase209,rationale
+model_fit,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+model_prediction,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+strategy_replay,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+test_replay_execution,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+test_result,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+promotion,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+paper_live_acceptance,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+order_arrival,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+fill_model,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+pnl_replay,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+profitability_claim,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.
+threshold_widening,0,0,Phase209 is a model-fit precommit specification only; execution begins no earlier than a future gated dry-run phase.

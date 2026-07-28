@@ -1,0 +1,18 @@
+metric,value,description
+phase209_model_spec_rows,3,Model-family specification rows
+phase209_feature_set_rows,24,Feature-set contract rows
+phase209_allowed_feature_set_rows,24,Feature-set rows allowed for future Phase210 design matrix
+phase209_label_target_rows,3,Label-target contract rows
+phase209_split_control_rows,4,Split/control contract rows
+phase209_forbidden_execution_rows,12,Forbidden execution ledger rows
+phase209_gate_rows,6,Gates evaluated
+phase209_hard_gate_rows,6,Hard gates evaluated
+phase209_hard_gate_pass_rows,6,Hard gates passed
+phase209_model_fit_precommit_spec_complete,1,1 means Phase209 completed
+phase209_model_fit_execution_allowed,0,No model fitting executed/opened in Phase209
+phase209_strategy_replay_allowed,0,No strategy replay opened
+phase209_test_replay_allowed_next,0,No test replay opened
+phase209_promotion_allowed,0,No promotion opened
+phase209_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase209_forbidden_outputs,model_fit;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening,Outputs forbidden in this phase
+phase209_next_best_action,run_phase210_train_validation_model_fit_dry_run_no_replay_no_test,Recommended next milestone

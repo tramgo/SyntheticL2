@@ -6857,6 +6857,53 @@ Current interpretation: Phase208 is the first clean quality gate after the passi
 
 ---
 
+### Phase209 - Model-fit precommit spec, no execution/no replay
+
+Phase209 freezes the model-fit design contract after the Phase208 feature matrix quality gate. It records what may be attempted in the next train/validation-only dry-run phase, but it does not fit models, emit predictions, run strategy replay, run test replay, emit orders/fills/P&L, promote anything, or open paper/live acceptance.
+
+Phase209 model-family specs:
+
+- regularized logistic classification baseline for `short_horizon_direction_label`;
+- regularized linear return/sign proxy for `future_mid_return_bps_next_bucket`;
+- monotonic tree or gradient-boosting diagnostic for `execution_risk_spread_widen_next_bucket`.
+
+Phase209 feature/label/split contracts:
+
+- allowed feature-set rows: 24, inherited from Phase207/Phase208 feature/horizon matrix quality;
+- label targets: 3, bound to the Phase180 Zerodha cost/latency label precommit and Phase181 materialized receive-flow labels;
+- split controls: train-only fitting, validation-only screening/calibration, sealed test dates;
+- negative controls: shuffled time/date, target-symbol-excluded cross-symbol synchrony, blocked-form overlap control;
+- forbidden execution ledger: model fit, predictions, replay, test result, promotion, paper/live acceptance, order-arrival, fill-model, P&L replay, profitability claim, and threshold widening all remain forbidden in Phase209.
+
+Phase209 results:
+
+- model spec rows: 3;
+- feature-set contract rows: 24;
+- allowed feature-set rows for a future design matrix: 24;
+- label-target contract rows: 3;
+- split/control contract rows: 4;
+- forbidden execution ledger rows: 12;
+- hard gates: 6 / 6 passed;
+- model-fit execution allowed: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase210_train_validation_model_fit_dry_run_no_replay_no_test`.
+
+Current Phase149 evidence after Phase209:
+
+- phase rows discovered: 202;
+- runner phase rows: 200;
+- acceptance phase rows: 152;
+- hard global-state gates: 155 / 155 passed;
+- real receive-flow branch status: `model_fit_precommit_spec_complete_phase210_train_validation_fit_dry_run_pending_no_replay_no_test`;
+- next best action: `run_phase210_train_validation_model_fit_dry_run_no_replay_no_test`.
+
+Current interpretation: Phase209 opens only the specification path toward a Phase210 train/validation model-fit dry run. It still makes no profitability claim, does not touch sealed test replay, and does not permit promotion or paper/live acceptance.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
