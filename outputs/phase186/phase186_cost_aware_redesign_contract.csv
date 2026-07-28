@@ -1,0 +1,7 @@
+redesign_contract_id,requirement,required_before_new_replay,evidence_required
+P186_COST_AWARE_THRESHOLDING,"Candidate thresholds must be fitted against net return-bps proxies after Phase180 cost/latency bounds, not gross label direction alone.",1,train_fitted_cost_aware_threshold_catalog
+P186_MIN_VALIDATION_NET_EDGE,A redesigned family must predeclare a minimum validation net edge that exceeds both retail/default and stressed-retail cost bounds.,1,validation_net_edge_margin_bps_by_profile
+P186_EVENT_SELECTIVITY_BOUND,A redesigned family must cap decision frequency or explicitly prove that high event count does not make costs dominate.,1,train_validation_decision_rate_and_turnover_bound
+P186_NEGATIVE_CONTROL_MARGIN,Actual-time validation net edge must beat shuffled-time and shuffled-symbol controls by a predeclared positive margin.,1,negative_control_net_edge_margin
+P186_NO_TEST_UNTIL_REDESIGN_PASSES,Untouched test replay remains blocked until a redesigned family passes train/validation cost-aware gates.,1,test_rows_used_equals_0_and_test_replay_allowed_next_equals_0
+P186_ALLOWED_LATENCY_PROFILES,Only promotion-eligible latency profiles may support acceptance: P180_RETAIL_MARKETABLE_DEFAULT;P180_STRESSED_RETAIL. Zero-latency remains diagnostic-only.,1,phase180_latency_profile_binding

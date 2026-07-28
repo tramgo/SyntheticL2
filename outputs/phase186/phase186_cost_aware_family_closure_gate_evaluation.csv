@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P186_PHASE185_INTERPRETATION_COMPLETE,1,phase185_validation_interpretation_complete=1,hard
+P186_COST_DOMINATED_RESULT_ACKNOWLEDGED,1,phase185_cost_dominates_validation_edge=1,hard
+P186_CURRENT_FAMILIES_CLOSED,1,closed_family_rows=3,hard
+P186_TEST_REPLAY_REMAINS_CLOSED,1,phase185_test_replay_allowed_next=0,hard
+P186_PROMOTION_REMAINS_CLOSED,1,phase185_promotion_allowed=0,hard
+P186_REDESIGN_CONTRACT_PRECOMMITTED,1,redesign_contract_rows=6,hard
+P186_NEXT_BLUEPRINT_DECLARED_NO_REPLAY,1,blueprint_rows=2,hard

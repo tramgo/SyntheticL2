@@ -1,0 +1,15 @@
+metric,value,description
+phase186_closed_family_rows,3,Current family rows closed
+phase186_redesign_contract_rows,6,Redesign contract rows
+phase186_next_family_blueprint_rows,2,Next family blueprint rows
+phase186_best_closed_family_validation_net_bps_proxy_mean,-12.73287566065313,Best validation net bps among closed families
+phase186_gate_rows,7,Gates evaluated
+phase186_hard_gate_rows,7,Hard gates evaluated
+phase186_hard_gate_pass_rows,7,Hard gates passed
+phase186_current_family_set_closed,1,1 means current Phase179 family set is closed unless redesigned
+phase186_reuse_without_redesign_allowed,0,Closed family set cannot be reused unchanged
+phase186_test_replay_allowed_next,0,No test replay opened by Phase186
+phase186_promotion_allowed,0,No promotion opened
+phase186_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase186_forbidden_outputs,test_replay;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase186_next_best_action,build_phase187_cost_aware_sparse_receive_flow_candidate_no_test,Recommended next milestone

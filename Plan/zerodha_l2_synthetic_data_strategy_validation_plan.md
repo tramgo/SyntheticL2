@@ -5536,6 +5536,74 @@ Current interpretation: the current receive-flow strategy-family set should not 
 
 ---
 
+### Phase186 - Cost-aware Family Closure and Redesign Precommit
+
+**Date:** 2026-07-28
+
+Phase186 converts the Phase185 verdict into an explicit research-state decision. The current Phase179 receive-flow strategy-family set is closed as cost-dominated on validation and cannot be reused unchanged. Phase186 also precommits the design constraints required before any redesigned family can run another train/validation replay.
+
+Phase186 does not run a new replay, touch test rows, open promotion, open paper/live acceptance, emit orders/fills, calculate P&L or claim profitability.
+
+Phase186 outputs:
+
+- `outputs/phase186/phase186_closed_family_set.csv`;
+- `outputs/phase186/phase186_cost_aware_redesign_contract.csv`;
+- `outputs/phase186/phase186_next_family_blueprint.csv`;
+- `outputs/phase186/phase186_cost_aware_family_closure_gate_evaluation.csv`;
+- `outputs/phase186/phase186_cost_aware_family_closure_acceptance_summary.csv`;
+- `outputs/phase186/phase186_cost_aware_family_closure_precommit_report.md`;
+- `outputs/phase186/phase186_cost_aware_family_closure_manifest.json`.
+
+Current Phase186 evidence:
+
+- closed family rows: 3;
+- redesign contract rows: 6;
+- next family blueprint rows: 2;
+- best closed-family validation net return-bps proxy mean: -12.73287566065313;
+- gates evaluated: 7;
+- hard gates passed: 7 / 7;
+- current family set closed: 1;
+- reuse without redesign allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `build_phase187_cost_aware_sparse_receive_flow_candidate_no_test`.
+
+Closed current family set:
+
+- `P179_RECEIVE_CADENCE_SHOCK_CONTEXT`;
+- `P179_LIQUIDITY_CHURN_CONTEXT`;
+- `P179_SOURCE_QUALITY_REGIME_FILTER`.
+
+All three are closed with decision `closed_cost_dominated_validation`, because Phase185 found every retail/default and stressed-retail validation profile net-negative after Phase180 cost/latency bounds.
+
+Phase186 redesign contract requires:
+
+- cost-aware thresholding against net return-bps proxies, not gross label direction alone;
+- a predeclared minimum validation net edge above both retail/default and stressed-retail cost bounds;
+- explicit decision-frequency or turnover bounds so high event counts cannot quietly let costs dominate;
+- actual-time validation net edge above shuffled-time and shuffled-symbol controls by a predeclared margin;
+- no untouched-test replay until the redesigned family passes train/validation cost-aware gates;
+- only Phase180 promotion-eligible retail/default and stressed-retail latency profiles for acceptance, with zero-latency remaining diagnostic-only.
+
+Next family blueprint candidates:
+
+- `P186_NET_EDGE_SPARSE_RECEIVE_FLOW`: a sparse, cost-buffered threshold family that only acts when expected move exceeds spread, slippage and statutory costs;
+- `P186_EXECUTION_RISK_AVOIDANCE_FILTER`: a regime-avoidance filter that tries to avoid costly receive-flow/book-churn states rather than predict every short-horizon move.
+
+Current Phase149 evidence after Phase186:
+
+- phase rows discovered: 179;
+- runner phase rows: 177;
+- acceptance phase rows: 129;
+- hard global-state gates: 39 / 39 passed;
+- real receive-flow branch status: `current_family_set_closed_cost_aware_redesign_pending`;
+- next best action: `build_phase187_cost_aware_sparse_receive_flow_candidate_no_test`.
+
+Current interpretation: the current family set is closed cleanly. The next useful implementation is not to replay the same families again, but to build a redesigned cost-aware sparse candidate that treats realistic cost and latency as first-class constraints before any new train/validation dry-run.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
