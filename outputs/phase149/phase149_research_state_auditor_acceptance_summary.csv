@@ -1,9 +1,9 @@
 metric,value,description
-phase149_phase_rows,208,Phase rows discovered from scripts and outputs
-phase149_runner_phase_rows,206,Phase rows with at least one runner
-phase149_acceptance_phase_rows,158,Phase rows with acceptance summaries
+phase149_phase_rows,209,Phase rows discovered from scripts and outputs
+phase149_runner_phase_rows,207,Phase rows with at least one runner
+phase149_acceptance_phase_rows,159,Phase rows with acceptance summaries
 phase149_branch_rows,4,Current research branches summarized
-phase149_hard_gate_rows,200,Hard global-state gates evaluated
-phase149_hard_gate_pass_rows,200,Hard global-state gates passed
+phase149_hard_gate_rows,207,Hard global-state gates evaluated
+phase149_hard_gate_pass_rows,207,Hard global-state gates passed
 phase149_strategy_replay_allowed,0,Phase149 never unlocks strategy replay
-phase149_next_best_action,run_phase216_event_surprise_label_redesign_or_event_only_target_precommit_no_model_no_replay_no_test,Recommended next milestone
+phase149_next_best_action,run_phase217_event_only_design_matrix_precommit_no_model_no_replay_no_test,Recommended next milestone

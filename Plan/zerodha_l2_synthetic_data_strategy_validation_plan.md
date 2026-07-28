@@ -7215,6 +7215,59 @@ Current interpretation: Phase215 keeps the materialized event-surprise label bra
 
 ---
 
+### Phase216 - Event-only target precommit, no model/no replay/no test
+
+Phase216 converts the Phase215 sparse event-surprise label-quality interpretation into an explicit event-only target contract before any model-fit precommit. It allows only train/validation rows where `event_surprise_bucket == 1`, keeps the targets scoped to interpretable split/horizon/label combinations, and records excluded targets so sparse labels are not silently promoted into all-row predictors.
+
+Phase216 target allowlist:
+
+- H1: `up`, `down`, `vol_expansion`;
+- H5: `up`, `down`, `vol_expansion`;
+- H15: `vol_expansion` only.
+
+Phase216 excluded targets:
+
+- H15: `up`, `down`;
+- H60: `up`, `down`, `vol_expansion`.
+
+Phase216 results:
+
+- allowed event-only target rows: 7;
+- full train+validation target rows: 7;
+- excluded target rows: 10;
+- event-only target contract rows: 1;
+- control contract rows: 3;
+- Phase217 work-order rows: 1;
+- forbidden execution rows: 13;
+- hard gates: 7 / 7 passed;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase217_event_only_design_matrix_precommit_no_model_no_replay_no_test`.
+
+Phase216 decision:
+
+- `event_only_target_contract_precommitted_no_model_fit`;
+- event-surprise labels remain eligible only as event-conditioned targets, not all-row direction labels;
+- control contracts require all-row baseline, event-only shuffled control, and split-integrity negative control in Phase217;
+- no Phase216 artifact opens model fitting, prediction export, strategy replay, sealed test replay, order/fill/P&L simulation, promotion, paper/live acceptance, threshold widening, or profitability claims.
+
+Current Phase149 evidence after Phase216:
+
+- phase rows discovered: 209;
+- runner phase rows: 207;
+- acceptance phase rows: 159;
+- hard global-state gates: 207 / 207 passed;
+- real receive-flow branch status: `event_surprise_event_only_target_precommit_complete_phase217_design_matrix_precommit_pending_no_model_no_replay_no_test`;
+- next best action: `run_phase217_event_only_design_matrix_precommit_no_model_no_replay_no_test`.
+
+Current interpretation: Phase216 keeps the branch alive but tightens it again. The next milestone must construct a Phase217 event-only design-matrix precommit with explicit controls and split integrity before any model fitting can resume. This is a small gate, yes, but it is the kind of small gate that prevents the research from quietly cheating. Tiny bouncer at the door, clipboard and all.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

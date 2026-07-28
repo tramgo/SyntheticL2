@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P216_PHASE215_COMPLETE,True,phase215_complete=1,hard
+P216_PHASE215_PASSING_ROWS_POSITIVE,True,passing_rows=14,hard
+P216_ALLOWLIST_RECORDED,True,allowlist_rows=7; full_train_validation_rows=7,hard
+P216_EXCLUSION_LEDGER_RECORDED,True,exclusion_rows=10,hard
+P216_EVENT_ONLY_CONTRACT_RECORDED,True,contract_rows=1,hard
+P216_CONTROLS_AND_WORK_ORDER_RECORDED,True,controls=3; work_order=1,hard
+P216_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

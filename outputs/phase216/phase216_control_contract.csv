@@ -1,0 +1,4 @@
+phase216_control_id,control_type,requirement,required_for_phase217,model_fit_allowed_now,strategy_replay_allowed
+P216_EVENT_ONLY_BASE_RATE_CONTROL,base_rate,Phase217 must compute event-only base-rate controls for each allowed label/horizon before any future fit.,1,0,0
+P216_EVENT_TIME_SHUFFLE_CONTROL,time_shuffle,Phase217 must preserve a shuffled event-time control to test whether event timing matters beyond label base rates.,1,0,0
+P216_SEALED_TEST_ZERO_USE_CONTROL,sealed_test,Phase217 may inventory sealed test rows but must use zero sealed test rows.,1,0,0

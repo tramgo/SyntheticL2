@@ -1,0 +1,2 @@
+phase217_work_order_id,work_order,allowed_target_rows,full_train_validation_target_rows,required_control_rows,allowed_next_scope,model_fit_allowed_next,strategy_replay_allowed,test_replay_allowed_next
+P217_EVENT_ONLY_DESIGN_MATRIX_PRECOMMIT,Precommit an event-only design matrix using only allowed Phase216 label/horizon rows and event_surprise_bucket == 1 filter.,7,7,3,design_matrix_contract_only_no_model_no_replay_no_test,0,0,0

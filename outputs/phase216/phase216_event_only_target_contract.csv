@@ -1,0 +1,2 @@
+phase216_contract_id,contract,allowed_target_rows,allowed_full_train_validation_target_rows,excluded_split_horizon_label_rows,sealed_test_policy,threshold_widening_allowed,model_fit_allowed_now,strategy_replay_allowed,test_replay_allowed_next,profitability_claim_allowed
+P216_EVENT_ONLY_TARGET_CONTRACT,Use Phase214 event-surprise labels only on rows where event_surprise_bucket == 1; do not train all-row predictors on sparse conditional labels.,7,7,10,record_inventory_only_zero_rows_used,0,0,0,0,0

@@ -1,0 +1,20 @@
+metric,value,description
+phase216_event_only_target_rows,7,Allowed event-only target rows
+phase216_full_train_validation_target_rows,7,Allowed targets with both train and validation interpretable
+phase216_excluded_target_rows,10,Excluded split/horizon/label rows
+phase216_event_only_contract_rows,1,Event-only target contract rows
+phase216_control_contract_rows,3,Control contract rows
+phase216_phase217_work_order_rows,1,Phase217 work-order rows
+phase216_forbidden_execution_rows,13,Forbidden execution rows
+phase216_gate_rows,7,Gates evaluated
+phase216_hard_gate_rows,7,Hard gates evaluated
+phase216_hard_gate_pass_rows,7,Hard gates passed
+phase216_event_surprise_event_only_target_precommit_complete,1,1 means Phase216 completed
+phase216_model_fit_allowed_next,0,No model fit opened
+phase216_strategy_replay_allowed,0,No strategy replay opened
+phase216_test_replay_allowed_next,0,No test replay opened
+phase216_promotion_allowed,0,No promotion opened
+phase216_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase216_profitability_claim_allowed,0,No profitability claim is allowed
+phase216_forbidden_outputs,model_fit;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase216_next_best_action,run_phase217_event_only_design_matrix_precommit_no_model_no_replay_no_test,Recommended next milestone
