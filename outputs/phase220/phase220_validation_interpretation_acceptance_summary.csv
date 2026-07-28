@@ -1,0 +1,21 @@
+metric,value,description
+phase220_interpretation_rows,21,Validation interpretation rows
+phase220_passing_candidate_rows,5,Passing validation candidate rows
+phase220_candidate_family_rows,1,Candidate model families
+phase220_best_mse_improvement_vs_base,0.0100934445514009,Best validation MSE improvement versus base rate
+phase220_best_improvement_vs_shuffle,0.010729979734094786,Best validation MSE improvement versus shuffled control
+phase220_best_validation_correlation,0.2205753672014153,Best validation correlation
+phase220_phase221_work_order_rows,1,Phase221 work-order rows
+phase220_forbidden_execution_rows,11,Forbidden execution rows
+phase220_gate_rows,6,Gates evaluated
+phase220_hard_gate_rows,6,Hard gates evaluated
+phase220_hard_gate_pass_rows,6,Hard gates passed
+phase220_event_only_model_fit_validation_interpretation_complete,1,1 means Phase220 completed
+phase220_candidate_opened_for_phase221_precommit,1,1 means Phase221 may precommit or stop a signal/replay contract
+phase220_strategy_replay_allowed,0,No strategy replay opened
+phase220_test_replay_allowed_next,0,No test replay opened
+phase220_promotion_allowed,0,No promotion opened
+phase220_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase220_profitability_claim_allowed,0,No profitability claim is allowed
+phase220_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase220_next_best_action,run_phase221_event_only_signal_replay_precommit_or_stop_no_replay_no_test,Recommended next milestone

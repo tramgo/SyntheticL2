@@ -142,6 +142,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 218,outputs\phase218,True,11,outputs\phase218\phase218_model_fit_precommit_acceptance_summary.csv,outputs\phase218\phase218_model_fit_precommit_manifest.json,False
 219,outputs\phase219,True,9,outputs\phase219\phase219_model_fit_acceptance_summary.csv,outputs\phase219\phase219_model_fit_manifest.json,False
 22,outputs\phase22,True,6,,outputs\phase22\phase22_real_data_integration_manifest.json,False
+220,outputs\phase220,True,8,outputs\phase220\phase220_validation_interpretation_acceptance_summary.csv,outputs\phase220\phase220_validation_interpretation_manifest.json,False
 23,outputs\phase23,True,6,,outputs\phase23\phase23_key_risk_register_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False

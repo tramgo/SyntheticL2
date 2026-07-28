@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P220_PHASE219_COMPLETE,True,phase219_complete=1,hard
+P220_VALIDATION_INTERPRETATION_RECORDED,True,validation_rows=21,hard
+P220_PASSING_CANDIDATES_RECORDED,True,passing_rows=5,hard
+P220_CANDIDATE_FAMILY_RECORDED,True,candidate_families=1,hard
+P220_PHASE221_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P220_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

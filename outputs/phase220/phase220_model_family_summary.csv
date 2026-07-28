@@ -1,0 +1,4 @@
+model_family,validation_rows,passing_validation_rows,best_mse_improvement_vs_base,best_improvement_vs_shuffle,best_correlation,candidate_family_for_phase221,strategy_replay_allowed,test_replay_allowed_next
+class_weighted_regularized_logistic_classification,7,0,0.0020335589358407,0.0021182792038202947,0.206414143909287,0,0,0
+event_only_sparse_classification_diagnostic,7,0,0.0002681591308011,0.000571275734688903,0.2129576450474831,0,0,0
+low_depth_tree_or_stump_diagnostic,7,5,0.0100934445514009,0.010729979734094786,0.2205753672014153,1,0,0

@@ -7436,6 +7436,57 @@ Current interpretation: Phase219 gives us the first real model-fit evidence in t
 
 ---
 
+### Phase220 - Event-only model-fit validation interpretation, no replay/no test
+
+Phase220 interprets the Phase219 train/validation dry-run results against event-only base-rate and shuffled-event controls. It does not run replay and does not use sealed test data. Its only allowed output is a Phase221 precommit-or-stop work order for the surviving validation candidates.
+
+Phase220 interpretation thresholds:
+
+- minimum validation rows: 10,000;
+- minimum MSE improvement versus event-only base rate: 0.003;
+- minimum MSE improvement versus shuffled-event control: 0.0005;
+- minimum validation correlation: 0.10.
+
+Phase220 results:
+
+- validation interpretation rows: 21;
+- passing validation candidate rows: 5;
+- candidate model-family rows: 1;
+- best validation MSE improvement versus base rate: 0.010093;
+- best validation MSE improvement versus shuffled control: 0.010730;
+- best validation correlation: 0.220575;
+- Phase221 work-order rows: 1;
+- forbidden execution rows: 11;
+- hard gates: 6 / 6 passed;
+- candidate opened for Phase221 precommit: 1;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase221_event_only_signal_replay_precommit_or_stop_no_replay_no_test`.
+
+Phase220 candidate interpretation:
+
+- surviving model family: `low_depth_tree_or_stump_diagnostic`;
+- passing candidates: 5;
+- passing horizons: H1 and H5 only;
+- H15 fails interpretation because validation sample size and improvement are insufficient;
+- logistic and sparse-classification diagnostics do not pass the full base-rate/shuffled/correlation threshold set.
+
+Current Phase149 evidence after Phase220:
+
+- phase rows discovered: 213;
+- runner phase rows: 211;
+- acceptance phase rows: 163;
+- hard global-state gates: 238 / 238 passed;
+- real receive-flow branch status: `event_only_model_fit_validation_interpretation_complete_phase221_signal_replay_precommit_or_stop_pending_no_replay_no_test`;
+- next best action: `run_phase221_event_only_signal_replay_precommit_or_stop_no_replay_no_test`.
+
+Current interpretation: Phase220 gives a narrow but real validation-screened candidate family. The next milestone may precommit a signal/replay contract or stop, but it must still be a precommit decision only. No replay, no sealed test, and no profitability claim are open yet. The candidate is at the velvet rope; Phase221 decides whether it even gets a wristband.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
