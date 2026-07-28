@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P195_PHASE194_CLOSURE_COMPLETE,1,phase194_fragility_decision_complete=1,hard
+P195_TRAIN_ONLY_SELECTION,1,selected_candidate_rows=22,hard
+P195_VALIDATION_EXTENSION_EVALUATED_NO_TEST,1,test_rows_used=0; decision_rows=22,hard
+P195_DATE_AND_SYMBOL_BREADTH_GATES_APPLIED,1,date_positive_fraction;symbol_positive_fraction;validation_extension_gate_pass,hard
+P195_PASSING_CANDIDATE_RECORDED,1,passing_candidates=0,hard
+P195_NO_TEST_REPLAY_OR_PROMOTION,1,test_replay_allowed_next=0; promotion_allowed=0,hard

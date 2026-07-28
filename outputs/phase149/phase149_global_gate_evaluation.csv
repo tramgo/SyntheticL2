@@ -75,5 +75,9 @@ phase149_receive_flow_phase194_fragility_decision_recorded,True,1,1,hard
 phase149_receive_flow_phase194_test_replay_closed,True,0,0,hard
 phase149_receive_flow_phase194_promotion_closed,True,0,0,hard
 phase149_receive_flow_phase194_paper_live_closed,True,0,0,hard
+phase149_receive_flow_phase195_redesign_search_recorded,True,1,1,hard
+phase149_receive_flow_phase195_test_replay_closed,True,0,0,hard
+phase149_receive_flow_phase195_promotion_closed,True,0,0,hard
+phase149_receive_flow_phase195_paper_live_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard

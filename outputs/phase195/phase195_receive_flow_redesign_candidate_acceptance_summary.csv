@@ -1,0 +1,18 @@
+metric,value,description
+phase195_candidate_grid_rows,576,Redesigned candidate grid rows
+phase195_train_selected_candidate_rows,22,Train-selected candidate rows
+phase195_candidate_decision_rows,22,Candidate decision rows
+phase195_passing_extension_gate_candidates,0,Candidates passing date and symbol breadth extension gates
+phase195_best_candidate_id,P195_TOP5_FOLLOW_I80_S1p5_Z1_Q1_R50,Top redesign candidate by extension screen
+phase195_best_min_extension_net_bps,-12.410960684628158,Best candidate minimum extension net bps
+phase195_best_date_positive_fraction,0.0,Best candidate date-positive fraction
+phase195_best_symbol_positive_fraction,0.0,Best candidate symbol-positive fraction
+phase195_gate_rows,6,Gates evaluated
+phase195_hard_gate_rows,6,Hard gates evaluated
+phase195_hard_gate_pass_rows,6,Hard gates passed
+phase195_redesign_search_complete,1,1 means Phase195 completed
+phase195_test_replay_allowed_next,0,No test replay opened
+phase195_promotion_allowed,0,No promotion opened
+phase195_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase195_forbidden_outputs,test_result;test_replay_execution;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase195_next_best_action,redesign_or_expand_feature_family_no_test,Recommended next milestone

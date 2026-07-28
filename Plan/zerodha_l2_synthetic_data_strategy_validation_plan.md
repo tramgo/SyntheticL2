@@ -6141,6 +6141,49 @@ Current Phase149 evidence after Phase194:
 
 Current interpretation: the plan should stop treating the Phase187 sparse candidate as a likely test candidate. The next implementation milestone should redesign the receive-flow family with explicit date-consistency and symbol-breadth gates, or run a broader diagnostic data pull only to inform redesign, not to rescue this closed candidate.
 
+### Phase195 - Receive-flow redesign candidate search with extension gates
+
+Phase195 implements the Phase194 redesign blueprint rather than spending the untouched test split.
+
+Search discipline:
+
+- selection split: train only;
+- evaluation splits: original validation plus unassigned validation-extension dates;
+- excluded split: `test_untouched`;
+- evaluated latency profiles: `P180_RETAIL_MARKETABLE_DEFAULT` and `P180_STRESSED_RETAIL`;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+The redesigned grid tested follow/fade variants of top-five and top-of-book imbalance with tighter spread, receive-event z-score, quote-churn and decision-rate filters.
+
+Phase195 results:
+
+- redesigned candidate grid rows: 576;
+- train-selected candidate rows: 22;
+- candidate decision rows: 22;
+- candidates passing extension date/symbol gates: 0;
+- best candidate by extension screen: `P195_TOP5_FOLLOW_I80_S1p5_Z1_Q1_R50`;
+- best candidate minimum extension net: -12.4110 bps;
+- best candidate date-positive fraction: 0.0;
+- best candidate symbol-positive fraction: 0.0;
+- hard gates: 6 / 6 passed.
+
+Interpretation:
+
+The stricter redesign search did not find a receive-flow candidate that survived the extension gates. This is stronger evidence than Phase194 alone: even after changing thresholds, side mode and quote-churn filters, the train-selected receive-flow candidates did not generalize to the validation-extension dates.
+
+Current Phase149 evidence after Phase195:
+
+- phase rows discovered: 188;
+- runner phase rows: 186;
+- acceptance phase rows: 138;
+- hard global-state gates: 82 / 82 passed;
+- real receive-flow branch status: `redesign_search_no_extension_gate_survivor_no_test`;
+- next best action: `redesign_or_expand_feature_family_no_test`.
+
+Current interpretation: the active receive-flow line should move beyond this simple imbalance/cadence grid. The next useful research move is to expand the feature family or alter the model class while preserving the Phase195 gates: train-only selection, validation-extension rejection, no untouched test replay, no promotion, and no paper/live acceptance.
+
 ---
 
 ## 25. Final Principle
