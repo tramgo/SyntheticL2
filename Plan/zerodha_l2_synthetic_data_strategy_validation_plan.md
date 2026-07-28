@@ -5053,6 +5053,62 @@ Current interpretation: Phase176 and Phase177 have now produced the real receive
 
 ---
 
+### Phase178 - Receive-flow Feature Handoff Precommit
+
+**Date:** 2026-07-28
+
+Phase178 converts the audited Phase176/177 receive-flow feature evidence into a downstream-use contract. It does not run a strategy and does not open replay. Its purpose is to prevent the next research step from silently turning source-quality features into trading signals without explicit train/test, leakage, blocklist and cost/latency precommit controls.
+
+Phase178 outputs:
+
+- `outputs/phase178/phase178_allowed_feature_handoff.csv`;
+- `outputs/phase178/phase178_train_test_split_policy.csv`;
+- `outputs/phase178/phase178_blocklist_carry_forward_policy.csv`;
+- `outputs/phase178/phase178_handoff_gate_evaluation.csv`;
+- `outputs/phase178/phase178_receive_flow_feature_handoff_precommit_acceptance_summary.csv`;
+- `outputs/phase178/phase178_receive_flow_feature_handoff_precommit_report.md`;
+- `outputs/phase178/phase178_receive_flow_feature_handoff_precommit_manifest.json`.
+
+Current Phase178 evidence:
+
+- handoff feature rows: 6;
+- train/test policy rows: 1;
+- blocklist policy rows: 3;
+- gates evaluated: 7;
+- hard gates passed: 7 / 7;
+- handoff ready: 1;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`.
+
+Declared chronological split:
+
+- train dates: `2026-07-08`, `2026-07-09`, `2026-07-10`;
+- validation date: `2026-07-13`;
+- test date: `2026-07-14`;
+- fit policy: baselines, transforms and model choices fit only on train dates;
+- validation policy: validation date may select only predeclared thresholds after Phase179;
+- final test policy: test date remains untouched until replay precommit passes.
+
+Phase178 carries forward these blocked-family policies:
+
+- do not reuse Phase164 S01-S07/S09 synthetic signal formulas or thresholds;
+- cross-symbol arrival synchrony may be context only; the Phase167 fixed S08 lead-lag score remains forbidden;
+- top-five depth churn may describe feed/book context only; passive queue/fill claims from the Phase131-136 branch remain closed.
+
+Current Phase149 evidence after Phase178:
+
+- phase rows discovered: 171;
+- runner phase rows: 169;
+- acceptance phase rows: 121;
+- hard global-state gates: 14 / 14 passed;
+- real receive-flow branch status: `handoff_precommitted_strategy_family_pending`;
+- next best action: `build_phase179_strategy_family_precommit_no_replay`.
+
+Current interpretation: the feature lake and quality audit are now handed off in a controlled way. The next phase should define a Phase179 strategy-family precommit without replay: candidate families, allowed feature inputs, explicit train/validation/test usage, leakage checks, blocklist overlap checks, and required Zerodha cost/latency catalog bindings before any event replay or P&L calculation is allowed.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,12 @@
+metric,value,description
+phase178_handoff_feature_rows,6,Feature families handed off for future precommit only
+phase178_train_test_policy_rows,1,Chronological train/validation/test split policies
+phase178_blocklist_policy_rows,3,Blocked-family policies carried forward
+phase178_gate_rows,7,Gates evaluated
+phase178_hard_gate_rows,7,Hard gates evaluated
+phase178_hard_gate_pass_rows,7,Hard gates passed
+phase178_handoff_ready,1,1 means Phase179 precommit may be built
+phase178_strategy_replay_allowed,0,No strategy replay opened
+phase178_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase178_forbidden_outputs,buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase178_next_best_action,build_phase179_strategy_family_precommit_no_replay,Recommended next milestone

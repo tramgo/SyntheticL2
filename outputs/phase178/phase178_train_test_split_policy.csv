@@ -1,0 +1,2 @@
+split_id,train_dates,validation_dates,test_dates,fit_policy,selection_policy,final_test_policy,minimum_dates_required,split_pass
+P178_CHRONOLOGICAL_3_1_1,2026-07-08;2026-07-09;2026-07-10,2026-07-13,2026-07-14,fit baselines/transforms/model choices on train_dates only,validation_dates may select predeclared thresholds only after Phase179,test_dates are untouched until the replay phase precommit passes,5,1

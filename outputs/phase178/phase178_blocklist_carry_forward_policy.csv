@@ -1,0 +1,4 @@
+blocked_source,handoff_rule,overlap_allowed
+PHASE164_S01_TO_S07_S09_SYNTHETIC_FORMS,feature may not recreate blocked synthetic signal formulas or thresholds,0
+PHASE167_S08_FIXED_CROSS_SYMBOL_LEAD_LAG_FORM,cross-symbol arrival synchrony is context only; fixed S08 lead-lag score remains forbidden,0
+PHASE131_TO_136_TOP_FIVE_DEPTH_PASSIVE_BRANCH,depth refresh/churn may describe feed/book context only; passive queue/fill claims remain closed,0

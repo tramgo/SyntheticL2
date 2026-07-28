@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P178_PHASE176_FEATURES_MATERIALIZED,1,phase176_features_materialized=1,hard
+P178_PHASE177_QUALITY_AUDIT_RAN,1,phase177_feature_quality_audit_ran=1,hard
+P178_COVERAGE_COMPLETE,1,coverage_pass_rows=20/20,hard
+P178_PARTITION_QUALITY_CLEAN,1,missing_required=0;duplicate_buckets=0;monotonic_violations=0;partitions=640,hard
+P178_HANDOFF_FEATURES_DECLARED,1,handoff_feature_rows=6,hard
+P178_CHRONOLOGICAL_SPLIT_DECLARED,1,"{'split_id': 'P178_CHRONOLOGICAL_3_1_1', 'train_dates': '2026-07-08;2026-07-09;2026-07-10', 'validation_dates': '2026-07-13', 'test_dates': '2026-07-14', 'fit_policy': 'fit baselines/transforms/model choices on train_dates only', 'selection_policy': 'validation_dates may select predeclared thresholds only after Phase179', 'final_test_policy': 'test_dates are untouched until the replay phase precommit passes', 'minimum_dates_required': 5, 'split_pass': 1}",hard
+P178_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,handoff precommit only; forbidden_outputs=buy_sell_signal;side;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard

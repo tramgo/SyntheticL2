@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-28T16:14:15.541412+00:00",
+  "scope": "phase178_receive_flow_feature_handoff_precommit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "bcdb06552cbad04dce6a86ee81457bea395fbca0",
+  "configuration_hash": "1ca5b71490e980c09fbf1384835f0eddde5634dc4bbeb222df9658fb7693d325",
+  "random_seed": "none_deterministic_handoff_precommit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase178_receive_flow_feature_handoff_precommit",
+  "cost_model_version": "not_applicable_no_replay",
+  "latency_model_version": "not_applicable_no_replay",
+  "creation_timestamp": "2026-07-28T16:14:15.541412+00:00"
+}
