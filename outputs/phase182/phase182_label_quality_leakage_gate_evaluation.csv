@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P182_PHASE181_LABELS_MATERIALIZED,1,phase181_labels_materialized=1,hard
+P182_PHASE180_PRECOMMIT_READY,1,phase180_precommit_ready=1,hard
+P182_ALL_LABEL_PARTITIONS_PASS,1,partitions=640;failed_partitions=0,hard
+P182_NO_FORBIDDEN_OUTPUT_COLUMNS,1,forbidden_column_partitions=0,hard
+P182_SPLIT_ROLES_AND_TEST_UNTOUCHED_PRESENT,1,split_roles=test_untouched;train;validation,hard
+P182_LABEL_AVAILABILITY_THRESHOLD,1,min_label_available_fraction=0.993243,hard
+P182_NO_REPLAY_OR_PROFITABILITY_OUTPUTS,1,label quality/leakage audit only; no replay or PnL artifacts emitted,hard

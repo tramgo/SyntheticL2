@@ -1,0 +1,13 @@
+metric,value,description
+phase182_partition_audit_rows,640,Label partitions audited
+phase182_split_audit_rows,3,Split leakage audit rows
+phase182_failed_partitions,0,Failed label partitions
+phase182_forbidden_column_partitions,0,Partitions with forbidden output columns
+phase182_min_label_available_fraction,0.9932432432432432,Minimum partition label availability
+phase182_gate_rows,7,Gates evaluated
+phase182_hard_gate_rows,7,Hard gates evaluated
+phase182_hard_gate_pass_rows,7,Hard gates passed
+phase182_label_quality_leakage_audit_pass,1,1 means label quality/leakage audit passed
+phase182_strategy_replay_allowed,0,No strategy replay opened
+phase182_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase182_next_best_action,build_phase183_replay_readiness_precommit_no_pnl,Recommended next milestone

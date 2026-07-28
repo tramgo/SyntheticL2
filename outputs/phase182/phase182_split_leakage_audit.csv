@@ -1,0 +1,4 @@
+split_role,partitions,rows,test_untouched_rows,failed_partitions,min_label_available_fraction,leakage_policy
+test_untouched,128,567640,567640,0,0.9946949602122016,test_untouched rows may exist as labels but must not be used for selection before replay precommit
+train,384,1080009,0,0,0.9932432432432432,test_untouched rows may exist as labels but must not be used for selection before replay precommit
+validation,128,561515,0,0,0.9973474801061007,test_untouched rows may exist as labels but must not be used for selection before replay precommit

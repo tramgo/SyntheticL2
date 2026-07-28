@@ -1,6 +1,6 @@
 # Phase149 Research State Auditor
 
-Generated UTC: 2026-07-28T16:27:20.953129+00:00
+Generated UTC: 2026-07-28T16:31:33.462862+00:00
 
 Phase149 reconciles current phase scripts, output evidence, branch states, and replay gates.
 It does not run strategies, contact Azure, import data, or unlock replay.
@@ -9,21 +9,21 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | metric | value | description |
 | --- | --- | --- |
-| phase149_phase_rows | 174 | Phase rows discovered from scripts and outputs |
-| phase149_runner_phase_rows | 172 | Phase rows with at least one runner |
-| phase149_acceptance_phase_rows | 124 | Phase rows with acceptance summaries |
+| phase149_phase_rows | 175 | Phase rows discovered from scripts and outputs |
+| phase149_runner_phase_rows | 173 | Phase rows with at least one runner |
+| phase149_acceptance_phase_rows | 125 | Phase rows with acceptance summaries |
 | phase149_branch_rows | 4 | Current research branches summarized |
-| phase149_hard_gate_rows | 20 | Hard global-state gates evaluated |
-| phase149_hard_gate_pass_rows | 20 | Hard global-state gates passed |
+| phase149_hard_gate_rows | 22 | Hard global-state gates evaluated |
+| phase149_hard_gate_pass_rows | 22 | Hard global-state gates passed |
 | phase149_strategy_replay_allowed | 0 | Phase149 never unlocks strategy replay |
-| phase149_next_best_action | build_phase182_label_quality_leakage_audit_no_replay | Recommended next milestone |
+| phase149_next_best_action | build_phase183_replay_readiness_precommit_no_pnl | Recommended next milestone |
 
 ## Branch Status Summary
 
 | branch | status | evidence | current_next_action |
 | --- | --- | --- | --- |
 | real_l2_anchor_gate | gated | Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. | use_phase174_secure_download_orchestrator_for_required_real_l2_dates |
-| real_receive_flow_source | labels_materialized_quality_leakage_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1; Phase178 handoff_ready=1; Phase179 precommit_ready=1; Phase180 precommit_ready=1; Phase181 labels_materialized=1. | build_phase182_label_quality_leakage_audit_no_replay |
+| real_receive_flow_source | label_quality_leakage_audited_replay_readiness_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1; Phase178 handoff_ready=1; Phase179 precommit_ready=1; Phase180 precommit_ready=1; Phase181 labels_materialized=1; Phase182 label_audit_pass=1. | build_phase183_replay_readiness_precommit_no_pnl |
 | top_five_depth_passive | closed_clean_falsification | Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification. | do_not_open_phase134_or_phase135_for_this_branch |
 | dense_synthetic_replay | not_promoted | Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates. | only_continue_if_precommitted_and_not_blocklisted |
 
@@ -49,6 +49,8 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | phase149_receive_flow_cost_latency_label_replay_gate_closed | True | 0 | 0 | hard |
 | phase149_receive_flow_label_materialization_recorded | True | 1 | 1 | hard |
 | phase149_receive_flow_label_materialization_replay_gate_closed | True | 0 | 0 | hard |
+| phase149_receive_flow_label_quality_leakage_audit_recorded | True | 1 | 1 | hard |
+| phase149_receive_flow_label_quality_leakage_replay_gate_closed | True | 0 | 0 | hard |
 | phase149_deep_book_branch_closed | True | 1 | 1 | hard |
 | phase149_no_promoted_strategy_replay | True | 0 | 0 | hard |
 
@@ -56,7 +58,6 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 
 | phase | runner_count | output_rows | has_runner | has_outputs | has_acceptance_summary | status | branch | strategy_replay_allowed | next_action | runner | output_dir |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 97 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase97_generator_recalibration_patch_plan.py | outputs\phase97 |
 | 98 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase98_generator_calibration_config_contract.py | outputs\phase98 |
 | 99 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase99_generator_calibration_wiring_verifier.py | outputs\phase99 |
 | 100 | 1 | 1 | True | True | True | evidence_present |  |  |  | scripts\run_phase100_calibrated_generator_quality_smoke.py | outputs\phase100 |
@@ -136,3 +137,4 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | 179 | 1 | 1 | True | True | True | strategy_family_precommitted_no_replay | real_receive_flow_source | 0 | build_phase180_cost_latency_bound_label_precommit_no_replay | scripts\run_phase179_strategy_family_precommit.py | outputs\phase179 |
 | 180 | 1 | 1 | True | True | True | cost_latency_label_precommitted_no_replay | real_receive_flow_source | 0 | build_phase181_label_materialization_no_replay | scripts\run_phase180_cost_latency_label_precommit.py | outputs\phase180 |
 | 181 | 1 | 1 | True | True | True | labels_materialized_no_replay | real_receive_flow_source | 0 | build_phase182_label_quality_leakage_audit_no_replay | scripts\run_phase181_label_materialization.py | outputs\phase181 |
+| 182 | 1 | 1 | True | True | True | label_quality_leakage_audited_no_replay | real_receive_flow_source | 0 | build_phase183_replay_readiness_precommit_no_pnl | scripts\run_phase182_label_quality_leakage_audit.py | outputs\phase182 |
