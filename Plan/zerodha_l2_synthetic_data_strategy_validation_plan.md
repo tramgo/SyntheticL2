@@ -5343,6 +5343,72 @@ Current interpretation: the label lake has passed partition-level quality and le
 
 ---
 
+### Phase183 - Replay-readiness Precommit, No P&L
+
+**Date:** 2026-07-28
+
+Phase183 precommits the exact conditions under which a later strategy replay implementation may be built over the audited real receive-flow feature and label stack. It does not run replay, emit signals, emit orders, model fills, calculate P&L, claim profitability or open paper/live acceptance.
+
+Phase183 outputs:
+
+- `outputs/phase183/phase183_replay_input_contract.csv`;
+- `outputs/phase183/phase183_future_replay_gate_contract.csv`;
+- `outputs/phase183/phase183_replay_kill_switch_catalog.csv`;
+- `outputs/phase183/phase183_replay_readiness_gate_evaluation.csv`;
+- `outputs/phase183/phase183_replay_readiness_precommit_acceptance_summary.csv`;
+- `outputs/phase183/phase183_replay_readiness_precommit_report.md`;
+- `outputs/phase183/phase183_replay_readiness_precommit_manifest.json`.
+
+Current Phase183 evidence:
+
+- replay input contract rows: 3;
+- future replay gate contract rows: 7;
+- kill-switch rows: 4;
+- gates evaluated: 8;
+- hard gates passed: 8 / 8;
+- replay readiness precommitted: 1;
+- strategy replay allowed: 0;
+- P&L allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`;
+- next best action: `build_phase184_train_validation_replay_dry_run_no_test_no_promotion`.
+
+Replay input contracts currently cover the three Phase179 strategy-family candidates:
+
+- source-quality regime filter;
+- liquidity-churn context;
+- receive-cadence shock context.
+
+Phase183 future replay gates require:
+
+- train-only fitting for transforms, baselines and thresholds;
+- validation-only family and threshold selection;
+- untouched test rows until a replay runner has produced train/validation-only readiness evidence;
+- Phase180 Zerodha cost catalog and retail/stressed latency binding before any net metric;
+- blocklist overlap scan against previously rejected strategy forms;
+- shuffled-time and shuffled-symbol negative controls;
+- predeclared kill-switches before any future promotion claim.
+
+Predeclared kill switches reject or invalidate future replay if:
+
+- apparent edge exists only under zero-latency/control assumptions;
+- test rows influence selection;
+- a candidate overlaps blocked forms from prior phases;
+- any net metric is computed without Phase180 cost and latency profile binding.
+
+Current Phase149 evidence after Phase183:
+
+- phase rows discovered: 176;
+- runner phase rows: 174;
+- acceptance phase rows: 126;
+- hard global-state gates: 25 / 25 passed;
+- real receive-flow branch status: `replay_readiness_precommitted_train_validation_dry_run_pending`;
+- next best action: `build_phase184_train_validation_replay_dry_run_no_test_no_promotion`.
+
+Current interpretation: replay design is now precommitted, but the experiment has still not produced strategy orders, fills, P&L or profitability evidence. Phase184 may implement a dry-run replay over train and validation only, with no test-date usage and no promotion. The first useful replay result should be treated as a falsification screen, not as proof of tradability.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

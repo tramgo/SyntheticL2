@@ -120,6 +120,7 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         180: Path("outputs/phase180/phase180_cost_latency_label_precommit_acceptance_summary.csv"),
         181: Path("outputs/phase181/phase181_label_materialization_acceptance_summary.csv"),
         182: Path("outputs/phase182/phase182_label_quality_leakage_audit_acceptance_summary.csv"),
+        183: Path("outputs/phase183/phase183_replay_readiness_precommit_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -306,6 +307,16 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "strategy_replay_allowed": as_int(metric_value(path, "phase182_strategy_replay_allowed", 0)),
             "next_action": metric_value(path, "phase182_next_best_action", ""),
         }
+    if phase == 183:
+        readiness = as_int(metric_value(path, "phase183_replay_readiness_precommitted", 0))
+        return {
+            "branch": "real_receive_flow_source",
+            "state": "replay_readiness_precommitted_no_pnl" if readiness else "replay_readiness_precommit_gated",
+            "replay_readiness_precommitted": readiness,
+            "strategy_replay_allowed": as_int(metric_value(path, "phase183_strategy_replay_allowed", 0)),
+            "pnl_allowed": as_int(metric_value(path, "phase183_pnl_allowed", 0)),
+            "next_action": metric_value(path, "phase183_next_best_action", ""),
+        }
     return {}
 
 
@@ -338,6 +349,7 @@ def build_phase_ledger(scripts: pd.DataFrame, outputs: pd.DataFrame) -> pd.DataF
                 "status": status,
                 "branch": metric_status.get("branch", ""),
                 "strategy_replay_allowed": metric_status.get("strategy_replay_allowed", ""),
+                "pnl_allowed": metric_status.get("pnl_allowed", ""),
                 "next_action": metric_status.get("next_action", ""),
                 "runner": "|".join(script_rows["runner"].astype(str).tolist()) if has_runner else "",
                 "output_dir": "|".join(output_rows["output_dir"].astype(str).tolist()) if has_outputs else "",
@@ -356,8 +368,9 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase180 = phase_status_from_metrics(180)
     phase181 = phase_status_from_metrics(181)
     phase182 = phase_status_from_metrics(182)
+    phase183 = phase_status_from_metrics(183)
     phase172 = phase_status_from_metrics(172)
-    real_receive_next = phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_next = phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
     ready_dates = as_int(phase172.get("ready_receive_flow_dates", 0))
     additional_dates_needed = as_int(phase172.get("additional_dates_needed", 0))
     features_materialized = as_int(phase176.get("features_materialized", 0))
@@ -367,6 +380,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     cost_label_ready = as_int(phase180.get("precommit_ready", 0))
     labels_materialized = as_int(phase181.get("labels_materialized", 0))
     label_audit_pass = as_int(phase182.get("label_quality_leakage_audit_pass", 0))
+    replay_readiness = as_int(phase183.get("replay_readiness_precommitted", 0))
     if ready_dates >= 5 and additional_dates_needed == 0:
         real_receive_status = "source_gate_open_feature_materialization_pending" if features_materialized == 0 else "feature_quality_pending"
         if quality_audit_ran == 1:
@@ -381,6 +395,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
             real_receive_status = "labels_materialized_quality_leakage_pending"
         if label_audit_pass == 1:
             real_receive_status = "label_quality_leakage_audited_replay_readiness_pending"
+        if replay_readiness == 1:
+            real_receive_status = "replay_readiness_precommitted_train_validation_dry_run_pending"
     else:
         real_receive_status = "gated_waiting_for_two_more_real_l2_dates"
     real_receive_evidence = (
@@ -393,7 +409,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         f"Phase179 precommit_ready={phase179.get('precommit_ready', '')}; "
         f"Phase180 precommit_ready={phase180.get('precommit_ready', '')}; "
         f"Phase181 labels_materialized={phase181.get('labels_materialized', '')}; "
-        f"Phase182 label_audit_pass={phase182.get('label_quality_leakage_audit_pass', '')}."
+        f"Phase182 label_audit_pass={phase182.get('label_quality_leakage_audit_pass', '')}; "
+        f"Phase183 replay_readiness={phase183.get('replay_readiness_precommitted', '')}."
     )
     branches = [
         {
@@ -437,6 +454,7 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     phase180 = phase_ledger[phase_ledger["phase"].astype(int).eq(180)] if not phase_ledger.empty else pd.DataFrame()
     phase181 = phase_ledger[phase_ledger["phase"].astype(int).eq(181)] if not phase_ledger.empty else pd.DataFrame()
     phase182 = phase_ledger[phase_ledger["phase"].astype(int).eq(182)] if not phase_ledger.empty else pd.DataFrame()
+    phase183 = phase_ledger[phase_ledger["phase"].astype(int).eq(183)] if not phase_ledger.empty else pd.DataFrame()
     real_replay_allowed = int(phase148["strategy_replay_allowed"].iloc[0]) if not phase148.empty and str(phase148["strategy_replay_allowed"].iloc[0]) != "" else 0
     receive_replay_allowed = int(phase172["strategy_replay_allowed"].iloc[0]) if not phase172.empty and str(phase172["strategy_replay_allowed"].iloc[0]) != "" else 0
     secure_replay_allowed = int(phase174["strategy_replay_allowed"].iloc[0]) if not phase174.empty and str(phase174["strategy_replay_allowed"].iloc[0]) != "" else 0
@@ -448,6 +466,8 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     cost_label_replay_allowed = int(phase180["strategy_replay_allowed"].iloc[0]) if not phase180.empty and str(phase180["strategy_replay_allowed"].iloc[0]) != "" else 0
     label_materialization_replay_allowed = int(phase181["strategy_replay_allowed"].iloc[0]) if not phase181.empty and str(phase181["strategy_replay_allowed"].iloc[0]) != "" else 0
     label_audit_replay_allowed = int(phase182["strategy_replay_allowed"].iloc[0]) if not phase182.empty and str(phase182["strategy_replay_allowed"].iloc[0]) != "" else 0
+    replay_readiness_replay_allowed = int(phase183["strategy_replay_allowed"].iloc[0]) if not phase183.empty and str(phase183["strategy_replay_allowed"].iloc[0]) != "" else 0
+    replay_readiness_pnl_allowed = int(phase183["pnl_allowed"].iloc[0]) if not phase183.empty and str(phase183["pnl_allowed"].iloc[0]) != "" else 0
     secure_download_recorded = bool(not phase174.empty and "secure_download" in str(phase174["status"].iloc[0]))
     feature_schema_recorded = bool(not phase175.empty and "feature_schema" in str(phase175["status"].iloc[0]))
     phase176_status = str(phase176["status"].iloc[0]) if not phase176.empty else ""
@@ -458,6 +478,7 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     cost_label_precommit_recorded = bool(not phase180.empty and "cost_latency_label_precommitted" in str(phase180["status"].iloc[0]))
     label_materialization_recorded = bool(not phase181.empty and "labels_materialized" in str(phase181["status"].iloc[0]))
     label_audit_recorded = bool(not phase182.empty and "label_quality_leakage_audited" in str(phase182["status"].iloc[0]))
+    replay_readiness_recorded = bool(not phase183.empty and "replay_readiness_precommitted" in str(phase183["status"].iloc[0]))
     branch_closed = bool(not phase136.empty and "closed_clean_falsification" in str(phase136["status"].iloc[0]))
     rows = [
         ("phase149_real_l2_replay_gate_closed", bool(real_replay_allowed == 0), real_replay_allowed, 0, "hard"),
@@ -480,6 +501,9 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
         ("phase149_receive_flow_label_materialization_replay_gate_closed", bool(label_materialization_replay_allowed == 0), label_materialization_replay_allowed, 0, "hard"),
         ("phase149_receive_flow_label_quality_leakage_audit_recorded", label_audit_recorded, int(label_audit_recorded), 1, "hard"),
         ("phase149_receive_flow_label_quality_leakage_replay_gate_closed", bool(label_audit_replay_allowed == 0), label_audit_replay_allowed, 0, "hard"),
+        ("phase149_receive_flow_replay_readiness_precommit_recorded", replay_readiness_recorded, int(replay_readiness_recorded), 1, "hard"),
+        ("phase149_receive_flow_replay_readiness_replay_gate_closed", bool(replay_readiness_replay_allowed == 0), replay_readiness_replay_allowed, 0, "hard"),
+        ("phase149_receive_flow_replay_readiness_pnl_gate_closed", bool(replay_readiness_pnl_allowed == 0), replay_readiness_pnl_allowed, 0, "hard"),
         ("phase149_deep_book_branch_closed", branch_closed, int(branch_closed), 1, "hard"),
         ("phase149_no_promoted_strategy_replay", True, 0, 0, "hard"),
     ]

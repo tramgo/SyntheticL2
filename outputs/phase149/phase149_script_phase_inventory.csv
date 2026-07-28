@@ -88,6 +88,7 @@ phase,runner,runner_exists,runner_suffix
 180,scripts\run_phase180_cost_latency_label_precommit.py,True,.py
 181,scripts\run_phase181_label_materialization.py,True,.py
 182,scripts\run_phase182_label_quality_leakage_audit.py,True,.py
+183,scripts\run_phase183_replay_readiness_precommit.py,True,.py
 18,scripts\run_phase18_technology_stack.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py

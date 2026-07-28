@@ -1,0 +1,13 @@
+metric,value,description
+phase183_replay_input_contract_rows,3,Replay input contract rows
+phase183_replay_gate_contract_rows,7,Future replay gates precommitted
+phase183_kill_switch_rows,4,Kill-switch rows precommitted
+phase183_gate_rows,8,Gates evaluated
+phase183_hard_gate_rows,8,Hard gates evaluated
+phase183_hard_gate_pass_rows,8,Hard gates passed
+phase183_replay_readiness_precommitted,1,1 means replay design may be implemented next
+phase183_strategy_replay_allowed,0,No strategy replay opened
+phase183_pnl_allowed,0,P&L remains closed
+phase183_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase183_forbidden_outputs,order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase183_next_best_action,build_phase184_train_validation_replay_dry_run_no_test_no_promotion,Recommended next milestone

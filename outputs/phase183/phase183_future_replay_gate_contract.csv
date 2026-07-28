@@ -1,0 +1,8 @@
+gate_id,gate_definition,required_before_phase184,failure_action
+P183_TRAIN_ONLY_FIT,"All model fitting, baselines, feature transforms and threshold choices must fit on train dates only unless validation-use is explicitly declared.",1,block_replay
+P183_VALIDATION_SELECTION_ONLY,Validation date may select among predeclared families/thresholds only; no test-date feedback allowed.,1,block_replay
+P183_TEST_UNTOUCHED_UNTIL_FINAL,Test date remains untouched until the replay runner has produced train/validation-only readiness evidence.,1,block_replay
+P183_COST_LATENCY_BOUND,Future replay must bind Phase180 Zerodha cost catalog and retail/stressed latency profiles before any net result.,1,block_replay
+P183_BLOCKLIST_OVERLAP_SCAN,"Future replay must scan candidate rules for overlap with Phase164, Phase167 and Phase131-136 blocked forms.",1,block_replay
+P183_NEGATIVE_CONTROLS_REQUIRED,Future replay must include shuffled-time and shuffled-symbol negative controls before acceptance can be interpreted.,1,block_acceptance
+P183_KILL_SWITCH_PREDECLARED,Future replay must abort promotion if only zero-latency/control rows are positive or if retail/stressed profiles are negative.,1,block_promotion

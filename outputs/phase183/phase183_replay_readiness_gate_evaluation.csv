@@ -1,0 +1,9 @@
+gate_id,gate_pass,evidence,severity
+P183_PHASE176_FEATURES_MATERIALIZED,1,phase176_features_materialized=1,hard
+P183_PHASE180_COST_LATENCY_LABEL_PRECOMMIT_READY,1,phase180_precommit_ready=1,hard
+P183_PHASE181_LABELS_MATERIALIZED,1,phase181_labels_materialized=1,hard
+P183_PHASE182_LABEL_AUDIT_PASS,1,phase182_label_quality_leakage_audit_pass=1,hard
+P183_REPLAY_INPUT_CONTRACT_DECLARED,1,replay_contract_rows=3,hard
+P183_REPLAY_GATE_CONTRACT_DECLARED,1,gate_contract_rows=7,hard
+P183_KILL_SWITCHES_DECLARED,1,kill_switch_rows=4,hard
+P183_NO_PNL_OR_REPLAY_OUTPUTS,1,replay-readiness precommit only; forbidden_outputs=order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,hard
