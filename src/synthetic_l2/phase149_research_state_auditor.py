@@ -360,7 +360,8 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     quality_replay_allowed = int(phase177["strategy_replay_allowed"].iloc[0]) if not phase177.empty and str(phase177["strategy_replay_allowed"].iloc[0]) != "" else 0
     secure_download_recorded = bool(not phase174.empty and "secure_download" in str(phase174["status"].iloc[0]))
     feature_schema_recorded = bool(not phase175.empty and "feature_schema" in str(phase175["status"].iloc[0]))
-    materializer_recorded = bool(not phase176.empty and "materializer" in str(phase176["status"].iloc[0]))
+    phase176_status = str(phase176["status"].iloc[0]) if not phase176.empty else ""
+    materializer_recorded = bool(not phase176.empty and ("materializer" in phase176_status or "receive_flow_features_materialized" in phase176_status))
     quality_audit_recorded = bool(not phase177.empty and "quality_audit" in str(phase177["status"].iloc[0]))
     branch_closed = bool(not phase136.empty and "closed_clean_falsification" in str(phase136["status"].iloc[0]))
     rows = [

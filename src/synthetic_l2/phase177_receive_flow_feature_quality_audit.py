@@ -93,22 +93,104 @@ def build_gate_evaluation(phase176: pd.DataFrame, schema: pd.DataFrame, feature_
             {
                 "gate_id": "P177_NO_REPLAY_OR_PROFITABILITY_OUTPUTS",
                 "gate_pass": 1,
-                "evidence": "feature-quality scaffold only while materialization gate is closed; forbidden_outputs=" + FORBIDDEN_OUTPUTS,
+                "evidence": "feature-quality audit does not emit replay/profitability artifacts; forbidden_outputs=" + FORBIDDEN_OUTPUTS,
                 "severity": "hard",
             },
         ]
     )
 
 
-def build_acceptance_summary(catalog: pd.DataFrame, gates: pd.DataFrame, phase176: pd.DataFrame) -> pd.DataFrame:
+def partition_value(path: Path, prefix: str) -> str:
+    for part in path.parts:
+        if part.startswith(prefix + "="):
+            return part.split("=", 1)[1]
+    return ""
+
+
+def compute_partition_quality_metrics(feature_root: Path) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    files = sorted(feature_root.rglob("*.parquet")) if feature_root.exists() else []
+    required_columns = [
+        "bucket_ms",
+        "receive_event_count",
+        "quote_churn_count",
+        "depth_refresh_count",
+        "stale_quote_duration_ms",
+        "cross_symbol_arrival_count",
+        "cross_symbol_arrival_share",
+        "receive_event_rate_zscore",
+    ]
+    for path in files:
+        df = pd.read_parquet(path)
+        missing = [col for col in required_columns if col not in df.columns]
+        bucket = pd.to_numeric(df["bucket_ms"], errors="coerce") if "bucket_ms" in df.columns else pd.Series(dtype=float)
+        duplicate_buckets = int(bucket.duplicated().sum()) if not bucket.empty else 0
+        monotonic_violations = int((bucket.diff().dropna() < 0).sum()) if not bucket.empty else 0
+        null_rates = {
+            f"{col}_null_rate": float(df[col].isna().mean()) if col in df.columns and len(df) else 1.0
+            for col in required_columns
+        }
+        rows.append(
+            {
+                "horizon": partition_value(path, "horizon"),
+                "trade_date": partition_value(path, "trade_date"),
+                "exchange": partition_value(path, "exchange"),
+                "symbol": partition_value(path, "symbol"),
+                "parquet_file": str(path),
+                "rows": int(len(df)),
+                "columns": int(len(df.columns)),
+                "missing_required_columns": ";".join(missing),
+                "duplicate_bucket_rows": duplicate_buckets,
+                "bucket_monotonic_violations": monotonic_violations,
+                "first_bucket_ms": int(bucket.min()) if not bucket.empty and pd.notna(bucket.min()) else "",
+                "last_bucket_ms": int(bucket.max()) if not bucket.empty and pd.notna(bucket.max()) else "",
+                **null_rates,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def compute_coverage_metrics(partition_metrics: pd.DataFrame) -> pd.DataFrame:
+    if partition_metrics.empty:
+        return pd.DataFrame(columns=["horizon", "trade_date", "expected_symbols", "observed_symbols", "coverage_pass", "rows"])
+    rows = []
+    expected_symbols = int(partition_metrics["symbol"].nunique())
+    for (horizon, trade_date), group in partition_metrics.groupby(["horizon", "trade_date"], sort=True):
+        observed = int(group["symbol"].nunique())
+        rows.append(
+            {
+                "horizon": horizon,
+                "trade_date": trade_date,
+                "expected_symbols": expected_symbols,
+                "observed_symbols": observed,
+                "coverage_pass": int(observed == expected_symbols),
+                "rows": int(group["rows"].sum()),
+                "partitions": int(len(group)),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def build_acceptance_summary(
+    catalog: pd.DataFrame,
+    gates: pd.DataFrame,
+    phase176: pd.DataFrame,
+    partition_metrics: pd.DataFrame,
+    coverage: pd.DataFrame,
+) -> pd.DataFrame:
     materialized = as_int(metric_value(phase176, "phase176_features_materialized", 0))
     phase176_activation_ready = as_int(metric_value(phase176, "phase176_activation_ready", 0))
     activation = gates[gates["severity"].astype(str).eq("activation")]
     hard = gates[gates["severity"].astype(str).eq("hard")]
-    audit_ran = int(materialized == 1 and not activation.empty and activation["gate_pass"].astype(bool).all())
+    metrics_computed = int(not partition_metrics.empty and not coverage.empty)
+    duplicate_bucket_rows = int(partition_metrics["duplicate_bucket_rows"].sum()) if not partition_metrics.empty else 0
+    monotonic_violations = int(partition_metrics["bucket_monotonic_violations"].sum()) if not partition_metrics.empty else 0
+    missing_required_partitions = int(partition_metrics["missing_required_columns"].astype(str).ne("").sum()) if not partition_metrics.empty else 0
+    coverage_pass_rows = int(coverage["coverage_pass"].astype(bool).sum()) if not coverage.empty else 0
+    audit_ran = int(materialized == 1 and not activation.empty and activation["gate_pass"].astype(bool).all() and metrics_computed == 1)
     next_action = (
         "run_phase178_receive_flow_feature_handoff_precommit_no_strategy"
-        if audit_ran
+        if audit_ran and duplicate_bucket_rows == 0 and monotonic_violations == 0 and missing_required_partitions == 0 and coverage_pass_rows == len(coverage)
         else (
             "implement_phase176_parquet_materialization_now_that_activation_gate_is_open"
             if phase176_activation_ready == 1
@@ -122,6 +204,12 @@ def build_acceptance_summary(catalog: pd.DataFrame, gates: pd.DataFrame, phase17
             ("phase177_hard_gate_rows", int(len(hard)), "Hard gates evaluated"),
             ("phase177_hard_gate_pass_rows", int(hard["gate_pass"].astype(bool).sum()) if not hard.empty else 0, "Hard gates passed"),
             ("phase177_features_materialized", materialized, "Inherited Phase176 feature materialization flag"),
+            ("phase177_partition_quality_rows", int(len(partition_metrics)), "Feature partitions audited"),
+            ("phase177_coverage_rows", int(len(coverage)), "Horizon/date coverage rows audited"),
+            ("phase177_coverage_pass_rows", coverage_pass_rows, "Horizon/date coverage rows passed"),
+            ("phase177_missing_required_column_partitions", missing_required_partitions, "Feature partitions missing required audit columns"),
+            ("phase177_duplicate_bucket_rows", duplicate_bucket_rows, "Duplicate bucket rows across feature partitions"),
+            ("phase177_bucket_monotonic_violations", monotonic_violations, "Bucket ordering violations across feature partitions"),
             ("phase177_feature_quality_audit_ran", audit_ran, "1 means feature-quality metrics were computed"),
             ("phase177_strategy_replay_allowed", 0, "No strategy replay opened"),
             ("phase177_paper_or_live_acceptance_allowed", 0, "Paper/live remains closed"),
@@ -154,16 +242,22 @@ def run_phase177(phase176_dir: Path, phase175_dir: Path, feature_root: Path, out
     schema = read_csv(phase175_dir / "phase175_receive_flow_feature_schema.csv")
     catalog = build_quality_audit_catalog(schema)
     gates = build_gate_evaluation(phase176, schema, feature_root)
-    acceptance = build_acceptance_summary(catalog, gates, phase176)
+    partition_metrics = compute_partition_quality_metrics(feature_root)
+    coverage = compute_coverage_metrics(partition_metrics)
+    acceptance = build_acceptance_summary(catalog, gates, phase176, partition_metrics, coverage)
 
     catalog.to_csv(output_dir / "phase177_feature_quality_check_catalog.csv", index=False)
     gates.to_csv(output_dir / "phase177_feature_quality_gate_evaluation.csv", index=False)
+    partition_metrics.to_csv(output_dir / "phase177_partition_quality_metrics.csv", index=False)
+    coverage.to_csv(output_dir / "phase177_horizon_date_coverage_metrics.csv", index=False)
     acceptance.to_csv(output_dir / "phase177_receive_flow_feature_quality_audit_acceptance_summary.csv", index=False)
     write_report(
         output_dir,
         {
             "Acceptance Summary": acceptance,
             "Quality Check Catalog": catalog,
+            "Partition Quality Metrics": partition_metrics.head(200),
+            "Horizon/date Coverage Metrics": coverage,
             "Gate Evaluation": gates,
         },
     )
@@ -187,6 +281,8 @@ def run_phase177(phase176_dir: Path, phase175_dir: Path, feature_root: Path, out
             outputs={
                 "quality_check_catalog": str(output_dir / "phase177_feature_quality_check_catalog.csv"),
                 "gate_evaluation": str(output_dir / "phase177_feature_quality_gate_evaluation.csv"),
+                "partition_quality_metrics": str(output_dir / "phase177_partition_quality_metrics.csv"),
+                "horizon_date_coverage_metrics": str(output_dir / "phase177_horizon_date_coverage_metrics.csv"),
                 "acceptance_summary": str(output_dir / "phase177_receive_flow_feature_quality_audit_acceptance_summary.csv"),
                 "report": str(output_dir / "phase177_receive_flow_feature_quality_audit_report.md"),
             },

@@ -1,6 +1,6 @@
 # Phase149 Research State Auditor
 
-Generated UTC: 2026-07-28T15:24:10.326089+00:00
+Generated UTC: 2026-07-28T16:10:28.104154+00:00
 
 Phase149 reconciles current phase scripts, output evidence, branch states, and replay gates.
 It does not run strategies, contact Azure, import data, or unlock replay.
@@ -16,14 +16,14 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | phase149_hard_gate_rows | 12 | Hard global-state gates evaluated |
 | phase149_hard_gate_pass_rows | 12 | Hard global-state gates passed |
 | phase149_strategy_replay_allowed | 0 | Phase149 never unlocks strategy replay |
-| phase149_next_best_action | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | Recommended next milestone |
+| phase149_next_best_action | run_phase178_receive_flow_feature_handoff_precommit_no_strategy | Recommended next milestone |
 
 ## Branch Status Summary
 
 | branch | status | evidence | current_next_action |
 | --- | --- | --- | --- |
 | real_l2_anchor_gate | gated | Phase146/148 keep strategy replay closed until at least five ready real-anchor days are proven. | use_phase174_secure_download_orchestrator_for_required_real_l2_dates |
-| real_receive_flow_source | source_gate_open_feature_materialization_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=0; Phase177 quality_audit_ran=0. | implement_phase176_parquet_materialization_now_that_activation_gate_is_open |
+| real_receive_flow_source | quality_audited_handoff_pending | Phase172 ready_dates=5, additional_dates_needed=0; Phase174 download_ran=1; Phase175 activation_ready=1; Phase176 features_materialized=1; Phase177 quality_audit_ran=1. | run_phase178_receive_flow_feature_handoff_precommit_no_strategy |
 | top_five_depth_passive | closed_clean_falsification | Phase136 Outcome A closes the branch after Phase132 kill-switch and Phase116 blocklist verification. | do_not_open_phase134_or_phase135_for_this_branch |
 | dense_synthetic_replay | not_promoted | Partial/smoke dense replay artifacts remain non-promotional and do not override replay gates. | only_continue_if_precommitted_and_not_blocklisted |
 
@@ -126,5 +126,5 @@ It does not run strategies, contact Azure, import data, or unlock replay.
 | 173 | 1 | 1 | True | True | True | download_preflight_ready | real_receive_flow_download_gate | 0 | run_phase148_with_download_for_required_dates_then_rerun_phase172 | scripts\run_phase173_real_l2_download_credential_preflight.py | outputs\phase173 |
 | 174 | 1 | 1 | True | True | True | secure_download_executed | real_receive_flow_download_gate | 0 | inspect_phase148_phase172_outputs_then_download_remaining_dates_if_needed | scripts\run_phase174_secure_real_l2_download_orchestrator.ps1 | outputs\phase174 |
 | 175 | 1 | 1 | True | True | True | receive_flow_feature_schema_activation_ready | real_receive_flow_source | 0 | run_phase176_receive_flow_feature_materialization_no_strategy | scripts\run_phase175_receive_flow_feature_schema_precommit.py | outputs\phase175 |
-| 176 | 1 | 1 | True | True | True | receive_flow_feature_materializer_ready_gated | real_receive_flow_source | 0 | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | scripts\run_phase176_receive_flow_feature_materializer.py | outputs\phase176 |
-| 177 | 1 | 1 | True | True | True | receive_flow_feature_quality_audit_scaffold_gated | real_receive_flow_source | 0 | implement_phase176_parquet_materialization_now_that_activation_gate_is_open | scripts\run_phase177_receive_flow_feature_quality_audit.py | outputs\phase177 |
+| 176 | 1 | 1 | True | True | True | receive_flow_features_materialized_no_replay | real_receive_flow_source | 0 | run_phase177_feature_quality_audit | scripts\run_phase176_receive_flow_feature_materializer.py | outputs\phase176 |
+| 177 | 1 | 1 | True | True | True | receive_flow_feature_quality_audited_no_replay | real_receive_flow_source | 0 | run_phase178_receive_flow_feature_handoff_precommit_no_strategy | scripts\run_phase177_receive_flow_feature_quality_audit.py | outputs\phase177 |
