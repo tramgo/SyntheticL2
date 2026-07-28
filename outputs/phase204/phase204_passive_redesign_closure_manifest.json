@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-28T20:36:52.339746+00:00",
+  "scope": "phase204_passive_redesign_closure_decision_no_replay",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "87d5631c1be518f78e77afd2e6741c4bea93c8c1",
+  "configuration_hash": "24503b076b11d87a6a8db8779885864cbbaadd0cf0e29f5eed39a218b379a622",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase204_passive_redesign_closure_decision_no_replay",
+  "cost_model_version": "not_applicable_no_strategy_replay",
+  "latency_model_version": "not_applicable_no_strategy_replay",
+  "creation_timestamp": "2026-07-28T20:36:52.339746+00:00"
+}

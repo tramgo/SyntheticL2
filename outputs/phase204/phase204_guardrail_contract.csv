@@ -1,0 +1,5 @@
+contract_id,requirement,required_next
+P204_NO_PASSIVE_REPLAY_FROM_ZERO_CANDIDATE_GATE,Do not run passive strategy replay while Phase203 candidate_gate_open is 0.,1
+P204_NO_THRESHOLD_WIDENING,"Do not rescue Phase203 by relaxing toxicity, breadth or cancel-guard thresholds after observing label outcomes.",1
+P204_MATERIAL_NEW_SOURCE_OR_BREADTH_REQUIRED,Any continuation must either precommit a materially new non-passive source or expand labels before replay.,1
+P204_COST_LATENCY_REBIND_REQUIRED,Any future candidate must rebind Zerodha-style costs and latency before P&L or acceptance interpretation.,1

@@ -1,0 +1,5 @@
+phase,milestone,status,key_evidence,candidate_gate_open,strategy_replay_allowed,test_replay_allowed_next
+200,passive_queue_position_hypothesis_precommit,complete,selected_hypothesis=P200_QUEUE_PASSIVE_QUEUE_POSITION_PROXY; label_contract_rows=6,0,0,0
+201,passive_queue_stage01_label_expansion,complete_no_pre_replay_candidate,joined_rows=696; pre_replay_candidates=0; dominant_failure=adverse_selection_gate_failed|breadth_gate_failed,False,0,0
+202,passive_feature_redesign_precommit,complete,redesigned_features=4; acceptance_contract_rows=4,0,0,0
+203,redesigned_passive_label_materialization,complete_candidate_gate_closed,materialized_rows=696; redesigned_pass_rows=0; adverse_ceiling_met=0; max_symbols=4; max_dates=4,0,0,0

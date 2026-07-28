@@ -1,0 +1,4 @@
+queue_rank,next_item,recommended_phase,why,allowed_scope,strategy_replay_allowed
+1,precommit_non_passive_external_orderflow_or_context_source,Phase205,The passive queue branch failed toxicity and breadth after redesign; the next synthetic-only route must use a materially different source.,precommit_only_no_replay,0
+2,expand_redesigned_passive_label_materialization_breadth,Phase205_alt,Only label-only expansion is allowed if we stay with passive labels; it must target adverse-selection ceiling and at least 8 symbols before replay precommit.,label_only_no_replay,0
+3,return_to_real_anchor_microstructure_calibration,real_anchor,"Real L2 remains the strongest source for realistic cadence/depth calibration and should be downloaded first, then analyzed locally.",local_data_audit_no_strategy_replay,0

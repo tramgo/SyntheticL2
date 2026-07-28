@@ -1,0 +1,20 @@
+metric,value,description
+phase204_evidence_rows,4,Phase200-203 evidence rows
+phase204_decision_rows,1,Decision rows
+phase204_next_queue_rows,3,Next research queue rows
+phase204_guardrail_rows,4,Guardrail contract rows
+phase204_decision,close_current_passive_queue_redesign_for_replay_require_material_new_source_or_broader_labels,Branch decision
+phase204_current_passive_redesign_closed_for_replay,1,1 means current passive redesign closed for replay
+phase204_material_new_source_required,1,1 means next source must be materially new unless label breadth expands first
+phase204_broader_label_materialization_allowed,1,1 means label-only breadth expansion remains allowed
+phase204_threshold_widening_allowed,0,0 means threshold widening is forbidden
+phase204_gate_rows,6,Gates evaluated
+phase204_hard_gate_rows,6,Hard gates evaluated
+phase204_hard_gate_pass_rows,6,Hard gates passed
+phase204_closure_decision_complete,1,1 means Phase204 completed
+phase204_strategy_replay_allowed,0,No strategy replay opened
+phase204_test_replay_allowed_next,0,No test replay opened
+phase204_promotion_allowed,0,No promotion opened
+phase204_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase204_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening,Outputs forbidden in this phase
+phase204_next_best_action,run_phase205_material_new_source_precommit_or_label_breadth_plan_no_replay,Recommended next milestone

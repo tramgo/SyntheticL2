@@ -6582,6 +6582,64 @@ Current interpretation: Phase203 gives a useful negative result. Queue-recovery 
 
 ---
 
+### Phase204 - Passive redesign closure decision
+
+Phase204 converts the Phase203 zero-candidate result into an explicit branch decision. It does not run strategy replay, test replay, order-arrival simulation, fill modeling, P&L, promotion, or paper/live acceptance.
+
+Phase204 evidence basis:
+
+- Phase200 precommitted the passive queue-position hypothesis and label contract;
+- Phase201 expanded Stage01 labels and found 696 joined candidates but 0 pre-replay candidates;
+- Phase202 precommitted four redesigned passive feature labels;
+- Phase203 materialized those redesigned labels over 696 Stage01 candidates and still found 0 redesigned candidate pass rows.
+
+Phase204 decision:
+
+`close_current_passive_queue_redesign_for_replay_require_material_new_source_or_broader_labels`
+
+Guardrails:
+
+- no passive replay while Phase203 candidate gate is 0;
+- no threshold widening after observing Phase203 label outcomes;
+- any continuation must either use a materially new non-passive source or expand labels before replay;
+- any future candidate must rebind Zerodha-style costs and latency before P&L or acceptance interpretation.
+
+Phase204 next research queue:
+
+1. `precommit_non_passive_external_orderflow_or_context_source`;
+2. `expand_redesigned_passive_label_materialization_breadth`;
+3. `return_to_real_anchor_microstructure_calibration`.
+
+Phase204 results:
+
+- evidence rows: 4;
+- decision rows: 1;
+- next queue rows: 3;
+- guardrail rows: 4;
+- current passive redesign closed for replay: 1;
+- material new source required: 1;
+- broader label materialization allowed: 1;
+- threshold widening allowed: 0;
+- hard gates: 6 / 6 passed;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase205_material_new_source_precommit_or_label_breadth_plan_no_replay`.
+
+Current Phase149 evidence after Phase204:
+
+- phase rows discovered: 197;
+- runner phase rows: 195;
+- acceptance phase rows: 147;
+- hard global-state gates: 126 / 126 passed;
+- real receive-flow branch status: `passive_redesign_closed_for_replay_material_new_source_or_label_breadth_pending_no_replay`;
+- next best action: `run_phase205_material_new_source_precommit_or_label_breadth_plan_no_replay`.
+
+Current interpretation: the current passive queue redesign line is closed for replay. The next milestone should be Phase205: choose and precommit the next source route, with no replay. If the route remains passive, it must be label-breadth materialization only; if it seeks edge, it must introduce a materially new non-passive source.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
