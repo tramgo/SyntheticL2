@@ -7005,6 +7005,57 @@ Current interpretation: Phase211 is a clean falsification of the current Phase20
 
 ---
 
+### Phase212 - Model-family closure or redesign precommit, no replay/no test
+
+Phase212 closes the current Phase209/Phase210 model-family set for replay after Phase211 found no control-aware survivor. It records the failure modes and a material redesign queue for the next source-selection phase. It does not fit models, emit predictions, run strategy replay, touch sealed test rows, emit orders/fills/P&L, promote anything, open paper/live acceptance, or make profitability claims.
+
+Phase212 closure evidence:
+
+- current model-family closure rows: 3;
+- families closed for replay: 3;
+- reuse without redesign allowed: 0;
+- candidate opened for replay: 0;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0.
+
+Phase212 failure modes:
+
+- validation MSE is not materially better than shuffled-target control;
+- absolute validation correlation is weak or not jointly supported;
+- binary accuracy is base-rate/control-like and cannot be treated as edge.
+
+Phase212 material redesign queue for Phase213:
+
+- `P212_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE`: define labels around receive-event surprise conditional on symbol/date liquidity regime;
+- `P212_REGIME_STRATIFIED_FEATURE_SOURCE`: precommit regime-stratified receive-flow features split by spread, liquidity, churn, and opening/steady-state context;
+- `P212_CROSS_SECTIONAL_RELATIVE_FLOW_SOURCE`: define cross-sectional relative receive-flow ranks and market-wide shock residuals with target-symbol exclusion.
+
+Phase212 results:
+
+- failure-mode rows: 3;
+- material redesign precommit rows: 3;
+- Phase213 action queue rows: 3;
+- forbidden execution rows: 13;
+- hard gates: 7 / 7 passed;
+- next best action: `run_phase213_material_new_model_source_precommit_no_replay_no_test`.
+
+Current Phase149 evidence after Phase212:
+
+- phase rows discovered: 205;
+- runner phase rows: 203;
+- acceptance phase rows: 155;
+- hard global-state gates: 178 / 178 passed;
+- real receive-flow branch status: `model_family_closure_or_redesign_precommit_complete_phase213_material_new_source_pending_no_replay_no_test`;
+- next best action: `run_phase213_material_new_model_source_precommit_no_replay_no_test`.
+
+Current interpretation: Phase212 prevents further compute from being spent on the rejected current-form model families. The next research step must be a materially new model source precommit, not threshold widening, not replay, and not a rerun of the same model family with cosmetic tuning.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

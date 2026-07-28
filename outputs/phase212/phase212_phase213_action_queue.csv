@@ -1,0 +1,4 @@
+phase212_action_rank,phase212_redesign_id,next_phase,required_action,acceptance_boundary,blocking_until_done,strategy_replay_allowed,promotion_allowed
+1,P212_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE,Phase213,"Define labels around receive-event surprise conditional on symbol/date liquidity regime, not raw next-bucket direction.",precommit_only_no_model_fit_no_replay_no_test,1,0,0
+2,P212_REGIME_STRATIFIED_FEATURE_SOURCE,Phase213,"Precommit regime-stratified receive-flow features split by spread, liquidity, churn, and opening/steady-state context.",precommit_only_no_model_fit_no_replay_no_test,1,0,0
+3,P212_CROSS_SECTIONAL_RELATIVE_FLOW_SOURCE,Phase213,Define cross-sectional relative receive-flow ranks and market-wide shock residuals with target-symbol exclusion.,precommit_only_no_model_fit_no_replay_no_test,1,0,0

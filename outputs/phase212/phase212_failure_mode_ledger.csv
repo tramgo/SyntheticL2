@@ -1,0 +1,4 @@
+phase212_failure_mode_id,failure_mode,affected_rows,worst_or_best_evidence,redesign_implication,strategy_replay_allowed
+P212_CONTROL_LIKE_MSE,validation_mse_not_materially_better_than_shuffled_target_control,12,best_mse_improvement_pct=0.954265709809624,Future source must create materially stronger out-of-sample target separation before model/replay precommit.,0
+P212_WEAK_VALIDATION_CORRELATION,absolute_validation_correlation_too_weak_or_not_jointly_supported,9,best_abs_validation_correlation=0.1435918920113247,Future source should test regime/state segmentation or materially different labels before any new fit.,0
+P212_BASE_RATE_ACCURACY,binary_accuracy_base_rate_or_control_like,7,best_binary_accuracy_lift=0.0116095862011775,"Future binary classification must use balanced lift/control-aware metrics, not headline accuracy.",0

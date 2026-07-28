@@ -1,0 +1,21 @@
+metric,value,description
+phase212_family_closure_rows,3,Model-family closure rows
+phase212_families_closed_for_replay,3,Families closed for replay
+phase212_reuse_without_redesign_allowed,0,Reuse without redesign allowed rows
+phase212_failure_mode_rows,3,Failure-mode rows
+phase212_redesign_precommit_rows,3,Material redesign precommit rows
+phase212_action_queue_rows,3,Phase213 action queue rows
+phase212_forbidden_execution_rows,13,Forbidden execution rows
+phase212_gate_rows,7,Gates evaluated
+phase212_hard_gate_rows,7,Hard gates evaluated
+phase212_hard_gate_pass_rows,7,Hard gates passed
+phase212_model_family_closure_or_redesign_precommit_complete,1,1 means Phase212 completed
+phase212_candidate_opened_for_replay,0,No candidate opened for replay
+phase212_model_fit_allowed_next,0,No model fit opened by Phase212
+phase212_strategy_replay_allowed,0,No strategy replay opened
+phase212_test_replay_allowed_next,0,No test replay opened
+phase212_promotion_allowed,0,No promotion opened
+phase212_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase212_profitability_claim_allowed,0,No profitability claim is allowed
+phase212_forbidden_outputs,model_fit;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase212_next_best_action,run_phase213_material_new_model_source_precommit_no_replay_no_test,Recommended next milestone

@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P212_PHASE211_COMPLETE,True,phase211_complete=1,hard
+P212_NO_PHASE211_PASSING_ROWS,True,passing_rows=0,hard
+P212_CURRENT_FAMILIES_CLOSED_FOR_REPLAY,True,closure_rows=3; closed_rows=3; reuse_allowed=0,hard
+P212_FAILURE_MODES_RECORDED,True,failure_mode_rows=3,hard
+P212_MATERIAL_REDESIGN_QUEUE_RECORDED,True,redesign_rows=3,hard
+P212_ACTION_QUEUE_RECORDED,True,action_rows=3,hard
+P212_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard
