@@ -1,0 +1,7 @@
+kill_switch_id,fired,evidence,action,declared_in_phase183
+P183_ZERO_LATENCY_ONLY_EDGE,0,Phase184 excluded the zero-latency diagnostic profile; retail/stressed profiles only.,not_applicable_for_phase184,1
+P183_TEST_DATE_SELECTION_LEAK,0,phase184_test_rows_used=0,pass_no_test_leak_detected,1
+P183_FORBIDDEN_FORM_OVERLAP,0,Phase184 used only Phase183 precommitted receive-flow families; no passive queue/fill or fixed lead-lag form was introduced.,pass_no_new_forbidden_form_detected,1
+P183_COST_LATENCY_UNBOUND,0,Every Phase184 validation interpretation row is bound to P180_RETAIL_MARKETABLE_DEFAULT or P180_STRESSED_RETAIL.,pass_cost_latency_bound,1
+P185_COST_DOMINATES_VALIDATION_EDGE,1,best_validation_net_bps=-12.732876; positive_validation_count=0; cost_dominated_count=6,close_or_redesign_family_set_before_any_test_replay,0
+P185_NO_PROMOTION_OR_PAPER_LIVE,0,phase184_promotion_allowed=0; phase184_paper_or_live_acceptance_allowed=0,pass_no_promotion_opened,0

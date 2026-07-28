@@ -5476,6 +5476,66 @@ Current interpretation: the first train/validation receive-flow dry replay is st
 
 ---
 
+### Phase185 - Validation Replay Interpretation and Kill-switch Audit, No Test
+
+**Date:** 2026-07-28
+
+Phase185 interprets the Phase184 train/validation dry replay and applies the predeclared kill-switch discipline without touching test rows or opening promotion. This phase answers the practical question: whether the Phase179 receive-flow family set has enough validation evidence to justify a later untouched-test replay gate.
+
+Phase185 outputs:
+
+- `outputs/phase185/phase185_validation_interpretation.csv`;
+- `outputs/phase185/phase185_kill_switch_audit.csv`;
+- `outputs/phase185/phase185_family_decision.csv`;
+- `outputs/phase185/phase185_validation_replay_interpretation_gate_evaluation.csv`;
+- `outputs/phase185/phase185_validation_replay_interpretation_acceptance_summary.csv`;
+- `outputs/phase185/phase185_validation_replay_interpretation_report.md`;
+- `outputs/phase185/phase185_validation_replay_interpretation_manifest.json`.
+
+Current Phase185 evidence:
+
+- validation interpretation rows: 6;
+- kill-switch audit rows: 6;
+- gates evaluated: 6;
+- hard gates passed: 6 / 6;
+- best validation family: `P179_RECEIVE_CADENCE_SHOCK_CONTEXT`;
+- best validation latency profile: `P180_RETAIL_MARKETABLE_DEFAULT`;
+- best validation net return-bps proxy mean: -12.73287566065313;
+- cost-dominates-validation-edge flag: 1;
+- test rows used: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- validation interpretation complete: 1;
+- next best action: `redesign_cost_aware_receive_flow_family_or_close_current_family_set_before_test_replay`.
+
+Phase185 kill-switch result:
+
+- `P183_TEST_DATE_SELECTION_LEAK`: not fired; `phase184_test_rows_used=0`;
+- `P183_COST_LATENCY_UNBOUND`: not fired; every Phase184 validation interpretation row is bound to Phase180 retail/default or stressed-retail profiles;
+- `P183_FORBIDDEN_FORM_OVERLAP`: not fired; Phase184 used only Phase183 precommitted receive-flow families and did not introduce passive queue/fill or fixed lead-lag forms;
+- `P185_COST_DOMINATES_VALIDATION_EDGE`: fired; best validation net mean is -12.732876 bps, positive validation count is 0, and all six validation family/profile rows are cost-dominated;
+- `P185_NO_PROMOTION_OR_PAPER_LIVE`: not fired; no promotion or paper/live acceptance was opened.
+
+Family decision:
+
+- all six family/profile rows are marked `do_not_promote_cost_dominated_validation`;
+- `test_replay_allowed_next=0` for all rows;
+- recommended action: `redesign_cost_aware_receive_flow_family_or_close_current_family_set`.
+
+Current Phase149 evidence after Phase185:
+
+- phase rows discovered: 178;
+- runner phase rows: 176;
+- acceptance phase rows: 128;
+- hard global-state gates: 34 / 34 passed;
+- real receive-flow branch status: `validation_interpretation_cost_dominated_redesign_or_close_pending`;
+- next best action: `redesign_cost_aware_receive_flow_family_or_close_current_family_set_before_test_replay`.
+
+Current interpretation: the current receive-flow strategy-family set should not proceed to untouched-test replay. The gross edge seen in the best validation row is too small relative to realistic intraday cost and latency bounds. The next useful action is either to close this family set as a clean falsification or redesign around much stronger cost-aware selection criteria before requesting a new train/validation replay.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

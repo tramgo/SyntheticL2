@@ -1,0 +1,17 @@
+metric,value,description
+phase185_validation_interpretation_rows,6,Validation interpretation rows
+phase185_kill_switch_rows,6,Kill-switch audit rows
+phase185_gate_rows,6,Gates evaluated
+phase185_hard_gate_rows,6,Hard gates evaluated
+phase185_hard_gate_pass_rows,6,Hard gates passed
+phase185_best_validation_family,P179_RECEIVE_CADENCE_SHOCK_CONTEXT,Best ranked validation family
+phase185_best_validation_latency_profile,P180_RETAIL_MARKETABLE_DEFAULT,Best ranked validation latency profile
+phase185_best_validation_net_bps_proxy_mean,-12.73287566065313,Best validation net return-bps proxy mean
+phase185_cost_dominates_validation_edge,1,1 means validation gross edge is not enough after cost bounds
+phase185_test_rows_used,0,Test rows remain untouched
+phase185_test_replay_allowed_next,0,No test replay opened by Phase185
+phase185_promotion_allowed,0,No promotion opened
+phase185_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase185_validation_interpretation_complete,1,1 means interpretation and kill-switch audit completed
+phase185_forbidden_outputs,test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase185_next_best_action,redesign_cost_aware_receive_flow_family_or_close_current_family_set_before_test_replay,Recommended next milestone
