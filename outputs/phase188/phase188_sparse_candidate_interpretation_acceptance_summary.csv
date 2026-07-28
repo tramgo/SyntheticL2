@@ -1,0 +1,22 @@
+metric,value,description
+phase188_interpretation_rows,1,Interpretation rows
+phase188_gate_rows,7,Gates evaluated
+phase188_hard_gate_rows,7,Hard gates evaluated
+phase188_hard_gate_pass_rows,7,Hard gates passed
+phase188_candidate_id,P187_TOP5_I85_S2p5_Z1_R100,Interpreted candidate
+phase188_validation_decision_events,2646,Validation dry decision events interpreted
+phase188_min_profile_net_bps_proxy_mean,46.330933977955674,Minimum profile validation net bps
+phase188_min_profile_edge_over_shuffled_bps,45.439161105260446,Minimum profile edge over shuffled-time control
+phase188_top_symbol_event_share,0.05857898715041572,Top symbol decision-event share
+phase188_top3_symbol_event_share,0.172713529856387,Top 3 symbol decision-event share
+phase188_concentration_warning,0,1 means concentration review warning
+phase188_symbol_positive_fraction,0.06666666666666667,Fraction of symbol/profile groups net positive
+phase188_breadth_warning,1,1 means symbol breadth is weak
+phase188_date_count_warning,1,1 means validation evidence has fewer than two dates
+phase188_robustness_interpretation,promising_but_breadth_limited_requires_phase189_precommit_or_redesign_decision,Interpretation verdict
+phase188_interpretation_complete,1,1 means Phase188 interpretation completed
+phase188_test_replay_allowed_next,0,No test replay opened by Phase188
+phase188_promotion_allowed,0,No promotion opened
+phase188_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase188_forbidden_outputs,test_result;test_replay;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase188_next_best_action,build_phase189_untouched_test_replay_precommit_or_redesign_decision,Recommended next milestone

@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P188_PHASE187_CANDIDATE_COMPLETE,1,phase187_cost_aware_sparse_candidate_complete=1,hard
+P188_VALIDATION_POSITIVE_ALL_PROFILES_ACKNOWLEDGED,1,phase187_validation_positive_all_profiles=1,hard
+P188_DATE_SYMBOL_CONCENTRATION_AUDIT_PRESENT,1,date_rows=2; symbol_rows=60,hard
+P188_NEGATIVE_CONTROL_MARGIN_POSITIVE,1,min_profile_edge_over_shuffled_bps=45.439161105260446,hard
+P188_CONCENTRATION_REVIEW_RECORDED,1,concentration_warning=0,hard
+P188_BREADTH_REVIEW_RECORDED,1,breadth_warning=1; date_count_warning=1,hard
+P188_NO_TEST_REPLAY_OR_PROMOTION,1,test_replay_allowed_by_phase188=0; promotion_allowed=0,hard

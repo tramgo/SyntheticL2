@@ -1,0 +1,3 @@
+candidate_id,latency_profile_id,trade_date,decision_events,symbols,dates,gross_return_bps_proxy_mean,cost_bound_bps_mean,net_return_bps_after_cost_proxy_mean,net_positive_event_fraction,shuffled_time_net_bps_proxy_mean,net_edge_over_shuffled_time_bps_mean,net_positive_group,beats_shuffled_group
+P187_TOP5_I85_S2p5_Z1_R100,P180_RETAIL_MARKETABLE_DEFAULT,2026-07-13,1323,30,1,60.5943466830395,12.194990700113845,48.399355982925655,0.006046863189720333,-12.200856182224204,60.60021216514986,1,1
+P187_TOP5_I85_S2p5_Z1_R100,P180_STRESSED_RETAIL,2026-07-13,1323,30,1,60.5943466830395,14.263412705083832,46.330933977955674,0.006046863189720333,0.8917728726952223,45.439161105260446,1,1
