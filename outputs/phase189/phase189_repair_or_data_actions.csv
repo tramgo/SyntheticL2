@@ -1,0 +1,4 @@
+action_id,priority,action,evidence_target
+P189_ADD_VALIDATION_DATES,1,Add or designate additional validation dates before untouched-test replay.,validation_dates_with_events >= 2 without using test_untouched rows
+P189_REPAIR_SYMBOL_BREADTH_OR_DECLARE_SCOPE,2,Repair weak symbol breadth or explicitly restrict the candidate scope before test replay.,symbol_positive_fraction >= 0.25 or candidate_scope_declared_symbol_specific
+P189_PREPARE_DIAGNOSTIC_TEST_REPLAY_SPEC,3,"Draft a diagnostic-only untouched-test replay spec for the frozen candidate, but do not execute it in Phase189.",test_replay_allowed_next remains 0 in Phase189

@@ -1,0 +1,7 @@
+contract_id,requirement,required_before_test_replay,status_after_phase189
+P189_SINGLE_CANDIDATE_FREEZE,"Only the frozen candidate may be used in any later untouched-test replay: P187_TOP5_I85_S2p5_Z1_R100. No threshold, profile or symbol selection may use test rows.",1,precommitted_but_not_opened
+P189_NO_VALIDATION_RESELECTION,"If additional validation breadth is collected, candidate choice must be either frozen or the phase must return to train-only selection; test rows remain untouched.",1,precommitted_but_not_opened
+P189_BREADTH_REPAIR_REQUIRED,"Before untouched-test replay, either symbol breadth warning and date-count warning must be repaired, or explicitly accepted as a diagnostic-only test limitation.",1,blocking_current_test_unlock
+P189_COST_LATENCY_BINDING,Any later test replay must bind Phase180 retail/default and stressed-retail cost/latency profiles before any net metric.,1,precommitted_but_not_opened
+P189_NEGATIVE_CONTROLS_REQUIRED,Any later untouched-test replay must include shuffled-time and shuffled-symbol controls before interpretation.,1,precommitted_but_not_opened
+P189_NO_PROMOTION_FROM_TEST_ALONE,A positive untouched-test replay may only trigger a later promotion-readiness audit; it cannot directly open paper/live acceptance.,1,precommitted_but_not_opened

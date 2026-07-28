@@ -5718,6 +5718,72 @@ Current Phase149 evidence after Phase188:
 
 ---
 
+### Phase189 - Untouched-test Replay Precommit or Redesign Decision
+
+**Date:** 2026-07-28
+
+Phase189 decides whether the Phase187/188 sparse candidate may proceed toward untouched-test replay. Because Phase188 found a strong cost-bound validation edge but also flagged weak symbol breadth and only one validation date, Phase189 defers test replay and records the exact repair/precommit conditions required before a test replay can be considered.
+
+Phase189 does not run test replay, produce test results, open promotion, open paper/live acceptance, emit orders/fills, calculate P&L or claim profitability.
+
+Phase189 outputs:
+
+- `outputs/phase189/phase189_test_replay_or_redesign_decision.csv`;
+- `outputs/phase189/phase189_future_test_replay_contract.csv`;
+- `outputs/phase189/phase189_repair_or_data_actions.csv`;
+- `outputs/phase189/phase189_test_replay_precommit_decision_gate_evaluation.csv`;
+- `outputs/phase189/phase189_test_replay_precommit_decision_acceptance_summary.csv`;
+- `outputs/phase189/phase189_test_replay_precommit_decision_report.md`;
+- `outputs/phase189/phase189_test_replay_precommit_decision_manifest.json`.
+
+Current Phase189 evidence:
+
+- decision rows: 1;
+- future test contract rows: 6;
+- repair/action rows: 3;
+- candidate under decision: `P187_TOP5_I85_S2p5_Z1_R100`;
+- decision: `defer_test_replay_collect_more_validation_breadth_or_redesign`;
+- minimum profile validation net return-bps proxy mean inherited from Phase188: 46.330933977955674;
+- symbol-positive fraction inherited from Phase188: 0.066667;
+- breadth warning: 1;
+- date-count warning: 1;
+- untouched-test replay precommit allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- gates evaluated: 7;
+- hard gates passed: 7 / 7;
+- decision complete: 1;
+- next best action: `build_phase190_additional_validation_breadth_or_diagnostic_test_spec_no_execution`.
+
+Future test-replay contract:
+
+- freeze the candidate if a later diagnostic test replay is allowed;
+- prohibit validation or test reselection;
+- repair or explicitly declare the breadth/date limitation before test replay;
+- bind Phase180 retail/default and stressed-retail cost/latency profiles;
+- include shuffled-time and shuffled-symbol negative controls;
+- prohibit direct paper/live promotion from a positive test result.
+
+Repair/data actions:
+
+- add or designate additional validation dates before untouched-test replay;
+- repair weak symbol breadth or explicitly declare a symbol-specific candidate scope;
+- draft a diagnostic-only untouched-test replay spec, but do not execute it in Phase189.
+
+Current Phase149 evidence after Phase189:
+
+- phase rows discovered: 182;
+- runner phase rows: 180;
+- acceptance phase rows: 132;
+- hard global-state gates: 53 / 53 passed;
+- real receive-flow branch status: `test_replay_deferred_validation_breadth_pending`;
+- next best action: `build_phase190_additional_validation_breadth_or_diagnostic_test_spec_no_execution`.
+
+Current interpretation: Phase189 preserves the promising sparse candidate but does not unlock the untouched test set. The correct next implementation is Phase190: either add validation breadth without touching test rows, or write a diagnostic-only test replay specification that remains unexecuted until its precommit gates are satisfied.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

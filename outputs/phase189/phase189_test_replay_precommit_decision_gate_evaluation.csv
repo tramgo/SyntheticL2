@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P189_PHASE188_INTERPRETATION_COMPLETE,1,phase188_interpretation_complete=1,hard
+P189_DECISION_RECORDED,1,decision_rows=1,hard
+P189_BREADTH_DATE_WARNINGS_ACKNOWLEDGED,1,breadth_warning=1; date_count_warning=1,hard
+P189_TEST_REPLAY_NOT_OPENED,1,test_replay_allowed_next=0,hard
+P189_PROMOTION_AND_PAPER_LIVE_CLOSED,1,promotion_allowed=0; paper_live=0,hard
+P189_FUTURE_TEST_CONTRACT_DECLARED,1,contract_rows=6,hard
+P189_REPAIR_ACTIONS_DECLARED,1,action_rows=3,hard

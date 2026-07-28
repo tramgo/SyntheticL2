@@ -94,6 +94,7 @@ phase,runner,runner_exists,runner_suffix
 186,scripts\run_phase186_cost_aware_family_closure_precommit.py,True,.py
 187,scripts\run_phase187_cost_aware_sparse_candidate.py,True,.py
 188,scripts\run_phase188_sparse_candidate_interpretation.py,True,.py
+189,scripts\run_phase189_test_replay_precommit_decision.py,True,.py
 18,scripts\run_phase18_technology_stack.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py

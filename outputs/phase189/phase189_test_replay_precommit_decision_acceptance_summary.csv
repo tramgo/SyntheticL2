@@ -1,0 +1,20 @@
+metric,value,description
+phase189_decision_rows,1,Decision rows
+phase189_future_test_contract_rows,6,Future test contract rows
+phase189_repair_action_rows,3,Repair/action rows
+phase189_candidate_id,P187_TOP5_I85_S2p5_Z1_R100,Candidate under decision
+phase189_decision,defer_test_replay_collect_more_validation_breadth_or_redesign,Decision
+phase189_min_profile_net_bps_proxy_mean,46.330933977955674,Minimum profile validation net bps from Phase188
+phase189_symbol_positive_fraction,0.06666666666666667,Phase188 symbol-positive fraction
+phase189_breadth_warning,1,1 means breadth warning acknowledged
+phase189_date_count_warning,1,1 means date-count warning acknowledged
+phase189_untouched_test_replay_precommit_allowed,0,1 means current evidence allows a test precommit
+phase189_test_replay_allowed_next,0,No test replay opened by Phase189
+phase189_promotion_allowed,0,No promotion opened
+phase189_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase189_gate_rows,7,Gates evaluated
+phase189_hard_gate_rows,7,Hard gates evaluated
+phase189_hard_gate_pass_rows,7,Hard gates passed
+phase189_decision_complete,1,1 means Phase189 decision completed
+phase189_forbidden_outputs,test_replay;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase189_next_best_action,build_phase190_additional_validation_breadth_or_diagnostic_test_spec_no_execution,Recommended next milestone
