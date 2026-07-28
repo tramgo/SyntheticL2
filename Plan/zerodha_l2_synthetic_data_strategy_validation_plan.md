@@ -6956,6 +6956,55 @@ Current interpretation: Phase210 proves the train/validation model-fit pipeline 
 
 ---
 
+### Phase211 - Model-fit validation interpretation, no replay/no test
+
+Phase211 interprets the Phase210 aggregate train/validation model-fit metrics against shuffled-target negative controls. It is an interpretation and decision gate only. It does not use sealed test data, run strategy replay, export row-level predictions, emit orders/fills/P&L, promote candidates, open paper/live acceptance, or make profitability claims.
+
+Phase211 control-aware interpretation rules:
+
+- require at least 1.0% validation MSE improvement versus shuffled-target control;
+- require absolute validation correlation of at least 0.10;
+- for binary labels, require at least 0.005 binary-accuracy lift versus shuffled-target control;
+- treat base-rate-like accuracy as insufficient even when headline accuracy appears high;
+- keep replay closed regardless of interpretation outcome.
+
+Phase211 results:
+
+- interpreted model/horizon rows: 12;
+- model-family summary rows: 3;
+- passing interpretation rows: 0;
+- best validation MSE improvement versus shuffled-target control: approximately 0.954%;
+- best absolute validation correlation: approximately 0.144;
+- best binary-accuracy lift versus shuffled-target control: approximately 0.0116;
+- hard gates: 6 / 6 passed;
+- candidate opened for replay: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase212_model_family_closure_or_redesign_precommit_no_replay_no_test`.
+
+Phase211 decision:
+
+- no model/horizon candidate passed the full control-aware screen;
+- all three Phase209 model families are closed for replay in their current form;
+- the visible binary accuracies are mostly base-rate/control-like, not tradable edge evidence;
+- the receive-flow model-fit branch should move to a closure-or-redesign precommit rather than replay.
+
+Current Phase149 evidence after Phase211:
+
+- phase rows discovered: 204;
+- runner phase rows: 202;
+- acceptance phase rows: 154;
+- hard global-state gates: 170 / 170 passed;
+- real receive-flow branch status: `model_fit_validation_interpretation_complete_phase212_closure_or_redesign_pending_no_replay_no_test`;
+- next best action: `run_phase212_model_family_closure_or_redesign_precommit_no_replay_no_test`.
+
+Current interpretation: Phase211 is a clean falsification of the current Phase209/Phase210 model family set for replay. It does not invalidate the data pipeline; it says the current receive-flow model fits are not strong enough versus controls to justify replay, test replay, promotion, or any profitability claim.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

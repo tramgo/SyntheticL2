@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P211_PHASE210_COMPLETE,True,phase210_complete=1,hard
+P211_INTERPRETATION_ROWS_RECORDED,True,interpretation_rows=12,hard
+P211_FAMILY_SUMMARY_RECORDED,True,family_summary_rows=3,hard
+P211_DECISION_LEDGER_RECORDED,True,decision_rows=1,hard
+P211_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard
+P211_NO_TEST_REPLAY_OR_PROFITABILITY_CLAIM,True,closed_flags_sum=0,hard

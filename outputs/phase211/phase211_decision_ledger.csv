@@ -1,0 +1,2 @@
+phase211_decision_id,passing_interpretation_rows,model_families_with_pass,decision,rationale,strategy_replay_allowed,test_replay_allowed_next,promotion_allowed,paper_or_live_acceptance_allowed,profitability_claim_allowed
+P211_VALIDATION_INTERPRETATION_DECISION,0,0,no_candidate_opened_for_replay,Validation dry-run metrics are compared with shuffled-target controls; replay and sealed test remain closed regardless of interpretation.,0,0,0,0,0

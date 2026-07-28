@@ -1,0 +1,12 @@
+forbidden_output,emitted_in_phase211,allowed_in_phase211,rationale
+strategy_replay,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+test_replay_execution,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+test_result,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+promotion,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+paper_live_acceptance,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+order_arrival,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+fill_model,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+pnl_replay,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+profitability_claim,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+threshold_widening,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."
+row_level_prediction_export,0,0,"Phase211 interprets aggregate validation metrics only and keeps replay, test, P&L, promotion, and paper/live closed."

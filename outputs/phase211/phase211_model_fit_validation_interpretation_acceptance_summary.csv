@@ -1,0 +1,21 @@
+metric,value,description
+phase211_interpretation_rows,12,Model/horizon interpretation rows
+phase211_family_summary_rows,3,Model-family summary rows
+phase211_passing_interpretation_rows,0,Rows passing the control-aware interpretation screen
+phase211_best_mse_improvement_pct_vs_control,0.9542657098096239,Best validation MSE improvement versus shuffled-target control
+phase211_best_abs_validation_correlation,0.1435918920113247,Best absolute validation correlation
+phase211_best_binary_accuracy_lift_vs_control,0.01160958620117758,Best binary accuracy lift versus shuffled-target control
+phase211_decision_rows,1,Decision ledger rows
+phase211_forbidden_execution_rows,11,Forbidden execution rows
+phase211_gate_rows,6,Gates evaluated
+phase211_hard_gate_rows,6,Hard gates evaluated
+phase211_hard_gate_pass_rows,6,Hard gates passed
+phase211_model_fit_validation_interpretation_complete,1,1 means Phase211 completed
+phase211_candidate_opened_for_replay,0,No candidate opened for replay
+phase211_strategy_replay_allowed,0,No strategy replay opened
+phase211_test_replay_allowed_next,0,No test replay opened
+phase211_promotion_allowed,0,No promotion opened
+phase211_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase211_profitability_claim_allowed,0,No profitability claim is allowed
+phase211_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase211_next_best_action,run_phase212_model_family_closure_or_redesign_precommit_no_replay_no_test,Recommended next milestone
