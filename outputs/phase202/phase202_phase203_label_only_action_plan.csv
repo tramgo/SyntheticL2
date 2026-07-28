@@ -1,0 +1,4 @@
+action_id,priority,action,allowed_scope,strategy_replay_allowed
+P203_MATERIALIZE_QUEUE_RECOVERY_PERSISTENCE_LABELS,1,Materialize redesigned queue recovery persistence labels over Stage 01 shards.,label_only_no_replay,0
+P203_MATERIALIZE_TOXICITY_ABSTENTION_FILTERS,2,Materialize toxicity abstention filters and compare against Phase201 adverse-selection failures.,label_only_no_replay,0
+P203_AUDIT_SYMBOL_MONTH_STABILITY,3,Audit symbol/month stability for redesigned passive feature families.,label_only_no_replay,0

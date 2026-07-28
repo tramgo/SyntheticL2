@@ -6477,6 +6477,60 @@ Current interpretation: the passive queue-position path remains alive as a mater
 
 ---
 
+### Phase202 - Passive feature redesign precommit
+
+Phase202 converts the Phase201 failure into a label-only redesign contract. Phase201 improved breadth to 4 symbols and 4 trade dates, but still produced 0 pre-replay candidates because the dominant failure remained:
+
+`adverse_selection_gate_failed|breadth_gate_failed`
+
+Phase202 therefore does not execute strategy replay, test replay, order-arrival simulation, fill modeling, P&L, promotion, or paper/live acceptance. It records what must change before the passive queue branch deserves another materialization pass.
+
+Phase202 failure decomposition:
+
+- adverse-selection failure response: add queue-recovery persistence, adverse markout ceiling, and toxicity-abstention filters before candidate construction;
+- breadth failure response: require symbol/month stability at the feature-family level rather than accepting single-pocket survival.
+
+Phase202 redesigned passive feature contract:
+
+- `P202_QUEUE_RECOVERY_PERSISTENCE`;
+- `P202_TOXICITY_ABSTENTION_FILTER`;
+- `P202_SYMBOL_MONTH_STABILITY_SCORE`;
+- `P202_SPREAD_COMPRESSION_WITH_CANCEL_GUARD`.
+
+Phase202 acceptance contract:
+
+- require at least 4 trade dates and at least 8 symbols before any bounded pilot replay can even be precommitted;
+- require an adverse-selection ceiling before replay;
+- forbid threshold widening as a substitute for material feature redesign;
+- keep Phase203 label-only.
+
+Phase202 results:
+
+- failure-decomposition rows: 2;
+- redesigned feature rows: 4;
+- acceptance contract rows: 4;
+- Phase203 label-only action rows: 3;
+- hard gates: 7 / 7 passed;
+- passive feature redesign precommit complete: 1;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase203_redesigned_passive_label_materialization_no_replay`.
+
+Current Phase149 evidence after Phase202:
+
+- phase rows discovered: 195;
+- runner phase rows: 193;
+- acceptance phase rows: 145;
+- hard global-state gates: 116 / 116 passed;
+- real receive-flow branch status: `passive_feature_redesign_precommitted_label_materialization_pending_no_replay`;
+- next best action: `run_phase203_redesigned_passive_label_materialization_no_replay`.
+
+Current interpretation: Phase202 is progress, but still deliberately not a profitability experiment. It says the old passive queue Stage 01 labels were too fragile, and it narrows the next action to Phase203 redesigned label materialization. The next milestone should materialize the four redesigned passive features as labels/features only, then rerun acceptance screens before any replay is considered.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

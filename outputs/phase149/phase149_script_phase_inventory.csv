@@ -112,6 +112,7 @@ phase,runner,runner_exists,runner_suffix
 1,scripts\run_phase1_received_tick_features.py,True,.py
 200,scripts\run_phase200_material_new_hypothesis_precommit.py,True,.py
 201,scripts\run_phase201_passive_queue_label_stage01_acceptance.py,True,.py
+202,scripts\run_phase202_passive_feature_redesign_precommit.py,True,.py
 20,scripts\run_phase20_acceptance_hardening.py,True,.py
 20,scripts\run_phase20_m01_broker_evidence_contract.py,True,.py
 20,scripts\run_phase20_m02_strategy_support_contract.py,True,.py

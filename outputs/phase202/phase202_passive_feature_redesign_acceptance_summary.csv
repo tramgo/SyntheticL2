@@ -1,0 +1,15 @@
+metric,value,description
+phase202_failure_decomposition_rows,2,Failure rows from Phase201
+phase202_redesigned_feature_rows,4,Redesigned passive feature rows
+phase202_acceptance_contract_rows,4,Acceptance contract rows
+phase202_phase203_action_rows,3,Next label-only action rows
+phase202_gate_rows,7,Gates evaluated
+phase202_hard_gate_rows,7,Hard gates evaluated
+phase202_hard_gate_pass_rows,7,Hard gates passed
+phase202_passive_feature_redesign_precommit_complete,1,1 means Phase202 completed
+phase202_strategy_replay_allowed,0,No strategy replay opened
+phase202_test_replay_allowed_next,0,No test replay opened
+phase202_promotion_allowed,0,No promotion opened
+phase202_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase202_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase202_next_best_action,run_phase203_redesigned_passive_label_materialization_no_replay,Recommended next milestone

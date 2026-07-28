@@ -1,0 +1,3 @@
+failure_id,observed,phase201_pre_replay_candidate_rows,phase201_joined_label_candidate_rows,redesign_response,must_address_before_replay,phase201_max_candidate_symbols,phase201_max_candidate_trade_dates
+P202_ADVERSE_SELECTION_GATE_FAILED,adverse_selection_gate_failed|breadth_gate_failed,0.0,696.0,"Add queue recovery persistence, adverse markout ceiling, and toxicity abstention filters before candidate construction.",1,,
+P202_BREADTH_GATE_FAILED,adverse_selection_gate_failed|breadth_gate_failed,,,Require symbol/month stability at the feature-family level instead of single pocket survival.,1,4.0,4.0
