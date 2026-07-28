@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P200_PHASE199_BRANCH_DECISION_COMPLETE,1,phase199_complete=1; material_required=1,hard
+P200_PRIORITY_HYPOTHESIS_SELECTED,1,selected_rows=1,hard
+P200_MATERIAL_DIFFERENCE_RECORDED,1,passive queue-position differs from receive-flow/context marketable search,hard
+P200_LABEL_CONTRACT_RECORDED,1,contract_rows=6,hard
+P200_LABEL_ONLY_EXPANSION_ACTIONS_RECORDED,1,action_rows=4,hard
+P200_PHASE120_LABEL_EXPANSION_ALLOWED_REPLAY_CLOSED,1,label_expansion_allowed=1; replay_allowed=0,hard
+P200_NO_TEST_REPLAY_OR_PROMOTION,1,test_replay=0; strategy_replay=0; promotion=0; paper_live=0,hard

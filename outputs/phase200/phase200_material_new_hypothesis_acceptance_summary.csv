@@ -1,0 +1,16 @@
+metric,value,description
+phase200_selected_hypothesis_id,P200_QUEUE_PASSIVE_QUEUE_POSITION_PROXY,Selected material new hypothesis
+phase200_selected_hypothesis_rows,1,Selected hypothesis rows
+phase200_label_contract_rows,6,Passive queue label contract rows
+phase200_stage_action_rows,4,Next stage action rows
+phase200_prior_evidence_rows,5,Prior evidence rows
+phase200_gate_rows,7,Gates evaluated
+phase200_hard_gate_rows,7,Hard gates evaluated
+phase200_hard_gate_pass_rows,7,Hard gates passed
+phase200_material_new_hypothesis_precommit_complete,1,1 means Phase200 completed
+phase200_strategy_replay_allowed,0,No strategy replay opened
+phase200_test_replay_allowed_next,0,No test replay opened
+phase200_promotion_allowed,0,No promotion opened
+phase200_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase200_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase200_next_best_action,run_phase201_passive_queue_label_only_stage01_expansion_no_replay,Recommended next milestone

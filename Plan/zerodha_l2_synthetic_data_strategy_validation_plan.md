@@ -6368,6 +6368,65 @@ Current Phase149 evidence after Phase199:
 
 Current interpretation: this branch should not spend the untouched test split. The next implementation milestone should precommit one materially different Phase200 hypothesis, with passive queue-position/adverse-selection survival as the highest-priority queue item.
 
+### Phase200 - Material new hypothesis precommit
+
+Phase200 selects the highest-priority materially different hypothesis from Phase199 and turns it into a label-contract milestone.
+
+Selected hypothesis:
+
+`P200_QUEUE_PASSIVE_QUEUE_POSITION_PROXY`
+
+Material difference:
+
+Instead of continuing marketable receive-flow/context timing, Phase200 switches to passive maker queue-position and adverse-selection survival. This changes the target design from “should we cross now?” to “is a hypothetical maker fill likely to survive without toxic markout after queue recovery?”
+
+Phase200 uses existing passive-label history:
+
+- Phase66 adverse-selection labels;
+- Phase68 replenishment-after-touch labels;
+- Phase69 spread-transition labels;
+- Phase118 richer passive feature contracts;
+- Phase120 staged label-only expansion plan.
+
+Phase200 outputs:
+
+- selected hypothesis rows: 1;
+- passive queue label contract rows: 6;
+- label-only stage action rows: 4;
+- prior passive evidence rows: 5;
+- hard gates: 7 / 7 passed;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Phase200 label contract:
+
+- define passive queue survival without adverse markout;
+- require queue-recovery feature inputs rather than post-entry unavailable information;
+- run Phase120 Stage 01 label-only expansion first;
+- require multi-month and multi-symbol breadth before any bounded pilot replay;
+- preserve cost-toxicity rejection;
+- keep strategy replay, test replay, order/fill/P&L and paper/live acceptance closed.
+
+Phase200 next stage action plan:
+
+1. run Phase66 passive adverse-selection labels with `--limit-shards 128`;
+2. run Phase68 replenishment-after-touch labels with `--limit-shards 128`;
+3. run Phase69 spread-transition labels with `--limit-shards 128`;
+4. rerun Phase119 richer passive joined labels on the expanded Stage 01 label outputs.
+
+Current Phase149 evidence after Phase200:
+
+- phase rows discovered: 193;
+- runner phase rows: 191;
+- acceptance phase rows: 143;
+- hard global-state gates: 106 / 106 passed;
+- real receive-flow branch status: `material_new_passive_queue_hypothesis_precommitted_label_expansion_pending_no_test`;
+- next best action: `run_phase201_passive_queue_label_only_stage01_expansion_no_replay`.
+
+Current interpretation: the branch has moved to a genuinely different passive-label path. The next implementation milestone should execute Phase201 Stage 01 label-only expansion, still with no strategy replay, no test replay, no orders/fills/P&L and no paper/live acceptance.
+
 ---
 
 ## 25. Final Principle

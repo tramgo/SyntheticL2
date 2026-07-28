@@ -1,0 +1,6 @@
+evidence_id,observed,interpretation
+P200_PHASE120_LABEL_EXPANSION_ALLOWED,1,Label-only expansion is allowed without replay.
+P200_PHASE120_REPLAY_CLOSED,0,Passive replay remains closed.
+P200_FEATURE_CONTRACT_AVAILABLE,3,Phase118 passive feature contracts available.
+P200_STAGE_PLAN_AVAILABLE,3,Phase120 staged label expansion commands available.
+P200_CURRENT_COVERAGE_ROWS,96,Current passive label coverage rows available for stage planning.
