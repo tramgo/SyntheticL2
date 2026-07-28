@@ -5234,6 +5234,65 @@ Current interpretation: the project now has a source-verified Zerodha cost catal
 
 ---
 
+### Phase181 - Label Materialization, No Replay
+
+**Date:** 2026-07-28
+
+Phase181 materializes future receive-flow labels from the Phase176 feature lake under the Phase180 precommit. It writes labels only. It does not generate signals, sides, orders, order arrivals, fill models, P&L replay, profitability claims or paper/live acceptance.
+
+Phase181 outputs:
+
+- `outputs/phase181/phase181_label_partition_inventory.csv`;
+- `outputs/phase181/phase181_label_quality_by_horizon_date_split.csv`;
+- `outputs/phase181/phase181_label_materialization_gate_evaluation.csv`;
+- `outputs/phase181/phase181_label_materialization_acceptance_summary.csv`;
+- `outputs/phase181/phase181_label_materialization_report.md`;
+- `outputs/phase181/phase181_label_materialization_manifest.json`.
+
+The local label Parquet lake is written under:
+
+- `derived_real_l2_receive_flow_labels_phase181/`
+
+The Parquet lake is intentionally not committed because repo rules ignore Parquet data. The tracked evidence is the partition inventory, quality summary, gate ledger, report and manifest.
+
+Materialized label families:
+
+- future mid-return in basis points for the next bucket;
+- future absolute return in basis points for the next bucket;
+- future spread-change in basis points for the next bucket;
+- future volatility proxy over the next five buckets;
+- execution-risk spread-widening indicator for the next bucket;
+- short-horizon direction label.
+
+Current Phase181 evidence:
+
+- label partitions materialized: 640;
+- label rows written: 2,209,164;
+- rows with primary labels available: 2,208,464;
+- horizon/date/split quality rows: 20;
+- gates evaluated: 5;
+- hard gates passed: 5 / 5;
+- labels materialized: 1;
+- minimum horizon/date availability fraction: 0.993243;
+- split roles present: `train`, `validation`, `test_untouched`;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `signal;side;order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`;
+- next best action: `build_phase182_label_quality_leakage_audit_no_replay`.
+
+Current Phase149 evidence after Phase181:
+
+- phase rows discovered: 174;
+- runner phase rows: 172;
+- acceptance phase rows: 124;
+- hard global-state gates: 20 / 20 passed;
+- real receive-flow branch status: `labels_materialized_quality_leakage_pending`;
+- next best action: `build_phase182_label_quality_leakage_audit_no_replay`.
+
+Current interpretation: label materialization is now complete, but replay remains closed. The next phase should audit label quality and leakage: feature timestamp before label horizon, test-date untouched policy, split-role consistency, label availability by symbol/date/horizon, and absence of signal/order/P&L columns.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
