@@ -6904,6 +6904,58 @@ Current interpretation: Phase209 opens only the specification path toward a Phas
 
 ---
 
+### Phase210 - Train/validation model-fit dry run, no replay/no test
+
+Phase210 is the first model-fitting milestone after the selected receive-flow context reset. It joins Phase176 receive-flow feature partitions to Phase181 receive-flow labels, fits train-only dry-run ridge models, scores aggregate train/validation metrics, and records shuffled-target controls. It exports only aggregate metrics and coefficient ledgers. It does not export row-level predictions, run strategy replay, touch sealed test rows, emit orders/fills/P&L, promote anything, open paper/live acceptance, or make a profitability claim.
+
+Phase210 implementation notes:
+
+- dependency posture: used local pandas/NumPy and existing parquet files; no new scikit-learn dependency was installed;
+- fit scope: 3 Phase209 model specs x 4 horizons = 12 model/horizon fits;
+- feature scope: Phase209's 24 allowed feature/horizon rows, reduced to the non-overlap receive-flow feature columns;
+- label scope: `short_horizon_direction_label`, `future_mid_return_bps_next_bucket`, and `execution_risk_spread_widen_next_bucket`;
+- split scope: train and validation only;
+- sealed split: `test_untouched` remains unused;
+- controls: 12 shuffled-target negative-control rows recorded.
+
+Phase210 results:
+
+- joined train/validation design-matrix partition rows: 512;
+- joined train/validation design-matrix rows: 1,641,001;
+- unique model/horizon fits: 12;
+- train/validation metric rows: 24;
+- validation metric rows: 12;
+- coefficient rows: 132;
+- negative-control rows: 12;
+- hard gates: 7 / 7 passed;
+- model-fit execution: 1;
+- sealed test rows used: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase211_model_fit_validation_interpretation_no_replay_no_test`.
+
+Validation metric snapshot:
+
+- max absolute validation correlation across the 12 model/horizon fits: approximately 0.144;
+- best validation binary accuracy: approximately 0.817 on an execution-risk label fit;
+- these are diagnostic model-fit metrics only and must not be interpreted as tradable edge, P&L, or profitability.
+
+Current Phase149 evidence after Phase210:
+
+- phase rows discovered: 203;
+- runner phase rows: 201;
+- acceptance phase rows: 153;
+- hard global-state gates: 163 / 163 passed;
+- real receive-flow branch status: `train_validation_model_fit_dry_run_complete_phase211_validation_interpretation_pending_no_replay_no_test`;
+- next best action: `run_phase211_model_fit_validation_interpretation_no_replay_no_test`.
+
+Current interpretation: Phase210 proves the train/validation model-fit pipeline can run over real receive-flow feature and label materializations without using test rows or replaying a strategy. The next required milestone is Phase211 interpretation: compare validation metrics against controls, reject weak or control-like fits, and decide whether any future precommit is justified while replay and sealed test remain closed.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

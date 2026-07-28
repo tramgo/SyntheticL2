@@ -178,6 +178,9 @@ def build_split_and_control_contract(label_inventory: pd.DataFrame, ablations: p
     split_dates = {}
     if not label_inventory.empty and {"split_role", "trade_date"}.issubset(label_inventory.columns):
         split_dates = label_inventory.groupby("split_role")["trade_date"].apply(lambda s: semicolon_join(s)).to_dict()
+        sealed_test_dates = semicolon_join(label_inventory.loc[label_inventory["split_role"].astype(str).str.contains("test", case=False, na=False), "trade_date"])
+    else:
+        sealed_test_dates = ""
     ablation_ids = semicolon_join(ablations["ablation_id"]) if not ablations.empty and "ablation_id" in ablations.columns else ""
     rows = [
         {
@@ -187,7 +190,7 @@ def build_split_and_control_contract(label_inventory: pd.DataFrame, ablations: p
             "contract": "Fit on train only; screen/calibrate on validation only; keep test dates sealed and unused.",
             "train_dates": split_dates.get("train", ""),
             "validation_dates": split_dates.get("validation", ""),
-            "test_dates_sealed": split_dates.get("test", ""),
+            "test_dates_sealed": sealed_test_dates,
             "source_ablation_ids": ablation_ids,
             "model_fit_execution_allowed_phase209": 0,
             "strategy_replay_allowed": 0,
@@ -200,7 +203,7 @@ def build_split_and_control_contract(label_inventory: pd.DataFrame, ablations: p
             "contract": "Every model-family dry run must include a shuffled time/date control before edge interpretation.",
             "train_dates": split_dates.get("train", ""),
             "validation_dates": split_dates.get("validation", ""),
-            "test_dates_sealed": split_dates.get("test", ""),
+            "test_dates_sealed": sealed_test_dates,
             "source_ablation_ids": ablation_ids,
             "model_fit_execution_allowed_phase209": 0,
             "strategy_replay_allowed": 0,
@@ -213,7 +216,7 @@ def build_split_and_control_contract(label_inventory: pd.DataFrame, ablations: p
             "contract": "Cross-symbol arrival synchrony must exclude the target symbol in any future design matrix.",
             "train_dates": split_dates.get("train", ""),
             "validation_dates": split_dates.get("validation", ""),
-            "test_dates_sealed": split_dates.get("test", ""),
+            "test_dates_sealed": sealed_test_dates,
             "source_ablation_ids": ablation_ids,
             "model_fit_execution_allowed_phase209": 0,
             "strategy_replay_allowed": 0,
@@ -226,7 +229,7 @@ def build_split_and_control_contract(label_inventory: pd.DataFrame, ablations: p
             "contract": "No Phase164 form reuse, no fixed Phase167 S08 score, no passive queue replay form overlap.",
             "train_dates": split_dates.get("train", ""),
             "validation_dates": split_dates.get("validation", ""),
-            "test_dates_sealed": split_dates.get("test", ""),
+            "test_dates_sealed": sealed_test_dates,
             "source_ablation_ids": ablation_ids,
             "model_fit_execution_allowed_phase209": 0,
             "strategy_replay_allowed": 0,

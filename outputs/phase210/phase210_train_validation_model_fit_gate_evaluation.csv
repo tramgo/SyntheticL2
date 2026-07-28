@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P210_PHASE209_COMPLETE,True,phase209_complete=1,hard
+P210_DESIGN_MATRIX_JOINED,True,joined_rows=1641001,hard
+P210_MODEL_FITS_RECORDED,True,model_fit_rows=12,hard
+P210_VALIDATION_METRICS_RECORDED,True,validation_metric_rows=12,hard
+P210_NEGATIVE_CONTROLS_RECORDED,True,negative_control_rows=12,hard
+P210_TEST_REPLAY_AND_TEST_ROWS_CLOSED,True,test_rows_used=0,hard
+P210_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

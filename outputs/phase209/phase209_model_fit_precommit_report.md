@@ -1,6 +1,6 @@
 # Phase209 Model-fit Precommit Spec
 
-Generated UTC: 2026-07-28T21:03:52.337838+00:00
+Generated UTC: 2026-07-28T21:10:33.078514+00:00
 
 Phase209 freezes the next model-fit design without executing the fit.
 It records model families, feature sets, label targets, train/validation/test sealing rules, negative controls, and forbidden outputs.
@@ -77,10 +77,10 @@ It emits no model predictions, no strategy replay, no order/fill/P&L artifacts, 
 
 | phase209_control_id | control_type | required_before_phase210 | contract | train_dates | validation_dates | test_dates_sealed | source_ablation_ids | model_fit_execution_allowed_phase209 | strategy_replay_allowed | test_replay_allowed_next |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P209_TRAIN_VALIDATION_TEST_SPLIT_CONTRACT | split | 1 | Fit on train only; screen/calibrate on validation only; keep test dates sealed and unused. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 |  | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
-| P209_SHUFFLED_TIME_DATE_NEGATIVE_CONTROL | negative_control | 1 | Every model-family dry run must include a shuffled time/date control before edge interpretation. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 |  | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
-| P209_TARGET_SYMBOL_EXCLUDED_CROSS_SYMBOL_CONTROL | leakage_control | 1 | Cross-symbol arrival synchrony must exclude the target symbol in any future design matrix. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 |  | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
-| P209_BLOCKED_FORM_OVERLAP_CONTROL | reuse_control | 1 | No Phase164 form reuse, no fixed Phase167 S08 score, no passive queue replay form overlap. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 |  | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
+| P209_TRAIN_VALIDATION_TEST_SPLIT_CONTRACT | split | 1 | Fit on train only; screen/calibrate on validation only; keep test dates sealed and unused. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 | 2026-07-14 | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
+| P209_SHUFFLED_TIME_DATE_NEGATIVE_CONTROL | negative_control | 1 | Every model-family dry run must include a shuffled time/date control before edge interpretation. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 | 2026-07-14 | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
+| P209_TARGET_SYMBOL_EXCLUDED_CROSS_SYMBOL_CONTROL | leakage_control | 1 | Cross-symbol arrival synchrony must exclude the target symbol in any future design matrix. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 | 2026-07-14 | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
+| P209_BLOCKED_FORM_OVERLAP_CONTROL | reuse_control | 1 | No Phase164 form reuse, no fixed Phase167 S08 score, no passive queue replay form overlap. | 2026-07-08;2026-07-09;2026-07-10 | 2026-07-13 | 2026-07-14 | P207_BLOCKED_FORM_OVERLAP_CONTROL;P207_SHUFFLED_TIME_NEGATIVE_CONTROL;P207_TARGET_SYMBOL_EXCLUDED_SYNCHRONY | 0 | 0 | 0 |
 
 ## Forbidden Execution Ledger
 

@@ -1,0 +1,22 @@
+metric,value,description
+phase210_design_matrix_partition_rows,512,Train/validation joined partition rows
+phase210_design_matrix_joined_rows,1641001,Joined train/validation design-matrix rows
+phase210_model_fit_rows,12,Unique model/horizon fits
+phase210_metric_rows,24,Train/validation metric rows
+phase210_validation_metric_rows,12,Validation metric rows
+phase210_coefficient_rows,132,Coefficient rows
+phase210_negative_control_rows,12,Negative-control rows
+phase210_forbidden_execution_rows,11,Forbidden execution rows
+phase210_gate_rows,7,Gates evaluated
+phase210_hard_gate_rows,7,Hard gates evaluated
+phase210_hard_gate_pass_rows,7,Hard gates passed
+phase210_train_validation_model_fit_dry_run_complete,1,1 means Phase210 completed
+phase210_model_fit_execution,1,Train/validation model fitting executed
+phase210_strategy_replay_allowed,0,No strategy replay opened
+phase210_test_replay_allowed_next,0,No test replay opened
+phase210_test_rows_used,0,No sealed test rows used
+phase210_promotion_allowed,0,No promotion opened
+phase210_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase210_profitability_claim_allowed,0,No profitability claim is allowed
+phase210_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase210_next_best_action,run_phase211_model_fit_validation_interpretation_no_replay_no_test,Recommended next milestone
