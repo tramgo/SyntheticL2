@@ -1,0 +1,4 @@
+work_order_id,selected_route_id,action,allowed_scope,strategy_replay_allowed
+P206_WO01_SOURCE_NON_OVERLAP_AUDIT,P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH,audit selected source against failed Phase194-204 forms,source_contract_no_replay,0
+P206_WO02_FEATURE_FAMILY_CATALOG,P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH,catalog materially new receive-flow context features without model fitting,feature_contract_no_replay,0
+P206_WO03_PRE_REPLAY_GUARDRAILS,P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH,"carry forward no-threshold-widening, train-only selection, and no test replay guardrails",guardrail_contract_no_replay,0

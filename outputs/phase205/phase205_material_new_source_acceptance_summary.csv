@@ -1,0 +1,16 @@
+metric,value,description
+phase205_evidence_rows,5,Source evidence rows
+phase205_route_scorecard_rows,3,Route scorecard rows
+phase205_selected_source_contract_rows,1,Selected source contract rows
+phase205_phase206_work_order_rows,3,Phase206 work-order rows
+phase205_selected_route_id,P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH,Selected route
+phase205_gate_rows,6,Gates evaluated
+phase205_hard_gate_rows,6,Hard gates evaluated
+phase205_hard_gate_pass_rows,6,Hard gates passed
+phase205_material_new_source_precommit_complete,1,1 means Phase205 completed
+phase205_strategy_replay_allowed,0,No strategy replay opened
+phase205_test_replay_allowed_next,0,No test replay opened
+phase205_promotion_allowed,0,No promotion opened
+phase205_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase205_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening,Outputs forbidden in this phase
+phase205_next_best_action,run_phase206_selected_source_nonoverlap_feature_contract_no_replay,Recommended next milestone

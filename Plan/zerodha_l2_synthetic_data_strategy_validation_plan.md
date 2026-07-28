@@ -6640,6 +6640,63 @@ Current interpretation: the current passive queue redesign line is closed for re
 
 ---
 
+### Phase205 - Material new source precommit
+
+Phase205 chooses the next route after Phase204 closed the passive queue redesign for replay. It is a source-route precommit only. It does not run strategy replay, test replay, order-arrival simulation, fill modeling, P&L, promotion, paper/live acceptance, or threshold widening.
+
+Phase205 evidence basis:
+
+- Phase204 requires a materially new source or broader label materialization before any replay;
+- Phase203 materialized 696 passive redesigned labels and still found 0 redesigned candidate pass rows;
+- Phase171 selected `P171_REAL_MULTIDAY_RECEIVE_EVENT_FLOW` as the external/order-flow source axis;
+- Phase172 shows the local real receive-flow panel is available with 7 ready dates, 224 symbol/day partitions, 3,654,137 rows and about 10.53 GB compressed local Parquet;
+- Phase175/176/177 show schema activation, feature materialization and feature-quality audit were already completed for the receive-flow source.
+
+Phase205 selected route:
+
+`P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH`
+
+This route is selected over passive label breadth expansion because it is the highest-priority materially new non-passive source route from Phase204 and has local receive-flow/source-quality evidence already available.
+
+Phase205 route scorecard:
+
+- selected material new source route: `P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH`;
+- passive label breadth expansion remains allowed only as a label-only alternative, not as replay;
+- real-anchor calibration refresh remains useful but is not the primary source precommit route.
+
+Phase205 Phase206 work order:
+
+1. audit selected source against failed Phase194-204 forms;
+2. catalog materially new receive-flow context features without model fitting;
+3. carry forward no-threshold-widening, train-only selection, and no-test-replay guardrails.
+
+Phase205 results:
+
+- evidence rows: 5;
+- route scorecard rows: 3;
+- selected source contract rows: 1;
+- Phase206 work-order rows: 3;
+- selected route: `P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH`;
+- hard gates: 6 / 6 passed;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase206_selected_source_nonoverlap_feature_contract_no_replay`.
+
+Current Phase149 evidence after Phase205:
+
+- phase rows discovered: 198;
+- runner phase rows: 196;
+- acceptance phase rows: 148;
+- hard global-state gates: 131 / 131 passed;
+- real receive-flow branch status: `material_new_source_precommitted_phase206_contract_pending_no_replay`;
+- next best action: `run_phase206_selected_source_nonoverlap_feature_contract_no_replay`.
+
+Current interpretation: Phase205 reopens work only at the source-contract level, not at the strategy level. The next milestone should be Phase206: prove the selected receive-flow context source is not just a renamed version of the failed Phase194-204 forms, and catalog the allowed feature families before any model fitting or replay.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

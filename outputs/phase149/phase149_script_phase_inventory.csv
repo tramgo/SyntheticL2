@@ -115,6 +115,7 @@ phase,runner,runner_exists,runner_suffix
 202,scripts\run_phase202_passive_feature_redesign_precommit.py,True,.py
 203,scripts\run_phase203_redesigned_passive_label_materialization.py,True,.py
 204,scripts\run_phase204_passive_redesign_closure_decision.py,True,.py
+205,scripts\run_phase205_material_new_source_precommit.py,True,.py
 20,scripts\run_phase20_acceptance_hardening.py,True,.py
 20,scripts\run_phase20_m01_broker_evidence_contract.py,True,.py
 20,scripts\run_phase20_m02_strategy_support_contract.py,True,.py
