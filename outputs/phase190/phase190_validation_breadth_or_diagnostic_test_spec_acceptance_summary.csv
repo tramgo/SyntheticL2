@@ -1,0 +1,20 @@
+metric,value,description
+phase190_split_feasibility_rows,5,Split feasibility rows
+phase190_decision_rows,1,Decision rows
+phase190_diagnostic_test_spec_rows,6,Diagnostic test spec rows
+phase190_data_action_rows,3,Data/action rows
+phase190_validation_date_count,1,Current validation date count
+phase190_test_untouched_date_count,1,Current test_untouched date count
+phase190_additional_validation_breadth_available_now,0,1 means current artifacts have enough validation dates
+phase190_may_relabel_test_as_validation,0,Test rows cannot be relabelled as validation
+phase190_decision,diagnostic_test_spec_only_no_execution,Decision
+phase190_gate_rows,6,Gates evaluated
+phase190_hard_gate_rows,6,Hard gates evaluated
+phase190_hard_gate_pass_rows,6,Hard gates passed
+phase190_test_replay_execution,0,No test replay executed
+phase190_test_replay_allowed_next,0,No test replay opened by Phase190
+phase190_promotion_allowed,0,No promotion opened
+phase190_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase190_decision_complete,1,1 means Phase190 completed
+phase190_forbidden_outputs,test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase190_next_best_action,add_real_validation_date_or_build_phase191_diagnostic_test_replay_precommit_no_execution,Recommended next milestone

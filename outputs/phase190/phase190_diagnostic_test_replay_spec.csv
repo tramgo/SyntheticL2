@@ -1,0 +1,7 @@
+spec_id,spec,required_for_future_execution
+P190_FREEZE_CANDIDATE,"Freeze candidate P187_TOP5_I85_S2p5_Z1_R100; no threshold, profile, symbol, or date reselection may occur during diagnostic test replay.",1
+P190_USE_ONLY_TEST_UNTOUCHED_SPLIT,A later diagnostic test replay may read only rows whose existing split_role is test_untouched; it may not relabel test rows in Phase190.,1
+P190_BIND_COST_LATENCY,Bind Phase180 P180_RETAIL_MARKETABLE_DEFAULT and P180_STRESSED_RETAIL profiles before any net metric.,1
+P190_NEGATIVE_CONTROLS,Include shuffled-time and shuffled-symbol controls in the future diagnostic test replay interpretation.,1
+P190_NO_PROMOTION_FROM_TEST,"A positive diagnostic test result may only open a later promotion-readiness audit, not paper/live acceptance.",1
+P190_BREADTH_LIMITATION_REPORT,Report that validation breadth was limited to one date and weak symbol-positive breadth before interpreting any future test result.,1

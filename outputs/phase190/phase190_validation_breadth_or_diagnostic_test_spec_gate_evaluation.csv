@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P190_PHASE189_DECISION_COMPLETE,1,phase189_decision_complete=1,hard
+P190_SPLIT_FEASIBILITY_RECORDED,1,split_rows=5,hard
+P190_TEST_NOT_RELABELLED,1,may_relabel_test_as_validation=0,hard
+P190_DIAGNOSTIC_SPEC_DECLARED,1,spec_rows=6,hard
+P190_TEST_REPLAY_NOT_EXECUTED,1,test_replay_allowed_next=0,hard
+P190_PROMOTION_AND_PAPER_LIVE_CLOSED,1,promotion_allowed=0; paper_live=0,hard

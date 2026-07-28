@@ -1,0 +1,4 @@
+action_id,priority,action,success_metric
+P190_DOWNLOAD_OR_DESIGNATE_MORE_VALIDATION_DATES,1,"Add at least one more non-test validation date from real receive-flow data, then rerun Phase187 and Phase188 before revisiting test replay.",validation_date_count >= 2 with test_untouched_dates unchanged
+P190_KEEP_TEST_UNTOUCHED,2,Do not relabel the current test_untouched date as validation in this branch.,may_relabel_test_as_validation=0 and test_replay_allowed_next=0
+P190_OPTIONAL_DIAGNOSTIC_SPEC_REVIEW,3,"Review the diagnostic test replay spec, but do not execute it until a later explicit precommit phase allows it.",test_replay_execution=0 in Phase190

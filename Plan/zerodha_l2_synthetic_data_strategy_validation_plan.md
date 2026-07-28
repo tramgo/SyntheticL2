@@ -5784,6 +5784,74 @@ Current interpretation: Phase189 preserves the promising sparse candidate but do
 
 ---
 
+### Phase190 - Additional Validation Breadth or Diagnostic Test Spec, No Execution
+
+**Date:** 2026-07-28
+
+Phase190 checks whether additional validation breadth exists without touching the test set. The current label inventory has one validation date and one `test_untouched` date, so Phase190 cannot honestly add validation breadth from existing artifacts. It therefore writes a diagnostic-only future test replay specification and keeps test replay execution closed.
+
+Phase190 does not relabel test rows, run test replay, produce test results, open promotion, open paper/live acceptance, emit orders/fills, calculate P&L or claim profitability.
+
+Phase190 outputs:
+
+- `outputs/phase190/phase190_split_feasibility.csv`;
+- `outputs/phase190/phase190_validation_breadth_decision.csv`;
+- `outputs/phase190/phase190_diagnostic_test_replay_spec.csv`;
+- `outputs/phase190/phase190_data_actions.csv`;
+- `outputs/phase190/phase190_validation_breadth_or_diagnostic_test_spec_gate_evaluation.csv`;
+- `outputs/phase190/phase190_validation_breadth_or_diagnostic_test_spec_acceptance_summary.csv`;
+- `outputs/phase190/phase190_validation_breadth_or_diagnostic_test_spec_report.md`;
+- `outputs/phase190/phase190_validation_breadth_or_diagnostic_test_spec_manifest.json`.
+
+Current Phase190 evidence:
+
+- split feasibility rows: 5;
+- decision rows: 1;
+- diagnostic test spec rows: 6;
+- data/action rows: 3;
+- validation date count: 1;
+- test_untouched date count: 1;
+- additional validation breadth available now: 0;
+- may relabel test as validation: 0;
+- decision: `diagnostic_test_spec_only_no_execution`;
+- gates evaluated: 6;
+- hard gates passed: 6 / 6;
+- test replay execution: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- decision complete: 1;
+- next best action: `add_real_validation_date_or_build_phase191_diagnostic_test_replay_precommit_no_execution`.
+
+Split feasibility:
+
+- train dates: `2026-07-08`, `2026-07-09`, `2026-07-10`;
+- validation date: `2026-07-13`;
+- test_untouched date: `2026-07-14`;
+- the `2026-07-14` test_untouched date must not be relabelled as validation in this branch.
+
+Diagnostic future test replay spec:
+
+- freeze candidate `P187_TOP5_I85_S2p5_Z1_R100`;
+- use only existing `test_untouched` rows if a later phase explicitly opens diagnostic test replay;
+- bind Phase180 retail/default and stressed-retail cost/latency profiles;
+- include shuffled-time and shuffled-symbol negative controls;
+- forbid direct paper/live promotion from test alone;
+- report the validation breadth limitation before interpreting any future test result.
+
+Current Phase149 evidence after Phase190:
+
+- phase rows discovered: 183;
+- runner phase rows: 181;
+- acceptance phase rows: 133;
+- hard global-state gates: 58 / 58 passed;
+- real receive-flow branch status: `diagnostic_test_spec_written_validation_breadth_pending`;
+- next best action: `add_real_validation_date_or_build_phase191_diagnostic_test_replay_precommit_no_execution`.
+
+Current interpretation: the test set remains untouched. The next best action is to add at least one more real validation date if available, then rerun Phase187/188; otherwise, Phase191 may formalize an even narrower diagnostic-test precommit, still without execution.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

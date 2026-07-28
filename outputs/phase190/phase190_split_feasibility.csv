@@ -1,0 +1,6 @@
+split_role,trade_date,partitions,rows,symbols,usable_for_phase190_additional_validation,must_not_relabel_as_validation_in_phase190
+test_untouched,2026-07-14,128,567640,32,0,1
+train,2026-07-08,128,211557,32,1,0
+train,2026-07-09,128,336038,32,1,0
+train,2026-07-10,128,532414,32,1,0
+validation,2026-07-13,128,561515,32,1,0

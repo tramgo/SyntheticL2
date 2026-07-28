@@ -96,6 +96,7 @@ phase,runner,runner_exists,runner_suffix
 188,scripts\run_phase188_sparse_candidate_interpretation.py,True,.py
 189,scripts\run_phase189_test_replay_precommit_decision.py,True,.py
 18,scripts\run_phase18_technology_stack.py,True,.py
+190,scripts\run_phase190_validation_breadth_or_diagnostic_test_spec.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py
 19,scripts\run_phase19_reproducibility.py,True,.py
 1,scripts\run_phase1_event_reconstruction.py,True,.py

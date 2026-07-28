@@ -1,0 +1,2 @@
+decision_id,train_dates,validation_dates,test_untouched_dates,validation_date_count,test_untouched_date_count,additional_validation_breadth_available_now,may_relabel_test_as_validation,phase189_test_replay_deferred,phase190_decision,test_replay_allowed_next,promotion_allowed,paper_or_live_acceptance_allowed
+P190_VALIDATION_BREADTH_FEASIBILITY,2026-07-08;2026-07-09;2026-07-10,2026-07-13,2026-07-14,1,1,0,0,1,diagnostic_test_spec_only_no_execution,0,0,0
