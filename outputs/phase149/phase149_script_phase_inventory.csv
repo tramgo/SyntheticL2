@@ -118,6 +118,7 @@ phase,runner,runner_exists,runner_suffix
 205,scripts\run_phase205_material_new_source_precommit.py,True,.py
 206,scripts\run_phase206_selected_source_nonoverlap_feature_contract.py,True,.py
 207,scripts\run_phase207_allowed_feature_matrix_precommit.py,True,.py
+208,scripts\run_phase208_feature_matrix_quality_gate.py,True,.py
 20,scripts\run_phase20_acceptance_hardening.py,True,.py
 20,scripts\run_phase20_m01_broker_evidence_contract.py,True,.py
 20,scripts\run_phase20_m02_strategy_support_contract.py,True,.py

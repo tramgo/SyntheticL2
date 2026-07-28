@@ -1,0 +1,17 @@
+metric,value,description
+phase208_quality_summary_rows,24,Feature/horizon quality rows
+phase208_quality_pass_rows,24,Feature/horizon quality rows passed
+phase208_blocking_gap_rows,0,Blocking quality gap rows
+phase208_trade_dates_max,7,Maximum trade-date coverage
+phase208_symbols_max,32,Maximum symbol coverage
+phase208_gate_rows,6,Gates evaluated
+phase208_hard_gate_rows,6,Hard gates evaluated
+phase208_hard_gate_pass_rows,6,Hard gates passed
+phase208_feature_matrix_quality_gate_complete,1,1 means Phase208 completed
+phase208_model_fit_allowed,0,No model fitting opened
+phase208_strategy_replay_allowed,0,No strategy replay opened
+phase208_test_replay_allowed_next,0,No test replay opened
+phase208_promotion_allowed,0,No promotion opened
+phase208_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase208_forbidden_outputs,model_fit;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening,Outputs forbidden in this phase
+phase208_next_best_action,run_phase209_model_fit_precommit_spec_no_execution_no_replay,Recommended next milestone

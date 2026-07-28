@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P208_PHASE207_COMPLETE,True,phase207_complete=1,hard
+P208_QUALITY_SUMMARY_RECORDED,True,quality_rows=24,hard
+P208_ALL_MATRIX_ROWS_PASS_QUALITY,True,quality_pass_rows=24; quality_rows=24,hard
+P208_NO_BLOCKING_GAPS,True,blocking_gaps=0,hard
+P208_ABLATION_AND_TERMINOLOGY_CONTROLS_PRESENT,True,ablation_rows=3; audit_rows=3,hard
+P208_NO_MODEL_FIT_REPLAY_OR_PROMOTION,True,forbidden_flag_sum=0,hard

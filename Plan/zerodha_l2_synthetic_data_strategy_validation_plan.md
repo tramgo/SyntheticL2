@@ -6815,6 +6815,48 @@ Current interpretation: Phase207 confirms the selected receive-flow context sour
 
 ---
 
+### Phase208 - Feature matrix quality gate
+
+Phase208 validates the Phase207 allowed feature matrix against Phase177 partition-quality evidence. It does not fit models, run strategy replay, run test replay, emit orders/fills/P&L, promote anything, or open paper/live acceptance.
+
+Phase208 checks:
+
+- Phase207 feature matrix precommit is complete;
+- all 24 feature/horizon rows are available;
+- coverage passes across the local real receive-flow partitions;
+- Phase177 partition-quality metrics show no missing required columns, duplicate bucket rows, or monotonic bucket violations;
+- target-exclusion, shuffled-time/date negative-control and blocked-form overlap specs are present;
+- leakage and top-five terminology audits pass;
+- model fitting and replay remain closed.
+
+Phase208 results:
+
+- quality summary rows: 24;
+- quality pass rows: 24;
+- blocking gap rows: 0;
+- max trade-date coverage: 7;
+- max symbol coverage: 32;
+- hard gates: 6 / 6 passed;
+- model fitting allowed: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase209_model_fit_precommit_spec_no_execution_no_replay`.
+
+Current Phase149 evidence after Phase208:
+
+- phase rows discovered: 201;
+- runner phase rows: 199;
+- acceptance phase rows: 151;
+- hard global-state gates: 149 / 149 passed;
+- real receive-flow branch status: `feature_matrix_quality_gate_complete_phase209_model_precommit_pending_no_execution_no_replay`;
+- next best action: `run_phase209_model_fit_precommit_spec_no_execution_no_replay`.
+
+Current interpretation: Phase208 is the first clean quality gate after the passive redesign closure and selected-source reset. It does not prove profitability and does not run a model. It only says the allowed receive-flow context matrix is now clean enough to write a model-fit precommit spec in Phase209, with no execution/replay yet.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

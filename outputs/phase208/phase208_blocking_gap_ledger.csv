@@ -1,0 +1,2 @@
+gap_id,blocking,evidence,model_fit_allowed,strategy_replay_allowed
+P208_NO_BLOCKING_GAPS,0,all feature-matrix quality checks passed,0,0
