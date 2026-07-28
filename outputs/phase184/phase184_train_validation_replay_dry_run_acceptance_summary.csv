@@ -1,0 +1,19 @@
+metric,value,description
+phase184_partition_rows_scanned,640,Feature/label partitions scanned
+phase184_train_partitions_used,384,Train partitions used
+phase184_validation_partitions_used,128,Validation partitions used
+phase184_test_partitions_used,0,Test partitions used
+phase184_train_rows_used,1079615,Train rows used
+phase184_validation_rows_used,561386,Validation rows used
+phase184_fit_parameter_rows,3,Train-fitted family parameter rows
+phase184_dry_run_summary_rows,36,Dry-run summary rows
+phase184_gate_rows,8,Gates evaluated
+phase184_hard_gate_rows,8,Hard gates evaluated
+phase184_hard_gate_pass_rows,8,Hard gates passed
+phase184_train_validation_dry_run_complete,1,1 means Phase184 dry run completed
+phase184_strategy_replay_dry_run_performed,1,Dry replay summary performed without orders/fills/P&L
+phase184_test_rows_used,0,Test rows remain untouched
+phase184_promotion_allowed,0,No promotion opened
+phase184_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase184_forbidden_outputs,order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance;test_result;promotion,Outputs forbidden in this phase
+phase184_next_best_action,build_phase185_validation_replay_interpretation_and_kill_switch_audit_no_test,Recommended next milestone

@@ -1,0 +1,9 @@
+gate_id,gate_pass,evidence,severity
+P184_PHASE183_REPLAY_READINESS_PRECOMMITTED,1,phase183_replay_readiness_precommitted=1,hard
+P184_TRAIN_ROWS_PRESENT,1,train_rows=1079615,hard
+P184_VALIDATION_ROWS_PRESENT,1,validation_rows=561386,hard
+P184_TEST_ROWS_UNTOUCHED,1,test_rows_used=0,hard
+P184_TRAIN_ONLY_FIT_PARAMETERS,1,fit_parameter_rows=3,hard
+P184_COST_LATENCY_BOUND_SUMMARY,1,summary_rows=36,hard
+P184_NEGATIVE_CONTROLS_PRESENT,1,control_rows=24,hard
+P184_NO_PROMOTION_OR_PAPER_LIVE,1,promotion_allowed=0; paper_live_acceptance_allowed=0,hard

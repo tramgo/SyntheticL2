@@ -5409,6 +5409,73 @@ Current interpretation: replay design is now precommitted, but the experiment ha
 
 ---
 
+### Phase184 - Train/Validation Replay Dry-run, No Test, No Promotion
+
+**Date:** 2026-07-28
+
+Phase184 runs the first row-level dry replay over the audited receive-flow feature and label stack. It uses the Phase183 precommitted family contracts, fits feature transforms/weights/thresholds on train rows only, evaluates train and validation rows only, binds Phase180 retail/stressed latency and cost bounds, and includes shuffled negative controls.
+
+Phase184 does not use `test_untouched` rows, emit orders/fills, calculate contract-note P&L, claim profitability, open paper/live acceptance or promote any candidate.
+
+Phase184 outputs:
+
+- `outputs/phase184/phase184_partition_use_audit.csv`;
+- `outputs/phase184/phase184_train_fit_parameters.csv`;
+- `outputs/phase184/phase184_dry_run_summary.csv`;
+- `outputs/phase184/phase184_negative_control_summary.csv`;
+- `outputs/phase184/phase184_validation_selection_screen.csv`;
+- `outputs/phase184/phase184_train_validation_replay_dry_run_gate_evaluation.csv`;
+- `outputs/phase184/phase184_train_validation_replay_dry_run_acceptance_summary.csv`;
+- `outputs/phase184/phase184_train_validation_replay_dry_run_report.md`;
+- `outputs/phase184/phase184_train_validation_replay_dry_run_manifest.json`.
+
+Current Phase184 evidence:
+
+- feature/label partitions scanned: 640;
+- train partitions used: 384;
+- validation partitions used: 128;
+- test partitions used: 0;
+- train rows used: 1,079,615;
+- validation rows used: 561,386;
+- train-fitted family parameter rows: 3;
+- dry-run summary rows: 36;
+- gates evaluated: 8;
+- hard gates passed: 8 / 8;
+- train/validation dry-run complete: 1;
+- strategy replay dry-run performed: 1;
+- test rows used: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `build_phase185_validation_replay_interpretation_and_kill_switch_audit_no_test`.
+
+Validation dry-run screen, actual-time order, cost-bound result:
+
+- best ranked family/profile: `P179_RECEIVE_CADENCE_SHOCK_CONTEXT` under `P180_RETAIL_MARKETABLE_DEFAULT`;
+- validation dry decision events: 106,368;
+- gross return proxy mean: 2.1187 bps;
+- cost-bound mean: 14.8516 bps;
+- net return after cost-bound proxy mean: -12.7329 bps;
+- net-positive event fraction: 0.004804;
+- stressed retail result for the same family: -16.0161 bps mean after cost-bound proxy.
+
+The remaining two family candidates were also validation net-negative after cost bounds:
+
+- `P179_LIQUIDITY_CHURN_CONTEXT`: -13.7593 bps under retail default and -17.2914 bps under stressed retail;
+- `P179_SOURCE_QUALITY_REGIME_FILTER`: -14.5580 bps under retail default and -17.7295 bps under stressed retail.
+
+Current Phase149 evidence after Phase184:
+
+- phase rows discovered: 177;
+- runner phase rows: 175;
+- acceptance phase rows: 127;
+- hard global-state gates: 29 / 29 passed;
+- real receive-flow branch status: `train_validation_replay_dry_run_complete_interpretation_pending`;
+- next best action: `build_phase185_validation_replay_interpretation_and_kill_switch_audit_no_test`.
+
+Current interpretation: the first train/validation receive-flow dry replay is structurally valid and cost-bound, but economically negative under realistic retail and stressed-retail assumptions. This is a useful falsification signal. Phase185 should audit whether any apparent gross edge is merely a cost/latency illusion, compare actual-time results against shuffled negative controls, apply the Phase183 kill switches and decide whether this family set should be closed, redesigned or carried to a later untouched-test replay gate.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
