@@ -1,0 +1,28 @@
+{
+  "phase": 203,
+  "generated_utc": "2026-07-28T20:32:13.701171+00:00",
+  "phase119_dir": "outputs\\phase120\\P120_LABEL_STAGE_01_MIN_BREADTH\\phase119",
+  "phase202_dir": "outputs\\phase202",
+  "output_dir": "outputs\\phase203",
+  "forbidden_outputs": "strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim",
+  "outputs": [
+    "phase203_redesigned_passive_label_rows.csv",
+    "phase203_redesigned_feature_summary.csv",
+    "phase203_symbol_month_stability_audit.csv",
+    "phase203_adverse_selection_audit.csv",
+    "phase203_redesigned_passive_label_gate_evaluation.csv",
+    "phase203_redesigned_passive_label_acceptance_summary.csv",
+    "phase203_redesigned_passive_label_materialization_report.md"
+  ],
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "89ba828b7fbca04389cf92349755987451e9c99d",
+  "configuration_hash": "fa86e731ab60ef500debde3abe60b9d7a2e02b6226d1bc2a932d25f81e437fb3",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase203_redesigned_passive_label_materialization_no_replay",
+  "cost_model_version": "not_applicable_no_execution_costs",
+  "latency_model_version": "not_applicable_no_latency_model",
+  "creation_timestamp": "2026-07-28T20:32:13.701171+00:00"
+}

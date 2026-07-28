@@ -6531,6 +6531,57 @@ Current interpretation: Phase202 is progress, but still deliberately not a profi
 
 ---
 
+### Phase203 - Redesigned passive label materialization
+
+Phase203 materializes the Phase202 redesigned passive labels over the expanded Stage01 Phase119 joined passive-label candidates:
+
+`outputs/phase120/P120_LABEL_STAGE_01_MIN_BREADTH/phase119/richer_passive_joined_label_candidates.csv`
+
+This phase is still label-only. It does not run strategy replay, test replay, order-arrival simulation, fill modeling, P&L, promotion, or paper/live acceptance.
+
+Phase203 materialized labels:
+
+- `p203_queue_recovery_persistence_label`;
+- `p203_toxicity_abstention_filter_label`;
+- `p203_symbol_month_stability_label`;
+- `p203_spread_compression_cancel_guard_label`;
+- `p203_redesigned_candidate_pass`.
+
+Phase203 results:
+
+- materialized label rows: 696;
+- redesigned feature summary rows: 5;
+- symbol/month breadth-audit rows: 2;
+- adverse-selection audit rows: 1;
+- queue-recovery persistence pass rows: 180;
+- toxicity-abstention pass rows: 0;
+- symbol/month stability pass rows: 0;
+- spread-compression cancel-guard pass rows: 0;
+- redesigned candidate pass rows: 0;
+- maximum candidate symbol breadth: 4;
+- maximum candidate trade-date breadth: 4;
+- adverse-selection ceiling met: 0;
+- candidate gate open: 0;
+- hard gates: 7 / 7 passed;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `redesign_passive_labels_or_expand_label_materialization_before_replay`.
+
+Current Phase149 evidence after Phase203:
+
+- phase rows discovered: 196;
+- runner phase rows: 194;
+- acceptance phase rows: 146;
+- hard global-state gates: 121 / 121 passed;
+- real receive-flow branch status: `redesigned_passive_labels_materialized_candidate_gate_closed_no_replay`;
+- next best action: `redesign_passive_labels_or_expand_label_materialization_before_replay`.
+
+Current interpretation: Phase203 gives a useful negative result. Queue-recovery persistence is present in 180 rows, but every redesigned candidate is still blocked by adverse-selection toxicity and insufficient symbol/month stability. The branch should not spend replay/test budget. The next milestone should either materially redesign the passive labels again or expand label materialization breadth before any replay is considered.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

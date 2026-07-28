@@ -1,0 +1,6 @@
+label_id,candidate_rows,pass_rows,pass_fraction,max_symbols_among_pass,max_trade_dates_among_pass,strategy_replay_allowed,test_replay_allowed_next
+p203_queue_recovery_persistence_label,696,180,0.25862068965517243,4,4,0,0
+p203_toxicity_abstention_filter_label,696,0,0.0,0,0,0,0
+p203_symbol_month_stability_label,696,0,0.0,0,0,0,0
+p203_spread_compression_cancel_guard_label,696,0,0.0,0,0,0,0
+p203_redesigned_candidate_pass,696,0,0.0,0,0,0,0

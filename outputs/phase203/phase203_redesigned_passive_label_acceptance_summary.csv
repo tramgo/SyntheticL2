@@ -1,0 +1,21 @@
+metric,value,description
+phase203_materialized_label_rows,696,Rows in redesigned passive label materialization
+phase203_feature_summary_rows,5,Rows in redesigned feature summary
+phase203_symbol_breadth_audit_rows,2,Rows in symbol/month stability audit
+phase203_adverse_selection_audit_rows,1,Rows in adverse-selection audit
+phase203_redesigned_candidate_pass_rows,0,Rows passing all redesigned passive labels
+phase203_max_candidate_symbols,4,Maximum candidate symbol breadth observed
+phase203_max_candidate_trade_dates,4,Maximum candidate trade-date breadth observed
+phase203_adverse_selection_ceiling_met,0,1 means any candidate met the toxicity ceiling
+phase203_symbol_month_stability_requirement_rows,0,Feature-family rows meeting symbol/month stability requirement
+phase203_candidate_gate_open,0,1 means Phase204 candidate precommit may be considered
+phase203_gate_rows,7,Gates evaluated
+phase203_hard_gate_rows,7,Hard gates evaluated
+phase203_hard_gate_pass_rows,7,Hard gates passed
+phase203_label_materialization_complete,1,1 means Phase203 completed
+phase203_strategy_replay_allowed,0,No strategy replay opened
+phase203_test_replay_allowed_next,0,No test replay opened
+phase203_promotion_allowed,0,No promotion opened
+phase203_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase203_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase203_next_best_action,redesign_passive_labels_or_expand_label_materialization_before_replay,Recommended next milestone
