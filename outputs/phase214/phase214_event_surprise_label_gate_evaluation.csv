@@ -1,0 +1,9 @@
+gate_id,gate_pass,evidence,severity
+P214_PHASE213_COMPLETE,True,phase213_complete=1,hard
+P214_LABEL_PARTITIONS_MATERIALIZED,True,partition_rows=512,hard
+P214_LABEL_ROWS_POSITIVE,True,materialized_rows=1641001,hard
+P214_EVENT_SURPRISE_ROWS_POSITIVE,True,event_surprise_rows=130231,hard
+P214_QUALITY_ROWS_PASS,True,quality_pass_rows=512; quality_rows=512,hard
+P214_SPLIT_BALANCE_RECORDED,True,balance_rows=8,hard
+P214_SEALED_TEST_INVENTORY_UNUSED,True,sealed_rows=128; sealed_used=0,hard
+P214_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

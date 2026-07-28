@@ -7113,6 +7113,59 @@ Current interpretation: Phase213 selects the next research source but deliberate
 
 ---
 
+### Phase214 - Event-surprise conditional label materialization, no model/no replay/no test
+
+Phase214 materializes the Phase213 event-surprise conditional labels over train and validation partitions only. It records sealed test inventory but uses zero sealed test rows. It does not fit models, emit predictions, run strategy replay, emit orders/fills/P&L, promote anything, open paper/live acceptance, or make profitability claims.
+
+Phase214 implementation notes:
+
+- source features: Phase176 receive-flow features;
+- source labels: Phase181 future return/spread labels;
+- selected Phase213 source: `P213_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE`;
+- allowed splits: train and validation;
+- sealed split recorded but unused: `test_untouched`;
+- event-surprise threshold: absolute receive-event-rate z-score at least 1.0;
+- conditional baselines: train-only regime baselines with explicit symbol/horizon fallback tracking for unseen fine-grained regimes;
+- sparse event-surprise partitions are recorded as quality diagnostics, not treated as hard failure if rows and baselines are valid.
+
+Phase214 materialized labels:
+
+- `event_surprise_up_conditional_label`;
+- `event_surprise_down_conditional_label`;
+- `event_surprise_vol_expansion_conditional_label`.
+
+Phase214 results:
+
+- materialized train/validation label partition rows: 512;
+- materialized conditional label rows: 1,641,001;
+- event-surprise active rows: 130,231;
+- partition quality rows: 512;
+- partition quality pass rows: 512;
+- split/horizon balance rows: 8;
+- sealed test inventory rows: 128;
+- sealed test rows used: 0;
+- hard gates: 8 / 8 passed;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase215_event_surprise_label_quality_interpretation_no_model_no_replay_no_test`.
+
+Current Phase149 evidence after Phase214:
+
+- phase rows discovered: 207;
+- runner phase rows: 205;
+- acceptance phase rows: 157;
+- hard global-state gates: 193 / 193 passed;
+- real receive-flow branch status: `event_surprise_label_materialization_complete_phase215_quality_interpretation_pending_no_model_no_replay_no_test`;
+- next best action: `run_phase215_event_surprise_label_quality_interpretation_no_model_no_replay_no_test`.
+
+Current interpretation: Phase214 proves the event-surprise conditional labels can be materialized over train/validation at scale while keeping sealed test and replay closed. The next milestone must interpret label quality and balance before any model-fit precommit is considered.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

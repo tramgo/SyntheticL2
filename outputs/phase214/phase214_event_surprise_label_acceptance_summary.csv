@@ -1,0 +1,22 @@
+metric,value,description
+phase214_label_partition_rows,512,Materialized train/validation label partition rows
+phase214_label_rows,1641001,Materialized conditional label rows
+phase214_event_surprise_rows,130231,Rows with event-surprise bucket active
+phase214_quality_rows,512,Partition quality rows
+phase214_quality_pass_rows,512,Partition quality rows passed
+phase214_split_balance_rows,8,Split/horizon balance rows
+phase214_sealed_test_inventory_rows,128,Sealed test inventory rows recorded
+phase214_sealed_test_rows_used,0,Sealed test rows used
+phase214_forbidden_execution_rows,13,Forbidden execution rows
+phase214_gate_rows,8,Gates evaluated
+phase214_hard_gate_rows,8,Hard gates evaluated
+phase214_hard_gate_pass_rows,8,Hard gates passed
+phase214_event_surprise_label_materialization_complete,1,1 means Phase214 completed
+phase214_model_fit_allowed_next,0,No model fit opened
+phase214_strategy_replay_allowed,0,No strategy replay opened
+phase214_test_replay_allowed_next,0,No test replay opened
+phase214_promotion_allowed,0,No promotion opened
+phase214_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase214_profitability_claim_allowed,0,No profitability claim is allowed
+phase214_forbidden_outputs,model_fit;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase214_next_best_action,run_phase215_event_surprise_label_quality_interpretation_no_model_no_replay_no_test,Recommended next milestone
