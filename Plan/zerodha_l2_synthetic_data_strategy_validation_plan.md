@@ -6427,6 +6427,54 @@ Current Phase149 evidence after Phase200:
 
 Current interpretation: the branch has moved to a genuinely different passive-label path. The next implementation milestone should execute Phase201 Stage 01 label-only expansion, still with no strategy replay, no test replay, no orders/fills/P&L and no paper/live acceptance.
 
+### Phase201 - Passive queue label-only Stage 01 acceptance
+
+Phase201 records the Phase120 Stage 01 label-only expansion for the Phase200 passive queue-position hypothesis. It is an acceptance/evidence milestone over label artifacts only; it does not run replay.
+
+Stage 01 evidence:
+
+- Stage ID: `P120_LABEL_STAGE_01_MIN_BREADTH`;
+- dense shards scanned: 128;
+- passive inferred touches: 274,244;
+- richer joined passive label candidates: 696;
+- pre-replay candidate rows: 0;
+- maximum candidate symbol breadth: 4;
+- maximum candidate trade-date breadth: 4;
+- dominant failure reason: `adverse_selection_gate_failed|breadth_gate_failed`.
+
+Phase201 gates:
+
+- Phase200 precommit complete;
+- Stage 01 artifacts present for Phase66, Phase68, Phase69 and Phase119;
+- label-only expansion recorded;
+- Phase119 outcome recorded;
+- strategy replay and test replay remain closed;
+- promotion and paper/live acceptance remain closed.
+
+Phase201 results:
+
+- hard gates: 6 / 6 passed;
+- label-only Stage 01 complete: 1;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Interpretation:
+
+Stage 01 improved breadth versus the earlier one-month passive-label run, but it still did not produce a pre-replay candidate. Because breadth improved to 4 dates / 4 symbols while the gates still failed, the next best action is not immediate Stage 02 replay. It is a passive feature redesign precommit that addresses adverse-selection and breadth failure before spending more label-expansion budget.
+
+Current Phase149 evidence after Phase201:
+
+- phase rows discovered: 194;
+- runner phase rows: 192;
+- acceptance phase rows: 144;
+- hard global-state gates: 111 / 111 passed;
+- real receive-flow branch status: `passive_queue_stage01_label_expansion_complete_no_replay_candidate_redesign_pending`;
+- next best action: `run_phase202_passive_feature_redesign_precommit_no_replay`.
+
+Current interpretation: the passive queue-position path remains alive as a materially different hypothesis, but only as a label/feature-design path. The next implementation milestone should precommit redesigned passive features before any bounded pilot replay or further expansion.
+
 ---
 
 ## 25. Final Principle

@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P201_PHASE200_PRECOMMIT_COMPLETE,1,phase200_complete=1,hard
+P201_STAGE01_ARTIFACTS_PRESENT,1,artifact_rows=4; present=4,hard
+P201_LABEL_ONLY_EXPANSION_RECORDED,1,phase66_shards=128,hard
+P201_PHASE119_OUTCOME_RECORDED,1,joined_rows=696; pre_replay=0,hard
+P201_REPLAY_REMAINS_CLOSED,1,strategy_replay=0; test_replay=0,hard
+P201_PROMOTION_AND_PAPER_LIVE_CLOSED,1,promotion=0; paper_live=0,hard

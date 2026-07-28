@@ -1,0 +1,19 @@
+metric,value,description
+phase201_stage01_shards_scanned,128,Stage 01 dense shards scanned
+phase201_inferred_touches,274244,Passive inferred touches
+phase201_joined_label_candidate_rows,696,Joined richer passive candidates
+phase201_pre_replay_candidate_rows,0,Candidates passing pre-replay gates
+phase201_max_candidate_symbols,4,Max candidate symbol breadth
+phase201_max_candidate_trade_dates,4,Max candidate date breadth
+phase201_dominant_failure_reason,adverse_selection_gate_failed|breadth_gate_failed,Dominant failure reason
+phase201_decision,stage01_breadth_improved_but_gates_failed_redesign_passive_features_before_stage02,Stage 01 decision
+phase201_gate_rows,6,Gates evaluated
+phase201_hard_gate_rows,6,Hard gates evaluated
+phase201_hard_gate_pass_rows,6,Hard gates passed
+phase201_label_only_stage01_complete,1,1 means Phase201 completed
+phase201_strategy_replay_allowed,0,No strategy replay opened
+phase201_test_replay_allowed_next,0,No test replay opened
+phase201_promotion_allowed,0,No promotion opened
+phase201_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase201_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase201_next_best_action,run_phase202_passive_feature_redesign_precommit_no_replay,Recommended next milestone
