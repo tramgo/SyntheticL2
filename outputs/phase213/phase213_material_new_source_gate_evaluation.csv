@@ -1,0 +1,9 @@
+gate_id,gate_pass,evidence,severity
+P213_PHASE212_COMPLETE,True,phase212_complete=1,hard
+P213_CURRENT_FAMILIES_CLOSED,True,families_closed=3,hard
+P213_MATERIAL_SOURCE_SELECTED,True,selection_rows=1,hard
+P213_LABEL_CONTRACT_RECORDED,True,label_contract_rows=3,hard
+P213_FEATURE_REQUIREMENTS_RECORDED,True,feature_requirement_rows=3,hard
+P213_CONTROL_CONTRACT_RECORDED,True,control_rows=3,hard
+P213_PHASE214_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P213_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

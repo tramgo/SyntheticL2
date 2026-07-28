@@ -7056,6 +7056,63 @@ Current interpretation: Phase212 prevents further compute from being spent on th
 
 ---
 
+### Phase213 - Material new model source precommit, no replay/no test
+
+Phase213 selects a materially new model source after Phase212 closed the current Phase209/210 model-family set for replay. It is a source-selection and contract milestone only. It does not fit models, emit predictions, run strategy replay, touch sealed test rows, emit orders/fills/P&L, promote anything, open paper/live acceptance, or make profitability claims.
+
+Phase213 selected source:
+
+- selected source: `P213_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE`;
+- source type: material new conditional label source;
+- parent redesign route: `P212_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE`;
+- reason selected: it directly attacks the Phase211 failure modes of control-like MSE, weak global correlation, and base-rate-like binary accuracy;
+- non-selected alternatives preserved: `P212_REGIME_STRATIFIED_FEATURE_SOURCE` and `P212_CROSS_SECTIONAL_RELATIVE_FLOW_SOURCE`.
+
+Phase213 contracts:
+
+- conditional label contract rows: 3;
+- feature requirement rows: 3;
+- control contract rows: 3;
+- Phase214 work-order rows: 1;
+- forbidden execution rows: 13.
+
+Phase213 conditional labels:
+
+- `event_surprise_up_conditional_label`;
+- `event_surprise_down_conditional_label`;
+- `event_surprise_vol_expansion_conditional_label`.
+
+Phase213 controls:
+
+- balanced base-rate control;
+- shuffled event-time control;
+- train-baseline-only leakage control.
+
+Phase213 results:
+
+- source selection rows: 1;
+- hard gates: 8 / 8 passed;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase214_event_surprise_label_contract_materialization_no_model_no_replay_no_test`.
+
+Current Phase149 evidence after Phase213:
+
+- phase rows discovered: 206;
+- runner phase rows: 204;
+- acceptance phase rows: 156;
+- hard global-state gates: 185 / 185 passed;
+- real receive-flow branch status: `material_new_model_source_precommit_complete_phase214_event_surprise_label_materialization_pending_no_model_no_replay_no_test`;
+- next best action: `run_phase214_event_surprise_label_contract_materialization_no_model_no_replay_no_test`.
+
+Current interpretation: Phase213 selects the next research source but deliberately does not open model fitting or replay. Phase214 should materialize and quality-audit the event-surprise conditional labels over train/validation only, while recording sealed test inventory but not using sealed test labels for selection.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

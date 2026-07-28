@@ -1,0 +1,4 @@
+phase213_feature_requirement_id,required_feature_source,requirement,leakage_control,required_for_phase214,model_fit_allowed_now,strategy_replay_allowed
+P213_RECEIVE_EVENT_SURPRISE_BUCKETS,phase176_receive_event_rate_zscore;receive_event_count;receive_event_rate_baseline_days,Create causal receive-event surprise buckets from prior-date baselines only.,bucket assignment must use only current/past receive timestamps and prior-date baseline state,1,0,0
+P213_LIQUIDITY_REGIME_BUCKETS,spread;top5_qty_imbalance;stale_quote_duration_ms;quote_churn_count,Create causal spread/liquidity/churn regimes for conditional baselines.,regime state must be computed at or before feature bucket timestamp,1,0,0
+P213_CONDITIONAL_BASELINE_STATE,train_only_symbol_date_horizon_regime_baselines,Estimate label baselines on train split only; validation uses frozen train baselines; sealed test unused.,no validation/test target values in baseline estimation,1,0,0

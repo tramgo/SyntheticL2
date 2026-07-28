@@ -1,0 +1,4 @@
+phase213_control_id,control_type,requirement,required_before_model_fit,test_replay_allowed_next
+P213_BALANCED_BASE_RATE_CONTROL,base_rate,Report class balance by split/horizon/regime and reject labels where validation base-rate dominates.,1,0
+P213_SHUFFLED_EVENT_TIME_CONTROL,time_shuffle,Shuffle receive-event surprise bucket times within symbol/date before interpretation.,1,0
+P213_TRAIN_BASELINE_ONLY_CONTROL,leakage_control,Prove conditional baselines are estimated from train split only and sealed test remains unused.,1,0

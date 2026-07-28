@@ -1,0 +1,20 @@
+metric,value,description
+phase213_source_selection_rows,1,Material-new-source selection rows
+phase213_selected_source_id,P213_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE,Selected material source
+phase213_label_contract_rows,3,Conditional label contract rows
+phase213_feature_requirement_rows,3,Feature requirement rows
+phase213_control_contract_rows,3,Control contract rows
+phase213_phase214_work_order_rows,1,Phase214 work-order rows
+phase213_forbidden_execution_rows,13,Forbidden execution rows
+phase213_gate_rows,8,Gates evaluated
+phase213_hard_gate_rows,8,Hard gates evaluated
+phase213_hard_gate_pass_rows,8,Hard gates passed
+phase213_material_new_model_source_precommit_complete,1,1 means Phase213 completed
+phase213_model_fit_allowed_next,0,No model fit opened
+phase213_strategy_replay_allowed,0,No strategy replay opened
+phase213_test_replay_allowed_next,0,No test replay opened
+phase213_promotion_allowed,0,No promotion opened
+phase213_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase213_profitability_claim_allowed,0,No profitability claim is allowed
+phase213_forbidden_outputs,model_fit;model_prediction;strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase213_next_best_action,run_phase214_event_surprise_label_contract_materialization_no_model_no_replay_no_test,Recommended next milestone

@@ -1,0 +1,2 @@
+phase214_work_order_id,phase213_source_id,work_order,label_contract_rows,feature_requirement_rows,control_rows,allowed_next_scope,model_fit_allowed_next,strategy_replay_allowed,test_replay_allowed_next,promotion_allowed
+P214_EVENT_SURPRISE_CONDITIONAL_LABEL_MATERIALIZATION,P213_EVENT_SURPRISE_CONDITIONAL_LABEL_SOURCE,"Materialize event-surprise conditional label contract over train/validation partitions only, with sealed test inventory recorded but unused.",3,3,3,label_contract_materialization_and_quality_no_model_no_replay_no_test,0,0,0,0
