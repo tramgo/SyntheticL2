@@ -1,0 +1,14 @@
+metric,value,description
+phase197_feature_contract_rows,5,Non-receive-flow feature family rows precommitted
+phase197_availability_audit_rows,15,Feature/split availability rows
+phase197_ready_feature_families,5,Feature families ready for future train/validation search
+phase197_gate_rows,7,Gates evaluated
+phase197_hard_gate_rows,7,Hard gates evaluated
+phase197_hard_gate_pass_rows,7,Hard gates passed
+phase197_non_receive_flow_feature_precommit_complete,1,1 means Phase197 completed
+phase197_strategy_replay_allowed,0,No strategy replay opened
+phase197_test_replay_allowed_next,0,No test replay opened
+phase197_promotion_allowed,0,No promotion opened
+phase197_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase197_forbidden_outputs,test_result;test_replay_execution;strategy_replay;order_arrival;fill_model;pnl_replay;profitability_claim;promotion;paper_live_acceptance,Outputs forbidden in this phase
+phase197_next_best_action,run_phase198_non_receive_flow_context_model_search_no_test,Recommended next milestone

@@ -6224,6 +6224,51 @@ Current Phase149 evidence after Phase196:
 
 Current interpretation: continuing to search the same receive-flow-only idea is becoming low-yield. The next best milestone should either introduce non-receive-flow explanatory features, such as broader regime/liquidity/volatility context, or formally pause this branch before spending the untouched test split.
 
+### Phase197 - Non-receive-flow feature expansion precommit
+
+Phase197 takes the “expand” path from Phase196 without opening a strategy replay. It precommits broader context features that may help explain when any microstructure signal is worth trading, rather than continuing to search receive-flow-only transforms.
+
+Precommitted feature families:
+
+- `P197_TIME_OF_DAY_CONTEXT`: IST session-clock features such as seconds from open and cyclic time-of-day transforms;
+- `P197_SYMBOL_LIQUIDITY_REGIME`: train-only symbol liquidity baselines and relative spread/receive-count context;
+- `P197_MARKET_CONTEXT_LAGGED`: lagged cross-sectional market context, including active symbol count, market spread, top-five imbalance and receive-flow stress;
+- `P197_ASSET_CLASS_PROXY`: static instrument-context proxy for ETF-like `BEES` symbols versus equities;
+- `P197_MICROSTRUCTURE_TRANSFORMS`: stable nonlinear transforms of spread, quote churn, depth refresh and stale-quote duration.
+
+Phase197 discipline:
+
+- uses existing non-test feature/label partitions;
+- records test partitions as unused;
+- fits symbol baselines on train only;
+- uses lagged market context for cross-sectional features;
+- does not run strategy replay;
+- does not create orders, fills, P&L, test results, promotion or paper/live acceptance.
+
+Phase197 results:
+
+- feature contract rows: 5;
+- feature availability audit rows: 15;
+- ready feature families for Phase198 search: 5;
+- hard gates: 7 / 7 passed;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Current Phase149 evidence after Phase197:
+
+- phase rows discovered: 190;
+- runner phase rows: 188;
+- acceptance phase rows: 140;
+- hard global-state gates: 91 / 91 passed;
+- real receive-flow branch status: `non_receive_flow_feature_expansion_precommitted_phase198_ready_no_test`;
+- next best action: `run_phase198_non_receive_flow_context_model_search_no_test`.
+
+Interpretation:
+
+The receive-flow-only branch remains rejected for now, but the broader context-feature route is open. The next milestone should run a Phase198 train/validation-only context model search using the Phase197 families, still excluding untouched test replay and still forbidding promotion, paper/live acceptance, orders, fills, P&L and profitability claims.
+
 ---
 
 ## 25. Final Principle

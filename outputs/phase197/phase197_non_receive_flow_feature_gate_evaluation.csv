@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P197_PHASE196_COMPLETE,1,phase196_expanded_model_search_complete=1,hard
+P197_FEATURE_CONTRACT_RECORDED,1,feature_contract_rows=5,hard
+P197_AVAILABILITY_AUDIT_RECORDED,1,availability_rows=15,hard
+P197_TEST_SPLIT_NOT_USED,1,test_partitions_used=0,hard
+P197_LEAKAGE_BOUNDARIES_RECORDED,1,leakage_boundary_rows=5,hard
+P197_PHASE198_READY_FEATURES_RECORDED,1,ready_feature_families=5,hard
+P197_NO_REPLAY_OR_PROMOTION,1,strategy_replay=0; test_replay=0; promotion=0; paper_live=0,hard

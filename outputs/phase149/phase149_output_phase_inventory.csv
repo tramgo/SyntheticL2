@@ -108,6 +108,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 194,outputs\phase194,True,6,outputs\phase194\phase194_sparse_candidate_fragility_acceptance_summary.csv,outputs\phase194\phase194_sparse_candidate_fragility_manifest.json,False
 195,outputs\phase195,True,12,outputs\phase195\phase195_receive_flow_redesign_candidate_acceptance_summary.csv,outputs\phase195\phase195_receive_flow_redesign_candidate_manifest.json,False
 196,outputs\phase196,True,13,outputs\phase196\phase196_expanded_feature_model_acceptance_summary.csv,outputs\phase196\phase196_expanded_feature_model_manifest.json,False
+197,outputs\phase197,True,8,outputs\phase197\phase197_non_receive_flow_feature_acceptance_summary.csv,outputs\phase197\phase197_non_receive_flow_feature_manifest.json,False
 2,outputs\phase2,True,9,,outputs\phase2\calibration_manifest.json,False
 20,outputs\phase20,True,17,,outputs\phase20\acceptance_hardening_manifest.json,False
 20,outputs\phase20_m01,True,7,,outputs\phase20_m01\broker_evidence_contract_manifest.json,False

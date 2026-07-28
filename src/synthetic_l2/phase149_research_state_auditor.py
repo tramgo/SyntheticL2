@@ -134,6 +134,7 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         194: Path("outputs/phase194/phase194_sparse_candidate_fragility_acceptance_summary.csv"),
         195: Path("outputs/phase195/phase195_receive_flow_redesign_candidate_acceptance_summary.csv"),
         196: Path("outputs/phase196/phase196_expanded_feature_model_acceptance_summary.csv"),
+        197: Path("outputs/phase197/phase197_non_receive_flow_feature_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -509,6 +510,20 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "paper_or_live_acceptance_allowed": as_int(metric_value(path, "phase196_paper_or_live_acceptance_allowed", 0)),
             "next_action": metric_value(path, "phase196_next_best_action", ""),
         }
+    if phase == 197:
+        complete = as_int(metric_value(path, "phase197_non_receive_flow_feature_precommit_complete", 0))
+        ready = as_int(metric_value(path, "phase197_ready_feature_families", 0))
+        return {
+            "branch": "real_receive_flow_source",
+            "state": "non_receive_flow_feature_expansion_precommitted_phase198_ready_no_test" if complete and ready > 0 else "non_receive_flow_feature_expansion_precommitted_no_ready_features_no_test" if complete else "non_receive_flow_feature_expansion_gated",
+            "non_receive_flow_feature_precommit_complete": complete,
+            "ready_feature_families": ready,
+            "strategy_replay_allowed": as_int(metric_value(path, "phase197_strategy_replay_allowed", 0)),
+            "test_replay_allowed_next": as_int(metric_value(path, "phase197_test_replay_allowed_next", 0)),
+            "promotion_allowed": as_int(metric_value(path, "phase197_promotion_allowed", 0)),
+            "paper_or_live_acceptance_allowed": as_int(metric_value(path, "phase197_paper_or_live_acceptance_allowed", 0)),
+            "next_action": metric_value(path, "phase197_next_best_action", ""),
+        }
     return {}
 
 
@@ -586,8 +601,9 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase194 = phase_status_from_metrics(194)
     phase195 = phase_status_from_metrics(195)
     phase196 = phase_status_from_metrics(196)
+    phase197 = phase_status_from_metrics(197)
     phase172 = phase_status_from_metrics(172)
-    real_receive_next = phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_next = phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
     ready_dates = as_int(phase172.get("ready_receive_flow_dates", 0))
     additional_dates_needed = as_int(phase172.get("additional_dates_needed", 0))
     features_materialized = as_int(phase176.get("features_materialized", 0))
@@ -611,6 +627,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase194_complete = as_int(phase194.get("fragility_decision_complete", 0))
     phase195_complete = as_int(phase195.get("redesign_search_complete", 0))
     phase196_complete = as_int(phase196.get("expanded_model_search_complete", 0))
+    phase197_complete = as_int(phase197.get("non_receive_flow_feature_precommit_complete", 0))
     if ready_dates >= 5 and additional_dates_needed == 0:
         real_receive_status = "source_gate_open_feature_materialization_pending" if features_materialized == 0 else "feature_quality_pending"
         if quality_audit_ran == 1:
@@ -653,6 +670,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
             real_receive_status = str(phase195.get("state", "redesign_search_complete_no_test"))
         if phase196_complete == 1:
             real_receive_status = str(phase196.get("state", "expanded_feature_model_search_complete_no_test"))
+        if phase197_complete == 1:
+            real_receive_status = str(phase197.get("state", "non_receive_flow_feature_expansion_precommitted_no_test"))
     else:
         real_receive_status = "gated_waiting_for_two_more_real_l2_dates"
     real_receive_evidence = (
@@ -679,7 +698,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         f"Phase193 extension_complete={phase193.get('validation_breadth_extension_complete', '')}, extension_dates={phase193.get('extension_validation_dates', '')}, min_profile_net={phase193.get('min_profile_net_bps_proxy_mean', '')}, breadth_warning={phase193.get('breadth_warning', '')}, test_replay_execution={phase193.get('test_replay_execution', '')}; "
         f"Phase194 fragility_decision_complete={phase194.get('fragility_decision_complete', '')}, all_extension_profile_dates_negative={phase194.get('all_extension_profile_dates_negative', '')}, test_replay_allowed_next={phase194.get('test_replay_allowed_next', '')}; "
         f"Phase195 redesign_search_complete={phase195.get('redesign_search_complete', '')}, passing_extension_gate_candidates={phase195.get('passing_extension_gate_candidates', '')}, best_candidate={phase195.get('best_candidate_id', '')}, best_min_extension_net={phase195.get('best_min_extension_net_bps', '')}, test_replay_allowed_next={phase195.get('test_replay_allowed_next', '')}; "
-        f"Phase196 expanded_model_search_complete={phase196.get('expanded_model_search_complete', '')}, train_selected_model_rows={phase196.get('train_selected_model_rows', '')}, passing_extension_gate_models={phase196.get('passing_extension_gate_models', '')}, best_model={phase196.get('best_model_id', '')}, test_replay_allowed_next={phase196.get('test_replay_allowed_next', '')}."
+        f"Phase196 expanded_model_search_complete={phase196.get('expanded_model_search_complete', '')}, train_selected_model_rows={phase196.get('train_selected_model_rows', '')}, passing_extension_gate_models={phase196.get('passing_extension_gate_models', '')}, best_model={phase196.get('best_model_id', '')}, test_replay_allowed_next={phase196.get('test_replay_allowed_next', '')}; "
+        f"Phase197 feature_precommit_complete={phase197.get('non_receive_flow_feature_precommit_complete', '')}, ready_feature_families={phase197.get('ready_feature_families', '')}, strategy_replay_allowed={phase197.get('strategy_replay_allowed', '')}, test_replay_allowed_next={phase197.get('test_replay_allowed_next', '')}."
     )
     branches = [
         {
@@ -737,6 +757,7 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     phase194 = phase_ledger[phase_ledger["phase"].astype(int).eq(194)] if not phase_ledger.empty else pd.DataFrame()
     phase195 = phase_ledger[phase_ledger["phase"].astype(int).eq(195)] if not phase_ledger.empty else pd.DataFrame()
     phase196 = phase_ledger[phase_ledger["phase"].astype(int).eq(196)] if not phase_ledger.empty else pd.DataFrame()
+    phase197 = phase_ledger[phase_ledger["phase"].astype(int).eq(197)] if not phase_ledger.empty else pd.DataFrame()
     real_replay_allowed = int(phase148["strategy_replay_allowed"].iloc[0]) if not phase148.empty and str(phase148["strategy_replay_allowed"].iloc[0]) != "" else 0
     receive_replay_allowed = int(phase172["strategy_replay_allowed"].iloc[0]) if not phase172.empty and str(phase172["strategy_replay_allowed"].iloc[0]) != "" else 0
     secure_replay_allowed = int(phase174["strategy_replay_allowed"].iloc[0]) if not phase174.empty and str(phase174["strategy_replay_allowed"].iloc[0]) != "" else 0
@@ -798,6 +819,10 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     phase196_test_replay_allowed = int(phase196["test_replay_allowed_next"].iloc[0]) if not phase196.empty and str(phase196["test_replay_allowed_next"].iloc[0]) != "" else 0
     phase196_promotion_allowed = int(phase196["promotion_allowed"].iloc[0]) if not phase196.empty and str(phase196["promotion_allowed"].iloc[0]) != "" else 0
     phase196_paper_live_allowed = int(phase196["paper_or_live_acceptance_allowed"].iloc[0]) if not phase196.empty and str(phase196["paper_or_live_acceptance_allowed"].iloc[0]) != "" else 0
+    phase197_strategy_replay_allowed = int(phase197["strategy_replay_allowed"].iloc[0]) if not phase197.empty and str(phase197["strategy_replay_allowed"].iloc[0]) != "" else 0
+    phase197_test_replay_allowed = int(phase197["test_replay_allowed_next"].iloc[0]) if not phase197.empty and str(phase197["test_replay_allowed_next"].iloc[0]) != "" else 0
+    phase197_promotion_allowed = int(phase197["promotion_allowed"].iloc[0]) if not phase197.empty and str(phase197["promotion_allowed"].iloc[0]) != "" else 0
+    phase197_paper_live_allowed = int(phase197["paper_or_live_acceptance_allowed"].iloc[0]) if not phase197.empty and str(phase197["paper_or_live_acceptance_allowed"].iloc[0]) != "" else 0
     secure_download_recorded = bool(not phase174.empty and "secure_download" in str(phase174["status"].iloc[0]))
     feature_schema_recorded = bool(not phase175.empty and "feature_schema" in str(phase175["status"].iloc[0]))
     phase176_status = str(phase176["status"].iloc[0]) if not phase176.empty else ""
@@ -822,6 +847,7 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
     phase194_recorded = bool(not phase194.empty and "frozen_sparse_candidate_closed" in str(phase194["status"].iloc[0]))
     phase195_recorded = bool(not phase195.empty and "redesign_search" in str(phase195["status"].iloc[0]))
     phase196_recorded = bool(not phase196.empty and "expanded_feature_model_search" in str(phase196["status"].iloc[0]))
+    phase197_recorded = bool(not phase197.empty and "non_receive_flow_feature_expansion" in str(phase197["status"].iloc[0]))
     branch_closed = bool(not phase136.empty and "closed_clean_falsification" in str(phase136["status"].iloc[0]))
     rows = [
         ("phase149_real_l2_replay_gate_closed", bool(real_replay_allowed == 0), real_replay_allowed, 0, "hard"),
@@ -908,6 +934,11 @@ def build_global_gates(phase_ledger: pd.DataFrame) -> pd.DataFrame:
         ("phase149_receive_flow_phase196_test_replay_closed", bool(phase196_test_replay_allowed == 0), phase196_test_replay_allowed, 0, "hard"),
         ("phase149_receive_flow_phase196_promotion_closed", bool(phase196_promotion_allowed == 0), phase196_promotion_allowed, 0, "hard"),
         ("phase149_receive_flow_phase196_paper_live_closed", bool(phase196_paper_live_allowed == 0), phase196_paper_live_allowed, 0, "hard"),
+        ("phase149_receive_flow_phase197_non_receive_flow_feature_precommit_recorded", phase197_recorded, int(phase197_recorded), 1, "hard"),
+        ("phase149_receive_flow_phase197_strategy_replay_closed", bool(phase197_strategy_replay_allowed == 0), phase197_strategy_replay_allowed, 0, "hard"),
+        ("phase149_receive_flow_phase197_test_replay_closed", bool(phase197_test_replay_allowed == 0), phase197_test_replay_allowed, 0, "hard"),
+        ("phase149_receive_flow_phase197_promotion_closed", bool(phase197_promotion_allowed == 0), phase197_promotion_allowed, 0, "hard"),
+        ("phase149_receive_flow_phase197_paper_live_closed", bool(phase197_paper_live_allowed == 0), phase197_paper_live_allowed, 0, "hard"),
         ("phase149_deep_book_branch_closed", branch_closed, int(branch_closed), 1, "hard"),
         ("phase149_no_promoted_strategy_replay", True, 0, 0, "hard"),
     ]
