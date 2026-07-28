@@ -1,0 +1,7 @@
+phase206_feature_id,blocked_reference_rows_checked,blocked_forms_digest_available,overlaps_phase164_blocked_strategy_token,overlaps_phase167_fixed_s08_form,overlaps_prior_phase197_context_search_without_new_contract,nonoverlap_pass,audit_note,strategy_replay_allowed
+P206_RECEIVE_EVENT_RATE_ZSCORE,14,1,0,0,0,1,Feature is source/context contract only; no model fit or replay in Phase206.,0
+P206_QUOTE_CHURN_RATE,14,1,0,0,0,1,Feature is source/context contract only; no model fit or replay in Phase206.,0
+P206_DEPTH_REFRESH_INTENSITY,14,1,0,0,0,1,Feature is source/context contract only; no model fit or replay in Phase206.,0
+P206_STALE_QUOTE_DURATION,14,1,0,0,0,1,Feature is source/context contract only; no model fit or replay in Phase206.,0
+P206_CROSS_SYMBOL_ARRIVAL_SYNCHRONY,14,1,0,0,0,1,Feature is source/context contract only; no model fit or replay in Phase206.,0
+P206_RECEIVE_FLOW_REGIME_STATE,14,1,0,0,0,1,Feature is source/context contract only; no model fit or replay in Phase206.,0

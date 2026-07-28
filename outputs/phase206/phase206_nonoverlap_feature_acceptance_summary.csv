@@ -1,0 +1,18 @@
+metric,value,description
+phase206_feature_catalog_rows,6,Selected source feature-family catalog rows
+phase206_blocked_reference_rows,14,Blocked/failed reference rows checked
+phase206_nonoverlap_audit_rows,6,Non-overlap audit rows
+phase206_nonoverlap_pass_rows,6,Rows passing non-overlap audit
+phase206_guardrail_rows,5,Guardrail contract rows
+phase206_phase207_work_order_rows,3,Phase207 work-order rows
+phase206_gate_rows,7,Gates evaluated
+phase206_hard_gate_rows,7,Hard gates evaluated
+phase206_hard_gate_pass_rows,7,Hard gates passed
+phase206_nonoverlap_feature_contract_complete,1,1 means Phase206 completed
+phase206_model_fit_allowed,0,No model fitting opened
+phase206_strategy_replay_allowed,0,No strategy replay opened
+phase206_test_replay_allowed_next,0,No test replay opened
+phase206_promotion_allowed,0,No promotion opened
+phase206_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase206_forbidden_outputs,strategy_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;model_fit,Outputs forbidden in this phase
+phase206_next_best_action,run_phase207_allowed_feature_matrix_precommit_no_model_no_replay,Recommended next milestone

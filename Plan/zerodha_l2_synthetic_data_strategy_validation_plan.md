@@ -6697,6 +6697,67 @@ Current interpretation: Phase205 reopens work only at the source-contract level,
 
 ---
 
+### Phase206 - Selected source non-overlap feature contract
+
+Phase206 audits the Phase205 selected route:
+
+`P205_REAL_RECEIVE_FLOW_CONTEXT_SOURCE_REFRESH`
+
+It proves the route is a source/feature contract rather than a renamed replay of the blocked Phase164, Phase167 S08, passive queue, or prior context-model forms. It does not fit models, run strategy replay, run test replay, emit orders/fills/P&L, promote anything, or open paper/live acceptance.
+
+Phase206 inputs:
+
+- Phase165 blocklist from the Phase164 full-year replay verdict;
+- Phase168 S08 blocklist;
+- Phase175 receive-flow feature schema;
+- Phase197 prior context-feature contract;
+- Phase205 selected source route.
+
+Phase206 selected source feature catalog:
+
+- `P206_RECEIVE_EVENT_RATE_ZSCORE`;
+- `P206_QUOTE_CHURN_RATE`;
+- `P206_DEPTH_REFRESH_INTENSITY`;
+- `P206_STALE_QUOTE_DURATION`;
+- `P206_CROSS_SYMBOL_ARRIVAL_SYNCHRONY`;
+- `P206_RECEIVE_FLOW_REGIME_STATE`.
+
+Important terminology/overlap controls:
+
+- depth features remain Zerodha top-five market-by-price book state, not exchange L3/L4 order-by-order data;
+- cross-symbol synchrony requires future target-symbol exclusion and must not reuse the fixed Phase167 S08 score;
+- receive-flow regime state is filter/context only until a later precommit explicitly opens model fitting;
+- train-only baselines remain required for any future context fitting.
+
+Phase206 results:
+
+- feature catalog rows: 6;
+- blocked reference rows checked: 14;
+- non-overlap audit rows: 6;
+- non-overlap pass rows: 6;
+- guardrail rows: 5;
+- Phase207 work-order rows: 3;
+- hard gates: 7 / 7 passed;
+- model fitting allowed: 0;
+- strategy replay allowed: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- next best action: `run_phase207_allowed_feature_matrix_precommit_no_model_no_replay`.
+
+Current Phase149 evidence after Phase206:
+
+- phase rows discovered: 199;
+- runner phase rows: 197;
+- acceptance phase rows: 149;
+- hard global-state gates: 137 / 137 passed;
+- real receive-flow branch status: `selected_source_nonoverlap_feature_contract_complete_phase207_matrix_pending_no_replay`;
+- next best action: `run_phase207_allowed_feature_matrix_precommit_no_model_no_replay`.
+
+Current interpretation: Phase206 allows the receive-flow context source to move forward only as a feature matrix precommit. It still does not justify model fitting or replay. The next milestone should build the allowed feature matrix, target-exclusion ablation spec, and leakage/terminology audit before any model search.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

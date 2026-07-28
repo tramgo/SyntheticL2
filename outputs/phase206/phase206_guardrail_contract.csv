@@ -1,0 +1,6 @@
+guardrail_id,requirement,required
+P206_NO_MODEL_FIT,"Phase206 may catalog features and overlap only; no model fitting, signal scoring or threshold search.",1
+P206_TARGET_SYMBOL_EXCLUSION_FOR_SYNCHRONY,Any future cross-symbol synchrony feature must precommit target-symbol exclusion and must not reuse Phase167 fixed S08 score.,1
+P206_TOP_FIVE_TERMINOLOGY,"Depth features must be described as Zerodha top-five market-by-price book state, not exchange L3/L4 order-by-order data.",1
+P206_TRAIN_ONLY_BASELINES_NEXT,Any future baseline/context fitting must be train-date only before validation/test transform.,1
+P206_REPLAY_STAYS_CLOSED,"No strategy replay, test replay, order/fill/P&L, promotion or paper/live acceptance may be emitted from Phase206.",1

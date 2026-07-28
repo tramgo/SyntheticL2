@@ -1,0 +1,4 @@
+work_order_id,action,input_feature_rows,allowed_scope,strategy_replay_allowed
+P207_WO01_BUILD_ALLOWED_FEATURE_MATRIX,"materialize a feature-availability matrix for the Phase206 catalog, no model fitting",6,feature_matrix_no_replay,0
+P207_WO02_TARGET_EXCLUSION_ABLATION_SPEC,precommit target-symbol exclusion and negative-control ablations for cross-symbol synchrony,6,ablation_spec_no_replay,0
+P207_WO03_LEAKAGE_AND_TERMINOLOGY_AUDIT,audit leakage controls and L1/top-five terminology before any feature matrix is used downstream,6,quality_audit_no_replay,0

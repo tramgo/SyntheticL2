@@ -128,5 +128,11 @@ phase149_receive_flow_phase205_strategy_replay_closed,True,0,0,hard
 phase149_receive_flow_phase205_test_replay_closed,True,0,0,hard
 phase149_receive_flow_phase205_promotion_closed,True,0,0,hard
 phase149_receive_flow_phase205_paper_live_closed,True,0,0,hard
+phase149_receive_flow_phase206_nonoverlap_feature_contract_recorded,True,1,1,hard
+phase149_receive_flow_phase206_model_fit_closed,True,0,0,hard
+phase149_receive_flow_phase206_strategy_replay_closed,True,0,0,hard
+phase149_receive_flow_phase206_test_replay_closed,True,0,0,hard
+phase149_receive_flow_phase206_promotion_closed,True,0,0,hard
+phase149_receive_flow_phase206_paper_live_closed,True,0,0,hard
 phase149_deep_book_branch_closed,True,1,1,hard
 phase149_no_promoted_strategy_replay,True,0,0,hard

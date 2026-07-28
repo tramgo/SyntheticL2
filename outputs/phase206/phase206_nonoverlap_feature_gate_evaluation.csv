@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P206_PHASE205_COMPLETE,True,phase205_complete=1,hard
+P206_FEATURE_CATALOG_RECORDED,True,feature_rows=6,hard
+P206_BLOCKED_REFERENCE_CATALOG_RECORDED,True,blocked_rows=14,hard
+P206_NONOVERLAP_AUDIT_PASSED,True,nonoverlap_pass_rows=6,hard
+P206_GUARDRAILS_RECORDED,True,guardrail_rows=5,hard
+P206_PHASE207_WORK_ORDER_RECORDED,True,work_order_rows=3,hard
+P206_NO_MODEL_FIT_REPLAY_OR_PROMOTION,True,forbidden_flag_sum=0,hard
