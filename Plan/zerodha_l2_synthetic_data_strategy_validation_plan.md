@@ -5109,6 +5109,60 @@ Current interpretation: the feature lake and quality audit are now handed off in
 
 ---
 
+### Phase179 - Strategy-family Precommit, No Replay
+
+**Date:** 2026-07-28
+
+Phase179 declares candidate strategy families that may later consume the audited receive-flow feature lake. It is deliberately not a replay phase. It does not emit orders, order arrivals, fills, P&L, profitability claims or paper/live acceptance.
+
+Phase179 outputs:
+
+- `outputs/phase179/phase179_strategy_family_catalog.csv`;
+- `outputs/phase179/phase179_precommit_rules.csv`;
+- `outputs/phase179/phase179_strategy_family_gate_evaluation.csv`;
+- `outputs/phase179/phase179_strategy_family_precommit_acceptance_summary.csv`;
+- `outputs/phase179/phase179_strategy_family_precommit_report.md`;
+- `outputs/phase179/phase179_strategy_family_precommit_manifest.json`.
+
+Precommitted candidate families:
+
+- `P179_SOURCE_QUALITY_REGIME_FILTER`: context filter using receive-flow regime, stale quote duration and cross-symbol arrival synchrony;
+- `P179_LIQUIDITY_CHURN_CONTEXT`: liquidity/execution-risk context using quote churn, depth refresh and stale quote duration;
+- `P179_RECEIVE_CADENCE_SHOCK_CONTEXT`: event-cadence context using receive-event z-score, cross-symbol synchrony and quote churn.
+
+Required Phase179 rules:
+
+- Phase179 may declare strategy families only; no replay, orders, fills, P&L or profitability claims;
+- use the Phase178 chronological split;
+- keep the test date untouched until a later replay precommit explicitly opens it;
+- bind Zerodha cost and latency/slippage catalogs before any later P&L replay;
+- audit overlap against Phase164, Phase167 and Phase131-136 blocked forms before replay.
+
+Current Phase179 evidence:
+
+- candidate strategy families: 3;
+- precommit rules: 5;
+- gates evaluated: 6;
+- hard gates passed: 6 / 6;
+- precommit ready: 1;
+- strategy replay allowed: 0;
+- paper/live acceptance allowed: 0;
+- forbidden outputs: `order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance`;
+- next best action: `build_phase180_cost_latency_bound_label_precommit_no_replay`.
+
+Current Phase149 evidence after Phase179:
+
+- phase rows discovered: 172;
+- runner phase rows: 170;
+- acceptance phase rows: 122;
+- hard global-state gates: 16 / 16 passed;
+- real receive-flow branch status: `strategy_family_precommitted_cost_latency_label_pending`;
+- next best action: `build_phase180_cost_latency_bound_label_precommit_no_replay`.
+
+Current interpretation: the project now has a controlled candidate-family precommit over the audited receive-flow feature lake. The next phase should bind labels and cost/latency assumptions before any replay. In particular, Phase180 should define future labels, Zerodha equity cost components, latency/slippage stress catalogs, and the exact gates that must pass before Phase181 can run any event replay.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-28T16:17:59.158795+00:00",
+  "scope": "phase179_strategy_family_precommit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "b2ef47c95148b859923cd69414e01bce2cceccc5",
+  "configuration_hash": "c4a4cad177ebfde5a428ca9631319e2d2a3bab54ce68527d84c6bc547bc0e160",
+  "random_seed": "none_deterministic_strategy_family_precommit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "phase179_strategy_family_precommit",
+  "cost_model_version": "not_bound_until_phase180",
+  "latency_model_version": "not_bound_until_phase180",
+  "creation_timestamp": "2026-07-28T16:17:59.158795+00:00"
+}

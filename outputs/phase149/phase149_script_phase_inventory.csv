@@ -83,6 +83,7 @@ phase,runner,runner_exists,runner_suffix
 176,scripts\run_phase176_receive_flow_feature_materializer.py,True,.py
 177,scripts\run_phase177_receive_flow_feature_quality_audit.py,True,.py
 178,scripts\run_phase178_receive_flow_feature_handoff_precommit.py,True,.py
+179,scripts\run_phase179_strategy_family_precommit.py,True,.py
 17,scripts\run_phase17_work_packages.py,True,.py
 18,scripts\run_phase18_technology_stack.py,True,.py
 19,scripts\run_phase19_manifest_normalizer.py,True,.py

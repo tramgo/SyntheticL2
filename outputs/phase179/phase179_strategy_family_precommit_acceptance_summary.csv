@@ -1,0 +1,11 @@
+metric,value,description
+phase179_strategy_family_rows,3,Candidate strategy families precommitted
+phase179_precommit_rule_rows,5,Rules required before any later replay
+phase179_gate_rows,6,Gates evaluated
+phase179_hard_gate_rows,6,Hard gates evaluated
+phase179_hard_gate_pass_rows,6,Hard gates passed
+phase179_precommit_ready,1,1 means next no-replay label/cost precommit may be built
+phase179_strategy_replay_allowed,0,No strategy replay opened
+phase179_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase179_forbidden_outputs,order;order_arrival;fill_model;pnl_replay;profitability_claim;paper_live_acceptance,Outputs forbidden in this phase
+phase179_next_best_action,build_phase180_cost_latency_bound_label_precommit_no_replay,Recommended next milestone

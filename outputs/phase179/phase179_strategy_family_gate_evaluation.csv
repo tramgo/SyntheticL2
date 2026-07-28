@@ -1,0 +1,7 @@
+gate_id,gate_pass,evidence,severity
+P179_PHASE178_HANDOFF_READY,1,phase178_handoff_ready=1,hard
+P179_PHASE177_QUALITY_AUDIT_RAN,1,phase177_feature_quality_audit_ran=1,hard
+P179_FEATURE_REFERENCES_IN_HANDOFF,1,families=3;all_features_in_phase178_handoff=1,hard
+P179_NO_DECISION_OUTPUTS,1,decision_output_allowed_sum=0,hard
+P179_NO_REPLAY_OUTPUTS,1,replay_allowed_sum=0,hard
+P179_PRECOMMIT_RULES_DECLARED,1,rules=5,hard

@@ -1,0 +1,6 @@
+rule_id,rule,required_value
+P179_NO_REPLAY_NO_PNL,"Phase179 may declare strategy families only; it must not emit orders, fills, P&L or profitability claims.",true
+P179_CHRONOLOGICAL_SPLIT_REQUIRED,Use Phase178 split: train=2026-07-08;2026-07-09;2026-07-10; validation=2026-07-13; test=2026-07-14.,true
+P179_TEST_DATE_UNTOUCHED,No model/threshold/feature-family choice may use the test date before a replay precommit explicitly opens it.,true
+P179_COST_LATENCY_BINDING_REQUIRED,Any later replay must bind Zerodha brokerage/STT/exchange/GST/SEBI/stamp-cost catalog plus latency/slippage assumptions before computing P&L.,true
+P179_BLOCKLIST_OVERLAP_AUDIT_REQUIRED,"Any later replay must audit overlap against Phase164, Phase167 and Phase131-136 blocked forms before running.",true
