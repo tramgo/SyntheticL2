@@ -6269,6 +6269,54 @@ Interpretation:
 
 The receive-flow-only branch remains rejected for now, but the broader context-feature route is open. The next milestone should run a Phase198 train/validation-only context model search using the Phase197 families, still excluding untouched test replay and still forbidding promotion, paper/live acceptance, orders, fills, P&L and profitability claims.
 
+### Phase198 - Non-receive-flow context model search
+
+Phase198 executes the Phase197 next action: a train/validation-only context model search using the broader non-receive-flow feature families. It remains a gated dry research search, not an order/fill/P&L replay.
+
+Search discipline:
+
+- fitting split: train only;
+- train selection: cost-aware, shuffled-time control-aware, and capped at 1% decision rate;
+- evaluation splits: validation plus validation-extension/unassigned rows only;
+- excluded split: `test_untouched`;
+- cost/latency profiles: `P180_RETAIL_MARKETABLE_DEFAULT` and `P180_STRESSED_RETAIL`;
+- forbidden outputs: test result, test replay execution, promotion, paper/live acceptance, order arrival, fill model, P&L replay and profitability claim.
+
+Phase198 model families:
+
+- individual Phase197 context families;
+- a composite non-receive-flow context model;
+- train-fitted linear feature-score models with signed and inverse score variants;
+- 1-second and 5-second horizon scopes;
+- strict spread filters and score-quantile filters.
+
+Phase198 results:
+
+- context model grid rows: 88;
+- train/profile summary rows: 176;
+- train-selected model rows: 0;
+- model decision rows: 0;
+- models passing extension gates: 0;
+- hard gates: 6 / 6 passed;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0.
+
+Interpretation:
+
+The broader context-feature route did not produce a train-selected survivor under the current cost, shuffled-control and 1% decision-rate gates. The strongest train rows were close to the decision-rate cap but slightly above it, so Phase198 correctly refused to open validation-extension decisions or test replay.
+
+Current Phase149 evidence after Phase198:
+
+- phase rows discovered: 191;
+- runner phase rows: 189;
+- acceptance phase rows: 141;
+- hard global-state gates: 95 / 95 passed;
+- real receive-flow branch status: `non_receive_flow_context_model_search_no_train_survivor_no_test`;
+- next best action: `expand_or_pause_non_receive_flow_context_branch_no_test`.
+
+Current interpretation: both receive-flow-only and first-pass broader-context searches have failed to produce a gated survivor. The next best action should be an explicit branch decision: either expand the feature/search design with a materially different hypothesis, or pause this branch rather than spending the untouched test split.
+
 ---
 
 ## 25. Final Principle

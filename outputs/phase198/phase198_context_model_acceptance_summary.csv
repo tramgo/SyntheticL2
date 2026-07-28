@@ -1,0 +1,19 @@
+metric,value,description
+phase198_model_grid_rows,88,Non-receive-flow context model rows
+phase198_train_selected_model_rows,0,Train-selected model rows
+phase198_model_decision_rows,0,Model decision rows
+phase198_passing_extension_gate_models,0,Models passing extension gates
+phase198_best_model_id,,Top model by extension screen
+phase198_best_feature_family,,Top model feature family
+phase198_best_min_extension_net_bps,,Best model minimum validation/extension net bps
+phase198_best_date_positive_fraction,,Best model date-positive fraction
+phase198_best_symbol_positive_fraction,,Best model symbol-positive fraction
+phase198_gate_rows,6,Gates evaluated
+phase198_hard_gate_rows,6,Hard gates evaluated
+phase198_hard_gate_pass_rows,6,Hard gates passed
+phase198_context_model_search_complete,1,1 means Phase198 completed
+phase198_test_replay_allowed_next,0,No test replay opened
+phase198_promotion_allowed,0,No promotion opened
+phase198_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase198_forbidden_outputs,test_result;test_replay_execution;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim,Outputs forbidden in this phase
+phase198_next_best_action,expand_or_pause_non_receive_flow_context_branch_no_test,Recommended next milestone
