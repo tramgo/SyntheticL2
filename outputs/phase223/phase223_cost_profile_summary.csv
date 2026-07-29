@@ -1,0 +1,3 @@
+latency_profile_id,validation_rows,decision_events,best_validation_net_after_cost_bps_proxy,worst_validation_net_after_cost_bps_proxy,positive_net_rows,actual_beats_shuffle_rows,passing_interpretation_rows,cost_dominates_rows,broader_replay_allowed_next,test_replay_allowed_next
+P180_RETAIL_MARKETABLE_DEFAULT,20,29827,-13.420731450576811,-14.777790720805951,0,5,0,5,0,0
+P180_STRESSED_RETAIL,20,29827,-15.780388083530331,-18.400335124588675,0,5,0,5,0,0

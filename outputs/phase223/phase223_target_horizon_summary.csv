@@ -1,0 +1,6 @@
+target_label,horizon_sec,validation_profile_threshold_rows,decision_events,active_rows,best_validation_net_after_cost_bps_proxy,positive_net_rows,interpretation_pass_rows
+event_surprise_down_conditional_label,1,8,0,0,0.0,0,0
+event_surprise_down_conditional_label,5,8,0,0,0.0,0,0
+event_surprise_up_conditional_label,5,8,0,0,0.0,0,0
+event_surprise_vol_expansion_conditional_label,1,8,24,2,-13.420731450576811,0,0
+event_surprise_vol_expansion_conditional_label,5,8,59630,8,-13.791666413059746,0,0

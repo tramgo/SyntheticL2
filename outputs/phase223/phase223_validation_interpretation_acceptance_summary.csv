@@ -1,0 +1,25 @@
+metric,value,description
+phase223_interpretation_rows,40,Validation interpretation rows
+phase223_profile_summary_rows,2,Cost profile summary rows
+phase223_target_summary_rows,5,Target/horizon summary rows
+phase223_validation_decision_events,59654,Validation decision events interpreted
+phase223_positive_net_validation_rows,0,Rows with positive validation net-after-cost proxy
+phase223_passing_interpretation_rows,0,Rows passing interpretation gates
+phase223_cost_dominates_rows,10,Rows where cost bound dominates gross proxy edge
+phase223_best_validation_net_after_cost_bps_proxy,-13.420731450576811,Best validation net-after-cost proxy
+phase223_worst_validation_net_after_cost_bps_proxy,-18.400335124588675,Worst validation net-after-cost proxy
+phase223_best_actual_vs_shuffle_net_edge_bps,1.0000000000000053,Best actual-vs-shuffled net edge
+phase223_phase224_work_order_rows,1,Phase224 work-order rows
+phase223_forbidden_execution_rows,11,Forbidden execution rows
+phase223_gate_rows,7,Gates evaluated
+phase223_hard_gate_rows,7,Hard gates evaluated
+phase223_hard_gate_pass_rows,7,Hard gates passed
+phase223_event_only_signal_replay_validation_interpretation_complete,1,1 means Phase223 completed
+phase223_broader_replay_allowed_next,0,No broader replay opened
+phase223_test_replay_allowed_next,0,No test replay opened
+phase223_test_rows_used,0,No sealed test rows used
+phase223_promotion_allowed,0,No promotion opened
+phase223_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase223_profitability_claim_allowed,0,No profitability claim is allowed
+phase223_forbidden_outputs,test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export;broader_replay_unlock,Outputs forbidden in this phase
+phase223_next_best_action,run_phase224_event_only_signal_replay_closure_or_redesign_precommit_no_test,Recommended next milestone

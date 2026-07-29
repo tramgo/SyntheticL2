@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P223_PHASE222_COMPLETE,True,phase222_complete=1,hard
+P223_VALIDATION_INTERPRETATION_RECORDED,True,validation_rows=40,hard
+P223_COST_PROFILE_INTERPRETATION_RECORDED,True,profile_rows=2,hard
+P223_NO_COST_POSITIVE_VALIDATION_PASS,True,passing_rows=0; positive_rows=0,hard
+P223_PHASE224_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P223_TEST_ROWS_UNTOUCHED,True,test_rows_used=0,hard
+P223_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

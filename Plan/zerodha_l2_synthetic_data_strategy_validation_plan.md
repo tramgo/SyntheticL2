@@ -7597,6 +7597,58 @@ Current interpretation: Phase222 is the first actual event-only signal replay ex
 
 ---
 
+## 24.49 Phase223 Event-Only Signal Replay Validation Interpretation Completed
+
+Phase223 interprets the Phase222 aggregate validation replay results. It does not run a new strategy replay, does not widen thresholds, does not touch sealed test rows, and does not emit order-arrival, fill, P&L, promotion, paper/live, or profitability artifacts.
+
+Phase223 interpretation scope:
+
+- source replay output: Phase222 aggregate signal replay summary;
+- interpreted rows: validation split only;
+- interpreted cost profiles: `P180_RETAIL_MARKETABLE_DEFAULT` and `P180_STRESSED_RETAIL`;
+- interpretation rows: 40;
+- profile summary rows: 2;
+- target/horizon summary rows: 5;
+- sealed test rows used: 0.
+
+Phase223 results:
+
+- validation decision events interpreted: 59,654;
+- positive net validation rows: 0;
+- passing interpretation rows: 0;
+- rows where cost dominates gross proxy edge: 10;
+- best validation net-after-cost proxy: -13.420731450576811 bps;
+- worst validation net-after-cost proxy: -18.400335124588675 bps;
+- best actual-vs-shuffled net edge: 1.0000000000000053 bps;
+- Phase224 work-order rows: 1;
+- hard gates: 7 / 7 passed;
+- broader replay allowed next: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase224_event_only_signal_replay_closure_or_redesign_precommit_no_test`.
+
+Phase223 interpretation:
+
+- The current event-only signal replay candidate set does not survive Zerodha-cost validation interpretation.
+- Actual labels show some edge versus shuffled labels, but not enough to become cost-positive under the retail or stressed-retail profiles.
+- No broader replay, sealed test replay, promotion, paper/live acceptance, or profitability claim is justified from this candidate set.
+- Phase224 must close this replay candidate set or precommit a materially redesigned source/model route.
+
+Current Phase149 evidence after Phase223:
+
+- phase rows discovered: 216;
+- runner phase rows: 214;
+- acceptance phase rows: 166;
+- hard global-state gates: 262 / 262 passed;
+- real receive-flow branch status: `event_only_signal_replay_validation_interpretation_complete_phase224_closure_or_redesign_precommit_pending_no_test`;
+- next best action: `run_phase224_event_only_signal_replay_closure_or_redesign_precommit_no_test`.
+
+Current interpretation: Phase223 is a clean falsification milestone. The replay machinery works, but this candidate set should not be expanded into broader replay or sealed test. The research remains valuable because it prevents us from spending compute on a cost-negative branch that only looked alive before execution costs bit it.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
