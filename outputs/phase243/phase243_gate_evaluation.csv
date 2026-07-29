@@ -1,0 +1,7 @@
+gate_id,passed,observed_value,required_value,severity
+P243_PHASE242_WORK_ORDER_PRESENT,True,run_phase243_cost_stress_first_redesign_search_without_2026_07_17_holdout_tuning_no_paper_live,Phase242 next action targets Phase243,hard
+P243_VARIANTS_EVALUATED,True,3920,>=3000 redesigned variants,hard
+P243_COST200_SURVIVORS_FOUND,True,487,>0 variants positive at 2x costs,hard
+P243_RANDOM_SIDE_CONTROLLED_SURVIVOR_FOUND,True,113,">0 variants pass side flip, random side, 1.5x and 2.0x cost",hard
+P243_HOLDOUT_DATE_NOT_USED_FOR_TUNING,True,2026-07-17,2026-07-17 excluded,hard
+P243_NO_DOWNLOAD_OR_PAPER_LIVE_OR_PROFIT_CLAIM,True,0,0,hard

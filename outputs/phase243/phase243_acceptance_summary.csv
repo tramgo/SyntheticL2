@@ -1,0 +1,26 @@
+metric,value,description
+phase243_cost_stress_first_redesign_complete,1,Phase243 redesign search completed
+phase243_training_event_bar_rows,28793,Training/discovery event bars used
+phase243_forbidden_holdout_dates,2026-07-17,Dates excluded from tuning
+phase243_expanded_variant_rows,3920,Redesigned variants evaluated
+phase243_net_positive_variant_rows,792,Net-positive variants after base costs
+phase243_cost150_positive_variant_rows,609,Positive under 1.5x costs
+phase243_cost200_positive_variant_rows,487,Positive under 2.0x costs
+phase243_controlled_candidate_rows,161,Cost-stress survivors with full controls evaluated
+phase243_survivor_candidate_rows,113,"Candidates passing side flip, random side and cost stress controls"
+phase243_best_candidate_id,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9,Best Phase243 survivor/candidate
+phase243_best_training_net_pnl_inr,8576.392616633566,Best training/discovery net P&L
+phase243_best_cost200_net_pnl_inr,5033.27266663252,Best 2x-cost net P&L
+phase243_best_random_beat_fraction,0.997,Best random-side beat fraction
+phase243_best_trade_rows,29,Best selected trades
+phase243_best_dates,5,Best dates represented
+phase243_best_symbols,13,Best symbols represented
+phase243_hard_gate_pass_rows,6,Hard gates passed
+phase243_hard_gate_rows,6,Hard gates evaluated
+phase243_future_holdout_precommit_allowed,1,"A future holdout precommit may be opened, but no current holdout acceptance"
+phase243_download_more_dates_now_allowed,0,No additional raw-date download in Phase243
+phase243_holdout_parameter_tuning_allowed,0,No 2026-07-17 tuning
+phase243_strategy_promotion_allowed,0,No strategy promotion from Phase243
+phase243_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase243
+phase243_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase243
+phase243_next_best_action,precommit_future_holdout_for_phase243_candidate_after_storage_decision_no_2026_07_17_tuning_no_paper_live,Recommended next milestone

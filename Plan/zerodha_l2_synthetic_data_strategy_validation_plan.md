@@ -9020,6 +9020,80 @@ Current Phase149 evidence after Phase242:
 
 ---
 
+## 24.69 Phase243 Cost-stress-first Redesign Search Completed
+
+Phase243 executes the Phase242 redesign queue without using the `2026-07-17` holdout for tuning and without downloading more raw dates. It searches stricter, lower-turnover variants and applies the cost-stress screen before full random-side control evaluation.
+
+Phase243 search scope:
+
+- input event bars: `outputs/phase235/phase235_real_event_bars.parquet`;
+- training/discovery event-bar rows used: `28,793`;
+- forbidden holdout date excluded from tuning: `2026-07-17`;
+- extra raw downloads performed: `0`;
+- expanded variants evaluated: `3,920`;
+- signal families searched: microprice, L1 imbalance, top-five market-by-price imbalance and bar-return;
+- horizons searched: `2`, `3`, `4`, `5`, `6`, `8`, `10`, `12`, `15`, `20` event bars;
+- event and signal quantiles searched: `0.90`, `0.925`, `0.95`, `0.975`, `0.985`, `0.99`, `0.995`.
+
+Phase243 search results:
+
+- net-positive variants after base modeled costs: `792`;
+- variants positive under 1.5x modeled cost: `609`;
+- variants positive under 2.0x modeled cost: `487`;
+- cost-stress survivors with full controls evaluated: `161`;
+- candidates passing side-flip, random-side, 1.5x cost and 2.0x cost controls: `113`;
+- hard gates passed: `6 / 6`.
+
+Best Phase243 redesigned candidate:
+
+- candidate id: `P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9`;
+- family: `bar_return_reversal`;
+- horizon: `8` event bars;
+- event quantile: `0.99`;
+- signal quantile: `0.90`;
+- event-window score threshold: `15.588122`;
+- signal absolute threshold: `0.00779013`;
+- training/discovery trades: `29`;
+- training/discovery dates: `5`;
+- training/discovery symbols: `13`;
+- training/discovery net P&L after modeled Zerodha costs: `8,576.392616633566`;
+- net P&L under 2.0x modeled cost: `5,033.27266663252`;
+- random-side beat fraction: `0.997`;
+- side-flip control: pass;
+- random-side control: pass;
+- 1.5x and 2.0x cost-stress controls: pass.
+
+Current interpretation: Phase243 found a materially stronger redesign candidate than the closed Phase237 candidate on the training/discovery data. The improvement is exactly in the areas that killed Phase237: 2.0x cost survival and random-side discriminator strength. However, Phase243 is still not acceptance because it is a redesign/search phase. It does not use the one-date holdout for tuning, does not download new dates, and does not open paper/live trading. The only allowed next action is to precommit a future holdout protocol for the Phase243 candidate after a storage decision.
+
+Phase243 boundaries:
+
+- future holdout precommit allowed: `1`;
+- download more dates now allowed: `0`;
+- holdout parameter tuning allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `precommit_future_holdout_for_phase243_candidate_after_storage_decision_no_2026_07_17_tuning_no_paper_live`.
+
+Phase243 outputs:
+
+- `outputs/phase243/phase243_redesign_candidate_summary.csv`;
+- `outputs/phase243/phase243_control_summary.csv`;
+- `outputs/phase243/phase243_controlled_candidate_summary.csv`;
+- `outputs/phase243/phase243_survivor_candidates.csv`;
+- `outputs/phase243/phase243_best_candidate_trade_ledger.csv`;
+- `outputs/phase243/phase243_gate_evaluation.csv`;
+- `outputs/phase243/phase243_acceptance_summary.csv`;
+- `outputs/phase243/phase243_cost_stress_first_redesign_report.md`;
+- `outputs/phase243/phase243_cost_stress_first_redesign_manifest.json`.
+
+Current Phase149 evidence after Phase243:
+
+- synthetic strategy-discovery branch status: `cost_stress_first_redesign_candidate_found_future_holdout_precommit_open`;
+- next best action: `precommit_future_holdout_for_phase243_candidate_after_storage_decision_no_2026_07_17_tuning_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
