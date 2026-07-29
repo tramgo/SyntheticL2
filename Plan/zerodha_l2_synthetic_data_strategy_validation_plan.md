@@ -8183,6 +8183,90 @@ Current Phase149 evidence after Phase231:
 
 ---
 
+## 24.58 Phase232 Phase231 Candidate Validation Completed
+
+Phase232 validates only the three Phase231 train+test synthetic candidates. It is designed to try to break them before any stronger claim is made.
+
+Phase232 inputs:
+
+- Phase231 acceptance summary: `outputs/phase231/phase231_acceptance_summary.csv`;
+- Phase231 candidate summary: `outputs/phase231/phase231_candidate_summary.csv`;
+- Phase231 trade ledger: `outputs/phase231/phase231_trade_ledger.csv`.
+
+Phase232 validation checks:
+
+- side-flip negative control;
+- 100 deterministic random-side controls per candidate;
+- train/test 1.25x cost stress;
+- test 1.50x cost stress;
+- test month leave-one-out stability;
+- month and symbol concentration screens.
+
+Phase232 outputs:
+
+- `outputs/phase232/phase232_candidate_validation_summary.csv`;
+- `outputs/phase232/phase232_cost_stress_summary.csv`;
+- `outputs/phase232/phase232_side_flip_control_summary.csv`;
+- `outputs/phase232/phase232_random_side_control_summary.csv`;
+- `outputs/phase232/phase232_gate_evaluation.csv`;
+- `outputs/phase232/phase232_acceptance_summary.csv`;
+- `outputs/phase232/phase232_validate_phase231_candidates_report.md`;
+- `outputs/phase232/phase232_validate_phase231_candidates_manifest.json`.
+
+Phase232 results:
+
+- Phase231 train+test candidates validated: 3;
+- negative-control pass rows: 3;
+- cost-stress pass rows: 3;
+- holdout/concentration stability pass rows: 1;
+- validated synthetic candidate rows: 1.
+
+Validated Phase232 candidate:
+
+- candidate id: `P231_MICROPRICE_REVERSAL_H3_Q0_9`;
+- Phase231 family: `P231_MICROPRICE_REVERSAL`;
+- test net P&L: `229962.80717188073`;
+- test random-side beat fraction: `1.0`;
+- test random-side p95 net P&L: `14548.127749`;
+- side-flip test net P&L: `-330669.000729`;
+- minimum leave-one-test-month net P&L: `116948.3084791053`;
+- test 1.25x cost-stress net P&L: `217374.532977`;
+- test 1.50x cost-stress net P&L: `204786.258783`.
+
+Rejected Phase232 carry-forward candidates:
+
+- `P231_L5_IMBALANCE_REVERSAL_H3_Q0_9` passed negative controls and cost stress, but failed concentration/stability;
+- `P231_MICROPRICE_REVERSAL_H3_Q0_95` passed negative controls and cost stress, but failed concentration/stability.
+
+Phase232 gates:
+
+- Phase231 candidates available: pass;
+- negative controls pass: pass;
+- cost stress pass: pass;
+- holdout stability pass: pass;
+- validated synthetic candidate found: pass.
+
+Current interpretation: Phase232 materially strengthens the Phase231 result. One microprice-reversal candidate survives the first stricter synthetic validation layer. This is not a paper/live-ready strategy and not a deployable profitability claim, but it is now a real candidate for fragility and realism validation instead of a merely lucky Phase231 row.
+
+Phase232 boundaries:
+
+- strategy promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- next best action: `run_phase233_fragility_and_realism_validation_for_phase232_candidates_no_paper_live`.
+
+Current Phase149 evidence after Phase232:
+
+- phase rows discovered: 225;
+- runner phase rows: 223;
+- acceptance phase rows: 175;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `phase231_candidate_validated_by_stricter_controls`;
+- next best action: `run_phase233_fragility_and_realism_validation_for_phase232_candidates_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,15 @@
+metric,value,description
+phase232_validate_phase231_candidates_complete,1,Phase232 validation completed
+phase232_phase231_candidate_rows,3,Phase231 train+test candidates validated
+phase232_negative_control_pass_rows,3,Candidates passing negative controls
+phase232_cost_stress_pass_rows,3,Candidates passing cost stress
+phase232_holdout_stability_pass_rows,1,Candidates passing holdout/concentration stability
+phase232_validated_synthetic_candidate_rows,1,Candidates passing all Phase232 gates
+phase232_best_candidate_id,P231_MICROPRICE_REVERSAL_H3_Q0_9,Best validated or ranked candidate
+phase232_best_test_net_pnl_inr,229962.80717188073,Best candidate test net P&L
+phase232_best_test_random_side_beat_fraction,1.0,Best candidate test random-side beat fraction
+phase232_best_test_leave_one_month_min_net_pnl_inr,116948.3084791053,Best candidate minimum leave-one-test-month net P&L
+phase232_strategy_promotion_allowed,0,No promotion from synthetic validation alone
+phase232_paper_or_live_acceptance_allowed,0,No paper/live acceptance from synthetic validation alone
+phase232_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic validation alone
+phase232_next_best_action,run_phase233_fragility_and_realism_validation_for_phase232_candidates_no_paper_live,Next validation milestone

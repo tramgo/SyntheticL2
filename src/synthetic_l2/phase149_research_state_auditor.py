@@ -169,6 +169,7 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         229: Path("outputs/phase229/phase229_strategy_search_acceptance_summary.csv"),
         230: Path("outputs/phase230/phase230_strategy_search_acceptance_summary.csv"),
         231: Path("outputs/phase231/phase231_acceptance_summary.csv"),
+        232: Path("outputs/phase232/phase232_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -1249,6 +1250,28 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "profitability_claim_allowed": as_int(metric_value(path, "phase231_deployable_profitability_claim_allowed", 0)),
             "next_action": metric_value(path, "phase231_next_best_action", ""),
         }
+    if phase == 232:
+        complete = as_int(metric_value(path, "phase232_validate_phase231_candidates_complete", 0))
+        validated = as_int(metric_value(path, "phase232_validated_synthetic_candidate_rows", 0))
+        return {
+            "branch": "synthetic_strategy_discovery",
+            "state": "phase231_candidate_validated_by_stricter_controls" if validated > 0 else ("phase231_candidates_failed_stricter_controls" if complete else "phase231_validation_gated"),
+            "validate_phase231_candidates_complete": complete,
+            "phase231_candidate_rows": as_int(metric_value(path, "phase232_phase231_candidate_rows", 0)),
+            "negative_control_pass_rows": as_int(metric_value(path, "phase232_negative_control_pass_rows", 0)),
+            "cost_stress_pass_rows": as_int(metric_value(path, "phase232_cost_stress_pass_rows", 0)),
+            "holdout_stability_pass_rows": as_int(metric_value(path, "phase232_holdout_stability_pass_rows", 0)),
+            "validated_synthetic_candidate_rows": validated,
+            "best_candidate_id": metric_value(path, "phase232_best_candidate_id", ""),
+            "best_test_net_pnl_inr": metric_value(path, "phase232_best_test_net_pnl_inr", 0),
+            "best_test_random_side_beat_fraction": metric_value(path, "phase232_best_test_random_side_beat_fraction", 0),
+            "best_test_leave_one_month_min_net_pnl_inr": metric_value(path, "phase232_best_test_leave_one_month_min_net_pnl_inr", 0),
+            "strategy_replay_allowed": 0,
+            "promotion_allowed": as_int(metric_value(path, "phase232_strategy_promotion_allowed", 0)),
+            "paper_or_live_acceptance_allowed": as_int(metric_value(path, "phase232_paper_or_live_acceptance_allowed", 0)),
+            "profitability_claim_allowed": as_int(metric_value(path, "phase232_deployable_profitability_claim_allowed", 0)),
+            "next_action": metric_value(path, "phase232_next_best_action", ""),
+        }
     return {}
 
 
@@ -1361,8 +1384,9 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase229 = phase_status_from_metrics(229)
     phase230 = phase_status_from_metrics(230)
     phase231 = phase_status_from_metrics(231)
+    phase232 = phase_status_from_metrics(232)
     phase172 = phase_status_from_metrics(172)
-    real_receive_next = phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or phase228.get("next_action") or phase227.get("next_action") or phase226.get("next_action") or phase225.get("next_action") or phase224.get("next_action") or phase223.get("next_action") or phase222.get("next_action") or phase221.get("next_action") or phase220.get("next_action") or phase219.get("next_action") or phase218.get("next_action") or phase217.get("next_action") or phase216.get("next_action") or phase215.get("next_action") or phase214.get("next_action") or phase213.get("next_action") or phase212.get("next_action") or phase211.get("next_action") or phase210.get("next_action") or phase209.get("next_action") or phase208.get("next_action") or phase207.get("next_action") or phase206.get("next_action") or phase205.get("next_action") or phase204.get("next_action") or phase203.get("next_action") or phase202.get("next_action") or phase201.get("next_action") or phase200.get("next_action") or phase199.get("next_action") or phase198.get("next_action") or phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_next = phase232.get("next_action") or phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or phase228.get("next_action") or phase227.get("next_action") or phase226.get("next_action") or phase225.get("next_action") or phase224.get("next_action") or phase223.get("next_action") or phase222.get("next_action") or phase221.get("next_action") or phase220.get("next_action") or phase219.get("next_action") or phase218.get("next_action") or phase217.get("next_action") or phase216.get("next_action") or phase215.get("next_action") or phase214.get("next_action") or phase213.get("next_action") or phase212.get("next_action") or phase211.get("next_action") or phase210.get("next_action") or phase209.get("next_action") or phase208.get("next_action") or phase207.get("next_action") or phase206.get("next_action") or phase205.get("next_action") or phase204.get("next_action") or phase203.get("next_action") or phase202.get("next_action") or phase201.get("next_action") or phase200.get("next_action") or phase199.get("next_action") or phase198.get("next_action") or phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
     ready_dates = as_int(phase172.get("ready_receive_flow_dates", 0))
     additional_dates_needed = as_int(phase172.get("additional_dates_needed", 0))
     features_materialized = as_int(phase176.get("features_materialized", 0))
@@ -1585,7 +1609,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         f"Phase228 closure_or_relaxation_complete={phase228.get('cost_aware_label_redesign_closure_or_relaxation_precommit_complete', '')}, closed_for_fit={phase228.get('current_label_set_closed_for_fit', '')}, closed_for_replay={phase228.get('current_label_set_closed_for_replay', '')}, redesign_routes={phase228.get('redesign_route_rows', '')}, guardrails={phase228.get('guardrail_rows', '')}, selected_route={phase228.get('selected_route_id', '')}, phase229_work_order_rows={phase228.get('phase229_work_order_rows', '')}, label_materialization_allowed_next={phase228.get('label_materialization_allowed_next', '')}, threshold_widening_allowed={phase228.get('threshold_widening_allowed', '')}, model_fit_allowed_next={phase228.get('model_fit_allowed_next', '')}, profitability_claim_allowed={phase228.get('profitability_claim_allowed', '')}; "
         f"Phase229 multi_strategy_search_complete={phase229.get('multi_strategy_profitability_search_complete', '')}, distinct_strategy_ids={phase229.get('distinct_strategy_ids', '')}, realistic_profile_rows={phase229.get('realistic_profile_rows', '')}, positive_realistic_candidates={phase229.get('positive_realistic_candidate_rows', '')}, positive_any_profile_rows={phase229.get('positive_any_profile_rows', '')}, best_strategy={phase229.get('best_strategy_id', '')}, best_annual_net_pnl={phase229.get('best_annual_net_pnl_inr', '')}; "
         f"Phase230 low_turnover_high_edge_complete={phase230.get('low_turnover_high_edge_search_complete', '')}, variant_group_rows={phase230.get('variant_group_rows', '')}, positive_expanded_groups={phase230.get('positive_expanded_group_rows', '')}, positive_oracle_signed_groups={phase230.get('positive_oracle_signed_group_rows', '')}, best_scope={phase230.get('best_scope', '')}, best_variant={phase230.get('best_expanded_variant', '')}, best_net_pnl={phase230.get('best_expanded_net_pnl_inr', '')}, profitability_claim_allowed={phase230.get('profitability_claim_allowed', '')}; "
-        f"Phase231 material_new_forms_complete={phase231.get('material_new_strategy_forms_complete', '')}, candidate_rows={phase231.get('candidate_rows', '')}, train_pass={phase231.get('train_pass_candidates', '')}, test_pass={phase231.get('test_pass_candidates', '')}, synthetic_candidates={phase231.get('synthetic_candidate_rows', '')}, best_candidate={phase231.get('best_candidate_id', '')}, best_test_net_pnl={phase231.get('best_test_net_pnl_inr', '')}, profitability_claim_allowed={phase231.get('profitability_claim_allowed', '')}."
+        f"Phase231 material_new_forms_complete={phase231.get('material_new_strategy_forms_complete', '')}, candidate_rows={phase231.get('candidate_rows', '')}, train_pass={phase231.get('train_pass_candidates', '')}, test_pass={phase231.get('test_pass_candidates', '')}, synthetic_candidates={phase231.get('synthetic_candidate_rows', '')}, best_candidate={phase231.get('best_candidate_id', '')}, best_test_net_pnl={phase231.get('best_test_net_pnl_inr', '')}, profitability_claim_allowed={phase231.get('profitability_claim_allowed', '')}; "
+        f"Phase232 validation_complete={phase232.get('validate_phase231_candidates_complete', '')}, validated_candidates={phase232.get('validated_synthetic_candidate_rows', '')}, negative_control_pass={phase232.get('negative_control_pass_rows', '')}, cost_stress_pass={phase232.get('cost_stress_pass_rows', '')}, holdout_stability_pass={phase232.get('holdout_stability_pass_rows', '')}, best_candidate={phase232.get('best_candidate_id', '')}, best_test_net_pnl={phase232.get('best_test_net_pnl_inr', '')}, profitability_claim_allowed={phase232.get('profitability_claim_allowed', '')}."
     )
     branches = [
         {
@@ -1608,7 +1633,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         },
         {
             "branch": "synthetic_strategy_discovery",
-            "status": phase231.get("state") or phase230.get("state") or phase229.get("state") or "not_started",
+            "status": phase232.get("state") or phase231.get("state") or phase230.get("state") or phase229.get("state") or "not_started",
             "evidence": (
                 f"Phase229 ranked {phase229.get('distinct_strategy_ids', '')} strategy ids and found "
                 f"{phase229.get('positive_realistic_candidate_rows', '')} positive realistic candidates; "
@@ -1617,9 +1642,10 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
                 f"{phase230.get('positive_oracle_signed_group_rows', '')} positive oracle-signed upper-bound groups; "
                 f"Phase231 replayed {phase231.get('candidate_rows', '')} material-new candidates and found "
                 f"{phase231.get('synthetic_candidate_rows', '')} train+test synthetic candidates, led by "
-                f"{phase231.get('best_candidate_id', '')} with test net P&L {phase231.get('best_test_net_pnl_inr', '')}."
+                f"{phase231.get('best_candidate_id', '')} with test net P&L {phase231.get('best_test_net_pnl_inr', '')}; "
+                f"Phase232 validated {phase232.get('validated_synthetic_candidate_rows', '')} candidate after cost stress, side-flip, random-side and holdout stability checks."
             ),
-            "current_next_action": phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or "run_phase229_or_phase230_strategy_discovery",
+            "current_next_action": phase232.get("next_action") or phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or "run_phase229_or_phase230_strategy_discovery",
         },
         {
             "branch": "dense_synthetic_replay",

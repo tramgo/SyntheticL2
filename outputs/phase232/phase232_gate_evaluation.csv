@@ -1,0 +1,6 @@
+gate_id,passed,observed_value,required_value,interpretation
+P232_PHASE231_CANDIDATES_AVAILABLE,True,3,>0 Phase231 candidates,Phase232 has Phase231 candidates to validate.
+P232_NEGATIVE_CONTROLS_PASS,True,3,>0 candidates pass side-flip and random-side controls,Candidate performance beats deterministic negative controls.
+P232_COST_STRESS_PASS,True,3,>0 candidates pass cost stress,Candidate remains positive under 1.25x train/test and 1.50x test cost stress.
+P232_HOLDOUT_STABILITY_PASS,True,1,>0 candidates pass month/symbol stability,Candidate is not solely one-month or one-symbol dominated under the configured thresholds.
+P232_VALIDATED_SYNTHETIC_CANDIDATE_FOUND,True,1,>0 candidates pass all Phase232 validation gates,"Validated synthetic candidates may proceed to stricter fragility/realism validation, not promotion."
