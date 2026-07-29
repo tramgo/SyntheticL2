@@ -1,0 +1,4 @@
+horizon_sec,materialization_available,split_rows,quality_pass_rows,total_rows,cost_aware_actionable_rows,max_actionable_rate,horizon_fit_precommit_allowed,horizon_verdict
+5,1,2,0,42994,85,0.002167291471415183,0,insufficient_split_quality_for_model_fit
+15,1,2,0,2637,51,0.03431952662721893,0,insufficient_split_quality_for_model_fit
+30,0,0,0,0,0,0.0,0,contracted_horizon_unavailable_in_current_inputs

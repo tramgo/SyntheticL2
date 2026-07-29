@@ -1,0 +1,23 @@
+metric,value,description
+phase227_quality_interpretation_rows,4,Split-level quality interpretation rows
+phase227_horizon_interpretation_rows,3,Horizon interpretation rows
+phase227_failure_mode_rows,4,Failure-mode rows
+phase227_phase228_work_order_rows,1,Phase228 work-order rows
+phase227_actionable_rows,136,Phase226 actionable rows interpreted
+phase227_quality_pass_rows,0,Phase226 quality pass rows interpreted
+phase227_fit_precommit_candidate_rows,0,Rows eligible for fit precommit
+phase227_model_fit_allowed_next,0,No model fit opened
+phase227_strategy_replay_allowed,0,No strategy replay opened
+phase227_broader_replay_allowed_next,0,No broader replay opened
+phase227_test_replay_allowed_next,0,No test replay opened
+phase227_test_rows_used,0,No sealed test rows used
+phase227_promotion_allowed,0,No promotion opened
+phase227_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase227_profitability_claim_allowed,0,No profitability claim is allowed
+phase227_forbidden_execution_rows,16,Forbidden execution rows
+phase227_gate_rows,7,Gates evaluated
+phase227_hard_gate_rows,7,Hard gates evaluated
+phase227_hard_gate_pass_rows,7,Hard gates passed
+phase227_cost_aware_event_label_quality_interpretation_complete,1,1 means Phase227 completed
+phase227_forbidden_outputs,label_materialization;feature_materialization;model_fit;model_prediction;strategy_replay;broader_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase227_next_best_action,run_phase228_cost_aware_label_redesign_closure_or_relaxation_precommit_no_fit_no_replay_no_test,Recommended next milestone

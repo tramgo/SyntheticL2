@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P227_PHASE226_COMPLETE,True,phase226_complete=1,hard
+P227_QUALITY_INTERPRETATION_RECORDED,True,quality_rows=4,hard
+P227_SPARSE_LABEL_FAILURE_RECORDED,True,actionable_rows=136; quality_pass_rows=0; fit_candidates=0,hard
+P227_HORIZON_INTERPRETATION_RECORDED,True,horizon_rows=3,hard
+P227_PHASE228_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P227_TEST_ROWS_UNTOUCHED,True,test_rows_used=0,hard
+P227_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

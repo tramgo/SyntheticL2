@@ -1,0 +1,5 @@
+horizon_sec,split_role,partitions,rows,cost_aware_actionable_rows,symbols,trade_dates,passes_min_event_count,passes_min_symbol_count,passes_min_trade_date_count,quality_gate_pass,test_rows_used,actionable_rate,fit_precommit_candidate,model_fit_allowed_next,strategy_replay_allowed,test_replay_allowed_next,promotion_allowed,paper_or_live_acceptance_allowed,profitability_claim_allowed,failure_reason,interpretation_verdict
+5,train,96,25922,48,32,3,0,1,0,0,0,0.0018517089730730654,0,0,0,0,0,0,0,minimum_actionable_event_count_failed,insufficient_cost_aware_label_support_for_fit_precommit
+5,validation,32,17072,37,32,1,0,1,0,0,0,0.002167291471415183,0,0,0,0,0,0,0,minimum_actionable_event_count_failed,insufficient_cost_aware_label_support_for_fit_precommit
+15,validation,32,845,29,32,1,0,1,0,0,0,0.03431952662721893,0,0,0,0,0,0,0,minimum_actionable_event_count_failed,insufficient_cost_aware_label_support_for_fit_precommit
+15,train,96,1792,22,32,3,0,1,0,0,0,0.012276785714285714,0,0,0,0,0,0,0,minimum_actionable_event_count_failed,insufficient_cost_aware_label_support_for_fit_precommit
