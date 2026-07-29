@@ -1,0 +1,9 @@
+gate_id,gate_pass,evidence,severity
+P221_PHASE220_COMPLETE,True,phase220_complete=1,hard
+P221_DECISION_RECORDED,True,decision_rows=1; phase222_precommitted=1,hard
+P221_CANDIDATES_FROZEN,True,candidate_rows=5,hard
+P221_SIGNAL_RULE_CONTRACT_RECORDED,True,signal_rule_rows=5; candidate_rows=5,hard
+P221_REPLAY_COST_LATENCY_CONTRACT_RECORDED,True,replay_contract_rows=1,hard
+P221_PHASE222_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P221_PHASE221_REPLAY_EXECUTION_CLOSED,True,phase221_replay_execution=0,hard
+P221_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; replay_flags=0,hard

@@ -1,0 +1,20 @@
+metric,value,description
+phase221_decision_rows,1,Decision rows
+phase221_candidate_rows,5,Frozen candidate rows
+phase221_signal_rule_rows,5,Signal rule contract rows
+phase221_replay_contract_rows,1,Replay precommit contract rows
+phase221_phase222_work_order_rows,1,Phase222 work-order rows
+phase221_forbidden_execution_rows,11,Forbidden execution rows
+phase221_gate_rows,8,Gates evaluated
+phase221_hard_gate_rows,8,Hard gates evaluated
+phase221_hard_gate_pass_rows,8,Hard gates passed
+phase221_event_only_signal_replay_precommit_or_stop_complete,1,1 means Phase221 completed
+phase221_phase222_replay_dry_run_precommitted,1,1 means Phase222 may execute train/validation replay dry run
+phase221_strategy_replay_execution_allowed,0,No strategy replay execution in Phase221
+phase221_strategy_replay_allowed_next,1,1 means next phase may execute gated train/validation replay
+phase221_test_replay_allowed_next,0,No test replay opened
+phase221_promotion_allowed,0,No promotion opened
+phase221_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase221_profitability_claim_allowed,0,No profitability claim is allowed
+phase221_forbidden_outputs,strategy_replay_execution;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase221_next_best_action,run_phase222_event_only_train_validation_signal_replay_dry_run_no_test,Recommended next milestone

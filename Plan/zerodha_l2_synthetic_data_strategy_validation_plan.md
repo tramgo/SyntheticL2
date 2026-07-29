@@ -7487,6 +7487,63 @@ Current interpretation: Phase220 gives a narrow but real validation-screened can
 
 ---
 
+### Phase221 - Event-only signal/replay precommit-or-stop, no replay/no test
+
+Phase221 freezes the Phase220 passing candidates and decides whether to precommit a train/validation-only signal replay dry run for Phase222. It precommits the Phase222 dry run because Phase220 produced 5 passing candidates in one validation-screened model family, but Phase221 itself does not execute replay.
+
+Phase221 precommit decision:
+
+- decision: `precommit_phase222_event_only_train_validation_signal_replay_dry_run`;
+- frozen candidate rows: 5;
+- candidate model family: `low_depth_tree_or_stump_diagnostic`;
+- signal rule contract rows: 5;
+- replay cost/latency contract rows: 1;
+- Phase180 Zerodha equity cost catalog bound for Phase222;
+- Phase180 latency/slippage profile catalog bound for Phase222;
+- allowed replay scope next: train/validation only;
+- sealed test rows used: 0.
+
+Phase221 results:
+
+- decision rows: 1;
+- frozen candidate rows: 5;
+- signal rule rows: 5;
+- replay contract rows: 1;
+- Phase222 work-order rows: 1;
+- forbidden execution rows: 11;
+- hard gates: 8 / 8 passed;
+- Phase222 replay dry run precommitted: 1;
+- strategy replay execution allowed in Phase221: 0;
+- strategy replay allowed next: 1;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase222_event_only_train_validation_signal_replay_dry_run_no_test`.
+
+Phase221 replay contract boundaries:
+
+- no sealed test replay;
+- no threshold widening;
+- no row-level prediction export from Phase221;
+- Phase222 must bind Zerodha cost components before any net metric;
+- Phase222 must bind latency/slippage profiles before any net metric;
+- Phase222 may produce only train/validation diagnostic replay evidence;
+- no promotion, paper/live acceptance, or profitability claim can be made from Phase221.
+
+Current Phase149 evidence after Phase221:
+
+- phase rows discovered: 214;
+- runner phase rows: 212;
+- acceptance phase rows: 164;
+- hard global-state gates: 246 / 246 passed;
+- real receive-flow branch status: `event_only_signal_replay_precommit_complete_phase222_train_validation_replay_dry_run_pending_no_test`;
+- next best action: `run_phase222_event_only_train_validation_signal_replay_dry_run_no_test`.
+
+Current interpretation: Phase221 finally opens the next-phase replay doorway, but only for a controlled train/validation dry run with costs and latency bound. This is still not a test replay, not a promotion, and not a profitability claim. We have handed the candidate a practice helmet, not a trophy.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
