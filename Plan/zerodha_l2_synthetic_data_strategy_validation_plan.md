@@ -8851,14 +8851,15 @@ Phase240 current completed smoke evidence:
 - deployable profitability claim allowed: `0`;
 - next best action while incomplete: `resume_phase240_unseen_raw_l2_download_no_paper_live`.
 
-Phase240 active full-shard background evidence at the time of this plan update:
+Phase240 completed one-date shard evidence:
 
-- active shard: `2026-07-17`;
+- completed shard: `2026-07-17`;
 - remote manifest listed for this shard: `50,787` parquet files;
 - remote bytes listed for this shard: `1,788,505,298`;
 - background output directory: `outputs/phase240/date_2026-07-17/`;
 - local destination: `real_data_sample/l2_unseen_validation/trade_date=2026-07-17/exchange=NSE/`;
-- most recent observed progress: at least `7,750 / 50,787` files processed, `0` failures, approximately `272,838,463` bytes completed.
+- final observed progress: `50,787 / 50,787` files processed, `0` failures, `1,788,505,298` bytes completed;
+- current disk constraint: continue with one new real date only unless disk is freed or additional storage is attached.
 
 Phase240 outputs:
 
@@ -8875,12 +8876,12 @@ Phase240 outputs:
 - `outputs/phase240/date_2026-07-17/phase240_listing_progress.json`;
 - `outputs/phase240/date_2026-07-17/phase240_download_progress.json`.
 
-Current interpretation: Phase240 is no longer just planning. It is executing the unseen raw real L2 acquisition path required before the frozen Phase237 candidate can be validated. The correct next operational action is to let the `2026-07-17` shard finish, then continue the same resumable path for `2026-07-20`, `2026-07-21`, `2026-07-22` and `2026-07-23`. Only after enough unseen raw L2 dates are fully present should Phase241 materialize Phase235-compatible event bars and run the frozen candidate validation without threshold tuning.
+Current interpretation: Phase240 is no longer just planning. It executed the first unseen raw real L2 acquisition shard required before the frozen Phase237 candidate can be tested outside its discovery dates. Because disk space is currently constrained, the next operational action is not to download `2026-07-20` through `2026-07-23` yet. Instead, Phase241 should materialize Phase235-compatible event bars for `2026-07-17` only and run a one-date unseen diagnostic with no threshold tuning. This one-date result can reject a fragile candidate early, but it must not be treated as the full five-date acceptance gate.
 
 Current Phase149 evidence after Phase240 partial start:
 
 - synthetic strategy-discovery branch status: `unseen_raw_l2_download_partial_or_in_progress`;
-- next best action: `resume_phase240_unseen_raw_l2_download_no_paper_live`;
+- next best action under low disk: `run_phase241_one_date_unseen_real_l2_materialization_and_frozen_candidate_diagnostic_no_paper_live`;
 - strategy replay remains closed in Phase149;
 - paper/live/profitability claims remain closed.
 

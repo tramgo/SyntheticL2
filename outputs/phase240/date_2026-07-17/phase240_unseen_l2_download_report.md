@@ -1,6 +1,6 @@
 # Phase240 Unseen Real L2 Download Report
 
-Generated UTC: 2026-07-29T07:55:21.729271+00:00
+Generated UTC: 2026-07-29T07:52:14.986644+00:00
 
 Phase240 downloads raw unseen real L2 dates from Azure Files using a process-provided SAS token.
 The SAS value is not written to disk. Downloads are resumable by local file-size checks.
@@ -17,7 +17,7 @@ The SAS value is not written to disk. Downloads are resumable by local file-size
 | phase240_completed_files | 50787 | Files processed |
 | phase240_failed_files | 0 | Files failed |
 | phase240_completed_dates | 1 | Dates fully downloaded |
-| phase240_elapsed_seconds | 131.994 | Elapsed seconds |
+| phase240_elapsed_seconds | 893.782 | Elapsed seconds |
 | phase240_validation_execution_allowed_now | 0 | Phase240 does not run validation |
 | phase240_strategy_promotion_allowed | 0 | No strategy promotion from Phase240 |
 | phase240_paper_or_live_acceptance_allowed | 0 | No paper/live acceptance from Phase240 |
@@ -28,7 +28,7 @@ The SAS value is not written to disk. Downloads are resumable by local file-size
 
 | trade_date | remote_files | remote_bytes | symbols | completed_files | downloaded_files | skipped_existing_files | failed_files | completed_bytes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07-17 | 50787 | 1788505298 | 32 | 50787 | 0 | 50787 | 0 | 1788505298 |
+| 2026-07-17 | 50787 | 1788505298 | 32 | 50787 | 50487 | 300 | 0 | 1788505298 |
 
 ## Failed Files
 

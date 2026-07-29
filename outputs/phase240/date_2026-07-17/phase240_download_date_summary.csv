@@ -1,2 +1,2 @@
 trade_date,remote_files,remote_bytes,symbols,completed_files,downloaded_files,skipped_existing_files,failed_files,completed_bytes
-2026-07-17,50787,1788505298,32,50787,0,50787,0,1788505298
+2026-07-17,50787,1788505298,32,50787,50487,300,0,1788505298

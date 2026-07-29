@@ -7,7 +7,7 @@ phase240_remote_manifest_bytes,1788505298,Remote bytes in attempted manifest
 phase240_completed_files,50787,Files processed
 phase240_failed_files,0,Files failed
 phase240_completed_dates,1,Dates fully downloaded
-phase240_elapsed_seconds,131.99358201026917,Elapsed seconds
+phase240_elapsed_seconds,893.7817752361298,Elapsed seconds
 phase240_validation_execution_allowed_now,0,Phase240 does not run validation
 phase240_strategy_promotion_allowed,0,No strategy promotion from Phase240
 phase240_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase240
