@@ -161,6 +161,7 @@ phase,runner,runner_exists,runner_suffix
 238,scripts\run_phase238_validation_precommit.py,True,.py
 239,scripts\run_phase239_unseen_date_acquisition.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py
+240,scripts\run_phase240_unseen_l2_downloader.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py

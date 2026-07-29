@@ -8826,6 +8826,66 @@ Current Phase149 evidence after Phase239:
 
 ---
 
+## 24.66 Phase240 Unseen Raw L2 Download Started / Resumable Shard Path
+
+Phase240 implements the Phase239 download step as a resumable Azure Files pull of unseen raw Zerodha-websocket-like top-five market-by-price depth data.
+
+Phase240 downloader scope:
+
+- source: Azure Files account `stctrade1ramic`, share `ctrade1-l2-data`;
+- remote source path pattern: `raw_l2/trade_date=<date>/exchange=NSE/symbol=<symbol>/`;
+- local target path pattern: `real_data_sample/l2_unseen_validation/trade_date=<date>/exchange=NSE/symbol=<symbol>/`;
+- persisted file type: raw parquet tick updates with L1 quote/depth and top-five bid/ask market-by-price book state as captured by the collector;
+- credential handling: SAS token is read only from `AZURE_STORAGE_SAS_TOKEN` in the process environment and is not written to disk;
+- resume rule: a local parquet is skipped when its byte size matches the remote Azure Files entry; incomplete `.part` files are discarded on failure;
+- execution style: date-sharded, progress-tracked downloads so large dates do not look stalled while Azure Files listings are being enumerated.
+
+Phase240 current completed smoke evidence:
+
+- explicit shard tested: `2026-07-17`;
+- root Phase240 partial attempt processed: `300` files;
+- failed files: `0`;
+- validation execution allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action while incomplete: `resume_phase240_unseen_raw_l2_download_no_paper_live`.
+
+Phase240 active full-shard background evidence at the time of this plan update:
+
+- active shard: `2026-07-17`;
+- remote manifest listed for this shard: `50,787` parquet files;
+- remote bytes listed for this shard: `1,788,505,298`;
+- background output directory: `outputs/phase240/date_2026-07-17/`;
+- local destination: `real_data_sample/l2_unseen_validation/trade_date=2026-07-17/exchange=NSE/`;
+- most recent observed progress: at least `7,750 / 50,787` files processed, `0` failures, approximately `272,838,463` bytes completed.
+
+Phase240 outputs:
+
+- `src/synthetic_l2/phase240_unseen_l2_downloader.py`;
+- `scripts/run_phase240_unseen_l2_downloader.py`;
+- `outputs/phase240/phase240_listing_progress.json`;
+- `outputs/phase240/phase240_remote_file_manifest.csv`;
+- `outputs/phase240/phase240_download_progress.json`;
+- `outputs/phase240/phase240_download_file_ledger.csv`;
+- `outputs/phase240/phase240_download_date_summary.csv`;
+- `outputs/phase240/phase240_acceptance_summary.csv`;
+- `outputs/phase240/phase240_unseen_l2_download_report.md`;
+- `outputs/phase240/phase240_unseen_l2_download_manifest.json`;
+- `outputs/phase240/date_2026-07-17/phase240_listing_progress.json`;
+- `outputs/phase240/date_2026-07-17/phase240_download_progress.json`.
+
+Current interpretation: Phase240 is no longer just planning. It is executing the unseen raw real L2 acquisition path required before the frozen Phase237 candidate can be validated. The correct next operational action is to let the `2026-07-17` shard finish, then continue the same resumable path for `2026-07-20`, `2026-07-21`, `2026-07-22` and `2026-07-23`. Only after enough unseen raw L2 dates are fully present should Phase241 materialize Phase235-compatible event bars and run the frozen candidate validation without threshold tuning.
+
+Current Phase149 evidence after Phase240 partial start:
+
+- synthetic strategy-discovery branch status: `unseen_raw_l2_download_partial_or_in_progress`;
+- next best action: `resume_phase240_unseen_raw_l2_download_no_paper_live`;
+- strategy replay remains closed in Phase149;
+- paper/live/profitability claims remain closed.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

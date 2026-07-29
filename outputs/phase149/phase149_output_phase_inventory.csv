@@ -163,6 +163,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 237,outputs\phase237,True,8,outputs\phase237\phase237_acceptance_summary.csv,outputs\phase237\phase237_threshold_transfer_search_manifest.json,False
 238,outputs\phase238,True,8,outputs\phase238\phase238_acceptance_summary.csv,outputs\phase238\phase238_validation_precommit_manifest.json,False
 239,outputs\phase239,True,8,outputs\phase239\phase239_acceptance_summary.csv,outputs\phase239\phase239_unseen_date_acquisition_manifest.json,False
+240,outputs\phase240,True,15,outputs\phase240\phase240_acceptance_summary.csv,outputs\phase240\phase240_unseen_l2_download_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
