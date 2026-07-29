@@ -147,6 +147,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 222,outputs\phase222,True,10,outputs\phase222\phase222_signal_replay_acceptance_summary.csv,outputs\phase222\phase222_signal_replay_manifest.json,False
 223,outputs\phase223,True,9,outputs\phase223\phase223_validation_interpretation_acceptance_summary.csv,outputs\phase223\phase223_validation_interpretation_manifest.json,False
 224,outputs\phase224,True,9,outputs\phase224\phase224_closure_or_redesign_acceptance_summary.csv,outputs\phase224\phase224_closure_or_redesign_manifest.json,False
+225,outputs\phase225,True,9,outputs\phase225\phase225_redesign_precommit_acceptance_summary.csv,outputs\phase225\phase225_redesign_precommit_manifest.json,False
 23,outputs\phase23,True,6,,outputs\phase23\phase23_key_risk_register_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False

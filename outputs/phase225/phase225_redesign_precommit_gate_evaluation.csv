@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P225_PHASE224_COMPLETE,True,phase224_complete=1,hard
+P225_SELECTED_ROUTE_BOUND,True,phase224_selected=P224_COST_AWARE_ACTIONABLE_EVENT_LABELS; work_selected=P224_COST_AWARE_ACTIONABLE_EVENT_LABELS,hard
+P225_COST_HURDLES_BOUND,True,cost_hurdle_rows=2; cost_rows=26; latency_rows=2,hard
+P225_LABEL_CONTRACT_RECORDED,True,label_rows=3,hard
+P225_NEGATIVE_CONTROLS_RECORDED,True,control_rows=3,hard
+P225_PHASE226_MATERIALIZATION_WORK_ORDER_RECORDED,True,work_order_rows=1; materialization_next=1,hard
+P225_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

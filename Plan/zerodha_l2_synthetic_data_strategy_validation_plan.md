@@ -7713,6 +7713,67 @@ Current interpretation: Phase224 avoids an attractive trap. The current replay c
 
 ---
 
+## 24.51 Phase225 Cost-Aware Event Source Redesign Precommit Completed
+
+Phase225 precommits the selected Phase224 redesign route before any label materialization, model fit, replay, broader replay, or sealed test. The selected route is `P224_COST_AWARE_ACTIONABLE_EVENT_LABELS`: labels must clear an economic Zerodha cost/latency hurdle before they can become candidates.
+
+Phase225 selected redesign:
+
+- selected route: `P224_COST_AWARE_ACTIONABLE_EVENT_LABELS`;
+- redesign theme: cost-aware label source;
+- label family: cost-aware actionable event move;
+- event filter: `event_surprise_bucket == 1`;
+- horizons: 5s, 15s, 30s;
+- allowed splits: train and validation only;
+- sealed test rows used: 0;
+- threshold widening allowed: 0.
+
+Phase225 cost hurdle contracts:
+
+- cost hurdle rows: 2;
+- bound statutory cost catalog rows: 26;
+- bound latency profiles: `P180_RETAIL_MARKETABLE_DEFAULT` and `P180_STRESSED_RETAIL`;
+- primary rule: gross forward move must exceed Phase180 statutory cost plus spread/latency/slippage bound;
+- primary safety margin: 1 bps;
+- stress rule: candidate must remain nonnegative under stressed retail cost/latency before any replay precommit.
+
+Phase225 label/control contracts:
+
+- label contract rows: 3;
+- negative-control rows: 3;
+- controls: event-time shuffle, symbol/date base-rate, and cost-hurdle ablation;
+- minimum event count per split: 1,000;
+- minimum symbol count per split: 8;
+- minimum trade-date count per split: 5.
+
+Phase225 results:
+
+- Phase226 work-order rows: 1;
+- label materialization allowed next: 1;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- broader replay allowed next: 0;
+- test replay allowed next: 0;
+- test rows used: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- hard gates: 7 / 7 passed;
+- next best action: `run_phase226_cost_aware_event_label_materialization_dry_run_no_fit_no_replay_no_test`.
+
+Current Phase149 evidence after Phase225:
+
+- phase rows discovered: 218;
+- runner phase rows: 216;
+- acceptance phase rows: 168;
+- hard global-state gates: 285 / 285 passed;
+- real receive-flow branch status: `cost_aware_event_source_redesign_precommit_complete_phase226_label_materialization_pending_no_fit_no_replay_no_test`;
+- next best action: `run_phase226_cost_aware_event_label_materialization_dry_run_no_fit_no_replay_no_test`.
+
+Current interpretation: Phase225 moves the cost wall to the front door. The next label materialization must prove there are enough cost-aware actionable events before any model fitting or replay is allowed.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

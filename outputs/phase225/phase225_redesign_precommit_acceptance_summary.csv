@@ -1,0 +1,22 @@
+metric,value,description
+phase225_cost_hurdle_rows,2,Cost hurdle contract rows
+phase225_label_contract_rows,3,Cost-aware label contract rows
+phase225_negative_control_rows,3,Negative-control contract rows
+phase225_phase226_work_order_rows,1,Phase226 work-order rows
+phase225_selected_route_id,P224_COST_AWARE_ACTIONABLE_EVENT_LABELS,Selected redesign route
+phase225_label_materialization_allowed_next,1,Label materialization allowed next
+phase225_model_fit_allowed_next,0,No model fit opened
+phase225_strategy_replay_allowed,0,No strategy replay opened
+phase225_broader_replay_allowed_next,0,No broader replay opened
+phase225_test_replay_allowed_next,0,No test replay opened
+phase225_test_rows_used,0,No sealed test rows used
+phase225_promotion_allowed,0,No promotion opened
+phase225_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase225_profitability_claim_allowed,0,No profitability claim is allowed
+phase225_forbidden_execution_rows,16,Forbidden execution rows
+phase225_gate_rows,7,Gates evaluated
+phase225_hard_gate_rows,7,Hard gates evaluated
+phase225_hard_gate_pass_rows,7,Hard gates passed
+phase225_cost_aware_event_source_redesign_precommit_complete,1,1 means Phase225 completed
+phase225_forbidden_outputs,label_materialization;feature_materialization;model_fit;model_prediction;strategy_replay;broader_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase225_next_best_action,run_phase226_cost_aware_event_label_materialization_dry_run_no_fit_no_replay_no_test,Recommended next milestone

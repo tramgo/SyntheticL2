@@ -1,0 +1,4 @@
+phase225_control_id,control_type,purpose,required_before_fit,pass_condition,model_fit_allowed_now,strategy_replay_allowed
+P225_CONTROL_EVENT_TIME_SHUFFLE,event_time_shuffle_within_symbol_date_split,Reject labels whose apparent signal survives only because of event timing leakage or base-rate structure.,1,model_or_screen_must_beat_shuffled_control_on_validation_before_replay_precommit,0,0
+P225_CONTROL_SYMBOL_DATE_BASE_RATE,symbol_date_base_rate,Reject labels explained by symbol/date unconditional actionability rates.,1,validation lift must exceed symbol-date base-rate control,0,0
+P225_CONTROL_COST_HURDLE_ABLATION,cost_hurdle_ablation,Quantify whether cost-aware labels materially reduce churn versus pre-cost event-only labels.,1,activation budget and positive-label rate must remain above minimum counts after cost hurdle,0,0
