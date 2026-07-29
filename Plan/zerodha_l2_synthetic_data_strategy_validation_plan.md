@@ -10114,6 +10114,73 @@ Current Phase149 evidence after Phase256:
 
 ---
 
+## 24.83 Phase257 Richer Raw Top-five Depth Strategy-search Interpretation Completed
+
+Phase257 interprets the Phase256 full-depth cost-aware taker strategy search. It closes the current taker-threshold search family after no profitable survivor was found, while preserving the full Zerodha top-five market-by-price depth surface as the core project input.
+
+Phase257 does not download more dates, run replay execution, promote a strategy, open paper/live acceptance or make a deployable profitability claim.
+
+Phase257 interpreted evidence:
+
+- Phase256 variants interpreted: `2,376`;
+- Phase256 full top-five depth variants interpreted: `2,376`;
+- Phase256 survivor candidates: `0`;
+- Phase256 variants positive at `1.0x` modeled cost floor: `0`;
+- current taker-threshold route closed: `1`;
+- full top-five depth preserved: `1`;
+- threshold-relaxation-only continuation allowed: `0`.
+
+Phase257 failure-mode interpretation:
+
+- `taker_cost_floor_dominates_gross_edge`: best `1.0x` cost net remained negative and no `1.0x` cost-positive variants existed;
+- `no_cost_stress_survivor`: survivor candidate rows were `0`;
+- `best_candidate_too_sparse_for_breadth`: best Phase256 variant had only `8` trades across `5` symbols;
+- `gross_edge_exists_but_is_insufficient`: some variants had positive gross edge, but net edge was dominated by modeled spread plus charges;
+- `full_depth_signal_not_invalidated`: Phase255 still shows `11 / 11` healthy full-depth features and maximum full-depth absolute Spearman IC of `0.1475390528147801`.
+
+Phase257 selected next route:
+
+- selected route: `P257_PASSIVE_QUEUE_AWARE_SPREAD_CAPTURE_PRECOMMIT`;
+- next executable milestone: `run_phase258_passive_queue_aware_spread_capture_precommit_full_top5_depth_no_paper_live`.
+
+Phase258 route contract:
+
+- input: `outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet`;
+- depth requirement: use levels 1 through 5 from Zerodha top-five market-by-price depth; no L1-only candidate is allowed;
+- order model: passive queue-aware limit-order proxy;
+- edge source: spread capture minus adverse selection;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- controls: random-side, side-flip, cost-stress and queue-adversity;
+- forbidden output: paper/live acceptance or deployable profitability claim.
+
+Phase257 gates:
+
+- Phase256 work order present: pass;
+- Phase256 search executed: pass, `2,376`;
+- no survivor recognized: pass, `0`;
+- full depth preserved: pass, `2,376 / 2,376`;
+- taker branch closed: pass;
+- next route selected: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase257 outputs:
+
+- `outputs/phase257/phase257_failure_mode_ledger.csv`;
+- `outputs/phase257/phase257_decision_ledger.csv`;
+- `outputs/phase257/phase257_next_route_contract.csv`;
+- `outputs/phase257/phase257_gate_evaluation.csv`;
+- `outputs/phase257/phase257_acceptance_summary.csv`;
+- `outputs/phase257/phase257_richer_raw_top5_depth_strategy_search_interpretation_report.md`;
+- `outputs/phase257/phase257_richer_raw_top5_depth_strategy_search_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase257:
+
+- synthetic strategy-discovery branch status: `passive_queue_aware_spread_capture_precommit_open`;
+- real receive-flow source branch status: `passive_queue_aware_spread_capture_precommit_open`;
+- next best action: `run_phase258_passive_queue_aware_spread_capture_precommit_full_top5_depth_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

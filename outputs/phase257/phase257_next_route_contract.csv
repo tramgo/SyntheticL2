@@ -1,0 +1,8 @@
+contract_id,contract_value,description
+P258_INPUT,outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet,Use existing compact raw top-five depth event bars; no new download required
+P258_DEPTH_REQUIREMENT,levels_1_to_5_required,Use full Zerodha top-five market-by-price book; no L1-only candidate is allowed
+P258_ORDER_MODEL,passive_queue_aware_limit_order_proxy,"Model quote placement, queue adversity, cancel/replace pressure and non-fill risk"
+P258_EDGE_SOURCE,spread_capture_minus_adverse_selection,Shift from taker edge to passive spread capture and adverse-selection controls
+P258_COST_MODEL,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Carry modeled Zerodha charges; passive fill still pays statutory/brokerage cost stack
+P258_CONTROLS,random_side;side_flip;cost_stress;queue_adversity,Controls must remain active before any promotion
+P258_FORBIDDEN,paper_live_or_deployable_profitability_claim,No paper/live acceptance or deployable profitability claim from Phase257/P258 precommit

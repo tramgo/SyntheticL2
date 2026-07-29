@@ -1,0 +1,19 @@
+metric,value,description
+phase257_interpretation_complete,1,Phase257 strategy-search interpretation completed
+phase257_phase256_variant_rows,2376,Phase256 variants interpreted
+phase257_phase256_full_depth_variant_rows,2376,Full top-five depth variants interpreted
+phase257_phase256_survivor_candidate_rows,0,Phase256 survivor candidates
+phase257_phase256_cost100_positive_variant_rows,0,Phase256 variants positive at 1x cost
+phase257_closed_taker_threshold_route,1,Close current taker-threshold route
+phase257_full_top_five_depth_preserved,1,Preserve full top-five depth as core surface
+phase257_threshold_relaxation_only_allowed,0,Do not continue by simple threshold relaxation
+phase257_selected_next_route,P257_PASSIVE_QUEUE_AWARE_SPREAD_CAPTURE_PRECOMMIT,Selected materially different route
+phase257_next_route_contract_rows,7,Next route contract rows
+phase257_hard_gate_pass_rows,7,Hard gates passed
+phase257_hard_gate_rows,7,Hard gates evaluated
+phase257_download_more_dates_now_allowed,0,No new download in Phase257
+phase257_replay_execution_allowed_now,0,No replay execution in Phase257
+phase257_strategy_promotion_allowed,0,No strategy promotion from Phase257
+phase257_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase257
+phase257_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase257
+phase257_next_best_action,run_phase258_passive_queue_aware_spread_capture_precommit_full_top5_depth_no_paper_live,Recommended next milestone

@@ -1,0 +1,6 @@
+failure_mode,evidence,severity,closed_by_phase257
+taker_cost_floor_dominates_gross_edge,best_cost100_net=-411.49029712563254; best_cost200_net=-1218.3826175402583; cost100_positive=0,hard,1
+no_cost_stress_survivor,survivor_candidate_rows=0,hard,1
+best_candidate_too_sparse_for_breadth,best_trade_rows=8; best_symbols=5,medium,1
+full_depth_signal_not_invalidated,Phase255 found healthy_full_depth_features=11/11 and max_abs_full_depth_ic=0.1475390528147801,important_context,0
+gross_edge_exists_but_is_insufficient,gross_positive_variants=1188; net_positive_variants=0,important_context,1

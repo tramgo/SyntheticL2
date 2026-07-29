@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P257_PHASE256_WORK_ORDER_PRESENT,True,run_phase257_richer_raw_top5_depth_strategy_search_interpretation_no_paper_live,Phase256 next action targets Phase257,hard
+P257_PHASE256_SEARCH_EXECUTED,True,2376,>0 Phase256 variants available for interpretation,hard
+P257_NO_SURVIVOR_RECOGNIZED,True,0,0 Phase256 survivors,hard
+P257_FULL_DEPTH_PRESERVED,True,2376/2376,all interpreted variants used full top-five depth,hard
+P257_TAKER_BRANCH_CLOSED,True,1,close taker threshold route,hard
+P257_NEXT_ROUTE_SELECTED,True,1,passive/queue-aware route contract written,hard
+P257_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

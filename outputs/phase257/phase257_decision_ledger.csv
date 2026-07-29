@@ -1,0 +1,6 @@
+decision_id,decision_value,evidence,description
+close_phase256_taker_threshold_search,1,variants=2376; survivors=0,Close current taker-threshold search family
+preserve_full_top_five_depth_surface,1,full_depth_rows=2376; variants=2376,Keep levels 1-5 depth as core input
+do_not_repeat_threshold_relaxation_only,1,cost100_positive=0,Avoid simply relaxing thresholds on same taker model
+cost_dominance_confirmed,1,max_gross=14361.504711738551; max_cost=45592.94635115765; median_cost=11442.96794243862,Costs dominate the searched gross edge
+selected_next_route,P257_PASSIVE_QUEUE_AWARE_SPREAD_CAPTURE_PRECOMMIT,passive/queue-aware route,Next materially different route
