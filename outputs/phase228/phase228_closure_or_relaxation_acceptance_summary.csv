@@ -1,0 +1,25 @@
+metric,value,description
+phase228_closure_rows,1,Closure decision rows
+phase228_current_label_set_closed_for_fit,1,Current label set closed for fit
+phase228_current_label_set_closed_for_replay,1,Current label set closed for replay
+phase228_redesign_route_rows,3,Redesign route rows
+phase228_guardrail_rows,3,Guardrail rows
+phase228_phase229_work_order_rows,1,Phase229 work-order rows
+phase228_selected_route_id,P228_SOURCE_EXPANSION_AND_AVAILABLE_HORIZON_REPAIR,Selected Phase229 route
+phase228_label_materialization_allowed_next,0,No label materialization opened
+phase228_model_fit_allowed_next,0,No model fit opened
+phase228_strategy_replay_allowed,0,No strategy replay opened
+phase228_broader_replay_allowed_next,0,No broader replay opened
+phase228_test_replay_allowed_next,0,No test replay opened
+phase228_test_rows_used,0,No sealed test rows used
+phase228_threshold_widening_allowed,0,No threshold widening opened
+phase228_promotion_allowed,0,No promotion opened
+phase228_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase228_profitability_claim_allowed,0,No profitability claim is allowed
+phase228_forbidden_execution_rows,16,Forbidden execution rows
+phase228_gate_rows,7,Gates evaluated
+phase228_hard_gate_rows,7,Hard gates evaluated
+phase228_hard_gate_pass_rows,7,Hard gates passed
+phase228_cost_aware_label_redesign_closure_or_relaxation_precommit_complete,1,1 means Phase228 completed
+phase228_forbidden_outputs,label_materialization;feature_materialization;model_fit;model_prediction;strategy_replay;broader_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase228_next_best_action,run_phase229_cost_aware_source_expansion_precommit_no_materialization_no_fit_no_replay_no_test,Recommended next milestone

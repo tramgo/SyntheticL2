@@ -7888,6 +7888,61 @@ Current interpretation: Phase227 formally blocks model fitting on the sparse cos
 
 ---
 
+## 24.54 Phase228 Cost-Aware Label Redesign Closure or Relaxation Precommit Completed
+
+Phase228 closes the current sparse cost-aware label set for model fitting and replay, then precommits a materially different route. It does not create labels, fit models, run replay, touch sealed test, widen thresholds, or make profitability claims.
+
+Phase228 closure decision:
+
+- current label set closed for fit: 1;
+- current label set closed for replay: 1;
+- reuse without material redesign allowed: 0;
+- closure reason: Phase227 found zero quality-pass splits and zero fit-precommit candidates.
+
+Phase228 selected route:
+
+- selected route: `P228_SOURCE_EXPANSION_AND_AVAILABLE_HORIZON_REPAIR`;
+- selected theme: source coverage expansion;
+- required artifacts: source coverage contract, available-horizon contract, minimum date-breadth contract, and no-threshold-widening proof;
+- Phase229 work-order rows: 1.
+
+Phase228 guardrails:
+
+- no post-hoc threshold widening;
+- available horizons only, with no 60s substitution for missing 30s;
+- source/date breadth must improve before fit can be reconsidered.
+
+Phase228 results:
+
+- closure rows: 1;
+- redesign route rows: 3;
+- guardrail rows: 3;
+- hard gates: 7 / 7 passed;
+- label materialization allowed next: 0;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- broader replay allowed next: 0;
+- test replay allowed next: 0;
+- test rows used: 0;
+- threshold widening allowed: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase229_cost_aware_source_expansion_precommit_no_materialization_no_fit_no_replay_no_test`.
+
+Current Phase149 evidence after Phase228:
+
+- phase rows discovered: 221;
+- runner phase rows: 219;
+- acceptance phase rows: 171;
+- hard global-state gates: 322 / 322 passed;
+- real receive-flow branch status: `cost_aware_label_set_closed_phase229_source_expansion_precommit_pending_no_materialization_no_fit_no_replay_no_test`;
+- next best action: `run_phase229_cost_aware_source_expansion_precommit_no_materialization_no_fit_no_replay_no_test`.
+
+Current interpretation: Phase228 prevents us from pretending sparse labels are usable. The next allowed action is a source-expansion precommit that repairs data breadth and horizon availability before any rematerialization, fit, replay, or test.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

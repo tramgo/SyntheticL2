@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P228_PHASE227_COMPLETE,True,phase227_complete=1,hard
+P228_NO_FIT_CANDIDATES_CONFIRMED,True,fit_candidates=0,hard
+P228_CURRENT_LABEL_SET_CLOSED,True,closure_rows=1; closed_fit=1; closed_replay=1,hard
+P228_REDESIGN_CATALOG_RECORDED,True,redesign_rows=3; selected_rows=1,hard
+P228_GUARDRAILS_RECORDED,True,guardrail_rows=3,hard
+P228_PHASE229_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P228_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

@@ -1,0 +1,4 @@
+phase228_guardrail_id,guardrail,required_in_phase229,threshold_widening_allowed,model_fit_allowed_next
+P228_NO_POST_HOC_THRESHOLD_WIDENING,"Do not lower cost hurdles, reduce minimum event count, or reinterpret failed quality gates inside Phase228.",1,0,0
+P228_AVAILABLE_HORIZONS_ONLY,A horizon may be used only if genuine Phase181/Phase214 train/validation inputs exist for that horizon.,1,0,0
+P228_SOURCE_BREADTH_BEFORE_FIT,Any rematerialization must improve date breadth and actionable count before model-fit precommit can be opened.,1,0,0

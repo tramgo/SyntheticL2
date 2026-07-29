@@ -150,6 +150,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 225,outputs\phase225,True,9,outputs\phase225\phase225_redesign_precommit_acceptance_summary.csv,outputs\phase225\phase225_redesign_precommit_manifest.json,False
 226,outputs\phase226,True,11,outputs\phase226\phase226_label_materialization_acceptance_summary.csv,outputs\phase226\phase226_label_materialization_manifest.json,False
 227,outputs\phase227,True,9,outputs\phase227\phase227_quality_interpretation_acceptance_summary.csv,outputs\phase227\phase227_quality_interpretation_manifest.json,False
+228,outputs\phase228,True,9,outputs\phase228\phase228_closure_or_relaxation_acceptance_summary.csv,outputs\phase228\phase228_closure_or_relaxation_manifest.json,False
 23,outputs\phase23,True,6,,outputs\phase23\phase23_key_risk_register_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
