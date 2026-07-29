@@ -8514,6 +8514,68 @@ Current Phase149 evidence after Phase235:
 
 ---
 
+## 24.62 Phase236 Real-anchor Neighbor Search Completed
+
+Phase236 responds directly to the need to test several strategy variants instead of stopping at one frozen parent candidate. It replays the 12 Phase233 microprice-reversal horizon/threshold neighbor variants on the Phase235 real-anchor event bars.
+
+Phase236 inputs:
+
+- Phase233 neighbor catalog: `outputs/phase233/phase233_neighbor_candidate_catalog.csv`;
+- Phase235 real event bars: `outputs/phase235/phase235_real_event_bars.parquet` generated locally by Phase235.
+
+Phase236 outputs:
+
+- `outputs/phase236/phase236_real_anchor_neighbor_summary.csv`;
+- `outputs/phase236/phase236_real_anchor_neighbor_trade_ledger.csv`;
+- `outputs/phase236/phase236_gate_evaluation.csv`;
+- `outputs/phase236/phase236_acceptance_summary.csv`;
+- `outputs/phase236/phase236_real_anchor_neighbor_search_report.md`;
+- `outputs/phase236/phase236_real_anchor_neighbor_search_manifest.json`.
+
+Phase236 results:
+
+- neighbor variants replayed: `12`;
+- positive real-anchor variants after costs: `7`;
+- breadth-passing variants: `0`;
+- best real-anchor neighbor: `P233_MICROPRICE_REVERSAL_H5_Q0_9`;
+- best real-anchor net P&L after costs: `1447.6958002712238`;
+- best variant selected trades: `1`;
+- best variant dates represented: `1`;
+- best variant symbols represented: `1`.
+
+Positive real-anchor variants were found, but they remain extremely sparse. The best variants are profitable pockets, not robust strategies.
+
+Phase236 gates:
+
+- neighbor variants replayed: pass, `12 / 12`;
+- positive real-anchor variants found: pass, `7`;
+- breadth-passing variants found: fail, `0`;
+- best variant trade breadth: fail, `1` trade versus required `>=25`;
+- no paper/live or promotion unlock: pass;
+- hard gates: `3 / 5` passed;
+- real-anchor neighbor search pass: `0`.
+
+Current interpretation: the microprice-reversal family has some real-anchor positive pockets, which is better than a total collapse, but the frozen synthetic thresholds do not transfer with enough trade/date/symbol breadth. The next useful move is not to promote the candidate. It is to redesign threshold transfer or expand the real-anchor strategy family so that real data can produce enough breadth for controls to mean something.
+
+Phase236 boundaries:
+
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase237_redesign_threshold_transfer_or_expand_real_anchor_strategy_family_no_paper_live`.
+
+Current Phase149 evidence after Phase236:
+
+- phase rows discovered: 229;
+- runner phase rows: 227;
+- acceptance phase rows: 179;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `real_anchor_neighbor_positive_pockets_breadth_failed`;
+- next best action: `run_phase237_redesign_threshold_transfer_or_expand_real_anchor_strategy_family_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

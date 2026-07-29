@@ -1,0 +1,17 @@
+metric,value,description
+phase236_real_anchor_neighbor_search_complete,1,Phase236 neighbor replay completed
+phase236_neighbor_variant_rows,12,Phase233 neighbor variants replayed
+phase236_positive_real_anchor_variant_rows,7,Positive real-anchor variants after cost floor
+phase236_breadth_passing_variant_rows,0,Positive variants passing date/symbol breadth
+phase236_best_candidate_id,P233_MICROPRICE_REVERSAL_H5_Q0_9,Best real-anchor neighbor by net P&L
+phase236_best_real_anchor_net_pnl_inr,1447.6958002712238,Best real-anchor net P&L after costs
+phase236_best_real_anchor_trade_rows,1,Best real-anchor selected trades
+phase236_best_real_anchor_dates,1,Best real-anchor dates represented
+phase236_best_real_anchor_symbols,1,Best real-anchor symbols represented
+phase236_hard_gate_pass_rows,3,Hard Phase236 gates passed
+phase236_hard_gate_rows,5,Hard Phase236 gates evaluated
+phase236_real_anchor_neighbor_search_pass,0,Whether any neighbor passed positive breadth gates
+phase236_strategy_promotion_allowed,0,No strategy promotion from Phase236
+phase236_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase236
+phase236_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase236
+phase236_next_best_action,run_phase237_redesign_threshold_transfer_or_expand_real_anchor_strategy_family_no_paper_live,Recommended next milestone

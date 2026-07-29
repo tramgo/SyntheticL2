@@ -1,0 +1,6 @@
+gate_id,passed,observed_value,required_value,severity
+P236_NEIGHBOR_VARIANTS_REPLAYED,True,12,>=12 Phase233 neighbor variants,hard
+P236_POSITIVE_REAL_ANCHOR_VARIANTS_FOUND,True,7,>0 positive real-anchor variants,hard
+P236_BREADTH_PASSING_VARIANTS_FOUND,False,0,>0 positive variants with >=3 dates and >=5 symbols,hard
+P236_BEST_VARIANT_TRADE_BREADTH,False,1,best variant has >=25 trades,hard
+P236_NO_PAPER_LIVE_OR_PROMOTION_UNLOCK,True,0,0,hard

@@ -159,6 +159,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 233,outputs\phase233,True,9,outputs\phase233\phase233_acceptance_summary.csv,outputs\phase233\phase233_fragility_realism_validation_manifest.json,False
 234,outputs\phase234,True,9,outputs\phase234\phase234_acceptance_summary.csv,outputs\phase234\phase234_holdout_preparation_manifest.json,False
 235,outputs\phase235,True,11,outputs\phase235\phase235_acceptance_summary.csv,outputs\phase235\phase235_real_anchor_microprice_replay_manifest.json,False
+236,outputs\phase236,True,6,outputs\phase236\phase236_acceptance_summary.csv,outputs\phase236\phase236_real_anchor_neighbor_search_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
