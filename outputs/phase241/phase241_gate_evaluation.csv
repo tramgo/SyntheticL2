@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P241_ONE_DATE_RAW_L2_PRESENT,True,50787.0,>0 raw parquet files,hard
+P241_EVENT_BARS_MATERIALIZED,True,4832.0,>0 event bars,hard
+P241_FROZEN_CANDIDATE_REPLAYED,True,15.0,>=1 frozen-candidate trade,hard
+P241_DIAGNOSTIC_NET_POSITIVE,True,700.4370638369003,>0 one-date net P&L after costs,diagnostic
+P241_DIAGNOSTIC_SYMBOL_BREADTH,True,13.0,>=5 symbols on one-date diagnostic,diagnostic
+P241_DIAGNOSTIC_CONTROLS,False,1.0,>=3 / 4 controls pass,diagnostic
+P241_FULL_ACCEPTANCE_CLOSED_ONE_DATE_ONLY,True,1.0,1,hard
+P241_NO_PAPER_LIVE_OR_PROMOTION_UNLOCK,True,0.0,0,hard

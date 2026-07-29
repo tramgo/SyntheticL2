@@ -8887,6 +8887,85 @@ Current Phase149 evidence after Phase240 partial start:
 
 ---
 
+## 24.67 Phase241 One-date Unseen Real L2 Diagnostic Completed
+
+Phase241 executes the low-disk validation path: use only the newly downloaded `2026-07-17` raw real L2 date, materialize Phase235-compatible event bars, replay the frozen Phase237 candidate with no threshold tuning and evaluate it as an early-falsification diagnostic only.
+
+Frozen candidate replayed:
+
+- candidate id: `P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95`;
+- family: `bar_return_reversal`;
+- horizon: `6` event bars;
+- event-window score threshold: `8.334102985231581`;
+- absolute signal threshold: `0.0056486291941683`;
+- signal source: `bar_return`;
+- direction: `reversal`;
+- parameter tuning used in Phase241: `0`.
+
+Phase241 materialization evidence:
+
+- raw trade date: `2026-07-17`;
+- raw symbols represented: `32`;
+- raw parquet files represented: `50,787`;
+- 15-second source feature rows materialized: `48,094`;
+- Phase235-compatible event bars materialized: `4,832`;
+- top-five market-by-price depth fields were carried through the same receive-flow feature/event-bar adapter used by the earlier real-anchor branch.
+
+Phase241 frozen-candidate diagnostic result:
+
+- frozen-candidate trades selected: `15`;
+- symbols represented in selected trades: `13`;
+- one-date net P&L after modeled Zerodha costs: `700.4370638369003`;
+- gross P&L before modeled cost drag: `2,553.228048142253`;
+- modeled cost drag: `1,852.7909843053526`;
+- precision after costs: `0.4666666666666667`;
+- positive-symbol count: `6`;
+- maximum absolute symbol contribution ratio: `1.1997964397380612`.
+
+Phase241 controls:
+
+- side-flip control: pass, side-flipped net P&L `-4,406.019032447605`;
+- random-side 1,000-run control: fail, random-side beat fraction `0.912` and random p95 net P&L `1,081.871334059165`;
+- 1.5x cost stress: fail, net P&L `-225.95842831577605`;
+- 2.0x cost stress: fail, net P&L `-1,152.3539204684525`;
+- control passes: `1 / 4`.
+
+Phase241 gates:
+
+- hard gates: `5 / 5` passed;
+- diagnostic gates: `2 / 3` passed;
+- one-date diagnostic candidate survived: `0`;
+- full five-date acceptance allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Current interpretation: The frozen Phase237 candidate did not collapse to negative P&L on the first unseen date, which is mildly encouraging. But it failed the robustness controls that matter most under costs: it did not beat the random-side control strongly enough, and it became negative under 1.5x and 2.0x modeled cost stress. Under the low-disk one-date policy, this is not a profitable-strategy acceptance result. The best next action is to close or redesign this exact Phase237 candidate rather than spend disk downloading more dates for it.
+
+Phase241 outputs:
+
+- `outputs/phase241/phase241_source_features_15s.parquet`;
+- `outputs/phase241/phase241_real_event_bars.parquet`;
+- `outputs/phase241/phase241_labeled_real_event_bars.parquet`;
+- `outputs/phase241/phase241_trade_ledger.csv`;
+- `outputs/phase241/phase241_diagnostic_summary.csv`;
+- `outputs/phase241/phase241_symbol_inventory.csv`;
+- `outputs/phase241/phase241_control_summary.csv`;
+- `outputs/phase241/phase241_gate_evaluation.csv`;
+- `outputs/phase241/phase241_acceptance_summary.csv`;
+- `outputs/phase241/phase241_one_date_unseen_real_l2_diagnostic_report.md`;
+- `outputs/phase241/phase241_one_date_unseen_real_l2_diagnostic_manifest.json`.
+
+Current Phase149 evidence after Phase241:
+
+- phase rows discovered: `234`;
+- runner phase rows: `232`;
+- acceptance phase rows: `184`;
+- synthetic strategy-discovery branch status: `one_date_unseen_diagnostic_positive_but_fragile`;
+- next best action: `close_or_redesign_phase237_candidate_after_one_date_unseen_real_l2_diagnostic_failure_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
