@@ -1,0 +1,22 @@
+metric,value,description
+phase255_feature_quality_interpretation_complete,1,Phase255 richer raw-depth feature quality interpretation completed
+phase255_input_event_bar_rows,1636,Phase254 richer raw-depth event bars audited
+phase255_trade_dates,1,Trade dates represented
+phase255_symbols,32,Symbols represented
+phase255_source_tick_rows,32426,Source raw ticks represented by audited event bars
+phase255_feature_rows,18,Features audited
+phase255_full_depth_feature_rows,11,Audited features using levels 2-5/top-five depth shape
+phase255_healthy_feature_rows,18,Healthy features by missingness/finite/variation gate
+phase255_healthy_full_depth_feature_rows,11,Healthy full-depth features
+phase255_max_abs_spearman_ic,0.1475390528147801,Maximum absolute Spearman IC across audited feature/label pairs
+phase255_max_abs_full_depth_spearman_ic,0.1475390528147801,Maximum absolute Spearman IC for full-depth features
+phase255_top_full_depth_feature,avg_order_count_imbalance_l1_l5,Top full-depth feature by absolute Spearman IC
+phase255_top_full_depth_label,future_return_h10,Top full-depth horizon label by absolute Spearman IC
+phase255_hard_gate_pass_rows,9,Hard gates passed
+phase255_hard_gate_rows,9,Hard gates evaluated
+phase255_strategy_search_allowed_next,1,Whether Phase256 training-only cost-aware strategy search is allowed next
+phase255_replay_execution_allowed_now,0,No replay execution in Phase255
+phase255_strategy_promotion_allowed,0,No strategy promotion from Phase255
+phase255_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase255
+phase255_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase255
+phase255_next_best_action,run_phase256_richer_raw_top5_depth_cost_aware_strategy_search_training_only_no_paper_live,Recommended next milestone

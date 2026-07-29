@@ -9974,6 +9974,77 @@ Current Phase149 evidence after Phase254:
 
 ---
 
+## 24.81 Phase255 Richer Raw Top-five Depth Feature-quality Interpretation Completed
+
+Phase255 audits the Phase254 compact raw-depth event-bar product before any strategy search consumes it. It uses the correct terminology: Zerodha provides top-five market-by-price depth, and levels 1 through 5 are rows inside that L2 book. Phase255 therefore checks whether levels 2 through 5 add material information beyond level 1, rather than treating them as universal L3/L4/L5 data classes.
+
+Phase255 is still not a replay, strategy promotion, paper/live acceptance or deployable profitability claim.
+
+Phase255 input evidence:
+
+- audited richer raw-depth event bars: `1,636`;
+- trade dates represented: `1`;
+- symbols represented: `32`;
+- source raw ticks represented: `32,426`;
+- audited features: `18`;
+- audited full-depth/top-five shape features: `11`.
+
+Phase255 feature-health evidence:
+
+- healthy audited features: `18 / 18`;
+- healthy full-depth features: `11 / 11`;
+- hard gates passed: `9 / 9`;
+- maximum absolute Spearman IC across all audited feature/label pairs: `0.1475390528147801`;
+- maximum absolute Spearman IC for full-depth features: `0.1475390528147801`;
+- top full-depth feature by absolute Spearman IC: `avg_order_count_imbalance_l1_l5`;
+- top associated label horizon: `future_return_h10`.
+
+Phase255 levels 2-5 contribution evidence:
+
+- median visible bid quantity share contributed by levels 2-5: `0.8836478570860395`;
+- median visible ask quantity share contributed by levels 2-5: `0.8617550757347539`;
+- 10th percentile bid quantity share from levels 2-5: `0.7189947073215726`;
+- 10th percentile ask quantity share from levels 2-5: `0.6800538136959537`;
+- top-five imbalance versus levels 2-5 imbalance correlation: `0.9384585637097993`;
+- levels 2-5 imbalance standard deviation: `0.2889942847862653`.
+
+Phase255 gates:
+
+- Phase254 work order present: pass;
+- input event bars present: pass, `1,636`;
+- symbol breadth retained: pass, `32`;
+- healthy feature count: pass, `18`;
+- healthy full-depth feature count: pass, `11`;
+- levels 2-5 depth share material: pass, `bid=0.8836; ask=0.8618`;
+- levels 2-5 imbalance not degenerate: pass, `std=0.288994; corr=0.938459`;
+- full-depth label association visible: pass, `0.147539`;
+- no replay/promotion/paper-live: pass.
+
+Phase255 verdict:
+
+- the compact richer raw top-five depth feature surface is healthy enough for a training-only cost-aware strategy search;
+- levels 2 through 5 carry material liquidity information, so Phase256 must continue using the full top-five depth surface and must not collapse to L1-only;
+- Phase256 may search for cost-aware strategy candidates on the Phase254/255 training surface;
+- no paper/live acceptance, promotion or deployable profitability claim is allowed from Phase255.
+
+Phase255 outputs:
+
+- `outputs/phase255/phase255_feature_quality_audit.csv`;
+- `outputs/phase255/phase255_full_depth_contribution_summary.csv`;
+- `outputs/phase255/phase255_feature_label_association.csv`;
+- `outputs/phase255/phase255_gate_evaluation.csv`;
+- `outputs/phase255/phase255_acceptance_summary.csv`;
+- `outputs/phase255/phase255_richer_raw_depth_feature_quality_interpretation_report.md`;
+- `outputs/phase255/phase255_richer_raw_depth_feature_quality_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase255:
+
+- synthetic strategy-discovery branch status: `richer_raw_top5_depth_quality_passed_strategy_search_open`;
+- real receive-flow source branch status: `richer_raw_top5_depth_quality_passed_strategy_search_open`;
+- next best action: `run_phase256_richer_raw_top5_depth_cost_aware_strategy_search_training_only_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

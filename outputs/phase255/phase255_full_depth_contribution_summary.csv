@@ -1,0 +1,8 @@
+metric,value,description
+median_bid_depth_share_from_levels_2_5,0.8836478570860395,Median share of visible bid quantity contributed by levels 2-5
+median_ask_depth_share_from_levels_2_5,0.8617550757347539,Median share of visible ask quantity contributed by levels 2-5
+p10_bid_depth_share_from_levels_2_5,0.7189947073215726,10th percentile bid quantity share from levels 2-5
+p10_ask_depth_share_from_levels_2_5,0.6800538136959537,10th percentile ask quantity share from levels 2-5
+top5_vs_beyond_l1_imbalance_corr,0.9384585637097993,Correlation between cumulative top-five imbalance and levels 2-5 imbalance
+beyond_l1_imbalance_std,0.2889942847862653,Variation of levels 2-5 imbalance
+top5_imbalance_std,0.2896024127106808,Variation of cumulative top-five imbalance

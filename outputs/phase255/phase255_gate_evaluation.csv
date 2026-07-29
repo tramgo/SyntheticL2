@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P255_PHASE254_WORK_ORDER_PRESENT,True,run_phase255_richer_raw_depth_feature_quality_interpretation_no_replay_no_paper_live,Phase254 next action targets Phase255,hard
+P255_INPUT_EVENT_BARS_PRESENT,True,1636,>=1000 richer raw-depth event bars,hard
+P255_SYMBOL_BREADTH_RETAINED,True,32,>=20 symbols,hard
+P255_HEALTHY_FEATURE_COUNT,True,18,>=12 healthy features,hard
+P255_HEALTHY_FULL_DEPTH_FEATURE_COUNT,True,11,>=8 healthy full-depth features,hard
+P255_LEVELS_2_5_DEPTH_SHARE_MATERIAL,True,bid=0.8836;ask=0.8618,median levels 2-5 share >=25% on both sides,hard
+P255_BEYOND_L1_IMBALANCE_NOT_DEGENERATE,True,std=0.288994;corr=0.938459,levels 2-5 imbalance varies and is not identical to top-five imbalance,hard
+P255_FULL_DEPTH_LABEL_ASSOCIATION_VISIBLE,True,0.147539,>=0.02 absolute Spearman IC for at least one full-depth feature/horizon,hard
+P255_NO_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard
