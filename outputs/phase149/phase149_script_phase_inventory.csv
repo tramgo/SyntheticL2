@@ -155,6 +155,7 @@ phase,runner,runner_exists,runner_suffix
 232,scripts\run_phase232_validate_phase231_candidates.py,True,.py
 233,scripts\run_phase233_fragility_realism_validation.py,True,.py
 234,scripts\run_phase234_prepare_holdout.py,True,.py
+235,scripts\run_phase235_real_anchor_microprice_replay.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py

@@ -8438,6 +8438,82 @@ Current Phase149 evidence after Phase234:
 
 ---
 
+## 24.61 Phase235 Real-anchor Microprice-reversal Replay Completed
+
+Phase235 executes the Phase234 next action on local downloaded real data. It does not read Azure directly. To avoid the slow recursive raw-parquet path across hundreds of thousands of small tick files, it uses Phase176 tick-derived real receive-flow features as the adapter source.
+
+Adapter design:
+
+- source: `outputs/phase176/phase176_feature_partition_inventory.csv`;
+- source feature horizon: 15 seconds;
+- event-bar construction: aggregate 10 source buckets per event bar;
+- source feature rows loaded: `286,633`;
+- real event bars materialized: `28,793`;
+- candidate: `P231_MICROPRICE_REVERSAL_H3_Q0_9`;
+- frozen rule: use the Phase234/Phase233 microprice-reversal thresholds; no parameter tuning on real data;
+- cost model: Zerodha equity intraday NSE cost model version `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`.
+
+Phase235 outputs:
+
+- `outputs/phase235/phase235_real_event_bars.parquet`;
+- `outputs/phase235/phase235_labeled_real_event_bars.parquet`;
+- `outputs/phase235/phase235_real_anchor_trade_ledger.parquet`;
+- `outputs/phase235/phase235_real_anchor_replay_summary.csv`;
+- `outputs/phase235/phase235_control_summary.csv`;
+- `outputs/phase235/phase235_gate_evaluation.csv`;
+- `outputs/phase235/phase235_acceptance_summary.csv`;
+- `outputs/phase235/phase235_real_anchor_microprice_replay_report.md`;
+- `outputs/phase235/phase235_real_anchor_microprice_replay_manifest.json`.
+
+Phase235 replay result:
+
+- selected real-anchor trades: `1`;
+- real-anchor net P&L after costs: `637.4164403580107`;
+- real-anchor gross P&L: `800.1084892866772`;
+- cost drag: `162.69204892866642`;
+- dates represented: `1`;
+- symbols represented: `1`;
+- precision cost-clear fraction: `1.0`.
+
+Phase235 controls:
+
+- side-flip control: pass, side-flip net P&L `-962.8005382153436`;
+- random-side 100-run control: fail, random beat fraction `0.5`;
+- 1.5x cost stress: pass, net P&L `556.0704158936776`;
+- 2.0x cost stress: pass, net P&L `474.7243914293444`.
+
+Phase235 gates:
+
+- real event bars/trades materialized: pass;
+- real-anchor net positive after costs: pass;
+- real-anchor date breadth: fail, only `1` date versus required `>=3`;
+- real-anchor symbol breadth: fail, only `1` symbol versus required `>=5`;
+- controls pass: pass, `3 / 4`;
+- no paper/live or promotion unlock: pass;
+- hard gates: `4 / 6` passed;
+- real-anchor replay pass: `0`.
+
+Current interpretation: the frozen synthetic candidate did produce a positive real-anchor trade, but it did not produce enough breadth to be considered robust. This is not a profitable-strategy acceptance result. It is a useful falsification/diagnostic result: the exact Phase233 thresholds are too narrow on the current real-anchor adapter. The next useful strategy-search move is to test the Phase233 neighbor variants and/or redesign the threshold transfer rule on the same real-anchor adapter, still without paper/live promotion.
+
+Phase235 boundaries:
+
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase236_close_or_redesign_microprice_reversal_after_real_anchor_failure_no_paper_live`.
+
+Current Phase149 evidence after Phase235:
+
+- phase rows discovered: 228;
+- runner phase rows: 226;
+- acceptance phase rows: 178;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `phase233_candidate_failed_real_anchor_breadth_on_adapter`;
+- next best action: `run_phase236_close_or_redesign_microprice_reversal_after_real_anchor_failure_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

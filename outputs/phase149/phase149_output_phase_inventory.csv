@@ -158,6 +158,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 232,outputs\phase232,True,8,outputs\phase232\phase232_acceptance_summary.csv,outputs\phase232\phase232_validate_phase231_candidates_manifest.json,False
 233,outputs\phase233,True,9,outputs\phase233\phase233_acceptance_summary.csv,outputs\phase233\phase233_fragility_realism_validation_manifest.json,False
 234,outputs\phase234,True,9,outputs\phase234\phase234_acceptance_summary.csv,outputs\phase234\phase234_holdout_preparation_manifest.json,False
+235,outputs\phase235,True,11,outputs\phase235\phase235_acceptance_summary.csv,outputs\phase235\phase235_real_anchor_microprice_replay_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False

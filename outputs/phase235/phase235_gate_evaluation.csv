@@ -1,0 +1,7 @@
+gate_id,passed,observed_value,required_value,severity
+P235_REAL_EVENT_BARS_MATERIALIZED,True,1.0,>0 candidate trades after materialization,hard
+P235_REAL_ANCHOR_NET_POSITIVE,True,637.4164403580107,>0 real-anchor net P&L after costs,hard
+P235_REAL_ANCHOR_DATE_BREADTH,False,1.0,>=3 real dates represented in selected trades,hard
+P235_REAL_ANCHOR_SYMBOL_BREADTH,False,1.0,>=5 symbols represented in selected trades,hard
+P235_CONTROLS_PASS,True,3.0,>=3 / 4 controls pass,hard
+P235_NO_PAPER_LIVE_OR_PROMOTION_UNLOCK,True,0.0,0,hard

@@ -1,0 +1,20 @@
+metric,value,description
+phase235_real_anchor_microprice_replay_complete,1,Phase235 real-anchor replay completed
+phase235_parent_candidate_id,P231_MICROPRICE_REVERSAL_H3_Q0_9,Candidate carried forward from Phase234
+phase235_source_horizon_sec,15,Phase176 source feature horizon used
+phase235_source_buckets_per_event_bar,10,Source buckets aggregated per real event bar
+phase235_source_feature_rows,286633,Phase176 real source feature rows loaded
+phase235_real_event_bar_rows,28793,Real event bars materialized
+phase235_real_anchor_trade_rows,1,Frozen candidate trades selected on real-anchor bars
+phase235_real_anchor_net_pnl_inr,637.4164403580107,Real-anchor net P&L after cost floor
+phase235_real_anchor_dates,1,Real dates represented in selected trades
+phase235_real_anchor_symbols,1,Symbols represented in selected trades
+phase235_control_pass_rows,3,Controls passed
+phase235_control_rows,4,Controls evaluated
+phase235_hard_gate_pass_rows,4,Hard Phase235 gates passed
+phase235_hard_gate_rows,6,Hard Phase235 gates evaluated
+phase235_real_anchor_replay_pass,0,Whether the frozen candidate passed the real-anchor dry run
+phase235_strategy_promotion_allowed,0,No strategy promotion from Phase235
+phase235_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase235
+phase235_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase235
+phase235_next_best_action,run_phase236_close_or_redesign_microprice_reversal_after_real_anchor_failure_no_paper_live,Recommended next milestone
