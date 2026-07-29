@@ -1,0 +1,4 @@
+decision_id,scope,decision,observed_value,required_value,rationale,reuse_allowed_without_material_redesign
+P249_CLOSE_SINGLE_NAME_BAR_RETURN_REVERSAL,single_name_bar_return_reversal_with_top5_depth_filters,closed_for_current_evidence_set,0,>0 controlled survivors,"Phase248 found no controlled survivor after adding top-five imbalance, spread/liquidity, event-intensity and range/market guards.",0
+P249_BLOCK_THRESHOLD_RELAXATION_LOOP,phase248_variant_thresholds,blocked,0,>0 positive at 2x modeled costs,Relaxing thresholds after zero 2x-cost positives would optimize toward cost-fragile sparse artifacts.,0
+P249_NO_MORE_DOWNLOADS_FOR_CLOSED_BRANCH,fresh_real_l2_dates,blocked_for_closed_parent,0,future_holdout_precommit_allowed=1,"No candidate qualifies for fresh holdout, so more date downloads would spend disk without a testable frozen candidate.",0

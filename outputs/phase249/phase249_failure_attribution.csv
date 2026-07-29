@@ -1,0 +1,6 @@
+failure_mode,observed_metric,observed_value,interpretation
+cost_floor_dominates_l2_filtered_reversal,phase248_cost200_positive_variant_rows,0,No combined-filter variant survived 2.0x modeled Zerodha costs.
+sparse_positive_artifacts,phase248_best_trade_rows,1,"Best apparent candidate had one trade, one date and one symbol, so it is not a strategy."
+no_controlled_survivors,phase248_survivor_candidate_rows,0,No candidate reached the control stage with sufficient cost-stress and breadth.
+gate_failed_P248_COST200_POSITIVE_VARIANTS_FOUND,P248_COST200_POSITIVE_VARIANTS_FOUND,0,Gate failed against requirement >0 positive at 2x cost.
+gate_failed_P248_CONTROLLED_SURVIVOR_FOUND,P248_CONTROLLED_SURVIVOR_FOUND,0,Gate failed against requirement >0 controlled survivors.

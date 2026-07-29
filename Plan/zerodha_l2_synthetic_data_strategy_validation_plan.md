@@ -9493,6 +9493,74 @@ Current Phase149 evidence after Phase248:
 
 ---
 
+## 24.75 Phase249 Close or Broaden After L2-filtered No-survivor Search Completed
+
+Phase249 closes the current single-name bar-return reversal branch under the present evidence and opens only materially different research routes. It does not download new data, rerun holdout dates, relax thresholds, promote a strategy or open paper/live acceptance.
+
+Phase249 closure evidence:
+
+- closed scope: `single_name_bar_return_reversal_with_top5_depth_filters`;
+- Phase248 variants considered: `1,728`;
+- Phase248 2.0x-cost positive variants: `0`;
+- Phase248 controlled survivors: `0`;
+- closure ledger rows: `3`;
+- failure attribution rows: `5`;
+- material broaden queue rows: `4`.
+
+Closed decisions:
+
+- `P249_CLOSE_SINGLE_NAME_BAR_RETURN_REVERSAL`: close single-name bar-return reversal with top-five depth filters for the current evidence set;
+- `P249_BLOCK_THRESHOLD_RELAXATION_LOOP`: block simple threshold relaxation after zero 2.0x-cost positives;
+- `P249_NO_MORE_DOWNLOADS_FOR_CLOSED_BRANCH`: block more fresh-date downloads until a materially new frozen candidate exists.
+
+Failure attribution:
+
+- cost floor dominates L2-filtered reversal;
+- best apparent positive row is sparse: one trade, one date and one symbol;
+- no controlled survivor exists;
+- Phase248 failed the 2.0x-cost-positive gate;
+- Phase248 failed the controlled-survivor gate.
+
+Material broaden queue:
+
+1. `P249_PAIR_OR_BASKET_RELATIVE_VALUE` — move to pair/basket or market-neutral relative value using existing event bars;
+2. `P249_TOP5_DEPTH_PREDICTIVE_TARGET` — use top-five imbalance transitions as a predictive target/source, not only as a filter;
+3. `P249_OPENING_SHOCK_SEPARATION` — separate opening shock / price discovery from normal intraday microstructure;
+4. `P249_CONSERVATIVE_PASSIVE_FILL_MODEL` — revisit passive limit-order modeling only with pessimistic fill probability and adverse-selection controls.
+
+Phase249 guardrails:
+
+- no deployable profitability claim;
+- no more fresh real L2 date download until a materially new frozen candidate exists;
+- `2026-07-17` and `2026-07-20` remain forbidden tuning dates for descendants;
+- threshold relaxation alone is blocked;
+- 2.0x modeled Zerodha cost positivity remains a first-class search objective;
+- random-side and side-flip controls remain mandatory before holdout.
+
+Phase249 verdict:
+
+- single-name bar-return reversal, even with top-five depth filters, is closed for the current evidence set;
+- the next best action is a materially different pair/basket relative-value precommit;
+- next best action: `run_phase250_pair_basket_relative_value_precommit_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live`.
+
+Phase249 outputs:
+
+- `outputs/phase249/phase249_closure_ledger.csv`;
+- `outputs/phase249/phase249_failure_attribution.csv`;
+- `outputs/phase249/phase249_material_broaden_queue.csv`;
+- `outputs/phase249/phase249_guardrail_ledger.csv`;
+- `outputs/phase249/phase249_gate_evaluation.csv`;
+- `outputs/phase249/phase249_acceptance_summary.csv`;
+- `outputs/phase249/phase249_close_or_broaden_after_l2_filtered_no_survivor_report.md`;
+- `outputs/phase249/phase249_close_or_broaden_after_l2_filtered_no_survivor_manifest.json`.
+
+Current Phase149 evidence after Phase249:
+
+- synthetic strategy-discovery branch status: `single_name_reversal_closed_pair_basket_precommit_open`;
+- next best action: `run_phase250_pair_basket_relative_value_precommit_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,7 @@
+guardrail_id,requirement,active
+P249_NO_PROFITABILITY_CLAIM,No deployable profitability claim because Phase248 found zero survivors.,1
+P249_NO_MORE_DATE_DOWNLOAD,No more fresh real L2 date downloads until a materially new frozen candidate exists.,1
+P249_NO_HOLDOUT_TUNING,2026-07-17 and 2026-07-20 remain forbidden tuning dates for descendants.,1
+P249_NO_THRESHOLD_RELAXATION_ONLY,Threshold relaxation alone is blocked; next route must be materially different.,1
+P249_COST_STRESS_FIRST_REMAINS,2.0x modeled Zerodha cost positivity remains a first-class search objective.,1
+P249_RANDOM_SIDE_SIDE_FLIP_REMAIN,Random-side and side-flip controls remain mandatory before holdout.,1

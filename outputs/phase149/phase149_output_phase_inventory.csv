@@ -172,6 +172,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 246,outputs\phase246,True,22,outputs\phase246\download_2026-07-20\phase240_acceptance_summary.csv|outputs\phase246\phase246_acceptance_summary.csv,outputs\phase246\download_2026-07-20\phase240_unseen_l2_download_manifest.json|outputs\phase246\phase246_fresh_one_date_holdout_diagnostic_manifest.json,False
 247,outputs\phase247,True,8,outputs\phase247\phase247_acceptance_summary.csv,outputs\phase247\phase247_l2_imbalance_regime_filter_redesign_precommit_manifest.json,False
 248,outputs\phase248,True,9,outputs\phase248\phase248_acceptance_summary.csv,outputs\phase248\phase248_l2_imbalance_regime_filtered_redesign_search_manifest.json,False
+249,outputs\phase249,True,8,outputs\phase249\phase249_acceptance_summary.csv,outputs\phase249\phase249_close_or_broaden_after_l2_filtered_no_survivor_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False

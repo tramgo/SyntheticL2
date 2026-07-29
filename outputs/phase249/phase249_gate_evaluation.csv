@@ -1,0 +1,7 @@
+gate_id,passed,observed_value,required_value,severity
+P249_PHASE248_WORK_ORDER_PRESENT,True,close_or_broaden_phase248_l2_imbalance_regime_filtered_search_no_downloads_no_paper_live,Phase248 next action asks close/broaden,hard
+P249_CLOSURE_LEDGER_WRITTEN,True,3,>=3 closure rows,hard
+P249_FAILURE_ATTRIBUTION_WRITTEN,True,5,>=3 failure attribution rows,hard
+P249_MATERIAL_BROADEN_QUEUE_WRITTEN,True,4,>=3 materially different routes,hard
+P249_GUARDRAILS_ACTIVE,True,all active,all guardrails active,hard
+P249_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard
