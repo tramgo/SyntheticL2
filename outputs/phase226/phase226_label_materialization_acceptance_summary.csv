@@ -1,0 +1,29 @@
+metric,value,description
+phase226_horizon_availability_rows,3,Contracted horizon availability rows
+phase226_available_horizon_rows,2,Available contracted horizons
+phase226_blocked_horizon_rows,1,Unavailable contracted horizons
+phase226_label_partition_rows,256,Materialized label partition rows
+phase226_materialized_horizons,2,Materialized horizons
+phase226_total_label_rows,45631,Total materialized event rows
+phase226_cost_aware_actionable_rows,136,Cost-aware actionable label rows
+phase226_cost_aware_up_rows,45,Cost-aware up rows
+phase226_cost_aware_down_rows,91,Cost-aware down rows
+phase226_split_summary_rows,4,Split quality summary rows
+phase226_quality_pass_rows,0,Split quality pass rows
+phase226_negative_control_summary_rows,12,Negative-control summary rows
+phase226_sealed_test_rows_available,184909,Sealed test rows available but not used
+phase226_test_rows_used,0,No sealed test rows used
+phase226_model_fit_allowed_next,0,No model fit opened
+phase226_strategy_replay_allowed,0,No strategy replay opened
+phase226_broader_replay_allowed_next,0,No broader replay opened
+phase226_test_replay_allowed_next,0,No test replay opened
+phase226_promotion_allowed,0,No promotion opened
+phase226_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase226_profitability_claim_allowed,0,No profitability claim is allowed
+phase226_forbidden_execution_rows,14,Forbidden execution rows
+phase226_gate_rows,7,Gates evaluated
+phase226_hard_gate_rows,7,Hard gates evaluated
+phase226_hard_gate_pass_rows,7,Hard gates passed
+phase226_cost_aware_event_label_materialization_dry_run_complete,1,1 means Phase226 completed
+phase226_forbidden_outputs,model_fit;model_prediction;strategy_replay;broader_replay;test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase226_next_best_action,run_phase227_cost_aware_event_label_quality_interpretation_no_fit_no_replay_no_test,Recommended next milestone

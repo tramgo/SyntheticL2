@@ -145,6 +145,7 @@ phase,runner,runner_exists,runner_suffix
 223,scripts\run_phase223_event_only_signal_replay_validation_interpretation.py,True,.py
 224,scripts\run_phase224_event_only_signal_replay_closure_or_redesign_precommit.py,True,.py
 225,scripts\run_phase225_cost_aware_event_source_redesign_precommit.py,True,.py
+226,scripts\run_phase226_cost_aware_event_label_materialization_dry_run.py,True,.py
 22,scripts\run_phase22_real_data_integration_roadmap.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py

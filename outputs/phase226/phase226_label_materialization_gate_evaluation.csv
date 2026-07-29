@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P226_PHASE225_COMPLETE,True,phase225_complete=1,hard
+P226_HORIZON_AVAILABILITY_RECORDED,True,availability_rows=3; available=2; blocked=1,hard
+P226_LABELS_MATERIALIZED_FOR_AVAILABLE_HORIZONS,True,materialized_horizons=2; inventory_rows=256,hard
+P226_QUALITY_SUMMARY_RECORDED,True,summary_rows=4; quality_pass_rows=0; actionable_rows=136,hard
+P226_NEGATIVE_CONTROL_SUMMARY_RECORDED,True,control_rows=12,hard
+P226_TEST_ROWS_UNTOUCHED,True,sealed_test_rows_used=0,hard
+P226_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

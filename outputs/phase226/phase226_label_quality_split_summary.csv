@@ -1,0 +1,5 @@
+horizon_sec,split_role,partitions,rows,cost_aware_actionable_rows,symbols,trade_dates,passes_min_event_count,passes_min_symbol_count,passes_min_trade_date_count,quality_gate_pass,test_rows_used
+5,train,96,25922,48,32,3,0,1,0,0,0
+5,validation,32,17072,37,32,1,0,1,0,0,0
+15,train,96,1792,22,32,3,0,1,0,0,0
+15,validation,32,845,29,32,1,0,1,0,0,0

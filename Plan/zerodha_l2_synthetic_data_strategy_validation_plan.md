@@ -7774,6 +7774,65 @@ Current interpretation: Phase225 moves the cost wall to the front door. The next
 
 ---
 
+## 24.52 Phase226 Cost-Aware Event Label Materialization Dry Run Completed
+
+Phase226 materializes train/validation-only cost-aware event labels from the Phase225 frozen contracts. It uses Phase176 feature/book fields, Phase181 forward-return labels, Phase214 event-surprise buckets, and Phase180 Zerodha retail/stressed cost profiles. It does not fit a model, run replay, touch sealed test rows, widen thresholds, or make a profitability claim.
+
+Phase226 horizon availability:
+
+- contracted horizon rows: 3;
+- available contracted horizons: 2;
+- blocked contracted horizons: 1;
+- materialized horizons: 5s and 15s;
+- blocked horizon: 30s, because the current Phase181/Phase214 train/validation inventories do not contain 30s partitions;
+- no silent substitution with 60s was allowed.
+
+Phase226 materialization results:
+
+- label partition rows: 256;
+- total materialized event rows: 45,631;
+- cost-aware actionable rows: 136;
+- cost-aware up rows: 45;
+- cost-aware down rows: 91;
+- split quality summary rows: 4;
+- split quality pass rows: 0;
+- negative-control summary rows: 12;
+- sealed test rows available but not used: 184,909;
+- sealed test rows used: 0.
+
+Phase226 split-quality finding:
+
+- 5s train: 25,922 event rows, 48 actionable rows;
+- 5s validation: 17,072 event rows, 37 actionable rows;
+- 15s train: 1,792 event rows, 22 actionable rows;
+- 15s validation: 845 event rows, 29 actionable rows;
+- all four split summaries fail the Phase225 minimum actionable-event count gate.
+
+Phase226 results:
+
+- hard gates: 7 / 7 passed;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- broader replay allowed next: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase227_cost_aware_event_label_quality_interpretation_no_fit_no_replay_no_test`.
+
+Current Phase149 evidence after Phase226:
+
+- phase rows discovered: 219;
+- runner phase rows: 217;
+- acceptance phase rows: 169;
+- hard global-state gates: 297 / 297 passed;
+- real receive-flow branch status: `cost_aware_event_label_materialization_complete_phase227_quality_interpretation_pending_no_fit_no_replay_no_test`;
+- next best action: `run_phase227_cost_aware_event_label_quality_interpretation_no_fit_no_replay_no_test`.
+
+Current interpretation: Phase226 gives a precise answer: the cost-aware redesign is economically stricter, but it creates too few actionable labels under current data. Phase227 must interpret this quality failure before any model fit or replay can be considered.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
