@@ -8966,6 +8966,60 @@ Current Phase149 evidence after Phase241:
 
 ---
 
+## 24.68 Phase242 Closure / Redesign Decision Completed
+
+Phase242 closes the exact frozen Phase237 candidate after the Phase241 one-date unseen diagnostic. This is not because the one-date P&L was negative; it was positive. The closure reason is that the positive result did not survive the robustness controls required before spending more disk or more holdout data on the same idea.
+
+Closed candidate:
+
+- candidate id: `P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95`;
+- Phase241 one-date net P&L: `700.4370638369003`;
+- Phase241 controls passed: `1 / 4`;
+- candidate survived one-date diagnostic: `0`;
+- decision: `close_exact_phase237_candidate`.
+
+Failure attribution:
+
+- side flip passed and remains supporting evidence only;
+- random-side control failed because the one-date edge did not beat randomized direction strongly enough;
+- 1.5x and 2.0x cost stress failed, which means the candidate is too cost-fragile for more holdout spend;
+- the one-date holdout `2026-07-17` must not be reused for parameter tuning.
+
+Phase242 opened three redesign tracks:
+
+1. `cost_stress_first_signal_search` — require 1.5x and 2.0x modeled Zerodha cost survival before any future holdout use;
+2. `random_side_discriminator_strength` — require random-side beat fraction at least `0.95` before reopening a holdout candidate;
+3. `lower_turnover_wider_move_hypotheses` — prefer fewer trades with larger expected move and lower cost drag ratio.
+
+Phase242 boundaries:
+
+- download more dates for this closed candidate allowed: `0`;
+- holdout parameter tuning allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase243_cost_stress_first_redesign_search_without_2026_07_17_holdout_tuning_no_paper_live`.
+
+Phase242 outputs:
+
+- `outputs/phase242/phase242_closure_decision.csv`;
+- `outputs/phase242/phase242_failure_attribution.csv`;
+- `outputs/phase242/phase242_redesign_queue.csv`;
+- `outputs/phase242/phase242_gate_evaluation.csv`;
+- `outputs/phase242/phase242_acceptance_summary.csv`;
+- `outputs/phase242/phase242_closure_or_redesign_report.md`;
+- `outputs/phase242/phase242_closure_or_redesign_manifest.json`.
+
+Current Phase149 evidence after Phase242:
+
+- phase rows discovered: `235`;
+- runner phase rows: `233`;
+- acceptance phase rows: `185`;
+- synthetic strategy-discovery branch status: `phase237_candidate_closed_redesign_queue_opened`;
+- next best action: `run_phase243_cost_stress_first_redesign_search_without_2026_07_17_holdout_tuning_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,13 @@
+metric,value,description
+phase242_closure_or_redesign_complete,1,Phase242 closure/redesign decision completed
+phase242_closed_candidate_id,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,Exact candidate closed
+phase242_one_date_net_pnl_inr,700.4370638369003,Phase241 net P&L
+phase242_control_pass_rows,1,Phase241 control passes
+phase242_control_rows,4,Phase241 controls
+phase242_redesign_queue_rows,3,Redesign queue rows opened
+phase242_download_more_dates_for_closed_candidate_allowed,0,Do not spend disk on this closed candidate
+phase242_holdout_parameter_tuning_allowed,0,Do not tune on 2026-07-17
+phase242_strategy_promotion_allowed,0,No strategy promotion from Phase242
+phase242_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase242
+phase242_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase242
+phase242_next_best_action,run_phase243_cost_stress_first_redesign_search_without_2026_07_17_holdout_tuning_no_paper_live,Recommended next milestone

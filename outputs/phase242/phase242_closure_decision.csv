@@ -1,0 +1,2 @@
+candidate_id,decision,decision_reason,one_date_net_pnl_inr,control_pass_rows,control_rows,candidate_survived_one_date_diagnostic,download_more_dates_for_this_candidate,reuse_2026_07_17_for_parameter_tuning,paper_or_live_acceptance_allowed,deployable_profitability_claim_allowed
+P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,close_exact_phase237_candidate,positive one-date net P&L did not survive robustness controls,700.4370638369003,1,4,0,0,0,0,0

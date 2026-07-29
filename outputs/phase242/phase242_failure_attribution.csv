@@ -1,0 +1,5 @@
+control_id,passed,net_pnl_inr,random_beat_fraction,failure_reason,required_redesign_action
+SIDE_FLIP,1,-4406.019032447605,,control_passed,retain_as_supporting_evidence_only
+RANDOM_SIDE_1000_RUNS,0,700.4370638369003,0.912,edge_not_strong_enough_against_randomized_direction_control,require stronger directional mechanism before any new holdout use
+COST_150,0,-225.95842831577605,,edge_not_robust_to_transaction_cost_stress,redesign for wider expected move or materially lower turnover
+COST_200,0,-1152.3539204684523,,edge_not_robust_to_transaction_cost_stress,redesign for wider expected move or materially lower turnover
