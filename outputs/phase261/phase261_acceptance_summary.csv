@@ -1,0 +1,25 @@
+metric,value,description
+phase261_passive_repair_precommit_complete,1,Phase261 passive opportunity breadth and fill-model repair precommit completed
+phase261_selected_route,P261_PASSIVE_OPPORTUNITY_BREADTH_AND_FILL_MODEL_REPAIR,Selected route
+phase261_input_event_bar_rows,1636,Input richer raw top-five event bars
+phase261_input_symbols,32,Input symbol breadth
+phase261_input_trade_dates,1,Input trade dates
+phase261_mean_spread_bps,2.844399420582611,Mean spread bps in input
+phase261_median_spread_bps,2.6725913756795983,Median spread bps in input
+phase261_mean_l2_l5_bid_share,0.8532375598112236,Mean bid depth share from levels 2-5
+phase261_mean_l2_l5_ask_share,0.8297748875874144,Mean ask depth share from levels 2-5
+phase261_repair_contract_rows,5,Repair contract rows
+phase261_fill_probability_grid_rows,12,Fill probability grid rows
+phase261_candidate_family_rows,5,Broadened candidate family rows
+phase261_control_contract_rows,9,Control contract rows
+phase261_full_top_five_depth_required,1,Zerodha top-five rows 1-5 required
+phase261_levels_2_to_5_materiality_required,1,Beyond-L1 depth required
+phase261_l1_only_candidate_allowed,0,L1-only candidate forbidden
+phase261_download_more_dates_now_allowed,0,No new download in Phase261
+phase261_replay_execution_allowed_now,0,No replay execution in Phase261
+phase261_strategy_promotion_allowed,0,No strategy promotion from Phase261
+phase261_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase261
+phase261_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase261
+phase261_hard_gate_pass_rows,10,Hard gates passed
+phase261_hard_gate_rows,10,Hard gates evaluated
+phase261_next_best_action,run_phase262_passive_opportunity_breadth_fill_model_training_search_full_top5_depth_no_paper_live,Recommended next milestone

@@ -10399,6 +10399,75 @@ Current Phase149 evidence after Phase260:
 
 ---
 
+## 24.87 Phase261 Passive Opportunity Breadth and Fill-model Repair Precommit Completed
+
+Phase261 converts the Phase260 route decision into an executable Phase262 search contract. It keeps the core project objective explicit: use Zerodha top-five market-by-price depth rows 1 through 5, require levels 2-5 materiality, and forbid L1-only candidates.
+
+Phase261 is a precommit only. It does not download data, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase261 input evidence:
+
+- input richer raw event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- mean spread: `2.844399420582611 bps`;
+- median spread: `2.6725913756795983 bps`;
+- mean bid-side depth share from levels 2-5: `0.8532375598112236`;
+- mean ask-side depth share from levels 2-5: `0.8297748875874144`.
+
+Phase261 repair contract:
+
+- selected route: `P261_PASSIVE_OPPORTUNITY_BREADTH_AND_FILL_MODEL_REPAIR`;
+- repair contract rows: `5`;
+- fill-probability grid rows: `12`;
+- broadened candidate family rows: `5`;
+- control contract rows: `9`;
+- full top-five depth required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only candidate allowed: `0`.
+
+Phase261 search contract for Phase262:
+
+- separate passive opportunity filtering from fill-probability scoring;
+- broaden spread, replenishment, imbalance and churn thresholds before scoring fills;
+- test bid-only, ask-only, two-sided and imbalance-skewed maker families;
+- score fill probability with base fill, queue haircut, churn haircut, levels-2-to-5 support boost, non-fill stress, queue-adversity and adverse-selection penalty multipliers;
+- keep random-side, side-flip, cost-stress, queue-adversity, non-fill stress and opportunity-breadth floors as required controls;
+- evaluate Zerodha statutory/brokerage charges at base, `1.5x`, and `2.0x`;
+- forbid paper/live acceptance and deployable profitability claims.
+
+Phase261 gates:
+
+- Phase260 work order present: pass;
+- Phase260 depth contract present: pass;
+- Phase254 richer raw event bars present: pass;
+- event-bar breadth: pass, `1,636` rows and `32` symbols;
+- repair contract written: pass, `5` rows;
+- fill grid written: pass, `12` rows;
+- full-depth family catalog written: pass, `5` families using L1-L5, L2-L5 and top-five features;
+- controls written: pass, `7` required controls;
+- L1-only forbidden: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase261 outputs:
+
+- `outputs/phase261/phase261_opportunity_repair_contract.csv`;
+- `outputs/phase261/phase261_fill_probability_grid.csv`;
+- `outputs/phase261/phase261_broadened_candidate_family_catalog.csv`;
+- `outputs/phase261/phase261_control_contract.csv`;
+- `outputs/phase261/phase261_gate_evaluation.csv`;
+- `outputs/phase261/phase261_acceptance_summary.csv`;
+- `outputs/phase261/phase261_passive_opportunity_breadth_fill_model_repair_precommit_report.md`;
+- `outputs/phase261/phase261_passive_opportunity_breadth_fill_model_repair_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase261:
+
+- synthetic strategy-discovery branch status: `passive_opportunity_breadth_fill_model_training_search_open`;
+- real receive-flow source branch status: `passive_opportunity_breadth_fill_model_training_search_open`;
+- next best action: `run_phase262_passive_opportunity_breadth_fill_model_training_search_full_top5_depth_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

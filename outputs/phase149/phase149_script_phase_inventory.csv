@@ -183,6 +183,7 @@ phase,runner,runner_exists,runner_suffix
 259,scripts\run_phase259_passive_queue_aware_spread_capture_training_search.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 260,scripts\run_phase260_passive_queue_aware_spread_capture_interpretation.py,True,.py
+261,scripts\run_phase261_passive_opportunity_breadth_fill_model_repair_precommit.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py

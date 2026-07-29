@@ -1,0 +1,6 @@
+repair_id,repair_contract,description,why_it_matters
+P261_REPAIR_OPPORTUNITY_FILTER,separate_opportunity_filter_from_fill_probability,"Generate candidate passive quote opportunities from spread, replenishment and full-depth regime first; score fill probability afterward.",prevents_one_tick_or_one_symbol_overfiltering
+P261_REPAIR_FILL_GRID,calibrated_fill_probability_grid,"Search fill-probability assumptions over base fill rate, queue haircuts, churn haircuts, levels 2-5 support boosts and non-fill stress.",prevents_single_formula_overfit
+P261_REPAIR_BREADTH,broaden_spread_replenishment_and_imbalance_thresholds,Include lower spread quantiles and softer replenishment/imbalance thresholds before queue-adversity penalties are applied.,increases_symbol_and_opportunity_breadth
+P261_REPAIR_SIDE_SPACE,bid_ask_both_and_skewed_quote_sides,"Keep bid-only, ask-only, two-sided and imbalance-skewed maker candidates so profitable direction is not assumed.",forces_side_controls
+P261_REPAIR_DEPTH_CORE,levels_1_to_5_required_l2_l5_materiality_required,Require top-five quantities/order counts and levels 2-5 shares in every candidate; L1-only variants are invalid by contract.,protects_core_project_objective

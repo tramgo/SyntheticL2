@@ -1,0 +1,10 @@
+control_id,control_status,description
+random_side_control,required,Every candidate must beat deterministic random side under the same opportunity and fill model grid.
+side_flip_control,required,"Flipping bid/ask interpretation must degrade or invert edge, not improve it by accident."
+cost_stress,required,"Evaluate Zerodha statutory/brokerage charges at base, 1.5x and 2x."
+queue_adversity_stress,required,Stress L1 queue crowding and top-five churn with fill haircut and adverse-selection penalty multipliers.
+nonfill_stress,required,Unfilled passive quotes must earn zero spread capture and may still incur opportunity/latency risk in sensitivity checks.
+opportunity_breadth_floor,required,"Best candidate must exceed minimum opportunity, symbol and fill-equivalent breadth before any promotion discussion."
+levels_1_to_5_depth_requirement,required,Use Zerodha top-five depth rows 1-5; levels 2-5 materiality is mandatory.
+l1_only_candidate_family,forbidden,"No L1-only strategy, feature, filter or candidate variant can survive."
+paper_live_or_deployable_profitability_claim,forbidden,Phase261/262 cannot claim paper/live/deployable profitability.

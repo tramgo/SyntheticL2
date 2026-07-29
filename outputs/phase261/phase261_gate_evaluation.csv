@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P261_PHASE260_WORK_ORDER_PRESENT,True,run_phase261_passive_opportunity_breadth_fill_model_repair_precommit_full_top5_depth_no_paper_live,Phase260 next action targets Phase261,hard
+P261_PHASE260_DEPTH_CONTRACT_PRESENT,True,1,levels_1_to_5_required present in Phase260 route,hard
+P261_INPUT_PRESENT,True,1,Phase254 richer raw top-five event bars exist,hard
+P261_EVENT_BAR_BREADTH,True,rows=1636.0;symbols=32.0,>=1000 rows and >=20 symbols,hard
+P261_REPAIR_CONTRACT_WRITTEN,True,5,>=5 repair contract rows,hard
+P261_FILL_GRID_WRITTEN,True,12,>=12 fill grid rows,hard
+P261_FULL_DEPTH_FAMILY_CATALOG_WRITTEN,True,5,">=5 families using l1_l5, l2_l5 and top5 features",hard
+P261_CONTROLS_WRITTEN,True,7,>=7 required controls,hard
+P261_L1_ONLY_FORBIDDEN,True,l1_only_candidate_family forbidden,L1-only candidates explicitly forbidden,hard
+P261_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard
