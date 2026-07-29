@@ -1,0 +1,6 @@
+availability_check,passed,observed_value,required_value,interpretation
+P238_PHASE235_REAL_EVENT_BARS_AVAILABLE,True,7,>0 local real event-bar dates,Local real event bars are available for diagnostics and split accounting.
+P238_PHASE237_CANDIDATE_FROZEN,True,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,frozen candidate id,Phase238 may not tune thresholds or candidate selection.
+P238_CURRENT_LOCAL_DATES_DISCOVERY_CONTAMINATED,True,2026-07-08;2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16,all Phase235 dates treated as Phase237 discovery data,"Because real quantile thresholds were selected on Phase235 bars, current dates cannot prove unseen acceptance."
+P238_TRULY_UNSEEN_LOCAL_DATES_AVAILABLE,False,0,>=5 dates not used by Phase237 discovery,No currently materialized local Phase235 dates qualify as truly unseen validation dates.
+P238_PHASE237_DISCOVERY_TRADE_DATES,True,2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16,best candidate trade dates recorded,Trade-date breadth is known for the discovery result.

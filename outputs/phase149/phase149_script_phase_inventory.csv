@@ -158,6 +158,7 @@ phase,runner,runner_exists,runner_suffix
 235,scripts\run_phase235_real_anchor_microprice_replay.py,True,.py
 236,scripts\run_phase236_real_anchor_neighbor_search.py,True,.py
 237,scripts\run_phase237_threshold_transfer_search.py,True,.py
+238,scripts\run_phase238_validation_precommit.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py

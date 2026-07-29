@@ -1,0 +1,18 @@
+metric,value,description
+phase238_validation_precommit_complete,1,Phase238 validation precommit completed
+phase238_candidate_id,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,Frozen Phase237 candidate
+phase238_phase237_net_pnl_inr,7041.523067663933,Phase237 discovery net P&L
+phase238_phase237_trade_rows,71,Phase237 discovery trade count
+phase238_phase237_dates,6,Phase237 discovery date count
+phase238_phase237_symbols,21,Phase237 discovery symbol count
+phase238_primary_validation_contract_rows,1,Primary unseen-validation contracts
+phase238_walk_forward_diagnostic_contract_rows,1,Diagnostic fallback contracts
+phase238_local_unseen_validation_dates_available,0,Whether enough local unseen validation dates exist now
+phase238_min_unseen_validation_dates_required,5,Minimum unseen dates required
+phase238_phase239_work_order_rows,4,Phase239 work-order rows
+phase238_hard_gate_pass_rows,5,Hard Phase238 gates passed
+phase238_hard_gate_rows,5,Hard Phase238 gates evaluated
+phase238_strategy_promotion_allowed,0,No strategy promotion from Phase238
+phase238_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase238
+phase238_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase238
+phase238_next_best_action,run_phase239_acquire_or_materialize_unseen_real_anchor_validation_dates_no_paper_live,Recommended next milestone

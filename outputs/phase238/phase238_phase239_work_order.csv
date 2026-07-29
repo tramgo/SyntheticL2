@@ -1,0 +1,5 @@
+step_order,phase239_task,candidate_id,detail,evidence
+1,acquire_or_materialize_unseen_real_l2_dates,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,Download/materialize at least 5 real L2 dates not present in Phase235/Phase237 discovery outputs.,date inventory proving new dates are outside Phase237 discovery sample
+2,rebuild_phase235_event_bar_adapter_for_unseen_dates,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,Use identical Phase235 event-bar adapter; no threshold recalibration on validation dates.,unseen real event-bar coverage summary
+3,replay_frozen_phase237_candidate,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,"Apply frozen Phase237 event threshold, signal threshold, horizon, side rule and Zerodha cost model.",unseen validation trade ledger and summary
+4,controls_and_decision,P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95,"Run side-flip, random-side, cost stress and concentration controls; decide validate, redesign or close.",Phase239 gate evaluation and no paper/live promotion boundary

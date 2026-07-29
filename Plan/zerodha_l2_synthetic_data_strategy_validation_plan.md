@@ -8650,6 +8650,86 @@ Current Phase149 evidence after Phase237:
 
 ---
 
+## 24.64 Phase238 Validation Precommit Completed
+
+Phase238 freezes the Phase237 candidate and prevents the project from accidentally treating the Phase237 discovery sample as unseen validation.
+
+Frozen candidate:
+
+- candidate id: `P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95`;
+- family: `bar_return_reversal`;
+- source adapter: Phase235 real-anchor event-bar adapter;
+- horizon: 6 event bars;
+- event quantile: `0.95`;
+- signal quantile: `0.95`;
+- event-window score threshold: `8.334102985231581`;
+- signal absolute threshold: `0.005648629194168348`;
+- Phase237 discovery net P&L: `7041.523067663933`;
+- Phase237 discovery trades: `71`;
+- Phase237 discovery dates: `6`;
+- Phase237 discovery symbols: `21`;
+- parameter tuning allowed in Phase238: `0`.
+
+Phase238 outputs:
+
+- `outputs/phase238/phase238_frozen_candidate_spec.csv`;
+- `outputs/phase238/phase238_validation_data_availability.csv`;
+- `outputs/phase238/phase238_validation_contract.csv`;
+- `outputs/phase238/phase238_phase239_work_order.csv`;
+- `outputs/phase238/phase238_gate_evaluation.csv`;
+- `outputs/phase238/phase238_acceptance_summary.csv`;
+- `outputs/phase238/phase238_validation_precommit_report.md`;
+- `outputs/phase238/phase238_validation_precommit_manifest.json`.
+
+Phase238 validation-data availability:
+
+- local Phase235 real event-bar dates available for diagnostics: `7`;
+- current local Phase235 dates treated as Phase237 discovery-contaminated: `2026-07-08`, `2026-07-09`, `2026-07-10`, `2026-07-13`, `2026-07-14`, `2026-07-15`, `2026-07-16`;
+- Phase237 best-candidate trade dates: `2026-07-09`, `2026-07-10`, `2026-07-13`, `2026-07-14`, `2026-07-15`, `2026-07-16`;
+- truly unseen local validation dates available now: `0`;
+- minimum unseen validation dates required: `5`.
+
+Phase238 validation contract:
+
+- primary route: unseen real-anchor validation on future downloaded/materialized Zerodha-websocket-like L2 dates not used by Phase237;
+- minimum unseen dates: `5`;
+- minimum symbols: `20`;
+- minimum trades: `50`;
+- required controls: side-flip, random-side 1,000-run, 1.5x cost, 2.0x cost and date/symbol concentration;
+- acceptance rule: positive net P&L after modeled costs, at least `3 / 4` controls pass, and date/symbol/trade breadth met;
+- fallback route: walk-forward diagnostic on existing Phase235 dates only, explicitly non-acceptance and non-promotional.
+
+Phase238 gates:
+
+- Phase237 candidate opened/frozen: pass;
+- primary unseen-validation contract written: pass;
+- diagnostic fallback contract written: pass;
+- local unseen acceptance data available now: soft fail, `0`;
+- Phase239 work order required: pass;
+- no paper/live or promotion unlock: pass;
+- hard gates: `5 / 5` passed.
+
+Current interpretation: Phase238 is an important discipline checkpoint. The Phase237 candidate is promising enough to validate, but the current local real-anchor data is not unseen anymore because threshold-transfer discovery used it. The next milestone must acquire or materialize new real L2 dates before any validation claim can be made. Existing dates may support walk-forward diagnostics only.
+
+Phase238 boundaries:
+
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase239_acquire_or_materialize_unseen_real_anchor_validation_dates_no_paper_live`.
+
+Current Phase149 evidence after Phase238:
+
+- phase rows discovered: 231;
+- runner phase rows: 229;
+- acceptance phase rows: 181;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `phase237_candidate_validation_precommitted_unseen_dates_needed`;
+- next best action: `run_phase239_acquire_or_materialize_unseen_real_anchor_validation_dates_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
