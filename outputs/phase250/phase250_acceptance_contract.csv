@@ -1,0 +1,11 @@
+contract_id,requirement,severity
+P250_NO_FORBIDDEN_TUNING_DATES,Phase251 search must exclude 2026-07-17 and 2026-07-20 from parameter selection.,hard
+P250_EXISTING_BARS_ONLY,Phase251 starts from existing Phase235 real event bars; no new raw L2 download until a frozen materially new survivor exists.,hard
+P250_MIN_GROUPS,At least 5 peer groups with 2 or more available symbols must be present.,hard
+P250_MIN_GROUPED_SYMBOLS,At least 20 symbols must be eligible for peer/basket construction.,hard
+P250_MARKET_NEUTRAL_NOTIONALS,Pair/basket variants must balance long and short notional before cost and risk scoring.,hard
+P250_COST_PER_LEG,"Zerodha-modeled costs, spread and slippage must be applied per leg; pair/basket costs are not single-leg costs.",hard
+P250_2X_COST_FIRST,No survivor may proceed without positive 2.0x modeled-cost net P&L.,hard
+P250_CONTROLS_REQUIRED,"Side-flip, random-side, concentration and cost-stress controls remain mandatory.",hard
+P250_BREADTH_REQUIRED,"Any training survivor must use at least 4 dates, 8 symbols and 20 trades before holdout precommit.",hard
+P250_NO_PROFIT_CLAIM,"Phase250 is a precommit only: no replay execution, paper/live acceptance or deployable profitability claim.",hard

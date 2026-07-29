@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P250_PHASE249_ROUTE_SELECTED,True,P249_PAIR_OR_BASKET_RELATIVE_VALUE,P249_PAIR_OR_BASKET_RELATIVE_VALUE,hard
+P250_PHASE249_WORK_ORDER_PRESENT,True,run_phase250_pair_basket_relative_value_precommit_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live,Phase249 next action points to Phase250 pair/basket precommit,hard
+P250_EVENT_BARS_AVAILABLE,True,28793,>0 Phase235 real event bars,hard
+P250_FORBIDDEN_DATES_NOT_USED_FOR_TUNING,True,"2026-07-17,2026-07-20",Excluded from Phase251 parameter search,hard
+P250_REQUIRED_INPUT_FEATURES_PRESENT,True,1,all required input features present,hard
+P250_MIN_GROUPS_AVAILABLE,True,8,>=5 peer groups,hard
+P250_MIN_GROUPED_SYMBOLS_AVAILABLE,True,29,>=20 eligible grouped symbols,hard
+P250_CANDIDATE_FAMILIES_REGISTERED,True,4,>=4 materially different pair/basket families,hard
+P250_ACCEPTANCE_CONTRACT_REGISTERED,True,10,>=10 acceptance contract rows,hard
+P250_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

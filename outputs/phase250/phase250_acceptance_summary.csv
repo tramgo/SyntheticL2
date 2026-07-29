@@ -1,0 +1,22 @@
+metric,value,description
+phase250_pair_basket_precommit_complete,1,Phase250 pair/basket precommit completed
+phase250_selected_route,P249_PAIR_OR_BASKET_RELATIVE_VALUE,Selected materially different route
+phase250_training_event_bar_rows,28793,Existing Phase235 event-bar rows available
+phase250_training_dates,7,Existing Phase235 dates available before forbidden-date exclusion
+phase250_training_symbols,32,Existing Phase235 symbols available
+phase250_forbidden_tuning_dates,"2026-07-17,2026-07-20",Dates excluded from Phase251 parameter selection
+phase250_pair_group_rows,8,Peer groups with at least two eligible symbols
+phase250_grouped_symbols,29,Symbols eligible for pair/basket construction
+phase250_candidate_family_rows,4,Candidate families registered
+phase250_feature_contract_rows,18,Feature contract rows
+phase250_required_input_features_present,1,Required Phase235 input columns present
+phase250_acceptance_contract_rows,10,Acceptance contract rows
+phase250_hard_gate_pass_rows,10,Hard gates passed
+phase250_hard_gate_rows,10,Hard gates evaluated
+phase250_phase251_training_search_allowed_next,1,Whether Phase251 training search is allowed next
+phase250_download_more_dates_now_allowed,0,No raw-date download in Phase250
+phase250_replay_execution_allowed_now,0,No replay execution in Phase250
+phase250_strategy_promotion_allowed,0,No strategy promotion from Phase250
+phase250_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase250
+phase250_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase250
+phase250_next_best_action,run_phase251_training_only_pair_basket_relative_value_search_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live,Recommended next milestone

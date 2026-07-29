@@ -1,0 +1,19 @@
+feature_name,source_stage,required_for_phase251,present_now,purpose
+trade_date,input,1,1,date partition and train/holdout exclusion key
+symbol,input,1,1,cross-sectional and peer grouping key
+source_event_bar_id,input,1,1,same event-bar clock used for cross-symbol alignment
+open_mid_price,input,1,1,event-bar opening mid
+close_mid_price,input,1,1,event-bar closing mid and future-return anchor
+bar_return,input,1,1,symbol event-bar return used for residual construction
+avg_top5_market_by_price_imbalance,input,1,1,"top-five market-by-price depth imbalance, not universal L5 data"
+avg_l1_imbalance,input,1,1,secondary top-of-book pressure check
+avg_spread,input,1,1,liquidity/spread guard
+avg_event_intensity_proxy,input,1,1,activity/volume-style guard
+taker_round_trip_cost_floor_bps,input,1,1,modeled Zerodha cost and spread floor
+abs_bar_return_bps,input,1,1,recent move magnitude / volatility comparison proxy
+peer_group_id,phase251_derived,1,1,static group assignment from the Phase250 universe catalog
+basket_return,phase251_derived,1,1,leave-one-out peer or benchmark basket return
+symbol_residual_return,phase251_derived,1,1,symbol return minus basket return
+relative_top5_imbalance,phase251_derived,1,1,symbol top-five imbalance minus peer/basket imbalance
+cross_sectional_rank,phase251_derived,1,1,within-event residual rank used for long/short baskets
+market_beta_proxy,phase251_optional,0,1,rough broad-basket sensitivity; do not tune on forbidden dates

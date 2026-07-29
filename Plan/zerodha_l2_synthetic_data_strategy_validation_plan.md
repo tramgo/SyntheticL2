@@ -9561,6 +9561,88 @@ Current Phase149 evidence after Phase249:
 
 ---
 
+## 24.76 Phase250 Pair/Basket Relative-value Precommit Completed
+
+Phase250 opens the materially different route selected by Phase249: pair/basket relative value instead of another single-name bar-return reversal threshold loop. It is a precommit only. It uses existing Phase235 real event bars, does not download new raw L2 data, does not tune on `2026-07-17` or `2026-07-20`, does not execute a replay, does not promote a strategy and does not open paper/live acceptance.
+
+Phase250 input evidence:
+
+- existing Phase235 real event-bar rows: `28,793`;
+- existing Phase235 dates before forbidden-date exclusion: `7`;
+- existing Phase235 symbols: `32`;
+- forbidden tuning dates carried forward: `2026-07-17`, `2026-07-20`;
+- required input features present: pass.
+
+Phase250 terminology:
+
+- the route uses Zerodha retail WebSocket **top-five market-by-price depth**;
+- `avg_top5_market_by_price_imbalance` means imbalance across visible depth levels 1 through 5;
+- this is not universal exchange L5/order-by-order data.
+
+Phase250 universe evidence:
+
+- peer groups with at least two eligible symbols: `8`;
+- grouped symbols eligible for pair/basket construction: `29`;
+- singleton or benchmark-only symbols are not forced into false peer groups.
+
+Phase250 candidate families:
+
+1. `P250_SECTOR_PAIR_RESIDUAL_REVERSION` — same-sector residual mean reversion after common peer movement is hedged;
+2. `P250_INDEX_BASKET_RESIDUAL_REVERSION` — stock residual versus ETF/broad-basket proxy;
+3. `P250_TOP5_IMBALANCE_RELATIVE_DIVERGENCE` — relative top-five depth pressure as a signal source, not merely a reversal filter;
+4. `P250_MARKET_NEUTRAL_LONG_SHORT_BASKET` — notional-balanced long/short baskets selected by residual and relative depth pressure.
+
+Phase250 acceptance contract for Phase251:
+
+- exclude `2026-07-17` and `2026-07-20` from parameter selection;
+- start from existing Phase235 real event bars only;
+- require at least `5` peer groups and `20` grouped symbols;
+- enforce market-neutral notional balancing for pair/basket variants;
+- apply Zerodha-modeled costs, spread and slippage per leg;
+- require positive 2.0x modeled-cost net P&L before any survivor can advance;
+- require side-flip, random-side, concentration and cost-stress controls;
+- require at least `4` training dates, `8` symbols and `20` trades for any survivor before holdout precommit;
+- block downloads, replay execution, strategy promotion, paper/live acceptance and deployable profitability claims in Phase250.
+
+Phase250 gates:
+
+- Phase249 selected route present: pass;
+- Phase249 work order present: pass;
+- event bars available: pass;
+- forbidden holdout dates excluded from tuning: pass;
+- required input features present: pass;
+- minimum groups available: pass, `8`;
+- minimum grouped symbols available: pass, `29`;
+- candidate families registered: pass, `4`;
+- acceptance contract registered: pass, `10`;
+- no download/replay/promotion/paper-live: pass.
+
+Phase250 verdict:
+
+- pair/basket relative-value search is now precommitted;
+- Phase251 training-only search is allowed next;
+- no profitability claim exists yet;
+- next best action: `run_phase251_training_only_pair_basket_relative_value_search_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live`.
+
+Phase250 outputs:
+
+- `outputs/phase250/phase250_pair_basket_universe.csv`;
+- `outputs/phase250/phase250_feature_contract.csv`;
+- `outputs/phase250/phase250_candidate_family_catalog.csv`;
+- `outputs/phase250/phase250_acceptance_contract.csv`;
+- `outputs/phase250/phase250_gate_evaluation.csv`;
+- `outputs/phase250/phase250_acceptance_summary.csv`;
+- `outputs/phase250/phase250_pair_basket_relative_value_precommit_report.md`;
+- `outputs/phase250/phase250_pair_basket_relative_value_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase250:
+
+- synthetic strategy-discovery branch status: `pair_basket_relative_value_training_search_precommitted`;
+- real receive-flow source branch status: `pair_basket_relative_value_training_search_precommitted`;
+- next best action: `run_phase251_training_only_pair_basket_relative_value_search_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

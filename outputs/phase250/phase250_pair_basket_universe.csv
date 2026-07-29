@@ -1,0 +1,33 @@
+symbol,peer_group_id,group_size_available,role,phase251_allowed,notes
+BAJAJ-AUTO,auto,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+M&M,auto,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+MARUTI,auto,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+AXISBANK,bank_finance,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+HDFCBANK,bank_finance,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+ICICIBANK,bank_finance,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+KOTAKBANK,bank_finance,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+SBIN,bank_finance,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+BRITANNIA,consumer,4,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+HINDUNILVR,consumer,4,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+ITC,consumer,4,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+NESTLEIND,consumer,4,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+BPCL,energy,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+ONGC,energy,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+RELIANCE,energy,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+BANKBEES,index_etf_basket,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+JUNIORBEES,index_etf_basket,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+NIFTYBEES,index_etf_basket,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+HCLTECH,information_technology,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+INFY,information_technology,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+TCS,information_technology,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+TECHM,information_technology,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+WIPRO,information_technology,5,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+ADANIPORTS,infra_capital_goods,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+LT,infra_capital_goods,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+ULTRACEMCO,infra_capital_goods,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+CIPLA,pharma,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+DRREDDY,pharma,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+SUNPHARMA,pharma,3,pair_and_basket,1,eligible for peer residuals and market-neutral baskets
+BHARTIARTL,benchmark_or_singleton,1,benchmark_or_excluded,0,single telecom name in current universe; usable only against broad basket unless a telecom peer appears
+GOLDBEES,benchmark_or_singleton,1,benchmark_or_excluded,0,commodity ETF; keep out of equity-sector pair residuals
+ITBEES,benchmark_or_singleton,1,benchmark_or_excluded,0,"sector ETF; usable as IT basket reference, not as a single-name equity peer"
