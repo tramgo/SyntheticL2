@@ -1,0 +1,26 @@
+metric,value,description
+phase259_passive_training_search_complete,1,Phase259 passive queue-aware training search completed
+phase259_input_event_bar_rows,1636,Input event bars
+phase259_symbols,32,Input symbol breadth
+phase259_trade_dates,1,Input trade dates
+phase259_variant_rows,3888,Passive variants tested
+phase259_full_top_five_depth_variant_rows,3888,Variants using full top-five depth
+phase259_depth_beyond_l1_variant_rows,3888,Variants using levels 2-5/beyond-L1
+phase259_cost100_positive_variant_rows,6,Variants positive at 1x Zerodha charge stack
+phase259_cost150_positive_variant_rows,0,Variants positive at 1.5x charges
+phase259_cost200_positive_variant_rows,0,Variants positive at 2x charges
+phase259_survivor_candidate_rows,0,"Variants passing breadth, cost stress and controls"
+phase259_best_candidate_id,P259_P258_PASSIVE_BID_REPLENISHMENT_H10_SPQ0p5_QQ0p5_CQ0p75_I0p05_RQ0p75_CF0p75,Best candidate by survivor/cost200/cost100 ranking
+phase259_best_family_id,P258_PASSIVE_BID_REPLENISHMENT,Best candidate family
+phase259_best_cost100_expected_net_pnl_inr,7.249843402049745,Best 1x-charge expected net P&L
+phase259_best_cost200_expected_net_pnl_inr,-75.43135659795024,Best 2x-charge expected net P&L
+phase259_best_opportunity_rows,1,Best opportunity rows
+phase259_best_symbols,1,Best symbol breadth
+phase259_best_realized_fill_equivalent_rows,0.3181820647751316,Best fill-equivalent rows
+phase259_hard_gate_pass_rows,7,Hard gates passed
+phase259_hard_gate_rows,7,Hard gates evaluated
+phase259_replay_execution_allowed_now,0,No replay execution in Phase259
+phase259_strategy_promotion_allowed,0,No strategy promotion from Phase259
+phase259_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase259
+phase259_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase259
+phase259_next_best_action,run_phase260_passive_queue_aware_spread_capture_interpretation_no_paper_live,Recommended next milestone

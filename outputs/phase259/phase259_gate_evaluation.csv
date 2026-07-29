@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P259_PHASE258_WORK_ORDER_PRESENT,True,run_phase259_passive_queue_aware_spread_capture_training_search_full_top5_depth_no_paper_live,Phase258 next action targets Phase259,hard
+P259_INPUT_ROWS_PRESENT,True,1636,>=1000 richer raw-depth event bars,hard
+P259_VARIANTS_TESTED,True,3888,>0 passive variants,hard
+P259_ALL_VARIANTS_USE_FULL_DEPTH,True,3888,all variants use full top-five depth,hard
+P259_ALL_VARIANTS_USE_DEPTH_BEYOND_L1,True,3888,all variants use levels 2-5/beyond-L1,hard
+P259_PASSIVE_CONTROLS_APPLIED,True,side_flip;random_side;queue_adversity,passive controls present,hard
+P259_NO_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

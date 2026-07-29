@@ -10263,6 +10263,73 @@ Current Phase149 evidence after Phase258:
 
 ---
 
+## 24.85 Phase259 Passive Queue-aware Spread-capture Training Search Completed
+
+Phase259 executes the first training-only passive/queue-aware spread-capture search on the Phase254 richer raw Zerodha top-five depth event bars. Expected passive P&L is fill-probability weighted and includes spread capture, future mid-price movement, adverse-selection and queue penalties, and modeled Zerodha charges. Every variant uses full top-five depth and levels 2-5/beyond-L1 features. No L1-only candidate is allowed.
+
+Phase259 remains training-only. It does not execute paper/live replay, promote a strategy, or make a deployable profitability claim.
+
+Phase259 search scope:
+
+- input event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- passive variants tested: `3,888`;
+- variants using full top-five depth: `3,888`;
+- variants using depth beyond L1 / levels 2-5: `3,888`;
+- passive controls applied: side-flip, deterministic random-side and queue-adversity controls.
+
+Phase259 result:
+
+- positive variants at `1.0x` Zerodha charge stack: `6`;
+- positive variants at `1.5x` charges: `0`;
+- positive variants at `2.0x` charges: `0`;
+- survivor candidates after opportunity-count, breadth, cost-stress and passive controls: `0`.
+
+Best Phase259 training-only variant:
+
+- candidate id: `P259_P258_PASSIVE_BID_REPLENISHMENT_H10_SPQ0p5_QQ0p5_CQ0p75_I0p05_RQ0p75_CF0p75`;
+- family: `P258_PASSIVE_BID_REPLENISHMENT`;
+- expected net P&L at `1.0x` charges: `7.249843402049745 INR`;
+- expected net P&L at `2.0x` charges: `-75.43135659795024 INR`;
+- opportunity rows: `1`;
+- symbol breadth: `1`;
+- realized fill-equivalent rows: `0.3181820647751316`.
+
+Phase259 interpretation:
+
+- passive/queue-aware spread capture is more promising than the prior taker-threshold route in that a few sparse variants are positive at base charges;
+- the edge is not yet investable or even a research survivor: the positive hits are too sparse and fail 1.5x/2x charge stress;
+- full top-five depth remains material and mandatory, but Phase260 must interpret whether to repair the passive fill/queue model, broaden passive filters, or close this specific passive search family.
+
+Phase259 gates:
+
+- Phase258 work order present: pass;
+- input rows present: pass, `1,636`;
+- variants tested: pass, `3,888`;
+- all variants use full top-five depth: pass, `3,888`;
+- all variants use depth beyond L1: pass, `3,888`;
+- passive controls applied: pass;
+- no replay/promotion/paper-live: pass.
+
+Phase259 outputs:
+
+- `outputs/phase259/phase259_passive_strategy_variant_results.csv`;
+- `outputs/phase259/phase259_top_passive_strategy_variants.csv`;
+- `outputs/phase259/phase259_survivor_opportunity_ledger.csv`;
+- `outputs/phase259/phase259_gate_evaluation.csv`;
+- `outputs/phase259/phase259_acceptance_summary.csv`;
+- `outputs/phase259/phase259_passive_queue_aware_spread_capture_training_search_report.md`;
+- `outputs/phase259/phase259_passive_queue_aware_spread_capture_training_search_manifest.json`.
+
+Current Phase149 evidence after Phase259:
+
+- synthetic strategy-discovery branch status: `passive_queue_aware_training_search_no_survivor_interpretation_open`;
+- real receive-flow source branch status: `passive_queue_aware_training_search_no_survivor_interpretation_open`;
+- next best action: `run_phase260_passive_queue_aware_spread_capture_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
