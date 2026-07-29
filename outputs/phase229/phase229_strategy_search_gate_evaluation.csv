@@ -1,0 +1,6 @@
+gate_id,passed,observed_value,required_value,interpretation
+P229_INPUT_UNIVERSE_AVAILABLE,True,36,>0 strategy/profile rows,Existing synthetic replay summaries are available for strategy discovery.
+P229_SEVERAL_STRATEGIES_EVALUATED,True,12,>=3 distinct strategy ids,The phase tests several existing strategy forms instead of a single shard loop.
+P229_REALISTIC_COST_PROFILES_EVALUATED,True,24,>0 retail/stressed profile rows,Ranking includes costed realistic retail execution profiles.
+P229_SYNTHETIC_PROFITABLE_REALISTIC_CANDIDATE_FOUND,False,0,>0 positive realistic net-after-cost rows,"If this fails, no tested strategy is currently profitable after realistic modeled costs."
+P229_SYNTHETIC_PROFITABLE_ANY_PROFILE_FOUND,False,0,>0 positive net-after-cost rows,Diagnostic control profitability is tracked separately from realistic tradability.

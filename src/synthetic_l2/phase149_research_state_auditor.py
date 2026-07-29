@@ -166,6 +166,7 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         226: Path("outputs/phase226/phase226_label_materialization_acceptance_summary.csv"),
         227: Path("outputs/phase227/phase227_quality_interpretation_acceptance_summary.csv"),
         228: Path("outputs/phase228/phase228_closure_or_relaxation_acceptance_summary.csv"),
+        229: Path("outputs/phase229/phase229_strategy_search_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -1177,6 +1178,27 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "profitability_claim_allowed": as_int(metric_value(path, "phase228_profitability_claim_allowed", 0)),
             "next_action": metric_value(path, "phase228_next_best_action", ""),
         }
+    if phase == 229:
+        complete = as_int(metric_value(path, "phase229_multi_strategy_profitability_search_complete", 0))
+        positive_realistic = as_int(metric_value(path, "phase229_positive_realistic_candidate_rows", 0))
+        return {
+            "branch": "synthetic_strategy_discovery",
+            "state": "multi_strategy_profitability_search_complete" if complete else "multi_strategy_profitability_search_gated",
+            "multi_strategy_profitability_search_complete": complete,
+            "source_summary_rows": as_int(metric_value(path, "phase229_source_summary_rows", 0)),
+            "distinct_strategy_ids": as_int(metric_value(path, "phase229_distinct_strategy_ids", 0)),
+            "realistic_profile_rows": as_int(metric_value(path, "phase229_realistic_profile_rows", 0)),
+            "positive_realistic_candidate_rows": positive_realistic,
+            "positive_any_profile_rows": as_int(metric_value(path, "phase229_positive_any_profile_rows", 0)),
+            "best_strategy_id": metric_value(path, "phase229_best_strategy_id", ""),
+            "best_execution_profile": metric_value(path, "phase229_best_execution_profile", ""),
+            "best_annual_net_pnl_inr": metric_value(path, "phase229_best_annual_net_pnl_inr", 0),
+            "strategy_replay_allowed": int(positive_realistic > 0),
+            "promotion_allowed": as_int(metric_value(path, "phase229_strategy_promotion_allowed", 0)),
+            "paper_or_live_acceptance_allowed": as_int(metric_value(path, "phase229_paper_or_live_acceptance_allowed", 0)),
+            "profitability_claim_allowed": as_int(metric_value(path, "phase229_deployable_profitability_claim_allowed", 0)),
+            "next_action": metric_value(path, "phase229_next_best_action", ""),
+        }
     return {}
 
 
@@ -1286,8 +1308,9 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase226 = phase_status_from_metrics(226)
     phase227 = phase_status_from_metrics(227)
     phase228 = phase_status_from_metrics(228)
+    phase229 = phase_status_from_metrics(229)
     phase172 = phase_status_from_metrics(172)
-    real_receive_next = phase228.get("next_action") or phase227.get("next_action") or phase226.get("next_action") or phase225.get("next_action") or phase224.get("next_action") or phase223.get("next_action") or phase222.get("next_action") or phase221.get("next_action") or phase220.get("next_action") or phase219.get("next_action") or phase218.get("next_action") or phase217.get("next_action") or phase216.get("next_action") or phase215.get("next_action") or phase214.get("next_action") or phase213.get("next_action") or phase212.get("next_action") or phase211.get("next_action") or phase210.get("next_action") or phase209.get("next_action") or phase208.get("next_action") or phase207.get("next_action") or phase206.get("next_action") or phase205.get("next_action") or phase204.get("next_action") or phase203.get("next_action") or phase202.get("next_action") or phase201.get("next_action") or phase200.get("next_action") or phase199.get("next_action") or phase198.get("next_action") or phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_next = phase229.get("next_action") or phase228.get("next_action") or phase227.get("next_action") or phase226.get("next_action") or phase225.get("next_action") or phase224.get("next_action") or phase223.get("next_action") or phase222.get("next_action") or phase221.get("next_action") or phase220.get("next_action") or phase219.get("next_action") or phase218.get("next_action") or phase217.get("next_action") or phase216.get("next_action") or phase215.get("next_action") or phase214.get("next_action") or phase213.get("next_action") or phase212.get("next_action") or phase211.get("next_action") or phase210.get("next_action") or phase209.get("next_action") or phase208.get("next_action") or phase207.get("next_action") or phase206.get("next_action") or phase205.get("next_action") or phase204.get("next_action") or phase203.get("next_action") or phase202.get("next_action") or phase201.get("next_action") or phase200.get("next_action") or phase199.get("next_action") or phase198.get("next_action") or phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
     ready_dates = as_int(phase172.get("ready_receive_flow_dates", 0))
     additional_dates_needed = as_int(phase172.get("additional_dates_needed", 0))
     features_materialized = as_int(phase176.get("features_materialized", 0))

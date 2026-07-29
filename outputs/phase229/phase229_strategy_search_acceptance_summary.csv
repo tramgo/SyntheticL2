@@ -1,0 +1,18 @@
+metric,value,description
+phase229_multi_strategy_profitability_search_complete,1,Strategy discovery ranking completed
+phase229_source_summary_rows,36,Strategy/profile summary rows ranked
+phase229_distinct_strategy_ids,12,Distinct strategy ids evaluated
+phase229_realistic_profile_rows,24,Retail/stressed profile rows evaluated
+phase229_control_profile_rows,12,Zero-latency control profile rows evaluated
+phase229_phase164_trade_ledger_rows,37424,Phase164 daily/symbol/profile ledger rows referenced
+phase229_phase164_trade_dates,252,Phase164 trade dates referenced
+phase229_phase164_symbols,32,Phase164 symbols referenced
+phase229_positive_realistic_candidate_rows,0,Positive net-after-cost realistic profile rows
+phase229_positive_any_profile_rows,0,Positive net-after-cost rows across all profiles
+phase229_best_strategy_id,P164_S06_ABSORPTION_REVERSAL,Best strategy/profile by annual net P&L
+phase229_best_execution_profile,zero_latency_spread_only_control,Best execution profile by annual net P&L
+phase229_best_annual_net_pnl_inr,-189512.60575493483,Best annual net P&L in ranked universe
+phase229_strategy_promotion_allowed,0,No promotion from synthetic search alone
+phase229_paper_or_live_acceptance_allowed,0,No paper/live acceptance from synthetic search alone
+phase229_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic search alone
+phase229_next_best_action,run_phase230_expand_low_turnover_high_edge_strategy_search_no_generator_profit_tuning,Next strategy-discovery milestone
