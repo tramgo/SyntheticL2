@@ -7544,6 +7544,59 @@ Current interpretation: Phase221 finally opens the next-phase replay doorway, bu
 
 ---
 
+## 24.48 Phase222 Event-Only Train/Validation Signal Replay Dry Run Completed
+
+Phase222 executes the Phase221-precommitted signal replay dry run on train/validation event-only rows only. It binds the Phase180 Zerodha equity cost catalog and Phase180 latency/slippage profile catalog before reporting any net-after-cost proxy. It does not touch sealed test rows, does not emit order-arrival or fill/P&L artifacts, and does not make a profitability claim.
+
+Phase222 replay scope:
+
+- frozen candidates from Phase221: 5;
+- threshold grid: `0.55;0.60;0.65;0.70`;
+- split scope: train and validation only;
+- cost/latency scope: Phase180 statutory Zerodha equity costs plus zero-latency diagnostic, retail-marketable, and stressed-retail latency/slippage profiles;
+- row-level prediction export: 0;
+- sealed test rows used: 0.
+
+Phase222 results:
+
+- event-only partition rows: 256;
+- event-only joined rows: 127,215;
+- threshold activation rows: 40;
+- signal replay summary rows: 240;
+- negative-control rows: 120;
+- validation screen rows: 40;
+- validation decision events: 89,481;
+- best validation net-after-cost proxy: -11.998805192630435 bps;
+- worst validation net-after-cost proxy: -18.400335124588675 bps;
+- hard gates: 7 / 7 passed;
+- strategy replay execution: 1;
+- test replay allowed next: 0;
+- test rows used: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0;
+- next best action: `run_phase223_event_only_signal_replay_validation_interpretation_no_test`.
+
+Phase222 interpretation:
+
+- The replay engine now executes against event-only train/validation matrices with frozen candidates and cost/latency catalogs.
+- The fixed threshold grid is sparse for some direction labels and active mainly for volatility-expansion style rules.
+- The best validation net-after-cost proxy remains negative after realistic costs, so Phase222 is not evidence of profitability.
+- Phase223 must interpret the validation replay results and negative controls before any broader replay decision.
+
+Current Phase149 evidence after Phase222:
+
+- phase rows discovered: 215;
+- runner phase rows: 213;
+- acceptance phase rows: 165;
+- hard global-state gates: 253 / 253 passed;
+- real receive-flow branch status: `event_only_train_validation_signal_replay_dry_run_complete_phase223_validation_interpretation_pending_no_test`;
+- next best action: `run_phase223_event_only_signal_replay_validation_interpretation_no_test`.
+
+Current interpretation: Phase222 is the first actual event-only signal replay execution in this branch, but it remains a diagnostic train/validation dry run. Costs still dominate the observed validation edge, so the next best action is interpretation and falsification, not scaling, test replay, or promotion.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

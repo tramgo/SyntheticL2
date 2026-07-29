@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P222_PHASE221_COMPLETE_AND_REPLAY_PRECOMMITTED,True,phase221_complete=1; replay_precommitted=1,hard
+P222_EVENT_ONLY_MATRICES_JOINED,True,event_only_joined_rows=127215,hard
+P222_REPLAY_SUMMARY_RECORDED,True,summary_rows=240; validation_decision_events=178962,hard
+P222_NEGATIVE_CONTROLS_RECORDED,True,control_rows=120,hard
+P222_THRESHOLD_ACTIVATION_RECORDED,True,threshold_rows=40,hard
+P222_TEST_ROWS_UNTOUCHED,True,test_rows_used=0,hard
+P222_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard

@@ -1,0 +1,23 @@
+metric,value,description
+phase222_event_only_partition_rows,256,Train/validation event-only partition rows
+phase222_event_only_joined_rows,127215,Joined event-only rows
+phase222_threshold_activation_rows,40,Threshold activation rows
+phase222_replay_summary_rows,240,Replay summary rows
+phase222_control_rows,120,Negative-control rows
+phase222_validation_screen_rows,40,Validation screen rows
+phase222_validation_decision_events,89481,Validation decision events
+phase222_best_validation_net_after_cost_bps_proxy,-11.998805192630435,Best validation net-after-cost proxy
+phase222_worst_validation_net_after_cost_bps_proxy,-18.400335124588675,Worst validation net-after-cost proxy
+phase222_forbidden_execution_rows,10,Forbidden execution rows
+phase222_gate_rows,7,Gates evaluated
+phase222_hard_gate_rows,7,Hard gates evaluated
+phase222_hard_gate_pass_rows,7,Hard gates passed
+phase222_event_only_train_validation_signal_replay_dry_run_complete,1,1 means Phase222 completed
+phase222_strategy_replay_execution,1,Train/validation signal replay dry run executed
+phase222_test_replay_allowed_next,0,No test replay opened
+phase222_test_rows_used,0,No sealed test rows used
+phase222_promotion_allowed,0,No promotion opened
+phase222_paper_or_live_acceptance_allowed,0,Paper/live remains closed
+phase222_profitability_claim_allowed,0,No profitability claim is allowed
+phase222_forbidden_outputs,test_replay_execution;test_result;promotion;paper_live_acceptance;order_arrival;fill_model;pnl_replay;profitability_claim;threshold_widening;row_level_prediction_export,Outputs forbidden in this phase
+phase222_next_best_action,run_phase223_event_only_signal_replay_validation_interpretation_no_test,Recommended next milestone

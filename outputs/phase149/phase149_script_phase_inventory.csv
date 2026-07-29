@@ -141,6 +141,7 @@ phase,runner,runner_exists,runner_suffix
 21,scripts\run_phase21_decision_framework.py,True,.py
 220,scripts\run_phase220_event_only_model_fit_validation_interpretation.py,True,.py
 221,scripts\run_phase221_event_only_signal_replay_precommit_or_stop.py,True,.py
+222,scripts\run_phase222_event_only_train_validation_signal_replay_dry_run.py,True,.py
 22,scripts\run_phase22_real_data_integration_roadmap.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py

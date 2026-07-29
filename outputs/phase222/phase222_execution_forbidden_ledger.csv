@@ -1,0 +1,11 @@
+forbidden_output,emitted_in_phase222,allowed_in_phase222,rationale
+test_replay_execution,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+test_result,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+promotion,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+paper_live_acceptance,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+order_arrival,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+fill_model,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+pnl_replay,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+profitability_claim,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+threshold_widening,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
+row_level_prediction_export,0,0,"Phase222 runs train/validation diagnostic signal replay only and emits no test, order/fill, P&L, promotion, paper/live, row-level prediction, or profitability artifact."
