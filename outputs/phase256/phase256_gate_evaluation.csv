@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P256_PHASE255_WORK_ORDER_PRESENT,True,run_phase256_richer_raw_top5_depth_cost_aware_strategy_search_training_only_no_paper_live,Phase255 next action targets Phase256,hard
+P256_INPUT_ROWS_PRESENT,True,1636,>=1000 richer raw-depth event bars,hard
+P256_VARIANTS_TESTED,True,2376,>0 training-only strategy variants,hard
+P256_ALL_VARIANTS_USE_FULL_DEPTH,True,2376,all variants use full top-five depth,hard
+P256_ALL_VARIANTS_USE_DEPTH_BEYOND_L1,True,2376,all variants use levels 2-5 / beyond-L1 fields,hard
+P256_COST_STACK_APPLIED,True,cost100/cost150/cost200,Zerodha cost floor applied at 1x/1.5x/2x,hard
+P256_NO_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

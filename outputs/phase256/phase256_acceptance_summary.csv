@@ -1,0 +1,27 @@
+metric,value,description
+phase256_strategy_search_complete,1,Phase256 richer raw top-five depth training-only strategy search completed
+phase256_input_event_bar_rows,1636,Input richer raw-depth event bars
+phase256_symbols,32,Symbols represented
+phase256_trade_dates,1,Trade dates represented
+phase256_variant_rows,2376,Training-only strategy variants tested
+phase256_full_top_five_depth_variant_rows,2376,Variants using full top-five depth
+phase256_depth_beyond_l1_variant_rows,2376,Variants using levels 2-5/beyond-L1 fields
+phase256_cost100_positive_variant_rows,0,Variants positive at 1x Zerodha cost floor
+phase256_cost150_positive_variant_rows,0,Variants positive at 1.5x cost floor
+phase256_cost200_positive_variant_rows,0,Variants positive at 2x cost floor
+phase256_survivor_candidate_rows,0,"Variants passing trade, breadth, cost-stress and random-side controls"
+phase256_best_candidate_id,P256_AVG_DEPTH_BEYOND_L1_QTY_IMBALANCE_FOLLOW_H10_TQ0p95_SPQ0p5_CQ0p75,Best candidate by survivor/cost200/cost100 ranking
+phase256_best_feature,avg_depth_beyond_l1_qty_imbalance,Best candidate feature
+phase256_best_sign_mode,follow,Best candidate sign mode
+phase256_best_horizon,10,Best candidate horizon
+phase256_best_cost100_net_pnl_inr,-411.49029712563254,Best candidate 1x-cost net P&L
+phase256_best_cost200_net_pnl_inr,-1218.3826175402583,Best candidate 2x-cost net P&L
+phase256_best_trade_rows,8,Best candidate trade count
+phase256_best_symbols,5,Best candidate symbol breadth
+phase256_hard_gate_pass_rows,7,Hard gates passed
+phase256_hard_gate_rows,7,Hard gates evaluated
+phase256_replay_execution_allowed_now,0,No replay execution in Phase256
+phase256_strategy_promotion_allowed,0,No strategy promotion from Phase256
+phase256_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase256
+phase256_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase256
+phase256_next_best_action,run_phase257_richer_raw_top5_depth_strategy_search_interpretation_no_paper_live,Recommended next milestone

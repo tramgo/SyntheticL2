@@ -10045,6 +10045,75 @@ Current Phase149 evidence after Phase255:
 
 ---
 
+## 24.82 Phase256 Richer Raw Top-five Depth Cost-aware Strategy Search Completed
+
+Phase256 runs a training-only cost-aware strategy search on the Phase254/255 richer raw Zerodha top-five depth event-bar product. Every tested variant is required to use the full top-five depth surface and levels 2-5/beyond-L1 information. No variant is L1-only.
+
+Phase256 remains a training-only search. It does not execute paper/live replay, promote a strategy, or make a deployable profitability claim.
+
+Phase256 search scope:
+
+- input event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- variants tested: `2,376`;
+- variants using full top-five depth: `2,376`;
+- variants using depth beyond L1 / levels 2-5: `2,376`;
+- cost profiles applied: `1.0x`, `1.5x`, and `2.0x` modeled Zerodha taker round-trip cost floor.
+
+Phase256 result:
+
+- positive variants at `1.0x` cost: `0`;
+- positive variants at `1.5x` cost: `0`;
+- positive variants at `2.0x` cost: `0`;
+- survivor candidates after trade-count, breadth, cost-stress and deterministic random-side controls: `0`.
+
+Best Phase256 training-only variant:
+
+- candidate id: `P256_AVG_DEPTH_BEYOND_L1_QTY_IMBALANCE_FOLLOW_H10_TQ0p95_SPQ0p5_CQ0p75`;
+- feature: `avg_depth_beyond_l1_qty_imbalance`;
+- sign mode: `follow`;
+- horizon: `10` event bars;
+- trade rows: `8`;
+- symbol breadth: `5`;
+- `1.0x` cost net P&L: `-411.49029712563254 INR`;
+- `2.0x` cost net P&L: `-1218.3826175402583 INR`.
+
+Phase256 interpretation:
+
+- full-depth L2 information is material, but the tested taker-style threshold strategies are not profitable after Zerodha cost floor;
+- gross edge exists in some broad variants, but modeled spread plus charges dominate the edge;
+- continuing the same taker threshold search is not the best next action;
+- next investigation should interpret the no-survivor result and likely shift toward a passive/queue-aware spread-capture or order-placement model that uses the same full top-five depth surface.
+
+Phase256 gates:
+
+- Phase255 work order present: pass;
+- input rows present: pass, `1,636`;
+- variants tested: pass, `2,376`;
+- all variants use full top-five depth: pass, `2,376`;
+- all variants use depth beyond L1: pass, `2,376`;
+- cost stack applied: pass;
+- no replay/promotion/paper-live: pass.
+
+Phase256 outputs:
+
+- `outputs/phase256/phase256_strategy_variant_results.csv`;
+- `outputs/phase256/phase256_top_strategy_variants.csv`;
+- `outputs/phase256/phase256_survivor_trade_ledger.csv`;
+- `outputs/phase256/phase256_gate_evaluation.csv`;
+- `outputs/phase256/phase256_acceptance_summary.csv`;
+- `outputs/phase256/phase256_richer_raw_top5_depth_cost_aware_strategy_search_report.md`;
+- `outputs/phase256/phase256_richer_raw_top5_depth_cost_aware_strategy_search_manifest.json`.
+
+Current Phase149 evidence after Phase256:
+
+- synthetic strategy-discovery branch status: `richer_raw_top5_depth_taker_search_no_survivor_interpretation_open`;
+- real receive-flow source branch status: `richer_raw_top5_depth_taker_search_no_survivor_interpretation_open`;
+- next best action: `run_phase257_richer_raw_top5_depth_strategy_search_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
