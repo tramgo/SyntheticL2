@@ -10330,6 +10330,75 @@ Current Phase149 evidence after Phase259:
 
 ---
 
+## 24.86 Phase260 Passive Queue-aware Spread-capture Interpretation Completed
+
+Phase260 interprets the Phase259 passive/queue-aware spread-capture training search. Phase259 produced a few sparse base-charge positive variants but no research survivor. Phase260 therefore closes the Phase259 candidate set for promotion, while keeping the broader passive route open for one repair/broaden precommit because full top-five depth signal quality has not been invalidated.
+
+Phase260 does not download data, run replay execution, promote a strategy, open paper/live acceptance or make a deployable profitability claim.
+
+Phase260 interpreted evidence:
+
+- Phase259 variants interpreted: `3,888`;
+- Phase259 full-depth variants interpreted: `3,888`;
+- Phase259 variants positive at `1.0x` charges: `6`;
+- Phase259 variants positive at `2.0x` charges: `0`;
+- Phase259 survivors: `0`;
+- best Phase259 opportunity rows: `1`;
+- Phase259 candidates closed for promotion: `1`;
+- full passive route closed: `0`;
+- full top-five depth preserved: `1`.
+
+Phase260 failure-mode interpretation:
+
+- `base_charge_edge_sparse`: Phase259 had sparse base-charge edge, but the best variant had only `1` opportunity and `1` symbol;
+- `cost_stress_failure`: no variants were positive at `1.5x` or `2.0x` charges;
+- `no_survivor_after_controls`: survivor candidate rows were `0`;
+- `opportunity_surface_too_sparse`: the opportunity surface is too narrow under the first passive filter design;
+- `full_depth_route_not_invalidated`: every Phase259 variant used full top-five depth and levels 2-5.
+
+Phase260 selected next route:
+
+- selected route: `P260_PASSIVE_OPPORTUNITY_BREADTH_AND_FILL_MODEL_REPAIR_PRECOMMIT`;
+- next executable milestone: `run_phase261_passive_opportunity_breadth_fill_model_repair_precommit_full_top5_depth_no_paper_live`.
+
+Phase261 route contract:
+
+- input: `outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet`;
+- depth requirement: levels 1 through 5 required; L1-only candidates remain forbidden;
+- repair 1: separate opportunity filtering from fill-probability scoring;
+- repair 2: calibrate a fill-probability grid instead of using one fixed formula;
+- repair 3: broaden spread and replenishment thresholds while retaining queue-adversity controls;
+- controls: random-side, side-flip, cost-stress, queue-adversity and non-fill stress;
+- forbidden output: paper/live acceptance or deployable profitability claim.
+
+Phase260 gates:
+
+- Phase259 work order present: pass;
+- Phase259 search executed: pass, `3,888`;
+- no survivor recognized: pass, `0`;
+- full depth preserved: pass, `3,888 / 3,888`;
+- promotion closed: pass;
+- next route selected: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase260 outputs:
+
+- `outputs/phase260/phase260_failure_mode_ledger.csv`;
+- `outputs/phase260/phase260_decision_ledger.csv`;
+- `outputs/phase260/phase260_next_route_contract.csv`;
+- `outputs/phase260/phase260_gate_evaluation.csv`;
+- `outputs/phase260/phase260_acceptance_summary.csv`;
+- `outputs/phase260/phase260_passive_queue_aware_spread_capture_interpretation_report.md`;
+- `outputs/phase260/phase260_passive_queue_aware_spread_capture_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase260:
+
+- synthetic strategy-discovery branch status: `passive_opportunity_breadth_fill_model_repair_precommit_open`;
+- real receive-flow source branch status: `passive_opportunity_breadth_fill_model_repair_precommit_open`;
+- next best action: `run_phase261_passive_opportunity_breadth_fill_model_repair_precommit_full_top5_depth_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,21 @@
+metric,value,description
+phase260_interpretation_complete,1,Phase260 passive search interpretation completed
+phase260_phase259_variant_rows,3888,Phase259 variants interpreted
+phase260_phase259_full_depth_variant_rows,3888,Full-depth variants interpreted
+phase260_phase259_cost100_positive_variant_rows,6,Phase259 variants positive at base charges
+phase260_phase259_cost200_positive_variant_rows,0,Phase259 variants positive at 2x charges
+phase260_phase259_survivor_candidate_rows,0,Phase259 survivors
+phase260_phase259_best_opportunity_rows,1,Best Phase259 opportunity rows
+phase260_close_phase259_for_promotion,1,Close Phase259 candidates for promotion
+phase260_full_passive_route_closed,0,Do not fully close passive route yet
+phase260_full_top_five_depth_preserved,1,Preserve full top-five depth
+phase260_selected_next_route,P260_PASSIVE_OPPORTUNITY_BREADTH_AND_FILL_MODEL_REPAIR_PRECOMMIT,Selected next route
+phase260_next_route_contract_rows,7,Next route contract rows
+phase260_hard_gate_pass_rows,7,Hard gates passed
+phase260_hard_gate_rows,7,Hard gates evaluated
+phase260_download_more_dates_now_allowed,0,No new download in Phase260
+phase260_replay_execution_allowed_now,0,No replay execution in Phase260
+phase260_strategy_promotion_allowed,0,No strategy promotion from Phase260
+phase260_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase260
+phase260_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase260
+phase260_next_best_action,run_phase261_passive_opportunity_breadth_fill_model_repair_precommit_full_top5_depth_no_paper_live,Recommended next milestone

@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_first_passive_search_for_promotion,1,survivors=0,Do not promote Phase259 candidates
+do_not_close_full_passive_route_yet,1,positive_1x=6; positive_2x=0,Sparse base edge justifies one repair/broaden pass
+preserve_full_top_five_depth_surface,1,full_depth=3888; variants=3888,Full top-five depth remains mandatory
+repair_opportunity_breadth_required,1,best opportunity and symbol breadth are too small,Broaden passive opportunity surface before next search
+repair_fill_model_required,1,fill-equivalent rows are too sparse,Separate opportunity generation from fill-probability model
+selected_next_route,P260_PASSIVE_OPPORTUNITY_BREADTH_AND_FILL_MODEL_REPAIR_PRECOMMIT,passive repair/broaden route,Next materially different action

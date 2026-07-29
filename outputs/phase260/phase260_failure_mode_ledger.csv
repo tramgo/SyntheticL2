@@ -1,0 +1,6 @@
+failure_mode,evidence,severity,closed_or_requires_repair
+base_charge_edge_sparse,positive_1x=6; best_1x=7.249843402049745; best_opportunities=1; best_symbols=1,hard,1
+cost_stress_failure,positive_1p5=0; positive_2x=0; best_2x=-75.43135659795024,hard,1
+no_survivor_after_controls,survivors=0,hard,1
+opportunity_surface_too_sparse,nonzero_variant_rows=3096; total_variants=3888,medium,0
+full_depth_route_not_invalidated,all Phase259 variants used full top-five depth and levels 2-5,important_context,0

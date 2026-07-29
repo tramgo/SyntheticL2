@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P260_PHASE259_WORK_ORDER_PRESENT,True,run_phase260_passive_queue_aware_spread_capture_interpretation_no_paper_live,Phase259 next action targets Phase260,hard
+P260_PHASE259_SEARCH_EXECUTED,True,3888,>0 Phase259 variants,hard
+P260_NO_SURVIVOR_RECOGNIZED,True,0,0 Phase259 survivors,hard
+P260_FULL_DEPTH_PRESERVED,True,3888/3888,all interpreted variants used full top-five depth,hard
+P260_PROMOTION_CLOSED,True,1,no promotion from Phase259,hard
+P260_NEXT_ROUTE_SELECTED,True,P260_PASSIVE_OPPORTUNITY_BREADTH_AND_FILL_MODEL_REPAIR_PRECOMMIT,repair/broaden contract written,hard
+P260_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

@@ -185,6 +185,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 258,outputs\phase258,True,8,outputs\phase258\phase258_acceptance_summary.csv,outputs\phase258\phase258_passive_queue_aware_spread_capture_precommit_manifest.json,False
 259,outputs\phase259,True,7,outputs\phase259\phase259_acceptance_summary.csv,outputs\phase259\phase259_passive_queue_aware_spread_capture_training_search_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
+260,outputs\phase260,True,7,outputs\phase260\phase260_acceptance_summary.csv,outputs\phase260\phase260_passive_queue_aware_spread_capture_interpretation_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False
 29,outputs\phase29,True,8,,outputs\phase29\phase29_partial_strategy_proxy_replay_manifest.json,False

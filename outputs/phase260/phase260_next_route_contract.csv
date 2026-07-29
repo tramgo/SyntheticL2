@@ -1,0 +1,8 @@
+contract_id,contract_value,description
+P261_INPUT,outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet,Use existing compact raw top-five depth event bars; no new download required
+P261_DEPTH_REQUIREMENT,levels_1_to_5_required,Use full Zerodha top-five market-by-price book; L1-only candidates remain forbidden
+P261_REPAIR_1,separate_opportunity_filter_from_fill_probability,Avoid filtering away most passive opportunities before fill model scores them
+P261_REPAIR_2,calibrate_fill_probability_grid,Search conservative fill haircuts and non-fill rates rather than one fixed formula
+P261_REPAIR_3,broaden_spread_and_replenishment_thresholds,Broaden opportunity count while retaining queue-adversity controls
+P261_CONTROLS,random_side;side_flip;cost_stress;queue_adversity;nonfill_stress,Controls required before any candidate can survive
+P261_FORBIDDEN,paper_live_or_deployable_profitability_claim,No paper/live acceptance or deployable profitability claim
