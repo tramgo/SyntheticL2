@@ -1,0 +1,14 @@
+{
+  "generated_utc": "2026-07-29T08:42:48.388257+00:00",
+  "target_trade_dates": [
+    "2026-07-20"
+  ],
+  "listed_trade_dates": [
+    "2026-07-20"
+  ],
+  "listed_date_count": 1,
+  "target_date_count": 1,
+  "listed_remote_files": 50421,
+  "listed_remote_bytes": 1773570501,
+  "elapsed_seconds": 71.98677396774292
+}

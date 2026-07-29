@@ -1,0 +1,25 @@
+metric,value,description
+phase246_fresh_one_date_holdout_diagnostic_complete,1,Phase246 one-date fresh holdout diagnostic completed
+phase246_trade_date,2026-07-20,Fresh unseen real date used
+phase246_requested_policy,one_new_date_first,Storage/download policy selected
+phase246_candidate_id,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9,Frozen Phase244 candidate
+phase246_parameter_tuning_used,0,No Phase246 parameter tuning
+phase246_raw_symbol_dirs,32,Raw symbol directories represented
+phase246_raw_parquet_files,50421,Raw parquet files represented
+phase246_source_feature_rows_15s,48095,15-second source feature rows materialized
+phase246_real_event_bar_rows,4832,Phase235-compatible event bars materialized
+phase246_trade_rows,9,Frozen candidate trades selected
+phase246_net_pnl_inr,645.9481647866867,One-date diagnostic net P&L after costs
+phase246_symbols,9,Symbols represented in selected trades
+phase246_control_pass_rows,2,Controls passed
+phase246_control_rows,4,Controls evaluated
+phase246_diagnostic_gate_pass_rows,1,Diagnostic gates passed
+phase246_diagnostic_gate_rows,4,Diagnostic gates evaluated
+phase246_hard_gate_pass_rows,7,Hard gates passed
+phase246_hard_gate_rows,7,Hard gates evaluated
+phase246_one_date_diagnostic_candidate_survived,0,One-date diagnostic survived; still not acceptance
+phase246_full_acceptance_allowed,0,One-date diagnostic cannot satisfy full acceptance
+phase246_strategy_promotion_allowed,0,No strategy promotion from Phase246
+phase246_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase246
+phase246_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase246
+phase246_next_best_action,close_or_redesign_phase244_candidate_after_phase246_one_date_failure_no_more_downloads_no_paper_live,Recommended next milestone

@@ -9229,6 +9229,100 @@ Current Phase149 evidence after Phase245:
 
 ---
 
+## 24.72 Phase246 Fresh One-date Holdout Diagnostic Completed
+
+Phase246 follows the disk-conscious one-new-date-first policy. It downloads only `2026-07-20`, replays the frozen Phase244 candidate without tuning, and treats the result as an early-falsification diagnostic rather than acceptance.
+
+Fresh raw L2 download evidence for `2026-07-20`:
+
+- remote files listed: `50,421`;
+- remote bytes listed: `1,773,570,501`;
+- symbols listed: `32`;
+- completed files: `50,421`;
+- failed files: `0`;
+- completed bytes: `1,773,570,501`.
+
+Frozen Phase244 candidate replayed:
+
+- candidate id: `P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9`;
+- trade date: `2026-07-20`;
+- parameter tuning used: `0`;
+- source feature rows at 15-second horizon: `48,095`;
+- real event-bar rows: `4,832`;
+- raw parquet files represented: `50,421`;
+- raw symbol directories represented: `32`.
+
+Phase246 diagnostic result:
+
+- selected frozen-candidate trades: `9`;
+- selected-trade symbols: `9`;
+- net P&L after modeled costs: `645.9481647866867 INR`;
+- gross P&L: `1,772.9728236892784 INR`;
+- cost drag: `1,127.0246589025917 INR`;
+- positive-symbol count: `4`;
+- precision cost-clear rate: `0.4444444444444444`;
+- max absolute symbol contribution / net P&L: `0.7027983267309629`.
+
+Phase246 controls:
+
+- side-flip control: pass, flipped net P&L `-2,899.99748259187 INR`;
+- random-side control: fail, random beat fraction `0.939` versus required `0.95`;
+- 1.5x cost stress: pass, net P&L `82.43583533539083 INR`;
+- 2.0x cost stress: fail, net P&L `-481.076494115905 INR`;
+- controls passed: `2 / 4`.
+
+Phase246 diagnostic gates:
+
+- net positive after costs: pass;
+- minimum trades: fail, `9` observed versus `20` required;
+- minimum symbols: fail, `9` observed versus `10` required;
+- controls: fail, `2 / 4` observed versus `4 / 4` required;
+- diagnostic gates passed: `1 / 4`;
+- hard gates passed: `7 / 7`.
+
+Phase246 verdict:
+
+- the frozen Phase244 bar-return-reversal candidate does not survive the one fresh-date diagnostic;
+- the positive headline P&L is not enough because breadth, 2.0x cost stress and random-side discrimination failed;
+- no additional dates should be downloaded for this frozen candidate;
+- no strategy promotion, paper/live acceptance or deployable profitability claim is allowed;
+- next best action: `close_or_redesign_phase244_candidate_after_phase246_one_date_failure_no_more_downloads_no_paper_live`.
+
+This result reinforces the design risk that a large bar can be trend continuation or news-driven flow rather than mean-reversion. The next redesign should not use bar-return reversal alone. It should combine:
+
+- bar-return reversal;
+- top-five market-by-price depth imbalance;
+- spread/liquidity guard;
+- volume or trade-intensity filter;
+- recent volatility/range-regime filter;
+- market-index direction veto where available;
+- and the existing modeled Zerodha brokerage, taxes, spread/slippage and cost-stress controls.
+
+Phase246 outputs:
+
+- `outputs/phase246/download_2026-07-20/phase240_remote_file_manifest.csv`;
+- `outputs/phase246/download_2026-07-20/phase240_download_file_ledger.csv`;
+- `outputs/phase246/download_2026-07-20/phase240_download_date_summary.csv`;
+- `outputs/phase246/download_2026-07-20/phase240_acceptance_summary.csv`;
+- `outputs/phase246/phase246_source_features_15s.parquet`;
+- `outputs/phase246/phase246_real_event_bars.parquet`;
+- `outputs/phase246/phase246_labeled_real_event_bars.parquet`;
+- `outputs/phase246/phase246_trade_ledger.csv`;
+- `outputs/phase246/phase246_diagnostic_summary.csv`;
+- `outputs/phase246/phase246_symbol_inventory.csv`;
+- `outputs/phase246/phase246_control_summary.csv`;
+- `outputs/phase246/phase246_gate_evaluation.csv`;
+- `outputs/phase246/phase246_acceptance_summary.csv`;
+- `outputs/phase246/phase246_fresh_one_date_holdout_diagnostic_report.md`;
+- `outputs/phase246/phase246_fresh_one_date_holdout_diagnostic_manifest.json`.
+
+Current Phase149 evidence after Phase246:
+
+- synthetic strategy-discovery branch status: `phase244_candidate_failed_one_fresh_date_diagnostic_redesign_required`;
+- next best action: `close_or_redesign_phase244_candidate_after_phase246_one_date_failure_no_more_downloads_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

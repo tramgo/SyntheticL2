@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P246_ONE_NEW_DATE_POLICY_SELECTED,True,one_new_date_first,one_new_date_first,hard
+P246_FORBIDDEN_TUNING_DATE_EXCLUDED,True,2026-07-20,not 2026-07-17,hard
+P246_RAW_L2_PRESENT,True,50421,>0 raw parquet files,hard
+P246_EVENT_BARS_MATERIALIZED,True,4832,>0 event bars,hard
+P246_FROZEN_PHASE244_CANDIDATE_REPLAYED,True,9,>=1 frozen-candidate trade,hard
+P246_DIAGNOSTIC_NET_POSITIVE,True,645.9481647866867,>0 net P&L after modeled costs,diagnostic
+P246_DIAGNOSTIC_MIN_TRADES,False,9,>=20 trades,diagnostic
+P246_DIAGNOSTIC_MIN_SYMBOLS,False,9,>=10 symbols,diagnostic
+P246_DIAGNOSTIC_CONTROLS,False,2/4,4/4 controls,diagnostic
+P246_FULL_ACCEPTANCE_CLOSED_ONE_DATE_ONLY,True,1,1,hard
+P246_NO_TUNING_PROMOTION_PAPER_OR_LIVE,True,0,0,hard
