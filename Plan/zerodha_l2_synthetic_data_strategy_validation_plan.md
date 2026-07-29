@@ -9894,6 +9894,86 @@ Current Phase149 evidence after Phase253:
 
 ---
 
+## 24.80 Phase254 Richer Raw Top-five Depth Event-bar Materialization Completed
+
+Phase254 materializes compact richer event bars directly from existing local raw Zerodha WebSocket top-five market-by-price parquet. It reads explicit buy/sell levels 1 through 5 price, quantity and order-count fields, carries modeled Zerodha cost-floor fields and does not download data, execute a replay, promote a strategy, open paper/live acceptance or claim profitability.
+
+Phase254 scope note:
+
+- this is the first bounded raw-depth materialization shard, not a full multi-day raw-depth rollout;
+- raw root used: `real_data_sample/l2_single_day`;
+- source parquet shard cap: `100` files per symbol;
+- source parquet files read: `3,200`;
+- invalid crossed/locked/nonpositive/missing raw ticks excluded before aggregation: `4`;
+- receive events per richer event bar: `20`.
+
+Phase254 materialized evidence:
+
+- richer raw-depth event bars: `1,636`;
+- trade dates represented: `1`;
+- symbols represented: `32`;
+- source raw tick rows represented after invalid-tick exclusion: `32,426`;
+- training-allowed event-bar rows: `1,636`;
+- crossed/locked tick rows in materialized output: `0`;
+- nonpositive full-depth rows in materialized output: `0`;
+- missing level rows in materialized output: `0`;
+- mean event-bar spread: `2.844399420582611 bps`;
+- median event-bar spread: `2.6725913756795983 bps`;
+- mean cumulative top-five imbalance: `-0.01526043138112327`;
+- mean depth-beyond-L1 imbalance: `-0.005222969536552238`.
+
+Phase254 richer features now materialized:
+
+- L1 mid and spread;
+- per-level L1-L5 buy/sell quantity and order-count-derived depth;
+- cumulative top-five buy/sell quantity and order count;
+- cumulative top-five quantity imbalance;
+- levels 2-5 depth-beyond-L1 imbalance;
+- level-weighted depth imbalance;
+- bid/ask slope and convexity;
+- order-count imbalance;
+- average visible quantity per order;
+- receive-order quantity/order/price churn and transition proxies;
+- replenishment and withdrawal pressure;
+- future mid-return labels for horizons 3, 6 and 10 event bars;
+- modeled Zerodha round-trip charge and taker cost-floor bps.
+
+Phase254 gates:
+
+- Phase253 work order present: pass;
+- event bars materialized: pass, `1,636`;
+- first real-date output present: pass, `1`;
+- symbol breadth: pass, `32`;
+- source tick counts retained: pass, `32,426`;
+- raw-depth quality pass after invalid-tick exclusion: pass;
+- cost fields carried: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase254 verdict:
+
+- a compact richer raw top-five depth event-bar product now exists;
+- the product is bounded but real, schema-valid and quality-gated;
+- no strategy search or replay should start until Phase255 interprets feature quality and decides whether to scale the shard or open a richer-depth search;
+- next best action: `run_phase255_richer_raw_depth_feature_quality_interpretation_no_replay_no_paper_live`.
+
+Phase254 outputs:
+
+- `outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet`;
+- `outputs/phase254/phase254_daily_quality_summary.csv`;
+- `outputs/phase254/phase254_symbol_feature_summary.csv`;
+- `outputs/phase254/phase254_gate_evaluation.csv`;
+- `outputs/phase254/phase254_acceptance_summary.csv`;
+- `outputs/phase254/phase254_richer_raw_top5_depth_event_bar_materialization_report.md`;
+- `outputs/phase254/phase254_richer_raw_top5_depth_event_bar_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase254:
+
+- synthetic strategy-discovery branch status: `richer_raw_top5_depth_materialized_quality_interpretation_open`;
+- real receive-flow source branch status: `richer_raw_top5_depth_materialized_quality_interpretation_open`;
+- next best action: `run_phase255_richer_raw_depth_feature_quality_interpretation_no_replay_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

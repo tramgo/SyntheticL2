@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P254_PHASE253_WORK_ORDER_PRESENT,True,run_phase254_materialize_richer_raw_top5_depth_event_bars_existing_raw_only_no_paper_live,Phase253 next action targets Phase254,hard
+P254_EVENT_BARS_MATERIALIZED,True,1636.0,>0 richer raw-depth event bars,hard
+P254_REAL_DATE_OUTPUT,True,1.0,>=1 real trade date for first richer-depth materialization,hard
+P254_SYMBOL_BREADTH,True,32.0,>=20 symbols,hard
+P254_SOURCE_TICK_COUNTS_RETAINED,True,32426.0,>0 source ticks represented,hard
+P254_RAW_DEPTH_QUALITY_PASS,True,crossed=0.0;missing=0.0,0 crossed/locked and 0 missing level rows,hard
+P254_COST_FIELDS_CARRIED,True,zerodha_round_trip_charge_bps;taker_round_trip_cost_floor_bps,cost floor fields present,hard
+P254_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

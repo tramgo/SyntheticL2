@@ -175,6 +175,7 @@ phase,runner,runner_exists,runner_suffix
 251,scripts\run_phase251_pair_basket_relative_value_search.py,True,.py
 252,scripts\run_phase252_close_or_broaden_after_pair_basket_no_survivor.py,True,.py
 253,scripts\run_phase253_richer_raw_top5_depth_feature_materialization_precommit.py,True,.py
+254,scripts\run_phase254_materialize_richer_raw_top5_depth_event_bars.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py

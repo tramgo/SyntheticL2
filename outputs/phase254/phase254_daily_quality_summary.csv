@@ -1,0 +1,2 @@
+trade_date,event_bar_rows,symbols,source_tick_rows,mean_spread_bps,crossed_or_locked_tick_rows,nonpositive_depth_tick_rows,missing_level_tick_rows
+2026-07-13,1636,32,32426,2.844399420582611,0,0,0

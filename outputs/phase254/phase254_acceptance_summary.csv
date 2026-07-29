@@ -1,0 +1,27 @@
+metric,value,description
+phase254_richer_raw_depth_materialization_complete,1,Phase254 richer raw-depth event-bar materialization completed
+phase254_raw_root_used,real_data_sample\l2_single_day,Existing local raw root used
+phase254_events_per_bar,20,Receive events per richer raw-depth event bar
+phase254_max_files_per_symbol,100,Bounded raw parquet files read per symbol
+phase254_source_parquet_files_read,3200,Source raw parquet shards read
+phase254_excluded_invalid_source_tick_rows,4,Invalid crossed/locked/nonpositive/missing raw ticks excluded before aggregation
+phase254_event_bar_rows,1636,Materialized richer event bars
+phase254_trade_dates,1,Trade dates represented
+phase254_symbols,32,Symbols represented
+phase254_source_tick_rows,32426,Source raw tick rows represented
+phase254_training_allowed_event_bar_rows,1636,Rows allowed for downstream training selection
+phase254_crossed_or_locked_tick_rows,0,Crossed/locked source tick rows
+phase254_nonpositive_depth_tick_rows,0,Nonpositive full-depth source rows
+phase254_missing_level_tick_rows,0,Rows missing required level fields
+phase254_mean_spread_bps,2.844399420582611,Mean event-bar spread bps
+phase254_median_spread_bps,2.6725913756795983,Median event-bar spread bps
+phase254_mean_top5_imbalance,-0.01526043138112327,Mean cumulative top-five imbalance
+phase254_mean_depth_beyond_l1_imbalance,-0.005222969536552238,Mean depth-beyond-L1 imbalance
+phase254_hard_gate_pass_rows,8,Hard gates passed
+phase254_hard_gate_rows,8,Hard gates evaluated
+phase254_download_more_dates_now_allowed,0,No raw-date download in Phase254
+phase254_replay_execution_allowed_now,0,No replay execution in Phase254
+phase254_strategy_promotion_allowed,0,No strategy promotion from Phase254
+phase254_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase254
+phase254_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase254
+phase254_next_best_action,run_phase255_richer_raw_depth_feature_quality_interpretation_no_replay_no_paper_live,Recommended next milestone
