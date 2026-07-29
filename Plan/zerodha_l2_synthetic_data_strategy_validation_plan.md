@@ -8091,6 +8091,98 @@ Current Phase149 evidence after Phase230:
 
 ---
 
+## 24.57 Phase231 Material New Strategy Forms Completed
+
+Phase231 is the first continuation milestone in this shard to move from negative strategy variants to positive synthetic candidates. It executes materially new, longer-horizon event-bar strategy forms after Phase230 showed that filtering, lowering turnover and inverting the old Phase164 tick-signal family could not clear realistic modeled costs.
+
+Phase231 inputs:
+
+- Phase92 event-window features: `outputs/phase92/low_turnover_event_window_features.parquet`;
+- Phase83 stratified source event bars: `outputs/phase83/stratified_source_event_bars.parquet`;
+- Phase230 acceptance summary: `outputs/phase230/phase230_strategy_search_acceptance_summary.csv`.
+
+Phase231 strategy families:
+
+- event-bar continuation;
+- event-bar reversal;
+- top-five market-by-price imbalance continuation;
+- top-five market-by-price imbalance reversal;
+- microprice continuation;
+- microprice reversal.
+
+Phase231 search design:
+
+- train months: January through June 2026;
+- test months: July through December 2026;
+- holding horizons: 3, 6 and 12 event bars;
+- thresholds: train-split quantiles `0.90`, `0.95`, `0.975`, `0.99`;
+- cost model: existing Zerodha-style event-window cost floor;
+- order notional: `100000` INR;
+- no generator profit tuning.
+
+Phase231 outputs:
+
+- `outputs/phase231/phase231_candidate_catalog.csv`;
+- `outputs/phase231/phase231_candidate_summary.csv`;
+- `outputs/phase231/phase231_family_summary.csv`;
+- `outputs/phase231/phase231_trade_ledger.csv`;
+- `outputs/phase231/phase231_gate_evaluation.csv`;
+- `outputs/phase231/phase231_acceptance_summary.csv`;
+- `outputs/phase231/phase231_material_new_strategy_forms_report.md`;
+- `outputs/phase231/phase231_material_new_strategy_forms_manifest.json`.
+
+Phase231 results:
+
+- event-bar rows scanned: 160,150;
+- candidate strategy forms replayed: 72;
+- selected candidate trade rows: 50,020;
+- train-pass candidates: 7;
+- test-pass candidates: 8;
+- train+test synthetic candidate rows: 3.
+
+Best Phase231 candidate:
+
+- candidate id: `P231_MICROPRICE_REVERSAL_H3_Q0_9`;
+- family id: `P231_MICROPRICE_REVERSAL`;
+- train net P&L: `353034.6899132213`;
+- test net P&L: `229962.8071718807`;
+- test precision cost-clear fraction: `0.5972602739726027`.
+
+Other candidate evidence:
+
+- `P231_MICROPRICE_REVERSAL` produced 2 train+test synthetic candidates;
+- `P231_L5_IMBALANCE_REVERSAL` produced 1 train+test synthetic candidate;
+- `P231_EVENT_REVERSAL` had strong test P&L in several rows but failed train gates, so it is not a Phase231 synthetic candidate.
+
+Phase231 gates:
+
+- Phase230 handoff confirmed: pass;
+- material-new candidates replayed: pass;
+- train-pass candidates found: pass;
+- test-pass candidates found: pass;
+- synthetic candidates found: pass.
+
+Current interpretation: dense one-tick/tick-level scalping-style forms remain cost-dominated, but longer-horizon event-bar microprice reversal and top-five market-by-price imbalance reversal now produce positive synthetic train+test candidates under the current synthetic event-bar cost floor. These are research candidates only. They require stricter holdout, negative controls, fragility checks, and eventually real-anchor validation before any promotion, paper/live acceptance, or deployable profitability claim.
+
+Phase231 boundaries:
+
+- strategy promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- next best action: `run_phase232_validate_phase231_candidates_on_stricter_holdout_and_negative_controls_no_paper_live`.
+
+Current Phase149 evidence after Phase231:
+
+- phase rows discovered: 224;
+- runner phase rows: 222;
+- acceptance phase rows: 174;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `material_new_strategy_forms_positive_synthetic_candidates_found`;
+- next best action: `run_phase232_validate_phase231_candidates_on_stricter_holdout_and_negative_controls_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

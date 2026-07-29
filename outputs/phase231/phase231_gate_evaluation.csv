@@ -1,0 +1,6 @@
+gate_id,passed,observed_value,required_value,interpretation
+P231_PHASE230_HANDOFF_CONFIRMED,True,0,0 positive Phase230 expanded groups,Phase231 is justified by Phase230 failure of old signal variants.
+P231_MATERIAL_NEW_CANDIDATES_REPLAYED,True,72,>=18 candidates,Materially new event-bar strategy forms were replayed.
+P231_TRAIN_PASS_CANDIDATES_FOUND,True,7,>0 train-pass candidates,At least one new candidate clears train economics and breadth gates.
+P231_TEST_PASS_CANDIDATES_FOUND,True,8,>0 test-pass candidates,At least one new candidate clears test economics and breadth gates.
+P231_SYNTHETIC_CANDIDATES_FOUND,True,3,>0 train+test pass candidates,"Positive synthetic candidates exist, subject to stricter holdout and realism checks before any promotion."

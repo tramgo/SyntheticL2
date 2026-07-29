@@ -154,6 +154,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 229,outputs\phase229,True,7,outputs\phase229\phase229_strategy_search_acceptance_summary.csv,outputs\phase229\phase229_multi_strategy_profitability_search_manifest.json,False
 23,outputs\phase23,True,6,,outputs\phase23\phase23_key_risk_register_manifest.json,False
 230,outputs\phase230,True,7,outputs\phase230\phase230_strategy_search_acceptance_summary.csv,outputs\phase230\phase230_low_turnover_high_edge_strategy_search_manifest.json,False
+231,outputs\phase231,True,8,outputs\phase231\phase231_acceptance_summary.csv,outputs\phase231\phase231_material_new_strategy_forms_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False

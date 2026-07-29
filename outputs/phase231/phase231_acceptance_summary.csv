@@ -1,0 +1,17 @@
+metric,value,description
+phase231_material_new_strategy_forms_complete,1,Phase231 replay completed
+phase231_event_bar_rows,160150,Event-bar rows scanned
+phase231_candidate_rows,72,Candidate strategy forms replayed
+phase231_trade_ledger_rows,50020,Selected candidate trade rows
+phase231_train_pass_candidates,7,Candidates passing train gates
+phase231_test_pass_candidates,8,Candidates passing test gates
+phase231_synthetic_candidate_rows,3,Candidates passing both train and test gates
+phase231_best_candidate_id,P231_MICROPRICE_REVERSAL_H3_Q0_9,Best candidate by pass status and test P&L
+phase231_best_family_id,P231_MICROPRICE_REVERSAL,Best candidate family
+phase231_best_train_net_pnl_inr,353034.6899132213,Best candidate train net P&L
+phase231_best_test_net_pnl_inr,229962.8071718807,Best candidate test net P&L
+phase231_best_test_precision_cost_clear,0.5972602739726027,Best candidate test precision cost-clear fraction
+phase231_strategy_promotion_allowed,0,No promotion from synthetic candidate search alone
+phase231_paper_or_live_acceptance_allowed,0,No paper/live acceptance from synthetic candidate search alone
+phase231_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic candidate search alone
+phase231_next_best_action,run_phase232_validate_phase231_candidates_on_stricter_holdout_and_negative_controls_no_paper_live,Next validation milestone
