@@ -1,0 +1,12 @@
+required_feature,source_column_or_family,present_in_real_l2_schema,missing_columns,purpose
+receive_order,collector_received_utc_ms,True,,Required to replay websocket receive order and event-bar chronology.
+monotonic_tiebreak,collector_received_monotonic_ns,True,,Required when multiple ticks share the same receive millisecond.
+trade_date,trade_date,True,,Required for day partitioning and holdout split.
+symbol,tradingsymbol,True,,Required for symbol-level event bars.
+last_price,last_price,True,,Required for event-bar close price and return labels.
+volume,volume_traded,True,,Required for volume deltas and event-window intensity.
+level1_bid_price,buy_1_price,True,,Required for mid price and microprice.
+level1_bid_quantity,buy_1_quantity,True,,Required for microprice.
+level1_ask_price,sell_1_price,True,,Required for mid price and microprice.
+level1_ask_quantity,sell_1_quantity,True,,Required for microprice.
+top_five_market_by_price_depth,buy_1_price..buy_5_orders/sell_1_price..sell_5_orders,True,,Required for top-five market-by-price context and book-valid filtering.

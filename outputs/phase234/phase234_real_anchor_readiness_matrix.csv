@@ -1,0 +1,6 @@
+check_id,passed,observed_value,required_value,interpretation
+P234_PHASE233_SYNTHETIC_CANDIDATE_SURVIVED,True,1,Phase233 pass=1,Filled after candidate handoff is built.
+P234_LOCAL_REAL_PARQUET_CATALOG_EXISTS,True,99272,>0 local Parquet files,Download-first real L2 storage is available locally.
+P234_MIN_REAL_RECEIVE_FLOW_DAYS,True,7,>=5 ready receive-flow dates,Enough real days exist for a small real-anchor adapter trial.
+P234_SCHEMA_SUPPORTS_MICROPRICE_REVERSAL,True,11,11 / 11 required schema rows present,Raw real ticks contain the fields needed to compute event bars and microprice reversal inputs.
+P234_EVENT_BAR_ADAPTER_ALREADY_EXISTS,False,0,Phase235 adapter not yet built,Phase234 does not pretend strategy replay already exists on real L2; it creates the next executable adapter work order.

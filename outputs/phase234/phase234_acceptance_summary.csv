@@ -1,0 +1,16 @@
+metric,value,description
+phase234_holdout_preparation_complete,1,Phase234 route preparation completed
+phase234_parent_candidate_id,P231_MICROPRICE_REVERSAL_H3_Q0_9,Candidate carried forward from Phase233
+phase234_phase233_fragility_realism_pass,1,Phase233 survivor pass flag
+phase234_required_schema_rows,11,Required schema mapping rows evaluated
+phase234_required_schema_present_rows,11,Required schema rows present in local real L2 sample
+phase234_real_anchor_route_ready,1,Whether the next best action can use local real L2 adapter preparation
+phase234_selected_route_id,P234_REAL_ANCHOR_EVENT_BAR_ADAPTER_PREP,Selected holdout route
+phase234_phase235_work_order_rows,4,Concrete work-order rows for Phase235
+phase234_hard_gate_pass_rows,6,Hard Phase234 gates passed
+phase234_hard_gate_rows,6,Hard Phase234 gates evaluated
+phase234_strategy_replay_execution_allowed_now,0,Phase234 does not execute strategy replay
+phase234_strategy_promotion_allowed,0,No strategy promotion from Phase234
+phase234_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase234
+phase234_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase234
+phase234_next_best_action,run_phase235_build_real_anchor_event_bar_microprice_reversal_adapter_no_paper_live,Recommended next milestone

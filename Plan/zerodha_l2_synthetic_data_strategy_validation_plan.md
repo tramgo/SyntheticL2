@@ -8361,6 +8361,83 @@ Current Phase149 evidence after Phase233:
 
 ---
 
+## 24.60 Phase234 Real-anchor or Sealed-holdout Preparation Completed
+
+Phase234 converts the profitable synthetic Phase231/232/233 candidate into a concrete next experiment instead of continuing blind shard-by-shard synthetic expansion.
+
+The candidate carried forward remains:
+
+- candidate id: `P231_MICROPRICE_REVERSAL_H3_Q0_9`;
+- family: `P231_MICROPRICE_REVERSAL`;
+- rule: microprice reversal, meaning the replay goes opposite the event-bar average microprice deviation;
+- horizon: 3 event bars;
+- threshold quantile: `0.90`;
+- synthetic test net P&L from Phase232/233: approximately `229962.807172`;
+- synthetic test net P&L under 2x cost drag from Phase233: approximately `179609.71039338846`.
+
+Phase234 inputs:
+
+- Phase232 candidate validation summary: `outputs/phase232/phase232_candidate_validation_summary.csv`;
+- Phase233 acceptance summary and candidate catalog: `outputs/phase233/`;
+- Phase150 real L2 DuckDB/schema catalog: `outputs/phase150/`;
+- Phase172 real receive-flow availability audit: `outputs/phase172/`;
+- Phase142 local real L2 date readiness: `outputs/phase142/local_real_l2_date_readiness.csv`.
+
+Phase234 outputs:
+
+- `outputs/phase234/phase234_candidate_handoff.csv`;
+- `outputs/phase234/phase234_required_schema_mapping.csv`;
+- `outputs/phase234/phase234_real_anchor_readiness_matrix.csv`;
+- `outputs/phase234/phase234_holdout_route_decision.csv`;
+- `outputs/phase234/phase234_phase235_work_order.csv`;
+- `outputs/phase234/phase234_gate_evaluation.csv`;
+- `outputs/phase234/phase234_acceptance_summary.csv`;
+- `outputs/phase234/phase234_holdout_preparation_report.md`;
+- `outputs/phase234/phase234_holdout_preparation_manifest.json`.
+
+Phase234 readiness result:
+
+- Phase233 survivor pass: `1`;
+- local real Parquet files cataloged: `99,272`;
+- real receive-flow dates ready: `7`;
+- required schema rows present: `11 / 11`;
+- hard Phase234 gates: `6 / 6` passed;
+- selected route: `P234_REAL_ANCHOR_EVENT_BAR_ADAPTER_PREP`;
+- Phase235 work-order rows: `4`.
+
+Important terminology note carried forward: the real schema supports Zerodha websocket top-five market-by-price depth, not a universal exchange “L5” market-data level. The required fields are buy/sell levels 1 through 5 with price, quantity and order-count columns. Phase234 therefore describes the next adapter as using top-five market-by-price depth and L1 microprice, not as using vendor-independent “L5 data.”
+
+Phase234 route decision:
+
+The next best experiment should use local downloaded real Zerodha-websocket-like L2 ticks first. The real data now has enough local receive-flow dates and the exact schema columns needed to compute the frozen candidate inputs: receive-order sorting, per-symbol/day event bars, L1 mid/microprice, average microprice deviation, event-window score and 3-event-bar forward close-mid returns. A sealed synthetic-generator holdout remains the fallback only if Phase235 fails to materialize or audit these real-anchor event bars.
+
+Phase235 work order:
+
+1. materialize real event bars from local Parquet by date/symbol, sorted by `collector_received_utc_ms` and `collector_received_monotonic_ns`;
+2. compute microprice-reversal features, including mid price, L1 microprice, `avg_microprice_dev`, event-window score and 3-event-bar forward returns;
+3. run a train-free dry real-anchor replay using the frozen Phase233 thresholds and Zerodha equity intraday NSE cost model;
+4. run side-flip, random-side, cost-stress, date/symbol concentration and stale-feed exclusion controls before deciding whether to continue, redesign or close.
+
+Phase234 boundaries:
+
+- strategy replay execution allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase235_build_real_anchor_event_bar_microprice_reversal_adapter_no_paper_live`.
+
+Current Phase149 evidence after Phase234:
+
+- phase rows discovered: 227;
+- runner phase rows: 225;
+- acceptance phase rows: 177;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `phase233_candidate_prepared_for_real_anchor_adapter`;
+- next best action: `run_phase235_build_real_anchor_event_bar_microprice_reversal_adapter_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
