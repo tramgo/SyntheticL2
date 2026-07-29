@@ -153,6 +153,7 @@ phase,runner,runner_exists,runner_suffix
 230,scripts\run_phase230_low_turnover_high_edge_strategy_search.py,True,.py
 231,scripts\run_phase231_material_new_strategy_forms.py,True,.py
 232,scripts\run_phase232_validate_phase231_candidates.py,True,.py
+233,scripts\run_phase233_fragility_realism_validation.py,True,.py
 23,scripts\run_phase23_key_risk_register.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py

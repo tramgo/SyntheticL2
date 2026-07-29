@@ -1,0 +1,6 @@
+gate_id,passed,observed_value,required_value,interpretation
+P233_PHASE232_SURVIVOR_AVAILABLE,True,1,>0 Phase232 validated candidates,Phase233 has a validated synthetic candidate to stress.
+P233_PARENT_REPLAY_STILL_PASSES,True,1,1,Parent candidate still passes under the Phase233 recomputation path.
+P233_PARAMETER_NEIGHBORHOOD_HAS_SURVIVORS,True,7,>=2 passing neighbor cells,Candidate should not be a single-cell threshold/horizon accident.
+P233_TEST_2X_COST_STRESS_PASS,True,1,1,Parent test split remains positive under 2x cost drag.
+P233_TEST_FEED_AND_REGIME_BREADTH_PASS,True,feed_positive=5;regime_positive=5,>=1 feed profile and >=2 regime slices positive,Candidate should not depend on exactly one synthetic regime slice.

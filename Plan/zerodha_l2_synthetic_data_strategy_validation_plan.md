@@ -8267,6 +8267,100 @@ Current Phase149 evidence after Phase232:
 
 ---
 
+## 24.59 Phase233 Fragility and Realism Validation Completed
+
+Phase233 stresses the single Phase232 survivor, `P231_MICROPRICE_REVERSAL_H3_Q0_9`, across nearby horizons, nearby thresholds, stronger cost multipliers and synthetic realism slices. This phase tests whether the Phase232 survivor is a one-cell accident or a broader synthetic effect.
+
+Phase233 inputs:
+
+- Phase92 event-window features: `outputs/phase92/low_turnover_event_window_features.parquet`;
+- Phase83 stratified source event bars: `outputs/phase83/stratified_source_event_bars.parquet`;
+- Phase232 acceptance summary: `outputs/phase232/phase232_acceptance_summary.csv`;
+- Phase232 candidate validation summary: `outputs/phase232/phase232_candidate_validation_summary.csv`.
+
+Phase233 stress design:
+
+- parent candidate: `P231_MICROPRICE_REVERSAL_H3_Q0_9`;
+- neighbor horizons: `2`, `3`, `4`, `5` event bars;
+- neighbor quantiles: `0.875`, `0.900`, `0.925`;
+- cost multipliers: `1.0`, `1.25`, `1.50`, `2.0`;
+- realism slices: feed profile, regime code, shock bars, market-shock bars and symbol-shock bars.
+
+Phase233 outputs:
+
+- `outputs/phase233/phase233_neighbor_candidate_catalog.csv`;
+- `outputs/phase233/phase233_neighbor_candidate_summary.csv`;
+- `outputs/phase233/phase233_neighbor_trade_ledger.csv`;
+- `outputs/phase233/phase233_cost_multiplier_summary.csv`;
+- `outputs/phase233/phase233_realism_slice_summary.csv`;
+- `outputs/phase233/phase233_gate_evaluation.csv`;
+- `outputs/phase233/phase233_acceptance_summary.csv`;
+- `outputs/phase233/phase233_fragility_realism_validation_report.md`;
+- `outputs/phase233/phase233_fragility_realism_validation_manifest.json`.
+
+Phase233 results:
+
+- Phase232 survivor rows available: 1;
+- parent candidate stressed: `P231_MICROPRICE_REVERSAL_H3_Q0_9`;
+- parameter-neighborhood candidates replayed: 12;
+- passing neighbor rows: 7;
+- parent test net P&L under 2x cost drag: `179609.71039338846`;
+- Phase233 gates passed: 5 / 5;
+- Phase233 fragility/realism pass: 1.
+
+Key neighbor evidence:
+
+- `P233_MICROPRICE_REVERSAL_H4_Q0_875`: test net P&L `393327.395720`;
+- `P233_MICROPRICE_REVERSAL_H3_Q0_875`: test net P&L `376480.548207`;
+- `P233_MICROPRICE_REVERSAL_H4_Q0_9`: test net P&L `231099.781654`;
+- parent recomputation `P233_MICROPRICE_REVERSAL_H3_Q0_9`: test net P&L `229962.807172`;
+- `P233_MICROPRICE_REVERSAL_H5_Q0_875`: test net P&L `193526.799076`;
+- `P233_MICROPRICE_REVERSAL_H3_Q0_925`: test net P&L `180520.836708`;
+- `P233_MICROPRICE_REVERSAL_H4_Q0_925`: test net P&L `160233.481872`.
+
+Phase233 cost-stress evidence for the parent:
+
+- test 1.0x cost net P&L: `229962.807172`;
+- test 1.25x cost net P&L: `217374.532977`;
+- test 1.50x cost net P&L: `204786.258783`;
+- test 2.0x cost net P&L: `179609.71039338846`.
+
+Phase233 realism-slice evidence:
+
+- test feed-profile positive slices: 5;
+- test regime-code positive slices: 5;
+- parent does not depend on exactly one feed profile;
+- parent does not depend on exactly one synthetic regime slice.
+
+Phase233 gates:
+
+- Phase232 survivor available: pass;
+- parent replay still passes: pass;
+- parameter neighborhood has survivors: pass;
+- test 2x cost stress pass: pass;
+- test feed/regime breadth pass: pass.
+
+Current interpretation: the surviving microprice-reversal candidate is not merely a one-threshold or one-horizon synthetic fluke. It remains positive across a neighborhood of related parameters, stays positive under 2x cost drag, and has positive test slices across all feed profiles and multiple regimes. It is still synthetic-only and not paper/live-ready, but it is now strong enough to justify either a real-anchor replay preparation or a sealed-generator holdout.
+
+Phase233 boundaries:
+
+- strategy promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- next best action: `run_phase234_prepare_real_anchor_or_sealed_generator_holdout_for_phase233_candidate_no_paper_live`.
+
+Current Phase149 evidence after Phase233:
+
+- phase rows discovered: 226;
+- runner phase rows: 224;
+- acceptance phase rows: 176;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `phase232_candidate_passed_fragility_realism_validation`;
+- next best action: `run_phase234_prepare_real_anchor_or_sealed_generator_holdout_for_phase233_candidate_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

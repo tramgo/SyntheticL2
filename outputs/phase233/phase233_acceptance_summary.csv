@@ -1,0 +1,14 @@
+metric,value,description
+phase233_fragility_realism_validation_complete,1,Phase233 validation completed
+phase233_phase232_survivor_rows,1,Phase232 validated candidates available
+phase233_parent_candidate_id,P231_MICROPRICE_REVERSAL_H3_Q0_9,Parent Phase232 candidate stressed
+phase233_neighbor_candidate_rows,12,Parameter-neighborhood candidates replayed
+phase233_neighbor_pass_rows,7,Neighbor cells passing train/test stability
+phase233_parent_test_2x_cost_net_pnl_inr,179609.71039338846,Parent test net P&L under 2x cost drag
+phase233_gate_pass_rows,5,Phase233 gates passed
+phase233_gate_rows,5,Phase233 gates evaluated
+phase233_fragility_realism_pass,1,1 means Phase233 candidate passes this synthetic fragility/realism layer
+phase233_strategy_promotion_allowed,0,No promotion from synthetic validation alone
+phase233_paper_or_live_acceptance_allowed,0,No paper/live acceptance from synthetic validation alone
+phase233_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic validation alone
+phase233_next_best_action,run_phase234_prepare_real_anchor_or_sealed_generator_holdout_for_phase233_candidate_no_paper_live,Next validation milestone
