@@ -1,0 +1,35 @@
+path,gb,files,cleanup_class,destructive_action_allowed_now,requires_user_approval,recommended_action,rationale
+raw_synthetic_l2_dense_full_year,65.74335778597742,384,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+scratch_azcopy_selected,4.882674883119762,149308,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache,4.317334903404117,12,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase162_distributional_full_year,3.856925050728023,384,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase108_symbol_aware_generator_overrides,0.8626183876767755,384,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase109_residual_imbalance_floor,0.8625890398398042,384,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase106_full_symbol_calibrated_realism,0.8189745806157589,384,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_full_year,0.4572819974273443,8064,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache_smoke,0.37459259666502476,1,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_phase156_symbol_tail_cadence_smoke,0.33325831685215235,32,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_phase159_distributional_cadence_smoke,0.33305570390075445,32,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_phase162_smoke,0.33305570390075445,32,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_dense_phase50_multisymbol_x64,0.251162632368505,36,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_dense_phase51_smoke,0.185781117528677,1,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_full_year_compact_monthly,0.16563378181308508,12,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_dense_phase49_hdfcbank_x64,0.08391450252383947,12,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase101_calibrated_quality,0.06453990004956722,36,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase102_anchored_price_quality,0.0639792550355196,36,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+scratch_azcopy_smoke,0.05234241392463446,1578,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+scratch_azure_l2_selected_smoke,0.03555519413203001,1076,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+raw_synthetic_l2_phase105_source_mid_volatility_scale,0.02561899833381176,12,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase104_real_anchor_cadence,0.025324149057269096,12,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+raw_synthetic_l2_phase45_sample,8.729100227355957e-05,2,archive_candidate_after_manifest_check,0,1,archive_or_move_if_space_needed,large generated raw synthetic artifact; archive or move before deletion
+scratch_azcopy_oauth_probe,0.0,0,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+scratch_azure_l2_download,0.0,0,likely_safe_after_user_review,0,1,review_then_archive_or_delete,scratch/smoke artifact; not needed for current Phase244 frozen candidate unless user wants to preserve it
+real_data_sample,13.120216782204807,400813,preserve_current_real_holdout,0,0,preserve,contains downloaded real L2 holdout data and seed samples
+outputs,1.4678260320797563,2323,preserve_research_evidence,0,0,preserve,contains committed CSV/report evidence and ignored parquet outputs
+derived_real_l2_receive_flow_features_phase176,0.16663153376430273,896,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target
+derived_real_l2_receive_flow_labels_phase181,0.08531137462705374,896,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target
+derived_phase214_event_surprise_conditional_labels,0.017211497761309147,512,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target
+src,0.01096013467758894,531,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target
+derived_phase226_cost_aware_event_labels,0.003390226513147354,256,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target
+Plan,0.0005040504038333893,2,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target
+scripts,0.0003026612102985382,513,preserve_by_default,0,0,preserve,code/plan/derived artifact; not a first cleanup target

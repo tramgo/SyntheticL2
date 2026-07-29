@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-29T08:33:08.852083+00:00",
+  "scope": "phase245_storage_decision_audit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "3e3447aa4a58d1a6655675efb06d71e6118196fb",
+  "configuration_hash": "cf6f913d39cb4a5531dc7b42786c642f654e8f22fc9f0ac8fecb72b3a354674c",
+  "random_seed": "none_deterministic_storage_audit",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "not_applicable_storage_audit",
+  "latency_model_version": "not_applicable_storage_audit",
+  "creation_timestamp": "2026-07-29T08:33:08.852083+00:00"
+}

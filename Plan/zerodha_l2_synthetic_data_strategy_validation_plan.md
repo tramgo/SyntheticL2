@@ -9173,6 +9173,62 @@ Current Phase149 evidence after Phase244:
 
 ---
 
+## 24.71 Phase245 Storage Decision Audit Completed
+
+Phase245 performs a non-destructive storage audit for the Phase244 future-holdout path. It sizes the current workspace footprint, lists cleanup/archive candidates for user review, estimates the space needed for the target fresh holdout dates, and keeps all download, cleanup, paper/live and profitability-promotion gates closed.
+
+Phase245 storage evidence:
+
+- free GB on workspace drive: `90.4128532409668`;
+- storage inventory rows: `34`;
+- cleanup/archive candidate rows requiring user review: `25`;
+- target fresh unseen holdout dates from Phase244: `3`;
+- conservative projected requirement: `7.5 GB`;
+- projected free GB after target download: `82.9128532409668`;
+- local download feasible by space-only estimate: `1`.
+
+Largest observed footprint areas:
+
+- `raw_synthetic_l2_dense_full_year`: `65.7434 GB`, archive candidate after manifest check;
+- `real_data_sample`: `13.1202 GB`, preserve current real holdout and seed samples;
+- `scratch_azcopy_selected`: `4.88267 GB`, likely safe after user review;
+- `raw_synthetic_l2_phase166_cross_symbol_lead_lag_cache`: `4.31733 GB`, archive candidate after manifest check;
+- `raw_synthetic_l2_phase162_distributional_full_year`: `3.85693 GB`, archive candidate after manifest check;
+- `outputs`: `1.46783 GB`, preserve research evidence.
+
+Phase245 decision:
+
+- local C drive can likely support the Phase244 target of three fresh unseen dates by space-only estimate;
+- however, the plan still blocks new downloads until the storage/download policy is explicitly chosen;
+- the disk-conscious next path is one fresh unseen real date first as a diagnostic, then continue date-by-date only if the frozen candidate survives controls.
+
+Phase245 boundaries:
+
+- destructive cleanup allowed now: `0`;
+- additional raw-date download allowed now: `0`;
+- future holdout execution allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `choose_local_c_drive_download_or_cleanup_policy_then_run_phase246_fresh_holdout_download_no_tuning_no_paper_live`.
+
+Phase245 outputs:
+
+- `outputs/phase245/phase245_storage_inventory.csv`;
+- `outputs/phase245/phase245_cleanup_candidate_ledger.csv`;
+- `outputs/phase245/phase245_download_readiness_decision.csv`;
+- `outputs/phase245/phase245_gate_evaluation.csv`;
+- `outputs/phase245/phase245_acceptance_summary.csv`;
+- `outputs/phase245/phase245_storage_decision_audit_report.md`;
+- `outputs/phase245/phase245_storage_decision_audit_manifest.json`.
+
+Current Phase149 evidence after Phase245:
+
+- synthetic strategy-discovery branch status: `storage_audit_local_space_feasible_policy_choice_required`;
+- next best action: `choose_local_c_drive_download_or_cleanup_policy_then_run_phase246_fresh_holdout_download_no_tuning_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

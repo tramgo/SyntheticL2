@@ -1,0 +1,2 @@
+decision_id,free_gb_now,target_holdout_dates,min_holdout_dates,conservative_gb_per_date,projected_required_gb,projected_free_gb_after_target,min_free_gb_after_download,local_download_feasible_by_space_only,download_allowed_now,decision
+P245_LOCAL_C_DRIVE_DOWNLOAD_READINESS,90.4128532409668,3,2,2.5,7.5,82.9128532409668,40.0,1,0,storage_choice_still_required_before_download

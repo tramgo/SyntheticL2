@@ -1,0 +1,18 @@
+metric,value,description
+phase245_storage_decision_audit_complete,1,Phase245 storage audit completed
+phase245_free_gb_now,90.4128532409668,Free GB on workspace drive
+phase245_inventory_rows,34,Storage inventory rows
+phase245_cleanup_candidate_rows,25,Rows requiring user review before cleanup/archive
+phase245_target_holdout_dates,3,Target future holdout dates from Phase244
+phase245_projected_required_gb,7.5,Conservative space needed for target fresh dates
+phase245_projected_free_gb_after_target,82.9128532409668,Projected free GB after target download
+phase245_local_download_feasible_by_space_only,1,Space-only feasibility; still needs user storage decision
+phase245_destructive_cleanup_allowed_now,0,No cleanup/delete action is allowed by Phase245
+phase245_download_more_dates_now_allowed,0,No additional raw-date download in Phase245
+phase245_holdout_execution_allowed_now,0,No holdout run in Phase245
+phase245_strategy_promotion_allowed,0,No strategy promotion from Phase245
+phase245_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase245
+phase245_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase245
+phase245_hard_gate_pass_rows,6,Hard gates passed
+phase245_hard_gate_rows,6,Hard gates evaluated
+phase245_next_best_action,choose_local_c_drive_download_or_cleanup_policy_then_run_phase246_fresh_holdout_download_no_tuning_no_paper_live,Recommended next milestone
