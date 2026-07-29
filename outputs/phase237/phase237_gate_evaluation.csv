@@ -1,0 +1,7 @@
+gate_id,passed,observed_value,required_value,severity
+P237_EXPANDED_VARIANTS_EVALUATED,True,3584,>=3000 expanded variants,hard
+P237_BREADTH_POSITIVE_CANDIDATE_FOUND,True,3,>0 positive breadth candidates,hard
+P237_BEST_CANDIDATE_NET_POSITIVE,True,7041.523067663933,>0 best net P&L,hard
+P237_BEST_CANDIDATE_BREADTH,True,trades=71;dates=6;symbols=21,">=50 trades, >=5 dates, >=20 symbols, >=4 positive dates",hard
+P237_BEST_CANDIDATE_CONTROLS,True,3,>=3 / 4 controls pass,hard
+P237_NO_PAPER_LIVE_OR_PROMOTION_UNLOCK,True,0,0,hard

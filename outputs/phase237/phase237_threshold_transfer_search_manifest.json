@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-29T07:01:20.633342+00:00",
+  "scope": "phase237_threshold_transfer_expanded_real_anchor_search",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "c08072d87c4ab1b45aa21152ca6feead68873e10",
+  "configuration_hash": "32d0f25a9b6520c43d1ce2ce5186e4ea4d1d5d1737b8efecc7fa03c35f7a1c90",
+  "random_seed": 237,
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase235_real_anchor_event_bar_adapter",
+  "creation_timestamp": "2026-07-29T07:01:20.633342+00:00"
+}

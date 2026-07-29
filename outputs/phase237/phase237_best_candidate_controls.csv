@@ -1,0 +1,5 @@
+control_id,net_pnl_inr,passed,random_p95_net_pnl_inr,random_beat_fraction
+SIDE_FLIP,-24151.499706350103,True,,
+RANDOM_SIDE_1000_RUNS,7041.523067663933,True,1217.995486090839,0.998
+COST_150,2764.028907992391,True,,
+COST_200,-1513.465251679151,False,,

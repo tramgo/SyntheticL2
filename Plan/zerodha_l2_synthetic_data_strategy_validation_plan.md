@@ -8576,6 +8576,80 @@ Current Phase149 evidence after Phase236:
 
 ---
 
+## 24.63 Phase237 Threshold-transfer / Expanded Real-anchor Search Completed
+
+Phase237 executes the Phase236 next action: redesign threshold transfer and expand the real-anchor strategy family instead of copying synthetic score magnitudes into real data. The key finding from Phase235/236 was that the synthetic event-window threshold around `54` was far too extreme on real-anchor event bars, where the 99th percentile event-window score was approximately `15.6`. Phase237 therefore uses real-quantile thresholds on the Phase235 real-anchor event bars.
+
+Phase237 search design:
+
+- input: `outputs/phase235/phase235_real_event_bars.parquet`;
+- horizons: `2`, `3`, `4`, `5`, `6`, `8`, `10` event bars;
+- event quantiles: `0.50`, `0.60`, `0.70`, `0.75`, `0.80`, `0.85`, `0.90`, `0.95`;
+- signal quantiles: `0.50`, `0.60`, `0.70`, `0.75`, `0.80`, `0.85`, `0.90`, `0.95`;
+- signal sources:
+  - L1 microprice deviation;
+  - L1 imbalance;
+  - top-five market-by-price imbalance;
+  - bar return;
+- directions:
+  - reversal;
+  - continuation;
+- cost model: Zerodha equity intraday NSE cost model version `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- promotion/paper/live claim: closed.
+
+Phase237 outputs:
+
+- `outputs/phase237/phase237_expanded_candidate_summary.csv`;
+- `outputs/phase237/phase237_breadth_positive_candidates.csv`;
+- `outputs/phase237/phase237_best_candidate_trade_ledger.csv`;
+- `outputs/phase237/phase237_best_candidate_controls.csv`;
+- `outputs/phase237/phase237_gate_evaluation.csv`;
+- `outputs/phase237/phase237_acceptance_summary.csv`;
+- `outputs/phase237/phase237_threshold_transfer_search_report.md`;
+- `outputs/phase237/phase237_threshold_transfer_search_manifest.json`.
+
+Phase237 results:
+
+- expanded variants evaluated: `3,584`;
+- positive variants after costs: `5`;
+- positive breadth candidates: `3`;
+- best candidate: `P237_BAR_RETURN_REVERSAL_H6_EQ0_95_SQ0_95`;
+- best family: `bar_return_reversal`;
+- best real-anchor net P&L after costs: `7041.523067663933`;
+- selected trades: `71`;
+- dates represented: `6`;
+- symbols represented: `21`;
+- hard Phase237 gates: `6 / 6` passed;
+- candidate opened for Phase238: `1`.
+
+Best candidate controls:
+
+- side-flip control: pass, side-flip net P&L `-24151.499706350103`;
+- random-side 1,000-run control: pass, random p95 net P&L `1217.995486090839`, beat fraction `0.998`;
+- 1.5x cost stress: pass, net P&L `2764.028907992391`;
+- 2.0x cost stress: fail, net P&L `-1513.465251679151`.
+
+Current interpretation: Phase237 is the first broad positive real-anchor research result in this chain. It is not the original microprice-reversal parent; it is a related real-anchor threshold-transfer expansion that found an event-bar return reversal candidate. The candidate has enough trade/date/symbol breadth to justify a precommitted validation phase, but it is still not a paper/live-ready strategy and not a deployable profitability claim. The 2x cost-stress failure is an explicit caution flag for Phase238.
+
+Phase237 boundaries:
+
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase238_precommit_unseen_real_anchor_or_walk_forward_validation_for_phase237_candidate_no_paper_live`.
+
+Current Phase149 evidence after Phase237:
+
+- phase rows discovered: 230;
+- runner phase rows: 228;
+- acceptance phase rows: 180;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `real_anchor_threshold_transfer_candidate_opened_for_validation`;
+- next best action: `run_phase238_precommit_unseen_real_anchor_or_walk_forward_validation_for_phase237_candidate_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
