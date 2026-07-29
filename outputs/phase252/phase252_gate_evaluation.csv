@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P252_PHASE251_WORK_ORDER_PRESENT,True,close_or_broaden_phase251_pair_basket_relative_value_search_no_downloads_no_paper_live,Phase251 next action asks close/broaden,hard
+P252_CLOSURE_LEDGER_WRITTEN,True,3,>=3 closure rows,hard
+P252_FAILURE_ATTRIBUTION_WRITTEN,True,4,>=4 failure rows,hard
+P252_MATERIAL_BROADEN_QUEUE_WRITTEN,True,3,>=3 materially different routes,hard
+P252_RAW_DEPTH_SCHEMA_AVAILABLE,True,30/30,all raw buy/sell levels 1-5 fields present in sample schema,hard
+P252_GUARDRAILS_ACTIVE,True,all active,all guardrails active,hard
+P252_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

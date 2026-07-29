@@ -1,0 +1,4 @@
+decision_id,scope,decision,observed_value,required_value,rationale,reuse_allowed_without_material_redesign
+P252_CLOSE_AGGREGATE_PAIR_BASKET_RELATIVE_VALUE,phase251_pair_basket_relative_value_on_phase235_aggregate_event_bars,closed_for_current_evidence_set,0,>0 controlled survivors,Phase251 found no controlled survivor across market-neutral pair/basket variants.,0
+P252_BLOCK_THRESHOLD_RELAXATION_LOOP,phase251_variant_thresholds,blocked,0,>0 positive at 2x modeled costs,Relaxing thresholds after zero base-cost and zero 2x-cost positives would not address cost-floor dominance.,0
+P252_KEEP_NEW_DOWNLOADS_CLOSED,fresh_real_l2_dates,blocked_until_material_new_richer_depth_candidate,0,future_holdout_precommit_allowed=1,No Phase251 survivor qualifies for fresh holdout data spend.,0

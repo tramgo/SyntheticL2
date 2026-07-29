@@ -1,0 +1,23 @@
+metric,value,description
+phase252_close_or_broaden_complete,1,Phase252 close/broaden decision completed
+phase252_closed_scope,aggregate_pair_basket_relative_value_on_phase235_event_bars,Scope closed under current evidence
+phase252_phase251_variant_rows,3840,Phase251 variants considered
+phase252_phase251_base_positive_rows,0,Phase251 base-cost positive variants
+phase252_phase251_cost200_positive_rows,0,Phase251 2x-cost positive variants
+phase252_phase251_survivor_rows,0,Phase251 controlled survivors
+phase252_raw_root_rows,3,Raw roots inspected
+phase252_raw_depth_schema_present_rows,30,Raw depth schema fields present
+phase252_raw_depth_schema_rows,30,Raw depth schema fields required
+phase252_closure_rows,3,Closure ledger rows
+phase252_failure_attribution_rows,4,Failure attribution rows
+phase252_broaden_queue_rows,3,Materially different broaden routes
+phase252_selected_next_route,P252_RICHER_RAW_TOP5_DEPTH_EVENT_BARS,Highest-priority next route
+phase252_threshold_relaxation_only_allowed,0,No threshold relaxation loop
+phase252_download_more_dates_now_allowed,0,No raw-date download in Phase252
+phase252_replay_execution_allowed_now,0,No replay execution in Phase252
+phase252_strategy_promotion_allowed,0,No strategy promotion from Phase252
+phase252_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase252
+phase252_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase252
+phase252_hard_gate_pass_rows,7,Hard gates passed
+phase252_hard_gate_rows,7,Hard gates evaluated
+phase252_next_best_action,run_phase253_richer_raw_top5_depth_feature_materialization_precommit_no_new_downloads_no_paper_live,Recommended next milestone

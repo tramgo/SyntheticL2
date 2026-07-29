@@ -9727,6 +9727,94 @@ Current Phase149 evidence after Phase251:
 
 ---
 
+## 24.78 Phase252 Close or Broaden After Pair/Basket No-survivor Search Completed
+
+Phase252 closes the aggregate-feature pair/basket relative-value branch under the current evidence and opens a materially different raw-depth route. It does not download new data, rerun holdout dates, relax thresholds, execute a replay, promote a strategy, open paper/live acceptance or claim profitability.
+
+Phase252 closure evidence:
+
+- closed scope: `aggregate_pair_basket_relative_value_on_phase235_event_bars`;
+- Phase251 variants considered: `3,840`;
+- Phase251 base-cost positive variants: `0`;
+- Phase251 2.0x-cost positive variants: `0`;
+- Phase251 controlled survivors: `0`;
+- closure ledger rows: `3`;
+- failure attribution rows: `4`;
+- material broaden queue rows: `3`.
+
+Raw top-five depth schema evidence:
+
+- raw roots inspected: `3`;
+- required raw depth schema fields: `30`;
+- raw depth schema fields present in sampled parquet: `30 / 30`;
+- required fields include buy/sell levels 1 through 5, with price, quantity and order-count columns for each side and level;
+- this confirms the next route can use explicit per-level Zerodha top-five market-by-price depth from raw parquet, not just aggregate event-bar imbalance.
+
+Closed decisions:
+
+- `P252_CLOSE_AGGREGATE_PAIR_BASKET_RELATIVE_VALUE`: close aggregate Phase235 pair/basket relative value for the current evidence set;
+- `P252_BLOCK_THRESHOLD_RELAXATION_LOOP`: block another threshold relaxation after zero base-cost and zero 2.0x-cost positives;
+- `P252_KEEP_NEW_DOWNLOADS_CLOSED`: keep fresh-date downloads closed until a materially new richer-depth candidate is frozen.
+
+Failure attribution:
+
+- aggregate pair/basket branch is cost dominated;
+- no 2.0x-cost positive variants existed;
+- Phase251 used top-five aggregate and depth-beyond-L1 features, but not explicit per-level raw depth-shape features;
+- the best failed candidate had positive gross P&L but modeled cost drag exceeded gross edge.
+
+Material broaden queue:
+
+1. `P252_RICHER_RAW_TOP5_DEPTH_EVENT_BARS` — rebuild event bars from raw buy/sell levels 1-5 price, quantity and order-count fields;
+2. `P252_DEPTH_EVENT_SEQUENCE_MODEL` — model per-level book-shape, queue-count and replenishment/withdrawal sequences;
+3. `P252_LOW_TURNOVER_OPENING_DEPTH_SHOCK` — test lower-turnover opening depth-shock separation.
+
+Phase252 guardrails:
+
+- no deployable profitability claim;
+- no more fresh real L2 date downloads until a richer raw-depth candidate is frozen;
+- no threshold relaxation-only loop;
+- next primary route must use explicit raw buy/sell levels 1-5 price, quantity and order-count fields;
+- Zerodha modeled costs, spread/slippage, 2.0x-cost stress, side-flip and random-side controls remain mandatory;
+- paper/live acceptance remains closed.
+
+Phase252 gates:
+
+- Phase251 work order present: pass;
+- closure ledger written: pass;
+- failure attribution written: pass;
+- material broaden queue written: pass;
+- raw depth schema available: pass, `30 / 30`;
+- guardrails active: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase252 verdict:
+
+- aggregate pair/basket relative value is closed for the current evidence set;
+- the next route is richer raw top-five depth feature materialization;
+- next best action: `run_phase253_richer_raw_top5_depth_feature_materialization_precommit_no_new_downloads_no_paper_live`.
+
+Phase252 outputs:
+
+- `outputs/phase252/phase252_raw_depth_inventory.csv`;
+- `outputs/phase252/phase252_raw_depth_schema_contract.csv`;
+- `outputs/phase252/phase252_closure_ledger.csv`;
+- `outputs/phase252/phase252_failure_attribution.csv`;
+- `outputs/phase252/phase252_material_broaden_queue.csv`;
+- `outputs/phase252/phase252_guardrail_ledger.csv`;
+- `outputs/phase252/phase252_gate_evaluation.csv`;
+- `outputs/phase252/phase252_acceptance_summary.csv`;
+- `outputs/phase252/phase252_close_or_broaden_after_pair_basket_no_survivor_report.md`;
+- `outputs/phase252/phase252_close_or_broaden_after_pair_basket_no_survivor_manifest.json`.
+
+Current Phase149 evidence after Phase252:
+
+- synthetic strategy-discovery branch status: `aggregate_pair_basket_closed_richer_raw_depth_precommit_open`;
+- real receive-flow source branch status: `aggregate_pair_basket_closed_richer_raw_depth_precommit_open`;
+- next best action: `run_phase253_richer_raw_top5_depth_feature_materialization_precommit_no_new_downloads_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

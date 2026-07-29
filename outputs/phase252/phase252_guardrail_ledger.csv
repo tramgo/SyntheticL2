@@ -1,0 +1,7 @@
+guardrail_id,requirement,active
+P252_NO_PROFITABILITY_CLAIM,No deployable profitability claim because Phase251 found zero positive variants and zero survivors.,1
+P252_NO_MORE_DATE_DOWNLOAD,No fresh real L2 date downloads until a richer raw-depth candidate is frozen.,1
+P252_NO_THRESHOLD_RELAXATION_ONLY,Do not continue by relaxing Phase251 thresholds; next route must change the feature source.,1
+P252_RAW_DEPTH_REQUIRED_NEXT,"The next primary route must use explicit raw buy/sell levels 1-5 price, quantity and order-count fields.",1
+P252_COSTS_AND_CONTROLS_REMAIN,"Zerodha modeled costs, spread/slippage, 2x-cost stress, side-flip and random-side controls remain mandatory.",1
+P252_NO_PAPER_LIVE,Paper/live acceptance remains closed.,1

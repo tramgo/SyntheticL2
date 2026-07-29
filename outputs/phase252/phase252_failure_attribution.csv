@@ -1,0 +1,5 @@
+failure_mode,observed_metric,observed_value,interpretation
+aggregate_pair_basket_cost_floor_dominance,phase251_net_positive_variant_rows,0,No tested pair/basket variant was positive even at base modeled costs.
+no_2x_cost_positive_variants,phase251_cost200_positive_variant_rows,0,The branch produced no cost-stress candidates for controls.
+aggregate_depth_feature_limit,phase251_full_top_five_depth_variant_rows,3840,"Phase251 used top-five aggregate and depth-beyond-L1 features, but not explicit per-level book-shape features from raw parquet."
+best_failed_candidate_cost_drag,phase251_best_training_net_pnl_inr,-1681.1779513204742,The best failed candidate had positive gross P&L but modeled cost drag exceeded the edge.
