@@ -8014,6 +8014,83 @@ Current Phase149 evidence after Phase229:
 
 ---
 
+## 24.56 Phase230 Low-turnover High-edge Strategy Search Completed
+
+Phase230 continues the profitability-search pivot requested after Phase229. It does not add another guardrail-only step. It tests whether the already executed Phase164 full-year synthetic trade ledger contains any usable lower-turnover or stronger-edge subset after realistic modeled costs.
+
+Phase230 inputs:
+
+- Phase164 aggregate trade ledger: `outputs/phase164/phase164_aggregate_trade_ledger.csv`;
+- Phase229 strategy-search acceptance summary: `outputs/phase229/phase229_strategy_search_acceptance_summary.csv`.
+
+Phase230 expansion logic:
+
+- original signal groups;
+- inverse/contrarian signal groups;
+- oracle-signed upper-bound groups, where the sign is chosen perfectly after the fact only to test whether the signal magnitude could ever clear costs;
+- grouping scopes:
+  - strategy/profile;
+  - strategy/symbol/profile;
+  - strategy/date/profile;
+  - strategy/symbol/date/profile.
+
+The oracle-signed upper bound is not tradable and is not promotion evidence. It is a feasibility diagnostic: if even this bound fails, the current signal family lacks enough gross edge to survive the modeled cost stack.
+
+Phase230 outputs:
+
+- `outputs/phase230/phase230_variant_group_screen.csv`;
+- `outputs/phase230/phase230_expansion_catalog.csv`;
+- `outputs/phase230/phase230_phase231_work_order.csv`;
+- `outputs/phase230/phase230_strategy_search_gate_evaluation.csv`;
+- `outputs/phase230/phase230_strategy_search_acceptance_summary.csv`;
+- `outputs/phase230/phase230_low_turnover_high_edge_strategy_search_report.md`;
+- `outputs/phase230/phase230_low_turnover_high_edge_strategy_search_manifest.json`.
+
+Phase230 results:
+
+- Phase164 ledger rows scanned: 37,424;
+- realistic retail/stressed rows scanned: 25,010;
+- expansion scope rows summarized: 4;
+- original/inverse/oracle variant groups tested: 28,162;
+- positive expanded group rows: 0;
+- positive oracle-signed upper-bound rows: 0;
+- best scope: `strategy_symbol_date_profile`;
+- best strategy id: `P164_S06_ABSORPTION_REVERSAL`;
+- best execution profile: `retail_marketable_default`;
+- best expanded variant: `original`;
+- best expanded net return: `-0.001005200932874`;
+- best expanded net P&L: `-100.5200932874`.
+
+Phase230 gates:
+
+- Phase164 ledger available: pass;
+- realistic profile rows available: pass;
+- multiple expansion scopes tested: pass;
+- expanded realistic profitable group found: fail;
+- oracle-signed upper bound clears cost: fail.
+
+Current interpretation: filtering, lowering turnover within the existing Phase164 rows, and flipping signal direction are insufficient. Even a non-tradable perfect-sign upper bound cannot find a positive group after modeled realistic costs. Therefore the next strategy work must be materially new: longer horizon, lower turnover, different edge source, or explicitly pessimistic passive/limit execution where the fill model is modeled rather than assumed.
+
+Phase230 boundaries:
+
+- strategy promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- deployable profitability claim allowed: 0;
+- generator profit tuning allowed: 0;
+- next best action: `run_phase231_material_new_strategy_forms_longer_horizon_or_pessimistic_passive_no_generator_profit_tuning`.
+
+Current Phase149 evidence after Phase230:
+
+- phase rows discovered: 223;
+- runner phase rows: 221;
+- acceptance phase rows: 173;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `low_turnover_high_edge_expansion_complete`;
+- next best action: `run_phase231_material_new_strategy_forms_longer_horizon_or_pessimistic_passive_no_generator_profit_tuning`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

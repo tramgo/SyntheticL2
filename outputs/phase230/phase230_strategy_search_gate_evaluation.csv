@@ -1,0 +1,6 @@
+gate_id,passed,observed_value,required_value,interpretation
+P230_PHASE164_LEDGER_AVAILABLE,True,37424,>0 ledger rows,Full-year synthetic daily/symbol/profile trade ledger is available.
+P230_REALISTIC_PROFILE_ROWS_AVAILABLE,True,25010,>0 realistic rows,Search is evaluated under realistic retail/stressed profiles.
+P230_MULTIPLE_EXPANSION_SCOPES_TESTED,True,4,>=4 grouping scopes,Search tests low-turnover selective scopes instead of only full portfolio rows.
+P230_EXPANDED_REALISTIC_PROFITABLE_GROUP_FOUND,False,0,>0 original/inverse/oracle best groups,"If this fails, expanded variants of the current signal set still do not clear modeled costs."
+P230_ORACLE_SIGNED_UPPER_BOUND_CLEARS_COST,False,0,>0 oracle-signed groups,This is an upper-bound feasibility check; failure means even perfect sign choice at tested scopes cannot beat costs.

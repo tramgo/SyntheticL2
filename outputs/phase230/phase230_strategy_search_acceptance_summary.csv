@@ -1,0 +1,19 @@
+metric,value,description
+phase230_low_turnover_high_edge_search_complete,1,Phase230 search completed
+phase230_phase229_positive_realistic_candidate_rows,0,Inherited Phase229 positive realistic candidates
+phase230_phase164_ledger_rows,37424,Phase164 ledger rows scanned
+phase230_realistic_ledger_rows,25010,Realistic retail/stressed rows scanned
+phase230_group_scope_rows,4,Expansion scope rows summarized
+phase230_variant_group_rows,28162,Variant groups tested across scopes
+phase230_positive_expanded_group_rows,0,Positive original/inverse/oracle best groups
+phase230_positive_oracle_signed_group_rows,0,Positive oracle-signed upper-bound groups
+phase230_best_scope,strategy_symbol_date_profile,Best expanded scope
+phase230_best_strategy_id,P164_S06_ABSORPTION_REVERSAL,Best expanded strategy id where present
+phase230_best_execution_profile,retail_marketable_default,Best expanded execution profile
+phase230_best_expanded_variant,original,Best among original/inverse/oracle variants
+phase230_best_expanded_net_return,-0.001005200932874,Best expanded net return
+phase230_best_expanded_net_pnl_inr,-100.5200932874,Best expanded net P&L INR
+phase230_strategy_promotion_allowed,0,No promotion from synthetic expansion alone
+phase230_paper_or_live_acceptance_allowed,0,No paper/live acceptance from synthetic expansion alone
+phase230_deployable_profitability_claim_allowed,0,No deployable profitability claim from synthetic expansion alone
+phase230_next_best_action,run_phase231_material_new_strategy_forms_longer_horizon_or_pessimistic_passive_no_generator_profit_tuning,Next strategy-discovery milestone
