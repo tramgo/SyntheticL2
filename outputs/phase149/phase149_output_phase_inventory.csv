@@ -175,6 +175,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 249,outputs\phase249,True,8,outputs\phase249\phase249_acceptance_summary.csv,outputs\phase249\phase249_close_or_broaden_after_l2_filtered_no_survivor_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 250,outputs\phase250,True,8,outputs\phase250\phase250_acceptance_summary.csv,outputs\phase250\phase250_pair_basket_relative_value_precommit_manifest.json,False
+251,outputs\phase251,True,9,outputs\phase251\phase251_acceptance_summary.csv,outputs\phase251\phase251_pair_basket_relative_value_search_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False

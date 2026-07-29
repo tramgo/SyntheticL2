@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P251_PHASE250_WORK_ORDER_PRESENT,True,run_phase251_training_only_pair_basket_relative_value_search_no_downloads_no_2026_07_17_or_2026_07_20_tuning_no_paper_live,Phase250 next action targets Phase251,hard
+P251_FORBIDDEN_DATES_EXCLUDED,True,2026-07-17;2026-07-20,2026-07-17 and 2026-07-20 excluded,hard
+P251_VARIANTS_EVALUATED,True,3840,>=400 pair/basket variants,hard
+P251_MARKET_NEUTRAL_ALL_VARIANTS,True,3840/3840,all variants,hard
+P251_COSTS_PER_LEG_ALL_VARIANTS,True,3840/3840,all variants,hard
+P251_FULL_TOP_FIVE_DEPTH_ALL_VARIANTS,True,3840/3840,all variants use top-five market-by-price depth,hard
+P251_DEPTH_BEYOND_L1_ALL_VARIANTS,True,3840/3840,all variants use depth beyond L1,hard
+P251_COST200_POSITIVE_VARIANTS_FOUND,False,0,>0 positive at 2x cost,hard
+P251_CONTROLLED_SURVIVOR_FOUND,False,0,>0 controlled survivors,diagnostic
+P251_NO_DOWNLOAD_HOLDOUT_TUNING_OR_PAPER_LIVE,True,0,0,hard

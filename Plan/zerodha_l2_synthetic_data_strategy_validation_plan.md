@@ -9643,6 +9643,90 @@ Current Phase149 evidence after Phase250:
 
 ---
 
+## 24.77 Phase251 Pair/Basket Relative-value Training Search Completed
+
+Phase251 executes the Phase250 precommitted training-only pair/basket search. It uses existing Phase235 real event bars only, excludes `2026-07-17` and `2026-07-20` from tuning, balances long/short notional, applies modeled Zerodha costs per leg and keeps downloads, holdout execution, paper/live acceptance, strategy promotion and deployable profitability claims closed.
+
+Phase251 full-depth note:
+
+- every variant uses Zerodha WebSocket **top-five market-by-price depth**, not only L1/top-of-book;
+- every variant uses `avg_top5_market_by_price_imbalance`;
+- every variant also uses a `depth_beyond_l1` contrast, defined from top-five imbalance minus L1 imbalance, so a candidate cannot pass on price bars or L1-only evidence;
+- the current Phase235 event-bar schema has top-five aggregate imbalance features, not every raw per-level quantity/order-count field. A future richer-depth search should rebuild event bars from raw parquet if the next route needs explicit level-2, level-3, level-4 and level-5 shape features.
+
+Phase251 execution evidence:
+
+- training event bars after forbidden-date exclusion and universe filter: `26,095`;
+- training dates: `7`;
+- training symbols: `29`;
+- variants evaluated: `3,840`;
+- variants using top-five market-by-price depth: `3,840 / 3,840`;
+- variants using depth-beyond-L1 contrast: `3,840 / 3,840`;
+- market-neutral variants: `3,840 / 3,840`;
+- variants with costs applied per leg: `3,840 / 3,840`.
+
+Phase251 economic result:
+
+- net-positive variants at base modeled costs: `0`;
+- positive variants at 1.5x modeled costs: `0`;
+- positive variants at 2.0x modeled costs: `0`;
+- controlled candidates evaluated: `0`;
+- survivor candidates: `0`.
+
+Best failed candidate:
+
+- candidate: `P251_SECTOR_PAIR_RESIDUAL_REVERSION_H10_RQ0_95_TQ0_8_DQ0_5_SP0_75_IQ0_5_RB1`;
+- family: `P250_SECTOR_PAIR_RESIDUAL_REVERSION`;
+- signal trades: `17`;
+- modeled leg rows: `34`;
+- dates represented: `6`;
+- symbols represented: `11`;
+- peer groups represented: `7`;
+- training net P&L after modeled costs: `-1,681.1779513204742 INR`;
+- 2.0x-cost net P&L: `-5,120.63307718977 INR`;
+- gross P&L was positive, but modeled cost drag exceeded gross edge.
+
+Phase251 gates:
+
+- Phase250 work order present: pass;
+- forbidden dates excluded: pass;
+- variants evaluated: pass, `3,840`;
+- market-neutral variants: pass, `3,840 / 3,840`;
+- costs per leg: pass, `3,840 / 3,840`;
+- full top-five depth used: pass, `3,840 / 3,840`;
+- depth beyond L1 used: pass, `3,840 / 3,840`;
+- 2.0x-cost positive variants found: fail, `0`;
+- controlled survivor found: fail, `0`;
+- no download/holdout tuning/paper-live: pass.
+
+Phase251 verdict:
+
+- the tested pair/basket relative-value route did not produce a cost-clearing strategy;
+- no future holdout precommit is allowed;
+- no more fresh real-date download is justified for this failed route;
+- the next action should close or materially broaden the Phase251 branch, not relax thresholds;
+- next best action: `close_or_broaden_phase251_pair_basket_relative_value_search_no_downloads_no_paper_live`.
+
+Phase251 outputs:
+
+- `outputs/phase251/phase251_candidate_summary.csv`;
+- `outputs/phase251/phase251_control_summary.csv`;
+- `outputs/phase251/phase251_controlled_candidate_summary.csv`;
+- `outputs/phase251/phase251_survivor_candidates.csv`;
+- `outputs/phase251/phase251_best_candidate_leg_ledger.csv`;
+- `outputs/phase251/phase251_gate_evaluation.csv`;
+- `outputs/phase251/phase251_acceptance_summary.csv`;
+- `outputs/phase251/phase251_pair_basket_relative_value_search_report.md`;
+- `outputs/phase251/phase251_pair_basket_relative_value_search_manifest.json`.
+
+Current Phase149 evidence after Phase251:
+
+- synthetic strategy-discovery branch status: `pair_basket_relative_value_no_survivor_broaden_or_close`;
+- real receive-flow source branch status: `pair_basket_relative_value_no_survivor_broaden_or_close`;
+- next best action: `close_or_broaden_phase251_pair_basket_relative_value_search_no_downloads_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

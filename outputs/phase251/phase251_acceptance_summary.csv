@@ -1,0 +1,33 @@
+metric,value,description
+phase251_pair_basket_search_complete,1,Phase251 pair/basket training-only search completed
+phase251_training_event_bar_rows,26095,Training event bars after forbidden-date exclusion and universe filter
+phase251_training_dates,7,Training dates used
+phase251_training_symbols,29,Training symbols used
+phase251_forbidden_tuning_dates,2026-07-17;2026-07-20,Dates excluded from tuning
+phase251_variant_rows,3840,Pair/basket variants evaluated
+phase251_full_top_five_depth_variant_rows,3840,Variants using top-five market-by-price depth
+phase251_depth_beyond_l1_variant_rows,3840,Variants using depth-beyond-L1 contrast
+phase251_net_positive_variant_rows,0,Net-positive variants at base cost
+phase251_cost150_positive_variant_rows,0,Positive variants at 1.5x cost
+phase251_cost200_positive_variant_rows,0,Positive variants at 2.0x cost
+phase251_controlled_candidate_rows,0,Candidates evaluated with side-flip/random-side controls
+phase251_survivor_candidate_rows,0,Candidates passing controls and breadth gates
+phase251_best_candidate_id,P251_SECTOR_PAIR_RESIDUAL_REVERSION_H10_RQ0_95_TQ0_8_DQ0_5_SP0_75_IQ0_5_RB1,Best Phase251 survivor/candidate
+phase251_best_family_id,P250_SECTOR_PAIR_RESIDUAL_REVERSION,Best candidate family
+phase251_best_training_net_pnl_inr,-1681.1779513204742,Best training net P&L
+phase251_best_cost200_net_pnl_inr,-5120.63307718977,Best 2x-cost net P&L
+phase251_best_random_beat_fraction,0.0,Best random-side beat fraction
+phase251_best_trade_rows,17,Best signal trades
+phase251_best_leg_rows,34,Best leg rows
+phase251_best_dates,6,Best dates represented
+phase251_best_symbols,11,Best leg symbols represented
+phase251_best_peer_groups,7,Best peer groups represented
+phase251_hard_gate_pass_rows,8,Hard gates passed
+phase251_hard_gate_rows,9,Hard gates evaluated
+phase251_future_holdout_precommit_allowed,0,Future holdout precommit allowed only if survivors exist
+phase251_download_more_dates_now_allowed,0,No raw-date download in Phase251
+phase251_holdout_parameter_tuning_allowed,0,No holdout-date tuning
+phase251_strategy_promotion_allowed,0,No strategy promotion from Phase251
+phase251_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase251
+phase251_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase251
+phase251_next_best_action,close_or_broaden_phase251_pair_basket_relative_value_search_no_downloads_no_paper_live,Recommended next milestone
