@@ -1,0 +1,4 @@
+option_id,description,allowed_now,download_allowed_without_user_storage_decision,expected_effect
+H244_A_STORAGE_FREE_LOCAL,Free or archive local scratch/smoke/raw data before downloading more unseen real dates,1,0,enables 2-3 date holdout without new disk pressure
+H244_B_EXTERNAL_OR_SECONDARY_DISK,Attach or choose a larger storage location for unseen raw L2 dates,1,0,preserves current local artifacts and shifts raw date footprint off C drive
+H244_C_ONE_DATE_ONLY_DIAGNOSTIC,Use only already downloaded 2026-07-17 as diagnostic if storage is not expanded,1,0,fastest but cannot satisfy acceptance and must not tune thresholds

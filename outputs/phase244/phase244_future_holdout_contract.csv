@@ -1,0 +1,11 @@
+contract_id,requirement,requirement_type,candidate_id
+H244_FREEZE_CANDIDATE,"Candidate id, horizon, signal source, direction and thresholds are frozen before holdout",hard,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_NO_2026_07_17_TUNING,The existing 2026-07-17 holdout cannot be used for threshold or parameter selection,hard,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_STORAGE_DECISION_REQUIRED,Choose local cleanup/archive or external storage before downloading more raw dates,hard,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_MIN_DATES,Minimum 2 fresh unseen dates; target 3 dates,acceptance,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_MIN_TRADES,At least 20 frozen-candidate trades after materialization,acceptance,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_MIN_SYMBOLS,At least 10 symbols represented in selected trades,acceptance,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_COST_CONTROLS,"Net P&L positive at base, 1.5x and 2.0x modeled Zerodha costs",acceptance,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_RANDOM_SIDE_CONTROL,Random-side beat fraction at least 0.95 on the holdout,acceptance,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_SIDE_FLIP_CONTROL,Side-flipped net P&L must be negative,acceptance,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9
+H244_NO_PAPER_LIVE,No paper/live/deployable profitability claim from precommit or download phases,hard,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9

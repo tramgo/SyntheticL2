@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P244_PHASE243_SURVIVOR_SELECTED,True,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9,non-empty Phase243 survivor,hard
+P244_CANDIDATE_FROZEN,True,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9,candidate spec frozen for future holdout,hard
+P244_NO_HOLDOUT_TUNING,True,2026-07-17,2026-07-17 cannot be used for tuning,hard
+P244_STORAGE_DECISION_OPTIONS_WRITTEN,True,3,>=3 storage options,hard
+P244_HOLDOUT_CONTRACT_WRITTEN,True,10,>=10 contract requirements,hard
+P244_DOWNLOAD_NOT_ALLOWED_NOW,True,0,no raw download until storage decision,hard
+P244_NO_PAPER_LIVE_OR_PROFIT_CLAIM,True,0,0,hard

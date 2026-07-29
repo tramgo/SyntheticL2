@@ -9094,6 +9094,85 @@ Current Phase149 evidence after Phase243:
 
 ---
 
+## 24.70 Phase244 Future Holdout Precommit Completed
+
+Phase244 freezes the best Phase243 survivor for future holdout testing and defines the storage decision required before any more raw L2 downloads. It does not download data, tune on `2026-07-17`, run a holdout, open paper/live trading or claim deployable profitability.
+
+Frozen Phase244 candidate:
+
+- candidate id: `P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9`;
+- family: `bar_return_reversal`;
+- signal source: `bar_return`;
+- direction: `reversal`;
+- horizon: `8` event bars;
+- event quantile: `0.99`;
+- signal quantile: `0.90`;
+- event-window score threshold: `15.588121832874576`;
+- signal absolute threshold: `0.0077901307358087`;
+- training/discovery net P&L: `8,576.392616633566`;
+- training/discovery 2.0x-cost net P&L: `5,033.27266663252`;
+- training random-side beat fraction: `0.997`;
+- frozen for future holdout: `1`;
+- parameter tuning allowed in future holdout: `0`;
+- forbidden tuning date: `2026-07-17`.
+
+Phase244 future holdout contract:
+
+- minimum fresh unseen holdout dates: `2`;
+- target fresh unseen holdout dates: `3`;
+- minimum frozen-candidate holdout trades: `20`;
+- minimum holdout symbols: `10`;
+- required holdout controls:
+  - net P&L positive at base, 1.5x and 2.0x modeled Zerodha costs;
+  - random-side beat fraction at least `0.95`;
+  - side-flipped net P&L negative;
+- `2026-07-17` cannot be used for threshold or parameter selection.
+
+Phase244 storage decision options:
+
+1. `H244_A_STORAGE_FREE_LOCAL` — free/archive local scratch, smoke or raw data before downloading more unseen dates;
+2. `H244_B_EXTERNAL_OR_SECONDARY_DISK` — attach or choose larger storage for unseen raw L2 dates;
+3. `H244_C_ONE_DATE_ONLY_DIAGNOSTIC` — stay with already downloaded `2026-07-17`, which is fastest but cannot satisfy acceptance and still cannot be used for tuning.
+
+Phase244 gates:
+
+- Phase243 survivor selected: pass;
+- candidate frozen: pass;
+- no holdout tuning: pass;
+- storage decision options written: pass;
+- holdout contract written: pass;
+- download not allowed now: pass;
+- no paper/live/profitability claim: pass;
+- hard gates: `7 / 7` passed.
+
+Phase244 boundaries:
+
+- storage decision required: `1`;
+- download more dates now allowed: `0`;
+- future holdout execution allowed now: `0`;
+- holdout parameter tuning allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `choose_storage_option_then_download_fresh_unseen_dates_for_phase244_frozen_candidate_no_tuning_no_paper_live`.
+
+Phase244 outputs:
+
+- `outputs/phase244/phase244_frozen_candidate_spec.csv`;
+- `outputs/phase244/phase244_storage_decision_options.csv`;
+- `outputs/phase244/phase244_future_holdout_contract.csv`;
+- `outputs/phase244/phase244_gate_evaluation.csv`;
+- `outputs/phase244/phase244_acceptance_summary.csv`;
+- `outputs/phase244/phase244_future_holdout_precommit_report.md`;
+- `outputs/phase244/phase244_future_holdout_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase244:
+
+- synthetic strategy-discovery branch status: `future_holdout_precommitted_storage_decision_required`;
+- next best action: `choose_storage_option_then_download_fresh_unseen_dates_for_phase244_frozen_candidate_no_tuning_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -167,6 +167,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 241,outputs\phase241,True,11,outputs\phase241\phase241_acceptance_summary.csv,outputs\phase241\phase241_one_date_unseen_real_l2_diagnostic_manifest.json,False
 242,outputs\phase242,True,7,outputs\phase242\phase242_acceptance_summary.csv,outputs\phase242\phase242_closure_or_redesign_manifest.json,False
 243,outputs\phase243,True,9,outputs\phase243\phase243_acceptance_summary.csv,outputs\phase243\phase243_cost_stress_first_redesign_manifest.json,False
+244,outputs\phase244,True,7,outputs\phase244\phase244_acceptance_summary.csv,outputs\phase244\phase244_future_holdout_precommit_manifest.json,False
 25,outputs\phase25,True,7,,outputs\phase25\phase25_event_replay_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False

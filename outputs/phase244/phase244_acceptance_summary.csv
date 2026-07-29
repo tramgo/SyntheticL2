@@ -1,0 +1,20 @@
+metric,value,description
+phase244_future_holdout_precommit_complete,1,Phase244 future holdout precommit completed
+phase244_candidate_id,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9,Frozen Phase243 candidate
+phase244_best_training_net_pnl_inr,8576.392616633566,Training/discovery net P&L
+phase244_best_cost200_net_pnl_inr,5033.27266663252,2x-cost training/discovery net P&L
+phase244_best_random_beat_fraction,0.997,Training random-side beat fraction
+phase244_min_holdout_dates_required,2,Minimum fresh unseen holdout dates
+phase244_target_holdout_dates,3,Target fresh unseen holdout dates
+phase244_min_holdout_trades_required,20,Minimum frozen-candidate holdout trades
+phase244_min_holdout_symbols_required,10,Minimum holdout symbols
+phase244_storage_decision_required,1,Storage decision required before more raw downloads
+phase244_download_more_dates_now_allowed,0,No additional raw-date download in Phase244
+phase244_holdout_parameter_tuning_allowed,0,No 2026-07-17 or future holdout tuning
+phase244_future_holdout_execution_allowed_now,0,Precommit only; no holdout run in Phase244
+phase244_strategy_promotion_allowed,0,No strategy promotion from Phase244
+phase244_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase244
+phase244_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase244
+phase244_hard_gate_pass_rows,7,Hard gates passed
+phase244_hard_gate_rows,7,Hard gates evaluated
+phase244_next_best_action,choose_storage_option_then_download_fresh_unseen_dates_for_phase244_frozen_candidate_no_tuning_no_paper_live,Recommended next milestone
