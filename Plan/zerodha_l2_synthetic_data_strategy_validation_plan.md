@@ -7649,6 +7649,70 @@ Current interpretation: Phase223 is a clean falsification milestone. The replay 
 
 ---
 
+## 24.50 Phase224 Event-Only Signal Replay Closure or Redesign Precommit Completed
+
+Phase224 closes the current Phase221/222/223 event-only signal replay candidate set for broader replay and sealed test. It records the failure modes, defines material redesign routes, and creates a Phase225 work order without fitting models, running replay, widening thresholds, touching sealed test, or making a profitability claim.
+
+Phase224 closure decision:
+
+- current candidate set: `phase221_frozen_event_only_signal_replay_candidates`;
+- closed for broader replay: 1;
+- closed for sealed test replay: 1;
+- reuse without material redesign allowed: 0;
+- Phase223 positive net validation rows: 0;
+- Phase223 passing interpretation rows: 0;
+- closure reason: Zerodha-cost validation interpretation has zero positive net rows and zero passing rows.
+
+Phase224 failure modes:
+
+- validation replay edge is not positive after Zerodha cost and latency bounds;
+- actual-vs-shuffled label edge exists but is not actionable after cost;
+- fixed threshold-grid activity is sparse or concentrated in non-directional targets;
+- cost bound dominates gross proxy edge for material rows.
+
+Phase224 redesign routes:
+
+- `P224_COST_AWARE_ACTIONABLE_EVENT_LABELS`;
+- `P224_SELECTIVITY_AND_COOLDOWN_SIGNAL_SOURCE`;
+- `P224_EXECUTION_AWARE_PASSIVE_OR_MIDPOINT_PROXY`.
+
+Phase224 selected Phase225 route:
+
+- selected route: `P224_COST_AWARE_ACTIONABLE_EVENT_LABELS`;
+- selected theme: cost-aware label source;
+- required artifacts: cost-hurdle label contract, train/validation-only materialization, negative-control labels, and a minimum event-count gate;
+- allowed next scope: source redesign precommit only;
+- model fit allowed next: 0;
+- strategy replay allowed: 0;
+- broader replay allowed next: 0;
+- test replay allowed next: 0;
+- promotion allowed: 0;
+- paper/live acceptance allowed: 0;
+- profitability claim allowed: 0.
+
+Phase224 results:
+
+- closure rows: 1;
+- failure-mode rows: 4;
+- redesign route rows: 3;
+- Phase225 work-order rows: 1;
+- hard gates: 7 / 7 passed;
+- forbidden execution rows: 14;
+- next best action: `run_phase225_cost_aware_event_source_redesign_precommit_no_fit_no_replay_no_test`.
+
+Current Phase149 evidence after Phase224:
+
+- phase rows discovered: 217;
+- runner phase rows: 215;
+- acceptance phase rows: 167;
+- hard global-state gates: 274 / 274 passed;
+- real receive-flow branch status: `event_only_signal_replay_candidate_set_closed_phase225_cost_aware_redesign_precommit_pending_no_fit_no_replay_no_test`;
+- next best action: `run_phase225_cost_aware_event_source_redesign_precommit_no_fit_no_replay_no_test`.
+
+Current interpretation: Phase224 avoids an attractive trap. The current replay candidate set is now formally closed for broader replay and sealed test, and the only allowed way forward is a materially different, cost-aware event-source redesign.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+gate_id,gate_pass,evidence,severity
+P224_PHASE223_COMPLETE,True,phase223_complete=1,hard
+P224_PHASE223_NO_COST_POSITIVE_ROWS,True,positive_rows=0; passing_rows=0,hard
+P224_CURRENT_CANDIDATE_SET_CLOSED,True,closure_rows=1; closed_for_broader=1; closed_for_test=1; reuse_allowed=0,hard
+P224_FAILURE_MODES_RECORDED,True,failure_rows=4,hard
+P224_MATERIAL_REDESIGN_ROUTES_RECORDED,True,redesign_rows=3; candidates=3,hard
+P224_PHASE225_WORK_ORDER_RECORDED,True,work_order_rows=1,hard
+P224_FORBIDDEN_OUTPUTS_CLEAN,True,forbidden_emitted=0; forbidden_flags=0,hard
