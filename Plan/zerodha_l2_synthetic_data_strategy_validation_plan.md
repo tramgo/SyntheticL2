@@ -10468,6 +10468,84 @@ Current Phase149 evidence after Phase261:
 
 ---
 
+## 24.88 Phase262 Passive Opportunity Breadth and Fill-model Training Search Completed
+
+Phase262 executes the broader training-only passive opportunity search precommitted by Phase261. It uses the Phase254 richer raw Zerodha top-five event bars and applies the Phase261 fill-probability grid. Every variant uses full Zerodha top-five market-by-price depth rows 1 through 5 and levels 2-5/beyond-L1 materiality. L1-only variants remain forbidden.
+
+Phase262 does not download data, run replay execution, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase262 search scope:
+
+- input event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- passive variants tested: `2,592`;
+- variants using full top-five depth: `2,592`;
+- variants using levels 2-5 / beyond-L1 depth: `2,592`;
+- L1-only variants: `0`;
+- Phase261 fill models used: `12`;
+- spread-capture assumption for this executable pass: `0.50` of quoted spread.
+
+Phase262 result:
+
+- positive variants at `1.0x` Zerodha charge stack: `5`;
+- positive variants at `1.5x` charges: `0`;
+- positive variants at `2.0x` charges: `0`;
+- survivor candidates after opportunity-count, symbol breadth, fill-equivalent breadth, cost-stress, side-flip, random-side, queue-adversity and non-fill controls: `0`.
+
+Best Phase262 training-only variant by survivor/cost-stress ranking:
+
+- candidate family: `P262_TWO_SIDED_SPREAD_CAPTURE_LOW_CHURN`;
+- fill model: `P261_FILL_conservative_low_fill_QA0p75`;
+- expected net P&L at `1.0x` charges: `-17.14255650345248 INR`;
+- expected net P&L at `2.0x` charges: `-55.442989223856685 INR`;
+- opportunity rows: `5`;
+- symbol breadth: `4`;
+- realized fill-equivalent rows: `0.4632302472678699`;
+- side-flip control: pass;
+- random-side control: pass;
+- queue-adversity stress: fail;
+- non-fill stress: fail.
+
+Phase262 interpretation to be completed by Phase263:
+
+- the broader passive opportunity/fill-model search still found no survivor;
+- sparse base-cost positives exist, but they disappear under `1.5x` and `2.0x` cost stress;
+- the best cost-stress-ranked variant is negative even at base charges and has too little breadth;
+- full top-five depth remains enforced, but Phase263 must decide whether this passive route is closed or whether a materially different full-depth route is justified.
+
+Phase262 gates:
+
+- Phase261 work order present: pass;
+- Phase261 full-depth requirement present: pass;
+- Phase261 levels 2-5 requirement present: pass;
+- input rows present: pass, `1,636`;
+- variants tested: pass, `2,592`;
+- all variants use full top-five depth: pass, `2,592`;
+- all variants use levels 2-5: pass, `2,592`;
+- no L1-only variants: pass, `0`;
+- fill grid applied: pass, `12`;
+- controls applied: pass, side-flip, random-side, queue-adversity and non-fill stress;
+- no download/replay/promotion/paper-live: pass.
+
+Phase262 outputs:
+
+- `outputs/phase262/phase262_passive_opportunity_variant_results.csv`;
+- `outputs/phase262/phase262_top_passive_opportunity_variants.csv`;
+- `outputs/phase262/phase262_survivor_opportunity_ledger.csv`;
+- `outputs/phase262/phase262_gate_evaluation.csv`;
+- `outputs/phase262/phase262_acceptance_summary.csv`;
+- `outputs/phase262/phase262_passive_opportunity_breadth_fill_model_training_search_report.md`;
+- `outputs/phase262/phase262_passive_opportunity_breadth_fill_model_training_search_manifest.json`.
+
+Current Phase149 evidence after Phase262:
+
+- synthetic strategy-discovery branch status: `passive_opportunity_breadth_fill_model_training_no_survivor_interpretation_open`;
+- real receive-flow source branch status: `passive_opportunity_breadth_fill_model_training_no_survivor_interpretation_open`;
+- next best action: `run_phase263_passive_opportunity_breadth_fill_model_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

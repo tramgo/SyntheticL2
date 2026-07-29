@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P262_PHASE261_WORK_ORDER_PRESENT,True,run_phase262_passive_opportunity_breadth_fill_model_training_search_full_top5_depth_no_paper_live,Phase261 next action targets Phase262,hard
+P262_PHASE261_FULL_DEPTH_REQUIRED,True,1,full top-five depth required,hard
+P262_PHASE261_L2_L5_REQUIRED,True,1,levels 2-5 materiality required,hard
+P262_INPUT_ROWS_PRESENT,True,1636,>=1000 richer raw top-five event bars,hard
+P262_VARIANTS_TESTED,True,2592,>0 variants,hard
+P262_ALL_VARIANTS_USE_FULL_DEPTH,True,2592,all variants use full top-five depth,hard
+P262_ALL_VARIANTS_USE_LEVELS_2_TO_5,True,2592,all variants use levels 2-5/beyond-L1,hard
+P262_NO_L1_ONLY_VARIANTS,True,0,0 L1-only variants,hard
+P262_FILL_GRID_APPLIED,True,12,>=12 Phase261 fill models,hard
+P262_CONTROLS_APPLIED,True,side_flip;random_side;queue_adversity;nonfill_stress,all controls present,hard
+P262_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

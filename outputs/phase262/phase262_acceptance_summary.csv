@@ -1,0 +1,34 @@
+metric,value,description
+phase262_passive_training_search_complete,1,Phase262 passive opportunity breadth/fill-model training search completed
+phase262_input_event_bar_rows,1636,Input event bars
+phase262_symbols,32,Input symbol breadth
+phase262_trade_dates,1,Input trade dates
+phase262_variant_rows,2592,Passive variants tested
+phase262_full_top_five_depth_variant_rows,2592,Variants using full top-five depth
+phase262_depth_beyond_l1_variant_rows,2592,Variants using levels 2-5/beyond-L1
+phase262_l1_only_variant_rows,0,L1-only variants
+phase262_fill_model_rows_used,12,Distinct Phase261 fill models used
+phase262_cost100_positive_variant_rows,5,Variants positive at 1x Zerodha charge stack
+phase262_cost150_positive_variant_rows,0,Variants positive at 1.5x charges
+phase262_cost200_positive_variant_rows,0,Variants positive at 2x charges
+phase262_survivor_candidate_rows,0,"Variants passing breadth, cost stress and controls"
+phase262_best_candidate_id,P262_P262_TWO_SIDED_SPREAD_CAPTURE_LOW_CHURN_H10_SPQ0p75_RQ0p4_CQ0p4_PQ0p5_I0p0_CF0p5_P261_FILL_conservative_low_fill_QA0p75,Best candidate by survivor/cost200/cost150/cost100 ranking
+phase262_best_family_id,P262_TWO_SIDED_SPREAD_CAPTURE_LOW_CHURN,Best candidate family
+phase262_best_fill_model_id,P261_FILL_conservative_low_fill_QA0p75,Best fill model
+phase262_best_cost100_expected_net_pnl_inr,-17.14255650345248,Best 1x-charge expected net P&L
+phase262_best_cost200_expected_net_pnl_inr,-55.442989223856685,Best 2x-charge expected net P&L
+phase262_best_opportunity_rows,5,Best opportunity rows
+phase262_best_symbols,4,Best symbol breadth
+phase262_best_realized_fill_equivalent_rows,0.4632302472678699,Best fill-equivalent rows
+phase262_best_side_flip_degrades,1,Best side-flip control
+phase262_best_random_side_beat,1,Best random-side control
+phase262_best_queue_adversity_survives,0,Best queue-adversity stress
+phase262_best_nonfill_stress_survives,0,Best non-fill stress
+phase262_hard_gate_pass_rows,11,Hard gates passed
+phase262_hard_gate_rows,11,Hard gates evaluated
+phase262_download_more_dates_now_allowed,0,No new download in Phase262
+phase262_replay_execution_allowed_now,0,No replay execution in Phase262
+phase262_strategy_promotion_allowed,0,No strategy promotion from Phase262
+phase262_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase262
+phase262_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase262
+phase262_next_best_action,run_phase263_passive_opportunity_breadth_fill_model_interpretation_no_paper_live,Recommended next milestone
