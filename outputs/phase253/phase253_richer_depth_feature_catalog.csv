@@ -1,0 +1,27 @@
+feature_name,feature_group,definition,purpose
+l1_mid_price,level_1_price,mean of buy_1_price and sell_1_price,top-of-book price anchor
+l1_spread,level_1_price,sell_1_price minus buy_1_price,spread and tradability guard
+level_n_spread_1_to_5,per_level_price,sell_n_price minus buy_n_price for n=1..5,per-level book-width shape
+buy_quantity_1_to_5,per_level_quantity,buy_n_quantity for n=1..5,visible bid-side depth by level
+sell_quantity_1_to_5,per_level_quantity,sell_n_quantity for n=1..5,visible ask-side depth by level
+buy_orders_1_to_5,per_level_order_count,buy_n_orders for n=1..5,visible bid queue-count shape
+sell_orders_1_to_5,per_level_order_count,sell_n_orders for n=1..5,visible ask queue-count shape
+cum_buy_qty_l1_l5,cumulative_depth,sum buy_1_quantity..buy_5_quantity,full visible bid depth
+cum_sell_qty_l1_l5,cumulative_depth,sum sell_1_quantity..sell_5_quantity,full visible ask depth
+cum_top5_qty_imbalance,cumulative_depth,(cum_buy_qty_l1_l5 - cum_sell_qty_l1_l5)/(cum_buy_qty_l1_l5 + cum_sell_qty_l1_l5),full visible depth imbalance
+depth_beyond_l1_qty_imbalance,depth_beyond_l1,levels 2..5 bid/ask imbalance,separate deeper book pressure from top-of-book
+level_weighted_depth_imbalance,weighted_depth,near-level weighted bid/ask imbalance across levels 1..5,book pressure emphasizing executable levels
+depth_slope_bid,depth_shape,slope of bid quantities across levels 1..5,bid-side depth shape
+depth_slope_ask,depth_shape,slope of ask quantities across levels 1..5,ask-side depth shape
+depth_convexity_bid,depth_shape,curvature of bid quantities across levels 1..5,bid-side replenishment shape
+depth_convexity_ask,depth_shape,curvature of ask quantities across levels 1..5,ask-side replenishment shape
+order_count_imbalance_l1_l5,order_count_shape,buy order-count total versus sell order-count total,visible queue crowding
+avg_qty_per_order_bid_l1_l5,order_size_shape,cum buy quantity divided by cum buy orders,visible bid order-size proxy
+avg_qty_per_order_ask_l1_l5,order_size_shape,cum sell quantity divided by cum sell orders,visible ask order-size proxy
+delta_per_level_qty_1_to_5,event_sequence,receive-order change in each buy/sell level quantity,add/cancel/consume proxy
+delta_per_level_orders_1_to_5,event_sequence,receive-order change in each buy/sell level order count,queue-count transition proxy
+price_shift_level_1_to_5,event_sequence,receive-order change in per-level bid/ask prices,book move and queue-roll proxy
+depth_replenishment_pressure,event_sequence,positive depth deltas after adverse price move,replenishment proxy
+depth_withdrawal_pressure,event_sequence,negative depth deltas before/with price move,withdrawal proxy
+top5_book_churn,event_sequence,sum absolute per-level quantity/order changes,book activity independent of trade volume
+event_bar_future_mid_return,label,future close-mid return over configured event-bar horizons,training target for Phase254+ searches

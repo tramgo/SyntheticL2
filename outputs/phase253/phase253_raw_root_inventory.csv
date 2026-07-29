@@ -1,0 +1,4 @@
+raw_root,exists,trade_date_dir_rows,sample_parquet_rows,sample_path,usable_without_new_download
+real_data_sample\l2_multiday_panel,1,7,3,real_data_sample\l2_multiday_panel\trade_date=2026-07-16\exchange=NSE\symbol=ADANIPORTS\part-034500_837289-000001.parquet,1
+real_data_sample\l2_unseen_validation,1,2,3,real_data_sample\l2_unseen_validation\trade_date=2026-07-20\exchange=NSE\symbol=ADANIPORTS\part-034500_938067-000001.parquet,1
+real_data_sample\l2_single_day,1,0,3,real_data_sample\l2_single_day\symbol=ADANIPORTS\part-034501_461115-000006.parquet,1

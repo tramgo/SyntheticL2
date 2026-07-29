@@ -1,0 +1,18 @@
+metric,value,description
+phase253_richer_raw_depth_precommit_complete,1,Phase253 richer raw-depth materialization precommit completed
+phase253_raw_root_rows,3,Raw roots inspected
+phase253_usable_raw_root_rows,3,Local raw roots usable without new download
+phase253_schema_present_rows,38,Core/raw depth fields present
+phase253_schema_rows,38,Core/raw depth fields required
+phase253_raw_depth_level_columns,30,Explicit buy/sell level 1-5 price/quantity/order columns
+phase253_feature_catalog_rows,26,Feature catalog rows
+phase253_materialization_contract_rows,10,Materialization contract rows
+phase253_hard_gate_pass_rows,6,Hard gates passed
+phase253_hard_gate_rows,6,Hard gates evaluated
+phase253_phase254_materialization_allowed_next,1,Whether Phase254 materialization is allowed next
+phase253_download_more_dates_now_allowed,0,No raw-date download in Phase253
+phase253_replay_execution_allowed_now,0,No replay execution in Phase253
+phase253_strategy_promotion_allowed,0,No strategy promotion from Phase253
+phase253_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase253
+phase253_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase253
+phase253_next_best_action,run_phase254_materialize_richer_raw_top5_depth_event_bars_existing_raw_only_no_paper_live,Recommended next milestone

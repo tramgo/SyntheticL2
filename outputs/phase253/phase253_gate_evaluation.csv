@@ -1,0 +1,7 @@
+gate_id,passed,observed_value,required_value,severity
+P253_PHASE252_WORK_ORDER_PRESENT,True,run_phase253_richer_raw_top5_depth_feature_materialization_precommit_no_new_downloads_no_paper_live,Phase252 next action targets Phase253,hard
+P253_LOCAL_RAW_ROOT_AVAILABLE,True,3,>0 usable local raw roots,hard
+P253_RAW_SCHEMA_PRESENT,True,38/38,all core/depth fields present in sample schema,hard
+P253_FEATURE_CATALOG_WRITTEN,True,26,>=20 richer raw-depth features,hard
+P253_CONTRACT_WRITTEN,True,10,>=10 materialization contract rows,hard
+P253_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

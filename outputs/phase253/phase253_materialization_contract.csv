@@ -1,0 +1,11 @@
+contract_id,requirement,severity
+P253_EXISTING_RAW_ONLY,Phase254 must use existing local raw parquet roots only; no new Azure/raw downloads.,hard
+P253_EXPLICIT_LEVELS_1_TO_5,"Phase254 must read buy/sell levels 1..5 price, quantity and order-count columns directly.",hard
+P253_RECEIVE_ORDER_SORT,"Ticks must be sorted by trade_date, exchange, symbol, collector_received_utc_ms and monotonic timestamp when present.",hard
+P253_EVENT_BAR_CLOCK_DECLARED,Event bars must use a declared receive-event clock and retain source tick counts per bar.,hard
+P253_NO_FORBIDDEN_TUNING,2026-07-17 and 2026-07-20 remain excluded from downstream parameter selection.,hard
+P253_LEVEL_SHAPE_FEATURES_REQUIRED,"Outputs must include per-level, cumulative, weighted, slope/convexity and order-count features.",hard
+P253_DELTA_SEQUENCE_FEATURES_REQUIRED,"Outputs must include receive-order deltas for per-level quantity, price and order-count changes.",hard
+P253_SCHEMA_QUALITY_GATES,"Outputs must check crossed/locked books, nonpositive quantities, missing levels and invalid sorting.",hard
+P253_COST_MODEL_CARRIED,Downstream outputs must carry Zerodha modeled cost/spread floor fields before replay.,hard
+P253_NO_REPLAY_PAPER_LIVE,"Phase253 is precommit only; no replay, promotion, paper/live or profitability claim.",hard

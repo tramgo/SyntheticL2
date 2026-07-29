@@ -9815,6 +9815,85 @@ Current Phase149 evidence after Phase252:
 
 ---
 
+## 24.79 Phase253 Richer Raw Top-five Depth Feature-materialization Precommit Completed
+
+Phase253 precommits the next executable materialization step for richer raw Zerodha top-five market-by-price depth features. It is a precommit only: no new raw downloads, no replay execution, no strategy promotion, no paper/live acceptance and no deployable profitability claim.
+
+Phase253 input/schema evidence:
+
+- raw roots inspected: `3`;
+- usable local raw roots without new download: `3`;
+- core plus raw depth schema fields required: `38`;
+- core plus raw depth schema fields present in sampled raw parquet: `38 / 38`;
+- explicit buy/sell level 1-5 price, quantity and order-count columns: `30`;
+- richer depth feature catalog rows: `26`;
+- materialization contract rows: `10`.
+
+Phase253 richer raw-depth feature groups:
+
+- level-1 mid price and spread;
+- per-level spreads for levels 1 through 5;
+- per-level buy/sell quantities for levels 1 through 5;
+- per-level buy/sell order counts for levels 1 through 5;
+- cumulative buy/sell top-five depth;
+- cumulative top-five quantity imbalance;
+- depth-beyond-L1 quantity imbalance using levels 2 through 5;
+- level-weighted depth imbalance;
+- bid/ask depth slope and convexity;
+- order-count imbalance;
+- average visible quantity per order;
+- receive-order per-level quantity, order-count and price-shift deltas;
+- depth replenishment and withdrawal pressure proxies;
+- top-five book churn;
+- event-bar future mid-return labels for downstream searches.
+
+Phase253 materialization contract for Phase254:
+
+- use existing local raw parquet roots only;
+- read explicit buy/sell levels 1 through 5 price, quantity and order-count columns directly;
+- sort ticks by trade date, exchange, symbol, receive timestamp and monotonic timestamp when present;
+- declare the event-bar clock and retain source tick counts per bar;
+- keep `2026-07-17` and `2026-07-20` excluded from downstream parameter selection;
+- include per-level, cumulative, weighted, slope/convexity and order-count features;
+- include receive-order delta/sequence features;
+- run schema quality gates for crossed/locked books, nonpositive quantities, missing levels and invalid sorting;
+- carry Zerodha modeled cost/spread floor fields before any replay;
+- keep replay, promotion, paper/live and profitability claims closed.
+
+Phase253 gates:
+
+- Phase252 work order present: pass;
+- local raw root available: pass, `3`;
+- raw schema present: pass, `38 / 38`;
+- feature catalog written: pass, `26`;
+- materialization contract written: pass, `10`;
+- no download/replay/promotion/paper-live: pass.
+
+Phase253 verdict:
+
+- richer raw top-five depth materialization is precommitted;
+- Phase254 materialization is allowed next;
+- next best action: `run_phase254_materialize_richer_raw_top5_depth_event_bars_existing_raw_only_no_paper_live`.
+
+Phase253 outputs:
+
+- `outputs/phase253/phase253_raw_root_inventory.csv`;
+- `outputs/phase253/phase253_raw_schema_contract.csv`;
+- `outputs/phase253/phase253_richer_depth_feature_catalog.csv`;
+- `outputs/phase253/phase253_materialization_contract.csv`;
+- `outputs/phase253/phase253_gate_evaluation.csv`;
+- `outputs/phase253/phase253_acceptance_summary.csv`;
+- `outputs/phase253/phase253_richer_raw_top5_depth_feature_materialization_precommit_report.md`;
+- `outputs/phase253/phase253_richer_raw_top5_depth_feature_materialization_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase253:
+
+- synthetic strategy-discovery branch status: `richer_raw_top5_depth_materialization_precommitted`;
+- real receive-flow source branch status: `richer_raw_top5_depth_materialization_precommitted`;
+- next best action: `run_phase254_materialize_richer_raw_top5_depth_event_bars_existing_raw_only_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

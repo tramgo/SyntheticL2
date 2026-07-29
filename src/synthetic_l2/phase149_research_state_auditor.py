@@ -190,6 +190,7 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         250: Path("outputs/phase250/phase250_acceptance_summary.csv"),
         251: Path("outputs/phase251/phase251_acceptance_summary.csv"),
         252: Path("outputs/phase252/phase252_acceptance_summary.csv"),
+        253: Path("outputs/phase253/phase253_acceptance_summary.csv"),
     }
     path = paths.get(phase)
     if path is None or not path.exists():
@@ -1796,6 +1797,28 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "profitability_claim_allowed": as_int(metric_value(path, "phase252_deployable_profitability_claim_allowed", 0)),
             "next_action": metric_value(path, "phase252_next_best_action", ""),
         }
+    if phase == 253:
+        complete = as_int(metric_value(path, "phase253_richer_raw_depth_precommit_complete", 0))
+        return {
+            "branch": "synthetic_strategy_discovery",
+            "state": "richer_raw_top5_depth_materialization_precommitted" if complete else "phase253_richer_raw_depth_precommit_gated",
+            "richer_raw_depth_precommit_complete": complete,
+            "raw_root_rows": as_int(metric_value(path, "phase253_raw_root_rows", 0)),
+            "usable_raw_root_rows": as_int(metric_value(path, "phase253_usable_raw_root_rows", 0)),
+            "schema_present_rows": as_int(metric_value(path, "phase253_schema_present_rows", 0)),
+            "schema_rows": as_int(metric_value(path, "phase253_schema_rows", 0)),
+            "raw_depth_level_columns": as_int(metric_value(path, "phase253_raw_depth_level_columns", 0)),
+            "feature_catalog_rows": as_int(metric_value(path, "phase253_feature_catalog_rows", 0)),
+            "materialization_contract_rows": as_int(metric_value(path, "phase253_materialization_contract_rows", 0)),
+            "phase254_materialization_allowed_next": as_int(metric_value(path, "phase253_phase254_materialization_allowed_next", 0)),
+            "download_more_dates_now_allowed": as_int(metric_value(path, "phase253_download_more_dates_now_allowed", 0)),
+            "replay_execution_allowed_now": as_int(metric_value(path, "phase253_replay_execution_allowed_now", 0)),
+            "strategy_replay_allowed": 0,
+            "promotion_allowed": as_int(metric_value(path, "phase253_strategy_promotion_allowed", 0)),
+            "paper_or_live_acceptance_allowed": as_int(metric_value(path, "phase253_paper_or_live_acceptance_allowed", 0)),
+            "profitability_claim_allowed": as_int(metric_value(path, "phase253_deployable_profitability_claim_allowed", 0)),
+            "next_action": metric_value(path, "phase253_next_best_action", ""),
+        }
     return {}
 
 
@@ -1929,8 +1952,9 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase250 = phase_status_from_metrics(250)
     phase251 = phase_status_from_metrics(251)
     phase252 = phase_status_from_metrics(252)
+    phase253 = phase_status_from_metrics(253)
     phase172 = phase_status_from_metrics(172)
-    real_receive_next = phase252.get("next_action") or phase251.get("next_action") or phase250.get("next_action") or phase249.get("next_action") or phase248.get("next_action") or phase247.get("next_action") or phase246.get("next_action") or phase245.get("next_action") or phase244.get("next_action") or phase243.get("next_action") or phase242.get("next_action") or phase241.get("next_action") or phase240.get("next_action") or phase239.get("next_action") or phase238.get("next_action") or phase237.get("next_action") or phase236.get("next_action") or phase235.get("next_action") or phase234.get("next_action") or phase233.get("next_action") or phase232.get("next_action") or phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or phase228.get("next_action") or phase227.get("next_action") or phase226.get("next_action") or phase225.get("next_action") or phase224.get("next_action") or phase223.get("next_action") or phase222.get("next_action") or phase221.get("next_action") or phase220.get("next_action") or phase219.get("next_action") or phase218.get("next_action") or phase217.get("next_action") or phase216.get("next_action") or phase215.get("next_action") or phase214.get("next_action") or phase213.get("next_action") or phase212.get("next_action") or phase211.get("next_action") or phase210.get("next_action") or phase209.get("next_action") or phase208.get("next_action") or phase207.get("next_action") or phase206.get("next_action") or phase205.get("next_action") or phase204.get("next_action") or phase203.get("next_action") or phase202.get("next_action") or phase201.get("next_action") or phase200.get("next_action") or phase199.get("next_action") or phase198.get("next_action") or phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
+    real_receive_next = phase253.get("next_action") or phase252.get("next_action") or phase251.get("next_action") or phase250.get("next_action") or phase249.get("next_action") or phase248.get("next_action") or phase247.get("next_action") or phase246.get("next_action") or phase245.get("next_action") or phase244.get("next_action") or phase243.get("next_action") or phase242.get("next_action") or phase241.get("next_action") or phase240.get("next_action") or phase239.get("next_action") or phase238.get("next_action") or phase237.get("next_action") or phase236.get("next_action") or phase235.get("next_action") or phase234.get("next_action") or phase233.get("next_action") or phase232.get("next_action") or phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or phase228.get("next_action") or phase227.get("next_action") or phase226.get("next_action") or phase225.get("next_action") or phase224.get("next_action") or phase223.get("next_action") or phase222.get("next_action") or phase221.get("next_action") or phase220.get("next_action") or phase219.get("next_action") or phase218.get("next_action") or phase217.get("next_action") or phase216.get("next_action") or phase215.get("next_action") or phase214.get("next_action") or phase213.get("next_action") or phase212.get("next_action") or phase211.get("next_action") or phase210.get("next_action") or phase209.get("next_action") or phase208.get("next_action") or phase207.get("next_action") or phase206.get("next_action") or phase205.get("next_action") or phase204.get("next_action") or phase203.get("next_action") or phase202.get("next_action") or phase201.get("next_action") or phase200.get("next_action") or phase199.get("next_action") or phase198.get("next_action") or phase197.get("next_action") or phase196.get("next_action") or phase195.get("next_action") or phase194.get("next_action") or phase193.get("next_action") or phase192.get("next_action") or phase191.get("next_action") or phase190.get("next_action") or phase189.get("next_action") or phase188.get("next_action") or phase187.get("next_action") or phase186.get("next_action") or phase185.get("next_action") or phase184.get("next_action") or phase183.get("next_action") or phase182.get("next_action") or phase181.get("next_action") or phase180.get("next_action") or phase179.get("next_action") or phase178.get("next_action") or phase177.get("next_action") or phase176.get("next_action") or phase175.get("next_action") or phase174.get("next_action") or phase172.get("next_action") or "run_phase174_or_phase172_according_to_latest_gate"
     ready_dates = as_int(phase172.get("ready_receive_flow_dates", 0))
     additional_dates_needed = as_int(phase172.get("additional_dates_needed", 0))
     features_materialized = as_int(phase176.get("features_materialized", 0))
@@ -1989,6 +2013,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase250_complete = as_int(phase250.get("pair_basket_precommit_complete", 0))
     phase251_complete = as_int(phase251.get("pair_basket_search_complete", 0))
     phase252_complete = as_int(phase252.get("close_or_broaden_complete", 0))
+    phase253_complete = as_int(phase253.get("richer_raw_depth_precommit_complete", 0))
     if ready_dates >= 5 and additional_dates_needed == 0:
         real_receive_status = "source_gate_open_feature_materialization_pending" if features_materialized == 0 else "feature_quality_pending"
         if quality_audit_ran == 1:
@@ -2101,6 +2126,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
             real_receive_status = str(phase251.get("state", "pair_basket_relative_value_no_survivor_broaden_or_close"))
         if phase252_complete == 1:
             real_receive_status = str(phase252.get("state", "aggregate_pair_basket_closed_richer_raw_depth_precommit_open"))
+        if phase253_complete == 1:
+            real_receive_status = str(phase253.get("state", "richer_raw_top5_depth_materialization_precommitted"))
     else:
         real_receive_status = "gated_waiting_for_two_more_real_l2_dates"
     real_receive_evidence = (
@@ -2183,7 +2210,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         f"Phase249 close_or_broaden_complete={phase249.get('close_or_broaden_complete', '')}, closed_scope={phase249.get('closed_scope', '')}, selected_next_route={phase249.get('selected_next_route', '')}, broaden_queue_rows={phase249.get('broaden_queue_rows', '')}, threshold_relaxation_only_allowed={phase249.get('threshold_relaxation_only_allowed', '')}, download_now_allowed={phase249.get('download_more_dates_now_allowed', '')}, profitability_claim_allowed={phase249.get('profitability_claim_allowed', '')}; "
         f"Phase250 pair_basket_precommit_complete={phase250.get('pair_basket_precommit_complete', '')}, selected_route={phase250.get('selected_route', '')}, grouped_symbols={phase250.get('grouped_symbols', '')}, candidate_families={phase250.get('candidate_family_rows', '')}, phase251_allowed={phase250.get('phase251_training_search_allowed_next', '')}, download_now_allowed={phase250.get('download_more_dates_now_allowed', '')}, replay_now_allowed={phase250.get('replay_execution_allowed_now', '')}, profitability_claim_allowed={phase250.get('profitability_claim_allowed', '')}; "
         f"Phase251 pair_basket_search_complete={phase251.get('pair_basket_search_complete', '')}, variants={phase251.get('variant_rows', '')}, full_top_five_depth_variants={phase251.get('full_top_five_depth_variant_rows', '')}, depth_beyond_l1_variants={phase251.get('depth_beyond_l1_variant_rows', '')}, base_positive={phase251.get('net_positive_variant_rows', '')}, cost200_positive={phase251.get('cost200_positive_variant_rows', '')}, survivors={phase251.get('survivor_candidate_rows', '')}, best={phase251.get('best_candidate_id', '')}, best_net={phase251.get('best_training_net_pnl_inr', '')}, profitability_claim_allowed={phase251.get('profitability_claim_allowed', '')}; "
-        f"Phase252 close_or_broaden_complete={phase252.get('close_or_broaden_complete', '')}, closed_scope={phase252.get('closed_scope', '')}, selected_next_route={phase252.get('selected_next_route', '')}, raw_depth_schema={phase252.get('raw_depth_schema_present_rows', '')}/{phase252.get('raw_depth_schema_rows', '')}, download_now_allowed={phase252.get('download_more_dates_now_allowed', '')}, profitability_claim_allowed={phase252.get('profitability_claim_allowed', '')}."
+        f"Phase252 close_or_broaden_complete={phase252.get('close_or_broaden_complete', '')}, closed_scope={phase252.get('closed_scope', '')}, selected_next_route={phase252.get('selected_next_route', '')}, raw_depth_schema={phase252.get('raw_depth_schema_present_rows', '')}/{phase252.get('raw_depth_schema_rows', '')}, download_now_allowed={phase252.get('download_more_dates_now_allowed', '')}, profitability_claim_allowed={phase252.get('profitability_claim_allowed', '')}; "
+        f"Phase253 richer_raw_depth_precommit_complete={phase253.get('richer_raw_depth_precommit_complete', '')}, usable_raw_roots={phase253.get('usable_raw_root_rows', '')}, schema={phase253.get('schema_present_rows', '')}/{phase253.get('schema_rows', '')}, raw_depth_level_columns={phase253.get('raw_depth_level_columns', '')}, feature_catalog_rows={phase253.get('feature_catalog_rows', '')}, phase254_allowed={phase253.get('phase254_materialization_allowed_next', '')}, profitability_claim_allowed={phase253.get('profitability_claim_allowed', '')}."
     )
     branches = [
         {
@@ -2206,7 +2234,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         },
         {
             "branch": "synthetic_strategy_discovery",
-            "status": phase252.get("state") or phase251.get("state") or phase250.get("state") or phase249.get("state") or phase248.get("state") or phase247.get("state") or phase246.get("state") or phase245.get("state") or phase244.get("state") or phase243.get("state") or phase242.get("state") or phase241.get("state") or phase240.get("state") or phase239.get("state") or phase238.get("state") or phase237.get("state") or phase236.get("state") or phase235.get("state") or phase234.get("state") or phase233.get("state") or phase232.get("state") or phase231.get("state") or phase230.get("state") or phase229.get("state") or "not_started",
+            "status": phase253.get("state") or phase252.get("state") or phase251.get("state") or phase250.get("state") or phase249.get("state") or phase248.get("state") or phase247.get("state") or phase246.get("state") or phase245.get("state") or phase244.get("state") or phase243.get("state") or phase242.get("state") or phase241.get("state") or phase240.get("state") or phase239.get("state") or phase238.get("state") or phase237.get("state") or phase236.get("state") or phase235.get("state") or phase234.get("state") or phase233.get("state") or phase232.get("state") or phase231.get("state") or phase230.get("state") or phase229.get("state") or "not_started",
             "evidence": (
                 f"Phase229 ranked {phase229.get('distinct_strategy_ids', '')} strategy ids and found "
                 f"{phase229.get('positive_realistic_candidate_rows', '')} positive realistic candidates; "
@@ -2236,9 +2264,10 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
                 f"Phase249 closed {phase249.get('closed_scope', '')} and selected {phase249.get('selected_next_route', '')} as the next materially different route; "
                 f"Phase250 precommitted pair/basket relative-value search with grouped_symbols={phase250.get('grouped_symbols', '')}, candidate_families={phase250.get('candidate_family_rows', '')}, no_download={phase250.get('download_more_dates_now_allowed', '')}, replay_now={phase250.get('replay_execution_allowed_now', '')}, profitability_claim_allowed={phase250.get('profitability_claim_allowed', '')}; "
                 f"Phase251 executed {phase251.get('variant_rows', '')} pair/basket variants with full_top_five_depth_variants={phase251.get('full_top_five_depth_variant_rows', '')} and depth_beyond_l1_variants={phase251.get('depth_beyond_l1_variant_rows', '')}, finding base_positive={phase251.get('net_positive_variant_rows', '')}, cost200_positive={phase251.get('cost200_positive_variant_rows', '')} and survivors={phase251.get('survivor_candidate_rows', '')}; "
-                f"Phase252 closed {phase252.get('closed_scope', '')} and selected {phase252.get('selected_next_route', '')} after confirming raw_depth_schema={phase252.get('raw_depth_schema_present_rows', '')}/{phase252.get('raw_depth_schema_rows', '')}."
+                f"Phase252 closed {phase252.get('closed_scope', '')} and selected {phase252.get('selected_next_route', '')} after confirming raw_depth_schema={phase252.get('raw_depth_schema_present_rows', '')}/{phase252.get('raw_depth_schema_rows', '')}; "
+                f"Phase253 precommitted richer raw top-five depth materialization with usable_raw_roots={phase253.get('usable_raw_root_rows', '')}, schema={phase253.get('schema_present_rows', '')}/{phase253.get('schema_rows', '')}, feature_catalog_rows={phase253.get('feature_catalog_rows', '')} and phase254_allowed={phase253.get('phase254_materialization_allowed_next', '')}."
             ),
-            "current_next_action": phase252.get("next_action") or phase251.get("next_action") or phase250.get("next_action") or phase249.get("next_action") or phase248.get("next_action") or phase247.get("next_action") or phase246.get("next_action") or phase245.get("next_action") or phase244.get("next_action") or phase243.get("next_action") or phase242.get("next_action") or phase241.get("next_action") or phase240.get("next_action") or phase239.get("next_action") or phase238.get("next_action") or phase237.get("next_action") or phase236.get("next_action") or phase235.get("next_action") or phase234.get("next_action") or phase233.get("next_action") or phase232.get("next_action") or phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or "run_phase229_or_phase230_strategy_discovery",
+            "current_next_action": phase253.get("next_action") or phase252.get("next_action") or phase251.get("next_action") or phase250.get("next_action") or phase249.get("next_action") or phase248.get("next_action") or phase247.get("next_action") or phase246.get("next_action") or phase245.get("next_action") or phase244.get("next_action") or phase243.get("next_action") or phase242.get("next_action") or phase241.get("next_action") or phase240.get("next_action") or phase239.get("next_action") or phase238.get("next_action") or phase237.get("next_action") or phase236.get("next_action") or phase235.get("next_action") or phase234.get("next_action") or phase233.get("next_action") or phase232.get("next_action") or phase231.get("next_action") or phase230.get("next_action") or phase229.get("next_action") or "run_phase229_or_phase230_strategy_discovery",
         },
         {
             "branch": "dense_synthetic_replay",
