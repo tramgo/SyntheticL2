@@ -9399,6 +9399,100 @@ Current Phase149 evidence after Phase247:
 
 ---
 
+## 24.74 Phase248 L2 Imbalance / Regime-filtered Training Search Completed
+
+Phase248 executes the Phase247 redesign contract as a training-only search. It uses the existing Phase235 real event-bar training set, excludes both `2026-07-17` and `2026-07-20` from tuning, requires top-five market-by-price imbalance in every variant, and keeps raw downloads, holdout execution, paper/live routing and deployable profitability claims closed.
+
+Phase248 input scope:
+
+- training event-bar rows: `28,793`;
+- training dates: `7`;
+- training symbols: `32`;
+- forbidden tuning dates: `2026-07-17;2026-07-20`;
+- raw-date downloads executed: `0`;
+- holdout parameter tuning allowed: `0`.
+
+Phase248 search design:
+
+- evaluated variants: `1,728`;
+- variants with required top-five imbalance filter active: `1,728 / 1,728`;
+- families searched:
+  - `P247_REVERSAL_L2_CONFIRMATION`;
+  - `P247_REVERSAL_L2_DIVERGENCE`;
+  - `P247_RANGE_ONLY_REVERSAL`;
+  - `P247_COMBINED_STRICT_REVERSAL`;
+- filters used:
+  - bar-return reversal trigger;
+  - top-five market-by-price imbalance confirmation/divergence;
+  - spread/liquidity guard;
+  - event-intensity guard;
+  - prior range-volatility filter where applicable;
+  - market-direction proxy where available.
+
+Phase248 result:
+
+- net-positive variants at base cost: `30`;
+- variants positive at 1.5x modeled cost: `12`;
+- variants positive at 2.0x modeled cost: `0`;
+- candidates evaluated with full side-flip/random-side controls: `0`;
+- controlled survivors: `0`;
+- future holdout precommit allowed: `0`.
+
+Best observed candidate was still not usable:
+
+- candidate id: `P248_COMBINED_STRICT_REVERSAL_H8_EQ0_99_BQ0_85_TQ0_8_SP0_75_IQ0_25_RQ0_75`;
+- family: `P247_COMBINED_STRICT_REVERSAL`;
+- training trades: `1`;
+- training dates: `1`;
+- training symbols: `1`;
+- base-cost net P&L: `62.20259112587328 INR`;
+- 2.0x-cost net P&L: `-37.83447968607757 INR`;
+- random-side beat fraction: `0.0`.
+
+Phase248 gates:
+
+- Phase247 work order present: pass;
+- forbidden holdout dates excluded: pass;
+- L2 filter active in all variants: pass;
+- variant count sufficient: pass;
+- 2.0x-cost positive variants found: fail, `0`;
+- controlled survivor found: fail, `0`;
+- no download/holdout tuning/paper-live: pass.
+
+Phase248 verdict:
+
+- adding top-five imbalance and regime/liquidity filters made the candidate logic more defensible, but did not produce a robust strategy under modeled Zerodha costs;
+- the positive base-cost rows were sparse and did not survive 2.0x cost stress;
+- no candidate should be sent to fresh holdout;
+- next best action: `close_or_broaden_phase248_l2_imbalance_regime_filtered_search_no_downloads_no_paper_live`.
+
+Possible Phase249 directions, if broadening continues:
+
+- reduce turnover further by requiring fewer but stronger event bars;
+- test market-neutral pair or basket-style signals rather than single-name reversal entries;
+- use top-five depth imbalance as a predictive target/source itself rather than only as a reversal filter;
+- separate opening auction shock from normal intraday bars;
+- use passive/limit-order queue models only if fill probability can be modeled conservatively.
+
+Phase248 outputs:
+
+- `outputs/phase248/phase248_candidate_summary.csv`;
+- `outputs/phase248/phase248_control_summary.csv`;
+- `outputs/phase248/phase248_controlled_candidate_summary.csv`;
+- `outputs/phase248/phase248_survivor_candidates.csv`;
+- `outputs/phase248/phase248_best_candidate_trade_ledger.csv`;
+- `outputs/phase248/phase248_gate_evaluation.csv`;
+- `outputs/phase248/phase248_acceptance_summary.csv`;
+- `outputs/phase248/phase248_l2_imbalance_regime_filtered_redesign_search_report.md`;
+- `outputs/phase248/phase248_l2_imbalance_regime_filtered_redesign_search_manifest.json`.
+
+Current Phase149 evidence after Phase248:
+
+- synthetic strategy-discovery branch status: `l2_imbalance_regime_filtered_search_no_survivor_broaden_or_close`;
+- next best action: `close_or_broaden_phase248_l2_imbalance_regime_filtered_search_no_downloads_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P248_PHASE247_WORK_ORDER_PRESENT,True,run_phase248_training_only_l2_imbalance_regime_filtered_redesign_no_2026_07_17_or_2026_07_20_tuning_no_downloads_no_paper_live,Phase247 next action targets Phase248,hard
+P248_FORBIDDEN_HOLDOUT_DATES_EXCLUDED,True,2026-07-17;2026-07-20,2026-07-17 and 2026-07-20 excluded,hard
+P248_L2_FILTER_ACTIVE_IN_ALL_VARIANTS,True,1728/1728,all variants,hard
+P248_VARIANTS_EVALUATED,True,1728,>=800 combined-filter variants,hard
+P248_COST200_POSITIVE_VARIANTS_FOUND,False,0,>0 positive at 2x cost,hard
+P248_CONTROLLED_SURVIVOR_FOUND,False,0,>0 controlled survivors,diagnostic
+P248_NO_DOWNLOAD_HOLDOUT_TUNING_OR_PAPER_LIVE,True,0,0,hard
