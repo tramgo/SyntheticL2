@@ -1,0 +1,10 @@
+feature_or_filter,status,source,purpose
+bar_return,required,existing Phase235/246 event-bar field,primary reversal trigger retained but no longer sufficient alone
+avg_top5_market_by_price_imbalance,required,top-five market-by-price depth field,confirm reversal pressure or veto continuation-aligned depth
+avg_l1_imbalance,optional_confirmation,best bid/ask depth field,secondary order-book pressure check
+avg_spread,required,event-bar spread field,avoid expensive or unstable spread states
+taker_round_trip_cost_floor_bps,required,modeled Zerodha cost and spread floor,cost floor remains embedded in every replay
+avg_event_intensity_proxy,required,tick/update intensity proxy,avoid weak bars with insufficient market activity
+abs_bar_return_bps,required,bar move size field,compare bar move with recent volatility/range regime
+market_direction_proxy,required_if_available,NIFTYBEES or index proxy to be materialized in Phase248 if present,veto reversal trades aligned with broad market continuation
+news_event_calendar,blocked_external_optional,not currently available locally,do not fabricate news labels; leave as explicit external data gap

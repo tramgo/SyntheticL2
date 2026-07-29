@@ -1,0 +1,20 @@
+metric,value,description
+phase247_l2_imbalance_regime_filter_redesign_precommit_complete,1,Phase247 redesign precommit completed
+phase247_parent_candidate_id,P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9,Failed frozen Phase244 parent candidate
+phase247_failure_attribution_rows,6,Phase246 failure rows attributed
+phase247_feature_filter_rows,9,Required/optional feature filter rows
+phase247_redesign_candidate_rows,4,Redesign candidate families precommitted
+phase247_acceptance_contract_rows,8,Acceptance contract rows
+phase247_forbidden_tuning_dates,2026-07-17;2026-07-20,Dates excluded from tuning
+phase247_l2_imbalance_filter_required,1,Top-five market-by-price imbalance filter required
+phase247_range_or_market_veto_required,1,Range-regime or market-direction veto required
+phase247_cost_stress_first_objective,1,2x cost stress prioritized in candidate ranking
+phase247_no_more_downloads_for_failed_parent_allowed,1,No more raw-date downloads for failed parent candidate
+phase247_training_search_allowed_next,1,Phase248 training-only redesign search may run next
+phase247_holdout_execution_allowed_now,0,No holdout execution in Phase247
+phase247_strategy_promotion_allowed,0,No strategy promotion from Phase247
+phase247_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase247
+phase247_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase247
+phase247_hard_gate_pass_rows,6,Hard gates passed
+phase247_hard_gate_rows,6,Hard gates evaluated
+phase247_next_best_action,run_phase248_training_only_l2_imbalance_regime_filtered_redesign_no_2026_07_17_or_2026_07_20_tuning_no_downloads_no_paper_live,Recommended next milestone

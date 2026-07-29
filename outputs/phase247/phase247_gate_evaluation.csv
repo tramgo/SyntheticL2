@@ -1,0 +1,7 @@
+gate_id,passed,observed_value,required_value,severity
+P247_PHASE246_FAILURE_OBSERVED,True,6,>0 failure attribution rows,hard
+P247_TOP5_IMBALANCE_INCLUDED,True,avg_top5_market_by_price_imbalance,present,hard
+P247_REDESIGN_CATALOG_WRITTEN,True,4,>=3 redesign candidates,hard
+P247_ACCEPTANCE_CONTRACT_WRITTEN,True,8,>=6 contract rows,hard
+P247_NO_HOLDOUT_TUNING,True,2026-07-17;2026-07-20,excluded from tuning,hard
+P247_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

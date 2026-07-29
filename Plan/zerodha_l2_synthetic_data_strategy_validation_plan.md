@@ -9323,6 +9323,82 @@ Current Phase149 evidence after Phase246:
 
 ---
 
+## 24.73 Phase247 L2 Imbalance / Regime-filter Redesign Precommit Completed
+
+Phase247 converts the Phase246 failure into a bounded redesign contract. It explicitly rejects bar-return reversal as a standalone strategy and requires top-five market-by-price depth imbalance, spread/liquidity, volatility/range and market-direction checks before the next training-only search.
+
+Phase247 failure attribution:
+
+- parent candidate: `P243_BAR_RETURN_REVERSAL_H8_EQ0_99_SQ0_9`;
+- Phase246 failure attribution rows: `6`;
+- failed controls include:
+  - random-side beat fraction below requirement;
+  - 2.0x cost stress negative;
+  - trade breadth below requirement;
+  - symbol breadth below requirement;
+  - combined diagnostic controls below requirement.
+
+Required filter/check catalog:
+
+- `bar_return`: retained as the primary reversal trigger, but no longer sufficient alone;
+- `avg_top5_market_by_price_imbalance`: required top-five market-by-price depth confirmation or continuation veto;
+- `avg_l1_imbalance`: optional secondary order-book pressure confirmation;
+- `avg_spread`: required spread/liquidity guard;
+- `taker_round_trip_cost_floor_bps`: required modeled Zerodha cost/spread floor;
+- `avg_event_intensity_proxy`: required activity/volume-style guard;
+- `abs_bar_return_bps`: required recent-volatility/range comparison input;
+- `market_direction_proxy`: required if materializable from `NIFTYBEES` or another index proxy;
+- `news_event_calendar`: external optional blocker; do not fabricate news labels.
+
+Precommitted redesign families:
+
+1. `P247_REVERSAL_L2_CONFIRMATION` — bar-return reversal only when top-five depth imbalance confirms reversal pressure;
+2. `P247_REVERSAL_L2_DIVERGENCE` — reversal only when price impulse and depth pressure diverge;
+3. `P247_RANGE_ONLY_REVERSAL` — reversal only in range-bound / non-trending volatility states;
+4. `P247_COMBINED_STRICT_REVERSAL` — strict conjunction of reversal trigger, depth confirmation, range regime, liquidity/spread and market-direction veto.
+
+Phase247 acceptance contract:
+
+- exclude `2026-07-17` and `2026-07-20` from threshold, filter and parameter selection;
+- require at least one top-five market-by-price imbalance filter;
+- require at least one range-regime or market-direction veto if the proxy exists;
+- require spread/liquidity guard;
+- rank candidates by 2.0x-cost robustness before headline base-cost P&L;
+- retain random-side and side-flip controls;
+- download no more fresh dates for the failed Phase244 parent candidate;
+- keep paper/live/deployable profitability claim closed.
+
+Phase247 evidence:
+
+- feature/filter rows: `9`;
+- redesign candidate rows: `4`;
+- acceptance contract rows: `8`;
+- hard gates: `6 / 6` passed;
+- training search allowed next: `1`;
+- holdout execution allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase248_training_only_l2_imbalance_regime_filtered_redesign_no_2026_07_17_or_2026_07_20_tuning_no_downloads_no_paper_live`.
+
+Phase247 outputs:
+
+- `outputs/phase247/phase247_failure_attribution.csv`;
+- `outputs/phase247/phase247_required_filter_catalog.csv`;
+- `outputs/phase247/phase247_redesign_candidate_catalog.csv`;
+- `outputs/phase247/phase247_acceptance_contract.csv`;
+- `outputs/phase247/phase247_gate_evaluation.csv`;
+- `outputs/phase247/phase247_acceptance_summary.csv`;
+- `outputs/phase247/phase247_l2_imbalance_regime_filter_redesign_precommit_report.md`;
+- `outputs/phase247/phase247_l2_imbalance_regime_filter_redesign_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase247:
+
+- synthetic strategy-discovery branch status: `l2_imbalance_regime_filter_training_search_precommitted`;
+- next best action: `run_phase248_training_only_l2_imbalance_regime_filtered_redesign_no_2026_07_17_or_2026_07_20_tuning_no_downloads_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

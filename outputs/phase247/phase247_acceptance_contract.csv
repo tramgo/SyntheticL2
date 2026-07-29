@@ -1,0 +1,9 @@
+contract_id,requirement,requirement_type
+H247_NO_HOLDOUT_TUNING,"Exclude 2026-07-17;2026-07-20 from threshold, filter and parameter selection",hard
+H247_L2_FILTER_REQUIRED,At least one top-five market-by-price imbalance filter must be active,hard
+H247_RANGE_OR_MARKET_VETO_REQUIRED,At least one range-regime or market-direction veto must be active if the needed proxy exists,hard
+H247_LIQUIDITY_SPREAD_GUARD_REQUIRED,Spread/liquidity guard must be active before any replay candidate can be opened,hard
+H247_COST_STRESS_FIRST_OBJECTIVE,Candidate ranking must prefer positive 2.0x-cost net P&L before base-cost headline P&L,hard
+H247_RANDOM_SIDE_AND_SIDE_FLIP_CONTROLS,Random-side beat >=0.95 and side-flip net negative remain required,hard
+H247_NO_MORE_DATE_DOWNLOAD_FOR_FAILED_PARENT,Do not download more fresh dates for the failed Phase244 parent candidate,hard
+H247_NO_PAPER_LIVE,No paper/live/deployable profitability claim from the redesign precommit,hard

@@ -168,6 +168,7 @@ phase,runner,runner_exists,runner_suffix
 244,scripts\run_phase244_future_holdout_precommit.py,True,.py
 245,scripts\run_phase245_storage_decision_audit.py,True,.py
 246,scripts\run_phase246_fresh_one_date_holdout_diagnostic.py,True,.py
+247,scripts\run_phase247_l2_imbalance_regime_filter_redesign_precommit.py,True,.py
 25,scripts\run_phase25_event_replay_expansion.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py

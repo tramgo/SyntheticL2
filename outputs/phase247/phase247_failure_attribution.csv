@@ -1,0 +1,7 @@
+failure_id,observed_value,required_value,interpretation
+P247_BAR_REVERSAL_ALONE_FAILED_FRESH_DATE,0,1,Frozen bar-return reversal did not survive one fresh unseen date; redesign required before any more downloads.
+P247_CONTROL_FAIL_RANDOM_SIDE_1000_RUNS,645.9481647866867,control_pass=True,Existing candidate is not robust enough under the configured control.
+P247_CONTROL_FAIL_COST_200,-481.076494115905,control_pass=True,Existing candidate is not robust enough under the configured control.
+P247_GATE_FAIL_P246_DIAGNOSTIC_MIN_TRADES,9,>=20 trades,One-date diagnostic gate failed; do not continue this frozen candidate date-by-date.
+P247_GATE_FAIL_P246_DIAGNOSTIC_MIN_SYMBOLS,9,>=10 symbols,One-date diagnostic gate failed; do not continue this frozen candidate date-by-date.
+P247_GATE_FAIL_P246_DIAGNOSTIC_CONTROLS,2/4,4/4 controls,One-date diagnostic gate failed; do not continue this frozen candidate date-by-date.
