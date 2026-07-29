@@ -10181,6 +10181,88 @@ Current Phase149 evidence after Phase257:
 
 ---
 
+## 24.84 Phase258 Passive Queue-aware Spread-capture Precommit Completed
+
+Phase258 precommits the next materially different route after Phase257 closed the full-depth taker-threshold search. The route is passive/queue-aware spread capture using the same Zerodha top-five market-by-price depth surface. It is a precommit only: no replay execution, no strategy promotion, no paper/live acceptance and no deployable profitability claim.
+
+Phase258 input evidence:
+
+- input event bars: `1,636`;
+- input symbols: `32`;
+- input trade dates: `1`;
+- mean spread: `2.844399420582611 bps`;
+- mean bid-side visible depth share from levels 2-5: `0.8532375598112236`;
+- mean ask-side visible depth share from levels 2-5: `0.8297748875874144`.
+
+Phase258 selected route:
+
+- route: `P258_PASSIVE_QUEUE_AWARE_SPREAD_CAPTURE`;
+- order model contract rows: `8`;
+- feature contract rows: `15`;
+- candidate family rows: `5`;
+- control contract rows: `7`;
+- full top-five depth required: `1`;
+- L1-only candidate allowed: `0`.
+
+Phase258 order-model contract:
+
+- passive quote side may be bid, ask or both;
+- quote price uses best bid or best ask proxy without crossing the spread;
+- queue position proxy uses same-side level-1 quantity and order count;
+- fill probability proxy depends on opposite trade pressure minus same-side queue;
+- adverse-selection proxy penalizes unfavorable future mid-price movement after fill;
+- cancel/replace proxy uses top-five churn and L1 price-shift pressure;
+- latency proxy assumes at least one event-bar activation delay;
+- Zerodha equity intraday cost stack remains active.
+
+Phase258 candidate families:
+
+- `P258_PASSIVE_BID_REPLENISHMENT`;
+- `P258_PASSIVE_ASK_REPLENISHMENT`;
+- `P258_TWO_SIDED_HIGH_SPREAD_LOW_CHURN`;
+- `P258_IMBALANCE_SKEWED_MAKER`;
+- `P258_QUEUE_AVOIDANCE_FILTER`.
+
+Phase258 controls:
+
+- random-side control;
+- side-flip control;
+- cost stress;
+- queue-adversity stress;
+- non-fill model;
+- forbidden-date controls for `2026-07-17` and `2026-07-20`;
+- no paper/live or deployable profitability claim.
+
+Phase258 gates:
+
+- Phase257 work order present: pass;
+- input present: pass;
+- event-bar breadth: pass, `1,636` rows and `32` symbols;
+- full-depth feature contract: pass, `9`;
+- no L1-only candidates: pass;
+- passive family catalog written: pass, `5`;
+- control contract written: pass, `6` required controls;
+- no download/replay/promotion/paper-live: pass.
+
+Phase258 outputs:
+
+- `outputs/phase258/phase258_order_model_contract.csv`;
+- `outputs/phase258/phase258_feature_contract.csv`;
+- `outputs/phase258/phase258_candidate_family_catalog.csv`;
+- `outputs/phase258/phase258_control_contract.csv`;
+- `outputs/phase258/phase258_gate_evaluation.csv`;
+- `outputs/phase258/phase258_acceptance_summary.csv`;
+- `outputs/phase258/phase258_passive_queue_aware_spread_capture_precommit_report.md`;
+- `outputs/phase258/phase258_passive_queue_aware_spread_capture_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase258:
+
+- synthetic strategy-discovery branch status: `passive_queue_aware_spread_capture_training_search_open`;
+- real receive-flow source branch status: `passive_queue_aware_spread_capture_training_search_open`;
+- next best action: `run_phase259_passive_queue_aware_spread_capture_training_search_full_top5_depth_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

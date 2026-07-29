@@ -1,0 +1,16 @@
+feature_status,feature,description
+required,avg_spread_bps,Spread capture ceiling and liquidity filter
+required,avg_cum_buy_qty_l1_l5,Full bid-side visible depth
+required,avg_cum_sell_qty_l1_l5,Full ask-side visible depth
+required,avg_cum_buy_qty_l2_l5,Beyond-L1 bid depth; prevents L1-only candidate
+required,avg_cum_sell_qty_l2_l5,Beyond-L1 ask depth; prevents L1-only candidate
+required,avg_cum_top5_qty_imbalance,Full top-five imbalance
+required,avg_depth_beyond_l1_qty_imbalance,Levels 2-5 imbalance
+required,avg_order_count_imbalance_l1_l5,Order-count crowding imbalance
+required,top5_qty_churn_sum,Depth churn / queue instability
+required,top5_order_churn_sum,Order-count churn / cancel pressure
+required,depth_replenishment_pressure,Passive support and replenishment
+required,depth_withdrawal_pressure,Withdrawal/adverse-selection risk
+required,l1_price_shift_abs_sum,Cancel/replace and queue-loss proxy
+required,taker_round_trip_cost_floor_bps,Cost reference and stress floor
+forbidden,l1_only_depth_imbalance,No L1-only candidate family is allowed

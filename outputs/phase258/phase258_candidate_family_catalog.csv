@@ -1,0 +1,6 @@
+candidate_family_id,quote_side,description,required_signal_groups
+P258_PASSIVE_BID_REPLENISHMENT,bid,Quote bid when levels 2-5 bid depth replenishes and adverse ask pressure is low,full_top5_depth;queue_proxy;adverse_selection
+P258_PASSIVE_ASK_REPLENISHMENT,ask,Quote ask when levels 2-5 ask depth replenishes and adverse bid pressure is low,full_top5_depth;queue_proxy;adverse_selection
+P258_TWO_SIDED_HIGH_SPREAD_LOW_CHURN,both,Quote both sides only when spread is wide enough and top-five churn is low,spread_capture;low_churn;queue_proxy
+P258_IMBALANCE_SKEWED_MAKER,bid_or_ask,Skew passive side with top-five and levels 2-5 imbalance agreement,top5_imbalance;beyond_l1_imbalance;order_count
+P258_QUEUE_AVOIDANCE_FILTER,filter,"Block passive quote when L1 queue crowding, withdrawal or price-shift risk is high",queue_adversity;withdrawal;price_shift

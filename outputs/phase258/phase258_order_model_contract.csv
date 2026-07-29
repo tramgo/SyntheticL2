@@ -1,0 +1,9 @@
+model_component,contract_value,description
+quote_side,bid_or_ask_or_both,"Passive quotes may be placed on bid, ask or both sides according to depth signal"
+quote_price,best_bid_or_best_ask_proxy,Use level-1 same-side price as passive quote proxy; no crossing of spread
+queue_position_proxy,same_side_l1_quantity_and_order_count,Approximate ahead quantity and queue crowding from L1 quantity/order count
+fill_probability_proxy,opposite_trade_pressure_minus_same_side_queue,Fill likelihood rises with opposite pressure and falls with queue depth/order crowding
+adverse_selection_proxy,future_mid_move_against_quote,Penalize fills followed by unfavorable mid-price movement
+cancel_replace_proxy,top5_churn_and_l1_price_shift,Higher churn or L1 price shifts increase cancel/replace/adverse fill risk
+latency_proxy,next_event_bar_arrival,Assume quote becomes active after at least one event-bar latency step
+cost_stack,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Apply statutory/brokerage cost stack; passive model may avoid taker spread crossing but not charges

@@ -182,6 +182,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 255,outputs\phase255,True,7,outputs\phase255\phase255_acceptance_summary.csv,outputs\phase255\phase255_richer_raw_depth_feature_quality_interpretation_manifest.json,False
 256,outputs\phase256,True,7,outputs\phase256\phase256_acceptance_summary.csv,outputs\phase256\phase256_richer_raw_top5_depth_cost_aware_strategy_search_manifest.json,False
 257,outputs\phase257,True,7,outputs\phase257\phase257_acceptance_summary.csv,outputs\phase257\phase257_richer_raw_top5_depth_strategy_search_interpretation_manifest.json,False
+258,outputs\phase258,True,8,outputs\phase258\phase258_acceptance_summary.csv,outputs\phase258\phase258_passive_queue_aware_spread_capture_precommit_manifest.json,False
 26,outputs\phase26,True,10,,outputs\phase26\phase26_strategy_salvage_scan_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False

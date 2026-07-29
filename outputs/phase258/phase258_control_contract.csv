@@ -1,0 +1,8 @@
+control_id,control_status,description
+random_side_control,required,Passive quote direction must beat deterministic random side
+side_flip_control,required,Signal side flip should degrade or invert expected edge
+cost_stress,required,"Evaluate at base, 1.5x and 2x statutory/brokerage charges"
+queue_adversity_stress,required,Haircut fills or edge when queue crowding/churn is high
+nonfill_model,required,Unfilled quote opportunities must not receive spread capture
+forbidden_dates,required,Keep 2026-07-17 and 2026-07-20 excluded from parameter selection
+paper_live_claim,forbidden,No paper/live acceptance or deployable profitability claim

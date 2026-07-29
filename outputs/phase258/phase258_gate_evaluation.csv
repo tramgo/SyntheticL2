@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P258_PHASE257_WORK_ORDER_PRESENT,True,run_phase258_passive_queue_aware_spread_capture_precommit_full_top5_depth_no_paper_live,Phase257 next action targets Phase258,hard
+P258_INPUT_PRESENT,True,1,Phase254 richer event bars exist,hard
+P258_EVENT_BAR_BREADTH,True,rows=1636.0;symbols=32.0,>=1000 rows and >=20 symbols,hard
+P258_FULL_DEPTH_FEATURE_CONTRACT,True,9,>=6 required full-depth features,hard
+P258_NO_L1_ONLY_CANDIDATES,True,l1_only_depth_imbalance forbidden,L1-only candidate explicitly forbidden,hard
+P258_PASSIVE_FAMILY_CATALOG_WRITTEN,True,5,>=4 passive/queue-aware families,hard
+P258_CONTROL_CONTRACT_WRITTEN,True,6,>=5 required controls,hard
+P258_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

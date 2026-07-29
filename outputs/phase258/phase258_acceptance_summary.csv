@@ -1,0 +1,23 @@
+metric,value,description
+phase258_passive_queue_precommit_complete,1,Phase258 passive queue-aware spread-capture precommit completed
+phase258_selected_route,P258_PASSIVE_QUEUE_AWARE_SPREAD_CAPTURE,Selected route
+phase258_input_event_bar_rows,1636,Input richer event bars
+phase258_input_symbols,32,Input symbol breadth
+phase258_input_trade_dates,1,Input trade dates
+phase258_mean_spread_bps,2.844399420582611,Mean spread bps in input
+phase258_mean_l2_l5_bid_share,0.8532375598112236,Mean bid depth share from levels 2-5
+phase258_mean_l2_l5_ask_share,0.8297748875874144,Mean ask depth share from levels 2-5
+phase258_order_model_contract_rows,8,Order model contract rows
+phase258_feature_contract_rows,15,Feature contract rows
+phase258_candidate_family_rows,5,Candidate family rows
+phase258_control_contract_rows,7,Control contract rows
+phase258_full_top_five_depth_required,1,Levels 1-5 required
+phase258_l1_only_candidate_allowed,0,L1-only candidate forbidden
+phase258_hard_gate_pass_rows,8,Hard gates passed
+phase258_hard_gate_rows,8,Hard gates evaluated
+phase258_download_more_dates_now_allowed,0,No new download in Phase258
+phase258_replay_execution_allowed_now,0,No replay execution in Phase258
+phase258_strategy_promotion_allowed,0,No strategy promotion from Phase258
+phase258_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase258
+phase258_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase258
+phase258_next_best_action,run_phase259_passive_queue_aware_spread_capture_training_search_full_top5_depth_no_paper_live,Recommended next milestone
