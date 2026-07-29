@@ -1,0 +1,16 @@
+metric,value,description
+phase239_unseen_date_acquisition_audit_complete,1,Phase239 acquisition/materialization audit completed
+phase239_local_unseen_candidate_dates,0,Local dates not in Phase237 discovery sample
+phase239_min_unseen_validation_dates_required,5,Minimum unseen dates required by Phase238
+phase239_target_unseen_date_rows,5,Target unseen date rows planned
+phase239_az_cli_available,1,Azure CLI availability
+phase239_azcopy_available,0,AzCopy availability
+phase239_azure_storage_listing_ready,1,Whether Azure storage listing is readable now
+phase239_download_plan_rows,7,Download/materialization plan rows
+phase239_hard_gate_pass_rows,3,Hard Phase239 gates passed
+phase239_hard_gate_rows,4,Hard Phase239 gates evaluated
+phase239_validation_execution_allowed_now,0,Phase239 does not execute validation
+phase239_strategy_promotion_allowed,0,No strategy promotion from Phase239
+phase239_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase239
+phase239_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase239
+phase239_next_best_action,run_phase240_execute_unseen_real_l2_download_and_materialization_no_paper_live,Recommended next milestone

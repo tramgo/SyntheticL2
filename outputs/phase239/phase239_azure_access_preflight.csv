@@ -1,0 +1,8 @@
+check_id,passed,observed_value,required_value,interpretation
+P239_AZ_CLI_AVAILABLE,True,C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin\az.CMD,az on PATH or SDK credential alternative,Azure CLI is available for a possible download path.
+P239_AZCOPY_AVAILABLE,False,,azcopy optional,AzCopy is not on PATH; use Azure CLI or Python SDK download path.
+P239_CURRENT_PROCESS_STORAGE_SECRET_AVAILABLE,True,present,fresh SAS/connection string or working az login,A current-process storage secret exists.
+P239_AZ_LOGIN_STORAGE_LIST_READABLE,False,"FileNotFoundError(2, 'The system cannot find the file specified', None, 2, None)",readable storage container listing,Azure CLI storage listing failed before data download.
+P239_FILE_SERVICE_SAS_SHARE_READABLE,True,ctrade1-l2-data,ctrade1-l2-data,SAS can read the Azure Files L2 share.
+P239_FILE_SERVICE_RAW_L2_DATES_READABLE,True,1970-01-01;2026-07-08;2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16;2026-07-17;2026-07-20;2026-07-21;2026-07-22;2026-07-23;2026-07-24;2026-07-27;2026-07-28;2026-07-29,raw_l2/trade_date=*,SAS can list raw_l2 trade-date directories.
+P239_FILE_SERVICE_TARGET_UNSEEN_DATES_AVAILABLE,True,2026-07-17;2026-07-20;2026-07-21;2026-07-22;2026-07-23,2026-07-17;2026-07-20;2026-07-21;2026-07-22;2026-07-23,All target unseen dates are visible in Azure Files raw_l2.

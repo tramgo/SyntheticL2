@@ -8730,6 +8730,102 @@ Current Phase149 evidence after Phase238:
 
 ---
 
+## 24.65 Phase239 Unseen-date Acquisition / Materialization Audit Completed
+
+Phase239 executes the Phase238 acquisition preflight. It checks whether the unseen validation dates required for the frozen Phase237 candidate are locally available or reachable from Azure Files.
+
+Phase239 local evidence:
+
+- local dates not in the Phase237 discovery sample: `0`;
+- minimum unseen validation dates required: `5`;
+- target unseen date rows planned: `5`;
+- target dates:
+  - `2026-07-17`;
+  - `2026-07-20`;
+  - `2026-07-21`;
+  - `2026-07-22`;
+  - `2026-07-23`.
+
+Phase239 Azure evidence:
+
+- Azure CLI available: `1`;
+- AzCopy available: `0`;
+- current-process SAS/connection credential available during the run: `1`;
+- Azure CLI storage listing via login: failed on this machine path;
+- Azure Files SDK with SAS: succeeded;
+- share found: `ctrade1-l2-data`;
+- raw L2 trade-date directories visible in Azure Files:
+  - `1970-01-01`;
+  - `2026-07-08`;
+  - `2026-07-09`;
+  - `2026-07-10`;
+  - `2026-07-13`;
+  - `2026-07-14`;
+  - `2026-07-15`;
+  - `2026-07-16`;
+  - `2026-07-17`;
+  - `2026-07-20`;
+  - `2026-07-21`;
+  - `2026-07-22`;
+  - `2026-07-23`;
+  - `2026-07-24`;
+  - `2026-07-27`;
+  - `2026-07-28`;
+  - `2026-07-29`;
+- target unseen dates visible in Azure Files: all `5 / 5`.
+
+Phase239 outputs:
+
+- `outputs/phase239/phase239_local_real_l2_inventory.csv`;
+- `outputs/phase239/phase239_azure_access_preflight.csv`;
+- `outputs/phase239/phase239_target_unseen_dates.csv`;
+- `outputs/phase239/phase239_download_materialization_plan.csv`;
+- `outputs/phase239/phase239_gate_evaluation.csv`;
+- `outputs/phase239/phase239_acceptance_summary.csv`;
+- `outputs/phase239/phase239_unseen_date_acquisition_report.md`;
+- `outputs/phase239/phase239_unseen_date_acquisition_manifest.json`.
+
+Phase239 download/materialization plan:
+
+1. download raw L2 date `2026-07-17` from Azure Files to `real_data_sample/l2_unseen_validation/`;
+2. download raw L2 date `2026-07-20`;
+3. download raw L2 date `2026-07-21`;
+4. download raw L2 date `2026-07-22`;
+5. download raw L2 date `2026-07-23`;
+6. materialize Phase235-compatible event-bar adapter features under `derived_real_l2_receive_flow_features_phase239/`;
+7. run frozen Phase237 candidate validation in a later phase without threshold tuning.
+
+Phase239 gates:
+
+- local unseen dates available: fail, `0 / 5`;
+- Azure download ready now: soft pass, `1`;
+- target unseen-date plan written: pass, `5`;
+- download/materialization plan written: pass, `7` rows;
+- no validation or promotion unlock: pass;
+- hard gates: `3 / 4` passed.
+
+Current interpretation: Phase239 makes the next step executable. The local machine still has no unseen validation dates, but Azure Files has the required target dates and can be read through the fresh SAS using the Python Azure Files SDK. The next milestone should execute a resumable download/materialization path. Because one target date is roughly `50,787` files and `1.79GB`, the download must be resumable and progress-tracked rather than a blind one-shot command.
+
+Phase239 boundaries:
+
+- validation execution allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- next best action: `run_phase240_execute_unseen_real_l2_download_and_materialization_no_paper_live`.
+
+Current Phase149 evidence after Phase239:
+
+- phase rows discovered: 232;
+- runner phase rows: 230;
+- acceptance phase rows: 182;
+- branch rows: 5;
+- hard global-state gates: 322 / 322 passed;
+- synthetic strategy-discovery branch status: `unseen_real_l2_dates_available_for_download`;
+- next best action: `run_phase240_execute_unseen_real_l2_download_and_materialization_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

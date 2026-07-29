@@ -1,0 +1,6 @@
+target_trade_date,already_materialized_locally,required_for_phase238_primary_validation,expected_source_prefix,target_raw_root,target_feature_root,holiday_calendar_check_required
+2026-07-17,False,True,raw_l2/trade_date=2026-07-17/exchange=NSE/,real_data_sample/l2_unseen_validation/trade_date=2026-07-17/exchange=NSE/,derived_real_l2_receive_flow_features_phase239/trade_date=2026-07-17/exchange=NSE/,True
+2026-07-20,False,True,raw_l2/trade_date=2026-07-20/exchange=NSE/,real_data_sample/l2_unseen_validation/trade_date=2026-07-20/exchange=NSE/,derived_real_l2_receive_flow_features_phase239/trade_date=2026-07-20/exchange=NSE/,True
+2026-07-21,False,True,raw_l2/trade_date=2026-07-21/exchange=NSE/,real_data_sample/l2_unseen_validation/trade_date=2026-07-21/exchange=NSE/,derived_real_l2_receive_flow_features_phase239/trade_date=2026-07-21/exchange=NSE/,True
+2026-07-22,False,True,raw_l2/trade_date=2026-07-22/exchange=NSE/,real_data_sample/l2_unseen_validation/trade_date=2026-07-22/exchange=NSE/,derived_real_l2_receive_flow_features_phase239/trade_date=2026-07-22/exchange=NSE/,True
+2026-07-23,False,True,raw_l2/trade_date=2026-07-23/exchange=NSE/,real_data_sample/l2_unseen_validation/trade_date=2026-07-23/exchange=NSE/,derived_real_l2_receive_flow_features_phase239/trade_date=2026-07-23/exchange=NSE/,True
