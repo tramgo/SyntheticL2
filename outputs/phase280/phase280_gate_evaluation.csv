@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P280_PHASE279_WORK_ORDER_PRESENT,True,run_phase280_material_new_target_construction_search_no_paper_live,Phase279 next action targets Phase280,hard
+P280_PHASE279_PRECOMMIT_COMPLETE,True,1,Phase279 complete,hard
+P280_TARGET_FAMILIES_EXECUTED,True,5,>=5 target families executed,hard
+P280_SCENARIOS_PRESENT,True,144,>0 scenarios,hard
+P280_COST200_REQUIRED,True,cost200,all scenarios cost200,hard
+P280_FULL_DEPTH_REQUIRED,True,full_depth=1;levels_2_to_5=1,full-depth target contract,hard
+P280_L1_ONLY_FORBIDDEN,True,0,0 L1-only variants,hard
+P280_NO_LIVE_LABEL_LEAKAGE,True,0,0 net/gross edge live masks,hard
+P280_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard

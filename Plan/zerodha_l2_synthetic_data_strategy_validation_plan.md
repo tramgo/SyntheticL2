@@ -11903,6 +11903,78 @@ Current Phase149 evidence after Phase279:
 
 ---
 
+## 24.106 Phase280 Material New Target-construction Search Completed
+
+Phase280 executed the Phase279 material-new target-construction search under the synthetic-only acceptance path. This was a full-depth L2 search milestone, not a replay/paper/live promotion milestone.
+
+Phase280 inputs:
+
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- `outputs/phase279/phase279_acceptance_summary.csv`;
+- `outputs/phase279/phase279_target_family_catalog.csv`.
+
+Phase280 target families executed:
+
+- `P279_SPREAD_COST_MARGIN_TARGET`;
+- `P279_ADVERSE_SELECTION_AVOIDANCE_TARGET`;
+- `P279_REPLENISHMENT_CONFIRMATION_TARGET`;
+- `P279_TIME_TO_EXIT_TARGET`;
+- `P279_NET_EDGE_DISTRIBUTION_SHIFT_TARGET`.
+
+Phase280 results:
+
+- target family rows: `5`;
+- variant rows: `24`;
+- cost200 scenario rows: `144`;
+- cost200 above-12 annualized diagnostic rows: `0`;
+- best variant: `P280_SPREAD_REPLENISH_COMBO_Q70`;
+- best family: `spread_cost_margin`;
+- best cost200 annualized diagnostic: `11.28247573982665`;
+- best realized net P&L: `358.17383301036983`;
+- best scheduled event rows: `2`;
+- L1-only variant rows: `0`;
+- net/gross-edge live-mask rows: `0`.
+
+Interpretation boundary:
+
+- the best Phase280 result came close to the user's `>12%` sparse diagnostic threshold but did not cross it under cost200;
+- the result is therefore a useful full-depth clue, not a profitable-strategy acceptance;
+- the small scheduled-event count makes it especially unsuitable for any robust portfolio-return claim;
+- full top-five rows 1-5 and levels 2-5 materiality remained mandatory;
+- net/gross edge was allowed only as offline target-label evidence and was not used as a live selection mask;
+- strategy replay, promotion, paper/live acceptance, and deployable profitability claims remain closed.
+
+Phase280 hard gates:
+
+- Phase279 work order present: pass;
+- Phase279 precommit complete: pass;
+- five target families executed: pass;
+- scenarios present: pass;
+- cost200 required: pass;
+- full-depth target contract present: pass;
+- L1-only variants forbidden: pass;
+- no live label leakage: pass;
+- replay/paper/live/claim boundaries closed: pass.
+
+Phase280 outputs:
+
+- `outputs/phase280/phase280_material_target_scenario_results.csv`;
+- `outputs/phase280/phase280_material_target_family_summary.csv`;
+- `outputs/phase280/phase280_sample_material_target_scheduled_event_ledger.csv`;
+- `outputs/phase280/phase280_gate_evaluation.csv`;
+- `outputs/phase280/phase280_acceptance_summary.csv`;
+- `outputs/phase280/phase280_material_new_target_construction_search_report.md`;
+- `outputs/phase280/phase280_material_new_target_construction_search_manifest.json`.
+
+Current Phase149 evidence after Phase280:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `material_new_target_construction_interpretation_open`;
+- real receive-flow source branch status: `material_new_target_construction_interpretation_open`;
+- next best action: `run_phase281_material_new_target_construction_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

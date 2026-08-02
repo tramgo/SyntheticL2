@@ -1,0 +1,21 @@
+metric,value,description
+phase280_material_new_target_construction_search_complete,1,Phase280 material new target-construction search completed
+phase280_selected_route,P280_MATERIAL_NEW_TARGET_CONSTRUCTION_SEARCH,Selected route
+phase280_target_family_rows,5,Target families evaluated
+phase280_variant_rows,24,Target-construction variants evaluated
+phase280_scenario_rows,144,Cost200 scenarios evaluated
+phase280_cost200_above12_scenario_rows,0,Cost200 above-12 scenarios
+phase280_best_variant_id,P280_SPREAD_REPLENISH_COMBO_Q70,Best target-construction variant
+phase280_best_target_family,spread_cost_margin,Best target family
+phase280_best_cost200_annualized_pct,11.28247573982665,Best cost200 annualized diagnostic
+phase280_best_realized_net_pnl_inr,358.17383301036983,Best realized net P&L
+phase280_best_scheduled_event_rows,2,Best scheduled event rows
+phase280_l1_only_variant_rows,0,L1-only variants
+phase280_net_edge_live_mask_rows,0,Live masks using net/gross edge
+phase280_strategy_replay_allowed,0,No strategy replay unlocked
+phase280_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase280_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase280_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase280_hard_gate_pass_rows,9,Hard gates passed
+phase280_hard_gate_rows,9,Hard gates evaluated
+phase280_next_best_action,run_phase281_material_new_target_construction_interpretation_no_paper_live,Recommended next milestone
