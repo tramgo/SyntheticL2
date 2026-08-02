@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P266_PHASE265_WORK_ORDER_PRESENT,True,run_phase266_full_depth_liquidity_shock_absorption_event_interpretation_no_paper_live,Phase265 next action targets Phase266,hard
+P266_PHASE265_SEARCH_EXECUTED,True,summary=432;rows=432,Phase265 variants present,hard
+P266_FULL_DEPTH_RECOGNIZED,True,full_depth=432;l2_l5=432;l1_only=0;variants=432,all variants full-depth and no L1-only,hard
+P266_NO_SURVIVOR_RECOGNIZED,True,0,0 Phase265 survivors,hard
+P266_2X_POSITIVE_BUT_BREADTH_FRAGILE_RECOGNIZED,True,positive_2x=2;best_events=9;best_symbols=4,2x-positive pocket must be treated as fragile,hard
+P266_SHUFFLE_MARGIN_FRAGILITY_RECOGNIZED,True,1.1368683772161603e-13,shuffled-label separation too small: <100.0,hard
+P266_NEXT_ROUTE_SELECTED,True,P266_FULL_DEPTH_LIQUIDITY_SHOCK_BREADTH_AND_SHUFFLE_ROBUSTNESS_REPAIR_PRECOMMIT,Phase267 repair route contract written,hard
+P266_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

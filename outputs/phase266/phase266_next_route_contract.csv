@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+P267_INPUT,outputs/phase265/phase265_liquidity_shock_variant_results.csv plus outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet,Reuse current full-depth event-bar surface; no new download in the precommit.
+P267_DEPTH_REQUIREMENT,levels_1_to_5_required_l2_l5_required,Every candidate must use top-five market-by-price rows 1-5 and material levels 2-5 evidence.
+P267_FORBIDDEN,l1_only;threshold_relaxation_only;paper_live_or_deployable_profitability_claim,"No L1-only route, no naked threshold loosening, and no paper/live/profitability acceptance."
+P267_REPAIR_TARGET,breadth_and_shuffle_robustness,Repair the Phase265 failure by requiring broader events and economically material shuffled-label separation.
+P267_EVENT_GENERALIZATION,bid_absorption;ask_absorption;spread_compression_absorption;withdrawal_reversal;market_regime_confirmed_absorption,"Generalize the mechanism across full-depth families, not by only reusing the top row."
+P267_ACCEPTANCE_FLOORS,events>=30;symbols>=8;dates>=1;cost200_net>0;cost200_avg_net_per_event>=25;shuffle_margin>=100,Training candidate floors before any future replay discussion.
+P267_CONTROLS,side_flip;random_side;shuffled_label_margin;cost_stress_1p5_2x;breadth;no_l1_only,All controls must be explicit in the candidate ledger.
+P267_NEXT_IF_FAILS,close_liquidity_shock_absorption_route_or_require_more_unseen_real_dates,"If breadth/robustness repair fails, stop this route or use fresh unseen real dates rather than overfitting current date."

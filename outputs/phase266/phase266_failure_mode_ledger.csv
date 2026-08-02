@@ -1,0 +1,7 @@
+failure_mode,evidence,severity,closed_or_requires_repair,interpretation
+no_survivor_after_full_control_stack,survivors=0,hard,1,No Phase265 candidate can be promoted or replayed.
+positive_2x_edge_exists_but_is_tiny_and_sparse,positive_1x=38; positive_1p5=6; positive_2x=2; best_cost100=782.0356498346316; best_cost200=37.90484983463176; best_cost200_avg=4.211649981625751,hard,1,"The best result is positive under 2x costs, but the remaining edge per event is too small to treat as robust."
+best_candidate_breadth_fragile,best_events=9; best_symbols=4; best_dates=1; required_events=30; required_symbols=8; required_dates=1,hard,1,The lead pocket is too narrow for acceptance.
+positive_2x_breadth_rows_absent,cost200_positive_rows=2; cost200_positive_breadth_rows=0,hard,1,2x-positive rows do not survive breadth requirements.
+shuffle_label_margin_not_economic,best_cost100=782.0356498346316; shuffle_label_net=782.0356498346315; shuffle_margin=1.1368683772161603e-13; required_margin=100.0,hard,1,The lead row's shuffled-label separation is effectively not robust enough for acceptance.
+full_depth_surface_preserved_not_invalidated,full_depth=432; l2_l5=432; l1_only=0; variants=432,important_context,1,Full top-five and levels 2-5 depth remain mandatory and were respected.

@@ -188,6 +188,7 @@ phase,runner,runner_exists,runner_suffix
 263,scripts\run_phase263_passive_opportunity_breadth_fill_model_interpretation.py,True,.py
 264,scripts\run_phase264_full_depth_liquidity_shock_absorption_event_precommit.py,True,.py
 265,scripts\run_phase265_full_depth_liquidity_shock_absorption_event_training_search.py,True,.py
+266,scripts\run_phase266_full_depth_liquidity_shock_absorption_event_interpretation.py,True,.py
 26,scripts\run_phase26_strategy_salvage_scan.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py

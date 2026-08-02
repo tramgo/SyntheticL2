@@ -1,0 +1,9 @@
+decision_id,decision_value,evidence,description
+close_phase265_for_promotion,1,survivors=0,Do not promote Phase265 candidates.
+close_phase265_for_replay,1,survivors=0,Do not execute strategy replay from Phase265.
+recognize_promising_but_unaccepted_2x_pocket,1,positive_2x=2; best=P265_P265_L2L5_BID_ABSORPTION_CONTINUATION_H10_IQ0p9_SQ0p75_SPHIGH,"Keep the mechanism alive as a research lead, not as an accepted strategy."
+close_current_narrow_liquidity_shock_candidate,1,best_events=9; best_symbols=4; best_dates=1,The current narrow pocket is closed for acceptance.
+preserve_full_top_five_depth_surface,1,full_depth=432; l2_l5=432; l1_only=0; variants=432,Full top-five L2 depth remains the core project surface.
+threshold_relaxation_only_allowed,0,positive pocket is sparse and shuffle-fragile,Do not continue by merely loosening thresholds.
+material_breadth_and_shuffle_robustness_repair_required,1,best candidate is 2x-positive but too sparse and economically weak versus shuffled-label control,Next work must repair breadth and label/control robustness.
+selected_next_route,P266_FULL_DEPTH_LIQUIDITY_SHOCK_BREADTH_AND_SHUFFLE_ROBUSTNESS_REPAIR_PRECOMMIT,full-depth breadth + shuffle-robustness repair precommit,Next materially different action.

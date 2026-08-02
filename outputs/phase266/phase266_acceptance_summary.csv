@@ -1,0 +1,36 @@
+metric,value,description
+phase266_interpretation_complete,1,Phase266 liquidity-shock interpretation completed
+phase266_phase265_variant_rows,432,Phase265 variants interpreted
+phase266_phase265_full_depth_variant_rows,432,Full-depth variants interpreted
+phase266_phase265_l2_l5_variant_rows,432,Levels 2-5 variants interpreted
+phase266_phase265_l1_only_variant_rows,0,L1-only variants interpreted
+phase266_phase265_cost100_positive_variant_rows,38,Phase265 variants positive at 1x charges
+phase266_phase265_cost150_positive_variant_rows,6,Phase265 variants positive at 1.5x charges
+phase266_phase265_cost200_positive_variant_rows,2,Phase265 variants positive at 2x charges
+phase266_phase265_survivor_candidate_rows,0,Phase265 survivors
+phase266_best_candidate_id,P265_P265_L2L5_BID_ABSORPTION_CONTINUATION_H10_IQ0p9_SQ0p75_SPHIGH,Best Phase265 candidate
+phase266_best_family_id,P265_L2L5_BID_ABSORPTION_CONTINUATION,Best Phase265 family
+phase266_best_cost100_net_pnl_inr,782.0356498346316,Best 1x-charge net P&L
+phase266_best_cost200_net_pnl_inr,37.90484983463176,Best 2x-charge net P&L
+phase266_best_cost200_avg_net_per_event_inr,4.211649981625751,Best 2x average net per event
+phase266_best_event_rows,9,Best event rows
+phase266_best_symbols,4,Best symbol breadth
+phase266_best_trade_dates,1,Best date breadth
+phase266_best_shuffle_label_net_pnl_inr,782.0356498346315,Best shuffled-label net P&L
+phase266_best_shuffle_label_margin_inr,1.1368683772161603e-13,Best 1x P&L minus shuffled-label P&L
+phase266_close_phase265_for_promotion,1,Close Phase265 for promotion
+phase266_close_phase265_for_replay,1,Close Phase265 for replay
+phase266_recognize_promising_but_unaccepted_2x_pocket,1,Recognize 2x-positive pocket as research lead only
+phase266_close_current_narrow_liquidity_shock_candidate,1,Close narrow candidate for acceptance
+phase266_full_top_five_depth_preserved,1,Preserve full top-five depth
+phase266_threshold_relaxation_only_allowed,0,Threshold relaxation only remains forbidden
+phase266_selected_next_route,P266_FULL_DEPTH_LIQUIDITY_SHOCK_BREADTH_AND_SHUFFLE_ROBUSTNESS_REPAIR_PRECOMMIT,Selected next route
+phase266_next_route_contract_rows,8,Next route contract rows
+phase266_hard_gate_pass_rows,8,Hard gates passed
+phase266_hard_gate_rows,8,Hard gates evaluated
+phase266_download_more_dates_now_allowed,0,No new download in Phase266
+phase266_replay_execution_allowed_now,0,No replay execution in Phase266
+phase266_strategy_promotion_allowed,0,No strategy promotion from Phase266
+phase266_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase266
+phase266_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase266
+phase266_next_best_action,run_phase267_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_precommit_no_paper_live,Recommended next milestone
