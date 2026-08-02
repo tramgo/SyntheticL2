@@ -1,0 +1,38 @@
+metric,value,description
+phase271_fixed_capital_analysis_complete,1,Phase271 fixed-capital/concurrency/capacity analysis completed
+phase271_selected_route,P271_FIXED_CAPITAL_CONCURRENCY_AND_CAPACITY_RETURN_ANALYSIS,Selected route
+phase271_phase269_research_lead_rows,17,Phase269 ranked fixed-notional leads used
+phase271_input_event_rows,245,Phase268 event rows used for scheduling
+phase271_input_symbols,17,Input symbols
+phase271_observed_trade_dates,1,Observed trade dates
+phase271_scenario_rows,4320,Capital/concurrency/cost scenarios evaluated
+phase271_scope_rows,18,Pooled plus per-candidate scheduling scopes
+phase271_total_scheduled_event_rows,37440,Scheduled event rows across scenarios
+phase271_cost100_annualized_above_12pct_scenario_rows,58,Cost100 scenarios above 12% one-date annualized diagnostic
+phase271_cost150_annualized_above_12pct_scenario_rows,19,Cost150 scenarios above 12% one-date annualized diagnostic
+phase271_cost200_annualized_above_12pct_scenario_rows,6,Cost200 scenarios above 12% one-date annualized diagnostic
+phase271_cost100_plus_1bp_annualized_above_12pct_scenario_rows,44,Cost100 plus 1bp scenarios above 12% one-date annualized diagnostic
+phase271_cost100_plus_2bp_annualized_above_12pct_scenario_rows,30,Cost100 plus 2bp scenarios above 12% one-date annualized diagnostic
+phase271_best_scenario_id,P271_CAND003_CAP100000_NOT100000_CONC1_COST100,Best mechanical one-date annualized scenario
+phase271_best_realized_net_pnl_inr,545.516320875022,Best scenario realized net P&L
+phase271_best_portfolio_return_pct,0.5455163208750219,Best scenario one-date portfolio return percent
+phase271_best_mechanical_one_date_annualized_portfolio_return_pct,137.4701128605055,Best scenario mechanical one-date annualized percent
+phase271_best_scheduled_event_rows,5,Best scenario scheduled events
+phase271_best_rejected_event_rows,6,Best scenario rejected events
+phase271_best_notional_turnover_x_initial_capital,5.0,Best scenario notional turnover / capital
+phase271_best_max_drawdown_inr,-128.8549363787629,Best scenario max drawdown
+phase271_annualized_return_is_robust_portfolio_claim,0,"Only one observed date, annualized values are mechanical diagnostics"
+phase271_portfolio_claim_allowed,0,Robust portfolio claim allowed only with >=5 observed dates
+phase271_unlimited_capital_assumption_allowed,0,Unlimited capital forbidden
+phase271_fixed_notional_proxy_as_portfolio_return_allowed,0,Fixed-notional proxy cannot be relabeled
+phase271_full_top_five_depth_required,1,Zerodha top-five rows 1-5 required
+phase271_levels_2_to_5_materiality_required,1,Levels 2-5 materiality required
+phase271_l1_only_candidate_allowed,0,L1-only candidates forbidden
+phase271_acceptance_grade_scenario_rows,0,Robust portfolio acceptance rows
+phase271_hard_gate_pass_rows,12,Hard gates passed
+phase271_hard_gate_rows,12,Hard gates evaluated
+phase271_strategy_replay_allowed,0,No strategy replay unlocked
+phase271_strategy_promotion_allowed,0,No promotion unlocked
+phase271_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase271_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase271_next_best_action,run_phase272_fixed_capital_capacity_return_interpretation_no_paper_live,Recommended next milestone

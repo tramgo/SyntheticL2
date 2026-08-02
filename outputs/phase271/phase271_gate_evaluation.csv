@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P271_PHASE270_WORK_ORDER_PRESENT,True,run_phase271_fixed_capital_concurrency_and_capacity_return_analysis_no_paper_live,Phase270 next action targets Phase271,hard
+P271_PHASE270_PRECOMMIT_COMPLETE,True,1,Phase270 fixed-capital precommit complete,hard
+P271_RESEARCH_LEADS_PRESENT,True,17,>0 Phase269 research leads,hard
+P271_EVENT_LEDGER_PRESENT,True,245,>0 Phase268 events for leads,hard
+P271_SCENARIO_GRID_COMPLETE,True,4320,(pooled + per-lead) * 4*3*4*5 scenarios,hard
+P271_FIXED_CAPITAL_DENOMINATOR_USED,True,100000.0;250000.0;500000.0;1000000.0,initial capital denominator,hard
+P271_SCHEDULER_MATERIALIZED,True,37440,>0 scheduled events,hard
+P271_UNLIMITED_CAPITAL_FORBIDDEN,True,0,no unlimited capital or robust claim from one date,hard
+P271_FULL_TOP_FIVE_DEPTH_PRESERVED,True,full_depth=1200;variants=1200,all variants full-depth,hard
+P271_LEVELS_2_TO_5_MATERIALITY_PRESERVED,True,l2_l5=1200;l1_only=0;variants=1200,levels 2-5 materiality and no L1-only,hard
+P271_COST_STRESS_PROFILES_PRESENT,True,cost100;cost100_plus_1bp;cost100_plus_2bp;cost150;cost200,"base, 1.5x, 2x, plus slippage",hard
+P271_NO_REPLAY_PROMOTION_PAPER_LIVE,True,0,replay/promotion/paper-live remain closed,hard

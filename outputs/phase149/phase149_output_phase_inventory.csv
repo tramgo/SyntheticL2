@@ -197,6 +197,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 269,outputs\phase269,True,8,outputs\phase269\phase269_acceptance_summary.csv,outputs\phase269\phase269_full_depth_liquidity_shock_two_lane_training_interpretation_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
 270,outputs\phase270,True,9,outputs\phase270\phase270_acceptance_summary.csv,outputs\phase270\phase270_fixed_capital_concurrency_and_capacity_return_precommit_manifest.json,False
+271,outputs\phase271,True,8,outputs\phase271\phase271_acceptance_summary.csv,outputs\phase271\phase271_fixed_capital_concurrency_and_capacity_return_analysis_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False
 29,outputs\phase29,True,8,,outputs\phase29\phase29_partial_strategy_proxy_replay_manifest.json,False
 3,outputs\phase3,True,6,,outputs\phase3\regime_manifest.json,False

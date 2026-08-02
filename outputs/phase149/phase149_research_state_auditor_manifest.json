@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-08-02T02:53:00.238608+00:00",
+  "generated_utc": "2026-08-02T03:05:01.238744+00:00",
   "scope": "phase149_research_state_auditor",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "40477b0a47aac66ab30cec47fa0461893009bac4",
+  "generator_version": "302301b7d92e54593c903160af8c6ff00c6ff715",
   "configuration_hash": "caff2ea9465c70c675c7451d20a09db0d2ba5c905070589e0d4aff7b6dac788e",
   "random_seed": "none_deterministic_state_audit",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "phase149_research_state_auditor",
   "cost_model_version": "not_applicable",
   "latency_model_version": "not_applicable",
-  "creation_timestamp": "2026-08-02T02:53:00.238608+00:00"
+  "creation_timestamp": "2026-08-02T03:05:01.238744+00:00"
 }

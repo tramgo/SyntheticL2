@@ -11174,6 +11174,100 @@ Current Phase149 evidence after Phase270:
 
 ---
 
+## 24.97 Phase271 Fixed-capital Concurrency and Capacity Return Analysis Completed
+
+Phase271 executes the capital-aware return analysis precommitted in Phase270. It converts Phase269's fixed-notional research leads into fixed-capital scheduled diagnostics so that no result depends on an unlimited-capital denominator.
+
+Phase271 evaluates both:
+
+- a pooled `ALL_RANKED_LEADS` allocator that ranks all preserved leads together; and
+- one independent scheduling scope per preserved lead, `CAND001` through `CAND017`.
+
+The scheduler enforces:
+
+- initial capital grid: `100000;250000;500000;1000000`;
+- fixed notional grid: `25000;50000;100000`;
+- max concurrent positions: `1;2;4;8`;
+- capital lock until `richer_event_bar_id + horizon`;
+- same-symbol overlap rejection;
+- Zerodha intraday NSE cost model `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost profiles: `cost100`, `cost150`, `cost200`, `cost100_plus_1bp`, and `cost100_plus_2bp`.
+
+Phase271 preserves the core L2 objective:
+
+- full Zerodha top-five market-by-price rows 1-5 required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only candidate allowed: `0`.
+
+Phase271 results:
+
+- Phase269 research leads used: `17`;
+- input event rows: `245`;
+- input symbols: `17`;
+- observed trade dates: `1`;
+- scheduling scopes: `18`;
+- capital/concurrency/cost scenarios: `4320`;
+- scheduled event rows across scenarios: `37440`;
+- cost100 scenarios above 12% one-date annualized diagnostic: `58`;
+- cost150 scenarios above 12% one-date annualized diagnostic: `19`;
+- cost200 scenarios above 12% one-date annualized diagnostic: `6`;
+- cost100 plus 1bp slippage scenarios above 12% one-date annualized diagnostic: `44`;
+- cost100 plus 2bp slippage scenarios above 12% one-date annualized diagnostic: `30`;
+- best scenario: `P271_CAND003_CAP100000_NOT100000_CONC1_COST100`;
+- best realized net P&L: `545.516320875022`;
+- best one-date portfolio return: `0.5455163208750219%`;
+- best mechanical one-date annualized portfolio return: `137.4701128605055%`;
+- best scheduled event rows: `5`;
+- best rejected event rows: `6`;
+- best notional turnover / initial capital: `5.0`;
+- best max drawdown: `-128.8549363787629`.
+
+Interpretation boundary:
+
+- the >12% rows are profitable **one-date mechanical diagnostics**, not robust annual portfolio claims;
+- robust portfolio claim allowed: `0`;
+- acceptance-grade scenario rows: `0`;
+- unlimited capital assumption allowed: `0`;
+- fixed-notional proxy as portfolio return allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase271 gates:
+
+- Phase270 work order present: pass;
+- Phase270 precommit complete: pass;
+- research leads present: pass;
+- event ledger present: pass;
+- pooled plus per-lead scenario grid complete: pass;
+- fixed-capital denominator used: pass;
+- scheduler materialized: pass;
+- unlimited capital forbidden: pass;
+- full top-five depth preserved: pass;
+- levels 2-5 materiality preserved: pass;
+- cost-stress profiles present: pass;
+- replay, promotion, and paper/live remain closed: pass.
+
+Phase271 outputs:
+
+- `outputs/phase271/phase271_capital_scenario_results.csv`;
+- `outputs/phase271/phase271_scheduled_event_ledger.csv`;
+- `outputs/phase271/phase271_candidate_capacity_diagnostics.csv`;
+- `outputs/phase271/phase271_annualized_proxy_reconciliation.csv`;
+- `outputs/phase271/phase271_gate_evaluation.csv`;
+- `outputs/phase271/phase271_acceptance_summary.csv`;
+- `outputs/phase271/phase271_fixed_capital_concurrency_and_capacity_return_analysis_report.md`;
+- `outputs/phase271/phase271_fixed_capital_concurrency_and_capacity_return_analysis_manifest.json`.
+
+Current Phase149 evidence after Phase271:
+
+- synthetic strategy-discovery branch status: `fixed_capital_capacity_return_interpretation_open`;
+- real receive-flow source branch status: `fixed_capital_capacity_return_interpretation_open`;
+- next best action: `run_phase272_fixed_capital_capacity_return_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
