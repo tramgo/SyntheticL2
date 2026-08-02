@@ -12911,6 +12911,69 @@ Current Phase149 evidence after Phase291:
 
 ---
 
+## 24.118 Phase292 Adaptive Pressure Breadth-Repair Search Completed
+
+Phase292 tested whether the high-annualized but one-event Phase290 adaptive-pressure spark could be broadened into a less sparse, fixed-capital cost200 research survivor.
+
+Phase292 inputs:
+
+- Phase277 cost200 redesign event universe;
+- Phase291 acceptance/interpretation contract;
+- Phase290 adaptive-pressure spark evidence;
+- full Zerodha top-five market-by-price depth rows 1-5, with depth beyond L1 / levels 2-5 required;
+- fixed initial-capital scheduling through the Phase271 capital/concurrency model.
+
+Phase292 design:
+
+- searched looser but still feature-only full-depth L2 threshold masks;
+- used exhaustion-reversal breadth repair families;
+- tested all-market and open-window buckets;
+- tested side-mode transfer using original and pressure-derived side rules;
+- used fixed capital, fixed order notional and max-concurrent scheduling;
+- scored with cost200 Zerodha-style retail cost stress;
+- kept L1-only variants forbidden;
+- kept net/gross edge labels forbidden as live selection masks.
+
+Phase292 evidence:
+
+- variants searched: `144`;
+- fixed-capital cost200 scenarios evaluated: `576`;
+- sparse above-12% annualized diagnostic scenario rows: `0`;
+- robust portfolio event-floor scenario rows: `0`;
+- robust above-12% scenario rows: `0`;
+- best variant: `P292_EXHAUSTION_BREADTH_P55_S45_I25_NOTWIDE_ALL_ORIG_H10`;
+- best family: `exhaustion_reversal_breadth_repair`;
+- best side mode: `ORIG`;
+- best market bucket: `ALL`;
+- best cost200 fixed-capital annualized diagnostic: `5.678613627848375%`;
+- best realized net P&L: `180.27344850312303` INR;
+- best scheduled events: `1`;
+- L1-only variant rows: `0`;
+- net-edge live-mask rows: `0`;
+- hard gates: `8/8`.
+
+Phase292 interpretation:
+
+The breadth repair did not rescue the Phase290 spark. The best Phase292 route is still only a one-event diagnostic and falls below the 12% annualized discovery threshold after fixed-capital cost200 scheduling. It therefore does not open replay, paper trading, live trading, strategy promotion or a deployable profitability claim.
+
+Phase292 outputs:
+
+- `outputs/phase292/phase292_breadth_repair_variant_catalog.csv`;
+- `outputs/phase292/phase292_breadth_repair_scenario_results.csv`;
+- `outputs/phase292/phase292_breadth_repair_variant_summary.csv`;
+- `outputs/phase292/phase292_sample_breadth_repair_scheduled_event_ledger.csv`;
+- `outputs/phase292/phase292_gate_evaluation.csv`;
+- `outputs/phase292/phase292_acceptance_summary.csv`;
+- `outputs/phase292/phase292_adaptive_pressure_breadth_repair_search_report.md`;
+- `outputs/phase292/phase292_adaptive_pressure_breadth_repair_search_manifest.json`.
+
+Current Phase149 evidence after Phase292:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `adaptive_pressure_breadth_repair_interpretation_open`;
+- `synthetic_strategy_discovery` status: `adaptive_pressure_breadth_repair_interpretation_open`;
+- current next action: `run_phase293_adaptive_pressure_breadth_repair_interpretation_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

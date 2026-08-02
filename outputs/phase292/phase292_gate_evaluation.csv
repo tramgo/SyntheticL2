@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P292_PHASE291_WORK_ORDER_PRESENT,True,run_phase292_adaptive_pressure_breadth_repair_search_no_paper_live,Phase291 routes to Phase292,hard
+P292_VARIANTS_PRESENT,True,144,>=130 breadth repair variants,hard
+P292_SCENARIOS_PRESENT,True,576,>=500 fixed-capital scenarios,hard
+P292_COST_AND_FIXED_CAPITAL_REQUIRED,True,cost200=1;fixed_capital=1,cost200 fixed-capital scoring,hard
+P292_FULL_DEPTH_REQUIRED,True,catalog_l1=0,"full-depth, no L1-only",hard
+P292_NO_LIVE_NET_EDGE_MASKS,True,0,no net/gross edge live masks,hard
+P292_FIXED_CAPITAL_ANNUALIZED_DENOMINATOR,True,fixed_initial_capital,no unlimited-capital denominator,hard
+P292_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard

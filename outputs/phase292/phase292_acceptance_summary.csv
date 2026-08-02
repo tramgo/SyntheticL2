@@ -1,0 +1,24 @@
+metric,value,description
+phase292_breadth_repair_search_complete,1,Phase292 adaptive pressure breadth repair search completed
+phase292_selected_route,P292_ADAPTIVE_PRESSURE_BREADTH_REPAIR_SEARCH,Selected route
+phase292_variant_rows,144,Variants evaluated
+phase292_scenario_rows,576,Cost200 fixed-capital scenarios evaluated
+phase292_sparse_above12_scenario_rows,0,Above-12 sparse diagnostic rows
+phase292_robust_portfolio_floor_scenario_rows,0,Robust floor rows
+phase292_robust_portfolio_above12_scenario_rows,0,Robust above-12 rows
+phase292_best_variant_id,P292_EXHAUSTION_BREADTH_P55_S45_I25_NOTWIDE_ALL_ORIG_H10,Best variant
+phase292_best_repair_family,exhaustion_reversal_breadth_repair,Best repair family
+phase292_best_side_mode,ORIG,Best side mode
+phase292_best_market_bucket,ALL,Best market bucket
+phase292_best_cost200_annualized_pct,5.678613627848375,Best annualized diagnostic
+phase292_best_realized_net_pnl_inr,180.27344850312303,Best net P&L
+phase292_best_scheduled_event_rows,1,Best scheduled events
+phase292_l1_only_variant_rows,0,L1-only variants
+phase292_net_edge_live_mask_rows,0,Net edge live masks
+phase292_strategy_replay_allowed,0,No replay
+phase292_strategy_promotion_allowed,0,No promotion
+phase292_paper_or_live_acceptance_allowed,0,No paper/live
+phase292_deployable_profitability_claim_allowed,0,No deployable claim
+phase292_hard_gate_pass_rows,8,Hard gates passed
+phase292_hard_gate_rows,8,Hard gates
+phase292_next_best_action,run_phase293_adaptive_pressure_breadth_repair_interpretation_no_paper_live,Next action
