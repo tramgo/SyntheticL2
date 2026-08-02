@@ -1,0 +1,6 @@
+decision_id,decision_value,evidence,description
+preserve_phase271_capital_aware_pockets,1,priority_candidates=2;best_candidate=P268_P268_BID_ABSORPTION_BREADTH_REPAIR_H10_IQ0p9_SQ0p75_SPCOMPRESSION,Keep the profitable diagnostic pockets for immediate focused strategy follow-through.
+do_not_claim_robust_annual_portfolio_return,1,observed_dates=1;min_required=5,One-date annualization is a diagnostic only.
+do_not_promote_or_paper_live,1,acceptance_grade_scenario_rows=0,"No replay promotion, paper/live, or deployable claim is allowed."
+avoid_broad_pooled_allocator_for_next_step,1,ALL_RANKED_LEADS produced no above-12 diagnostic scenarios,Do not average away small candidate-specific edges.
+selected_next_route,P272_FOCUSED_CAPITAL_AWARE_CANDIDATE_FOLLOWTHROUGH_SEARCH,focused candidate follow-through search,Test the specific profitable pockets and near-neighbor parameterizations next.

@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P272_PHASE271_WORK_ORDER_PRESENT,True,run_phase272_fixed_capital_capacity_return_interpretation_no_paper_live,Phase271 next action targets Phase272,hard
+P272_PHASE271_ANALYSIS_COMPLETE,True,1,Phase271 complete,hard
+P272_PHASE271_HARD_GATES_PASS,True,12/12,Phase271 hard gates pass,hard
+P272_SCENARIOS_PRESENT,True,4320,>0 Phase271 scenarios,hard
+P272_PRIORITY_POCKETS_FOUND,True,2,>0 follow-through priority candidates,hard
+P272_FULL_DEPTH_PRESERVED,True,full=1;l2_l5=1;l1_only=0,full-depth and no L1-only,hard
+P272_ONE_DATE_BOUNDARY_RECOGNIZED,True,dates=1;portfolio_claim=0,one-date diagnostic only,hard
+P272_NO_PROMOTION_OR_DEPLOYABLE_CLAIM,True,0,deployable claim closed,hard
+P272_NEXT_ROUTE_SELECTED,True,P272_FOCUSED_CAPITAL_AWARE_CANDIDATE_FOLLOWTHROUGH_SEARCH,Phase273 focused follow-through selected,hard

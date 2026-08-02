@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+fixed_capital_scheduler_materialized,scenario_rows=4320;observed_dates=1,positive_mechanics,1,Capital-aware denominator and scheduler are now materialized.
+per_candidate_profitable_pockets_found,cost100_above12=58;cost200_above12=6;best_candidate=P268_P268_BID_ABSORPTION_BREADTH_REPAIR_H10_IQ0p9_SQ0p75_SPCOMPRESSION;best_ann=137.4701128605055,research_positive,1,Small one-date capital-aware pockets exist and should be chased with focused follow-through.
+pooled_allocator_not_yet_working,pooled_above12_scenarios=0,important_context,1,Pooling all ranked leads diluted the edge; follow-through should isolate candidates first.
+cost200_survival_is_sparse_but_nonzero,cost200_above12=6;followthrough_priority_candidates=2,research_positive,1,Some pockets survive 2x modeled Zerodha costs on the one-date diagnostic.
+one_date_only_blocks_portfolio_claim,observed_dates=1;min_required=5;portfolio_claim_allowed=0,hard_boundary,1,Do not call the annualized diagnostic a robust annual portfolio return.
+deployable_profitability_claim_closed,deployable_profitability_claim_allowed=0,hard_boundary,1,No paper/live or deployable profitability claim is opened by this result.
+focused_followthrough_required,priority_candidates=2,next_action,1,"Next step should test focused candidate subsets and parameter neighborhoods, not broad pooled averaging."

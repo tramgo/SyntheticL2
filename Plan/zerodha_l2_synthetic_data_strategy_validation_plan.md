@@ -11268,6 +11268,79 @@ Current Phase149 evidence after Phase271:
 
 ---
 
+## 24.98 Phase272 Fixed-capital Capacity-return Interpretation Completed
+
+Phase272 interprets Phase271's fixed-capital scheduled diagnostics and chooses the next strategy-discovery action. The key finding is that profitable one-date diagnostics are candidate-specific; the pooled `ALL_RANKED_LEADS` allocator is not yet profitable.
+
+Phase272 results:
+
+- Phase271 scenario rows interpreted: `4320`;
+- Phase271 scheduling scopes interpreted: `18`;
+- observed trade dates: `1`;
+- ranked per-candidate capital-aware pockets: `17`;
+- follow-through priority candidates: `2`;
+- pooled all-ranked-lead scenarios above 12%: `0`;
+- best candidate: `P268_P268_BID_ABSORPTION_BREADTH_REPAIR_H10_IQ0p9_SQ0p75_SPCOMPRESSION`;
+- best scenario: `P271_CAND003_CAP100000_NOT100000_CONC1_COST100`;
+- best cost profile: `cost100`;
+- best realized net P&L: `545.516320875022`;
+- best mechanical one-date annualized portfolio-return diagnostic: `137.4701128605055`;
+- best candidate 2x-cost above-12 scenario rows: `3`.
+
+Phase272 interpretation:
+
+- fixed-capital scheduler materialized: yes;
+- per-candidate profitable pockets found: yes;
+- pooled allocator working: no;
+- cost200 survival: sparse but nonzero;
+- robust annual portfolio claim: blocked because only one observed date is available;
+- deployable profitability claim: closed;
+- next action: focused follow-through on the candidate pockets instead of broad pooled averaging.
+
+Phase272 controls:
+
+- full Zerodha top-five market-by-price rows 1-5 remain mandatory;
+- levels 2-5 materiality remains mandatory;
+- L1-only candidates remain forbidden;
+- portfolio claim allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase272 selected next route:
+
+`P272_FOCUSED_CAPITAL_AWARE_CANDIDATE_FOLLOWTHROUGH_SEARCH`
+
+Phase273 work-order intent:
+
+- use `outputs/phase271/phase271_capital_scenario_results.csv`;
+- use `outputs/phase271/phase271_scheduled_event_ledger.csv`;
+- focus on top per-candidate pockets rather than the all-ranked pooled allocator;
+- evaluate top-candidate subsets, cost profiles, notional/concurrency neighborhoods, and event-order sensitivity;
+- preserve full top-five depth and levels 2-5 materiality;
+- keep the one-date diagnostic boundary explicit.
+
+Phase272 outputs:
+
+- `outputs/phase272/phase272_ranked_capital_aware_research_pockets.csv`;
+- `outputs/phase272/phase272_scope_summary.csv`;
+- `outputs/phase272/phase272_interpretation_ledger.csv`;
+- `outputs/phase272/phase272_decision_ledger.csv`;
+- `outputs/phase272/phase272_next_route_contract.csv`;
+- `outputs/phase272/phase272_gate_evaluation.csv`;
+- `outputs/phase272/phase272_acceptance_summary.csv`;
+- `outputs/phase272/phase272_fixed_capital_capacity_return_interpretation_report.md`;
+- `outputs/phase272/phase272_fixed_capital_capacity_return_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase272:
+
+- synthetic strategy-discovery branch status: `focused_capital_aware_candidate_followthrough_search_open`;
+- real receive-flow source branch status: `focused_capital_aware_candidate_followthrough_search_open`;
+- next best action: `run_phase273_focused_capital_aware_candidate_followthrough_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
