@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase290_executed,scenario_rows=984,evidence,1,Phase290 executed adaptive full-depth pressure expansion.
+above12_spark_exists_but_too_sparse,best_ann=28.55657959303009;best_events=1;spark_variants=4,research_clue,1,"The high annualized result is a spark, not an accepted strategy."
+no_sparse_above12_survivor,sparse_above12_rows=0,hard_negative,1,No Phase290 scenario met both >12% and the sparse event floor.
+no_robust_portfolio_survivor,robust_floor_rows=0;robust_above12_rows=0,hard_negative,1,No robust portfolio evidence exists.
+full_depth_boundary_preserved,l1_only=0;live_label_leakage=0,constraint,1,Full-depth and no-live-leakage boundaries held.
+same_adaptive_route_should_close_for_acceptance,event_floor_failed,decision,1,Do not accept the one-event adaptive spark.
+next_route_should_repair_breadth,P291_ADAPTIVE_PRESSURE_BREADTH_REPAIR_SEARCH,next_action,1,Search whether adaptive pressure clues can be broadened without relaxing cost/capital rules.

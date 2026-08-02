@@ -216,6 +216,7 @@ phase,runner,runner_exists,runner_suffix
 289,scripts\run_phase289_full_depth_liquidity_pressure_interpretation.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py
 290,scripts\run_phase290_adaptive_full_depth_liquidity_pressure_expansion_search.py,True,.py
+291,scripts\run_phase291_adaptive_full_depth_liquidity_pressure_interpretation.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py
 2,scripts\run_phase2_empirical_calibration.py,True,.py
 30,scripts\run_phase30_strategy_decision_triage.py,True,.py

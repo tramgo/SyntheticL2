@@ -12825,6 +12825,92 @@ Current Phase149 evidence after Phase290:
 
 ---
 
+## 24.117 Phase291 Adaptive Full-Depth Liquidity-Pressure Interpretation Completed
+
+Phase291 interpreted the Phase290 adaptive liquidity-pressure expansion. The key result is sharp but still non-accepted: Phase290 produced above-12 annualized sparks, but they were too sparse to qualify even as sparse discovery survivors.
+
+Phase291 evidence:
+
+- Phase290 variants interpreted: `246`;
+- Phase290 scenarios interpreted: `984`;
+- Phase290 sparse above-12 annualized diagnostic scenarios: `0`;
+- Phase290 robust portfolio floor scenarios: `0`;
+- Phase290 robust portfolio above-12 scenarios: `0`;
+- best Phase290 spark: `P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P65_S55_I55_NOTWIDE_OPEN_INV_H10`;
+- best adaptive family: `exhaustion_reversal_adaptive`;
+- best primary pressure feature: `depth_withdrawal_pressure`;
+- best interaction feature: `churn_withdraw_interaction`;
+- best side mode: `INV`;
+- best market bucket: `OPEN`;
+- best fixed-capital cost200 annualized diagnostic: `28.55657959303009%`;
+- best scheduled event rows: `1`;
+- above-12 but too-sparse variants: `4`;
+- Phase291 hard gates: `9/9`.
+
+Phase291 decisions:
+
+- close Phase290 adaptive route for acceptance: `1`;
+- preserve the above-12 sparks only as breadth-repair clues;
+- keep fixed-capital annualized denominator: `1`;
+- do not relax annualized return into an unlimited-capital metric: `1`;
+- do not claim portfolio return: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Selected Phase292 route:
+
+- selected next route: `P291_ADAPTIVE_PRESSURE_BREADTH_REPAIR_SEARCH`;
+- next action: `run_phase292_adaptive_pressure_breadth_repair_search_no_paper_live`.
+
+Phase292 route contract:
+
+- inputs:
+  - `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+  - `outputs/phase290/phase290_adaptive_pressure_scenario_results.csv`;
+  - `outputs/phase290/phase290_adaptive_pressure_variant_summary.csv`;
+- search type: adaptive pressure breadth-repair search;
+- required directions:
+  - looser but feature-only thresholds;
+  - family context transfer;
+  - open-to-all bucket transfer;
+  - horizon and concurrency breadth;
+  - cost200 fixed-capital scheduler;
+- capital and costs:
+  - initial capital `100000`;
+  - cost200 required;
+  - fixed-notional grid required;
+  - max-concurrent grid required;
+  - annualized denominator must be fixed capital, never unlimited capital;
+- acceptance boundary:
+  - sparse `>12%` annualized still needs at least `8` scheduled events;
+  - robust portfolio claim still needs a larger event floor;
+  - L1-only variants remain forbidden;
+  - net/gross-edge live masks remain forbidden;
+  - no replay, promotion, paper/live acceptance, or deployable profitability claim is open.
+
+Phase291 outputs:
+
+- `outputs/phase291/phase291_ranked_adaptive_pressure_interpretation.csv`;
+- `outputs/phase291/phase291_adaptive_pressure_family_interpretation.csv`;
+- `outputs/phase291/phase291_interpretation_ledger.csv`;
+- `outputs/phase291/phase291_decision_ledger.csv`;
+- `outputs/phase291/phase291_next_route_contract.csv`;
+- `outputs/phase291/phase291_gate_evaluation.csv`;
+- `outputs/phase291/phase291_acceptance_summary.csv`;
+- `outputs/phase291/phase291_adaptive_full_depth_liquidity_pressure_interpretation_report.md`;
+- `outputs/phase291/phase291_adaptive_full_depth_liquidity_pressure_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase291:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `adaptive_pressure_breadth_repair_search_open`;
+- real receive-flow source branch status: `adaptive_pressure_breadth_repair_search_open`;
+- next best action: `run_phase292_adaptive_pressure_breadth_repair_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

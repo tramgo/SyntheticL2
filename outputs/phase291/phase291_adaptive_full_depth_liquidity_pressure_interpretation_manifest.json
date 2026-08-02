@@ -1,0 +1,20 @@
+{
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "configuration_hash": "b1cf1d62763e30db6f66b7aa21b73a08a2ce9166aa90b2a559d17befcf60ffd6",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "creation_timestamp": "2026-08-02T09:02:58.841144+00:00",
+  "generated_utc": "2026-08-02T09:02:58.841144+00:00",
+  "generator_version": "e64894a137c5daea8aa9212e8b2b99e36b8d90d1",
+  "hard_gate_pass_rows": 9,
+  "hard_gate_rows": 9,
+  "latency_model_version": "phase291_interpretation_no_new_latency_model",
+  "next_action": "run_phase292_adaptive_pressure_breadth_repair_search_no_paper_live",
+  "output_dir": "outputs\\phase291",
+  "phase290_dir": "outputs\\phase290",
+  "random_seed": "not_applicable_deterministic",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "selected_next_route": "P291_ADAPTIVE_PRESSURE_BREADTH_REPAIR_SEARCH",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+}
