@@ -1,0 +1,25 @@
+metric,value,description
+phase263_interpretation_complete,1,Phase263 passive opportunity/fill-model interpretation completed
+phase263_phase262_variant_rows,2592,Phase262 variants interpreted
+phase263_phase262_full_depth_variant_rows,2592,Full-depth variants interpreted
+phase263_phase262_l2_l5_variant_rows,2592,Levels 2-5 variants interpreted
+phase263_phase262_l1_only_variant_rows,0,L1-only variants interpreted
+phase263_phase262_cost100_positive_variant_rows,5,Phase262 variants positive at base charges
+phase263_phase262_cost200_positive_variant_rows,0,Phase262 variants positive at 2x charges
+phase263_phase262_survivor_candidate_rows,0,Phase262 survivors
+phase263_phase262_best_cost100_expected_net_pnl_inr,-17.14255650345248,Best Phase262 1x expected net P&L
+phase263_phase262_best_cost200_expected_net_pnl_inr,-55.442989223856685,Best Phase262 2x expected net P&L
+phase263_close_phase262_for_promotion,1,Close Phase262 candidates for promotion
+phase263_close_passive_spread_capture_fill_model_route,1,Close repaired passive route for now
+phase263_full_top_five_depth_preserved,1,Preserve full top-five depth
+phase263_threshold_relaxation_only_allowed,0,Threshold relaxation only remains forbidden
+phase263_selected_next_route,P263_FULL_DEPTH_LIQUIDITY_SHOCK_ABSORPTION_EVENT_PRECOMMIT,Selected next route
+phase263_next_route_contract_rows,7,Next route contract rows
+phase263_hard_gate_pass_rows,8,Hard gates passed
+phase263_hard_gate_rows,8,Hard gates evaluated
+phase263_download_more_dates_now_allowed,0,No new download in Phase263
+phase263_replay_execution_allowed_now,0,No replay execution in Phase263
+phase263_strategy_promotion_allowed,0,No strategy promotion from Phase263
+phase263_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase263
+phase263_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase263
+phase263_next_best_action,run_phase264_full_depth_liquidity_shock_absorption_event_precommit_no_paper_live,Recommended next milestone

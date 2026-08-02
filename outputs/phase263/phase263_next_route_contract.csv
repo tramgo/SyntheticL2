@@ -1,0 +1,8 @@
+contract_id,contract_value,description
+P264_INPUT,outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet,Use existing richer raw Zerodha top-five event bars; no new download required
+P264_DEPTH_REQUIREMENT,levels_1_to_5_required_l2_l5_required,Use full top-five market-by-price rows 1-5 with explicit levels 2-5 features; L1-only variants forbidden
+P264_ROUTE,full_depth_liquidity_shock_absorption_event_model,Move from passive spread capture to directional liquidity-shock/absorption events
+P264_EVENT_FEATURES,replenishment;withdrawal;top5_churn;order_churn;l2_l5_imbalance;spread_compression_expansion;level_weighted_imbalance,Use depth dynamics rather than only static imbalance or bar return
+P264_LABELS,future_mid_return_h3_h6_h10_cost_hurdled,Evaluate directional continuation/reversal labels after realistic Zerodha cost floors
+P264_CONTROLS,random_side;side_flip;cost_stress;shuffle_label;event_breadth;no_l1_only,Controls required before any candidate can survive
+P264_FORBIDDEN,paper_live_or_deployable_profitability_claim;threshold_relaxation_only,"No paper/live acceptance, deployable profitability claim, or mere passive-threshold relaxation"

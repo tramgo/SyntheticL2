@@ -1,0 +1,8 @@
+failure_mode,evidence,severity,closed_or_requires_repair
+cost_stress_failure,positive_1x=5; positive_1p5=0; positive_2x=0; best_2x=-55.442989223856685,hard,1
+no_survivor_after_full_control_stack,survivors=0,hard,1
+best_ranked_candidate_negative_even_at_base_cost,best_1x=-17.14255650345248; best_2x=-55.442989223856685,hard,1
+opportunity_and_fill_breadth_too_sparse,best_opportunities=5; best_symbols=4; best_fill_equivalent=0.4632302472678699,hard,1
+queue_and_nonfill_stress_not_survived,queue_surviving_variants=6; nonfill_surviving_variants=3,hard,0
+positive_base_edge_not_robust,positive_1x=5; nonzero_variants=2592; total_variants=2592,medium,1
+full_depth_surface_preserved_not_invalidated,full_depth=2592; l2_l5=2592; l1_only=0; variants=2592,important_context,1

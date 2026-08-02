@@ -10546,6 +10546,81 @@ Current Phase149 evidence after Phase262:
 
 ---
 
+## 24.89 Phase263 Passive Opportunity Breadth and Fill-model Interpretation Completed
+
+Phase263 interprets the Phase262 broadened passive opportunity/fill-model training search. It closes the repaired passive spread-capture/fill-model route for promotion because the broader search still produced no controlled survivor. This is not a rejection of the full-depth L2 surface. It is a rejection of this passive spread-capture mechanism after repair.
+
+Phase263 does not download data, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase263 interpreted evidence:
+
+- Phase262 variants interpreted: `2,592`;
+- Phase262 full-depth variants interpreted: `2,592`;
+- Phase262 levels 2-5 variants interpreted: `2,592`;
+- Phase262 L1-only variants interpreted: `0`;
+- Phase262 variants positive at `1.0x` charges: `5`;
+- Phase262 variants positive at `2.0x` charges: `0`;
+- Phase262 survivor candidates: `0`;
+- best Phase262 expected net P&L at `1.0x` charges: `-17.14255650345248 INR`;
+- best Phase262 expected net P&L at `2.0x` charges: `-55.442989223856685 INR`;
+- Phase262 candidates closed for promotion: `1`;
+- passive spread-capture/fill-model route closed for now: `1`;
+- full top-five depth preserved: `1`;
+- threshold-relaxation-only allowed: `0`.
+
+Phase263 failure-mode interpretation:
+
+- `cost_stress_failure`: `5` variants were positive at base charges, but `0` were positive at `1.5x` or `2.0x` charges;
+- `no_survivor_after_full_control_stack`: survivor rows were `0`;
+- `best_ranked_candidate_negative_even_at_base_cost`: the best cost-stress-ranked candidate was negative at both base and `2.0x` costs;
+- `opportunity_and_fill_breadth_too_sparse`: best opportunity breadth was `5` rows, `4` symbols and `0.4632302472678699` fill-equivalent rows;
+- `queue_and_nonfill_stress_not_survived`: the best candidate failed queue-adversity and non-fill stress;
+- `full_depth_surface_preserved_not_invalidated`: every interpreted variant used full top-five depth and levels 2-5, with no L1-only variants.
+
+Phase263 selected next route:
+
+- selected route: `P263_FULL_DEPTH_LIQUIDITY_SHOCK_ABSORPTION_EVENT_PRECOMMIT`;
+- next executable milestone: `run_phase264_full_depth_liquidity_shock_absorption_event_precommit_no_paper_live`.
+
+Phase264 route contract:
+
+- input: `outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet`;
+- depth requirement: full top-five market-by-price rows 1 through 5 required; levels 2-5 features required; L1-only variants forbidden;
+- route: full-depth liquidity-shock / absorption event model;
+- event features: replenishment, withdrawal, top-five churn, order-count churn, L2-L5 imbalance, spread compression/expansion and level-weighted imbalance;
+- labels: cost-hurdled future mid returns at horizons 3, 6 and 10;
+- controls: random-side, side-flip, cost-stress, shuffled-label, event-breadth and no-L1-only controls;
+- forbidden: paper/live acceptance, deployable profitability claim and threshold-relaxation-only continuation.
+
+Phase263 gates:
+
+- Phase262 work order present: pass;
+- Phase262 search executed: pass, `2,592` rows;
+- no survivor recognized: pass, `0`;
+- no `2.0x` cost-positive variant recognized: pass, `0`;
+- full depth preserved: pass, `2,592 / 2,592` full-depth and levels 2-5, `0` L1-only;
+- passive route closed: pass;
+- next route selected: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase263 outputs:
+
+- `outputs/phase263/phase263_failure_mode_ledger.csv`;
+- `outputs/phase263/phase263_decision_ledger.csv`;
+- `outputs/phase263/phase263_next_route_contract.csv`;
+- `outputs/phase263/phase263_gate_evaluation.csv`;
+- `outputs/phase263/phase263_acceptance_summary.csv`;
+- `outputs/phase263/phase263_passive_opportunity_breadth_fill_model_interpretation_report.md`;
+- `outputs/phase263/phase263_passive_opportunity_breadth_fill_model_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase263:
+
+- synthetic strategy-discovery branch status: `full_depth_liquidity_shock_absorption_event_precommit_open`;
+- real receive-flow source branch status: `full_depth_liquidity_shock_absorption_event_precommit_open`;
+- next best action: `run_phase264_full_depth_liquidity_shock_absorption_event_precommit_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

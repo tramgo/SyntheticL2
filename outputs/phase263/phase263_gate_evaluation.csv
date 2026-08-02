@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P263_PHASE262_WORK_ORDER_PRESENT,True,run_phase263_passive_opportunity_breadth_fill_model_interpretation_no_paper_live,Phase262 next action targets Phase263,hard
+P263_PHASE262_SEARCH_EXECUTED,True,summary=2592;rows=2592,Phase262 variants present,hard
+P263_NO_SURVIVOR_RECOGNIZED,True,0,0 Phase262 survivors,hard
+P263_NO_2X_COST_POSITIVE_RECOGNIZED,True,0,0 variants positive at 2x costs,hard
+P263_FULL_DEPTH_PRESERVED,True,full_depth=2592;l2_l5=2592;l1_only=0;variants=2592,all variants full-depth and no L1-only,hard
+P263_PASSIVE_ROUTE_CLOSED,True,1,passive route closed for now,hard
+P263_NEXT_ROUTE_SELECTED,True,P263_FULL_DEPTH_LIQUIDITY_SHOCK_ABSORPTION_EVENT_PRECOMMIT,Phase264 next route contract written,hard
+P263_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

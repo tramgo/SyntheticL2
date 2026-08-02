@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_phase262_for_promotion,1,survivors=0,Do not promote Phase262 candidates
+close_passive_spread_capture_fill_model_route,1,positive_1x=5; positive_2x=0; survivors=0,The repaired passive spread-capture/fill-model route is closed for now
+preserve_full_top_five_depth_surface,1,full_depth=2592; l2_l5=2592; l1_only=0; variants=2592,Full top-five L2 depth remains mandatory
+threshold_relaxation_only_allowed,0,two consecutive passive searches failed survivor/cost-stress gates,Do not continue by merely relaxing passive thresholds
+materially_different_route_required,1,passive route failed after repair; full-depth signal surface still useful,Open a different mechanism rather than another passive spread-capture tweak
+selected_next_route,P263_FULL_DEPTH_LIQUIDITY_SHOCK_ABSORPTION_EVENT_PRECOMMIT,full-depth liquidity shock / absorption event source,Next materially different action
