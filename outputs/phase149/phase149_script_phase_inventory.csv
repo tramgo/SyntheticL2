@@ -199,6 +199,7 @@ phase,runner,runner_exists,runner_suffix
 273,scripts\run_phase273_focused_capital_aware_candidate_followthrough_search.py,True,.py
 274,scripts\run_phase274_focused_capital_followthrough_interpretation.py,True,.py
 275,scripts\run_phase275_focused_capital_multiday_synthetic_followthrough_search.py,True,.py
+276,scripts\run_phase276_multiday_synthetic_followthrough_interpretation.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py

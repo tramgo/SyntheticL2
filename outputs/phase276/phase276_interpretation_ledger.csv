@@ -1,0 +1,7 @@
+finding_id,evidence,severity,finding_present,interpretation
+synthetic_multiday_search_executed,scenario_rows=4800;synthetic_dates=8,evidence,1,Phase275 moved beyond one-date diagnostics into synthetic multiday testing.
+normal_cost_sparse_positive_exists,cost100_above12=2;best_ann=15.091000980326113,research_positive,1,"A small normal-cost pocket exists, but it is sparse."
+cost200_multiday_failure,cost200_above12=0;cost200_median_above12=0;cost200_worst_above12=0,hard_negative,1,The focused pocket does not survive 2x-cost synthetic multiday stress.
+sparsity_warning,sparse_positive_profiles=2;scenario_rows=4800,risk,1,"Above-12 outcomes are rare and concentrated, so do not overfit to the best seed/regime."
+full_depth_route_still_material,sample ledger preserves top-five and levels 2-5 depth features,constraint,1,Do not fall back to L1-only features; redesign must remain full-depth.
+next_route_should_redesign_for_cost_robustness,P276_COST_ROBUST_FULL_DEPTH_REDESIGN_SEARCH,next_action,1,"The next executable search should target edge magnitude, fill selectivity, and cost robustness."

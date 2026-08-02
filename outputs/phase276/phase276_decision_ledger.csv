@@ -1,0 +1,6 @@
+decision_id,decision_value,evidence,description
+close_phase275_for_promotion,1,cost200_above12=0;portfolio_claim=0,"No promotion, paper/live, or deployable profitability claim is allowed."
+recognize_fragile_normal_cost_pocket,1,cost100_above12=2;best_profile=TOP2_PRIORITY_SUBSET:cost100,"Keep the signal as a research clue, not as an accepted strategy."
+reject_as_is_focused_pocket,1,cost200_multiday_above12=0,The Phase275 focused pocket should not be continued unchanged.
+selected_redesign_anchor_profile,TOP2_PRIORITY_SUBSET:cost200,redesign_priority=1;max_ann=9.882085380326114,Use the strongest fragile profiles as anchors for redesign.
+selected_next_route,P276_COST_ROBUST_FULL_DEPTH_REDESIGN_SEARCH,cost robustness failed but normal-cost pocket exists,Execute a cost-robust full-depth redesign search.

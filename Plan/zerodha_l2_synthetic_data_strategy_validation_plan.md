@@ -11573,6 +11573,83 @@ Current Phase149 evidence after Phase275:
 
 ---
 
+## 24.102 Phase276 Multiday Synthetic Follow-through Interpretation Completed
+
+Phase276 interprets the Phase275 synthetic multiday follow-through. The result is a useful rejection of the current pocket as-is: there is a sparse normal-cost positive signal, but no 2x-cost synthetic multiday survival.
+
+Phase276 interpreted Phase275 evidence:
+
+- Phase275 scenario rows: `4800`;
+- synthetic dates per Phase275 scenario: `8`;
+- Phase275 cost100 above-12 synthetic multiday diagnostic rows: `2`;
+- Phase275 cost200 above-12 synthetic multiday diagnostic rows: `0`;
+- Phase275 best synthetic multiday annualized diagnostic: `15.091000980326113`;
+- ranked interpreted profile rows: `5`;
+- normal-cost sparse-positive profile rows: `2`;
+- cost200 failed profile rows: `3`;
+- best redesign anchor profile: `TOP2_PRIORITY_SUBSET:cost200`;
+- best redesign anchor max synthetic annualized diagnostic: `9.882085380326114`.
+
+Phase276 decision:
+
+- close the Phase275 focused pocket for promotion as-is;
+- preserve the normal-cost positive result only as a research clue;
+- treat the 2x-cost failure as the dominant evidence;
+- continue only via a cost-robust full-depth redesign search;
+- keep full top-five L2 rows 1-5 and levels 2-5 materiality mandatory;
+- do not fall back to L1-only features.
+
+Phase276 selected next route:
+
+`P276_COST_ROBUST_FULL_DEPTH_REDESIGN_SEARCH`
+
+Phase277 work-order intent:
+
+- use `outputs/phase275/phase275_multiday_synthetic_scenario_results.csv`;
+- use `outputs/phase275/phase275_sample_synthetic_scheduled_event_ledger.csv`;
+- anchor redesign on `TOP2_PRIORITY_SUBSET:cost200`, `PRIORITY01:cost200`, and `PRIORITY02:cost200`;
+- target increased `cost200` above-12 diagnostics and median stability;
+- keep top-five imbalance, levels 2-5 depth, depth replenishment/withdrawal, spread regime, and event sparsity features central;
+- execute a new synthetic-only search, not paper/live, not promotion, and not a deployable profitability claim.
+
+Phase276 controls:
+
+- Phase275 as-is promotion allowed: `0`;
+- portfolio claim allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase276 hard gates:
+
+- Phase275 work order present: pass;
+- Phase275 search complete: pass;
+- Phase275 hard gates pass: pass;
+- Phase275 results present: pass;
+- outcome classified as fragile: pass;
+- replay, paper/live, and deployable claims remain closed: pass;
+- Phase277 cost-robust redesign route selected: pass.
+
+Phase276 outputs:
+
+- `outputs/phase276/phase276_ranked_multiday_synthetic_profiles.csv`;
+- `outputs/phase276/phase276_interpretation_ledger.csv`;
+- `outputs/phase276/phase276_decision_ledger.csv`;
+- `outputs/phase276/phase276_next_route_contract.csv`;
+- `outputs/phase276/phase276_gate_evaluation.csv`;
+- `outputs/phase276/phase276_acceptance_summary.csv`;
+- `outputs/phase276/phase276_multiday_synthetic_followthrough_interpretation_report.md`;
+- `outputs/phase276/phase276_multiday_synthetic_followthrough_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase276:
+
+- synthetic strategy-discovery branch status: `cost_robust_full_depth_redesign_search_open`;
+- real receive-flow source branch status: `cost_robust_full_depth_redesign_search_open`;
+- next best action: `run_phase277_cost_robust_full_depth_redesign_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

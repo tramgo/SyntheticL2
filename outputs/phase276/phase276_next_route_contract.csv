@@ -1,0 +1,7 @@
+contract_id,contract_value,description
+P277_INPUT,outputs/phase275/phase275_multiday_synthetic_scenario_results.csv;outputs/phase275/phase275_sample_synthetic_scheduled_event_ledger.csv,Use Phase275 scenario and scheduled-event evidence.
+P277_ANCHOR_PROFILES,TOP2_PRIORITY_SUBSET:cost200;PRIORITY01:cost200;PRIORITY02:cost200,Anchor redesign on fragile normal-cost and near-surviving cost-stress profiles.
+P277_SEARCH_TYPE,cost_robust_full_depth_redesign_search,"Execute a new search, not a paper/live route."
+P277_OBJECTIVE,increase_cost200_above12_and_median_stability_without_l1_only_fallback,Target cost robustness while retaining full-depth L2 materiality.
+P277_REQUIRED_FEATURE_FAMILIES,top5_imbalance;levels_2_to_5_depth;depth_replenishment_withdrawal;spread_regime;event_sparsity,Keep full-depth order-book features central.
+P277_BOUNDARY,no_paper_live;no_deployable_profitability_claim;no_strategy_replay_until_cost_robust_multiday_acceptance,Boundaries remain closed.

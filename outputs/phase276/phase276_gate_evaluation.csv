@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P276_PHASE275_WORK_ORDER_PRESENT,True,run_phase276_multiday_synthetic_followthrough_interpretation_no_paper_live,Phase275 next action targets Phase276,hard
+P276_PHASE275_SEARCH_COMPLETE,True,1,Phase275 complete,hard
+P276_PHASE275_HARD_GATES_PASS,True,9/9,Phase275 hard gates pass,hard
+P276_RESULTS_PRESENT,True,scenarios=4800;ranked=5,Phase275 results interpreted,hard
+P276_OUTCOME_CLASSIFIED_AS_FRAGILE,True,cost100_above12=2;cost200_above12=0,normal-cost positive but cost200 failed,hard
+P276_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P276_NEXT_ROUTE_SELECTED,True,P276_COST_ROBUST_FULL_DEPTH_REDESIGN_SEARCH,Phase277 cost-robust redesign selected,hard
