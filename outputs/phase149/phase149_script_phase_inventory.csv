@@ -196,6 +196,7 @@ phase,runner,runner_exists,runner_suffix
 270,scripts\run_phase270_fixed_capital_concurrency_and_capacity_return_precommit.py,True,.py
 271,scripts\run_phase271_fixed_capital_concurrency_and_capacity_return_analysis.py,True,.py
 272,scripts\run_phase272_fixed_capital_capacity_return_interpretation.py,True,.py
+273,scripts\run_phase273_focused_capital_aware_candidate_followthrough_search.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py

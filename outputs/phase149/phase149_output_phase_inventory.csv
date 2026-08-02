@@ -199,6 +199,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 270,outputs\phase270,True,9,outputs\phase270\phase270_acceptance_summary.csv,outputs\phase270\phase270_fixed_capital_concurrency_and_capacity_return_precommit_manifest.json,False
 271,outputs\phase271,True,8,outputs\phase271\phase271_acceptance_summary.csv,outputs\phase271\phase271_fixed_capital_concurrency_and_capacity_return_analysis_manifest.json,False
 272,outputs\phase272,True,9,outputs\phase272\phase272_acceptance_summary.csv,outputs\phase272\phase272_fixed_capital_capacity_return_interpretation_manifest.json,False
+273,outputs\phase273,True,7,outputs\phase273\phase273_acceptance_summary.csv,outputs\phase273\phase273_focused_capital_aware_candidate_followthrough_search_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False
 29,outputs\phase29,True,8,,outputs\phase29\phase29_partial_strategy_proxy_replay_manifest.json,False
 3,outputs\phase3,True,6,,outputs\phase3\regime_manifest.json,False

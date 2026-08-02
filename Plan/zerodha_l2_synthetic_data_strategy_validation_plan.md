@@ -11341,6 +11341,88 @@ Current Phase149 evidence after Phase272:
 
 ---
 
+## 24.99 Phase273 Focused Capital-aware Candidate Follow-through Search Completed
+
+Phase273 executes the focused follow-through selected by Phase272. It tests the two priority candidate pockets individually and as a top-two subset, while preserving fixed-capital accounting and the full Zerodha top-five depth objective.
+
+Phase273 search scope:
+
+- priority candidates: `2`;
+- candidate/subset scopes: `3`;
+- order policies evaluated: `5`;
+- capital grid: `100000;250000;500000`;
+- fixed notional grid: `50000;75000;100000;125000`;
+- max concurrent positions: `1;2;3;4`;
+- cost profiles: `cost100`, `cost150`, `cost200`, `cost100_plus_1bp`, `cost100_plus_2bp`;
+- scenario rows evaluated: `3600`.
+
+Phase273 order-policy stress:
+
+- `time_rank`;
+- `time_reverse_rank`;
+- `rank_time`;
+- `reverse_rank_time`;
+- `deterministic_shuffle`.
+
+Phase273 results:
+
+- cost100 scenarios above 12% one-date annualized diagnostic: `332`;
+- cost200 scenarios above 12% one-date annualized diagnostic: `121`;
+- cost200-positive scope/profile rows: `3`;
+- best scope: `TOP2_PRIORITY_SUBSET`;
+- best order policy: `time_reverse_rank`;
+- best cost profile: `cost100`;
+- best realized net P&L: `756.4893251437448`;
+- best mechanical one-date annualized portfolio-return diagnostic: `190.6353099362237`;
+- best scheduled event rows: `6`;
+- best notional turnover / initial capital: `6.0`.
+
+Interpretation boundary:
+
+- Phase273 materially improves the one-date diagnostic versus Phase271/Phase272 by combining the two priority candidates and testing event-order stress;
+- the result is still one-date only and therefore is not a robust annual portfolio-return claim;
+- portfolio claim allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Full-depth controls:
+
+- full Zerodha top-five market-by-price rows 1-5 remain mandatory;
+- levels 2-5 materiality remains mandatory;
+- L1-only candidates remain forbidden;
+- the inherited cost model remains `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`.
+
+Phase273 gates:
+
+- Phase272 work order present: pass;
+- Phase272 interpretation complete: pass;
+- priority candidates present: pass;
+- follow-through scenarios present: pass;
+- order-policy stress present: pass;
+- cost200 diagnostic survives: pass;
+- full-depth boundary preserved: pass;
+- replay, promotion, and paper/live remain closed: pass.
+
+Phase273 outputs:
+
+- `outputs/phase273/phase273_followthrough_scenario_results.csv`;
+- `outputs/phase273/phase273_sample_scheduled_event_ledger.csv`;
+- `outputs/phase273/phase273_order_policy_stability_summary.csv`;
+- `outputs/phase273/phase273_gate_evaluation.csv`;
+- `outputs/phase273/phase273_acceptance_summary.csv`;
+- `outputs/phase273/phase273_focused_capital_aware_candidate_followthrough_search_report.md`;
+- `outputs/phase273/phase273_focused_capital_aware_candidate_followthrough_search_manifest.json`.
+
+Current Phase149 evidence after Phase273:
+
+- synthetic strategy-discovery branch status: `focused_capital_followthrough_interpretation_open`;
+- real receive-flow source branch status: `focused_capital_followthrough_interpretation_open`;
+- next best action: `run_phase274_focused_capital_followthrough_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

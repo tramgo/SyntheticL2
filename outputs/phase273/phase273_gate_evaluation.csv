@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P273_PHASE272_WORK_ORDER_PRESENT,True,run_phase273_focused_capital_aware_candidate_followthrough_search_no_paper_live,Phase272 next action targets Phase273,hard
+P273_PHASE272_INTERPRETATION_COMPLETE,True,1,Phase272 complete,hard
+P273_PRIORITY_CANDIDATES_PRESENT,True,2,>=2 priority candidates,hard
+P273_FOLLOWTHROUGH_SCENARIOS_PRESENT,True,3600,>0 follow-through scenarios,hard
+P273_ORDER_POLICY_STRESS_PRESENT,True,deterministic_shuffle;rank_time;reverse_rank_time;time_rank;time_reverse_rank,all order policies,hard
+P273_COST200_DIAGNOSTIC_SURVIVES,True,121,>0 cost200 above-12 one-date diagnostic scenarios,hard
+P273_FULL_DEPTH_BOUNDARY_PRESERVED,True,phase272_replay_closed_and_full_depth_contract_inherited,"full-depth inherited, replay closed",hard
+P273_NO_REPLAY_PROMOTION_PAPER_LIVE,True,0,replay/promotion/paper-live closed,hard

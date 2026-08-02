@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-02T03:15:17.289625+00:00",
+  "scope": "phase273_focused_capital_aware_candidate_followthrough_search",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "5442a8a97b800c048e537575520c8397ae3131a6",
+  "configuration_hash": "c51aefbd1c21c8475b03b0fb65d4d478465eca82e6d8dc62de05a7fca22e25c9",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase273_phase271_horizon_capital_lock_scheduler_with_order_policy_stress",
+  "creation_timestamp": "2026-08-02T03:15:17.289625+00:00"
+}
