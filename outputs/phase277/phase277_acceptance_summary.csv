@@ -1,0 +1,22 @@
+metric,value,description
+phase277_cost_robust_redesign_search_complete,1,Phase277 cost-robust full-depth redesign search completed
+phase277_selected_route,P277_COST_ROBUST_FULL_DEPTH_REDESIGN_SEARCH,Selected route
+phase277_variant_rows,47,Redesign variants evaluated
+phase277_scenario_rows,282,Cost200 redesign scenarios evaluated
+phase277_full_depth_variant_rows,12,Variants using top-five and levels 2-5 features
+phase277_l1_only_variant_rows,0,L1-only variants
+phase277_cost200_above12_scenario_rows,0,Cost200 above-12 redesign scenarios
+phase277_cost200_median_above12_variant_rows,0,Cost200 variants with median annualized above 12%
+phase277_cost200_worst_case_above12_variant_rows,0,Cost200 variants with worst-case annualized above 12%
+phase277_best_variant_id,P277_REPLENISH_WITHDRAW_GE_Q90,Best redesign variant
+phase277_best_redesign_family,depth_replenishment_withdrawal,Best redesign family
+phase277_best_realized_net_pnl_inr,297.47561822740005,Best realized net P&L
+phase277_best_cost200_annualized_pct,9.370481974163102,Best cost200 annualized diagnostic
+phase277_best_scheduled_event_rows,1,Best scheduled event rows
+phase277_strategy_replay_allowed,0,No strategy replay unlocked
+phase277_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase277_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase277_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase277_hard_gate_pass_rows,9,Hard gates passed
+phase277_hard_gate_rows,9,Hard gates evaluated
+phase277_next_best_action,run_phase278_cost_robust_redesign_interpretation_no_paper_live,Recommended next milestone

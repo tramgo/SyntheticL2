@@ -11650,6 +11650,93 @@ Current Phase149 evidence after Phase276:
 
 ---
 
+## 24.103 Phase277 Cost-robust Full-depth Redesign Search Completed
+
+Phase277 executed the Phase276-selected cost-robust redesign search. It used observable full-depth L2 features only for selection and used gross/net edge only for post-selection scoring.
+
+Phase277 search inputs:
+
+- `outputs/phase275/phase275_sample_synthetic_scheduled_event_ledger.csv`;
+- `outputs/phase276/phase276_next_route_contract.csv`;
+- target cost profile: `cost200`;
+- anchor profile available in the event universe: `TOP2_PRIORITY_SUBSET:cost200`;
+- cost200 event-universe rows: `1280`.
+
+Phase277 search design:
+
+- top-five imbalance filters;
+- levels 2-5 / beyond-L1 depth filters;
+- level-weighted depth filters;
+- depth replenishment/withdrawal filters;
+- spread-regime filters;
+- top-five churn/event-sparsity filters;
+- combined consensus/spread and replenishment/churn filters;
+- fixed-capital scheduling with Zerodha 2x-cost stress;
+- no L1-only variants;
+- no label-leaking gross/net-edge selection rules.
+
+Phase277 results:
+
+- redesign variants evaluated: `47`;
+- cost200 redesign scenarios evaluated: `282`;
+- full-depth variant rows using both top-five and levels 2-5 features: `12`;
+- L1-only variant rows: `0`;
+- cost200 above-12 annualized diagnostic scenario rows: `0`;
+- cost200 median-above-12 variant rows: `0`;
+- cost200 worst-case-above-12 variant rows: `0`;
+- best variant: `P277_REPLENISH_WITHDRAW_GE_Q90`;
+- best redesign family: `depth_replenishment_withdrawal`;
+- best realized net P&L: `297.47561822740005`;
+- best cost200 annualized diagnostic: `9.370481974163102`;
+- best scheduled event rows: `1`.
+
+Phase277 interpretation boundary:
+
+- the cost-robust redesign improved the best `cost200` diagnostic versus several weaker filters, but it still did not clear the `>12%` threshold;
+- the strongest observable full-depth cost200 filter remains too sparse and too weak for acceptance;
+- the current redesign search does not unlock replay, paper/live, promotion, or deployable profitability claims;
+- Phase278 should interpret whether to broaden the redesign family, change the target construction, or close this cost-robust branch.
+
+Phase277 controls:
+
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- full top-five L2 rows 1-5 and levels 2-5 materiality remain mandatory;
+- L1-only fallback remains forbidden.
+
+Phase277 hard gates:
+
+- Phase276 work order present: pass;
+- Phase276 interpretation complete: pass;
+- route contract present: pass;
+- cost200 event universe present: pass;
+- full-depth features present: pass;
+- variants evaluated: pass;
+- L1-only forbidden: pass;
+- outcome classified: pass;
+- replay, paper/live, and deployable claims remain closed: pass.
+
+Phase277 outputs:
+
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- `outputs/phase277/phase277_cost_robust_redesign_scenario_results.csv`;
+- `outputs/phase277/phase277_cost_robust_redesign_variant_summary.csv`;
+- `outputs/phase277/phase277_sample_redesign_scheduled_event_ledger.csv`;
+- `outputs/phase277/phase277_gate_evaluation.csv`;
+- `outputs/phase277/phase277_acceptance_summary.csv`;
+- `outputs/phase277/phase277_cost_robust_full_depth_redesign_search_report.md`;
+- `outputs/phase277/phase277_cost_robust_full_depth_redesign_search_manifest.json`.
+
+Current Phase149 evidence after Phase277:
+
+- synthetic strategy-discovery branch status: `cost_robust_redesign_interpretation_open`;
+- real receive-flow source branch status: `cost_robust_redesign_interpretation_open`;
+- next best action: `run_phase278_cost_robust_redesign_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
