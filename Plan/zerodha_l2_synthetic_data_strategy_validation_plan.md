@@ -10934,6 +10934,95 @@ Current Phase149 evidence after Phase267:
 
 ---
 
+## 24.94 Phase268 Full-depth Two-lane Liquidity-shock Training Search Completed
+
+Phase268 executes the Phase267 two-lane repair search. It preserves the full Zerodha top-five market-by-price objective: rows 1 through 5 are mandatory, levels 2-5 must be material, and L1-only variants remain forbidden.
+
+Phase268 explicitly separates discovery from acceptance:
+
+- exploratory lane: keeps small positive pockets and annualized-return research leads, with controls recorded as diagnostics rather than hard filters;
+- acceptance lane: requires breadth, cost stress, average edge, side-flip, random-side and shuffled-label margin before any replay, promotion, paper/live, or profitability claim.
+
+The annualized-return research lens treats small-event pockets as worth pursuing when the fixed-notional annualized return proxy exceeds `12%`. This proxy is calculated as `net_pnl_inr / 100000 * 252`. It is not a portfolio annual return because Phase268 does not yet model capital concurrency, position sizing, capital reuse, compounding, or capacity. This is a research-lead label, not deployable strategy acceptance.
+
+Phase268 search evidence:
+
+- input event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- variants tested: `1,200`;
+- full top-five depth variants: `1,200`;
+- levels 2-5 variants: `1,200`;
+- L1-only variants: `0`;
+- exploratory candidate rows: `22`;
+- annualization notional: `100,000` INR;
+- annualization formula: `net_pnl_inr / 100000 * 252`;
+- annualized-return is portfolio return: `0`;
+- annualized profitable research leads at `1.0x` costs using `>12%` annualized return: `17`;
+- annualized profitable research leads at `2.0x` costs using `>12%` annualized return: `0`;
+- acceptance-grade candidate rows: `0`;
+- positive variants at `1.0x` costs: `25`;
+- positive variants at `1.5x` costs: `4`;
+- positive variants at `2.0x` costs: `2`.
+
+Best Phase268 research lead:
+
+- candidate id: `P268_P268_BID_ABSORPTION_BREADTH_REPAIR_H10_IQ0p9_SQ0p75_SPHIGH`;
+- family id: `P268_BID_ABSORPTION_BREADTH_REPAIR`;
+- exploratory candidate: `1`;
+- acceptance-grade candidate: `0`;
+- cost-1.0x net P&L: `782.0356498346316`;
+- cost-1.0x annualized return: `197.07298375832715%`;
+- cost-2.0x net P&L: `37.90484983463176`;
+- cost-2.0x annualized return: `9.552022158327203%`;
+- cost-2.0x average net per event: `4.211649981625751`;
+- event rows: `9`;
+- symbols: `4`;
+- trade dates: `1`;
+- shuffled-label margin: `0.0`;
+- side-flip control degrades: `1`;
+- random-side control beaten: `1`.
+
+Interpretation:
+
+- Phase268 did find profitable research leads under the user's annualized-return lens at `1.0x` modeled costs.
+- None of those leads are yet acceptance-grade, because the `2.0x` annualized-return hurdle, breadth, average-edge, and shuffled-label-margin evidence are still weak.
+- The right next step is interpretation and ranking of these exploratory annualized-return leads, not replay or promotion.
+
+Phase268 gates:
+
+- Phase267 work order present: pass;
+- exploratory lane enabled: pass;
+- exploratory controls are not filters: pass;
+- input rows present: pass;
+- variants tested: pass;
+- all variants use full top-five depth: pass;
+- all variants use levels 2-5: pass;
+- no L1-only variants: pass;
+- two-lane labels present: pass;
+- annualized-return labels present: pass;
+- controls recorded: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase268 outputs:
+
+- `outputs/phase268/phase268_two_lane_variant_results.csv`;
+- `outputs/phase268/phase268_top_two_lane_variants.csv`;
+- `outputs/phase268/phase268_exploratory_event_ledger.csv`;
+- `outputs/phase268/phase268_acceptance_event_ledger.csv`;
+- `outputs/phase268/phase268_gate_evaluation.csv`;
+- `outputs/phase268/phase268_acceptance_summary.csv`;
+- `outputs/phase268/phase268_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_training_search_report.md`;
+- `outputs/phase268/phase268_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_training_search_manifest.json`.
+
+Current Phase149 evidence after Phase268:
+
+- synthetic strategy-discovery branch status: `full_depth_liquidity_shock_two_lane_training_no_acceptance_interpretation_open`;
+- real receive-flow source branch status: `full_depth_liquidity_shock_two_lane_training_no_acceptance_interpretation_open`;
+- next best action: `run_phase269_full_depth_liquidity_shock_two_lane_training_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P268_PHASE267_WORK_ORDER_PRESENT,True,run_phase268_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_training_search_no_paper_live,Phase267 next action targets Phase268,hard
+P268_PHASE267_EXPLORATORY_LANE_ENABLED,True,1,exploratory lane enabled,hard
+P268_PHASE267_EXPLORATORY_CONTROLS_NOT_FILTERS,True,0,exploratory controls recorded as metrics,hard
+P268_INPUT_ROWS_PRESENT,True,1636,>=1000 richer raw top-five event bars,hard
+P268_VARIANTS_TESTED,True,1200,>0 variants,hard
+P268_ALL_VARIANTS_USE_FULL_DEPTH,True,1200,all variants use rows 1-5,hard
+P268_ALL_VARIANTS_USE_LEVELS_2_TO_5,True,1200,all variants use levels 2-5,hard
+P268_NO_L1_ONLY_VARIANTS,True,0,0 L1-only variants,hard
+P268_TWO_LANE_LABELS_PRESENT,True,exploratory;acceptance,two-lane labels present,hard
+P268_ANNUALIZED_RETURN_LABELS_PRESENT,True,annualized_return,annualized-return research lead labels present,hard
+P268_CONTROLS_RECORDED,True,side_flip;random_side;shuffle_margin,controls recorded,hard
+P268_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

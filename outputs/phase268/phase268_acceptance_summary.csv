@@ -1,0 +1,44 @@
+metric,value,description
+phase268_two_lane_training_search_complete,1,Phase268 full-depth two-lane training search completed
+phase268_input_event_bar_rows,1636,Input event bars
+phase268_symbols,32,Input symbol breadth
+phase268_trade_dates,1,Input trade dates
+phase268_variant_rows,1200,Variants tested
+phase268_full_top_five_depth_variant_rows,1200,Variants using rows 1-5
+phase268_depth_beyond_l1_variant_rows,1200,Variants using levels 2-5
+phase268_l1_only_variant_rows,0,L1-only variants
+phase268_exploratory_candidate_rows,22,Exploratory candidates retained
+phase268_annualization_notional_inr,100000.0,Fixed notional denominator for annualized-return proxy
+phase268_annualization_trading_days,252.0,Trading-day multiplier for annualized-return proxy
+phase268_annualization_is_portfolio_return,0,Annualized-return fields are not portfolio annual returns
+phase268_annualization_formula,net_pnl_inr / 100000 * 252,Fixed-notional research-lead proxy formula
+phase268_annualized_profitable_research_lead_rows,17,Exploratory candidates with annualized return >= 12% at 1x costs
+phase268_cost200_annualized_profitable_research_lead_rows,0,Exploratory candidates with annualized return >= 12% at 2x costs
+phase268_acceptance_grade_candidate_rows,0,Acceptance-grade candidates
+phase268_cost100_positive_variant_rows,25,Variants positive at 1x costs
+phase268_cost150_positive_variant_rows,4,Variants positive at 1.5x costs
+phase268_cost200_positive_variant_rows,2,Variants positive at 2x costs
+phase268_best_candidate_id,P268_P268_BID_ABSORPTION_BREADTH_REPAIR_H10_IQ0p9_SQ0p75_SPHIGH,Best candidate
+phase268_best_family_id,P268_BID_ABSORPTION_BREADTH_REPAIR,Best family
+phase268_best_exploratory_candidate,1,Best exploratory flag
+phase268_best_acceptance_grade_candidate,0,Best acceptance flag
+phase268_best_cost100_net_pnl_inr,782.0356498346316,Best 1x net P&L
+phase268_best_cost100_annualized_return_pct,197.07298375832715,Best 1x annualized return
+phase268_best_cost200_net_pnl_inr,37.90484983463176,Best 2x net P&L
+phase268_best_cost200_annualized_return_pct,9.552022158327203,Best 2x annualized return
+phase268_best_cost200_avg_net_per_event_inr,4.211649981625751,Best 2x average net/event
+phase268_best_event_rows,9,Best event rows
+phase268_best_symbols,4,Best symbols
+phase268_best_trade_dates,1,Best dates
+phase268_best_shuffle_label_margin_inr,0.0,Best shuffled-label margin
+phase268_best_side_flip_degrades,1,Best side-flip control
+phase268_best_random_side_beat,1,Best random-side control
+phase268_exploratory_controls_are_filters,0,"Exploratory controls are metrics, not hard filters"
+phase268_hard_gate_pass_rows,12,Hard gates passed
+phase268_hard_gate_rows,12,Hard gates evaluated
+phase268_download_more_dates_now_allowed,0,No new download in Phase268
+phase268_replay_execution_allowed_now,0,No replay execution in Phase268
+phase268_strategy_promotion_allowed,0,No strategy promotion from Phase268
+phase268_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase268
+phase268_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase268
+phase268_next_best_action,run_phase269_full_depth_liquidity_shock_two_lane_training_interpretation_no_paper_live,Recommended next milestone
