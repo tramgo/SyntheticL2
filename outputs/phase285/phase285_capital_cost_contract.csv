@@ -1,0 +1,9 @@
+contract_id,contract_value,description,severity
+P285_INITIAL_CAPITAL_INR,100000.0,Fixed capital denominator for Phase286 diagnostics,hard
+P285_FIXED_NOTIONAL_GRID_INR,25000;50000;75000;100000,Fixed notional grid for lifecycle search,hard
+P285_MAX_CONCURRENT_GRID,1;2;4,Concurrency grid to reduce two-trade bottleneck diagnostics,hard
+P285_COST200_REQUIRED,Zerodha cost200 required for all acceptance diagnostics,hard,
+P285_ANNUALIZED_FORMULA,realized_net_pnl / initial_capital * 100 * 252 / observed_trade_dates,Fixed-capital annualized diagnostic formula,hard
+P285_SPARSE_DIAGNOSTIC_EVENT_FLOOR,8,Minimum scheduled events for sparse >12 diagnostic,hard
+P285_ROBUST_PORTFOLIO_EVENT_FLOOR,30,Minimum scheduled events for robust portfolio-return claim,hard
+P285_NO_PROMOTION,"no replay, promotion, paper/live, or deployable profitability claim",Boundaries remain closed,hard

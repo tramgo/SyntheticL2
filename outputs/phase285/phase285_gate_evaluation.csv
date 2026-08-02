@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P285_PHASE284_WORK_ORDER_PRESENT,True,run_phase285_event_lifecycle_exit_side_redesign_precommit_no_paper_live,Phase284 next action targets Phase285,hard
+P285_PHASE284_INTERPRETATION_COMPLETE,True,1,Phase284 complete,hard
+P285_PHASE283_CLOSED_AND_COST_PRESERVED,True,close=1;do_not_relax=1;do_not_claim=1,"Phase283 closed, cost threshold preserved, portfolio claim blocked",hard
+P285_ROUTE_CONTRACT_PRESENT,True,8,Phase284 route contract present,hard
+P285_LIFECYCLE_SEEDS_PRESENT,True,10,>0 eligible full-depth lifecycle seeds,hard
+P285_EVENT_UNIVERSE_DIAGNOSTICS_PRESENT,True,11,event-universe diagnostics present,hard
+P285_LIFECYCLE_FAMILIES_PRESENT,True,families=5;allowed=5,>=5 lifecycle families allowed,hard
+P285_ENTRY_EXIT_GRID_PRESENT,True,grid=12;allowed=12,>=12 lifecycle grid rows allowed,hard
+P285_CAPITAL_COST_CONTROLS_PRESENT,True,8,capital/cost controls present,hard
+P285_FULL_DEPTH_AND_LEAKAGE_BOUNDARY,True,l1_allowed_sum=0;live_mask_allowed_sum=0,L1-only and live label masks forbidden,hard
+P285_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P285_NEXT_ROUTE_SELECTED,True,P286 lifecycle search,Phase286 search route selected,hard

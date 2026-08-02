@@ -1,0 +1,12 @@
+diagnostic_id,diagnostic_value,description
+event_universe_rows,1280.0,Phase277 full-depth event universe rows
+event_universe_dates,8.0,Distinct event-universe dates
+event_universe_symbols,7.0,Distinct event-universe symbols
+event_universe_median_spread_bps,4.915813662187011,Median event-universe spread
+event_universe_positive_net_edge_rows,547.0,Rows with positive inherited net edge
+phase283_ledger_rows,4476.0,Phase283 scheduled/rejected ledger rows sampled
+phase283_scheduled_rows,27.0,Phase283 scheduled rows in ledger
+phase283_rejected_rows,4449.0,Phase283 rejected rows in ledger
+phase283_rejected_same_symbol_overlap_rows,234.0,Rejected same-symbol overlap rows
+phase283_rejected_max_concurrent_rows,4215.0,Rejected max-concurrent rows
+phase283_scheduled_median_net_edge_bps,4.014828505654009,Median scheduled net edge in Phase283 ledger

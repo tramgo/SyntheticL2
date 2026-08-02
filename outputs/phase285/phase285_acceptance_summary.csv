@@ -1,0 +1,30 @@
+metric,value,description
+phase285_lifecycle_redesign_precommit_complete,1,Phase285 event lifecycle/side/exit redesign precommit completed
+phase285_selected_route,P285_EVENT_LIFECYCLE_EXIT_SIDE_REDESIGN_PRECOMMIT,Selected route
+phase285_preserved_phase283_clue_rows,10,Preserved Phase283 clue rows
+phase285_phase286_lifecycle_seed_rows,10,Eligible Phase286 lifecycle seeds
+phase285_event_universe_rows,1280.0,Full-depth event universe rows
+phase285_event_universe_dates,8.0,Event-universe dates
+phase285_event_universe_symbols,7.0,Event-universe symbols
+phase285_phase283_scheduled_rows,27.0,Phase283 scheduled rows sampled
+phase285_phase283_rejected_same_symbol_overlap_rows,234.0,Same-symbol overlap bottleneck rows
+phase285_phase283_rejected_max_concurrent_rows,4215.0,Max-concurrency bottleneck rows
+phase285_lifecycle_family_rows,5,Lifecycle families defined
+phase285_phase286_allowed_lifecycle_family_rows,5,Lifecycle families allowed for Phase286
+phase285_entry_exit_grid_rows,12,Entry/exit grid rows
+phase285_capital_cost_contract_rows,8,Capital/cost contract rows
+phase285_cost200_required,1,Cost200 required
+phase285_fixed_capital_required,1,Fixed-capital denominator required
+phase285_sparse_diagnostic_event_floor,8,Sparse diagnostic event floor
+phase285_robust_portfolio_event_floor,30,Robust portfolio event floor
+phase285_full_depth_required,1,Full top-five and levels 2-5 required
+phase285_beyond_l1_features_required,1,Beyond-L1 features required
+phase285_l1_only_allowed,0,L1-only variants forbidden
+phase285_net_edge_live_mask_allowed,0,Net/gross edge live masks forbidden
+phase285_strategy_replay_allowed,0,No strategy replay unlocked
+phase285_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase285_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase285_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase285_hard_gate_pass_rows,12,Hard gates passed
+phase285_hard_gate_rows,12,Hard gates evaluated
+phase285_next_best_action,run_phase286_event_lifecycle_exit_side_redesign_search_no_paper_live,Recommended next milestone

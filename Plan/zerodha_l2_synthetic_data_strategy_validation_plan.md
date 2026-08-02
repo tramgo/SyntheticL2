@@ -12309,6 +12309,87 @@ Current Phase149 evidence after Phase284:
 
 ---
 
+## 24.111 Phase285 Event Lifecycle / Side / Exit Redesign Precommit Completed
+
+Phase285 converted the Phase284 pivot into an executable Phase286 search contract. This milestone deliberately targets the practical reason the Phase283 route stalled: the signal/filter stack produced many candidate observations but very few scheduled trades under fixed-capital/concurrency constraints.
+
+Phase285 evidence:
+
+- preserved Phase283 full-depth clue rows: `10`;
+- Phase286 lifecycle seed rows: `10`;
+- full-depth event-universe rows: `1280`;
+- event-universe dates: `8`;
+- event-universe symbols: `7`;
+- Phase283 sampled scheduled rows: `27`;
+- Phase283 sampled same-symbol overlap rejections: `234`;
+- Phase283 sampled max-concurrent rejections: `4215`;
+- lifecycle family rows: `5`;
+- allowed Phase286 lifecycle families: `5`;
+- entry/exit grid rows: `12`;
+- capital/cost contract rows: `8`;
+- Phase285 hard gates: `12/12`.
+
+Phase285 selected next route:
+
+- selected route: `P285_EVENT_LIFECYCLE_EXIT_SIDE_REDESIGN_PRECOMMIT`;
+- next action: `run_phase286_event_lifecycle_exit_side_redesign_search_no_paper_live`.
+
+Phase286 search contract:
+
+- inputs:
+  - `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+  - `outputs/phase285/phase285_preserved_phase283_clue_catalog.csv`;
+  - `outputs/phase285/phase285_lifecycle_family_catalog.csv`;
+  - `outputs/phase285/phase285_entry_exit_grid_contract.csv`;
+- lifecycle families:
+  - side-flip reversal test;
+  - entry-delay test;
+  - short-horizon exit test;
+  - take-profit / stop-loss / timeout test;
+  - queue-adversity / order-timing test;
+- entry/exit grid:
+  - original and inverse side;
+  - entry delay `0`, `1`, or `2` ticks/bars;
+  - exit horizons `3`, `5`, `8`, and `10`;
+  - take-profit / stop-loss combinations at `4` and `8` bps where applicable;
+  - base and slow latency buckets;
+  - max-concurrent grid `1`, `2`, and `4`;
+  - fixed-notional grid `25000`, `50000`, `75000`, and `100000`.
+
+Phase285 required boundaries:
+
+- use fixed-capital annualized return: `realized_net_pnl / initial_capital * 100 * 252 / observed_trade_dates`;
+- initial capital remains `100000`;
+- cost200 remains mandatory;
+- sparse diagnostic threshold remains annualized `>12%` with at least `8` scheduled events;
+- robust portfolio-return claim still needs at least `30` scheduled events;
+- full Zerodha top-five depth rows 1-5 and levels 2-5 / beyond-L1 materiality remain mandatory;
+- L1-only variants remain forbidden;
+- net/gross-edge live masks remain forbidden;
+- no replay, promotion, paper/live acceptance, or deployable profitability claim is open.
+
+Phase285 outputs:
+
+- `outputs/phase285/phase285_preserved_phase283_clue_catalog.csv`;
+- `outputs/phase285/phase285_event_universe_diagnostics.csv`;
+- `outputs/phase285/phase285_lifecycle_family_catalog.csv`;
+- `outputs/phase285/phase285_entry_exit_grid_contract.csv`;
+- `outputs/phase285/phase285_capital_cost_contract.csv`;
+- `outputs/phase285/phase285_next_route_contract.csv`;
+- `outputs/phase285/phase285_gate_evaluation.csv`;
+- `outputs/phase285/phase285_acceptance_summary.csv`;
+- `outputs/phase285/phase285_event_lifecycle_exit_side_redesign_precommit_report.md`;
+- `outputs/phase285/phase285_event_lifecycle_exit_side_redesign_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase285:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `event_lifecycle_exit_side_redesign_search_open`;
+- real receive-flow source branch status: `event_lifecycle_exit_side_redesign_search_open`;
+- next best action: `run_phase286_event_lifecycle_exit_side_redesign_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

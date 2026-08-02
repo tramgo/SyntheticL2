@@ -1,0 +1,13 @@
+grid_id,side_multiplier,entry_delay_ticks,exit_horizon_ticks,take_profit_bps,stop_loss_bps,latency_bucket,cost_profile_required,fixed_capital_initial_capital_inr,full_depth_required,phase286_search_allowed
+P285_GRID_ORIG_E0_H3,1,0,3,,,base,cost200,100000.0,1,1
+P285_GRID_ORIG_E0_H5,1,0,5,,,base,cost200,100000.0,1,1
+P285_GRID_ORIG_E1_H5,1,1,5,,,base,cost200,100000.0,1,1
+P285_GRID_ORIG_E2_H8,1,2,8,,,slow,cost200,100000.0,1,1
+P285_GRID_INV_E0_H3,-1,0,3,,,base,cost200,100000.0,1,1
+P285_GRID_INV_E0_H5,-1,0,5,,,base,cost200,100000.0,1,1
+P285_GRID_INV_E1_H5,-1,1,5,,,base,cost200,100000.0,1,1
+P285_GRID_INV_E2_H8,-1,2,8,,,slow,cost200,100000.0,1,1
+P285_GRID_ORIG_TP4_SL4_H5,1,0,5,4,4,base,cost200,100000.0,1,1
+P285_GRID_ORIG_TP8_SL4_H10,1,1,10,8,4,slow,cost200,100000.0,1,1
+P285_GRID_INV_TP4_SL4_H5,-1,0,5,4,4,base,cost200,100000.0,1,1
+P285_GRID_INV_TP8_SL4_H10,-1,1,10,8,4,slow,cost200,100000.0,1,1
