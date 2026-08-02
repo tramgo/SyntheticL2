@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-02T02:12:25.527968+00:00",
+  "scope": "phase265_full_depth_liquidity_shock_absorption_event_training_search",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "3ca55cebeeec1a2e85f14715b77e2cda3c844c7b",
+  "configuration_hash": "05d8aa12a293aea77ac5a8839ba1d9ca4437e4d7931b5121333ae7c0169f56d9",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase265_directional_event_bar_proxy_no_replay",
+  "creation_timestamp": "2026-08-02T02:12:25.527968+00:00"
+}

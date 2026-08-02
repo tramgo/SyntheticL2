@@ -10711,6 +10711,79 @@ Current Phase149 evidence after Phase264:
 
 ---
 
+## 24.91 Phase265 Full-depth Liquidity-shock Absorption Training Search Completed
+
+Phase265 executed the Phase264 route as a training-only search over full Zerodha top-five market-by-price depth. Every candidate used rows 1 through 5 and required material levels 2-5 evidence. L1-only variants were not allowed.
+
+Phase265 remains a synthetic/research training milestone only. It does not download more dates, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase265 input and search evidence:
+
+- input event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- candidate variants tested: `432`;
+- full top-five depth variants: `432`;
+- variants using levels 2-5 materiality: `432`;
+- L1-only variants: `0`.
+
+Phase265 profitability and stress evidence:
+
+- positive variants at `1.0x` modeled Zerodha costs: `38`;
+- positive variants at `1.5x` modeled Zerodha costs: `6`;
+- positive variants at `2.0x` modeled Zerodha costs: `2`;
+- survivor candidates after breadth and stress controls: `0`.
+
+Best observed Phase265 candidate:
+
+- candidate id: `P265_P265_L2L5_BID_ABSORPTION_CONTINUATION_H10_IQ0p9_SQ0p75_SPHIGH`;
+- family id: `P265_L2L5_BID_ABSORPTION_CONTINUATION`;
+- cost-1.0x net P&L: `782.0356498346316`;
+- cost-2.0x net P&L: `37.90484983463176`;
+- event rows: `9`;
+- symbols: `4`;
+- trade dates: `1`;
+- side-flip control degrades: `1`;
+- random-side control beaten: `1`;
+- shuffled-label control beaten: `1`.
+
+Interpretation:
+
+- Phase265 found a small positive full-depth bid-absorption continuation pocket even under `2.0x` cost stress.
+- The pocket is not accepted because it is breadth-fragile: only `9` events across `4` symbols and `1` real date.
+- Therefore the correct next action is interpretation and falsification, not replay or scale-out.
+
+Phase265 gates:
+
+- Phase264 work order present: pass;
+- Phase264 full-depth contract present: pass;
+- Phase264 levels 2-5 contract present: pass;
+- input event rows present: pass;
+- variants tested: pass;
+- all variants use full top-five depth: pass;
+- all variants use levels 2-5: pass;
+- no L1-only variants: pass;
+- controls applied: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase265 outputs:
+
+- `outputs/phase265/phase265_liquidity_shock_variant_results.csv`;
+- `outputs/phase265/phase265_top_liquidity_shock_variants.csv`;
+- `outputs/phase265/phase265_survivor_event_ledger.csv`;
+- `outputs/phase265/phase265_gate_evaluation.csv`;
+- `outputs/phase265/phase265_acceptance_summary.csv`;
+- `outputs/phase265/phase265_full_depth_liquidity_shock_absorption_event_training_search_report.md`;
+- `outputs/phase265/phase265_full_depth_liquidity_shock_absorption_event_training_search_manifest.json`.
+
+Current Phase149 evidence after Phase265:
+
+- synthetic strategy-discovery branch status: `full_depth_liquidity_shock_training_no_survivor_interpretation_open`;
+- real receive-flow source branch status: `full_depth_liquidity_shock_training_no_survivor_interpretation_open`;
+- next best action: `run_phase266_full_depth_liquidity_shock_absorption_event_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

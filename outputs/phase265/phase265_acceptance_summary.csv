@@ -1,0 +1,31 @@
+metric,value,description
+phase265_liquidity_shock_training_search_complete,1,Phase265 full-depth liquidity-shock/absorption training search completed
+phase265_input_event_bar_rows,1636,Input event bars
+phase265_symbols,32,Input symbol breadth
+phase265_trade_dates,1,Input trade dates
+phase265_variant_rows,432,Event variants tested
+phase265_full_top_five_depth_variant_rows,432,Variants using full top-five depth
+phase265_depth_beyond_l1_variant_rows,432,Variants using levels 2-5/beyond-L1
+phase265_l1_only_variant_rows,0,L1-only variants
+phase265_cost100_positive_variant_rows,38,Variants positive at 1x Zerodha charge stack
+phase265_cost150_positive_variant_rows,6,Variants positive at 1.5x charges
+phase265_cost200_positive_variant_rows,2,Variants positive at 2x charges
+phase265_survivor_candidate_rows,0,"Variants passing breadth, cost stress and controls"
+phase265_best_candidate_id,P265_P265_L2L5_BID_ABSORPTION_CONTINUATION_H10_IQ0p9_SQ0p75_SPHIGH,Best candidate by survivor/cost200/cost150/cost100 ranking
+phase265_best_family_id,P265_L2L5_BID_ABSORPTION_CONTINUATION,Best candidate family
+phase265_best_cost100_net_pnl_inr,782.0356498346316,Best 1x-charge net P&L
+phase265_best_cost200_net_pnl_inr,37.90484983463176,Best 2x-charge net P&L
+phase265_best_event_rows,9,Best event rows
+phase265_best_symbols,4,Best symbol breadth
+phase265_best_trade_dates,1,Best date breadth
+phase265_best_side_flip_degrades,1,Best side-flip control
+phase265_best_random_side_beat,1,Best random-side control
+phase265_best_shuffle_label_beat,1,Best shuffled-label control
+phase265_hard_gate_pass_rows,10,Hard gates passed
+phase265_hard_gate_rows,10,Hard gates evaluated
+phase265_download_more_dates_now_allowed,0,No new download in Phase265
+phase265_replay_execution_allowed_now,0,No replay execution in Phase265
+phase265_strategy_promotion_allowed,0,No strategy promotion from Phase265
+phase265_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase265
+phase265_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase265
+phase265_next_best_action,run_phase266_full_depth_liquidity_shock_absorption_event_interpretation_no_paper_live,Recommended next milestone

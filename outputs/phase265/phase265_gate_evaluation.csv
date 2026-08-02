@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P265_PHASE264_WORK_ORDER_PRESENT,True,run_phase265_full_depth_liquidity_shock_absorption_event_training_search_no_paper_live,Phase264 next action targets Phase265,hard
+P265_PHASE264_FULL_DEPTH_REQUIRED,True,1,full top-five depth required,hard
+P265_PHASE264_L2_L5_REQUIRED,True,1,levels 2-5 materiality required,hard
+P265_INPUT_ROWS_PRESENT,True,1636,>=1000 richer raw top-five event bars,hard
+P265_VARIANTS_TESTED,True,432,>0 event variants,hard
+P265_ALL_VARIANTS_USE_FULL_DEPTH,True,432,all variants use full top-five depth,hard
+P265_ALL_VARIANTS_USE_LEVELS_2_TO_5,True,432,all variants use levels 2-5/beyond-L1,hard
+P265_NO_L1_ONLY_VARIANTS,True,0,0 L1-only variants,hard
+P265_CONTROLS_APPLIED,True,side_flip;random_side;shuffle_label,controls present,hard
+P265_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard
