@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P293_PHASE292_SEARCH_COMPLETE,True,1,Phase292 search complete,hard
+P293_PHASE292_NEXT_ACTION_PRESENT,True,run_phase293_adaptive_pressure_breadth_repair_interpretation_no_paper_live,Phase292 routes to Phase293 interpretation,hard
+P293_PHASE292_GATES_PASS,True,8/8,Phase292 gates pass,hard
+P293_RANKED_INTERPRETATION_PRESENT,True,144,>0 ranked variants,hard
+P293_CLOSES_PHASE292_FOR_ACCEPTANCE,True,1,Phase292 closed for acceptance,hard
+P293_NO_SURVIVOR_TO_PROMOTE,True,sparse_above12=0;robust_above12=0,no Phase292 survivor,hard
+P293_NEXT_ROUTE_SELECTED,True,P294_FULL_DEPTH_PRESSURE_ABSORPTION_CONTINUATION_SEARCH,P294_FULL_DEPTH_PRESSURE_ABSORPTION_CONTINUATION_SEARCH,hard
+P293_FULL_DEPTH_BOUNDARY_PRESERVED,True,l1_only=0;live_mask=0,"full-depth, no leakage",hard
+P293_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P293_ROUTE_CONTRACT_PRESENT,True,8,Phase294 route contract rows,hard

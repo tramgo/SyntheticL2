@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+P294_INPUTS,outputs/phase277/phase277_cost200_redesign_event_universe.csv;outputs/phase292/phase292_breadth_repair_scenario_results.csv;outputs/phase292/phase292_breadth_repair_variant_summary.csv,Use the same full-depth event universe plus Phase292 failure evidence.
+P294_SEARCH_TYPE,full_depth_pressure_absorption_continuation_search,Test continuation after pressure/absorption instead of contrarian reversal.
+P294_REQUIRED_L2_FEATURES,top5_imbalance;depth_withdrawal_pressure;visible_absorption_or_replenishment;spread_state;depth_beyond_l1_materiality,"Use Zerodha top-five market-by-price depth, not L1-only signals."
+P294_SIGNAL_DIRECTION,continuation_after_absorption;no_bar_return_reversal_alone;no_minor_phase292_threshold_repair,Materially different from the failed contrarian route.
+P294_CAPITAL_AND_COST,fixed_initial_capital;cost200_required;Zerodha_intraday_equity_formula;max_concurrent_scheduler,No unlimited capital or bps-only cost shortcut.
+P294_DISCOVERY_GATE,annualized_pct_gt_12.0;scheduled_event_rows_ge_8,Above-12 is discovery only unless event breadth is present.
+P294_PORTFOLIO_GATE,scheduled_event_rows_ge_30;multi_symbol_and_multi_date_breadth_required,Portfolio claims require materially more breadth.
+P294_BOUNDARY,no_paper_live;no_strategy_replay;no_deployable_profitability_claim;l1_only_forbidden;net_edge_live_mask_forbidden,Only a synthetic-only search route is opened.

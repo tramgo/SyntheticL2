@@ -12974,6 +12974,56 @@ Current Phase149 evidence after Phase292:
 - `synthetic_strategy_discovery` status: `adaptive_pressure_breadth_repair_interpretation_open`;
 - current next action: `run_phase293_adaptive_pressure_breadth_repair_interpretation_no_paper_live`.
 
+## 24.119 Phase293 Adaptive Pressure Breadth-Repair Interpretation Completed
+
+Phase293 interpreted Phase292 as a failed attempt to broaden the Phase290 one-event adaptive-pressure spark. The key decision is to stop repeating minor contrarian/reversal threshold repairs and pivot to a materially different full-depth L2 thesis: pressure absorption / continuation.
+
+Phase293 evidence:
+
+- Phase292 variants interpreted: `144`;
+- Phase292 fixed-capital cost200 scenarios interpreted: `576`;
+- Phase292 sparse above-12% annualized diagnostic rows: `0`;
+- Phase292 robust portfolio event-floor rows: `0`;
+- Phase292 robust above-12% rows: `0`;
+- best interpreted Phase292 variant: `P292_EXHAUSTION_BREADTH_P25_S25_I25_NOTWIDE_ALL_ORIG_H10`;
+- best interpreted repair family: `exhaustion_reversal_breadth_repair`;
+- best side mode: `ORIG`;
+- best market bucket: `ALL`;
+- best fixed-capital cost200 annualized diagnostic: `5.678613627848375%`;
+- best scheduled events: `3`;
+- positive but below-12% variants: `71`;
+- hard gates: `10/10`.
+
+Phase293 decisions:
+
+- close Phase292 for acceptance: `1`;
+- close the same contrarian breadth-repair family: `1`;
+- keep the fixed initial-capital annualized denominator: `1`;
+- do not lower cost or event floors to manufacture profitability: `1`;
+- no replay, no promotion, no paper/live acceptance and no deployable profitability claim;
+- selected next route: `P294_FULL_DEPTH_PRESSURE_ABSORPTION_CONTINUATION_SEARCH`.
+
+The rationale is simple: the project has now repeatedly tested reversal/contrarian variants and found either negative economics or sparse diagnostics. A large pressure event can also represent continuation. Phase294 should therefore test whether full top-five L2 pressure, absorption/replenishment and depth-beyond-L1 materiality can identify continuation after pressure rather than reversal after pressure.
+
+Phase293 outputs:
+
+- `outputs/phase293/phase293_ranked_breadth_repair_interpretation.csv`;
+- `outputs/phase293/phase293_breadth_repair_family_interpretation.csv`;
+- `outputs/phase293/phase293_interpretation_ledger.csv`;
+- `outputs/phase293/phase293_decision_ledger.csv`;
+- `outputs/phase293/phase293_next_route_contract.csv`;
+- `outputs/phase293/phase293_gate_evaluation.csv`;
+- `outputs/phase293/phase293_acceptance_summary.csv`;
+- `outputs/phase293/phase293_adaptive_pressure_breadth_repair_interpretation_report.md`;
+- `outputs/phase293/phase293_adaptive_pressure_breadth_repair_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase293:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `full_depth_pressure_absorption_continuation_search_open`;
+- `synthetic_strategy_discovery` status: `full_depth_pressure_absorption_continuation_search_open`;
+- current next action: `run_phase294_full_depth_pressure_absorption_continuation_search_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase292_executed,scenario_rows=576,evidence,1,Phase292 executed the breadth-repair search.
+breadth_repair_failed_above12,sparse_above12=0;best_ann=5.678613627848375,hard_negative,1,No fixed-capital cost200 breadth-repair scenario exceeded 12%.
+no_robust_portfolio_evidence,robust_floor=0;robust_above12=0;best_events=1,hard_negative,1,No robust portfolio event-floor evidence exists.
+full_depth_boundary_preserved,l1_only=0;live_label_leakage=0,constraint,1,Full-depth and no-live-leakage boundaries held.
+positive_clues_below_threshold,positive_full_depth_clues=71,research_clue,1,Positive-but-below-threshold rows may inform what not to repeat.
+contrarian_reversal_route_exhausted,phase290_spark_not_broadened_by_phase292,decision,1,Do not keep searching minor threshold variants of the same contrarian repair route.
+next_route_should_test_continuation,P294_FULL_DEPTH_PRESSURE_ABSORPTION_CONTINUATION_SEARCH,next_action,1,A strong pressure event may continue rather than reverse; test full-depth absorption/continuation next.

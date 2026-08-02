@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_phase292_breadth_repair_for_acceptance,1,sparse_above12=0;best_ann=5.678613627848375;best_events=1,"Do not accept, replay, or promote Phase292."
+close_same_contrarian_breadth_repair_family,1,phase292_breadth_repair_failed,Avoid another near-duplicate threshold relaxation pass.
+preserve_best_phase292_failure_clue,P292_EXHAUSTION_BREADTH_P25_S25_I25_NOTWIDE_ALL_ORIG_H10,family=exhaustion_reversal_breadth_repair;side=ORIG;bucket=ALL,Keep only as negative evidence and implementation context.
+do_not_relax_annualized_denominator,1,fixed_initial_capital_required,Annualized return remains fixed-capital based.
+do_not_lower_cost_or_event_floor,1,cost200_required;event_floor=8;portfolio_floor=30,Do not manufacture profitability by weakening the denominator or floor.
+selected_next_route,P294_FULL_DEPTH_PRESSURE_ABSORPTION_CONTINUATION_SEARCH,contrarian/reversal breadth repair failed,Test full-depth pressure absorption/continuation as a materially different thesis.
