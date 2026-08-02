@@ -1,0 +1,5 @@
+decision_id,decision_value,evidence,description
+preserve_phase273_followthrough_pockets,1,preserved_scope_profile_rows=15;top_scope=TOP2_PRIORITY_SUBSET,Keep Phase273 pockets for multi-date synthetic follow-through.
+do_not_promote_or_claim_portfolio_return,1,one_date_diagnostic_only,"No replay, paper/live, or deployable annual return claim."
+do_not_continue_broad_pooled_allocator,1,Phase272 pooled_above12=0,Continue focused top-two/candidate route instead of all-ranked pooling.
+selected_next_route,P274_FOCUSED_CAPITAL_MULTIDAY_SYNTHETIC_FOLLOWTHROUGH_SEARCH,execute synthetic-only multi-date follow-through search,Next step should execute a broader synthetic follow-through search.

@@ -11423,6 +11423,76 @@ Current Phase149 evidence after Phase273:
 
 ---
 
+## 24.100 Phase274 Focused Capital Follow-through Interpretation Completed
+
+Phase274 interprets the Phase273 focused follow-through search. It confirms that the candidate route is strong enough to continue, but still not strong enough to claim robust annual portfolio profitability.
+
+Phase274 interpreted Phase273 evidence:
+
+- Phase273 scenario rows: `3600`;
+- Phase273 cost100 above-12 one-date annualized diagnostic rows: `332`;
+- Phase273 cost200 above-12 one-date annualized diagnostic rows: `121`;
+- ranked scope/profile rows: `15`;
+- cost200 survivor scope/profile rows: `3`;
+- median-positive scope/profile rows: `2`;
+- worst-case-positive scope/profile rows: `0`;
+- best ranked scope/profile: `TOP2_PRIORITY_SUBSET:cost200`;
+- best order policy in that ranked profile: `deterministic_shuffle`;
+- best max one-date annualized diagnostic in that profile: `102.40387422782716`;
+- best median one-date annualized diagnostic in that profile: `-24.751087908787973`.
+
+Phase274 interpretation:
+
+- Phase273 materially strengthened the signal versus Phase271/Phase272;
+- the top-two candidate subset is the best scope;
+- 2x-cost diagnostic survival exists and is worth pursuing;
+- order-policy fragility remains because worst-case-positive scope/profile rows are `0`;
+- one-date annualization remains a diagnostic only;
+- the next step should execute a synthetic-only multi-date follow-through search.
+
+Phase274 controls:
+
+- portfolio claim allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- full Zerodha top-five rows 1-5 and levels 2-5 remain mandatory;
+- L1-only candidates remain forbidden.
+
+Phase274 selected next route:
+
+`P274_FOCUSED_CAPITAL_MULTIDAY_SYNTHETIC_FOLLOWTHROUGH_SEARCH`
+
+Phase275 work-order intent:
+
+- use `outputs/phase273/phase273_followthrough_scenario_results.csv`;
+- use `outputs/phase273/phase273_order_policy_stability_summary.csv`;
+- focus on strongest top-two and priority scope/cost profiles;
+- execute a synthetic-only multi-date or multi-seed follow-through search;
+- keep fixed-capital accounting and Zerodha cost stress;
+- keep full-depth L2 rows 1-5 and levels 2-5 materiality;
+- do not open paper/live or deployable profitability claims unless multi-date gates later pass.
+
+Phase274 outputs:
+
+- `outputs/phase274/phase274_ranked_followthrough_scope_profiles.csv`;
+- `outputs/phase274/phase274_interpretation_ledger.csv`;
+- `outputs/phase274/phase274_decision_ledger.csv`;
+- `outputs/phase274/phase274_next_route_contract.csv`;
+- `outputs/phase274/phase274_gate_evaluation.csv`;
+- `outputs/phase274/phase274_acceptance_summary.csv`;
+- `outputs/phase274/phase274_focused_capital_followthrough_interpretation_report.md`;
+- `outputs/phase274/phase274_focused_capital_followthrough_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase274:
+
+- synthetic strategy-discovery branch status: `focused_capital_multiday_synthetic_followthrough_search_open`;
+- real receive-flow source branch status: `focused_capital_multiday_synthetic_followthrough_search_open`;
+- next best action: `run_phase275_focused_capital_multiday_synthetic_followthrough_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

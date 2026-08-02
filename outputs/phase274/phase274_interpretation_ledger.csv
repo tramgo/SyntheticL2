@@ -1,0 +1,7 @@
+finding_id,evidence,severity,finding_present,interpretation
+focused_followthrough_strengthened_signal,cost100_above12=332;cost200_above12=121;best_ann=190.6353099362237,research_positive,1,Phase273 strengthened the candidate-specific one-date diagnostic.
+top2_subset_is_best_scope,TOP2_PRIORITY_SUBSET,research_positive,1,The two priority candidates combine better than either broad pooling or single-candidate-only best case.
+order_policy_fragility_remains,median_positive_rows=2;worst_case_positive_rows=0,risk,1,"Some order policies and scenario settings remain negative, so this is not ready for promotion."
+cost200_survivor_profiles_exist,cost200_scope_profile_rows=3,research_positive,1,2x-cost diagnostic survival exists but remains one-date evidence.
+one_date_blocks_portfolio_claim,observed_trade_dates=1;required>=5,hard_boundary,1,Annualized values remain one-date mechanical diagnostics.
+next_step_must_execute_multiday_synthetic_followthrough,scenario_rows=3600,next_action,1,Move from one-date diagnostic to synthetic-only multi-date follow-through search.

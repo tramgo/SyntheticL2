@@ -1,0 +1,6 @@
+contract_id,contract_value,description
+P275_INPUT,outputs/phase273/phase273_followthrough_scenario_results.csv;outputs/phase273/phase273_order_policy_stability_summary.csv,Use Phase273 focused follow-through evidence.
+P275_SCOPE_PROFILES,TOP2_PRIORITY_SUBSET:cost200;PRIORITY02:cost200;PRIORITY01:cost200;TOP2_PRIORITY_SUBSET:cost100;TOP2_PRIORITY_SUBSET:cost100_plus_1bp,Focus on strongest top-two and priority scope/cost profiles.
+P275_SEARCH_TYPE,focused_capital_multiday_synthetic_followthrough_search,"Execute synthetic-only multi-date or multi-seed follow-through, not a precommit-only step."
+P275_DEPTH_REQUIREMENT,full_top_five_rows_1_to_5_and_levels_2_to_5_required,Keep full-depth L2 requirement.
+P275_BOUNDARY,no_paper_live;no_deployable_profitability_claim_until_multiday_acceptance,No claim until multi-date gates pass.

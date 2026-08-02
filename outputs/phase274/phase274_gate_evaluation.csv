@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P274_PHASE273_WORK_ORDER_PRESENT,True,run_phase274_focused_capital_followthrough_interpretation_no_paper_live,Phase273 next action targets Phase274,hard
+P274_PHASE273_SEARCH_COMPLETE,True,1,Phase273 complete,hard
+P274_PHASE273_HARD_GATES_PASS,True,8/8,Phase273 hard gates pass,hard
+P274_RESULTS_PRESENT,True,results=3600;ranked=15,Phase273 results ranked,hard
+P274_COST200_SURVIVAL_RECOGNIZED,True,121,>0 cost200 diagnostic survivors,hard
+P274_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P274_NEXT_ROUTE_SELECTED,True,P274_FOCUSED_CAPITAL_MULTIDAY_SYNTHETIC_FOLLOWTHROUGH_SEARCH,Phase275 multi-date follow-through selected,hard
