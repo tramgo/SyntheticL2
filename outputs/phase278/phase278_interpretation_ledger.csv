@@ -1,0 +1,7 @@
+finding_id,evidence,severity,finding_present,interpretation
+cost_robust_redesign_executed,variants=47;scenarios=282,evidence,1,Phase277 executed the intended redesign search.
+cost200_acceptance_failed,cost200_above12=0;best_ann=9.370481974163102,hard_negative,1,No cost200 redesign cleared the >12% diagnostic threshold.
+best_filter_is_near_miss_not_survivor,best_ann=9.370481974163102;threshold=12.0,risk,1,The best replenishment/withdrawal clue is useful but below acceptance.
+full_depth_boundary_preserved,l1_only=0;material_clues=25,constraint,1,No L1-only fallback occurred; full-depth evidence remains central.
+same_filter_family_should_close_for_acceptance,cost200_median_above12=0;cost200_worst_case_above12=0,decision,1,Do not keep iterating the same filter family for acceptance.
+next_route_should_change_target_construction,P278_MATERIAL_NEW_TARGET_CONSTRUCTION_PRECOMMIT,next_action,1,Move to materially different target construction rather than relaxing cost stress.

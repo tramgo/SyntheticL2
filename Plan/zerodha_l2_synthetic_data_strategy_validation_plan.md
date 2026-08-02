@@ -11737,6 +11737,80 @@ Current Phase149 evidence after Phase277:
 
 ---
 
+## 24.104 Phase278 Cost-robust Redesign Interpretation Completed
+
+Phase278 interprets the Phase277 cost-robust full-depth redesign search. The conclusion is that the current filter-redesign route should close for acceptance: it produced useful full-depth clues, but no `cost200` survivor above the `>12%` diagnostic threshold.
+
+Phase278 interpreted Phase277 evidence:
+
+- Phase277 variants interpreted: `47`;
+- Phase277 scenarios interpreted: `282`;
+- Phase277 cost200 above-12 scenario rows: `0`;
+- best Phase277 cost200 annualized diagnostic: `9.370481974163102`;
+- material full-depth clue variant rows: `25`;
+- best preserved clue variant: `P277_REPLENISH_WITHDRAW_GE_Q90`;
+- best preserved clue family: `depth_replenishment_withdrawal`.
+
+Phase278 decision:
+
+- close Phase277 filter redesign for acceptance;
+- preserve the replenishment/withdrawal clue for future feature construction;
+- do not relax the cost threshold from `cost200`;
+- do not reinterpret the below-12 result as profitable;
+- move to materially different target construction rather than continuing filter-only tuning.
+
+Phase278 selected next route:
+
+`P278_MATERIAL_NEW_TARGET_CONSTRUCTION_PRECOMMIT`
+
+Phase279 work-order intent:
+
+- use `outputs/phase277/phase277_cost_robust_redesign_variant_summary.csv`;
+- use `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- preserve near-miss full-depth clues such as `P277_REPLENISH_WITHDRAW_GE_Q90`;
+- change event/label target construction instead of relaxing filters;
+- explore net-edge distribution shift, time-to-exit, adverse-selection avoidance, replenishment confirmation, and spread-cost margin targets;
+- keep full-depth L2 required;
+- keep L1-only candidates forbidden;
+- keep paper/live, replay, promotion, and deployable profitability claims closed.
+
+Phase278 controls:
+
+- cost threshold relaxation allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase278 hard gates:
+
+- Phase277 work order present: pass;
+- Phase277 search complete: pass;
+- Phase277 hard gates pass: pass;
+- Phase277 results present: pass;
+- outcome classified as no cost200 survivor: pass;
+- replay, paper/live, and deployable claims remain closed: pass;
+- Phase279 material new target-construction route selected: pass.
+
+Phase278 outputs:
+
+- `outputs/phase278/phase278_ranked_cost_robust_redesign_interpretation.csv`;
+- `outputs/phase278/phase278_interpretation_ledger.csv`;
+- `outputs/phase278/phase278_decision_ledger.csv`;
+- `outputs/phase278/phase278_next_route_contract.csv`;
+- `outputs/phase278/phase278_gate_evaluation.csv`;
+- `outputs/phase278/phase278_acceptance_summary.csv`;
+- `outputs/phase278/phase278_cost_robust_redesign_interpretation_report.md`;
+- `outputs/phase278/phase278_cost_robust_redesign_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase278:
+
+- synthetic strategy-discovery branch status: `material_new_target_construction_precommit_open`;
+- real receive-flow source branch status: `material_new_target_construction_precommit_open`;
+- next best action: `run_phase279_material_new_target_construction_precommit_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

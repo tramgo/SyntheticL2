@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P278_PHASE277_WORK_ORDER_PRESENT,True,run_phase278_cost_robust_redesign_interpretation_no_paper_live,Phase277 next action targets Phase278,hard
+P278_PHASE277_SEARCH_COMPLETE,True,1,Phase277 complete,hard
+P278_PHASE277_HARD_GATES_PASS,True,9/9,Phase277 hard gates pass,hard
+P278_RESULTS_PRESENT,True,47,Phase277 variants interpreted,hard
+P278_OUTCOME_CLASSIFIED_AS_NO_COST200_SURVIVOR,True,cost200_above12=0;best_ann=9.370481974163102,no accepted cost200 survivor,hard
+P278_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P278_NEXT_ROUTE_SELECTED,True,P278_MATERIAL_NEW_TARGET_CONSTRUCTION_PRECOMMIT,Phase279 material target construction selected,hard

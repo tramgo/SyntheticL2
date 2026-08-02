@@ -1,0 +1,5 @@
+decision_id,decision_value,evidence,description
+close_phase277_filter_redesign_for_acceptance,1,cost200_above12=0;best_ann=9.370481974163102,Do not promote or continue this same filter route as accepted.
+preserve_replenishment_withdrawal_clue,1,top_variant=P277_REPLENISH_WITHDRAW_GE_Q90;max_ann=9.370481974163102,Keep the best full-depth clue for future feature construction.
+do_not_relax_cost_threshold,1,cost200_required;threshold=12,Do not downgrade acceptance to cost100 or below-12 cost200.
+selected_next_route,P278_MATERIAL_NEW_TARGET_CONSTRUCTION_PRECOMMIT,filter redesign exhausted without cost200 survivor,Precommit a materially new target construction.
