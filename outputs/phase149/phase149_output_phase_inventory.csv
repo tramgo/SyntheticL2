@@ -205,6 +205,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 276,outputs\phase276,True,8,outputs\phase276\phase276_acceptance_summary.csv,outputs\phase276\phase276_multiday_synthetic_followthrough_interpretation_manifest.json,False
 277,outputs\phase277,True,8,outputs\phase277\phase277_acceptance_summary.csv,outputs\phase277\phase277_cost_robust_full_depth_redesign_search_manifest.json,False
 278,outputs\phase278,True,8,outputs\phase278\phase278_acceptance_summary.csv,outputs\phase278\phase278_cost_robust_redesign_interpretation_manifest.json,False
+279,outputs\phase279,True,8,outputs\phase279\phase279_acceptance_summary.csv,outputs\phase279\phase279_material_new_target_construction_precommit_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False
 29,outputs\phase29,True,8,,outputs\phase29\phase29_partial_strategy_proxy_replay_manifest.json,False
 3,outputs\phase3,True,6,,outputs\phase3\regime_manifest.json,False

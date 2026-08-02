@@ -1,0 +1,17 @@
+metric,value,description
+phase279_target_construction_precommit_complete,1,Phase279 material new target-construction precommit completed
+phase279_selected_route,P279_MATERIAL_NEW_TARGET_CONSTRUCTION_PRECOMMIT,Selected route
+phase279_target_family_rows,5,Target families defined
+phase279_phase280_allowed_target_family_rows,5,Target families allowed for Phase280 search
+phase279_preserved_clue_rows,5,Preserved Phase277 clue rows
+phase279_phase280_anchor_clue_rows,5,Clues eligible as Phase280 anchors
+phase279_cost200_required,1,Cost200 required
+phase279_full_depth_required,1,Full top-five and levels 2-5 required
+phase279_l1_only_allowed,0,L1-only targets forbidden
+phase279_strategy_replay_allowed,0,No strategy replay unlocked
+phase279_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase279_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase279_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase279_hard_gate_pass_rows,9,Hard gates passed
+phase279_hard_gate_rows,9,Hard gates evaluated
+phase279_next_best_action,run_phase280_material_new_target_construction_search_no_paper_live,Recommended next milestone

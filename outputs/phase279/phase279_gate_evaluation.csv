@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P279_PHASE278_WORK_ORDER_PRESENT,True,run_phase279_material_new_target_construction_precommit_no_paper_live,Phase278 next action targets Phase279,hard
+P279_PHASE278_INTERPRETATION_COMPLETE,True,1,Phase278 complete,hard
+P279_FILTER_ROUTE_CLOSED,True,close_filter=1;do_not_relax=1,filter route closed and cost threshold preserved,hard
+P279_ROUTE_CONTRACT_PRESENT,True,5,Phase279 route contract present,hard
+P279_TARGET_FAMILIES_PRESENT,True,targets=5;allowed=5,>=5 target families and >=4 allowed,hard
+P279_PRESERVED_CLUES_PRESENT,True,5,>0 preserved full-depth clues,hard
+P279_FULL_DEPTH_AND_L1_BOUNDARY,True,full_depth=True;l1_forbidden=True,full-depth required and L1-only forbidden,hard
+P279_CONTROLS_PRESENT,True,6,control contract present,hard
+P279_NEXT_ROUTE_SELECTED,True,P280 material target search,Phase280 route selected,hard

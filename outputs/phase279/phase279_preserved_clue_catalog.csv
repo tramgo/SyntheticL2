@@ -1,0 +1,6 @@
+phase277_variant_id,redesign_family,feature_rule,max_annualized_pct,median_annualized_pct,cost200_above12_scenario_rows,uses_top5,uses_levels_2_to_5,l1_only_variant,preserve_as_clue_not_acceptance,eligible_for_phase280_anchor
+P277_REPLENISH_WITHDRAW_GE_Q90,depth_replenishment_withdrawal,depth_replenish_withdraw_ratio >= 12.933958,9.370481974163102,4.141519867592942,0,0,1,0,1,1
+P277_SPREAD_LE_Q80,spread_regime,avg_spread_bps <= 2.559387,9.370481974163102,4.141519867592942,0,0,0,0,1,1
+P277_REPLENISH_CHURN_Q70,replenishment_churn_filter,depth_replenish_withdraw_ratio >= 8.417774 and top5_churn_pressure <= 342736.393969,7.720631524209429,6.895706299232592,0,1,1,0,1,1
+P277_CHURN_LE_Q60,event_sparsity,top5_churn_pressure <= 445889.435425,6.911747790276217,4.726383815501002,0,1,0,0,1,1
+P277_CHURN_LE_Q80,event_sparsity,top5_churn_pressure <= 71224.830695,6.088286104875007,6.079533589565381,0,1,0,0,1,1

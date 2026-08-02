@@ -11811,6 +11811,98 @@ Current Phase149 evidence after Phase278:
 
 ---
 
+## 24.105 Phase279 Material New Target-construction Precommit Completed
+
+Phase279 precommits the materially different target-construction route selected by Phase278. This is a precommit checkpoint, not a trading-result checkpoint: it defines the target families, clue anchors, and controls for the next executable search.
+
+Phase279 inputs:
+
+- `outputs/phase278/phase278_acceptance_summary.csv`;
+- `outputs/phase278/phase278_next_route_contract.csv`;
+- `outputs/phase277/phase277_cost_robust_redesign_variant_summary.csv`;
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`.
+
+Phase279 target families:
+
+- `P279_SPREAD_COST_MARGIN_TARGET`;
+- `P279_ADVERSE_SELECTION_AVOIDANCE_TARGET`;
+- `P279_REPLENISHMENT_CONFIRMATION_TARGET`;
+- `P279_TIME_TO_EXIT_TARGET`;
+- `P279_NET_EDGE_DISTRIBUTION_SHIFT_TARGET`.
+
+Phase279 preserved clue anchors:
+
+- `P277_REPLENISH_WITHDRAW_GE_Q90`;
+- `P277_SPREAD_LE_Q80`;
+- `P277_REPLENISH_CHURN_Q70`;
+- `P277_CHURN_LE_Q60`;
+- `P277_CHURN_LE_Q80`.
+
+Phase279 results:
+
+- target family rows: `5`;
+- Phase280-allowed target family rows: `5`;
+- preserved Phase277 clue rows: `5`;
+- Phase280 anchor clue rows: `5`;
+- cost200 required: `1`;
+- full top-five and levels 2-5 depth required: `1`;
+- L1-only targets allowed: `0`.
+
+Phase279 control contract:
+
+- net/gross edge may define offline labels only, not live selection masks;
+- all Phase280 scoring must include cost200 or stronger stress;
+- top-five rows 1-5 and levels 2-5 materiality are mandatory;
+- L1-only target families and variants are forbidden;
+- no strategy replay, promotion, paper/live, or deployable profitability claim is allowed;
+- diagnostic acceptance remains annualized `>12%` under cost200 with stability evidence.
+
+Phase279 selected next route:
+
+`run_phase280_material_new_target_construction_search_no_paper_live`
+
+Phase280 work-order intent:
+
+- use `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- use `outputs/phase279/phase279_target_family_catalog.csv`;
+- execute the five materially new target-construction families;
+- use preserved full-depth clues as anchors only, not accepted strategies;
+- keep cost200 required;
+- keep full-depth L2 required;
+- keep L1-only forbidden;
+- keep paper/live, replay, promotion, and deployable profitability claims closed.
+
+Phase279 hard gates:
+
+- Phase278 work order present: pass;
+- Phase278 interpretation complete: pass;
+- filter route closed and cost threshold preserved: pass;
+- Phase279 route contract present: pass;
+- target families present: pass;
+- preserved clues present: pass;
+- full-depth and L1 boundary preserved: pass;
+- controls present: pass;
+- Phase280 material target search route selected: pass.
+
+Phase279 outputs:
+
+- `outputs/phase279/phase279_preserved_clue_catalog.csv`;
+- `outputs/phase279/phase279_target_family_catalog.csv`;
+- `outputs/phase279/phase279_control_contract.csv`;
+- `outputs/phase279/phase279_next_route_contract.csv`;
+- `outputs/phase279/phase279_gate_evaluation.csv`;
+- `outputs/phase279/phase279_acceptance_summary.csv`;
+- `outputs/phase279/phase279_material_new_target_construction_precommit_report.md`;
+- `outputs/phase279/phase279_material_new_target_construction_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase279:
+
+- synthetic strategy-discovery branch status: `material_new_target_construction_search_open`;
+- real receive-flow source branch status: `material_new_target_construction_search_open`;
+- next best action: `run_phase280_material_new_target_construction_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

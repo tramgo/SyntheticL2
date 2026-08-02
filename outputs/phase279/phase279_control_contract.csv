@@ -1,0 +1,7 @@
+control_id,control_value,severity
+P279_NO_LABEL_LEAKAGE,"net_edge_bps and gross_edge_bps may define offline labels only, not live selection masks",hard
+P279_COST200_REQUIRED,all Phase280 scoring must include cost200 or stronger stress,hard
+P279_FULL_DEPTH_REQUIRED,top-five rows 1-5 and levels 2-5 materiality required,hard
+P279_L1_ONLY_FORBIDDEN,L1-only target families and variants forbidden,hard
+P279_NO_PROMOTION,"no strategy replay, promotion, paper/live, or deployable profitability claim",hard
+P279_ACCEPTANCE_THRESHOLD,diagnostic acceptance remains annualized > 12 percent under cost200 with stability evidence,hard
