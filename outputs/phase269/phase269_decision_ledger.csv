@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+preserve_phase268_research_leads,1,annualized_1x_research_leads=17,Keep the leads for next-stage capital-aware analysis.
+do_not_claim_portfolio_annual_return,1,annualization_formula=net_pnl_inr / 100000 * 252,Annualized values are fixed-notional proxies only.
+do_not_promote_or_replay_phase268,1,acceptance_grade_candidates=0,"No replay, promotion, paper/live, or deployable profitability claim."
+require_fixed_capital_concurrency_model,1,small-event annualized proxy can overstate deployable return,"Next phase must model simultaneous capital use, per-event notional, and capacity."
+preserve_full_depth_requirement,1,rows_1_to_5_and_l2_l5_required,Full-depth Zerodha top-five depth remains mandatory.
+selected_next_route,P269_FIXED_CAPITAL_CONCURRENCY_AND_CAPACITY_RETURN_PRECOMMIT,capital-aware return precommit,Next materially necessary action.

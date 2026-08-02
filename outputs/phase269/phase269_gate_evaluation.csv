@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P269_PHASE268_WORK_ORDER_PRESENT,True,run_phase269_full_depth_liquidity_shock_two_lane_training_interpretation_no_paper_live,Phase268 next action targets Phase269,hard
+P269_PHASE268_SEARCH_EXECUTED,True,summary=1200;rows=1200,Phase268 variants present,hard
+P269_FULL_DEPTH_RECOGNIZED,True,full_depth=1200;l2_l5=1200;l1_only=0;variants=1200,all variants full-depth and no L1-only,hard
+P269_RESEARCH_LEADS_RANKED,True,17,all annualized research leads ranked,hard
+P269_ANNUALIZATION_NOT_PORTFOLIO_RECOGNIZED,True,0,annualized proxy is not portfolio return,hard
+P269_NO_ACCEPTANCE_RECOGNIZED,True,0,0 acceptance-grade candidates,hard
+P269_CAPITAL_MODEL_NEXT_ROUTE_SELECTED,True,P269_FIXED_CAPITAL_CONCURRENCY_AND_CAPACITY_RETURN_PRECOMMIT,capital-aware precommit selected,hard
+P269_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

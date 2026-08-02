@@ -1,0 +1,8 @@
+contract_id,contract_value,description
+P270_INPUT,outputs/phase268/phase268_two_lane_variant_results.csv and outputs/phase268/phase268_exploratory_event_ledger.csv,Use Phase268 research leads and event ledger; no replay yet.
+P270_RETURN_TYPE,fixed_capital_portfolio_return_model,Convert fixed-notional annualized proxy into capital-aware return evidence.
+P270_CAPITAL_ACCOUNTING,initial_capital;per_trade_notional;max_concurrent_positions;capital_reuse;cash_drag,Explicitly model capital constraints instead of assuming unlimited capital.
+P270_CAPACITY_ACCOUNTING,events_per_day;symbol_capacity;turnover;cost_stress;slippage_sensitivity,Check if small-event pockets remain meaningful after capacity and turnover limits.
+P270_DEPTH_REQUIREMENT,full_top_five_rows_1_to_5_and_levels_2_to_5_required,Capital-aware analysis must still use the full-depth L2 signal surface.
+P270_FORBIDDEN,paper_live_or_deployable_profitability_claim;portfolio_return_claim_without_capital_model;l1_only,No claim until capital/capacity model exists and L1-only remains forbidden.
+P270_OUTPUT,capital_return_precommit_and_candidate_capacity_contract,Write the contract for a later capital-aware analysis/search.

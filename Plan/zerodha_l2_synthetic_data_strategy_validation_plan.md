@@ -11023,6 +11023,80 @@ Current Phase149 evidence after Phase268:
 
 ---
 
+## 24.95 Phase269 Full-depth Two-lane Training Interpretation Completed
+
+Phase269 interprets the Phase268 two-lane full-depth liquidity-shock search after the fixed-notional annualized-return lens was added. It preserves the profitable exploratory leads, but explicitly refuses to treat fixed-notional annualization as a portfolio annual return.
+
+Phase269 is an interpretation milestone only. It does not download more dates, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase269 interpreted Phase268 evidence:
+
+- Phase268 variants interpreted: `1,200`;
+- full top-five depth variants interpreted: `1,200`;
+- levels 2-5 variants interpreted: `1,200`;
+- L1-only variants interpreted: `0`;
+- exploratory candidates: `22`;
+- fixed-notional annualized profitable research leads at `1.0x` costs: `17`;
+- fixed-notional annualized profitable research leads at `2.0x` costs: `0`;
+- acceptance-grade candidates: `0`;
+- annualization notional: `100,000` INR;
+- annualization formula: `net_pnl_inr / 100000 * 252`;
+- annualization is portfolio return: `0`.
+
+Top Phase269 research lead:
+
+- candidate id: `P268_P268_BID_ABSORPTION_BREADTH_REPAIR_H10_IQ0p9_SQ0p75_SPHIGH`;
+- family id: `P268_BID_ABSORPTION_BREADTH_REPAIR`;
+- cost-1.0x fixed-notional annualized return proxy: `197.07298375832715%`;
+- cost-2.0x fixed-notional annualized return proxy: `9.552022158327205%`;
+- event rows: `9`;
+- symbols: `4`;
+- shuffled-label margin: `0.0`.
+
+Interpretation:
+
+- The 17 Phase268 research leads are worth preserving and ranking because they exceed the user's `12%` annualized-return threshold under the fixed `100,000` INR notional proxy at `1.0x` costs.
+- They are not yet portfolio-return evidence. The current annualized proxy does not model capital concurrency, capital reuse, trade sizing, turnover, capacity, or compounding.
+- No lead clears the `12%` fixed-notional proxy under `2.0x` cost stress, and no lead is acceptance-grade.
+- The correct next action is to precommit a fixed-capital, concurrency, and capacity return model before making any annual-return or replay claim.
+
+Phase269 decisions:
+
+- preserve Phase268 research leads: `1`;
+- do not claim portfolio annual return: `1`;
+- do not promote or replay Phase268: `1`;
+- selected next route: `P269_FIXED_CAPITAL_CONCURRENCY_AND_CAPACITY_RETURN_PRECOMMIT`.
+
+Phase269 gates:
+
+- Phase268 work order present: pass;
+- Phase268 search executed: pass;
+- full-depth evidence recognized: pass;
+- research leads ranked: pass;
+- annualization is not portfolio return recognized: pass;
+- no acceptance-grade candidate recognized: pass;
+- capital-model next route selected: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase269 outputs:
+
+- `outputs/phase269/phase269_ranked_annualized_research_leads.csv`;
+- `outputs/phase269/phase269_interpretation_ledger.csv`;
+- `outputs/phase269/phase269_decision_ledger.csv`;
+- `outputs/phase269/phase269_next_route_contract.csv`;
+- `outputs/phase269/phase269_gate_evaluation.csv`;
+- `outputs/phase269/phase269_acceptance_summary.csv`;
+- `outputs/phase269/phase269_full_depth_liquidity_shock_two_lane_training_interpretation_report.md`;
+- `outputs/phase269/phase269_full_depth_liquidity_shock_two_lane_training_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase269:
+
+- synthetic strategy-discovery branch status: `fixed_capital_concurrency_capacity_return_precommit_open`;
+- real receive-flow source branch status: `fixed_capital_concurrency_capacity_return_precommit_open`;
+- next best action: `run_phase270_fixed_capital_concurrency_and_capacity_return_precommit_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+profitable_fixed_notional_research_leads_found,annualized_1x_leads=17; best_1x_annualized=197.07298375832715,research_positive,1,There are profit-hunting leads worth preserving.
+no_cost200_annualized_profitable_research_leads,cost200_annualized_leads=0; best_2x_annualized=9.552022158327203,hard,1,No lead clears the 12% fixed-notional proxy under 2x modeled costs.
+no_acceptance_grade_candidate,acceptance_grade_candidates=0,hard,1,No candidate is acceptance-grade yet.
+annualization_not_portfolio_return,phase268_annualization_is_portfolio_return=0,hard,1,"Annualized values are fixed-notional proxies, not capital-account portfolio returns."
+best_lead_breadth_and_shuffle_fragile,events=9;symbols=4;shuffle_margin=0.0,hard,1,Best lead remains sparse or shuffle-fragile.
+capital_concurrency_capacity_missing,capital_concurrency_model=not_yet_materialized;capacity_model=not_yet_materialized,hard,1,Next phase must convert fixed-notional proxies into capital-aware return evidence.
+full_depth_surface_preserved,full_depth=1200;l2_l5=1200;l1_only=0;variants=1200,important_context,1,Full-depth L2/L2-L5 objective remains intact.
