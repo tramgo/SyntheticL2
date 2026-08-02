@@ -1,0 +1,8 @@
+scoring_control_id,scoring_control_value,severity
+P282_FIXED_CAPITAL_DENOMINATOR,annualized_return = realized_net_pnl / initial_capital * 100 * 252 / observed_trade_dates,hard
+P282_COST200_REQUIRED,all Phase283 scenarios must use Zerodha cost200 or stronger stress,hard
+P282_MIN_EVENT_FLOOR_DIAGNOSTIC,8,hard
+P282_ROBUST_PORTFOLIO_CLAIM_FLOOR,30,hard
+P282_NO_LABEL_LEAKAGE,"net/gross edge may only define offline diagnostics, never live selection masks",hard
+P282_FULL_DEPTH_REQUIRED,top-five rows 1-5 and levels 2-5/beyond-L1 materiality required,hard
+P282_NO_PROMOTION,"no strategy replay, promotion, paper/live acceptance, or deployable profitability claim",hard

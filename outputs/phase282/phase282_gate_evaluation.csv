@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P282_PHASE281_WORK_ORDER_PRESENT,True,run_phase282_regime_conditioned_full_depth_ensemble_precommit_no_paper_live,Phase281 next action targets Phase282,hard
+P282_PHASE281_INTERPRETATION_COMPLETE,True,1,Phase281 complete,hard
+P282_PHASE280_CLOSED_AND_COST_PRESERVED,True,close=1;do_not_relax=1;do_not_claim=1,"Phase280 closed, cost threshold preserved, portfolio claim blocked",hard
+P282_ROUTE_CONTRACT_PRESENT,True,6,Phase281 route contract present,hard
+P282_CLUE_SEEDS_PRESENT,True,8,>0 eligible full-depth search seeds,hard
+P282_ENSEMBLES_PRESENT,True,ensembles=4;allowed=4,>=4 ensembles and >=3 allowed,hard
+P282_REGIME_BUCKETS_PRESENT,True,buckets=4;allowed=4,>=4 regime buckets allowed,hard
+P282_SCORING_CONTROLS_PRESENT,True,7,scoring controls present,hard
+P282_FULL_DEPTH_AND_LEAKAGE_BOUNDARY,True,l1_allowed_sum=0;live_mask_allowed_sum=0,L1-only and live label masks forbidden,hard
+P282_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P282_NEXT_ROUTE_SELECTED,True,P283 ensemble search,Phase283 search route selected,hard

@@ -209,6 +209,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False
 280,outputs\phase280,True,7,outputs\phase280\phase280_acceptance_summary.csv,outputs\phase280\phase280_material_new_target_construction_search_manifest.json,False
 281,outputs\phase281,True,9,outputs\phase281\phase281_acceptance_summary.csv,outputs\phase281\phase281_material_target_construction_interpretation_manifest.json,False
+282,outputs\phase282,True,9,outputs\phase282\phase282_acceptance_summary.csv,outputs\phase282\phase282_regime_conditioned_full_depth_ensemble_precommit_manifest.json,False
 29,outputs\phase29,True,8,,outputs\phase29\phase29_partial_strategy_proxy_replay_manifest.json,False
 3,outputs\phase3,True,6,,outputs\phase3\regime_manifest.json,False
 30,outputs\phase30,True,6,,outputs\phase30\phase30_strategy_decision_triage_manifest.json,False

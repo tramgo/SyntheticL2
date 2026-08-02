@@ -12055,6 +12055,105 @@ Current Phase149 evidence after Phase281:
 
 ---
 
+## 24.108 Phase282 Regime-conditioned Full-depth Ensemble Precommit Completed
+
+Phase282 precommits the broader regime-conditioned full-depth ensemble search selected by Phase281. This milestone turns the Phase281 interpretation into an executable Phase283 work order; it does not run the search, unlock replay, or claim profitability.
+
+Phase282 inputs:
+
+- `outputs/phase281/phase281_acceptance_summary.csv`;
+- `outputs/phase281/phase281_ranked_material_target_interpretation.csv`;
+- `outputs/phase281/phase281_next_route_contract.csv`;
+- `outputs/phase281/phase281_decision_ledger.csv`.
+
+Phase282 precommit results:
+
+- preserved Phase281 clue rows: `8`;
+- Phase283 search seed rows: `8`;
+- ensemble family rows: `4`;
+- Phase283-allowed ensemble rows: `4`;
+- regime bucket rows: `4`;
+- minimum scheduled-event floor for sparse diagnostic ranking: `8`;
+- minimum scheduled-event floor for robust portfolio-return claim: `30`;
+- cost200 required: `1`;
+- fixed-capital denominator required: `1`;
+- full top-five and levels 2-5 depth required: `1`;
+- L1-only ensembles allowed: `0`;
+- net/gross-edge live masks allowed: `0`.
+
+Phase282 ensemble families:
+
+- `P282_SPREAD_REPLENISH_ADVERSE_ENSEMBLE`;
+- `P282_TIME_GATED_REPLENISH_ENSEMBLE`;
+- `P282_ADVERSE_AVOID_NET_LABEL_ENSEMBLE`;
+- `P282_FAMILY_VOTE_ENSEMBLE`.
+
+Phase282 regime buckets:
+
+- `P282_TIME_OPEN_BUCKET`;
+- `P282_TIME_LATER_BUCKET`;
+- `P282_SPREAD_COMPRESSED_BUCKET`;
+- `P282_DEPTH_STABLE_BUCKET`.
+
+Phase282 scoring contract:
+
+- annualized return must use the fixed-capital denominator:
+  `realized_net_pnl / initial_capital * 100 * 252 / observed_trade_dates`;
+- all Phase283 scenarios must use Zerodha cost200 or stronger stress;
+- sparse diagnostic ranking requires at least `8` scheduled events;
+- robust annual portfolio-return claims require at least `30` scheduled events;
+- net/gross edge may only define offline diagnostics, never live selection masks;
+- top-five rows 1-5 and levels 2-5 / beyond-L1 materiality are mandatory;
+- no strategy replay, promotion, paper/live acceptance, or deployable profitability claim is unlocked.
+
+Phase282 selected next route:
+
+`run_phase283_regime_conditioned_full_depth_ensemble_search_no_paper_live`
+
+Phase283 work-order intent:
+
+- use `outputs/phase280/phase280_material_target_scenario_results.csv`;
+- use `outputs/phase280/phase280_sample_material_target_scheduled_event_ledger.csv`;
+- use `outputs/phase282/phase282_ensemble_family_catalog.csv`;
+- use `outputs/phase282/phase282_regime_bucket_contract.csv`;
+- execute the regime-conditioned full-depth ensemble search;
+- keep cost200, fixed-capital annualization, event floors, full-depth L2, and no paper/live boundaries.
+
+Phase282 hard gates:
+
+- Phase281 work order present: pass;
+- Phase281 interpretation complete: pass;
+- Phase280 closed, cost threshold preserved, and portfolio claim blocked: pass;
+- Phase281 route contract present: pass;
+- clue seeds present: pass;
+- ensembles present: pass;
+- regime buckets present: pass;
+- scoring controls present: pass;
+- full-depth/no-leakage boundary preserved: pass;
+- replay/paper/live/claim boundaries closed: pass;
+- Phase283 ensemble search route selected: pass.
+
+Phase282 outputs:
+
+- `outputs/phase282/phase282_preserved_clue_catalog.csv`;
+- `outputs/phase282/phase282_ensemble_family_catalog.csv`;
+- `outputs/phase282/phase282_regime_bucket_contract.csv`;
+- `outputs/phase282/phase282_scoring_control_contract.csv`;
+- `outputs/phase282/phase282_next_route_contract.csv`;
+- `outputs/phase282/phase282_gate_evaluation.csv`;
+- `outputs/phase282/phase282_acceptance_summary.csv`;
+- `outputs/phase282/phase282_regime_conditioned_full_depth_ensemble_precommit_report.md`;
+- `outputs/phase282/phase282_regime_conditioned_full_depth_ensemble_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase282:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `regime_conditioned_full_depth_ensemble_search_open`;
+- real receive-flow source branch status: `regime_conditioned_full_depth_ensemble_search_open`;
+- next best action: `run_phase283_regime_conditioned_full_depth_ensemble_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

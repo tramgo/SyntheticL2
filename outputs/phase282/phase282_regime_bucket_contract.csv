@@ -1,0 +1,5 @@
+bucket_id,bucket_type,bucket_rule,purpose,full_depth_required,cost_profile_required,phase283_search_allowed
+P282_TIME_OPEN_BUCKET,time_of_day,early/open bucket derived from richer_event_bar_id lower quantiles or available event timestamps,test whether near-miss edge is concentrated near the open without assuming a universal all-day effect,1,cost200,1
+P282_TIME_LATER_BUCKET,time_of_day,later bucket derived from richer_event_bar_id upper quantiles or available event timestamps,control for open-only overfitting and identify later-session pockets,1,cost200,1
+P282_SPREAD_COMPRESSED_BUCKET,spread_state,avg_spread_bps at or below configurable lower/middle quantiles,reduce cost hurdle and slippage pressure without lowering the Zerodha cost model,1,cost200,1
+P282_DEPTH_STABLE_BUCKET,depth_state,low top5 churn and low withdrawal pressure with positive levels 2-5 imbalance,distinguish stable liquidity from noisy one-bar depth flickers,1,cost200,1

@@ -1,0 +1,22 @@
+metric,value,description
+phase282_regime_conditioned_ensemble_precommit_complete,1,Phase282 regime-conditioned full-depth ensemble precommit completed
+phase282_selected_route,P282_REGIME_CONDITIONED_FULL_DEPTH_ENSEMBLE_PRECOMMIT,Selected route
+phase282_preserved_clue_rows,8,Preserved Phase281 clue rows
+phase282_phase283_search_seed_rows,8,Eligible Phase283 search seeds
+phase282_ensemble_family_rows,4,Ensemble families defined
+phase282_phase283_allowed_ensemble_rows,4,Ensemble families allowed for Phase283
+phase282_regime_bucket_rows,4,Regime/time/spread/depth buckets defined
+phase282_min_event_floor_diagnostic,8,Minimum scheduled-event floor for sparse diagnostic ranking
+phase282_min_events_for_robust_portfolio_claim,30,Minimum scheduled-event floor for robust portfolio-return claim
+phase282_cost200_required,1,Cost200 required
+phase282_fixed_capital_required,1,Fixed-capital denominator required
+phase282_full_depth_required,1,Full top-five and levels 2-5 required
+phase282_l1_only_allowed,0,L1-only ensembles forbidden
+phase282_net_edge_live_mask_allowed,0,Net/gross edge live masks forbidden
+phase282_strategy_replay_allowed,0,No strategy replay unlocked
+phase282_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase282_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase282_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase282_hard_gate_pass_rows,11,Hard gates passed
+phase282_hard_gate_rows,11,Hard gates evaluated
+phase282_next_best_action,run_phase283_regime_conditioned_full_depth_ensemble_search_no_paper_live,Recommended next milestone
