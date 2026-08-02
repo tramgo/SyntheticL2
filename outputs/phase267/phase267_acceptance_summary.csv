@@ -1,0 +1,34 @@
+metric,value,description
+phase267_breadth_shuffle_repair_precommit_complete,1,Phase267 full-depth breadth/shuffle robustness repair precommit completed
+phase267_selected_route,P267_FULL_DEPTH_LIQUIDITY_SHOCK_BREADTH_SHUFFLE_ROBUSTNESS_REPAIR,Selected route
+phase267_phase266_interpretation_complete,1,Phase266 interpretation complete
+phase267_phase266_full_depth_preserved,1,Phase266 preserved full depth
+phase267_phase266_close_phase265_for_replay,1,Phase266 closed replay
+phase267_phase266_best_cost200_avg_net_per_event_inr,4.211649981625751,Phase266 best 2x average edge
+phase267_phase266_best_shuffle_label_margin_inr,1.1368683772161603e-13,Phase266 best shuffled-label margin
+phase267_repair_feature_catalog_rows,17,Repair feature catalog rows
+phase267_candidate_family_rows,5,Candidate family rows
+phase267_acceptance_floor_rows,17,Acceptance floor rows
+phase267_search_grid_contract_rows,10,Search grid contract rows
+phase267_control_contract_rows,14,Control contract rows
+phase267_exploratory_lane_enabled,1,Keep positive/near-positive small pockets as non-accepted research leads
+phase267_exploratory_controls_are_filters,0,"Exploratory controls are metrics, not hard filters"
+phase267_exploratory_min_event_rows,5,Minimum event rows for exploratory candidate ledger inclusion
+phase267_exploratory_min_symbols,2,Minimum symbols for exploratory candidate ledger inclusion
+phase267_acceptance_min_event_rows,30,Minimum event rows for acceptance-grade survival
+phase267_acceptance_min_symbols,8,Minimum symbols for acceptance-grade survival
+phase267_acceptance_min_trade_dates_current_data,1,Minimum dates on current one-date training data
+phase267_acceptance_min_cost200_avg_net_per_event_inr,25,Minimum 2x average net/event for acceptance-grade survival
+phase267_acceptance_min_shuffle_label_margin_inr,100,Minimum shuffled-label margin for acceptance-grade survival
+phase267_full_top_five_depth_required,1,Zerodha rows 1-5 required
+phase267_levels_2_to_5_materiality_required,1,Levels 2-5 materiality required
+phase267_l1_only_candidate_allowed,0,L1-only candidates forbidden
+phase267_threshold_relaxation_only_allowed,0,Threshold-relaxation-only continuation forbidden
+phase267_hard_gate_pass_rows,12,Hard gates passed
+phase267_hard_gate_rows,12,Hard gates evaluated
+phase267_download_more_dates_now_allowed,0,No new download in Phase267
+phase267_replay_execution_allowed_now,0,No replay execution in Phase267
+phase267_strategy_promotion_allowed,0,No strategy promotion from Phase267
+phase267_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase267
+phase267_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase267
+phase267_next_best_action,run_phase268_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_training_search_no_paper_live,Recommended next milestone

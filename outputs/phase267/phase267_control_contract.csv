@@ -1,0 +1,15 @@
+control_id,control_status,description
+full_depth_control,required,Every candidate must use Zerodha rows 1-5.
+levels_2_to_5_materiality_control,required,Every candidate must include L2-L5/beyond-L1 evidence.
+no_l1_only_control,required,Reject L1-only features and candidates.
+exploratory_lane_control,required,Keep broad positive and near-positive pockets for inspection even when controls fail; label them exploratory only.
+acceptance_breadth_control,required,"Require minimum events, symbols and dates only before acceptance/replay/promotion."
+acceptance_cost_stress_control,required,"Require positive 1x, 1.5x and 2x modeled Zerodha-cost net P&L before acceptance."
+acceptance_cost200_average_edge_control,required,Require cost200 average net/event >= 25 INR before acceptance.
+acceptance_shuffle_label_margin_control,required,Require economically material shuffled-label margin >= 100 INR before acceptance.
+acceptance_side_flip_control,required,Require side flip degradation before acceptance.
+acceptance_random_side_control,required,Require deterministic random-side beat before acceptance.
+threshold_relaxation_only_acceptance,forbidden,No accepted survivor may be created solely by loosening thresholds.
+paper_live_or_deployable_profitability_claim,forbidden,No paper/live acceptance or deployable profitability claim in Phase267/268.
+download_more_dates_now,forbidden_in_phase267,Phase267 is a precommit; it does not download data.
+replay_execution_now,forbidden_in_phase267,Phase267 is not replay execution.

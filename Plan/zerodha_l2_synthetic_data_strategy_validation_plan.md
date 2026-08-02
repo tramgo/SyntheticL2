@@ -10859,6 +10859,81 @@ Current Phase149 evidence after Phase266:
 
 ---
 
+## 24.93 Phase267 Full-depth Breadth and Shuffle-robustness Repair Precommit Completed
+
+Phase267 freezes the repair contract after Phase266 found that the Phase265 lead was 2x-cost positive but too sparse and effectively indistinguishable from the shuffled-label control. It preserves the full Zerodha top-five market-by-price objective: rows 1 through 5 are mandatory, levels 2-5 must be material, and L1-only variants remain forbidden.
+
+Phase267 also incorporates the important discovery-vs-acceptance distinction: too many hard controls too early can hide potentially profitable anomalies. Therefore Phase268 must run as a two-lane search:
+
+- exploratory lane: keep small positive or near-positive pockets for diagnosis, with controls recorded as metrics rather than used as hard filters;
+- acceptance lane: apply strict breadth, cost-stress, side-flip, random-side, and shuffled-label margin floors before any replay, promotion, paper/live, or profitability claim.
+
+Phase267 is a precommit only. It does not download more dates, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase267 contract evidence:
+
+- repair feature catalog rows: `17`;
+- candidate family rows: `5`;
+- acceptance floor rows: `17`;
+- search-grid contract rows: `10`;
+- control contract rows: `14`;
+- exploratory lane enabled: `1`;
+- exploratory controls are hard filters: `0`;
+- exploratory minimum event rows: `5`;
+- exploratory minimum symbols: `2`;
+- acceptance minimum event rows: `30`;
+- acceptance minimum symbols: `8`;
+- acceptance minimum trade dates on current data: `1`;
+- acceptance minimum 2x-cost average net per event: `25`;
+- acceptance minimum shuffled-label margin: `100`;
+- full top-five depth required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only candidate allowed: `0`;
+- threshold-relaxation-only acceptance allowed: `0`.
+
+Phase267 candidate families for Phase268:
+
+- `P268_BID_ABSORPTION_BREADTH_REPAIR`;
+- `P268_ASK_ABSORPTION_BREADTH_REPAIR`;
+- `P268_SPREAD_COMPRESSION_ABSORPTION_REPAIR`;
+- `P268_WITHDRAWAL_REVERSAL_ROBUSTNESS_REPAIR`;
+- `P268_MARKET_REGIME_CONFIRMED_ABSORPTION`.
+
+Phase267 gates:
+
+- Phase266 work order present: pass;
+- Phase266 full-depth preservation recognized: pass;
+- Phase266 closed replay: pass;
+- Phase266 forbids threshold-relaxation-only continuation: pass;
+- Phase266 depth contract present: pass;
+- Phase266 repair contract present: pass;
+- repair feature catalog written: pass;
+- candidate families written: pass;
+- two-lane floors written: pass;
+- search grid written: pass;
+- controls written: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase267 outputs:
+
+- `outputs/phase267/phase267_repair_feature_catalog.csv`;
+- `outputs/phase267/phase267_candidate_family_contract.csv`;
+- `outputs/phase267/phase267_acceptance_floor_contract.csv`;
+- `outputs/phase267/phase267_search_grid_contract.csv`;
+- `outputs/phase267/phase267_control_contract.csv`;
+- `outputs/phase267/phase267_gate_evaluation.csv`;
+- `outputs/phase267/phase267_acceptance_summary.csv`;
+- `outputs/phase267/phase267_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_precommit_report.md`;
+- `outputs/phase267/phase267_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase267:
+
+- synthetic strategy-discovery branch status: `full_depth_liquidity_shock_two_lane_training_search_open`;
+- real receive-flow source branch status: `full_depth_liquidity_shock_two_lane_training_search_open`;
+- next best action: `run_phase268_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_training_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

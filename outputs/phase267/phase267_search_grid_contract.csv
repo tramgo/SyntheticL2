@@ -1,0 +1,11 @@
+grid_component,contract_value,description
+horizons,3;6;10,Reuse available future mid-return horizons.
+imbalance_quantiles,0.50;0.60;0.75;0.90,Include a controlled lower threshold only when breadth and shuffle margin floors remain binding.
+shock_quantiles,0.50;0.60;0.75;0.90,Include a controlled lower shock threshold only under the same floors.
+spread_regimes,low;mid;high;compression;all_with_spread_cap,Broaden context without dropping spread/cost awareness.
+families,bid_absorption;ask_absorption;spread_compression;withdrawal_reversal;market_regime_confirmed,Repair must generalize mechanism families.
+cost_multipliers,1.0;1.5;2.0,Use actual modeled Zerodha cost stack under stress.
+shuffle_margin_modes,absolute_inr>=100;relative_to_cost200_net>=1x,Shuffled-label edge must be economically material.
+exploratory_lane,keep_positive_or_near_positive_small_pockets_for_diagnosis,Do not over-filter discovery; preserve promising anomalies as non-accepted research leads.
+acceptance_lane,apply_breadth_cost_shuffle_and_control_floors_before_replay_or_promotion,"Controls become hard only for acceptance-grade labels, not for exploration."
+threshold_relaxation_guard,relaxation_allowed_for_exploration_but_not_as_standalone_acceptance,"Threshold widening may discover ideas, but cannot by itself create an accepted survivor."

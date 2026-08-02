@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P267_PHASE266_WORK_ORDER_PRESENT,True,run_phase267_full_depth_liquidity_shock_breadth_shuffle_robustness_repair_precommit_no_paper_live,Phase266 next action targets Phase267,hard
+P267_PHASE266_FULL_DEPTH_PRESERVED,True,1,Phase266 preserved full top-five depth,hard
+P267_PHASE266_CLOSED_REPLAY,True,1,Phase266 closed Phase265 for replay,hard
+P267_PHASE266_FORBIDS_THRESHOLD_RELAXATION_ONLY,True,0,threshold-relaxation-only continuation forbidden,hard
+P267_PHASE266_DEPTH_CONTRACT_PRESENT,True,1,Phase266 route requires rows 1-5 and L2-L5,hard
+P267_PHASE266_REPAIR_CONTRACT_PRESENT,True,1,Phase266 route targets breadth and shuffle robustness,hard
+P267_REPAIR_FEATURE_CATALOG_WRITTEN,True,17,feature catalog includes full-depth requirements and forbidden L1-only row,hard
+P267_CANDIDATE_FAMILIES_WRITTEN,True,5,">=5 candidate families, all requiring levels 2-5",hard
+P267_TWO_LANE_FLOORS_WRITTEN,True,17,exploratory and acceptance lane floors present,hard
+P267_SEARCH_GRID_WRITTEN,True,10,>=8 search-grid contract rows,hard
+P267_CONTROLS_WRITTEN,True,14,"full-depth, L2-L5, exploratory lane, acceptance shuffle-margin and threshold-relaxation controls present",hard
+P267_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

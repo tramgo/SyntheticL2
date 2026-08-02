@@ -1,0 +1,18 @@
+feature_group,feature,description,status
+full_depth_core,avg_cum_buy_qty_l1_l5,Full visible bid quantity across Zerodha rows 1-5,required
+full_depth_core,avg_cum_sell_qty_l1_l5,Full visible ask quantity across Zerodha rows 1-5,required
+l2_l5_core,avg_cum_buy_qty_l2_l5,Bid-side depth beyond L1; required levels 2-5 materiality,required
+l2_l5_core,avg_cum_sell_qty_l2_l5,Ask-side depth beyond L1; required levels 2-5 materiality,required
+l2_l5_core,avg_depth_beyond_l1_qty_imbalance,Levels 2-5 quantity imbalance,required
+l2_l5_core,avg_level_weighted_depth_imbalance,Top-five level-weighted depth imbalance,required
+l2_l5_core,avg_order_count_imbalance_l1_l5,Top-five order-count imbalance,required
+shock,depth_replenishment_pressure,Visible-depth replenishment pressure,required
+shock,depth_withdrawal_pressure,Visible-depth withdrawal pressure,required
+shock,top5_qty_churn_sum,Top-five quantity churn / book instability,required
+shock,top5_order_churn_sum,Top-five order-count churn / cancel pressure,required
+spread_regime,avg_spread_bps,Spread regime and cost context,required
+spread_regime,spread_compression_bps,Spread compression confirmation,required
+market_regime,market_direction_proxy,Optional broad-market direction guard if available in the event surface,optional
+market_regime,market_volatility_proxy,Optional market volatility guard if available in the event surface,optional
+cost,zerodha_round_trip_charge_bps,Zerodha modeled round-trip charge floor,required
+forbidden,l1_only_depth_imbalance,L1-only feature set is forbidden,forbidden

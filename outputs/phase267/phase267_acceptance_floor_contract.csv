@@ -1,0 +1,18 @@
+floor_id,required_expression,numeric_floor,description
+exploratory_minimum_event_rows,>=5,5,Profit-hunting lane keeps small but interesting pockets for diagnosis; not acceptance.
+exploratory_minimum_symbols,>=2,2,Profit-hunting lane keeps sparse cross-symbol clues; not acceptance.
+exploratory_cost100_net_pnl_inr,>0,0,Exploratory candidates may enter the ledger if base-cost net is positive.
+exploratory_controls_as_metrics_not_filters,record_only,0,"Side-flip, random-side and shuffled-label controls are recorded for exploratory ranking but do not suppress discovery rows."
+acceptance_minimum_event_rows,>=30,30,Acceptance-grade candidate must have enough events before replay or promotion discussion.
+acceptance_minimum_symbols,>=8,8,Acceptance-grade candidate must not be a one-name or four-name artifact.
+acceptance_minimum_trade_dates,>=1_current_data;>=2_when_additional_unseen_dates_available,1,Current training data has one date; future unseen date expansion must raise this floor.
+acceptance_cost100_net_pnl_inr,>0,0,Acceptance lane base cost stack must be positive.
+acceptance_cost150_net_pnl_inr,>0,0,Acceptance lane 1.5x modeled Zerodha cost stress must be positive.
+acceptance_cost200_net_pnl_inr,>0,0,Acceptance lane 2x modeled Zerodha cost stress must be positive.
+acceptance_cost200_avg_net_per_event_inr,>=25,25,Acceptance lane rejects tiny residual 2x edges such as Phase265's about 4.21 INR/event.
+acceptance_shuffle_label_margin_inr,>=100,100,Acceptance lane must beat shuffled-label net P&L by an economically material margin.
+acceptance_side_flip_degrades,==1,1,Acceptance lane requires flipped signal side to degrade net P&L.
+acceptance_random_side_beat,==1,1,Acceptance lane requires deterministic random-side beat.
+uses_full_top_five_depth,==1,1,Both lanes require rows 1-5.
+uses_depth_beyond_l1,==1,1,Both lanes require levels 2-5 materiality.
+uses_l1_only,==0,0,L1-only candidate is forbidden in both lanes.
