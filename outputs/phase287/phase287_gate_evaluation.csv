@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P287_PHASE286_SEARCH_COMPLETE,True,1,Phase286 search complete,hard
+P287_PHASE286_NEXT_ACTION_PRESENT,True,run_phase287_event_lifecycle_exit_side_redesign_interpretation_no_paper_live,Phase286 routes to Phase287 interpretation,hard
+P287_PHASE286_GATES_PASS,True,8/8,Phase286 gates pass,hard
+P287_RANKED_INTERPRETATION_PRESENT,True,60,>0 ranked variants,hard
+P287_CLOSES_PHASE286_FOR_ACCEPTANCE,True,1,Phase286 closed for acceptance,hard
+P287_NEXT_ROUTE_SELECTED,True,P287_FULL_DEPTH_LIQUIDITY_PRESSURE_STRATEGY_SEARCH,P287_FULL_DEPTH_LIQUIDITY_PRESSURE_STRATEGY_SEARCH,hard
+P287_FULL_DEPTH_BOUNDARY_PRESERVED,True,l1_only=0;live_mask=0,"full-depth, no leakage",hard
+P287_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P287_ROUTE_CONTRACT_PRESENT,True,8,Phase288 route contract rows,hard

@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_phase286_lifecycle_route_for_acceptance,1,sparse_above12=0;best_ann=3.462593252169461;best_events=4,"Do not accept, replay, or promote Phase286 lifecycle variants."
+preserve_best_full_depth_lifecycle_clue,P286_P285_QUEUE_ADVERSITY_ORDER_TIMING_TEST_P285_GRID_ORIG_E2_H8,family=queue_adversity_order_timing_test;grid=P285_GRID_ORIG_E2_H8;scheduled_events=4,Carry forward only as a clue for a different full-depth edge source.
+preserved_lifecycle_families_for_feature_context,queue_adversity_order_timing_test;entry_delay_test,positive full-depth but below-12 diagnostics,"Preserve as context, not as accepted strategies."
+do_not_relax_annualized_denominator,1,fixed_initial_capital_required,"Annualized return remains fixed-capital based, never unlimited-capital based."
+do_not_claim_portfolio_return,1,best_scheduled_events=4;sparse_floor=8;robust_floor=30,The evidence is too sparse for a portfolio-return claim.
+selected_next_route,P287_FULL_DEPTH_LIQUIDITY_PRESSURE_STRATEGY_SEARCH,lifecycle route exhausted; direct L2 pressure edge source required,Run a direct full-depth liquidity-pressure search.

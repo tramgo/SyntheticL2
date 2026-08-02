@@ -12472,6 +12472,93 @@ Current Phase149 evidence after Phase286:
 
 ---
 
+## 24.113 Phase287 Event Lifecycle / Side / Exit Redesign Interpretation Completed
+
+Phase287 interpreted the Phase286 lifecycle / side / exit redesign search as a no-survivor checkpoint and selected a materially different next strategy-search route. This is important because Phase286 tested the obvious lifecycle explanations for the prior failure: wrong side, poor entry delay, poor exit horizon, take-profit / stop-loss clipping, timeout handling, and queue-adversity timing. Those changes did not create a fixed-capital cost200 profitable route.
+
+Phase287 evidence:
+
+- Phase286 variants interpreted: `60`;
+- Phase286 scenarios interpreted: `720`;
+- Phase286 sparse above-12 annualized diagnostic scenarios: `0`;
+- Phase286 robust portfolio floor scenarios: `0`;
+- Phase286 robust portfolio above-12 scenarios: `0`;
+- best Phase286 variant preserved as clue: `P286_P285_QUEUE_ADVERSITY_ORDER_TIMING_TEST_P285_GRID_ORIG_E2_H8`;
+- best lifecycle family: `queue_adversity_order_timing_test`;
+- best grid: `P285_GRID_ORIG_E2_H8`;
+- best fixed-capital cost200 annualized diagnostic: `3.462593252169461%`;
+- best interpreted variant max scheduled events: `8`;
+- positive full-depth clue variants: `3`;
+- Phase287 hard gates: `9/9`.
+
+Phase287 decisions:
+
+- close Phase286 lifecycle route for acceptance: `1`;
+- keep fixed-capital annualized denominator: `1`;
+- do not relax annualized return into an unlimited-capital metric: `1`;
+- do not claim portfolio return: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Selected Phase288 route:
+
+- selected next route: `P287_FULL_DEPTH_LIQUIDITY_PRESSURE_STRATEGY_SEARCH`;
+- next action: `run_phase288_full_depth_liquidity_pressure_strategy_search_no_paper_live`.
+
+Phase288 route contract:
+
+- inputs:
+  - `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+  - `outputs/phase286/phase286_lifecycle_scenario_results.csv`;
+  - `outputs/phase286/phase286_lifecycle_variant_summary.csv`;
+- search type: direct full-depth L2 liquidity-pressure strategy search;
+- required feature directions:
+  - beyond-L1 imbalance;
+  - depth slope;
+  - spread state;
+  - book churn;
+  - withdrawal;
+  - replenishment;
+  - consensus;
+  - volume shock;
+  - market-open bucket;
+  - reversal vs continuation side;
+- capital and costs:
+  - initial capital `100000`;
+  - cost200 required;
+  - fixed-notional grid required;
+  - max-concurrent grid required;
+  - annualized denominator must be fixed capital, never unlimited capital;
+- acceptance boundary:
+  - sparse `>12%` annualized remains discovery-only;
+  - robust portfolio claim still needs a larger event floor;
+  - L1-only variants remain forbidden;
+  - net/gross-edge live masks remain forbidden;
+  - no replay, promotion, paper/live acceptance, or deployable profitability claim is open.
+
+Phase287 outputs:
+
+- `outputs/phase287/phase287_ranked_lifecycle_interpretation.csv`;
+- `outputs/phase287/phase287_lifecycle_family_interpretation.csv`;
+- `outputs/phase287/phase287_interpretation_ledger.csv`;
+- `outputs/phase287/phase287_decision_ledger.csv`;
+- `outputs/phase287/phase287_next_route_contract.csv`;
+- `outputs/phase287/phase287_gate_evaluation.csv`;
+- `outputs/phase287/phase287_acceptance_summary.csv`;
+- `outputs/phase287/phase287_event_lifecycle_exit_side_redesign_interpretation_report.md`;
+- `outputs/phase287/phase287_event_lifecycle_exit_side_redesign_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase287:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `full_depth_liquidity_pressure_strategy_search_open`;
+- real receive-flow source branch status: `full_depth_liquidity_pressure_strategy_search_open`;
+- next best action: `run_phase288_full_depth_liquidity_pressure_strategy_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
