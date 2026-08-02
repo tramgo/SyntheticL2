@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+event_time_key,trade_date;exchange;symbol;richer_event_bar_id;horizon,Event scheduling key for capital locks.
+position_exit_key,richer_event_bar_id + horizon,Capital is released after the modeled holding horizon.
+same_symbol_overlap_policy,keep_highest_ranked_event_when_capital_or_overlap_conflict,Avoid stacking contradictory events in the same symbol/window.
+cross_symbol_concurrency_policy,rank_by_research_lead_score_then_allocate_until_cash_or_slot_limit,Allocate limited capital to ranked research leads.
+capacity_proxy,event_count;symbol_count;notional_turnover;cost_stress;depth_quantity_context,Small-event leads must pass capacity diagnostics.
+turnover_limit_diagnostic,daily_notional_turnover / initial_capital,Record turnover pressure before acceptance.
+slippage_sensitivity,base_cost;1p5x_cost;2x_cost;additional_1bp;additional_2bp,Capacity analysis must include extra slippage stress.
+minimum_observed_dates_for_claim,>=1_current_data_for_mechanics;>=5_future_for_portfolio_claim,"One-date current data can test mechanics, not robust annual portfolio claims."

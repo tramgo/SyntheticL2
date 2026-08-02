@@ -11097,6 +11097,83 @@ Current Phase149 evidence after Phase269:
 
 ---
 
+## 24.96 Phase270 Fixed-capital Concurrency and Capacity Return Precommit Completed
+
+Phase270 precommits the capital-aware return model required after Phase269 preserved fixed-notional annualized research leads. Its purpose is to prevent fixed-notional annualized proxies from being mistaken for portfolio annual return.
+
+Phase270 preserves the full Zerodha top-five market-by-price objective: rows 1 through 5 remain mandatory, levels 2-5 must be material, and L1-only candidates remain forbidden.
+
+Phase270 is a precommit only. It does not download more dates, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase270 capital model contract:
+
+- initial capital grid: `100000;250000;500000;1000000`;
+- fixed notional grid: `25000;50000;100000`;
+- max concurrent positions: `1;2;4;8`;
+- per-trade notional policy: `min(fixed_notional, available_cash / open_slot_count)`;
+- capital reuse rule: capital is released only after horizon exit;
+- cash drag rule: idle intraday cash return is zero;
+- portfolio return formula: `realized_net_pnl_inr / initial_capital_inr`;
+- annualized portfolio return formula: `portfolio_return_over_observed_dates * 252 / observed_trade_dates`.
+
+Phase270 concurrency and capacity contract:
+
+- event scheduling key: `trade_date;exchange;symbol;richer_event_bar_id;horizon`;
+- position exit key: `richer_event_bar_id + horizon`;
+- same-symbol overlap policy: keep highest-ranked event when capital or overlap conflicts;
+- cross-symbol concurrency policy: rank by research lead score, then allocate until cash or slot limit;
+- capacity proxy: event count, symbol count, notional turnover, cost stress, and depth quantity context;
+- turnover diagnostic: `daily_notional_turnover / initial_capital`;
+- slippage sensitivity: base cost, `1.5x`, `2x`, plus additional `1bp` and `2bp`;
+- minimum observed dates for claim: current one-date data may test mechanics, but future portfolio claims require at least five dates.
+
+Phase270 controls:
+
+- full top-five depth required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only candidate allowed: `0`;
+- unlimited capital assumption allowed: `0`;
+- portfolio return claim without scheduler allowed: `0`;
+- fixed-notional proxy as portfolio return allowed: `0`;
+- replay execution now allowed: `0`;
+- paper/live or deployable profitability claim allowed: `0`.
+
+Phase270 gates:
+
+- Phase269 work order present: pass;
+- Phase269 selected fixed-capital route: pass;
+- Phase269 forbids portfolio-return claim: pass;
+- Phase269 forbids replay/promotion: pass;
+- Phase269 full-depth evidence recognized: pass;
+- Phase269 capital contract present: pass;
+- Phase269 capacity contract present: pass;
+- capital model contract written: pass;
+- concurrency/capacity contract written: pass;
+- input contract written: pass;
+- output contract written: pass;
+- controls written: pass;
+- no download/replay/promotion/paper-live: pass.
+
+Phase270 outputs:
+
+- `outputs/phase270/phase270_capital_model_contract.csv`;
+- `outputs/phase270/phase270_concurrency_capacity_contract.csv`;
+- `outputs/phase270/phase270_candidate_input_contract.csv`;
+- `outputs/phase270/phase270_return_output_contract.csv`;
+- `outputs/phase270/phase270_control_contract.csv`;
+- `outputs/phase270/phase270_gate_evaluation.csv`;
+- `outputs/phase270/phase270_acceptance_summary.csv`;
+- `outputs/phase270/phase270_fixed_capital_concurrency_and_capacity_return_precommit_report.md`;
+- `outputs/phase270/phase270_fixed_capital_concurrency_and_capacity_return_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase270:
+
+- synthetic strategy-discovery branch status: `fixed_capital_concurrency_capacity_return_analysis_open`;
+- real receive-flow source branch status: `fixed_capital_concurrency_capacity_return_analysis_open`;
+- next best action: `run_phase271_fixed_capital_concurrency_and_capacity_return_analysis_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

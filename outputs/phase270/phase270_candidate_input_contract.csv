@@ -1,0 +1,6 @@
+input_id,path,description
+ranked_research_leads,outputs/phase269/phase269_ranked_annualized_research_leads.csv,Use the 17 fixed-notional annualized research leads.
+variant_results,outputs/phase268/phase268_two_lane_variant_results.csv,Use all Phase268 variants for controls and fallback ranking.
+exploratory_event_ledger,outputs/phase268/phase268_exploratory_event_ledger.csv,Use event-level rows for scheduling and capital locks.
+acceptance_event_ledger,outputs/phase268/phase268_acceptance_event_ledger.csv,Expected empty until acceptance-grade candidates appear.
+full_depth_source_surface,outputs/phase254/phase254_richer_raw_top5_depth_event_bars.parquet,Full top-five event-bar source remains the underlying signal surface.

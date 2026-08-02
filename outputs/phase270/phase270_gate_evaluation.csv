@@ -1,0 +1,14 @@
+gate_id,passed,observed_value,required_value,severity
+P270_PHASE269_WORK_ORDER_PRESENT,True,run_phase270_fixed_capital_concurrency_and_capacity_return_precommit_no_paper_live,Phase269 next action targets Phase270,hard
+P270_PHASE269_ROUTE_SELECTED,True,P269_FIXED_CAPITAL_CONCURRENCY_AND_CAPACITY_RETURN_PRECOMMIT,Phase269 selected fixed-capital route,hard
+P270_PHASE269_FORBIDS_PORTFOLIO_CLAIM,True,1,Phase269 forbids portfolio-return claim,hard
+P270_PHASE269_FORBIDS_REPLAY,True,1,Phase269 forbids replay/promotion,hard
+P270_PHASE269_FULL_DEPTH_RECOGNIZED,True,full_depth=1200;l2_l5=1200;l1_only=0;variants=1200,Full-depth Phase268 evidence recognized,hard
+P270_PHASE269_CAPITAL_CONTRACT_PRESENT,True,1,Phase269 next route contains capital accounting,hard
+P270_PHASE269_CAPACITY_CONTRACT_PRESENT,True,1,Phase269 next route contains capacity accounting,hard
+P270_CAPITAL_MODEL_CONTRACT_WRITTEN,True,8,Capital model contract rows written,hard
+P270_CONCURRENCY_CAPACITY_CONTRACT_WRITTEN,True,8,Concurrency/capacity rows written,hard
+P270_INPUT_CONTRACT_WRITTEN,True,5,Input contract rows written,hard
+P270_OUTPUT_CONTRACT_WRITTEN,True,5,Phase271 output contract rows written,hard
+P270_CONTROLS_WRITTEN,True,8,Required and forbidden controls written,hard
+P270_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard

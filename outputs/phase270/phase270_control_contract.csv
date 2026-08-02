@@ -1,0 +1,9 @@
+control_id,control_status,description
+full_top_five_depth_required,required,Rows 1-5 remain mandatory for every included signal.
+levels_2_to_5_materiality_required,required,L2-L5 materiality remains mandatory.
+l1_only_candidate_allowed,forbidden,No L1-only candidate or capital analysis is allowed.
+unlimited_capital_assumption,forbidden,Capital-aware return cannot assume unlimited simultaneous capital.
+portfolio_return_claim_without_scheduler,forbidden,No portfolio return claim without event scheduling and capital locks.
+fixed_notional_proxy_as_portfolio_return,forbidden,Phase268 annualized proxy cannot be relabeled as portfolio return.
+paper_live_or_deployable_profitability_claim,forbidden,No paper/live or deployable profitability claim in Phase270/271.
+replay_execution_now,forbidden,Phase270 is a precommit only.

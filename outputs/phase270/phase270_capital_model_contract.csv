@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+initial_capital_inr,100000;250000;500000;1000000,Evaluate fixed starting capital scenarios instead of unlimited capital.
+per_trade_notional_policy,"min(fixed_notional, available_cash / open_slot_count)",Each event consumes capital; no order may exceed available capital.
+fixed_notional_grid_inr,25000;50000;100000,Stress the Phase268 fixed-notional proxy under smaller and equal notionals.
+max_concurrent_positions,1;2;4;8,Cap simultaneous exposure; overlapping events must compete for capital.
+capital_reuse_rule,capital_released_after_horizon_exit,Capital is not reusable until the event horizon exits.
+cash_drag_rule,idle_cash_return_zero_intraday,Unused cash earns zero intraday return.
+portfolio_return_formula,realized_net_pnl_inr / initial_capital_inr,Only this capital-accounted formula may be called portfolio return.
+annualized_portfolio_return_formula,portfolio_return_over_observed_dates * 252 / observed_trade_dates,Annualize only after fixed-capital event scheduling is materialized.

@@ -1,0 +1,6 @@
+output_id,planned_path,description
+capital_scenario_results,phase271_capital_scenario_results.csv,"Portfolio return, drawdown, turnover and utilization by capital/concurrency scenario."
+scheduled_event_ledger,phase271_scheduled_event_ledger.csv,Event-level capital allocation and rejection reasons.
+candidate_capacity_diagnostics,phase271_candidate_capacity_diagnostics.csv,"Capacity, turnover and slippage diagnostics by candidate family."
+annualized_proxy_reconciliation,phase271_annualized_proxy_reconciliation.csv,Compare fixed-notional proxy vs capital-accounted return.
+acceptance_summary,phase271_acceptance_summary.csv,No replay/promotion unless capital model passes gates.
