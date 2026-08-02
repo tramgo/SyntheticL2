@@ -1,0 +1,24 @@
+metric,value,description
+phase288_liquidity_pressure_search_complete,1,Phase288 direct full-depth liquidity-pressure search completed
+phase288_selected_route,P288_FULL_DEPTH_LIQUIDITY_PRESSURE_STRATEGY_SEARCH,Selected route
+phase288_variant_rows,192,Variants evaluated
+phase288_scenario_rows,2304,Cost200 fixed-capital scenarios evaluated
+phase288_sparse_above12_scenario_rows,0,Above-12 sparse diagnostic rows with event floor met
+phase288_robust_portfolio_floor_scenario_rows,0,Scenarios meeting robust portfolio event floor
+phase288_robust_portfolio_above12_scenario_rows,0,Robust floor scenarios above 12 percent
+phase288_best_variant_id,P288_P288_EXHAUSTION_REVERSAL_Q70_ORIG_H10,Best Phase288 variant
+phase288_best_liquidity_family,exhaustion_reversal,Best liquidity family
+phase288_best_pressure_column,depth_withdrawal_pressure,Best pressure feature
+phase288_best_side_mode,ORIG,Best side mode
+phase288_best_cost200_annualized_pct,5.391389753841644,Best cost200 fixed-capital annualized diagnostic
+phase288_best_realized_net_pnl_inr,171.15523028068714,Best realized net P&L
+phase288_best_scheduled_event_rows,1,Best scheduled event rows
+phase288_l1_only_variant_rows,0,L1-only variants
+phase288_net_edge_live_mask_rows,0,Live masks using net/gross edge
+phase288_strategy_replay_allowed,0,No strategy replay unlocked
+phase288_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase288_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase288_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase288_hard_gate_pass_rows,8,Hard gates passed
+phase288_hard_gate_rows,8,Hard gates evaluated
+phase288_next_best_action,run_phase289_full_depth_liquidity_pressure_interpretation_no_paper_live,Recommended next milestone

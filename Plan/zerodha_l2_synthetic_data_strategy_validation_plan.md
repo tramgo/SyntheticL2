@@ -12559,6 +12559,94 @@ Current Phase149 evidence after Phase287:
 
 ---
 
+## 24.114 Phase288 Full-Depth Liquidity-Pressure Strategy Search Completed
+
+Phase288 executed the direct full-depth L2 liquidity-pressure strategy search selected by Phase287. Unlike the lifecycle wrapper search in Phase286, this milestone changed the feature source directly: it searched observable top-five depth pressure, withdrawal, replenishment, churn, spread, consensus, market-open pressure, and reversal-vs-continuation side tests.
+
+Phase288 design boundary:
+
+- selection masks are observable full-depth L2 features only;
+- gross edge is used only after selection for synthetic scoring;
+- no net/gross-edge live mask is used;
+- annualized return denominator is fixed initial capital, not unlimited capital;
+- cost200 fixed-capital scoring is mandatory;
+- replay, promotion, paper/live acceptance, and deployable profitability claims remain closed.
+
+Phase288 inputs:
+
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- `outputs/phase287/phase287_acceptance_summary.csv`;
+- `outputs/phase287/phase287_next_route_contract.csv`.
+
+Phase288 feature directions tested:
+
+- beyond-L1 imbalance;
+- level-weighted depth imbalance;
+- depth-slope pressure;
+- spread state;
+- book churn;
+- withdrawal pressure;
+- replenishment pressure;
+- replenishment-vs-withdrawal ratio;
+- consensus imbalance;
+- market-open bucket;
+- reversal vs continuation side.
+
+Phase288 search families:
+
+- pressure continuation;
+- exhaustion reversal;
+- spread-compression pressure;
+- market-open pressure burst;
+- replenishment absorption;
+- liquidity vacuum.
+
+Phase288 result summary:
+
+- liquidity-pressure search complete: `1`;
+- variants evaluated: `192`;
+- cost200 fixed-capital scenarios evaluated: `2304`;
+- sparse above-12 annualized diagnostic scenarios: `0`;
+- robust portfolio floor scenarios: `0`;
+- robust portfolio above-12 annualized scenarios: `0`;
+- best variant: `P288_P288_EXHAUSTION_REVERSAL_Q70_ORIG_H10`;
+- best liquidity family: `exhaustion_reversal`;
+- best pressure feature: `depth_withdrawal_pressure`;
+- best side mode: `ORIG`;
+- best cost200 fixed-capital annualized diagnostic: `5.391389753841644%`;
+- best realized net P&L: `171.15523028068714`;
+- best scheduled event rows: `1`;
+- L1-only variant rows: `0`;
+- net-edge live mask rows: `0`;
+- Phase288 hard gates: `8/8`.
+
+Phase288 interpretation boundary:
+
+- The direct full-depth liquidity-pressure route did not find a profitable survivor.
+- The best result is below the `>12%` annualized discovery threshold.
+- The best result is also too sparse at only `1` scheduled event.
+- Therefore Phase288 is a concrete negative strategy-search result, not a near-acceptance result.
+
+Phase288 outputs:
+
+- `outputs/phase288/phase288_liquidity_pressure_variant_catalog.csv`;
+- `outputs/phase288/phase288_liquidity_pressure_scenario_results.csv`;
+- `outputs/phase288/phase288_liquidity_pressure_variant_summary.csv`;
+- `outputs/phase288/phase288_sample_liquidity_pressure_scheduled_event_ledger.csv`;
+- `outputs/phase288/phase288_gate_evaluation.csv`;
+- `outputs/phase288/phase288_acceptance_summary.csv`;
+- `outputs/phase288/phase288_full_depth_liquidity_pressure_strategy_search_report.md`;
+- `outputs/phase288/phase288_full_depth_liquidity_pressure_strategy_search_manifest.json`.
+
+Current Phase149 evidence after Phase288:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `full_depth_liquidity_pressure_interpretation_open`;
+- real receive-flow source branch status: `full_depth_liquidity_pressure_interpretation_open`;
+- next best action: `run_phase289_full_depth_liquidity_pressure_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
