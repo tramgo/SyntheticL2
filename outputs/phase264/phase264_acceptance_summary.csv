@@ -1,0 +1,26 @@
+metric,value,description
+phase264_liquidity_shock_precommit_complete,1,Phase264 full-depth liquidity-shock/absorption event precommit completed
+phase264_selected_route,P264_FULL_DEPTH_LIQUIDITY_SHOCK_ABSORPTION_EVENT_MODEL,Selected route
+phase264_input_event_bar_rows,1636,Input event bars
+phase264_input_symbols,32,Input symbols
+phase264_input_trade_dates,1,Input trade dates
+phase264_mean_l2_l5_bid_share,0.8532375598112236,Mean bid depth share from levels 2-5
+phase264_mean_l2_l5_ask_share,0.8297748875874144,Mean ask depth share from levels 2-5
+phase264_mean_abs_l2_l5_imbalance,0.22872162637585508,Mean absolute L2-L5 imbalance
+phase264_feature_catalog_rows,16,Feature catalog rows
+phase264_event_family_rows,5,Event family rows
+phase264_label_contract_rows,5,Label contract rows
+phase264_search_grid_contract_rows,6,Search grid contract rows
+phase264_control_contract_rows,8,Control contract rows
+phase264_full_top_five_depth_required,1,Zerodha top-five rows 1-5 required
+phase264_levels_2_to_5_materiality_required,1,Levels 2-5 features required
+phase264_l1_only_candidate_allowed,0,L1-only candidates forbidden
+phase264_threshold_relaxation_only_allowed,0,Threshold relaxation only forbidden
+phase264_hard_gate_pass_rows,11,Hard gates passed
+phase264_hard_gate_rows,11,Hard gates evaluated
+phase264_download_more_dates_now_allowed,0,No new download in Phase264
+phase264_replay_execution_allowed_now,0,No replay execution in Phase264
+phase264_strategy_promotion_allowed,0,No strategy promotion from Phase264
+phase264_paper_or_live_acceptance_allowed,0,No paper/live acceptance from Phase264
+phase264_deployable_profitability_claim_allowed,0,No deployable profitability claim from Phase264
+phase264_next_best_action,run_phase265_full_depth_liquidity_shock_absorption_event_training_search_no_paper_live,Recommended next milestone

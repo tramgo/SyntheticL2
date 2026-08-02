@@ -1,0 +1,9 @@
+control_id,control_status,description
+random_side_control,required,Candidate must beat deterministic random side under the same event mask
+side_flip_control,required,Flipping the liquidity-shock direction should degrade or invert edge
+cost_stress,required,"Evaluate base, 1.5x and 2x Zerodha cost floors"
+shuffle_label_control,required,Candidate must beat shuffled future-return labels
+event_breadth_control,required,"Candidate must clear minimum event, symbol and date breadth floors"
+no_l1_only_control,required,Every event family must use top-five and levels 2-5 features
+threshold_relaxation_only,forbidden,Do not continue the failed passive route by merely relaxing thresholds
+paper_live_or_deployable_profitability_claim,forbidden,Phase264/265 cannot claim paper/live/deployable profitability

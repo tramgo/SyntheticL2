@@ -10621,6 +10621,96 @@ Current Phase149 evidence after Phase263:
 
 ---
 
+## 24.90 Phase264 Full-depth Liquidity-shock Absorption Event Precommit Completed
+
+Phase264 precommits the next materially different route after Phase263 closed the repaired passive spread-capture/fill-model path. The new route is a directional full-depth liquidity-shock / absorption event model. It uses Zerodha top-five market-by-price rows 1 through 5, explicitly requires levels 2-5 features, and forbids L1-only variants.
+
+Phase264 is a precommit only. It does not download data, execute replay, promote a strategy, open paper/live acceptance, or make a deployable profitability claim.
+
+Phase264 input evidence:
+
+- input event bars: `1,636`;
+- symbols represented: `32`;
+- trade dates represented: `1`;
+- mean bid-side depth share from levels 2-5: `0.8532375598112236`;
+- mean ask-side depth share from levels 2-5: `0.8297748875874144`;
+- mean absolute L2-L5 imbalance: `0.22872162637585508`.
+
+Phase264 route contract:
+
+- selected route: `P264_FULL_DEPTH_LIQUIDITY_SHOCK_ABSORPTION_EVENT_MODEL`;
+- feature catalog rows: `16`;
+- event family rows: `5`;
+- label contract rows: `5`;
+- search-grid contract rows: `6`;
+- control contract rows: `8`;
+- full top-five depth required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only candidate allowed: `0`;
+- threshold-relaxation-only allowed: `0`.
+
+Phase264 event-family catalog:
+
+- `P265_L2L5_BID_ABSORPTION_CONTINUATION`: long-side bid absorption / continuation after liquidity shock;
+- `P265_L2L5_ASK_ABSORPTION_CONTINUATION`: short-side ask absorption / continuation after liquidity shock;
+- `P265_WITHDRAWAL_REVERSAL_AFTER_SHOCK`: reversal after aggressive withdrawal/churn only with opposite-side levels 2-5 absorption;
+- `P265_SPREAD_COMPRESSION_ABSORPTION`: spread compression after high churn with top-five and levels 2-5 imbalance agreement;
+- `P265_DEPTH_CHURN_EXHAUSTION_FILTER`: filter/downweight excessive churn or order-cancel pressure without replenishment confirmation.
+
+Phase264 label and search contract:
+
+- labels: future mid returns at horizons `3`, `6`, and `10`;
+- cost hurdle: directional labels must exceed Zerodha cost floors under `1.0x`, `1.5x`, and `2.0x` charges before candidate survival;
+- no-leakage rule: future labels may not be used as features or filters;
+- search thresholds: imbalance quantiles `0.60`, `0.75`, `0.90`; shock quantiles `0.60`, `0.75`, `0.90`;
+- spread regimes: low, mid, high and compression;
+- breadth floors: opportunities `>=30`, symbols `>=8`, dates `>=1` on current available data.
+
+Phase264 controls:
+
+- random-side control;
+- side-flip control;
+- cost-stress control;
+- shuffled-label control;
+- event-breadth control;
+- no-L1-only control;
+- threshold-relaxation-only continuation forbidden;
+- paper/live or deployable profitability claim forbidden.
+
+Phase264 gates:
+
+- Phase263 work order present: pass;
+- Phase263 depth contract present: pass;
+- Phase263 route contract present: pass;
+- Phase254 richer raw event bars present: pass;
+- input breadth: pass, `1,636` rows and `32` symbols;
+- feature catalog written: pass, `16` rows;
+- full-depth event families written: pass, `5` rows;
+- label contract written: pass, `5` rows;
+- search-grid contract written: pass, `6` rows;
+- controls written: pass, `8` rows;
+- no download/replay/promotion/paper-live: pass.
+
+Phase264 outputs:
+
+- `outputs/phase264/phase264_feature_catalog.csv`;
+- `outputs/phase264/phase264_event_family_catalog.csv`;
+- `outputs/phase264/phase264_label_contract.csv`;
+- `outputs/phase264/phase264_search_grid_contract.csv`;
+- `outputs/phase264/phase264_control_contract.csv`;
+- `outputs/phase264/phase264_gate_evaluation.csv`;
+- `outputs/phase264/phase264_acceptance_summary.csv`;
+- `outputs/phase264/phase264_full_depth_liquidity_shock_absorption_event_precommit_report.md`;
+- `outputs/phase264/phase264_full_depth_liquidity_shock_absorption_event_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase264:
+
+- synthetic strategy-discovery branch status: `full_depth_liquidity_shock_absorption_event_training_search_open`;
+- real receive-flow source branch status: `full_depth_liquidity_shock_absorption_event_training_search_open`;
+- next best action: `run_phase265_full_depth_liquidity_shock_absorption_event_training_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

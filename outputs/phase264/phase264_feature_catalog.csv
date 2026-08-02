@@ -1,0 +1,17 @@
+feature_group,feature,description
+depth_stock,avg_cum_buy_qty_l1_l5,Full visible bid-side quantity across Zerodha top-five rows 1-5
+depth_stock,avg_cum_sell_qty_l1_l5,Full visible ask-side quantity across Zerodha top-five rows 1-5
+depth_stock,avg_cum_buy_qty_l2_l5,Bid depth beyond L1; required levels 2-5 materiality
+depth_stock,avg_cum_sell_qty_l2_l5,Ask depth beyond L1; required levels 2-5 materiality
+imbalance,avg_cum_top5_qty_imbalance,Top-five quantity imbalance
+imbalance,avg_depth_beyond_l1_qty_imbalance,Levels 2-5 quantity imbalance
+imbalance,avg_level_weighted_depth_imbalance,Near-level weighted depth imbalance
+imbalance,avg_order_count_imbalance_l1_l5,Top-five order-count imbalance
+shock,depth_replenishment_pressure,Visible-depth replenishment event pressure
+shock,depth_withdrawal_pressure,Visible-depth withdrawal event pressure
+shock,top5_qty_churn_sum,Top-five quantity churn / instability
+shock,top5_order_churn_sum,Top-five order-count churn / cancel pressure
+shock,l1_price_shift_abs_sum,L1 price movement / spread-book instability proxy
+liquidity,avg_spread_bps,Spread compression/expansion context and cost hurdle context
+cost,taker_round_trip_cost_floor_bps,Zerodha cost floor for directional event hurdle
+forbidden,l1_only_depth_imbalance,No L1-only feature set or candidate family is allowed

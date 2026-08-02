@@ -1,0 +1,7 @@
+grid_component,contract_value,description
+horizons,3;6;10,Evaluate the same event horizons available in Phase254
+imbalance_quantiles,0.60;0.75;0.90,Threshold top-five and levels 2-5 imbalance strength
+shock_quantiles,0.60;0.75;0.90,"Threshold replenishment, withdrawal and churn event intensity"
+spread_regimes,low;mid;high;compression,Separate spread/compression context from directional depth shock
+cost_multipliers,1.0;1.5;2.0,Stress Zerodha statutory/brokerage charges
+breadth_floors,opportunities>=30;symbols>=8;dates>=1,Minimum breadth before any survivor discussion on current available data

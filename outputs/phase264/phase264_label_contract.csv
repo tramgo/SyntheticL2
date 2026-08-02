@@ -1,0 +1,6 @@
+label_id,label_status,description
+future_mid_return_h3,required,3-event-bar future mid return label
+future_mid_return_h6,required,6-event-bar future mid return label
+future_mid_return_h10,required,10-event-bar future mid return label
+cost_hurdled_return,required,"Directional label must exceed Zerodha cost floor at 1x, 1.5x and 2x stress before candidate survival"
+no_future_feature_leakage,required,Future labels may not be used as features or filters

@@ -189,6 +189,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 261,outputs\phase261,True,8,outputs\phase261\phase261_acceptance_summary.csv,outputs\phase261\phase261_passive_opportunity_breadth_fill_model_repair_precommit_manifest.json,False
 262,outputs\phase262,True,7,outputs\phase262\phase262_acceptance_summary.csv,outputs\phase262\phase262_passive_opportunity_breadth_fill_model_training_search_manifest.json,False
 263,outputs\phase263,True,7,outputs\phase263\phase263_acceptance_summary.csv,outputs\phase263\phase263_passive_opportunity_breadth_fill_model_interpretation_manifest.json,False
+264,outputs\phase264,True,9,outputs\phase264\phase264_acceptance_summary.csv,outputs\phase264\phase264_full_depth_liquidity_shock_absorption_event_precommit_manifest.json,False
 27,outputs\phase27,True,11,,outputs\phase27\phase27_feature_edge_scan_manifest.json,False
 28,outputs\phase28,True,9,,outputs\phase28\phase28_richer_event_label_support_manifest.json,False
 29,outputs\phase29,True,8,,outputs\phase29\phase29_partial_strategy_proxy_replay_manifest.json,False

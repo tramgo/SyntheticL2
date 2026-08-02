@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P264_PHASE263_WORK_ORDER_PRESENT,True,run_phase264_full_depth_liquidity_shock_absorption_event_precommit_no_paper_live,Phase263 next action targets Phase264,hard
+P264_PHASE263_DEPTH_CONTRACT_PRESENT,True,1,Phase263 route requires levels 1-5 and L2-L5,hard
+P264_PHASE263_ROUTE_CONTRACT_PRESENT,True,1,Phase263 route is liquidity-shock/absorption,hard
+P264_INPUT_PRESENT,True,1,Phase254 richer raw top-five event bars exist,hard
+P264_INPUT_BREADTH,True,rows=1636.0;symbols=32.0,>=1000 rows and >=20 symbols,hard
+P264_FEATURE_CATALOG_WRITTEN,True,16,>=15 feature rows plus L1-only forbidden row,hard
+P264_FULL_DEPTH_EVENT_FAMILIES_WRITTEN,True,5,>=5 event families with L2-L5/top-five features,hard
+P264_LABEL_CONTRACT_WRITTEN,True,5,required labels and no-leakage contract,hard
+P264_SEARCH_GRID_WRITTEN,True,6,>=6 search-grid rows,hard
+P264_CONTROLS_WRITTEN,True,8,required controls and forbidden continuations,hard
+P264_NO_DOWNLOAD_REPLAY_PROMOTION_OR_PAPER_LIVE,True,0,0,hard
