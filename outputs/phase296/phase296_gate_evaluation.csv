@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P296_PHASE295_WORK_ORDER_PRESENT,True,run_phase296_full_year_top5_depth_strategy_family_sweep_no_paper_live,Phase295 routes to Phase296,hard
+P296_INPUT_FULL_YEAR_PRESENT,True,rows=3012294;dates=252,full-year Phase42 event-state,hard
+P296_TOP5_DEPTH_PROXY_PRESENT,True,l1+l5+beyond_l1_proxy,top-five-depth proxy columns,hard
+P296_VARIANTS_PRESENT,True,360,>=300 profile-specific variants,hard
+P296_SCENARIOS_PRESENT,True,720,>=600 fixed-capital cost200 scenarios,hard
+P296_FIXED_CAPITAL_REQUIRED,True,1000000.0,fixed initial capital denominator,hard
+P296_COST200_REQUIRED,True,cost200,Zerodha cost stress profile,hard
+P296_FULL_DEPTH_REQUIRED,True,l1_only=0,top-five and levels 2-5 proxy required,hard
+P296_NO_LIVE_NET_EDGE_MASKS,True,0,no net/gross edge live masks,hard
+P296_FIXED_CAPITAL_ANNUALIZED_DENOMINATOR,True,fixed_initial_capital,no unlimited-capital annualization,hard
+P296_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard

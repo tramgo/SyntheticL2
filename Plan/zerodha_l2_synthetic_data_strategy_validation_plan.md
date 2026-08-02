@@ -13148,6 +13148,71 @@ Current Phase149 evidence after Phase295:
 - `synthetic_strategy_discovery` status: `full_year_top5_depth_strategy_family_sweep_open`;
 - current next action: `run_phase296_full_year_top5_depth_strategy_family_sweep_no_paper_live`.
 
+## 24.122 Phase296 Full-Year Top-Five-Depth Strategy-Family Sweep Completed
+
+Phase296 executed the next broader synthetic-only strategy experiment on the full-year Phase42 top-five-depth event-state. The purpose was to stop mining the small Phase277 event universe and test several materially different L2 strategy families over 252 synthetic trading dates, 32 symbols and 5 feed profiles while preserving fixed initial-capital annualization and Zerodha cost stress.
+
+Terminology boundary:
+
+- Phase296 uses Phase42's full-year top-five-depth feature state: `l1_imbalance`, `l5_imbalance` and a derived beyond-L1 materiality proxy.
+- This is a top-five-depth strategy-family sweep, not proof that raw bid/ask price and quantity for every book level were persisted in this Phase42 input.
+- Raw Zerodha-websocket-like L1-L5 book-state persistence remains the dense-lake data-generation milestone.
+
+Phase296 strategy families:
+
+- `P296_TOP5_PRESSURE_CONTINUATION`;
+- `P296_BEYOND_L1_ABSORPTION_CONTINUATION`;
+- `P296_TOP5_PRESSURE_REVERSAL_RANGE`;
+- `P296_SPREAD_COMPRESSED_MLOFI_FOLLOW`;
+- `P296_LIQUIDITY_VACUUM_MOMENTUM_CONTINUATION`;
+- `P296_MICROPRICE_DEPTH_REVERSAL`.
+
+Phase296 evidence:
+
+- full-year input rows: `3012294`;
+- synthetic trading dates: `252`;
+- symbols: `32`;
+- feed profiles: `5`;
+- profile-specific variants evaluated: `360`;
+- fixed-capital cost200 scenarios evaluated: `720`;
+- sparse above-12% annualized diagnostic rows: `0`;
+- robust portfolio event-floor rows: `0`;
+- robust above-12% rows: `0`;
+- best variant: `P296_TOP5_PRESSURE_CONTINUATION_DISCONNECT_SCENARIO_IQ85_BQ70_NOT_WIDE_DL3_H3`;
+- best strategy family: `P296_TOP5_PRESSURE_CONTINUATION`;
+- best feed profile: `disconnect_scenario`;
+- best fixed-capital cost200 annualized diagnostic: `2.906507%`;
+- best realized net P&L: `13263.820197` INR;
+- best scheduled events: `6`;
+- best observed trade dates: `115`;
+- fixed initial-capital denominator: `1000000.0` INR;
+- L1-only variant rows: `0`;
+- net-edge live-mask rows: `0`;
+- hard gates: `11/11`.
+
+Phase296 interpretation boundary:
+
+Phase296 found no fixed-capital cost200 strategy-family survivor. The best scenario is positive but below the 12% annualized discovery threshold and has only six scheduled events, so it is not a robust portfolio result. Phase296 therefore opens only Phase297 interpretation. It does not open replay, promotion, paper/live acceptance or a deployable profitability claim.
+
+Phase296 outputs:
+
+- `outputs/phase296/phase296_variant_catalog.csv`;
+- `outputs/phase296/phase296_scenario_summary.csv`;
+- `outputs/phase296/phase296_variant_summary.csv`;
+- `outputs/phase296/phase296_family_summary.csv`;
+- `outputs/phase296/phase296_sample_trade_ledger.csv`;
+- `outputs/phase296/phase296_gate_evaluation.csv`;
+- `outputs/phase296/phase296_acceptance_summary.csv`;
+- `outputs/phase296/phase296_full_year_top5_depth_strategy_family_sweep_report.md`;
+- `outputs/phase296/phase296_full_year_top5_depth_strategy_family_sweep_manifest.json`.
+
+Current Phase149 evidence after Phase296:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `full_year_top5_depth_strategy_family_sweep_interpretation_open`;
+- `synthetic_strategy_discovery` status: `full_year_top5_depth_strategy_family_sweep_interpretation_open`;
+- current next action: `run_phase297_full_year_top5_depth_strategy_family_sweep_interpretation_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
