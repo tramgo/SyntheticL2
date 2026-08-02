@@ -12226,6 +12226,89 @@ Current Phase149 evidence after Phase283:
 
 ---
 
+## 24.110 Phase284 Regime-conditioned Full-depth Ensemble Interpretation Completed
+
+Phase284 interpreted the Phase283 ensemble search and closed the current regime-conditioned ensemble/filter-stack route for acceptance. This is not a retreat into more guardrails: it is a pivot away from repeatedly filtering the same sparse near-miss and toward a materially different source of edge.
+
+Phase284 conclusion:
+
+- Phase283 executed correctly using full Zerodha top-five depth rows 1-5 and levels 2-5 / beyond-L1 materiality;
+- Phase283 produced `0` cost200 sparse-above-12 survivor rows;
+- Phase283 produced `0` robust portfolio event-floor survivor rows;
+- the best cost200 fixed-capital annualized diagnostic remained `11.28247573982665`;
+- the best realized net P&L remained `358.17383301036983`;
+- the best scheduled event count remained only `2`;
+- therefore the ensemble route is closed for acceptance;
+- the positive full-depth rows remain useful only as clues for the next search;
+- no replay, promotion, paper/live acceptance, or deployable profitability claim is open.
+
+Why the next route changes:
+
+- adding more filters to the same ensemble family risks shrinking the already-sparse event set further;
+- relaxing the cost threshold would create a false profitability claim;
+- using the same side/entry/exit assumptions again would not materially test a new source of edge;
+- the next search must change trade lifecycle design: follow-vs-reversal side, entry timing, latency bucket, exit horizon, take-profit, stop-loss, timeout exit, and queue/adversity treatment.
+
+Phase284 selected next route:
+
+- selected route: `P284_EVENT_LIFECYCLE_EXIT_SIDE_REDESIGN_PRECOMMIT`;
+- next action: `run_phase285_event_lifecycle_exit_side_redesign_precommit_no_paper_live`.
+
+Phase285 route contract:
+
+- inputs:
+  - `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+  - `outputs/phase283/phase283_regime_conditioned_ensemble_scenario_results.csv`;
+  - `outputs/phase283/phase283_sample_regime_conditioned_scheduled_event_ledger.csv`;
+- required search directions:
+  - follow-vs-reversal side;
+  - latency bucket;
+  - entry-delay ticks;
+  - exit-horizon ticks;
+  - take-profit bps;
+  - stop-loss bps;
+  - timeout exit;
+  - queue adversity;
+  - fixed-capital cost200 scoring;
+- required L2 terms:
+  - top-five rows 1-5 required;
+  - levels 2-5 materiality required;
+  - beyond-L1 features required;
+  - L1-only variants forbidden;
+  - net/gross-edge live masks forbidden.
+
+Phase284 hard gates:
+
+- Phase283 work order present: pass;
+- Phase283 search complete: pass;
+- Phase283 hard gates pass: pass;
+- Phase283 results present: pass;
+- outcome classified as no survivor: pass;
+- event count remains too sparse: pass;
+- full-depth boundary preserved: pass;
+- replay/paper/live/claim boundaries closed: pass;
+- Phase285 lifecycle redesign route selected: pass.
+
+Phase284 outputs:
+
+- `outputs/phase284/phase284_ranked_ensemble_interpretation.csv`;
+- `outputs/phase284/phase284_family_interpretation.csv`;
+- `outputs/phase284/phase284_interpretation_ledger.csv`;
+- `outputs/phase284/phase284_decision_ledger.csv`;
+- `outputs/phase284/phase284_next_route_contract.csv`;
+- `outputs/phase284/phase284_gate_evaluation.csv`;
+- `outputs/phase284/phase284_acceptance_summary.csv`;
+- `outputs/phase284/phase284_regime_conditioned_full_depth_ensemble_interpretation_report.md`;
+- `outputs/phase284/phase284_regime_conditioned_full_depth_ensemble_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase284:
+
+- synthetic strategy-discovery branch status: `event_lifecycle_exit_side_redesign_precommit_open`;
+- real receive-flow source branch status: `event_lifecycle_exit_side_redesign_precommit_open`;
+- next best action: `run_phase285_event_lifecycle_exit_side_redesign_precommit_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

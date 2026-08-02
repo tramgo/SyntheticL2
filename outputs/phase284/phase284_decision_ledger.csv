@@ -1,0 +1,6 @@
+decision_id,decision_value,evidence,description
+close_phase283_ensemble_route_for_acceptance,1,sparse_above12=0;robust_floor=0;best_ann=11.28247573982665,Do not accept or promote Phase283 ensemble search.
+preserve_best_full_depth_near_miss_clue,P283_P282_ADVERSE_AVOID_NET_LABEL_ENSEMBLE_V1_P282_DEPTH_STABLE_BUCKET,family=adverse_avoid_net_label_ensemble;bucket=P282_DEPTH_STABLE_BUCKET;scheduled_events=2,Preserve best clue only as evidence for lifecycle redesign.
+do_not_relax_cost_threshold,1,cost200_required;threshold=12,Do not convert the below-12 near-miss into an acceptance rule.
+do_not_claim_portfolio_return,1,best_scheduled_events=2;sparse_floor=8;robust_floor=30,Sparse near-miss is not a robust annual portfolio-return claim.
+selected_next_route,P284_EVENT_LIFECYCLE_EXIT_SIDE_REDESIGN_PRECOMMIT,ensemble route exhausted; edge source must change,Precommit event lifecycle/side/exit redesign.

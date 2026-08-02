@@ -208,6 +208,7 @@ phase,runner,runner_exists,runner_suffix
 281,scripts\run_phase281_material_target_construction_interpretation.py,True,.py
 282,scripts\run_phase282_regime_conditioned_full_depth_ensemble_precommit.py,True,.py
 283,scripts\run_phase283_regime_conditioned_full_depth_ensemble_search.py,True,.py
+284,scripts\run_phase284_regime_conditioned_full_depth_ensemble_interpretation.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py
 2,scripts\run_phase2_empirical_calibration.py,True,.py

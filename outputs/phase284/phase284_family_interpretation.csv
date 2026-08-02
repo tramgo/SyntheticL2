@@ -1,0 +1,5 @@
+ensemble_family,variant_rows,scenario_rows,selected_event_rows_max,max_scheduled_event_rows,cost200_above12_sparse_diagnostic_rows,sparse_floor_met_rows,robust_portfolio_floor_met_rows,min_annualized_pct,median_annualized_pct,max_annualized_pct,max_net_pnl_inr,best_variant_id,positive_full_depth_clue_variants,near_miss_variants,close_family_for_acceptance,preserve_as_lifecycle_redesign_seed
+adverse_avoid_net_label_ensemble,10,60,449,4,0,0,0,0.8982283534647382,5.901319614427377,11.28247573982665,358.17383301036983,P283_P282_ADVERSE_AVOID_NET_LABEL_ENSEMBLE_V1_P282_DEPTH_STABLE_BUCKET,10,10,1,1
+spread_replenish_adverse_ensemble,10,60,533,4,0,0,0,-0.2949535105707531,4.3387379350571695,11.28247573982665,358.17383301036983,P283_P282_SPREAD_REPLENISH_ADVERSE_ENSEMBLE_V2_ALL_EVENTS,10,10,1,1
+time_gated_replenish_ensemble,10,60,516,4,0,0,0,-0.2949535105707531,4.197124671826636,11.28247573982665,358.17383301036983,P283_P282_TIME_GATED_REPLENISH_ENSEMBLE_V2_ALL_EVENTS,10,10,1,1
+family_vote_ensemble,10,60,317,3,0,0,0,0.6993766825650733,7.554332024414504,11.28247573982665,358.17383301036983,P283_P282_FAMILY_VOTE_ENSEMBLE_V2_ALL_EVENTS,10,10,1,1

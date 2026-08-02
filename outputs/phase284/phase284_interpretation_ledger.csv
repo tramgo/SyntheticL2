@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase283_executed,scenario_rows=240,evidence,1,Phase283 executed the regime-conditioned full-depth ensemble search.
+no_sparse_above12_survivor,sparse_above12_rows=0;best_ann=11.28247573982665,hard_negative,1,No Phase283 scenario crossed the >12% cost200 sparse diagnostic threshold.
+no_robust_portfolio_floor_survivor,robust_floor_rows=0;best_events=2,hard_negative,1,No Phase283 scenario met the robust portfolio event floor.
+near_miss_remains_too_sparse,best_ann=11.28247573982665;best_scheduled_events=2,risk,1,"The best clue remains a sparse near-miss, not a profitable strategy."
+full_depth_boundary_preserved,l1_only=0;live_label_leakage=0;repaired_seeds=1,constraint,1,Full top-five depth and no-live-leakage boundaries held.
+same_ensemble_route_should_close_for_acceptance,cost200_above12=0;robust_floor=0,decision,1,Do not keep iterating the same Phase283 ensemble/filter stack for acceptance.
+next_route_changes_edge_source,P284_EVENT_LIFECYCLE_EXIT_SIDE_REDESIGN_PRECOMMIT,next_action,1,"Move to event lifecycle, side, and exit redesign rather than relaxing thresholds or adding more filters."
