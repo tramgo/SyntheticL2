@@ -12154,6 +12154,78 @@ Current Phase149 evidence after Phase282:
 
 ---
 
+## 24.109 Phase283 Regime-conditioned Full-depth Ensemble Search Completed
+
+Phase283 executed the Phase282 regime-conditioned full-depth ensemble search using observable full-depth L2 seed masks and fixed-capital cost200 scoring. The search deliberately removed the offline net-edge label from the net-edge-shift seed before using it as a live-style selection mask.
+
+Phase283 inputs:
+
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- `outputs/phase282/phase282_acceptance_summary.csv`;
+- `outputs/phase282/phase282_preserved_clue_catalog.csv`;
+- `outputs/phase282/phase282_ensemble_family_catalog.csv`;
+- `outputs/phase282/phase282_regime_bucket_contract.csv`.
+
+Phase283 search results:
+
+- seed rows: `8`;
+- ensemble variant rows: `40`;
+- cost200 fixed-capital scenario rows: `240`;
+- sparse above-12 scenario rows after the `8` scheduled-event floor: `0`;
+- robust portfolio-floor scenario rows after the `30` scheduled-event floor: `0`;
+- best variant: `P283_P282_SPREAD_REPLENISH_ADVERSE_ENSEMBLE_V2_ALL_EVENTS`;
+- best ensemble family: `spread_replenish_adverse_ensemble`;
+- best bucket: `ALL_EVENTS`;
+- best cost200 annualized diagnostic: `11.28247573982665`;
+- best realized net P&L: `358.17383301036983`;
+- best scheduled event rows: `2`;
+- L1-only variant rows: `0`;
+- net/gross-edge live-mask rows: `0`.
+
+Phase283 interpretation boundary:
+
+- the ensemble search did not improve beyond the Phase280 near-miss;
+- the best result remains below the user's `>12%` sparse annualized diagnostic threshold;
+- the best result also fails the Phase282 sparse diagnostic event floor because it has only `2` scheduled events;
+- no robust portfolio-return claim is possible because no scenario reached the `30` scheduled-event floor;
+- full top-five rows 1-5 and levels 2-5 / beyond-L1 materiality remained mandatory;
+- L1-only variants and net/gross-edge live masks remained forbidden;
+- no replay, promotion, paper/live acceptance, or deployable profitability claim is open.
+
+Phase283 hard gates:
+
+- Phase282 work order present: pass;
+- Phase282 precommit complete: pass;
+- net-edge label seed repair documented: pass;
+- ensemble variants evaluated: pass;
+- scenarios present: pass;
+- cost200 required: pass;
+- full-depth required: pass;
+- L1-only variants forbidden: pass;
+- no live label leakage: pass;
+- replay/paper/live/claim boundaries closed: pass.
+
+Phase283 outputs:
+
+- `outputs/phase283/phase283_observable_seed_catalog.csv`;
+- `outputs/phase283/phase283_ensemble_variant_catalog.csv`;
+- `outputs/phase283/phase283_regime_conditioned_ensemble_scenario_results.csv`;
+- `outputs/phase283/phase283_regime_conditioned_ensemble_variant_summary.csv`;
+- `outputs/phase283/phase283_sample_regime_conditioned_scheduled_event_ledger.csv`;
+- `outputs/phase283/phase283_gate_evaluation.csv`;
+- `outputs/phase283/phase283_acceptance_summary.csv`;
+- `outputs/phase283/phase283_regime_conditioned_full_depth_ensemble_search_report.md`;
+- `outputs/phase283/phase283_regime_conditioned_full_depth_ensemble_search_manifest.json`.
+
+Current Phase149 evidence after Phase283:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `regime_conditioned_full_depth_ensemble_interpretation_open`;
+- real receive-flow source branch status: `regime_conditioned_full_depth_ensemble_interpretation_open`;
+- next best action: `run_phase284_regime_conditioned_full_depth_ensemble_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

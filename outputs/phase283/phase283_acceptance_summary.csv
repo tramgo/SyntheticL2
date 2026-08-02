@@ -1,0 +1,23 @@
+metric,value,description
+phase283_regime_conditioned_ensemble_search_complete,1,Phase283 regime-conditioned full-depth ensemble search completed
+phase283_selected_route,P283_REGIME_CONDITIONED_FULL_DEPTH_ENSEMBLE_SEARCH,Selected route
+phase283_seed_rows,8,Search seed rows
+phase283_variant_rows,40,Ensemble variants evaluated
+phase283_scenario_rows,240,Cost200 fixed-capital scenarios evaluated
+phase283_sparse_above12_scenario_rows,0,Cost200 above-12 sparse diagnostic rows with event floor met
+phase283_robust_portfolio_floor_scenario_rows,0,Scenarios meeting robust portfolio event floor
+phase283_best_variant_id,P283_P282_SPREAD_REPLENISH_ADVERSE_ENSEMBLE_V2_ALL_EVENTS,Best Phase283 variant
+phase283_best_ensemble_family,spread_replenish_adverse_ensemble,Best ensemble family
+phase283_best_bucket_id,ALL_EVENTS,Best regime bucket
+phase283_best_cost200_annualized_pct,11.28247573982665,Best cost200 annualized diagnostic
+phase283_best_realized_net_pnl_inr,358.17383301036983,Best realized net P&L
+phase283_best_scheduled_event_rows,2,Best scheduled event rows
+phase283_l1_only_variant_rows,0,L1-only variants
+phase283_net_edge_live_mask_rows,0,Live masks using net/gross edge
+phase283_strategy_replay_allowed,0,No strategy replay unlocked
+phase283_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase283_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase283_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase283_hard_gate_pass_rows,10,Hard gates passed
+phase283_hard_gate_rows,10,Hard gates evaluated
+phase283_next_best_action,run_phase284_regime_conditioned_full_depth_ensemble_interpretation_no_paper_live,Recommended next milestone

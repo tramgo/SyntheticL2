@@ -1,0 +1,9 @@
+phase280_variant_id,target_family,observable_seed_rule,event_rows,uses_top5,uses_levels_2_to_5,l1_only_seed,net_edge_live_mask_removed,eligible_for_phase283
+P280_SPREAD_REPLENISH_COMBO_Q70,spread_cost_margin,observable: spread<=q30 and replenish_withdraw>=q70 and beyond_l1_imbalance>=q60,67,1,1,0,0,1
+P280_TIME_TO_EXIT_SHORT_HQ90,time_to_exit,observable: horizon<=10 and replenish_withdraw>=q90,128,1,1,0,0,1
+P280_ADVERSE_SELECTION_AVOID_Q60,adverse_selection_avoidance,observable: churn<=q40 and withdrawal<=q40,430,1,1,0,0,1
+P280_ADVERSE_SELECTION_AVOID_Q80,adverse_selection_avoidance,observable: churn<=q19 and withdrawal<=q19,230,1,1,0,0,1
+P280_REPLENISH_CONFIRM_Q50,depth_replenishment_confirmation,observable: replenish_withdraw>=q50 and weighted_depth>=q50,190,1,1,0,0,1
+P280_TIME_TO_EXIT_SHORT_HQ70,time_to_exit,observable: horizon<=10 and replenish_withdraw>=q70,384,1,1,0,0,1
+P280_TIME_TO_EXIT_SHORT_HQ80,time_to_exit,observable: horizon<=10 and replenish_withdraw>=q80,256,1,1,0,0,1
+P280_NET_EDGE_SHIFT_LABEL_ANCHORED_Q60,net_edge_distribution_shift,observable-only repair: consensus>=q60 and sparsity<=q40; offline net-edge label removed,73,1,1,0,1,1

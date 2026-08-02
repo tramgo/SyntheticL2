@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P283_PHASE282_WORK_ORDER_PRESENT,True,run_phase283_regime_conditioned_full_depth_ensemble_search_no_paper_live,Phase282 next action targets Phase283,hard
+P283_PHASE282_PRECOMMIT_COMPLETE,True,1,Phase282 complete,hard
+P283_SEED_REPAIRS_DOCUMENTED,True,1,net-edge label seed repaired to observable-only mask,hard
+P283_VARIANTS_EVALUATED,True,40,>0 ensemble variants,hard
+P283_SCENARIOS_PRESENT,True,240,>0 scenarios,hard
+P283_COST200_REQUIRED,True,cost200,all scenarios cost200,hard
+P283_FULL_DEPTH_REQUIRED,True,top5=1;levels_2_to_5=1,full-depth scenario contract,hard
+P283_L1_ONLY_FORBIDDEN,True,0,0 L1-only variants,hard
+P283_NO_LIVE_LABEL_LEAKAGE,True,0,0 net/gross edge live masks,hard
+P283_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
