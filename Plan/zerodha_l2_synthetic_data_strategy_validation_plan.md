@@ -11493,6 +11493,86 @@ Current Phase149 evidence after Phase274:
 
 ---
 
+## 24.101 Phase275 Focused Capital Multiday Synthetic Follow-through Search Completed
+
+Phase275 executes the Phase274-selected synthetic-only multiday follow-through. It bootstraps the full-depth Phase268 event ledger into multiple synthetic sessions, then re-tests the focused Phase273/Phase274 scope profiles under fixed-capital, order-policy, cost, seed, and regime stress.
+
+Phase275 is intentionally not a real-data portfolio-return claim. It is a synthetic multiday diagnostic used to decide whether the focused pocket deserves interpretation, redesign, or closure.
+
+Phase275 search dimensions:
+
+- route scope/profile rows evaluated: `5`;
+- scenario rows evaluated: `4800`;
+- order policies: `5`;
+- synthetic seeds: `4`;
+- synthetic regimes: `4`;
+- synthetic dates per scenario: `8`;
+- fixed-capital accounting: preserved;
+- Zerodha equity intraday NSE cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- full top-five L2 rows 1-5 and levels 2-5 materiality: preserved in the sample scheduled-event ledger.
+
+Phase275 results:
+
+- cost100 above-12 synthetic multiday annualized diagnostic rows: `2`;
+- cost200 above-12 synthetic multiday annualized diagnostic rows: `0`;
+- cost200 median-above-12 scope/profile rows: `0`;
+- cost200 worst-case-above-12 scope/profile rows: `0`;
+- best scenario: `P271_P275_TOP2_PRIORITY_SUBSET_REVERSE_RANK_TIME_BASE_BOOTSTRAP_SEED202_CAP100000_NOT100000_CONC1_COST100`;
+- best scope/profile: `TOP2_PRIORITY_SUBSET:cost100`;
+- best order policy: `reverse_rank_time`;
+- best synthetic regime: `base_bootstrap`;
+- best synthetic seed: `202`;
+- best realized net P&L: `479.07939620082897`;
+- best synthetic multiday annualized diagnostic: `15.091000980326113`;
+- best scheduled event rows: `2`.
+
+Phase275 interpretation boundary:
+
+- the focused pocket can still produce sparse above-12 diagnostics at normal cost;
+- the focused pocket did not survive 2x cost stress in the multiday synthetic follow-through;
+- the result is therefore a fragile normal-cost pocket, not a robust deployable strategy;
+- Phase276 should interpret whether to redesign around cost robustness, loosen only research filters, or close this focused pocket.
+
+Phase275 controls:
+
+- synthetic multiday diagnostic allowed: `1`;
+- portfolio claim allowed: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase275 hard gates:
+
+- Phase274 work order present: pass;
+- Phase274 interpretation complete: pass;
+- route scope profiles present: pass;
+- synthetic multiday rows present: pass;
+- order-policy stress present: pass;
+- cost stress present: pass;
+- full-depth contract preserved: pass;
+- replay, paper/live, and deployable claims remain closed: pass;
+- outcome classified: pass.
+
+Phase275 outputs:
+
+- `outputs/phase275/phase275_multiday_synthetic_scenario_results.csv`;
+- `outputs/phase275/phase275_daily_synthetic_scenario_results.csv`;
+- `outputs/phase275/phase275_sample_synthetic_scheduled_event_ledger.csv`;
+- `outputs/phase275/phase275_scope_profile_stability_summary.csv`;
+- `outputs/phase275/phase275_gate_evaluation.csv`;
+- `outputs/phase275/phase275_acceptance_summary.csv`;
+- `outputs/phase275/phase275_focused_capital_multiday_synthetic_followthrough_search_report.md`;
+- `outputs/phase275/phase275_focused_capital_multiday_synthetic_followthrough_search_manifest.json`.
+
+Current Phase149 evidence after Phase275:
+
+- synthetic strategy-discovery branch status: `multiday_synthetic_followthrough_interpretation_open`;
+- real receive-flow source branch status: `multiday_synthetic_followthrough_interpretation_open`;
+- next best action: `run_phase276_multiday_synthetic_followthrough_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

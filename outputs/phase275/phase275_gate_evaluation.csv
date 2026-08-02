@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P275_PHASE274_WORK_ORDER_PRESENT,True,run_phase275_focused_capital_multiday_synthetic_followthrough_search_no_paper_live,Phase274 next action targets Phase275,hard
+P275_PHASE274_INTERPRETATION_COMPLETE,True,1,Phase274 complete,hard
+P275_ROUTE_SCOPE_PROFILES_PRESENT,True,5,>0 Phase274 route scope profiles,hard
+P275_SYNTHETIC_MULTIDAY_ROWS_PRESENT,True,rows=4800;min_dates=8,scenarios cover multiple synthetic dates,hard
+P275_ORDER_POLICY_STRESS_PRESENT,True,deterministic_shuffle;rank_time;reverse_rank_time;time_rank;time_reverse_rank,all Phase273 order policies retained,hard
+P275_COST_STRESS_PRESENT,True,cost100;cost100_plus_1bp;cost200,cost200 included,hard
+P275_FULL_DEPTH_CONTRACT_PRESERVED,True,top5_rows_1_to_5_depth_columns_inherited_and_sample_ledger_persists_depth_materiality,full top-five and levels 2-5 materiality required,hard
+P275_BOUNDARIES_CLOSED,True,replay=0;paper=0;deployable_claim=0,no replay/paper/live/deployable claim,hard
+P275_OUTCOME_CLASSIFIED,True,5,scope/profile stability summary written whether positive or negative,hard
