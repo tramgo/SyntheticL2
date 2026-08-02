@@ -13270,6 +13270,72 @@ Current Phase149 evidence after Phase297:
 - `synthetic_strategy_discovery` status: `raw_dense_top5_book_state_strategy_sweep_open`;
 - current next action: `run_phase298_raw_dense_top5_book_state_strategy_sweep_no_paper_live`.
 
+## 24.124 Phase298 Raw Dense Top-Five Book-State Strategy Sweep Completed
+
+Phase298 executed the first raw dense top-five market-by-price book-state strategy sweep. Unlike Phase296, this milestone used persisted raw book-state columns for depth levels 1-5: bid/ask prices, quantities and order counts.
+
+Execution scope:
+
+- dense lake root: `raw_synthetic_l2_dense_full_year`;
+- raw dense lake source: Phase51 full 80GB-class dense lake;
+- symbol slice: `HDFCBANK`;
+- trade months scanned: `12`;
+- dense shard files scanned: `12`;
+- deterministic dense-row sample stride: `256`;
+- sampled dense rows: `729132`;
+- shard trade-date rows sampled: `252`;
+- raw dense candidate event rows: `9596`;
+- raw-book-state variants evaluated: `576`;
+- fixed-capital cost200 scenarios evaluated: `1152`.
+
+Raw book-state scope:
+
+- required book columns present: bid/ask price, quantity and order count for levels 1-5;
+- levels 2-5 materiality required: `1`;
+- raw levels 1-5 required: `1`;
+- L1-only variant rows: `0`;
+- net-edge live-mask rows: `0`;
+- annualized denominator: `fixed_initial_capital`.
+
+Phase298 evidence:
+
+- sparse above-12% rows: `0`;
+- robust portfolio floor rows: `0`;
+- robust above-12% rows: `0`;
+- best variant: `P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6`;
+- best strategy family: `P298_RAW_MICROPRICE_DEPTH_REVERSAL`;
+- best fixed-capital cost200 annualized diagnostic: `382.997353%`;
+- best realized net P&L: `15198.307659` INR;
+- best scheduled events: `3`;
+- best observed trade dates: `1`;
+- hard gates: `13/13`.
+
+Phase298 interpretation boundary:
+
+The best Phase298 result is a classic sparse-diagnostic spark: very high annualized percentage because the denominator is one observed trade date and only three scheduled events. It fails the sparse event floor (`3 < 8`) and cannot be treated as a profitable strategy, portfolio result, replay candidate, paper/live candidate or deployable profitability claim. Phase298 therefore opens only Phase299 interpretation.
+
+Phase298 outputs:
+
+- `outputs/phase298/phase298_raw_book_schema_audit.csv`;
+- `outputs/phase298/phase298_raw_dense_shard_summary.csv`;
+- `outputs/phase298/phase298_raw_dense_candidate_events.csv`;
+- `outputs/phase298/phase298_variant_catalog.csv`;
+- `outputs/phase298/phase298_scenario_summary.csv`;
+- `outputs/phase298/phase298_variant_summary.csv`;
+- `outputs/phase298/phase298_family_summary.csv`;
+- `outputs/phase298/phase298_sample_trade_ledger.csv`;
+- `outputs/phase298/phase298_gate_evaluation.csv`;
+- `outputs/phase298/phase298_acceptance_summary.csv`;
+- `outputs/phase298/phase298_raw_dense_top5_book_state_strategy_sweep_report.md`;
+- `outputs/phase298/phase298_raw_dense_top5_book_state_strategy_sweep_manifest.json`.
+
+Current Phase149 evidence after Phase298:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `raw_dense_top5_book_state_strategy_sweep_interpretation_open`;
+- `synthetic_strategy_discovery` status: `raw_dense_top5_book_state_strategy_sweep_interpretation_open`;
+- current next action: `run_phase299_raw_dense_top5_book_state_strategy_sweep_interpretation_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

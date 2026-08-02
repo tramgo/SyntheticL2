@@ -1,0 +1,35 @@
+metric,value,description
+phase298_raw_dense_sweep_complete,1,Phase298 raw dense top-five book-state strategy sweep completed
+phase298_selected_route,P298_RAW_DENSE_TOP5_BOOK_STATE_STRATEGY_SWEEP,Selected route
+phase298_dense_root,raw_synthetic_l2_dense_full_year,Raw dense lake root
+phase298_symbol_rows,1,Symbols in bounded sweep
+phase298_trade_month_rows,12,Trade months in bounded sweep
+phase298_source_file_rows,12,Dense shard files scanned
+phase298_sample_stride,256,Deterministic dense-row sample stride
+phase298_sampled_dense_rows,729132,Sampled raw dense rows
+phase298_shard_trade_date_rows,252,Shard-date rows sampled
+phase298_raw_event_rows,9596,Raw dense candidate event rows
+phase298_variant_rows,576,Raw-book-state variants evaluated
+phase298_scenario_rows,1152,Cost200 fixed-capital scenarios evaluated
+phase298_sparse_above12_scenario_rows,0,Above-12 sparse diagnostic rows
+phase298_robust_portfolio_floor_scenario_rows,0,Robust floor rows
+phase298_robust_portfolio_above12_scenario_rows,0,Robust above-12 rows
+phase298_best_variant_id,P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6,Best variant
+phase298_best_strategy_family,P298_RAW_MICROPRICE_DEPTH_REVERSAL,Best family
+phase298_best_cost200_annualized_pct,382.9973530062694,Best fixed-capital annualized diagnostic
+phase298_best_realized_net_pnl_inr,15198.307658978945,Best net P&L
+phase298_best_scheduled_event_rows,3,Best scheduled events
+phase298_best_observed_trade_dates,1,Best observed dates
+phase298_best_initial_capital_inr,1000000.0,Fixed initial capital denominator
+phase298_raw_book_state_l1_l5_required,1,Raw levels 1-5 required
+phase298_levels_2_to_5_required,1,Levels 2-5 materiality required
+phase298_l1_only_variant_rows,0,L1-only variants
+phase298_net_edge_live_mask_rows,0,Net edge live masks
+phase298_annualized_denominator,fixed_initial_capital,Annualized denominator
+phase298_strategy_replay_allowed,0,No replay
+phase298_strategy_promotion_allowed,0,No promotion
+phase298_paper_or_live_acceptance_allowed,0,No paper/live
+phase298_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase298_hard_gate_pass_rows,13,Passed hard gates
+phase298_hard_gate_rows,13,Hard gates
+phase298_next_best_action,run_phase299_raw_dense_top5_book_state_strategy_sweep_interpretation_no_paper_live,Recommended next milestone

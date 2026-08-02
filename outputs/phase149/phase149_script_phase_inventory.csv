@@ -223,6 +223,7 @@ phase,runner,runner_exists,runner_suffix
 295,scripts\run_phase295_full_depth_pressure_absorption_continuation_interpretation.py,True,.py
 296,scripts\run_phase296_full_year_top5_depth_strategy_family_sweep.py,True,.py
 297,scripts\run_phase297_full_year_top5_depth_strategy_family_sweep_interpretation.py,True,.py
+298,scripts\run_phase298_raw_dense_top5_book_state_strategy_sweep.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py
 2,scripts\run_phase2_empirical_calibration.py,True,.py
 30,scripts\run_phase30_strategy_decision_triage.py,True,.py

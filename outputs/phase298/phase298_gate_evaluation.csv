@@ -1,0 +1,14 @@
+gate_id,passed,observed_value,required_value,severity
+P298_PHASE297_WORK_ORDER_PRESENT,True,run_phase298_raw_dense_top5_book_state_strategy_sweep_no_paper_live,Phase297 routes to Phase298,hard
+P298_DENSE_LAKE_MATERIALIZED,True,1,Phase51 full 80GB-class dense lake materialized,hard
+P298_RAW_SCHEMA_PRESENT,True,12/12,all sampled shards have raw levels 1-5 price/qty/order columns,hard
+P298_FULL_YEAR_SLICE_PRESENT,True,months=12;date_rows=252,12 monthly shards and >=240 shard-date rows,hard
+P298_RAW_EVENTS_PRESENT,True,9596,>0 raw dense candidate events,hard
+P298_VARIANTS_PRESENT,True,576,>=48 raw-book-state variants,hard
+P298_SCENARIOS_PRESENT,True,1152,>=96 fixed-capital scenarios,hard
+P298_FIXED_CAPITAL_REQUIRED,True,1000000.0,fixed initial capital denominator,hard
+P298_COST200_REQUIRED,True,cost200,Zerodha cost stress profile,hard
+P298_RAW_FULL_DEPTH_REQUIRED,True,l1_only=0,raw levels 1-5 and levels 2-5 materiality,hard
+P298_NO_LIVE_NET_EDGE_MASKS,True,0,no net/gross edge live masks,hard
+P298_FIXED_CAPITAL_ANNUALIZED_DENOMINATOR,True,fixed_initial_capital,no unlimited-capital annualization,hard
+P298_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard

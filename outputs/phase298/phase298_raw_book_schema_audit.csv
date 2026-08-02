@@ -1,0 +1,13 @@
+file_path,book_level_required_columns,book_level_present_columns,missing_columns,raw_book_state_schema_pass
+raw_synthetic_l2_dense_full_year\trade_month=2026-01\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-02\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-03\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-04\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-05\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-06\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-07\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-08\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-09\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-10\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-11\symbol=HDFCBANK\part-00000.parquet,30,30,,1
+raw_synthetic_l2_dense_full_year\trade_month=2026-12\symbol=HDFCBANK\part-00000.parquet,30,30,,1
