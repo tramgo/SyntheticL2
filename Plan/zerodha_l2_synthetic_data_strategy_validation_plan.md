@@ -12732,6 +12732,99 @@ Current Phase149 evidence after Phase289:
 
 ---
 
+## 24.116 Phase290 Adaptive Full-Depth Liquidity-Pressure Expansion Search Completed
+
+Phase290 executed the adaptive full-depth liquidity-pressure expansion selected by Phase289. This search changed the Phase288 fixed-grid design by allowing family-specific thresholds, pressure-feature interactions, pressure-sign side modes, spread-state constraints, open/non-open buckets, and multiple horizons while preserving fixed-capital cost200 scheduling.
+
+Phase290 design boundary:
+
+- selection masks are observable full-depth L2 features only;
+- gross edge is used only after selection for synthetic scoring;
+- no net/gross-edge live mask is used;
+- annualized return denominator is fixed initial capital, not unlimited capital;
+- cost200 fixed-capital scoring is mandatory;
+- replay, promotion, paper/live acceptance, and deployable profitability claims remain closed.
+
+Phase290 inputs:
+
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- `outputs/phase289/phase289_acceptance_summary.csv`;
+- `outputs/phase289/phase289_next_route_contract.csv`.
+
+Phase290 adaptive dimensions:
+
+- adaptive families:
+  - exhaustion reversal;
+  - replenishment absorption;
+  - pressure continuation;
+  - liquidity vacuum;
+- family-specific threshold pairs;
+- pressure-feature interactions:
+  - churn-withdrawal interaction;
+  - spread-compression score;
+  - consensus/beyond-L1 pressure interaction;
+  - withdrawal/replenishment ratio;
+- side modes:
+  - original side;
+  - inverse side;
+  - pressure-sign continuation;
+  - pressure-sign reversal;
+- market buckets:
+  - all events;
+  - market-open events;
+- spread states:
+  - any spread;
+  - not-wide spread;
+- horizons:
+  - `5`, `8`, and `10` ticks/bars.
+
+Phase290 result summary:
+
+- adaptive liquidity-pressure search complete: `1`;
+- adaptive variants evaluated: `246`;
+- cost200 fixed-capital scenarios evaluated: `984`;
+- sparse above-12 annualized diagnostic scenarios: `0`;
+- robust portfolio floor scenarios: `0`;
+- robust portfolio above-12 annualized scenarios: `0`;
+- best variant: `P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P65_S55_I55_NOTWIDE_OPEN_INV_H10`;
+- best adaptive family: `exhaustion_reversal_adaptive`;
+- best primary pressure feature: `depth_withdrawal_pressure`;
+- best interaction feature: `churn_withdraw_interaction`;
+- best side mode: `INV`;
+- best market bucket: `OPEN`;
+- best cost200 fixed-capital annualized diagnostic: `28.55657959303009%`;
+- best realized net P&L: `113.31976028980193`;
+- best scheduled event rows: `1`;
+- L1-only variant rows: `0`;
+- net-edge live mask rows: `0`;
+- Phase290 hard gates: `8/8`.
+
+Phase290 interpretation boundary:
+
+- The adaptive route found a high annualized diagnostic spark, but it is based on only `1` scheduled event.
+- Therefore it fails the sparse discovery event floor and cannot be treated as a profitable strategy.
+- It is evidence that adaptive pressure interactions may contain isolated synthetic opportunities, not evidence of a deployable portfolio edge.
+
+Phase290 outputs:
+
+- `outputs/phase290/phase290_adaptive_pressure_variant_catalog.csv`;
+- `outputs/phase290/phase290_adaptive_pressure_scenario_results.csv`;
+- `outputs/phase290/phase290_adaptive_pressure_variant_summary.csv`;
+- `outputs/phase290/phase290_sample_adaptive_pressure_scheduled_event_ledger.csv`;
+- `outputs/phase290/phase290_gate_evaluation.csv`;
+- `outputs/phase290/phase290_acceptance_summary.csv`;
+- `outputs/phase290/phase290_adaptive_full_depth_liquidity_pressure_expansion_search_report.md`;
+- `outputs/phase290/phase290_adaptive_full_depth_liquidity_pressure_expansion_search_manifest.json`.
+
+Current Phase149 evidence after Phase290:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `adaptive_full_depth_liquidity_pressure_interpretation_open`;
+- real receive-flow source branch status: `adaptive_full_depth_liquidity_pressure_interpretation_open`;
+- next best action: `run_phase291_adaptive_full_depth_liquidity_pressure_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
