@@ -1,0 +1,10 @@
+contract_id,contract_value,description
+P298_INPUTS,raw_synthetic_l2_dense_full_year;raw_l2_like_partitions;date_exchange_symbol_top5_book_state,"Use the raw dense top-five book-state lake or raw-lake partitions, not only Phase42 proxy features."
+P298_REQUIRED_BOOK_SCOPE,bid_price_1_to_5;ask_price_1_to_5;bid_qty_1_to_5;ask_qty_1_to_5;order_count_1_to_5_if_available,Persisted market-by-price levels 1-5 are required.
+P298_TERMINOLOGY,Zerodha_top_five_market_by_price_depth_levels_1_to_5_not_universal_market_data_L1_to_L5,Use correct terminology for book levels.
+P298_STRATEGY_SEEDS,top5_pressure_continuation;microprice_depth_reversal;beyond_l1_absorption;spread_compressed_mlofi,Seed from Phase296 clues but recompute from raw levels.
+P298_FEATURES,level_weighted_imbalance;depth_beyond_l1;queue_size_slope;spread_ticks;microprice_l1_to_l5;book_churn;level_replenishment,Exploit raw book levels rather than proxy-only l5 imbalance.
+P298_COST_CAPITAL,fixed_initial_capital;cost200_required;Zerodha_intraday_equity_formula;max_concurrent_scheduler,No unlimited capital or simplified bps-only costs.
+P298_DISCOVERY_GATE,annualized_pct_gt_12.0;scheduled_event_rows_ge_8;multi_date_required,Sparse discovery remains a clue only.
+P298_PORTFOLIO_GATE,scheduled_event_rows_ge_30;multi_symbol_and_multi_regime_required,Portfolio/profitability claims require robust breadth.
+P298_BOUNDARY,no_paper_live;no_strategy_replay;no_deployable_profitability_claim;net_edge_live_mask_forbidden,Synthetic-only search; no acceptance until earned.

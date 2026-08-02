@@ -1,0 +1,10 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase296_executed,scenario_rows=720,evidence,1,Phase296 executed the full-year top-five-depth proxy sweep.
+phase296_failed_above12,sparse_above12=0;best_ann=2.906506686547222,hard_negative,1,No fixed-capital cost200 scenario exceeded the 12% sparse-discovery threshold.
+phase296_no_robust_portfolio_evidence,robust_floor=0;robust_above12=0;best_events=6,hard_negative,1,No robust portfolio evidence exists.
+phase296_too_sparse_best_case,best_scheduled_events=6,constraint,1,The best result is also too sparse for the sparse diagnostic event floor.
+fixed_capital_boundary_preserved,fixed_initial_capital,constraint,1,No unlimited-capital annualization.
+full_depth_proxy_boundary_preserved,l1_only=0;live_label_leakage=0,constraint,1,Top-five/depth-beyond-L1 proxy and no live leakage boundaries held.
+proxy_input_limit_identified,Phase42 lacks raw L1-L5 persisted book state columns,design_gap,1,"The next search should use raw dense top-five book-state artifacts, not more Phase42 proxy variants."
+raw_book_state_clues_preserved,clue_variants=9,research_clue,1,Positive-but-below-threshold pockets can seed raw-book-state work without opening acceptance.
+next_route_should_use_raw_book_state,P298_RAW_DENSE_TOP5_BOOK_STATE_STRATEGY_SWEEP,next_action,1,Move from proxy features to raw dense top-five book-state strategy sweep.

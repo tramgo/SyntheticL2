@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P297_PHASE296_SWEEP_COMPLETE,True,1,Phase296 sweep complete,hard
+P297_PHASE296_NEXT_ACTION_PRESENT,True,run_phase297_full_year_top5_depth_strategy_family_sweep_interpretation_no_paper_live,Phase296 routes to Phase297 interpretation,hard
+P297_PHASE296_GATES_PASS,True,11/11,Phase296 hard gates pass,hard
+P297_RANKED_INTERPRETATION_PRESENT,True,360,>0 ranked variants,hard
+P297_CLOSES_PHASE296_FOR_ACCEPTANCE,True,1,Phase296 closed for acceptance,hard
+P297_NO_SURVIVOR_TO_PROMOTE,True,sparse_above12=0;robust_above12=0,no Phase296 survivor,hard
+P297_BEST_TOO_SPARSE,True,6,<8,hard
+P297_FIXED_CAPITAL_DENOMINATOR,True,fixed_initial_capital,fixed_initial_capital,hard
+P297_FULL_DEPTH_PROXY_BOUNDARY,True,l1_only=0;live_mask=0,"top-five proxy, no leakage",hard
+P297_NEXT_ROUTE_SELECTED,True,P298_RAW_DENSE_TOP5_BOOK_STATE_STRATEGY_SWEEP,P298_RAW_DENSE_TOP5_BOOK_STATE_STRATEGY_SWEEP,hard
+P297_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P297_ROUTE_CONTRACT_PRESENT,True,9,Phase298 route contract rows,hard

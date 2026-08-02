@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_phase296_for_acceptance,1,best_ann=2.906506686547222;sparse_above12=0,"Do not accept, replay, or promote Phase296."
+close_phase42_proxy_sweep_for_direct_acceptance,1,full_year_proxy_sweep_no_survivor,Avoid more minor proxy-only grid tweaks as the next action.
+preserve_best_phase296_clue_for_raw_book_state,P296_TOP5_PRESSURE_CONTINUATION_DISCONNECT_SCENARIO_IQ85_BQ70_NOT_WIDE_DL3_H3,family=P296_TOP5_PRESSURE_CONTINUATION;feed=disconnect_scenario;max_ann=2.906506686547222,"Carry only as a raw-book-state clue, not as a strategy."
+do_not_claim_portfolio_return,1,no_above12;no_robust_floor;best_events_below_floor,No deployable or robust annual return claim.
+do_not_relax_annualized_denominator,1,fixed_initial_capital_required,Annualized return remains fixed-capital based.
+selected_next_route,P298_RAW_DENSE_TOP5_BOOK_STATE_STRATEGY_SWEEP,Phase42 proxy input limit plus no survivor,Move to raw dense top-five book-state strategy sweep.

@@ -13213,6 +13213,63 @@ Current Phase149 evidence after Phase296:
 - `synthetic_strategy_discovery` status: `full_year_top5_depth_strategy_family_sweep_interpretation_open`;
 - current next action: `run_phase297_full_year_top5_depth_strategy_family_sweep_interpretation_no_paper_live`.
 
+## 24.123 Phase297 Full-Year Top-Five-Depth Strategy-Family Sweep Interpretation Completed
+
+Phase297 interpreted Phase296 as a clean negative result for the Phase42 full-year top-five-depth proxy sweep. It does not say L2 depth is useless. It says this proxy-only full-year sweep did not produce a fixed-capital cost200 survivor and should not be mined further with minor threshold tweaks.
+
+Phase297 evidence:
+
+- Phase296 input rows interpreted: `3012294`;
+- Phase296 variants interpreted: `360`;
+- Phase296 fixed-capital cost200 scenarios interpreted: `720`;
+- Phase296 sparse above-12% rows: `0`;
+- Phase296 robust portfolio floor rows: `0`;
+- Phase296 robust above-12% rows: `0`;
+- best Phase296 variant: `P296_TOP5_PRESSURE_CONTINUATION_DISCONNECT_SCENARIO_IQ85_BQ70_NOT_WIDE_DL3_H3`;
+- best strategy family: `P296_TOP5_PRESSURE_CONTINUATION`;
+- best feed profile: `disconnect_scenario`;
+- best fixed-capital cost200 annualized diagnostic: `2.906506686547222%`;
+- best scheduled events: `6`;
+- positive but below-12% variants: `110`;
+- raw-book-state clue variants preserved: `9`;
+- interpreted families: `6`;
+- hard gates: `12/12`.
+
+Phase297 decisions:
+
+- close Phase296 for acceptance: `1`;
+- close the Phase42 proxy sweep for direct acceptance: `1`;
+- do not claim portfolio return: `1`;
+- keep fixed initial-capital annualized denominator: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- selected next route: `P298_RAW_DENSE_TOP5_BOOK_STATE_STRATEGY_SWEEP`.
+
+Phase297 interpretation boundary:
+
+The best Phase296 result is positive but below 12% annualized and schedules only six events, so it is neither a sparse discovery survivor nor a robust portfolio result. Phase297 preserves the strongest positive-but-weak pockets only as raw-book-state clues. The next route must use persisted top-five market-by-price book levels where available: bid/ask prices, quantities and order-count fields across levels 1-5, with levels 2-5 materiality retained.
+
+Phase297 outputs:
+
+- `outputs/phase297/phase297_ranked_variant_interpretation.csv`;
+- `outputs/phase297/phase297_family_interpretation.csv`;
+- `outputs/phase297/phase297_interpretation_ledger.csv`;
+- `outputs/phase297/phase297_decision_ledger.csv`;
+- `outputs/phase297/phase297_next_route_contract.csv`;
+- `outputs/phase297/phase297_gate_evaluation.csv`;
+- `outputs/phase297/phase297_acceptance_summary.csv`;
+- `outputs/phase297/phase297_full_year_top5_depth_strategy_family_sweep_interpretation_report.md`;
+- `outputs/phase297/phase297_full_year_top5_depth_strategy_family_sweep_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase297:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `raw_dense_top5_book_state_strategy_sweep_open`;
+- `synthetic_strategy_discovery` status: `raw_dense_top5_book_state_strategy_sweep_open`;
+- current next action: `run_phase298_raw_dense_top5_book_state_strategy_sweep_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
