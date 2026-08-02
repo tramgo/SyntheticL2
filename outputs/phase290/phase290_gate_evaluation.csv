@@ -1,7 +1,7 @@
 gate_id,passed,observed_value,required_value,severity
 P290_PHASE289_WORK_ORDER_PRESENT,True,run_phase290_adaptive_full_depth_liquidity_pressure_expansion_search_no_paper_live,Phase289 routes to Phase290,hard
-P290_VARIANTS_PRESENT,True,246,>=240 adaptive L2 pressure variants,hard
-P290_SCENARIOS_PRESENT,True,984,>=960 fixed-capital scenarios,hard
+P290_VARIANTS_PRESENT,True,6150,>=1000 adaptive L2 pressure variants,hard
+P290_SCENARIOS_PRESENT,True,73800,>=12000 fixed-capital scenarios,hard
 P290_COST_AND_FIXED_CAPITAL_REQUIRED,True,cost200=1;fixed_capital=1,cost200 fixed-capital scoring,hard
 P290_FULL_DEPTH_REQUIRED,True,catalog_l1=0,full-depth with L1-only forbidden,hard
 P290_NO_LIVE_NET_EDGE_MASKS,True,0,net/gross edge not used as live masks,hard

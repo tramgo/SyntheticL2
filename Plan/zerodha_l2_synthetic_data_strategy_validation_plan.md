@@ -12781,19 +12781,19 @@ Phase290 adaptive dimensions:
 Phase290 result summary:
 
 - adaptive liquidity-pressure search complete: `1`;
-- adaptive variants evaluated: `246`;
-- cost200 fixed-capital scenarios evaluated: `984`;
+- adaptive variants evaluated after reproducibility reconciliation: `6150`;
+- cost200 fixed-capital scenarios evaluated after reproducibility reconciliation: `73800`;
 - sparse above-12 annualized diagnostic scenarios: `0`;
-- robust portfolio floor scenarios: `0`;
+- robust portfolio floor scenarios: `24`;
 - robust portfolio above-12 annualized scenarios: `0`;
-- best variant: `P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P65_S55_I55_NOTWIDE_OPEN_INV_H10`;
+- best variant: `P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P75_S50_I40_NOTWIDE_OPEN_PRESSURE_SIGN_REV_H13`;
 - best adaptive family: `exhaustion_reversal_adaptive`;
 - best primary pressure feature: `depth_withdrawal_pressure`;
 - best interaction feature: `churn_withdraw_interaction`;
-- best side mode: `INV`;
+- best side mode: `PRESSURE_SIGN_REV`;
 - best market bucket: `OPEN`;
-- best cost200 fixed-capital annualized diagnostic: `28.55657959303009%`;
-- best realized net P&L: `113.31976028980193`;
+- best cost200 fixed-capital annualized diagnostic: `38.38492871577907%`;
+- best realized net P&L: `152.321145697536`;
 - best scheduled event rows: `1`;
 - L1-only variant rows: `0`;
 - net-edge live mask rows: `0`;
@@ -12827,24 +12827,24 @@ Current Phase149 evidence after Phase290:
 
 ## 24.117 Phase291 Adaptive Full-Depth Liquidity-Pressure Interpretation Completed
 
-Phase291 interpreted the Phase290 adaptive liquidity-pressure expansion. The key result is sharp but still non-accepted: Phase290 produced above-12 annualized sparks, but they were too sparse to qualify even as sparse discovery survivors.
+Phase291 interpreted the reconciled Phase290 adaptive liquidity-pressure expansion. The key result is sharper but still non-accepted: Phase290 produced above-12 annualized sparks, but they were too sparse to qualify even as sparse discovery survivors.
 
 Phase291 evidence:
 
-- Phase290 variants interpreted: `246`;
-- Phase290 scenarios interpreted: `984`;
+- Phase290 variants interpreted: `6150`;
+- Phase290 scenarios interpreted: `73800`;
 - Phase290 sparse above-12 annualized diagnostic scenarios: `0`;
-- Phase290 robust portfolio floor scenarios: `0`;
+- Phase290 robust portfolio floor scenarios: `24`;
 - Phase290 robust portfolio above-12 scenarios: `0`;
-- best Phase290 spark: `P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P65_S55_I55_NOTWIDE_OPEN_INV_H10`;
+- best Phase290 spark: `P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P75_S50_I40_NOTWIDE_OPEN_PRESSURE_SIGN_REV_H13`;
 - best adaptive family: `exhaustion_reversal_adaptive`;
 - best primary pressure feature: `depth_withdrawal_pressure`;
 - best interaction feature: `churn_withdraw_interaction`;
 - best side mode: `INV`;
 - best market bucket: `OPEN`;
-- best fixed-capital cost200 annualized diagnostic: `28.55657959303009%`;
+- best fixed-capital cost200 annualized diagnostic: `38.38492871577907%`;
 - best scheduled event rows: `1`;
-- above-12 but too-sparse variants: `4`;
+- above-12 but too-sparse variants: `37`;
 - Phase291 hard gates: `9/9`.
 
 Phase291 decisions:

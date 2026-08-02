@@ -1,7 +1,7 @@
 decision_id,decision_value,evidence,description
-close_phase290_adaptive_route_for_acceptance,1,best_ann=28.55657959303009;best_events=1;event_floor=8,"Do not accept, replay, or promote Phase290."
-preserve_best_adaptive_pressure_spark,P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P65_S55_I55_NOTWIDE_OPEN_INV_H10,family=exhaustion_reversal_adaptive;interaction=churn_withdraw_interaction;scheduled_events=1,Carry forward only as a breadth-repair clue.
-preserved_families_for_breadth_repair,exhaustion_reversal_adaptive,above-12 but too sparse or positive diagnostics,"Preserve families as search context, not as accepted strategies."
+close_phase290_adaptive_route_for_acceptance,1,best_ann=38.38492871577907;best_events=1;event_floor=8,"Do not accept, replay, or promote Phase290."
+preserve_best_adaptive_pressure_spark,P290_P290_EXHAUSTION_REVERSAL_ADAPTIVE_P75_S50_I40_NOTWIDE_OPEN_INV_H13,family=exhaustion_reversal_adaptive;interaction=churn_withdraw_interaction;scheduled_events=1,Carry forward only as a breadth-repair clue.
+preserved_families_for_breadth_repair,exhaustion_reversal_adaptive;liquidity_vacuum_adaptive,above-12 but too sparse or positive diagnostics,"Preserve families as search context, not as accepted strategies."
 do_not_relax_annualized_denominator,1,fixed_initial_capital_required,Annualized return remains fixed-capital based.
 do_not_claim_portfolio_return,1,best_scheduled_events=1;robust_floor=30,Evidence is too sparse for a portfolio-return claim.
 selected_next_route,P291_ADAPTIVE_PRESSURE_BREADTH_REPAIR_SEARCH,adaptive route found spark but failed breadth,Run adaptive pressure breadth repair.
