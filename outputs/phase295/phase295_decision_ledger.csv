@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_phase294_for_acceptance,1,best_ann=7.839348198816357;best_events=1,"Do not accept, replay, or promote Phase294."
+close_phase277_event_universe_for_minor_repairs,1,Phase290-Phase294 no survivor,Avoid additional minor threshold searches on the same curated event universe.
+preserve_best_phase294_clue_for_full_year,P294_P294_SPREAD_COMPRESSED_ABSORPTION_CONT_P65_S55_I35_ANYSPREAD_OPEN_ORIG_H13,family=spread_compressed_absorption_continuation;bucket=OPEN;side=ORIG,"Carry only as a full-year sweep clue, not as a strategy."
+do_not_relax_annualized_denominator,1,fixed_initial_capital_required,Annualized return remains fixed-capital based.
+do_not_lower_cost_or_event_floor,1,cost200_required;event_floor=8;portfolio_floor=30,Do not manufacture profitability by weakening rules.
+selected_next_route,P296_FULL_YEAR_TOP5_DEPTH_STRATEGY_FAMILY_SWEEP,current event universe exhausted,Move to full-year top-five depth family sweep.

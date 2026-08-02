@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+P296_INPUTS,full_year_raw_or_compact_top5_l2_lake;outputs/phase294/phase294_continuation_family_summary.csv;outputs/phase149/phase149_branch_status_summary.csv,Leave the small Phase277 event universe and use full-year top-five L2 evidence.
+P296_SEARCH_TYPE,full_year_top5_depth_strategy_family_sweep,Run a broader family sweep on full-year L2-derived events/features.
+P296_REQUIRED_L2_SCOPE,top5_market_by_price_rows_1_to_5;levels_2_to_5_materiality_required;l1_only_forbidden,Maintain the core project objective.
+P296_STRATEGY_FAMILIES,absorption_continuation;pressure_reversal;liquidity_vacuum;spread_compression;depth_replenishment;cross_symbol_pressure_if_available,Broaden families on full-year data rather than tweaking Phase277 thresholds.
+P296_COST_CAPITAL,fixed_initial_capital;cost200_required;Zerodha_intraday_equity_formula;max_concurrent_scheduler,No unlimited capital or simplified bps-only costs.
+P296_DISCOVERY_GATE,annualized_pct_gt_12.0;scheduled_event_rows_ge_8;multi_date_required,Sparse discovery requires more than one-event sparks.
+P296_PORTFOLIO_GATE,scheduled_event_rows_ge_30;multi_symbol_and_multi_regime_required,Portfolio/profitability claims require robust breadth.
+P296_BOUNDARY,no_paper_live;no_strategy_replay;no_deployable_profitability_claim;net_edge_live_mask_forbidden,Synthetic-only search; acceptance remains closed until earned.

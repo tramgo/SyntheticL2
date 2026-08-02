@@ -223,6 +223,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 292,outputs\phase292,True,8,outputs\phase292\phase292_acceptance_summary.csv,outputs\phase292\phase292_adaptive_pressure_breadth_repair_search_manifest.json,False
 293,outputs\phase293,True,9,outputs\phase293\phase293_acceptance_summary.csv,outputs\phase293\phase293_adaptive_pressure_breadth_repair_interpretation_manifest.json,False
 294,outputs\phase294,True,9,outputs\phase294\phase294_acceptance_summary.csv,outputs\phase294\phase294_full_depth_pressure_absorption_continuation_search_manifest.json,False
+295,outputs\phase295,True,9,outputs\phase295\phase295_acceptance_summary.csv,outputs\phase295\phase295_full_depth_pressure_absorption_continuation_interpretation_manifest.json,False
 3,outputs\phase3,True,6,,outputs\phase3\regime_manifest.json,False
 30,outputs\phase30,True,6,,outputs\phase30\phase30_strategy_decision_triage_manifest.json,False
 31,outputs\phase31,True,6,,outputs\phase31\phase31_redesign_evidence_contract_manifest.json,False

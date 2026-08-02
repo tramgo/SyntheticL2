@@ -13092,6 +13092,62 @@ Current Phase149 evidence after Phase294:
 - `synthetic_strategy_discovery` status: `full_depth_pressure_absorption_continuation_interpretation_open`;
 - current next action: `run_phase295_full_depth_pressure_absorption_continuation_interpretation_no_paper_live`.
 
+## 24.121 Phase295 Full-Depth Pressure Absorption / Continuation Interpretation Completed
+
+Phase295 interpreted the Phase294 continuation/absorption search as a clean negative result on the current Phase277 event universe. This is important because the project has now tested the same curated event universe through reversal, adaptive pressure, breadth repair and continuation/absorption families without producing a fixed-capital cost200 survivor.
+
+Phase295 evidence:
+
+- Phase294 variants interpreted: `840`;
+- Phase294 scenarios interpreted: `3360`;
+- Phase294 continuation families interpreted: `4`;
+- Phase294 sparse above-12% rows: `0`;
+- Phase294 robust portfolio floor rows: `0`;
+- Phase294 robust above-12% rows: `0`;
+- best Phase294 variant: `P294_P294_SPREAD_COMPRESSED_ABSORPTION_CONT_P65_S55_I35_ANYSPREAD_OPEN_ORIG_H13`;
+- best continuation family: `spread_compressed_absorption_continuation`;
+- best side mode: `ORIG`;
+- best market bucket: `OPEN`;
+- best fixed-capital cost200 annualized diagnostic: `7.839348198816357%`;
+- best scheduled events: `2`;
+- positive but below-12% variants: `476`;
+- hard gates: `10/10`.
+
+Phase295 decisions:
+
+- close Phase294 for acceptance: `1`;
+- close the Phase277 event universe for minor threshold/repair searches: `1`;
+- keep fixed initial-capital annualized denominator: `1`;
+- do not lower cost or event floors: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- selected next route: `P296_FULL_YEAR_TOP5_DEPTH_STRATEGY_FAMILY_SWEEP`.
+
+Phase295 interpretation boundary:
+
+The negative conclusion is not that full-depth L2 is useless. The negative conclusion is narrower and evidence-based: the current small Phase277 event universe is exhausted for minor variants. The next experiment should move to a full-year top-five L2 strategy-family sweep so the search has materially broader dates, symbols and regimes while preserving full-depth rows 1-5, levels 2-5 materiality, fixed capital and Zerodha-style cost stress.
+
+Phase295 outputs:
+
+- `outputs/phase295/phase295_ranked_continuation_interpretation.csv`;
+- `outputs/phase295/phase295_continuation_family_interpretation.csv`;
+- `outputs/phase295/phase295_interpretation_ledger.csv`;
+- `outputs/phase295/phase295_decision_ledger.csv`;
+- `outputs/phase295/phase295_next_route_contract.csv`;
+- `outputs/phase295/phase295_gate_evaluation.csv`;
+- `outputs/phase295/phase295_acceptance_summary.csv`;
+- `outputs/phase295/phase295_full_depth_pressure_absorption_continuation_interpretation_report.md`;
+- `outputs/phase295/phase295_full_depth_pressure_absorption_continuation_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase295:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `full_year_top5_depth_strategy_family_sweep_open`;
+- `synthetic_strategy_discovery` status: `full_year_top5_depth_strategy_family_sweep_open`;
+- current next action: `run_phase296_full_year_top5_depth_strategy_family_sweep_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

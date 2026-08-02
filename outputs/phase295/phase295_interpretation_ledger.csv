@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase294_executed,scenario_rows=3360,evidence,1,Phase294 executed the continuation/absorption search.
+continuation_failed_above12,sparse_above12=0;best_ann=7.839348198816357,hard_negative,1,No fixed-capital cost200 continuation scenario exceeded the sparse-discovery gate.
+no_robust_portfolio_evidence,robust_floor=0;robust_above12=0;best_events=1,hard_negative,1,No robust portfolio evidence exists.
+full_depth_boundary_preserved,l1_only=0;live_label_leakage=0,constraint,1,Full-depth and no-live-leakage boundaries held.
+positive_below12_not_enough,positive_below12_variants=476,research_clue,1,Some variants are positive but below the required threshold and event floor.
+phase277_event_universe_exhausted,phase290_to_phase294_no_survivor,decision,1,The curated Phase277 event universe should not be mined with more minor variants.
+next_route_should_expand_universe,P296_FULL_YEAR_TOP5_DEPTH_STRATEGY_FAMILY_SWEEP,next_action,1,Move to full-year top-five depth family sweep rather than more Phase277 repairs.
