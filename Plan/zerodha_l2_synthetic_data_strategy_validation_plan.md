@@ -12390,6 +12390,88 @@ Current Phase149 evidence after Phase285:
 
 ---
 
+## 24.112 Phase286 Event Lifecycle / Side / Exit Redesign Search Completed
+
+Phase286 executed the lifecycle / side / exit redesign search contracted by Phase285. This was a concrete strategy-discovery run, not just another guardrail checkpoint: it evaluated whether the preserved Phase283 full-depth clues become more profitable after changing side selection, entry delay, exit horizon, latency bucket, take-profit / stop-loss clipping, timeout behaviour, queue-adversity handling, fixed notional, and max-concurrent scheduling.
+
+Important interpretation boundary:
+
+- Phase286 is **not** raw tick-path replay.
+- It uses the Phase277 event universe and the existing synthetic horizon-10 gross-edge proxy as the base signal path.
+- It applies full-depth L2 observable masks and lifecycle transformations to test whether the Phase283 clue set remains useful after more realistic event lifecycle handling.
+- It does not authorize replay, promotion, paper/live acceptance, or any deployable profitability claim.
+
+Phase286 inputs:
+
+- `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+- `outputs/phase285/phase285_preserved_phase283_clue_catalog.csv`;
+- `outputs/phase285/phase285_lifecycle_family_catalog.csv`;
+- `outputs/phase285/phase285_entry_exit_grid_contract.csv`;
+- `outputs/phase285/phase285_capital_cost_contract.csv`.
+
+Phase286 search design:
+
+- lifecycle families evaluated: `5`;
+- entry/exit grids evaluated: `12`;
+- fixed-notional values evaluated: `25000`, `50000`, `75000`, `100000`;
+- max-concurrent settings evaluated: `1`, `2`, `4`;
+- lifecycle variants evaluated: `60`;
+- cost200 fixed-capital scenarios evaluated: `720`;
+- annualized return denominator: fixed initial capital, not unlimited capital;
+- initial capital: `100000`;
+- cost model: cost200 remains mandatory.
+
+Phase286 full-depth L2 requirements:
+
+- Zerodha top-five rows 1-5 are required;
+- levels 2-5 / beyond-L1 materiality is required;
+- L1-only variants are forbidden;
+- net/gross-edge live masks are forbidden;
+- selection masks use observable full-depth features such as beyond-L1 imbalance, churn, spread, consensus, replenishment, withdrawal, and queue-adversity proxies.
+
+Phase286 result summary:
+
+- lifecycle redesign search complete: `1`;
+- sparse above-12 annualized diagnostic scenarios: `0`;
+- robust portfolio event-floor scenarios: `0`;
+- robust portfolio above-12 annualized scenarios: `0`;
+- best variant: `P286_P285_QUEUE_ADVERSITY_ORDER_TIMING_TEST_P285_GRID_ORIG_E2_H8`;
+- best lifecycle family: `queue_adversity_order_timing_test`;
+- best grid: `P285_GRID_ORIG_E2_H8`;
+- best cost200 fixed-capital annualized diagnostic: `3.462593252169461%`;
+- best realized net P&L: `109.923595306967`;
+- best scheduled event rows: `4`;
+- L1-only variant rows: `0`;
+- net-edge live mask rows: `0`;
+- Phase286 hard gates: `8/8`.
+
+Phase286 interpretation:
+
+- The lifecycle / side / exit pivot did not find a profitable path.
+- The best scenario reached only about `3.46%` fixed-capital annualized return and only `4` scheduled events.
+- This fails both the sparse discovery hurdle and the robust portfolio-return hurdle.
+- The result is still useful because it closes a plausible next explanation for the Phase283 failure: the issue was not simply wrong side, entry delay, exit horizon, or queue-adversity timing under the tested proxy model.
+
+Phase286 outputs:
+
+- `outputs/phase286/phase286_lifecycle_variant_catalog.csv`;
+- `outputs/phase286/phase286_lifecycle_scenario_results.csv`;
+- `outputs/phase286/phase286_lifecycle_variant_summary.csv`;
+- `outputs/phase286/phase286_sample_lifecycle_scheduled_event_ledger.csv`;
+- `outputs/phase286/phase286_gate_evaluation.csv`;
+- `outputs/phase286/phase286_acceptance_summary.csv`;
+- `outputs/phase286/phase286_event_lifecycle_exit_side_redesign_search_report.md`;
+- `outputs/phase286/phase286_event_lifecycle_exit_side_redesign_search_manifest.json`.
+
+Current Phase149 evidence after Phase286:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `event_lifecycle_exit_side_redesign_interpretation_open`;
+- real receive-flow source branch status: `event_lifecycle_exit_side_redesign_interpretation_open`;
+- next best action: `run_phase287_event_lifecycle_exit_side_redesign_interpretation_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

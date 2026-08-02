@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P286_PHASE285_WORK_ORDER_PRESENT,True,run_phase286_event_lifecycle_exit_side_redesign_search_no_paper_live,Phase285 next action targets Phase286,hard
+P286_PHASE285_PRECOMMIT_COMPLETE,True,1,Phase285 complete,hard
+P286_VARIANTS_PRESENT,True,60,>=60 lifecycle variants,hard
+P286_SCENARIOS_PRESENT,True,720,>=700 cost200 fixed-capital scenarios,hard
+P286_COST_AND_FIXED_CAPITAL_REQUIRED,True,cost200=1;fixed_capital=1,cost200 fixed-capital scoring,hard
+P286_FULL_DEPTH_REQUIRED,True,full_depth=1;catalog_l1=0;scenario_l1=0,full-depth with L1-only forbidden,hard
+P286_NO_LIVE_NET_EDGE_MASKS,True,catalog_live_mask=0;scenario_live_mask=0,net/gross edge not used as live masks,hard
+P286_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard

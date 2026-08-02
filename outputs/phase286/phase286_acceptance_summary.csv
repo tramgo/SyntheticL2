@@ -1,0 +1,23 @@
+metric,value,description
+phase286_lifecycle_redesign_search_complete,1,Phase286 lifecycle/side/exit redesign search completed
+phase286_selected_route,P286_EVENT_LIFECYCLE_EXIT_SIDE_REDESIGN_SEARCH,Selected route
+phase286_variant_rows,60,Lifecycle variants evaluated
+phase286_scenario_rows,720,Cost200 fixed-capital scenarios evaluated
+phase286_sparse_above12_scenario_rows,0,Cost200 above-12 sparse diagnostic rows with event floor met
+phase286_robust_portfolio_floor_scenario_rows,0,Scenarios meeting robust portfolio event floor
+phase286_robust_portfolio_above12_scenario_rows,0,Robust floor scenarios above 12 percent
+phase286_best_variant_id,P286_P285_QUEUE_ADVERSITY_ORDER_TIMING_TEST_P285_GRID_ORIG_E2_H8,Best Phase286 variant
+phase286_best_lifecycle_family,queue_adversity_order_timing_test,Best lifecycle family
+phase286_best_grid_id,P285_GRID_ORIG_E2_H8,Best lifecycle grid
+phase286_best_cost200_annualized_pct,3.462593252169461,Best cost200 annualized diagnostic
+phase286_best_realized_net_pnl_inr,109.923595306967,Best realized net P&L
+phase286_best_scheduled_event_rows,4,Best scheduled event rows
+phase286_l1_only_variant_rows,0,L1-only variants
+phase286_net_edge_live_mask_rows,0,Live masks using net/gross edge
+phase286_strategy_replay_allowed,0,No strategy replay unlocked
+phase286_strategy_promotion_allowed,0,No strategy promotion unlocked
+phase286_paper_or_live_acceptance_allowed,0,No paper/live acceptance
+phase286_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase286_hard_gate_pass_rows,8,Hard gates passed
+phase286_hard_gate_rows,8,Hard gates evaluated
+phase286_next_best_action,run_phase287_event_lifecycle_exit_side_redesign_interpretation_no_paper_live,Recommended next milestone
