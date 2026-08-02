@@ -1,0 +1,7 @@
+liquidity_family,variant_rows,scenario_rows,selected_event_rows_max,max_scheduled_event_rows,cost200_above12_sparse_diagnostic_rows,robust_portfolio_floor_above12_rows,sparse_floor_met_rows,robust_portfolio_floor_met_rows,min_annualized_pct,median_annualized_pct,max_annualized_pct,max_net_pnl_inr,best_variant_id,positive_but_below12_variants,full_depth_positive_clue_variants,preserve_adaptive_expansion_clue,close_family_for_acceptance
+exhaustion_reversal,32,384,109,6,0,0,0,0,-16.90134654401222,-5.155634918680093,5.391389753841644,171.15523028068714,P288_P288_EXHAUSTION_REVERSAL_Q50_ORIG_H10,16,16,1,1
+replenishment_absorption,32,384,29,4,0,0,0,0,-14.391043962456957,-5.795382216594193,3.9409095422723457,125.10823943721734,P288_P288_REPLENISHMENT_ABSORPTION_Q50_ORIG_H10,10,10,1,1
+spread_compression_pressure,32,384,38,4,0,0,0,0,-14.358740742272346,-5.589793103132949,3.9409095422723457,125.10823943721734,P288_P288_SPREAD_COMPRESSION_PRESSURE_Q50_ORIG_H10,10,10,1,1
+pressure_continuation,32,384,111,12,0,0,72,0,-35.75660456324064,-9.20728548592176,2.626043474009329,83.36645949235964,P288_P288_PRESSURE_CONTINUATION_Q50_ORIG_H10,12,12,1,1
+liquidity_vacuum,32,384,73,7,0,0,0,0,-15.426080179392134,-6.821135676128668,0.434235567391564,13.785256107668696,P288_P288_LIQUIDITY_VACUUM_Q50_ORIG_H10,4,4,1,1
+open_pressure_burst,32,384,55,5,0,0,0,0,-11.0028403272849,-5.873425537550505,0.3503270144019629,11.121492520697238,P288_P288_OPEN_PRESSURE_BURST_Q50_INV_H10,4,4,1,1

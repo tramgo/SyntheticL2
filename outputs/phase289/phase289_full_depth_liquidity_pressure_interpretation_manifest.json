@@ -1,0 +1,20 @@
+{
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "configuration_hash": "82690ef51d7316895f798856f444b5df4c02589c5c5aa9bb51bd9d829a0ed53f",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "creation_timestamp": "2026-08-02T08:35:27.556770+00:00",
+  "generated_utc": "2026-08-02T08:35:27.556770+00:00",
+  "generator_version": "8638fcf0ea7adfb3818e726af81a8068e9911114",
+  "hard_gate_pass_rows": 9,
+  "hard_gate_rows": 9,
+  "latency_model_version": "phase289_interpretation_no_new_latency_model",
+  "next_action": "run_phase290_adaptive_full_depth_liquidity_pressure_expansion_search_no_paper_live",
+  "output_dir": "outputs\\phase289",
+  "phase288_dir": "outputs\\phase288",
+  "random_seed": "not_applicable_deterministic",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "selected_next_route": "P289_ADAPTIVE_FULL_DEPTH_LIQUIDITY_PRESSURE_EXPANSION_SEARCH",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+}

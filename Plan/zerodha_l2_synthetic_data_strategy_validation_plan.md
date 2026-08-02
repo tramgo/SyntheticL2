@@ -12647,6 +12647,91 @@ Current Phase149 evidence after Phase288:
 
 ---
 
+## 24.115 Phase289 Full-Depth Liquidity-Pressure Interpretation Completed
+
+Phase289 interpreted the Phase288 fixed-grid liquidity-pressure strategy search. The key outcome is that the direct full-depth pressure route produced many positive clues but no accepted or profitable strategy under the fixed-capital cost200/event-floor rules.
+
+Phase289 evidence:
+
+- Phase288 variants interpreted: `192`;
+- Phase288 scenarios interpreted: `2304`;
+- Phase288 sparse above-12 annualized diagnostic scenarios: `0`;
+- Phase288 robust portfolio floor scenarios: `0`;
+- Phase288 robust portfolio above-12 scenarios: `0`;
+- best Phase288 variant preserved as clue: `P288_P288_EXHAUSTION_REVERSAL_Q50_ORIG_H10`;
+- best liquidity family: `exhaustion_reversal`;
+- best pressure feature: `depth_withdrawal_pressure`;
+- best side mode: `ORIG`;
+- best fixed-capital cost200 annualized diagnostic: `5.391389753841644%`;
+- best interpreted variant max scheduled events: `4`;
+- positive full-depth clue variants: `56`;
+- Phase289 hard gates: `9/9`.
+
+Phase289 decisions:
+
+- close Phase288 fixed-grid pressure route for acceptance: `1`;
+- preserve positive pressure families only as adaptive-expansion clues;
+- keep fixed-capital annualized denominator: `1`;
+- do not relax annualized return into an unlimited-capital metric: `1`;
+- do not claim portfolio return: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Selected Phase290 route:
+
+- selected next route: `P289_ADAPTIVE_FULL_DEPTH_LIQUIDITY_PRESSURE_EXPANSION_SEARCH`;
+- next action: `run_phase290_adaptive_full_depth_liquidity_pressure_expansion_search_no_paper_live`.
+
+Phase290 route contract:
+
+- inputs:
+  - `outputs/phase277/phase277_cost200_redesign_event_universe.csv`;
+  - `outputs/phase288/phase288_liquidity_pressure_scenario_results.csv`;
+  - `outputs/phase288/phase288_liquidity_pressure_variant_summary.csv`;
+- search type: adaptive full-depth liquidity-pressure expansion search;
+- required directions:
+  - family-specific thresholds;
+  - pressure-feature interactions;
+  - side by pressure sign;
+  - horizon by spread state;
+  - open vs non-open buckets;
+  - cost200 fixed-capital scheduler;
+- capital and costs:
+  - initial capital `100000`;
+  - cost200 required;
+  - fixed-notional grid required;
+  - max-concurrent grid required;
+  - annualized denominator must be fixed capital, never unlimited capital;
+- acceptance boundary:
+  - sparse `>12%` annualized remains discovery-only;
+  - robust portfolio claim still needs a larger event floor;
+  - L1-only variants remain forbidden;
+  - net/gross-edge live masks remain forbidden;
+  - no replay, promotion, paper/live acceptance, or deployable profitability claim is open.
+
+Phase289 outputs:
+
+- `outputs/phase289/phase289_ranked_pressure_interpretation.csv`;
+- `outputs/phase289/phase289_pressure_family_interpretation.csv`;
+- `outputs/phase289/phase289_interpretation_ledger.csv`;
+- `outputs/phase289/phase289_decision_ledger.csv`;
+- `outputs/phase289/phase289_next_route_contract.csv`;
+- `outputs/phase289/phase289_gate_evaluation.csv`;
+- `outputs/phase289/phase289_acceptance_summary.csv`;
+- `outputs/phase289/phase289_full_depth_liquidity_pressure_interpretation_report.md`;
+- `outputs/phase289/phase289_full_depth_liquidity_pressure_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase289:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `adaptive_full_depth_liquidity_pressure_expansion_search_open`;
+- real receive-flow source branch status: `adaptive_full_depth_liquidity_pressure_expansion_search_open`;
+- next best action: `run_phase290_adaptive_full_depth_liquidity_pressure_expansion_search_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

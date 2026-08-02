@@ -213,6 +213,7 @@ phase,runner,runner_exists,runner_suffix
 286,scripts\run_phase286_event_lifecycle_exit_side_redesign_search.py,True,.py
 287,scripts\run_phase287_event_lifecycle_exit_side_redesign_interpretation.py,True,.py
 288,scripts\run_phase288_full_depth_liquidity_pressure_strategy_search.py,True,.py
+289,scripts\run_phase289_full_depth_liquidity_pressure_interpretation.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py
 2,scripts\run_phase2_empirical_calibration.py,True,.py

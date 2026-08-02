@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase288_executed,scenario_rows=2304,evidence,1,Phase288 executed the direct full-depth liquidity-pressure strategy search.
+no_sparse_above12_survivor,sparse_above12_rows=0;best_ann=5.391389753841644,hard_negative,1,No Phase288 scenario crossed the fixed-capital >12% sparse diagnostic threshold.
+no_robust_portfolio_survivor,robust_floor_rows=0;robust_above12_rows=0;best_events=1,hard_negative,1,No Phase288 scenario met robust breadth or robust above-12 evidence.
+best_case_too_sparse,best_ann=5.391389753841644;best_scheduled_events=1,risk,1,The best Phase288 result is below threshold and too sparse.
+full_depth_boundary_preserved,l1_only=0;live_label_leakage=0;positive_full_depth_clues=56,constraint,1,Full top-five depth and no-live-leakage boundaries held.
+same_pressure_route_should_close_for_acceptance,cost200_above12=0;robust_above12=0,decision,1,Do not accept the fixed-grid Phase288 pressure route.
+next_route_should_expand_pressure_family_adaptively,P289_ADAPTIVE_FULL_DEPTH_LIQUIDITY_PRESSURE_EXPANSION_SEARCH,next_action,1,Move to adaptive thresholds and family-specific pressure interactions instead of repeating the fixed grid.

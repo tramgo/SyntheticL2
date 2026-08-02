@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,description
+close_phase288_pressure_route_for_acceptance,1,sparse_above12=0;best_ann=5.391389753841644;best_events=1,"Do not accept, replay, or promote Phase288 pressure variants."
+preserve_best_full_depth_pressure_clue,P288_P288_EXHAUSTION_REVERSAL_Q50_ORIG_H10,family=exhaustion_reversal;pressure=depth_withdrawal_pressure;scheduled_events=1,Carry forward only as a clue for adaptive expansion.
+preserved_pressure_families_for_expansion,exhaustion_reversal;replenishment_absorption;spread_compression_pressure;pressure_continuation;liquidity_vacuum;open_pressure_burst,positive full-depth but below-12 diagnostics,"Preserve families as search context, not as accepted strategies."
+do_not_relax_annualized_denominator,1,fixed_initial_capital_required,"Annualized return remains fixed-capital based, never unlimited-capital based."
+do_not_claim_portfolio_return,1,best_scheduled_events=1;sparse_floor=8;robust_floor=30,Evidence is too sparse for a portfolio-return claim.
+selected_next_route,P289_ADAPTIVE_FULL_DEPTH_LIQUIDITY_PRESSURE_EXPANSION_SEARCH,fixed pressure grid exhausted; adaptive feature interactions required,Run an adaptive full-depth pressure expansion search.

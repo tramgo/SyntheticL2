@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P289_PHASE288_SEARCH_COMPLETE,True,1,Phase288 search complete,hard
+P289_PHASE288_NEXT_ACTION_PRESENT,True,run_phase289_full_depth_liquidity_pressure_interpretation_no_paper_live,Phase288 routes to Phase289 interpretation,hard
+P289_PHASE288_GATES_PASS,True,8/8,Phase288 gates pass,hard
+P289_RANKED_INTERPRETATION_PRESENT,True,192,>0 ranked variants,hard
+P289_CLOSES_PHASE288_FOR_ACCEPTANCE,True,1,Phase288 closed for acceptance,hard
+P289_NEXT_ROUTE_SELECTED,True,P289_ADAPTIVE_FULL_DEPTH_LIQUIDITY_PRESSURE_EXPANSION_SEARCH,P289_ADAPTIVE_FULL_DEPTH_LIQUIDITY_PRESSURE_EXPANSION_SEARCH,hard
+P289_FULL_DEPTH_BOUNDARY_PRESERVED,True,l1_only=0;live_mask=0,"full-depth, no leakage",hard
+P289_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P289_ROUTE_CONTRACT_PRESENT,True,8,Phase290 route contract rows,hard
