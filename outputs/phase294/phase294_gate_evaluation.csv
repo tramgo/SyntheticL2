@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P294_PHASE293_WORK_ORDER_PRESENT,True,run_phase294_full_depth_pressure_absorption_continuation_search_no_paper_live,Phase293 routes to Phase294,hard
+P294_VARIANTS_PRESENT,True,840,>=250 continuation variants,hard
+P294_SCENARIOS_PRESENT,True,3360,>=1000 fixed-capital scenarios,hard
+P294_MULTIPLE_FAMILIES_TESTED,True,4,>=4 continuation families,hard
+P294_COST_AND_FIXED_CAPITAL_REQUIRED,True,cost200=1;fixed_capital=1,cost200 fixed-capital scoring,hard
+P294_FULL_DEPTH_REQUIRED,True,catalog_l1=0,"full-depth, no L1-only",hard
+P294_NO_LIVE_NET_EDGE_MASKS,True,0,no net/gross edge live masks,hard
+P294_FIXED_CAPITAL_ANNUALIZED_DENOMINATOR,True,fixed_initial_capital,no unlimited-capital denominator,hard
+P294_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard

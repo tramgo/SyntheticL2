@@ -219,6 +219,7 @@ phase,runner,runner_exists,runner_suffix
 291,scripts\run_phase291_adaptive_full_depth_liquidity_pressure_interpretation.py,True,.py
 292,scripts\run_phase292_adaptive_pressure_breadth_repair_search.py,True,.py
 293,scripts\run_phase293_adaptive_pressure_breadth_repair_interpretation.py,True,.py
+294,scripts\run_phase294_full_depth_pressure_absorption_continuation_search.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py
 2,scripts\run_phase2_empirical_calibration.py,True,.py
 30,scripts\run_phase30_strategy_decision_triage.py,True,.py

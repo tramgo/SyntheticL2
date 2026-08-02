@@ -13024,6 +13024,74 @@ Current Phase149 evidence after Phase293:
 - `synthetic_strategy_discovery` status: `full_depth_pressure_absorption_continuation_search_open`;
 - current next action: `run_phase294_full_depth_pressure_absorption_continuation_search_no_paper_live`.
 
+## 24.120 Phase294 Full-Depth Pressure Absorption / Continuation Search Completed
+
+Phase294 executed the materially different route selected by Phase293. Instead of testing another contrarian/reversal repair, it tested whether strong full-depth L2 pressure, visible absorption/replenishment and depth-beyond-L1 materiality imply continuation.
+
+Phase294 design:
+
+- synthetic-only continuation search;
+- fixed initial-capital annualized denominator;
+- cost200 Zerodha-style retail cost stress;
+- Phase271 capital/concurrency scheduler;
+- full top-five market-by-price depth required;
+- depth beyond L1 / levels 2-5 materiality required;
+- L1-only variants forbidden;
+- net/gross edge live masks forbidden;
+- no replay, promotion, paper/live acceptance or deployable profitability claim opened by the search itself.
+
+Phase294 continuation families tested:
+
+- `replenishment_absorption_continuation`;
+- `consensus_depth_continuation`;
+- `withdrawal_followthrough_continuation`;
+- `spread_compressed_absorption_continuation`.
+
+Phase294 result summary:
+
+- continuation search complete: `1`;
+- continuation family rows: `4`;
+- variants evaluated: `840`;
+- fixed-capital cost200 scenarios evaluated: `3360`;
+- sparse above-12% annualized diagnostic rows: `0`;
+- robust portfolio event-floor rows: `0`;
+- robust above-12% rows: `0`;
+- discovery-survivor variants: `0`;
+- robust-survivor variants: `0`;
+- best variant: `P294_P294_SPREAD_COMPRESSED_ABSORPTION_CONT_P65_S55_I35_NOTWIDE_OPEN_ORIG_H13`;
+- best continuation family: `spread_compressed_absorption_continuation`;
+- best side mode: `ORIG`;
+- best market bucket: `OPEN`;
+- best fixed-capital cost200 annualized diagnostic: `7.839348198816357%`;
+- best realized net P&L: `93.32557379543282` INR;
+- best scheduled events: `1`;
+- L1-only variant rows: `0`;
+- net-edge live-mask rows: `0`;
+- hard gates: `9/9`.
+
+Phase294 interpretation boundary:
+
+Phase294 is a stronger negative result for the current Phase277 event universe. It tested the user-requested alternative that a strong bar or pressure event may continue rather than reverse, but no continuation family survived the fixed-capital cost200 sparse-discovery gate. The best diagnostic is below 12% and still only one scheduled event. This closes Phase294 for any direct replay/paper/live/profitability claim and opens only Phase295 interpretation.
+
+Phase294 outputs:
+
+- `outputs/phase294/phase294_continuation_variant_catalog.csv`;
+- `outputs/phase294/phase294_continuation_scenario_results.csv`;
+- `outputs/phase294/phase294_continuation_variant_summary.csv`;
+- `outputs/phase294/phase294_continuation_family_summary.csv`;
+- `outputs/phase294/phase294_sample_continuation_scheduled_event_ledger.csv`;
+- `outputs/phase294/phase294_gate_evaluation.csv`;
+- `outputs/phase294/phase294_acceptance_summary.csv`;
+- `outputs/phase294/phase294_full_depth_pressure_absorption_continuation_search_report.md`;
+- `outputs/phase294/phase294_full_depth_pressure_absorption_continuation_search_manifest.json`.
+
+Current Phase149 evidence after Phase294:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `full_depth_pressure_absorption_continuation_interpretation_open`;
+- `synthetic_strategy_discovery` status: `full_depth_pressure_absorption_continuation_interpretation_open`;
+- current next action: `run_phase295_full_depth_pressure_absorption_continuation_interpretation_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
