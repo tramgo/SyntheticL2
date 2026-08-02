@@ -1,0 +1,8 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase280_executed,scenario_rows=144,evidence,1,Phase280 executed the target-construction search.
+cost200_acceptance_failed,cost200_above12=0;best_ann=11.28247573982665,hard_negative,1,No Phase280 target crossed the >12% cost200 diagnostic threshold.
+near_miss_is_too_sparse,best_ann=11.28247573982665;best_scheduled_events=2,risk,1,The top clue is close but too sparse for a robust portfolio-return claim.
+full_depth_boundary_preserved,l1_only=0;live_label_leakage=0,constraint,1,Full-depth and no-live-leakage constraints held.
+material_clues_exist,material_clue_variants=19,evidence,1,Preserve useful L2 clues for a broader ensemble search.
+same_target_construction_should_close_for_acceptance,all_families_cost200_above12=0,decision,1,Do not keep iterating the same Phase280 target masks for acceptance.
+next_route_broadens_search_not_thresholds,P281_REGIME_CONDITIONED_FULL_DEPTH_ENSEMBLE_PRECOMMIT,next_action,1,Move to regime-conditioned full-depth ensembles instead of relaxing cost stress.

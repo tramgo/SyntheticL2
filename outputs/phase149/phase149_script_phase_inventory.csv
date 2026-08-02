@@ -205,6 +205,7 @@ phase,runner,runner_exists,runner_suffix
 279,scripts\run_phase279_material_new_target_construction_precommit.py,True,.py
 27,scripts\run_phase27_feature_edge_scan.py,True,.py
 280,scripts\run_phase280_material_new_target_construction_search.py,True,.py
+281,scripts\run_phase281_material_target_construction_interpretation.py,True,.py
 28,scripts\run_phase28_richer_event_label_support.py,True,.py
 29,scripts\run_phase29_partial_strategy_proxy_replay.py,True,.py
 2,scripts\run_phase2_empirical_calibration.py,True,.py

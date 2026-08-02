@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P281_PHASE280_WORK_ORDER_PRESENT,True,run_phase281_material_new_target_construction_interpretation_no_paper_live,Phase280 next action targets Phase281,hard
+P281_PHASE280_SEARCH_COMPLETE,True,1,Phase280 complete,hard
+P281_PHASE280_HARD_GATES_PASS,True,9/9,Phase280 hard gates pass,hard
+P281_RESULTS_PRESENT,True,24,Phase280 variants interpreted,hard
+P281_OUTCOME_CLASSIFIED_AS_NO_COST200_SURVIVOR,True,cost200_above12=0;best_ann=11.28247573982665,no accepted cost200 survivor,hard
+P281_FULL_DEPTH_BOUNDARY_PRESERVED,True,l1_only=0;live_leakage=0,full-depth/no-leakage preserved,hard
+P281_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P281_NEXT_ROUTE_SELECTED,True,P281_REGIME_CONDITIONED_FULL_DEPTH_ENSEMBLE_PRECOMMIT,Phase282 ensemble precommit selected,hard

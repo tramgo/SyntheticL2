@@ -11975,6 +11975,86 @@ Current Phase149 evidence after Phase280:
 
 ---
 
+## 24.107 Phase281 Material Target-construction Interpretation Completed
+
+Phase281 interprets the Phase280 material target-construction search. It does not add a replay or promotion step. It decides whether the near-miss Phase280 evidence is enough for acceptance, whether to preserve clues, and what materially different experiment should come next.
+
+Phase281 inputs:
+
+- `outputs/phase280/phase280_acceptance_summary.csv`;
+- `outputs/phase280/phase280_material_target_family_summary.csv`;
+- `outputs/phase280/phase280_material_target_scenario_results.csv`.
+
+Phase281 interpretation results:
+
+- Phase280 target family rows interpreted: `5`;
+- Phase280 variant rows interpreted: `24`;
+- Phase280 scenario rows interpreted: `144`;
+- Phase280 cost200 above-12 annualized diagnostic rows: `0`;
+- Phase280 best cost200 annualized diagnostic: `11.28247573982665`;
+- Phase280 best scheduled event rows: `2`;
+- material full-depth clue variants: `19`;
+- near-miss variants below `12%`: `19`;
+- close Phase280 target construction for acceptance: `1`;
+- best preserved clue variant: `P280_SPREAD_REPLENISH_COMBO_Q70`;
+- best preserved clue family: `spread_cost_margin`;
+- do not relax cost threshold: `1`;
+- do not claim portfolio return: `1`.
+
+Phase281 decision:
+
+- Phase280 is closed for acceptance because no cost200 scenario crossed the user's `>12%` sparse annualized diagnostic threshold;
+- the best result is a useful clue but not an accepted profitable strategy;
+- the best result is especially sparse: `2` scheduled events, far below a robust portfolio-claim event floor;
+- full top-five depth and levels 2-5 materiality remain central;
+- L1-only fallbacks, net/gross-edge live masks, replay, promotion, paper/live acceptance, and deployable profitability claims remain closed.
+
+Phase281 selected next route:
+
+`P281_REGIME_CONDITIONED_FULL_DEPTH_ENSEMBLE_PRECOMMIT`
+
+Phase282 work-order intent:
+
+- use `outputs/phase280/phase280_material_target_scenario_results.csv`;
+- use `outputs/phase280/phase280_sample_material_target_scheduled_event_ledger.csv`;
+- seed the next search with preserved full-depth clues, including `P280_SPREAD_REPLENISH_COMBO_Q70`;
+- broaden the strategy axis into regime-conditioned full-depth ensembles;
+- include time-of-day, spread-state, event-count floor, family-ensemble, and fixed-capital cost200 controls;
+- broaden the search without lowering the cost threshold;
+- keep no replay, promotion, paper/live acceptance, or deployable profitability claim.
+
+Phase281 hard gates:
+
+- Phase280 work order present: pass;
+- Phase280 search complete: pass;
+- Phase280 hard gates passed: pass;
+- Phase280 results present: pass;
+- no cost200 survivor outcome classified: pass;
+- full-depth/no-leakage boundary preserved: pass;
+- replay/paper/live/claim boundaries closed: pass;
+- Phase282 ensemble precommit route selected: pass.
+
+Phase281 outputs:
+
+- `outputs/phase281/phase281_ranked_material_target_interpretation.csv`;
+- `outputs/phase281/phase281_family_interpretation.csv`;
+- `outputs/phase281/phase281_interpretation_ledger.csv`;
+- `outputs/phase281/phase281_decision_ledger.csv`;
+- `outputs/phase281/phase281_next_route_contract.csv`;
+- `outputs/phase281/phase281_gate_evaluation.csv`;
+- `outputs/phase281/phase281_acceptance_summary.csv`;
+- `outputs/phase281/phase281_material_target_construction_interpretation_report.md`;
+- `outputs/phase281/phase281_material_target_construction_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase281:
+
+- Phase149 hard gates: `322/322`;
+- synthetic strategy-discovery branch status: `regime_conditioned_full_depth_ensemble_precommit_open`;
+- real receive-flow source branch status: `regime_conditioned_full_depth_ensemble_precommit_open`;
+- next best action: `run_phase282_regime_conditioned_full_depth_ensemble_precommit_no_paper_live`.
+
+---
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
