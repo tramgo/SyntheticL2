@@ -1,0 +1,12 @@
+contract_id,contract_value,description
+P316_INPUT_EVENTS,10,Use the generated Phase315 synthetic catalyst ledger.
+P316_INPUT_EVENT_SYMBOL_ROWS,320,Use the Phase315 event-symbol dense join work order.
+P316_JOIN_WINDOW_SECONDS,pre=900;post=1800,Preserve Phase306/307 event-window comparability.
+P316_JOIN_CLOCK,event_time_ist,Center each join window on the generated catalyst timestamp.
+P316_FULL_DEPTH_REQUIRED,depth_levels_1_to_5,Materialization must retain all visible top-five market-by-price depth columns.
+P316_DEPTH_BEYOND_L1_REQUIRED,depth_levels_2_to_5_material,Downstream features/search must not collapse to top-of-book only.
+P316_OUTPUT_JOINED_PARQUET,outputs/phase317/phase317_joined_multievent_top5_depth.parquet,Phase317 joined top-five depth target.
+P316_OUTPUT_COVERAGE_AUDIT,outputs/phase317/phase317_event_symbol_timestamp_coverage.csv,Phase317 coverage audit target.
+P316_NO_DIRECTIONAL_LABEL,required,"Event rows provide timing only, not true bullish/bearish labels."
+P316_NO_STRATEGY_SEARCH,required,Join materialization precedes feature/search phases.
+P316_BOUNDARIES,replay=0;promotion=0;paper=0;claim=0,No strategy acceptance boundaries change in this phase.

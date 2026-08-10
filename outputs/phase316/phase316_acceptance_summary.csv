@@ -1,0 +1,16 @@
+metric,value,description
+phase316_multievent_top5_depth_join_precommit_complete,1,Phase316 multi-event top-five depth join precommit completed
+phase316_generated_event_rows,10,Phase315 generated synthetic event rows inherited
+phase316_event_symbol_work_order_rows,320,Phase315 event-symbol work-order rows inherited
+phase316_min_symbols_per_event,32,Minimum symbols per generated event
+phase316_join_contract_rows,11,Join contract rows
+phase316_full_depth_required,1,Phase317 must retain depth levels 1-5
+phase316_depth_beyond_l1_required,1,Phase317/318 must preserve depth levels 2-5 materiality
+phase316_strategy_search_allowed_now,0,No strategy search in Phase316
+phase316_strategy_replay_allowed,0,No replay
+phase316_strategy_promotion_allowed,0,No promotion
+phase316_paper_or_live_acceptance_allowed,0,No paper/live
+phase316_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase316_hard_gate_pass_rows,9,Passed hard gates
+phase316_hard_gate_rows,9,Hard gates
+phase316_next_best_action,run_phase317_event_catalyst_multievent_top5_depth_join_materialization_no_strategy_search,Recommended next action

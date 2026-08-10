@@ -14295,6 +14295,42 @@ Current Phase149 evidence after Phase315:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_top5_depth_join_precommit_open`;
 - current next action: `run_phase316_event_catalyst_multievent_top5_depth_join_precommit_no_replay`.
 
+## 24.143 Phase316 Event-Catalyst Multi-Event Top-Five Depth Join Precommit Completed
+
+Phase316 precommits the multi-event top-five market-by-price depth join from the Phase315 generated synthetic event ledger. It validates the 10-event, 32-symbol work order, fixes the 900-second pre-event and 1800-second post-event window, and locks the Phase317 materialization contract. It does not materialize joined rows, run strategy search, replay, promote, or claim profitability.
+
+Phase316 evidence:
+
+- multi-event top-five depth join precommit complete: `1`;
+- generated synthetic event rows inherited: `10`;
+- event-symbol work-order rows inherited: `320`;
+- minimum symbols per generated event: `32`;
+- join contract rows: `11`;
+- hard gates: `9/9`;
+- depth levels 1-5 required: `1`;
+- depth levels 2-5 materiality required: `1`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase316 outputs:
+
+- `outputs/phase316/phase316_acceptance_summary.csv`;
+- `outputs/phase316/phase316_multievent_top5_depth_join_contract.csv`;
+- `outputs/phase316/phase316_phase317_materialization_work_order.csv`;
+- `outputs/phase316/phase316_gate_evaluation.csv`;
+- `outputs/phase316/phase316_event_catalyst_multievent_top5_depth_join_precommit_report.md`;
+- `outputs/phase316/phase316_event_catalyst_multievent_top5_depth_join_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase316:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_top5_depth_join_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_top5_depth_join_materialization_open`;
+- current next action: `run_phase317_event_catalyst_multievent_top5_depth_join_materialization_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
