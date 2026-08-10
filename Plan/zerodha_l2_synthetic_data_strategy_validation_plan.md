@@ -14122,6 +14122,50 @@ Current Phase149 evidence after Phase311:
 - `synthetic_strategy_discovery` status: `event_catalyst_training_strategy_search_open`;
 - current next action: `run_phase312_event_catalyst_strategy_search_training_only`.
 
+## 24.139 Phase312 Event-Catalyst Strategy Search Training-Only Completed
+
+Phase312 executes the Phase311 precommitted training-only strategy search on the Phase310 full-depth event-catalyst feature matrix. It uses fixed-capital return accounting, Zerodha equity intraday NSE cost modeling, and slippage/cost stress profiles. Annualized return above `12%` is recorded only as a sparse synthetic research lead because this run has one observed synthetic event date. It does not unlock replay, promotion, paper/live acceptance, or deployable profitability claims.
+
+Phase312 evidence:
+
+- strategy search training complete: `1`;
+- evaluated scenario rows: `10,368`;
+- positive net P&L rows: `3,741`;
+- sparse annualized rows above `12%`: `2,385`;
+- best scenario: `P312_pre_event_pressure_shift_reversal_H900_all_nonzero_signal_N100000_C2_zerodha_base_CAP100000`;
+- best sparse annualized return: `215.856022%`;
+- best net P&L: `856.571514` INR;
+- best scheduled trades: `1`;
+- observed synthetic event dates: `1`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `7/7`.
+
+Phase312 interpretation boundary:
+
+- the search did find profitable sparse synthetic research leads under fixed-capital accounting;
+- the strongest cluster is around pre-event L2-L5 pressure-shift reversal at the 900-second horizon;
+- the evidence is too sparse for acceptance because only one synthetic event date is represented;
+- next step is interpretation, clustering, and robustness design before any broader replay or promotion can be considered.
+
+Phase312 outputs:
+
+- `outputs/phase312/phase312_acceptance_summary.csv`;
+- `outputs/phase312/phase312_strategy_variant_results.csv`;
+- `outputs/phase312/phase312_sample_scheduled_trade_ledger.csv`;
+- `outputs/phase312/phase312_gate_evaluation.csv`;
+- `outputs/phase312/phase312_event_catalyst_strategy_search_training_only_report.md`;
+- `outputs/phase312/phase312_event_catalyst_strategy_search_training_only_manifest.json`.
+
+Current Phase149 evidence after Phase312:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_training_strategy_search_interpretation_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_training_strategy_search_interpretation_open`;
+- current next action: `run_phase313_event_catalyst_strategy_search_interpretation_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P312_PHASE311_PRECOMMIT_COMPLETE,True,1,1,hard
+P312_PHASE311_EXECUTION_ALLOWED,True,1,1,hard
+P312_VARIANTS_EVALUATED,True,10368,>0,hard
+P312_FIXED_CAPITAL_USED,True,3,>=1,hard
+P312_ZERODHA_COSTS_USED,True,zerodha,all,hard
+P312_NO_REPLAY_PROMOTION_OR_PAPER_LIVE,True,replay=0;promotion=0;paper=0,all_zero,hard
+P312_NO_DEPLOYABLE_PROFITABILITY_CLAIM,True,0,0,hard

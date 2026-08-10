@@ -1,0 +1,17 @@
+metric,value,description
+phase312_strategy_search_training_complete,1,Phase312 event-catalyst strategy search training-only completed
+phase312_variant_rows,10368,Evaluated scenario rows
+phase312_positive_net_pnl_rows,3741,Rows with positive net P&L
+phase312_sparse_above12_annualized_rows,2385,Sparse annualized rows above 12%
+phase312_best_scenario_id,P312_pre_event_pressure_shift_reversal_H900_all_nonzero_signal_N100000_C2_zerodha_base_CAP100000,Best sparse annualized scenario
+phase312_best_annualized_return_pct_sparse,215.8560215354418,Best sparse annualized return
+phase312_best_net_pnl_inr,856.571514029531,Best net P&L
+phase312_best_scheduled_trade_rows,1,Best scheduled trades
+phase312_observed_trade_dates,1,Observed synthetic event dates
+phase312_strategy_replay_allowed,0,No replay
+phase312_strategy_promotion_allowed,0,No promotion
+phase312_paper_or_live_acceptance_allowed,0,No paper/live
+phase312_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase312_hard_gate_pass_rows,7,Passed hard gates
+phase312_hard_gate_rows,7,Hard gates
+phase312_next_best_action,run_phase313_event_catalyst_strategy_search_interpretation_no_replay,Recommended next action
