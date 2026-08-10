@@ -1,0 +1,15 @@
+metric,value,description
+phase309_event_feature_precommit_complete,1,Phase309 event-catalyst feature precommit completed
+phase309_feature_catalog_rows,18,Feature catalog rows
+phase309_depth_beyond_l1_feature_rows,9,Features using depth levels 2-5
+phase309_materialization_contract_rows,8,Materialization contract rows
+phase309_full_depth_required,1,Top-five market-by-price depth required
+phase309_l1_only_candidate_allowed,0,L1-only candidate path closed
+phase309_strategy_search_allowed_now,0,No strategy search in Phase309
+phase309_strategy_replay_allowed,0,No replay
+phase309_strategy_promotion_allowed,0,No promotion
+phase309_paper_or_live_acceptance_allowed,0,No paper/live
+phase309_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase309_hard_gate_pass_rows,7,Passed hard gates
+phase309_hard_gate_rows,7,Hard gates
+phase309_next_best_action,run_phase310_event_catalyst_feature_materialization_no_strategy_search,Recommended next action

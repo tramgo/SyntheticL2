@@ -1,0 +1,8 @@
+gate_id,passed,observed_value,required_value,severity
+P309_PHASE308_COMPLETE,True,1,1,hard
+P309_PHASE308_NO_HARD_ISSUES,True,0,0,hard
+P309_FEATURE_CATALOG_NONEMPTY,True,18,>0,hard
+P309_DEPTH_BEYOND_L1_FEATURES_PRESENT,True,9,>0,hard
+P309_CONTRACT_ROWS_PRESENT,True,8,>=8,hard
+P309_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
+P309_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard

@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+P309_INPUT,outputs/phase307/phase307_joined_event_top5_depth.parquet,Use Phase307 joined event/depth artifact.
+P309_QUALITY_GATE,phase308_hard_issue_rows == 0,Only materialize if Phase308 quality audit passes.
+P309_DEPTH_REQUIREMENT,levels_1_to_5_required,Feature set must preserve top-five market-by-price depth.
+P309_L2_L5_MATERIALITY,depth_beyond_l1_required,At least one material feature family must use levels 2-5.
+P309_NO_L1_ONLY_SEARCH,l1_only_candidate_allowed=0,Do not open L1-only strategies from this branch.
+P309_EVENT_BOUNDARY,event rows are catalysts only,No directional labels from event source.
+P309_NO_STRATEGY_SEARCH,strategy_search_allowed_now=0,Precommit only; no P&L or optimization.
+P309_NEXT,run_phase310_event_catalyst_feature_materialization_no_strategy_search,Materialize features before searching strategies.

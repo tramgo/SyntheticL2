@@ -13970,6 +13970,53 @@ Current Phase149 evidence after Phase308:
 - `synthetic_strategy_discovery` status: `event_catalyst_feature_precommit_open`;
 - current next action: `run_phase309_event_catalyst_feature_precommit_no_strategy_search`.
 
+## 24.136 Phase309 Event-Catalyst Feature Precommit Completed
+
+Phase309 precommits the full-depth event-catalyst feature contract for the Phase307 joined artifact after the Phase308 quality audit passed. It defines only features that can be materialized from event-relative time, top-of-book fields, and full top-five market-by-price depth levels 1-5. It explicitly requires levels 2-5 materiality and keeps the L1-only candidate route closed. It does not run strategy search, replay, promotion, paper/live acceptance, or profitability analysis.
+
+Phase309 evidence:
+
+- event feature precommit complete: `1`;
+- feature catalog rows: `18`;
+- features using depth levels 2-5: `9`;
+- materialization contract rows: `8`;
+- full depth required: `1`;
+- L1-only candidate allowed: `0`;
+- strategy search allowed now: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `7/7`.
+
+Phase309 precommitted feature families:
+
+- event-relative clock;
+- L1 spread, midpoint, microprice, and queue imbalance;
+- L1-L5 and L2-L5 quantity imbalance;
+- L1-L5 and L2-L5 order-count imbalance;
+- bid/ask depth slope across levels 1-5;
+- full-depth and L2-L5 pressure normalized by spread;
+- pre-event context midpoint;
+- post-event returns at 60, 300, and 900 seconds;
+- full-depth pressure shift around the event.
+
+Phase309 outputs:
+
+- `outputs/phase309/phase309_acceptance_summary.csv`;
+- `outputs/phase309/phase309_event_catalyst_feature_catalog.csv`;
+- `outputs/phase309/phase309_event_catalyst_feature_materialization_contract.csv`;
+- `outputs/phase309/phase309_gate_evaluation.csv`;
+- `outputs/phase309/phase309_event_catalyst_feature_precommit_report.md`;
+- `outputs/phase309/phase309_event_catalyst_feature_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase309:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_feature_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_feature_materialization_open`;
+- current next action: `run_phase310_event_catalyst_feature_materialization_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
