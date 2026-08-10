@@ -14545,6 +14545,58 @@ Current Phase149 evidence after Phase321:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_training_strategy_search_open`;
 - current next action: `run_phase322_event_catalyst_multievent_strategy_search_training_only_no_replay`.
 
+## 24.149 Phase322 Event-Catalyst Multi-Event Strategy Search Training-Only Completed
+
+Phase322 executes the Phase321 precommitted training-only strategy search over the Phase320 compact multi-event top-five market-by-price depth feature matrix. It evaluates fixed-capital annualized research metrics with Zerodha equity intraday NSE costs, 2x cost stress, taker execution, and passive-aware directional execution rows carrying fill-probability, adverse-selection and forced-flatten penalties. It does not run replay, promotion, paper/live acceptance or deployable profitability claims.
+
+Phase322 evidence:
+
+- training-only strategy search complete: `1`;
+- scenario rows evaluated: `138,240`;
+- distinct strategy families evaluated: `10`;
+- 2x cost-stress scenario rows: `34,560`;
+- passive-aware execution scenario rows: `69,120`;
+- scenarios above 12% annualized research threshold: `3,127`;
+- 2x cost scenarios above 12% annualized research threshold: `320`;
+- 2x cost acceptance-grade candidate rows: `0`;
+- best scenario: `P321_DEPTH_ACCEL_REVERSAL_H1800_top_10pct_abs_signal_long_only_taker_entry_taker_exit_CAP100000_NOT100000_CONC1_zerodha_base`;
+- best family: `P321_DEPTH_ACCEL_REVERSAL`;
+- best execution policy: `taker_entry_taker_exit`;
+- best cost profile: `zerodha_base`;
+- best fixed-capital annualized research return: `85.081315%`;
+- best scheduled event rows: `8`;
+- best 2x-cost fixed-capital annualized research return: `64.239785%`;
+- best 2x-cost scheduled event rows: `8`;
+- annualized denominator: `fixed_initial_capital`;
+- hard gates: `9/9`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase322 interpretation boundary:
+
+- The user-requested sparse profitability clue condition is present: several scenarios clear `>12%` annualized, including `320` scenarios under 2x cost.
+- No acceptance-grade candidate is present yet because the strongest pockets remain below the `30` scheduled-event robustness floor; the best 2x-cost pocket has only `8` scheduled events.
+- The correct next action is therefore interpretation, not replay or promotion: decide whether Phase323 should close this route as sparse or precommit a breadth-repair search that preserves fixed-capital, Zerodha-cost and depth-levels-2-5 requirements.
+
+Phase322 outputs:
+
+- `outputs/phase322/phase322_acceptance_summary.csv`;
+- `outputs/phase322/phase322_scenario_summary.csv`;
+- `outputs/phase322/phase322_top_scenarios.csv`;
+- `outputs/phase322/phase322_interpretation_metrics.csv`;
+- `outputs/phase322/phase322_gate_evaluation.csv`;
+- `outputs/phase322/phase322_event_catalyst_multievent_strategy_search_training_only_report.md`;
+- `outputs/phase322/phase322_event_catalyst_multievent_strategy_search_training_only_manifest.json`.
+
+Current Phase149 evidence after Phase322:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_strategy_search_interpretation_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_strategy_search_interpretation_open`;
+- current next action: `run_phase323_event_catalyst_multievent_strategy_search_interpretation_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

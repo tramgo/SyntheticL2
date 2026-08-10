@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P322_PHASE321_COMPLETE,True,1,1,hard
+P322_PHASE321_EXECUTION_ALLOWED,True,1,1,hard
+P322_SCENARIOS_PRODUCED,True,138240,>0,hard
+P322_VARIANT_COVERAGE_COMPLETE,True,138240/138240,equal,hard
+P322_COST200_SCENARIOS_PRESENT,True,34560,>0,hard
+P322_PASSIVE_AWARE_SCENARIOS_PRESENT,True,69120,>0,hard
+P322_FIXED_CAPITAL_DENOMINATOR,True,all_positive,all_positive,hard
+P322_NO_PROFITABILITY_CLAIM,True,profitability_claim_allowed=0,0,hard
+P322_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard
