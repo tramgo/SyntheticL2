@@ -1,0 +1,9 @@
+decision_id,decision_value,evidence,description
+selected_outcome,P301_PASSIVE_AWARE_EXECUTION_FALSIFIED,Phase300 has no acceptance survivor and kill-switch fired.,Passive-aware directional execution falsified for this evidence chain.
+close_phase300_for_acceptance,1,survivors=0,Do not promote or replay Phase300.
+do_not_rescue_with_more_filters,1,charter_kill_switch,Do not tune extra filters into the same Phase300 stack.
+preserve_best_sparse_pocket_for_terminal_report,P300_P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6_P300_FILL_OPTIMISTIC_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200,ann=287.9689503602893;events=2,Record the flashy pocket as sparse evidence only.
+preserve_broadest_all_seed_case_for_terminal_report,P300_ALL_PHASE299_SEEDS_P300_FILL_BASE_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200,ann=8.230380462356296;events=26,Record the broader all-seed miss.
+terminal_report_required,1,precommitted_kill_switch_fired,Prepare final retail top-five L2 alpha-thesis terminal report.
+replay_promotion_paper_live_closed,1,replay=0;promotion=0;paper=0;claim=0,Boundaries remain closed.
+selected_next_action,run_phase302_terminal_retail_top5_l2_alpha_thesis_report_no_paper_live,terminal_report_required,Next milestone.

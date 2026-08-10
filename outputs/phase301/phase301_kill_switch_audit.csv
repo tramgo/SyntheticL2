@@ -1,0 +1,8 @@
+kill_switch_id,fired,observed_value,required_value,interpretation
+P301_NO_ROBUST_COST200_SURVIVOR,1,0,0,Close route if no cost200 acceptance survivor exists.
+P301_BEST_REMAINS_SPARSE,1,2,>=30,Close route if best annualized pocket remains below event floor.
+P301_EVENT_FLOOR_EMPTY,1,0,>0,No scenario met the 30-event floor.
+P301_BREADTH_EMPTY,1,0,>0,No scenario met breadth.
+P301_NO_PENALTY_WEAKENING_RESCUE,1,0,0,No acceptance route is opened by weakening penalties.
+P301_PHASE300_KILL_SWITCH_RECORDED,1,1,1,Phase300 precommitted kill-switch fired.
+P301_TERMINAL_REPORT_REQUIRED,1,survivors=0;best_events=2;kill=1,terminal_report,Route to terminal report.

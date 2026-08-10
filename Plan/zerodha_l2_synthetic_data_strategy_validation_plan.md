@@ -13527,6 +13527,81 @@ Current Phase149 evidence after Phase300 execution:
 - `synthetic_strategy_discovery` status: `passive_aware_execution_hybrid_interpretation_open`;
 - current next action: `run_phase301_passive_aware_execution_hybrid_interpretation_no_paper_live`.
 
+## 24.128 Phase301 Passive-Aware Execution Hybrid Interpretation Completed
+
+Phase301 interpreted the Phase300 passive-aware execution hybrid run against the precommitted charter. The outcome is a formal falsification for this evidence chain, not a replay/paper/live unlock.
+
+Selected outcome:
+
+- `P301_PASSIVE_AWARE_EXECUTION_FALSIFIED`.
+
+Phase301 evidence:
+
+- Phase300 scenarios interpreted: `108`;
+- Phase300 above-12% annualized diagnostic scenarios: `17`;
+- Phase300 `>=30` event-floor scenarios: `0`;
+- Phase300 breadth-met scenarios: `0`;
+- Phase300 cost200 acceptance survivor rows: `0`;
+- Phase300 kill-switch triggered: `1`;
+- hard gates: `10/10`.
+
+Best annualized diagnostic preserved for the terminal report:
+
+- scenario: `P300_P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6_P300_FILL_OPTIMISTIC_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200`;
+- annualized diagnostic: `287.968950%`;
+- scheduled events: `2`;
+- interpretation: sparse pocket only.
+
+Broadest scheduled scenario preserved for the terminal report:
+
+- scenario: `P300_ALL_PHASE299_SEEDS_P300_FILL_BASE_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200`;
+- annualized diagnostic: `8.230380%`;
+- scheduled events: `26`;
+- interpretation: broader than the best pocket, but still below both the `>=30` event floor and the `>12%` annualized threshold.
+
+Phase301 kill-switch audit:
+
+- no robust cost200 survivor: fired;
+- best remains sparse: fired;
+- event floor empty: fired;
+- breadth empty: fired;
+- no penalty-weakening rescue allowed: fired;
+- Phase300 kill-switch recorded: fired;
+- terminal report required: fired.
+
+Phase301 decisions:
+
+- close Phase300 for acceptance: `1`;
+- do not rescue with more filters: `1`;
+- terminal report required: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- selected next action: `run_phase302_terminal_retail_top5_l2_alpha_thesis_report_no_paper_live`.
+
+Phase301 interpretation boundary:
+
+This does not prove that every possible use of top-five depth is worthless. It says the project’s tested retail directional top-five market-by-price L2 alpha route, including the passive-aware execution rescue lever, did not satisfy the precommitted acceptance gates under fixed-capital Zerodha cost200 scoring. The next milestone should produce a terminal report that harvests useful by-products, closes the failed route and avoids post-hoc rescue tuning.
+
+Phase301 outputs:
+
+- `outputs/phase301/phase301_ranked_scenario_interpretation.csv`;
+- `outputs/phase301/phase301_kill_switch_audit.csv`;
+- `outputs/phase301/phase301_decision_ledger.csv`;
+- `outputs/phase301/phase301_terminal_report_contract.csv`;
+- `outputs/phase301/phase301_gate_evaluation.csv`;
+- `outputs/phase301/phase301_acceptance_summary.csv`;
+- `outputs/phase301/phase301_passive_aware_execution_hybrid_interpretation_report.md`;
+- `outputs/phase301/phase301_passive_aware_execution_hybrid_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase301:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `terminal_retail_top5_l2_alpha_thesis_report_open`;
+- `synthetic_strategy_discovery` status: `terminal_retail_top5_l2_alpha_thesis_report_open`;
+- current next action: `run_phase302_terminal_retail_top5_l2_alpha_thesis_report_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
