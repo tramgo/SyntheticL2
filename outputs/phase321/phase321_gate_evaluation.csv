@@ -1,0 +1,14 @@
+gate_id,passed,observed_value,required_value,severity
+P321_PHASE320_COMPLETE,True,1,1,hard
+P321_PHASE320_MATRIX_BREADTH,True,320,320,hard
+P321_PHASE320_TARGET_SEPARATION,True,0,0,hard
+P321_FAMILY_CATALOG_PRESENT,True,10,>=10,hard
+P321_ALL_FAMILIES_USE_DEPTH_BEYOND_L1,True,10/10,all,hard
+P321_SEARCH_GRID_PRESENT,True,13824,>0,hard
+P321_COST200_PRESENT,True,3456,>0,hard
+P321_PASSIVE_AWARE_ROWS_PRESENT,True,6912,>0,hard
+P321_FIXED_CAPITAL_PRESENT,True,present,present,hard
+P321_PASSIVE_REALISM_PENALTIES_PRESENT,True,fill+adverse+flatten,present,hard
+P321_WORK_ORDER_PRESENT,True,8,>=8,hard
+P321_NO_STRATEGY_SEARCH_EXECUTED_NOW,True,phase321_execution_now=0,0,hard
+P321_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard

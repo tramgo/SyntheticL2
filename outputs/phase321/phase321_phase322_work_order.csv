@@ -1,0 +1,9 @@
+work_order_id,scope,description
+load_phase320_matrix,outputs/phase320/phase320_event_catalyst_multievent_feature_matrix.csv,Use the accepted compact matrix.
+expand_family_grid,family_catalog x search_grid,Evaluate directional full-depth families only.
+compute_signed_signals,family-specific live feature formulas,Use no target_ columns in signal construction.
+score_targets,"target_post_{60,300,900,1800}s_mid_return_bps and target_post_300s_depth_pressure_shift",Targets are outcomes only.
+apply_zerodha_costs,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,"Apply brokerage, STT, transaction, GST, SEBI, stamp duty, and slippage/cost stress."
+apply_fixed_capital_scheduler,"initial_capital, fixed_notional, max_concurrent_positions",Reject unlimited-capital annual-return math.
+apply_passive_aware_penalties,fill_probability + adverse_selection + forced_flatten,Only for passive-aware execution-policy rows.
+write_training_search_outputs,outputs/phase322,Training-only search outputs; no replay/promotion.

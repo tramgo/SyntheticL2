@@ -14496,6 +14496,55 @@ Current Phase149 evidence after Phase320:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_strategy_search_precommit_open`;
 - current next action: `run_phase321_event_catalyst_multievent_strategy_search_precommit_no_replay`.
 
+## 24.148 Phase321 Event-Catalyst Multi-Event Strategy Search Precommit Completed
+
+Phase321 precommits the Phase322 training-only strategy search over the Phase320 multi-event top-five market-by-price depth feature matrix. It carries forward the attached passive-aware execution charter as execution-policy realism requirements, without reopening the already-closed Phase300 passive-aware route. Every allowed strategy family uses depth levels 2-5; L1-only candidates, target/live leakage, net-edge live masks, unlimited-capital annual return math, paper/live acceptance and deployable profitability claims remain closed.
+
+Phase321 evidence:
+
+- multi-event strategy search precommit complete: `1`;
+- strategy family rows: `10`;
+- strategy families using depth levels 2-5: `10`;
+- search grid rows before family expansion: `13,824`;
+- family x grid upper-bound rows: `138,240`;
+- 2x cost-stress grid rows: `3,456`;
+- passive-aware execution grid rows: `6,912`;
+- acceptance contract rows: `16`;
+- Phase322 work-order rows: `8`;
+- Zerodha cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only candidate path allowed: `0`;
+- net-edge live mask rows allowed: `0`;
+- fixed-capital denominator required: `1`;
+- 2x cost stress required: `1`;
+- passive realism penalties required for passive-aware rows: `1`;
+- hard gates: `13/13`;
+- strategy search execution allowed next: `1` for Phase322 training-only search;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase321 outputs:
+
+- `outputs/phase321/phase321_acceptance_summary.csv`;
+- `outputs/phase321/phase321_strategy_family_catalog.csv`;
+- `outputs/phase321/phase321_strategy_search_grid.csv`;
+- `outputs/phase321/phase321_acceptance_contract.csv`;
+- `outputs/phase321/phase321_phase322_work_order.csv`;
+- `outputs/phase321/phase321_zerodha_cost_component_catalog.csv`;
+- `outputs/phase321/phase321_gate_evaluation.csv`;
+- `outputs/phase321/phase321_event_catalyst_multievent_strategy_search_precommit_report.md`;
+- `outputs/phase321/phase321_event_catalyst_multievent_strategy_search_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase321:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_training_strategy_search_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_training_strategy_search_open`;
+- current next action: `run_phase322_event_catalyst_multievent_strategy_search_training_only_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

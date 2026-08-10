@@ -1,0 +1,26 @@
+metric,value,description
+phase321_multievent_strategy_search_precommit_complete,1,Phase321 multi-event strategy search precommit completed
+phase321_strategy_family_rows,10,Strategy family rows
+phase321_depth_beyond_l1_family_rows,10,Families using depth levels 2-5
+phase321_search_grid_rows,13824,Search grid rows before family expansion
+phase321_expanded_variant_upper_bound_rows,138240,Family x grid upper bound
+phase321_cost200_grid_rows,3456,2x cost-stress grid rows
+phase321_passive_aware_grid_rows,6912,Passive-aware execution grid rows
+phase321_acceptance_contract_rows,16,Acceptance contract rows
+phase321_work_order_rows,8,Phase322 work-order rows
+phase321_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha cost model version
+phase321_full_depth_required,1,Depth levels 1-5 required
+phase321_depth_beyond_l1_required,1,Depth levels 2-5 materiality required
+phase321_l1_only_candidate_allowed,0,L1-only candidate path closed
+phase321_net_edge_live_mask_rows_allowed,0,No net-edge live lookahead mask allowed
+phase321_fixed_capital_required,1,Fixed initial capital denominator required
+phase321_cost200_required,1,2x cost stress required
+phase321_passive_realism_penalties_required,1,"Fill probability, adverse selection and forced flatten required for passive-aware rows"
+phase321_strategy_search_execution_allowed_next,1,Phase322 training-only search may run if gates pass
+phase321_strategy_replay_allowed,0,No replay
+phase321_strategy_promotion_allowed,0,No promotion
+phase321_paper_or_live_acceptance_allowed,0,No paper/live
+phase321_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase321_hard_gate_pass_rows,13,Passed hard gates
+phase321_hard_gate_rows,13,Hard gates
+phase321_next_best_action,run_phase322_event_catalyst_multievent_strategy_search_training_only_no_replay,Recommended next action
