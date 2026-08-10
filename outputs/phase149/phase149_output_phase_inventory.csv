@@ -248,6 +248,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 314,outputs\phase314,True,7,outputs\phase314\phase314_acceptance_summary.csv,outputs\phase314\phase314_event_catalyst_multievent_synthetic_breadth_precommit_manifest.json,False
 315,outputs\phase315,True,8,outputs\phase315\phase315_acceptance_summary.csv,outputs\phase315\phase315_event_catalyst_multievent_synthetic_breadth_materialization_manifest.json,False
 316,outputs\phase316,True,6,outputs\phase316\phase316_acceptance_summary.csv,outputs\phase316\phase316_event_catalyst_multievent_top5_depth_join_precommit_manifest.json,False
+317,outputs\phase317,True,10,outputs\phase317\phase317_acceptance_summary.csv,outputs\phase317\phase317_event_catalyst_multievent_top5_depth_join_materialization_manifest.json,False
 32,outputs\phase32,True,7,,outputs\phase32\phase32_contract_evidence_scanner_manifest.json,False
 33,outputs\phase33,True,10,,outputs\phase33\phase33_broker_evidence_intake_manifest.json,False
 34,outputs\phase34,True,6,,outputs\phase34\phase34_real_data_multiday_readiness_manifest.json,False

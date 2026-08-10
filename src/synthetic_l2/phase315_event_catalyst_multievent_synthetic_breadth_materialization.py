@@ -97,6 +97,69 @@ def row_group_candidates(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def dense_reference_date_candidates(dense_root: Path, reference_symbol: str, min_dates: int) -> pd.DataFrame:
+    try:
+        import duckdb  # type: ignore
+    except ImportError:
+        return pd.DataFrame()
+    pattern = str(dense_root / "trade_month=*" / f"symbol={reference_symbol}" / "part-*.parquet").replace("\\", "/")
+    query = f"""
+        with bucketed as (
+          select
+            exchange_timestamp_ms,
+            strftime(to_timestamp(exchange_timestamp_ms) at time zone 'Asia/Kolkata', '%Y-%m-%d') as event_date_ist,
+            floor(exchange_timestamp_ms / {PRE_EVENT_SECONDS + POST_EVENT_SECONDS})::bigint * {PRE_EVENT_SECONDS + POST_EVENT_SECONDS} as bucket_epoch
+          from read_parquet('{pattern}', hive_partitioning=false, union_by_name=true)
+        ), grouped as (
+          select
+            event_date_ist,
+            bucket_epoch,
+            count(*) as source_rows_on_date,
+            min(exchange_timestamp_ms) as date_min_epoch,
+            max(exchange_timestamp_ms) as date_max_epoch
+          from bucketed
+          group by 1, 2
+          having count(*) >= 100000
+        ), ranked as (
+          select *, row_number() over(partition by event_date_ist order by source_rows_on_date desc, bucket_epoch) as rn
+          from grouped
+        )
+        select event_date_ist, source_rows_on_date, date_min_epoch, date_max_epoch
+        from ranked
+        where rn = 1
+        order by source_rows_on_date desc, event_date_ist
+        limit {max(min_dates * 3, min_dates)}
+    """
+    frame = duckdb.connect().execute(query).fetchdf()
+    if frame.empty:
+        return frame
+    frame["event_epoch_seconds"] = ((frame["date_min_epoch"].astype("int64") + frame["date_max_epoch"].astype("int64")) // 2).astype("int64")
+    frame["candidate_window_start_epoch"] = frame["event_epoch_seconds"] - PRE_EVENT_SECONDS
+    frame["candidate_window_end_epoch"] = frame["event_epoch_seconds"] + POST_EVENT_SECONDS
+    frame["source_symbol"] = reference_symbol
+    frame["source_trade_month_partition"] = "duckdb_row_level_date_profile"
+    frame["source_file"] = pattern
+    frame["source_row_group"] = -1
+    frame["source_row_group_min_epoch"] = frame["date_min_epoch"]
+    frame["source_row_group_max_epoch"] = frame["date_max_epoch"]
+    frame["source_row_group_rows"] = frame["source_rows_on_date"]
+    return frame[
+        [
+            "source_symbol",
+            "source_trade_month_partition",
+            "source_file",
+            "source_row_group",
+            "event_epoch_seconds",
+            "event_date_ist",
+            "candidate_window_start_epoch",
+            "candidate_window_end_epoch",
+            "source_row_group_min_epoch",
+            "source_row_group_max_epoch",
+            "source_row_group_rows",
+        ]
+    ].copy()
+
+
 def discover_bounds(dense_root: Path) -> tuple[pd.DataFrame, dict[str, list[ParquetBounds]]]:
     parquet_paths = sorted(dense_root.glob("trade_month=*/symbol=*/part-*.parquet"))
     by_symbol: dict[str, list[ParquetBounds]] = {}
@@ -318,11 +381,13 @@ def run(
     generated_utc = datetime.now(timezone.utc).isoformat()
     phase314 = read_csv(phase314_dir / "phase314_acceptance_summary.csv")
     inventory, by_symbol = discover_bounds(dense_root)
-    reference_paths = sorted(dense_root.glob(f"trade_month=*/symbol={reference_symbol}/part-*.parquet"))
-    candidate_rows: list[dict[str, Any]] = []
-    for path in reference_paths:
-        candidate_rows.extend(row_group_candidates(path))
-    candidates = pd.DataFrame(candidate_rows)
+    candidates = dense_reference_date_candidates(dense_root, reference_symbol, min_event_dates)
+    if candidates.empty:
+        reference_paths = sorted(dense_root.glob(f"trade_month=*/symbol={reference_symbol}/part-*.parquet"))
+        candidate_rows: list[dict[str, Any]] = []
+        for path in reference_paths:
+            candidate_rows.extend(row_group_candidates(path))
+        candidates = pd.DataFrame(candidate_rows)
     events, work_order = select_events(candidates, by_symbol, min_event_dates, min_symbols_per_event)
     gates = build_gate_evaluation(phase314, events, work_order, inventory)
     acceptance = build_acceptance(events, work_order, gates)

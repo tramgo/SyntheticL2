@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-08-10T06:42:03.056366+00:00",
+  "generated_utc": "2026-08-10T07:11:20.662578+00:00",
   "scope": "phase315_event_catalyst_multievent_synthetic_breadth_materialization",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "a13bb3074208da0dbae72ccf1fab1c881509783c",
+  "generator_version": "65684d6558a460987de2b90afcee334ed8490997",
   "configuration_hash": "754a3753d017ac4bbb73a02b333b85a1811235a96919b8dbe4ddc1dcffbb3a72",
   "random_seed": "not_applicable_deterministic",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
   "cost_model_version": "not_applicable_event_materialization_only",
   "latency_model_version": "not_applicable_event_materialization_only",
-  "creation_timestamp": "2026-08-10T06:42:03.056366+00:00"
+  "creation_timestamp": "2026-08-10T07:11:20.662578+00:00"
 }

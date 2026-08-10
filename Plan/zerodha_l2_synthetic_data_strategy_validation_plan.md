@@ -14258,7 +14258,7 @@ Current Phase149 evidence after Phase314:
 
 ## 24.142 Phase315 Event-Catalyst Multi-Event Synthetic Breadth Materialization Completed
 
-Phase315 materializes the generated synthetic catalyst breadth ledger requested by Phase314. It scans actual dense parquet timestamp coverage and selects ten distinct synthetic event dates with 32-symbol overlap, then writes a generated synthetic calendar separately from the real-event dropzone. This is still a timing-only catalyst ledger: no directional event label, no strategy replay, no promotion, no paper/live acceptance and no profitability claim.
+Phase315 materializes the generated synthetic catalyst breadth ledger requested by Phase314. It uses actual dense row-level timestamp coverage, repaired to select high-density 45-minute buckets rather than sparse date midpoints, and selects ten distinct synthetic event dates with 32-symbol overlap. It then writes a generated synthetic calendar separately from the real-event dropzone. This is still a timing-only catalyst ledger: no directional event label, no strategy replay, no promotion, no paper/live acceptance and no profitability claim.
 
 Phase315 evidence:
 
@@ -14268,6 +14268,7 @@ Phase315 evidence:
 - minimum symbols per generated event: `32`;
 - event-symbol join work-order rows: `320`;
 - dense file inventory rows scanned by metadata: `384`;
+- event timestamp selection repaired to use row-level dense 45-minute buckets: `1`;
 - hard gates: `10/10`;
 - full top-five market-by-price depth levels 1-5 required for downstream join/search: `1`;
 - depth levels 2-5 materiality required downstream: `1`;
@@ -14330,6 +14331,44 @@ Current Phase149 evidence after Phase316:
 - `real_receive_flow_source` status: `event_catalyst_multievent_top5_depth_join_materialization_open`;
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_top5_depth_join_materialization_open`;
 - current next action: `run_phase317_event_catalyst_multievent_top5_depth_join_materialization_no_strategy_search`.
+
+## 24.144 Phase317 Event-Catalyst Multi-Event Top-Five Depth Join Materialization Completed
+
+Phase317 materializes the Phase316 precommitted synthetic event-catalyst to top-five market-by-price depth join. The first materialization attempt exposed a real quality problem: file-level row-group timestamp overlap was too optimistic and only 7 of 10 events produced joined rows. Phase315 was repaired to select actual high-density 45-minute row-level buckets, Phase316 was rerun, and Phase317 was rerun with a symbol-file fallback for metadata false positives. The accepted rerun writes joined top-five depth rows only; it still does not run strategy search, replay, promotion, paper/live acceptance or profitability claims.
+
+Phase317 evidence:
+
+- multi-event top-five depth join materialization complete: `1`;
+- event-symbol work-order rows audited: `320`;
+- timestamp-overlap rows: `320`;
+- materialized joined top-five depth rows: `28,350,310`;
+- materialized events: `10`;
+- materialized symbols: `32`;
+- parquet row groups read: `752`;
+- full depth columns present: `1`;
+- hard gates: `9/9`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase317 outputs:
+
+- `outputs/phase317/phase317_acceptance_summary.csv`;
+- `outputs/phase317/phase317_joined_multievent_top5_depth.parquet`;
+- `outputs/phase317/phase317_event_symbol_timestamp_coverage.csv`;
+- `outputs/phase317/phase317_joined_multievent_top5_depth_preview.csv`;
+- `outputs/phase317/phase317_gate_evaluation.csv`;
+- `outputs/phase317/phase317_event_catalyst_multievent_top5_depth_join_materialization_report.md`;
+- `outputs/phase317/phase317_event_catalyst_multievent_top5_depth_join_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase317:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_join_quality_audit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_join_quality_audit_open`;
+- current next action: `run_phase318_event_catalyst_multievent_join_quality_audit_no_strategy_search`.
 
 ## 25. Final Principle
 

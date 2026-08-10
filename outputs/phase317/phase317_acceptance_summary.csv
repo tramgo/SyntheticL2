@@ -1,0 +1,17 @@
+metric,value,description
+phase317_multievent_top5_depth_join_materialization_complete,1,Phase317 multi-event top-five depth join materialization completed
+phase317_work_order_rows,320,Event-symbol work-order rows audited
+phase317_timestamp_overlap_rows,320,Event-symbol rows with timestamp overlap
+phase317_materialized_join_rows,28350310,Joined top-five depth rows materialized
+phase317_materialized_events,10,Events with joined rows
+phase317_materialized_symbols,32,Symbols with joined rows
+phase317_row_groups_read,752,Parquet row groups read across all event-symbol windows
+phase317_full_depth_columns_present,1,Depth levels 1-5 price/quantity/order columns retained
+phase317_strategy_search_allowed_now,0,No strategy search in Phase317
+phase317_strategy_replay_allowed,0,No replay
+phase317_strategy_promotion_allowed,0,No promotion
+phase317_paper_or_live_acceptance_allowed,0,No paper/live
+phase317_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase317_hard_gate_pass_rows,9,Passed hard gates
+phase317_hard_gate_rows,9,Hard gates
+phase317_next_best_action,run_phase318_event_catalyst_multievent_join_quality_audit_no_strategy_search,Recommended next action
