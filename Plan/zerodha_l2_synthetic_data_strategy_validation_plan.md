@@ -13879,6 +13879,49 @@ Current Phase149 evidence after Phase306:
 - `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_materialization_open`;
 - current next action: `run_phase307_event_catalyst_top5_depth_join_materialization_no_strategy_search`.
 
+## 24.134 Phase307 Event-Catalyst Top-Five Depth Join Materialization Completed, Timestamp Overlap Blocked
+
+Phase307 attempted to materialize the Phase306 event-catalyst to tick-level top-five market-by-price depth join. This phase reads the dense Parquet metadata first, records timestamp coverage by event-symbol row, retains the full Zerodha-style depth levels 1-5 column contract, and only scans a bounded event window when the dense file timestamp range overlaps the event window. It does not run strategy search, replay, promotion, paper/live acceptance, or profitability analysis.
+
+Phase307 evidence:
+
+- join materialization complete: `1`;
+- event-symbol work-order rows audited: `32`;
+- timestamp-overlapping event-symbol rows: `0`;
+- materialized joined rows: `0`;
+- materialized symbols: `0`;
+- full depth columns retained: `1`;
+- strategy search allowed now: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `7/7`.
+
+Phase307 timestamp finding:
+
+- imported RBI event window: `2026-08-05 09:45:00+05:30` to `2026-08-05 10:30:00+05:30`;
+- representative dense August synthetic file start: about `2026-08-19 14:38-14:45+05:30`;
+- representative dense August synthetic file end: up to about `2026-09-17 05:00:57+05:30`;
+- interpretation: the dense full-year synthetic lake exists and has large per-symbol row counts, but the seeded RBI event timestamp is outside the current dense timestamp coverage. This blocks materialized event-window rows and keeps strategy search closed.
+
+Phase307 outputs:
+
+- `outputs/phase307/phase307_acceptance_summary.csv`;
+- `outputs/phase307/phase307_event_symbol_timestamp_coverage.csv`;
+- `outputs/phase307/phase307_joined_event_top5_depth.parquet`;
+- `outputs/phase307/phase307_joined_event_top5_depth_preview.csv`;
+- `outputs/phase307/phase307_gate_evaluation.csv`;
+- `outputs/phase307/phase307_event_catalyst_top5_depth_join_materialization_report.md`;
+- `outputs/phase307/phase307_event_catalyst_top5_depth_join_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase307:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_top5_depth_join_blocked_no_timestamp_overlap`;
+- `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_blocked_no_timestamp_overlap`;
+- current next action: `add_event_catalyst_with_timestamp_overlapping_dense_lake_or_recalendarize_synthetic_event_time_then_rerun_phase307`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

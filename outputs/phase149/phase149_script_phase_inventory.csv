@@ -235,6 +235,7 @@ phase,runner,runner_exists,runner_suffix
 304,scripts\run_phase304_event_catalyst_source_acquisition_package.py,True,.py
 305,scripts\run_phase305_event_catalyst_source_import_audit.py,True,.py
 306,scripts\run_phase306_event_catalyst_top5_depth_join_precommit.py,True,.py
+307,scripts\run_phase307_event_catalyst_top5_depth_join_materialization.py,True,.py
 30,scripts\run_phase30_strategy_decision_triage.py,True,.py
 31,scripts\run_phase31_redesign_evidence_contract.py,True,.py
 32,scripts\run_phase32_contract_evidence_scanner.py,True,.py
