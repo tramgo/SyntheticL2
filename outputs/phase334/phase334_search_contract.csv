@@ -1,0 +1,15 @@
+contract_id,contract_value,description
+input_matrix,outputs/phase330/phase330_feature_matrix.parquet,Use the existing expanded full-depth event feature matrix.
+scenario_source,outputs/phase332/phase332_scenario_summary.parquet,Use Phase332 only for precommitted clue selection and diagnostic comparison.
+preserved_family,P331_DEPTH_ACCEL_REVERSAL,Only redesign around the Phase333-preserved family.
+annualized_threshold_pct,12.0,Do not lower the user profitability threshold.
+cost_profile_required,zerodha_2x_all_in_cost_proxy,Acceptance diagnostics require 2x Zerodha all-in cost stress.
+robust_event_floor,30,Acceptance-grade diagnostics require at least 30 scheduled events.
+fixed_capital_denominator,required,Annualized return must use fixed initial capital.
+full_depth_top5_required,1,Use top-five market-by-price depth and features using levels beyond L1.
+l1_only_allowed,0,No L1-only strategy variant is allowed.
+net_edge_live_mask_allowed,0,No future outcome or net-edge live masks are allowed.
+passive_aware_policy,diagnostic_required_not_primary_rescue,Passive-aware fill/adverse-selection/forced-flatten penalties remain in diagnostics.
+strategy_replay_allowed,0,Phase334 is precommit only.
+paper_or_live_allowed,0,No paper/live acceptance opens here.
+profitability_claim_allowed,0,No deployable profitability claim opens here.

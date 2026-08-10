@@ -1,0 +1,21 @@
+metric,value,description
+phase334_cost_stress_margin_redesign_precommit_complete,1,Phase334 precommit completed
+phase334_preserved_family,P331_DEPTH_ACCEL_REVERSAL,Family preserved from Phase333
+phase334_design_lane_rows,4,Design lanes
+phase334_search_contract_rows,14,Search contract rows
+phase334_phase335_work_order_rows,9,Phase335 work-order rows
+phase334_best_cost200_prior_annualized_return_pct,11.517554062957867,Prior best 2x-cost annualized return
+phase334_required_annualized_threshold_pct,12.0,Required annualized threshold
+phase334_required_cost_profile,zerodha_2x_all_in_cost_proxy,Required cost profile
+phase334_full_depth_required,1,Full top-five depth required
+phase334_levels_2_to_5_required,1,Levels 2-5 materiality required
+phase334_l1_only_allowed,0,No L1-only variants
+phase334_net_edge_live_mask_allowed,0,No net-edge/future-outcome live masks
+phase334_strategy_replay_allowed,0,No replay
+phase334_strategy_promotion_allowed,0,No promotion
+phase334_paper_or_live_acceptance_allowed,0,No paper/live
+phase334_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase334_strategy_search_execution_allowed_next,1,Phase335 training-only execution allowed next
+phase334_hard_gate_pass_rows,10,Passed hard gates
+phase334_hard_gate_rows,10,Hard gates
+phase334_next_best_action,run_phase335_cost_stress_margin_redesign_training_only_no_replay,Recommended next action

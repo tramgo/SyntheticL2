@@ -1,0 +1,10 @@
+work_order_id,lane_id,action,requirements
+P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE_GRID,P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE,build_training_only_redesign_grid,cost200 required; fixed capital; full top-five depth; no future masks
+P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE_CONTROLS,P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE,attach_controls,side flip; random side; family-neutral broadness; passive-aware diagnostic
+P334_LANE_B_TURNOVER_COMPRESSION_GRID,P334_LANE_B_TURNOVER_COMPRESSION,build_training_only_redesign_grid,cost200 required; fixed capital; full top-five depth; no future masks
+P334_LANE_B_TURNOVER_COMPRESSION_CONTROLS,P334_LANE_B_TURNOVER_COMPRESSION,attach_controls,side flip; random side; family-neutral broadness; passive-aware diagnostic
+P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN_GRID,P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN,build_training_only_redesign_grid,cost200 required; fixed capital; full top-five depth; no future masks
+P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN_CONTROLS,P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN,attach_controls,side flip; random side; family-neutral broadness; passive-aware diagnostic
+P334_LANE_D_HORIZON_AND_EXIT_MARGIN_GRID,P334_LANE_D_HORIZON_AND_EXIT_MARGIN,build_training_only_redesign_grid,cost200 required; fixed capital; full top-five depth; no future masks
+P334_LANE_D_HORIZON_AND_EXIT_MARGIN_CONTROLS,P334_LANE_D_HORIZON_AND_EXIT_MARGIN,attach_controls,side flip; random side; family-neutral broadness; passive-aware diagnostic
+P334_ACCEPTANCE_AND_REPORTING,all,write_phase335_outputs,scenario surface; top candidates; cost200 above12 count; acceptance-grade count; no replay claim

@@ -265,6 +265,7 @@ phase,runner,runner_exists,runner_suffix
 331,scripts\run_phase331_event_catalyst_expanded_strategy_search_precommit.py,True,.py
 332,scripts\run_phase332_event_catalyst_expanded_strategy_search_training_only.py,True,.py
 333,scripts\run_phase333_event_catalyst_expanded_strategy_search_interpretation.py,True,.py
+334,scripts\run_phase334_cost_stress_margin_redesign_precommit.py,True,.py
 33,scripts\run_phase33_broker_evidence_intake.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py

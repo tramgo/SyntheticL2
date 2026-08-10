@@ -15192,6 +15192,71 @@ Current Phase149 evidence after Phase333:
 - `synthetic_strategy_discovery` status: `cost_stress_margin_redesign_precommit_open`;
 - current next action: `run_phase334_cost_stress_margin_redesign_precommit_no_replay`.
 
+## 24.161 Phase334 Cost-Stress Margin Redesign Precommit Completed
+
+Phase334 precommits the next training-only redesign around the Phase333-preserved near miss. It is not a replay, promotion, paper/live gate or profitability claim.
+
+The precommitted redesign is intentionally narrow:
+
+- preserved family: `P331_DEPTH_ACCEL_REVERSAL`;
+- prior best 2x-cost annualized return: `11.517554062957867%`;
+- required annualized threshold remains `>12%`;
+- required cost profile remains `zerodha_2x_all_in_cost_proxy`;
+- fixed-capital denominator remains required;
+- full top-five depth remains required;
+- levels 2-5 materiality remains required;
+- L1-only variants remain forbidden;
+- net-edge/future-outcome live masks remain forbidden;
+- passive-aware execution remains a diagnostic realism policy, not the accepted primary rescue route.
+
+Phase334 design lanes:
+
+- `P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE`: tighten depth-acceleration reversal entries using live L2 quality;
+- `P334_LANE_B_TURNOVER_COMPRESSION`: reduce cost drag by limiting the strongest symbols per event while preserving at least 30 scheduled events;
+- `P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN`: avoid wide-spread/weak-book states using live top-five depth;
+- `P334_LANE_D_HORIZON_AND_EXIT_MARGIN`: test nearby exit horizons around the 900-second near miss without per-event future-outcome selection.
+
+Phase334 result:
+
+- design lanes: `4`;
+- search contract rows: `14`;
+- Phase335 work-order rows: `9`;
+- Phase335 training-only execution allowed next: `1`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase334 hard gates:
+
+- Phase333 complete: pass;
+- near miss preserved: pass;
+- cost200 not already accepted: pass;
+- best cost200 within redesign range: pass, `11.517554062957867`;
+- design lanes present: pass, `4`;
+- contract rows present: pass, `14`;
+- work order present: pass, `9`;
+- full depth required: pass;
+- levels 2-5 required: pass;
+- no replay or claim: pass.
+
+Phase334 outputs:
+
+- `outputs/phase334/phase334_acceptance_summary.csv`;
+- `outputs/phase334/phase334_design_lanes.csv`;
+- `outputs/phase334/phase334_search_contract.csv`;
+- `outputs/phase334/phase334_phase335_work_order.csv`;
+- `outputs/phase334/phase334_gate_evaluation.csv`;
+- `outputs/phase334/phase334_cost_stress_margin_redesign_precommit_report.md`;
+- `outputs/phase334/phase334_cost_stress_margin_redesign_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase334:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `cost_stress_margin_redesign_training_search_open`;
+- `synthetic_strategy_discovery` status: `cost_stress_margin_redesign_training_search_open`;
+- current next action: `run_phase335_cost_stress_margin_redesign_training_only_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
