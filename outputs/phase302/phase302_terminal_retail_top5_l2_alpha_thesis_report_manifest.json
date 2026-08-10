@@ -1,0 +1,32 @@
+{
+  "phase": 302,
+  "generated_utc": "2026-08-10T05:17:43.450330+00:00",
+  "scope": "phase302_terminal_retail_top5_l2_alpha_thesis_report",
+  "inputs": {
+    "phase298_acceptance": "outputs\\phase298\\phase298_acceptance_summary.csv",
+    "phase299_acceptance": "outputs\\phase299\\phase299_acceptance_summary.csv",
+    "phase300_acceptance": "outputs\\phase300\\phase300_acceptance_summary.csv",
+    "phase300_scenarios": "outputs\\phase300\\phase300_execution_scenario_summary.csv",
+    "phase301_acceptance": "outputs\\phase301\\phase301_acceptance_summary.csv",
+    "phase301_kill_switch": "outputs\\phase301\\phase301_kill_switch_audit.csv"
+  },
+  "outputs": {
+    "acceptance": "outputs\\phase302\\phase302_acceptance_summary.csv",
+    "report": "outputs\\phase302\\phase302_terminal_retail_top5_l2_alpha_thesis_report.md",
+    "evidence_chain": "outputs\\phase302\\phase302_evidence_chain.csv",
+    "byproducts": "outputs\\phase302\\phase302_byproduct_catalog.csv",
+    "closure_decision": "outputs\\phase302\\phase302_closure_decision.csv",
+    "gates": "outputs\\phase302\\phase302_gate_evaluation.csv"
+  },
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "864021b81706f3391026afb7fb672e0063abb84e",
+  "configuration_hash": "9ab6566c819e4fb7dc08fa8f484d8c8876a428452bf8c349e443aa40484d2f08",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase302_terminal_report_only",
+  "creation_timestamp": "2026-08-10T05:17:43.450330+00:00"
+}

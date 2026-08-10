@@ -13602,6 +13602,72 @@ Current Phase149 evidence after Phase301:
 - `synthetic_strategy_discovery` status: `terminal_retail_top5_l2_alpha_thesis_report_open`;
 - current next action: `run_phase302_terminal_retail_top5_l2_alpha_thesis_report_no_paper_live`.
 
+## 24.129 Phase302 Terminal Retail Top-Five L2 Alpha Thesis Report Completed
+
+Phase302 produced the terminal report required by Phase301. The report closes the tested retail directional top-five market-by-price depth alpha route for acceptance. This is a scoped closure, not a claim that all top-five depth data is useless. The closed scope is the Phase298-Phase301 route: raw tick-level top-five market-by-price book-state directional signals, then passive-aware execution rescue, Zerodha-style cost200 stress, fixed initial capital, back-of-queue passive fill modeling, adverse-selection penalty and forced flattening.
+
+Phase302 terminal verdict:
+
+- selected verdict: `P302_RETAIL_TOP5_L2_ALPHA_THESIS_CLOSED_FOR_ACCEPTANCE`;
+- closed scope: `retail_directional_top_five_market_by_price_depth_alpha_with_passive_aware_rescue`;
+- same-route continuation: closed;
+- material new source or material new thesis required before continuing;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase302 evidence:
+
+- Phase300 scenarios summarized: `108`;
+- Phase300 above-12% annualized diagnostic scenarios: `17`;
+- Phase300 `>=30` event-floor scenarios: `0`;
+- Phase300 breadth-met scenarios: `0`;
+- Phase300 cost200 acceptance survivor rows: `0`;
+- Phase300 kill-switch triggered: `1`;
+- Phase301 selected outcome: `P301_PASSIVE_AWARE_EXECUTION_FALSIFIED`;
+- Phase302 hard gates: `10/10`.
+
+Best sparse diagnostic preserved:
+
+- scenario: `P300_P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6_P300_FILL_OPTIMISTIC_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200`;
+- annualized diagnostic: `287.968950%`;
+- scheduled events: `2`;
+- interpretation: diagnostic only, because event/breadth acceptance gates fail.
+
+Broadest scheduled diagnostic preserved:
+
+- scenario: `P300_ALL_PHASE299_SEEDS_P300_FILL_BASE_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200`;
+- annualized diagnostic: `8.230380%`;
+- scheduled events: `26`;
+- interpretation: broader than the best pocket, but still below the `>=30` event floor and below the `>12%` annualized diagnostic threshold.
+
+Durable by-products kept for future material-new work:
+
+- raw dense top-five market-by-price book-state lake and feature pipeline;
+- Zerodha statutory/brokerage cost200 model;
+- passive back-of-queue fill harness;
+- adverse-selection and forced-flatten realism audit;
+- negative evidence ledger to avoid repeated shard-by-shard rescue of the same route.
+
+Phase302 outputs:
+
+- `outputs/phase302/phase302_acceptance_summary.csv`;
+- `outputs/phase302/phase302_evidence_chain.csv`;
+- `outputs/phase302/phase302_byproduct_catalog.csv`;
+- `outputs/phase302/phase302_closure_decision.csv`;
+- `outputs/phase302/phase302_terminal_verdict_ledger.csv`;
+- `outputs/phase302/phase302_gate_evaluation.csv`;
+- `outputs/phase302/phase302_terminal_retail_top5_l2_alpha_thesis_report.md`;
+- `outputs/phase302/phase302_terminal_retail_top5_l2_alpha_thesis_report_manifest.json`.
+
+Current Phase149 evidence after Phase302:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `retail_top5_l2_alpha_thesis_closed_terminal_report_complete`;
+- `synthetic_strategy_discovery` status: `retail_top5_l2_alpha_thesis_closed_terminal_report_complete`;
+- current next action: `do_not_continue_retail_top5_l2_alpha_rescue_without_material_new_source_or_thesis`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

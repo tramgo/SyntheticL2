@@ -1,0 +1,5 @@
+phase,evidence_role,key_observation,acceptance_read
+298,raw_top_five_market_by_price_depth_strategy_sweep,raw_events=9596; variants=576; scenarios=1152; best_annualized=382.9973530062694; best_events=3,Sparse directional clues preserved; direct acceptance closed.
+299,raw_dense_sweep_interpretation_and_passive_route_selection,directional_signal_seeds=16; above12_below_30_events=9; passive_fill_required=1; profitability_claim_allowed=0,Only seed-level continuation allowed; no profitability claim.
+300,passive_aware_execution_hybrid_with_cost200_and_fixed_capital,scenarios=108; above12=17; event_floor=0; breadth=0; survivors=0; kill_switch=1,Passive-aware rescue failed acceptance; sparse pockets remain diagnostic only.
+301,interpretation_and_kill_switch_audit,selected_outcome=P301_PASSIVE_AWARE_EXECUTION_FALSIFIED; terminal_report_required=1; kill_switch_rows=7; do_not_rescue=1,Route is closed and must be reported as terminal for acceptance.
