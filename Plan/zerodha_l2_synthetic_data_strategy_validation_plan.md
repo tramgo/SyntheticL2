@@ -15053,6 +15053,82 @@ Current Phase149 evidence after Phase331:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_training_strategy_search_open`;
 - current next action: `run_phase332_event_catalyst_expanded_strategy_search_training_only_no_replay`.
 
+## 24.159 Phase332 Event-Catalyst Expanded Strategy Search Training-Only Completed
+
+Phase332 executes the Phase331-precommitted expanded training-only strategy search over the Phase330 full-depth feature matrix. It is a diagnostic profitability search, not replay, promotion, paper/live acceptance or a deployable profitability claim.
+
+The full precommitted surface was evaluated:
+
+- scenario rows evaluated: `1,036,800`;
+- distinct strategy families: `15`;
+- 2x Zerodha cost-stress scenarios: `259,200`;
+- passive-aware execution scenarios: `518,400`;
+- event-bucket policies evaluated: `5`;
+- full-depth and depth-beyond-L1 constraints preserved through the Phase331 family catalog;
+- fixed-capital denominator used for annualized-return diagnostics.
+
+Phase332 result:
+
+- scenarios above the `>12%` annualized research threshold across all cost profiles: `564`;
+- 2x Zerodha cost-stress scenarios above `>12%`: `0`;
+- 2x cost acceptance-grade candidates with event/date/symbol breadth: `0`;
+- best overall scenario: `P331_DEPTH_ACCEL_REVERSAL_H900_top_10pct_abs_signal_all_events_long_only_taker_entry_taker_exit_CAP100000_NOT100000_CONC1_zerodha_base`;
+- best overall annualized fixed-capital diagnostic: `30.5361528844332%`;
+- best overall scheduled events: `40`;
+- best 2x-cost scenario: `P331_DEPTH_ACCEL_REVERSAL_H900_top_10pct_abs_signal_all_events_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy`;
+- best 2x-cost annualized fixed-capital diagnostic: `11.517554062957867%`;
+- best 2x-cost scheduled events: `40`.
+
+Interpretation before Phase333:
+
+- Phase332 did find base-cost/slippage-profile research pockets above `12%`.
+- The same expanded full-depth search did **not** clear the `>12%` annualized bar under 2x Zerodha cost stress.
+- The best 2x-cost result is close at `11.517554062957867%`, but below the user-specified `>12%` profitable threshold.
+- Because `cost200_above12_scenario_rows = 0` and `cost200_acceptance_grade_candidate_rows = 0`, Phase332 does not open replay, promotion, paper/live acceptance or deployable profitability claims.
+- Phase333 must interpret whether the near-miss is a useful research clue or whether this expanded event-catalyst branch should close or require a materially different redesign.
+
+Phase332 hard gates:
+
+- Phase331 precommit complete: pass;
+- Phase331 execution allowed next: pass;
+- scenarios produced: pass, `1,036,800`;
+- variant coverage complete: pass, `1,036,800 / 1,036,800`;
+- cost200 scenarios present: pass, `259,200`;
+- passive-aware scenarios present: pass, `518,400`;
+- event-bucket scenarios present: pass, `5`;
+- fixed-capital denominator present: pass;
+- no profitability claim: pass;
+- replay/promotion/paper/live/profitability boundaries closed: pass.
+
+Phase332 evidence:
+
+- expanded strategy search training complete: `1`;
+- hard gates: `10/10`;
+- scenario parquet written: `1`;
+- scenario parquet bytes: `18,894,815`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase332 outputs:
+
+- `outputs/phase332/phase332_acceptance_summary.csv`;
+- `outputs/phase332/phase332_scenario_summary.parquet`;
+- `outputs/phase332/phase332_top_scenarios.csv`;
+- `outputs/phase332/phase332_family_cost_execution_summary.csv`;
+- `outputs/phase332/phase332_interpretation_metrics.csv`;
+- `outputs/phase332/phase332_gate_evaluation.csv`;
+- `outputs/phase332/phase332_event_catalyst_expanded_strategy_search_training_only_report.md`;
+- `outputs/phase332/phase332_event_catalyst_expanded_strategy_search_training_only_manifest.json`.
+
+Current Phase149 evidence after Phase332:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_strategy_search_interpretation_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_strategy_search_interpretation_open`;
+- current next action: `run_phase333_event_catalyst_expanded_strategy_search_interpretation_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
