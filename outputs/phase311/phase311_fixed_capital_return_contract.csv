@@ -1,0 +1,9 @@
+contract_id,contract_value,description
+initial_capital_grid_inr,100000;250000;500000,Fixed starting capital scenarios; no unlimited capital.
+per_trade_notional_grid_inr,25000;50000;100000,Per-symbol event allocation before capital/concurrency gates.
+capital_allocation_rule,rank_by_abs_signal_then_allocate_until_cash_or_concurrency_exhausted,Avoid pretending every signal has independent capital.
+portfolio_return_formula,net_pnl_inr / initial_capital_inr,Only fixed-capital net P&L divided by initial capital is portfolio return.
+annualized_return_formula,portfolio_return * 252 / observed_trade_dates,Allowed only as sparse research diagnostic while observed_trade_dates is recorded.
+annualized_profitability_research_threshold,>=12pct,User-requested research-lead threshold; not deployable acceptance.
+minimum_dates_for_deployable_claim,not_satisfied,One synthetic event date cannot support deployable annual-return claim.
+same_symbol_overlap_policy,one_position_per_symbol_event_window,Prevent stacking same-symbol event decisions.

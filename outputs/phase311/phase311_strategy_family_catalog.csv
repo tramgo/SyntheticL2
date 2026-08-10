@@ -1,0 +1,9 @@
+family_id,signal_formula,target_columns,description
+event_depth_pressure_continuation,go_with_sign(event_l2_l5_pressure),target_return_300s_bps;target_return_900s_bps,Tests whether L2-L5 pressure at event time follows through.
+event_depth_pressure_reversal,go_against_sign(event_l2_l5_pressure),target_return_300s_bps;target_return_900s_bps,Tests whether strong L2-L5 pressure mean-reverts after the event.
+pre_event_pressure_shift_continuation,go_with_sign(event_l2_l5_pressure - pre_mean_l2_l5_pressure),target_return_300s_bps;target_return_900s_bps,Tests whether pressure acceleration predicts continuation.
+pre_event_pressure_shift_reversal,go_against_sign(event_l2_l5_pressure - pre_mean_l2_l5_pressure),target_return_300s_bps;target_return_900s_bps,Tests whether pressure acceleration is an overreaction.
+microprice_dislocation_continuation,go_with_sign((event_l1_microprice - event_l1_mid) / event_l1_mid),target_return_60s_bps;target_return_300s_bps,Tests microprice dislocation follow-through.
+microprice_dislocation_reversal,go_against_sign((event_l1_microprice - event_l1_mid) / event_l1_mid),target_return_60s_bps;target_return_300s_bps,Tests microprice dislocation reversal.
+pre_event_trend_reversal,go_against_sign((event_l1_mid / pre_mean_l1_mid) - 1),target_return_300s_bps;target_return_900s_bps,Tests bar-return reversal around event context.
+pre_event_trend_continuation,go_with_sign((event_l1_mid / pre_mean_l1_mid) - 1),target_return_300s_bps;target_return_900s_bps,Tests event-time trend continuation.

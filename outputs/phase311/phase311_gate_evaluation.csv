@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P311_PHASE310_COMPLETE,True,1,1,hard
+P311_PHASE310_FULL_DEPTH_FEATURES,True,1,1,hard
+P311_FAMILY_CATALOG_NONEMPTY,True,8,>=8,hard
+P311_SEARCH_GRID_NONEMPTY,True,432,>0,hard
+P311_FIXED_CAPITAL_CONTRACT_PRESENT,True,8,>=8,hard
+P311_ZERODHA_COST_MODEL_REFERENCED,True,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,present,hard
+P311_DEPTH_BEYOND_L1_REQUIRED,True,present,present,hard
+P311_NO_EXECUTION_OPENED,True,strategy_execution_now=0,0,hard
+P311_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard

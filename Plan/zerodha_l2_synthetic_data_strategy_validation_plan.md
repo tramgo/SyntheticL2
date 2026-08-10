@@ -14060,6 +14060,68 @@ Current Phase149 evidence after Phase310:
 - `synthetic_strategy_discovery` status: `event_catalyst_strategy_search_precommit_open`;
 - current next action: `run_phase311_event_catalyst_strategy_search_precommit_no_execution`.
 
+## 24.138 Phase311 Event-Catalyst Strategy Search Precommit Completed
+
+Phase311 precommits the training-only event-catalyst strategy search that may run on the Phase310 feature matrix. It defines the allowed families, grid, fixed-capital return contract, Zerodha cost model, and controls before any strategy search execution. It keeps replay, promotion, paper/live acceptance, and deployable profitability claims closed.
+
+Phase311 evidence:
+
+- strategy search precommit complete: `1`;
+- strategy family rows: `8`;
+- search grid rows before family expansion: `432`;
+- expanded variant upper-bound rows: `3,456`;
+- fixed-capital contract rows: `8`;
+- control contract rows: `9`;
+- full top-five depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only candidate allowed: `0`;
+- Zerodha cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- training-only strategy search execution allowed next: `1`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `9/9`.
+
+Phase311 allowed strategy families:
+
+- event L2-L5 pressure continuation;
+- event L2-L5 pressure reversal;
+- pre-event pressure-shift continuation;
+- pre-event pressure-shift reversal;
+- microprice dislocation continuation;
+- microprice dislocation reversal;
+- pre-event trend reversal;
+- pre-event trend continuation.
+
+Phase311 capital/cost boundary:
+
+- annualized return above `12%` may be treated only as a sparse training research lead;
+- portfolio return must be calculated as `net_pnl_inr / initial_capital_inr`;
+- annualized return must use fixed-capital portfolio return and observed trade-date count;
+- no unlimited-capital return claim is allowed;
+- Zerodha equity intraday NSE charges are required, including brokerage cap, STT, exchange transaction charge, SEBI charge, stamp duty, and GST through the project cost model;
+- slippage stress is required via additional 1bp/2bp and 2x all-in-cost profiles.
+
+Phase311 outputs:
+
+- `outputs/phase311/phase311_acceptance_summary.csv`;
+- `outputs/phase311/phase311_strategy_family_catalog.csv`;
+- `outputs/phase311/phase311_strategy_search_grid.csv`;
+- `outputs/phase311/phase311_fixed_capital_return_contract.csv`;
+- `outputs/phase311/phase311_control_contract.csv`;
+- `outputs/phase311/phase311_zerodha_cost_component_catalog.csv`;
+- `outputs/phase311/phase311_gate_evaluation.csv`;
+- `outputs/phase311/phase311_event_catalyst_strategy_search_precommit_report.md`;
+- `outputs/phase311/phase311_event_catalyst_strategy_search_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase311:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_training_strategy_search_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_training_strategy_search_open`;
+- current next action: `run_phase312_event_catalyst_strategy_search_training_only`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

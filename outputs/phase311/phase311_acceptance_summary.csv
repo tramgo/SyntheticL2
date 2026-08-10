@@ -1,0 +1,19 @@
+metric,value,description
+phase311_strategy_search_precommit_complete,1,Phase311 event-catalyst strategy search precommit completed
+phase311_strategy_family_rows,8,Strategy family rows
+phase311_search_grid_rows,432,Search grid rows before family expansion
+phase311_expanded_variant_upper_bound_rows,3456,Family x grid upper bound
+phase311_capital_contract_rows,8,Fixed-capital contract rows
+phase311_control_contract_rows,9,Control contract rows
+phase311_full_depth_required,1,Full top-five depth required
+phase311_depth_beyond_l1_required,1,Levels 2-5 materiality required
+phase311_l1_only_candidate_allowed,0,L1-only candidate path closed
+phase311_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha cost model version
+phase311_strategy_search_execution_allowed_next,1,Phase312 training-only search may run if gates pass
+phase311_strategy_replay_allowed,0,No replay
+phase311_strategy_promotion_allowed,0,No promotion
+phase311_paper_or_live_acceptance_allowed,0,No paper/live
+phase311_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase311_hard_gate_pass_rows,9,Passed hard gates
+phase311_hard_gate_rows,9,Hard gates
+phase311_next_best_action,run_phase312_event_catalyst_strategy_search_training_only,Recommended next action

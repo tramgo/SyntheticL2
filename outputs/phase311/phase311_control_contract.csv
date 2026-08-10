@@ -1,0 +1,10 @@
+control_id,control_status,description
+full_top_five_depth_required,required,Every allowed family must include L1-L5 or L2-L5 materiality.
+depth_beyond_l1_required,required,At least one signal term must use levels 2-5.
+l1_only_candidate_allowed,forbidden,L1-only event strategies are not allowed in this branch.
+zerodha_cost_model_required,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Use the documented Zerodha equity intraday NSE charge model.
+slippage_stress_required,required,Search must include additional 1bp/2bp and 2x cost-stress profiles.
+post_event_target_as_feature,forbidden,"target_ columns are labels/diagnostics only, not inputs."
+portfolio_return_without_fixed_capital,forbidden,No unlimited-capital annual return.
+paper_live_or_deployable_profitability_claim,forbidden,No paper/live or deployable claim from Phase312.
+strategy_execution_now,forbidden,Phase311 is a precommit only.
