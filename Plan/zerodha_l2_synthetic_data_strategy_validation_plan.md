@@ -15129,6 +15129,69 @@ Current Phase149 evidence after Phase332:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_strategy_search_interpretation_open`;
 - current next action: `run_phase333_event_catalyst_expanded_strategy_search_interpretation_no_replay`.
 
+## 24.160 Phase333 Event-Catalyst Expanded Strategy Search Interpretation Completed
+
+Phase333 interprets the Phase332 expanded strategy-search surface. It does not execute replay, promote a strategy, open paper/live acceptance or claim deployable profitability.
+
+The Phase333 decision is:
+
+- base/slippage research pockets above `>12%` annualized exist: `1`;
+- 2x Zerodha cost-stress `>12%` bar passed: `0`;
+- 2x cost acceptance-grade candidates exist: `0`;
+- best 2x-cost near-miss preserved as a redesign clue: `1`;
+- preserved family for redesign: `P331_DEPTH_ACCEL_REVERSAL`;
+- passive-aware rescue status: `falsified_as_primary_rescue`;
+- next design focus: `cost_stress_margin_and_turnover_reduction`;
+- selected next route: `P334_COST_STRESS_MARGIN_REDESIGN_PRECOMMIT`;
+- next action: `run_phase334_cost_stress_margin_redesign_precommit_no_replay`.
+
+Why the branch is not accepted:
+
+- Phase332 had `564` above-12% scenarios across all cost profiles, but `0` under 2x Zerodha all-in cost stress.
+- The best 2x-cost result was `11.517554062957867%`, which is below the user threshold of `>12%`.
+- The near-miss had `40` scheduled events, so it is not just a two-trade fluke; still, below-threshold evidence is not profitability acceptance.
+- Passive-aware execution remains part of realism, but the passive-aware policy did not rescue the strategy surface and is explicitly not accepted as a primary rescue route.
+
+Phase333 hard gates:
+
+- Phase332 complete: pass;
+- decision rows present: pass, `10`;
+- cost200 failure interpreted: pass;
+- near-miss decision present: pass;
+- passive-aware status present: pass;
+- profitability claim closed: pass;
+- replay closed: pass;
+- next route selected: pass.
+
+Phase333 evidence:
+
+- interpretation complete: `1`;
+- hard gates: `8/8`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase149 hard gates after refresh: `322/322`;
+- Phase149 next action after refresh: `run_phase334_cost_stress_margin_redesign_precommit_no_replay`.
+
+Phase333 outputs:
+
+- `outputs/phase333/phase333_acceptance_summary.csv`;
+- `outputs/phase333/phase333_gate_evaluation.csv`;
+- `outputs/phase333/phase333_interpretation_decision_ledger.csv`;
+- `outputs/phase333/phase333_cost200_near_miss_top_scenarios.csv`;
+- `outputs/phase333/phase333_cost_profile_gap_summary.csv`;
+- `outputs/phase333/phase333_family_cost_stress_interpretation_summary.csv`;
+- `outputs/phase333/phase333_event_catalyst_expanded_strategy_search_interpretation_report.md`;
+- `outputs/phase333/phase333_event_catalyst_expanded_strategy_search_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase333:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `cost_stress_margin_redesign_precommit_open`;
+- `synthetic_strategy_discovery` status: `cost_stress_margin_redesign_precommit_open`;
+- current next action: `run_phase334_cost_stress_margin_redesign_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

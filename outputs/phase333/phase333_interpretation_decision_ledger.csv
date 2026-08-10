@@ -1,0 +1,11 @@
+decision_id,decision_value,evidence,interpretation
+phase332_search_complete,1,scenario_rows=1036800,The expanded training-only search ran to completion.
+base_or_slippage_profitable_research_pockets_exist,1,above12_scenario_rows=564,Profitable-looking pockets exist before the strict 2x cost-stress bar.
+cost200_profitability_bar_passed,0,cost200_above12_scenario_rows=0; threshold>12.0,The user threshold is not met under the 2x Zerodha all-in cost proxy.
+cost200_acceptance_grade_candidates_exist,0,cost200_acceptance_grade_candidate_rows=0,No acceptance-grade candidate exists without passing both cost and breadth gates.
+best_cost200_near_miss_preserved,1,best_cost200=11.517554062957867; gap_to_12=0.482445937042133; events=40,"The near-miss is broad enough to redesign around, but it is not accepted as profitable."
+preserved_family_for_redesign,P331_DEPTH_ACCEL_REVERSAL,Phase332 best family,Depth-acceleration reversal remains the strongest actionable clue.
+passive_aware_rescue_status,falsified_as_primary_rescue,best_passive=7.220955903503546; best_taker=30.5361528844332,"Passive-aware execution realism stays required, but it did not rescue the branch."
+next_design_focus,cost_stress_margin_and_turnover_reduction,2x cost miss is 0.482445937 pct points below 12,The next test should reduce cost drag without lowering the annualized or cost-stress bar.
+forbidden_next_actions,no_replay_no_promotion_no_paper_live_no_profit_claim,all acceptance gates closed,Do not jump to replay or declare profitability from Phase332.
+selected_next_route,P334_COST_STRESS_MARGIN_REDESIGN_PRECOMMIT,run_phase334_cost_stress_margin_redesign_precommit_no_replay,"Precommit a narrow redesign around the preserved cost-stress near miss, then execute it."

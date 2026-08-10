@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P333_PHASE332_COMPLETE,True,1,1,hard
+P333_DECISION_ROWS_PRESENT,True,10,>=10,hard
+P333_COST200_FAILURE_INTERPRETED,True,present,present,hard
+P333_NEAR_MISS_DECISION_PRESENT,True,present,present,hard
+P333_PASSIVE_AWARE_STATUS_PRESENT,True,present,present,hard
+P333_PROFITABILITY_CLAIM_CLOSED,True,0,0,hard
+P333_REPLAY_CLOSED,True,0,0,hard
+P333_NEXT_ROUTE_SELECTED,True,P334_COST_STRESS_MARGIN_REDESIGN_PRECOMMIT,selected,hard
