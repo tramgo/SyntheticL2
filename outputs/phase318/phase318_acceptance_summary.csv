@@ -1,0 +1,21 @@
+metric,value,description
+phase318_multievent_join_quality_audit_complete,1,Phase318 multi-event join quality audit completed
+phase318_joined_rows,28350310,Joined rows audited
+phase318_event_rows,10,Distinct events audited
+phase318_symbol_rows,32,Distinct symbols audited
+phase318_min_event_symbol_coverage,32,Minimum symbols per event
+phase318_min_symbol_event_coverage,10,Minimum events per symbol
+phase318_relative_second_min,-900,Minimum relative second
+phase318_relative_second_max,1800,Maximum relative second
+phase318_crossed_or_locked_l1_rows,0,Crossed or locked top-of-book rows
+phase318_bid_depth_sort_error_rows,0,Bid depth sort error rows
+phase318_ask_depth_sort_error_rows,0,Ask depth sort error rows
+phase318_depth_beyond_l1_material_rows,28350310,Rows with depth levels 2-5 material
+phase318_strategy_search_allowed_now,0,No strategy search in Phase318
+phase318_strategy_replay_allowed,0,No replay
+phase318_strategy_promotion_allowed,0,No promotion
+phase318_paper_or_live_acceptance_allowed,0,No paper/live
+phase318_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase318_hard_gate_pass_rows,12,Passed hard gates
+phase318_hard_gate_rows,12,Hard gates
+phase318_next_best_action,run_phase319_event_catalyst_multievent_feature_materialization_precommit_no_replay,Recommended next action

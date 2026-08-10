@@ -1,0 +1,2 @@
+joined_rows,event_rows,symbol_rows,min_relative_second,max_relative_second,crossed_or_locked_l1_rows,nonpositive_l1_quantity_rows,nonpositive_depth_beyond_l1_quantity_rows,bid_depth_sort_error_rows,ask_depth_sort_error_rows,depth_beyond_l1_material_rows
+28350310,10,32,-900,1800,0.0,0.0,0.0,0.0,0.0,28350310.0

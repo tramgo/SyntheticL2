@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P318_PHASE317_COMPLETE,True,1,1,hard
+P318_JOINED_PARQUET_EXISTS,True,1,1,hard
+P318_FULL_DEPTH_SCHEMA_PRESENT,True,1,1,hard
+P318_JOINED_ROWS_MATCH_PHASE317,True,28350310,28350310,hard
+P318_EVENT_COVERAGE_COMPLETE,True,events=10;min_symbols=32,>=10_events_x_32_symbols,hard
+P318_SYMBOL_COVERAGE_COMPLETE,True,symbols=32;min_events=10,>=32_symbols_x_10_events,hard
+P318_RELATIVE_WINDOW_BOUNDED,True,-900.0..1800.0,-900..1800,hard
+P318_NO_CROSSED_OR_LOCKED_L1,True,0.0,0,hard
+P318_DEPTH_SORT_OK,True,bid=0.0;ask=0.0,0,hard
+P318_DEPTH_BEYOND_L1_MATERIAL,True,28350310,28350310,hard
+P318_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
+P318_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard
