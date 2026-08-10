@@ -1,0 +1,14 @@
+contract_id,contract_value,description
+P326_INPUT_EVENTS,50,Use the expanded Phase325 synthetic catalyst event ledger.
+P326_INPUT_EVENT_SYMBOL_ROWS,1600,Use the Phase325 event-symbol dense join work order.
+P326_JOIN_WINDOW_SECONDS,pre=900;post=1800,Preserve Phase317/320 event-window comparability.
+P326_JOIN_CLOCK,event_time_ist,Center each join window on the generated catalyst timestamp.
+P326_FULL_DEPTH_REQUIRED,depth_levels_1_to_5,Materialization must retain all visible top-five market-by-price depth columns.
+P326_DEPTH_BEYOND_L1_REQUIRED,depth_levels_2_to_5_material,Downstream features/search must not collapse to top-of-book only.
+P326_OUTPUT_JOINED_PARQUET,outputs/phase327/phase327_joined_expanded_event_top5_depth.parquet,Phase327 expanded joined top-five depth target.
+P326_OUTPUT_COVERAGE_AUDIT,outputs/phase327/phase327_event_symbol_timestamp_coverage.csv,Phase327 coverage audit target.
+P326_TARGET_EVENT_ROWS,50,Preferred expanded breadth target inherited from Phase324/325.
+P326_MIN_EVENT_ROWS,40,Minimum expanded breadth target inherited from Phase324/325.
+P326_NO_DIRECTIONAL_LABEL,required,"Event rows provide timing only, not true bullish/bearish labels."
+P326_NO_STRATEGY_SEARCH,required,Expanded join materialization precedes feature/search phases.
+P326_BOUNDARIES,replay=0;promotion=0;paper=0;claim=0,No strategy acceptance boundaries change in this phase.

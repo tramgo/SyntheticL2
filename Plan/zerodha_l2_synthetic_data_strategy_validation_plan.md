@@ -14721,6 +14721,51 @@ Current Phase149 evidence after Phase325:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_top5_depth_join_precommit_open`;
 - current next action: `run_phase326_event_catalyst_expanded_top5_depth_join_precommit_no_replay`.
 
+## 24.153 Phase326 Event-Catalyst Expanded Top-Five Depth Join Precommit Completed
+
+Phase326 precommits the expanded top-five-depth join contract for the Phase325 50-event synthetic catalyst universe. It converts the 50-event, 1,600 event-symbol work order into a Phase327 materialization contract without running strategy search, replay, promotion, paper/live acceptance or profitability claims.
+
+Phase326 keeps the project objective centered on full Zerodha-style top-five depth:
+
+- depth levels 1-5 are required in the materialized dataset;
+- levels 2-5 must remain materially used, not decorative;
+- L1-only candidates remain disallowed;
+- the next step is data materialization only, not strategy selection.
+
+Phase326 evidence:
+
+- expanded top-five depth join precommit complete: `1`;
+- generated synthetic catalyst event rows: `50`;
+- event-symbol work-order rows: `1,600`;
+- minimum symbols per event: `32`;
+- join contract rows: `13`;
+- target event rows: `50`;
+- minimum event rows: `40`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `11/11`.
+
+Phase326 outputs:
+
+- `outputs/phase326/phase326_acceptance_summary.csv`;
+- `outputs/phase326/phase326_expanded_top5_depth_join_contract.csv`;
+- `outputs/phase326/phase326_phase327_materialization_work_order.csv`;
+- `outputs/phase326/phase326_gate_evaluation.csv`;
+- `outputs/phase326/phase326_event_catalyst_expanded_top5_depth_join_precommit_report.md`;
+- `outputs/phase326/phase326_event_catalyst_expanded_top5_depth_join_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase326:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_top5_depth_join_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_top5_depth_join_materialization_open`;
+- current next action: `run_phase327_event_catalyst_expanded_top5_depth_join_materialization_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

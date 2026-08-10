@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P326_PHASE325_MATERIALIZATION_COMPLETE,True,1,1,hard
+P326_TARGET_EVENT_ROWS_PRESENT,True,50,>=50,hard
+P326_MIN_EVENT_ROWS_PRESENT,True,50,>=40,hard
+P326_DISTINCT_EVENT_DATES_PRESENT,True,50,>=50,hard
+P326_32_SYMBOL_COVERAGE_PRESENT,True,32,>=32,hard
+P326_EVENT_SYMBOL_WORK_ORDER_COMPLETE,True,events=50;rows=1600,all_events_x_32_symbols,hard
+P326_JOIN_WINDOWS_FIXED,True,0,0,hard
+P326_FULL_DEPTH_CONTRACT_PRESENT,True,contract,present,hard
+P326_DEPTH_BEYOND_L1_CONTRACT_PRESENT,True,contract,present,hard
+P326_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
+P326_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard
