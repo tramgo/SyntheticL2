@@ -14597,6 +14597,50 @@ Current Phase149 evidence after Phase322:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_strategy_search_interpretation_open`;
 - current next action: `run_phase323_event_catalyst_multievent_strategy_search_interpretation_no_replay`.
 
+## 24.150 Phase323 Event-Catalyst Multi-Event Strategy Search Interpretation Completed
+
+Phase323 interprets the Phase322 training-only search. It preserves the profitable fixed-capital research clue while refusing replay, promotion or acceptance because the strongest 2x-cost pockets remain sparse. The result is useful: it identifies which family should be expanded. It is not yet sufficient: the current 10-event universe cannot satisfy the 30 scheduled-event robustness floor.
+
+Phase323 evidence:
+
+- multi-event strategy-search interpretation complete: `1`;
+- fixed-capital profitable research leads exist: `1`;
+- acceptance-grade candidates exist: `0`;
+- best 2x-cost lead is sparse: `1`;
+- current event universe limits acceptance: `1`;
+- best family preserved for breadth expansion: `P321_DEPTH_ACCEL_REVERSAL`;
+- passive-aware rescue status: `diagnostic_only_not_dominant`;
+- selected next route: `P324_EVENT_CATALYST_BREADTH_EXPANSION_PRECOMMIT`;
+- hard gates: `8/8`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase323 interpretation:
+
+- The Phase322 search did find profitable-looking research leads under fixed capital and 2x costs, which satisfies the user-requested `>12%` sparse profitability-clue lens.
+- It did not produce an acceptance-grade result: the best 2x-cost lead used only `8` scheduled events, and even the broadest current scenario could not reach the `30` event floor because the present event universe has only `10` synthetic catalyst events.
+- The correct next action is therefore not to stop and not to promote. It is to expand event breadth around the preserved full-depth family `P321_DEPTH_ACCEL_REVERSAL`, while keeping Zerodha costs, fixed-capital annualization, depth levels 2-5 materiality, target separation and no replay/paper/live boundaries intact.
+
+Phase323 outputs:
+
+- `outputs/phase323/phase323_acceptance_summary.csv`;
+- `outputs/phase323/phase323_family_interpretation_summary.csv`;
+- `outputs/phase323/phase323_execution_policy_interpretation_summary.csv`;
+- `outputs/phase323/phase323_breadth_interpretation_summary.csv`;
+- `outputs/phase323/phase323_interpretation_decision_ledger.csv`;
+- `outputs/phase323/phase323_gate_evaluation.csv`;
+- `outputs/phase323/phase323_event_catalyst_multievent_strategy_search_interpretation_report.md`;
+- `outputs/phase323/phase323_event_catalyst_multievent_strategy_search_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase323:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_breadth_expansion_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_breadth_expansion_precommit_open`;
+- current next action: `run_phase324_event_catalyst_breadth_expansion_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,6 @@
+breadth_bucket,scenario_rows,best_annualized_pct,max_scheduled_event_rows,distinct_families
+events_lt_10,43776,85.08131468912852,9,10
+events_eq_10,94464,59.136319160013045,10,10
+events_ge_30,0,,0,0
+cost200_above12_events_lt_30,320,64.23978494555296,10,5
+acceptance_grade,0,,0,0

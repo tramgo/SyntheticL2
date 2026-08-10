@@ -1,0 +1,11 @@
+decision_id,decision_value,evidence,interpretation
+phase322_training_complete,1,scenario_rows=138240,Training-only search completed.
+fixed_capital_profitable_research_leads_exist,1,cost200_above12_scenario_rows=320; threshold=12.0,Research lead exists under user-requested annualized threshold and 2x costs.
+acceptance_grade_candidates_exist,0,cost200_acceptance_grade_candidate_rows=0,No acceptance-grade candidate unless 2x cost and breadth gates both pass.
+best_2x_cost_lead_is_sparse,1,best_cost200_annualized=64.23978494555296; best_cost200_events=8; required_events=30,Best 2x-cost return is profitable-looking but too sparse.
+breadth_universe_limits_acceptance,1,broadest_scheduled_events=10; required_events=30,The current 10-event universe cannot prove a 30-event acceptance floor.
+best_family_preserved_for_breadth_expansion,P321_DEPTH_ACCEL_REVERSAL,top family from Phase322,Preserve the best clue; do not discard just because acceptance is not yet proven.
+passive_aware_rescue_status,diagnostic_only_not_dominant,best_passive=26.020007407463368; best_taker=85.08131468912852,"Attached passive-aware realism is preserved as a diagnostic policy, not a shortcut to acceptance."
+replay_or_promotion_allowed,0,closed,No replay or promotion from sparse training-only evidence.
+deployable_profitability_claim_allowed,0,closed,No deployable profitability claim from Phase323.
+selected_next_route,P324_EVENT_CATALYST_BREADTH_EXPANSION_PRECOMMIT,run_phase324_event_catalyst_breadth_expansion_precommit_no_replay,Expand event breadth around preserved full-depth families before any replay/promotion decision.
