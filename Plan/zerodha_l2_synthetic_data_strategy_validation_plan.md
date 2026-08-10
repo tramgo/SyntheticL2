@@ -15334,6 +15334,55 @@ Current Phase149 evidence after Phase335:
 - `synthetic_strategy_discovery` status: `cost_stress_margin_redesign_interpretation_open`;
 - current next action: `run_phase336_cost_stress_margin_redesign_interpretation_no_replay`.
 
+## 24.163 Phase336 Cost-Stress Margin Redesign Interpretation Completed
+
+Phase336 interprets the Phase335 cost-stress-margin redesign result. It does not rerun the search, replay the candidates, promote a strategy, open paper/live acceptance or claim deployable profitability.
+
+Phase336 preserved the positive training-only evidence:
+
+- 2x Zerodha cost-stress scenarios above `>12%` annualized from Phase335: `138`;
+- 2x-cost acceptance-grade training candidates preserved: `32`;
+- best preserved acceptance-grade candidate: `P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy`;
+- best preserved acceptance-grade annualized fixed-capital diagnostic: `19.32314001122077%`;
+- best preserved acceptance-grade scheduled events: `47`;
+- candidate lanes preserved: `P334_LANE_B_TURNOVER_COMPRESSION`; `P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN`; `P334_LANE_D_HORIZON_AND_EXIT_MARGIN`;
+- passive-aware route status: `diagnostic_only_no_acceptance_grade_rows`.
+
+Phase336 interpretation:
+
+- The Phase335 result is a real training-only research pocket under 2x Zerodha all-in cost stress.
+- The result is not accepted as final profitability because it has not passed a precommitted holdout validation step.
+- Passive-aware scenarios remain diagnostic only because they produced no acceptance-grade rows.
+- The correct next step is not replay/promotion. It is a holdout-validation precommit that freezes candidate selection and acceptance rules before any holdout execution.
+
+Phase336 hard gates:
+
+- interpretation complete: pass;
+- 2x-cost profitable training pockets exist: pass;
+- 2x-cost acceptance-grade training candidates exist: pass;
+- candidate rows preserved: pass, `32`;
+- passive-aware status recorded: pass;
+- next route selected: pass, `P337_COST_STRESS_HOLDOUT_VALIDATION_PRECOMMIT`;
+- no replay/promotion/paper/live/profitability claim: pass;
+- hard gates: `8/8`.
+
+Phase336 outputs:
+
+- `outputs/phase336/phase336_acceptance_summary.csv`;
+- `outputs/phase336/phase336_acceptance_grade_candidate_ledger.csv`;
+- `outputs/phase336/phase336_failure_mode_ledger.csv`;
+- `outputs/phase336/phase336_interpretation_decision_ledger.csv`;
+- `outputs/phase336/phase336_gate_evaluation.csv`;
+- `outputs/phase336/phase336_cost_stress_margin_redesign_interpretation_report.md`;
+- `outputs/phase336/phase336_cost_stress_margin_redesign_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase336:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `cost_stress_holdout_validation_precommit_open`;
+- `synthetic_strategy_discovery` status: `cost_stress_holdout_validation_precommit_open`;
+- current next action: `run_phase337_cost_stress_holdout_validation_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

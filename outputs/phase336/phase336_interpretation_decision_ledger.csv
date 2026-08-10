@@ -1,0 +1,11 @@
+decision_id,decision_value,evidence,interpretation
+phase335_training_complete,1,scenario_rows=6720,Phase335 completed the training-only redesign search.
+cost200_profitable_training_pockets_exist,1,cost200_above12=138,The redesigned training surface crossed the user >12% threshold under 2x costs.
+cost200_acceptance_grade_training_candidates_exist,1,acceptance_rows=32,"Training-only candidates pass cost, breadth, and control diagnostics."
+best_acceptance_grade_candidate_preserved,P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy,annualized=19.32314001122077; events=47,Preserve the best candidate for holdout precommit.
+candidate_lanes_preserved,P334_LANE_B_TURNOVER_COMPRESSION;P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN;P334_LANE_D_HORIZON_AND_EXIT_MARGIN,candidate_rows=32,Preserve all lanes that generated acceptance-grade rows.
+passive_aware_status,diagnostic_only_no_acceptance_grade_rows,passive acceptance-grade rows=0,Passive-aware realism remains diagnostic and should not be used to claim acceptance.
+failure_modes_recorded,3,sparse; passive; holdout_required,Record reasons this is not yet final profitability.
+replay_allowed_now,0,training-only evidence,No replay opens directly from Phase336.
+paper_live_or_profitability_claim_allowed,0,closed,No paper/live or deployable profitability claim opens.
+selected_next_route,P337_COST_STRESS_HOLDOUT_VALIDATION_PRECOMMIT,run_phase337_cost_stress_holdout_validation_precommit_no_replay,Precommit holdout/falsification for the preserved training candidates.

@@ -1,0 +1,4 @@
+failure_mode,scenario_rows,interpretation
+sparse_high_return_not_acceptance_grade,106,Some high-return rows are too sparse and must not drive validation.
+passive_aware_no_cost200_acceptance,0,Passive-aware route did not produce acceptance-grade candidates; keep it diagnostic.
+candidate_count_requires_holdout,32,"Positive training candidates exist, so next step must be precommitted holdout/falsification, not a profitability claim."
