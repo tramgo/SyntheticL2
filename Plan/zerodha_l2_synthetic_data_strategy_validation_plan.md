@@ -13784,9 +13784,9 @@ Phase305 audits the Phase304 event-catalyst dropzone and imports only non-templa
 Phase305 evidence:
 
 - event-catalyst import audit complete: `1`;
-- non-template source files audited: `1`;
-- raw candidate rows read: `1`;
-- imported event rows: `1`;
+- non-template source files audited: `2`;
+- raw candidate rows read: `2`;
+- imported event rows: `2`;
 - import issue rows: `0`;
 - template rows imported: `0`;
 - strategy search allowed now: `0`;
@@ -13807,6 +13807,14 @@ Phase305 imported source:
 - confidence: `0.90`;
 - embargo-safe flag: `1`;
 - interpretation: exogenous event timestamp only, not a directional label.
+- file: `event_sources/event_catalysts/dropzone/event_catalysts_synthetic_calendar_rbi_mpc_20260820.csv`;
+- event time: `2026-08-20 15:30:00+05:30`;
+- event type: `rbi_policy`;
+- symbol scope: `ALL`;
+- source file reference: `event_sources/event_catalysts/dropzone/event_catalysts_rbi_mpc_20260805.csv`;
+- confidence: `0.80`;
+- embargo-safe flag: `1`;
+- interpretation: synthetic-calendar alignment row for dense-lake join validation only; not a real-world event date, real-world event time, or directional label.
 
 Phase305 import boundary:
 
@@ -13838,9 +13846,9 @@ Phase306 precommits the join between the imported event-catalyst ledger and the 
 Phase306 evidence:
 
 - join precommit complete: `1`;
-- imported event rows available: `1`;
-- event × symbol join work-order rows: `32`;
-- distinct events with matching dense month: `1`;
+- imported event rows available: `2`;
+- event × symbol join work-order rows: `64`;
+- distinct events with matching dense month: `2`;
 - symbols in join universe: `32`;
 - pre-event window: `900` seconds;
 - post-event window: `1800` seconds;
@@ -13879,17 +13887,17 @@ Current Phase149 evidence after Phase306:
 - `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_materialization_open`;
 - current next action: `run_phase307_event_catalyst_top5_depth_join_materialization_no_strategy_search`.
 
-## 24.134 Phase307 Event-Catalyst Top-Five Depth Join Materialization Completed, Timestamp Overlap Blocked
+## 24.134 Phase307 Event-Catalyst Top-Five Depth Join Materialization Completed
 
-Phase307 attempted to materialize the Phase306 event-catalyst to tick-level top-five market-by-price depth join. This phase reads the dense Parquet metadata first, records timestamp coverage by event-symbol row, retains the full Zerodha-style depth levels 1-5 column contract, and only scans a bounded event window when the dense file timestamp range overlaps the event window. It does not run strategy search, replay, promotion, paper/live acceptance, or profitability analysis.
+Phase307 materializes the Phase306 event-catalyst to tick-level top-five market-by-price depth join. This phase reads dense Parquet row-group metadata first, records timestamp coverage by event-symbol row, retains the full Zerodha-style depth levels 1-5 column contract, and scans only bounded event windows whose row groups overlap the requested timestamps. It does not run strategy search, replay, promotion, paper/live acceptance, or profitability analysis.
 
 Phase307 evidence:
 
 - join materialization complete: `1`;
-- event-symbol work-order rows audited: `32`;
-- timestamp-overlapping event-symbol rows: `0`;
-- materialized joined rows: `0`;
-- materialized symbols: `0`;
+- event-symbol work-order rows audited: `64`;
+- timestamp-overlapping event-symbol rows: `32`;
+- materialized joined rows: `2,721,782`;
+- materialized symbols: `32`;
 - full depth columns retained: `1`;
 - strategy search allowed now: `0`;
 - strategy replay allowed: `0`;
@@ -13903,7 +13911,9 @@ Phase307 timestamp finding:
 - imported RBI event window: `2026-08-05 09:45:00+05:30` to `2026-08-05 10:30:00+05:30`;
 - representative dense August synthetic file start: about `2026-08-19 14:38-14:45+05:30`;
 - representative dense August synthetic file end: up to about `2026-09-17 05:00:57+05:30`;
-- interpretation: the dense full-year synthetic lake exists and has large per-symbol row counts, but the seeded RBI event timestamp is outside the current dense timestamp coverage. This blocks materialized event-window rows and keeps strategy search closed.
+- the original real RBI event timestamp is outside the current dense synthetic timestamp coverage and remains documented as non-overlapping;
+- a separate synthetic-calendar alignment row at `2026-08-20 15:30:00+05:30` overlaps row-level dense timestamps and produced joined rows across all 32 symbols;
+- interpretation: the joined artifact is valid for synthetic-calendar strategy research preparation, not for real-world RBI date claims or directional event labels.
 
 Phase307 outputs:
 
@@ -13918,9 +13928,9 @@ Phase307 outputs:
 Current Phase149 evidence after Phase307:
 
 - hard gates remain `322/322`;
-- `real_receive_flow_source` status: `event_catalyst_top5_depth_join_blocked_no_timestamp_overlap`;
-- `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_blocked_no_timestamp_overlap`;
-- current next action: `add_event_catalyst_with_timestamp_overlapping_dense_lake_or_recalendarize_synthetic_event_time_then_rerun_phase307`.
+- `real_receive_flow_source` status: `event_catalyst_top5_depth_join_quality_audit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_quality_audit_open`;
+- current next action: `run_phase308_event_catalyst_join_quality_audit_no_strategy_search`.
 
 ## 25. Final Principle
 

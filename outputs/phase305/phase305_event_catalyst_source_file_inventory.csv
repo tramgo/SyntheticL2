@@ -1,2 +1,3 @@
 source_file,row_count,required_columns_present,importable_rows,issue_rows,file_status
 event_sources\event_catalysts\dropzone\event_catalysts_rbi_mpc_20260805.csv,1,1,1,0,importable
+event_sources\event_catalysts\dropzone\event_catalysts_synthetic_calendar_rbi_mpc_20260820.csv,1,1,1,0,importable

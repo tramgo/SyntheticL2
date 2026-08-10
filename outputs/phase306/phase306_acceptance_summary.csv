@@ -1,8 +1,8 @@
 metric,value,description
 phase306_join_precommit_complete,1,Phase306 event-catalyst top-five depth join precommit completed
-phase306_imported_event_rows,1,Imported event-catalyst rows available
-phase306_event_universe_rows,32,Event x symbol join work-order rows
-phase306_event_rows_with_depth_month,1,Distinct events with matching dense month
+phase306_imported_event_rows,2,Imported event-catalyst rows available
+phase306_event_universe_rows,64,Event x symbol join work-order rows
+phase306_event_rows_with_depth_month,2,Distinct events with matching dense month
 phase306_symbol_rows,32,Symbols in join universe
 phase306_pre_event_seconds,900,Pre-event window
 phase306_post_event_seconds,1800,Post-event window

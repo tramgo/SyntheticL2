@@ -1,8 +1,8 @@
 metric,value,description
 phase305_event_catalyst_import_audit_complete,1,Phase305 event-catalyst source import audit completed
-phase305_candidate_source_file_rows,1,Non-template CSV files audited
-phase305_candidate_source_raw_rows,1,Raw candidate rows read
-phase305_imported_event_rows,1,Rows imported into event catalyst source ledger
+phase305_candidate_source_file_rows,2,Non-template CSV files audited
+phase305_candidate_source_raw_rows,2,Raw candidate rows read
+phase305_imported_event_rows,2,Rows imported into event catalyst source ledger
 phase305_issue_rows,0,Import issue rows
 phase305_template_rows_imported,0,Template rows are never imported
 phase305_strategy_search_allowed_now,0,No strategy search until imported events exist and Phase306 precommits join

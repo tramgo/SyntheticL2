@@ -1,8 +1,8 @@
 gate_id,passed,observed_value,required_value,severity
 P307_PHASE306_PRECOMMIT_COMPLETE,True,1,1,hard
-P307_WORK_ORDER_COVERAGE_AUDITED,True,32,>0,hard
+P307_WORK_ORDER_COVERAGE_AUDITED,True,64,>0,hard
 P307_FULL_DEPTH_COLUMNS_RETAINED,True,1,1,hard
-P307_TIMESTAMP_OVERLAP_RECORDED,True,0,recorded,hard
-P307_MATERIALIZATION_RESULT_RECORDED,True,0,recorded,hard
+P307_TIMESTAMP_OVERLAP_RECORDED,True,32,recorded,hard
+P307_MATERIALIZATION_RESULT_RECORDED,True,2721782,recorded,hard
 P307_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
 P307_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard

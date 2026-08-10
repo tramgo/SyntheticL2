@@ -1,9 +1,9 @@
 metric,value,description
 phase307_join_materialization_complete,1,Phase307 event-catalyst top-five depth join materialization completed
-phase307_work_order_rows,32,Event-symbol work-order rows audited
-phase307_timestamp_overlap_rows,0,Event-symbol rows whose dense file overlaps event window
-phase307_materialized_join_rows,0,Joined top-five depth rows materialized
-phase307_materialized_symbols,0,Symbols with joined rows
+phase307_work_order_rows,64,Event-symbol work-order rows audited
+phase307_timestamp_overlap_rows,32,Event-symbol rows whose dense file overlaps event window
+phase307_materialized_join_rows,2721782,Joined top-five depth rows materialized
+phase307_materialized_symbols,32,Symbols with joined rows
 phase307_full_depth_columns_present,1,Depth levels 1-5 price/quantity/order columns retained
 phase307_strategy_search_allowed_now,0,No strategy search in Phase307
 phase307_strategy_replay_allowed,0,No replay
@@ -12,4 +12,4 @@ phase307_paper_or_live_acceptance_allowed,0,No paper/live
 phase307_deployable_profitability_claim_allowed,0,No deployable profitability claim
 phase307_hard_gate_pass_rows,7,Passed hard gates
 phase307_hard_gate_rows,7,Hard gates
-phase307_next_best_action,add_event_catalyst_with_timestamp_overlapping_dense_lake_or_recalendarize_synthetic_event_time_then_rerun_phase307,Recommended next action
+phase307_next_best_action,run_phase308_event_catalyst_join_quality_audit_no_strategy_search,Recommended next action

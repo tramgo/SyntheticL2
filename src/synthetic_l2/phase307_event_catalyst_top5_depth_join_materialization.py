@@ -63,17 +63,21 @@ def parquet_timestamp_bounds(path: Path) -> tuple[int, int, int, int]:
 
 def read_window(path: Path, start_epoch: int, end_epoch: int) -> pd.DataFrame:
     columns = ["exchange_timestamp_ms", "last_price", "volume_traded", *DEPTH_COLUMNS]
-    try:
-        table = pq.read_table(
-            path,
-            columns=columns,
-            filters=[("exchange_timestamp_ms", ">=", start_epoch), ("exchange_timestamp_ms", "<=", end_epoch)],
-        )
-    except Exception:
-        table = pq.read_table(path, columns=columns)
-        frame = table.to_pandas()
-        return frame[(frame["exchange_timestamp_ms"] >= start_epoch) & (frame["exchange_timestamp_ms"] <= end_epoch)].copy()
-    return table.to_pandas()
+    pf = pq.ParquetFile(path)
+    ts_idx = pf.schema.names.index("exchange_timestamp_ms")
+    row_groups: list[int] = []
+    for i in range(pf.num_row_groups):
+        stats = pf.metadata.row_group(i).column(ts_idx).statistics
+        if stats is None or not stats.has_min_max:
+            row_groups.append(i)
+            continue
+        if int(stats.min) <= end_epoch and int(stats.max) >= start_epoch:
+            row_groups.append(i)
+    if not row_groups:
+        return pd.DataFrame(columns=columns)
+    table = pf.read_row_groups(row_groups, columns=columns)
+    frame = table.to_pandas()
+    return frame[(frame["exchange_timestamp_ms"] >= start_epoch) & (frame["exchange_timestamp_ms"] <= end_epoch)].copy()
 
 
 def materialize(work_order: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:

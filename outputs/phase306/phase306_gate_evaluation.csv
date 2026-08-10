@@ -1,6 +1,6 @@
 gate_id,passed,observed_value,required_value,severity
-P306_PHASE305_IMPORTED_EVENTS,True,1,>0,hard
-P306_EVENT_UNIVERSE_EXPANDED,True,32,>0,hard
+P306_PHASE305_IMPORTED_EVENTS,True,2,>0,hard
+P306_EVENT_UNIVERSE_EXPANDED,True,64,>0,hard
 P306_FULL_DEPTH_SCHEMA_AVAILABLE,True,1,1,hard
 P306_JOIN_CONTRACT_PRESENT,True,7,>=7,hard
 P306_NO_L1_ONLY_JOIN,True,full_depth_levels_1_to_5_required,required,hard

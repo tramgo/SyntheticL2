@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-08-10T05:44:48.224145+00:00",
+  "generated_utc": "2026-08-10T05:58:00.969532+00:00",
   "scope": "phase306_event_catalyst_top5_depth_join_precommit",
   "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
-  "generator_version": "82c6c3cd4780147bcc548ff3d587304a20d9047c",
+  "generator_version": "878ba3d583033b1fa7bb5652507ae040d45e2387",
   "configuration_hash": "e0ec18056a2d05a1314445c40afd64ae8d9e367e5285799df24250f5237b5b7c",
   "random_seed": "not_applicable_deterministic",
   "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
@@ -11,5 +11,5 @@
   "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
   "cost_model_version": "not_applicable_join_precommit_only",
   "latency_model_version": "not_applicable_join_precommit_only",
-  "creation_timestamp": "2026-08-10T05:44:48.224145+00:00"
+  "creation_timestamp": "2026-08-10T05:58:00.969532+00:00"
 }
