@@ -1,0 +1,8 @@
+quality_id,passed,observed,required
+feature_matrix_nonempty,True,32,>0
+symbol_breadth_32,True,32,>=32
+materialized_event_rows_nonzero,True,1,>=1
+feature_columns_nonempty,True,29,>0
+target_columns_nonempty,True,6,>0
+no_required_feature_nulls,True,0,0
+relative_window_complete,True,32,32

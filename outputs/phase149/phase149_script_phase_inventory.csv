@@ -239,6 +239,7 @@ phase,runner,runner_exists,runner_suffix
 308,scripts\run_phase308_event_catalyst_join_quality_audit.py,True,.py
 309,scripts\run_phase309_event_catalyst_feature_precommit.py,True,.py
 30,scripts\run_phase30_strategy_decision_triage.py,True,.py
+310,scripts\run_phase310_event_catalyst_feature_materialization.py,True,.py
 31,scripts\run_phase31_redesign_evidence_contract.py,True,.py
 32,scripts\run_phase32_contract_evidence_scanner.py,True,.py
 33,scripts\run_phase33_broker_evidence_intake.py,True,.py

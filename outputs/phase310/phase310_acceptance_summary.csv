@@ -1,0 +1,16 @@
+metric,value,description
+phase310_event_feature_materialization_complete,1,Phase310 event-catalyst feature materialization completed
+phase310_feature_matrix_rows,32,Feature matrix rows
+phase310_materialized_event_rows,1,Distinct materialized events
+phase310_materialized_symbols,32,Distinct materialized symbols
+phase310_quality_rows,7,Quality rows
+phase310_quality_pass_rows,7,Quality rows passed
+phase310_full_depth_features_materialized,1,Depth levels 2-5 feature columns present
+phase310_strategy_search_allowed_now,0,No strategy search in Phase310
+phase310_strategy_replay_allowed,0,No replay
+phase310_strategy_promotion_allowed,0,No promotion
+phase310_paper_or_live_acceptance_allowed,0,No paper/live
+phase310_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase310_hard_gate_pass_rows,6,Passed hard gates
+phase310_hard_gate_rows,6,Hard gates
+phase310_next_best_action,run_phase311_event_catalyst_strategy_search_precommit_no_execution,Recommended next action

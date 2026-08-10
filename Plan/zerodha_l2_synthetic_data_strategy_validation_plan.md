@@ -14017,6 +14017,49 @@ Current Phase149 evidence after Phase309:
 - `synthetic_strategy_discovery` status: `event_catalyst_feature_materialization_open`;
 - current next action: `run_phase310_event_catalyst_feature_materialization_no_strategy_search`.
 
+## 24.137 Phase310 Event-Catalyst Feature Materialization Completed
+
+Phase310 materializes a compact event-symbol feature matrix from the Phase307 joined tick-level top-five depth artifact. It separates pre/event-time candidate features from post-event response diagnostics so post-event returns are not accidentally treated as model inputs. It preserves full-depth levels 1-5 and explicitly includes depth-beyond-L1 features. It does not run strategy search, replay, promotion, paper/live acceptance, or profitability analysis.
+
+Phase310 evidence:
+
+- event feature materialization complete: `1`;
+- feature matrix rows: `32`;
+- distinct materialized events: `1`;
+- distinct materialized symbols: `32`;
+- quality rows: `7`;
+- quality rows passed: `7`;
+- full-depth features materialized: `1`;
+- strategy search allowed now: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `6/6`.
+
+Phase310 materialized artifact policy:
+
+- candidate feature columns are pre-event or event-time only;
+- response/target diagnostic columns are named with the `target_` prefix;
+- post-event returns at 60, 300, 900, and 1800 seconds are present as diagnostics for future precommitted strategy evaluation;
+- depth-beyond-L1 features such as L2-L5 imbalance and pressure are present so this branch remains genuinely top-five-depth, not L1-only.
+
+Phase310 outputs:
+
+- `outputs/phase310/phase310_acceptance_summary.csv`;
+- `outputs/phase310/phase310_event_catalyst_feature_matrix.csv`;
+- `outputs/phase310/phase310_feature_quality.csv`;
+- `outputs/phase310/phase310_gate_evaluation.csv`;
+- `outputs/phase310/phase310_event_catalyst_feature_materialization_report.md`;
+- `outputs/phase310/phase310_event_catalyst_feature_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase310:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_strategy_search_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_strategy_search_precommit_open`;
+- current next action: `run_phase311_event_catalyst_strategy_search_precommit_no_execution`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
