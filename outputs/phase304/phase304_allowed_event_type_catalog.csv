@@ -1,0 +1,9 @@
+event_type,description
+macro_release,Scheduled or surprise macro release affecting broad market or sector.
+rbi_policy,RBI policy/rate/liquidity event with timestamped release.
+earnings_result,Company result or guidance event with symbol-specific scope.
+corporate_announcement,Exchange/company announcement with timestamped public release.
+index_rebalance,Index inclusion/exclusion/rebalance event with known effective or announcement time.
+block_deal,Large block/bulk deal or ownership event when externally timestamped.
+sector_news,Sector-wide catalyst from an external feed or manual evidence ledger.
+other,Allowed only with notes and source evidence.

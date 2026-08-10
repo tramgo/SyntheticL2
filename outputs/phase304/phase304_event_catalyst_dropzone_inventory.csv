@@ -1,0 +1,2 @@
+path,row_count,required_columns_present,read_error
+event_sources\event_catalysts\dropzone\event_catalyst_events_template.csv,1,1,

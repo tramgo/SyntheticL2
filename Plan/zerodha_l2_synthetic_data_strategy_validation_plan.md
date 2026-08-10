@@ -13717,6 +13717,66 @@ Current Phase149 evidence after Phase303:
 - `synthetic_strategy_discovery` status: `material_new_event_catalyst_source_acquisition_open`;
 - current next action: `acquire_or_build_material_new_event_catalyst_source_before_any_new_l2_strategy_search`.
 
+## 24.131 Phase304 Event-Catalyst Source Acquisition Package Completed
+
+Phase304 creates the acquisition package for the material-new external event-catalyst source selected by Phase303. This milestone does not run strategy search and does not import event rows. It makes the external-source requirement concrete enough to execute next.
+
+Phase304 evidence:
+
+- source acquisition package complete: `1`;
+- required event schema rows: `7`;
+- optional event schema rows: `5`;
+- dropzone CSV files inventoried: `1`;
+- non-template source files present: `0`;
+- external event rows imported: `0`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `8/8`.
+
+Required event-catalyst schema:
+
+- `event_time_ist`;
+- `event_type`;
+- `symbol_scope`;
+- `index_scope`;
+- `source_url_or_file`;
+- `confidence`;
+- `embargo_safe_flag`.
+
+Optional event-catalyst fields:
+
+- `event_title`;
+- `expected_impact_side`;
+- `source_provider`;
+- `source_published_time_ist`;
+- `notes`.
+
+Created dropzone/template:
+
+- `event_sources/event_catalysts/dropzone/event_catalyst_events_template.csv`;
+- template rows are placeholders only and must be replaced before Phase305 can import events.
+
+Phase304 outputs:
+
+- `outputs/phase304/phase304_acceptance_summary.csv`;
+- `outputs/phase304/phase304_event_catalyst_schema_contract.csv`;
+- `outputs/phase304/phase304_allowed_event_type_catalog.csv`;
+- `outputs/phase304/phase304_event_catalyst_events_template.csv`;
+- `outputs/phase304/phase304_event_catalyst_dropzone_inventory.csv`;
+- `outputs/phase304/phase304_gate_evaluation.csv`;
+- `outputs/phase304/phase304_event_catalyst_source_acquisition_package_report.md`;
+- `outputs/phase304/phase304_event_catalyst_source_acquisition_package_manifest.json`.
+
+Current Phase149 evidence after Phase304:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_dropzone_population_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_dropzone_population_open`;
+- current next action: `populate_event_catalyst_dropzone_then_run_phase305_event_catalyst_source_import_audit`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

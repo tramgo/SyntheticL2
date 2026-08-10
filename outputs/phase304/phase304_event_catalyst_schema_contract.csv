@@ -1,0 +1,13 @@
+column_name,data_type,required_status,description
+event_time_ist,datetime_ist,required,Timestamp at which the market could first react; no future publication time allowed.
+event_type,category,required,"One of macro_release, rbi_policy, earnings_result, corporate_announcement, index_rebalance, block_deal, sector_news, other."
+symbol_scope,pipe_or_comma_symbols,required,NSE symbols affected directly; use ALL if index-wide.
+index_scope,category,required,"NIFTY50, BANKNIFTY, SECTOR, ALL, or NONE."
+source_url_or_file,string,required,External URL or local evidence file path backing the event.
+confidence,float_0_to_1,required,Confidence that timestamp/scope are usable without hindsight.
+embargo_safe_flag,int_0_or_1,required,1 only if the event time is observable no later than the reaction window start.
+event_title,string,optional,Human-readable event title.
+expected_impact_side,category,optional,"unknown, bullish, bearish, mixed; optional metadata only, not a label."
+source_provider,string,optional,"NSE, BSE, RBI, company_ir, news_vendor, manual_ledger, etc."
+source_published_time_ist,datetime_ist,optional,Publication time if different from event time.
+notes,string,optional,Free-text notes for source audit.

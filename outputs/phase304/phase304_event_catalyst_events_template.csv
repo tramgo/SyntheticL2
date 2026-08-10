@@ -1,0 +1,2 @@
+event_time_ist,event_type,symbol_scope,index_scope,source_url_or_file,confidence,embargo_safe_flag,event_title,expected_impact_side,source_provider,source_published_time_ist,notes
+2026-07-10 09:15:00+05:30,other,HDFCBANK,BANKNIFTY,REPLACE_WITH_EXTERNAL_SOURCE_URL_OR_LOCAL_EVIDENCE_FILE,0.80,1,TEMPLATE_ROW_DELETE_OR_REPLACE,unknown,manual_ledger,2026-07-10 09:15:00+05:30,Template only; Phase305 must reject this placeholder if not replaced.

@@ -1,0 +1,15 @@
+metric,value,description
+phase304_source_acquisition_package_complete,1,Phase304 source acquisition package completed
+phase304_required_schema_rows,7,Required event schema rows
+phase304_optional_schema_rows,5,Optional event schema rows
+phase304_dropzone_file_rows,1,CSV files inventoried in dropzone
+phase304_non_template_source_file_rows,0,Non-template source files currently present
+phase304_external_event_rows_imported,0,No event rows imported in Phase304
+phase304_strategy_search_allowed_now,0,No strategy search until source is populated and audited
+phase304_strategy_replay_allowed,0,No replay
+phase304_strategy_promotion_allowed,0,No promotion
+phase304_paper_or_live_acceptance_allowed,0,No paper/live
+phase304_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase304_hard_gate_pass_rows,8,Passed hard gates
+phase304_hard_gate_rows,8,Hard gates
+phase304_next_best_action,populate_event_catalyst_dropzone_then_run_phase305_event_catalyst_source_import_audit,Recommended next action
