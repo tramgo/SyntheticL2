@@ -14766,6 +14766,49 @@ Current Phase149 evidence after Phase326:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_top5_depth_join_materialization_open`;
 - current next action: `run_phase327_event_catalyst_expanded_top5_depth_join_materialization_no_strategy_search`.
 
+## 24.154 Phase327 Event-Catalyst Expanded Top-Five Depth Join Materialization Completed
+
+Phase327 materializes the Phase326 expanded event-catalyst top-five-depth join. It writes the expanded joined parquet and coverage audit for the full Phase325 50-event universe and 32-symbol ticker set. The phase initially exposed a real coverage issue: assigned dense source files could show broad timestamp metadata overlap while producing zero rows inside specific event windows. The accepted Phase327 run therefore keeps assigned-file rows as primary data and applies a fallback-source repair only to zero-row event-symbol windows, scanning a narrow covering dense file for the same symbol and deduplicating by event, symbol and timestamp.
+
+This is still a data materialization phase only. It does not run strategy search, replay, promotion, paper/live acceptance or deployable profitability claims.
+
+Phase327 evidence:
+
+- expanded top-five depth join materialization complete: `1`;
+- event-symbol work-order rows audited: `1,600`;
+- timestamp-overlap rows recorded: `1,600`;
+- materialized joined top-five-depth rows: `93,322,187`;
+- materialized events: `50`;
+- materialized symbols: `32`;
+- row groups audited/read: `53,536`;
+- full depth columns present: `1`;
+- depth beyond L1 required: `1`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `11/11`.
+
+Phase327 outputs:
+
+- `outputs/phase327/phase327_acceptance_summary.csv`;
+- `outputs/phase327/phase327_joined_expanded_event_top5_depth.parquet`;
+- `outputs/phase327/phase327_event_symbol_timestamp_coverage.csv`;
+- `outputs/phase327/phase327_joined_expanded_event_top5_depth_preview.csv`;
+- `outputs/phase327/phase327_gate_evaluation.csv`;
+- `outputs/phase327/phase327_symbol_parts/`;
+- `outputs/phase327/phase327_symbol_fallback_parts/`;
+- `outputs/phase327/phase327_event_catalyst_expanded_top5_depth_join_materialization_report.md`;
+- `outputs/phase327/phase327_event_catalyst_expanded_top5_depth_join_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase327:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_join_quality_audit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_join_quality_audit_open`;
+- current next action: `run_phase328_event_catalyst_expanded_join_quality_audit_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

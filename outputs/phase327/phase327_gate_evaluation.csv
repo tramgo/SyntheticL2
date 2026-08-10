@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P327_PHASE326_PRECOMMIT_COMPLETE,True,1,1,hard
+P327_WORK_ORDER_COVERAGE_AUDITED,True,1600,>=1600,hard
+P327_TIMESTAMP_OVERLAP_RECORDED,True,1600,>0,hard
+P327_MATERIALIZED_JOIN_ROWS_PRESENT,True,93322187,>0,hard
+P327_MIN_40_EVENTS_MATERIALIZED,True,50,>=40,hard
+P327_32_SYMBOLS_MATERIALIZED,True,32,>=32,hard
+P327_FULL_DEPTH_COLUMNS_RETAINED,True,1,1,hard
+P327_DEPTH_BEYOND_L1_REQUIRED,True,levels_2_to_5_retained,required,hard
+P327_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
+P327_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard
+P327_FALLBACK_PATHS_AUDITED,True,513,>=0,hard

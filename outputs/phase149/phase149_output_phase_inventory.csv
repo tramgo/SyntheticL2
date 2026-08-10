@@ -259,6 +259,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 324,outputs\phase324,True,6,outputs\phase324\phase324_acceptance_summary.csv,outputs\phase324\phase324_event_catalyst_breadth_expansion_precommit_manifest.json,False
 325,outputs\phase325,True,8,outputs\phase325\phase325_acceptance_summary.csv,outputs\phase325\phase325_event_catalyst_breadth_expansion_materialization_manifest.json,False
 326,outputs\phase326,True,6,outputs\phase326\phase326_acceptance_summary.csv,outputs\phase326\phase326_event_catalyst_expanded_top5_depth_join_precommit_manifest.json,False
+327,outputs\phase327,True,79,outputs\phase327\phase327_acceptance_summary.csv,outputs\phase327\phase327_event_catalyst_expanded_top5_depth_join_materialization_manifest.json,False
 33,outputs\phase33,True,10,,outputs\phase33\phase33_broker_evidence_intake_manifest.json,False
 34,outputs\phase34,True,6,,outputs\phase34\phase34_real_data_multiday_readiness_manifest.json,False
 35,outputs\phase35,True,6,,outputs\phase35\phase35_stage_a2_computable_diagnostics_manifest.json,False
