@@ -1,0 +1,4 @@
+execution_policy_id,cross_if_not_filled,cross_hurdle_bps,passive_exit,calm_exit_churn_cap,calm_exit_spread_cap_bps
+P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN,0,999.0,1,0.11,3.0
+P300_HYBRID_PASSIVE_ENTRY_CROSS_IF_EDGE_FORCED_FLATTEN,1,28.0,1,0.09,2.5
+P300_PASSIVE_ENTRY_TAKER_EXIT,0,999.0,0,0.0,0.0

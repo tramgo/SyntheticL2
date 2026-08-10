@@ -1,0 +1,4 @@
+fill_model_id,base_fill_prob,adverse_flow_weight,support_penalty,churn_weight,wide_spread_penalty,max_fill_prob,exit_fill_scale,toxicity_multiplier
+P300_FILL_PESSIMISTIC_BACK_OF_QUEUE,0.08,0.28,0.16,0.1,0.1,0.38,0.75,1.2
+P300_FILL_BASE_BACK_OF_QUEUE,0.14,0.34,0.12,0.14,0.08,0.52,0.9,1.0
+P300_FILL_OPTIMISTIC_BACK_OF_QUEUE,0.2,0.38,0.08,0.18,0.05,0.68,1.05,0.85

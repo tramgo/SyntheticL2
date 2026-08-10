@@ -230,7 +230,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 299,outputs\phase299,True,9,outputs\phase299\phase299_acceptance_summary.csv,outputs\phase299\phase299_raw_dense_top5_book_state_strategy_sweep_interpretation_manifest.json,False
 3,outputs\phase3,True,6,,outputs\phase3\regime_manifest.json,False
 30,outputs\phase30,True,6,,outputs\phase30\phase30_strategy_decision_triage_manifest.json,False
-300,outputs\phase300,True,7,outputs\phase300\phase300_acceptance_summary.csv,outputs\phase300\phase300_passive_aware_execution_hybrid_precommit_manifest.json,False
+300,outputs\phase300,True,16,outputs\phase300\phase300_acceptance_summary.csv,outputs\phase300\phase300_passive_aware_execution_hybrid_manifest.json|outputs\phase300\phase300_passive_aware_execution_hybrid_precommit_manifest.json,False
 31,outputs\phase31,True,6,,outputs\phase31\phase31_redesign_evidence_contract_manifest.json,False
 32,outputs\phase32,True,7,,outputs\phase32\phase32_contract_evidence_scanner_manifest.json,False
 33,outputs\phase33,True,10,,outputs\phase33\phase33_broker_evidence_intake_manifest.json,False
@@ -311,4 +311,5 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 97,outputs\phase97,True,6,outputs\phase97\generator_recalibration_patch_acceptance_summary.csv,outputs\phase97\phase97_generator_recalibration_patch_plan_manifest.json,False
 98,outputs\phase98,True,8,outputs\phase98\generator_calibration_config_acceptance_summary.csv,outputs\phase98\phase98_generator_calibration_config_contract_manifest.json,False
 99,outputs\phase99,True,8,outputs\phase99\generator_calibration_wiring_acceptance_summary.csv,outputs\phase99\phase99_generator_calibration_wiring_verifier_manifest.json,False
+300,outputs\pycache_phase300_exec_verify,True,41,,,False
 300,outputs\pycache_phase300_verify,True,43,,,False

@@ -13440,6 +13440,93 @@ Current Phase149 evidence after Phase300 precommit:
 - `synthetic_strategy_discovery` status: `passive_aware_execution_hybrid_execution_open`;
 - current next action: `run_phase300_passive_aware_execution_hybrid_no_paper_live`.
 
+## 24.127 Phase300 Passive-Aware Execution Hybrid Run Completed
+
+Phase300 executed the precommitted passive-aware execution hybrid on the Phase299 directional seed universe. This run did not search for new alpha. It reused the preserved Phase298 directional L2 seeds and tested execution-side realism: passive fill probability, deterministic fill draws, back-of-queue retail prior, adverse-selection penalty, forced flattening, spread components and Zerodha cost200 scoring.
+
+Execution scope:
+
+- Phase299 directional seed variants used: `16`;
+- Phase298 raw seed events used: `141`;
+- fill models evaluated: `3`;
+- execution policies evaluated: `3`;
+- max-concurrent settings evaluated: `1`, `2`, `4`;
+- total execution scenarios evaluated: `108`;
+- fixed initial-capital denominator: `1000000.0` INR;
+- fixed order notional: `75000.0` INR, below the `100000` INR charter cap;
+- cost stress: `cost200`.
+
+Realism evidence:
+
+- passive entry attempts logged in sample ledger: `220`;
+- passive entry fills logged in sample ledger: `20`;
+- adverse-selection penalty rows: `20/20` passive entry fills;
+- forced-flatten rows logged in sample ledger: `20`;
+- raw top-five market-by-price depth schema columns present: `30`;
+- L1-only variant rows: `0`;
+- net-edge live-mask rows: `0`;
+- hard gates: `10/10`.
+
+Phase300 results:
+
+- above-12% annualized diagnostic scenarios: `17`;
+- scenarios meeting the `>=30` scheduled-event floor: `0`;
+- scenarios meeting breadth: `0`;
+- cost200 acceptance survivor rows: `0`;
+- kill-switch triggered: `1`.
+
+Best annualized diagnostic:
+
+- best scenario: `P300_P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6_P300_FILL_OPTIMISTIC_BACK_OF_QUEUE_P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN_CAP1000000_NOT75000_CONC4_COST200`;
+- best seed: `P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6`;
+- best fill model: `P300_FILL_OPTIMISTIC_BACK_OF_QUEUE`;
+- best execution policy: `P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN`;
+- scheduled events: `2`;
+- scheduled symbols: `1`;
+- positive trade dates: `1`;
+- net P&L: `11427.339300` INR;
+- fixed-capital annualized diagnostic: `287.968950%`.
+
+Best broader all-seed scheduled scenario:
+
+- seed scope: `ALL_PHASE299_SEEDS`;
+- fill model: `P300_FILL_BASE_BACK_OF_QUEUE`;
+- execution policy: `P300_PASSIVE_ENTRY_PASSIVE_EXIT_FORCED_FLATTEN`;
+- max concurrent positions: `4`;
+- scheduled events: `26`;
+- scheduled symbols: `1`;
+- positive trade dates: `4`;
+- net P&L: `10777.879177` INR;
+- fixed-capital annualized diagnostic: `8.230380%`;
+- event floor met: `0`;
+- breadth met: `0`;
+- acceptance survivor: `0`.
+
+Phase300 interpretation boundary:
+
+The passive-aware execution lever did improve some tiny pockets, but it did not produce a valid strategy under the precommitted acceptance diagnostics. The high annualized results remain sparse single-symbol pockets, and the broader all-seed scenario remains below both the `>=30` event floor and the `>12%` annualized bar. No replay, promotion, paper/live acceptance or deployable profitability claim is opened.
+
+Phase300 outputs:
+
+- `outputs/phase300/phase300_fill_model_catalog.csv`;
+- `outputs/phase300/phase300_execution_policy_catalog.csv`;
+- `outputs/phase300/phase300_directional_signal_seed_catalog.csv`;
+- `outputs/phase300/phase300_directional_seed_event_universe.csv`;
+- `outputs/phase300/phase300_execution_scenario_summary.csv`;
+- `outputs/phase300/phase300_execution_variant_summary.csv`;
+- `outputs/phase300/phase300_execution_event_ledger.csv`;
+- `outputs/phase300/phase300_gate_evaluation.csv`;
+- `outputs/phase300/phase300_acceptance_summary.csv`;
+- `outputs/phase300/phase300_passive_aware_execution_hybrid_report.md`;
+- `outputs/phase300/phase300_passive_aware_execution_hybrid_manifest.json`.
+
+Current Phase149 evidence after Phase300 execution:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `passive_aware_execution_hybrid_interpretation_open`;
+- `synthetic_strategy_discovery` status: `passive_aware_execution_hybrid_interpretation_open`;
+- current next action: `run_phase301_passive_aware_execution_hybrid_interpretation_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

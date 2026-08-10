@@ -3312,15 +3312,22 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
         }
     if phase == 300:
         complete = as_int(metric_value(path, "phase300_precommit_complete", 0))
+        execution_complete = as_int(metric_value(path, "phase300_execution_complete", 0))
         return {
             "branch": "synthetic_strategy_discovery",
-            "state": "passive_aware_execution_hybrid_execution_open" if complete else "phase300_passive_aware_execution_precommit_gated",
+            "state": "passive_aware_execution_hybrid_interpretation_open" if execution_complete else ("passive_aware_execution_hybrid_execution_open" if complete else "phase300_passive_aware_execution_precommit_gated"),
             "precommit_complete": complete,
+            "execution_complete": execution_complete,
             "selected_route": metric_value(path, "phase300_selected_route", ""),
             "charter_rows": as_int(metric_value(path, "phase300_charter_rows", 0)),
             "input_registry_rows": as_int(metric_value(path, "phase300_input_registry_rows", 0)),
             "execution_work_order_rows": as_int(metric_value(path, "phase300_execution_work_order_rows", 0)),
             "directional_signal_seed_rows": as_int(metric_value(path, "phase300_directional_signal_seed_rows", 0)),
+            "seed_variant_rows": as_int(metric_value(path, "phase300_seed_variant_rows", 0)),
+            "seed_event_rows": as_int(metric_value(path, "phase300_seed_event_rows", 0)),
+            "scenario_rows": as_int(metric_value(path, "phase300_scenario_rows", 0)),
+            "fill_model_rows": as_int(metric_value(path, "phase300_fill_model_rows", 0)),
+            "execution_policy_rows": as_int(metric_value(path, "phase300_execution_policy_rows", 0)),
             "raw_depth_schema_columns_present": as_int(metric_value(path, "phase300_raw_depth_schema_columns_present", 0)),
             "l1_only_variant_rows": as_int(metric_value(path, "phase300_l1_only_variant_rows", 0)),
             "net_edge_live_mask_rows": as_int(metric_value(path, "phase300_net_edge_live_mask_rows", 0)),
@@ -3330,6 +3337,23 @@ def phase_status_from_metrics(phase: int) -> dict[str, Any]:
             "cost200_required": as_int(metric_value(path, "phase300_cost200_required", 0)),
             "fixed_capital_required": as_int(metric_value(path, "phase300_fixed_capital_required", 0)),
             "results_generated": as_int(metric_value(path, "phase300_results_generated", 0)),
+            "above12_scenario_rows": as_int(metric_value(path, "phase300_above12_scenario_rows", 0)),
+            "event_floor_scenario_rows": as_int(metric_value(path, "phase300_event_floor_scenario_rows", 0)),
+            "breadth_met_scenario_rows": as_int(metric_value(path, "phase300_breadth_met_scenario_rows", 0)),
+            "cost200_acceptance_survivor_rows": as_int(metric_value(path, "phase300_cost200_acceptance_survivor_rows", 0)),
+            "best_scenario_id": metric_value(path, "phase300_best_scenario_id", ""),
+            "best_seed_scope": metric_value(path, "phase300_best_seed_scope", ""),
+            "best_fill_model_id": metric_value(path, "phase300_best_fill_model_id", ""),
+            "best_execution_policy_id": metric_value(path, "phase300_best_execution_policy_id", ""),
+            "best_scheduled_event_rows": as_int(metric_value(path, "phase300_best_scheduled_event_rows", 0)),
+            "best_scheduled_symbols": as_int(metric_value(path, "phase300_best_scheduled_symbols", 0)),
+            "best_positive_trade_dates": as_int(metric_value(path, "phase300_best_positive_trade_dates", 0)),
+            "best_realized_net_pnl_inr": metric_value(path, "phase300_best_realized_net_pnl_inr", ""),
+            "best_annualized_pct": metric_value(path, "phase300_best_annualized_pct", ""),
+            "best_avg_entry_fill_probability": metric_value(path, "phase300_best_avg_entry_fill_probability", ""),
+            "best_passive_entry_fill_rows": as_int(metric_value(path, "phase300_best_passive_entry_fill_rows", 0)),
+            "best_forced_flatten_rows": as_int(metric_value(path, "phase300_best_forced_flatten_rows", 0)),
+            "kill_switch_triggered": as_int(metric_value(path, "phase300_kill_switch_triggered", 0)),
             "strategy_replay_allowed": as_int(metric_value(path, "phase300_strategy_replay_allowed", 0)),
             "promotion_allowed": as_int(metric_value(path, "phase300_strategy_promotion_allowed", 0)),
             "paper_or_live_acceptance_allowed": as_int(metric_value(path, "phase300_paper_or_live_acceptance_allowed", 0)),
@@ -3627,6 +3651,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
     phase298_complete = as_int(phase298.get("raw_dense_sweep_complete", 0))
     phase299_complete = as_int(phase299.get("interpretation_complete", 0))
     phase300_complete = as_int(phase300.get("precommit_complete", 0))
+    phase300_execution_complete = as_int(phase300.get("execution_complete", 0))
     if ready_dates >= 5 and additional_dates_needed == 0:
         real_receive_status = "source_gate_open_feature_materialization_pending" if features_materialized == 0 else "feature_quality_pending"
         if quality_audit_ran == 1:
@@ -3835,6 +3860,8 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
             real_receive_status = str(phase299.get("state", "passive_aware_execution_hybrid_precommit_open"))
         if phase300_complete == 1:
             real_receive_status = str(phase300.get("state", "passive_aware_execution_hybrid_execution_open"))
+        if phase300_execution_complete == 1:
+            real_receive_status = str(phase300.get("state", "passive_aware_execution_hybrid_interpretation_open"))
     else:
         real_receive_status = "gated_waiting_for_two_more_real_l2_dates"
     real_receive_evidence = (
@@ -3965,7 +3992,7 @@ def build_branch_summary(ledger: pd.DataFrame) -> pd.DataFrame:
         f" Phase297 interpretation_complete={phase297.get('interpretation_complete', '')}, selected_next_route={phase297.get('selected_next_route', '')}, close_phase296={phase297.get('close_phase296_for_acceptance', '')}, close_phase42_proxy={phase297.get('close_phase42_proxy_sweep_for_direct_acceptance', '')}, raw_book_state_clues={phase297.get('raw_book_state_clue_variant_rows', '')}, best_phase296_variant={phase297.get('best_phase296_variant_id', '')}, best_family={phase297.get('best_strategy_family', '')}, best_feed={phase297.get('best_feed_profile', '')}, best_cost200_annualized={phase297.get('best_cost200_annualized_pct', '')}, best_scheduled_events={phase297.get('best_scheduled_event_rows', '')}, do_not_claim_portfolio_return={phase297.get('do_not_claim_portfolio_return', '')}, profitability_claim_allowed={phase297.get('profitability_claim_allowed', '')}."
         f" Phase298 raw_dense_sweep_complete={phase298.get('raw_dense_sweep_complete', '')}, symbols={phase298.get('symbol_rows', '')}, months={phase298.get('trade_month_rows', '')}, files={phase298.get('source_file_rows', '')}, stride={phase298.get('sample_stride', '')}, sampled_rows={phase298.get('sampled_dense_rows', '')}, shard_date_rows={phase298.get('shard_trade_date_rows', '')}, raw_events={phase298.get('raw_event_rows', '')}, variants={phase298.get('variant_rows', '')}, scenarios={phase298.get('scenario_rows', '')}, sparse_above12={phase298.get('sparse_above12_scenario_rows', '')}, robust_above12={phase298.get('robust_portfolio_above12_scenario_rows', '')}, best_variant={phase298.get('best_variant_id', '')}, best_family={phase298.get('best_strategy_family', '')}, best_cost200_annualized={phase298.get('best_cost200_annualized_pct', '')}, best_events={phase298.get('best_scheduled_event_rows', '')}, best_dates={phase298.get('best_observed_trade_dates', '')}, annualized_denominator={phase298.get('annualized_denominator', '')}, profitability_claim_allowed={phase298.get('profitability_claim_allowed', '')}."
         f" Phase299 interpretation_complete={phase299.get('interpretation_complete', '')}, selected_next_route={phase299.get('selected_next_route', '')}, close_phase298={phase299.get('close_phase298_for_direct_acceptance', '')}, above12_below_30={phase299.get('above12_below_30_event_variant_rows', '')}, directional_signal_seeds={phase299.get('directional_signal_seed_rows', '')}, best_phase298_variant={phase299.get('best_phase298_variant_id', '')}, best_family={phase299.get('best_strategy_family', '')}, best_cost200_annualized={phase299.get('best_cost200_annualized_pct', '')}, best_events={phase299.get('best_scheduled_event_rows', '')}, passive_fill_model_required={phase299.get('require_passive_fill_model', '')}, adverse_selection_required={phase299.get('require_adverse_selection_penalty', '')}, forced_flatten_required={phase299.get('require_forced_flatten_cost', '')}, profitability_claim_allowed={phase299.get('profitability_claim_allowed', '')}."
-        f" Phase300 precommit_complete={phase300.get('precommit_complete', '')}, selected_route={phase300.get('selected_route', '')}, charter_rows={phase300.get('charter_rows', '')}, inputs={phase300.get('input_registry_rows', '')}, work_order={phase300.get('execution_work_order_rows', '')}, directional_signal_seeds={phase300.get('directional_signal_seed_rows', '')}, raw_depth_schema_columns={phase300.get('raw_depth_schema_columns_present', '')}, l1_only={phase300.get('l1_only_variant_rows', '')}, live_masks={phase300.get('net_edge_live_mask_rows', '')}, fill_model_required={phase300.get('fill_model_required', '')}, adverse_selection_required={phase300.get('adverse_selection_required', '')}, forced_flatten_required={phase300.get('forced_flatten_cost_required', '')}, cost200_required={phase300.get('cost200_required', '')}, fixed_capital_required={phase300.get('fixed_capital_required', '')}, results_generated={phase300.get('results_generated', '')}, profitability_claim_allowed={phase300.get('profitability_claim_allowed', '')}."
+        f" Phase300 precommit_complete={phase300.get('precommit_complete', '')}, execution_complete={phase300.get('execution_complete', '')}, selected_route={phase300.get('selected_route', '')}, charter_rows={phase300.get('charter_rows', '')}, inputs={phase300.get('input_registry_rows', '')}, work_order={phase300.get('execution_work_order_rows', '')}, directional_signal_seeds={phase300.get('directional_signal_seed_rows', '')}, seed_variants={phase300.get('seed_variant_rows', '')}, seed_events={phase300.get('seed_event_rows', '')}, scenarios={phase300.get('scenario_rows', '')}, fill_models={phase300.get('fill_model_rows', '')}, execution_policies={phase300.get('execution_policy_rows', '')}, raw_depth_schema_columns={phase300.get('raw_depth_schema_columns_present', '')}, l1_only={phase300.get('l1_only_variant_rows', '')}, live_masks={phase300.get('net_edge_live_mask_rows', '')}, fill_model_required={phase300.get('fill_model_required', '')}, adverse_selection_required={phase300.get('adverse_selection_required', '')}, forced_flatten_required={phase300.get('forced_flatten_cost_required', '')}, cost200_required={phase300.get('cost200_required', '')}, fixed_capital_required={phase300.get('fixed_capital_required', '')}, above12={phase300.get('above12_scenario_rows', '')}, event_floor={phase300.get('event_floor_scenario_rows', '')}, breadth={phase300.get('breadth_met_scenario_rows', '')}, survivors={phase300.get('cost200_acceptance_survivor_rows', '')}, best_scenario={phase300.get('best_scenario_id', '')}, best_annualized={phase300.get('best_annualized_pct', '')}, best_events={phase300.get('best_scheduled_event_rows', '')}, kill_switch={phase300.get('kill_switch_triggered', '')}, profitability_claim_allowed={phase300.get('profitability_claim_allowed', '')}."
     )
     branches = [
         {
