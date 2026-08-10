@@ -1,0 +1,25 @@
+metric,value,description
+phase320_multievent_feature_materialization_complete,1,Phase320 multi-event feature materialization completed
+phase320_feature_matrix_rows,320,Compact event-symbol feature matrix rows
+phase320_event_rows,10,Distinct events
+phase320_symbol_rows,32,Distinct symbols
+phase320_source_tick_rows,28350310,Joined ticks represented
+phase320_min_source_tick_rows_per_event_symbol,78283,Minimum raw tick support per event-symbol row
+phase320_live_feature_columns,38,Live feature columns
+phase320_depth_feature_columns,23,Depth-aware live feature columns
+phase320_target_columns,5,Separated target columns
+phase320_live_feature_null_cells,0,Live feature null cells
+phase320_target_null_cells,0,Target null cells
+phase320_target_columns_used_as_live_features,0,Target columns used as live features
+phase320_full_depth_required,1,Depth levels 1-5 required
+phase320_depth_beyond_l1_required,1,Depth levels 2-5 materiality required
+phase320_l1_only_variant_rows_allowed,0,No L1-only variants allowed
+phase320_net_edge_live_mask_rows_allowed,0,No net-edge live lookahead mask allowed
+phase320_strategy_search_allowed_now,0,No strategy search in Phase320
+phase320_strategy_replay_allowed,0,No replay
+phase320_strategy_promotion_allowed,0,No promotion
+phase320_paper_or_live_acceptance_allowed,0,No paper/live
+phase320_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase320_hard_gate_pass_rows,11,Passed hard gates
+phase320_hard_gate_rows,11,Hard gates
+phase320_next_best_action,run_phase321_event_catalyst_multievent_strategy_search_precommit_no_replay,Recommended next action

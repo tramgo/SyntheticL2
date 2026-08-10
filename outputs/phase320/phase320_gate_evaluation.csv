@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P320_PHASE319_COMPLETE,True,1,1,hard
+P320_FEATURE_MATRIX_ROWS,True,320,320,hard
+P320_EVENT_BREADTH,True,10,>=10,hard
+P320_SYMBOL_BREADTH,True,32,>=32,hard
+P320_JOIN_ROWS_REPRESENTED,True,28350310/28350310,equal,hard
+P320_MIN_RAW_TICKS_PRESENT,True,78283,>0,hard
+P320_LIVE_FEATURE_COLUMNS_PRESENT,True,38,>=35,hard
+P320_DEPTH_FEATURE_COLUMNS_PRESENT,True,23,>=20,hard
+P320_TARGET_COLUMNS_SEPARATED,True,targets=5;live_target_cols=0,5_targets_and_0_live_targets,hard
+P320_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
+P320_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard

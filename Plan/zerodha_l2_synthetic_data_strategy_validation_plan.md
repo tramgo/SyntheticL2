@@ -14451,6 +14451,51 @@ Current Phase149 evidence after Phase319:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_feature_materialization_open`;
 - current next action: `run_phase320_event_catalyst_multievent_feature_materialization_no_strategy_search`.
 
+## 24.147 Phase320 Event-Catalyst Multi-Event Feature Materialization Completed
+
+Phase320 materializes the compact event-symbol feature matrix from the accepted Phase317/Phase318 top-five market-by-price depth join. It reads the 28.35M-row joined parquet with DuckDB, derives live signal features from depth levels 1-5 and depth levels 2-5, and writes one compact row per event and symbol. Target response fields are present only as explicitly prefixed `target_` columns and are not live signal features. Phase320 still does not run strategy search, replay, promotion, paper/live acceptance or profitability claims.
+
+Phase320 evidence:
+
+- multi-event feature materialization complete: `1`;
+- feature matrix rows: `320`;
+- distinct events: `10`;
+- distinct symbols: `32`;
+- joined ticks represented: `28,350,310`;
+- minimum raw tick support per event-symbol row: `78,283`;
+- live feature columns: `38`;
+- depth-aware live feature columns: `23`;
+- separated target columns: `5`;
+- live feature null cells: `0`;
+- target null cells: `0`;
+- target columns used as live features: `0`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only variant rows allowed: `0`;
+- net-edge live mask rows allowed: `0`;
+- hard gates: `11/11`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase320 outputs:
+
+- `outputs/phase320/phase320_acceptance_summary.csv`;
+- `outputs/phase320/phase320_event_catalyst_multievent_feature_matrix.csv`;
+- `outputs/phase320/phase320_feature_quality.csv`;
+- `outputs/phase320/phase320_gate_evaluation.csv`;
+- `outputs/phase320/phase320_event_catalyst_multievent_feature_materialization_report.md`;
+- `outputs/phase320/phase320_event_catalyst_multievent_feature_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase320:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_strategy_search_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_strategy_search_precommit_open`;
+- current next action: `run_phase321_event_catalyst_multievent_strategy_search_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
