@@ -1,0 +1,9 @@
+decision_id,decision_value,evidence,interpretation
+phase312_positive_sparse_leads_exist,1,sparse_above12_rows=2385,Useful training clue exists.
+best_cluster_family,pre_event_pressure_shift_reversal,P312_pre_event_pressure_shift_reversal_H900_all_nonzero_signal_N100000_C2_zerodha_base_CAP100000,Best sparse annualized scenario family.
+cost_stress_sparse_leads_exist,1,2x_cost_sparse_above12_rows=495,Checks whether any clue survives 2x all-in-cost proxy.
+insufficient_event_breadth_for_acceptance,1,observed_trade_dates=1,One synthetic event date is not acceptance breadth.
+insufficient_trade_breadth_for_acceptance,1,best_scheduled_trades=1,Best scenario is too sparse for robust portfolio claim.
+replay_or_promotion_allowed,0,closed,No replay/promotion from Phase313.
+deployable_profitability_claim_allowed,0,closed,No deployable claim from one-event synthetic evidence.
+selected_next_route,P314_EVENT_CATALYST_MULTIEVENT_SYNTHETIC_BREADTH_PRECOMMIT,run_phase314_event_catalyst_multievent_synthetic_breadth_precommit_no_replay,Build more synthetic event breadth before broader search/replay.

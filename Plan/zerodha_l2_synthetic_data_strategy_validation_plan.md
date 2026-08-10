@@ -14166,6 +14166,49 @@ Current Phase149 evidence after Phase312:
 - `synthetic_strategy_discovery` status: `event_catalyst_training_strategy_search_interpretation_open`;
 - current next action: `run_phase313_event_catalyst_strategy_search_interpretation_no_replay`.
 
+## 24.140 Phase313 Event-Catalyst Strategy Search Interpretation Completed
+
+Phase313 interprets the Phase312 training-only event-catalyst strategy search. It confirms that sparse positive research leads exist, including under 2x all-in-cost stress, but it keeps acceptance closed because event breadth and trade breadth are insufficient. It does not run replay, promotion, paper/live acceptance, or deployable profitability claims.
+
+Phase313 evidence:
+
+- interpretation complete: `1`;
+- sparse positive training leads exist: `1`;
+- 2x-cost sparse training leads exist: `1`;
+- insufficient event breadth for acceptance: `1`;
+- insufficient trade breadth for acceptance: `1`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- selected next route: `P314_EVENT_CATALYST_MULTIEVENT_SYNTHETIC_BREADTH_PRECOMMIT`;
+- hard gates: `5/5`.
+
+Phase313 interpretation:
+
+- the Phase312 positives are real within this synthetic training-only run;
+- the top family cluster is not a random one-off in the grid: pre-event trend reversal and pre-event pressure-shift reversal both show many sparse above-12% rows;
+- 2x all-in-cost stress still leaves sparse above-12% rows, which is worth preserving;
+- the best Phase312 scenario still schedules only one trade on one synthetic event date, so it cannot be accepted as robust or deployable;
+- the next best action is to build multi-event synthetic breadth, then rerun the event-catalyst search on more event dates before any replay or promotion.
+
+Phase313 outputs:
+
+- `outputs/phase313/phase313_acceptance_summary.csv`;
+- `outputs/phase313/phase313_family_interpretation_summary.csv`;
+- `outputs/phase313/phase313_cost_stress_interpretation_summary.csv`;
+- `outputs/phase313/phase313_interpretation_decision_ledger.csv`;
+- `outputs/phase313/phase313_gate_evaluation.csv`;
+- `outputs/phase313/phase313_event_catalyst_strategy_search_interpretation_report.md`;
+- `outputs/phase313/phase313_event_catalyst_strategy_search_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase313:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_synthetic_breadth_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_synthetic_breadth_precommit_open`;
+- current next action: `run_phase314_event_catalyst_multievent_synthetic_breadth_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
