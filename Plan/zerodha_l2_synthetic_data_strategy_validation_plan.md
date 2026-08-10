@@ -14681,6 +14681,46 @@ Current Phase149 evidence after Phase324:
 - `synthetic_strategy_discovery` status: `event_catalyst_breadth_expansion_materialization_open`;
 - current next action: `run_phase325_event_catalyst_breadth_expansion_materialization_no_replay`.
 
+## 24.152 Phase325 Event-Catalyst Breadth Expansion Materialization Completed
+
+Phase325 materializes the expanded synthetic catalyst event ledger and event-symbol work order required by Phase324. It reuses the proven row-level dense-bucket discovery approach from Phase315 and expands the event universe to 50 distinct synthetic catalyst dates, with 32 symbols per event. It does not join the depth parquet rows yet; it prepares the expanded join work order for Phase326.
+
+Phase325 evidence:
+
+- breadth expansion materialization complete: `1`;
+- generated synthetic catalyst event rows: `50`;
+- distinct synthetic catalyst event dates: `50`;
+- minimum symbols per event: `32`;
+- event-symbol join work-order rows: `1,600`;
+- target event rows: `50`;
+- minimum event rows: `40`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- hard gates: `10/10`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase325 outputs:
+
+- `outputs/phase325/phase325_acceptance_summary.csv`;
+- `outputs/phase325/phase325_expanded_synthetic_event_ledger.csv`;
+- `event_sources/event_catalysts/generated/phase325_expanded_synthetic_calendar.csv`;
+- `outputs/phase325/phase325_event_symbol_join_work_order.csv`;
+- `outputs/phase325/phase325_dense_file_inventory.csv`;
+- `outputs/phase325/phase325_reference_row_level_candidates.csv`;
+- `outputs/phase325/phase325_gate_evaluation.csv`;
+- `outputs/phase325/phase325_event_catalyst_breadth_expansion_materialization_report.md`;
+- `outputs/phase325/phase325_event_catalyst_breadth_expansion_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase325:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_top5_depth_join_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_top5_depth_join_precommit_open`;
+- current next action: `run_phase326_event_catalyst_expanded_top5_depth_join_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

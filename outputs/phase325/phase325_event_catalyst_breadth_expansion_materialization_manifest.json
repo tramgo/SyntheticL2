@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-10T08:31:16.197173+00:00",
+  "scope": "phase325_event_catalyst_breadth_expansion_materialization",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "512f96ef28b34614b372e0268bcf83b065ab59fc",
+  "configuration_hash": "d99fc6f9ecc8bdd222c84ddf08afc16d49e5fa66fadc544714555cc0c64763c0",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "not_applicable_event_materialization_only",
+  "latency_model_version": "not_applicable_event_materialization_only",
+  "creation_timestamp": "2026-08-10T08:31:16.197173+00:00"
+}

@@ -1,0 +1,17 @@
+metric,value,description
+phase325_breadth_expansion_materialization_complete,1,Phase325 event-catalyst breadth expansion materialization completed
+phase325_generated_event_rows,50,Expanded generated synthetic catalyst event rows
+phase325_distinct_event_dates,50,Distinct generated synthetic event dates
+phase325_min_symbols_per_event,32,Minimum symbol coverage across generated events
+phase325_event_symbol_work_order_rows,1600,Event-symbol dense join work-order rows
+phase325_target_event_rows,50,Target event rows
+phase325_minimum_event_rows,40,Minimum event rows
+phase325_full_depth_required,1,Future join/search must use top-five market-by-price depth levels 1-5
+phase325_depth_beyond_l1_required,1,Future features/search must preserve depth levels 2-5 materiality
+phase325_strategy_replay_allowed,0,No replay
+phase325_strategy_promotion_allowed,0,No promotion
+phase325_paper_or_live_acceptance_allowed,0,No paper/live
+phase325_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase325_hard_gate_pass_rows,10,Passed hard gates
+phase325_hard_gate_rows,10,Hard gates
+phase325_next_best_action,run_phase326_event_catalyst_expanded_top5_depth_join_precommit_no_replay,Recommended next action
