@@ -14641,6 +14641,46 @@ Current Phase149 evidence after Phase323:
 - `synthetic_strategy_discovery` status: `event_catalyst_breadth_expansion_precommit_open`;
 - current next action: `run_phase324_event_catalyst_breadth_expansion_precommit_no_replay`.
 
+## 24.151 Phase324 Event-Catalyst Breadth Expansion Precommit Completed
+
+Phase324 precommits the breadth expansion required after Phase323 preserved a profitable but sparse fixed-capital research clue. It does not materialize new event rows yet. It locks the Phase325 work order: expand from the current 10 synthetic catalyst events to a preferred 50-event universe, with a minimum 40-event universe, so the next search can genuinely test the 30 scheduled-event robustness floor.
+
+Phase324 evidence:
+
+- breadth expansion precommit complete: `1`;
+- target total event rows: `50`;
+- minimum total event rows: `40`;
+- robust event floor to test: `30`;
+- minimum symbols per event: `32`;
+- expansion contract rows: `18`;
+- Phase325 work-order rows: `8`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only candidate path allowed: `0`;
+- fixed-capital denominator required: `1`;
+- 2x cost stress required: `1`;
+- hard gates: `9/9`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase324 outputs:
+
+- `outputs/phase324/phase324_acceptance_summary.csv`;
+- `outputs/phase324/phase324_breadth_expansion_contract.csv`;
+- `outputs/phase324/phase324_phase325_work_order.csv`;
+- `outputs/phase324/phase324_gate_evaluation.csv`;
+- `outputs/phase324/phase324_event_catalyst_breadth_expansion_precommit_report.md`;
+- `outputs/phase324/phase324_event_catalyst_breadth_expansion_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase324:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_breadth_expansion_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_breadth_expansion_materialization_open`;
+- current next action: `run_phase325_event_catalyst_breadth_expansion_materialization_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

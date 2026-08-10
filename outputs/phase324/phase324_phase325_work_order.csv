@@ -1,0 +1,9 @@
+work_order_id,scope,description
+discover_dense_source_inventory,raw_synthetic_l2_dense_full_year/trade_month=*/symbol=*/part-*.parquet,Inventory available synthetic top-five depth files.
+select_row_level_dense_buckets,reference_symbol=HDFCBANK; distinct_event_dates; target=50; minimum=40,"Select actual dense row-level windows, not only file metadata."
+validate_symbol_coverage,symbols_per_event>=32,Reject events missing full symbol breadth.
+write_expanded_event_ledger,event_sources/event_catalysts/generated/phase325_expanded_synthetic_events.csv,Materialize expanded event ledger.
+write_expanded_work_order,outputs/phase325/phase325_event_symbol_work_order.csv,Create event-symbol join work order.
+preserve_phase323_family_seed,P321_DEPTH_ACCEL_REVERSAL,"Carry preserved strategy clue into later search, without optimizing on future labels."
+run_quality_gates,event_rows>=40;symbols=32;depth=top5;no_replay,Gate Phase325 before any join/search.
+next_join_precommit,run_phase326_event_catalyst_expanded_top5_depth_join_precommit_no_replay,Prepare expanded top-five-depth join after breadth is materialized.

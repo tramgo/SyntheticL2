@@ -1,0 +1,19 @@
+contract_id,contract_value,description
+selected_route,P324_EVENT_CATALYST_BREADTH_EXPANSION_PRECOMMIT,Expand the event-catalyst universe before further acceptance decisions.
+preserved_strategy_family,P321_DEPTH_ACCEL_REVERSAL,Carry forward the Phase323 best full-depth clue.
+target_event_rows,50,Preferred total synthetic catalyst events for Phase325.
+minimum_event_rows,40,Minimum total synthetic catalyst events before Phase326 join/materialization.
+robust_event_floor,30,Acceptance floor that Phase322 could not satisfy.
+minimum_symbols_per_event,32,Preserve full 32-symbol universe per event.
+window_seconds,pre=900;post=1800,Use the same event-relative window as Phase317/320.
+source_root,raw_synthetic_l2_dense_full_year,Use the existing full-year dense top-five book-state source.
+candidate_selection,row_level_dense_buckets_distinct_dates,Avoid row-group midpoint false positives; use dense row-level buckets.
+full_depth_required,depth_levels_1_to_5,Preserve top-five market-by-price depth.
+depth_beyond_l1_required,depth_levels_2_to_5_material,No L1-only candidate path.
+cost_model_preserved,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Future search must keep documented Zerodha costs.
+fixed_capital_required,required,No unlimited-capital annualized return.
+cost200_required,required,Keep 2x cost-stress scoring.
+target_live_separation,required,"target_ fields stay outcomes, not live signals."
+net_edge_live_mask,forbidden,No lookahead live mask.
+phase324_execution_now,precommit_only,Do not materialize new joins in Phase324.
+boundaries,replay=0;promotion=0;paper=0;claim=0,No boundary change.

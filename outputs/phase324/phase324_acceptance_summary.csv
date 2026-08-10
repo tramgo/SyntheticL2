@@ -1,0 +1,20 @@
+metric,value,description
+phase324_breadth_expansion_precommit_complete,1,Phase324 event-catalyst breadth expansion precommit completed
+phase324_target_event_rows,50,Preferred total event rows for Phase325
+phase324_minimum_event_rows,40,Minimum total event rows for Phase325
+phase324_robust_event_floor,30,Robustness floor from Phase323 interpretation
+phase324_min_symbols_per_event,32,Minimum symbols per event
+phase324_contract_rows,18,Expansion contract rows
+phase324_work_order_rows,8,Phase325 work-order rows
+phase324_full_depth_required,1,Depth levels 1-5 required
+phase324_depth_beyond_l1_required,1,Depth levels 2-5 materiality required
+phase324_l1_only_candidate_allowed,0,No L1-only candidate path
+phase324_fixed_capital_required,1,Fixed capital denominator required
+phase324_cost200_required,1,2x cost stress required
+phase324_strategy_replay_allowed,0,No replay
+phase324_strategy_promotion_allowed,0,No promotion
+phase324_paper_or_live_acceptance_allowed,0,No paper/live
+phase324_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase324_hard_gate_pass_rows,9,Passed hard gates
+phase324_hard_gate_rows,9,Hard gates
+phase324_next_best_action,run_phase325_event_catalyst_breadth_expansion_materialization_no_replay,Recommended next action
