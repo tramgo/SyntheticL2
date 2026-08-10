@@ -1,0 +1,16 @@
+metric,value,description
+feature_matrix_rows,1600,Expected compact event-symbol rows.
+event_rows,50,Distinct events.
+symbol_rows,32,Distinct symbols.
+source_tick_rows,141708530,Joined ticks represented by the compact matrix.
+min_source_tick_rows_per_event_symbol,78007,Minimum raw tick support per event-symbol row.
+live_feature_columns,38,Columns available to live signal modeling.
+depth_feature_columns,23,Live feature columns using depth levels 1-5 or 2-5.
+target_columns,5,Separated target/response columns.
+live_feature_null_cells,0,Null cells across live feature columns.
+target_null_cells,0,Null cells across target columns.
+joined_rows_expected,141708530,Phase328 accepted joined rows.
+joined_rows_represented,141708530,Source rows represented in matrix.
+target_columns_used_as_live_features,0,Must remain zero.
+matrix_parquet_written,1,Feature matrix parquet was written.
+matrix_parquet_bytes,440746,Feature matrix parquet size in bytes.

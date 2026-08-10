@@ -14905,6 +14905,82 @@ Current Phase149 evidence after Phase329:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_feature_materialization_open`;
 - current next action: `run_phase330_event_catalyst_expanded_feature_materialization_no_strategy_search`.
 
+## 24.157 Phase330 Event-Catalyst Expanded Feature Materialization Completed
+
+Phase330 materializes the compact expanded event-symbol feature matrix from the repaired Phase327 joined top-five-depth parquet and accepted Phase328 quality audit. It is an execution milestone over the Phase329 work order, not a strategy search. It does not run replay, promotion, paper/live acceptance or profitability claims.
+
+The materialized matrix preserves the full 50-event by 32-symbol scope:
+
+- feature matrix rows: `1,600`;
+- distinct events: `50`;
+- distinct symbols: `32`;
+- source joined tick rows represented: `141,708,530`;
+- minimum source tick rows per event-symbol: `78,007`;
+- live feature columns: `38`;
+- depth-aware live feature columns: `23`;
+- separated target columns: `5`;
+- live feature null cells: `0`;
+- target null cells: `0`;
+- target columns used as live features: `0`;
+- feature matrix parquet written: `1`;
+- feature matrix parquet bytes: `440,746`.
+
+Phase330 keeps the attached passive-aware charter constraints as downstream controls without reopening the already-falsified Phase300 passive-aware execution route:
+
+- full Zerodha visible top-five market-by-price depth levels 1-5 are required;
+- visible depth levels 2-5 remain material via depth and L2-L5 feature columns;
+- L1-only candidate variants remain forbidden;
+- net-edge/future-outcome live masks remain forbidden;
+- target response columns remain separated from live signal features;
+- strategy search is still closed until the Phase331 precommit defines the search grid and acceptance controls;
+- replay, promotion, paper/live acceptance and deployable profitability claims remain closed.
+
+Phase330 hard gates:
+
+- Phase329 precommit complete: pass;
+- 1,600 feature rows: pass;
+- 50-event breadth: pass;
+- 32-symbol breadth: pass;
+- joined rows represented exactly: pass, `141,708,530 / 141,708,530`;
+- minimum raw ticks per event-symbol > 0: pass, `78,007`;
+- live feature columns present: pass, `38 >= 35`;
+- depth feature columns present: pass, `23 >= 20`;
+- target columns separated: pass, `5` targets and `0` live-target columns;
+- matrix parquet written and non-empty: pass;
+- no strategy search opened: pass;
+- replay/promotion/paper/live/profitability boundaries closed: pass.
+
+Phase330 evidence:
+
+- expanded feature materialization complete: `1`;
+- hard gates: `12/12`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only variant rows allowed: `0`;
+- net-edge live mask rows allowed: `0`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase330 outputs:
+
+- `outputs/phase330/phase330_acceptance_summary.csv`;
+- `outputs/phase330/phase330_event_catalyst_expanded_feature_matrix.csv`;
+- `outputs/phase330/phase330_event_catalyst_expanded_feature_matrix.parquet`;
+- `outputs/phase330/phase330_feature_quality.csv`;
+- `outputs/phase330/phase330_gate_evaluation.csv`;
+- `outputs/phase330/phase330_event_catalyst_expanded_feature_materialization_report.md`;
+- `outputs/phase330/phase330_event_catalyst_expanded_feature_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase330:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_strategy_search_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_strategy_search_precommit_open`;
+- current next action: `run_phase331_event_catalyst_expanded_strategy_search_precommit_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
