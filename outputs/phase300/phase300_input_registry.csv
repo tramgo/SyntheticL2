@@ -1,0 +1,10 @@
+input_id,value,description
+phase299_work_order,run_phase300_passive_aware_execution_hybrid_precommit_no_paper_live,Phase299 must route to Phase300.
+phase299_selected_route,P300_PASSIVE_AWARE_DIRECTIONAL_L2_EXECUTION_PRECOMMIT,Selected next route.
+phase299_directional_signal_seed_rows,16,Directional seeds available.
+phase298_raw_depth_schema_columns_present,30,Required raw levels 1-5 price/qty/order-count columns present in Phase298 schema audit.
+phase298_l1_only_variant_rows,0,L1-only rows from Phase298.
+phase298_net_edge_live_mask_rows,0,Live leakage rows from Phase298.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned cost model.
+raw_dense_source,raw_synthetic_l2_dense_full_year,Raw dense lake root.
+execution_result_generation_allowed_by_this_phase,0,This precommit does not generate Phase300 backtest results.

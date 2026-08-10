@@ -1,0 +1,9 @@
+finding_id,evidence,severity,finding_present,interpretation
+phase298_executed,scenario_rows=1152,evidence,1,Phase298 executed on raw dense top-five book-state artifacts.
+phase298_no_direct_acceptance_survivor,sparse_above12=0;robust_above12=0,hard_negative,1,No direct Phase298 survivor is accepted or promoted.
+phase298_best_is_sparse_spark,best_ann=382.9973530062694;best_events=3;best_dates=1,research_clue,1,"The best result is a sparse fixed-capital annualized spark, not a strategy."
+above12_below_floor_variants_preserved,rows=9,research_clue,1,High annualized pockets below the 30-event floor are preserved only as directional-signal seeds.
+directional_signal_seeds_preserved,rows=16,next_input,1,Reuse existing directional signals; do not run a fresh alpha search in Phase300.
+raw_depth_scope_preserved,"bid/ask price, quantity, order-count depth levels 1-5",constraint,1,"Phase300 must continue using top-five market-by-price depth levels, including levels 2-5."
+taker_cost_problem_identified,prior candidates crossed spread on entry/exit,design_gap,1,"The next lever is passive-aware execution, not more taker-only threshold mining."
+next_route_selected,P300_PASSIVE_AWARE_DIRECTIONAL_L2_EXECUTION_PRECOMMIT,next_action,1,Route to Phase300 passive-aware execution precommit before generating results.

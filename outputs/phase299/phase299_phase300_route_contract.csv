@@ -1,0 +1,14 @@
+contract_id,contract_value,description
+P300_THESIS,passive_aware_execution_of_directional_top5_depth_signals,Test the retail-available cost-side lever after taker-only edges failed.
+P300_INPUT_DIRECTIONAL_SIGNALS,P235;P268;P280;P281;P282;P298_sparse_directional_seeds,Reuse existing directional L2 signals; no new alpha search.
+P300_INPUT_FILL_MODEL,P260_to_P269_passive_queue_depth_features,"Estimate P(fill | queue depth, side, horizon) from raw depth state."
+P300_INPUT_TOXICITY,P130_and_P280_to_P282_adverse_selection_toxicity_estimates,Apply fill-conditioned toxicity/adverse-selection penalty.
+P300_INPUT_FEED_FILTER,P130_feed_imperfection_regime_filter,Skip toxic or degraded feed windows where applicable.
+P300_INPUT_COST_MODEL,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha NSE equity intraday model with cost200 stress.
+P300_INPUT_RAW_BOOK,P51_raw_dense_lake;P298_schema_audit,Use raw top-five market-by-price depth levels 1-5 price/qty/order-count.
+P300_FORBID_L1_ONLY,l1_only_variant_rows_must_equal_0,Levels 2-5 materiality remains required.
+P300_FORBID_LOOKAHEAD,net_edge_live_mask_rows_must_equal_0,No net-edge labels may be used as live masks.
+P300_REQUIRED_EXECUTION_POLICY,passive_entry_wait_cancel_or_cross;passive_exit_when_calm;aggressive_exit_when_risk_or_expiry,"Hybrid execution policy, not two-sided market-making."
+P300_REQUIRED_PENALTIES,fill_probability;adverse_selection;forced_flatten,All three realism penalties are mandatory.
+P300_ACCEPTANCE_BAR,events_ge_30;annualized_gt_12pct_cost200;multi_symbol_date_breadth;rank_stable_1x_to_2x,Sparse >12% pockets below 30 events are discovery-only.
+P300_BOUNDARY,replay_0;promotion_0;paper_live_0;profitability_claim_0,Synthetic-only precommit; no acceptance flip.

@@ -1,0 +1,25 @@
+metric,value,description
+phase300_precommit_complete,1,Phase300 passive-aware execution precommit completed
+phase300_selected_route,P300_PASSIVE_AWARE_DIRECTIONAL_L2_EXECUTION_HYBRID,Selected route
+phase300_charter_rows,29,Charter rows
+phase300_input_registry_rows,9,Input registry rows
+phase300_execution_work_order_rows,10,Execution work-order rows
+phase300_directional_signal_seed_rows,16,Directional seed rows from Phase299
+phase300_raw_depth_schema_columns_present,30,Required raw depth columns present
+phase300_l1_only_variant_rows,0,L1-only rows
+phase300_net_edge_live_mask_rows,0,Live leakage rows
+phase300_fill_model_required,1,Passive fill model required
+phase300_adverse_selection_required,1,Adverse selection penalty required
+phase300_forced_flatten_cost_required,1,Forced flatten cost required
+phase300_cost200_required,1,2x cost stress required
+phase300_fixed_capital_required,1,Fixed capital denominator required
+phase300_min_event_rows,30,Acceptance event floor
+phase300_annualized_threshold_pct,12.0,Acceptance annualized threshold
+phase300_results_generated,0,Precommit only; no Phase300 results generated
+phase300_strategy_replay_allowed,0,No replay
+phase300_strategy_promotion_allowed,0,No promotion
+phase300_paper_or_live_acceptance_allowed,0,No paper/live
+phase300_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase300_hard_gate_pass_rows,10,Passed hard gates
+phase300_hard_gate_rows,10,Hard gates
+phase300_next_best_action,run_phase300_passive_aware_execution_hybrid_no_paper_live,Recommended next milestone

@@ -1,0 +1,8 @@
+decision_id,decision_value,evidence,description
+close_phase298_for_direct_acceptance,1,no_sparse_or_robust_acceptance_rows,"No replay, promotion, paper/live, or profitability claim is opened."
+preserve_best_sparse_spark_as_seed,P298_RAW_MICROPRICE_DEPTH_REVERSAL_HDFCBANK_2026-01_Q99_DL3_H6,family=P298_RAW_MICROPRICE_DEPTH_REVERSAL;ann=382.9973530062694;events=3,Use only as a directional signal seed.
+do_not_add_new_alpha_search_in_phase300,1,charter_requires_reuse_validated_directional_signals,"Phase300 tests execution realism, not a new signal grid."
+require_passive_fill_model,1,passive_fill_probability_from_queue_depth_required,No assumed passive fills.
+require_adverse_selection_penalty,1,fill_conditioned_toxicity_penalty_required,Filled passive orders must pay adverse-selection penalty.
+require_forced_flatten_cost,1,inventory_leftover_pays_taker_flatten,No free spread saving by refusing to exit.
+selected_next_route,P300_PASSIVE_AWARE_DIRECTIONAL_L2_EXECUTION_PRECOMMIT,only remaining retail cost-side lever,Freeze Phase300 passive-aware execution charter before results.

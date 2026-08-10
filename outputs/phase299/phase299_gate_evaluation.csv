@@ -1,0 +1,14 @@
+gate_id,passed,observed_value,required_value,severity
+P299_PHASE298_SWEEP_COMPLETE,True,1,Phase298 sweep complete,hard
+P299_PHASE298_NEXT_ACTION_PRESENT,True,run_phase299_raw_dense_top5_book_state_strategy_sweep_interpretation_no_paper_live,Phase298 routes to Phase299 interpretation,hard
+P299_PHASE298_GATES_PASS,True,13/13,Phase298 hard gates pass,hard
+P299_RANKED_INTERPRETATION_PRESENT,True,576,>0 ranked variants,hard
+P299_CLOSES_PHASE298_FOR_DIRECT_ACCEPTANCE,True,1,Phase298 closed for direct acceptance,hard
+P299_NO_ACCEPTANCE_SURVIVOR,True,sparse_above12=0;robust_above12=0,no Phase298 survivor,hard
+P299_BEST_BELOW_PHASE300_EVENT_FLOOR,True,3,<30,hard
+P299_DIRECTIONAL_SEEDS_PRESERVED,True,16,>0,hard
+P299_RAW_TOP5_BOOK_SCOPE,True,l1_only=0;live_mask=0,levels 1-5 and no leakage,hard
+P299_FIXED_CAPITAL_DENOMINATOR,True,fixed_initial_capital,fixed_initial_capital,hard
+P299_NEXT_ROUTE_SELECTED,True,P300_PASSIVE_AWARE_DIRECTIONAL_L2_EXECUTION_PRECOMMIT,P300_PASSIVE_AWARE_DIRECTIONAL_L2_EXECUTION_PRECOMMIT,hard
+P299_BOUNDARIES_CLOSED,True,replay=0;paper=0;claim=0,no replay/paper/live/claim,hard
+P299_PHASE300_CONTRACT_PRESENT,True,13,Phase300 route contract rows,hard
