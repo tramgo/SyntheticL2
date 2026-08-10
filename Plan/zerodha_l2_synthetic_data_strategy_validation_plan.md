@@ -13779,14 +13779,14 @@ Current Phase149 evidence after Phase304:
 
 ## 24.132 Phase305 Event-Catalyst Source Import Audit Completed
 
-Phase305 audits the Phase304 event-catalyst dropzone and imports only non-template, schema-valid, embargo-safe event-catalyst rows. It does not run strategy search. The current run correctly imports zero rows because the dropzone contains only the template file.
+Phase305 audits the Phase304 event-catalyst dropzone and imports only non-template, schema-valid, embargo-safe event-catalyst rows. It does not run strategy search. The current rerun imports one verified RBI MPC event-catalyst row and keeps strategy search closed until Phase306 precommits the top-five depth join.
 
 Phase305 evidence:
 
 - event-catalyst import audit complete: `1`;
-- non-template source files audited: `0`;
-- raw candidate rows read: `0`;
-- imported event rows: `0`;
+- non-template source files audited: `1`;
+- raw candidate rows read: `1`;
+- imported event rows: `1`;
 - import issue rows: `0`;
 - template rows imported: `0`;
 - strategy search allowed now: `0`;
@@ -13796,10 +13796,22 @@ Phase305 evidence:
 - deployable profitability claim allowed: `0`;
 - hard gates: `8/8`.
 
+Phase305 imported source:
+
+- file: `event_sources/event_catalysts/dropzone/event_catalysts_rbi_mpc_20260805.csv`;
+- event time: `2026-08-05 10:00:00+05:30`;
+- event type: `rbi_policy`;
+- symbol scope: `ALL`;
+- index scope: `ALL`;
+- source URL: `https://www.youtube.com/watch?v=XIdD58WOX30`;
+- confidence: `0.90`;
+- embargo-safe flag: `1`;
+- interpretation: exogenous event timestamp only, not a directional label.
+
 Phase305 import boundary:
 
 - the template file `event_sources/event_catalysts/dropzone/event_catalyst_events_template.csv` is never imported;
-- no Phase306 depth join, strategy search, replay, promotion or profitability claim can open until a non-template CSV with real event-catalyst rows is added to the dropzone and Phase305 is rerun successfully;
+- no strategy search, replay, promotion or profitability claim can open until Phase306 precommits the top-five depth join;
 - imported rows must satisfy the Phase304 schema and `embargo_safe_flag=1`.
 
 Phase305 outputs:
@@ -13815,9 +13827,9 @@ Phase305 outputs:
 Current Phase149 evidence after Phase305:
 
 - hard gates remain `322/322`;
-- `real_receive_flow_source` status: `event_catalyst_source_import_blocked_dropzone_unpopulated`;
-- `synthetic_strategy_discovery` status: `event_catalyst_source_import_blocked_dropzone_unpopulated`;
-- current next action: `populate_event_catalyst_dropzone_with_non_template_source_rows_then_rerun_phase305`.
+- `real_receive_flow_source` status: `event_catalyst_source_imported_join_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_source_imported_join_precommit_open`;
+- current next action: `run_phase306_event_catalyst_top5_depth_join_precommit_no_strategy_search`.
 
 ## 25. Final Principle
 
