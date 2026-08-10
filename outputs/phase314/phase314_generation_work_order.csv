@@ -1,0 +1,7 @@
+work_order_id,scope,description
+event_timestamp_discovery,raw_synthetic_l2_dense_full_year,Discover candidate timestamps from dense parquet metadata and row-level samples.
+cross_symbol_overlap,32_symbol_universe,Keep event timestamps that have broad symbol coverage for the same event window.
+event_spacing,prefer_distinct_synthetic_dates_and_nonoverlapping_windows,Avoid near-duplicate adjacent windows.
+calendar_labeling,synthetic_calendar_event_id,"Label generated rows as synthetic-calendar events, not real-world events."
+phase315_outputs,event_sources/event_catalysts/generated/phase315_multievent_synthetic_calendar.csv,Write generated event ledger separately from verified external event sources.
+phase316_join,rerun_event_catalyst_join_for_multievent_ledger,Join multi-event ledger to top-five depth before feature/search rerun.

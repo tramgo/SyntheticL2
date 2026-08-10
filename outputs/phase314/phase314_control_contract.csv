@@ -1,0 +1,9 @@
+control_id,control_status,description
+real_event_date_claim,forbidden,Synthetic-calendar rows must not be described as real-world RBI/news dates.
+directional_event_label,forbidden,Event rows provide timing only; no bullish/bearish truth label.
+l1_only_candidate,forbidden,Full-depth branch cannot collapse to L1-only.
+unlimited_capital_return,forbidden,Future annualized return must retain fixed-capital denominator.
+paper_live_acceptance,forbidden,No paper/live claim from synthetic breadth expansion.
+deployable_profitability_claim,forbidden,No deployable claim until independent breadth and acceptance gates exist.
+zerodha_cost_stress,required,Future search keeps Zerodha cost model and stress profiles.
+sparse_annualized_label,required,Annualized >12% remains a sparse research lead until breadth gates pass.

@@ -1,0 +1,16 @@
+metric,value,description
+phase314_multievent_breadth_precommit_complete,1,Phase314 multi-event synthetic breadth precommit completed
+phase314_breadth_contract_rows,10,Breadth contract rows
+phase314_generation_work_order_rows,6,Generation work-order rows
+phase314_control_rows,8,Control rows
+phase314_min_synthetic_event_dates,10,Minimum synthetic event dates for next materialization
+phase314_min_symbols_per_event,32,Minimum symbol universe target per event
+phase314_full_depth_required,1,Full top-five market-by-price depth required
+phase314_depth_beyond_l1_required,1,Levels 2-5 materiality required
+phase314_replay_allowed,0,No replay
+phase314_strategy_promotion_allowed,0,No promotion
+phase314_paper_or_live_acceptance_allowed,0,No paper/live
+phase314_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase314_hard_gate_pass_rows,7,Passed hard gates
+phase314_hard_gate_rows,7,Hard gates
+phase314_next_best_action,run_phase315_event_catalyst_multievent_synthetic_breadth_materialization_no_replay,Recommended next action

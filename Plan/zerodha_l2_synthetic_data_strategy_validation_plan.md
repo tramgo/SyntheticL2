@@ -14209,6 +14209,53 @@ Current Phase149 evidence after Phase313:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_synthetic_breadth_precommit_open`;
 - current next action: `run_phase314_event_catalyst_multievent_synthetic_breadth_precommit_no_replay`.
 
+## 24.141 Phase314 Event-Catalyst Multi-Event Synthetic Breadth Precommit Completed
+
+Phase314 precommits the multi-event synthetic breadth expansion selected by Phase313. It requires the next materialization to discover timestamps from actual dense L2 coverage rather than assuming normal NSE clock times, because the current dense synthetic shard has event-compatible rows at synthetic-clock times such as `15:30 IST`. It does not generate events, run joins, replay strategies, promote strategies, or claim deployable profitability.
+
+Phase314 evidence:
+
+- multi-event breadth precommit complete: `1`;
+- breadth contract rows: `10`;
+- generation work-order rows: `6`;
+- control rows: `8`;
+- minimum synthetic event dates for next materialization: `10`;
+- minimum symbols per event target: `32`;
+- full top-five depth required: `1`;
+- depth beyond L1 required: `1`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `7/7`.
+
+Phase314 breadth contract:
+
+- generate at least 10 synthetic event dates before rerunning event-catalyst search;
+- keep the 32-symbol universe target for every generated event when dense rows exist;
+- discover valid event timestamps from dense row-level or row-group coverage;
+- preserve the Phase306/307 window of 900 seconds before and 1800 seconds after event time;
+- label generated rows as synthetic-calendar catalyst timestamps, not real-world RBI/news dates;
+- keep full L1-L5 market-by-price depth and L2-L5 materiality mandatory;
+- continue to treat annualized >12% as a sparse research lead until breadth gates pass.
+
+Phase314 outputs:
+
+- `outputs/phase314/phase314_acceptance_summary.csv`;
+- `outputs/phase314/phase314_multievent_breadth_contract.csv`;
+- `outputs/phase314/phase314_generation_work_order.csv`;
+- `outputs/phase314/phase314_control_contract.csv`;
+- `outputs/phase314/phase314_gate_evaluation.csv`;
+- `outputs/phase314/phase314_event_catalyst_multievent_synthetic_breadth_precommit_report.md`;
+- `outputs/phase314/phase314_event_catalyst_multievent_synthetic_breadth_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase314:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_synthetic_breadth_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_synthetic_breadth_materialization_open`;
+- current next action: `run_phase315_event_catalyst_multievent_synthetic_breadth_materialization_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

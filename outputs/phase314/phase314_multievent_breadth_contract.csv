@@ -1,0 +1,11 @@
+contract_id,contract_value,description
+P314_MIN_SYNTHETIC_EVENT_DATES,>=10,Generate at least 10 synthetic event dates before rerunning event-catalyst search.
+P314_MIN_SYMBOLS_PER_EVENT,32,Each synthetic event should cover the 32-symbol universe when dense rows exist.
+P314_SOURCE_CLOCK_POLICY,discover_from_dense_row_level_or_row_group_coverage,Do not assume NSE-clock-normal rows; choose timestamps from actual dense coverage.
+P314_EVENT_WINDOW_SECONDS,pre=900;post=1800,Preserve Phase306/307 event window for comparability.
+P314_EVENT_TYPE_POLICY,synthetic_calendar_rbi_policy_like,"Synthetic-calendar events are catalyst timestamps only, not real RBI dates."
+P314_TRAINING_ONLY_POLICY,no_replay_no_promotion_no_paper_live,Breadth expansion is still synthetic-only training research.
+P314_FULL_DEPTH_POLICY,levels_1_to_5_required,Every generated event must retain full top-five market-by-price depth.
+P314_L2_L5_MATERIALITY_POLICY,required,The next search must preserve depth-beyond-L1 features.
+P314_ACCEPTANCE_FLOOR_FOR_FUTURE,>=10_events_now;>=30_trades_for_candidate_interpretation,Increase breadth before interpreting annualized leads.
+P314_NEXT,run_phase315_event_catalyst_multievent_synthetic_breadth_materialization_no_replay,Materialize the multi-event synthetic event ledger and rerun join/features/search pipeline.
