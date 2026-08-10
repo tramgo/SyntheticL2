@@ -262,6 +262,7 @@ phase,runner,runner_exists,runner_suffix
 329,scripts\run_phase329_event_catalyst_expanded_feature_materialization_precommit.py,True,.py
 32,scripts\run_phase32_contract_evidence_scanner.py,True,.py
 330,scripts\run_phase330_event_catalyst_expanded_feature_materialization.py,True,.py
+331,scripts\run_phase331_event_catalyst_expanded_strategy_search_precommit.py,True,.py
 33,scripts\run_phase33_broker_evidence_intake.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py

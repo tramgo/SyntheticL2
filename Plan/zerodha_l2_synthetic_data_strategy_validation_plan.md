@@ -14981,6 +14981,78 @@ Current Phase149 evidence after Phase330:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_strategy_search_precommit_open`;
 - current next action: `run_phase331_event_catalyst_expanded_strategy_search_precommit_no_replay`.
 
+## 24.158 Phase331 Event-Catalyst Expanded Strategy Search Precommit Completed
+
+Phase331 precommits the expanded training-only strategy search over the Phase330 compact top-five-depth feature matrix. It is a search-contract milestone, not a profitability run. It does not execute the strategy search, replay, promotion, paper/live acceptance or deployable profitability claims.
+
+Phase331 carries the attached passive-aware execution charter forward as execution-realism requirements without reopening the already-falsified Phase300 passive-aware rescue route. Passive-aware rows are allowed only as honest execution-policy diagnostics with fill probability, adverse-selection penalty and forced flattening. No maker rebate is assumed.
+
+Phase331 precommitted search scope:
+
+- strategy family rows: `15`;
+- depth-beyond-L1 family rows: `15`;
+- search grid rows before family expansion: `69,120`;
+- family x grid upper-bound rows: `1,036,800`;
+- 2x cost-stress grid rows: `17,280`;
+- passive-aware execution grid rows: `34,560`;
+- observable event-bucket policy rows: `5`;
+- acceptance contract rows: `17`;
+- Phase332 work-order rows: `10`;
+- Zerodha cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`.
+
+Phase331 hard gates:
+
+- Phase330 feature matrix complete: pass;
+- Phase330 matrix breadth `1,600` rows: pass;
+- target/live separation: pass, `0` target columns used as live features;
+- Phase330 depth feature columns present: pass, `23 >= 20`;
+- strategy family catalog present: pass, `15 >= 15`;
+- all families use depth beyond L1: pass, `15/15`;
+- search grid present: pass, `69,120`;
+- 2x cost-stress rows present: pass, `17,280`;
+- passive-aware rows present: pass, `34,560`;
+- fixed-capital denominator contract present: pass;
+- passive realism penalties present: pass;
+- Phase332 work order present: pass;
+- no strategy search executed in Phase331: pass;
+- replay/promotion/paper/live/profitability boundaries closed: pass.
+
+Phase331 evidence:
+
+- expanded strategy search precommit complete: `1`;
+- hard gates: `14/14`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only candidate allowed: `0`;
+- net-edge live mask rows allowed: `0`;
+- fixed-capital denominator required: `1`;
+- cost200 required: `1`;
+- passive realism penalties required: `1`;
+- strategy search execution allowed next: `1`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase331 outputs:
+
+- `outputs/phase331/phase331_acceptance_summary.csv`;
+- `outputs/phase331/phase331_strategy_family_catalog.csv`;
+- `outputs/phase331/phase331_strategy_search_grid.csv`;
+- `outputs/phase331/phase331_acceptance_contract.csv`;
+- `outputs/phase331/phase331_phase332_work_order.csv`;
+- `outputs/phase331/phase331_zerodha_cost_component_catalog.csv`;
+- `outputs/phase331/phase331_gate_evaluation.csv`;
+- `outputs/phase331/phase331_event_catalyst_expanded_strategy_search_precommit_report.md`;
+- `outputs/phase331/phase331_event_catalyst_expanded_strategy_search_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase331:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_training_strategy_search_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_training_strategy_search_open`;
+- current next action: `run_phase332_event_catalyst_expanded_strategy_search_training_only_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

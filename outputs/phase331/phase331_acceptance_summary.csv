@@ -1,0 +1,27 @@
+metric,value,description
+phase331_expanded_strategy_search_precommit_complete,1,Phase331 expanded strategy search precommit completed
+phase331_strategy_family_rows,15,Strategy family rows
+phase331_depth_beyond_l1_family_rows,15,Families using depth levels 2-5
+phase331_search_grid_rows,69120,Search grid rows before family expansion
+phase331_expanded_variant_upper_bound_rows,1036800,Family x grid upper bound
+phase331_cost200_grid_rows,17280,2x cost-stress grid rows
+phase331_passive_aware_grid_rows,34560,Passive-aware execution grid rows
+phase331_event_bucket_policy_rows,5,Observable event-bucket policies
+phase331_acceptance_contract_rows,17,Acceptance contract rows
+phase331_work_order_rows,10,Phase332 work-order rows
+phase331_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Zerodha cost model version
+phase331_full_depth_required,1,Depth levels 1-5 required
+phase331_depth_beyond_l1_required,1,Depth levels 2-5 materiality required
+phase331_l1_only_candidate_allowed,0,L1-only candidate path closed
+phase331_net_edge_live_mask_rows_allowed,0,No net-edge live lookahead mask allowed
+phase331_fixed_capital_required,1,Fixed initial capital denominator required
+phase331_cost200_required,1,2x cost stress required
+phase331_passive_realism_penalties_required,1,"Fill probability, adverse selection and forced flatten required for passive-aware rows"
+phase331_strategy_search_execution_allowed_next,1,Phase332 training-only search may run if gates pass
+phase331_strategy_replay_allowed,0,No replay
+phase331_strategy_promotion_allowed,0,No promotion
+phase331_paper_or_live_acceptance_allowed,0,No paper/live
+phase331_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase331_hard_gate_pass_rows,14,Passed hard gates
+phase331_hard_gate_rows,14,Hard gates
+phase331_next_best_action,run_phase332_event_catalyst_expanded_strategy_search_training_only_no_replay,Recommended next action

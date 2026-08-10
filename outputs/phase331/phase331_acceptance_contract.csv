@@ -1,0 +1,18 @@
+contract_id,contract_value,description
+fixed_capital_denominator,required,Annualized return must be net P&L divided by fixed initial capital; no unlimited-capital return.
+annualized_research_lead_threshold_pct,12.0,"Sparse >12% annualized is a research lead only, not acceptance."
+cost200_profile_required,zerodha_2x_all_in_cost_proxy,Every candidate family must be scored under a 2x cost stress profile.
+zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Use documented Zerodha equity intraday NSE charges.
+minimum_scheduled_event_rows_for_acceptance,30,Below 30 scheduled events is sparse clue only.
+minimum_symbol_date_breadth_for_acceptance,2_symbols_x_2_dates_positive,Avoid single-symbol/single-date pockets.
+full_depth_required,zerodha_visible_depth_levels_1_to_5,Use top-five market-by-price depth.
+depth_beyond_l1_required,depth_levels_2_to_5_material,No L1-only strategy candidates.
+target_separation,target_columns_prefixed_and_not_live_features,No target column may be used as a live signal input.
+net_edge_live_mask,forbidden,No lookahead net-edge live mask.
+passive_fill_policy_if_used,pessimistic_back_of_queue_fill_probability,"Passive-aware variants must include fill probability, not assumed fills."
+adverse_selection_if_passive,required,Passive-aware variants must penalize filled passive orders for toxicity/adverse selection.
+forced_flatten_if_passive,required,Any unfilled/unexited passive-aware inventory must pay taker flatten cost.
+maker_rebate_assumption,forbidden,Retail maker rebate is not assumed.
+phase331_execution_now,forbidden,Phase331 is precommit only; Phase332 may run training-only search.
+strategy_replay_allowed,forbidden,No replay opens from Phase331.
+paper_live_or_profitability_claim,forbidden,No paper/live/deployable claim from precommit or training search.
