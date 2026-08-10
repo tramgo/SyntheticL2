@@ -238,6 +238,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 305,outputs\phase305,True,7,outputs\phase305\phase305_acceptance_summary.csv,outputs\phase305\phase305_event_catalyst_source_import_audit_manifest.json,False
 306,outputs\phase306,True,6,outputs\phase306\phase306_acceptance_summary.csv,outputs\phase306\phase306_event_catalyst_top5_depth_join_precommit_manifest.json,False
 307,outputs\phase307,True,7,outputs\phase307\phase307_acceptance_summary.csv,outputs\phase307\phase307_event_catalyst_top5_depth_join_materialization_manifest.json,False
+308,outputs\phase308,True,6,outputs\phase308\phase308_acceptance_summary.csv,outputs\phase308\phase308_event_catalyst_join_quality_audit_manifest.json,False
 31,outputs\phase31,True,6,,outputs\phase31\phase31_redesign_evidence_contract_manifest.json,False
 32,outputs\phase32,True,7,,outputs\phase32\phase32_contract_evidence_scanner_manifest.json,False
 33,outputs\phase33,True,10,,outputs\phase33\phase33_broker_evidence_intake_manifest.json,False

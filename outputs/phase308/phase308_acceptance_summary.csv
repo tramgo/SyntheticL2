@@ -1,0 +1,18 @@
+metric,value,description
+phase308_join_quality_audit_complete,1,Phase308 joined event/depth quality audit completed
+phase308_joined_rows,2721782,Joined rows audited
+phase308_materialized_event_rows,1,Distinct materialized events
+phase308_materialized_symbols,32,Distinct materialized symbols
+phase308_symbol_quality_rows,32,Event-symbol quality rows
+phase308_required_columns_present,1,Required joined columns present
+phase308_full_depth_columns_present,1,Depth levels 1-5 columns present
+phase308_required_null_cells,0,Null cells in required columns
+phase308_hard_issue_rows,0,Hard issue rows
+phase308_strategy_search_allowed_now,0,No strategy search in Phase308
+phase308_strategy_replay_allowed,0,No replay
+phase308_strategy_promotion_allowed,0,No promotion
+phase308_paper_or_live_acceptance_allowed,0,No paper/live
+phase308_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase308_hard_gate_pass_rows,9,Passed hard gates
+phase308_hard_gate_rows,9,Hard gates
+phase308_next_best_action,run_phase309_event_catalyst_feature_precommit_no_strategy_search,Recommended next action

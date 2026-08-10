@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-10T06:02:04.722486+00:00",
+  "scope": "phase308_event_catalyst_join_quality_audit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "bb15855d7d86b17037d6d6e630c14f28a627b9f4",
+  "configuration_hash": "f29be1bc696899292b018051e7eed172723d3871bfc6b7ca99986517b5da30d6",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "not_applicable_quality_audit_only",
+  "latency_model_version": "not_applicable_quality_audit_only",
+  "creation_timestamp": "2026-08-10T06:02:04.722486+00:00"
+}

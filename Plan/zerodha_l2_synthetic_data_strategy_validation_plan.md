@@ -13932,6 +13932,44 @@ Current Phase149 evidence after Phase307:
 - `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_quality_audit_open`;
 - current next action: `run_phase308_event_catalyst_join_quality_audit_no_strategy_search`.
 
+## 24.135 Phase308 Event-Catalyst Join Quality Audit Completed
+
+Phase308 audits the Phase307 joined event/top-five-depth artifact before any feature construction or strategy search. It checks that required event/time/symbol/depth columns exist, the joined dataset is non-empty, all 32 symbols are represented, depth levels 1-5 are present, required cells are non-null, top-of-book is non-crossed, depth prices are monotonic by side, depth quantities/orders are positive, and each event-symbol row has the expected relative-time window. It does not run strategy search, replay, promotion, paper/live acceptance, or profitability analysis.
+
+Phase308 evidence:
+
+- join quality audit complete: `1`;
+- joined rows audited: `2,721,782`;
+- distinct materialized events: `1`;
+- distinct materialized symbols: `32`;
+- event-symbol quality rows: `32`;
+- required joined columns present: `1`;
+- full depth levels 1-5 columns present: `1`;
+- required null cells: `0`;
+- hard issue rows: `0`;
+- strategy search allowed now: `0`;
+- strategy replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `9/9`.
+
+Phase308 outputs:
+
+- `outputs/phase308/phase308_acceptance_summary.csv`;
+- `outputs/phase308/phase308_event_symbol_join_quality.csv`;
+- `outputs/phase308/phase308_join_quality_issue_ledger.csv`;
+- `outputs/phase308/phase308_gate_evaluation.csv`;
+- `outputs/phase308/phase308_event_catalyst_join_quality_audit_report.md`;
+- `outputs/phase308/phase308_event_catalyst_join_quality_audit_manifest.json`.
+
+Current Phase149 evidence after Phase308:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_feature_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_feature_precommit_open`;
+- current next action: `run_phase309_event_catalyst_feature_precommit_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
