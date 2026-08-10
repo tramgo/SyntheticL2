@@ -233,6 +233,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 300,outputs\phase300,True,16,outputs\phase300\phase300_acceptance_summary.csv,outputs\phase300\phase300_passive_aware_execution_hybrid_manifest.json|outputs\phase300\phase300_passive_aware_execution_hybrid_precommit_manifest.json,False
 301,outputs\phase301,True,8,outputs\phase301\phase301_acceptance_summary.csv,outputs\phase301\phase301_passive_aware_execution_hybrid_interpretation_manifest.json,False
 302,outputs\phase302,True,8,outputs\phase302\phase302_acceptance_summary.csv,outputs\phase302\phase302_terminal_retail_top5_l2_alpha_thesis_report_manifest.json,False
+303,outputs\phase303,True,6,outputs\phase303\phase303_acceptance_summary.csv,outputs\phase303\phase303_material_new_thesis_source_selector_manifest.json,False
 31,outputs\phase31,True,6,,outputs\phase31\phase31_redesign_evidence_contract_manifest.json,False
 32,outputs\phase32,True,7,,outputs\phase32\phase32_contract_evidence_scanner_manifest.json,False
 33,outputs\phase33,True,10,,outputs\phase33\phase33_broker_evidence_intake_manifest.json,False

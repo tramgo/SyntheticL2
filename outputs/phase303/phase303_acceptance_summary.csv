@@ -1,0 +1,16 @@
+metric,value,description
+phase303_material_new_selector_complete,1,Phase303 material-new thesis/source selector completed
+phase303_selected_route,P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE_SOURCE_ACQUISITION,Selected route
+phase303_candidate_rows,5,Candidate routes evaluated
+phase303_rejected_same_route_rows,1,Same-route candidates rejected
+phase303_selected_requires_external_source,1,Selected route requires new external source
+phase303_selected_uses_top_five_depth_levels_1_to_5,1,Selected route keeps top-five market-by-price levels 1-5
+phase303_work_order_rows,5,Work-order rows emitted
+phase303_strategy_search_allowed_now,0,No strategy search until the new source exists
+phase303_strategy_replay_allowed,0,No replay
+phase303_strategy_promotion_allowed,0,No promotion
+phase303_paper_or_live_acceptance_allowed,0,No paper/live
+phase303_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase303_hard_gate_pass_rows,8,Passed hard gates
+phase303_hard_gate_rows,8,Hard gates
+phase303_next_best_action,acquire_or_build_material_new_event_catalyst_source_before_any_new_l2_strategy_search,Recommended next action

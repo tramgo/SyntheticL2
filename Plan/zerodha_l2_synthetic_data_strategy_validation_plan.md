@@ -13668,6 +13668,55 @@ Current Phase149 evidence after Phase302:
 - `synthetic_strategy_discovery` status: `retail_top5_l2_alpha_thesis_closed_terminal_report_complete`;
 - current next action: `do_not_continue_retail_top5_l2_alpha_rescue_without_material_new_source_or_thesis`.
 
+## 24.130 Phase303 Material-New Thesis and Source Selector Completed
+
+Phase303 converts the Phase302 terminal closure into an executable next-step boundary. It does not reopen the closed retail directional top-five market-by-price depth rescue route. It evaluates whether any next path is materially new enough to justify more work.
+
+Phase303 selected route:
+
+- selected route: `P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE_SOURCE_ACQUISITION`;
+- candidate routes evaluated: `5`;
+- same-route rescue candidates rejected: `1`;
+- selected route requires an external source: `1`;
+- selected route keeps tick-level top-five market-by-price depth levels 1-5: `1`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `8/8`.
+
+Rejected routes:
+
+- same directional top-five rescue: rejected because it only changes filters/execution around the Phase298-Phase302 closed route;
+- two-sided retail market-making: rejected for live acceptance because retail has no maker rebate, weak queue priority and slower cancel realism; it remains simulation-only education at most;
+- broker-fill/contract-note reconciliation: deferred because the user stated Zerodha fills/contract notes are unavailable;
+- derivatives/index-futures lead source: retained as a later candidate if those external feeds become available.
+
+Selected work order:
+
+- define the event-source schema: `event_time_ist`, `event_type`, `symbol_scope`, `index_scope`, `source_url_or_file`, `confidence`, `embargo_safe_flag`;
+- create or import an event calendar before any new strategy search;
+- join event timestamps to tick-level top-five market-by-price depth levels 1-5;
+- precommit fixed-capital, Zerodha cost200, event/breadth floors and no replay/paper/live/profitability-claim gates;
+- block strategy mining until the new source exists.
+
+Phase303 outputs:
+
+- `outputs/phase303/phase303_acceptance_summary.csv`;
+- `outputs/phase303/phase303_material_new_candidate_catalog.csv`;
+- `outputs/phase303/phase303_material_new_source_work_order.csv`;
+- `outputs/phase303/phase303_gate_evaluation.csv`;
+- `outputs/phase303/phase303_material_new_thesis_source_selector_report.md`;
+- `outputs/phase303/phase303_material_new_thesis_source_selector_manifest.json`.
+
+Current Phase149 evidence after Phase303:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `material_new_event_catalyst_source_acquisition_open`;
+- `synthetic_strategy_discovery` status: `material_new_event_catalyst_source_acquisition_open`;
+- current next action: `acquire_or_build_material_new_event_catalyst_source_before_any_new_l2_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

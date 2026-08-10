@@ -1,0 +1,6 @@
+candidate_id,candidate_type,material_new_source,material_new_thesis,uses_top_five_depth_levels_1_to_5,requires_external_data,reason,decision
+P303_SAME_DIRECTIONAL_TOP5_RESCUE,rejected_same_route,0,0,1,0,Only changes filters/execution around the Phase298-302 closed route.,reject
+P303_TWO_SIDED_RETAIL_MARKET_MAKING,rejected_scope,0,1,1,0,"Retail has no maker rebate, weak queue priority and slow cancels; prior charter excludes live market-making.",reject_for_live_acceptance
+P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE,material_new_source_and_thesis,1,1,1,1,Adds exogenous event/news/calendar state before interpreting L2 response; not a same-signal rescue.,select
+P303_BROKER_FILL_CONTRACT_NOTE_RECONCILIATION,material_new_execution_source,1,0,0,1,"Would validate execution economics, but user stated Zerodha fills/contract notes are unavailable.",defer_until_available
+P303_DERIVATIVES_OR_INDEX_FUTURES_LEAD_SOURCE,material_new_cross_market_source,1,1,1,1,Adds a cross-market lead source; useful if futures/options/index feed can be acquired.,candidate_after_event_catalyst

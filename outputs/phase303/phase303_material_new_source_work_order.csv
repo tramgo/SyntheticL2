@@ -1,0 +1,6 @@
+work_order_id,action,selected_candidate_id,deliverable
+P303_WO_01,define_event_source_schema,P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE,"event_time_ist,event_type,symbol_scope,index_scope,source_url_or_file,confidence,embargo_safe_flag"
+P303_WO_02,create_or_import_event_calendar,P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE,No strategy search until at least one event source file exists.
+P303_WO_03,join_events_to_top5_depth_response,P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE,Use tick-level top-five market-by-price levels 1-5 before/after event time.
+P303_WO_04,precommit_acceptance_gates,P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE,"Fixed capital, Zerodha cost200, event/breadth floors, no paper/live/profitability claim."
+P303_WO_05,run_only_after_source_exists,P303_EXTERNAL_EVENT_CATALYST_PLUS_L2_RESPONSE,Do not mine Phase302-closed same-route filters while waiting for source.

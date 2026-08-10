@@ -231,6 +231,7 @@ phase,runner,runner_exists,runner_suffix
 300,scripts\run_phase300_passive_aware_execution_hybrid_precommit.py,True,.py
 301,scripts\run_phase301_passive_aware_execution_hybrid_interpretation.py,True,.py
 302,scripts\run_phase302_terminal_retail_top5_l2_alpha_thesis_report.py,True,.py
+303,scripts\run_phase303_material_new_thesis_source_selector.py,True,.py
 30,scripts\run_phase30_strategy_decision_triage.py,True,.py
 31,scripts\run_phase31_redesign_evidence_contract.py,True,.py
 32,scripts\run_phase32_contract_evidence_scanner.py,True,.py
