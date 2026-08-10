@@ -1,0 +1,18 @@
+metric,value,description
+phase306_join_precommit_complete,1,Phase306 event-catalyst top-five depth join precommit completed
+phase306_imported_event_rows,1,Imported event-catalyst rows available
+phase306_event_universe_rows,32,Event x symbol join work-order rows
+phase306_event_rows_with_depth_month,1,Distinct events with matching dense month
+phase306_symbol_rows,32,Symbols in join universe
+phase306_pre_event_seconds,900,Pre-event window
+phase306_post_event_seconds,1800,Post-event window
+phase306_event_bucket_seconds,1,Join bucket size
+phase306_full_depth_levels_1_to_5_required,1,Top-five market-by-price depth required
+phase306_strategy_search_allowed_now,0,No strategy search in Phase306
+phase306_strategy_replay_allowed,0,No replay
+phase306_strategy_promotion_allowed,0,No promotion
+phase306_paper_or_live_acceptance_allowed,0,No paper/live
+phase306_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase306_hard_gate_pass_rows,8,Passed hard gates
+phase306_hard_gate_rows,8,Hard gates
+phase306_next_best_action,run_phase307_event_catalyst_top5_depth_join_materialization_no_strategy_search,Recommended next action

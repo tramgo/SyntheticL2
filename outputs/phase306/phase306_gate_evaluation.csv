@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P306_PHASE305_IMPORTED_EVENTS,True,1,>0,hard
+P306_EVENT_UNIVERSE_EXPANDED,True,32,>0,hard
+P306_FULL_DEPTH_SCHEMA_AVAILABLE,True,1,1,hard
+P306_JOIN_CONTRACT_PRESENT,True,7,>=7,hard
+P306_NO_L1_ONLY_JOIN,True,full_depth_levels_1_to_5_required,required,hard
+P306_NO_DIRECTIONAL_LABEL_FROM_EVENT,True,event_timestamp_only,required,hard
+P306_NO_STRATEGY_SEARCH_OPENED,True,strategy_search_allowed_now=0,0,hard
+P306_BOUNDARIES_CLOSED,True,replay=0;promotion=0;paper=0;claim=0,all_zero,hard

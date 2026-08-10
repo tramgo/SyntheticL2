@@ -13831,6 +13831,54 @@ Current Phase149 evidence after Phase305:
 - `synthetic_strategy_discovery` status: `event_catalyst_source_imported_join_precommit_open`;
 - current next action: `run_phase306_event_catalyst_top5_depth_join_precommit_no_strategy_search`.
 
+## 24.133 Phase306 Event-Catalyst Top-Five Depth Join Precommit Completed
+
+Phase306 precommits the join between the imported event-catalyst ledger and the tick-level dense top-five market-by-price depth lake. It does not materialize joined features and does not run strategy search.
+
+Phase306 evidence:
+
+- join precommit complete: `1`;
+- imported event rows available: `1`;
+- event × symbol join work-order rows: `32`;
+- distinct events with matching dense month: `1`;
+- symbols in join universe: `32`;
+- pre-event window: `900` seconds;
+- post-event window: `1800` seconds;
+- join bucket size: `1` second;
+- full depth levels 1-5 required: `1`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `8/8`.
+
+Phase306 join contract:
+
+- center join windows on `event_time_ist`;
+- retain a 15-minute pre-event top-five depth context;
+- retain a 30-minute post-event response window;
+- use 1-second event/depth buckets;
+- require top-five market-by-price depth levels 1-5;
+- treat event rows as catalyst timestamps only, not as directional labels;
+- keep strategy search closed until a later materialization/audit phase proves the joined dataset is valid.
+
+Phase306 outputs:
+
+- `outputs/phase306/phase306_acceptance_summary.csv`;
+- `outputs/phase306/phase306_event_catalyst_top5_depth_join_contract.csv`;
+- `outputs/phase306/phase306_event_symbol_join_work_order.csv`;
+- `outputs/phase306/phase306_gate_evaluation.csv`;
+- `outputs/phase306/phase306_event_catalyst_top5_depth_join_precommit_report.md`;
+- `outputs/phase306/phase306_event_catalyst_top5_depth_join_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase306:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_top5_depth_join_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_top5_depth_join_materialization_open`;
+- current next action: `run_phase307_event_catalyst_top5_depth_join_materialization_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

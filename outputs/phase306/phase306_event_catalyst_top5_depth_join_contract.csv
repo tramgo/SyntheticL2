@@ -1,0 +1,8 @@
+contract_id,contract_value,description
+P306_JOIN_CLOCK,event_time_ist,Join windows are centered on observable event timestamp.
+P306_PRE_WINDOW,900,Seconds before event for pre-catalyst top-five depth context.
+P306_POST_WINDOW,1800,Seconds after event for response measurement.
+P306_BUCKET_SECONDS,1,One-second bucket for joined event/depth response features.
+P306_FULL_DEPTH_REQUIRED,1,Use top-five market-by-price depth levels 1-5; no L1-only join.
+P306_NO_DIRECTIONAL_LABEL,1,"Event source provides catalyst timing, not bullish/bearish truth labels."
+P306_NO_STRATEGY_SEARCH,1,"Materialization precommit only; no P&L, replay or optimization."
