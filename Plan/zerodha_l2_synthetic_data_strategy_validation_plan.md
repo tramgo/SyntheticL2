@@ -14236,7 +14236,7 @@ Phase314 breadth contract:
 - discover valid event timestamps from dense row-level or row-group coverage;
 - preserve the Phase306/307 window of 900 seconds before and 1800 seconds after event time;
 - label generated rows as synthetic-calendar catalyst timestamps, not real-world RBI/news dates;
-- keep full L1-L5 market-by-price depth and L2-L5 materiality mandatory;
+- keep Zerodha top-five market-by-price depth levels 1-5 mandatory, with depth levels 2-5 materiality required;
 - continue to treat annualized >12% as a sparse research lead until breadth gates pass.
 
 Phase314 outputs:
@@ -14255,6 +14255,45 @@ Current Phase149 evidence after Phase314:
 - `real_receive_flow_source` status: `event_catalyst_multievent_synthetic_breadth_materialization_open`;
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_synthetic_breadth_materialization_open`;
 - current next action: `run_phase315_event_catalyst_multievent_synthetic_breadth_materialization_no_replay`.
+
+## 24.142 Phase315 Event-Catalyst Multi-Event Synthetic Breadth Materialization Completed
+
+Phase315 materializes the generated synthetic catalyst breadth ledger requested by Phase314. It scans actual dense parquet timestamp coverage and selects ten distinct synthetic event dates with 32-symbol overlap, then writes a generated synthetic calendar separately from the real-event dropzone. This is still a timing-only catalyst ledger: no directional event label, no strategy replay, no promotion, no paper/live acceptance and no profitability claim.
+
+Phase315 evidence:
+
+- multi-event synthetic breadth materialization complete: `1`;
+- generated synthetic event rows: `10`;
+- distinct generated synthetic event dates: `10`;
+- minimum symbols per generated event: `32`;
+- event-symbol join work-order rows: `320`;
+- dense file inventory rows scanned by metadata: `384`;
+- hard gates: `10/10`;
+- full top-five market-by-price depth levels 1-5 required for downstream join/search: `1`;
+- depth levels 2-5 materiality required downstream: `1`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase315 generated outputs:
+
+- `event_sources/event_catalysts/generated/phase315_multievent_synthetic_calendar.csv`;
+- `outputs/phase315/phase315_acceptance_summary.csv`;
+- `outputs/phase315/phase315_generated_synthetic_event_ledger.csv`;
+- `outputs/phase315/phase315_event_symbol_join_work_order.csv`;
+- `outputs/phase315/phase315_dense_file_inventory.csv`;
+- `outputs/phase315/phase315_reference_row_group_candidates.csv`;
+- `outputs/phase315/phase315_gate_evaluation.csv`;
+- `outputs/phase315/phase315_event_catalyst_multievent_synthetic_breadth_materialization_report.md`;
+- `outputs/phase315/phase315_event_catalyst_multievent_synthetic_breadth_materialization_manifest.json`.
+
+Current Phase149 evidence after Phase315:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_top5_depth_join_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_top5_depth_join_precommit_open`;
+- current next action: `run_phase316_event_catalyst_multievent_top5_depth_join_precommit_no_replay`.
 
 ## 25. Final Principle
 

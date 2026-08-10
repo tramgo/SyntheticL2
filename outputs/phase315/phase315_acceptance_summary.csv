@@ -1,0 +1,15 @@
+metric,value,description
+phase315_multievent_synthetic_breadth_materialization_complete,1,Phase315 synthetic event breadth materialization completed
+phase315_generated_event_rows,10,Generated synthetic catalyst event rows
+phase315_distinct_event_dates,10,Distinct generated synthetic event dates
+phase315_min_symbols_per_event,32,Minimum symbol coverage across generated events
+phase315_event_symbol_work_order_rows,320,Event-symbol dense join work-order rows
+phase315_full_depth_required,1,Future join/search must use top-five market-by-price depth levels 1-5
+phase315_depth_beyond_l1_required,1,Future features/search must preserve depth levels 2-5 materiality
+phase315_strategy_replay_allowed,0,No replay
+phase315_strategy_promotion_allowed,0,No promotion
+phase315_paper_or_live_acceptance_allowed,0,No paper/live
+phase315_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase315_hard_gate_pass_rows,10,Passed hard gates
+phase315_hard_gate_rows,10,Hard gates
+phase315_next_best_action,run_phase316_event_catalyst_multievent_top5_depth_join_precommit_no_replay,Recommended next action
