@@ -1,0 +1,8 @@
+work_order_id,scope,description
+load_joined_parquet,DuckDB scan over outputs/phase327/phase327_joined_expanded_event_top5_depth.parquet,Avoid loading all 141.7M joined rows into pandas at once.
+derive_tick_features,"SQL expressions for spread, mid, microprice, depth imbalances, depth slopes and pressure",Use Zerodha visible levels 1-5 and depth-beyond-L1 levels 2-5.
+aggregate_signal_features,"group by event_id,event_time_ist,event_type,symbol",Produce compact event-symbol feature rows.
+preserve_event_symbol_breadth,expect 50 events x 32 symbols = 1600 rows,Reject partial event-symbol feature coverage.
+separate_targets,post_60s/post_300s/post_900s/post_1800s response columns,Keep target columns explicitly outside live feature set.
+write_outputs,outputs/phase330/phase330_event_catalyst_expanded_feature_matrix.parquet,Feature materialization target.
+quality_audit,outputs/phase330/phase330_feature_quality.csv,"Validate full-depth features, target separation and 50x32 coverage."

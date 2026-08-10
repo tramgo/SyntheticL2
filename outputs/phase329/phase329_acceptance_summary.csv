@@ -1,0 +1,20 @@
+metric,value,description
+phase329_expanded_feature_materialization_precommit_complete,1,Phase329 expanded feature materialization precommit completed
+phase329_feature_catalog_rows,23,Feature catalog rows
+phase329_depth_beyond_l1_feature_rows,14,Feature rows using visible depth levels 2-5
+phase329_lookahead_target_only_rows,6,Target-only lookahead columns explicitly separated
+phase329_materialization_contract_rows,14,Materialization contract rows
+phase329_processing_work_order_rows,7,Processing work-order rows
+phase329_expected_feature_rows,1600,Expected event-symbol feature rows for Phase330
+phase329_full_depth_required,1,Zerodha visible levels 1-5 required
+phase329_depth_beyond_l1_required,1,Visible levels 2-5 materiality required
+phase329_l1_only_variant_rows_allowed,0,No L1-only variants allowed
+phase329_net_edge_live_mask_rows_allowed,0,No net-edge live lookahead mask allowed
+phase329_strategy_search_allowed_now,0,No strategy search in Phase329
+phase329_strategy_replay_allowed,0,No replay
+phase329_strategy_promotion_allowed,0,No promotion
+phase329_paper_or_live_acceptance_allowed,0,No paper/live
+phase329_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase329_hard_gate_pass_rows,11,Passed hard gates
+phase329_hard_gate_rows,11,Hard gates
+phase329_next_best_action,run_phase330_event_catalyst_expanded_feature_materialization_no_strategy_search,Recommended next action

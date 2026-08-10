@@ -14852,6 +14852,59 @@ Current Phase149 evidence after Phase328:
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_feature_materialization_precommit_open`;
 - current next action: `run_phase329_event_catalyst_expanded_feature_materialization_precommit_no_replay`.
 
+## 24.156 Phase329 Event-Catalyst Expanded Feature Materialization Precommit Completed
+
+Phase329 precommits compact expanded feature materialization from the repaired Phase327 joined top-five-depth parquet and accepted Phase328 quality audit. It does not materialize the feature matrix yet and does not run strategy search, replay, promotion, paper/live acceptance or profitability claims.
+
+Phase329 locks the Phase330 work order around the full 50-event by 32-symbol scope:
+
+- expected compact feature rows: `1,600`;
+- source parquet: `outputs/phase327/phase327_joined_expanded_event_top5_depth.parquet`;
+- audited joined rows to preserve unless Phase327 is rerun: `141,708,530`;
+- required window: `relative_second=-900..1800`;
+- full Zerodha visible depth levels 1-5 required;
+- visible depth levels 2-5 must remain material;
+- no L1-only variants;
+- no net-edge/future-outcome live mask;
+- target/diagnostic columns remain separated from live signal features.
+
+Phase329 evidence:
+
+- expanded feature materialization precommit complete: `1`;
+- feature catalog rows: `23`;
+- depth-beyond-L1 feature rows: `14`;
+- lookahead target-only rows: `6`;
+- materialization contract rows: `14`;
+- processing work-order rows: `7`;
+- expected Phase330 feature rows: `1,600`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only variant rows allowed: `0`;
+- net-edge live mask rows allowed: `0`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `11/11`.
+
+Phase329 outputs:
+
+- `outputs/phase329/phase329_acceptance_summary.csv`;
+- `outputs/phase329/phase329_expanded_feature_catalog.csv`;
+- `outputs/phase329/phase329_feature_materialization_contract.csv`;
+- `outputs/phase329/phase329_processing_work_order.csv`;
+- `outputs/phase329/phase329_gate_evaluation.csv`;
+- `outputs/phase329/phase329_event_catalyst_expanded_feature_materialization_precommit_report.md`;
+- `outputs/phase329/phase329_event_catalyst_expanded_feature_materialization_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase329:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_feature_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_feature_materialization_open`;
+- current next action: `run_phase330_event_catalyst_expanded_feature_materialization_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

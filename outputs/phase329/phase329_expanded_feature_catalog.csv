@@ -1,0 +1,24 @@
+feature_id,formula,feature_family,description,feature_role,phase330_materialization_required,uses_depth_beyond_l1,lookahead_target_only
+event_clock_relative_second,relative_second,event_clock,Event-relative second from -900 through +1800.,context,1,0,0
+l1_spread,sell_1_price - buy_1_price,top_of_book_l1,Best bid/ask spread.,signal,1,0,0
+l1_mid,(sell_1_price + buy_1_price) / 2,top_of_book_l1,Best bid/ask midpoint.,signal,1,0,0
+l1_microprice,weighted best quote by opposite-side quantity,top_of_book_l1,Best-level microprice.,signal,1,0,0
+l1_queue_imbalance,(buy_1_quantity - sell_1_quantity) / total_l1_qty,top_of_book_l1,Best-level quantity imbalance.,signal,1,0,0
+depth_l1_l5_qty_imbalance,sum_qty_bid_l1_l5 vs sum_qty_ask_l1_l5,top_five_depth,Quantity imbalance across Zerodha visible market-by-price levels 1-5.,signal,1,1,0
+depth_l2_l5_qty_imbalance,sum_qty_bid_l2_l5 vs sum_qty_ask_l2_l5,top_five_depth_beyond_l1,Quantity imbalance across visible depth levels 2-5.,signal,1,1,0
+depth_l1_l5_order_imbalance,sum_orders_bid_l1_l5 vs sum_orders_ask_l1_l5,top_five_depth,Order-count imbalance across Zerodha visible market-by-price levels 1-5.,signal,1,1,0
+depth_l2_l5_order_imbalance,sum_orders_bid_l2_l5 vs sum_orders_ask_l2_l5,top_five_depth_beyond_l1,Order-count imbalance across visible depth levels 2-5.,signal,1,1,0
+bid_depth_slope_l1_l5,buy_1_price - buy_5_price,top_five_depth,Bid-side price ladder slope across levels 1-5.,signal,1,1,0
+ask_depth_slope_l1_l5,sell_5_price - sell_1_price,top_five_depth,Ask-side price ladder slope across levels 1-5.,signal,1,1,0
+l2_l5_depth_share,depth_l2_l5_qty / depth_l1_l5_qty,top_five_depth_beyond_l1,Share of displayed quantity beyond best bid/ask.,signal,1,1,0
+depth_pressure,"depth_l1_l5_qty_imbalance / max(l1_spread,tick)",top_five_depth,Full visible-depth imbalance normalized by spread.,signal,1,1,0
+depth_l2_l5_pressure,"depth_l2_l5_qty_imbalance / max(l1_spread,tick)",top_five_depth_beyond_l1,Levels 2-5 imbalance normalized by spread.,signal,1,1,0
+pre_900s_mean_features,mean(signal features where relative_second < 0),pre_event_context,Pre-event feature means over the full 900s lead-in.,signal,1,1,0
+pre_300s_mean_features,mean(signal features where -300 <= relative_second < 0),pre_event_context,Near-event feature means over the last 300s before the event.,signal,1,1,0
+event_nearest_features,nearest row to relative_second=0,event_context,At-event feature snapshot.,signal,1,1,0
+pre_post_pressure_delta_diagnostic,post depth_pressure minus pre depth_pressure,diagnostic,Pressure shift diagnostic separated from live entry features unless explicitly treated as a target.,diagnostic,1,1,1
+post_60s_response,midpoint return at +60s from event_mid,target_response,"Short response target, excluded from live signal features.",target,1,0,1
+post_300s_response,midpoint return at +300s from event_mid,target_response,"Five-minute response target, excluded from live signal features.",target,1,0,1
+post_900s_response,midpoint return at +900s from event_mid,target_response,"Fifteen-minute response target, excluded from live signal features.",target,1,0,1
+post_1800s_response,midpoint return at +1800s from event_mid,target_response,"Thirty-minute response target, excluded from live signal features.",target,1,0,1
+post_depth_pressure_shift,post depth_pressure minus pre depth_pressure,target_response,"Liquidity-pressure response target, excluded from live signal features.",target,1,1,1
