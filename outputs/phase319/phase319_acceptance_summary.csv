@@ -1,0 +1,19 @@
+metric,value,description
+phase319_multievent_feature_materialization_precommit_complete,1,Phase319 multi-event feature materialization precommit completed
+phase319_feature_catalog_rows,22,Feature catalog rows
+phase319_depth_beyond_l1_feature_rows,13,Feature rows using depth levels 2-5
+phase319_lookahead_target_only_rows,5,Target-only lookahead columns explicitly separated
+phase319_materialization_contract_rows,13,Materialization contract rows
+phase319_processing_work_order_rows,6,Processing work-order rows
+phase319_full_depth_required,1,Depth levels 1-5 required
+phase319_depth_beyond_l1_required,1,Depth levels 2-5 materiality required
+phase319_l1_only_variant_rows_allowed,0,No L1-only variants allowed
+phase319_net_edge_live_mask_rows_allowed,0,No net-edge live lookahead mask allowed
+phase319_strategy_search_allowed_now,0,No strategy search in Phase319
+phase319_strategy_replay_allowed,0,No replay
+phase319_strategy_promotion_allowed,0,No promotion
+phase319_paper_or_live_acceptance_allowed,0,No paper/live
+phase319_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase319_hard_gate_pass_rows,10,Passed hard gates
+phase319_hard_gate_rows,10,Hard gates
+phase319_next_best_action,run_phase320_event_catalyst_multievent_feature_materialization_no_strategy_search,Recommended next action

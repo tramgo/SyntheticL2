@@ -1,0 +1,14 @@
+contract_id,contract_value,description
+P319_INPUT_JOIN,outputs/phase317/phase317_joined_multievent_top5_depth.parquet,Use the accepted local Phase317 joined parquet.
+P319_INPUT_QUALITY,outputs/phase318/phase318_acceptance_summary.csv,Require Phase318 quality audit before feature materialization.
+P319_MIN_JOIN_ROWS,28350310,Preserve Phase318 audited joined-row count unless Phase317 is rerun.
+P319_EVENT_SYMBOL_SCOPE,10_events_x_32_symbols,Feature matrix should produce one compact row per event and symbol.
+P319_WINDOW,relative_second=-900..1800,Use only the audited event-relative window.
+P319_FULL_DEPTH_REQUIRED,depth_levels_1_to_5,Retain full Zerodha top-five market-by-price depth.
+P319_DEPTH_BEYOND_L1_REQUIRED,depth_levels_2_to_5_material,Feature matrix must include material depth-beyond-L1 features.
+P319_NO_L1_ONLY_VARIANTS,l1_only_variant_rows=0,No downstream strategy family may use only top-of-book fields.
+P319_TARGET_SEPARATION,target_columns_not_live_signal_features,"Post-event returns and pressure shifts must be targets/diagnostics, not live signal inputs."
+P319_NO_NET_EDGE_LIVE_MASK,net_edge_live_mask_rows=0,No future outcome mask may be used to select live rows.
+P319_NO_STRATEGY_SEARCH,strategy_search_allowed_now=0,"Precommit only; no P&L, replay or optimization."
+P319_BOUNDARIES,replay=0;promotion=0;paper=0;claim=0,No acceptance boundary changes.
+P319_NEXT,run_phase320_event_catalyst_multievent_feature_materialization_no_strategy_search,Materialize compact multi-event feature matrix next.

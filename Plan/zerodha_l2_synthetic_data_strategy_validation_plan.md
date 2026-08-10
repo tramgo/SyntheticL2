@@ -14411,6 +14411,46 @@ Current Phase149 evidence after Phase318:
 - `synthetic_strategy_discovery` status: `event_catalyst_multievent_feature_materialization_precommit_open`;
 - current next action: `run_phase319_event_catalyst_multievent_feature_materialization_precommit_no_replay`.
 
+## 24.146 Phase319 Event-Catalyst Multi-Event Feature Materialization Precommit Completed
+
+Phase319 precommits the Phase320 feature materialization contract for the accepted Phase317/Phase318 multi-event top-five market-by-price depth join. It converts the 10-event, 32-symbol, 28.35M-row accepted join into a controlled feature catalog and work order before any strategy search. The precommit requires depth levels 1-5, requires depth levels 2-5 materiality, separates lookahead response targets from live signal features, and explicitly rejects L1-only variants and net-edge live masks.
+
+Phase319 evidence:
+
+- multi-event feature materialization precommit complete: `1`;
+- feature catalog rows: `22`;
+- feature rows using depth levels 2-5: `13`;
+- lookahead target-only rows separated from live signal features: `5`;
+- materialization contract rows: `13`;
+- processing work-order rows: `6`;
+- full depth required: `1`;
+- depth beyond L1 required: `1`;
+- L1-only variant rows allowed: `0`;
+- net-edge live mask rows allowed: `0`;
+- hard gates: `10/10`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase319 outputs:
+
+- `outputs/phase319/phase319_acceptance_summary.csv`;
+- `outputs/phase319/phase319_multievent_feature_catalog.csv`;
+- `outputs/phase319/phase319_feature_materialization_contract.csv`;
+- `outputs/phase319/phase319_processing_work_order.csv`;
+- `outputs/phase319/phase319_gate_evaluation.csv`;
+- `outputs/phase319/phase319_event_catalyst_multievent_feature_materialization_precommit_report.md`;
+- `outputs/phase319/phase319_event_catalyst_multievent_feature_materialization_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase319:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_multievent_feature_materialization_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_multievent_feature_materialization_open`;
+- current next action: `run_phase320_event_catalyst_multievent_feature_materialization_no_strategy_search`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
