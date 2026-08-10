@@ -15257,6 +15257,83 @@ Current Phase149 evidence after Phase334:
 - `synthetic_strategy_discovery` status: `cost_stress_margin_redesign_training_search_open`;
 - current next action: `run_phase335_cost_stress_margin_redesign_training_only_no_replay`.
 
+## 24.162 Phase335 Cost-Stress Margin Redesign Training-Only Completed
+
+Phase335 executes the Phase334-precommitted cost-stress-margin redesign search over the Phase330 expanded full-depth feature matrix. It is training-only. It does not replay, promote, open paper/live acceptance or claim deployable profitability.
+
+The search remained scoped to the Phase333-preserved clue:
+
+- preserved family: `P331_DEPTH_ACCEL_REVERSAL`;
+- design lanes evaluated: `4`;
+- variant grid rows: `140`;
+- scenario rows evaluated: `6,720`;
+- 2x Zerodha cost-stress scenarios: `3,360`;
+- passive-aware diagnostic scenarios: `3,360`;
+- fixed-capital annualized denominator used;
+- Zerodha cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- full top-five depth required;
+- levels 2-5 materiality required;
+- L1-only variants forbidden;
+- net-edge/future-outcome live masks forbidden.
+
+Phase335 result:
+
+- all-cost-profile scenarios above `>12%` annualized: `816`;
+- 2x Zerodha cost-stress scenarios above `>12%`: `138`;
+- 2x cost acceptance-grade candidates: `32`;
+- best 2x-cost scenario: `P335_P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE_SQ0p975_SPQ1p000_DSQ0p500_TOP2_H300_long_only_taker_entry_taker_exit_CAP100000_NOT100000_CONC1_zerodha_2x_all_in_cost_proxy`;
+- best 2x-cost annualized fixed-capital diagnostic: `29.193422416856485%`;
+- best 2x-cost scheduled events: `14`;
+- best 2x-cost control pass: `1`;
+- best acceptance-grade 2x-cost scenario: `P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy`;
+- best acceptance-grade 2x-cost annualized fixed-capital diagnostic: `19.32314001122077%`;
+- best acceptance-grade scheduled events: `47`.
+
+Lane-level read:
+
+- `P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN`: `22` 2x-cost acceptance-grade rows, best 2x-cost annualized `15.094243884933306%`;
+- `P334_LANE_D_HORIZON_AND_EXIT_MARGIN`: `8` 2x-cost acceptance-grade rows, best 2x-cost annualized `29.193422416856485%` and best acceptance-grade annualized `19.32314001122077%`;
+- `P334_LANE_B_TURNOVER_COMPRESSION`: `2` 2x-cost acceptance-grade rows, best 2x-cost annualized `13.954542263091037%`;
+- `P334_LANE_A_STRICTER_DEPTH_ACCEL_EDGE`: produced the best sparse 2x-cost annualized result but did not produce acceptance-grade breadth.
+
+Interpretation before Phase336:
+
+- Phase335 is the first phase in this expanded chain to produce `>12%` 2x-cost scenarios and acceptance-grade training-only candidates.
+- The result is encouraging, but still not a replay, paper/live acceptance or deployable profitability claim.
+- Phase336 must interpret whether the positive candidates are robust enough to open a strictly precommitted next validation step, or whether the result is a training-surface artifact requiring further falsification.
+
+Phase335 hard gates:
+
+- Phase334 complete: pass;
+- Phase334 execution allowed: pass;
+- scenarios produced: pass, `6,720`;
+- design lanes covered: pass, `4`;
+- cost200 scenarios present: pass, `3,360`;
+- passive diagnostics present: pass, `3,360`;
+- fixed-capital denominator: pass;
+- control columns present: pass;
+- no profitability claim: pass;
+- replay/promotion/paper/live/profitability boundaries closed: pass.
+
+Phase335 outputs:
+
+- `outputs/phase335/phase335_acceptance_summary.csv`;
+- `outputs/phase335/phase335_scenario_summary.parquet`;
+- `outputs/phase335/phase335_top_scenarios.csv`;
+- `outputs/phase335/phase335_lane_summary.csv`;
+- `outputs/phase335/phase335_interpretation_metrics.csv`;
+- `outputs/phase335/phase335_gate_evaluation.csv`;
+- `outputs/phase335/phase335_variant_grid.csv`;
+- `outputs/phase335/phase335_cost_stress_margin_redesign_training_only_report.md`;
+- `outputs/phase335/phase335_cost_stress_margin_redesign_training_only_manifest.json`.
+
+Current Phase149 evidence after Phase335:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `cost_stress_margin_redesign_interpretation_open`;
+- `synthetic_strategy_discovery` status: `cost_stress_margin_redesign_interpretation_open`;
+- current next action: `run_phase336_cost_stress_margin_redesign_interpretation_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
