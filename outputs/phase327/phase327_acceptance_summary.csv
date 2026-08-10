@@ -2,7 +2,7 @@ metric,value,description
 phase327_expanded_top5_depth_join_materialization_complete,1,Phase327 expanded event-catalyst top-five depth join materialization completed
 phase327_work_order_rows,1600,Event-symbol work-order rows audited
 phase327_timestamp_overlap_rows,1600,Event-symbol rows with timestamp overlap
-phase327_materialized_join_rows,93322187,Joined top-five depth rows materialized
+phase327_materialized_join_rows,141708530,Joined top-five depth rows materialized
 phase327_materialized_events,50,Events with joined rows
 phase327_materialized_symbols,32,Symbols with joined rows
 phase327_row_groups_read,53536,Parquet row groups read across all event-symbol windows

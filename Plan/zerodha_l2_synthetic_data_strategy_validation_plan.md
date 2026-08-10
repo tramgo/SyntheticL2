@@ -14777,7 +14777,7 @@ Phase327 evidence:
 - expanded top-five depth join materialization complete: `1`;
 - event-symbol work-order rows audited: `1,600`;
 - timestamp-overlap rows recorded: `1,600`;
-- materialized joined top-five-depth rows: `93,322,187`;
+- materialized joined top-five-depth rows after Phase328-triggered fallback repair: `141,708,530`;
 - materialized events: `50`;
 - materialized symbols: `32`;
 - row groups audited/read: `53,536`;
@@ -14808,6 +14808,49 @@ Current Phase149 evidence after Phase327:
 - `real_receive_flow_source` status: `event_catalyst_expanded_join_quality_audit_open`;
 - `synthetic_strategy_discovery` status: `event_catalyst_expanded_join_quality_audit_open`;
 - current next action: `run_phase328_event_catalyst_expanded_join_quality_audit_no_strategy_search`.
+
+## 24.155 Phase328 Event-Catalyst Expanded Join Quality Audit Completed
+
+Phase328 audits the repaired Phase327 expanded joined top-five-depth parquet before any feature materialization or strategy search. It deliberately checks more than "rows exist": it requires full event-symbol breadth, full depth schema, bounded event windows, non-crossed L1 quotes, sorted bid/ask depth levels, and material depth beyond L1.
+
+The first Phase328 run caught an important issue: Phase327 had all 50 events and 32 symbols overall, but some events had only 29 symbols with rows. Phase327 was repaired so zero-row event-symbol fallback windows choose a same-symbol source file with actual ticks inside the event window. The accepted Phase328 run then passed with full 50-event by 32-symbol coverage.
+
+Phase328 evidence:
+
+- expanded join quality audit complete: `1`;
+- joined rows audited: `141,708,530`;
+- distinct events audited: `50`;
+- distinct symbols audited: `32`;
+- minimum symbols per event: `32`;
+- minimum events per symbol: `50`;
+- relative-second window: `-900` to `1800`;
+- crossed/locked L1 rows: `0`;
+- bid depth sort error rows: `0`;
+- ask depth sort error rows: `0`;
+- rows with depth levels 2-5 material: `141,708,530`;
+- strategy search allowed now: `0`;
+- replay allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates: `12/12`.
+
+Phase328 outputs:
+
+- `outputs/phase328/phase328_acceptance_summary.csv`;
+- `outputs/phase328/phase328_join_quality_summary.csv`;
+- `outputs/phase328/phase328_join_event_coverage.csv`;
+- `outputs/phase328/phase328_join_symbol_coverage.csv`;
+- `outputs/phase328/phase328_gate_evaluation.csv`;
+- `outputs/phase328/phase328_event_catalyst_expanded_join_quality_audit_report.md`;
+- `outputs/phase328/phase328_event_catalyst_expanded_join_quality_audit_manifest.json`.
+
+Current Phase149 evidence after Phase328:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `event_catalyst_expanded_feature_materialization_precommit_open`;
+- `synthetic_strategy_discovery` status: `event_catalyst_expanded_feature_materialization_precommit_open`;
+- current next action: `run_phase329_event_catalyst_expanded_feature_materialization_precommit_no_replay`.
 
 ## 25. Final Principle
 

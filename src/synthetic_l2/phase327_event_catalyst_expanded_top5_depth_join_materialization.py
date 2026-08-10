@@ -56,6 +56,39 @@ def compact_parts_streaming(part_paths: list[str], output_path: Path) -> int:
     return joined_rows
 
 
+def count_timestamp_rows(path: Path, start_epoch: int, end_epoch: int) -> int:
+    pf = pq.ParquetFile(path)
+    ts_idx = pf.schema.names.index("exchange_timestamp_ms")
+    count = 0
+    for row_group in range(pf.num_row_groups):
+        stats = pf.metadata.row_group(row_group).column(ts_idx).statistics
+        if stats is None or not stats.has_min_max:
+            table = pf.read_row_group(row_group, columns=["exchange_timestamp_ms"])
+        elif int(stats.min) <= end_epoch and int(stats.max) >= start_epoch:
+            table = pf.read_row_group(row_group, columns=["exchange_timestamp_ms"])
+        else:
+            continue
+        values = table.column("exchange_timestamp_ms").to_numpy()
+        count += int(((values >= start_epoch) & (values <= end_epoch)).sum())
+        if count > 0:
+            return count
+    return count
+
+
+def choose_fallback_source(symbol: str, start_epoch: int, end_epoch: int) -> tuple[str, int]:
+    checked = 0
+    candidates: list[Path] = []
+    for path in sorted(Path("raw_synthetic_l2_dense_full_year").glob(f"trade_month=*/symbol={symbol}/part-*.parquet")):
+        file_min, file_max, _, _ = parquet_timestamp_bounds(path)
+        if file_min <= end_epoch and file_max >= start_epoch:
+            candidates.append(path)
+    for path in candidates:
+        checked += 1
+        if count_timestamp_rows(path, start_epoch, end_epoch) > 0:
+            return str(path), checked
+    return "", checked
+
+
 def materialize_duckdb(work_order: pd.DataFrame, output_path: Path, preview_rows: int = 1000) -> tuple[pd.DataFrame, pd.DataFrame, int, int]:
     work = work_order.copy()
     work["dense_file_path"] = work["dense_file_path"].astype(str)
@@ -170,28 +203,33 @@ def materialize_duckdb(work_order: pd.DataFrame, output_path: Path, preview_rows
         fallback_paths_by_symbol: dict[str, int] = {}
         fallback_part_paths: list[str] = []
         for symbol, symbol_missing_work in missing_work.groupby("symbol", sort=True):
-            missing_start = int(symbol_missing_work["window_start_epoch"].min())
-            missing_end = int(symbol_missing_work["window_end_epoch"].max())
-            candidate_meta: list[tuple[str, int, int]] = []
-            for path in sorted(Path("raw_synthetic_l2_dense_full_year").glob(f"trade_month=*/symbol={symbol}/part-*.parquet")):
-                file_min, file_max, _, _ = parquet_timestamp_bounds(path)
-                if file_min <= missing_end and file_max >= missing_start:
-                    candidate_meta.append((str(path), file_min, file_max))
-            broad_covering = [row for row in candidate_meta if row[1] <= missing_start and row[2] >= missing_end]
-            selected_meta = sorted(broad_covering or candidate_meta, key=lambda row: (row[2] - row[1], row[0]))[:1]
-            candidate_paths = [row[0] for row in selected_meta]
-            fallback_paths_by_symbol[str(symbol)] = len(candidate_paths)
-            if not candidate_paths:
+            selected_rows: list[dict[str, Any]] = []
+            checked_total = 0
+            for _, missing_row in symbol_missing_work.iterrows():
+                fallback_source, checked = choose_fallback_source(
+                    str(symbol),
+                    as_int(missing_row.get("window_start_epoch", 0)),
+                    as_int(missing_row.get("window_end_epoch", 0)),
+                )
+                checked_total += checked
+                if not fallback_source:
+                    continue
+                row_dict = missing_row.to_dict()
+                row_dict["fallback_dense_file_path"] = fallback_source
+                selected_rows.append(row_dict)
+            fallback_paths_by_symbol[str(symbol)] = checked_total
+            if not selected_rows:
                 continue
-            fallback_part_path = fallback_parts_dir / f"symbol={symbol}_fallback.parquet"
-            fallback_part_sql = sql_quote(str(fallback_part_path))
-            candidate_path_list_sql = sql_list(candidate_paths)
-            con.register("phase327_fallback_windows", symbol_missing_work)
-            con.execute(
-                f"""
-                COPY (
-                    SELECT {", ".join(OUTPUT_COLUMNS)}
-                    FROM (
+            selected_missing_work = pd.DataFrame(selected_rows)
+            symbol_fallback_part_paths: list[str] = []
+            for source_index, (source_path, source_missing_work) in enumerate(selected_missing_work.groupby("fallback_dense_file_path", sort=True), start=1):
+                fallback_part_path = fallback_parts_dir / f"symbol={symbol}_fallback_source={source_index:02d}.parquet"
+                fallback_part_sql = sql_quote(str(fallback_part_path))
+                source_path_sql = sql_quote(str(source_path))
+                con.register("phase327_fallback_windows", source_missing_work)
+                con.execute(
+                    f"""
+                    COPY (
                         SELECT
                             w.event_id,
                             w.event_time_ist,
@@ -201,23 +239,18 @@ def materialize_duckdb(work_order: pd.DataFrame, output_path: Path, preview_rows
                             d.exchange_timestamp_ms,
                             d.last_price,
                             d.volume_traded,
-                            {depth_select},
-                            row_number() OVER (
-                                PARTITION BY w.event_id, w.symbol, d.exchange_timestamp_ms
-                                ORDER BY d.filename
-                            ) AS fallback_rank
-                        FROM read_parquet({candidate_path_list_sql}, filename=true) AS d
+                            {depth_select}
+                        FROM read_parquet({source_path_sql}) AS d
                         INNER JOIN phase327_fallback_windows AS w
                             ON d.exchange_timestamp_ms BETWEEN w.window_start_epoch AND w.window_end_epoch
                     )
-                    WHERE fallback_rank = 1
+                    TO {fallback_part_sql} (FORMAT PARQUET, COMPRESSION ZSTD)
+                    """
                 )
-                TO {fallback_part_sql} (FORMAT PARQUET, COMPRESSION ZSTD)
-                """
-            )
-            con.unregister("phase327_fallback_windows")
-            if fallback_part_path.exists() and fallback_part_path.stat().st_size > 0:
-                fallback_part_paths.append(str(fallback_part_path))
+                con.unregister("phase327_fallback_windows")
+                if fallback_part_path.exists() and fallback_part_path.stat().st_size > 0:
+                    symbol_fallback_part_paths.append(str(fallback_part_path))
+            fallback_part_paths.extend(symbol_fallback_part_paths)
 
         if fallback_part_paths:
             part_paths.extend(fallback_part_paths)
