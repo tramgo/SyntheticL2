@@ -18327,6 +18327,59 @@ Current next best action after Phase384:
 
 - Refresh official-catalyst eligibility with `2026-07-27` included, then rerun the same frozen reversal retest without search.
 
+## 24.212 Phase385 Refresh Catalyst Event Count After 2026-07-27 Completed
+
+Phase385 refreshes official-catalyst no-lookahead eligibility after Phase384 added the `2026-07-27` real L2 day. It does not run a strategy retest and opens no promotion, paper/live acceptance, or deployable profitability claim.
+
+Phase385 local and official-source refresh:
+
+- local trade dates included: `2026-07-08` through `2026-07-27`, covering `14` local real L2 dates;
+- official source response rows: `28`;
+- official source OK rows: `28`;
+- official catalyst rows fetched: `258`;
+- full-depth schema retained: `36 / 36`.
+
+Phase385 event-count result:
+
+- refreshed no-lookahead eligible rows with local L2: `249`;
+- previous Phase359 eligible rows: `25`;
+- new eligible rows versus Phase359: `224`;
+- eligible rows whose diagnostic date is `2026-07-27`: `16`;
+- combined Phase341 plus refreshed work rows: `347`.
+
+Phase385 event-floor estimate:
+
+- estimated selected trades after the refreshed event count: approximately `33.85365853658537`;
+- event floor after refresh estimate: `1`;
+- acceptance retest allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase385 interpretation:
+
+- The Phase383/384 event-density repair added verified catalyst-aligned work.
+- The heuristic selected-event estimate remains above the `30` floor, so the next step is a separately wired frozen retest on the expanded Phase385 work order.
+- This is not an acceptance result. It is retest-readiness evidence only.
+
+Phase385 outputs:
+
+- `outputs/phase385/phase373_acceptance_summary.csv`;
+- `outputs/phase385/phase373_local_real_l2_inventory.csv`;
+- `outputs/phase385/phase373_official_source_response_ledger.csv`;
+- `outputs/phase385/phase373_official_catalyst_calendar.csv`;
+- `outputs/phase385/phase373_no_lookahead_official_catalyst_eligibility.csv`;
+- `outputs/phase385/phase373_new_eligible_events_vs_phase359.csv`;
+- `outputs/phase385/phase373_refreshed_execution_work_order.csv`;
+- `outputs/phase385/phase373_full_depth_schema_contract.csv`;
+- `outputs/phase385/phase373_gate_evaluation.csv`;
+- `outputs/phase385/phase373_refreshed_catalyst_event_count_after_20260721_report.md`;
+- `outputs/phase385/phase373_refreshed_catalyst_event_count_after_20260721_manifest.json`.
+
+Current next best action after Phase385:
+
+- Adapt the Phase385 refreshed work order into the frozen retest schema, then rerun the Phase381-style frozen reversal retest with no search.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
