@@ -1,0 +1,3 @@
+scope,trade_rows,diagnostic_trade_dates,symbols,positive_trade_rows,positive_symbol_date_cells,net_pnl_inr,side_flip_net_pnl_inr,annualized_return_pct,side_flip_annualized_return_pct,initial_capital_inr,annualization_diagnostic_days
+isolated_all_events_diagnostic,98,7,23,35,26,-8858.826357085392,-23427.886357085245,-127.56709954202965,-337.3615635420275,250000.0,7
+capacity_capped_portfolio_diagnostic,37,7,16,10,8,-2644.9927940519356,-9533.192794052062,-38.087896234347866,-137.27797623434967,250000.0,7
