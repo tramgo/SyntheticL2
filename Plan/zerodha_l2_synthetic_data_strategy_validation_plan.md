@@ -17052,6 +17052,66 @@ Current next best action after Phase363:
 
 - Interpret Phase363 formally and, if continuing, precommit a distinct post-catalyst impulse-reversal-after-replenishment thesis. Do not treat the Phase363 reversal control as accepted profitability evidence.
 
+## 24.191 Phase364 Catalyst Impulse Reversal Clue Interpretation Completed
+
+Phase364 interprets Phase363. It rejects the precommitted impulse-continuation thesis for acceptance and freezes the impulse-reversal-after-replenishment control as a new sparse clue requiring its own precommit.
+
+Phase364 evidence:
+
+- Phase363 above-12 rows: `8`;
+- continuation above-12 rows: `0`;
+- reversal-control above-12 rows: `8`;
+- best reversal scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- best reversal selected trades: `12`;
+- best reversal diagnostic dates: `8`;
+- best reversal symbols: `7`;
+- best reversal net P&L: `3106.731736870181` INR;
+- best reversal annualized return: `39.144819884564285%`;
+- best reversal event floor met: `0`;
+- acceptance candidate rows: `0`.
+
+Phase364 decisions:
+
+- `P364_REJECT_PHASE362_CONTINUATION_PRIMARY`: reject the Phase362 continuation thesis for acceptance because all impulse-continuation variants were below the `12%` annualized threshold.
+- `P364_FREEZE_REVERSAL_AFTER_REPLENISHMENT_CLUE`: freeze the reversal-after-replenishment control as a new precommit candidate, not acceptance evidence, because all above-12 rows came from controls and the best clue is below the `30` event floor.
+
+Phase364 frozen clue contract:
+
+- clue id: `P364_POST_CATALYST_IMPULSE_REVERSAL_AFTER_REPLENISHMENT`;
+- source phase: `Phase363`;
+- source scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- decision delay: `120` seconds;
+- minimum absolute impulse: `2.5` bps;
+- minimum levels-2-5 imbalance: `0.25`;
+- minimum replenishment ratio: `0.0`;
+- side rule: reverse the signed post-catalyst impulse after displayed liquidity replenishment and levels 2-5 support the original impulse;
+- status: sparse clue requiring precommit.
+
+Phase364 hard gates:
+
+- Phase363 present: pass;
+- continuation failure recorded: pass, `0` continuation above-12 rows;
+- reversal clue recorded: pass, `8` reversal-control above-12 rows;
+- event-floor blocker recorded: pass, `12 < 30`;
+- no acceptance candidates: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase364 outputs:
+
+- `scripts/run_phase364_catalyst_impulse_reversal_clue_interpretation.py`;
+- `src/synthetic_l2/phase364_catalyst_impulse_reversal_clue_interpretation.py`;
+- `outputs/phase364/phase364_acceptance_summary.csv`;
+- `outputs/phase364/phase364_interpretation_ledger.csv`;
+- `outputs/phase364/phase364_branch_decision_ledger.csv`;
+- `outputs/phase364/phase364_reversal_clue_contract.csv`;
+- `outputs/phase364/phase364_gate_evaluation.csv`;
+- `outputs/phase364/phase364_catalyst_impulse_reversal_clue_interpretation_report.md`;
+- `outputs/phase364/phase364_catalyst_impulse_reversal_clue_interpretation_manifest.json`.
+
+Current next best action after Phase364:
+
+- Precommit Phase365 post-catalyst impulse-reversal-after-replenishment as its own thesis before any execution. Do not treat Phase363 reversal controls as accepted profitability evidence.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

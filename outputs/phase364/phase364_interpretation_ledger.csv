@@ -1,0 +1,4 @@
+interpretation_id,value,evidence,decision
+continuation_failed,1,continuation_above12_rows=0; best_continuation_ann=-25.30190130634633,Do not continue the Phase362 primary continuation thesis for acceptance.
+reversal_control_positive_sparse,1,reversal_above12_rows=8; best_trades=12; required=30,Treat reversal-after-replenishment as a new sparse clue only.
+acceptance_still_closed,1,phase363_acceptance_candidate_rows=0,"No replay, promotion, paper/live acceptance or deployable profitability claim."
