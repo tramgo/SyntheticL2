@@ -18051,6 +18051,60 @@ Current next best action after Phase379:
 
 - Precommit the expanded real-L2 catalyst acceptance retest. Use the frozen candidate only, retain full top-five depth and Zerodha cost model, and keep paper/live acceptance closed unless the retest itself passes its predefined acceptance gates.
 
+## 24.207 Phase380 Expanded Reversal Acceptance Retest Precommit Completed
+
+Phase380 precommits the expanded real-L2 catalyst acceptance retest after Phase379 opened the event-count gate. It adapts the refreshed Phase379 work order into the Phase363-compatible execution schema while freezing the Phase365 primary scenario and preserving the full-depth and Zerodha cost requirements. It does not execute the retest.
+
+Phase380 frozen retest contract:
+
+- source thesis: `P365_POST_CATALYST_IMPULSE_REVERSAL_AFTER_REPLENISHMENT`;
+- frozen primary scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- frozen grid id: `P362_D120_I2p5_D0p25_R0p0`;
+- decision delay: inherited frozen `120` seconds;
+- horizon: inherited frozen `900` seconds;
+- minimum absolute impulse: inherited frozen `2.5` bps;
+- minimum levels-2-to-5 imbalance: inherited frozen `0.25`;
+- minimum replenishment ratio: inherited frozen `0.0`;
+- full-depth rule: top-five L1-L5 book state required, with levels 2-5 materiality retained;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- parameter search allowed: `0`;
+- retest executed now: `0`;
+- paper/live or profit claim allowed: `0`.
+
+Phase380 expanded work order:
+
+- source work order: `outputs/phase379/phase373_refreshed_execution_work_order.csv`;
+- adapted work order: `outputs/phase380/phase380_phase360_execution_work_order.csv`;
+- adapted rows: `233`;
+- diagnostic dates: `13`;
+- symbols: `27`;
+- Phase379 selected-event estimate: approximately `32.29268292682927`;
+- event floor open: `1`.
+
+Phase380 hard gates:
+
+- Phase379 event floor open: pass, estimate `32.293 >= 30`;
+- Phase365 frozen thesis present: pass;
+- expanded work order present: pass, `233` rows;
+- full-depth and Zerodha cost rule retained: pass;
+- no search and no retest yet: pass;
+- no paper/live or profit claim: pass.
+
+Phase380 outputs:
+
+- `scripts/run_phase380_expanded_reversal_acceptance_retest_precommit.py`;
+- `src/synthetic_l2/phase380_expanded_reversal_acceptance_retest_precommit.py`;
+- `outputs/phase380/phase380_acceptance_summary.csv`;
+- `outputs/phase380/phase380_retest_contract.csv`;
+- `outputs/phase380/phase380_phase360_execution_work_order.csv`;
+- `outputs/phase380/phase380_gate_evaluation.csv`;
+- `outputs/phase380/phase380_expanded_reversal_acceptance_retest_precommit_report.md`;
+- `outputs/phase380/phase380_expanded_reversal_acceptance_retest_precommit_manifest.json`.
+
+Current next best action after Phase380:
+
+- Execute Phase381 expanded real-L2 frozen reversal acceptance retest with no parameter search and no paper/live action. Promotion remains closed unless the retest passes its predefined acceptance gates.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
