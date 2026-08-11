@@ -16456,6 +16456,83 @@ Current next best action after Phase353:
 - Restore Phase350 real-date expansion with a fresh SAS/local one-date drop; or
 - precommit a more structural material-new thesis that is not merely catalyst-time side selection, such as longer-horizon event drift with market-index confirmation, or a non-directional execution/liquidity forecast objective.
 
+## 24.181 Phase354 Real-Catalyst Market-Context L2 Diagnostic Completed
+
+Phase354 tested a more structural local real-data thesis on the existing seven-date official-catalyst real L2 panel: catalyst trades should use both entry-time full-depth state and a market-proxy context from local NIFTYBEES/BANKBEES L2, rather than raw catalyst timing or raw imbalance alone.
+
+This phase used existing local real data only and did not require a new Azure download.
+
+Phase354 design:
+
+- input catalyst/event ledger: `outputs/phase342/phase342_real_day_trade_diagnostic_ledger.csv`;
+- local market proxies: `NIFTYBEES`, `BANKBEES`;
+- proxy source: `real_data_sample/l2_multiday_panel`;
+- proxy lookbacks: `300` and `900` seconds before catalyst entry;
+- enriched event rows: `392`;
+- scenario rows: `48`;
+- scenario trade rows: `606`;
+- scopes tested:
+  - all official-catalyst events;
+  - lead catalyst categories;
+  - capacity-selected events;
+- rule families:
+  - market-confirmed depth-levels-2-5 follow;
+  - market-confirmed top-five follow;
+  - market-stretched depth-levels-2-5 fade;
+  - market-neutral top-five fade;
+- fixed capital: `250,000` INR;
+- cost profile: `zerodha_2x_all_in_cost_proxy`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`.
+
+Phase354 result:
+
+- above-12% fixed-capital annualized rows: `4`;
+- acceptance candidate rows: `0`;
+- best scenario: `P354_capacity_selected_events_NIFTYBEES_LB900_market_neutral_top5_fade`;
+- best trade rows: `14`;
+- best diagnostic dates: `7`;
+- best symbols: `11`;
+- best positive trade rows: `8`;
+- best positive symbol-date cells: `6`;
+- best positive symbols: `6`;
+- best net P&L: `1701.7706064420217` INR;
+- best fixed-capital annualized return: `24.505496732765113%`.
+
+Phase354 interpretation:
+
+- This is the first recent materially new local real-L2 branch to produce `>12%` fixed-capital annualized diagnostic rows after cost200.
+- It is not acceptance-grade because the best rows are sparse, with only `13-14` trades versus the robust event floor of `30`.
+- The clue is specific: capacity-selected official-catalyst events, market-neutral NIFTYBEES/BANKBEES context, and fading top-five imbalance.
+- The result should be preserved as a precommit clue for event-count expansion, not promoted, paper-traded, or described as deployable profitability.
+- Because no new real dates are currently available without storage access, the honest next step is either to restore Phase350 real-date expansion or precommit a narrow Phase355 validation/expansion contract for this exact clue.
+
+Phase354 hard gates:
+
+- Phase342 ledger present: pass, `filled_rows=98`;
+- market-proxy L2 joined: pass;
+- real L2 plus official catalyst lineage used: pass;
+- market-context rules evaluated: pass, `scenario_rows=48`;
+- L1-only variants forbidden: pass;
+- cost200 fixed-capital scoring: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase354 outputs:
+
+- `scripts/run_phase354_real_catalyst_market_context_diagnostic.py`;
+- `src/synthetic_l2/phase354_real_catalyst_market_context_diagnostic.py`;
+- `outputs/phase354/phase354_acceptance_summary.csv`;
+- `outputs/phase354/phase354_market_context_event_ledger.csv`;
+- `outputs/phase354/phase354_scenario_summary.csv`;
+- `outputs/phase354/phase354_trade_ledger.csv`;
+- `outputs/phase354/phase354_gate_evaluation.csv`;
+- `outputs/phase354/phase354_real_catalyst_market_context_diagnostic_report.md`;
+- `outputs/phase354/phase354_real_catalyst_market_context_diagnostic_manifest.json`.
+
+Current next best action after Phase354:
+
+- Precommit Phase355 to preserve and test the market-neutral top-five fade clue without changing thresholds post hoc; and/or
+- restore Phase350 real-date expansion so the Phase354 clue can be tested on additional unseen official-catalyst real L2 dates.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

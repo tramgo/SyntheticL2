@@ -1,0 +1,8 @@
+gate_id,passed,evidence
+P354_PHASE342_LEDGER_PRESENT,1,filled_rows=98
+P354_MARKET_PROXY_L2_PRESENT,1,NIFTYBEES/BANKBEES proxy context joined
+P354_REAL_L2_AND_OFFICIAL_CATALYST_USED,1,Phase342 real L2 plus official catalyst lineage
+P354_MARKET_CONTEXT_RULES_EVALUATED,1,scenario_rows=48
+P354_L1_ONLY_FORBIDDEN,1,No L1-only variants
+P354_COST200_FIXED_CAPITAL,1,2x Zerodha cost and fixed INR 250000 annualization
+P354_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed
