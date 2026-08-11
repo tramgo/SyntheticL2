@@ -1,0 +1,5 @@
+repair_option_id,priority,route,action,why,ready_now,secret_material_recorded
+P349_OPT_001_USE_FRESH_BLOB_SAS_ENV,1,sas_https_without_az_login,"Provide a fresh blob service SAS URL or SAS token via an environment variable, then run Phase350 targeted one-date download.",Bypasses the local Azure CLI TLS token-refresh failure and avoids storing secrets in repo outputs.,0,0
+P349_OPT_002_INSTALL_OR_PROVIDE_AZCOPY,2,azcopy_with_sas,"Install azcopy or add it to PATH, then use SAS-protected URLs for targeted partition copies.",AzCopy is better for resumable targeted Azure Blob/File downloads when storage access is SAS-based.,0,0
+P349_OPT_003_REPAIR_AZURE_CLI_CA_CHAIN,3,az_cli_auth_mode_login,"Repair Azure CLI certificate trust or configure the proxy CA bundle, then retry az storage listing/download.",Current az login-mode route fails on certificate verification before storage listing can proceed.,0,0
+P349_OPT_004_LOCAL_DROPZONE_ONE_DATE,4,manual_local_drop,"Drop one official-catalyst-matched date partition into the local real L2 panel, then run Phase350 local verification.",Works when cloud access cannot be repaired immediately and disk space is tight.,0,0

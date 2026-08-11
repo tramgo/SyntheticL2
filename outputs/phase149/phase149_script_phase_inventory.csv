@@ -281,6 +281,7 @@ phase,runner,runner_exists,runner_suffix
 346,scripts\run_phase346_official_catalyst_native_search_interpretation.py,True,.py
 347,scripts\run_phase347_official_catalyst_event_count_expansion_precommit.py,True,.py
 348,scripts\run_phase348_official_catalyst_event_count_expansion_execution.py,True,.py
+349,scripts\run_phase349_storage_access_repair_or_sas_targeted_download.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py
 36,scripts\run_phase36_collector_instrumentation_package.py,True,.py

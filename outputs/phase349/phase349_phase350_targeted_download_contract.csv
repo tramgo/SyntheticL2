@@ -1,0 +1,13 @@
+contract_id,contract_value,description
+phase350_scope,targeted_one_new_official_catalyst_matched_date,Download or verify only one new date increment.
+target_symbols,ADANIPORTS;AXISBANK;BHARTIARTL;DRREDDY;HCLTECH;HDFCBANK;ICICIBANK;KOTAKBANK;M&M;RELIANCE;SBIN;TCS,Candidate symbols from Phase347; do not download unrelated full panel.
+max_new_dates_per_increment,1,Disk-aware increment size.
+target_partition_shape,raw_l2/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet,Expected Zerodha-websocket-like raw top-five L2 partition shape.
+full_top_five_depth_required,1,"Persist bid/ask price, quantity and order-count levels 1-5."
+levels_2_to_5_materiality_required,1,Do not reduce to L1-only features.
+official_catalyst_timestamp_authority_required,1,Use official NSE/BSE/SEBI-style timestamp authority.
+no_lookahead_join_required,1,Entry/replay time must be first tick at or after official announcement time.
+candidate_grid_rows,10,Rerun only Phase347 candidate grid rows after expansion.
+additional_candidate_trade_rows_needed,11,Minimum additional candidate rows before acceptance re-evaluation.
+paper_live_or_profit_claim_allowed,0,No paper/live or deployable profitability claim.
+secret_persistence_allowed,0,"Do not write SAS, connection strings, account keys or signed URLs to repo outputs."

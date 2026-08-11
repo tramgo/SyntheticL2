@@ -16140,6 +16140,71 @@ Current Phase149 evidence after Phase348:
 - `synthetic_strategy_discovery` status: `official_catalyst_event_count_expansion_storage_access_repair_open`;
 - current next action: `run_phase349_storage_access_repair_or_sas_targeted_download_no_paper_live`.
 
+## 24.176 Phase349 Storage Access Repair Or SAS Targeted Download Precommit Completed
+
+Phase349 converts the Phase348 storage-access blocker into a safe repair and targeted-download contract. It does not execute a download and does not store secrets.
+
+Phase349 evidence:
+
+- Phase348 attempted: `1`;
+- supported SAS environment inputs present: `0`;
+- storage repair option rows: `4`;
+- Phase350 targeted-download contract rows: `12`;
+- safe command contract rows: `3`;
+- candidate grid rows: `10`;
+- secret material recorded: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase349 repair options:
+
+- `P349_OPT_001_USE_FRESH_BLOB_SAS_ENV`: provide a fresh blob service SAS URL or SAS token via environment variable and run Phase350;
+- `P349_OPT_002_INSTALL_OR_PROVIDE_AZCOPY`: install/add `azcopy` to PATH and use SAS-protected targeted copies;
+- `P349_OPT_003_REPAIR_AZURE_CLI_CA_CHAIN`: repair Azure CLI certificate trust and retry login-mode storage access;
+- `P349_OPT_004_LOCAL_DROPZONE_ONE_DATE`: manually drop one official-catalyst-matched date partition into the local real L2 panel and verify locally.
+
+Phase349 Phase350 execution contract:
+
+- one new official-catalyst-matched date increment only;
+- candidate symbols only: `ADANIPORTS`, `AXISBANK`, `BHARTIARTL`, `DRREDDY`, `HCLTECH`, `HDFCBANK`, `ICICIBANK`, `KOTAKBANK`, `M&M`, `RELIANCE`, `SBIN`, `TCS`;
+- expected partition shape: `raw_l2/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet`;
+- full top-five depth required;
+- levels 2-5 materiality required;
+- official catalyst timestamp authority required;
+- no-lookahead join required;
+- no secret persistence allowed;
+- no paper/live or profit claim allowed.
+
+Phase349 hard gates:
+
+- Phase348 attempt recorded: pass;
+- storage repair options present: pass, `4`;
+- SAS environment input contract present: pass, `4`;
+- Phase350 download contract present: pass, `12`;
+- full-depth and no-lookahead preserved: pass;
+- no secret material recorded: pass;
+- no promotion, paper/live or profit claim: pass;
+- hard gates: `7/7`.
+
+Phase349 outputs:
+
+- `outputs/phase349/phase349_acceptance_summary.csv`;
+- `outputs/phase349/phase349_sas_env_input_inventory.csv`;
+- `outputs/phase349/phase349_storage_repair_option_ledger.csv`;
+- `outputs/phase349/phase349_phase350_targeted_download_contract.csv`;
+- `outputs/phase349/phase349_safe_command_contract.csv`;
+- `outputs/phase349/phase349_gate_evaluation.csv`;
+- `outputs/phase349/phase349_storage_access_repair_or_sas_targeted_download_report.md`;
+- `outputs/phase349/phase349_storage_access_repair_or_sas_targeted_download_manifest.json`.
+
+Current Phase149 evidence after Phase349:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `waiting_for_sas_or_azcopy_for_targeted_download`;
+- `synthetic_strategy_discovery` status: `waiting_for_sas_or_azcopy_for_targeted_download`;
+- current next action: `provide_sas_or_install_azcopy_then_run_phase350_targeted_download_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

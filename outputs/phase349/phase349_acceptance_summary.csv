@@ -1,0 +1,15 @@
+metric,value,description
+phase349_storage_access_repair_or_sas_targeted_download_precommit_complete,1,Phase349 precommit completed
+phase349_phase348_attempted,1,Phase348 attempted
+phase349_sas_env_inputs_present,0,Any supported SAS environment input present
+phase349_repair_option_rows,4,Storage repair options
+phase349_phase350_contract_rows,12,Phase350 execution contract rows
+phase349_command_contract_rows,3,Safe command contract rows
+phase349_candidate_grid_rows,10,Candidate grid rows
+phase349_secret_material_recorded,0,No secret material recorded
+phase349_strategy_promotion_allowed,0,No promotion
+phase349_paper_or_live_acceptance_allowed,0,No paper/live
+phase349_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase349_hard_gate_pass_rows,7,Passed hard gates
+phase349_hard_gate_rows,7,Hard gates
+phase349_next_best_action,provide_sas_or_install_azcopy_then_run_phase350_targeted_download_no_paper_live,Recommended next action

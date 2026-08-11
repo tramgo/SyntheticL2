@@ -1,0 +1,5 @@
+input_name,present,secret_value_recorded,use
+AZURE_STORAGE_SAS_TOKEN,0,0,Phase350 may consume this in-memory environment variable; Phase349 never writes the value.
+AZURE_BLOB_SERVICE_SAS_URL,0,0,Phase350 may consume this in-memory environment variable; Phase349 never writes the value.
+STCTRADE1RAMIC_BLOB_SAS_URL,0,0,Phase350 may consume this in-memory environment variable; Phase349 never writes the value.
+STCTRADE1RAMIC_SAS_TOKEN,0,0,Phase350 may consume this in-memory environment variable; Phase349 never writes the value.

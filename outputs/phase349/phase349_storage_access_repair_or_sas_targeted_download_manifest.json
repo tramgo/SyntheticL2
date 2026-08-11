@@ -1,0 +1,31 @@
+{
+  "generated_at_utc": "2026-08-11T08:56:35.786442+00:00",
+  "next_action": "provide_sas_or_install_azcopy_then_run_phase350_targeted_download_no_paper_live",
+  "output_dir": "outputs\\phase349",
+  "outputs": {
+    "commands": "outputs\\phase349\\phase349_safe_command_contract.csv",
+    "contract": "outputs\\phase349\\phase349_phase350_targeted_download_contract.csv",
+    "env_inventory": "outputs\\phase349\\phase349_sas_env_input_inventory.csv",
+    "gates": "outputs\\phase349\\phase349_gate_evaluation.csv",
+    "manifest": "outputs\\phase349\\phase349_storage_access_repair_or_sas_targeted_download_manifest.json",
+    "repair": "outputs\\phase349\\phase349_storage_repair_option_ledger.csv",
+    "report": "outputs\\phase349\\phase349_storage_access_repair_or_sas_targeted_download_report.md",
+    "summary": "outputs\\phase349\\phase349_acceptance_summary.csv"
+  },
+  "phase": 349,
+  "phase347_dir": "outputs\\phase347",
+  "phase348_dir": "outputs\\phase348",
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "51f57e3f2e41cef6994d7b407537551bf84eda44f0dad1e232b843205cb8725e",
+    "cost_model_version": "not_applicable_no_execution_costs",
+    "creation_timestamp": "2026-08-11T08:56:35.786442+00:00",
+    "generator_version": "cfc3ac68ea0e543ca5d2796c97271f73686038cc",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  }
+}

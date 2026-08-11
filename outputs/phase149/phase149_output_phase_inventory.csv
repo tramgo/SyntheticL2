@@ -283,6 +283,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 346,outputs\phase346,True,8,outputs\phase346\phase346_acceptance_summary.csv,outputs\phase346\phase346_official_catalyst_native_search_interpretation_manifest.json,False
 347,outputs\phase347,True,8,outputs\phase347\phase347_acceptance_summary.csv,outputs\phase347\phase347_official_catalyst_event_count_expansion_precommit_manifest.json,False
 348,outputs\phase348,True,6,outputs\phase348\phase348_acceptance_summary.csv,outputs\phase348\phase348_official_catalyst_event_count_expansion_execution_manifest.json,False
+349,outputs\phase349,True,8,outputs\phase349\phase349_acceptance_summary.csv,outputs\phase349\phase349_storage_access_repair_or_sas_targeted_download_manifest.json,False
 35,outputs\phase35,True,6,,outputs\phase35\phase35_stage_a2_computable_diagnostics_manifest.json,False
 36,outputs\phase36,True,9,,outputs\phase36\phase36_collector_instrumentation_package_manifest.json,False
 37,outputs\phase37,True,8,,outputs\phase37\phase37_collector_ledger_verifier_manifest.json,False

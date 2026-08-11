@@ -1,0 +1,4 @@
+command_id,shell,template,safe_logging,secret_material_recorded
+P349_CMD_001_SET_SAS_IN_PROCESS,PowerShell,$env:AZURE_BLOB_SERVICE_SAS_URL='<paste fresh blob service SAS URL only in your local shell>'; python scripts\run_phase350_sas_targeted_one_date_download.py,Do not echo the environment variable; Phase350 must redact signed URLs.,0
+P349_CMD_002_SET_TOKEN_IN_PROCESS,PowerShell,$env:AZURE_STORAGE_SAS_TOKEN='<paste fresh SAS token only in your local shell>'; python scripts\run_phase350_sas_targeted_one_date_download.py,Do not echo the environment variable; Phase350 must redact signed URLs.,0
+P349_CMD_003_LOCAL_DROP_VERIFY,PowerShell,python scripts\run_phase350_sas_targeted_one_date_download.py --local-only-verify,Use only after manually dropping a new trade_date=YYYY-MM-DD partition.,0
