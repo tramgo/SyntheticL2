@@ -17590,6 +17590,73 @@ Current next best action after Phase372:
 
 - The `2026-07-21` full-universe real L2 day is now locally verified. Do not retest the strategy yet because the estimated selected-trade count remains below the `30` event floor. Continue with another disk-safe official-catalyst real L2 day or build the next event-count expansion readiness package from the newly verified `2026-07-21` evidence.
 
+## 24.200 Phase373 Refreshed Catalyst Event Count After 2026-07-21 Completed
+
+Phase373 refreshes official-catalyst no-lookahead eligibility after the Phase372 `2026-07-21` full-universe real L2 day was downloaded and verified. It does not run a strategy retest and opens no promotion, paper/live acceptance or deployable profitability claim.
+
+Phase373 local and official-source refresh:
+
+- local trade dates included: `2026-07-08;2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16;2026-07-17;2026-07-20;2026-07-21`;
+- target trade date: `2026-07-21`;
+- target full-universe local present: `1`;
+- official source response rows: `20`;
+- official source OK rows: `20`;
+- official catalyst rows fetched: `172`;
+- full-depth schema retained: `36 / 36`.
+
+Phase373 event-count result:
+
+- refreshed no-lookahead eligible rows with local L2: `163`;
+- previous Phase359 eligible rows: `25`;
+- new eligible rows versus Phase359: `138`;
+- eligible rows whose diagnostic date is `2026-07-21`: `21`;
+- prior-date carry-forward rows into `2026-07-21`: `13`;
+- combined Phase341 plus refreshed work rows: `261`.
+
+Phase373 event-floor estimate:
+
+- current frozen clue selected trades: `12`;
+- estimated selected trades after the refreshed event count: approximately `25.463414634146343`;
+- event floor after refresh estimate: `0`;
+- acceptance retest allowed now: `0`.
+
+Phase373 interpretation:
+
+- The newly downloaded `2026-07-21` day materially improves the catalyst event pool.
+- The project is now much closer to the `30`-event floor, but still below it by estimate.
+- A strategy retest remains closed until one more disk-safe real L2 event increment or equivalent verified event evidence is added.
+
+Phase373 hard gates:
+
+- Phase372 target verified: pass, `32` symbols;
+- official fetch attempted: pass, `20` source rows;
+- official fetch OK: pass, `20` OK rows;
+- refreshed eligible events present: pass, `163`;
+- target-date events present: pass, `21`;
+- full-depth schema retained: pass, `36 / 36`;
+- event floor checked: pass, estimate `25.463 < 30`;
+- no strategy retest or promotion: pass.
+
+Phase373 outputs:
+
+- `scripts/run_phase373_refreshed_catalyst_event_count_after_20260721.py`;
+- `src/synthetic_l2/phase373_refreshed_catalyst_event_count_after_20260721.py`;
+- `outputs/phase373/phase373_acceptance_summary.csv`;
+- `outputs/phase373/phase373_local_real_l2_inventory.csv`;
+- `outputs/phase373/phase373_official_source_response_ledger.csv`;
+- `outputs/phase373/phase373_official_catalyst_calendar.csv`;
+- `outputs/phase373/phase373_no_lookahead_official_catalyst_eligibility.csv`;
+- `outputs/phase373/phase373_new_eligible_events_vs_phase359.csv`;
+- `outputs/phase373/phase373_refreshed_execution_work_order.csv`;
+- `outputs/phase373/phase373_full_depth_schema_contract.csv`;
+- `outputs/phase373/phase373_gate_evaluation.csv`;
+- `outputs/phase373/phase373_refreshed_catalyst_event_count_after_20260721_report.md`;
+- `outputs/phase373/phase373_refreshed_catalyst_event_count_after_20260721_manifest.json`.
+
+Current next best action after Phase373:
+
+- Interpret Phase373 or download the next official-catalyst real L2 day. One more disk-safe full-universe day may be enough to cross the estimated `30` selected-event floor; do not retest until the event-floor condition is verified.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
