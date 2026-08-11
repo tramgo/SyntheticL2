@@ -16889,6 +16889,68 @@ Phase360 outputs:
 - `outputs/phase360/phase360_full_depth_market_neutral_fade_on_unseen_real_l2_report.md`;
 - `outputs/phase360/phase360_full_depth_market_neutral_fade_on_unseen_real_l2_manifest.json`.
 
+## 24.188 Phase361 Full-Depth Fade Unseen Interpretation Completed
+
+Phase361 interprets the Phase360 unseen real-L2 result for the Phase357/358 full-depth market-neutral fade family. It is a branch decision, not a new search.
+
+Phase361 evidence:
+
+- Phase360 unseen primary net P&L: `-939.5364392427646` INR;
+- Phase360 unseen primary annualized return: `-47.35263653783534%`;
+- combined Phase356 plus Phase360 trade rows: `17`;
+- combined diagnostic dates: `9`;
+- combined net P&L: `882.3549254140542` INR;
+- combined annualized return: `9.882375164637406%`;
+- combined above-12: `0`;
+- combined event floor met: `0`;
+- combined acceptance candidates: `0`.
+
+Phase361 decision:
+
+- decision id: `P361_CLOSE_FULL_DEPTH_MARKET_NEUTRAL_FADE_FOR_ACCEPTANCE`;
+- decision: close the full-depth market-neutral fade family for acceptance under current real-L2 evidence;
+- reason: the sparse Phase358 positive clue failed on unseen real L2, and the combined read-through is below both the user's `12%` annualized threshold and the `30` event floor;
+- same-family parameter rescue allowed: `0`;
+- additional same-family filter rescue allowed: `0`;
+- additional real-date falsification evidence allowed: `1`;
+- materially new thesis allowed: `1`;
+- paper/live or deployable profitability claim allowed: `0`.
+
+Phase361 interpretation:
+
+- The Phase358 positive clue did not survive first unseen local real-L2 expansion.
+- The combined read-through is not profitable by the user's `12%` annualized bar.
+- Even after unseen expansion, the event count remains below the acceptance floor.
+- No replay, paper/live, promotion or deployable profitability claim is allowed.
+
+Phase361 hard gates:
+
+- Phase358 present: pass;
+- Phase359 present: pass;
+- Phase360 present: pass;
+- unseen failure recorded: pass;
+- combined below-12 read-through recorded: pass;
+- event floor rechecked: pass, `17 < 30`;
+- parameter/filter rescue forbidden: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase361 outputs:
+
+- `scripts/run_phase361_full_depth_fade_unseen_interpretation.py`;
+- `src/synthetic_l2/phase361_full_depth_fade_unseen_interpretation.py`;
+- `outputs/phase361/phase361_acceptance_summary.csv`;
+- `outputs/phase361/phase361_combined_readthrough.csv`;
+- `outputs/phase361/phase361_interpretation_ledger.csv`;
+- `outputs/phase361/phase361_branch_decision_ledger.csv`;
+- `outputs/phase361/phase361_gate_evaluation.csv`;
+- `outputs/phase361/phase361_full_depth_fade_unseen_interpretation_report.md`;
+- `outputs/phase361/phase361_full_depth_fade_unseen_interpretation_manifest.json`.
+
+Current next best action after Phase361:
+
+- Do not tune or rescue the same full-depth market-neutral fade family with additional filters.
+- Either precommit a materially new real-L2 thesis, or use more real dates only as falsification evidence for the closed branch.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

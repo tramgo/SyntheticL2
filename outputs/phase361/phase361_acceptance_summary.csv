@@ -1,0 +1,21 @@
+metric,value,description
+phase361_full_depth_fade_unseen_interpretation_complete,1,Phase361 interpretation completed
+phase361_phase360_unseen_net_pnl_inr,-939.5364392427646,Phase360 primary unseen net PnL
+phase361_phase360_unseen_annualized_return_pct,-47.35263653783534,Phase360 primary unseen annualized return
+phase361_combined_trade_rows,17,Phase356 + Phase360 trades
+phase361_combined_diagnostic_dates,9,Phase356 + Phase360 dates
+phase361_combined_net_pnl_inr,882.3549254140542,Combined net PnL
+phase361_combined_annualized_return_pct,9.882375164637406,Combined annualized return
+phase361_combined_above12,0,Combined above 12%
+phase361_combined_event_floor_met,0,Combined event floor met
+phase361_acceptance_candidate_rows,0,Combined acceptance candidates
+phase361_branch_closed_for_acceptance,1,Full-depth market-neutral fade closed for acceptance under current evidence
+phase361_parameter_rescue_allowed,0,No same-family parameter rescue
+phase361_additional_real_date_falsification_allowed,1,More real dates may be used for falsification evidence
+phase361_materially_new_thesis_allowed,1,A materially different thesis may be precommitted
+phase361_strategy_promotion_allowed,0,No promotion
+phase361_paper_or_live_acceptance_allowed,0,No paper/live
+phase361_deployable_profitability_claim_allowed,0,No deployable claim
+phase361_hard_gate_pass_rows,8,Passed hard gates
+phase361_hard_gate_rows,8,Hard gates
+phase361_next_best_action,precommit_materially_new_real_l2_thesis_or_expand_real_dates_for_falsification_no_paper_live,Recommended next milestone

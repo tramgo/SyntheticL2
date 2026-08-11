@@ -1,0 +1,5 @@
+interpretation_id,value,evidence,decision
+unseen_failure,1,net=-939.5364392427646; annualized=-47.35263653783534,Phase358 positive clue did not survive first unseen local real-L2 expansion.
+combined_below_threshold,1,combined_annualized=9.882375164637406; threshold=12.0,Combined read-through is not profitable by the user's 12% annualized bar.
+combined_event_floor_failed,1,combined_trades=17; required=30,"Even after unseen expansion, event count is below acceptance floor."
+no_acceptance_survivor,1,phase360_acceptance_candidate_rows=0,"No replay, paper/live, promotion or deployable profitability claim is allowed."
