@@ -1,0 +1,15 @@
+field,frozen_value,description
+scenario_id,P354_capacity_selected_events_NIFTYBEES_LB900_market_neutral_top5_fade,Frozen Phase354 clue; no scenario substitution allowed
+scope,capacity_selected_events,Must remain capacity-selected events
+proxy_symbol,NIFTYBEES,Must remain NIFTYBEES
+lookback_seconds,900,Must remain 900 seconds
+rule_id,market_neutral_top5_fade,Must remain market-neutral top-five fade
+trade_rows,14,Observed Phase354 trade rows
+diagnostic_trade_dates,7,Observed diagnostic dates
+symbols,11,Observed symbols
+positive_symbols,6,Observed positive symbols
+positive_symbol_date_cells,6,Observed positive symbol/date cells
+net_pnl_inr,1701.7706064420215,Observed net PnL
+annualized_return_pct,24.505496732765117,Observed fixed-capital annualized return
+event_floor_met,0,Must reach 30 events before acceptance
+acceptance_candidate,0,Current clue is not acceptance-grade

@@ -16533,6 +16533,64 @@ Current next best action after Phase354:
 - Precommit Phase355 to preserve and test the market-neutral top-five fade clue without changing thresholds post hoc; and/or
 - restore Phase350 real-date expansion so the Phase354 clue can be tested on additional unseen official-catalyst real L2 dates.
 
+## 24.182 Phase355 Market-Context Clue Validation Precommit Completed
+
+Phase355 froze the exact Phase354 sparse positive clue before any validation or expansion. This precommit prevents post-hoc tuning of the first recent above-12% local real-L2 clue.
+
+Frozen Phase354 clue:
+
+- scenario: `P354_capacity_selected_events_NIFTYBEES_LB900_market_neutral_top5_fade`;
+- scope: `capacity_selected_events`;
+- proxy symbol: `NIFTYBEES`;
+- lookback: `900` seconds;
+- rule: `market_neutral_top5_fade`;
+- observed trade rows: `14`;
+- observed diagnostic dates: `7`;
+- observed symbols: `11`;
+- observed positive symbols: `6`;
+- observed positive symbol/date cells: `6`;
+- observed net P&L: `1701.7706064420215` INR;
+- observed fixed-capital annualized return: `24.505496732765117%`;
+- observed acceptance candidate: `0`, because the clue is below the `30` event floor.
+
+Phase355 validation contract:
+
+- no post-hoc changes to scope, proxy, lookback, market-neutral threshold, top-five fade rule, costs or fixed-capital denominator;
+- validation requires at least `30` trades/events;
+- validation must remain above `12.0%` fixed-capital annualized return;
+- breadth must remain positive across at least two symbols and two symbol/date cells;
+- because the lead clue is top-five rather than depth-levels-2-5 specific, validation must log depth-levels-2-5 diagnostics and run depth-levels-2-5 guard/control variants;
+- controls must include side-flip, deterministic random/alternate side, proxy-swap BANKBEES, lookback-swap 300s, depth-levels-2-5 guard and depth-levels-2-5 fade variant;
+- no promotion, paper/live acceptance or deployable profitability claim is allowed from the precommit.
+
+Phase355 hard gates:
+
+- Phase354 complete: pass;
+- frozen clue present: pass;
+- sparse clue recognized: pass, `trade_rows=14`;
+- validation contract present: pass, `7` rows;
+- control catalog present: pass, `6` rows;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase355 outputs:
+
+- `scripts/run_phase355_market_context_clue_validation_precommit.py`;
+- `src/synthetic_l2/phase355_market_context_clue_validation_precommit.py`;
+- `outputs/phase355/phase355_acceptance_summary.csv`;
+- `outputs/phase355/phase355_frozen_clue_contract.csv`;
+- `outputs/phase355/phase355_validation_contract.csv`;
+- `outputs/phase355/phase355_control_catalog.csv`;
+- `outputs/phase355/phase355_boundary_ledger.csv`;
+- `outputs/phase355/phase355_frozen_clue_trade_ledger.csv`;
+- `outputs/phase355/phase355_gate_evaluation.csv`;
+- `outputs/phase355/phase355_market_context_clue_validation_precommit_report.md`;
+- `outputs/phase355/phase355_market_context_clue_validation_precommit_manifest.json`.
+
+Current next best action after Phase355:
+
+- Run Phase356 validation execution for the frozen clue and controls on the current local real-L2 panel; and
+- if Phase356 remains sparse, restore Phase350 real-date expansion before any acceptance claim.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

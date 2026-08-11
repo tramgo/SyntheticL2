@@ -1,0 +1,8 @@
+contract_id,requirement,acceptance_evidence,hard_gate
+P355_NO_POST_HOC_THRESHOLD_CHANGE,"Do not change scope, proxy, lookback, market-neutral threshold, top-five fade rule, costs, or fixed-capital denominator.",Frozen contract reconciles exactly to Phase354.,1
+P355_EVENT_FLOOR_REQUIRED,Validation requires at least 30 trades/events.,Expanded real-date or predeclared validation ledger event count.,1
+P355_ABOVE12_REQUIRED,Fixed-capital annualized return must remain > 12.0%.,Cost200 fixed-capital scenario summary.,1
+P355_BREADTH_REQUIRED,At least two positive symbols and two positive symbol/date cells; current clue already exceeds this but validation must preserve it.,Positive-symbol and positive-symbol-date counts.,1
+P355_FULL_DEPTH_GUARDS_REQUIRED,"Because the lead clue is top-five rather than depth-2-5 specific, validation must log depth-levels-2-5 diagnostics and run depth-2-5 guard/control variants.",Validation ledger includes entry_l2_l5_qty_imbalance and depth guard/control rows.,1
+P355_CONTROLS_REQUIRED,"Side-flip, random-side, proxy-swap BANKBEES, lookback-swap 300s, and depth-2-5 guard controls must not dominate the frozen clue.",Control comparison ledger.,1
+P355_NO_PROMOTION_PAPER_LIVE,"No promotion, paper/live acceptance, or deployable profitability claim from this precommit.",Boundary ledger remains closed.,1

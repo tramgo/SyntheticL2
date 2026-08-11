@@ -1,0 +1,7 @@
+gate_id,passed,evidence
+P355_PHASE354_COMPLETE,1,Phase354 evidence present
+P355_FROZEN_CLUE_PRESENT,1,P354_capacity_selected_events_NIFTYBEES_LB900_market_neutral_top5_fade
+P355_SPARSE_CLUE_RECOGNIZED,1,trade_rows=14
+P355_CONTRACT_PRESENT,1,contract_rows=7
+P355_CONTROLS_PRESENT,1,control_rows=6
+P355_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

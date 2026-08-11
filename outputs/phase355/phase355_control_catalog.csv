@@ -1,0 +1,7 @@
+control_id,description,required_interpretation
+side_flip,Flip every long/short side from the frozen clue.,must_not_outperform_frozen
+random_side_deterministic,Deterministic alternating/randomized side assignment with fixed seed.,must_not_outperform_frozen
+proxy_swap_bankbees,Replace NIFTYBEES with BANKBEES while keeping 900s lookback and market-neutral top-five fade.,diagnostic_control
+lookback_swap_300s,Replace 900s with 300s while keeping NIFTYBEES and market-neutral top-five fade.,diagnostic_control
+depth_2_5_guard,Require depth-levels-2-5 imbalance to be non-contradictory or report failure if it removes the clue.,materiality_guard
+depth_2_5_fade_variant,Test depth-levels-2-5 fade under the same market-neutral proxy context.,full_depth_control

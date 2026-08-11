@@ -1,0 +1,6 @@
+boundary,value,description
+strategy_replay_allowed,0,No replay unlock
+strategy_promotion_allowed,0,No promotion
+paper_or_live_acceptance_allowed,0,No paper/live
+deployable_profitability_claim_allowed,0,No deployable claim
+current_result_is_sparse_clue_only,1,Phase354 has >12 rows but <30 events

@@ -1,0 +1,30 @@
+{
+  "generated_at_utc": "2026-08-11T15:12:01.790117+00:00",
+  "next_action": "run_phase356_market_context_clue_validation_execution_no_paper_live",
+  "outputs": {
+    "boundary": "outputs\\phase355\\phase355_boundary_ledger.csv",
+    "controls": "outputs\\phase355\\phase355_control_catalog.csv",
+    "frozen": "outputs\\phase355\\phase355_frozen_clue_contract.csv",
+    "frozen_trades": "outputs\\phase355\\phase355_frozen_clue_trade_ledger.csv",
+    "gates": "outputs\\phase355\\phase355_gate_evaluation.csv",
+    "manifest": "outputs\\phase355\\phase355_market_context_clue_validation_precommit_manifest.json",
+    "report": "outputs\\phase355\\phase355_market_context_clue_validation_precommit_report.md",
+    "summary": "outputs\\phase355\\phase355_acceptance_summary.csv",
+    "validation": "outputs\\phase355\\phase355_validation_contract.csv"
+  },
+  "phase": 355,
+  "phase354_dir": "outputs\\phase354",
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "79c8b1a51d39503c0a4a73ed5fde81410cd0ce6fcfd8b2b2ef3c5beeda8b5abe",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "creation_timestamp": "2026-08-11T15:12:01.790117+00:00",
+    "generator_version": "5f472c1e3fa9d3e223267b2c7c6ed1e47cf2ea17",
+    "latency_model_version": "not_applicable_precommit_only",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  }
+}
