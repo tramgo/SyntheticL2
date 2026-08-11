@@ -1,0 +1,5 @@
+interpretation_id,value,evidence,decision
+primary_positive_sparse,1,ann=39.144819884564285; trades=12,"Primary remains a positive sparse clue, not acceptance."
+side_flip_negative_control_pass,1,primary=39.144819884564285; side_flip=-99.13225678941524,Reversal dominates same-filter continuation side flip.
+strict_replenishment_fragility,1,strict_replenishment_ann=-3.6424119335008,"Clue weakens under stricter replenishment, so robustness is not established."
+acceptance_closed,1,event_floor=0; acceptance=0,"No promotion, paper/live acceptance or deployable profitability claim."

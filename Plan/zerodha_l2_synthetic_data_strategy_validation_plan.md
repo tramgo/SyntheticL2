@@ -17164,6 +17164,64 @@ Current next best action after Phase365:
 
 - Run Phase366 frozen post-catalyst impulse reversal diagnostic with the registered controls, no search, no paper/live and no deployable profitability claim.
 
+## 24.193 Phase366 Post-Catalyst Impulse Reversal Frozen Diagnostic Completed
+
+Phase366 executes the Phase365 frozen reversal thesis by extracting the exact primary and registered controls from Phase363. It performs no parameter search and opens no promotion, paper/live acceptance or deployable profitability claim.
+
+Phase366 frozen primary:
+
+- primary scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- selected trades: `12`;
+- diagnostic dates: `8`;
+- symbols: `7`;
+- positive symbols: `3`;
+- net P&L: `3106.731736870181` INR;
+- annualized return: `39.144819884564285%`;
+- above-12: `1`;
+- event floor met: `0`;
+- acceptance candidate rows: `0`.
+
+Phase366 registered controls:
+
+- side flip / same-filter continuation: `-99.13225678941524%`;
+- stricter replenishment at `0.10`: `-3.6424119335008%`;
+- weaker depth threshold at `0.15`: `30.84189916949289%`;
+- shorter delay at `60s`: `18.059748979575467%`.
+
+Phase366 interpretation:
+
+- The primary remains a positive sparse clue, not acceptance.
+- The side-flip control is strongly negative, so reversal dominates same-filter continuation.
+- The stricter replenishment control is negative, so robustness is not established.
+- The event floor remains the binding blocker: `12 < 30`.
+- No promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase366 hard gates:
+
+- Phase365 precommit present: pass;
+- primary frozen row present: pass;
+- registered controls present: pass, `5 / 5`;
+- full-depth cost200 inherited: pass;
+- event floor checked: pass, `event_floor_met=0`;
+- no search or parameter expansion: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase366 outputs:
+
+- `scripts/run_phase366_post_catalyst_impulse_reversal_frozen_diagnostic.py`;
+- `src/synthetic_l2/phase366_post_catalyst_impulse_reversal_frozen_diagnostic.py`;
+- `outputs/phase366/phase366_acceptance_summary.csv`;
+- `outputs/phase366/phase366_frozen_scenario_summary.csv`;
+- `outputs/phase366/phase366_primary_trade_ledger.csv`;
+- `outputs/phase366/phase366_interpretation_ledger.csv`;
+- `outputs/phase366/phase366_gate_evaluation.csv`;
+- `outputs/phase366/phase366_post_catalyst_impulse_reversal_frozen_diagnostic_report.md`;
+- `outputs/phase366/phase366_post_catalyst_impulse_reversal_frozen_diagnostic_manifest.json`.
+
+Current next best action after Phase366:
+
+- Interpret Phase366 or expand real dates for reversal-branch falsification. Do not claim profitability until the clue survives the event floor, stricter replenishment/robustness controls and additional real-date evidence.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

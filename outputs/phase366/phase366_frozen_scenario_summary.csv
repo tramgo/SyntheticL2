@@ -1,0 +1,6 @@
+scenario_id,scenario_role,scheduled_event_rows,capacity_selected_trade_rows,diagnostic_trade_dates,symbols,positive_trade_rows,positive_symbols,positive_symbol_date_cells,net_pnl_inr,annualized_return_pct,above12,event_floor_met,breadth_met,acceptance_candidate,phase366_role,control_id,source_scenario_id,present
+P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,impulse_reversal_control,16,12,8,7,6,3,4,3106.731736870181,39.144819884564285,1,0,1,0,primary_frozen_reversal,primary,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,1
+P362_D120_I2p5_D0p25_R0p0_CONTINUATION,impulse_continuation,16,12,8,7,2,1,2,-7867.639427731369,-99.13225678941524,0,0,0,0,side_flip_continuation,side_flip,P362_D120_I2p5_D0p25_R0p0_CONTINUATION,1
+P362_D120_I2p5_D0p25_R0p1_REVERSAL_CONTROL,impulse_reversal_control,9,9,8,7,3,2,3,-289.0803121826032,-3.6424119335008,0,0,1,0,stricter_replenishment,stricter_replenishment,P362_D120_I2p5_D0p25_R0p1_REVERSAL_CONTROL,1
+P362_D120_I2p5_D0p15_R0p0_REVERSAL_CONTROL,impulse_reversal_control,23,16,8,9,7,4,5,2447.7697753565785,30.84189916949289,1,0,1,0,weaker_depth,weaker_depth,P362_D120_I2p5_D0p15_R0p0_REVERSAL_CONTROL,1
+P362_D60_I2p5_D0p25_R0p0_REVERSAL_CONTROL,impulse_reversal_control,16,10,6,8,5,3,5,1074.9850583080636,18.059748979575467,1,0,1,0,shorter_delay,shorter_delay,P362_D60_I2p5_D0p25_R0p0_REVERSAL_CONTROL,1
