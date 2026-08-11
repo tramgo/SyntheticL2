@@ -1,0 +1,20 @@
+metric,value,description
+phase363_liquidity_replenished_catalyst_impulse_diagnostic_complete,1,Phase363 execution completed
+phase363_work_order_rows,123,Combined Phase341 + Phase359 work orders
+phase363_max_work_rows,0,Optional smoke limit; 0 means full work order
+phase363_event_feature_rows,246,Event feature rows
+phase363_ready_event_feature_rows,246,Ready event feature rows
+phase363_scenario_rows,32,Scenario summary rows
+phase363_trade_rows,444,Trade ledger rows
+phase363_above12_rows,8,Above-12 rows
+phase363_acceptance_candidate_rows,0,Acceptance candidates
+phase363_best_scenario_id,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,Best scenario
+phase363_best_annualized_return_pct,39.144819884564285,Best annualized return
+phase363_best_net_pnl_inr,3106.7317368701815,Best net PnL
+phase363_best_capacity_selected_trade_rows,12,Best selected trades
+phase363_strategy_promotion_allowed,0,No promotion
+phase363_paper_or_live_acceptance_allowed,0,No paper/live
+phase363_deployable_profitability_claim_allowed,0,No deployable claim
+phase363_hard_gate_pass_rows,8,Passed hard gates
+phase363_hard_gate_rows,8,Hard gates
+phase363_next_best_action,interpret_phase363_or_precommit_next_material_real_l2_thesis_no_paper_live,Recommended next milestone

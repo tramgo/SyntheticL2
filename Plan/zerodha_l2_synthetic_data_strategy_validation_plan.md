@@ -16999,6 +16999,59 @@ Current next best action after Phase362:
 
 - Run Phase363 liquidity-replenished catalyst impulse diagnostic on the current local official-catalyst real-L2 work orders, with no paper/live or deployable profitability claim.
 
+## 24.190 Phase363 Liquidity-Replenished Catalyst Impulse Diagnostic Completed
+
+Phase363 executed the Phase362 materially new impulse-continuation thesis on the combined current local official-catalyst real-L2 work orders from Phase341 and Phase359. It used event-window raw L2 loading, full top-five depth, levels 2-5 materiality, liquidity replenishment, impulse-reversal controls, Zerodha cost200 fixed-capital scoring and no paper/live or profitability claim.
+
+Phase363 execution evidence:
+
+- combined work-order rows: `123`;
+- event feature rows: `246`;
+- ready event feature rows: `246`;
+- scenario rows: `32`;
+- trade ledger rows: `444`;
+- above-12 rows: `8`;
+- acceptance candidate rows: `0`;
+- best scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- best annualized return: `39.144819884564285%`;
+- best net P&L: `3106.7317368701815` INR;
+- best capacity-selected trades: `12`.
+
+Phase363 continuation-vs-control interpretation:
+
+- The precommitted impulse-continuation thesis did not produce any above-12 rows.
+- Best continuation scenario: `-25.301901%` annualized, with `0` above-12 rows across all continuation variants.
+- The impulse-reversal control produced all `8` above-12 rows.
+- Best reversal-control row had `12` selected trades across `8` diagnostic dates and therefore remains sparse below the `30` event floor.
+- Because the positive rows are controls, not the Phase362 primary continuation thesis, this is not an acceptance result. It is a clue for a distinct future precommit: post-catalyst impulse reversal after liquidity replenishment.
+
+Phase363 hard gates:
+
+- Phase362 precommit present: pass;
+- work orders present: pass, `123`;
+- event features ready: pass, `246`;
+- full-depth filter applied: pass;
+- controls executed: pass;
+- cost200 fixed-capital scoring: pass;
+- no same-family fade rescue: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase363 outputs:
+
+- `scripts/run_phase363_liquidity_replenished_catalyst_impulse_diagnostic.py`;
+- `src/synthetic_l2/phase363_liquidity_replenished_catalyst_impulse_diagnostic.py`;
+- `outputs/phase363/phase363_acceptance_summary.csv`;
+- `outputs/phase363/phase363_event_feature_ledger.csv`;
+- `outputs/phase363/phase363_trade_ledger.csv`;
+- `outputs/phase363/phase363_scenario_summary.csv`;
+- `outputs/phase363/phase363_gate_evaluation.csv`;
+- `outputs/phase363/phase363_liquidity_replenished_catalyst_impulse_diagnostic_report.md`;
+- `outputs/phase363/phase363_liquidity_replenished_catalyst_impulse_diagnostic_manifest.json`.
+
+Current next best action after Phase363:
+
+- Interpret Phase363 formally and, if continuing, precommit a distinct post-catalyst impulse-reversal-after-replenishment thesis. Do not treat the Phase363 reversal control as accepted profitability evidence.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

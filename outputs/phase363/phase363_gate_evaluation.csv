@@ -1,0 +1,9 @@
+gate_id,passed,evidence
+P363_PHASE362_PRECOMMIT_PRESENT,1,Phase362 precommit complete
+P363_WORK_ORDERS_PRESENT,1,work_rows=123
+P363_EVENT_FEATURES_READY,1,ready_rows=246
+P363_FULL_DEPTH_FILTER_APPLIED,1,uses top5 and levels 2-5 quantity/order features
+P363_CONTROLS_EXECUTED,1,reversal controls
+P363_COST200_FIXED_CAPITAL,1,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14
+P363_NO_SAME_FAMILY_FADE_RESCUE,1,new impulse-continuation family only
+P363_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed
