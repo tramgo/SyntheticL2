@@ -1,0 +1,4 @@
+interpretation_id,value,evidence,decision
+expanded_retest_executed,1,event_rows=233; scenario_rows=2,Frozen expanded real-L2 retest executed.
+primary_acceptance_candidate,0,ann=25.68958992557929; selected_trades=19; breadth=1,"Primary passes acceptance gates only if annualized return, event floor and breadth all pass."
+side_flip_control_not_better,1,primary_ann=25.68958992557929; side_flip_ann=-93.55244161582728,Primary reversal should dominate same-filter continuation control.

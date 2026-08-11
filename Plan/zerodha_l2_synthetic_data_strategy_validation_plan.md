@@ -18105,6 +18105,122 @@ Current next best action after Phase380:
 
 - Execute Phase381 expanded real-L2 frozen reversal acceptance retest with no parameter search and no paper/live action. Promotion remains closed unless the retest passes its predefined acceptance gates.
 
+## 24.208 Phase381 Expanded Real-L2 Frozen Reversal Acceptance Retest Completed
+
+Phase381 executes the Phase380 precommitted expanded real-L2 frozen reversal retest. It uses the frozen `P362_D120_I2p5_D0p25_R0p0` grid row and the frozen primary reversal scenario `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`, with the same-filter continuation side flip retained as a control. It performs no parameter search and opens no paper/live action.
+
+Phase381 execution scope:
+
+- expanded work-order rows replayed: `233`;
+- missing local L2 rows: `0`;
+- event feature rows: `233`;
+- ready event feature rows: `233`;
+- scenario rows: `2`;
+- trade ledger rows: `56`;
+- full-depth rule: retained, with top-five L1-L5 and levels 2-5 materiality;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- parameter search: `0`.
+
+Phase381 primary frozen reversal result:
+
+- primary scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- capacity-selected trades: `19`;
+- diagnostic dates: `11`;
+- symbols: `11`;
+- positive symbols: `5`;
+- positive symbol-date cells: `7`;
+- net P&L: approximately `2,803.427472037423` INR;
+- annualized return: approximately `25.68958992557929%`;
+- above `12%` annualized threshold: `1`;
+- event floor met: `0`;
+- breadth met: `1`;
+- acceptance candidate: `0`.
+
+Phase381 control result:
+
+- same-filter continuation side flip annualized return: approximately `-93.55244161582728%`;
+- reversal direction dominates the continuation side flip in this retest.
+
+Phase381 interpretation:
+
+- The frozen primary remains profitable after expanding the real L2 catalyst evidence.
+- The retest is still not an acceptance result because actual capacity-selected trades are `19`, below the `30` selected-trade floor.
+- The Phase379 selected-event estimate crossed the floor, but the actual frozen trade selection did not. The estimate was useful for opening the retest gate, not sufficient for acceptance.
+- No promotion, paper/live acceptance, or deployable profitability claim is opened.
+
+Phase381 hard gates:
+
+- Phase380 precommit present: pass;
+- no missing local L2 dates: pass;
+- frozen grid only: pass;
+- event features ready: pass, `233` ready rows;
+- full-depth cost200 retained: pass;
+- acceptance gate evaluated: pass;
+- no parameter search: pass;
+- no paper/live or deployable claim: pass.
+
+Phase381 outputs:
+
+- `scripts/run_phase381_expanded_reversal_acceptance_retest.py`;
+- `src/synthetic_l2/phase381_expanded_reversal_acceptance_retest.py`;
+- `outputs/phase381/phase381_acceptance_summary.csv`;
+- `outputs/phase381/phase381_resolved_work_order.csv`;
+- `outputs/phase381/phase381_event_feature_ledger.csv`;
+- `outputs/phase381/phase381_trade_ledger.csv`;
+- `outputs/phase381/phase381_scenario_summary.csv`;
+- `outputs/phase381/phase381_interpretation_ledger.csv`;
+- `outputs/phase381/phase381_gate_evaluation.csv`;
+- `outputs/phase381/phase381_expanded_reversal_acceptance_retest_report.md`;
+- `outputs/phase381/phase381_expanded_reversal_acceptance_retest_manifest.json`.
+
+Current next best action after Phase381:
+
+- Interpret the retest result explicitly. The likely decision is profitable-but-sparse, not accepted.
+
+## 24.209 Phase382 Interpret Phase381 Retest Completed
+
+Phase382 interprets the Phase381 expanded real-L2 frozen reversal retest. It separates profitability evidence from acceptance evidence so the branch does not accidentally promote a sparse result.
+
+Phase382 acceptance interpretation:
+
+- primary annualized return: approximately `25.68958992557929%`;
+- primary selected trades: `19`;
+- required selected trades: `30`;
+- selected-trade gap: `11`;
+- profitability gate met: `1`;
+- event floor met: `0`;
+- breadth met: `1`;
+- side-flip control passed: `1`;
+- acceptance candidate: `0`.
+
+Phase382 decision ledger:
+
+- `P382_PROFITABILITY_DIAGNOSTIC_POSITIVE`: pass. The frozen primary remains economically positive after expanding real L2 evidence.
+- `P382_EVENT_FLOOR_FAILS`: pass. The retest is still too sparse for acceptance, with `19` selected trades versus `30` required.
+- `P382_BREADTH_PASSES`: pass. Breadth is not the blocker.
+- `P382_SIDE_FLIP_CONTROL_PASSES`: pass. The reversal direction dominates the same-filter continuation control.
+- `P382_NO_ACCEPTANCE_OR_PROMOTION`: pass. No promotion, paper trade, or deployable profitability claim is allowed.
+
+Phase382 conclusion:
+
+- This is a valuable positive diagnostic, not an accepted strategy.
+- The immediate blocker is event density after the frozen full-depth filters and capacity rule.
+- The next work should be an explicit event-density repair precommit or a materially new thesis. Any relaxation must be precommitted and treated as a new test, not as a same-run rescue.
+
+Phase382 outputs:
+
+- `scripts/run_phase382_interpret_phase381_retest.py`;
+- `src/synthetic_l2/phase382_interpret_phase381_retest.py`;
+- `outputs/phase382/phase382_acceptance_summary.csv`;
+- `outputs/phase382/phase382_decision_ledger.csv`;
+- `outputs/phase382/phase382_gate_evaluation.csv`;
+- `outputs/phase382/phase382_interpret_phase381_retest_report.md`;
+- `outputs/phase382/phase382_interpret_phase381_retest_manifest.json`.
+
+Current next best action after Phase382:
+
+- Precommit an event-density repair or a materially new thesis, with no paper/live action. The existing frozen reversal candidate remains profitable but not accepted.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

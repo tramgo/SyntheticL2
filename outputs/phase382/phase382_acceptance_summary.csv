@@ -1,0 +1,17 @@
+metric,value,description
+phase382_interpret_phase381_retest_complete,1,Phase382 complete
+phase382_primary_annualized_return_pct,25.68958992557929,Primary annualized return
+phase382_primary_selected_trade_rows,19,Primary capacity-selected trades
+phase382_event_floor_required,30,Required selected trades
+phase382_event_floor_gap,11,Remaining selected-trade gap
+phase382_profitability_gate_met,1,Annualized return > 12%
+phase382_event_floor_met,0,Selected-trade floor met
+phase382_breadth_met,1,Breadth met
+phase382_side_flip_control_passed,1,Primary beats continuation control
+phase382_acceptance_candidate,0,Acceptance candidate
+phase382_strategy_promotion_allowed,0,No promotion
+phase382_paper_or_live_acceptance_allowed,0,No paper/live
+phase382_deployable_profitability_claim_allowed,0,No deployable claim
+phase382_hard_gate_pass_rows,6,Passed gates
+phase382_hard_gate_rows,6,Gates
+phase382_next_best_action,precommit_event_density_repair_or_new_material_thesis_no_paper_live,Recommended next action

@@ -1,0 +1,27 @@
+metric,value,description
+phase381_expanded_reversal_acceptance_retest_complete,1,Phase381 complete
+phase381_work_order_rows,233,Expanded work-order rows replayed
+phase381_missing_local_l2_rows,0,Rows whose diagnostic date has no local L2 root
+phase381_event_feature_rows,233,Event feature rows
+phase381_ready_event_feature_rows,233,Ready event feature rows
+phase381_trade_rows,56,Trade ledger rows
+phase381_scenario_rows,2,Scenario rows
+phase381_primary_scenario_id,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,Frozen primary scenario
+phase381_primary_selected_trade_rows,19,Primary capacity-selected trades
+phase381_primary_diagnostic_dates,11,Primary diagnostic dates
+phase381_primary_symbols,11,Primary symbols
+phase381_primary_positive_symbols,5,Primary positive symbols
+phase381_primary_positive_symbol_date_cells,7,Primary positive symbol-date cells
+phase381_primary_net_pnl_inr,2803.427472037423,Primary net PnL
+phase381_primary_annualized_return_pct,25.68958992557929,Primary annualized return
+phase381_primary_above12,1,Primary above 12%
+phase381_primary_event_floor_met,0,Primary event floor
+phase381_primary_breadth_met,1,Primary breadth gate
+phase381_primary_acceptance_candidate,0,Primary acceptance candidate
+phase381_side_flip_annualized_return_pct,-93.55244161582728,Side-flip control annualized return
+phase381_strategy_promotion_allowed,0,Promotion allowed only if primary acceptance candidate
+phase381_paper_or_live_acceptance_allowed,0,No paper/live action in this phase
+phase381_deployable_profitability_claim_allowed,0,No deployable claim
+phase381_hard_gate_pass_rows,8,Passed hard gates
+phase381_hard_gate_rows,8,Hard gates
+phase381_next_best_action,interpret_phase381_acceptance_result_no_paper_live,Recommended next action
