@@ -17222,6 +17222,62 @@ Current next best action after Phase366:
 
 - Interpret Phase366 or expand real dates for reversal-branch falsification. Do not claim profitability until the clue survives the event floor, stricter replenishment/robustness controls and additional real-date evidence.
 
+## 24.194 Phase367 Passive-Aware Charter Reconciliation Completed
+
+Phase367 reconciles the attached Phase300 passive-aware execution charter with the later Phase363/366 catalyst-reversal clue. It creates no new trades, performs no search and opens no promotion, paper/live acceptance or deployable profitability claim.
+
+Phase367 confirms that the attached passive-aware charter was already executed and interpreted through Phase300/301:
+
+- Phase300 cost200 acceptance survivor rows: `0`;
+- Phase300 event-floor scenario rows: `0`;
+- Phase300 breadth-met scenario rows: `0`;
+- Phase300 hard gates: `10 / 10`;
+- Phase301 selected outcome: `P301_PASSIVE_AWARE_EXECUTION_FALSIFIED`;
+- Phase301 terminal-report-required flag: `1`;
+- Phase301 no-rescue-with-more-filters flag: `1`.
+
+Phase367 also checks whether the later Phase366 catalyst-reversal clue reopens the passive-aware acceptance path:
+
+- Phase366 primary annualized diagnostic: `39.144819884564285%`;
+- Phase366 primary selected trades: `12`;
+- Phase366 event floor met: `0`;
+- Phase366 acceptance candidate rows: `0`;
+- Phase366 stricter-replenishment annualized diagnostic: `-3.6424119335008%`;
+- passive-aware acceptance reopened now: `0`.
+
+Phase367 decision:
+
+- The Phase300 passive-aware route remains falsified for its original evidence chain.
+- The Phase363/366 catalyst-reversal branch is a materially later sparse clue, not a rescue of the Phase300 stack.
+- The new clue is too sparse and too fragile under stricter replenishment to justify passive-aware acceptance testing as a promotion path now.
+- Any future passive-aware rerun must wait for additional official-catalyst real L2 event evidence or be framed only as frozen falsification.
+- If reopened later, the attached charter remains binding: probabilistic passive fills, adverse-selection penalty, forced flatten cost, full top-five depth, no lookahead and cost200 fixed-capital scoring are mandatory.
+
+Phase367 hard gates:
+
+- charter present and requirement-audited: pass, `5 / 5`;
+- Phase300 executed: pass, `10 / 10`;
+- Phase301 interpreted: pass;
+- Phase366 clue audited: pass, `12` trades and `0` acceptance candidates;
+- no reopen with sparse clue: pass, `event_floor_met=0`;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase367 outputs:
+
+- `scripts/run_phase367_passive_aware_charter_reconciliation.py`;
+- `src/synthetic_l2/phase367_passive_aware_charter_reconciliation.py`;
+- `outputs/phase367/phase367_acceptance_summary.csv`;
+- `outputs/phase367/phase367_charter_requirement_audit.csv`;
+- `outputs/phase367/phase367_reconciliation_ledger.csv`;
+- `outputs/phase367/phase367_next_action_contract.csv`;
+- `outputs/phase367/phase367_gate_evaluation.csv`;
+- `outputs/phase367/phase367_passive_aware_charter_reconciliation_report.md`;
+- `outputs/phase367/phase367_passive_aware_charter_reconciliation_manifest.json`.
+
+Current next best action after Phase367:
+
+- Expand official-catalyst real L2 event evidence if access/disk budget permits, or write the terminal/branch report. Do not rerun passive-aware execution as acceptance evidence on the current 12-trade sparse clue.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

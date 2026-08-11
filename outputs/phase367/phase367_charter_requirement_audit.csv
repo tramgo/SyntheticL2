@@ -1,0 +1,6 @@
+charter_check_id,passed,evidence,interpretation
+P367_CHARTER_PRESENT,1,Plan\phase300_passive_aware_execution_charter.md,Attached passive-aware charter is present in the plan folder.
+P367_REALISM_PENALTIES_PRESENT,1,fill/adverse/forced-flatten text scan,"Charter requires fill probability, adverse selection, and forced flatten cost."
+P367_FULL_DEPTH_REQUIRED,1,full-depth text scan,Charter forbids L1-only variants and requires full top-five depth materiality.
+P367_COST200_REQUIRED,1,cost stress text scan,Charter pins 2x cost stress and fixed-capital scoring.
+P367_NO_RESCUE_REQUIRED,1,kill-switch text scan,Charter forbids after-the-fact rescue tuning of the same stack.

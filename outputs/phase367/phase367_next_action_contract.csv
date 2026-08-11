@@ -1,0 +1,6 @@
+contract_id,allowed,requirement
+P367_ALLOW_ONLY_FROZEN_FALSIFICATION_OR_MORE_REAL_EVENTS,1,Either write a terminal/branch report or acquire/verify additional official-catalyst real L2 events before any passive-aware rerun.
+P367_PASSIVE_RERUN_BLOCKED_UNTIL_EVENT_FLOOR,0,Do not run passive-aware execution on the 12-trade Phase366 clue as acceptance evidence; >=30 scheduled events are required first.
+P367_NO_FILTER_RESCUE,0,Do not add more filters to rescue the old passive-aware stack.
+P367_IF_REOPENED_USE_CHARTER_REALISM,1,"Any future passive-aware run must include probabilistic fills, adverse-selection penalty, forced flatten, full top-five depth, no lookahead and cost200."
+P367_BOUNDARIES_CLOSED,0,"No replay promotion, paper/live acceptance or deployable profitability claim."

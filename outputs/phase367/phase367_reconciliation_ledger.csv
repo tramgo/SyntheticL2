@@ -1,0 +1,6 @@
+reconciliation_id,status,evidence,decision
+phase300_charter_executed,proved,gates=10/10; survivors=0,Attached passive-aware charter already has an executed Phase300 artifact chain.
+phase300_acceptance_closed,proved,survivors=0; kill_switch=1,Passive-aware execution route remains closed for the Phase299/300 evidence chain.
+phase301_no_rescue_binding,proved,outcome=P301_PASSIVE_AWARE_EXECUTION_FALSIFIED; terminal=1; no_rescue=1,Do not tune extra filters into the old Phase300 stack.
+phase366_new_clue_present,proved,scenario=P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL; ann=39.144819884564285; trades=12,"The later catalyst-reversal branch is a new sparse clue, not a Phase300 rescue."
+phase366_not_enough_to_reopen_passive_acceptance,proved,event_floor_met=0; acceptance=0; strict_replenishment_ann=-3.6424119335008,The clue is too sparse and too fragile under stricter replenishment to justify passive-aware acceptance testing as a promotion path now.
