@@ -1,0 +1,14 @@
+metric,value,description
+phase356_market_context_clue_validation_execution_complete,1,Phase356 execution completed
+phase356_frozen_trade_rows,14,Frozen validation trade rows
+phase356_frozen_annualized_return_pct,24.505496732765113,Frozen annualized return
+phase356_frozen_net_pnl_inr,1701.7706064420217,Frozen net PnL
+phase356_frozen_above12,1,Frozen above 12%
+phase356_frozen_event_floor_met,0,Frozen >=30 events
+phase356_control_rows,6,Control scenario rows
+phase356_control_dominates_frozen,1,Any control annualized return greater than frozen
+phase356_acceptance_candidate_rows,0,Acceptance candidates
+phase356_strategy_promotion_allowed,0,No promotion
+phase356_paper_or_live_acceptance_allowed,0,No paper/live
+phase356_deployable_profitability_claim_allowed,0,No deployable claim
+phase356_next_best_action,restore_phase350_real_date_expansion_for_unseen_event_floor_no_paper_live,Recommended next milestone

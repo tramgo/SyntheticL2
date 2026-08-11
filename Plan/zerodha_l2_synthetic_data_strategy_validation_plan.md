@@ -16591,6 +16591,72 @@ Current next best action after Phase355:
 - Run Phase356 validation execution for the frozen clue and controls on the current local real-L2 panel; and
 - if Phase356 remains sparse, restore Phase350 real-date expansion before any acceptance claim.
 
+## 24.183 Phase356 Market-Context Clue Validation Execution Completed
+
+Phase356 executed the Phase355 frozen clue and required controls on the current local real-L2 panel.
+
+Phase356 evidence:
+
+- frozen clue: `P356_FROZEN_NIFTYBEES_LB900_MARKET_NEUTRAL_TOP5_FADE`;
+- frozen trade rows: `14`;
+- frozen diagnostic dates: `7`;
+- frozen symbols: `11`;
+- frozen positive trade rows: `8`;
+- frozen positive symbols: `6`;
+- frozen positive symbol/date cells: `6`;
+- frozen net P&L: `1701.7706064420217` INR;
+- frozen fixed-capital annualized return: `24.505496732765113%`;
+- frozen above-12 diagnostic: `1`;
+- frozen event floor met: `0`;
+- acceptance candidate rows: `0`;
+- control scenario rows: `6`;
+- control dominates frozen: `1`.
+
+Phase356 control results:
+
+- depth-levels-2-5 fade variant: `12` trades, `1821.8913646568187` INR net P&L, `26.235235651058193%` annualized;
+- depth-levels-2-5 guard top-five fade: `13` trades, `1787.8020016348241` INR net P&L, `25.74434882354147%` annualized;
+- frozen NIFTYBEES 900s top-five fade: `14` trades, `1701.7706064420217` INR net P&L, `24.505496732765113%` annualized;
+- NIFTYBEES 300s lookback swap: `13` trades, `1601.200838218816` INR net P&L, `23.05729207035095%` annualized;
+- BANKBEES 900s proxy swap: `13` trades, `1408.6338455928194` INR net P&L, `20.2843273765366%` annualized;
+- deterministic alternate-side control: negative;
+- side-flip control: negative.
+
+Phase356 interpretation:
+
+- The Phase354/355 clue remains positive and above the `12%` annualized diagnostic threshold on the current local panel.
+- It still fails acceptance because only `14` frozen trades are available versus the `30` event floor.
+- The side-flip and deterministic alternate-side controls are strongly negative, which supports directional specificity.
+- However, depth-levels-2-5 guard/control variants outperform the frozen top-five-only clue, so the validated clue should be reinterpreted as a market-neutral full-depth fade family rather than a pure top-five fade.
+- No paper/live acceptance, promotion or deployable profitability claim is opened.
+- The next evidence step should be a precommit for a full-depth market-neutral fade family, or preferably restoring Phase350 real-date expansion to increase unseen event count before any acceptance decision.
+
+Phase356 hard gates:
+
+- Phase355 precommit present: pass;
+- frozen clue reconciled: pass, `trade_rows=14`;
+- event floor checked: pass, `event_floor_met=0`;
+- controls executed: pass, `6`;
+- control dominance recorded: pass, `control_dominates=1`;
+- cost200 fixed-capital scoring: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase356 outputs:
+
+- `scripts/run_phase356_market_context_clue_validation_execution.py`;
+- `src/synthetic_l2/phase356_market_context_clue_validation_execution.py`;
+- `outputs/phase356/phase356_acceptance_summary.csv`;
+- `outputs/phase356/phase356_scenario_summary.csv`;
+- `outputs/phase356/phase356_trade_ledger.csv`;
+- `outputs/phase356/phase356_gate_evaluation.csv`;
+- `outputs/phase356/phase356_market_context_clue_validation_execution_report.md`;
+- `outputs/phase356/phase356_market_context_clue_validation_execution_manifest.json`.
+
+Current next best action after Phase356:
+
+- Restore Phase350 real-date expansion for unseen event count; or
+- precommit a Phase357 full-depth market-neutral fade-family validation contract that freezes the depth-levels-2-5 interpretation without weakening event-floor or cost gates.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

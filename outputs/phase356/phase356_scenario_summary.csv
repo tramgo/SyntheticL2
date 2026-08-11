@@ -1,0 +1,8 @@
+scenario_id,control_id,scenario_role,trade_rows,diagnostic_trade_dates,symbols,positive_trade_rows,positive_symbols,positive_symbol_date_cells,net_pnl_inr,annualized_return_pct,above12,event_floor_met,breadth_met,acceptance_candidate
+P356_CONTROL_DEPTH_2_5_GUARD_TOP5_FADE,depth_2_5_guard,full_depth_guard,13,7,10,8,6,6,1787.8020016348241,25.74434882354147,1,0,1,0
+P356_CONTROL_DEPTH_2_5_FADE_VARIANT,depth_2_5_fade_variant,full_depth_control,12,7,9,8,6,6,1821.8913646568187,26.235235651058193,1,0,1,0
+P356_FROZEN_NIFTYBEES_LB900_MARKET_NEUTRAL_TOP5_FADE,frozen_clue,frozen_validation,14,7,11,8,6,6,1701.7706064420217,24.505496732765113,1,0,1,0
+P356_CONTROL_NIFTYBEES_LB300_MARKET_NEUTRAL_TOP5_FADE,lookback_swap_300s,control,13,7,10,8,6,6,1601.200838218816,23.05729207035095,1,0,1,0
+P356_CONTROL_BANKBEES_LB900_MARKET_NEUTRAL_TOP5_FADE,proxy_swap_bankbees,control,13,7,9,7,5,5,1408.6338455928194,20.2843273765366,1,0,1,0
+P356_CONTROL_DETERMINISTIC_ALTERNATE_SIDE,random_side_deterministic,control,14,7,11,3,1,1,-2194.5293935580144,-31.601223267235408,0,0,0,0
+P356_CONTROL_SIDE_FLIP,side_flip,control,14,7,11,1,1,1,-6317.829393558022,-90.97674326723552,0,0,0,0
