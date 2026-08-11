@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P404_PHASE403_MATERIAL_NEW_REQUIRED,True,1,1,hard
+P404_SAME_ROUTE_RESCUE_CLOSED,True,0,0,hard
+P404_EVENT_FEATURE_INPUT_PRESENT,True,270,>0,hard
+P404_REQUIRED_COLUMNS_PRESENT,True,1,1,hard
+P404_NOT_REVERSAL_OR_PASSIVE_RESCUE,True,liquidity_vacuum_continuation,material_new,hard
+P404_FULL_DEPTH_L2_L5_REQUIRED,True,l2_l5_alignment,present,hard
+P404_FIXED_THRESHOLDS_NO_SEARCH,True,fixed_thresholds,no_grid_search,hard
+P404_COST200_FIXED_CAPITAL,True,cost=2.0;capital=250000.0;notional=100000.0,cost200_fixed_capital,hard
+P404_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

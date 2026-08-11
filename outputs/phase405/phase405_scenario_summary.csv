@@ -1,0 +1,4 @@
+scenario_id,scenario_role,raw_candidate_rows,capacity_selected_trade_rows,diagnostic_dates,symbols,positive_symbols,positive_symbol_date_cells,net_pnl_inr,annualized_return_pct,above12,event_floor_met,breadth_met,acceptance_candidate,avg_impulse_bps,avg_replenishment_ratio,avg_l2_l5_abs_imbalance
+P405_LIQUIDITY_VACUUM_CONTINUATION_FULL_DEPTH,liquidity_vacuum_continuation,75,28,16,14,4,5,-11542.91920749659,-72.72039100722851,0,0,1,0,32.363310877637474,-0.2635477370608583,0.40781686928207883
+P405_CONTROL_SIDE_FLIP,side_flip_control,75,28,16,14,5,9,813.1643952080458,5.122935689810689,0,0,1,0,32.363310877637474,-0.2635477370608583,0.40781686928207883
+P405_CONTROL_TOP5_ONLY_DEPTH_REMOVED,top5_only_depth_removed_control,78,29,16,14,4,6,-11299.426204748186,-71.18638508991357,0,0,1,0,30.677720395902078,-0.28560700021030766,0.39624079225495734

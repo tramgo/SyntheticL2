@@ -1,0 +1,7 @@
+input_id,value,description
+phase403_material_new_required,1,Phase403 requires material-new thesis.
+phase403_same_route_rescue_allowed,0,Must be zero.
+phase401_event_feature_rows,273,Latest real-L2 event feature rows.
+phase401_ready_event_feature_rows,270,Ready latest real-L2 event feature rows.
+required_columns_present,1,All columns required for execution.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned cost model.

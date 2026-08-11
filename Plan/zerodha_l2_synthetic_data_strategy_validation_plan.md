@@ -18987,6 +18987,97 @@ Current next best action after Phase403:
 
 - Precommit a materially new full-depth L2 thesis before any new strategy search. Do not continue the same passive-aware directional rescue or the same frozen reversal route.
 
+## 24.231 Phase404 Liquidity-Vacuum Continuation Precommit Completed
+
+Phase404 responds to Phase403 by precommitting a materially new full-depth L2 thesis before any new strategy search. The thesis is not the prior reversal route and not the passive-aware execution rescue. It tests catalyst **continuation** only when the book shows a liquidity vacuum:
+
+- catalyst impulse side is non-zero;
+- absolute impulse is at least `2.5` bps;
+- top-five quantity imbalance aligns with the impulse and has absolute value at least `0.10`;
+- levels 2-5 quantity imbalance aligns with the impulse and has absolute value at least `0.10`;
+- replenishment ratio is no more than `0.75`;
+- execution is taker entry / taker exit under Zerodha cost200 and fixed capital;
+- no parameter search is allowed.
+
+Phase404 precommit evidence:
+
+- thesis id: `P404_CATALYST_LIQUIDITY_VACUUM_CONTINUATION_FULL_DEPTH`;
+- ready Phase401 event-feature rows available: `270`;
+- contract rows: `13`;
+- hard gates passed: `9 / 9`;
+- execution allowed next: `1`;
+- promotion, paper/live acceptance and deployable profitability claim allowed: `0`.
+
+## 24.232 Phase405 Liquidity-Vacuum Continuation Execution Completed
+
+Phase405 executes the Phase404 fixed-threshold material-new full-depth thesis on the current Phase401 real-L2 event-feature ledger. It also logs side-flip and depth-removed controls.
+
+Phase405 primary result:
+
+- input event-feature rows: `273`;
+- ready event-feature rows: `270`;
+- primary raw candidate rows: `75`;
+- primary capacity-selected trades: `28`;
+- diagnostic dates: `16`;
+- symbols: `14`;
+- positive symbols: `4`;
+- net P&L: approximately `-11,542.91920749659` INR;
+- annualized return: approximately `-72.72039100722851%`;
+- above `12%`: `0`;
+- selected-event floor met: `0`;
+- breadth met: `1`;
+- acceptance candidate: `0`.
+
+Phase405 controls:
+
+- side-flip annualized return: approximately `5.122935689810689%`;
+- depth-removed top-five-only control annualized return: approximately `-71.18638508991357%`.
+
+Phase405 interpretation before formal Phase406:
+
+- The material-new liquidity-vacuum continuation thesis fails strongly.
+- The opposite side does not clear the `> 12%` profitability threshold either.
+- Removing the levels 2-5 requirement does not rescue the idea.
+
+## 24.233 Phase406 Liquidity-Vacuum Continuation Interpretation Completed
+
+Phase406 interprets Phase405 and rejects the material-new liquidity-vacuum continuation branch.
+
+Phase406 decision:
+
+- selected decision: `P406_LIQUIDITY_VACUUM_CONTINUATION_REJECTED`;
+- primary raw candidates: `75`;
+- primary capacity-selected trades: `28`;
+- primary annualized return: approximately `-72.72039100722851%`;
+- primary acceptance candidate: `0`;
+- side-flip annualized return: approximately `5.122935689810689%`;
+- depth-removed annualized return: approximately `-71.18638508991357%`;
+- same-threshold rescue allowed: `0`;
+- hard gates passed: `6 / 6`;
+- promotion, paper/live acceptance and deployable profitability claim allowed: `0`.
+
+Phase406 conclusion:
+
+- This new full-depth L2 thesis is rejected under the fixed thresholds.
+- It is not a profitable strategy candidate.
+- Do not rescue it by tuning the same thresholds.
+
+Phase404-406 outputs:
+
+- `scripts/run_phase404_liquidity_vacuum_continuation_precommit.py`;
+- `src/synthetic_l2/phase404_liquidity_vacuum_continuation_precommit.py`;
+- `outputs/phase404/*`;
+- `scripts/run_phase405_liquidity_vacuum_continuation_execution.py`;
+- `src/synthetic_l2/phase405_liquidity_vacuum_continuation_execution.py`;
+- `outputs/phase405/*`;
+- `scripts/run_phase406_liquidity_vacuum_continuation_interpretation.py`;
+- `src/synthetic_l2/phase406_liquidity_vacuum_continuation_interpretation.py`;
+- `outputs/phase406/*`.
+
+Current next best action after Phase406:
+
+- Either precommit another materially new full-depth L2 thesis, or pause strategy search and consolidate the repeated negative evidence into a decision report. Do not continue the same liquidity-vacuum continuation thresholds, same passive-aware rescue, or same frozen reversal route.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,18 @@
+metric,value,description
+phase404_liquidity_vacuum_continuation_precommit_complete,1,Phase404 precommit completed
+phase404_thesis_id,P404_CATALYST_LIQUIDITY_VACUUM_CONTINUATION_FULL_DEPTH,Frozen thesis
+phase404_material_new_vs_phase403,1,"Continuation/liquidity-vacuum thesis, not same reversal/passive rescue"
+phase404_contract_rows,13,Contract rows
+phase404_phase401_ready_event_feature_rows,270,Ready input rows
+phase404_min_abs_impulse_bps,2.5,Fixed threshold
+phase404_min_abs_top5_imbalance,0.1,Fixed threshold
+phase404_min_abs_l2_l5_imbalance,0.1,Fixed threshold
+phase404_max_replenishment_ratio,0.75,Liquidity-vacuum threshold
+phase404_parameter_search_allowed,0,No search
+phase404_execution_allowed_next,1,Whether Phase405 may run
+phase404_strategy_promotion_allowed,0,No promotion
+phase404_paper_or_live_acceptance_allowed,0,No paper/live
+phase404_deployable_profitability_claim_allowed,0,No deployable claim
+phase404_hard_gate_pass_rows,9,Passed hard gates
+phase404_hard_gate_rows,9,Hard gates
+phase404_next_best_action,run_phase405_liquidity_vacuum_continuation_execution_no_paper_live,Recommended next action

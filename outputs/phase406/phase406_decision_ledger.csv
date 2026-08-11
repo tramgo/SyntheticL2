@@ -1,0 +1,10 @@
+decision_id,decision_value,evidence,decision_status
+selected_decision,P406_LIQUIDITY_VACUUM_CONTINUATION_REJECTED,Primary thesis is negative after cost200.,reject
+primary_profitability,0,annualized=-72.72039100722851,>12.0
+primary_event_floor,0,selected_events=28,>=30
+primary_acceptance,0,acceptance=0,0 means rejected
+side_flip_control,5.122935689810689,Opposite side does not clear >12 either.,diagnostic
+depth_removed_control,-71.18638508991357,Removing levels 2-5 does not rescue the idea.,diagnostic
+same_threshold_rescue_allowed,0,Fixed-threshold first test failed; no parameter rescue opened.,forbidden
+paper_live_or_profit_claim,0,promotion=0;paper=0;claim=0,closed
+next_action,precommit_next_materially_new_l2_thesis_or_pause_strategy_search_no_paper_live,"Move only to materially new thesis, or pause strategy search.",next

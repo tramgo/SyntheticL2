@@ -1,0 +1,14 @@
+contract_id,contract_value,description
+thesis_id,P404_CATALYST_LIQUIDITY_VACUUM_CONTINUATION_FULL_DEPTH,Materially new thesis after Phase403 closure.
+material_difference,liquidity_vacuum_continuation_not_reversal_not_passive_rescue,Do not reuse same reversal/passive-aware rescue route.
+entry_side,continue_catalyst_impulse_side,Direction follows the post-catalyst impulse.
+impulse_filter,abs(impulse_bps)>=2.5,"Fixed threshold, no search."
+top5_alignment,sign(decision_top5_qty_imbalance)==impulse_side and abs>= 0.1,Full top-five confirmation.
+l2_l5_alignment,sign(decision_l2_l5_qty_imbalance)==impulse_side and abs>= 0.1,Levels 2-5 materiality required.
+liquidity_vacuum,replenishment_ratio<=0.75,Continuation only when visible replenishment is weak.
+timing,decision_delay=120;horizon=900,Reuse current event-feature timing.
+execution_profile,taker_entry_taker_exit_cost200_fixed_capital,No passive fill rescue; all-in Zerodha 2x cost stress.
+capital,initial=250000.0;notional=100000.0;max_concurrent=2,"Fixed capital annualization, no unlimited capital."
+acceptance,selected_events>=30;annualized>12.0;breadth_multi_symbol_date,Same acceptance discipline.
+controls,side_flip_and_depth_removed_controls,Controls must be logged.
+forbidden,parameter_search;same_route_rescue;promotion;paper_live;deployable_profit_claim,Boundaries remain closed.
