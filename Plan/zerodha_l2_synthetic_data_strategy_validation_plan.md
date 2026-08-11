@@ -16019,6 +16019,74 @@ Current Phase149 evidence after Phase346:
 - `synthetic_strategy_discovery` status: `official_catalyst_event_count_expansion_precommit_open`;
 - current next action: `run_phase347_official_catalyst_event_count_expansion_precommit_no_paper_live`.
 
+## 24.174 Phase347 Official-Catalyst Event-Count Expansion Precommit Completed
+
+Phase347 precommits the next event-count expansion branch. It exists because Phase346 found `10` sparse, control-passing high-return candidates, but the largest candidate had only `19` trades versus the `30` trade/event floor. The branch is designed to add official catalyst-matched real L2 evidence without weakening controls.
+
+Phase347 precommit evidence:
+
+- Phase346 complete: `1`;
+- candidate execution grid rows: `10`;
+- official source priority rows: `4`;
+- official timestamp authority-capable rows: `3`;
+- local real L2 dates currently available: `7`;
+- existing official catalyst calendar rows: `117`;
+- existing Phase341 no-lookahead work order rows: `98`;
+- maximum Phase346 candidate trade rows: `19`;
+- additional candidate trade rows needed for floor: `11`;
+- disk-aware max new dates per increment: `1`;
+- estimated targeted date increments: `5`;
+- full top-five depth required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only allowed: `0`;
+- fixed-capital denominator required: `1`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase347 official catalyst source hierarchy:
+
+- `NSE_CORPORATE_ANNOUNCEMENTS`: primary timestamp authority;
+- `BSE_CORPORATE_ANNOUNCEMENTS`: official cross-check for dual-listed company disclosures and timing disputes;
+- `SEBI_CORPORATE_FILINGS_AND_ORDERS`: regulatory/context and material action source when explicit publication timing is available;
+- `NEWS_ANNOTATION_ONLY`: context only, not timestamp authority.
+
+Phase347 work order:
+
+- refresh official catalyst sources for candidate symbols;
+- download only targeted date/exchange/symbol real L2 partitions that intersect official catalyst rows and candidate symbols;
+- rebuild no-lookahead official catalyst-to-L2 joins using first tick at or after announcement time;
+- prepare Phase348 to rerun only the Phase347 candidate grid on the expanded event-count universe.
+
+Phase347 hard gates:
+
+- Phase346 complete: pass;
+- sparse candidates present: pass, `10`;
+- official source priority present: pass, `3` official-capable sources;
+- targeted disk scope recorded: pass;
+- full-depth and L2-L5 preserved: pass;
+- fixed capital and costs preserved: pass;
+- local baseline inventory present: pass, `7`;
+- no promotion, paper/live or profit claim: pass;
+- hard gates: `8/8`.
+
+Phase347 outputs:
+
+- `outputs/phase347/phase347_acceptance_summary.csv`;
+- `outputs/phase347/phase347_official_source_priority_catalog.csv`;
+- `outputs/phase347/phase347_candidate_execution_grid.csv`;
+- `outputs/phase347/phase347_existing_event_inventory.csv`;
+- `outputs/phase347/phase347_event_count_expansion_work_order.csv`;
+- `outputs/phase347/phase347_gate_evaluation.csv`;
+- `outputs/phase347/phase347_official_catalyst_event_count_expansion_precommit_report.md`;
+- `outputs/phase347/phase347_official_catalyst_event_count_expansion_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase347:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `official_catalyst_event_count_expansion_execution_open`;
+- `synthetic_strategy_discovery` status: `official_catalyst_event_count_expansion_execution_open`;
+- current next action: `run_phase348_official_catalyst_event_count_expansion_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

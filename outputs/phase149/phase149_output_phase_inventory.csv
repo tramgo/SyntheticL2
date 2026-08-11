@@ -281,6 +281,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 344,outputs\phase344,True,7,outputs\phase344\phase344_acceptance_summary.csv,outputs\phase344\phase344_official_catalyst_native_full_depth_strategy_search_precommit_manifest.json,False
 345,outputs\phase345,True,6,outputs\phase345\phase345_acceptance_summary.csv,outputs\phase345\phase345_official_catalyst_native_full_depth_strategy_search_execution_manifest.json,False
 346,outputs\phase346,True,8,outputs\phase346\phase346_acceptance_summary.csv,outputs\phase346\phase346_official_catalyst_native_search_interpretation_manifest.json,False
+347,outputs\phase347,True,8,outputs\phase347\phase347_acceptance_summary.csv,outputs\phase347\phase347_official_catalyst_event_count_expansion_precommit_manifest.json,False
 35,outputs\phase35,True,6,,outputs\phase35\phase35_stage_a2_computable_diagnostics_manifest.json,False
 36,outputs\phase36,True,9,,outputs\phase36\phase36_collector_instrumentation_package_manifest.json,False
 37,outputs\phase37,True,8,,outputs\phase37\phase37_collector_ledger_verifier_manifest.json,False

@@ -1,0 +1,5 @@
+source_id,priority,role,description,reference_url,official_timestamp_authority_allowed,paper_live_or_profit_claim_allowed
+NSE_CORPORATE_ANNOUNCEMENTS,1,primary_timestamp_authority,official exchange corporate announcements for symbol-level market disclosures,https://www.nseindia.com/companies-listing/corporate-filings-announcements,1,0
+BSE_CORPORATE_ANNOUNCEMENTS,2,official_cross_check,official exchange cross-check for dual-listed company disclosures and timing disputes,https://www.bseindia.com/corporates/ann.html,1,0
+SEBI_CORPORATE_FILINGS_AND_ORDERS,3,regulatory_context_and_material_action_source,"regulatory filings, orders, circulars, and enforcement context; use as timestamp authority only when event publication timing is explicit",https://www.sebi.gov.in/curation/corporate_filings.html,1,0
+NEWS_ANNOTATION_ONLY,4,context_not_timestamp_authority,news may explain catalyst context but must not replace official announcement timing,not_applicable,0,0

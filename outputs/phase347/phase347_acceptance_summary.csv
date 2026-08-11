@@ -1,0 +1,24 @@
+metric,value,description
+phase347_official_catalyst_event_count_expansion_precommit_complete,1,Phase347 precommit completed
+phase347_phase346_complete,1,Phase346 complete
+phase347_candidate_grid_rows,10,Sparse control-passing candidate rows carried forward
+phase347_official_source_priority_rows,4,Official source priority rows
+phase347_official_timestamp_authority_rows,3,Official timestamp authority-capable rows
+phase347_local_real_l2_dates,7,Local real L2 dates available
+phase347_official_calendar_rows,117,Existing official catalyst calendar rows
+phase347_inventory_date_rows,7,Existing inventory date rows
+phase347_existing_no_lookahead_work_order_rows,98,Existing Phase341 no-lookahead work order rows
+phase347_max_candidate_trade_rows,19,Maximum Phase346 candidate trade rows
+phase347_additional_candidate_trade_rows_needed,11,Additional candidate trade rows needed to reach event floor
+phase347_max_new_dates_per_increment,1,Disk-aware increment size
+phase347_estimated_targeted_date_increments,5,Estimated targeted date increments
+phase347_full_top_five_depth_required,1,Full top-five depth required
+phase347_levels_2_to_5_materiality_required,1,Levels 2-5 materiality required
+phase347_l1_only_allowed,0,No L1-only variants
+phase347_fixed_capital_denominator_required,1,Fixed-capital denominator required
+phase347_strategy_promotion_allowed,0,No promotion
+phase347_paper_or_live_acceptance_allowed,0,No paper/live
+phase347_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase347_hard_gate_pass_rows,8,Passed hard gates
+phase347_hard_gate_rows,8,Hard gates
+phase347_next_best_action,run_phase348_official_catalyst_event_count_expansion_execution_no_paper_live,Recommended next action
