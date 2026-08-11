@@ -1,0 +1,4 @@
+decision_id,value,evidence,decision
+phase374_download_verified,1,symbols=32; files=50018,2026-07-22 full-universe L2 is locally available.
+event_pool_improved,1,new_vs_phase373=15; target_ready=15,The target day added useful catalyst events.
+event_floor_still_not_met,1,estimated_selected=26.926829268292686; floor=30,Do not run acceptance retest yet.

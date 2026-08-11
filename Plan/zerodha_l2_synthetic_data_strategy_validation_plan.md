@@ -17657,6 +17657,129 @@ Current next best action after Phase373:
 
 - Interpret Phase373 or download the next official-catalyst real L2 day. One more disk-safe full-universe day may be enough to cross the estimated `30` selected-event floor; do not retest until the event-floor condition is verified.
 
+## 24.201 Phase374 Next-Day 2026-07-22 Real L2 Download Completed
+
+Phase374 downloads the next disk-safe official-catalyst real L2 day needed after Phase373. It targets `2026-07-22` because Phase373 left `9` post-close `2026-07-21` catalyst rows whose no-lookahead diagnostic date is the next trading day. The phase uses Azure Files access in-process only, does not persist any SAS secret, and does not run a strategy retest.
+
+Phase374 target selection and discovery:
+
+- target trade date: `2026-07-22`;
+- pending post-close event rows unlocked by the target: `9`;
+- Azure Files share used: `ctrade1-l2-data`;
+- source prefix: `raw_l2/trade_date=2026-07-22/exchange=NSE`;
+- local destination: `real_data_sample/l2_unseen_validation/trade_date=2026-07-22/exchange=NSE`;
+- dry-run discovered files: `50,018`;
+- dry-run discovered symbols: `32`.
+
+Phase374 final download and resume result:
+
+- discovered file rows: `50,018`;
+- download manifest rows: `50,018`;
+- existing/skipped rows on clean resume: `49,985`;
+- newly downloaded rows on clean resume: `33`;
+- per-file error rows after clean resume: `0`;
+- local symbols after: `32`;
+- local parquet files after: `50,018`;
+- local bytes after: `1,753,883,840`;
+- local full universe after: `1`.
+
+Phase374 event-floor estimate:
+
+- estimated selected trades after adding target pending events: approximately `26.869370043393687`;
+- event floor after target estimate: `0`;
+- acceptance retest allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase374 hard gates:
+
+- SAS access path present for this run: pass;
+- truststore injected before HTTPS calls: pass;
+- target date selected from pending post-close catalyst rows: pass;
+- target file discovery complete: pass, `50,018` files across `32` symbols;
+- clean resume download complete: pass, `0` errors;
+- local full universe present: pass, `32` symbols;
+- no strategy retest or promotion: pass.
+
+Phase374 outputs:
+
+- `scripts/run_phase374_next_day_20260722_downloader.py`;
+- `src/synthetic_l2/phase374_next_day_20260722_downloader.py`;
+- `outputs/phase374/phase374_acceptance_summary.csv`;
+- `outputs/phase374/phase374_access_ledger.csv`;
+- `outputs/phase374/phase374_discovered_file_manifest.csv`;
+- `outputs/phase374/phase374_download_manifest.csv`;
+- `outputs/phase374/phase374_gate_evaluation.csv`;
+- `outputs/phase374/phase374_local_inventory_before.csv`;
+- `outputs/phase374/phase374_local_inventory_after.csv`;
+- `outputs/phase374/phase374_pending_post_close_events.csv`;
+- `outputs/phase374/phase374_next_day_20260722_downloader_report.md`;
+- `outputs/phase374/phase374_next_day_20260722_downloader_manifest.json`.
+
+Current next best action after Phase374:
+
+- Refresh the official-catalyst no-lookahead eligibility count with `2026-07-22` included. Do not retest until the event-floor condition is verified.
+
+## 24.202 Phase375 Interpret 2026-07-22 Event Refresh Completed
+
+Phase375 interprets the refreshed official-catalyst event-count evidence after the `2026-07-22` real L2 day is present locally. It converts the Phase373-style refresh output produced for the expanded local universe into Phase375 decision artifacts and keeps the branch closed for retest because the estimated selected-event floor is still below `30`.
+
+Phase375 official-catalyst refresh:
+
+- official source response rows: `22`;
+- official source OK rows: `22`;
+- official catalyst rows fetched: `192`;
+- refreshed no-lookahead eligible rows with local L2: `178`;
+- previous Phase373 eligible rows: `163`;
+- new eligible rows versus Phase373: `15`.
+
+Phase375 target-date event result:
+
+- target diagnostic date: `2026-07-22`;
+- target-date eligible rows: `15`;
+- carry-forward rows from prior-date post-close catalysts: `9`;
+- same-day/pre-open/regular target rows: `6`.
+
+Phase375 event-floor estimate:
+
+- current frozen clue selected trades: `12`;
+- estimated selected trades after the refreshed event count: approximately `26.926829268292686`;
+- event floor met: `0`;
+- acceptance retest allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase375 interpretation:
+
+- The `2026-07-22` real L2 day adds confirmed catalyst-aligned work, including the expected carry-forward from `2026-07-21` post-close events.
+- The evidence pool improves again, but the frozen acceptance retest is still not open because the estimated selected-event count remains below `30`.
+- The correct next action is either one more disk-safe official-catalyst real L2 day or a retest precommit only after the event floor is verified.
+
+Phase375 hard gates:
+
+- Phase374 full universe present: pass;
+- refreshed eligibility output present: pass, `178` eligible rows;
+- target-date events present: pass, `15`;
+- event floor checked: pass, estimate `26.927 < 30`;
+- no strategy retest or promotion: pass.
+
+Phase375 outputs:
+
+- `scripts/run_phase375_interpret_20260722_event_refresh.py`;
+- `src/synthetic_l2/phase375_interpret_20260722_event_refresh.py`;
+- `outputs/phase375/phase375_acceptance_summary.csv`;
+- `outputs/phase375/phase375_target_date_eligible_events.csv`;
+- `outputs/phase375/phase375_decision_ledger.csv`;
+- `outputs/phase375/phase375_gate_evaluation.csv`;
+- `outputs/phase375/phase375_interpret_20260722_event_refresh_report.md`;
+- `outputs/phase375/phase375_interpret_20260722_event_refresh_manifest.json`.
+
+Current next best action after Phase375:
+
+- Download the next official-catalyst real L2 day, if disk budget permits, or precommit a retest only after a verified event-floor check opens the gate. No paper/live acceptance or deployable profitability claim is open.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
