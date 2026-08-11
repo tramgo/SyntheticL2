@@ -1,0 +1,18 @@
+metric,value,description
+phase369_official_catalyst_real_l2_expansion_readiness_complete,1,Phase369 complete if all hard gates pass
+phase369_current_no_lookahead_work_rows,123,Phase341 + Phase359 work rows
+phase369_phase366_selected_trades,12,Current clue selected trades
+phase369_additional_selected_trades_needed,18,Additional trades needed to reach 30
+phase369_estimated_additional_eligible_events_needed,185,Additional eligible catalyst events estimated
+phase369_estimated_full_universe_days_needed,15,Estimated additional full-universe days
+phase369_bytes_per_full_universe_day,1781037899,Observed bytes per full-universe day
+phase369_estimated_bytes_needed,26715568485,Estimated bytes for event-floor-sized increment
+phase369_current_download_route_available,0,Fresh SAS/env or Phase350 route available now
+phase369_one_day_increment_recommended,1,Disk-safe next increment
+phase369_acceptance_retest_allowed_now,0,No retest until event floor evidence exists
+phase369_strategy_promotion_allowed,0,No promotion
+phase369_paper_or_live_acceptance_allowed,0,No paper/live
+phase369_deployable_profitability_claim_allowed,0,No deployable claim
+phase369_hard_gate_pass_rows,7,Passed hard gates
+phase369_hard_gate_rows,7,Hard gates
+phase369_next_best_action,provide_fresh_sas_or_local_drop_one_new_full_universe_official_catalyst_l2_day_then_verify_no_paper_live,Recommended next milestone

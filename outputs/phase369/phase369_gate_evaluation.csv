@@ -1,0 +1,8 @@
+gate_id,passed,evidence
+P369_PHASE368_TERMINAL_PRESENT,1,add_or_verify_more_official_catalyst_real_l2_events_before_any_retest_no_paper_live
+P369_LOCAL_REAL_EVENT_EVIDENCE_PRESENT,1,work_rows=123
+P369_EVENT_FLOOR_GAP_COMPUTED,1,needed=18
+P369_DISK_INCREMENT_ESTIMATED,1,bytes_per_day=1781037899
+P369_ACCESS_ROUTE_AUDITED_WITHOUT_SECRETS,1,secret_rows=0
+P369_NO_RETEST_WITH_CURRENT_SPARSE_CLUE,1,event_floor=0; acceptance=0
+P369_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

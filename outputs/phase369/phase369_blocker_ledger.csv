@@ -1,0 +1,4 @@
+blocker_id,blocking,evidence,resolution
+P369_EVENT_FLOOR_NOT_MET,1,phase366_trades=12; needed=30,Add/verify more official-catalyst real L2 events before retest.
+P369_NO_CURRENT_DOWNLOAD_ROUTE,1,phase350_sas_env_present=0; current_supported_sas_env_names_present=0,"Provide fresh SAS env in-process, install/provide azcopy, or use local dropzone verification."
+P369_ACCEPTANCE_BRANCH_CLOSED,1,phase366_acceptance=0; phase366_ann=39.144819884564285,Treat current clue as diagnostic-only until event floor and robustness controls pass.

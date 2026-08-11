@@ -1,0 +1,4 @@
+access_route,available,evidence,secret_material_recorded
+existing_local_phase341_phase359_panel,1,phase341_events=98; phase359_events=25; phase359_dates=2026-07-17;2026-07-20,0
+phase350_sas_or_local_verify_route,0,phase350_sas_env_present=0; current_supported_sas_env_names_present=0; new_dates_added=0,0
+manual_local_dropzone,1,Can verify a locally dropped raw_l2/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL partition without persisting secrets.,0

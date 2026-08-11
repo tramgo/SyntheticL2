@@ -1,0 +1,11 @@
+metric,value,description
+current_no_lookahead_work_rows,123.0,Phase341 + Phase359 eligible official-catalyst work rows
+current_phase366_selected_trades,12.0,Frozen reversal clue selected trades
+acceptance_event_floor,30.0,Minimum scheduled/selected event floor used by this branch
+additional_selected_trades_needed,18.0,Selected trades needed before retest can meet event floor
+selected_trade_yield_per_work_row,0.0975609756097561,Phase366 selected trades divided by current work rows
+eligible_events_needed_at_current_yield,185.0,Estimated additional eligible events needed at observed yield
+phase359_eligible_events_per_unseen_day,12.5,Observed eligible events per new full-universe local day
+estimated_full_universe_days_needed,15.0,Estimated additional full-universe days needed
+bytes_per_full_universe_day,1781037899.0,Observed Phase359 full-universe raw L2 bytes per day
+estimated_bytes_needed,26715568485.0,Estimated disk needed at observed Phase359 size

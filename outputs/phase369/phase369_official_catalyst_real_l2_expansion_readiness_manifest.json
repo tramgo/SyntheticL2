@@ -1,0 +1,34 @@
+{
+  "generated_at_utc": "2026-08-11T16:16:50.785328+00:00",
+  "next_action": "provide_fresh_sas_or_local_drop_one_new_full_universe_official_catalyst_l2_day_then_verify_no_paper_live",
+  "outputs": {
+    "access": "outputs\\phase369\\phase369_access_route_audit.csv",
+    "blockers": "outputs\\phase369\\phase369_blocker_ledger.csv",
+    "gates": "outputs\\phase369\\phase369_gate_evaluation.csv",
+    "manifest": "outputs\\phase369\\phase369_official_catalyst_real_l2_expansion_readiness_manifest.json",
+    "math": "outputs\\phase369\\phase369_event_floor_expansion_math.csv",
+    "report": "outputs\\phase369\\phase369_official_catalyst_real_l2_expansion_readiness_report.md",
+    "summary": "outputs\\phase369\\phase369_acceptance_summary.csv",
+    "target": "outputs\\phase369\\phase369_target_increment_contract.csv"
+  },
+  "phase": 369,
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "ac5de5d5d49a44e64e58db08c0c6f37b614482f122507a9917075532ee942519",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "creation_timestamp": "2026-08-11T16:16:50.785328+00:00",
+    "generator_version": "3527fb0e23c426b3302a5b2dcc144ed7319d9793",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  },
+  "supported_sas_env_names_checked": [
+    "AZURE_STORAGE_SAS_TOKEN",
+    "AZURE_BLOB_SERVICE_SAS_URL",
+    "STCTRADE1RAMIC_BLOB_SAS_URL",
+    "STCTRADE1RAMIC_SAS_TOKEN"
+  ]
+}

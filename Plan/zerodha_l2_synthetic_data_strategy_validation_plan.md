@@ -17335,6 +17335,72 @@ Current next best action after Phase368:
 
 - Add or verify more official-catalyst real L2 events before any retest. If disk/access constraints prevent expansion, stop running acceptance-style strategy shards and treat the current branch as terminal for acceptance.
 
+## 24.196 Phase369 Official-Catalyst Real L2 Expansion Readiness Completed
+
+Phase369 turns the Phase368 next action into a concrete data-expansion readiness ledger. It does not download data, does not run a strategy retest and opens no promotion, paper/live acceptance or deployable profitability claim.
+
+Phase369 current evidence inventory:
+
+- Phase341 no-lookahead official-catalyst work rows: `98`;
+- Phase359 additional no-lookahead official-catalyst work rows: `25`;
+- combined current no-lookahead work rows: `123`;
+- Phase359 unseen full-universe local real L2 dates: `2026-07-17;2026-07-20`;
+- Phase359 unseen symbols: `32`;
+- current Phase366 selected trades: `12`;
+- current Phase366 event floor met: `0`;
+- current Phase366 acceptance candidates: `0`.
+
+Phase369 event-floor expansion math:
+
+- acceptance event floor: `30`;
+- additional selected trades needed: `18`;
+- observed selected-trade yield from current work rows: approximately `12 / 123`;
+- estimated additional eligible catalyst events needed at current yield: `185`;
+- observed eligible events per Phase359 unseen full-universe day: approximately `12.5`;
+- estimated additional similar full-universe days needed for an event-floor-sized retest: `15`;
+- observed bytes per full-universe real L2 day: `1781037899`;
+- estimated disk for the event-floor-sized increment: `26715568485` bytes, about `26.7 GB`.
+
+Phase369 access/readiness:
+
+- existing local Phase341/Phase359 panel is available;
+- current Phase350/SAS download route is not available in the shell: `phase369_current_download_route_available=0`;
+- no secret material is recorded;
+- manual local dropzone verification remains available.
+
+Phase369 decision:
+
+- One new full-universe official-catalyst real L2 day is the disk-safe next increment.
+- Acceptance retesting is still blocked until the event-floor-sized evidence gap is closed.
+- Do not run another acceptance-style strategy shard on the current 12-trade clue.
+
+Phase369 hard gates:
+
+- Phase368 terminal present: pass;
+- local real event evidence present: pass, `work_rows=123`;
+- event-floor gap computed: pass, `needed=18`;
+- disk increment estimated: pass, `bytes_per_day=1781037899`;
+- access route audited without secrets: pass;
+- no retest with current sparse clue: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase369 outputs:
+
+- `scripts/run_phase369_official_catalyst_real_l2_expansion_readiness.py`;
+- `src/synthetic_l2/phase369_official_catalyst_real_l2_expansion_readiness.py`;
+- `outputs/phase369/phase369_acceptance_summary.csv`;
+- `outputs/phase369/phase369_access_route_audit.csv`;
+- `outputs/phase369/phase369_event_floor_expansion_math.csv`;
+- `outputs/phase369/phase369_target_increment_contract.csv`;
+- `outputs/phase369/phase369_blocker_ledger.csv`;
+- `outputs/phase369/phase369_gate_evaluation.csv`;
+- `outputs/phase369/phase369_official_catalyst_real_l2_expansion_readiness_report.md`;
+- `outputs/phase369/phase369_official_catalyst_real_l2_expansion_readiness_manifest.json`.
+
+Current next best action after Phase369:
+
+- Provide a fresh SAS in the process environment or locally drop one new full-universe official-catalyst real L2 day, then verify it without persisting secrets. If disk remains tight, add exactly one day first; do not attempt an 80 GB bulk pull.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
