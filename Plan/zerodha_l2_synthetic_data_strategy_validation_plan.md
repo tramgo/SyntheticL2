@@ -16717,6 +16717,65 @@ Current next best action after Phase357:
 - Run Phase358 execution of the precommitted full-depth market-neutral fade family on the current panel; and
 - restore Phase350 real-date expansion for unseen event count before any acceptance claim if Phase358 remains below the event floor.
 
+## 24.185 Phase358 Full-Depth Market-Neutral Fade Execution Completed
+
+Phase358 executed the Phase357 precommitted full-depth market-neutral fade family on the current local official-catalyst real L2 panel. It used the already materialized Phase356 scenario and trade ledgers so the execution remained frozen to the Phase357 contract rather than becoming a new search.
+
+Phase358 primary result:
+
+- primary scenario: `P356_CONTROL_DEPTH_2_5_FADE_VARIANT`;
+- scenario role: depth-levels-2-5 full-depth fade primary;
+- trade rows: `12`;
+- diagnostic trade dates: `7`;
+- symbols: `9`;
+- positive symbols: `6`;
+- positive symbol/date cells: `6`;
+- net P&L: `1821.8913646568187` INR;
+- fixed-capital annualized return: `26.235235651058197%`;
+- above-12 diagnostic: pass;
+- event floor: fail, `12 < 30`;
+- acceptance candidate rows: `0`.
+
+Phase358 comparison rows:
+
+- depth guard annualized return: `25.74434882354147%`;
+- top-five reference annualized return: `24.505496732765117%`;
+- available control rows: `4`;
+- the depth-levels-2-5 full-depth fade remains stronger than the top-five reference on this sparse panel.
+
+Phase358 interpretation:
+
+- The full-depth market-neutral fade family remains a positive sparse clue, not an accepted strategy.
+- The event floor is still the binding blocker. The current evidence has 12 primary trades versus the required 30.
+- No promotion, paper/live acceptance or deployable profitability claim is opened.
+- The correct next evidence step remains restoring Phase350 real-date expansion for unseen event count before any acceptance decision.
+
+Phase358 hard gates:
+
+- Phase357 precommit present: pass;
+- primary full-depth scenario executed: pass;
+- cost200 fixed-capital scoring inherited from Phase356: pass;
+- event floor checked: pass, `event_floor_met=0`;
+- controls available: pass, `control_rows=4`;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase358 outputs:
+
+- `scripts/run_phase358_full_depth_market_neutral_fade_execution.py`;
+- `src/synthetic_l2/phase358_full_depth_market_neutral_fade_execution.py`;
+- `outputs/phase358/phase358_acceptance_summary.csv`;
+- `outputs/phase358/phase358_scenario_summary.csv`;
+- `outputs/phase358/phase358_primary_trade_ledger.csv`;
+- `outputs/phase358/phase358_interpretation_ledger.csv`;
+- `outputs/phase358/phase358_gate_evaluation.csv`;
+- `outputs/phase358/phase358_full_depth_market_neutral_fade_execution_report.md`;
+- `outputs/phase358/phase358_full_depth_market_neutral_fade_execution_manifest.json`.
+
+Current next best action after Phase358:
+
+- Restore Phase350 real-date expansion for unseen event count using a working targeted download route; then rerun the official-catalyst full-depth market-neutral fade family on the expanded real L2 panel.
+- Keep the attached Phase300 passive-aware execution charter closed as already executed and falsified for acceptance: it produced sparse above-12 pockets but 0 event-floor rows, 0 breadth rows, 0 acceptance survivors and triggered the precommitted kill switch.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

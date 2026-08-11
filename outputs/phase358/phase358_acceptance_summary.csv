@@ -1,0 +1,22 @@
+metric,value,description
+phase358_full_depth_market_neutral_fade_execution_complete,1,Phase358 execution completed
+phase358_phase357_precommit_present,1,Phase357 family contract present
+phase358_primary_scenario_id,P356_CONTROL_DEPTH_2_5_FADE_VARIANT,Primary full-depth family row
+phase358_primary_trade_rows,12,Primary trade rows
+phase358_primary_diagnostic_trade_dates,7,Primary dates
+phase358_primary_symbols,9,Primary symbols
+phase358_primary_positive_symbols,6,Primary positive symbols
+phase358_primary_positive_symbol_date_cells,6,Primary positive symbol/date cells
+phase358_primary_net_pnl_inr,1821.8913646568187,Primary net PnL
+phase358_primary_annualized_return_pct,26.235235651058197,Primary fixed-capital annualized return
+phase358_primary_above12,1,Primary above 12%
+phase358_primary_event_floor_met,0,Primary >=30 event floor
+phase358_primary_acceptance_candidate,0,Primary acceptance candidate
+phase358_guard_annualized_return_pct,25.74434882354147,Depth guard annualized return
+phase358_top5_reference_annualized_return_pct,24.505496732765117,Top-five reference annualized return
+phase358_control_rows,4,Control rows
+phase358_acceptance_candidate_rows,0,Acceptance candidates
+phase358_strategy_promotion_allowed,0,No promotion
+phase358_paper_or_live_acceptance_allowed,0,No paper/live
+phase358_deployable_profitability_claim_allowed,0,No deployable claim
+phase358_next_best_action,restore_phase350_real_date_expansion_for_unseen_event_floor_no_paper_live,Recommended next milestone

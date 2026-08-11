@@ -1,0 +1,5 @@
+interpretation_id,value,evidence,decision
+primary_positive,1,annualized=26.235235651058197; net=1821.8913646568187,Full-depth family remains a positive sparse clue.
+event_floor_failed,1,trade_rows=12; required=30,No acceptance until unseen real-date expansion increases event count.
+top5_reference_not_primary,1,primary=26.235235651058197; top5=24.505496732765117,Keep depth-levels-2-5 fade as primary family.
+paper_live_closed,1,promotion=0; paper_live=0; deployable_claim=0,Research clue only.
