@@ -1,0 +1,17 @@
+metric,value,description
+phase377_interpret_20260723_event_refresh_complete,1,Phase377 complete
+phase377_target_trade_date,2026-07-23,Target date
+phase377_target_ready_rows,24,Eligible rows on target diagnostic date
+phase377_target_carry_forward_rows,14,Prior-date post-close rows carried into target
+phase377_refreshed_eligible_rows,202,Refreshed eligible rows
+phase377_previous_phase375_eligible_rows,178,Previous Phase375 eligible rows
+phase377_new_eligible_rows_vs_phase375,24,New eligible rows after adding target
+phase377_estimated_selected_after_refresh,29.26829268292683,Estimated selected trades
+phase377_event_floor_met,0,Estimated event floor met
+phase377_acceptance_retest_allowed_now,0,No retest in this phase
+phase377_strategy_promotion_allowed,0,No promotion
+phase377_paper_or_live_acceptance_allowed,0,No paper/live
+phase377_deployable_profitability_claim_allowed,0,No deployable claim
+phase377_hard_gate_pass_rows,5,Passed gates
+phase377_hard_gate_rows,5,Gates
+phase377_next_best_action,download_next_official_catalyst_real_l2_day_or_precommit_retest_only_after_floor_no_paper_live,Recommended next action

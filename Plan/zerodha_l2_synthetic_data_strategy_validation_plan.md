@@ -17780,6 +17780,141 @@ Current next best action after Phase375:
 
 - Download the next official-catalyst real L2 day, if disk budget permits, or precommit a retest only after a verified event-floor check opens the gate. No paper/live acceptance or deployable profitability claim is open.
 
+## 24.203 Phase376 Next-Day 2026-07-23 Real L2 Download Completed
+
+Phase376 downloads the next disk-safe official-catalyst real L2 day after Phase375. It targets `2026-07-23` because Phase375 left `14` post-close `2026-07-22` catalyst rows whose no-lookahead diagnostic date is the next trading day. The phase uses Azure Files access in-process only, does not persist any SAS secret, and does not run a strategy retest.
+
+Phase376 target selection and discovery:
+
+- target trade date: `2026-07-23`;
+- pending post-close event rows unlocked by the target: `14`;
+- Azure Files share used: `ctrade1-l2-data`;
+- source prefix: `raw_l2/trade_date=2026-07-23/exchange=NSE`;
+- local destination: `real_data_sample/l2_unseen_validation/trade_date=2026-07-23/exchange=NSE`;
+- dry-run discovered files: `49,929`;
+- dry-run discovered symbols: `32`.
+
+Phase376 final download and clean resume result:
+
+- discovered file rows: `49,929`;
+- download manifest rows: `49,929`;
+- existing/skipped rows on clean resume: `49,929`;
+- newly downloaded rows on clean resume: `0`;
+- per-file error rows after clean resume: `0`;
+- local symbols after: `32`;
+- local parquet files after: `49,929`;
+- local bytes after: `1,758,380,336`;
+- local full universe after: `1`.
+
+Phase376 event-floor estimate:
+
+- estimated selected trades after adding target pending events: approximately `29.044669772540423`;
+- event floor after target estimate: `0`;
+- acceptance retest allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase376 hard gates:
+
+- Phase375 present: pass;
+- target date selected from pending post-close catalyst rows: pass, `2026-07-23`;
+- SAS access path present for this run: pass;
+- target file discovery complete: pass, `49,929` files across `32` symbols;
+- clean resume download complete: pass, `0` errors;
+- local full universe present: pass, `32` symbols;
+- no strategy retest or promotion: pass.
+
+Phase376 outputs:
+
+- `scripts/run_phase376_next_day_20260723_downloader.py`;
+- `src/synthetic_l2/phase376_next_day_20260723_downloader.py`;
+- `outputs/phase376/phase376_acceptance_summary.csv`;
+- `outputs/phase376/phase376_access_ledger.csv`;
+- `outputs/phase376/phase376_discovered_file_manifest.csv`;
+- `outputs/phase376/phase376_download_manifest.csv`;
+- `outputs/phase376/phase376_gate_evaluation.csv`;
+- `outputs/phase376/phase376_local_inventory_before.csv`;
+- `outputs/phase376/phase376_local_inventory_after.csv`;
+- `outputs/phase376/phase376_pending_post_close_events.csv`;
+- `outputs/phase376/phase376_next_day_20260723_downloader_report.md`;
+- `outputs/phase376/phase376_next_day_20260723_downloader_manifest.json`.
+
+Current next best action after Phase376:
+
+- Refresh the official-catalyst no-lookahead eligibility count with `2026-07-23` included. Do not retest until the event-floor condition is verified.
+
+## 24.204 Phase377 Interpret 2026-07-23 Event Refresh Completed
+
+Phase377 interprets the refreshed official-catalyst event-count evidence after the `2026-07-23` real L2 day is present locally. It converts the Phase373-style refresh output produced for the expanded local universe into Phase377 decision artifacts and keeps the branch closed for retest because the estimated selected-event floor is still below `30`.
+
+Phase377 official-catalyst refresh:
+
+- local trade dates included: `2026-07-08` through `2026-07-23`, covering `12` local real L2 dates;
+- official source response rows: `24`;
+- official source OK rows: `24`;
+- official catalyst rows fetched: `220`;
+- refreshed no-lookahead eligible rows with local L2: `202`;
+- previous Phase375 eligible rows: `178`;
+- new eligible rows versus Phase375: `24`;
+- combined Phase341 plus refreshed work rows: `300`.
+
+Phase377 target-date event result:
+
+- target diagnostic date: `2026-07-23`;
+- target-date eligible rows: `24`;
+- carry-forward rows from prior-date post-close catalysts: `14`;
+- same-day/pre-open/regular target rows: `10`.
+
+Phase377 event-floor estimate:
+
+- estimated selected trades after the refreshed event count: approximately `29.26829268292683`;
+- event floor met: `0`;
+- acceptance retest allowed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase377 interpretation:
+
+- The `2026-07-23` real L2 day adds confirmed catalyst-aligned work and brings the selected-event estimate very close to the `30`-event floor.
+- The acceptance retest is still not open because the verified estimate is `29.268 < 30`.
+- The correct next action remains one more disk-safe official-catalyst real L2 day, followed by another event-count refresh; do not promote, paper trade, or claim deployable profitability.
+
+Phase377 hard gates:
+
+- Phase376 full universe present: pass;
+- refreshed eligibility output present: pass, `202` eligible rows;
+- target-date events present: pass, `24`;
+- event floor checked: pass, estimate `29.268 < 30`;
+- no strategy retest or promotion: pass.
+
+Phase377 outputs:
+
+- `scripts/run_phase377_interpret_20260723_event_refresh.py`;
+- `src/synthetic_l2/phase377_interpret_20260723_event_refresh.py`;
+- `outputs/phase377/phase373_acceptance_summary.csv`;
+- `outputs/phase377/phase373_local_real_l2_inventory.csv`;
+- `outputs/phase377/phase373_official_source_response_ledger.csv`;
+- `outputs/phase377/phase373_official_catalyst_calendar.csv`;
+- `outputs/phase377/phase373_no_lookahead_official_catalyst_eligibility.csv`;
+- `outputs/phase377/phase373_new_eligible_events_vs_phase359.csv`;
+- `outputs/phase377/phase373_refreshed_execution_work_order.csv`;
+- `outputs/phase377/phase373_full_depth_schema_contract.csv`;
+- `outputs/phase377/phase373_gate_evaluation.csv`;
+- `outputs/phase377/phase373_refreshed_catalyst_event_count_after_20260721_report.md`;
+- `outputs/phase377/phase373_refreshed_catalyst_event_count_after_20260721_manifest.json`;
+- `outputs/phase377/phase377_acceptance_summary.csv`;
+- `outputs/phase377/phase377_target_date_eligible_events.csv`;
+- `outputs/phase377/phase377_decision_ledger.csv`;
+- `outputs/phase377/phase377_gate_evaluation.csv`;
+- `outputs/phase377/phase377_interpret_20260723_event_refresh_report.md`;
+- `outputs/phase377/phase377_interpret_20260723_event_refresh_manifest.json`.
+
+Current next best action after Phase377:
+
+- Download the next official-catalyst real L2 day, if disk budget permits. The branch remains closed for retest until the event-floor check is verified at or above `30` selected events.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

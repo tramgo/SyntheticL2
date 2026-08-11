@@ -1,0 +1,27 @@
+metric,value,description
+phase376_next_day_20260723_downloader_complete,1,Phase376 complete if all hard gates pass
+phase376_target_trade_date,2026-07-23,Next target date from Phase375 pending post-close rows
+phase376_pending_post_close_event_rows,14,Known pending post-close catalyst rows unlocked by target
+phase376_sas_env_present,1,Supported SAS env present
+phase376_truststore_injected,1,Truststore injected before HTTPS calls
+phase376_dry_run,0,Dry-run mode
+phase376_workers,128,Concurrent workers
+phase376_discovered_file_rows,49929,Discovered target file rows
+phase376_discovered_symbols,32,Discovered target symbols
+phase376_download_manifest_rows,49929,Download manifest rows
+phase376_existing_file_rows,49929,Existing/skipped file rows
+phase376_downloaded_file_rows,0,Downloaded file rows
+phase376_error_file_rows,0,Per-file error rows
+phase376_local_symbols_after,32,Local symbols after
+phase376_local_parquet_files_after,49929,Local parquet files after
+phase376_local_bytes_after,1758380336,Local bytes after
+phase376_local_full_universe_after,1,Full universe local after
+phase376_estimated_selected_after_target,29.044669772540423,Estimated selected trades after adding target pending events
+phase376_event_floor_after_target_estimate,0,Whether target estimate reaches 30-event floor
+phase376_acceptance_retest_allowed_now,0,No retest in this phase
+phase376_strategy_promotion_allowed,0,No promotion
+phase376_paper_or_live_acceptance_allowed,0,No paper/live
+phase376_deployable_profitability_claim_allowed,0,No deployable claim
+phase376_hard_gate_pass_rows,7,Passed hard gates
+phase376_hard_gate_rows,7,Hard gates
+phase376_next_best_action,refresh_catalyst_event_count_after_20260723_no_paper_live,Recommended next milestone
