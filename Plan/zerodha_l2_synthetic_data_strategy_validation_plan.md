@@ -18937,6 +18937,56 @@ Current next best action after Phase402:
 
 - Do not promote this frozen reversal candidate. Prefer a new precommitted full-depth L2 thesis, or only run capacity-rule sensitivity if explicitly choosing to test the existing candidate's throttle sensitivity.
 
+## 24.230 Phase403 Passive-Aware Charter Current-State Addendum Completed
+
+Phase403 reconciles the attached passive-aware execution charter with the current repository evidence. It was created because the attachment asks for passive-aware execution of directional L2 signals with probabilistic passive fills, adverse-selection penalties, forced-flatten costs, Zerodha cost200 scoring, fixed capital and closed paper/live boundaries.
+
+Phase403 finding:
+
+- the attached charter is already represented as `Plan/phase300_passive_aware_execution_charter.md`;
+- the charter was already executed by Phase300;
+- Phase301 already interpreted that passive-aware route as falsified;
+- Phase302 already closed the tested retail top-five L2 directional/passive-aware rescue route for acceptance;
+- the newer Phase402 real-L2 frozen reversal retest does not reopen that route.
+
+Phase403 evidence:
+
+- attached charter present: `1`;
+- attachment matches passive-aware / forced-flatten charter terms: `1`;
+- Phase300 execution complete: `1`;
+- Phase300 cost200 acceptance survivor rows: `0`;
+- Phase300 best scheduled event rows: `2`;
+- Phase301 selected outcome: `P301_PASSIVE_AWARE_EXECUTION_FALSIFIED`;
+- Phase302 material-new source or thesis required: `1`;
+- Phase402 primary annualized return: approximately `7.149347884879218%`;
+- Phase402 primary capacity-selected trades: `25`;
+- Phase402 acceptance candidate: `0`;
+- same-route passive-aware rescue allowed: `0`;
+- material-new thesis required: `1`;
+- hard gates passed: `10 / 10`.
+
+Phase403 interpretation:
+
+- The attached passive-aware execution charter has been performed already; it did not survive its own acceptance rules.
+- The most recent real-L2 retest also fails the user's `> 12%` annualized profitability rule and the selected-event floor.
+- Continuing the same directional reversal/passive-aware rescue route would violate the prior kill-switch.
+- The next executable strategy work must be a precommitted materially new full-depth L2 thesis, not another same-stack rescue filter.
+
+Phase403 outputs:
+
+- `scripts/run_phase403_passive_charter_current_state_addendum.py`;
+- `src/synthetic_l2/phase403_passive_charter_current_state_addendum.py`;
+- `outputs/phase403/phase403_acceptance_summary.csv`;
+- `outputs/phase403/phase403_evidence_ledger.csv`;
+- `outputs/phase403/phase403_decision_ledger.csv`;
+- `outputs/phase403/phase403_gate_evaluation.csv`;
+- `outputs/phase403/phase403_passive_charter_current_state_addendum_report.md`;
+- `outputs/phase403/phase403_passive_charter_current_state_addendum_manifest.json`.
+
+Current next best action after Phase403:
+
+- Precommit a materially new full-depth L2 thesis before any new strategy search. Do not continue the same passive-aware directional rescue or the same frozen reversal route.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

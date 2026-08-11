@@ -1,0 +1,8 @@
+decision_id,decision_value,evidence,decision_status
+selected_decision,P403_PASSIVE_AWARE_CHARTER_EXECUTED_AND_REMAINS_FALSIFIED,Phase300/301/302 and Phase402 all reject acceptance.,closed_for_same_route
+attached_charter_action_status,already_executed_as_phase300_and_interpreted_as_phase301,Phase300 execution and Phase301 falsification are present.,done
+same_passive_aware_rescue_allowed,0,phase302_do_not_continue_same_route=1,forbidden
+new_real_l2_reversal_status,failed_current_profitability_rule,phase402_ann=7.149347884879218;selected=25,not_accepted
+best_phase300_sparse_pocket_status,diagnostic_only,phase300_best_events=2;survivors=0,not_acceptance
+recommended_next_route,precommit_material_new_full_depth_l2_thesis_or_stop_same_route_no_paper_live,Needs material-new full-depth L2 thesis/source; do not rescue same stack.,next
+paper_live_or_profit_claim,0,promotion=0;paper=0;claim=0,closed

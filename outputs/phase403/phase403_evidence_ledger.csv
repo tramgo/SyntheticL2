@@ -1,0 +1,6 @@
+evidence_id,source,observed_value,interpretation
+P403_ATTACHMENT_CHARTER_PRESENT,C:\Users\Ramic\.codex\attachments\10cf61a2-bfc1-4e3b-9099-09a01ef9583e\pasted-text.txt,present=1;bytes=6623,Attached passive-aware execution charter was read for this addendum.
+P403_PHASE300_EXECUTED,outputs/phase300/phase300_acceptance_summary.csv,execution_complete=1;scenarios=108;survivors=0;kill=1,The attached charter's passive-aware hybrid was already executed under Phase300.
+P403_PHASE301_FALSIFIED,outputs/phase301/phase301_acceptance_summary.csv,outcome=P301_PASSIVE_AWARE_EXECUTION_FALSIFIED;terminal_required=1;do_not_rescue=1,The passive-aware route was interpreted as falsified; same-stack rescue tuning is forbidden.
+P403_PHASE302_TERMINAL_REPORT,outputs/phase302/phase302_acceptance_summary.csv,verdict=P302_RETAIL_TOP5_L2_ALPHA_THESIS_CLOSED_FOR_ACCEPTANCE;material_new_required=1;do_not_continue_same_route=1,The older Phase300 charter route already required a material-new source or thesis before continuing.
+P403_PHASE402_NEW_REAL_L2_RETEST,outputs/phase402/phase388_acceptance_summary.csv,annualized=7.149347884879218;selected_trades=25;acceptance=0;promotion=0,The newer real-L2 catalyst reversal retest also failed acceptance and fell below the >12% annualized threshold.
