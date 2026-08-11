@@ -18675,6 +18675,106 @@ Current next best action after Phase393:
 
 - Refresh official-catalyst eligibility with `2026-08-03` included, adapt the refreshed work order, and rerun the frozen reversal retest with no search.
 
+## 24.221 Phase394 Refresh Catalyst Event Count After 2026-08-03 Completed
+
+Phase394 refreshes official-catalyst no-lookahead eligibility after Phase393 added the `2026-08-03` full-universe real L2 day. It does not run a strategy retest and opens no promotion, paper/live acceptance, or deployable profitability claim.
+
+Phase394 event-count result:
+
+- local real L2 dates included: `15`;
+- official source response rows: `30`;
+- official source OK rows: `30`;
+- official catalyst rows fetched: `269`;
+- refreshed no-lookahead eligible rows with local L2: `262`;
+- new eligible rows versus Phase359: `237`;
+- eligible rows whose diagnostic date is `2026-08-03`: `13`;
+- combined Phase341 plus refreshed work rows: `360`;
+- estimated selected trades after refresh: approximately `35.1219512195122`;
+- event floor after refresh estimate: `1`.
+
+Current next best action after Phase394:
+
+- Adapt the Phase394 refreshed work order and rerun the frozen reversal retest with no search.
+
+## 24.222 Phase395 Phase394 Frozen Retest Precommit Completed
+
+Phase395 adapts the Phase394 refreshed work order into the frozen retest schema. It keeps the frozen `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL` scenario and performs no retest in the precommit.
+
+Phase395 result:
+
+- adapted work-order rows: `262`;
+- diagnostic dates: `15`;
+- symbols: `27`;
+- Phase394 selected-event estimate: approximately `35.1219512195122`;
+- parameter search allowed: `0`;
+- retest executed now: `0`;
+- paper/live or deployable profit claim allowed: `0`.
+
+## 24.223 Phase396 Phase394 Frozen Retest Completed
+
+Phase396 reruns the frozen reversal retest on the Phase395/Phase394 expanded work order. It uses the same frozen grid row, same full-depth features, same levels 2-5 materiality, same Zerodha cost model, and no parameter search.
+
+Phase396 execution result:
+
+- work-order rows replayed: `262`;
+- missing local L2 rows: `0`;
+- event feature rows: `262`;
+- ready event feature rows: `259`;
+- no-start-tick rows: `3`;
+- trade ledger rows: `64`;
+- scenario rows: `2`.
+
+Phase396 primary frozen reversal result:
+
+- raw scheduled candidates: `32`;
+- capacity-selected trades: `23`;
+- diagnostic dates: `13`;
+- symbols: `12`;
+- positive symbols: `3`;
+- positive symbol-date cells: `7`;
+- net P&L: approximately `1,620.6199675742087` INR;
+- annualized return: approximately `12.566037902421556%`;
+- above `12%` annualized threshold: `1`;
+- event floor met: `0`;
+- breadth met: `1`;
+- acceptance candidate: `0`.
+
+Phase396 control result:
+
+- same-filter continuation side flip annualized return: approximately `-82.03012519492701%`;
+- reversal direction still dominates continuation.
+
+## 24.224 Phase397 Interpret Phase396 Retest Completed
+
+Phase397 interprets the Phase396 frozen retest after the Phase393/394 added `2026-08-03` evidence.
+
+Phase397 interpretation:
+
+- profitability remains positive but has weakened to approximately `12.566%` annualized;
+- raw filtered candidates reach `32`, above the raw `30` floor;
+- capacity-selected trades are only `23`, leaving a `7`-trade gap to the selected-trade floor;
+- breadth passes;
+- side-flip continuation control remains strongly negative;
+- acceptance candidate: `0`;
+- promotion, paper/live acceptance, and deployable profitability claim remain closed.
+
+Phase397 conclusion:
+
+- Adding `2026-08-03` improved selected-trade count from `21` to `23`, but not enough.
+- The strategy remains alive only as a fragile positive diagnostic near the profitability threshold.
+- The next action should be more real L2 evidence, not parameter relaxation, unless a materially new precommitted thesis is written.
+
+Phase394-397 outputs:
+
+- `outputs/phase394/*`;
+- `outputs/phase395/*`;
+- `outputs/phase396/*`;
+- `outputs/phase397/*`.
+
+Current next best action after Phase397:
+
+- Add another full no-lookahead real L2 day if disk/Azure access permit, then refresh and rerun. Do not promote or paper/live trade.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

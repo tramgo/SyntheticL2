@@ -1,0 +1,3 @@
+scenario_id,scenario_role,scheduled_event_rows,capacity_selected_trade_rows,diagnostic_trade_dates,symbols,positive_trade_rows,positive_symbols,positive_symbol_date_cells,net_pnl_inr,annualized_return_pct,above12,event_floor_met,breadth_met,acceptance_candidate
+P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,impulse_reversal_control,32,23,13,12,10,3,7,1620.6199675742087,12.566037902421556,1,0,1,0
+P362_D120_I2p5_D0p25_R0p0_CONTINUATION,impulse_continuation,32,23,13,12,4,2,4,-10579.282019187016,-82.03012519492701,0,0,1,0

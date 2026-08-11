@@ -1,0 +1,6 @@
+decision_id,value,evidence,decision
+P388_PROFITABILITY_STILL_POSITIVE,1,ann=12.566037902421556; net=1620.6199675742087,Frozen reversal remains profitable after the Phase384 density repair.
+P388_RAW_CANDIDATE_FLOOR_REACHED,1,scheduled_candidates=32; required=30,Raw filtered candidates now reach the event floor.
+P388_CAPACITY_SELECTED_FLOOR_FAILS,1,capacity_selected=23; required=30; gap=7,Capacity selection remains the acceptance blocker.
+P388_SHORT_DAY_EFFECT_RECORDED,1,no_start_tick_rows=3,The short 2026-07-27 collector window produced some non-ready event rows.
+P388_NO_ACCEPTANCE_OR_PROMOTION,1,acceptance_candidate=0; breadth=1; side_flip_ann=-82.03012519492701,"No promotion, paper/live action, or deployable profitability claim."
