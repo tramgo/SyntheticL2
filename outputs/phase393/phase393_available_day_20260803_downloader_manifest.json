@@ -1,0 +1,36 @@
+{
+  "generated_at_utc": "2026-08-11T20:36:53.165356+00:00",
+  "outputs": {
+    "access": "outputs\\phase393\\phase393_access_ledger.csv",
+    "discovery": "outputs\\phase393\\phase393_discovered_file_manifest.csv",
+    "download": "outputs\\phase393\\phase393_download_manifest.csv",
+    "gates": "outputs\\phase393\\phase393_gate_evaluation.csv",
+    "local_after": "outputs\\phase393\\phase393_local_inventory_after.csv",
+    "local_before": "outputs\\phase393\\phase393_local_inventory_before.csv",
+    "manifest": "outputs\\phase393\\phase393_available_day_20260803_downloader_manifest.json",
+    "report": "outputs\\phase393\\phase393_available_day_20260803_downloader_report.md",
+    "summary": "outputs\\phase393\\phase393_acceptance_summary.csv"
+  },
+  "phase": 393,
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "3a94888105df1ce39315900bae236ab7cd74c7eb8c2ca4c4a199848014266f7d",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "creation_timestamp": "2026-08-11T20:36:53.165356+00:00",
+    "generator_version": "cddda5a1eeb6ff62df1923f76d131ad5f70086bd",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  },
+  "supported_sas_env_names_checked": [
+    "AZURE_BLOB_SERVICE_SAS_URL",
+    "STCTRADE1RAMIC_BLOB_SAS_URL",
+    "AZURE_FILE_SERVICE_SAS_URL",
+    "STCTRADE1RAMIC_FILE_SAS_URL",
+    "AZURE_STORAGE_SAS_TOKEN",
+    "STCTRADE1RAMIC_SAS_TOKEN"
+  ]
+}

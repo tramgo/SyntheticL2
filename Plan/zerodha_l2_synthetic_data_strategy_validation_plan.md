@@ -18625,6 +18625,56 @@ Current next best action after Phase392:
 
 - Download the first nearby full 32-symbol real-L2 partition, `2026-08-03`, then refresh official-catalyst eligibility and rerun the frozen reversal retest. Do not promote or paper/live trade.
 
+## 24.220 Phase393 Available-Day 2026-08-03 Real L2 Download Completed
+
+Phase393 downloads the first nearby full 32-symbol real-L2 partition after Phase392 showed that `2026-07-28` and `2026-07-29` were shell-only partitions. It targets `2026-08-03`, performs no strategy retest, and opens no promotion or paper/live action.
+
+Phase393 target selection and discovery:
+
+- source evidence: Phase392 Azure directory drill-down;
+- target trade date: `2026-08-03`;
+- pending post-close rows from the natural `2026-07-28` target path: `9`;
+- Azure Files share used: `ctrade1-l2-data`;
+- source prefix: `raw_l2/trade_date=2026-08-03/exchange=NSE`;
+- local destination: `real_data_sample/l2_unseen_validation/trade_date=2026-08-03/exchange=NSE`;
+- dry-run discovered files: `50,073`;
+- dry-run discovered symbols: `32`.
+
+Phase393 final download and clean resume result:
+
+- discovered file rows: `50,073`;
+- download manifest rows: `50,073`;
+- existing/skipped rows on clean resume: `50,042`;
+- newly downloaded rows on clean resume: `31`;
+- per-file error rows after clean resume: `0`;
+- local symbols after: `32`;
+- local parquet files after: `50,073`;
+- local bytes after: `1,751,944,736`;
+- local full universe after: `1`.
+
+Phase393 interpretation:
+
+- The `2026-08-03` full-universe day is now locally available for the next refresh and frozen retest.
+- No strategy retest, promotion, paper/live action, or deployable profitability claim is opened in this phase.
+
+Phase393 outputs:
+
+- `scripts/run_phase393_available_day_20260803_downloader.py`;
+- `src/synthetic_l2/phase393_available_day_20260803_downloader.py`;
+- `outputs/phase393/phase393_acceptance_summary.csv`;
+- `outputs/phase393/phase393_access_ledger.csv`;
+- `outputs/phase393/phase393_discovered_file_manifest.csv`;
+- `outputs/phase393/phase393_download_manifest.csv`;
+- `outputs/phase393/phase393_local_inventory_before.csv`;
+- `outputs/phase393/phase393_local_inventory_after.csv`;
+- `outputs/phase393/phase393_gate_evaluation.csv`;
+- `outputs/phase393/phase393_available_day_20260803_downloader_report.md`;
+- `outputs/phase393/phase393_available_day_20260803_downloader_manifest.json`.
+
+Current next best action after Phase393:
+
+- Refresh official-catalyst eligibility with `2026-08-03` included, adapt the refreshed work order, and rerun the frozen reversal retest with no search.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

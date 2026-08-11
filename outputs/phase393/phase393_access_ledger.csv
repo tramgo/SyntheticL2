@@ -1,0 +1,2 @@
+access_route,available,result,evidence,secret_material_recorded
+file_sas_env,1,file_sas_discovery_attempted,env=AZURE_STORAGE_SAS_TOKEN;shares_checked=1;rows=50073,0
