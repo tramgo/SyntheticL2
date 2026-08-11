@@ -1,0 +1,18 @@
+metric,value,description
+phase383_event_density_repair_precommit_complete,1,Phase383 complete
+phase383_frozen_primary_scenario_id,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,Frozen primary
+phase383_current_selected_trades,19,Phase382 selected trades
+phase383_event_floor_required,30,Required selected trades
+phase383_selected_trade_gap,11,Gap to event floor
+phase383_pending_post_close_rows,13,Rows unlocked by target
+phase383_source_post_close_announcement_date,2026-07-24,Pending announcement date
+phase383_target_trade_date,2026-07-27,Next no-lookahead L2 date
+phase383_parameter_relaxation_allowed,0,No parameter rescue
+phase383_capital_or_capacity_change_allowed,0,No capacity rescue
+phase383_strategy_retest_executed_now,0,No retest
+phase383_strategy_promotion_allowed,0,No promotion
+phase383_paper_or_live_acceptance_allowed,0,No paper/live
+phase383_deployable_profitability_claim_allowed,0,No deployable claim
+phase383_hard_gate_pass_rows,7,Passed gates
+phase383_hard_gate_rows,7,Gates
+phase383_next_best_action,download_phase384_target_20260727_then_refresh_and_rerun_frozen_retest_no_search,Recommended next action

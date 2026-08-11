@@ -18221,6 +18221,51 @@ Current next best action after Phase382:
 
 - Precommit an event-density repair or a materially new thesis, with no paper/live action. The existing frozen reversal candidate remains profitable but not accepted.
 
+## 24.210 Phase383 Event-Density Repair Precommit Completed
+
+Phase383 precommits the next repair after Phase382. The repair is to expand the no-lookahead real-L2 event pool by adding the next catalyst day, not to relax strategy parameters, increase capital/capacity, or rescue the same run.
+
+Phase383 repair contract:
+
+- source result: Phase382 profitable-but-sparse retest interpretation;
+- frozen primary scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- current selected trades: `19`;
+- required selected trades: `30`;
+- selected-trade gap: `11`;
+- pending post-close catalyst rows: `13`;
+- source post-close announcement date: `2026-07-24`;
+- next no-lookahead target trade date: `2026-07-27`;
+- parameter relaxation allowed: `0`;
+- capital or capacity change allowed: `0`;
+- same-run rescue allowed: `0`;
+- retest executed now: `0`;
+- paper/live or profit claim allowed: `0`.
+
+Phase383 hard gates:
+
+- Phase382 present: pass;
+- acceptance still closed: pass;
+- event-density gap present: pass, `11`;
+- next no-lookahead target selected: pass, `2026-07-27`;
+- pending post-close events present: pass, `13`;
+- no parameter or capacity rescue: pass;
+- no retest or paper/live now: pass.
+
+Phase383 outputs:
+
+- `scripts/run_phase383_event_density_repair_precommit.py`;
+- `src/synthetic_l2/phase383_event_density_repair_precommit.py`;
+- `outputs/phase383/phase383_acceptance_summary.csv`;
+- `outputs/phase383/phase383_event_density_repair_contract.csv`;
+- `outputs/phase383/phase383_pending_post_close_events.csv`;
+- `outputs/phase383/phase383_gate_evaluation.csv`;
+- `outputs/phase383/phase383_event_density_repair_precommit_report.md`;
+- `outputs/phase383/phase383_event_density_repair_precommit_manifest.json`.
+
+Current next best action after Phase383:
+
+- Download the `2026-07-27` full-universe real L2 day, refresh official-catalyst eligibility, and rerun the same frozen reversal retest only after the expanded evidence is verified.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
