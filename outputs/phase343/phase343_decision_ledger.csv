@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,interpretation
+phase342_execution_complete,1,Phase342 gates passed and produced official-catalyst real-L2 diagnostics.,Interpretation may proceed.
+current_survivor_route_profitable_real_diagnostic,0,capacity_ann=-38.087896234347866;capacity_net=-2644.9927940519356,The current survivor route is not profitable on the official-catalyst real diagnostic.
+current_survivor_route_closed,1,capacity_ann=-38.087896234347866;isolated_ann=-127.56709954202965,Close the Phase338/339 survivor route for acceptance.
+diagnostic_clues_preserved,8,Positive category/symbol pockets exist but are diagnostic only.,Preserve clues for a material-new official-catalyst-native search.
+next_route,P344_OFFICIAL_CATALYST_NATIVE_FULL_DEPTH_STRATEGY_SEARCH_PRECOMMIT,run_phase344_official_catalyst_native_full_depth_strategy_search_precommit_no_paper_live,Search a materially different real official-catalyst/full-depth route; do not tune the failed synthetic survivor.
+paper_live_or_profit_claim_allowed,0,closed,"No paper/live, promotion, or deployable profitability claim opens."

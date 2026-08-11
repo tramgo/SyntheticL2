@@ -1,0 +1,5 @@
+failure_or_limit,observed,interpretation
+capacity_capped_real_diagnostic_negative,net_pnl=-2644.992794051936;annualized=-38.087896234347866,The fixed-capital capacity-capped official-catalyst real-L2 diagnostic is negative.
+isolated_all_events_real_diagnostic_negative,net_pnl=-8858.826357085392;annualized=-127.56709954202964,"The all-events isolated diagnostic is also negative, so the failure is not only a capacity allocator artifact."
+current_synthetic_survivor_failed_real_transfer,-38.087896234347866,The Phase338/339 synthetic survivor did not transfer profitably to official-catalyst real L2.
+do_not_rescue_failed_survivor,closed,"Do not rescue by lowering costs, using unlimited capital, weakening no-lookahead timing, changing to L1-only, or tuning the same failed route."

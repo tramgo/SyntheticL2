@@ -1,0 +1,17 @@
+contract_id,contract_value,description
+input_real_trade_ledger,outputs/phase342/phase342_real_day_trade_diagnostic_ledger.csv,"Use Phase342 official-catalyst real-L2 diagnostics as evidence, not as tuned labels."
+input_official_calendar,outputs/phase340/phase340_official_catalyst_calendar.csv,"Use official exchange catalyst rows, not synthetic event labels."
+failed_survivor_closed,1,Do not continue the Phase338/339 synthetic survivor as an accepted or tuned route.
+material_new_required,1,"Next search must be official-catalyst-native and real-L2/full-depth, not a threshold tweak of the failed survivor."
+preserved_diagnostic_clues,General Updates;Updates,Positive pockets such as catalyst categories may seed hypotheses but not acceptance.
+full_top_five_depth_required,1,"Use top-five bid/ask price, quantity, and order-count fields."
+levels_2_to_5_materiality_required,1,Keep levels beyond L1 material to the strategy features.
+l1_only_allowed,0,No L1-only variants.
+no_lookahead_required,1,Keep Phase341 catalyst timing rules.
+fixed_capital_denominator_required,1,No unlimited-capital return math.
+cost_profile_required,zerodha_2x_all_in_cost_proxy,Keep 2x Zerodha all-in cost stress.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned cost formula.
+annualized_threshold_pct,12.0,Keep user threshold.
+paper_or_live_allowed,0,No paper/live acceptance.
+deployable_profitability_claim_allowed,0,No deployable claim.
+phase344_precommit_allowed_next,1,Open Phase344 precommit if Phase343 gates pass.

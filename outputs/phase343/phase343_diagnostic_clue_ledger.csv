@@ -1,0 +1,29 @@
+description,rows,positive_rows,net_pnl_inr,avg_mid_return_bps,symbols,dates,scope,diagnostic_clue_only,acceptance_allowed
+General Updates,8,5,1247.3758289264233,36.13855757720896,7,5,capacity_selected,1,0
+Updates,6,2,7.16548598840302,18.751522818988338,2,4,capacity_selected,1,0
+ESOP/ESOS/ESPS,4,1,-97.94699696918832,15.93736665422269,2,3,capacity_selected,1,0
+Record Date,1,0,-102.87684609919128,8.879603029511859,1,1,capacity_selected,1,0
+Credit Rating,1,0,-106.5173276815971,12.770764772336111,1,1,capacity_selected,1,0
+"Certificate under SEBI (Depositories and Participants) Regulations, 2018",1,0,-159.11523913239418,1.2286899093843986,1,1,capacity_selected,1,0
+Outcome of Board Meeting,1,0,-239.97296194361164,-5.4175695949313525,1,1,capacity_selected,1,0
+Copy of Newspaper Publication,4,0,-401.0350175407912,8.43438507225197,4,3,capacity_selected,1,0
+Appointment,2,0,-735.573757716,-16.059476046470305,2,1,capacity_selected,1,0
+Press Release,4,0,-902.2121205548029,-3.8278173176308083,4,3,capacity_selected,1,0
+Analysts/Institutional Investor Meet/Con. Call Updates,5,2,-1154.2838413291854,-4.478816099446276,5,4,capacity_selected,1,0
+"Certificate under SEBI (Depositories and Participants) Regulations, 2018",5,3,1518.270709007606,52.004226734657074,5,3,isolated_all_events,1,0
+General Updates,23,11,995.6107298572176,25.95615952029901,11,6,isolated_all_events,1,0
+ESOP/ESOS/ESPS,5,2,809.1989333008116,35.962765916361676,3,4,isolated_all_events,1,0
+Credit Rating,2,1,541.5150544471971,49.39137865079009,1,2,isolated_all_events,1,0
+Action(s) taken or orders passed,1,1,159.20804884998836,43.42801106713702,1,1,isolated_all_events,1,0
+Other Restructuring,1,1,19.585206184788376,20.56495421387623,1,1,isolated_all_events,1,0
+Shareholders meeting,3,2,-33.005938381401165,20.79413998477384,3,2,isolated_all_events,1,0
+Change in Director(s),1,0,-239.97296194361164,-5.4175695949313525,1,1,isolated_all_events,1,0
+Record Date,2,0,-342.8498080428029,1.7310167172902533,2,2,isolated_all_events,1,0
+Rumour Verification - Regulation 30(11),1,0,-658.258726336,-41.75629507781855,1,1,isolated_all_events,1,0
+Appointment,2,0,-735.573757716,-16.059476046470305,2,1,isolated_all_events,1,0
+Copy of Newspaper Publication,9,2,-854.8052469446895,13.085532196964243,8,5,isolated_all_events,1,0
+Updates,17,5,-1630.1710481462187,11.554727259172235,6,5,isolated_all_events,1,0
+Outcome of Board Meeting,3,1,-1721.2129018818262,-34.816375667191174,3,2,isolated_all_events,1,0
+Dividend,2,0,-1739.9294960292145,-65.34765398859695,2,2,isolated_all_events,1,0
+Analysts/Institutional Investor Meet/Con. Call Updates,14,6,-1766.3408195860236,8.617156460689383,11,7,isolated_all_events,1,0
+Press Release,7,0,-3180.0943337252147,-24.260660209345737,7,5,isolated_all_events,1,0

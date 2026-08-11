@@ -1,0 +1,29 @@
+{
+  "phase": 343,
+  "generated_at_utc": "2026-08-11T08:04:11.697357+00:00",
+  "phase342_dir": "outputs\\phase342",
+  "output_dir": "outputs\\phase343",
+  "outputs": {
+    "summary": "outputs\\phase343\\phase343_acceptance_summary.csv",
+    "failure_ledger": "outputs\\phase343\\phase343_failure_and_limit_ledger.csv",
+    "clue_ledger": "outputs\\phase343\\phase343_diagnostic_clue_ledger.csv",
+    "decision_ledger": "outputs\\phase343\\phase343_decision_ledger.csv",
+    "contract": "outputs\\phase343\\phase343_phase344_material_new_contract.csv",
+    "gates": "outputs\\phase343\\phase343_gate_evaluation.csv",
+    "report": "outputs\\phase343\\phase343_official_catalyst_real_day_diagnostic_interpretation_report.md",
+    "manifest": "outputs\\phase343\\phase343_official_catalyst_real_day_diagnostic_interpretation_manifest.json"
+  },
+  "reproducibility": {
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "generator_version": "04bb58990b7798c231e5418778d0c31da373d9a8",
+    "configuration_hash": "77e5fa6d3dda52d35ca74364db6e429453ccfd118f4c3db0fc0b09f4b8aa24c2",
+    "random_seed": "not_applicable_deterministic",
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "creation_timestamp": "2026-08-11T08:04:11.697357+00:00"
+  }
+}
