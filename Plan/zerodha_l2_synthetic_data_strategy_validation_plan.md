@@ -15606,6 +15606,66 @@ Current Phase149 evidence after Phase339:
 - `synthetic_strategy_discovery` status: `official_catalyst_calendar_acquisition_precommit_open`;
 - current next action: `run_phase340_official_catalyst_calendar_acquisition_precommit_no_paper_live`.
 
+## 24.167 Phase340 Official Catalyst Calendar Acquisition Completed
+
+Phase340 answers the catalyst-source correction directly: catalyst validation must use official exchange/regulator disclosures, not the synthetic Phase330 event label. The phase acquired official NSE catalyst rows for the already-local real L2 dates and preserved SEBI/BSE as source-catalog cross-checks.
+
+Official source acquisition:
+
+- primary official NSE corporate-announcement source queried: `https://www.nseindia.com/companies-listing/corporate-filings-announcements`;
+- NSE financial-results source queried: `https://www.nseindia.com/companies-listing/corporate-filings-financial-results`;
+- SEBI corporate-filings index cataloged as regulator-level routing/check source: `https://www.sebi.gov.in/curation/corporate_filings.html`;
+- BSE corporate-announcement source cataloged as cross-check source: `https://www.bseindia.com/corporates`;
+- no Azure/SAS secret material is required for this small official calendar acquisition.
+
+Phase340 official catalyst evidence:
+
+- local real L2 dates scanned: `7`;
+- NSE corporate-announcement source OK dates: `7`;
+- official catalyst rows for the 32-symbol universe and local real dates: `117`;
+- symbols with official catalyst rows: `25`;
+- same-day official-catalyst/real-L2 symbol-date overlaps: `69`;
+- SBIN official catalyst rows: `9`;
+- SBIN official catalyst dates: `2026-07-08`; `2026-07-09`; `2026-07-10`; `2026-07-13`; `2026-07-14`; `2026-07-15`; `2026-07-16`.
+
+SBIN context is now official-source grounded. The local real-L2 dates include SBIN announcements such as credit-rating updates, SBI Funds Management IPO updates, senior unsecured bond raising, and CFO-designate appointment disclosure. These are official NSE corporate-announcement rows, not inferred synthetic catalysts.
+
+Phase340 remains acquisition/precommit only:
+
+- it does not replay the Phase339 survivor;
+- it does not tune the Phase338 holdout;
+- it does not open paper/live acceptance;
+- it does not claim deployable profitability;
+- it opens Phase341 as an official-catalyst real-day survivor diagnostic precommit.
+
+Phase340 hard gates:
+
+- Phase339 complete: pass;
+- official NSE announcements fetched for all local dates: pass, `7/7`;
+- official catalyst rows present: pass, `117`;
+- same-day real L2 overlap present: pass, `69`;
+- SBIN official context present: pass, `9`;
+- NSE/SEBI/BSE source catalog present: pass;
+- Phase341 diagnostic contract present: pass;
+- no replay/promotion/profitability claim: pass;
+- hard gates: `8/8`.
+
+Phase340 outputs:
+
+- `outputs/phase340/phase340_acceptance_summary.csv`;
+- `outputs/phase340/phase340_official_source_catalog.csv`;
+- `outputs/phase340/phase340_official_source_response_ledger.csv`;
+- `outputs/phase340/phase340_official_catalyst_calendar.csv`;
+- `outputs/phase340/phase340_official_catalyst_real_l2_overlap.csv`;
+- `outputs/phase340/phase340_phase341_real_day_survivor_diagnostic_contract.csv`;
+- `outputs/phase340/phase340_gate_evaluation.csv`;
+- `outputs/phase340/phase340_official_catalyst_calendar_acquisition_report.md`;
+- `outputs/phase340/phase340_official_catalyst_calendar_acquisition_manifest.json`.
+
+Current next action after Phase340:
+
+`run_phase341_official_catalyst_real_day_survivor_diagnostic_precommit_no_paper_live`
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

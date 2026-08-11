@@ -1,0 +1,16 @@
+metric,value,description
+phase340_official_catalyst_calendar_acquisition_complete,1,Phase340 completed
+phase340_local_real_l2_date_rows,7,Local real L2 dates scanned
+phase340_nse_announcement_source_ok_dates,7,NSE announcement fetch OK dates
+phase340_official_catalyst_rows,117,Official catalyst rows for ticker universe and local dates
+phase340_official_catalyst_symbols,25,Symbols with official catalyst rows
+phase340_same_day_real_l2_catalyst_symbol_dates,69,Official catalyst symbol-dates with same-day local real L2
+phase340_sbin_official_catalyst_rows,9,SBIN official catalyst rows
+phase340_sbin_official_catalyst_dates,2026-07-08;2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16,SBIN official catalyst dates
+phase340_strategy_replay_allowed,0,No replay
+phase340_strategy_promotion_allowed,0,No promotion
+phase340_paper_or_live_acceptance_allowed,0,No paper/live
+phase340_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase340_hard_gate_pass_rows,8,Passed hard gates
+phase340_hard_gate_rows,8,Hard gates
+phase340_next_best_action,run_phase341_official_catalyst_real_day_survivor_diagnostic_precommit_no_paper_live,Recommended next action

@@ -274,6 +274,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 338,outputs\phase338,True,10,outputs\phase338\phase338_acceptance_summary.csv,outputs\phase338\phase338_cost_stress_holdout_validation_execution_manifest.json,False
 339,outputs\phase339,True,9,outputs\phase339\phase339_acceptance_summary.csv,outputs\phase339\phase339_cost_stress_holdout_validation_interpretation_manifest.json,False
 34,outputs\phase34,True,6,,outputs\phase34\phase34_real_data_multiday_readiness_manifest.json,False
+340,outputs\phase340,True,9,outputs\phase340\phase340_acceptance_summary.csv,outputs\phase340\phase340_official_catalyst_calendar_acquisition_manifest.json,False
 35,outputs\phase35,True,6,,outputs\phase35\phase35_stage_a2_computable_diagnostics_manifest.json,False
 36,outputs\phase36,True,9,,outputs\phase36\phase36_collector_instrumentation_package_manifest.json,False
 37,outputs\phase37,True,8,,outputs\phase37\phase37_collector_ledger_verifier_manifest.json,False

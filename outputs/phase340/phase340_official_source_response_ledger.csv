@@ -1,0 +1,15 @@
+source_url,trade_date,http_status,content_type,response_bytes,ok,source_id
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=08-07-2026&to_date=08-07-2026,2026-07-08,200,application/json; charset=utf-8,468716,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=09-07-2026&to_date=09-07-2026,2026-07-09,200,application/json; charset=utf-8,528743,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=10-07-2026&to_date=10-07-2026,2026-07-10,200,application/json; charset=utf-8,524892,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=13-07-2026&to_date=13-07-2026,2026-07-13,200,application/json; charset=utf-8,390233,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=14-07-2026&to_date=14-07-2026,2026-07-14,200,application/json; charset=utf-8,500654,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=15-07-2026&to_date=15-07-2026,2026-07-15,200,application/json; charset=utf-8,482851,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=16-07-2026&to_date=16-07-2026,2026-07-16,200,application/json; charset=utf-8,369351,1,NSE_CORPORATE_ANNOUNCEMENTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=08-07-2026&to_date=08-07-2026,2026-07-08,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=09-07-2026&to_date=09-07-2026,2026-07-09,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=10-07-2026&to_date=10-07-2026,2026-07-10,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=13-07-2026&to_date=13-07-2026,2026-07-13,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=14-07-2026&to_date=14-07-2026,2026-07-14,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=15-07-2026&to_date=15-07-2026,2026-07-15,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS
+https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=16-07-2026&to_date=16-07-2026,2026-07-16,200,application/json; charset=utf-8,2,1,NSE_FINANCIAL_RESULTS

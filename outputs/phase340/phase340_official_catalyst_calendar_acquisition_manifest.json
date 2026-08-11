@@ -1,0 +1,41 @@
+{
+  "phase": 340,
+  "generated_at_utc": "2026-08-11T07:15:20.077125+00:00",
+  "phase339_dir": "outputs\\phase339",
+  "real_root": "real_data_sample\\l2_multiday_panel",
+  "output_dir": "outputs\\phase340",
+  "local_real_dates": [
+    "2026-07-08",
+    "2026-07-09",
+    "2026-07-10",
+    "2026-07-13",
+    "2026-07-14",
+    "2026-07-15",
+    "2026-07-16"
+  ],
+  "ticker_count": 32,
+  "outputs": {
+    "summary": "outputs\\phase340\\phase340_acceptance_summary.csv",
+    "source_catalog": "outputs\\phase340\\phase340_official_source_catalog.csv",
+    "source_response_ledger": "outputs\\phase340\\phase340_official_source_response_ledger.csv",
+    "calendar": "outputs\\phase340\\phase340_official_catalyst_calendar.csv",
+    "overlap": "outputs\\phase340\\phase340_official_catalyst_real_l2_overlap.csv",
+    "contract": "outputs\\phase340\\phase340_phase341_real_day_survivor_diagnostic_contract.csv",
+    "gates": "outputs\\phase340\\phase340_gate_evaluation.csv",
+    "report": "outputs\\phase340\\phase340_official_catalyst_calendar_acquisition_report.md",
+    "manifest": "outputs\\phase340\\phase340_official_catalyst_calendar_acquisition_manifest.json"
+  },
+  "reproducibility": {
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "generator_version": "44278e68d69c53863dfdb100a20f26365b539407",
+    "configuration_hash": "5c5fd5da2b75d313330b49f1b54daf2da1a63cbbd707162a499c0aecb7715f1c",
+    "random_seed": "not_applicable_deterministic",
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "creation_timestamp": "2026-08-11T07:15:20.077125+00:00"
+  }
+}

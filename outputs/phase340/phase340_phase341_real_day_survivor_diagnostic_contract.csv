@@ -1,0 +1,16 @@
+contract_id,contract_value,description
+input_official_calendar,outputs/phase340/phase340_official_catalyst_calendar.csv,Use official NSE announcements/results rows only; synthetic labels are not catalyst truth.
+input_survivors,outputs/phase339/phase339_survivor_ledger.csv,Use frozen Phase339 survivors only; no new alpha search.
+real_l2_root,real_data_sample/l2_multiday_panel,Use local downloaded Zerodha WebSocket top-five L2 data first to protect disk.
+same_day_alignment,required,A catalyst diagnostic row requires same trade_date and symbol in official calendar and real L2.
+sbin_context,required_if_available,Report SBIN catalyst rows separately because the user explicitly asked for SBI catalyst context.
+full_top_five_depth_required,1,Use bid/ask price/quantity/order count levels 1-5; no L1-only shortcut.
+levels_2_to_5_materiality_required,1,Feature contribution from levels beyond best bid/ask must be logged.
+fixed_capital_denominator,required,"Annualized return must use fixed capital, not unlimited capital."
+annualized_threshold_pct,12.0,Keep the user's profitability threshold.
+robust_event_floor,30,Treat sparse fewer-than-30 event results as diagnostic only.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Keep Zerodha all-in cost model.
+cost_profile_required,zerodha_2x_all_in_cost_proxy,Use 2x cost stress.
+passive_aware_route_status,diagnostic_failed_not_primary_rescue,Do not rescue with passive-aware assumptions.
+paper_or_live_allowed,0,No paper/live acceptance from this diagnostic.
+deployable_profitability_claim_allowed,0,No deployable claim from same-day official catalyst diagnostic.
