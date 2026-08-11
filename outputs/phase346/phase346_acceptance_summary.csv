@@ -1,0 +1,15 @@
+metric,value,description
+phase346_official_catalyst_native_search_interpretation_complete,1,Phase346 interpretation completed
+phase346_phase345_complete,1,Phase345 complete
+phase346_phase345_acceptance_candidate_rows,0,Phase345 acceptance candidates
+phase346_capacity_above12_rows,11,Capacity-capped rows above 12%
+phase346_control_passing_sparse_candidate_rows,10,Control-passing sparse Phase347 candidate rows
+phase346_best_trade_rows,6,Best Phase345 capacity trade rows
+phase346_max_candidate_trade_rows,19,Maximum trade rows among high-return clues
+phase346_event_count_expansion_recommended,1,Event-count expansion recommended
+phase346_strategy_promotion_allowed,0,No promotion
+phase346_paper_or_live_acceptance_allowed,0,No paper/live
+phase346_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase346_hard_gate_pass_rows,7,Passed hard gates
+phase346_hard_gate_rows,7,Hard gates
+phase346_next_best_action,run_phase347_official_catalyst_event_count_expansion_precommit_no_paper_live,Recommended next action

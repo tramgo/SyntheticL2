@@ -1,0 +1,7 @@
+decision_id,decision_value,evidence,interpretation
+phase345_search_complete,1,grid_rows=67;trade_rows=6566,Interpretation may proceed.
+profitable_strategy_claim_allowed,0,acceptance_candidate_rows=0,No deployable or accepted profitability claim opens because Phase345 accepted zero candidates.
+high_return_pockets_exist,1,capacity_above12_rows=11;best_trade_rows=6,"The high-return pockets are real research clues, but sparse."
+event_count_is_primary_blocker,1,phase347_candidates=10;max_trade_rows=19;floor=30,"The next useful action is event-count expansion, not weaker controls or unlimited-capital math."
+selected_phase347_lead_family,P344_CATALYST_CATEGORY_CONTINUATION,family ledger ranks control-passing sparse high-return pockets first,Carry only control-passing sparse families into the next precommit.
+paper_live_or_profit_claim_allowed,0,closed,No paper/live acceptance or deployable profitability claim.

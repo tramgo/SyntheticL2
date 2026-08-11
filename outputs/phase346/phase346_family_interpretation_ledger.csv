@@ -1,0 +1,3 @@
+family_id,candidate_scenarios,high_return_scenarios,max_annualized_return_pct,sum_net_pnl_inr,max_trade_rows,control_passing_rows,recommended_phase347_use
+P344_CATALYST_CATEGORY_CONTINUATION,8,9,73.08622451297752,12747.104098729342,19,8,carry_forward_with_event_count_expansion
+P344_SBIN_AND_BANK_CATALYST_DIAGNOSTIC,2,2,57.21242682246277,1913.3611056007767,2,2,carry_forward_with_event_count_expansion

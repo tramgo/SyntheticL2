@@ -15959,6 +15959,66 @@ Current Phase149 evidence after Phase345:
 - `synthetic_strategy_discovery` status: `official_catalyst_native_search_interpretation_open`;
 - current next action: `run_phase346_official_catalyst_native_search_interpretation_no_paper_live`.
 
+## 24.173 Phase346 Official-Catalyst-Native Search Interpretation Completed
+
+Phase346 interpreted the Phase345 official-catalyst-native full-depth search. It preserved the user's `> 12%` annualized-return interest, but kept the annualization fixed-capital based and treated sparse results as research clues rather than accepted profitability.
+
+Phase346 interpretation evidence:
+
+- Phase345 complete: `1`;
+- Phase345 acceptance candidate rows: `0`;
+- capacity-capped rows above `12%`: `11`;
+- control-passing sparse Phase347 candidate rows: `10`;
+- best Phase345 capacity trade rows: `6`;
+- maximum trade rows among high-return clues: `19`;
+- robust event floor: `30`;
+- event-count expansion recommended: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase346 family interpretation:
+
+- `P344_CATALYST_CATEGORY_CONTINUATION` is the lead event-count expansion family with `8` sparse control-passing candidate scenarios;
+- `P344_SBIN_AND_BANK_CATALYST_DIAGNOSTIC` remains useful as a narrower bank/catalyst diagnostic with `2` sparse control-passing candidate scenarios;
+- the best Phase345 scenario that showed `73.08622451297752%` annualized return remains a research clue only because it used only `6` capacity-selected trades and failed controls.
+
+Phase346 decision:
+
+- Do not claim profitability from Phase345.
+- Do not weaken controls, lower costs, use unlimited capital, or move to L1-only features.
+- The next useful branch is Phase347: precommit an official-catalyst event-count expansion using real Zerodha-websocket-like top-five L2 days matched to official catalyst timestamps.
+- Official catalyst sources should be treated as timestamp authorities; news can annotate context but should not replace NSE/BSE/SEBI-style official records.
+
+Phase346 hard gates:
+
+- Phase345 complete: pass;
+- zero acceptance recognized: pass;
+- high-return clues recognized: pass, `11/11`;
+- event-count expansion candidates recorded: pass, `10`;
+- full-depth contract preserved: pass;
+- official catalyst and fixed-capital constraints preserved: pass;
+- no promotion, paper/live or profit claim: pass;
+- hard gates: `7/7`.
+
+Phase346 outputs:
+
+- `outputs/phase346/phase346_acceptance_summary.csv`;
+- `outputs/phase346/phase346_candidate_clue_ledger.csv`;
+- `outputs/phase346/phase346_family_interpretation_ledger.csv`;
+- `outputs/phase346/phase346_decision_ledger.csv`;
+- `outputs/phase346/phase346_phase347_execution_contract.csv`;
+- `outputs/phase346/phase346_gate_evaluation.csv`;
+- `outputs/phase346/phase346_official_catalyst_native_search_interpretation_report.md`;
+- `outputs/phase346/phase346_official_catalyst_native_search_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase346:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `official_catalyst_event_count_expansion_precommit_open`;
+- `synthetic_strategy_discovery` status: `official_catalyst_event_count_expansion_precommit_open`;
+- current next action: `run_phase347_official_catalyst_event_count_expansion_precommit_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
