@@ -1,0 +1,3 @@
+contract_id,target_trade_date,target_symbols,full_universe_required,expected_partition_shape,known_carry_forward_event_rows_if_added,acceptance_retest_allowed_after_this_one_day
+P370_PRIMARY_ONE_DAY_TARGET,2026-07-21,BAJAJ-AUTO;HCLTECH;ICICIBANK;TECHM;ULTRACEMCO,1,real_data_sample/l2_unseen_validation/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet,13,0
+P370_VERIFY_ONLY_NO_SECRET_PERSISTENCE,2026-07-21,ALL_32_REQUIRED,1,raw_l2/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet or local unseen validation equivalent,13,0

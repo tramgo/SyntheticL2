@@ -1,0 +1,8 @@
+gate_id,passed,evidence
+P370_PHASE369_COMPLETE,1,Phase369 complete
+P370_TARGET_DATE_SELECTED,1,2026-07-21
+P370_LOCAL_ROOTS_SCANNED,1,roots=real_data_sample\l2_multiday_panel;real_data_sample\l2_unseen_validation
+P370_FULL_UNIVERSE_REQUIREMENT_RETAINED,1,required_symbols=32
+P370_NO_ACCEPTANCE_RETEST_ON_ONE_DAY_TARGET,1,estimated_selected_after_one_day=13.268
+P370_NO_SECRET_MATERIAL_RECORDED,1,only env presence flags recorded
+P370_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

@@ -1,0 +1,6 @@
+check_id,passed,observed,required
+P370_TARGET_DATE_LOCAL_PRESENT,0,symbols=0; files=0; bytes=0,>=1 symbol for partial verify; 32 symbols for full-universe
+P370_TARGET_DATE_FULL_UNIVERSE,0,symbols=0/32,32 symbols
+P370_KNOWN_CARRY_FORWARD_EVENTS,1,13,>0 known post-close catalyst rows from previous local day
+P370_ONE_DAY_STILL_BELOW_EVENT_FLOOR,1,estimated_selected_after_one_day=13.268,<30 means no acceptance retest yet
+P370_SAS_ENV_PRESENT_NOW,0,supported_env_names_present=0,1 for direct SAS download in this shell

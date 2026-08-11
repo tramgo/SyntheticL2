@@ -1,0 +1,19 @@
+metric,value,description
+phase370_one_day_real_l2_drop_verifier_complete,1,Phase370 complete if all hard gates pass
+phase370_target_trade_date,2026-07-21,Primary one-day target
+phase370_target_known_carry_forward_event_rows,13,Known post-close events that become eligible if target day exists
+phase370_target_symbols_from_known_events,5,Symbols in known carry-forward events
+phase370_target_full_universe_local_present,0,Full target date already present locally
+phase370_target_local_symbol_count,0,Local target symbols found
+phase370_target_local_parquet_files,0,Local target parquet files found
+phase370_target_local_bytes,0,Local target bytes found
+phase370_sas_env_present_now,0,Supported SAS env present now
+phase370_estimated_selected_after_one_day,13.268292682926829,Estimated selected trades after adding known one-day carry-forward events
+phase370_event_floor_after_one_day_estimate,0,Whether one-day target likely reaches 30-event floor
+phase370_acceptance_retest_allowed_now,0,No acceptance retest without verified full-universe event-floor evidence
+phase370_strategy_promotion_allowed,0,No promotion
+phase370_paper_or_live_acceptance_allowed,0,No paper/live
+phase370_deployable_profitability_claim_allowed,0,No deployable claim
+phase370_hard_gate_pass_rows,7,Passed hard gates
+phase370_hard_gate_rows,7,Hard gates
+phase370_next_best_action,download_or_local_drop_full_universe_real_l2_for_2026-07-21_then_rerun_phase370_verify_no_paper_live,Recommended next milestone
