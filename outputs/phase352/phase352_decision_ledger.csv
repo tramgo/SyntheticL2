@@ -1,0 +1,6 @@
+decision_id,decision_value,evidence,interpretation
+phase351_evidence_complete,1,scenario_rows=9; event_rows=162; gates=7/7,Phase351 can be interpreted.
+hidden_positive_pockets_exist,0,positive_event_rows=0; positive_strategy_rows=0,No positive symbol/date or scenario pocket was found in Phase351.
+phase351_expand_same_branch,0,above12=0; acceptance_candidates=0; positive_event_rows=0,Do not widen the same bounded synthetic branch without a material new thesis.
+phase351_branch_closed_for_acceptance,1,best_ann=-4.1721579450629775; best_net=-41721.57945062977,Close Phase351 as a negative synthetic full-depth selective-search result.
+real_date_expansion_route_remains_open_if_access_restored,1,Phase348/350 failed only to add a new unseen real L2 date; Phase342/343 real holdout remains completed and negative.,"If fresh SAS/local drop exists, rerun Phase350; otherwise precommit a materially new thesis."

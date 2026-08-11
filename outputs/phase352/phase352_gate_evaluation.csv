@@ -1,0 +1,6 @@
+gate_id,passed,evidence
+P352_PHASE351_COMPLETE,1,Phase351 evidence files present
+P352_HIDDEN_POCKET_AUDITED,1,positive_event_rows=0
+P352_ZERO_ACCEPTANCE_RECOGNIZED,1,acceptance_candidates=0
+P352_CLOSE_OR_ROUTE_DECIDED,1,Close same branch; route to real-date expansion or material-new thesis
+P352_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

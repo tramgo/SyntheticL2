@@ -1,0 +1,5 @@
+failure_or_limit,observed,interpretation
+no_positive_event_rows,0,The branch has no hidden profitable symbol/date pocket in the bounded evidence.
+no_above12_scenarios,0,No scenario reached the user's >12% annualized diagnostic threshold.
+no_acceptance_candidates,0,"No scenario passed event floor, breadth and profitability criteria."
+passive_reduces_loss_but_does_not_rescue,passive_pessimistic_back_of_queue_cost200,"The best result is a passive-aware profile, but it remains negative."

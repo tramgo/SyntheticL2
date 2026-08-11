@@ -16330,6 +16330,57 @@ Current branch decision after Phase351:
   - restore real-data expansion by rerunning Phase350 with a fresh SAS or local one-date drop; or
   - precommit a materially new strategy thesis before further synthetic search.
 
+## 24.179 Phase352 Full-Depth Selective Strategy Interpretation Completed
+
+Phase352 interpreted the Phase351 bounded synthetic full-depth selective strategy-search milestone. It specifically audited whether Phase351 contained hidden positive symbol/date pockets that would justify widening the same branch.
+
+Phase352 evidence:
+
+- Phase351 scenario rows interpreted: `9`;
+- Phase351 event rows interpreted: `162`;
+- Phase351 positive event rows: `0`;
+- Phase351 above-12% fixed-capital annualized rows: `0`;
+- Phase351 acceptance candidate rows: `0`;
+- best Phase351 strategy: `P351_FULL_DEPTH_SHOCK_REVERSAL`;
+- best Phase351 execution profile: `passive_pessimistic_back_of_queue_cost200`;
+- best Phase351 annualized return: `-4.1721579450629775%`;
+- best Phase351 expected net P&L: `-41721.57945062977` INR;
+- worst Phase351 annualized return: `-289.15327222623205%`.
+
+Phase352 decision:
+
+- Phase351 evidence is complete and interpretable.
+- There are no hidden profitable symbol/date pockets in the bounded Phase351 evidence.
+- Same-branch Phase351 widening is not justified.
+- Phase351 is closed for acceptance.
+- Passive-aware execution reduced losses versus taker execution in the best-ranked Phase351 rows, but did not rescue profitability.
+- The real-date expansion route remains open only if storage access or a local one-date drop is restored, because Phase348/350 failed only to add a new unseen real L2 date; Phase342/343 had already completed and closed the local real-L2 official-catalyst holdout for the prior survivor route.
+
+Phase352 hard gates:
+
+- Phase351 complete: pass;
+- hidden-pocket audit performed: pass, `positive_event_rows=0`;
+- zero acceptance recognized: pass;
+- close-or-route decision recorded: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase352 outputs:
+
+- `scripts/run_phase352_full_depth_selective_strategy_interpretation.py`;
+- `src/synthetic_l2/phase352_full_depth_selective_strategy_interpretation.py`;
+- `outputs/phase352/phase352_acceptance_summary.csv`;
+- `outputs/phase352/phase352_decision_ledger.csv`;
+- `outputs/phase352/phase352_failure_ledger.csv`;
+- `outputs/phase352/phase352_top_scenario_interpretation.csv`;
+- `outputs/phase352/phase352_gate_evaluation.csv`;
+- `outputs/phase352/phase352_full_depth_selective_strategy_interpretation_report.md`;
+- `outputs/phase352/phase352_full_depth_selective_strategy_interpretation_manifest.json`.
+
+Current next best action after Phase352:
+
+- Restore Phase350 real-date expansion with a fresh SAS/local one-date drop; or
+- precommit a materially new strategy thesis before running additional synthetic searches.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

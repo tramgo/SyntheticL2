@@ -1,0 +1,29 @@
+{
+  "generated_at_utc": "2026-08-11T15:01:22.528524+00:00",
+  "next_action": "restore_phase350_real_date_expansion_or_precommit_material_new_thesis_no_paper_live",
+  "outputs": {
+    "decision": "outputs\\phase352\\phase352_decision_ledger.csv",
+    "failure": "outputs\\phase352\\phase352_failure_ledger.csv",
+    "gates": "outputs\\phase352\\phase352_gate_evaluation.csv",
+    "manifest": "outputs\\phase352\\phase352_full_depth_selective_strategy_interpretation_manifest.json",
+    "report": "outputs\\phase352\\phase352_full_depth_selective_strategy_interpretation_report.md",
+    "summary": "outputs\\phase352\\phase352_acceptance_summary.csv",
+    "top": "outputs\\phase352\\phase352_top_scenario_interpretation.csv"
+  },
+  "phase": 352,
+  "phase351_dir": "outputs\\phase351",
+  "plan_path": "Plan\\zerodha_l2_synthetic_data_strategy_validation_plan.md",
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "e9c710a36695e5784d717534181e7a43bed81c367c171aef6f26477bf9223831",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "creation_timestamp": "2026-08-11T15:01:22.528524+00:00",
+    "generator_version": "6a69da4f095b016c777e59ba1247c75e5b8f9164",
+    "latency_model_version": "not_applicable_interpretation_only",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  }
+}
