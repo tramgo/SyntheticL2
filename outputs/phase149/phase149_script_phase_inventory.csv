@@ -276,6 +276,7 @@ phase,runner,runner_exists,runner_suffix
 341,scripts\run_phase341_official_catalyst_real_day_survivor_diagnostic_precommit.py,True,.py
 342,scripts\run_phase342_official_catalyst_real_day_survivor_diagnostic_execution.py,True,.py
 343,scripts\run_phase343_official_catalyst_real_day_diagnostic_interpretation.py,True,.py
+344,scripts\run_phase344_official_catalyst_native_full_depth_strategy_search_precommit.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py
 36,scripts\run_phase36_collector_instrumentation_package.py,True,.py

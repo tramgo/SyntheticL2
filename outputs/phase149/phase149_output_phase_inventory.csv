@@ -278,6 +278,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 341,outputs\phase341,True,7,outputs\phase341\phase341_acceptance_summary.csv,outputs\phase341\phase341_official_catalyst_real_day_survivor_diagnostic_precommit_manifest.json,False
 342,outputs\phase342,True,6,outputs\phase342\phase342_acceptance_summary.csv,outputs\phase342\phase342_official_catalyst_real_day_survivor_diagnostic_execution_manifest.json,False
 343,outputs\phase343,True,8,outputs\phase343\phase343_acceptance_summary.csv,outputs\phase343\phase343_official_catalyst_real_day_diagnostic_interpretation_manifest.json,False
+344,outputs\phase344,True,7,outputs\phase344\phase344_acceptance_summary.csv,outputs\phase344\phase344_official_catalyst_native_full_depth_strategy_search_precommit_manifest.json,False
 35,outputs\phase35,True,6,,outputs\phase35\phase35_stage_a2_computable_diagnostics_manifest.json,False
 36,outputs\phase36,True,9,,outputs\phase36\phase36_collector_instrumentation_package_manifest.json,False
 37,outputs\phase37,True,8,,outputs\phase37\phase37_collector_ledger_verifier_manifest.json,False

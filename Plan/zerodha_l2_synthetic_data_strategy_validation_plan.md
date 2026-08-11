@@ -15840,6 +15840,72 @@ Current Phase149 evidence after Phase343:
 - `synthetic_strategy_discovery` status: `official_catalyst_native_full_depth_strategy_search_precommit_open`;
 - current next action: `run_phase344_official_catalyst_native_full_depth_strategy_search_precommit_no_paper_live`.
 
+## 24.171 Phase344 Official-Catalyst-Native Full-Depth Strategy Search Precommit Completed
+
+Phase344 precommits a materially new official-catalyst-native full-depth strategy search. It does not reopen the failed Phase338/339 synthetic survivor route. The failed survivor is retained only as a negative control.
+
+Phase344 precommit evidence:
+
+- Phase343 complete: `1`;
+- failed survivor remains closed: `1`;
+- search family rows: `4`;
+- Phase345 search grid rows: `67`;
+- negative-control family rows: `1`;
+- material-new route required: `1`;
+- full top-five depth required: `1`;
+- levels 2-5 materiality required: `1`;
+- L1-only variants allowed: `0`;
+- no-lookahead required: `1`;
+- Phase345 execution allowed next: `1`.
+
+Phase344 search families:
+
+- `P344_CATALYST_CATEGORY_CONTINUATION`: official catalyst category continuation using preserved clue categories `General Updates` and `Updates`;
+- `P344_FULL_DEPTH_CATALYST_REACTION_FILTER`: real post-catalyst full-depth pressure/imbalance confirmation;
+- `P344_SBIN_AND_BANK_CATALYST_DIAGNOSTIC`: separate official SBIN/bank catalyst diagnostic family requested by the user context;
+- `P344_NEGATIVE_CONTROL_FAILED_SURVIVOR_REPLAY`: failed Phase338/339 survivor replay as negative control only.
+
+Phase344 constraints carried into Phase345:
+
+- official catalyst calendar only; no synthetic event labels as catalyst truth;
+- Phase341 no-lookahead timing rules must be preserved;
+- fixed-capital annualization only;
+- `zerodha_2x_all_in_cost_proxy` remains required;
+- cost model remains `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- robust event floor remains `30`;
+- annualized threshold remains `12.0%`;
+- controls required: side-flip, random-side and category/feature shuffle controls;
+- no paper/live acceptance, promotion or deployable profitability claim.
+
+Phase344 hard gates:
+
+- Phase343 complete: pass;
+- failed survivor closed: pass;
+- material-new families present: pass, `4`;
+- grid present: pass, `67`;
+- negative control present: pass, `1`;
+- full-depth/no-L1-only/no-lookahead preserved: pass;
+- contract present: pass, `21`;
+- no promotion/paper/live/profitability claim: pass;
+- hard gates: `8/8`.
+
+Phase344 outputs:
+
+- `outputs/phase344/phase344_acceptance_summary.csv`;
+- `outputs/phase344/phase344_strategy_family_catalog.csv`;
+- `outputs/phase344/phase344_phase345_search_grid.csv`;
+- `outputs/phase344/phase344_phase345_execution_contract.csv`;
+- `outputs/phase344/phase344_gate_evaluation.csv`;
+- `outputs/phase344/phase344_official_catalyst_native_full_depth_strategy_search_precommit_report.md`;
+- `outputs/phase344/phase344_official_catalyst_native_full_depth_strategy_search_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase344:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `official_catalyst_native_full_depth_strategy_search_execution_open`;
+- `synthetic_strategy_discovery` status: `official_catalyst_native_full_depth_strategy_search_execution_open`;
+- current next action: `run_phase345_official_catalyst_native_full_depth_strategy_search_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

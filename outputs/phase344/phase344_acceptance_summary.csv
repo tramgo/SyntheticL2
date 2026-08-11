@@ -1,0 +1,19 @@
+metric,value,description
+phase344_official_catalyst_native_full_depth_strategy_search_precommit_complete,1,Phase344 precommit completed
+phase344_phase343_complete,1,Phase343 complete
+phase344_failed_survivor_closed,1,Failed survivor remains closed
+phase344_family_rows,4,Search family rows
+phase344_grid_rows,67,Search grid rows
+phase344_negative_control_rows,1,Negative control family rows
+phase344_material_new_required,1,Material-new route required
+phase344_full_depth_required,1,Full top-five depth required
+phase344_levels_2_to_5_required,1,Levels 2-5 materiality required
+phase344_l1_only_allowed,0,No L1-only variants
+phase344_no_lookahead_required,1,No lookahead
+phase344_phase345_execution_allowed_next,1,Phase345 execution allowed next
+phase344_strategy_promotion_allowed,0,No promotion
+phase344_paper_or_live_acceptance_allowed,0,No paper/live
+phase344_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase344_hard_gate_pass_rows,8,Passed hard gates
+phase344_hard_gate_rows,8,Hard gates
+phase344_next_best_action,run_phase345_official_catalyst_native_full_depth_strategy_search_execution_no_paper_live,Recommended next action
