@@ -1,0 +1,6 @@
+gate_id,passed,evidence
+P393_PHASE392_PROBE_PRESENT,1,Phase392 probe present
+P393_TARGET_AVAILABLE_DISCOVERY,1,discovered_rows=50499; local_full=1; error=0
+P393_FULL_UNIVERSE_VERIFIED_OR_PENDING,1,local_symbols=32
+P393_NO_SECRET_MATERIAL_RECORDED,1,secret_rows=0
+P393_NO_RETEST_OR_PROMOTION,1,download_only
