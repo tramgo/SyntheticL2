@@ -1,0 +1,7 @@
+probe_id,available,result,evidence,secret_material_recorded
+P371_AZ_CLI_PRESENT,1,az_on_path,version probe omitted from artifact; command availability only,0
+P371_AZ_ACCOUNT_CONTEXT,1,account_context_available,"{   ""tenantId"": ""bfbf2bf5-10dc-4b2a-9000-b5487375c998"" } ",0
+P371_AZ_STORAGE_LOGIN_LIST,0,azure_cli_certificate_failure,"WARNING: Connection verification disabled by environment variable AZURE_CLI_DISABLE_CONNECTION_VERIFICATION ERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /bfbf2bf5-10dc-4b2a-9000-b5487375c998/oauth2/v2.0/token (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)'))) Certificate verification failed. This typically happens when using ",0
+P371_AZCOPY_PRESENT,0,azcopy_not_on_path,azcopy command was not found on PATH,0
+P371_SUPPORTED_SAS_ENV_PRESENT,0,sas_env_absent,supported_env_names_present=0,0
+P371_TARGET_LOCAL_ALREADY_VERIFIED,0,target_full_universe_absent,target_trade_date=2026-07-21,0

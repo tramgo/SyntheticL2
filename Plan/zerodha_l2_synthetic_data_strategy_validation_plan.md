@@ -17462,6 +17462,70 @@ Current next best action after Phase370:
 
 - Download or locally drop full-universe real L2 for `2026-07-21` into the expected partition shape, then rerun Phase370 verification. Keep all retest, promotion, paper/live and profitability claims closed until event-floor evidence exists.
 
+## 24.198 Phase371 Azure Access Repair and 2026-07-21 Download Package Completed
+
+Phase371 probes current non-secret access state and emits a safe command package for the Phase370 one-day target. It does not download data, persist secrets, run a strategy retest or open promotion, paper/live acceptance or deployable profitability claims.
+
+Phase371 target:
+
+- target trade date: `2026-07-21`;
+- known carry-forward official catalyst event rows unlocked by this date: `13`;
+- expected local verification shape: `real_data_sample/l2_unseen_validation/trade_date=2026-07-21/exchange=NSE/symbol=SYMBOL/*.parquet`;
+- required full-universe symbols: `32`;
+- after-drop verification command: `python scripts/run_phase370_one_day_real_l2_drop_verifier.py`.
+
+Phase371 access probe result:
+
+- Azure CLI present: `1`;
+- Azure account context available: `1`;
+- Azure storage login-mode container listing available: `0`;
+- Azure CLI certificate failure observed during storage listing: `1`;
+- AzCopy present on PATH: `0`;
+- supported SAS environment variables present now: `0`;
+- target full-universe `2026-07-21` local partition present: `0`;
+- direct download route available now: `0`;
+- any route available now: `0`;
+- secret material recorded: `0`.
+
+Phase371 safe command package:
+
+- Fresh in-process SAS route: set a supported SAS env var in the current shell, then rerun Phase371/Phase370 verification without echoing the value.
+- AzCopy route: use a signed one-day recursive copy for `raw_l2/trade_date=2026-07-21/exchange=NSE` only, without committing signed URLs.
+- Local drop route: copy a full-universe `2026-07-21` partition into the unseen-validation shape, then rerun Phase370.
+- Azure CLI repair route: repair corporate/root CA bundle for Azure CLI token refresh, then retry read-only storage listing.
+
+Phase371 decision:
+
+- The workspace is ready to verify `2026-07-21`, but it cannot currently fetch it directly.
+- Current blocker is storage access, not strategy logic: account context exists, but storage list fails on certificate verification; no SAS env or AzCopy fallback is available.
+- The next executable path is a fresh in-process SAS or manual local drop for the full-universe `2026-07-21` partition.
+
+Phase371 hard gates:
+
+- Phase370 target present: pass;
+- Azure access probed: pass;
+- download route classified: pass, direct download unavailable and local drop route documented;
+- safe command package written: pass;
+- no secret material recorded: pass;
+- no strategy retest or promotion: pass.
+
+Phase371 outputs:
+
+- `scripts/run_phase371_azure_access_repair_20260721_package.py`;
+- `src/synthetic_l2/phase371_azure_access_repair_20260721_package.py`;
+- `outputs/phase371/phase371_acceptance_summary.csv`;
+- `outputs/phase371/phase371_access_probe_ledger.csv`;
+- `outputs/phase371/phase371_safe_command_catalog.csv`;
+- `outputs/phase371/phase371_20260721_verification_contract.csv`;
+- `outputs/phase371/phase371_known_carry_forward_events.csv`;
+- `outputs/phase371/phase371_gate_evaluation.csv`;
+- `outputs/phase371/phase371_azure_access_repair_20260721_package_report.md`;
+- `outputs/phase371/phase371_azure_access_repair_20260721_package_manifest.json`.
+
+Current next best action after Phase371:
+
+- Provide a fresh SAS in the process environment, install/provide AzCopy, repair Azure CLI certificate trust, or locally drop full-universe `2026-07-21`; then rerun Phase370 verification. Do not run another strategy retest until the target date is verified.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

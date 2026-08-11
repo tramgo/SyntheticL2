@@ -1,0 +1,20 @@
+metric,value,description
+phase371_azure_access_repair_20260721_package_complete,1,Phase371 complete if all hard gates pass
+phase371_target_trade_date,2026-07-21,Target date
+phase371_known_carry_forward_event_rows,13,Known events unlocked by target date
+phase371_az_cli_present,1,Azure CLI present
+phase371_az_account_context_available,1,Azure account context available
+phase371_az_storage_login_list_available,0,Azure storage login-mode list available
+phase371_az_cli_certificate_failure,1,Certificate failure observed
+phase371_azcopy_present,0,AzCopy present on PATH
+phase371_supported_sas_env_present,0,Supported SAS env present
+phase371_target_local_full_universe_present,0,Target full-universe already local
+phase371_direct_download_route_available_now,0,SAS or login-mode storage listing available now
+phase371_any_route_available_now,0,"Direct, azcopy, or local target route available now"
+phase371_secret_material_recorded,0,No secret material recorded
+phase371_strategy_promotion_allowed,0,No promotion
+phase371_paper_or_live_acceptance_allowed,0,No paper/live
+phase371_deployable_profitability_claim_allowed,0,No deployable claim
+phase371_hard_gate_pass_rows,6,Passed hard gates
+phase371_hard_gate_rows,6,Hard gates
+phase371_next_best_action,download_or_local_drop_full_universe_real_l2_for_2026-07-21_then_rerun_phase370_verify_no_paper_live,Recommended next milestone

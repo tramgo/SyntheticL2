@@ -1,0 +1,7 @@
+gate_id,passed,evidence
+P371_PHASE370_TARGET_PRESENT,1,2026-07-21
+P371_AZURE_ACCESS_PROBED,1,az_present=1; account_probe=1; storage_probe=0
+P371_DOWNLOAD_ROUTE_CLASSIFIED,1,direct_download_available=0; local_drop_available=1
+P371_SAFE_COMMAND_PACKAGE_WRITTEN,1,commands=4
+P371_NO_SECRET_MATERIAL_RECORDED,1,secret_rows=0
+P371_NO_STRATEGY_RETEST_OR_PROMOTION,1,download_package_only

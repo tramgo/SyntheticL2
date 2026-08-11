@@ -1,0 +1,6 @@
+contract_id,contract_value,requirement
+P371_TARGET_DATE,2026-07-21,Next one-day full-universe L2 target selected by Phase370.
+P371_REQUIRED_SYMBOLS,32,All project symbols must be present for full-universe verification.
+P371_EXPECTED_LOCAL_SHAPE,real_data_sample/l2_unseen_validation/trade_date=2026-07-21/exchange=NSE/symbol=SYMBOL/*.parquet,Local drop/download target consumed by Phase370 verifier.
+P371_KNOWN_CARRY_FORWARD_EVENTS,13,Known 2026-07-20 post-close official catalyst rows unlocked by 2026-07-21 L2.
+P371_AFTER_DROP_VERIFY_COMMAND,python scripts/run_phase370_one_day_real_l2_drop_verifier.py,Rerun local verifier before any strategy retest.
