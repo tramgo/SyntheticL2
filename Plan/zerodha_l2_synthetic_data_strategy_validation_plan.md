@@ -17278,6 +17278,63 @@ Current next best action after Phase367:
 
 - Expand official-catalyst real L2 event evidence if access/disk budget permits, or write the terminal/branch report. Do not rerun passive-aware execution as acceptance evidence on the current 12-trade sparse clue.
 
+## 24.195 Phase368 Current Branch Terminal Report Completed
+
+Phase368 closes the current passive-aware/catalyst-reversal evidence branch for acceptance. This is not a claim that all top-five depth research is useless; it says the current evidence does not justify replay promotion, paper/live acceptance or deployable profitability claims.
+
+Phase368 evidence chain:
+
+- Phase302 old passive-aware terminal report: `P302_RETAIL_TOP5_L2_ALPHA_THESIS_CLOSED_FOR_ACCEPTANCE`;
+- Phase359 local unseen real L2 official-catalyst join: `25` no-lookahead eligible events across unseen dates `2026-07-17;2026-07-20`;
+- Phase360 full-depth market-neutral fade on unseen real L2: `-47.35263653783534%` annualized and `0` acceptance candidates;
+- Phase363 catalyst impulse/reversal diagnostic: best scenario `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`, `39.144819884564285%` annualized and `0` acceptance candidates;
+- Phase366 frozen clue audit: `12` selected trades, `event_floor_met=0`, `0` acceptance candidates;
+- Phase367 passive-aware charter reconciliation: passive-aware acceptance reopened now `0`.
+
+Phase368 selected verdict:
+
+- `P368_CURRENT_PASSIVE_AWARE_AND_CATALYST_REVERSAL_BRANCH_CLOSED_FOR_ACCEPTANCE`.
+
+Phase368 closure decisions:
+
+- Do not run passive-aware acceptance testing on the current 12-trade clue.
+- Preserve the catalyst-reversal clue as diagnostic-only evidence for future falsification.
+- Before any retest, add or verify more official-catalyst real L2 events.
+- Keep promotion, paper/live acceptance and deployable profitability claims closed.
+
+Phase368 durable by-products:
+
+- official catalyst event join;
+- full-depth real L2 schema audit;
+- passive-aware realism charter;
+- catalyst-reversal clue for future event-count expansion.
+
+Phase368 hard gates:
+
+- Phase302 terminal present: pass;
+- Phase359 real holdout present: pass, `eligible_events=25`;
+- Phase360 real holdout executed: pass;
+- Phase366 clue below acceptance: pass;
+- Phase367 reconciliation complete: pass;
+- evidence chain present: pass, `6` rows;
+- boundaries closed: pass.
+
+Phase368 outputs:
+
+- `scripts/run_phase368_current_branch_terminal_report.py`;
+- `src/synthetic_l2/phase368_current_branch_terminal_report.py`;
+- `outputs/phase368/phase368_acceptance_summary.csv`;
+- `outputs/phase368/phase368_evidence_chain.csv`;
+- `outputs/phase368/phase368_closure_decision.csv`;
+- `outputs/phase368/phase368_byproduct_catalog.csv`;
+- `outputs/phase368/phase368_gate_evaluation.csv`;
+- `outputs/phase368/phase368_current_branch_terminal_report.md`;
+- `outputs/phase368/phase368_current_branch_terminal_report_manifest.json`.
+
+Current next best action after Phase368:
+
+- Add or verify more official-catalyst real L2 events before any retest. If disk/access constraints prevent expansion, stop running acceptance-style strategy shards and treat the current branch as terminal for acceptance.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

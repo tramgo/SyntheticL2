@@ -1,0 +1,7 @@
+phase,evidence_role,key_observation,acceptance_read
+302,old_passive_aware_terminal_report,verdict=P302_RETAIL_TOP5_L2_ALPHA_THESIS_CLOSED_FOR_ACCEPTANCE,Old Phase298-301 passive-aware route closed for acceptance.
+359,local_unseen_real_l2_official_catalyst_join,unseen_dates=2026-07-17;2026-07-20; eligible_events=25,"Real L2/catalyst holdout evidence exists, but event count is still small."
+360,full_depth_market_neutral_fade_real_holdout,ann=-47.35263653783534; acceptance=0,Full-depth fade failed on unseen real L2 catalyst holdout.
+363,liquidity_replenished_catalyst_impulse_diagnostic,best=P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL; ann=39.144819884564285; acceptance=0,"Found a positive reversal-control clue, but no acceptance candidate."
+366,frozen_reversal_clue_audit,trades=12; event_floor_met=0; acceptance=0,Clue remains sparse and below event-floor acceptance.
+367,passive_aware_charter_reconciliation,passive_acceptance_reopened=0,Passive-aware route is not reopened by the sparse clue.
