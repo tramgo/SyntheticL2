@@ -1,0 +1,9 @@
+charter_item,status,phase337_interpretation,phase337_requirement
+attached_charter_present,applied,The attached passive-aware execution charter was read and reconciled into the current Phase337 precommit.,charter_text_recorded_before_results
+stale_phase_numbering,renumbered_not_reopened,"The document uses older Phase300 language; current repo evidence already has Phase300/Phase336 state, so the substance is carried forward without reopening old Phase300 as accepted.",use_current_phase337_route
+passive_aware_hybrid_execution,required_as_holdout_diagnostic,"Passive-aware hybrid execution must be evaluated alongside frozen directional candidates, but it cannot override failed primary passive-aware evidence unless it passes all realism penalties.",phase338_compare_taker_primary_vs_passive_aware_diagnostic
+fill_model,required,"Passive entries must draw from a pessimistic retail queue-depth fill probability, never assumed fills.",fill_probability_applied_to_every_passive_entry
+adverse_selection,required,Filled passive orders must pay a fill-conditioned toxicity/adverse-selection penalty.,adverse_selection_penalty_applied_to_every_passive_fill
+forced_flatten,required,Any unexited inventory must pay taker flatten spread plus full statutory costs by signal expiry or end of day.,forced_flatten_cost_applied_to_leftover_inventory
+no_maker_rebate,required,No maker rebate is allowed for retail execution assumptions.,maker_rebate_assumed_zero
+terminal_killswitch,preserved,"If holdout fails breadth, 2x cost, or realism-penalty requirements, the route closes rather than being rescued by weakening penalties.",no_rescue_iteration_after_phase338_failure

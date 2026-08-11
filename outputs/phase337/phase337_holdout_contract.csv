@@ -1,0 +1,31 @@
+contract_id,contract_value,description
+input_candidates,outputs/phase336/phase336_acceptance_grade_candidate_ledger.csv,Freeze Phase336-preserved acceptance-grade training candidates before any holdout result.
+candidate_rows_frozen,32,All Phase336 candidate rows are carried forward without post-hoc filtering.
+candidate_selection_tuning_allowed,0,"No holdout-date tuning, no post-result candidate selection, no new filters."
+primary_scope,phase335_cost200_acceptance_grade_candidates,Primary holdout validates the positive cost-stress training pocket.
+charter_scope,attached_passive_aware_directional_execution_charter,The attached passive-aware charter is applied as a Phase337/Phase338 execution diagnostic contract.
+annualized_threshold_pct,12.0,User profitability threshold remains >12%.
+robust_event_floor,30,Sparse pockets below 30 scheduled events remain discovery clues only.
+minimum_positive_symbol_date_cells,2,Breadth cannot be a single symbol/date pocket.
+required_cost_profile,zerodha_2x_all_in_cost_proxy,2x Zerodha all-in cost stress is required.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE cost formula.
+fixed_capital_denominator,required,"Annualized return must use fixed initial capital, not unlimited capital."
+initial_capital_source,frozen_candidate_initial_capital_inr,Use the frozen candidate's capital denominator.
+full_top_five_depth_required,1,Use market-by-price top-five depth.
+levels_2_to_5_materiality_required,1,Depth beyond L1 must be material to features/filters/diagnostics.
+l1_only_variant_rows_allowed,0,No L1-only variants.
+net_edge_live_mask_rows_allowed,0,No future outcome/net-edge live masks.
+passive_fill_model_required,1,Passive-aware diagnostic must use queue-depth fill probability.
+adverse_selection_penalty_required,1,Passive fills must include toxicity/adverse-selection penalty.
+forced_flatten_cost_required,1,Leftover inventory must pay taker flatten plus full costs.
+maker_rebate_allowed,0,No maker rebate for retail assumptions.
+passive_aware_primary_rescue_allowed,0,Prior passive-aware evidence remains diagnostic; it cannot rescue the route unless all hard gates pass.
+rank_stability_required,1x_to_2x_no_ordering_reversal,Cost-stress ranking should not depend on fragile cost-order reversal.
+negative_controls_required,side_flip;random_side;breadth,Holdout execution must preserve controls.
+kill_switch_no_weakening,1,"Do not weaken realism penalties, cost threshold, or event floor to rescue failure."
+strategy_replay_allowed,0,Phase337 is precommit only.
+strategy_promotion_allowed,0,No strategy promotion opens here.
+paper_or_live_acceptance_allowed,0,No paper/live acceptance opens here.
+deployable_profitability_claim_allowed,0,No deployable profitability claim opens here.
+phase338_execution_allowed_next,1,"If gates pass, Phase338 may execute the frozen holdout contract."
+charter_requirements_recorded,8,Charter-derived requirements recorded in reconciliation ledger.

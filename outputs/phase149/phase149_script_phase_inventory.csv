@@ -268,6 +268,7 @@ phase,runner,runner_exists,runner_suffix
 334,scripts\run_phase334_cost_stress_margin_redesign_precommit.py,True,.py
 335,scripts\run_phase335_cost_stress_margin_redesign_training_only.py,True,.py
 336,scripts\run_phase336_cost_stress_margin_redesign_interpretation.py,True,.py
+337,scripts\run_phase337_cost_stress_holdout_validation_precommit.py,True,.py
 33,scripts\run_phase33_broker_evidence_intake.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py

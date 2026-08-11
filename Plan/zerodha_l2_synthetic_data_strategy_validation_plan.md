@@ -15383,6 +15383,79 @@ Current Phase149 evidence after Phase336:
 - `synthetic_strategy_discovery` status: `cost_stress_holdout_validation_precommit_open`;
 - current next action: `run_phase337_cost_stress_holdout_validation_precommit_no_replay`.
 
+## 24.164 Phase337 Cost-Stress Holdout Validation Precommit Completed
+
+Phase337 freezes the Phase336 acceptance-grade training candidates and reconciles the attached passive-aware execution charter into the current-numbered holdout contract. The attached charter used older Phase300 language, but current repo evidence has already moved beyond Phase300; therefore Phase337 carries forward the charter substance without reopening old Phase300 as accepted.
+
+Phase337 remains precommit-only. It does not execute holdout results, replay, promote, open paper/live acceptance or claim deployable profitability.
+
+Frozen candidate evidence:
+
+- frozen candidate rows: `32`;
+- best frozen candidate: `P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy`;
+- best frozen training annualized diagnostic: `19.32314001122077%`;
+- best frozen scheduled events: `47`;
+- frozen lanes: `P334_LANE_B_TURNOVER_COMPRESSION`; `P334_LANE_C_SPREAD_AND_BOOK_QUALITY_MARGIN`; `P334_LANE_D_HORIZON_AND_EXIT_MARGIN`.
+
+Attached passive-aware charter requirements now carried into Phase338:
+
+- passive fill probability required for every passive entry;
+- adverse-selection/toxicity penalty required for every passive fill;
+- forced-flatten taker cost required for leftover inventory;
+- no maker rebate allowed;
+- full top-five market-by-price depth required;
+- levels 2-5 materiality required;
+- L1-only variants forbidden;
+- net-edge/future-outcome live masks forbidden;
+- fixed-capital annualized denominator required;
+- 2x Zerodha all-in cost stress required;
+- no rescue iteration if the route fails by weakening realism penalties, cost threshold or event floor.
+
+Phase337 contract:
+
+- holdout contract rows: `30`;
+- Phase338 work-order rows: `8`;
+- robust scheduled-event floor: `30`;
+- required annualized threshold: `12.0%`;
+- required cost profile: `zerodha_2x_all_in_cost_proxy`;
+- cost model version: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- Phase338 execution allowed next: `1`;
+- replay/promotion/paper/live/profitability boundaries remain closed.
+
+Phase337 hard gates:
+
+- Phase336 complete: pass;
+- Phase336 route match: pass;
+- candidates frozen: pass, `32`;
+- event floor frozen: pass;
+- attached charter reconciled: pass;
+- passive realism penalties required: pass;
+- cost200 fixed-capital scoring required: pass;
+- full depth and levels 2-5 required: pass;
+- L1-only forbidden: pass;
+- no lookahead: pass;
+- boundaries closed: pass;
+- Phase338 work order present: pass;
+- hard gates: `12/12`.
+
+Phase337 outputs:
+
+- `outputs/phase337/phase337_acceptance_summary.csv`;
+- `outputs/phase337/phase337_frozen_candidate_ledger.csv`;
+- `outputs/phase337/phase337_passive_aware_charter_reconciliation.csv`;
+- `outputs/phase337/phase337_holdout_contract.csv`;
+- `outputs/phase337/phase337_phase338_work_order.csv`;
+- `outputs/phase337/phase337_gate_evaluation.csv`;
+- `outputs/phase337/phase337_cost_stress_holdout_validation_precommit_report.md`;
+- `outputs/phase337/phase337_cost_stress_holdout_validation_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase337:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `cost_stress_holdout_validation_execution_open`;
+- `synthetic_strategy_discovery` status: `cost_stress_holdout_validation_execution_open`;
+- current next action: `run_phase338_cost_stress_holdout_validation_execution_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

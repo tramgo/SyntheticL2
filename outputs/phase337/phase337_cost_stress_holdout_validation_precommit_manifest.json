@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-08-11T06:32:30.215760+00:00",
+  "scope": "phase337_cost_stress_holdout_validation_precommit",
+  "attached_charter_path": "C:\\Users\\Ramic\\.codex\\attachments\\10cf61a2-bfc1-4e3b-9099-09a01ef9583e\\pasted-text.txt",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "2458604de325b9f76acfc62fe85c05def55c4d81",
+  "configuration_hash": "a9daae622219d9d7922be3bc28e990bd0e7c8e4184f4c7a4f6c5c37f9eaef4cc",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "precommit_requires_phase338_passive_aware_latency_and_fill_model",
+  "creation_timestamp": "2026-08-11T06:32:30.215760+00:00"
+}

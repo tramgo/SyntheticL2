@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P337_PHASE336_COMPLETE,True,1,1,hard
+P337_PHASE336_ROUTE_MATCH,True,run_phase337_cost_stress_holdout_validation_precommit_no_replay,run_phase337_cost_stress_holdout_validation_precommit_no_replay,hard
+P337_CANDIDATES_FROZEN,True,32,>0,hard
+P337_ACCEPTANCE_EVENT_FLOOR_FROZEN,True,45,>=30,hard
+P337_CHARTER_RECONCILED,True,8,>0,hard
+P337_PASSIVE_REALISM_PENALTIES_REQUIRED,True,adverse_selection;fill_model;forced_flatten;no_maker_rebate,adverse_selection;fill_model;forced_flatten;no_maker_rebate,hard
+P337_COST200_FIXED_CAPITAL_REQUIRED,True,cost=zerodha_2x_all_in_cost_proxy;capital=required,zerodha_2x_all_in_cost_proxy;fixed,hard
+P337_FULL_DEPTH_REQUIRED,True,top5=1;l2_l5=1,both=1,hard
+P337_L1_ONLY_FORBIDDEN,True,0,0,hard
+P337_NO_LOOKAHEAD,True,0,0,hard
+P337_BOUNDARIES_CLOSED,True,phase336_replay=0;phase336_claim=0;contract_replay=0;contract_claim=0,all_zero,hard
+P337_PHASE338_WORK_ORDER_PRESENT,True,8,>=8,hard

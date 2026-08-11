@@ -1,0 +1,9 @@
+work_order_id,action,requirements,frozen_candidate_rows
+P338_FREEZE_INPUTS,load_frozen_candidates,Use only Phase337 frozen candidate rows; no post-hoc additions.,32
+P338_PRIMARY_HOLDOUT,execute_taker_policy_holdout,Evaluate frozen primary execution policies under 2x Zerodha costs and fixed capital.,32
+P338_PASSIVE_AWARE_DIAGNOSTIC,execute_passive_aware_hybrid_diagnostic,"Apply fill probability, adverse selection, forced flatten, no maker rebate.",32
+P338_FULL_DEPTH_AUDIT,verify_l1_l5_depth_materiality,Confirm levels 2-5 are used and L1-only rows are zero.,32
+P338_NO_LOOKAHEAD_AUDIT,verify_no_future_masks,Confirm net_edge_live_mask_rows and target live-mask rows are zero.,32
+P338_CONTROLS,run_side_flip_random_side_breadth_controls,Require no cost-stress order reversal and positive breadth.,32
+P338_KILLSWITCH,apply_no_rescue_killswitch,"Close route if event floor, 2x cost, breadth, or realism penalties fail.",32
+P338_REPORTING,write_holdout_execution_ledgers,"Write scenario, control, passive diagnostic, gate, and interpretation outputs.",32
