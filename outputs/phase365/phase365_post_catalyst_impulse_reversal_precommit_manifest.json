@@ -1,0 +1,28 @@
+{
+  "generated_at_utc": "2026-08-11T16:00:19.960522+00:00",
+  "next_action": "run_phase366_post_catalyst_impulse_reversal_frozen_diagnostic_no_paper_live",
+  "outputs": {
+    "controls": "outputs\\phase365\\phase365_control_catalog.csv",
+    "gates": "outputs\\phase365\\phase365_gate_evaluation.csv",
+    "manifest": "outputs\\phase365\\phase365_post_catalyst_impulse_reversal_precommit_manifest.json",
+    "report": "outputs\\phase365\\phase365_post_catalyst_impulse_reversal_precommit_report.md",
+    "summary": "outputs\\phase365\\phase365_acceptance_summary.csv",
+    "thesis": "outputs\\phase365\\phase365_thesis_contract.csv",
+    "validation": "outputs\\phase365\\phase365_validation_contract.csv"
+  },
+  "phase": 365,
+  "phase364_dir": "outputs\\phase364",
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "59b435b2007b50a842470a5edad462bb9a087216c8a794fe54e662c80db64698",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "creation_timestamp": "2026-08-11T16:00:19.960522+00:00",
+    "generator_version": "fff2f083921b3924a2ff08e1874a85670ab12d22",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  }
+}

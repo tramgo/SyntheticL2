@@ -17112,6 +17112,58 @@ Current next best action after Phase364:
 
 - Precommit Phase365 post-catalyst impulse-reversal-after-replenishment as its own thesis before any execution. Do not treat Phase363 reversal controls as accepted profitability evidence.
 
+## 24.192 Phase365 Post-Catalyst Impulse Reversal Precommit Completed
+
+Phase365 precommits the Phase364 sparse reversal-after-replenishment clue as its own frozen thesis. It does not run a search and opens no promotion, paper/live acceptance or deployable profitability claim.
+
+Phase365 frozen thesis:
+
+- thesis id: `P365_POST_CATALYST_IMPULSE_REVERSAL_AFTER_REPLENISHMENT`;
+- source clue id: `P364_POST_CATALYST_IMPULSE_REVERSAL_AFTER_REPLENISHMENT`;
+- source scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- decision delay: `120` seconds;
+- horizon: `900` seconds;
+- minimum absolute impulse: `2.5` bps;
+- minimum levels-2-5 imbalance: `0.25`;
+- minimum replenishment ratio: `0.0`;
+- side rule: reverse the signed post-catalyst impulse after displayed liquidity replenishment and levels 2-5 support the original impulse;
+- full-depth rule: use full top-five L1-L5 book state; levels 2-5 support must be material; no L1-only variant;
+- cost rule: Zerodha cost200 fixed-capital scoring.
+
+Phase365 control catalog:
+
+- primary: frozen post-catalyst impulse reversal after replenishment;
+- side flip: same filters but impulse continuation;
+- stricter replenishment: same reversal rule with minimum replenishment `0.10`;
+- weaker depth: same reversal rule with minimum levels-2-5 imbalance `0.15`;
+- shorter delay: same reversal rule with decision delay `60` seconds.
+
+Phase365 gates:
+
+- Phase364 complete: pass;
+- reversal clue present: pass;
+- exact parameters frozen: pass;
+- full-depth required: pass;
+- controls registered: pass, `5`;
+- no search or same-family rescue: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase365 outputs:
+
+- `scripts/run_phase365_post_catalyst_impulse_reversal_precommit.py`;
+- `src/synthetic_l2/phase365_post_catalyst_impulse_reversal_precommit.py`;
+- `outputs/phase365/phase365_acceptance_summary.csv`;
+- `outputs/phase365/phase365_thesis_contract.csv`;
+- `outputs/phase365/phase365_control_catalog.csv`;
+- `outputs/phase365/phase365_validation_contract.csv`;
+- `outputs/phase365/phase365_gate_evaluation.csv`;
+- `outputs/phase365/phase365_post_catalyst_impulse_reversal_precommit_report.md`;
+- `outputs/phase365/phase365_post_catalyst_impulse_reversal_precommit_manifest.json`.
+
+Current next best action after Phase365:
+
+- Run Phase366 frozen post-catalyst impulse reversal diagnostic with the registered controls, no search, no paper/live and no deployable profitability claim.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

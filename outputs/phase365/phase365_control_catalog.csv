@@ -1,0 +1,6 @@
+control_id,control_description,purpose
+primary,post_catalyst_impulse_reversal_after_replenishment,Frozen Phase364 side rule
+side_flip,post_catalyst_impulse_continuation_same_filters,Must be worse than primary or treated as ambiguity
+stricter_replenishment,same_reversal_rule_min_replenishment_0p10,Checks dependence on zero replenishment threshold
+weaker_depth,same_reversal_rule_min_l2_l5_imbalance_0p15,Checks depth-threshold sensitivity
+shorter_delay,same_reversal_rule_decision_delay_60s,Checks delay sensitivity

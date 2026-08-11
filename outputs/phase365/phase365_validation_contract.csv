@@ -1,0 +1,11 @@
+contract_id,contract_value,description
+phase364_complete_required,1,Phase364 must freeze the clue before this precommit.
+exact_primary_parameters_frozen,1,"120s delay, 2.5 bps impulse, 0.25 levels-2-5 imbalance, 0.0 replenishment."
+full_depth_required,1,Use L1-L5 price/qty/order-count fields and levels 2-5 materiality.
+l1_only_allowed,0,No L1-only variants.
+event_floor,30,Acceptance requires at least 30 selected trades.
+annualized_threshold_pct,12.0,User profitability bar.
+breadth_required,>=2 positive symbols and >=2 positive symbol/date cells,Avoid one-pocket clue.
+cost200_fixed_capital_required,1,Zerodha cost200 fixed capital.
+same_run_search_allowed,0,No parameter search in Phase366; controls only.
+paper_live_or_profit_claim_allowed,0,No promotion or deployable claim.

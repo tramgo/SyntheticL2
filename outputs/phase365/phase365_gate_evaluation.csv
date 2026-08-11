@@ -1,0 +1,8 @@
+gate_id,passed,evidence
+P365_PHASE364_COMPLETE,1,Phase364 complete
+P365_REVERSAL_CLUE_PRESENT,1,clue_rows=1
+P365_EXACT_PARAMETERS_FROZEN,1,delay=120; impulse=2.5; depth=0.25; replenishment=0.0
+P365_FULL_DEPTH_REQUIRED,1,L1-L5 and levels 2-5 materiality
+P365_CONTROLS_REGISTERED,1,control_rows=5
+P365_NO_SEARCH_OR_SAME_FAMILY_RESCUE,1,frozen primary plus controls only
+P365_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed
