@@ -1,0 +1,37 @@
+{
+  "generated_at_utc": "2026-08-11T20:20:18.709110+00:00",
+  "outputs": {
+    "access": "outputs\\phase392_dryrun\\phase392_access_ledger.csv",
+    "discovery": "outputs\\phase392_dryrun\\phase392_discovered_file_manifest.csv",
+    "download": "outputs\\phase392_dryrun\\phase392_download_manifest.csv",
+    "gates": "outputs\\phase392_dryrun\\phase392_gate_evaluation.csv",
+    "local_after": "outputs\\phase392_dryrun\\phase392_local_inventory_after.csv",
+    "local_before": "outputs\\phase392_dryrun\\phase392_local_inventory_before.csv",
+    "manifest": "outputs\\phase392_dryrun\\phase392_next_day_20260728_downloader_manifest.json",
+    "pending_events": "outputs\\phase392_dryrun\\phase392_pending_post_close_events.csv",
+    "report": "outputs\\phase392_dryrun\\phase392_next_day_20260728_downloader_report.md",
+    "summary": "outputs\\phase392_dryrun\\phase392_acceptance_summary.csv"
+  },
+  "phase": 392,
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "9ea58f440f0a7c7831094b650b58852bc9b7f6ebb3d868fd4404f24965b56f99",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "creation_timestamp": "2026-08-11T20:20:18.709110+00:00",
+    "generator_version": "72750af1ee1c45efca82485e79fc60ae94d1f3b3",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  },
+  "supported_sas_env_names_checked": [
+    "AZURE_BLOB_SERVICE_SAS_URL",
+    "STCTRADE1RAMIC_BLOB_SAS_URL",
+    "AZURE_FILE_SERVICE_SAS_URL",
+    "STCTRADE1RAMIC_FILE_SAS_URL",
+    "AZURE_STORAGE_SAS_TOKEN",
+    "STCTRADE1RAMIC_SAS_TOKEN"
+  ]
+}

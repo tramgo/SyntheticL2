@@ -18573,6 +18573,58 @@ Current next best action after Phase391:
 
 - Add more no-lookahead real L2 days if disk and Azure access permit, then rerun the frozen retest. Do not promote or paper/live trade.
 
+## 24.219 Phase392 Next-Day 2026-07-28 L2 Availability Probe Completed
+
+Phase392 attempts the next clean no-lookahead real-L2 continuation after Phase391. Phase385 left `9` post-close catalyst rows from `2026-07-27`, so the natural next diagnostic target is `2026-07-28`.
+
+Phase392 probe result:
+
+- target trade date: `2026-07-28`;
+- pending post-close event rows: `9`;
+- SAS access present: `1`;
+- dry-run mode: `1`;
+- discovered file rows: `0`;
+- discovered symbols: `0`;
+- local parquet files after: `0`;
+- local full universe after: `0`;
+- strategy retest executed now: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase392 Azure directory drill-down:
+
+- `raw_l2/trade_date=2026-07-28` exists as a shell partition;
+- `raw_l2/trade_date=2026-07-28/exchange=NSE` contains only `symbol=ADANIPORTS`;
+- that `symbol=ADANIPORTS` directory contains `0` parquet files;
+- `2026-07-29` shows the same shell-only pattern;
+- `2026-08-03`, `2026-08-04`, and `2026-08-05` have full `32`-symbol structures with parquet files.
+
+Phase392 interpretation:
+
+- `2026-07-28` is not usable as the next real-L2 event-density repair day.
+- This is not an Azure authentication failure; the share listing succeeded.
+- The next practical no-lookahead data target is `2026-08-03`, the first nearby full 32-symbol partition observed after the shell-only `2026-07-28` and `2026-07-29` partitions.
+
+Phase392 outputs:
+
+- `scripts/run_phase392_next_day_20260728_downloader.py`;
+- `src/synthetic_l2/phase392_next_day_20260728_downloader.py`;
+- `outputs/phase392_dryrun/phase392_acceptance_summary.csv`;
+- `outputs/phase392_dryrun/phase392_access_ledger.csv`;
+- `outputs/phase392_dryrun/phase392_discovered_file_manifest.csv`;
+- `outputs/phase392_dryrun/phase392_download_manifest.csv`;
+- `outputs/phase392_dryrun/phase392_local_inventory_before.csv`;
+- `outputs/phase392_dryrun/phase392_local_inventory_after.csv`;
+- `outputs/phase392_dryrun/phase392_gate_evaluation.csv`;
+- `outputs/phase392_dryrun/phase392_pending_post_close_events.csv`;
+- `outputs/phase392_dryrun/phase392_next_day_20260728_downloader_report.md`;
+- `outputs/phase392_dryrun/phase392_next_day_20260728_downloader_manifest.json`.
+
+Current next best action after Phase392:
+
+- Download the first nearby full 32-symbol real-L2 partition, `2026-08-03`, then refresh official-catalyst eligibility and rerun the frozen reversal retest. Do not promote or paper/live trade.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
