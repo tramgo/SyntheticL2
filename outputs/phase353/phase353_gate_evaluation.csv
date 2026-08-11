@@ -1,0 +1,8 @@
+gate_id,passed,evidence
+P353_PHASE342_LEDGER_PRESENT,1,filled_rows=98
+P353_REAL_L2_USED,1,Phase342 real L2 diagnostic ledger
+P353_OFFICIAL_CATALYST_USED,1,Phase340/342 official catalyst work order lineage
+P353_FULL_DEPTH_SIDE_RULES_PRESENT,1,top-five and depth-levels-2-5 rules evaluated
+P353_L1_ONLY_FORBIDDEN,1,No L1-only variants
+P353_COST200_FIXED_CAPITAL,1,2x Zerodha cost and fixed INR 250000 annualization
+P353_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

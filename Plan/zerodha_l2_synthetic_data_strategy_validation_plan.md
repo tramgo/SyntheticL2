@@ -16381,6 +16381,81 @@ Current next best action after Phase352:
 - Restore Phase350 real-date expansion with a fresh SAS/local one-date drop; or
 - precommit a materially new strategy thesis before running additional synthetic searches.
 
+## 24.180 Phase353 Real-Catalyst L2 Side-Selection Diagnostic Completed
+
+Phase353 tested a materially different local real-data lever on the existing official-catalyst real L2 panel. Instead of inheriting the prior Phase338/339 long-only survivor direction, it selected long or short direction from entry-time real top-five and depth-levels-2-5 imbalance on the Phase342 official-catalyst real L2 diagnostic ledger.
+
+This phase used already-local real Zerodha WebSocket top-five market-by-price depth and official catalyst lineage. It did not require new Azure downloads.
+
+Phase353 design:
+
+- input ledger: `outputs/phase342/phase342_real_day_trade_diagnostic_ledger.csv`;
+- filled official-catalyst real L2 input rows: `98`;
+- scopes tested:
+  - all official-catalyst events;
+  - lead catalyst categories;
+  - capacity-selected events;
+- side-selection rules tested:
+  - follow depth-levels-2-5 quantity imbalance;
+  - fade depth-levels-2-5 quantity imbalance;
+  - follow top-five quantity imbalance;
+  - fade top-five quantity imbalance;
+  - follow top-five order-count imbalance;
+  - fade top-five order-count imbalance;
+- scenarios evaluated: `18`;
+- trade rows evaluated across scenario/rule combinations: `1174`;
+- fixed initial capital: `250,000` INR;
+- cost profile: `zerodha_2x_all_in_cost_proxy`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`.
+
+Phase353 result:
+
+- above-12% fixed-capital annualized rows: `0`;
+- acceptance candidate rows: `0`;
+- best scenario: `P353_capacity_selected_events_fade_top5`;
+- best trade rows: `37`;
+- best diagnostic dates: `7`;
+- best symbols: `16`;
+- best positive trade rows: `13`;
+- best positive symbol-date cells: `10`;
+- best positive symbols: `9`;
+- best net P&L: `-795.7927940520694` INR;
+- best fixed-capital annualized return: `-11.459416234349801%`.
+
+Phase353 interpretation:
+
+- Side-selection from real top-five and depth-levels-2-5 imbalance improved the best local real-L2 diagnostic relative to many broader rules, but it still did not clear costs.
+- The best rule had breadth and event count, but remained negative after cost200.
+- No real-data side-selection rule reached the user's `>12%` annualized diagnostic threshold.
+- This closes the simple catalyst-time full-depth side-selection lever on the current local real-L2 panel.
+- It does not close all possible catalyst/L2 research; it says this materially new direction-selection rule family is not enough on the available 7-day official-catalyst real panel.
+
+Phase353 hard gates:
+
+- Phase342 ledger present: pass, `filled_rows=98`;
+- real L2 used: pass;
+- official catalyst lineage used: pass;
+- full-depth side rules present: pass;
+- L1-only variants forbidden: pass;
+- cost200 fixed-capital scoring: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase353 outputs:
+
+- `scripts/run_phase353_real_catalyst_l2_side_selection_diagnostic.py`;
+- `src/synthetic_l2/phase353_real_catalyst_l2_side_selection_diagnostic.py`;
+- `outputs/phase353/phase353_acceptance_summary.csv`;
+- `outputs/phase353/phase353_scenario_summary.csv`;
+- `outputs/phase353/phase353_trade_ledger.csv`;
+- `outputs/phase353/phase353_gate_evaluation.csv`;
+- `outputs/phase353/phase353_real_catalyst_l2_side_selection_diagnostic_report.md`;
+- `outputs/phase353/phase353_real_catalyst_l2_side_selection_diagnostic_manifest.json`.
+
+Current next best action after Phase353:
+
+- Restore Phase350 real-date expansion with a fresh SAS/local one-date drop; or
+- precommit a more structural material-new thesis that is not merely catalyst-time side selection, such as longer-horizon event drift with market-index confirmation, or a non-directional execution/liquidity forecast objective.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

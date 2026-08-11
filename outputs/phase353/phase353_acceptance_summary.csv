@@ -1,0 +1,14 @@
+metric,value,description
+phase353_real_catalyst_l2_side_selection_complete,1,Phase353 diagnostic completed
+phase353_phase342_filled_input_rows,98,Filled Phase342 rows used
+phase353_scenario_rows,18,Scenario rows evaluated
+phase353_trade_rows,1174,Trade rows evaluated
+phase353_above12_rows,0,Above-12 rows
+phase353_acceptance_candidate_rows,0,Acceptance candidates
+phase353_best_scenario_id,P353_capacity_selected_events_fade_top5,Best scenario
+phase353_best_annualized_return_pct,-11.459416234349801,Best annualized return
+phase353_best_net_pnl_inr,-795.7927940520694,Best net PnL
+phase353_strategy_promotion_allowed,0,No promotion
+phase353_paper_or_live_acceptance_allowed,0,No paper/live
+phase353_deployable_profitability_claim_allowed,0,No profitability claim
+phase353_next_best_action,restore_phase350_real_date_expansion_or_precommit_material_new_thesis_no_paper_live,Recommended next milestone
