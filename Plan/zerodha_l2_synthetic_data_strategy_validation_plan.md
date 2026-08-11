@@ -18380,6 +18380,113 @@ Current next best action after Phase385:
 
 - Adapt the Phase385 refreshed work order into the frozen retest schema, then rerun the Phase381-style frozen reversal retest with no search.
 
+## 24.213 Phase386 Phase385 Frozen Retest Precommit Completed
+
+Phase386 adapts the Phase385 refreshed work order into the frozen retest schema. It keeps the frozen `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL` scenario, permits no parameter search, and performs no retest in the precommit.
+
+Phase386 result:
+
+- adapted work-order rows: `249`;
+- diagnostic dates: `14`;
+- symbols: `27`;
+- Phase385 selected-event estimate: approximately `33.85365853658537`;
+- previous actual selected trades from Phase381/382: `19`;
+- parameter search allowed: `0`;
+- retest executed now: `0`;
+- paper/live or deployable profit claim allowed: `0`.
+
+Current next best action after Phase386:
+
+- Execute the frozen Phase387 retest on the Phase386 work order with no search.
+
+## 24.214 Phase387 Phase385 Frozen Retest Completed
+
+Phase387 executes the frozen reversal retest on the Phase386/Phase385 expanded work order. It uses one frozen grid row plus the same-filter continuation side-flip control. It keeps full top-five L1-L5 depth, levels 2-5 materiality, Zerodha costs, and no paper/live action.
+
+Phase387 execution result:
+
+- work-order rows replayed: `249`;
+- missing local L2 rows: `0`;
+- event feature rows: `249`;
+- ready event feature rows: `246`;
+- no-start-tick rows: `3`;
+- trade ledger rows: `60`;
+- scenario rows: `2`.
+
+Phase387 primary frozen reversal result:
+
+- raw scheduled candidates: `30`;
+- capacity-selected trades: `21`;
+- diagnostic dates: `12`;
+- symbols: `12`;
+- positive symbols: `4`;
+- positive symbol-date cells: `7`;
+- net P&L: approximately `2,244.1156160222085` INR;
+- annualized return: approximately `18.850571174586552%`;
+- above `12%` annualized threshold: `1`;
+- event floor met: `0`;
+- breadth met: `1`;
+- acceptance candidate: `0`.
+
+Phase387 control result:
+
+- same-filter continuation side flip annualized return: approximately `-87.52630835547492%`;
+- reversal direction still dominates continuation.
+
+Phase387 interpretation:
+
+- The event-density repair reached `30` raw filtered candidates, but the hard capacity-selected floor still fails because only `21` trades survive the capacity rule.
+- The strategy remains profitable and directionally superior to the side-flip control, but it is not accepted.
+- No promotion, paper/live action, or deployable profitability claim is opened.
+
+Current next best action after Phase387:
+
+- Interpret the result explicitly and decide whether the next precommit should test capacity-rule sensitivity or add more real L2 days.
+
+## 24.215 Phase388 Interpret Phase387 Retest Completed
+
+Phase388 interprets the Phase387 frozen retest after the Phase383/384 event-density repair and Phase385 refresh. It records the exact bottleneck shift from raw event count to capacity-selected event count.
+
+Phase388 acceptance interpretation:
+
+- primary annualized return: approximately `18.850571174586552%`;
+- primary net P&L: approximately `2,244.1156160222085` INR;
+- raw scheduled candidates: `30`;
+- capacity-selected trades: `21`;
+- remaining capacity-selected gap: `9`;
+- no-start-tick rows: `3`;
+- selected-trade event floor met: `0`;
+- breadth met: `1`;
+- side-flip annualized return: approximately `-87.52630835547492%`;
+- acceptance candidate: `0`.
+
+Phase388 decision ledger:
+
+- `P388_PROFITABILITY_STILL_POSITIVE`: pass. The frozen reversal remains profitable after the Phase384 density repair.
+- `P388_RAW_CANDIDATE_FLOOR_REACHED`: pass. Raw filtered candidates now reach the `30` event floor.
+- `P388_CAPACITY_SELECTED_FLOOR_FAILS`: pass. Capacity selection remains the acceptance blocker with `21` selected trades versus `30` required.
+- `P388_SHORT_DAY_EFFECT_RECORDED`: pass. The short `2026-07-27` collector window produced `3` no-start-tick rows.
+- `P388_NO_ACCEPTANCE_OR_PROMOTION`: pass. No promotion, paper/live action, or deployable profitability claim is allowed.
+
+Phase388 conclusion:
+
+- The profitable reversal clue is still alive, but not accepted.
+- The next precommit should either test capacity-rule sensitivity explicitly or add more real L2 days. Since raw candidates now meet the floor, a capacity-rule sensitivity precommit is the more diagnostic next step, but it must be treated as a new test and not as a silent rescue.
+
+Phase388 outputs:
+
+- `scripts/run_phase388_interpret_phase387_retest.py`;
+- `src/synthetic_l2/phase388_interpret_phase387_retest.py`;
+- `outputs/phase388/phase388_acceptance_summary.csv`;
+- `outputs/phase388/phase388_decision_ledger.csv`;
+- `outputs/phase388/phase388_gate_evaluation.csv`;
+- `outputs/phase388/phase388_interpret_phase387_retest_report.md`;
+- `outputs/phase388/phase388_interpret_phase387_retest_manifest.json`.
+
+Current next best action after Phase388:
+
+- Precommit capacity-rule sensitivity or add more real L2 days. Do not promote or paper/live trade.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

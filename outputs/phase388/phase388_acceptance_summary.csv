@@ -1,0 +1,16 @@
+metric,value,description
+phase388_interpret_phase387_retest_complete,1,Phase388 complete
+phase388_primary_annualized_return_pct,18.850571174586552,Primary annualized return
+phase388_primary_net_pnl_inr,2244.1156160222085,Primary net PnL
+phase388_primary_scheduled_candidates,30,Raw scheduled candidates
+phase388_primary_capacity_selected_trades,21,Capacity-selected trades
+phase388_capacity_selected_gap,9,Capacity-selected gap
+phase388_no_start_tick_rows,3,No-start rows
+phase388_event_floor_met,0,Selected-trade floor met
+phase388_breadth_met,1,Breadth met
+phase388_acceptance_candidate,0,Acceptance candidate
+phase388_side_flip_annualized_return_pct,-87.52630835547492,Side-flip annualized return
+phase388_strategy_promotion_allowed,0,No promotion
+phase388_paper_or_live_acceptance_allowed,0,No paper/live
+phase388_deployable_profitability_claim_allowed,0,No deployable claim
+phase388_next_best_action,precommit_capacity_rule_sensitivity_or_add_more_real_l2_no_paper_live,Recommended next action
