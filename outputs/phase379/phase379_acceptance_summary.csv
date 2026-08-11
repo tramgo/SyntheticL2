@@ -1,0 +1,18 @@
+metric,value,description
+phase379_interpret_20260724_event_refresh_complete,1,Phase379 complete
+phase379_target_trade_date,2026-07-24,Target date
+phase379_target_ready_rows,31,Eligible rows on target diagnostic date
+phase379_target_carry_forward_rows,18,Prior-date post-close rows carried into target
+phase379_refreshed_eligible_rows,233,Refreshed eligible rows
+phase379_previous_phase377_eligible_rows,202,Previous Phase377 eligible rows
+phase379_new_eligible_rows_vs_phase377,31,New eligible rows after adding target
+phase379_estimated_selected_after_refresh,32.29268292682927,Estimated selected trades
+phase379_event_floor_met,1,Estimated event floor met
+phase379_acceptance_retest_allowed_after_precommit,1,Retest allowed only after explicit precommit
+phase379_acceptance_retest_executed_now,0,No retest in this phase
+phase379_strategy_promotion_allowed,0,No promotion
+phase379_paper_or_live_acceptance_allowed,0,No paper/live
+phase379_deployable_profitability_claim_allowed,0,No deployable claim
+phase379_hard_gate_pass_rows,5,Passed gates
+phase379_hard_gate_rows,5,Gates
+phase379_next_best_action,precommit_acceptance_retest_on_expanded_real_l2_no_paper_live,Recommended next action

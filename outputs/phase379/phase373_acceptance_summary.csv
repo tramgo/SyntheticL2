@@ -1,0 +1,23 @@
+metric,value,description
+phase373_refreshed_catalyst_event_count_after_20260721_complete,1,Phase373 complete if all hard gates pass
+phase373_local_trade_dates,2026-07-08;2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16;2026-07-17;2026-07-20;2026-07-21;2026-07-22;2026-07-23;2026-07-24,Local trade dates included in refresh
+phase373_target_trade_date,2026-07-21,Newly verified target date
+phase373_target_full_universe_local_present,1,Target full universe present
+phase373_official_source_response_rows,26,Official source response rows
+phase373_official_source_ok_rows,26,Official source OK rows
+phase373_official_catalyst_rows,246,Official catalyst rows fetched
+phase373_refreshed_no_lookahead_eligible_rows,233,Refreshed eligible rows with local L2
+phase373_previous_phase359_eligible_rows,25,Previous Phase359 eligible rows
+phase373_new_eligible_rows_vs_phase359,208,New eligible rows after adding target date
+phase373_target_date_eligible_rows,21,Eligible rows whose diagnostic date is target
+phase373_target_carry_forward_rows,13,Prior-date post-close rows carried into target date
+phase373_combined_phase341_plus_refreshed_work_rows,331,Phase341 plus refreshed Phase359-like work rows
+phase373_estimated_selected_after_refresh,32.29268292682927,Estimated selected trades after refresh at observed yield
+phase373_event_floor_after_refresh_estimate,1,Whether estimate reaches event floor
+phase373_acceptance_retest_allowed_now,0,No retest in this phase
+phase373_strategy_promotion_allowed,0,No promotion
+phase373_paper_or_live_acceptance_allowed,0,No paper/live
+phase373_deployable_profitability_claim_allowed,0,No deployable claim
+phase373_hard_gate_pass_rows,8,Passed hard gates
+phase373_hard_gate_rows,8,Hard gates
+phase373_next_best_action,interpret_phase373_or_download_next_official_catalyst_real_l2_day_no_paper_live,Recommended next milestone

@@ -1,0 +1,27 @@
+metric,value,description
+phase378_next_day_20260724_downloader_complete,1,Phase378 complete if all hard gates pass
+phase378_target_trade_date,2026-07-24,Next target date from Phase377 pending post-close rows
+phase378_pending_post_close_event_rows,18,Known pending post-close catalyst rows unlocked by target
+phase378_sas_env_present,1,Supported SAS env present
+phase378_truststore_injected,1,Truststore injected before HTTPS calls
+phase378_dry_run,0,Dry-run mode
+phase378_workers,128,Concurrent workers
+phase378_discovered_file_rows,50103,Discovered target file rows
+phase378_discovered_symbols,32,Discovered target symbols
+phase378_download_manifest_rows,50103,Download manifest rows
+phase378_existing_file_rows,50097,Existing/skipped file rows
+phase378_downloaded_file_rows,6,Downloaded file rows
+phase378_error_file_rows,0,Per-file error rows
+phase378_local_symbols_after,32,Local symbols after
+phase378_local_parquet_files_after,50103,Local parquet files after
+phase378_local_bytes_after,1759706001,Local bytes after
+phase378_local_full_universe_after,1,Full universe local after
+phase378_estimated_selected_after_target,31.87635836754407,Estimated selected trades after adding target pending events
+phase378_event_floor_after_target_estimate,1,Whether target estimate reaches 30-event floor
+phase378_acceptance_retest_allowed_now,0,No retest in this phase
+phase378_strategy_promotion_allowed,0,No promotion
+phase378_paper_or_live_acceptance_allowed,0,No paper/live
+phase378_deployable_profitability_claim_allowed,0,No deployable claim
+phase378_hard_gate_pass_rows,7,Passed hard gates
+phase378_hard_gate_rows,7,Hard gates
+phase378_next_best_action,refresh_catalyst_event_count_after_20260724_no_paper_live,Recommended next milestone

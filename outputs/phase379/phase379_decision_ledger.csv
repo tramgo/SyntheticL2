@@ -1,0 +1,4 @@
+decision_id,value,evidence,decision
+phase378_download_verified,1,symbols=32; files=50103; errors=0,2026-07-24 full-universe L2 is locally available.
+event_pool_improved,1,new_vs_phase377=31; target_ready=31; carry_forward=18,The target day added useful catalyst events.
+event_floor_open,1,estimated_selected=32.29268292682927; floor=30,The real-L2 event-count gate is open for a precommitted acceptance retest.

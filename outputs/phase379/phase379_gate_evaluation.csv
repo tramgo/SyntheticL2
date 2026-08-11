@@ -1,0 +1,6 @@
+gate_id,passed,evidence
+P379_PHASE378_FULL_UNIVERSE_PRESENT,1,Phase378 local full universe
+P379_REFRESH_PRESENT,1,ready=233
+P379_TARGET_EVENTS_PRESENT,1,target_ready=31
+P379_EVENT_FLOOR_OPEN,1,estimated_selected=32.293; floor=30
+P379_NO_RETEST_OR_PROMOTION,1,interpretation_only
