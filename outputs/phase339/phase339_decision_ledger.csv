@@ -1,0 +1,9 @@
+decision_id,decision_value,evidence,interpretation
+phase338_execution_complete,1,Phase338 hard gates passed before interpretation.,Phase338 can be interpreted.
+primary_taker_route_survived_synthetic_holdout,1,acceptance_rows=8,Primary taker execution remains the only surviving route.
+best_survivor_preserved,P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy,annualized=20.82928580629932;events=34;symbol_date_cells=30,Preserve the best Phase338 survivor for replication precommit.
+survivor_rows_preserved,8,primary_acceptance=8,Carry forward all Phase338 primary 2x-cost survivors.
+passive_aware_route_status,diagnostic_failed_not_primary_rescue,passive_acceptance=0,Attached passive-aware charter did not produce accepted 2x-cost diagnostics.
+synthetic_holdout_boundary,not_deployable_profitability,synthetic event-hash partition,Do not claim live profitability from synthetic holdout evidence.
+paper_live_or_promotion_allowed,0,closed,"No paper/live, promotion, or deployable profitability opens from Phase339."
+next_route,P340_OFFICIAL_CATALYST_CALENDAR_ACQUISITION_PRECOMMIT,run_phase340_official_catalyst_calendar_acquisition_precommit_no_paper_live,Acquire and align official NSE/SEBI/BSE catalyst calendars before any catalyst-grounded real-day survivor diagnostic.

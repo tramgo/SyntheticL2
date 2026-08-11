@@ -1,0 +1,3 @@
+real_root,real_date_rows,real_symbol_rows,event_calendar_date_rows,event_calendar_symbol_rows,overlap_event_symbol_rows,overlap_date_rows,overlap_symbol_rows,overlap_dates,overlap_event_types,sbin_overlap_date_rows,sbin_overlap_dates,interpretation
+real_data_sample\l2_multiday_panel,7,32,50,32,96,3,32,2026-07-14;2026-07-15;2026-07-16,synthetic_calendar_rbi_policy_like,3,2026-07-14;2026-07-15;2026-07-16,real L2 overlaps event-catalyst calendar
+derived_real_l2_receive_flow_features_phase176,7,32,50,32,96,3,32,2026-07-14;2026-07-15;2026-07-16,synthetic_calendar_rbi_policy_like,3,2026-07-14;2026-07-15;2026-07-16,real L2 overlaps event-catalyst calendar

@@ -1,0 +1,5 @@
+failure_or_limit,observed_value,interpretation
+passive_aware_charter_not_primary_rescue,passive_above12=0;passive_acceptance=0,Passive-aware execution with fill/adverse/flatten penalties did not produce 2x-cost above-12 rows; keep it diagnostic.
+synthetic_holdout_not_deployable_profitability,1,"The holdout partition is synthetic/deterministic from the generated feature matrix, so it cannot by itself prove live profitability."
+primary_route_survived_but_requires_replication,8,"Primary taker route survived Phase338, so the next honest step is controlled replication precommit rather than paper/live promotion."
+do_not_tune_same_holdout,closed,"Do not add filters, weaken cost stress, lower event floor, or reuse holdout outcomes for tuning."

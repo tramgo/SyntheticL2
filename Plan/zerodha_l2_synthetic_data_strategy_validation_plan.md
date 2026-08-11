@@ -15533,6 +15533,79 @@ Current Phase149 evidence after Phase338:
 - `synthetic_strategy_discovery` status: `cost_stress_holdout_validation_interpretation_open`;
 - current next action: `run_phase339_cost_stress_holdout_validation_interpretation_no_replay`.
 
+## 24.166 Phase339 Holdout Interpretation and Official Catalyst Calendar Requirement Completed
+
+Phase339 interprets the Phase338 synthetic holdout survivor and answers the live-days question: yes, the survivor should be tested on live/real L2 days, but catalyst-grounded validation must not rely only on the generated `synthetic_calendar_rbi_policy_like` label. It must acquire and align official exchange/regulator catalyst calendars first.
+
+Official catalyst source requirement:
+
+- NSE corporate filings/announcements should be used for listed-company announcements;
+- NSE financial-results filings should be used for results catalysts;
+- SEBI corporate filings index should be used as a regulator-level routing/check source;
+- BSE corporate filings/announcements should be used as a cross-check where available;
+- the current Phase330 event label is synthetic and is not enough to claim an SBI-specific or company-specific catalyst context.
+
+Phase339 survivor evidence:
+
+- Phase338 primary taker route survived synthetic holdout: `1`;
+- survivor rows preserved: `8`;
+- best survivor: `P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy`;
+- best survivor annualized fixed-capital diagnostic: `20.829286%`;
+- best survivor scheduled events: `34`;
+- best survivor positive symbol-date cells: `30`;
+- passive-aware route status: `diagnostic_failed_not_primary_rescue`;
+- passive-aware 2x-cost acceptance rows: `0`;
+- synthetic holdout boundary: `not_deployable_profitability`.
+
+Real/event overlap audit:
+
+- local real L2 roots checked: `real_data_sample/l2_multiday_panel` and `derived_real_l2_receive_flow_features_phase176`;
+- local real/event overlap dates: `2026-07-14`; `2026-07-15`; `2026-07-16`;
+- overlap symbols: `32`;
+- SBIN overlap dates: `3`;
+- overlap event type currently found: `synthetic_calendar_rbi_policy_like`.
+
+Interpretation:
+
+- The local real data does overlap three synthetic event-calendar dates and includes SBIN.
+- That proves date/symbol overlap, not official catalyst validity.
+- Therefore Phase340 must acquire official NSE/SEBI/BSE catalyst calendars and align them to the local/Azure real L2 dates before any real-day survivor diagnostic is treated as catalyst-grounded.
+- No paper/live acceptance, replay, promotion or deployable profitability claim opens here.
+
+Phase339 hard gates:
+
+- Phase338 complete: pass;
+- Phase338 gates passed: pass;
+- primary survivors present: pass;
+- passive status recorded: pass;
+- synthetic boundary recorded: pass;
+- Phase340 official catalyst/real-day contract present: pass;
+- real/event date overlap present: pass;
+- SBIN event-date overlap present: pass;
+- full depth preserved: pass;
+- no lookahead or L1-only: pass;
+- boundaries closed: pass;
+- hard gates: `11/11`.
+
+Phase339 outputs:
+
+- `outputs/phase339/phase339_acceptance_summary.csv`;
+- `outputs/phase339/phase339_survivor_ledger.csv`;
+- `outputs/phase339/phase339_failure_and_limit_ledger.csv`;
+- `outputs/phase339/phase339_decision_ledger.csv`;
+- `outputs/phase339/phase339_phase340_real_day_diagnostic_contract.csv`;
+- `outputs/phase339/phase339_real_event_overlap_ledger.csv`;
+- `outputs/phase339/phase339_gate_evaluation.csv`;
+- `outputs/phase339/phase339_cost_stress_holdout_validation_interpretation_report.md`;
+- `outputs/phase339/phase339_cost_stress_holdout_validation_interpretation_manifest.json`.
+
+Current Phase149 evidence after Phase339:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `official_catalyst_calendar_acquisition_precommit_open`;
+- `synthetic_strategy_discovery` status: `official_catalyst_calendar_acquisition_precommit_open`;
+- current next action: `run_phase340_official_catalyst_calendar_acquisition_precommit_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P339_PHASE338_COMPLETE,True,1,1,hard
+P339_PHASE338_GATES_PASSED,True,12/12,all,hard
+P339_PRIMARY_SURVIVORS_PRESENT,True,phase338=8;ledger=8,>0,hard
+P339_PASSIVE_STATUS_RECORDED,True,0,0,hard
+P339_SYNTHETIC_BOUNDARY_RECORDED,True,recorded,recorded,hard
+P339_REAL_DAY_CONTRACT_PRESENT,True,26,>=20,hard
+P339_REAL_EVENT_DATE_OVERLAP_PRESENT,True,3,>0,hard
+P339_SBIN_EVENT_DATE_OVERLAP_PRESENT,True,3,>0,hard
+P339_FULL_DEPTH_PRESERVED,True,top5=1;l2_l5=1,both=1,hard
+P339_NO_LOOKAHEAD_OR_L1_ONLY,True,l1=0;lookahead=0,both=0,hard
+P339_BOUNDARIES_CLOSED,True,replay=0;claim=0;contract_claim=0,all_zero,hard

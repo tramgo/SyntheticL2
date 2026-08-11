@@ -1,0 +1,27 @@
+contract_id,contract_value,description
+input_survivors,outputs/phase339/phase339_survivor_ledger.csv,Use only Phase339-preserved Phase338 primary 2x-cost survivors.
+survivor_rows,8,Survivors cannot be expanded by post-hoc search.
+official_catalyst_calendar_required,1,Do not rely on synthetic event labels for catalyst-grounded real-day validation.
+official_sources,NSE corporate announcements;NSE financial results;SEBI corporate filings index;BSE corporate filings as cross-check,Use exchange/regulator-published filings and announcements as the catalyst calendar source.
+real_data_root,real_data_sample/l2_multiday_panel,Use already-downloaded local real Zerodha WebSocket top-five L2 after official catalyst dates are aligned.
+derived_real_feature_root,derived_real_l2_receive_flow_features_phase176,Use local Phase176 real receive-flow features for the first live-day compatibility diagnostic.
+local_real_dates_available,7,Current local imported real panel has seven dates and thirty-two symbols.
+real_day_goal,official_catalyst_aligned_schema_compatibility_and_survivor_directional_diagnostic,Test whether the synthetic survivor has an honest real-day analogue only after official catalyst-date alignment; do not claim direct strategy validation if schemas differ.
+schema_gap_must_be_logged,1,Phase340 must explicitly log synthetic Phase330 vs real Phase176 schema gaps.
+annualized_threshold_pct,12.0,Do not lower >12% annualized threshold.
+robust_event_floor,30,Do not accept sparse sub-30-event pockets.
+minimum_positive_symbol_date_cells,2,Breadth must not be single symbol/date.
+cost_profile_required,zerodha_2x_all_in_cost_proxy,2x Zerodha all-in cost stress remains required.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday cost formula.
+fixed_capital_denominator,required,"Annualized return remains fixed-capital, not unlimited capital."
+full_top_five_depth_required,1,Top-five market-by-price depth remains core.
+levels_2_to_5_materiality_required,1,Levels 2-5/beyond-L1 materiality remains required.
+l1_only_allowed,0,No L1-only variants.
+net_edge_live_mask_allowed,0,No future outcome/net-edge live masks.
+passive_aware_status,diagnostic_failed_not_primary_rescue,Do not use passive-aware diagnostics to rescue acceptance.
+holdout_tuning_allowed,0,No tuning on Phase338 holdout outcomes.
+strategy_replay_allowed,0,Phase339 is interpretation only.
+strategy_promotion_allowed,0,No promotion.
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.
+deployable_profitability_claim_allowed,0,No deployable profitability claim.
+phase340_precommit_allowed_next,1,"If gates pass, Phase340 may precommit official catalyst calendar acquisition and alignment."
