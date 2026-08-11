@@ -18266,6 +18266,67 @@ Current next best action after Phase383:
 
 - Download the `2026-07-27` full-universe real L2 day, refresh official-catalyst eligibility, and rerun the same frozen reversal retest only after the expanded evidence is verified.
 
+## 24.211 Phase384 Next-Day 2026-07-27 Real L2 Download Completed
+
+Phase384 executes the Phase383 event-density repair download. It adds the next no-lookahead real-L2 target day, `2026-07-27`, without changing the frozen strategy, relaxing parameters, increasing capital/capacity, or running a strategy retest.
+
+Phase384 target selection and discovery:
+
+- source precommit: Phase383;
+- target trade date: `2026-07-27`;
+- pending post-close event rows unlocked by the target: `13`;
+- Azure Files share used: `ctrade1-l2-data`;
+- source prefix: `raw_l2/trade_date=2026-07-27/exchange=NSE`;
+- local destination: `real_data_sample/l2_unseen_validation/trade_date=2026-07-27/exchange=NSE`;
+- dry-run discovered files: `5,665`;
+- dry-run discovered symbols: `32`.
+
+Phase384 final download and clean resume result:
+
+- discovered file rows: `5,665`;
+- download manifest rows: `5,665`;
+- existing/skipped rows on clean resume: `5,662`;
+- newly downloaded rows on clean resume: `3`;
+- per-file error rows after clean resume: `0`;
+- local symbols after: `32`;
+- local parquet files after: `5,665`;
+- local bytes after: `198,041,216`;
+- local full universe after: `1`.
+
+Phase384 interpretation:
+
+- The target day is materially smaller than the prior full days, which likely reflects a shorter collector window.
+- The day still has all `32` symbols and zero missing files after resume, so it is valid evidence for a no-lookahead refresh.
+- No strategy retest, promotion, paper/live action, or deployable profitability claim is opened in this phase.
+
+Phase384 hard gates:
+
+- Phase383 precommit present: pass;
+- target selected: pass, `2026-07-27`;
+- discovery recorded: pass, `5,665` files;
+- local full universe verified: pass, `32` symbols;
+- no secret material recorded: pass;
+- no retest or promotion: pass.
+
+Phase384 outputs:
+
+- `scripts/run_phase384_next_day_20260727_downloader.py`;
+- `src/synthetic_l2/phase384_next_day_20260727_downloader.py`;
+- `outputs/phase384/phase384_acceptance_summary.csv`;
+- `outputs/phase384/phase384_access_ledger.csv`;
+- `outputs/phase384/phase384_discovered_file_manifest.csv`;
+- `outputs/phase384/phase384_download_manifest.csv`;
+- `outputs/phase384/phase384_local_inventory_before.csv`;
+- `outputs/phase384/phase384_local_inventory_after.csv`;
+- `outputs/phase384/phase384_gate_evaluation.csv`;
+- `outputs/phase384/phase384_pending_post_close_events.csv`;
+- `outputs/phase384/phase384_next_day_20260727_downloader_report.md`;
+- `outputs/phase384/phase384_next_day_20260727_downloader_manifest.json`.
+
+Current next best action after Phase384:
+
+- Refresh official-catalyst eligibility with `2026-07-27` included, then rerun the same frozen reversal retest without search.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

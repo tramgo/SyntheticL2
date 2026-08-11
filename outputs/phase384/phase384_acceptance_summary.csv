@@ -1,0 +1,25 @@
+metric,value,description
+phase384_next_day_20260727_downloader_complete,1,Phase384 complete
+phase384_target_trade_date,2026-07-27,Phase383 target date
+phase384_pending_post_close_event_rows,13,Known pending rows unlocked by target
+phase384_sas_env_present,1,Supported SAS env present
+phase384_truststore_injected,1,Truststore injected
+phase384_dry_run,0,Dry-run mode
+phase384_workers,128,Concurrent workers
+phase384_discovered_file_rows,5665,Discovered target file rows
+phase384_discovered_symbols,32,Discovered target symbols
+phase384_download_manifest_rows,5665,Download manifest rows
+phase384_existing_file_rows,5662,Existing/skipped file rows
+phase384_downloaded_file_rows,3,Downloaded file rows
+phase384_error_file_rows,0,Per-file error rows
+phase384_local_symbols_after,32,Local symbols after
+phase384_local_parquet_files_after,5665,Local parquet files after
+phase384_local_bytes_after,198041216,Local bytes after
+phase384_local_full_universe_after,1,Full universe local after
+phase384_strategy_retest_executed_now,0,No retest in this phase
+phase384_strategy_promotion_allowed,0,No promotion
+phase384_paper_or_live_acceptance_allowed,0,No paper/live
+phase384_deployable_profitability_claim_allowed,0,No deployable claim
+phase384_hard_gate_pass_rows,6,Passed hard gates
+phase384_hard_gate_rows,6,Hard gates
+phase384_next_best_action,refresh_catalyst_event_count_after_20260727_then_rerun_frozen_retest_no_search,Recommended next action
