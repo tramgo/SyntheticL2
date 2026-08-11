@@ -1,0 +1,16 @@
+metric,value,description
+phase348_official_catalyst_event_count_expansion_execution_attempted,1,Phase348 execution attempted
+phase348_phase347_complete,1,Phase347 complete
+phase348_candidate_grid_rows,10,Candidate grid rows
+phase348_additional_candidate_trade_rows_needed,11,Additional candidate trades needed
+phase348_local_real_l2_dates,7,Local real L2 dates available
+phase348_targeted_download_access_available,0,Targeted storage access available now
+phase348_event_count_expansion_executed,0,Event-count expansion executed
+phase348_new_real_l2_dates_added,0,New local real L2 dates added
+phase348_new_candidate_trade_rows_added,0,New candidate trade rows added
+phase348_strategy_promotion_allowed,0,No promotion
+phase348_paper_or_live_acceptance_allowed,0,No paper/live
+phase348_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase348_hard_gate_pass_rows,6,Passed hard gates
+phase348_hard_gate_rows,7,Hard gates
+phase348_next_best_action,run_phase349_storage_access_repair_or_sas_targeted_download_no_paper_live,Recommended next action

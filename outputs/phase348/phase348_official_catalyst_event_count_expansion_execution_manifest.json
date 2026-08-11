@@ -1,0 +1,29 @@
+{
+  "generated_at_utc": "2026-08-11T08:50:20.049490+00:00",
+  "next_action": "run_phase349_storage_access_repair_or_sas_targeted_download_no_paper_live",
+  "output_dir": "outputs\\phase348",
+  "outputs": {
+    "access": "outputs\\phase348\\phase348_storage_access_ledger.csv",
+    "execution": "outputs\\phase348\\phase348_execution_attempt_ledger.csv",
+    "gates": "outputs\\phase348\\phase348_gate_evaluation.csv",
+    "manifest": "outputs\\phase348\\phase348_official_catalyst_event_count_expansion_execution_manifest.json",
+    "report": "outputs\\phase348\\phase348_official_catalyst_event_count_expansion_execution_report.md",
+    "summary": "outputs\\phase348\\phase348_acceptance_summary.csv"
+  },
+  "phase": 348,
+  "phase347_dir": "outputs\\phase347",
+  "real_root": "real_data_sample\\l2_multiday_panel",
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "98aa9469e83659a7fd18717d9b2819140614c75934278a7c6161fd658cab740f",
+    "cost_model_version": "not_applicable_no_execution_costs",
+    "creation_timestamp": "2026-08-11T08:50:20.049490+00:00",
+    "generator_version": "c3f22bc20b9d682e2d740d89407d1a1c9e145a19",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  }
+}

@@ -16087,6 +16087,59 @@ Current Phase149 evidence after Phase347:
 - `synthetic_strategy_discovery` status: `official_catalyst_event_count_expansion_execution_open`;
 - current next action: `run_phase348_official_catalyst_event_count_expansion_execution_no_paper_live`.
 
+## 24.175 Phase348 Official-Catalyst Event-Count Expansion Execution Attempt Recorded
+
+Phase348 attempted to execute the Phase347 targeted event-count expansion, but it did not add new real L2 data because no working targeted storage route was available in the current shell. This is an access/download blocker for the expansion step, not a strategy result and not a profitability conclusion.
+
+Phase348 execution evidence:
+
+- Phase347 complete: `1`;
+- candidate grid rows: `10`;
+- additional candidate trade rows still needed: `11`;
+- local real L2 dates available: `7`;
+- targeted download access available now: `0`;
+- event-count expansion executed: `0`;
+- new real L2 dates added: `0`;
+- new candidate trade rows added: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase348 access ledger:
+
+- local real L2 panel exists, but it contains only the existing local dates;
+- Azure CLI `--auth-mode login` route failed with local TLS certificate verification;
+- `azcopy` is not available on PATH;
+- no Azure SAS/storage variables were detected in workspace `.env`;
+- no secret material was written to Phase348 outputs.
+
+Phase348 gate evidence:
+
+- Phase347 complete: pass;
+- candidate grid available: pass, `10`;
+- expansion still needed: pass, `11`;
+- storage access routes recorded: pass, `4`;
+- targeted download access available: fail, `azure_cli_login=0;azcopy=0`;
+- no secret material recorded: pass;
+- no promotion, paper/live or profit claim: pass;
+- hard gates: `6/7`.
+
+Phase348 outputs:
+
+- `outputs/phase348/phase348_acceptance_summary.csv`;
+- `outputs/phase348/phase348_storage_access_ledger.csv`;
+- `outputs/phase348/phase348_execution_attempt_ledger.csv`;
+- `outputs/phase348/phase348_gate_evaluation.csv`;
+- `outputs/phase348/phase348_official_catalyst_event_count_expansion_execution_report.md`;
+- `outputs/phase348/phase348_official_catalyst_event_count_expansion_execution_manifest.json`.
+
+Current Phase149 evidence after Phase348:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `official_catalyst_event_count_expansion_storage_access_repair_open`;
+- `synthetic_strategy_discovery` status: `official_catalyst_event_count_expansion_storage_access_repair_open`;
+- current next action: `run_phase349_storage_access_repair_or_sas_targeted_download_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
