@@ -1,0 +1,16 @@
+field,frozen_value,description
+family_id,P357_FULL_DEPTH_MARKET_NEUTRAL_FADE,Frozen family identifier
+source_phase,Phase356,Derived from Phase356 controls that dominated the Phase355 frozen top-five clue
+primary_proxy,NIFTYBEES,No proxy tuning before validation
+primary_lookback_seconds,900,No lookback tuning before validation
+market_context,abs(NIFTYBEES 900s pre-entry return) <= 1.0 bps,Market-neutral context
+primary_side_rule,fade depth-levels-2-5 imbalance,Full-depth primary side rule
+guard_rule,top-five fade allowed only with non-contradictory depth-levels-2-5 context,Full-depth guard rule
+scope,capacity-selected official-catalyst real L2 events,Same event scope as Phase354/356 clue
+cost_profile,zerodha_2x_all_in_cost_proxy,Pinned cost stress
+initial_capital_inr,250000,Fixed-capital annualization denominator
+current_best_scenario,P356_CONTROL_DEPTH_2_5_FADE_VARIANT,Best full-depth Phase356 row
+current_best_trade_rows,12,Current sparse count
+current_best_annualized_pct,26.235235651058197,Current diagnostic annualized return
+current_best_net_pnl_inr,1821.8913646568187,Current diagnostic net PnL
+top5_reference_annualized_pct,24.505496732765117,Reference top-five frozen clue

@@ -16657,6 +16657,66 @@ Current next best action after Phase356:
 - Restore Phase350 real-date expansion for unseen event count; or
 - precommit a Phase357 full-depth market-neutral fade-family validation contract that freezes the depth-levels-2-5 interpretation without weakening event-floor or cost gates.
 
+## 24.184 Phase357 Full-Depth Market-Neutral Fade Precommit Completed
+
+Phase357 froze the Phase356 interpretation that the depth-levels-2-5 market-neutral fade/guard variants outperformed the earlier top-five-only frozen clue. This is a precommit only, not a validation result and not a profitability claim.
+
+Phase357 frozen family:
+
+- family id: `P357_FULL_DEPTH_MARKET_NEUTRAL_FADE`;
+- source phase: `Phase356`;
+- primary proxy: `NIFTYBEES`;
+- primary lookback: `900` seconds;
+- market context: `abs(NIFTYBEES 900s pre-entry return) <= 1.0 bps`;
+- primary side rule: fade depth-levels-2-5 imbalance;
+- guard rule: top-five fade allowed only with non-contradictory depth-levels-2-5 context;
+- scope: capacity-selected official-catalyst real L2 events;
+- cost profile: `zerodha_2x_all_in_cost_proxy`;
+- fixed capital: `250,000` INR;
+- current best full-depth scenario: `P356_CONTROL_DEPTH_2_5_FADE_VARIANT`;
+- current best full-depth trade rows: `12`;
+- current best full-depth net P&L: `1821.8913646568187` INR;
+- current best full-depth annualized return: `26.235235651058197%`;
+- top-five reference annualized return: `24.505496732765117%`.
+
+Phase357 validation contract:
+
+- no post-hoc tuning of proxy, lookback, market-neutral threshold, event scope, costs or capital denominator;
+- depth-levels-2-5 fade/guard is primary and the top-five-only clue is reference, not primary;
+- at least `30` events/trades are required before acceptance;
+- annualized return must remain above `12.0%` at cost200 fixed-capital scoring;
+- breadth must include at least two positive symbols and two positive symbol/date cells;
+- controls must include side flip, deterministic alternate side, proxy swap, lookback swap, top-five-only reference and depth-guard ablation;
+- if the current panel remains below event floor, restore Phase350 real-date expansion before any acceptance decision;
+- no promotion, paper/live acceptance or deployable profitability claim.
+
+Phase357 hard gates:
+
+- Phase356 complete: pass;
+- full-depth dominance recognized: pass;
+- sparse clue recognized: pass, `trade_rows=12`;
+- validation contract present: pass, `8` rows;
+- control catalog present: pass, `6` rows;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase357 outputs:
+
+- `scripts/run_phase357_full_depth_market_neutral_fade_precommit.py`;
+- `src/synthetic_l2/phase357_full_depth_market_neutral_fade_precommit.py`;
+- `outputs/phase357/phase357_acceptance_summary.csv`;
+- `outputs/phase357/phase357_family_contract.csv`;
+- `outputs/phase357/phase357_validation_contract.csv`;
+- `outputs/phase357/phase357_control_catalog.csv`;
+- `outputs/phase357/phase357_boundary_ledger.csv`;
+- `outputs/phase357/phase357_gate_evaluation.csv`;
+- `outputs/phase357/phase357_full_depth_market_neutral_fade_precommit_report.md`;
+- `outputs/phase357/phase357_full_depth_market_neutral_fade_precommit_manifest.json`.
+
+Current next best action after Phase357:
+
+- Run Phase358 execution of the precommitted full-depth market-neutral fade family on the current panel; and
+- restore Phase350 real-date expansion for unseen event count before any acceptance claim if Phase358 remains below the event floor.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

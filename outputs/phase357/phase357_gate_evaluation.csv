@@ -1,0 +1,7 @@
+gate_id,passed,evidence
+P357_PHASE356_COMPLETE,1,Phase356 evidence present
+P357_FULL_DEPTH_DOMINANCE_RECOGNIZED,1,Depth variant beats top-five clue
+P357_SPARSE_RECOGNIZED,1,trade_rows=12
+P357_CONTRACT_PRESENT,1,contract_rows=8
+P357_CONTROLS_PRESENT,1,control_rows=6
+P357_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

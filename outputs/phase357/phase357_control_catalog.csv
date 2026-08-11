@@ -1,0 +1,7 @@
+control_id,description,required_interpretation
+side_flip,Flip the full-depth fade side.,must_be_negative_or_weaker
+deterministic_alternate_side,Alternate long/short over the same selected events.,must_be_negative_or_weaker
+proxy_swap_bankbees,Use BANKBEES under same market-neutral logic.,robustness_control
+lookback_swap_300s,Use 300s NIFTYBEES lookback.,robustness_control
+top5_only_reference,Original Phase355 top-five fade clue.,reference_not_primary
+depth_guard_ablation,Remove or invert depth-levels-2-5 guard.,must_not_improve_cleanly

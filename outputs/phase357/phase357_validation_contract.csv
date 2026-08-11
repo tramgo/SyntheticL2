@@ -1,0 +1,9 @@
+contract_id,requirement,hard_gate
+P357_NO_POST_HOC_TUNING,"No change to proxy, lookback, market-neutral threshold, event scope, costs, or capital denominator.",1
+P357_FULL_DEPTH_PRIMARY,"Depth-levels-2-5 fade/guard is primary; top-five-only clue is reference, not primary.",1
+P357_EVENT_FLOOR,At least 30 events/trades required before acceptance.,1
+P357_ABOVE12,Annualized return must remain > 12.0% at cost200 fixed capital.,1
+P357_BREADTH,At least two positive symbols and two positive symbol/date cells.,1
+P357_CONTROLS,"Side flip, deterministic alternate side, proxy swap, lookback swap, top-five-only reference, and depth-guard ablation required.",1
+P357_UNSEEN_REAL_DATES_FIRST,"If current panel remains below event floor, restore Phase350 real-date expansion before acceptance.",1
+P357_NO_PROMOTION_PAPER_LIVE,"No strategy promotion, paper/live acceptance or deployable profitability claim.",1

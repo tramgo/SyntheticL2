@@ -1,0 +1,6 @@
+boundary,value,description
+current_family_is_sparse_clue,1,Best full-depth family row remains below event floor
+strategy_replay_allowed,0,No replay unlock
+strategy_promotion_allowed,0,No promotion
+paper_or_live_acceptance_allowed,0,No paper/live
+deployable_profitability_claim_allowed,0,No deployable claim
