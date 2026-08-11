@@ -1,0 +1,7 @@
+gate_id,passed,evidence
+P362_MATERIAL_NEW_THESIS,1,continuation_after_liquidity_replenishment_not_fade
+P362_SCENARIO_GRID_PRESENT,1,grid_rows=16
+P362_FULL_DEPTH_REQUIRED,1,levels 1-5 with levels 2-5 materiality
+P362_COST200_FIXED_CAPITAL_REQUIRED,1,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14
+P362_NO_SAME_FAMILY_RESCUE,1,fade branch remains closed
+P362_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

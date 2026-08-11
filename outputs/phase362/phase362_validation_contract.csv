@@ -1,0 +1,13 @@
+contract_id,contract_value,description
+phase361_branch_closed,1,The prior full-depth fade branch must be closed for acceptance before this new thesis runs.
+materially_new_thesis_required,1,"This is continuation after catalyst absorption, not same-family fade rescue."
+input_real_l2_roots,real_data_sample/l2_multiday_panel;real_data_sample/l2_unseen_validation,Use the current local official-catalyst real L2 panels.
+input_work_orders,outputs/phase341/phase341_phase342_execution_work_order.csv;outputs/phase359/phase359_phase360_execution_work_order.csv,Use existing official-catalyst no-lookahead work orders.
+full_top_five_depth_required,1,"Use bid/ask price, quantity and order-count levels 1-5."
+levels_2_to_5_materiality_required,1,Levels 2-5 determine the support filter; no L1-only variant is allowed.
+liquidity_replenishment_required,1,Displayed top-five quantity must replenish after catalyst start.
+cost200_fixed_capital_required,1,Zerodha cost200 and fixed INR 250000 capital denominator are required.
+annualized_threshold_pct,12.0,Keep user profitability threshold.
+robust_event_floor,30,Sparse fewer-than-30 trade outcomes are discovery only.
+same_family_parameter_rescue_allowed,0,Do not reopen Phase357/358 fade via hidden filters.
+paper_live_or_profit_claim_allowed,0,No paper/live acceptance or deployable profitability claim.

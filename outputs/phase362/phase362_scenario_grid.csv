@@ -1,0 +1,17 @@
+scenario_grid_id,decision_delay_seconds,horizon_seconds,min_abs_impulse_bps,min_abs_l2_l5_imbalance,min_replenishment_ratio,top5_noncontradiction_required,side_policy,control_side_policy
+P362_D60_I2p5_D0p15_R0p0,60,900,2.5,0.15,0.0,1,impulse_continuation,impulse_reversal
+P362_D60_I2p5_D0p15_R0p1,60,900,2.5,0.15,0.1,1,impulse_continuation,impulse_reversal
+P362_D60_I2p5_D0p25_R0p0,60,900,2.5,0.25,0.0,1,impulse_continuation,impulse_reversal
+P362_D60_I2p5_D0p25_R0p1,60,900,2.5,0.25,0.1,1,impulse_continuation,impulse_reversal
+P362_D60_I5p0_D0p15_R0p0,60,900,5.0,0.15,0.0,1,impulse_continuation,impulse_reversal
+P362_D60_I5p0_D0p15_R0p1,60,900,5.0,0.15,0.1,1,impulse_continuation,impulse_reversal
+P362_D60_I5p0_D0p25_R0p0,60,900,5.0,0.25,0.0,1,impulse_continuation,impulse_reversal
+P362_D60_I5p0_D0p25_R0p1,60,900,5.0,0.25,0.1,1,impulse_continuation,impulse_reversal
+P362_D120_I2p5_D0p15_R0p0,120,900,2.5,0.15,0.0,1,impulse_continuation,impulse_reversal
+P362_D120_I2p5_D0p15_R0p1,120,900,2.5,0.15,0.1,1,impulse_continuation,impulse_reversal
+P362_D120_I2p5_D0p25_R0p0,120,900,2.5,0.25,0.0,1,impulse_continuation,impulse_reversal
+P362_D120_I2p5_D0p25_R0p1,120,900,2.5,0.25,0.1,1,impulse_continuation,impulse_reversal
+P362_D120_I5p0_D0p15_R0p0,120,900,5.0,0.15,0.0,1,impulse_continuation,impulse_reversal
+P362_D120_I5p0_D0p15_R0p1,120,900,5.0,0.15,0.1,1,impulse_continuation,impulse_reversal
+P362_D120_I5p0_D0p25_R0p0,120,900,5.0,0.25,0.0,1,impulse_continuation,impulse_reversal
+P362_D120_I5p0_D0p25_R0p1,120,900,5.0,0.25,0.1,1,impulse_continuation,impulse_reversal

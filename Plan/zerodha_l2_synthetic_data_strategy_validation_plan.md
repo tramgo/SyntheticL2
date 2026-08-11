@@ -16951,6 +16951,54 @@ Current next best action after Phase361:
 - Do not tune or rescue the same full-depth market-neutral fade family with additional filters.
 - Either precommit a materially new real-L2 thesis, or use more real dates only as falsification evidence for the closed branch.
 
+## 24.189 Phase362 Liquidity-Replenished Catalyst Impulse Precommit Completed
+
+Phase362 precommits a materially new real-L2 thesis after Phase361 closed the full-depth fade branch for acceptance. This route tests post-catalyst impulse continuation only after displayed liquidity replenishes and levels 2-5 support the impulse direction.
+
+Phase362 thesis:
+
+- thesis id: `P362_LIQUIDITY_REPLENISHED_CATALYST_IMPULSE_CONTINUATION`;
+- material difference from closed fade: continuation after catalyst absorption, not fading top-five or depth-levels-2-5 imbalance;
+- signal timing: wait `60s` or `120s` after the official catalyst diagnostic start;
+- side rule: continue the signed mid-price impulse from start to decision tick;
+- full-depth rule: levels 2-5 imbalance must support the impulse direction and top-five imbalance must not contradict it;
+- liquidity rule: top-five displayed quantity at decision must be at least as large as at start, with stressed variants requiring at least `10%` replenishment;
+- execution rule: marketable diagnostic entry/exit with Zerodha cost200 fixed-capital scoring.
+
+Phase362 scenario grid:
+
+- grid rows: `16`;
+- decision delays: `60`, `120` seconds;
+- impulse thresholds: `2.5`, `5.0` bps;
+- depth-levels-2-5 imbalance thresholds: `0.15`, `0.25`;
+- replenishment thresholds: `0.0`, `0.10`;
+- continuation side policy plus impulse-reversal control side policy.
+
+Phase362 gates:
+
+- materially new thesis: pass;
+- scenario grid present: pass, `16`;
+- full top-five depth and levels 2-5 materiality required: pass;
+- cost200 fixed-capital required: pass;
+- same-family fade rescue forbidden: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase362 outputs:
+
+- `scripts/run_phase362_liquidity_replenished_catalyst_impulse_precommit.py`;
+- `src/synthetic_l2/phase362_liquidity_replenished_catalyst_impulse_precommit.py`;
+- `outputs/phase362/phase362_acceptance_summary.csv`;
+- `outputs/phase362/phase362_thesis_contract.csv`;
+- `outputs/phase362/phase362_scenario_grid.csv`;
+- `outputs/phase362/phase362_validation_contract.csv`;
+- `outputs/phase362/phase362_gate_evaluation.csv`;
+- `outputs/phase362/phase362_liquidity_replenished_catalyst_impulse_precommit_report.md`;
+- `outputs/phase362/phase362_liquidity_replenished_catalyst_impulse_precommit_manifest.json`.
+
+Current next best action after Phase362:
+
+- Run Phase363 liquidity-replenished catalyst impulse diagnostic on the current local official-catalyst real-L2 work orders, with no paper/live or deployable profitability claim.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

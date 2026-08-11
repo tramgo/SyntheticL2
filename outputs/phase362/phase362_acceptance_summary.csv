@@ -1,0 +1,12 @@
+metric,value,description
+phase362_liquidity_replenished_catalyst_impulse_precommit_complete,1,Phase362 precommit completed
+phase362_thesis_id,P362_LIQUIDITY_REPLENISHED_CATALYST_IMPULSE_CONTINUATION,Precommitted thesis
+phase362_scenario_grid_rows,16,Scenario grid rows
+phase362_materially_new_thesis,1,Not same-family fade rescue
+phase362_same_family_parameter_rescue_allowed,0,No rescue of closed fade branch
+phase362_strategy_promotion_allowed,0,No promotion
+phase362_paper_or_live_acceptance_allowed,0,No paper/live
+phase362_deployable_profitability_claim_allowed,0,No deployable claim
+phase362_hard_gate_pass_rows,6,Passed hard gates
+phase362_hard_gate_rows,6,Hard gates
+phase362_next_best_action,run_phase363_liquidity_replenished_catalyst_impulse_diagnostic_no_paper_live,Recommended next milestone
