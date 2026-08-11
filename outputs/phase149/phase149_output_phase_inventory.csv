@@ -271,6 +271,7 @@ phase,output_dir,output_exists,file_count,acceptance_files,manifest_files,is_smo
 335,outputs\phase335,True,9,outputs\phase335\phase335_acceptance_summary.csv,outputs\phase335\phase335_cost_stress_margin_redesign_training_only_manifest.json,False
 336,outputs\phase336,True,7,outputs\phase336\phase336_acceptance_summary.csv,outputs\phase336\phase336_cost_stress_margin_redesign_interpretation_manifest.json,False
 337,outputs\phase337,True,8,outputs\phase337\phase337_acceptance_summary.csv,outputs\phase337\phase337_cost_stress_holdout_validation_precommit_manifest.json,False
+338,outputs\phase338,True,10,outputs\phase338\phase338_acceptance_summary.csv,outputs\phase338\phase338_cost_stress_holdout_validation_execution_manifest.json,False
 34,outputs\phase34,True,6,,outputs\phase34\phase34_real_data_multiday_readiness_manifest.json,False
 35,outputs\phase35,True,6,,outputs\phase35\phase35_stage_a2_computable_diagnostics_manifest.json,False
 36,outputs\phase36,True,9,,outputs\phase36\phase36_collector_instrumentation_package_manifest.json,False

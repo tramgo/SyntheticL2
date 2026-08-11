@@ -1,0 +1,3 @@
+holdout_partition,event_rows,row_count,symbol_rows,hash_seed,holdout_bucket_cutoff,partition_note
+phase338_hash_holdout,36,1152,32,338,50,deterministic event-hash synthetic holdout partition; not paper/live acceptance
+phase338_hash_reference,14,448,32,338,50,deterministic event-hash synthetic holdout partition; not paper/live acceptance

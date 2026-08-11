@@ -1,0 +1,9 @@
+control_id,value,description
+base_top_scenario,P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP100000_NOT50000_CONC2_zerodha_2x_all_in_cost_proxy,Top primary taker scenario under base Zerodha costs
+cost200_top_scenario,P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy,Top primary taker scenario under 2x Zerodha costs
+base_top_strategy_shape,P334_LANE_D_HORIZON_AND_EXIT_MARGIN|900|0.75|1.0|0.5|2|long_only|taker_entry_taker_exit,Top primary taker structural strategy shape under base Zerodha costs
+cost200_top_strategy_shape,P334_LANE_D_HORIZON_AND_EXIT_MARGIN|900|0.75|1.0|0.5|2|long_only|taker_entry_taker_exit,Top primary taker structural strategy shape under 2x Zerodha costs
+cost_rank_top_stable,1,Top structural strategy shape stable from base to 2x cost
+cost200_control_pass_rows,32,2x-cost primary rows beating side-flip and random-side controls
+cost200_above12_rows,8,2x-cost primary rows above 12%
+cost200_holdout_acceptance_rows,8,2x-cost primary holdout acceptance rows

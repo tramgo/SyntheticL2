@@ -1,0 +1,8 @@
+diagnostic_id,value,description
+passive_aware_rows,64.0,Passive-aware diagnostic rows
+passive_aware_cost200_rows,32.0,Passive-aware 2x-cost diagnostic rows
+passive_aware_cost200_above12_rows,0.0,Passive-aware 2x-cost rows above 12%
+passive_aware_cost200_acceptance_rows,0.0,Passive-aware rows are diagnostic and not primary acceptance
+passive_aware_avg_fill_probability,0.47899114188253783,Average modeled passive fill probability
+passive_aware_avg_adverse_selection_bps,3.9851533033133393,Average modeled adverse selection penalty
+maker_rebate_assumed,0.0,No maker rebate assumed

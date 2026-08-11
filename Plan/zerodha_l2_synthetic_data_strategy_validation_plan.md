@@ -15456,6 +15456,83 @@ Current Phase149 evidence after Phase337:
 - `synthetic_strategy_discovery` status: `cost_stress_holdout_validation_execution_open`;
 - current next action: `run_phase338_cost_stress_holdout_validation_execution_no_replay`.
 
+## 24.165 Phase338 Cost-Stress Holdout Validation Execution Completed
+
+Phase338 executes the Phase337 frozen holdout contract on the current synthetic expanded feature matrix. It uses a deterministic event-hash synthetic holdout partition. It is not paper/live acceptance and does not claim deployable profitability.
+
+Execution scope:
+
+- frozen candidate rows evaluated: `32`;
+- holdout partition method: `event_hash_seed_338_bucket_lt_50`;
+- synthetic holdout event rows: `36`;
+- scenario rows evaluated: `128`;
+- primary 2x-cost rows: `32`;
+- passive-aware 2x-cost diagnostic rows: `32`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- required cost profile: `zerodha_2x_all_in_cost_proxy`;
+- fixed-capital denominator preserved.
+
+Primary taker holdout result:
+
+- primary 2x-cost holdout acceptance rows: `8`;
+- best holdout candidate: `P335_P334_LANE_D_HORIZON_AND_EXIT_MARGIN_SQ0p750_SPQ1p000_DSQ0p500_TOP2_H900_long_only_taker_entry_taker_exit_CAP250000_NOT100000_CONC2_zerodha_2x_all_in_cost_proxy`;
+- best holdout annualized fixed-capital diagnostic: `20.829286%`;
+- best holdout scheduled events: `34`;
+- best holdout positive symbol-date cells: `30`;
+- best holdout control pass: `1`;
+- structural strategy-shape rank stability from base cost to 2x cost: pass.
+
+Attached passive-aware charter diagnostic result:
+
+- passive-aware 2x-cost rows above `12%`: `0`;
+- passive-aware 2x-cost acceptance rows: `0`;
+- average modeled passive fill probability: `0.478991`;
+- maker rebate assumed: `0`;
+- passive fill probability, adverse-selection and forced-flatten penalties were applied.
+
+Interpretation before Phase339:
+
+- The primary taker execution route produced a positive synthetic holdout result under the frozen contract.
+- The passive-aware charter route did not itself rescue the edge: under honest fill/adverse-selection/forced-flatten penalties, passive-aware 2x-cost diagnostics produced no above-12 or acceptance rows.
+- The result is promising enough for interpretation, but still not a deployable profitability claim because it is synthetic holdout evidence, not paper/live or broker-confirmed execution.
+- Phase339 must decide whether this opens controlled replication, requires a stricter synthetic/real-anchor check, or is downgraded because the holdout partition is synthetic and derived from the same generated feature matrix family.
+
+Phase338 hard gates:
+
+- Phase337 complete: pass;
+- execution allowed: pass;
+- holdout partition present: pass;
+- scenarios produced: pass;
+- primary 2x-cost rows present: pass;
+- acceptance rows exist: pass, `8`;
+- full-depth columns present: pass;
+- L1-only forbidden: pass;
+- no lookahead: pass;
+- structural rank stability: pass;
+- passive realism applied: pass;
+- boundaries closed: pass;
+- hard gates: `12/12`.
+
+Phase338 outputs:
+
+- `outputs/phase338/phase338_acceptance_summary.csv`;
+- `outputs/phase338/phase338_holdout_scenario_summary.parquet`;
+- `outputs/phase338/phase338_top_holdout_scenarios.csv`;
+- `outputs/phase338/phase338_holdout_trade_ledger.csv`;
+- `outputs/phase338/phase338_partition_ledger.csv`;
+- `outputs/phase338/phase338_control_ledger.csv`;
+- `outputs/phase338/phase338_passive_aware_diagnostic_ledger.csv`;
+- `outputs/phase338/phase338_gate_evaluation.csv`;
+- `outputs/phase338/phase338_cost_stress_holdout_validation_execution_report.md`;
+- `outputs/phase338/phase338_cost_stress_holdout_validation_execution_manifest.json`.
+
+Current Phase149 evidence after Phase338:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `cost_stress_holdout_validation_interpretation_open`;
+- `synthetic_strategy_discovery` status: `cost_stress_holdout_validation_interpretation_open`;
+- current next action: `run_phase339_cost_stress_holdout_validation_interpretation_no_replay`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

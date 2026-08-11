@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P338_PHASE337_COMPLETE,True,1,1,hard
+P338_EXECUTION_ALLOWED,True,1,1,hard
+P338_HOLDOUT_PARTITION_PRESENT,True,1152,>0,hard
+P338_SCENARIOS_PRODUCED,True,128,>0,hard
+P338_COST200_PRIMARY_ROWS_PRESENT,True,32,>0,hard
+P338_ACCEPTANCE_ROWS_EXIST,True,8,>0,hard
+P338_FULL_DEPTH_COLUMNS_PRESENT,True,event_depth_l2_l5_qty_imbalance;event_depth_l2_l5_order_imbalance;event_l2_l5_depth_share;event_depth_l2_l5_pressure,all_required_l2_l5_columns,hard
+P338_L1_ONLY_FORBIDDEN,True,0,0,hard
+P338_NO_LOOKAHEAD,True,0,0,hard
+P338_RANK_STABILITY,True,1,1,hard
+P338_PASSIVE_REALISM_APPLIED,True,rows=32.0;fill=0.47899114188253783;rebate=0.0,passive_rows_and_no_rebate,hard
+P338_BOUNDARIES_CLOSED,True,profitability_claim_allowed=0,0,hard
