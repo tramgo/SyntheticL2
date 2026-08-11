@@ -1,0 +1,51 @@
+source,column,required,present,purpose
+raw_real_l2,collector_received_utc_ms,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,exchange_timestamp,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,last_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_1_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_1_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_1_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_2_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_2_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_2_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_3_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_3_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_3_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_4_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_4_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_4_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_5_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_5_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,buy_5_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_1_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_1_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_1_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_2_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_2_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_2_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_3_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_3_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_3_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_4_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_4_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_4_orders,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_5_price,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_5_quantity,1,1,full top-five market-by-price diagnostic input
+raw_real_l2,sell_5_orders,1,1,full top-five market-by-price diagnostic input
+phase176_real_receive_flow_features,trade_date,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,symbol,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,bucket_ms,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,receive_event_count,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,quote_churn_count,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,depth_refresh_count,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,stale_quote_duration_ms,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,last_price,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,best_bid,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,best_ask,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,spread,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,l1_qty_imbalance,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,top5_qty_imbalance,1,1,coarse real receive-flow compatibility diagnostic
+phase176_real_receive_flow_features,horizon_sec,1,1,coarse real receive-flow compatibility diagnostic
+diagnostic_policy,levels_2_to_5_materiality_required,1,1,forbid L1-only reinterpretation
+diagnostic_policy,fixed_capital_annualized_denominator,1,1,avoid unlimited-capital return math
+diagnostic_policy,zerodha_2x_all_in_cost_proxy,1,1,cost-stressed diagnostic threshold

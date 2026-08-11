@@ -1,0 +1,20 @@
+metric,value,description
+phase341_official_catalyst_real_day_survivor_diagnostic_precommit_complete,1,Phase341 precommit completed
+phase341_phase340_complete,1,Phase340 complete
+phase341_frozen_survivor_rows,8,Frozen Phase339 survivors available
+phase341_official_catalyst_rows,117,Official catalyst rows available
+phase341_no_lookahead_eligible_event_rows,98,Official catalyst rows with no-lookahead diagnostic real L2 availability
+phase341_no_lookahead_eligible_symbol_dates,60,No-lookahead eligible diagnostic symbol-dates
+phase341_sbin_no_lookahead_eligible_rows,8,SBIN no-lookahead eligible catalyst rows
+phase341_post_close_rows_shifted_to_next_real_l2_day,69,Post-close announcements shifted to next available real-L2 day
+phase341_work_order_rows,98,Phase342 execution work-order rows
+phase341_full_depth_schema_pass_rows,50,Full-depth/schema pass rows
+phase341_full_depth_schema_rows,50,Full-depth/schema rows
+phase341_strategy_replay_allowed,0,No replay in Phase341
+phase341_strategy_promotion_allowed,0,No promotion
+phase341_paper_or_live_acceptance_allowed,0,No paper/live
+phase341_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase341_phase342_execution_allowed_next,1,Phase342 execution allowed next if gates pass
+phase341_hard_gate_pass_rows,8,Passed hard gates
+phase341_hard_gate_rows,8,Hard gates
+phase341_next_best_action,run_phase342_official_catalyst_real_day_survivor_diagnostic_execution_no_paper_live,Recommended next action

@@ -15666,6 +15666,65 @@ Current next action after Phase340:
 
 `run_phase341_official_catalyst_real_day_survivor_diagnostic_precommit_no_paper_live`
 
+## 24.168 Phase341 Official-Catalyst Real-Day Survivor Diagnostic Precommit Completed
+
+Phase341 converts the official catalyst calendar from Phase340 into a no-lookahead real-day diagnostic work order for the frozen Phase339 survivor. It still does not execute the diagnostic replay or claim profitability; it only proves that the execution step is now well-scoped and supported by local real L2 data.
+
+No-lookahead catalyst alignment rule:
+
+- announcements before market open map to the same day's market open;
+- announcements during regular session map to the first real tick after the announcement time;
+- post-close announcements map to the next available local real-L2 trading date;
+- rows with no available diagnostic real L2 are excluded from the Phase342 work order.
+
+Phase341 evidence:
+
+- frozen Phase339 survivors available: `8`;
+- official catalyst rows available: `117`;
+- no-lookahead eligible catalyst rows with diagnostic real L2: `98`;
+- no-lookahead eligible symbol-date rows: `60`;
+- SBIN no-lookahead eligible catalyst rows: `8`;
+- post-close rows shifted to the next available real-L2 day: `69`;
+- Phase342 work-order rows: `98`;
+- full-depth/schema contract rows passing: `50/50`.
+
+Full-depth preservation:
+
+- raw real L2 schema includes collector receive time, exchange timestamp, last price and all bid/ask levels 1-5 with price, quantity and order-count fields;
+- Phase176 real receive-flow features provide spread, L1 quantity imbalance, top-five quantity imbalance, receive-event count, quote churn, depth refresh and staleness fields;
+- L1-only reinterpretation remains forbidden;
+- levels 2-5 materiality remains required;
+- fixed-capital annualized denominator remains required.
+
+Phase341 hard gates:
+
+- Phase340 complete: pass;
+- official eligible events present: pass, `98`;
+- official eligible symbol-dates present: pass, `60`;
+- SBIN eligible context present: pass, `8`;
+- no-lookahead rule applied: pass;
+- Phase342 work order present: pass, `98`;
+- full-depth and feature schema present: pass, `50/50`;
+- no replay/promotion/profitability claim: pass;
+- hard gates: `8/8`.
+
+Phase341 outputs:
+
+- `outputs/phase341/phase341_acceptance_summary.csv`;
+- `outputs/phase341/phase341_no_lookahead_official_catalyst_eligibility_ledger.csv`;
+- `outputs/phase341/phase341_real_l2_full_depth_schema_contract.csv`;
+- `outputs/phase341/phase341_phase342_execution_work_order.csv`;
+- `outputs/phase341/phase341_gate_evaluation.csv`;
+- `outputs/phase341/phase341_official_catalyst_real_day_survivor_diagnostic_precommit_report.md`;
+- `outputs/phase341/phase341_official_catalyst_real_day_survivor_diagnostic_precommit_manifest.json`.
+
+Current Phase149 evidence after Phase341:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `official_catalyst_real_day_survivor_diagnostic_execution_open`;
+- `synthetic_strategy_discovery` status: `official_catalyst_real_day_survivor_diagnostic_execution_open`;
+- current next action: `run_phase342_official_catalyst_real_day_survivor_diagnostic_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

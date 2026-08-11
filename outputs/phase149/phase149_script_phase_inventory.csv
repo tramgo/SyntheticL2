@@ -273,6 +273,7 @@ phase,runner,runner_exists,runner_suffix
 339,scripts\run_phase339_cost_stress_holdout_validation_interpretation.py,True,.py
 33,scripts\run_phase33_broker_evidence_intake.py,True,.py
 340,scripts\run_phase340_official_catalyst_calendar_acquisition_precommit.py,True,.py
+341,scripts\run_phase341_official_catalyst_real_day_survivor_diagnostic_precommit.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py
 36,scripts\run_phase36_collector_instrumentation_package.py,True,.py
