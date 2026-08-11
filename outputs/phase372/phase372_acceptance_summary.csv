@@ -1,0 +1,22 @@
+metric,value,description
+phase372_sas_one_day_20260721_downloader_complete,1,Phase372 complete if all hard gates pass
+phase372_target_trade_date,2026-07-21,Target date
+phase372_sas_env_present,1,Supported SAS env present
+phase372_truststore_injected,1,Truststore injected before HTTPS calls
+phase372_dry_run,0,Dry-run mode
+phase372_max_files,0,Max files; 0 means all target files
+phase372_workers,96,Concurrent workers for Azure File downloads
+phase372_discovered_blob_rows,50187,Discovered target blob rows
+phase372_discovered_symbols,32,Discovered target symbols
+phase372_download_manifest_rows,50187,Download manifest rows
+phase372_downloaded_file_rows,18,Downloaded file rows
+phase372_local_symbols_before,32,Local symbols before
+phase372_local_symbols_after,32,Local symbols after
+phase372_local_full_universe_after,1,Full universe local after
+phase372_secret_material_recorded,0,No secret material should be recorded
+phase372_strategy_promotion_allowed,0,No promotion
+phase372_paper_or_live_acceptance_allowed,0,No paper/live
+phase372_deployable_profitability_claim_allowed,0,No deployable claim
+phase372_hard_gate_pass_rows,6,Passed hard gates
+phase372_hard_gate_rows,6,Hard gates
+phase372_next_best_action,rerun_phase370_one_day_real_l2_drop_verifier_no_paper_live,Recommended next milestone

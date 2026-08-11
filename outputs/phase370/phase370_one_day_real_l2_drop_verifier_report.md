@@ -1,6 +1,6 @@
 # Phase370 One-Day Real L2 Drop Verifier
 
-Generated: 2026-08-11T16:20:55.527732+00:00
+Generated: 2026-08-11T18:31:44.716866+00:00
 
 Phase370 selects and verifies the next disk-safe one-day official-catalyst real L2 target. It does not download data, does not run a strategy retest, and opens no promotion, paper/live acceptance, or deployable profitability claim.
 
@@ -12,10 +12,10 @@ Phase370 selects and verifies the next disk-safe one-day official-catalyst real 
 | phase370_target_trade_date | 2026-07-21 | Primary one-day target |
 | phase370_target_known_carry_forward_event_rows | 13 | Known post-close events that become eligible if target day exists |
 | phase370_target_symbols_from_known_events | 5 | Symbols in known carry-forward events |
-| phase370_target_full_universe_local_present | 0 | Full target date already present locally |
-| phase370_target_local_symbol_count | 0 | Local target symbols found |
-| phase370_target_local_parquet_files | 0 | Local target parquet files found |
-| phase370_target_local_bytes | 0 | Local target bytes found |
+| phase370_target_full_universe_local_present | 1 | Full target date already present locally |
+| phase370_target_local_symbol_count | 32 | Local target symbols found |
+| phase370_target_local_parquet_files | 50187 | Local target parquet files found |
+| phase370_target_local_bytes | 1763772568 | Local target bytes found |
 | phase370_sas_env_present_now | 0 | Supported SAS env present now |
 | phase370_estimated_selected_after_one_day | 13.2683 | Estimated selected trades after adding known one-day carry-forward events |
 | phase370_event_floor_after_one_day_estimate | 0 | Whether one-day target likely reaches 30-event floor |
@@ -40,6 +40,7 @@ Phase370 selects and verifies the next disk-safe one-day official-catalyst real 
 | 2026-07-16 | 32 | 50283 | 1763034702 | 1 |
 | 2026-07-17 | 32 | 50787 | 1788505298 | 1 |
 | 2026-07-20 | 32 | 50421 | 1773570501 | 1 |
+| 2026-07-21 | 32 | 50187 | 1763772568 | 1 |
 
 ## One-day target contract
 
@@ -52,8 +53,8 @@ Phase370 selects and verifies the next disk-safe one-day official-catalyst real 
 
 | check_id | passed | observed | required |
 | --- | --- | --- | --- |
-| P370_TARGET_DATE_LOCAL_PRESENT | 0 | symbols=0; files=0; bytes=0 | >=1 symbol for partial verify; 32 symbols for full-universe |
-| P370_TARGET_DATE_FULL_UNIVERSE | 0 | symbols=0/32 | 32 symbols |
+| P370_TARGET_DATE_LOCAL_PRESENT | 1 | symbols=32; files=50187; bytes=1763772568 | >=1 symbol for partial verify; 32 symbols for full-universe |
+| P370_TARGET_DATE_FULL_UNIVERSE | 1 | symbols=32/32 | 32 symbols |
 | P370_KNOWN_CARRY_FORWARD_EVENTS | 1 | 13 | >0 known post-close catalyst rows from previous local day |
 | P370_ONE_DAY_STILL_BELOW_EVENT_FLOOR | 1 | estimated_selected_after_one_day=13.268 | <30 means no acceptance retest yet |
 | P370_SAS_ENV_PRESENT_NOW | 0 | supported_env_names_present=0 | 1 for direct SAS download in this shell |

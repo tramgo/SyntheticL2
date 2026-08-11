@@ -17526,6 +17526,70 @@ Current next best action after Phase371:
 
 - Provide a fresh SAS in the process environment, install/provide AzCopy, repair Azure CLI certificate trust, or locally drop full-universe `2026-07-21`; then rerun Phase370 verification. Do not run another strategy retest until the target date is verified.
 
+## 24.199 Phase372 SAS One-Day 2026-07-21 Downloader Completed
+
+Phase372 implements and runs the target-specific full-universe downloader/verifier harness for the Phase370/371 `2026-07-21` real L2 target. It reads SAS only from process environment variables, writes no signed URLs or tokens, and does not run a strategy retest or open promotion, paper/live acceptance or deployable profitability claims.
+
+Phase372 access and discovery:
+
+- Azure Blob SAS dry-run found `0` blob rows for the target path;
+- Azure Files SAS probing confirmed share `ctrade1-l2-data`;
+- Azure Files target path exists: `raw_l2/trade_date=2026-07-21/exchange=NSE`;
+- target symbol directories discovered: `32`;
+- target parquet rows discovered: `50187`;
+- truststore injected before HTTPS calls: `1`;
+- secret material recorded: `0`.
+
+Phase372 download execution:
+
+- target trade date: `2026-07-21`;
+- discovered target rows: `50187`;
+- discovered target symbols: `32`;
+- final download manifest rows: `50187`;
+- final manifest status counts: `50169` existing/skipped and `18` downloaded in the final resume pass;
+- local symbols before final resume pass: `32`;
+- local symbols after final resume pass: `32`;
+- local full-universe after final resume pass: `1`;
+- no strategy retest executed.
+
+Phase370 verification rerun after Phase372:
+
+- target full-universe local present: `1`;
+- target local symbol count: `32`;
+- target local parquet files: `50187`;
+- target local bytes: `1763772568`;
+- known carry-forward official catalyst rows unlocked: `13`;
+- estimated selected trades after this one-day increment: approximately `13.268292682926829`;
+- event floor after one-day estimate: `0`;
+- acceptance retest allowed now: `0`.
+
+Phase372 hard gates:
+
+- Phase371 target present: pass;
+- full-universe symbol contract retained: pass, `32` symbols;
+- SAS env or safe wait recorded: pass;
+- discovery or wait recorded: pass, `50187` discovered rows;
+- no secret material recorded: pass;
+- no strategy retest or promotion: pass.
+
+Phase372 outputs:
+
+- `scripts/run_phase372_sas_one_day_20260721_downloader.py`;
+- `src/synthetic_l2/phase372_sas_one_day_20260721_downloader.py`;
+- `outputs/phase372/phase372_acceptance_summary.csv`;
+- `outputs/phase372/phase372_access_ledger.csv`;
+- `outputs/phase372/phase372_discovered_blob_manifest.csv`;
+- `outputs/phase372/phase372_download_manifest.csv`;
+- `outputs/phase372/phase372_local_inventory_before.csv`;
+- `outputs/phase372/phase372_local_inventory_after.csv`;
+- `outputs/phase372/phase372_gate_evaluation.csv`;
+- `outputs/phase372/phase372_sas_one_day_20260721_downloader_report.md`;
+- `outputs/phase372/phase372_sas_one_day_20260721_downloader_manifest.json`.
+
+Current next best action after Phase372:
+
+- The `2026-07-21` full-universe real L2 day is now locally verified. Do not retest the strategy yet because the estimated selected-trade count remains below the `30` event floor. Continue with another disk-safe official-catalyst real L2 day or build the next event-count expansion readiness package from the newly verified `2026-07-21` evidence.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

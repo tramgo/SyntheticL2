@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-11T16:20:55.527732+00:00",
+  "generated_at_utc": "2026-08-11T18:31:44.716866+00:00",
   "next_action": "download_or_local_drop_full_universe_real_l2_for_2026-07-21_then_rerun_phase370_verify_no_paper_live",
   "outputs": {
     "date_inventory": "outputs\\phase370\\phase370_local_date_inventory.csv",
@@ -16,8 +16,8 @@
     "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
     "configuration_hash": "3850623f8e512df34ebab9532dea1f02b52855781f817c1be35782df566e8256",
     "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
-    "creation_timestamp": "2026-08-11T16:20:55.527732+00:00",
-    "generator_version": "0e758aa304367f3a52721349f8ba962f39e253e5",
+    "creation_timestamp": "2026-08-11T18:31:44.716866+00:00",
+    "generator_version": "a6237eef77cd004021fa8e5e13b69b02e0fbda63",
     "latency_model_version": "not_applicable_no_latency_model",
     "random_seed": "not_applicable_deterministic",
     "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",

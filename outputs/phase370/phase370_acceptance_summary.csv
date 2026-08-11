@@ -3,10 +3,10 @@ phase370_one_day_real_l2_drop_verifier_complete,1,Phase370 complete if all hard 
 phase370_target_trade_date,2026-07-21,Primary one-day target
 phase370_target_known_carry_forward_event_rows,13,Known post-close events that become eligible if target day exists
 phase370_target_symbols_from_known_events,5,Symbols in known carry-forward events
-phase370_target_full_universe_local_present,0,Full target date already present locally
-phase370_target_local_symbol_count,0,Local target symbols found
-phase370_target_local_parquet_files,0,Local target parquet files found
-phase370_target_local_bytes,0,Local target bytes found
+phase370_target_full_universe_local_present,1,Full target date already present locally
+phase370_target_local_symbol_count,32,Local target symbols found
+phase370_target_local_parquet_files,50187,Local target parquet files found
+phase370_target_local_bytes,1763772568,Local target bytes found
 phase370_sas_env_present_now,0,Supported SAS env present now
 phase370_estimated_selected_after_one_day,13.268292682926829,Estimated selected trades after adding known one-day carry-forward events
 phase370_event_floor_after_one_day_estimate,0,Whether one-day target likely reaches 30-event floor
