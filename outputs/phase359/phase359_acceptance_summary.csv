@@ -1,0 +1,22 @@
+metric,value,description
+phase359_local_unseen_real_l2_catalyst_expansion_complete,1,Phase359 completed if all hard gates pass
+phase359_existing_real_l2_dates,7,Existing multiday local real L2 dates
+phase359_unseen_real_l2_dates,2,New unseen local real L2 dates detected
+phase359_unseen_date_list,2026-07-17;2026-07-20,Unseen date list
+phase359_unseen_symbol_date_rows,64,Unseen symbol/date rows
+phase359_unseen_symbols,32,Unseen symbols
+phase359_official_source_response_rows,4,Official source response rows
+phase359_official_source_ok_rows,4,Official source OK rows
+phase359_official_catalyst_rows,38,Official catalyst rows for unseen dates
+phase359_official_catalyst_symbols,15,Official catalyst symbols
+phase359_no_lookahead_eligible_event_rows,25,No-lookahead eligible events with unseen real L2
+phase359_no_lookahead_eligible_symbol_dates,15,Eligible symbol/date cells
+phase359_phase360_work_order_rows,25,Phase360 work-order rows
+phase359_full_depth_schema_pass_rows,36,Schema pass rows
+phase359_full_depth_schema_rows,36,Schema rows
+phase359_strategy_promotion_allowed,0,No promotion
+phase359_paper_or_live_acceptance_allowed,0,No paper/live
+phase359_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase359_hard_gate_pass_rows,9,Passed hard gates
+phase359_hard_gate_rows,9,Hard gates
+phase359_next_best_action,run_phase360_full_depth_market_neutral_fade_on_unseen_real_l2_no_paper_live,Recommended next milestone

@@ -1,0 +1,5 @@
+scenario_id,scenario_role,scheduled_event_rows,capacity_selected_trade_rows,diagnostic_trade_dates,symbols,positive_trade_rows,positive_symbols,positive_symbol_date_cells,net_pnl_inr,annualized_return_pct,above12,event_floor_met,breadth_met,acceptance_candidate
+P360_UNSEEN_P357_FULL_DEPTH_MARKET_NEUTRAL_DEPTH_2_5_FADE,primary_full_depth_depth_2_5_fade,11,5,2,4,3,2,2,-939.5364392427646,-47.35263653783534,0,0,1,0
+P360_UNSEEN_TOP5_REFERENCE_MARKET_NEUTRAL_FADE,top5_reference,11,5,2,4,3,2,2,-939.5364392427646,-47.35263653783534,0,0,1,0
+P360_UNSEEN_SIDE_FLIP_CONTROL,side_flip_control,11,5,2,4,2,2,2,-696.6364392427554,-35.11047653783487,0,0,1,0
+P360_UNSEEN_DETERMINISTIC_ALTERNATE_SIDE_CONTROL,deterministic_alternate_side_control,11,5,2,4,2,1,1,-939.6364392427554,-47.35767653783488,0,0,0,0

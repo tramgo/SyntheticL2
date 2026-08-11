@@ -1,0 +1,9 @@
+gate_id,passed,evidence
+P360_PHASE359_COMPLETE,1,Phase359 complete
+P360_WORK_ORDER_PRESENT,1,work_rows=25
+P360_FILLED_EVENTS_PRESENT,1,filled=25
+P360_FULL_DEPTH_FILTER_APPLIED,1,eligible_primary=11
+P360_COST200_FIXED_CAPITAL,1,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14
+P360_EVENT_FLOOR_CHECKED,1,event_floor_met=0
+P360_CONTROLS_EXECUTED,1,scenario_rows=4
+P360_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

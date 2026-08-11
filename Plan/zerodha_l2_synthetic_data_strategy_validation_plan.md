@@ -16776,6 +16776,119 @@ Current next best action after Phase358:
 - Restore Phase350 real-date expansion for unseen event count using a working targeted download route; then rerun the official-catalyst full-depth market-neutral fade family on the expanded real L2 panel.
 - Keep the attached Phase300 passive-aware execution charter closed as already executed and falsified for acceptance: it produced sparse above-12 pockets but 0 event-floor rows, 0 breadth rows, 0 acceptance survivors and triggered the precommitted kill switch.
 
+## 24.186 Phase359 Local Unseen Real L2 Catalyst Expansion Completed
+
+Phase359 restored the real-date expansion path without a new Azure download by registering local unseen real L2 already present on disk under `real_data_sample/l2_unseen_validation`. It fetched official NSE catalyst rows for the unseen dates, applied no-lookahead eligibility, verified full top-five market-by-price schema and emitted a Phase360 work order.
+
+Phase359 expansion evidence:
+
+- existing multiday local real L2 dates: `7`;
+- unseen local real L2 dates: `2`;
+- unseen date list: `2026-07-17;2026-07-20`;
+- unseen symbol/date rows: `64`;
+- unseen symbols: `32`;
+- unseen Parquet files: `101,208`;
+- unseen local bytes: approximately `3.56` GB;
+- official NSE source response rows: `4`;
+- official NSE source OK rows: `4`;
+- official catalyst rows: `38`;
+- official catalyst symbols: `15`;
+- no-lookahead eligible events with unseen real L2: `25`;
+- no-lookahead eligible symbol/date cells: `15`;
+- Phase360 work-order rows: `25`;
+- full-depth schema pass rows: `36 / 36`.
+
+Phase359 hard gates:
+
+- unseen local dates present: pass, `2026-07-17;2026-07-20`;
+- full universe symbols present: pass, `32`;
+- official NSE fetch attempted: pass, `4`;
+- official NSE fetch OK: pass, `4`;
+- official catalyst rows present: pass, `38`;
+- no-lookahead eligible events present: pass, `25`;
+- full-depth schema present: pass, `36 / 36`;
+- Phase360 work order present: pass, `25`;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase359 outputs:
+
+- `scripts/run_phase359_local_unseen_real_l2_catalyst_expansion.py`;
+- `src/synthetic_l2/phase359_local_unseen_real_l2_catalyst_expansion.py`;
+- `outputs/phase359/phase359_acceptance_summary.csv`;
+- `outputs/phase359/phase359_local_unseen_real_l2_inventory.csv`;
+- `outputs/phase359/phase359_official_source_catalog.csv`;
+- `outputs/phase359/phase359_official_source_response_ledger.csv`;
+- `outputs/phase359/phase359_official_catalyst_calendar.csv`;
+- `outputs/phase359/phase359_no_lookahead_official_catalyst_eligibility.csv`;
+- `outputs/phase359/phase359_full_depth_schema_contract.csv`;
+- `outputs/phase359/phase359_phase360_execution_work_order.csv`;
+- `outputs/phase359/phase359_gate_evaluation.csv`;
+- `outputs/phase359/phase359_local_unseen_real_l2_catalyst_expansion_report.md`;
+- `outputs/phase359/phase359_local_unseen_real_l2_catalyst_expansion_manifest.json`.
+
+## 24.187 Phase360 Full-Depth Market-Neutral Fade on Unseen Real L2 Completed
+
+Phase360 executed the Phase357/358 full-depth market-neutral fade family on the Phase359 unseen official-catalyst real L2 work order. It used NIFTYBEES 900-second market-neutral context, top-five and depth-levels-2-5 filters, depth-levels-2-5 fade side selection, Zerodha cost200 fixed-capital scoring and deterministic controls.
+
+Phase360 unseen primary result:
+
+- work-order rows: `25`;
+- filled raw L2 event rows: `25`;
+- primary eligible rows after market-neutral/top-five/depth filters: `11`;
+- capacity-selected primary trades: `5`;
+- diagnostic trade dates: `2`;
+- symbols: `4`;
+- positive symbols: `2`;
+- positive symbol/date cells: `2`;
+- net P&L: `-939.5364392427646` INR;
+- fixed-capital annualized return: `-47.35263653783534%`;
+- above-12 diagnostic: fail;
+- event floor: fail, `5 < 30`;
+- acceptance candidate rows: `0`.
+
+Phase360 controls:
+
+- top-five reference: `-939.5364392427646` INR, `-47.35263653783534%`;
+- side-flip control: `-696.6364392427554` INR, `-35.11047653783487%`;
+- deterministic alternate-side control: `-939.6364392427554` INR, `-47.35767653783488%`;
+- all Phase360 scenario rows fail the above-12 and event-floor acceptance requirements.
+
+Combined read-through after Phase360:
+
+- Phase358 primary clue: `12` trades, `1821.8913646568187` INR, `26.235235651058197%`;
+- Phase360 unseen primary: `5` capacity-selected trades, `-939.5364392427646` INR, `-47.35263653783534%`;
+- combined diagnostic read-through: `17` trades across `9` diagnostic dates, `882.3549254140542` INR net P&L, approximately `9.882375164637406%` annualized;
+- the combined read-through is below the user's `12%` annualized profitability threshold and below the `30` event floor.
+
+Phase360 interpretation:
+
+- The Phase358 sparse positive clue did not survive the first unseen local real-L2 expansion.
+- This does not open acceptance, promotion, paper/live execution or deployable profitability.
+- The next milestone should interpret Phase360 and decide whether to expand to more real dates for final falsification evidence or close this full-depth market-neutral fade branch as not robust under current real-L2 evidence.
+
+Phase360 hard gates:
+
+- Phase359 complete: pass;
+- work order present: pass, `25`;
+- filled events present: pass, `25`;
+- full-depth filter applied: pass, `11`;
+- cost200 fixed-capital scoring: pass;
+- event floor checked: pass, `event_floor_met=0`;
+- controls executed: pass, `4` scenario rows;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase360 outputs:
+
+- `scripts/run_phase360_full_depth_market_neutral_fade_on_unseen_real_l2.py`;
+- `src/synthetic_l2/phase360_full_depth_market_neutral_fade_on_unseen_real_l2.py`;
+- `outputs/phase360/phase360_acceptance_summary.csv`;
+- `outputs/phase360/phase360_event_ledger.csv`;
+- `outputs/phase360/phase360_trade_ledger.csv`;
+- `outputs/phase360/phase360_scenario_summary.csv`;
+- `outputs/phase360/phase360_gate_evaluation.csv`;
+- `outputs/phase360/phase360_full_depth_market_neutral_fade_on_unseen_real_l2_report.md`;
+- `outputs/phase360/phase360_full_depth_market_neutral_fade_on_unseen_real_l2_manifest.json`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,6 @@
+source_id,authority,url,api_template,role,used_in_phase340
+NSE_CORPORATE_ANNOUNCEMENTS,exchange_official,https://www.nseindia.com/companies-listing/corporate-filings-announcements,https://www.nseindia.com/api/corporate-announcements?index=equities&from_date={dd-mm-yyyy}&to_date={dd-mm-yyyy},primary listed-company announcement source,1
+NSE_FINANCIAL_RESULTS,exchange_official,https://www.nseindia.com/companies-listing/corporate-filings-financial-results,https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date={dd-mm-yyyy}&to_date={dd-mm-yyyy},financial-results catalyst source,1
+NSE_CORPORATE_ACTIONS,exchange_official,https://www.nseindia.com/companies-listing/corporate-filings-actions,,corporate-action cross-check source,0
+SEBI_CORPORATE_FILINGS_INDEX,regulator_official,https://www.sebi.gov.in/curation/corporate_filings.html,,regulator-level routing/check source for NSE/BSE corporate filings,0
+BSE_CORPORATE_ANNOUNCEMENTS,exchange_official_cross_check,https://www.bseindia.com/corporates,,BSE cross-check for company announcements where available,0

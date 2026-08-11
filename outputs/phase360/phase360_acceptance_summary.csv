@@ -1,0 +1,21 @@
+metric,value,description
+phase360_full_depth_market_neutral_fade_unseen_execution_complete,1,Phase360 execution completed
+phase360_phase359_work_order_rows,25,Phase359 work-order rows
+phase360_filled_event_rows,25,Filled raw L2 event rows
+phase360_primary_eligible_event_rows,11,"Rows passing market-neutral, top-five and depth 2-5 filters"
+phase360_primary_capacity_selected_trade_rows,5,Primary capacity-selected rows
+phase360_primary_diagnostic_trade_dates,2,Primary dates
+phase360_primary_symbols,4,Primary symbols
+phase360_primary_positive_symbols,2,Primary positive symbols
+phase360_primary_positive_symbol_date_cells,2,Primary positive symbol/date cells
+phase360_primary_net_pnl_inr,-939.5364392427646,Primary net PnL
+phase360_primary_annualized_return_pct,-47.35263653783534,Primary annualized return
+phase360_primary_above12,0,Primary above 12%
+phase360_primary_event_floor_met,0,Primary >=30 event floor
+phase360_acceptance_candidate_rows,0,Acceptance candidates
+phase360_strategy_promotion_allowed,0,No promotion
+phase360_paper_or_live_acceptance_allowed,0,No paper/live
+phase360_deployable_profitability_claim_allowed,0,No deployable claim
+phase360_hard_gate_pass_rows,8,Passed hard gates
+phase360_hard_gate_rows,8,Hard gates
+phase360_next_best_action,interpret_phase360_and_decide_expand_or_close_no_paper_live,Recommended next milestone
