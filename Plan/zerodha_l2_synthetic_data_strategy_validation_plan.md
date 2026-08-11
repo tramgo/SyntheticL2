@@ -18833,6 +18833,110 @@ Current next best action after Phase398:
 
 - Refresh official-catalyst eligibility with `2026-08-04` included, adapt the refreshed work order, and rerun the frozen reversal retest with no search. Do not promote or paper/live trade.
 
+## 24.226 Phase399 Refresh Catalyst Event Count After 2026-08-04 Completed
+
+Phase399 refreshes official-catalyst no-lookahead eligibility after Phase398 added the `2026-08-04` full-universe real L2 day. It does not run a strategy retest and opens no promotion, paper/live acceptance, or deployable profitability claim.
+
+Phase399 event-count result:
+
+- local real L2 dates included: `16`;
+- local real L2 dates: `2026-07-08`, `2026-07-09`, `2026-07-10`, `2026-07-13`, `2026-07-14`, `2026-07-15`, `2026-07-16`, `2026-07-17`, `2026-07-20`, `2026-07-21`, `2026-07-22`, `2026-07-23`, `2026-07-24`, `2026-07-27`, `2026-08-03`, `2026-08-04`;
+- official source response rows: `32`;
+- official source OK rows: `32`;
+- official catalyst rows fetched: `300`;
+- refreshed no-lookahead eligible rows with local L2: `273`;
+- new eligible rows versus Phase359: `248`;
+- eligible rows whose diagnostic date is `2026-08-04`: `21`;
+- combined Phase341 plus refreshed work rows: `371`;
+- estimated selected trades after refresh: approximately `36.19512195121951`;
+- event floor after refresh estimate: `1`.
+
+Current next best action after Phase399:
+
+- Adapt the Phase399 refreshed work order and rerun the frozen reversal retest with no search.
+
+## 24.227 Phase400 Phase399 Frozen Retest Precommit Completed
+
+Phase400 adapts the Phase399 refreshed work order into the frozen retest schema. It keeps the frozen `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL` scenario and performs no retest in the precommit.
+
+Phase400 result:
+
+- adapted work-order rows: `273`;
+- diagnostic dates: `16`;
+- symbols: `27`;
+- Phase399 selected-event estimate: approximately `36.19512195121951`;
+- parameter search allowed: `0`;
+- retest executed now: `0`;
+- paper/live or deployable profit claim allowed: `0`.
+
+## 24.228 Phase401 Phase399 Frozen Retest Completed
+
+Phase401 reruns the frozen reversal retest on the Phase400/Phase399 expanded work order. It uses the same frozen grid row, same full-depth features, same levels 2-5 materiality, same Zerodha cost model, and no parameter search.
+
+Phase401 execution result:
+
+- work-order rows replayed: `273`;
+- missing local L2 rows: `0`;
+- event feature rows: `273`;
+- ready event feature rows: `270`;
+- no-start-tick rows: `3`;
+- trade ledger rows: `68`;
+- scenario rows: `2`.
+
+Phase401 primary frozen reversal result:
+
+- raw scheduled candidates: `34`;
+- capacity-selected trades: `25`;
+- diagnostic dates: `14`;
+- symbols: `12`;
+- positive symbols: `3`;
+- positive symbol-date cells: `7`;
+- net P&L: approximately `992.9649840110026` INR;
+- annualized return: approximately `7.149347884879218%`;
+- above `12%` annualized threshold: `0`;
+- event floor met: `0`;
+- breadth met: `1`;
+- acceptance candidate: `0`.
+
+Phase401 control result:
+
+- same-filter continuation side flip annualized return: approximately `-77.233854814144%`;
+- reversal direction still dominates continuation, but not enough to clear profitability or selected-trade acceptance.
+
+## 24.229 Phase402 Interpret Phase401 Retest Completed
+
+Phase402 interprets the Phase401 frozen retest after adding `2026-08-04` evidence.
+
+Phase402 interpretation:
+
+- adding `2026-08-04` increased raw scheduled candidates from `32` to `34`;
+- capacity-selected trades increased from `23` to `25`, leaving a `5`-trade gap to the selected-trade floor;
+- annualized return fell from approximately `12.566%` after Phase397 to approximately `7.149%`;
+- the strategy no longer clears the user profitability threshold of `> 12%` annualized return;
+- breadth still passes;
+- side-flip continuation control remains strongly negative;
+- acceptance candidate: `0`;
+- promotion, paper/live acceptance, and deployable profitability claim remain closed.
+
+Phase402 conclusion:
+
+- The frozen reversal + full-depth L2 imbalance thesis is still directionally better than the continuation control, but the added real-L2 evidence weakens the profitability case.
+- This is no longer a profitable candidate under the current acceptance rule, even before the selected-trade floor is reached.
+- The next best action is either:
+  - run a precommitted capacity-rule sensitivity if the objective is to test whether the capacity throttle is suppressing valid sparse opportunities; or
+  - write a materially new precommit for a different full-depth L2 thesis rather than continuing day-by-day evidence collection for this weakened reversal candidate.
+
+Phase399-402 outputs:
+
+- `outputs/phase399/*`;
+- `outputs/phase400/*`;
+- `outputs/phase401/*`;
+- `outputs/phase402/*`.
+
+Current next best action after Phase402:
+
+- Do not promote this frozen reversal candidate. Prefer a new precommitted full-depth L2 thesis, or only run capacity-rule sensitivity if explicitly choosing to test the existing candidate's throttle sensitivity.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

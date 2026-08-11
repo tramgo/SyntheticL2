@@ -1,0 +1,3 @@
+interpretation_id,value,evidence,decision
+primary_acceptance_candidate,0,ann=7.149347884879218; selected_trades=25; event_floor=0; breadth=1,"Primary is accepted only if profitability, event floor and breadth all pass."
+side_flip_control_not_better,1,primary_ann=7.149347884879218; side_flip_ann=-77.233854814144,Primary reversal should dominate continuation control.

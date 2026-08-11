@@ -1,0 +1,5 @@
+gate_id,passed,evidence
+P386_PHASE385_REFRESH_PRESENT,1,Phase385 refresh complete
+P386_WORK_ORDER_PRESENT,1,rows=273
+P386_NO_SEARCH_OR_RETEST_YET,1,precommit_only
+P386_NO_PAPER_LIVE_OR_PROFIT_CLAIM,1,closed

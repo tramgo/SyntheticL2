@@ -1,0 +1,9 @@
+gate_id,passed,evidence
+P387_PHASE386_PRECOMMIT_PRESENT,1,Phase386 complete
+P387_NO_MISSING_LOCAL_L2_DATES,1,missing_rows=0
+P387_FROZEN_GRID_ONLY,1,P362_D120_I2p5_D0p25_R0p0
+P387_EVENT_FEATURES_READY,1,ready_rows=270
+P387_FULL_DEPTH_COST200_RETAINED,1,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14
+P387_ACCEPTANCE_GATE_EVALUATED,1,ann>12.0; events>=30; breadth
+P387_NO_PARAMETER_SEARCH,1,single frozen grid row plus side-flip control
+P387_NO_PAPER_LIVE_OR_DEPLOYABLE_CLAIM,1,closed

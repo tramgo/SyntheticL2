@@ -1,0 +1,35 @@
+# Phase387 Phase385 Frozen Retest
+
+Generated: 2026-08-11T21:07:14.374781+00:00
+
+| metric | value | description |
+| --- | --- | --- |
+| phase387_phase385_frozen_retest_complete | 1 | Phase387 complete |
+| phase387_work_order_rows | 273 | Expanded work-order rows replayed |
+| phase387_missing_local_l2_rows | 0 | Rows whose diagnostic date has no local L2 root |
+| phase387_event_feature_rows | 273 | Event feature rows |
+| phase387_ready_event_feature_rows | 270 | Ready event feature rows |
+| phase387_trade_rows | 68 | Trade ledger rows |
+| phase387_scenario_rows | 2 | Scenario rows |
+| phase387_primary_scenario_id | P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL | Frozen primary scenario |
+| phase387_primary_selected_trade_rows | 25 | Primary capacity-selected trades |
+| phase387_primary_diagnostic_dates | 14 | Primary diagnostic dates |
+| phase387_primary_symbols | 12 | Primary symbols |
+| phase387_primary_positive_symbols | 3 | Primary positive symbols |
+| phase387_primary_positive_symbol_date_cells | 7 | Primary positive symbol-date cells |
+| phase387_primary_net_pnl_inr | 992.965 | Primary net PnL |
+| phase387_primary_annualized_return_pct | 7.14935 | Primary annualized return |
+| phase387_primary_above12 | 0 | Primary above 12% |
+| phase387_primary_event_floor_met | 0 | Primary event floor |
+| phase387_primary_breadth_met | 1 | Primary breadth gate |
+| phase387_primary_acceptance_candidate | 0 | Primary acceptance candidate |
+| phase387_side_flip_annualized_return_pct | -77.2339 | Side-flip control annualized return |
+| phase387_strategy_promotion_allowed | 0 | Promotion allowed only if primary acceptance candidate |
+| phase387_paper_or_live_acceptance_allowed | 0 | No paper/live action in this phase |
+| phase387_deployable_profitability_claim_allowed | 0 | No deployable claim |
+| phase387_next_best_action | interpret_phase387_acceptance_result_no_paper_live | Recommended next action |
+
+| scenario_id | scenario_role | scheduled_event_rows | capacity_selected_trade_rows | diagnostic_trade_dates | symbols | positive_trade_rows | positive_symbols | positive_symbol_date_cells | net_pnl_inr | annualized_return_pct | above12 | event_floor_met | breadth_met | acceptance_candidate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL | impulse_reversal_control | 34 | 25 | 14 | 12 | 10 | 3 | 7 | 992.965 | 7.14935 | 0 | 0 | 1 | 0 |
+| P362_D120_I2p5_D0p25_R0p0_CONTINUATION | impulse_continuation | 34 | 25 | 14 | 12 | 4 | 1 | 4 | -10726.9 | -77.2339 | 0 | 0 | 0 | 0 |
