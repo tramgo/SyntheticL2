@@ -1,0 +1,7 @@
+gate_id,passed,observed,required
+P350_PHASE349_COMPLETE,True,1,1
+P350_SECRET_INPUT_NOT_PERSISTED,True,not_recorded,not_recorded
+P350_SAS_OR_LOCAL_VERIFY_ROUTE_AVAILABLE,False,0,1
+P350_TARGET_DATE_DISCOVERED_OR_LOCAL_VERIFY,False,,target_date
+P350_DOWNLOAD_EXECUTED_OR_SAFE_WAIT,True,downloaded_rows=0;dry_run=0;sas_present=0,safe
+P350_NO_PROMOTION_PAPER_LIVE_OR_PROFIT_CLAIM,True,closed,closed

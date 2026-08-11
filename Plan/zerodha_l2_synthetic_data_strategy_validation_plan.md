@@ -16205,6 +16205,53 @@ Current Phase149 evidence after Phase349:
 - `synthetic_strategy_discovery` status: `waiting_for_sas_or_azcopy_for_targeted_download`;
 - current next action: `provide_sas_or_install_azcopy_then_run_phase350_targeted_download_no_paper_live`.
 
+## 24.177 Phase350 SAS Targeted One-Date Download Runner Implemented And Safely Attempted
+
+Phase350 implements the SAS-targeted one-date download runner referenced by Phase349. It supports SAS input through environment variables, local-only verification mode, and dry-run mode. It writes redacted/no-secret evidence only.
+
+Phase350 current execution evidence:
+
+- Phase349 complete: `1`;
+- supported SAS environment variable present: `0`;
+- local-only verification mode: `0`;
+- dry-run mode: `0`;
+- candidate symbol rows: `12`;
+- existing local real L2 dates before run: `7`;
+- target trade date selected: none;
+- download manifest rows: `0`;
+- downloaded file rows: `0`;
+- new real L2 dates added: `0`;
+- secret material recorded: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase350 gate evidence:
+
+- Phase349 complete: pass;
+- secret input not persisted: pass;
+- SAS or local-verify route available: fail, because no supported SAS environment variable was present and local-only mode was not requested;
+- target date discovered or local-verify: fail;
+- download executed or safe wait: pass;
+- no promotion, paper/live or profit claim: pass;
+- hard gates: `4/6`.
+
+Phase350 outputs:
+
+- `outputs/phase350/phase350_acceptance_summary.csv`;
+- `outputs/phase350/phase350_access_ledger.csv`;
+- `outputs/phase350/phase350_download_manifest.csv`;
+- `outputs/phase350/phase350_gate_evaluation.csv`;
+- `outputs/phase350/phase350_sas_targeted_one_date_download_report.md`;
+- `outputs/phase350/phase350_sas_targeted_one_date_download_manifest.json`.
+
+Current Phase149 evidence after Phase350:
+
+- hard gates remain `322/322`;
+- `real_receive_flow_source` status: `waiting_for_fresh_blob_sas_or_local_drop_to_rerun_phase350`;
+- `synthetic_strategy_discovery` status: `waiting_for_fresh_blob_sas_or_local_drop_to_rerun_phase350`;
+- current next action: `set_fresh_blob_sas_env_or_local_drop_then_rerun_phase350_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -283,6 +283,7 @@ phase,runner,runner_exists,runner_suffix
 348,scripts\run_phase348_official_catalyst_event_count_expansion_execution.py,True,.py
 349,scripts\run_phase349_storage_access_repair_or_sas_targeted_download.py,True,.py
 34,scripts\run_phase34_real_data_multiday_readiness.py,True,.py
+350,scripts\run_phase350_sas_targeted_one_date_download.py,True,.py
 35,scripts\run_phase35_stage_a2_computable_diagnostics.py,True,.py
 36,scripts\run_phase36_collector_instrumentation_package.py,True,.py
 37,scripts\run_phase37_collector_ledger_verifier.py,True,.py

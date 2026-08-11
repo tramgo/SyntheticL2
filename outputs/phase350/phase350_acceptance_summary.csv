@@ -1,0 +1,19 @@
+metric,value,description
+phase350_sas_targeted_one_date_download_attempted,1,Phase350 attempted
+phase350_phase349_complete,1,Phase349 complete
+phase350_sas_env_present,0,Supported SAS env var present
+phase350_local_only_verify,0,Local-only verify mode
+phase350_dry_run,0,Dry-run mode
+phase350_candidate_symbol_rows,12,Candidate symbol rows
+phase350_existing_local_dates_before,7,Local real L2 dates before
+phase350_target_trade_date,,Selected target trade date
+phase350_download_manifest_rows,0,Download manifest rows
+phase350_downloaded_file_rows,0,Downloaded file rows
+phase350_new_real_l2_dates_added,0,New local real L2 dates added
+phase350_secret_material_recorded,0,No secret material recorded
+phase350_strategy_promotion_allowed,0,No promotion
+phase350_paper_or_live_acceptance_allowed,0,No paper/live
+phase350_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase350_hard_gate_pass_rows,4,Passed hard gates
+phase350_hard_gate_rows,6,Hard gates
+phase350_next_best_action,set_fresh_blob_sas_env_or_local_drop_then_rerun_phase350_no_paper_live,Recommended next action

@@ -1,0 +1,29 @@
+{
+  "generated_at_utc": "2026-08-11T09:03:18.954774+00:00",
+  "next_action": "set_fresh_blob_sas_env_or_local_drop_then_rerun_phase350_no_paper_live",
+  "output_dir": "outputs\\phase350",
+  "outputs": {
+    "access": "outputs\\phase350\\phase350_access_ledger.csv",
+    "download": "outputs\\phase350\\phase350_download_manifest.csv",
+    "gates": "outputs\\phase350\\phase350_gate_evaluation.csv",
+    "manifest": "outputs\\phase350\\phase350_sas_targeted_one_date_download_manifest.json",
+    "report": "outputs\\phase350\\phase350_sas_targeted_one_date_download_report.md",
+    "summary": "outputs\\phase350\\phase350_acceptance_summary.csv"
+  },
+  "phase": 350,
+  "phase349_dir": "outputs\\phase349",
+  "real_root": "real_data_sample\\l2_multiday_panel",
+  "reproducibility": {
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "configuration_hash": "6f67e4678054dfc9623e36f6a64246b7679f8c6fedbedf499cd2c2aed215bb99",
+    "cost_model_version": "not_applicable_no_execution_costs",
+    "creation_timestamp": "2026-08-11T09:03:18.954774+00:00",
+    "generator_version": "0a492cc21a8cb0377422dd91d30904ee6dca3dd6",
+    "latency_model_version": "not_applicable_no_latency_model",
+    "random_seed": "not_applicable_deterministic",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan"
+  }
+}
