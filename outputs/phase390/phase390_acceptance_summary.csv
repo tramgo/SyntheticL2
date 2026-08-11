@@ -1,0 +1,11 @@
+metric,value,description
+phase390_capacity_rule_sensitivity_complete,1,Phase390 complete
+phase390_capacity_ladder,2;3;4,Capacities tested
+phase390_best_capacity,4,Best sensitivity capacity
+phase390_best_selected_trade_rows,26,Best selected trades
+phase390_best_annualized_return_pct_capital_adjusted,27.693861812665745,Best capital-adjusted annualized return
+phase390_best_sensitivity_acceptance_shape,0,Would pass shape gates as sensitivity
+phase390_promotion_allowed,0,No promotion from sensitivity
+phase390_paper_or_live_acceptance_allowed,0,No paper/live
+phase390_deployable_profitability_claim_allowed,0,No deployable claim
+phase390_next_best_action,interpret_phase390_capacity_sensitivity_no_paper_live,Recommended next action

@@ -1,0 +1,9 @@
+metric,value,description
+phase389_capacity_sensitivity_precommit_complete,1,Phase389 complete
+phase389_capacity_ladder,2;3;4,Capacities to test
+phase389_baseline_capacity_selected_trades,21,Baseline selected trades
+phase389_raw_scheduled_candidates,30,Raw scheduled candidates
+phase389_selected_trade_gap,9,Selected-trade gap
+phase389_alpha_parameter_change_allowed,0,No alpha parameter changes
+phase389_promotion_from_sensitivity_allowed,0,No promotion from sensitivity
+phase389_next_best_action,execute_phase390_capacity_rule_sensitivity_no_paper_live,Recommended next action

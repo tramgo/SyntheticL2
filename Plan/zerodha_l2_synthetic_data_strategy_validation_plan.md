@@ -18487,6 +18487,92 @@ Current next best action after Phase388:
 
 - Precommit capacity-rule sensitivity or add more real L2 days. Do not promote or paper/live trade.
 
+## 24.216 Phase389 Capacity-Rule Sensitivity Precommit Completed
+
+Phase389 precommits a capacity-rule sensitivity test after Phase388 identified capacity selection as the active blocker. This is not an alpha-parameter rescue: the frozen signal, full-depth requirements, cost model, and no-paper/live status remain unchanged.
+
+Phase389 contract:
+
+- source phase: Phase388;
+- frozen primary scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- capacity ladder: `2;3;4`;
+- baseline capacity: `2`;
+- baseline capacity-selected trades: `21`;
+- raw scheduled candidates: `30`;
+- selected-trade gap: `9`;
+- alpha parameter change allowed: `0`;
+- cost model change allowed: `0`;
+- depth rule change allowed: `0`;
+- capital adjustment required for capacity greater than `2`: `1`;
+- promotion from sensitivity allowed: `0`;
+- paper/live or profit claim allowed: `0`.
+
+Current next best action after Phase389:
+
+- Execute Phase390 capacity-rule sensitivity with capital-adjusted annualized returns and no promotion path.
+
+## 24.217 Phase390 Capacity-Rule Sensitivity Completed
+
+Phase390 reapplies the capacity-selection rule to the Phase387 raw trade candidates for capacities `2`, `3`, and `4`. It reuses the exact frozen raw trades and costs, so it does not re-read L2 parquet or change alpha logic. Annualized return is capital-adjusted using `max(250,000 INR, capacity * 100,000 INR)`.
+
+Phase390 capacity ladder result:
+
+- capacity `2`: `21` selected trades, `250,000` INR capital base, approximately `18.850571174586545%` annualized, event floor not met;
+- capacity `3`: `24` selected trades, `300,000` INR capital base, approximately `26.513238575181507%` annualized, event floor not met;
+- capacity `4`: `26` selected trades, `400,000` INR capital base, approximately `27.693861812665745%` annualized, event floor not met.
+
+Phase390 interpretation:
+
+- Capacity sensitivity improves selected-trade count, but not enough.
+- All capacity rows remain above `12%` annualized after capital adjustment.
+- No capacity row reaches the `30` selected-trade floor.
+- No promotion, paper/live action, or deployable profitability claim is allowed from this sensitivity.
+
+Current next best action after Phase390:
+
+- Interpret Phase390 and decide between more real L2 days or a separate event-deduplication/pre-filter policy precommit.
+
+## 24.218 Phase391 Interpret Phase390 Capacity Sensitivity Completed
+
+Phase391 interprets Phase390 and closes the capacity-sensitivity branch for acceptance.
+
+Phase391 result:
+
+- best capacity by selected trades: `4`;
+- best selected trades: `26`;
+- remaining gap to event floor: `4`;
+- best capital-adjusted annualized return: approximately `27.693861812665745%`;
+- all capacity rows profitable above `12%`: `1`;
+- any sensitivity row passes acceptance-shape gates: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase391 decision ledger:
+
+- `P391_CAPACITY_SENSITIVITY_PROFITABLE`: pass. Capacity sensitivity does not kill the economics.
+- `P391_CAPACITY_FLOOR_STILL_FAILS`: pass. Even capacity `4` reaches only `26` selected trades versus `30` required.
+- `P391_NO_PROMOTION_FROM_SENSITIVITY`: pass. No promotion, paper/live action, or deployable profitability claim.
+
+Phase391 conclusion:
+
+- The strategy remains economically interesting, but capacity sensitivity alone does not clear acceptance.
+- The next best action is either to add more real L2 days or to precommit an event-deduplication/pre-filter policy. Because the remaining gap is only `4` selected trades and the current raw candidate set has duplicate clusters, adding more real L2 days is the cleaner next acceptance path; deduplication/pre-filtering should be treated as a separate thesis if pursued.
+
+Phase391 outputs:
+
+- `scripts/run_phase391_interpret_phase390_capacity_sensitivity.py`;
+- `src/synthetic_l2/phase391_interpret_phase390_capacity_sensitivity.py`;
+- `outputs/phase391/phase391_acceptance_summary.csv`;
+- `outputs/phase391/phase391_decision_ledger.csv`;
+- `outputs/phase391/phase391_gate_evaluation.csv`;
+- `outputs/phase391/phase391_interpret_phase390_capacity_sensitivity_report.md`;
+- `outputs/phase391/phase391_interpret_phase390_capacity_sensitivity_manifest.json`.
+
+Current next best action after Phase391:
+
+- Add more no-lookahead real L2 days if disk and Azure access permit, then rerun the frozen retest. Do not promote or paper/live trade.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

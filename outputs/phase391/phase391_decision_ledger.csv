@@ -1,0 +1,4 @@
+decision_id,value,evidence,decision
+P391_CAPACITY_SENSITIVITY_PROFITABLE,1,all capacity ladder rows remain above 12% annualized after capital adjustment,Capacity sensitivity does not kill the economics.
+P391_CAPACITY_FLOOR_STILL_FAILS,1,best_capacity=4; best_selected=26; required=30,Even capacity 4 does not reach the 30 selected-trade floor.
+P391_NO_PROMOTION_FROM_SENSITIVITY,1,sensitivity_acceptance_shape rows are zero and promotion_allowed is zero,"No promotion, paper/live action, or deployable profitability claim."

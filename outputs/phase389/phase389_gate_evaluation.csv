@@ -1,0 +1,6 @@
+gate_id,passed,evidence
+P389_PHASE388_PRESENT,1,Phase388 complete
+P389_CAPACITY_BOTTLENECK_PRESENT,1,raw=30; selected=21; gap=9
+P389_ALPHA_COST_DEPTH_FROZEN,1,capacity sensitivity only
+P389_CAPITAL_ADJUSTMENT_REQUIRED,1,"annualized returns use max(250k, capacity*100k)"
+P389_NO_PROMOTION_PAPER_LIVE,1,diagnostic_only

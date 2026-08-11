@@ -1,0 +1,4 @@
+capacity,capital_base_inr,scheduled_event_rows,capacity_selected_trade_rows,diagnostic_trade_dates,symbols,positive_symbols,positive_symbol_date_cells,net_pnl_inr,annualized_return_pct_capital_adjusted,above12,event_floor_met,breadth_met,sensitivity_acceptance_shape,promotion_allowed,scenario_id,scenario_role,side_flip_annualized_return_pct_capital_adjusted,side_flip_selected_trade_rows
+2,250000.0,30,21,12,12,4,7,2244.1156160222076,18.850571174586545,1,0,1,0,0,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,impulse_reversal_control,-87.52630835547492,21
+3,300000.0,30,24,12,12,4,7,3787.6055107402153,26.513238575181507,1,0,1,0,0,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,impulse_reversal_control,-91.87804246468004,24
+4,400000.0,30,26,12,12,4,7,5275.021297650617,27.693861812665745,1,0,1,0,0,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,impulse_reversal_control,-80.98035854182598,26

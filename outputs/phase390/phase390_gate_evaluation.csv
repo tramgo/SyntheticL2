@@ -1,0 +1,6 @@
+gate_id,passed,evidence
+P390_PHASE389_PRECOMMIT_PRESENT,1,Phase389 complete
+P390_LADDER_EXECUTED,1,"ladder=[2, 3, 4]"
+P390_CAPITAL_ADJUSTED_RETURNS,1,"capital_base=max(250k, capacity*100k)"
+P390_ALPHA_COST_DEPTH_UNCHANGED,1,reused Phase387 raw trades
+P390_NO_PROMOTION_PAPER_LIVE,1,sensitivity_only
