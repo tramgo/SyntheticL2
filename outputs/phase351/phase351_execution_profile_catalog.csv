@@ -1,0 +1,4 @@
+execution_profile,passive_aware,fill_model_id,spread_cost_multiplier,passive_spread_cost_multiplier,adverse_selection_bps,forced_flatten_bps,fill_probability_multiplier
+taker_cost200_fixed_capital,0,P351_TAKER_DETERMINISTIC,1.0,0.0,0.0,0.0,1.0
+passive_base_back_of_queue_cost200,1,P351_PASSIVE_BASE_BACK_OF_QUEUE,0.35,0.35,2.5,1.0,0.75
+passive_pessimistic_back_of_queue_cost200,1,P351_PASSIVE_PESSIMISTIC_BACK_OF_QUEUE,0.5,0.5,4.0,2.0,0.5

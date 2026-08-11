@@ -16252,6 +16252,84 @@ Current Phase149 evidence after Phase350:
 - `synthetic_strategy_discovery` status: `waiting_for_fresh_blob_sas_or_local_drop_to_rerun_phase350`;
 - current next action: `set_fresh_blob_sas_env_or_local_drop_then_rerun_phase350_no_paper_live`.
 
+## 24.178 Phase351 Full-Depth Selective Dense Strategy Search Completed
+
+Phase351 added a bounded synthetic full-depth selective strategy-search milestone after reconciling that Phase52's `"running"` progress marker was stale. The run used the existing dense synthetic top-five market-by-price lake and tested lower-turnover selective signals rather than the earlier every-tick Phase52 replay.
+
+Phase351 is a synthetic diagnostic/search result only. It does not reopen paper/live acceptance, strategy promotion, or a deployable profitability claim.
+
+Phase351 design:
+
+- dense input root: `raw_synthetic_l2_dense_full_year`;
+- shards scanned in the milestone run: `32`;
+- bounded row cap per shard: `50,000`;
+- horizon tested: `6` ticks;
+- strategies tested: `3`;
+- execution profiles tested: `3`;
+- fixed initial capital: `1,000,000` INR;
+- per-event notional: `75,000` INR;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost stress: cost200 / 2x;
+- all strategy rows require top-five depth fields;
+- depth levels 2-5 materiality is explicitly required;
+- L1-only variants are forbidden;
+- passive-aware execution profiles include fill probability, adverse-selection and forced-flatten penalties.
+
+Phase351 result:
+
+- shard status: `32/32` ok;
+- daily/symbol event ledger rows: `162`;
+- scenario summary rows: `9`;
+- above-12% fixed-capital annualized rows: `0`;
+- acceptance candidate rows: `0`;
+- best scenario by fixed-capital annualized return: `P351_FULL_DEPTH_SHOCK_REVERSAL` with `passive_pessimistic_back_of_queue_cost200`;
+- best scheduled events: `761`;
+- best expected filled events: `204.51550810927637`;
+- best expected net P&L: `-41721.57945062977` INR;
+- best fixed-capital annualized return: `-4.1721579450629775%`;
+- positive symbols: `0`;
+- positive symbol-date cells: `0`.
+
+Phase351 interpretation:
+
+- The lower-turnover full-depth selective branch did reduce turnover versus the old every-tick Phase52 replay, but it still did not produce a profitable clue under cost200 fixed-capital scoring.
+- Passive-aware execution reduced the loss versus taker execution in the tested strategies, but did not turn any strategy positive.
+- No Phase351 strategy met the `>12%` diagnostic threshold, breadth requirement or acceptance-candidate criteria.
+- This result supports continued falsification of naive full-depth synthetic signals. It does not prove that all top-five depth research is useless; it only closes this specific bounded selective synthetic branch unless a materially new thesis is precommitted.
+
+Phase351 hard gates:
+
+- Phase52 stale-running marker reconciled: pass;
+- full top-five depth used: pass;
+- depth levels 2-5 materiality used: pass;
+- L1-only variants forbidden: pass;
+- cost200 fixed-capital scoring: pass;
+- passive realism applied: pass;
+- no promotion, paper/live or profitability claim: pass.
+
+Phase351 outputs:
+
+- `scripts/run_phase351_full_depth_selective_strategy_search.py`;
+- `src/synthetic_l2/phase351_full_depth_selective_strategy_search.py`;
+- `outputs/phase351/phase351_acceptance_summary.csv`;
+- `outputs/phase351/phase351_strategy_catalog.csv`;
+- `outputs/phase351/phase351_execution_profile_catalog.csv`;
+- `outputs/phase351/phase351_shard_scan_ledger.csv`;
+- `outputs/phase351/phase351_event_ledger.csv`;
+- `outputs/phase351/phase351_scenario_summary.csv`;
+- `outputs/phase351/phase351_gate_evaluation.csv`;
+- `outputs/phase351/phase351_full_depth_selective_strategy_search_report.md`;
+- `outputs/phase351/phase351_full_depth_selective_strategy_search_manifest.json`.
+
+Current branch decision after Phase351:
+
+- Phase342/343 remain the authoritative local real-L2 official-catalyst holdout result for the prior survivor route: negative and closed.
+- Phase348/350 remain the authoritative state for adding new unseen official-catalyst-matched real L2 dates: blocked until a fresh SAS/download route or local drop is available.
+- Phase351 adds one completed bounded synthetic full-depth selective-search negative result.
+- Next best action is either:
+  - restore real-data expansion by rerunning Phase350 with a fresh SAS or local one-date drop; or
+  - precommit a materially new strategy thesis before further synthetic search.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

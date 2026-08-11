@@ -1,0 +1,43 @@
+{
+  "phase": 351,
+  "generated_utc": "2026-08-11T09:48:50.039295+00:00",
+  "elapsed_seconds": 28.514161399914883,
+  "inputs": {
+    "dense_root": "raw_synthetic_l2_dense_full_year",
+    "limit_shards": 32,
+    "max_rows_per_shard": 50000
+  },
+  "parameters": {
+    "initial_capital_inr": 1000000.0,
+    "order_notional_inr": 75000.0,
+    "horizons": [
+      6
+    ],
+    "strategy_count": 3,
+    "execution_profile_count": 3
+  },
+  "outputs": {
+    "strategy_catalog": "outputs\\phase351\\phase351_strategy_catalog.csv",
+    "execution_profile_catalog": "outputs\\phase351\\phase351_execution_profile_catalog.csv",
+    "shard_scan_ledger": "outputs\\phase351\\phase351_shard_scan_ledger.csv",
+    "event_ledger": "outputs\\phase351\\phase351_event_ledger.csv",
+    "scenario_summary": "outputs\\phase351\\phase351_scenario_summary.csv",
+    "gate_evaluation": "outputs\\phase351\\phase351_gate_evaluation.csv",
+    "acceptance_summary": "outputs\\phase351\\phase351_acceptance_summary.csv",
+    "manifest": "outputs\\phase351\\phase351_full_depth_selective_strategy_search_manifest.json",
+    "report": "outputs\\phase351\\phase351_full_depth_selective_strategy_search_report.md"
+  },
+  "reproducibility": {
+    "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+    "generator_version": "186fb6679e8a5c05e574db6031601fc499548730",
+    "configuration_hash": "80fb2ec957e5efa7e71653595a081c56b423da32367c7b3eb16ef10077209ae1",
+    "random_seed": "not_applicable_deterministic",
+    "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+    "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+    "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+    "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+    "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+    "latency_model_version": "phase351_horizon_tick_exit_no_external_latency",
+    "creation_timestamp": "2026-08-11T09:48:50.039295+00:00"
+  }
+}

@@ -1,0 +1,8 @@
+gate_id,passed,evidence
+P351_PHASE52_RECONCILED,1,Phase52 stale-running marker reconciled before Phase351 search.
+P351_FULL_DEPTH_1_5_USED,1,All rows use top-five depth fields.
+P351_DEPTH_2_5_MATERIALITY_USED,1,Depth levels 2-5 materiality is required.
+P351_L1_ONLY_FORBIDDEN,1,No L1-only variant rows.
+P351_COST200_FIXED_CAPITAL,1,Zerodha cost model at 2x stress with fixed initial capital.
+P351_PASSIVE_REALISM_APPLIED,1,"Passive profiles include fill probability, adverse selection, and forced flatten proxies."
+P351_NO_PAPER_LIVE_OR_PROFIT_CLAIM,1,"No promotion, paper/live, or deployable profitability claim."

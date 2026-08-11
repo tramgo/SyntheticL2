@@ -1,0 +1,18 @@
+metric,value,description
+phase351_dense_input_root,raw_synthetic_l2_dense_full_year,Dense top-five input root
+phase351_shards_requested,32,Shard limit requested
+phase351_shards_scanned,32,Dense parquet shards scanned
+phase351_strategy_rows,3,Full-depth selective strategies tested
+phase351_execution_profile_rows,3,Execution profiles tested
+phase351_event_ledger_rows,162,Daily/symbol event result rows
+phase351_scenario_rows,9,Scenario summary rows
+phase351_above12_rows,0,Rows above 12% fixed-capital annualized diagnostic
+phase351_acceptance_candidate_rows,0,"Rows passing event floor, breadth, and >12 diagnostic"
+phase351_initial_capital_inr,1000000.0,Fixed annual return denominator
+phase351_order_notional_inr,75000.0,Per-event notional below 100000
+phase351_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model used
+phase351_strategy_replay_allowed,0,No replay unlock
+phase351_strategy_promotion_allowed,0,No promotion unlock
+phase351_paper_or_live_acceptance_allowed,0,No paper/live unlock
+phase351_deployable_profitability_claim_allowed,0,No deployable profitability claim
+phase351_next_best_action,interpret_phase351_or_expand_if_acceptance_candidates_exist,Recommended next milestone

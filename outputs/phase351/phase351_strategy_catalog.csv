@@ -1,0 +1,26 @@
+strategy_id,description,direction_sql,predicate_sql
+P351_FULL_DEPTH_SHOCK_REVERSAL,Large one-tick move opposed by top-five and depth-2-5 imbalance.,-sign(one_tick_return),"
+            abs(one_tick_return) >= q_abs_ret_995
+            and abs(top5_imbalance) >= 0.20
+            and abs(deep_imbalance_2_5) >= 0.20
+            and sign(top5_imbalance) = -sign(one_tick_return)
+            and sign(deep_imbalance_2_5) = -sign(one_tick_return)
+            and depth25_materiality >= 0.45
+            and spread_bps <= q_spread_bps_75
+        "
+P351_DEEP_PRESSURE_CONTINUATION,Depth-2-5 pressure aligned with top-five book and short move.,sign(deep_imbalance_2_5),"
+            abs(deep_imbalance_2_5) >= q_abs_deep_99
+            and abs(top5_imbalance) >= 0.15
+            and sign(top5_imbalance) = sign(deep_imbalance_2_5)
+            and sign(coalesce(one_tick_return, 0.0)) = sign(deep_imbalance_2_5)
+            and depth25_materiality >= 0.50
+            and spread_bps <= q_spread_bps_75
+        "
+P351_VOLUME_ABSORPTION_REVERSAL,Volume/update burst with price move absorbed by opposite depth-2-5 pressure.,-sign(one_tick_return),"
+            volume_delta >= q_volume_delta_99
+            and abs(one_tick_return) >= q_abs_ret_99
+            and abs(deep_imbalance_2_5) >= 0.15
+            and sign(deep_imbalance_2_5) = -sign(one_tick_return)
+            and depth25_materiality >= 0.45
+            and spread_bps <= q_spread_bps_80
+        "
