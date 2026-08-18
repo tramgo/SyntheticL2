@@ -1,0 +1,5 @@
+scenario_id,trade_date,symbol,input_ticks,candidate_scan_points,selected_trades,flip_side,remove_l2_l5,top5_only
+P415_PRIMARY_DEEP_BOOK_DIVERGENCE_SNAPBACK,2026-07-17,,4640,10,2,0,0,0
+P415_SIDE_FLIP_CONTROL,2026-07-17,,4640,10,0,1,0,0
+P415_LEVELS_2_TO_5_REMOVED_CONTROL,2026-07-17,,4640,10,2,0,1,0
+P415_TOP5_ONLY_CONTROL,2026-07-17,,4640,10,2,0,0,1

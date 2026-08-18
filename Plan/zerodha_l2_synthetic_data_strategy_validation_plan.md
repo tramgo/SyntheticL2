@@ -19699,6 +19699,81 @@ Current next best action after Phase414:
 
 - Commit and push Phase414 before any results, then implement `run_phase415_deep_book_divergence_snapback_execution_no_paper_live`.
 
+## 24.242 Phase415 Deep-Book Divergence Snapback Execution Completed
+
+Phase415 executes the Phase414 frozen materially new less-sparse full-depth L2 thesis. This is a strategy execution result, not a planning artifact.
+
+Phase415 execution scope:
+
+- primary scenario: `P415_PRIMARY_DEEP_BOOK_DIVERGENCE_SNAPBACK`;
+- controls:
+  - `P415_SIDE_FLIP_CONTROL`;
+  - `P415_LEVELS_2_TO_5_REMOVED_CONTROL`;
+  - `P415_TOP5_ONLY_CONTROL`;
+- source: bounded raw dense synthetic L1-L5 slices from `raw_synthetic_l2_dense_full_year`;
+- real-anchor cross-check: bounded local real L2 anchor slice;
+- execution style: taker-only entry and taker stop/target/horizon exit;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed initial capital: `1,000,000` INR;
+- fixed notional per trade: `100,000` INR.
+
+Phase415 primary result:
+
+- completed round trips: `238`;
+- trade dates: `5`;
+- symbols: `3`;
+- positive date fraction: `0.0`;
+- net P&L: approximately `-83,261.78122609416` INR;
+- annualized return: approximately `-419.6393773795146%`;
+- cost200 acceptance survivors: `0`.
+
+Phase415 controls:
+
+- side-flip control annualized return: `0.0%` because the flipped-side control selected no trades;
+- levels 2-5 removed control completed `244` round trips and annualized approximately `-428.7136861687991%`;
+- top-five-only control completed `238` round trips and annualized approximately `-419.6393773795146%`;
+- real-anchor primary annualized return: approximately `-1852.714791796141%`;
+- real-anchor sign cross-check passed because both synthetic and real-anchor primary signs were negative.
+
+Phase415 hard gates:
+
+- passed: `18 / 21`;
+- passed breadth gates:
+  - event floor: `238`, required at least `30`;
+  - date breadth: `5`, required at least `5`;
+  - symbol breadth: `3`, required at least `3`;
+- failed gates:
+  - `P415_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.6`;
+  - `P415_ANNUALIZED_FLOOR`: observed approximately `-419.6393773795146%`, required at least `12.0%`;
+  - `P415_SIDE_FLIP_CONTROL`: side-flip selected no trades and therefore did not provide a losing active opposite-side baseline.
+
+Phase415 interpretation before formal Phase416:
+
+- Phase414 successfully solved the zero-event sparsity problem but did not solve profitability.
+- The result is broadly and deeply negative after Zerodha cost200.
+- Levels 2-5 removal did not rescue the route and remained negative.
+- Top-five-only control did not differentiate from the primary in this bounded run.
+- This route cannot be promoted and cannot be accepted for paper/live.
+
+Phase415 outputs:
+
+- `scripts/run_phase415_deep_book_divergence_snapback_execution.py`;
+- `src/synthetic_l2/phase415_deep_book_divergence_snapback_execution.py`;
+- `outputs/phase415/phase415_acceptance_summary.csv`;
+- `outputs/phase415/phase415_synthetic_scenario_summary.csv`;
+- `outputs/phase415/phase415_synthetic_scan_diagnostics.csv`;
+- `outputs/phase415/phase415_synthetic_trade_ledger.csv`;
+- `outputs/phase415/phase415_real_anchor_scenario_summary.csv`;
+- `outputs/phase415/phase415_real_anchor_scan_diagnostics.csv`;
+- `outputs/phase415/phase415_real_anchor_trade_ledger.csv`;
+- `outputs/phase415/phase415_gate_evaluation.csv`;
+- `outputs/phase415/phase415_deep_book_divergence_snapback_execution_report.md`;
+- `outputs/phase415/phase415_deep_book_divergence_snapback_execution_manifest.json`.
+
+Current next best action after Phase415:
+
+- Implement `interpret_phase415_failure_or_success_no_paper_live`. Do not tune this same divergence snapback route after seeing negative cost200 results.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

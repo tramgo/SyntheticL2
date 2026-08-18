@@ -1,0 +1,18 @@
+metric,value,description
+phase415_deep_book_divergence_snapback_execution_complete,1,Phase415 execution completed
+phase415_primary_scenario_id,P415_PRIMARY_DEEP_BOOK_DIVERGENCE_SNAPBACK,Primary frozen scenario
+phase415_synthetic_scenario_rows,4,Synthetic scenario rows
+phase415_real_anchor_scenario_rows,4,Real-anchor scenario rows
+phase415_primary_completed_round_trips,238,Primary round trips
+phase415_primary_trade_dates,5,Primary trade dates
+phase415_primary_symbols,3,Primary symbols
+phase415_primary_positive_date_fraction,0.0,Primary positive date fraction
+phase415_primary_net_pnl_inr,-83261.78122609416,Primary net PnL
+phase415_primary_annualized_return_pct,-419.6393773795146,Primary annualized return
+phase415_cost200_acceptance_survivor_rows,0,Accepted synthetic scenarios
+phase415_strategy_promotion_allowed,0,No promotion
+phase415_paper_or_live_acceptance_allowed,0,No paper/live
+phase415_deployable_profitability_claim_allowed,0,No deployable claim
+phase415_hard_gate_pass_rows,18,Passed hard gates
+phase415_hard_gate_rows,21,Hard gates
+phase415_next_best_action,interpret_phase415_failure_or_success_no_paper_live,Recommended next action
