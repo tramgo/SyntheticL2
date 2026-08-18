@@ -1,0 +1,19 @@
+metric,value,description
+phase455_contiguous_cross_asset_execution_complete,1,Phase455 execution completed
+phase455_thesis_id,P455_CONTIGUOUS_CROSS_ASSET_ETF_PRESSURE_EXECUTION,Execution thesis
+phase455_best_scenario_id,P455_contiguous_cross_asset_etf_pressure_primary,Primary scenario
+phase455_best_completed_round_trips,284,Primary completed round trips
+phase455_best_trade_dates,129,Primary dates
+phase455_best_symbols,3,Primary symbols
+phase455_best_positive_date_fraction,0.0,Primary positive-date fraction
+phase455_best_gross_pnl_inr,0.0,Primary gross P&L
+phase455_best_cost200_inr,46912.583123133605,Primary Zerodha cost200
+phase455_best_net_pnl_inr,-46912.583123133605,Primary net P&L
+phase455_best_annualized_return_pct,-9.164318563588889,Fixed-capital annualized return
+phase455_acceptance_survivor,0,Accepted only if every hard gate passes
+phase455_strategy_promotion_allowed,0,No promotion
+phase455_paper_or_live_acceptance_allowed,0,No paper/live
+phase455_deployable_profitability_claim_allowed,0,No deployable claim
+phase455_hard_gate_pass_rows,12,Passed hard gates
+phase455_hard_gate_rows,17,Hard gates
+phase455_next_best_action,interpret_phase455_contiguous_cross_asset_etf_pressure_no_paper_live,Recommended next action

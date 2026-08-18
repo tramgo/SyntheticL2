@@ -1,0 +1,18 @@
+gate_id,passed,observed_value,required_value,severity
+P455_PHASE454_PRECOMMIT_USED,True,1,1,hard
+P455_REQUIRED_FILES_PRESENT,True,60,60,hard
+P455_CONTIGUOUS_METRICS_PRESENT,True,1290,>0,hard
+P455_LOW_TURNOVER_CAP_APPLIED,True,max_one_event_per_target_date,applied,hard
+P455_CROSS_ASSET_SOURCE_USED,True,NIFTYBEES;BANKBEES;ITBEES,etf_proxies,hard
+P455_FULL_DEPTH_L2_L5_PRIMARY,True,ETF and target L2-L5 pressure used,levels_2_to_5,hard
+P455_COMPLETED_ROUND_TRIPS_GE_30,True,284,>=30,hard
+P455_DATE_BREADTH_GE_5,True,129,>=5,hard
+P455_SYMBOL_BREADTH_GE_3,True,3,>=3,hard
+P455_POSITIVE_DATE_FRACTION_GE_0_60,False,0.0,>=0.60,hard
+P455_ANNUALIZED_GE_12_COST200,False,-9.164318563588889,>=12.0,hard
+P455_TIME_SHIFT_NOT_DOMINANT,False,primary=-46912.583123133605;shift=-46416.8572100976,primary_gt_shift,hard
+P455_SIDE_FLIP_NOT_DOMINANT,False,primary=-46912.583123133605;side_flip=-46912.583123133605,primary_gt_side_flip,hard
+P455_TARGET_ONLY_NOT_DOMINANT,True,primary=-46912.583123133605;target_only=-148647.3566089416,primary_gt_target_only,hard
+P455_ETF_L1_ONLY_NOT_DOMINANT,False,primary=-46912.583123133605;etf_l1=-46912.583123133605,primary_gt_etf_l1,hard
+P455_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P455_NO_PROMOTION_PAPER_LIVE,True,promotion=0;paper_live=0;claim=0,all_zero,hard

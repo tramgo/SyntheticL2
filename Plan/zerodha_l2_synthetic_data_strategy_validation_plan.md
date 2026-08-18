@@ -22439,6 +22439,87 @@ Current next best action after Phase454:
 
 - Run `run_phase455_contiguous_cross_asset_etf_pressure_no_paper_live`.
 
+## 24.282 Phase455 Contiguous Cross-Asset ETF Pressure Execution Completed
+
+Phase455 executed the Phase454 repaired contiguous raw tick-window contract for the Phase451 cross-asset ETF pressure source.
+
+Phase455 thesis ID:
+
+- `P455_CONTIGUOUS_CROSS_ASSET_ETF_PRESSURE_EXECUTION`.
+
+Phase455 execution coverage:
+
+- selected files: `60`;
+- files present: `60`;
+- daily signal metric rows: `1,290`;
+- source instruments: `NIFTYBEES`, `BANKBEES`, `ITBEES`;
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`;
+- months: `2026-01` through `2026-06`;
+- contiguous rows per symbol/date: `271`.
+
+Phase455 primary scenario:
+
+- `P455_contiguous_cross_asset_etf_pressure_primary`.
+
+Phase455 primary result:
+
+- completed round trips: `284`;
+- trade dates: `129`;
+- symbols: `3`;
+- positive-date fraction: `0.0`;
+- gross P&L: `0.0` INR;
+- Zerodha `cost200`: `46,912.583123133605` INR;
+- net P&L after cost200: `-46,912.583123133605` INR;
+- annualized return using fixed `1,000,000` INR capital: `-9.164318563588889%`;
+- acceptance survivor: `0`.
+
+Phase455 controls:
+
+- source time-shift net P&L: `-46,416.8572100976` INR;
+- side-flip net P&L: `-46,912.583123133605` INR;
+- target-only L1-L5 net P&L: `-148,647.3566089416` INR;
+- ETF L1-only net P&L: `-46,912.583123133605` INR.
+
+Phase455 failed hard gates:
+
+- positive-date fraction at least `0.60`: failed (`0.0`);
+- annualized return at least `12.0%`: failed (`-9.164318563588889%`);
+- source time-shift not dominant: failed because the shifted control was slightly less negative;
+- side-flip not dominant: failed because side flip tied the primary;
+- ETF L1-only not dominant: failed because ETF L1-only tied the primary.
+
+Phase455 hard gates:
+
+- passed: `12 / 17`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase455 interpretation before formal Phase456:
+
+- The repaired contiguous access contract produced trades and breadth, so Phase452's access blocker is resolved.
+- The first-window cross-asset ETF-pressure signal produced zero gross edge in these synthetic windows.
+- The strategy is therefore entirely cost-negative under Zerodha `cost200`.
+- Full-depth materiality is not established because ETF L1-only tied the primary and the side-flip control tied the primary.
+
+Phase455 outputs:
+
+- `scripts/run_phase455_contiguous_cross_asset_etf_pressure.py`;
+- `src/synthetic_l2/phase455_contiguous_cross_asset_etf_pressure.py`;
+- `outputs/phase455/phase455_acceptance_summary.csv`;
+- `outputs/phase455/phase455_control_summary.csv`;
+- `outputs/phase455/phase455_daily_signal_metrics.csv`;
+- `outputs/phase455/phase455_gate_evaluation.csv`;
+- `outputs/phase455/phase455_scenario_summary.csv`;
+- `outputs/phase455/phase455_selected_files.csv`;
+- `outputs/phase455/phase455_trade_ledger.csv`;
+- `outputs/phase455/phase455_contiguous_cross_asset_etf_pressure_report.md`;
+- `outputs/phase455/phase455_contiguous_cross_asset_etf_pressure_manifest.json`.
+
+Current next best action after Phase455:
+
+- Interpret Phase455 formally and close the first-window cross-asset ETF pressure route unless a materially different timing/label source is precommitted.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

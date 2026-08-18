@@ -1,0 +1,6 @@
+scenario_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct,acceptance_survivor
+P455_contiguous_cross_asset_etf_pressure_primary,284,129,3,0.0,0.0,46912.583123133605,-46912.583123133605,-9.164318563588889,0
+P455_contiguous_cross_asset_etf_pressure_source_time_shift,281,128,3,0.0,0.0,46416.8572100976,-46416.8572100976,-9.138318763237965,0
+P455_contiguous_cross_asset_etf_pressure_side_flip,284,129,3,0.0,0.0,46912.583123133605,-46912.583123133605,-9.164318563588889,0
+P455_contiguous_cross_asset_target_only_l1_l5,900,129,7,0.0,0.0,148647.3566089416,-148647.3566089416,-29.038088267793245,0
+P455_contiguous_cross_asset_etf_l1_only,284,129,3,0.0,0.0,46912.583123133605,-46912.583123133605,-9.164318563588889,0
