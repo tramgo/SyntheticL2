@@ -1,0 +1,19 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P426_QUEUE_DEPLETION_CONTINUATION_REJECTED_ZERO_SYNTHETIC_EVENTS,Frozen queue-depletion continuation route produced zero synthetic primary events and negative real-anchor evidence.,terminal_for_this_route
+phase425_next_action_matched,interpret_phase425_queue_depletion_continuation_no_paper_live,Phase426 implements the Phase425 next-action string.,basis
+synthetic_candidate_scan_points,14400,Bounded synthetic scan breadth.,evidence
+synthetic_selected_trades_all_scenarios,0,No synthetic scenarios selected trades under frozen thresholds.,failure
+synthetic_primary_completed_round_trips,0,Primary frozen route event count.,failure
+synthetic_primary_annualized_return_pct,0.0,Fixed-capital annualized return.,failure
+phase425_failed_hard_gates,P425_L1_ONLY_CONTROL;P425_EVENT_FLOOR;P425_DATE_BREADTH;P425_SYMBOL_BREADTH;P425_POSITIVE_DATE_FRACTION;P425_ANNUALIZED_FLOOR,Explicit failed gate basis.,basis
+real_anchor_primary_completed_round_trips,4,Real-anchor route had sparse activity.,real_anchor_negative
+real_anchor_primary_trade_dates,3,Real-anchor date breadth.,real_anchor_negative
+real_anchor_primary_symbols,3,Real-anchor symbol breadth.,real_anchor_negative
+real_anchor_primary_net_pnl_inr,-663.6089034859971,Real-anchor cost200 net P&L.,real_anchor_negative
+real_anchor_primary_annualized_return_pct,-5.574314789282376,Real-anchor fixed-capital annualized return.,real_anchor_negative
+exact_forward_tick_executor_preserved,1,Phase425 fixed the Phase422 proxy-only tick-gate weakness.,preserve
+same_family_tuning_allowed,0,Do not rescue the frozen queue-depletion thresholds after seeing zero-event result.,closed
+strategy_promotion_allowed,0,No accepted survivor.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+next_action,precommit_broader_full_depth_feature_family_sweep_or_pause_for_decision_report,Use a broader precommitted feature-family sweep if continuing strategy search.,next

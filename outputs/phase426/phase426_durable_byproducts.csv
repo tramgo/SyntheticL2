@@ -1,0 +1,6 @@
+artifact_id,description,status
+exact_forward_tick_indexing,Reusable executor pattern requiring exact post-entry tick index plus elapsed-time hold.,preserve
+queue_depletion_feature_functions,"Reusable L2-L5 depth depletion, order-count thinning and replenishment feature functions.",preserve
+l1_only_control_pattern,Depth-removal control is implemented as a first-class scenario.,preserve
+real_anchor_single_name_loader,Local real L2 replay path works for single-name full-depth tests.,preserve
+frozen_threshold_route,The specific Phase424 thresholds are not accepted and should not be rescued by post-result tuning.,close
