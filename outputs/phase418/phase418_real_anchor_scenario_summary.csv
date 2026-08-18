@@ -1,0 +1,5 @@
+panel,scenario_id,completed_round_trips,trade_dates,pairs,positive_date_fraction,net_pnl_inr,gross_pnl_inr,cost200_inr,annualized_return_pct,acceptance_survivor
+real_anchor,P418_PRIMARY_PAIR_SPREAD_CONVERGENCE,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+real_anchor,P418_SIDE_FLIP_CONTROL,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+real_anchor,P418_L2_L5_REMOVED_CONTROL,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+real_anchor,P418_SINGLE_LEG_PROXY_CONTROL,0,0,0,0.0,0.0,0.0,0.0,0.0,0

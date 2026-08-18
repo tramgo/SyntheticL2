@@ -1,0 +1,18 @@
+metric,value,description
+phase418_pair_spread_convergence_execution_complete,1,Phase418 execution completed
+phase418_primary_scenario_id,P418_PRIMARY_PAIR_SPREAD_CONVERGENCE,Primary scenario
+phase418_synthetic_scenario_rows,4,Synthetic scenario rows
+phase418_real_anchor_scenario_rows,4,Real-anchor scenario rows
+phase418_primary_completed_round_trips,189,Primary pair round trips
+phase418_primary_trade_dates,5,Primary trade dates
+phase418_primary_pairs,4,Primary pairs
+phase418_primary_positive_date_fraction,0.8,Primary positive date fraction
+phase418_primary_net_pnl_inr,15352.134856071578,Primary net P&L
+phase418_primary_annualized_return_pct,77.37475967460075,Primary annualized return
+phase418_cost200_acceptance_survivor_rows,3,Accepted scenarios
+phase418_strategy_promotion_allowed,0,No promotion
+phase418_paper_or_live_acceptance_allowed,0,No paper/live
+phase418_deployable_profitability_claim_allowed,0,No deployable claim
+phase418_hard_gate_pass_rows,20,Passed hard gates
+phase418_hard_gate_rows,21,Hard gates
+phase418_next_best_action,interpret_phase418_pair_spread_convergence_no_paper_live,Recommended next action

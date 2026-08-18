@@ -19910,6 +19910,78 @@ Current next best action after Phase417:
 
 - Commit and push Phase417 before any results, then implement `run_phase418_pair_spread_convergence_execution_no_paper_live`.
 
+## 24.245 Phase418 Pair-Spread Convergence Execution Completed
+
+Phase418 executes the Phase417 frozen market-neutral pair-spread convergence thesis. This is the first recent branch to produce a positive synthetic cost200 result, but it is not accepted because the levels 2-5 removed control outperformed the primary.
+
+Phase418 execution scope:
+
+- primary scenario: `P418_PRIMARY_PAIR_SPREAD_CONVERGENCE`;
+- controls:
+  - `P418_SIDE_FLIP_CONTROL`;
+  - `P418_L2_L5_REMOVED_CONTROL`;
+  - `P418_SINGLE_LEG_PROXY_CONTROL`;
+- synthetic source: bounded raw dense full-year L1-L5 slices from `raw_synthetic_l2_dense_full_year`;
+- pair alignment: timestamp-nearest `merge_asof` with `1,000` ms tolerance;
+- execution: taker entry and taker exit on both legs;
+- fixed capital: `1,000,000` INR;
+- gross pair notional: `100,000` INR;
+- leg notional: `50,000` INR;
+- cost model: Zerodha equity intraday NSE `cost200`.
+
+Phase418 primary result:
+
+- completed pair round trips: `189`;
+- trade dates: `5`;
+- pairs: `4`;
+- positive date fraction: `0.8`;
+- net P&L: approximately `15,352.134856071578` INR;
+- annualized return: approximately `77.37475967460075%`;
+- cost200 acceptance survivor rows across scenarios: `3`.
+
+Phase418 controls:
+
+- side-flip control completed `189` round trips and annualized approximately `-519.9392118699669%`;
+- levels 2-5 removed control completed `240` round trips and annualized approximately `98.21200763402915%`;
+- single-leg proxy control completed `189` round trips and annualized approximately `38.68737983730038%`;
+- real-anchor primary summary was unavailable/zero in this bounded pair catalog run, so the real-anchor sign check is not strong evidence.
+
+Phase418 hard gates:
+
+- passed: `20 / 21`;
+- passed profitability/breadth gates:
+  - event floor: `189`, required at least `30`;
+  - date breadth: `5`, required at least `5`;
+  - pair breadth: `4`, required at least `2`;
+  - positive date fraction: `0.8`, required at least `0.6`;
+  - annualized return: approximately `77.37475967460075%`, required at least `12.0%`;
+- failed gate:
+  - `P418_L2_L5_REMOVED_CONTROL`: levels 2-5 removed control annualized approximately `98.21200763402915%`, which outperformed the primary approximately `77.37475967460075%`.
+
+Phase418 interpretation before formal Phase419:
+
+- This is the first recent bounded synthetic route with positive annualized return above the `12%` floor.
+- It still cannot be promoted because the full-depth L2 contribution is not proven; the L2-L5 removed control was better than the primary.
+- Same-timestamp aligned entry/exit cases exist in the synthetic dense feed and must be treated as a realism caveat before any stronger claim.
+- The result should be interpreted as a promising non-directional lead, not accepted strategy evidence.
+
+Phase418 outputs:
+
+- `scripts/run_phase418_pair_spread_convergence_execution.py`;
+- `src/synthetic_l2/phase418_pair_spread_convergence_execution.py`;
+- `outputs/phase418/phase418_acceptance_summary.csv`;
+- `outputs/phase418/phase418_synthetic_scenario_summary.csv`;
+- `outputs/phase418/phase418_synthetic_pair_scan_diagnostics.csv`;
+- `outputs/phase418/phase418_synthetic_pair_trade_ledger.csv`;
+- `outputs/phase418/phase418_real_anchor_scenario_summary.csv`;
+- `outputs/phase418/phase418_gate_evaluation.csv`;
+- `outputs/phase418/phase418_pair_spread_convergence_execution_report.md`;
+- `outputs/phase418/phase418_pair_spread_convergence_execution_manifest.json`.
+
+Current next best action after Phase418:
+
+- Implement `interpret_phase418_pair_spread_convergence_no_paper_live`. The interpretation must preserve the positive result as a lead while blocking promotion until full-depth contribution and real-anchor evidence are stronger.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
