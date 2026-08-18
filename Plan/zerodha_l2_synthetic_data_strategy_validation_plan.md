@@ -20336,6 +20336,97 @@ Current next best action after Phase423:
 
 - Stop the tested pair-spread convergence route, or precommit a materially new full-depth L2 source/thesis. Do not tune this same pair-spread route to rescue the falsified lead.
 
+## 24.251 Phase424 Queue-Depletion Continuation Precommit Completed
+
+Phase424 precommits a materially new full-depth L2 thesis after Phase423 falsified the pair-spread positive lead.
+
+Phase424 selected thesis:
+
+- `P424_FULL_DEPTH_QUEUE_DEPLETION_CONTINUATION`.
+
+Phase424 material difference:
+
+- not pair-spread convergence;
+- not retail market-making;
+- not passive-fill rescue;
+- not bar-return reversal alone;
+- not a threshold rescue of a closed family.
+
+Phase424 hypothesis:
+
+- when opposite-side levels 2-5 visibly deplete;
+- opposite-side order counts thin;
+- same-side levels 2-5 replenish;
+- and L1 imbalance confirms direction;
+- the next few exact post-entry ticks may continue far enough to survive Zerodha `cost200`.
+
+Phase424 frozen execution requirements for Phase425:
+
+- use L1-L5 price, quantity and order-count fields;
+- require levels 2-5 materiality in the primary entry signal;
+- enforce exact post-entry tick indexing, not elapsed-time proxy-only indexing;
+- also enforce minimum forward hold of `250.0` ms;
+- use taker entry and taker exit only;
+- use Zerodha equity intraday NSE `cost200`;
+- use fixed `1,000,000` INR capital for annualized return;
+- use `100,000` INR order notional;
+- run L1-only removed-depth control;
+- run side-flip control;
+- run real-anchor cross-check on available local real L2 dates;
+- keep promotion, paper/live and deployable-claim boundaries closed.
+
+Phase424 frozen thresholds:
+
+- lookback ticks: `180`;
+- entry forward ticks: `3`;
+- max hold ticks: `30`;
+- minimum opposite L2-L5 depletion: `0.35`;
+- minimum same-side L2-L5 replenishment: `0.10`;
+- minimum L1 imbalance confirmation: `0.55`;
+- maximum spread: `8.0` bps;
+- maximum opposite L1 notional: `1,500,000` INR;
+- minimum L2-L5 depth notional: `2,000,000` INR;
+- full-depth edge over L1-only control: at least `5.0` percentage points.
+
+Phase424 acceptance gates:
+
+- completed round trips: at least `30`;
+- trade dates: at least `5`;
+- symbols: at least `5`;
+- positive date fraction: at least `0.60`;
+- annualized fixed-capital return: at least `12.0%`;
+- primary must beat L1-only control by at least `5.0` percentage points;
+- all costs are Zerodha `cost200`;
+- no paper/live or deployable profitability claim in Phase425.
+
+Phase424 result:
+
+- precommit complete: `1`;
+- execution results generated: `0`;
+- symbol catalog rows: `32`;
+- frozen parameter rows: `20`;
+- parameter freeze hash: `c2d6af1dec28f743762b7b1865bded9184983e7f52be8f8e1f0e0e5efa82157d`;
+- hard gates passed: `17 / 17`;
+- execution allowed next: `1`.
+
+Phase424 outputs:
+
+- `scripts/run_phase424_queue_depletion_continuation_precommit.py`;
+- `src/synthetic_l2/phase424_queue_depletion_continuation_precommit.py`;
+- `outputs/phase424/phase424_acceptance_summary.csv`;
+- `outputs/phase424/phase424_frozen_contract.csv`;
+- `outputs/phase424/phase424_symbol_catalog.csv`;
+- `outputs/phase424/phase424_parameter_freeze.csv`;
+- `outputs/phase424/phase424_input_registry.csv`;
+- `outputs/phase424/phase424_execution_hard_gate_contract.csv`;
+- `outputs/phase424/phase424_gate_evaluation.csv`;
+- `outputs/phase424/phase424_queue_depletion_continuation_precommit_report.md`;
+- `outputs/phase424/phase424_queue_depletion_continuation_precommit_manifest.json`.
+
+Current next best action after Phase424:
+
+- Commit and push Phase424 before any results, then run `run_phase425_queue_depletion_continuation_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

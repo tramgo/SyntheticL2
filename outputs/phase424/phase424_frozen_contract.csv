@@ -1,0 +1,18 @@
+contract_id,contract_value,description
+thesis_id,P424_FULL_DEPTH_QUEUE_DEPLETION_CONTINUATION,Material-new single-name full-depth L2 source after Phase423.
+material_difference,queue_depletion_continuation_not_pair_spread_not_market_making_not_bar_reversal,"Continuation after visible opposite-side depth evaporation, not a rescue of closed routes."
+market_hypothesis,when_l2_l5_opposite_queue_evaporates_and_l1_pressure_confirms_direction_short_horizon_continuation_may_pay_after_cost200,A liquidity-consumption continuation thesis using the full top-five book.
+entry_signal,opposite_l2_l5_depth_depletion_plus_order_count_thinning_plus_l1_imbalance_confirmation,Requires levels 2-5 depth and order-count features.
+long_rule,ask_l2_l5_depletes_ask_order_count_thins_bid_l2_l5_replenishes_l1_imbalance_bid_dominant,Buy when ask-side queues thin and bid pressure confirms.
+short_rule,bid_l2_l5_depletes_bid_order_count_thins_ask_l2_l5_replenishes_l1_imbalance_ask_dominant,Sell/short-side simulation mirror for research scoring only.
+exit_rule,exit_after_entry_forward_ticks_stop_or_max_hold_ticks,"Uses exact forward tick indexing in Phase425, not elapsed-time proxy-only."
+execution_profile,taker_entry_then_taker_exit_cost200_no_passive_fill_no_maker_rebate,Directional taker execution with Zerodha costs.
+full_depth_required,L1_to_L5_price_quantity_orders_with_levels_2_to_5_materiality,Top-five market-by-price book state is mandatory.
+l1_only_control,remove_l2_l5_depletion_replenishment_and_order_count_terms,Primary must beat L1-only control by the frozen edge margin.
+side_flip_control,invert_direction_for_same_events,Side-flip must not dominate primary.
+real_anchor_cross_check,replay_same_frozen_rules_on_available_local_real_l2_dates,Check sign and cost survival on real anchors if enough rows exist.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+cost_multiplier,2.0,Cost200 acceptance scoring.
+capital,initial=1000000.0;order_notional=100000.0,"Fixed capital denominator, no unlimited capital."
+acceptance,round_trips>=30;dates>=5;symbols>=5;positive_date_fraction>=0.6;annualized>=12.0;l2_l5_edge_delta>=5.0,Must be profitable with breadth and full-depth uniqueness.
+forbidden,pair_spread_rescue;market_maker_rescue;passive_fill_rescue;bar_return_reversal_alone;post_result_threshold_tuning;promotion;paper_live;deployable_claim,Closed routes and boundaries.

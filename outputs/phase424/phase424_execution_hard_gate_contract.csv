@@ -1,0 +1,19 @@
+gate_id,requirement,severity,phase424_precommitted
+P425_PHASE424_PRECOMMIT_USED,Execution must read Phase424 frozen contract and parameter freeze.,hard,1
+P425_TICK_ORDERED_SINGLE_NAME_REPLAY,Ticks must be consumed in exchange-time order with no lookahead.,hard,1
+P425_EXACT_FORWARD_TICK_INDEXING,"Exit evaluation must use at least 3 exact post-entry ticks, not proxy-only elapsed time.",hard,1
+P425_FORWARD_TIME_ENFORCED,Exit must also be at least 250.0 ms after entry.,hard,1
+P425_FULL_DEPTH_L1_L5_REQUIRED,"Feature rows must include L1-L5 price, quantity and order count fields.",hard,1
+P425_LEVELS_2_TO_5_MATERIAL,Primary entry must require L2-L5 depletion/replenishment/order-count thinning.,hard,1
+P425_L1_ONLY_CONTROL,L1-only control must be run and primary must beat it by the frozen edge margin.,hard,1
+P425_SIDE_FLIP_CONTROL,Side-flip control must be run and must not dominate primary.,hard,1
+P425_TAKER_ONLY_EXECUTION,"No passive fill, queue priority advantage or maker rebate.",hard,1
+P425_NO_LOOKAHEAD,All rolling queue-depletion features must be computed before entry tick.,hard,1
+P425_COST200_FIXED_CAPITAL,"Use Zerodha cost200 with fixed INR 1,000,000 denominator.",hard,1
+P425_EVENT_FLOOR,Completed round trips >= 30.,hard,1
+P425_DATE_BREADTH,Distinct trade dates >= 5.,hard,1
+P425_SYMBOL_BREADTH,Distinct symbols >= 5.,hard,1
+P425_POSITIVE_DATE_FRACTION,Positive date fraction >= 0.6.,hard,1
+P425_ANNUALIZED_FLOOR,Annualized fixed-capital return >= 12.0 percent.,hard,1
+P425_REAL_ANCHOR_CROSS_CHECK,Replay on available local real L2 dates and report sign/cost survival.,hard,1
+P425_BOUNDARIES_CLOSED,"No promotion, paper/live acceptance or deployable claim in Phase425.",hard,1
