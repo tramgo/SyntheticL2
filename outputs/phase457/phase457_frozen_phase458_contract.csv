@@ -1,0 +1,22 @@
+contract_id,contract_value,description
+thesis_id,P457_DELAYED_INTRADAY_CROSS_ASSET_DISPLACEMENT_PRECOMMIT,Phase457 delayed timing-source precommit.
+selected_source,delayed_intraday_cross_asset_etf_displacement,Materially new timing/label source after Phase456.
+material_difference,delayed_intraday_window_not_first_window_cross_asset_pressure,"Changes timing/label source, not thresholds or side-rule tuning."
+source_instruments,NIFTYBEES;BANKBEES;ITBEES,ETF/index-proxy source instruments.
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Frozen target basket.
+months,2026-01;2026-02;2026-03,Frozen bounded execution months.
+window_start_row,5000,Start delayed contiguous window at this per-symbol/date row.
+window_rows_per_symbol_date,271,Keep contiguous rows for entry plus horizon.
+entry_index,20,Entry index within window.
+horizon_ticks,240,Fixed exit horizon.
+guard_ticks,10,Guard ticks.
+max_events_per_target_date,1,Low-turnover cap.
+side_rule,long_when_delayed_etf_proxy_pressure_and_target_l2_l5_pressure_agree_short_when_opposite,Frozen side rule.
+controls_required,source_time_shift;side_flip;target_only_l1_l5;etf_l1_only_ablation,Required controls.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+cost_multiplier,2.0,Cost200.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Fixed capital and notional.
+acceptance_floor,round_trips_ge_30;dates_ge_5;symbols_ge_3;positive_date_fraction_ge_0p60;annualized_ge_12_cost200;controls_not_dominant,User profitability bar with breadth.
+forbidden,first_window_cross_asset_rescue;threshold_relaxation;side_rule_tuning;catalyst_rescue;market_maker_rescue;promotion;paper_live;deployable_profitability_claim,Closed boundaries.
+execution_results_generated_now,0,Precommit only.
+contract_hash,9570a1ddbd0aeb56798f2e49dd024049708123494182bdd85e8c10706fcfd0cd,Hash of frozen contract rows above.

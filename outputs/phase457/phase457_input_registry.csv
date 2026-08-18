@@ -1,0 +1,12 @@
+input_id,value,description
+dense_root_exists,1,Dense root exists.
+selected_file_rows,30,Frozen selected file rows.
+selected_files_present,30,Selected files present.
+months,2026-01;2026-02;2026-03,Frozen months.
+source_instruments,NIFTYBEES;BANKBEES;ITBEES,ETF/index proxies.
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Target symbols.
+window_start_row,5000,Delayed intraday row offset; not first-window.
+window_rows_per_symbol_date,271,Rows needed from each delayed window.
+entry_index,20,Entry row within delayed window.
+horizon_ticks,240,Fixed horizon.
+guard_ticks,10,Guard rows.

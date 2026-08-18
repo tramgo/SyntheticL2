@@ -1,0 +1,3 @@
+phase,route,verdict_or_status,boundary
+P456,first_window_cross_asset_etf_pressure,P456_FIRST_WINDOW_CROSS_ASSET_ETF_PRESSURE_REJECTED_ZERO_GROSS_EDGE,closed: first-window form produced zero gross edge and failed controls
+P455,contiguous_first_window_execution,0,same-form rescue not allowed

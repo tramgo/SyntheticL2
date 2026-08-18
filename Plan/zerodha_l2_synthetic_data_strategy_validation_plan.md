@@ -22576,6 +22576,84 @@ Current next best action after Phase456:
 
 - Precommit a materially new timing or label source that is not the first-window cross-asset ETF pressure form. Do not tune Phase455 thresholds or side rules after seeing the zero-gross-edge result.
 
+## 24.284 Phase457 Delayed Intraday Cross-Asset Displacement Precommit Completed
+
+Phase457 freezes a materially new timing/label source after Phase456 closed the first-window cross-asset ETF pressure form.
+
+Phase457 selected source:
+
+- `delayed_intraday_cross_asset_etf_displacement`.
+
+Phase457 thesis ID:
+
+- `P457_DELAYED_INTRADAY_CROSS_ASSET_DISPLACEMENT_PRECOMMIT`.
+
+Phase457 material difference:
+
+- delayed intraday timing window, not first-window cross-asset pressure;
+- window starts at per-symbol/date row `5,000`;
+- contiguous delayed window length: `271` rows;
+- entry index within delayed window: `20`;
+- horizon: `240` ticks;
+- guard: `10` ticks;
+- max events per target/date: `1`.
+
+Phase457 frozen source instruments:
+
+- `NIFTYBEES`;
+- `BANKBEES`;
+- `ITBEES`.
+
+Phase457 frozen target symbols:
+
+- `AXISBANK`;
+- `HDFCBANK`;
+- `ICICIBANK`;
+- `INFY`;
+- `HCLTECH`;
+- `TCS`;
+- `RELIANCE`.
+
+Phase457 frozen months:
+
+- `2026-01`;
+- `2026-02`;
+- `2026-03`.
+
+Phase457 boundaries:
+
+- first-window cross-asset rescue: forbidden;
+- threshold relaxation: forbidden;
+- side-rule tuning: forbidden;
+- catalyst rescue: forbidden;
+- market-maker rescue: forbidden;
+- strategy promotion: `0`;
+- paper/live acceptance: `0`;
+- deployable profitability claim: `0`.
+
+Phase457 hard gates:
+
+- passed: `10 / 10`;
+- execution results generated now: `0`;
+- Phase458 execution allowed next: `1`.
+
+Phase457 outputs:
+
+- `scripts/run_phase457_delayed_cross_asset_precommit.py`;
+- `src/synthetic_l2/phase457_delayed_cross_asset_precommit.py`;
+- `outputs/phase457/phase457_acceptance_summary.csv`;
+- `outputs/phase457/phase457_frozen_phase458_contract.csv`;
+- `outputs/phase457/phase457_gate_evaluation.csv`;
+- `outputs/phase457/phase457_input_registry.csv`;
+- `outputs/phase457/phase457_prior_boundary.csv`;
+- `outputs/phase457/phase457_selected_files.csv`;
+- `outputs/phase457/phase457_delayed_cross_asset_precommit_report.md`;
+- `outputs/phase457/phase457_delayed_cross_asset_precommit_manifest.json`.
+
+Current next best action after Phase457:
+
+- Run `run_phase458_delayed_intraday_cross_asset_displacement_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
