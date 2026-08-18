@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-08-18T13:12:51.340885+00:00",
+  "scope": "phase462_distributional_label_source_replacement_precommit",
+  "contract_hash": "6da80deb6d678d2b221b717a1e029ff444c7dd5843ffa3ea39a07bdc7a2448cb",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "bce04e52d15c86973304edfe98aaa71ab785c075",
+  "configuration_hash": "9af692f75c84b31958e087f7196fedf7c3a55daacae0bc50a10d607b1ee65eda",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase462_precommit_no_execution",
+  "creation_timestamp": "2026-08-18T13:12:51.340885+00:00"
+}

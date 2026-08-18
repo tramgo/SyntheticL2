@@ -1,0 +1,17 @@
+evidence_id,observed_value,description
+phase461_next_action,pause_or_repair_synthetic_generator_non_flat_move_distribution_before_strategy_replay,Phase461 requested repair/replacement after flat labels
+phase461_move_candidate_rows,0.0,Flat-source move candidates
+phase461_long_label_rows,0.0,Flat-source long labels
+phase461_short_label_rows,0.0,Flat-source short labels
+phase162_profile_id,P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE,Distributional profile evidence
+phase162_months_materialized,12,Materialized months
+phase162_symbols_materialized,32,Materialized symbols
+phase162_partition_files,384,Distributional partition files
+phase162_expected_partition_files,384,Expected partition files
+phase162_missing_partition_files,0,Missing partition files
+phase162_full_year_realism_audit_pass,1,Realism audit pass
+phase162_strategy_replay_allowed,0,Replay remained closed in Phase162
+replacement_profile_root_exists,1,Replacement profile root
+selected_files_present,21,Selected replacement files present
+selected_files_expected,21,Selected replacement files expected
+selected_files_bytes,228838666,Selected replacement bytes

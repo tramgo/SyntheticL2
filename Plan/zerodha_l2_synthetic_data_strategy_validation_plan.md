@@ -22920,6 +22920,90 @@ Current next best action after Phase461:
 
 - Pause fixed-window synthetic strategy shards and repair the synthetic generator's non-flat tick-level move distribution before strategy replay.
 
+## 24.289 Phase462 Distributional Label-Source Replacement Precommit Completed
+
+Phase462 responds to Phase461's flat-label finding by freezing a replacement label source before any further strategy replay.
+
+Phase462 selected source:
+
+- `phase162_p159_distributional_full_year_l1_l5_replacement_for_flat_phase461_source`.
+
+Phase462 thesis ID:
+
+- `P462_DISTRIBUTIONAL_LABEL_SOURCE_REPLACEMENT_PRECOMMIT`.
+
+Phase462 reason:
+
+- Phase461 used `raw_synthetic_l2_dense_full_year` and materialized `2,240` labels across `64` dates and `7` symbols;
+- Phase461 found `0` move-candidate rows at the `2.0` bps actual-move floor;
+- Phase461 found `0` long labels and `0` short labels;
+- therefore the next action is source repair/replacement, not another fixed-window strategy shard.
+
+Phase462 replacement source:
+
+- replacement dense root: `raw_synthetic_l2_phase162_distributional_full_year`;
+- replacement profile: `P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE`;
+- selected Phase463 files: `21`;
+- selected Phase463 files present: `21`;
+- selected Phase463 file bytes: `228,838,666`.
+
+Phase462 Phase162 evidence:
+
+- Phase162 months materialized: `12`;
+- Phase162 symbols materialized: `32`;
+- Phase162 partition files: `384`;
+- Phase162 expected partition files: `384`;
+- Phase162 missing partition files: `0`;
+- Phase162 full-year realism audit pass: `1`;
+- Phase162 strategy replay allowed at that stage: `0`.
+
+Phase462 frozen Phase463 contract:
+
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`;
+- months: `2026-01`, `2026-02`, `2026-03`;
+- candidate start rows: `0`, `5000`, `10000`, `20000`, `50000`;
+- entry index: `20`;
+- forward horizon: `240` ticks;
+- minimum absolute forward move: `2.0` bps;
+- selected file hash: `14b16054c17f688680c32b4a378e7f74ee7e7c6b9ccc3cac0f627d9545a19315`.
+
+Phase462 hard gates:
+
+- passed: `12 / 12`;
+- Phase461 repair request confirmed: pass;
+- Phase461 zero move candidates confirmed: pass;
+- Phase162 distributional profile selected: pass;
+- Phase162 full-year scope complete: pass;
+- Phase162 missing partitions: `0`;
+- replacement profile root present: pass;
+- selected replacement files present: `21 / 21`;
+- label-only next phase: pass.
+
+Phase462 boundary:
+
+- execution results generated: `0`;
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase463 label materialization allowed next: `1`.
+
+Phase462 outputs:
+
+- `scripts/run_phase462_distributional_label_source_replacement_precommit.py`;
+- `src/synthetic_l2/phase462_distributional_label_source_replacement_precommit.py`;
+- `outputs/phase462/phase462_acceptance_summary.csv`;
+- `outputs/phase462/phase462_frozen_phase463_contract.csv`;
+- `outputs/phase462/phase462_gate_evaluation.csv`;
+- `outputs/phase462/phase462_input_evidence.csv`;
+- `outputs/phase462/phase462_selected_replacement_files.csv`;
+- `outputs/phase462/phase462_distributional_label_source_replacement_precommit_report.md`;
+- `outputs/phase462/phase462_distributional_label_source_replacement_precommit_manifest.json`.
+
+Current next best action after Phase462:
+
+- Run `run_phase463_actual_move_label_materialization_on_phase162_distributional_l1_l5_no_pnl`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

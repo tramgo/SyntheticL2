@@ -1,0 +1,19 @@
+contract_id,contract_value,description
+phase462_thesis_id,P462_DISTRIBUTIONAL_LABEL_SOURCE_REPLACEMENT_PRECOMMIT,Precommit thesis
+selected_source_id,phase162_p159_distributional_full_year_l1_l5_replacement_for_flat_phase461_source,Replacement label source
+prior_flat_source_root,raw_synthetic_l2_dense_full_year,Phase461 source that produced zero non-flat labels
+replacement_dense_root,raw_synthetic_l2_phase162_distributional_full_year,Distributional full-year dense root
+replacement_profile_id,P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE,Distributional profile
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Target symbols
+months,2026-01;2026-02;2026-03,Target months
+window_start_rows,0;5000;10000;20000;50000,Candidate start rows
+entry_index,20,Entry row inside each candidate window
+horizon_ticks,240,Forward label horizon
+min_abs_forward_move_bps,2.0,Actual-move floor
+selected_file_count,21,Frozen replacement file count
+selected_file_hash,14b16054c17f688680c32b4a378e7f74ee7e7c6b9ccc3cac0f627d9545a19315,Hash of replacement file registry
+phase463_allowed_next,1,Allows label materialization only
+strategy_pnl_allowed,0,No P&L in Phase462 or Phase463 label materialization
+strategy_promotion_allowed,0,No promotion
+paper_or_live_acceptance_allowed,0,No paper/live
+deployable_profitability_claim_allowed,0,No deployable claim
