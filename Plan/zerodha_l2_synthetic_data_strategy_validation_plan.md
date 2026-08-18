@@ -20041,6 +20041,75 @@ Current next best action after Phase419:
 
 - Implement the Phase420 repair/audit package before any promotion: full-depth contribution repair, real-anchor pair panel check, same-timestamp timing audit and cost100/cost200 rank audit.
 
+## 24.247 Phase420 Pair-Spread Repair Audit Completed
+
+Phase420 audits the Phase418/419 positive pair-spread lead before any acceptance or promotion. It is audit-only and does not tune the strategy, generate new P&L or promote paper/live.
+
+Phase420 selected verdict:
+
+- `P420_PAIR_SPREAD_REPAIR_AUDIT_BLOCKED_ACCEPTANCE_BUT_LEAD_SURVIVES`.
+
+Phase420 full-depth contribution audit:
+
+- Phase418 primary annualized return: approximately `77.37475967460075%`;
+- levels 2-5 removed control annualized return: approximately `98.21200763402916%`;
+- single-leg proxy annualized return: approximately `38.68737983730038%`;
+- primary minus levels 2-5 removed: approximately `-20.83724795942841` percentage points;
+- primary minus single-leg proxy: approximately `38.68737983730038` percentage points;
+- full-depth contribution pass: `0`;
+- pair structure beats single-leg proxy: `1`.
+
+Phase420 timing realism audit:
+
+- primary trade rows: `189`;
+- same-timestamp or non-forward entry/exit rows: `80`;
+- same-timestamp share: approximately `0.42328042328042326`;
+- median hold: `1.0` ms;
+- 10th percentile hold: `0.0` ms;
+- 90th percentile hold: `2.0` ms;
+- timing realism pass: `0`.
+
+Phase420 real-anchor pair availability:
+
+- `HDFCBANK_ICICIBANK`: `16` overlapping real-anchor dates;
+- `HDFCBANK_AXISBANK`: `16` overlapping real-anchor dates;
+- `INFY_TCS`: `16` overlapping real-anchor dates;
+- `RELIANCE_ONGC`: `16` overlapping real-anchor dates.
+
+Phase420 interpretation:
+
+- The Phase418 positive synthetic pair lead survives as a research lead.
+- It is still blocked for acceptance because full-depth contribution is not proven.
+- It is also blocked because same-timestamp/near-instant aligned exits are too frequent for a strong execution claim.
+- The good news is that real-anchor pair coverage exists locally for all four pairs, so the next repair can use real L2 anchors instead of waiting for more downloads.
+
+Phase420 result:
+
+- audit complete: `1`;
+- positive lead preserved: `1`;
+- acceptance allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates passed: `9 / 9`.
+
+Phase420 outputs:
+
+- `scripts/run_phase420_pair_spread_repair_audit.py`;
+- `src/synthetic_l2/phase420_pair_spread_repair_audit.py`;
+- `outputs/phase420/phase420_acceptance_summary.csv`;
+- `outputs/phase420/phase420_full_depth_contribution_audit.csv`;
+- `outputs/phase420/phase420_timing_realism_audit.csv`;
+- `outputs/phase420/phase420_real_anchor_pair_availability.csv`;
+- `outputs/phase420/phase420_cost_rank_audit.csv`;
+- `outputs/phase420/phase420_decision_ledger.csv`;
+- `outputs/phase420/phase420_gate_evaluation.csv`;
+- `outputs/phase420/phase420_pair_spread_repair_audit_report.md`;
+- `outputs/phase420/phase420_pair_spread_repair_audit_manifest.json`.
+
+Current next best action after Phase420:
+
+- Precommit Phase421 pair-spread realism retest with a minimum forward-time rule and a full-depth unique gate, using existing local real-anchor pair coverage.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

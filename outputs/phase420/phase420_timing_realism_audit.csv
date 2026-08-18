@@ -1,0 +1,8 @@
+audit_id,value,description
+trade_rows,189.0,Primary trade rows
+same_timestamp_entry_exit_rows,80.0,entry_ts_ms >= exit_ts_ms due aligned synthetic ticks
+same_timestamp_share,0.42328042328042326,same timestamp rows / trades
+median_hold_ms,1.0,median exit-entry ms
+p10_hold_ms,0.0,10th percentile hold ms
+p90_hold_ms,2.0,90th percentile hold ms
+timing_realism_pass,0.0,Requires same timestamp share <= 0.05

@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-18T09:42:51.353243+00:00",
+  "scope": "phase420_pair_spread_repair_audit",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "ebf0084f6eaf752c2170e26c10948061dce833aa",
+  "configuration_hash": "2d7297a109d15b4a0a77937f2fbb3f6816d657ec31b07bde8402b8a55f222160",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase420_no_execution_audit",
+  "creation_timestamp": "2026-08-18T09:42:51.353243+00:00"
+}

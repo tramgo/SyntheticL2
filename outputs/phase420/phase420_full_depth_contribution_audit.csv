@@ -1,0 +1,8 @@
+audit_id,value,description
+primary_annualized_return_pct,77.37475967460075,Phase418 primary
+l2_l5_removed_annualized_return_pct,98.21200763402916,Levels 2-5 removed control
+single_leg_proxy_annualized_return_pct,38.68737983730038,Single-leg proxy control
+primary_minus_l2_l5_removed_pct,-20.83724795942841,Must be positive before full-depth contribution is accepted
+primary_minus_single_leg_proxy_pct,38.68737983730038,Pair must beat single-leg proxy
+full_depth_contribution_pass,0.0,Observed primary greater than L2-L5 removed control
+pair_structure_beats_proxy,1.0,Observed primary greater than single-leg proxy

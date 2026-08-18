@@ -1,0 +1,10 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P420_PAIR_SPREAD_REPAIR_AUDIT_BLOCKED_ACCEPTANCE_BUT_LEAD_SURVIVES,Positive lead remains but acceptance blockers persist.,lead_not_acceptance
+full_depth_contribution_pass,0,Primary must beat L2-L5 removed control.,blocker
+timing_realism_pass,0,Same-timestamp entry/exit share must be low.,blocker
+real_anchor_pair_available_count,4,Matching real-anchor pair-date availability.,available
+primary_cost200_rank,2,Rank among Phase418 scenarios at cost200.,diagnostic
+acceptance_allowed,0,Blocked until full-depth/timing/real-anchor repairs pass.,closed
+paper_or_live_acceptance_allowed,0,No paper/live.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+next_action,precommit_phase421_pair_spread_realism_retest_with_min_forward_time_and_full_depth_unique_gate,Retest lead with full-depth unique gate and minimum forward time.,next

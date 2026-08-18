@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P420_PHASE419_COMPLETE,True,1,1,hard
+P420_FULL_DEPTH_AUDIT_WRITTEN,True,7,>0,hard
+P420_TIMING_AUDIT_WRITTEN,True,7,>0,hard
+P420_COST_RANK_AUDIT_WRITTEN,True,written,written,hard
+P420_REAL_ANCHOR_AVAILABILITY_WRITTEN,True,4,>0,hard
+P420_FULL_DEPTH_BLOCKER_RECORDED,True,0,0,hard
+P420_TIMING_BLOCKER_RECORDED,True,0,0,hard
+P420_REAL_ANCHOR_STATUS_RECORDED,True,4,>=0,hard
+P420_NO_ACCEPTANCE_OR_PAPER_LIVE,True,acceptance=0;paper=0;claim=0,all_zero,hard
