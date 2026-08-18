@@ -1,0 +1,12 @@
+contract_id,contract_value,description
+selected_next_action,repair_azure_cli_tls_or_provide_fresh_sas_then_download_one_disk_safe_official_catalyst_l2_day,Real-date expansion is the only credible next path after Phase477 rejection.
+local_real_l2_date_count_observed,4,Local dated real L2 partitions found by this audit.
+fresh_sas_env_available,0,Supported SAS env variables present in this process.
+az_storage_login_list_available,0,Azure CLI storage list via login succeeded.
+one_day_disk_safe_increment_required,1,Do not attempt broad 80GB downloads while disk is constrained.
+target_download_scope,one_full_universe_official_catalyst_l2_day,"One new day first, then verify schema and event overlap."
+required_partition_shape,raw_l2/trade_date=YYYY-MM-DD/exchange=NSE/symbol=SYMBOL/*.parquet,Expected local shape.
+acceptance_retest_allowed_now,0,No acceptance retest until new real L2 event breadth exists.
+strategy_promotion_allowed,0,No strategy promotion.
+paper_or_live_acceptance_allowed,0,No paper/live.
+deployable_profitability_claim_allowed,0,No deployable claim.

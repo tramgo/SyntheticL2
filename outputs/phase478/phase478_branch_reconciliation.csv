@@ -1,0 +1,4 @@
+branch_id,evidence_source,status,net_pnl_inr,annualized_return_pct,trade_rows,acceptance_allowed,next_use
+P477_SYNTHETIC_COMBINED_SHOCK_MARKET_CONTEXT_L2_FADE,outputs/phase477,rejected,-360.10595112291935,-45.37334984148784,10,0,negative_control_only
+P360_UNSEEN_REAL_FULL_DEPTH_MARKET_NEUTRAL_FADE,outputs/phase360,unseen_real_failed,-939.5364392427646,-47.35263653783534,5,0,requires_more_real_dates_or_close
+P369_REAL_DATE_EXPANSION_READINESS,outputs/phase369,data_expansion_required,0.0,0.0,12,0,download_or_local_drop_one_disk_safe_day

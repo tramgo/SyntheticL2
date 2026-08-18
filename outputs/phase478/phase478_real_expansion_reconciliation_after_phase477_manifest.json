@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-18T14:15:41.843871+00:00",
+  "scope": "phase478_real_expansion_reconciliation_after_phase477",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "aff227ae94c1432bbe1443aeebee44bda8a5ae94",
+  "configuration_hash": "f2f46e156f97d478a550ad45d1fb720fb473d2f9ffca4c6d5ca9d7b8d25c0ed5",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase478_no_execution_access_probe_only",
+  "creation_timestamp": "2026-08-18T14:15:41.843871+00:00"
+}

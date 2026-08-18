@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P478_PHASE477_REJECTION_USED,True,0,0,hard
+P478_PHASE360_UNSEEN_REAL_EVIDENCE_USED,True,1,1,hard
+P478_PHASE369_EXPANSION_READINESS_USED,True,1,1,hard
+P478_BRANCH_RECONCILIATION_ROWS_PRESENT,True,3,>=3,hard
+P478_ACCESS_PROBED_WITHOUT_SECRETS,True,0,0,hard
+P478_REAL_EXPANSION_SELECTED_NEXT,True,repair_azure_cli_tls_or_provide_fresh_sas_then_download_one_disk_safe_official_catalyst_l2_day,repair_or_sas_download,hard
+P478_ONE_DAY_DISK_SAFE_INCREMENT_REQUIRED,True,1,1,hard
+P478_NO_ACCEPTANCE_RETEST_NOW,True,0,0,hard
+P478_NO_PROMOTION_PAPER_LIVE_OR_CLAIM,True,paper=0;claim=0,all_zero,hard

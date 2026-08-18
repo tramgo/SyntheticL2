@@ -1,0 +1,15 @@
+metric,value,description
+phase478_real_expansion_reconciliation_complete,1,Phase478 complete if all gates pass
+phase478_thesis_id,P478_REAL_EXPANSION_RECONCILIATION_AFTER_PHASE477,Phase478 thesis
+phase478_local_real_l2_file_rows,199513,Local real L2 parquet files found
+phase478_local_real_l2_date_rows,4,Local dated real L2 dates found
+phase478_supported_sas_env_present,0,SAS env available
+phase478_az_account_available,1,Azure account probe success
+phase478_az_storage_list_available,0,Azure storage list success
+phase478_strategy_promotion_allowed,0,No promotion
+phase478_paper_or_live_acceptance_allowed,0,No paper/live
+phase478_deployable_profitability_claim_allowed,0,No deployable claim
+phase478_phase479_allowed_next,1,Allows repair/download precommit only
+phase478_hard_gate_pass_rows,9,Passed hard gates
+phase478_hard_gate_rows,9,Hard gates
+phase478_next_best_action,repair_azure_cli_tls_or_provide_fresh_sas_then_download_one_disk_safe_official_catalyst_l2_day,Recommended next action

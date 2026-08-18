@@ -24286,6 +24286,68 @@ Current next best action after Phase477:
 - prioritize real-date expansion or a materially different real-catalyst test if fresh L2 data/access is available;
 - otherwise close the current synthetic combined-clue branch for acceptance.
 
+## 24.305 Phase478 Real Expansion Reconciliation After Phase477 Completed
+
+Phase478 reconciled the rejected Phase477 synthetic combined shock/deep L2-L5 fade diagnostic with the already-executed Phase360 unseen official-catalyst real-L2 failure and the Phase369 real-date expansion readiness evidence. This phase deliberately did not run another strategy shard. Its purpose was to decide whether the project should continue synthetic rescue attempts or move to new real L2 breadth.
+
+Phase478 thesis ID:
+
+- `P478_REAL_EXPANSION_RECONCILIATION_AFTER_PHASE477`
+
+Branch evidence used:
+
+- Phase477 synthetic combined shock market-context L2 fade: rejected; best primary net P&L â‚¹-360.11, annualized return -45.37%, 10 trades;
+- Phase360 unseen real full-depth market-neutral fade: failed; net P&L â‚¹-939.54, annualized return -47.35%, 5 selected trades;
+- Phase369 expansion readiness: more real dates required before another acceptance retest; broad download remains inappropriate while disk is constrained.
+
+Phase478 local and access audit:
+
+- local real L2 parquet files found by the Phase478 inventory: 199,513;
+- local dated real L2 partitions found under the audited roots: 4;
+- supported SAS environment variable present in this process: no;
+- Azure account probe: available;
+- Azure storage container listing through `az --auth-mode login`: unavailable because Azure CLI token refresh/listing hit local TLS certificate validation failure;
+- no SAS token, signature, or connection string was persisted in Phase478 artifacts.
+
+Phase478 decision:
+
+The project should not continue same-family synthetic shard after shard. The synthetic combined-clue branch has failed, and the unseen real holdout branch is also too sparse and negative. The next credible action is one disk-safe real-data expansion step:
+
+`repair_azure_cli_tls_or_provide_fresh_sas_then_download_one_disk_safe_official_catalyst_l2_day`
+
+Phase478 hard gates:
+
+- gates passed: 9 / 9;
+- Phase477 rejection used: pass;
+- Phase360 unseen real evidence used: pass;
+- Phase369 expansion readiness used: pass;
+- branch reconciliation rows present: pass;
+- access probed without secrets: pass;
+- real expansion selected next: pass;
+- one-day disk-safe increment required: pass;
+- no acceptance retest now: pass;
+- no promotion, paper/live, or deployable profitability claim: pass.
+
+Phase478 outputs:
+
+- `outputs/phase478/phase478_acceptance_summary.csv`;
+- `outputs/phase478/phase478_local_real_l2_inventory.csv`;
+- `outputs/phase478/phase478_access_probe.csv`;
+- `outputs/phase478/phase478_branch_reconciliation.csv`;
+- `outputs/phase478/phase478_next_real_expansion_contract.csv`;
+- `outputs/phase478/phase478_gate_evaluation.csv`;
+- `outputs/phase478/phase478_real_expansion_reconciliation_after_phase477_report.md`;
+- `outputs/phase478/phase478_real_expansion_reconciliation_after_phase477_manifest.json`;
+- `scripts/run_phase478_real_expansion_reconciliation_after_phase477.py`;
+- `src/synthetic_l2/phase478_real_expansion_reconciliation_after_phase477.py`.
+
+Current next best action after Phase478:
+
+- either repair the local Azure CLI TLS certificate path or provide a fresh SAS through a supported environment variable;
+- download or verify exactly one full-universe official-catalyst L2 day in the expected partition shape;
+- validate schema, L1 plus top-five depth availability, catalyst overlap, and disk impact;
+- only then run the next precommitted real-L2 acceptance retest.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+probe_id,available,evidence,secret_material_recorded
+supported_sas_env_present,0,present_count=0; names_redacted=,0
+az_account_show,1,"{
+  ""name"": ""Visual Studio Enterprise Subscription"",
+  ""tenantId"": ""bfbf2bf5-10dc-4b2a-9000-b5487375c998"",
+  ""user"": ""ramagovindaraja.thiruvadi@citi.com""
+}",0
+az_storage_container_list_login,0,"ERROR: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /bfbf2bf5-10dc-4b2a-9000-b5487375c998/v2.0/.well-known/openid-configuration (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))",0
