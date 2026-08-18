@@ -22736,6 +22736,61 @@ Current next best action after Phase458:
 
 - Interpret Phase458 formally and close the delayed-window cross-asset displacement route unless a new label source uses actual non-flat move candidates rather than fixed row windows.
 
+## 24.286 Phase459 Delayed Cross-Asset Displacement Interpretation Completed
+
+Phase459 formally interprets Phase458 and closes the delayed fixed-window cross-asset displacement form.
+
+Phase459 selected verdict:
+
+- `P459_DELAYED_CROSS_ASSET_DISPLACEMENT_REJECTED_ZERO_GROSS_EDGE`.
+
+Phase459 decision:
+
+- Phase458 produced real trades and breadth;
+- Phase458 acceptance survivor: `0`;
+- same delayed fixed-window route rescue allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase459 rejection basis:
+
+- primary completed round trips: `146`;
+- primary trade dates: `64`;
+- primary symbols: `3`;
+- primary gross P&L: `0.0` INR;
+- primary net P&L after Zerodha `cost200`: `-24,116.1968623696` INR;
+- primary annualized return using fixed `1,000,000` INR capital: `-9.495752514558031%`;
+- primary positive-date fraction: `0.0`;
+- source time-shift was slightly less negative than the primary;
+- side-flip tied the primary;
+- ETF L1-only tied the primary.
+
+Phase459 durable byproducts:
+
+- reusable delayed contiguous-window reader;
+- negative-evidence ledger showing both first-window and row-`5000` fixed windows produced zero gross edge;
+- next-source hint: use actual move-candidate labels or volatility-active windows before applying cross-asset pressure.
+
+Phase459 hard gates:
+
+- passed: `8 / 8`.
+
+Phase459 outputs:
+
+- `scripts/run_phase459_delayed_cross_asset_interpretation.py`;
+- `src/synthetic_l2/phase459_delayed_cross_asset_interpretation.py`;
+- `outputs/phase459/phase459_acceptance_summary.csv`;
+- `outputs/phase459/phase459_decision_ledger.csv`;
+- `outputs/phase459/phase459_durable_byproduct_catalog.csv`;
+- `outputs/phase459/phase459_gate_evaluation.csv`;
+- `outputs/phase459/phase459_delayed_cross_asset_interpretation_report.md`;
+- `outputs/phase459/phase459_delayed_cross_asset_interpretation_manifest.json`.
+
+Current next best action after Phase459:
+
+- Precommit an actual move-candidate label source or pause synthetic fixed-window routes. Do not tune fixed row offsets, thresholds or side rules after seeing the zero-gross-edge result.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

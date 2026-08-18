@@ -1,0 +1,4 @@
+byproduct_id,status,description
+delayed_window_reader,reusable,Can extract contiguous L1-L5 windows from later intraday row offsets.
+fixed_window_negative_evidence,ledger,Both first-window and delayed row-5000 windows produced zero gross edge under the current synthetic dense generator.
+next_source_hint,research_queue,Use actual move-candidate labels or volatility-active windows before applying cross-asset pressure.

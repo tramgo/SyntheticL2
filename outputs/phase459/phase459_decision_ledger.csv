@@ -1,0 +1,13 @@
+decision_id,decision_value,description,required_or_implication
+selected_verdict,P459_DELAYED_CROSS_ASSET_DISPLACEMENT_REJECTED_ZERO_GROSS_EDGE,The delayed fixed-window cross-asset source is rejected.,terminal_for_this_fixed_window_form
+acceptance_survivor,0,No accepted survivor.,0
+primary_completed_round_trips,146,Breadth was sufficient.,>=30
+primary_trade_dates,64,Date breadth was sufficient.,>=5
+primary_symbols,3,Symbol breadth was sufficient.,>=3
+primary_gross_pnl_inr,0.0,Gross edge before costs.,must_be_positive_to_continue
+primary_net_pnl_inr,-24116.1968623696,Net P&L after cost200.,>0_required
+primary_annualized_return_pct,-9.495752514558031,Fixed-capital annualized return.,>=12_required
+failed_gate_ids,P458_POSITIVE_DATE_FRACTION_GE_0_60;P458_ANNUALIZED_GE_12_COST200;P458_TIME_SHIFT_NOT_DOMINANT;P458_SIDE_FLIP_NOT_DOMINANT;P458_ETF_L1_ONLY_NOT_DOMINANT,Failed Phase458 gates.,basis
+same_delayed_fixed_window_rescue_allowed,0,Do not tune row offset or thresholds after seeing this result.,0
+paper_live_or_profit_claim,0,"No promotion, paper/live acceptance or deployable claim.",0
+next_action,precommit_actual_move_candidate_label_source_or_pause_synthetic_fixed_window_routes,Next route should use actual move-candidate labels rather than fixed row windows.,material_new_label_source
