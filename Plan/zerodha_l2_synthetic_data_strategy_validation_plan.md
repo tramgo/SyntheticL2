@@ -20583,6 +20583,82 @@ Current next best action after Phase426:
 
 - Precommit a broader full-depth feature-family sweep, or pause for a decision report. Do not tune the frozen Phase424 queue-depletion thresholds after seeing the zero-event result.
 
+## 24.254 Phase427 Broader Full-Depth Feature-Family Sweep Precommit Completed
+
+Phase427 precommits a broader full-depth L2 feature-family sweep after repeated narrow-route failures.
+
+Phase427 selected thesis:
+
+- `P427_BROADER_FULL_DEPTH_FEATURE_FAMILY_SWEEP`.
+
+Phase427 material difference:
+
+- not a pair-spread rescue;
+- not a queue-depletion threshold rescue;
+- not a retail market-maker rescue;
+- not a passive-fill rescue;
+- not bar-return reversal alone;
+- not post-result threshold tuning.
+
+Phase427 frozen feature families:
+
+- `depth_pressure_continuation`;
+- `depth_pressure_reversal`;
+- `spread_compression_breakout`;
+- `spread_expansion_fade`;
+- `queue_churn_followthrough`;
+- `book_slope_migration`.
+
+Phase427 frozen grid:
+
+- family rows: `6`;
+- lookback ticks: `60`, `180`, `360`;
+- exact forward ticks: `3`, `6`, `12`;
+- maximum spread bps buckets: `4.0`, `8.0`, `12.0`;
+- imbalance thresholds: `0.25`, `0.40`, `0.55`;
+- depth-change thresholds: `0.10`, `0.25`, `0.40`;
+- scenario grid rows: `1,458`;
+- parameter grid hash: `15b6b16d70fd944b4a1dbac15df59f2021ab587f078b4bac555539e5f1a1d36b`.
+
+Phase427 frozen Phase428 execution requirements:
+
+- read the frozen Phase427 grid;
+- consume ticks in exchange-time order;
+- use exact post-entry tick indexing;
+- require full-depth primary features using L1-L5 price, quantity and order-count fields;
+- run L1-only removed-depth control;
+- run side-flip control;
+- use Zerodha equity intraday NSE `cost200`;
+- annualize on fixed `1,000,000` INR capital;
+- run real-anchor cross-check for top bounded survivors;
+- no post-result tuning;
+- no promotion, paper/live or deployable profitability claim.
+
+Phase427 result:
+
+- precommit complete: `1`;
+- execution results generated: `0`;
+- hard gates passed: `13 / 13`;
+- execution allowed next: `1`.
+
+Phase427 outputs:
+
+- `scripts/run_phase427_broader_full_depth_feature_family_precommit.py`;
+- `src/synthetic_l2/phase427_broader_full_depth_feature_family_precommit.py`;
+- `outputs/phase427/phase427_acceptance_summary.csv`;
+- `outputs/phase427/phase427_frozen_contract.csv`;
+- `outputs/phase427/phase427_feature_family_catalog.csv`;
+- `outputs/phase427/phase427_parameter_grid.csv`;
+- `outputs/phase427/phase427_input_registry.csv`;
+- `outputs/phase427/phase427_execution_hard_gate_contract.csv`;
+- `outputs/phase427/phase427_gate_evaluation.csv`;
+- `outputs/phase427/phase427_broader_full_depth_feature_family_precommit_report.md`;
+- `outputs/phase427/phase427_broader_full_depth_feature_family_precommit_manifest.json`.
+
+Current next best action after Phase427:
+
+- Commit and push Phase427 before any results, then run `run_phase428_broader_full_depth_feature_family_sweep_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,12 @@
+input_id,value,description
+phase298_dense_root,raw_synthetic_l2_dense_full_year,Raw dense source root.
+phase298_full_depth_required,1,Must be one.
+phase298_levels_2_to_5_required,1,Must be one.
+phase298_l1_only_variant_rows,0,Must be zero.
+phase298_schema_present_columns_min,30,Minimum L1-L5 schema columns.
+phase426_selected_verdict,P426_QUEUE_DEPLETION_CONTINUATION_REJECTED_ZERO_SYNTHETIC_EVENTS,Queue-depletion closure context.
+phase426_same_family_tuning_allowed,0,Must be zero.
+scenario_grid_rows,1458,Precommitted scenario count.
+family_rows,6,Precommitted family count.
+symbol_rows,32,Precommitted symbol universe.
+execution_results_generated_now,0,Precommit only.

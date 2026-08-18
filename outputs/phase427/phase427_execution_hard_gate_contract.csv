@@ -1,0 +1,12 @@
+gate_id,requirement,severity,phase427_precommitted
+P428_PHASE427_PRECOMMIT_USED,Execution must read Phase427 frozen grid.,hard,1
+P428_TICK_ORDERED_REPLAY,Ticks consumed in exchange-time order.,hard,1
+P428_EXACT_FORWARD_TICK_INDEXING,Every trade exit must use exact post-entry tick offsets.,hard,1
+P428_FULL_DEPTH_PRIMARY_FEATURES,Primary scenarios require L2-L5 features.,hard,1
+P428_L1_ONLY_CONTROL,Run removed-depth control for every surviving family.,hard,1
+P428_SIDE_FLIP_CONTROL,Run side-flip control for every surviving family.,hard,1
+P428_COST200_FIXED_CAPITAL,"Use Zerodha cost200 and fixed INR 1,000,000 capital.",hard,1
+P428_BREADTH_AND_RETURN_GATES,Apply event/date/symbol/positive-date/annualized gates.,hard,1
+P428_REAL_ANCHOR_CROSS_CHECK,Replay top bounded survivors on available real anchors.,hard,1
+P428_NO_POST_RESULT_TUNING,Do not add thresholds after seeing results.,hard,1
+P428_BOUNDARIES_CLOSED,"No promotion, paper/live or deployable claim.",hard,1
