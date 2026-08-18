@@ -24348,6 +24348,68 @@ Current next best action after Phase478:
 - validate schema, L1 plus top-five depth availability, catalyst overlap, and disk impact;
 - only then run the next precommitted real-L2 acceptance retest.
 
+## 24.306 Phase479 Cancel-Included Attachment Current-State Audit Completed
+
+Phase479 handled the newly attached `cancel_included.txt` charter in the current Phase478+ plan state. The attachment asks to reopen the retail two-sided quoting family under an honest per-tick cancel-race model with realistic cancel latency, full top-five L2 depth, pinned Zerodha cost200, no maker rebate, no sub-100ms latency, no lookahead, and no paper/live boundary breach.
+
+Current-state finding:
+
+The attached charter is already represented and executed by the earlier Phase407-409 line. Phase407 precommitted the cancel-latency market-maker realism charter. Phase408 executed the per-tick cancel-race simulator. Phase409 interpreted the result and upgraded the P263 conservative zero-cancel closure to a stronger falsification for the tested retail two-sided top-five L2 market-maker route.
+
+Phase479 thesis ID:
+
+- `P479_CANCEL_INCLUDED_ATTACHMENT_CURRENT_STATE_AUDIT`
+
+Attachment audit evidence:
+
+- attachment content hash: `4dc4a03759bf58ec8e3d9058bebfe3610b42dbe81395acd5a0c270bb30cb24f3`;
+- Phase407 precommit complete: yes;
+- Phase407 latency-grid rows: 45;
+- Phase407 jitter seed: `40720260817`;
+- Phase408 per-tick cancel-race execution complete: yes;
+- Phase408 evaluated 18 named market-maker gates. The attachment text says 17 hard gates, but the enumerated named gate list contains 18 gates;
+- Phase408 best scenario: `P408_P408_TWO_SIDED_TOP5_L2_L5_CHURN_QUOTER_P407_C150_D10_M0p25_J40720260817`;
+- Phase408 best completed round trips: 152;
+- Phase408 best trade dates: 5;
+- Phase408 best symbols: 5;
+- Phase408 best net P&L: INR -47,401.79;
+- Phase408 best annualized return: -238.90%;
+- Phase408 cost200 acceptance survivors: 0;
+- Phase408 kill switch fired: yes;
+- Phase409 selected verdict: `P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED`;
+- same-family market-maker tuning allowed: no.
+
+Phase479 interpretation:
+
+The attachment is important, but it does not open a new strategy sweep now because its required experiment has already been run and failed materially. Breadth was not the failure mode: the best Phase408 scenario met the event, date, and symbol breadth floors. The failure was economics and robustness: strongly negative fixed-capital annualized return, zero cost200 survivors, zero positive date fraction for the best route, and failed latency monotonicity.
+
+Phase479 hard gates:
+
+- gates passed: 6 / 6;
+- attachment read: pass;
+- Phase407-409 artifacts recognized: pass;
+- cancel-included charter already executed: pass;
+- no market-maker tuning: pass;
+- real-L2 expansion remains next: pass;
+- no promotion, paper/live, or deployable profitability claim: pass.
+
+Phase479 outputs:
+
+- `outputs/phase479/phase479_acceptance_summary.csv`;
+- `outputs/phase479/phase479_attachment_requirement_audit.csv`;
+- `outputs/phase479/phase479_decision_ledger.csv`;
+- `outputs/phase479/phase479_gate_evaluation.csv`;
+- `outputs/phase479/phase479_cancel_included_attachment_current_state_audit_report.md`;
+- `outputs/phase479/phase479_cancel_included_attachment_current_state_audit_manifest.json`;
+- `scripts/run_phase479_cancel_included_attachment_current_state_audit.py`;
+- `src/synthetic_l2/phase479_cancel_included_attachment_current_state_audit.py`.
+
+Current next best action after Phase479:
+
+- do not rerun or tune the cancel-included retail market-maker family;
+- keep the Phase409 falsification as terminal for the tested route unless a genuinely new external execution source exists;
+- continue the Phase478-selected path: repair Azure CLI TLS or provide fresh SAS, then download or verify exactly one disk-safe full-universe official-catalyst real-L2 day before the next acceptance retest.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

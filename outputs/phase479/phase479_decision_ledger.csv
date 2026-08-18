@@ -1,0 +1,5 @@
+decision_id,decision,evidence,action_allowed
+cancel_included_attachment_status,already_precommitted_executed_and_falsified_in_phase407_409,"Phase407 precommit, Phase408 per-tick cancel-race run, Phase409 terminal interpretation exist.",current_state_audit_only
+best_cancel_race_result,failed_cost200_profitability,net_pnl_inr=-47401.785561310404;annualized_pct=-238.90499922900443;survivors=0,negative_evidence_only
+retail_market_maker_family_status,P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED,Same-family tuning is forbidden by the attachment and by Phase409.,reopen_only_with_new_external_execution_source
+post_phase478_path,continue_real_l2_one_day_expansion,Phase478 selected one disk-safe official-catalyst real-L2 day expansion after synthetic and sparse-real failures.,do_not_rerun_or_tune_cancel_included_market_maker_continue_phase478_real_l2_one_day_expansion

@@ -1,0 +1,11 @@
+requirement_id,satisfied,evidence,observed_value
+charter_scope_recognized,True,Attachment text contains the retail two-sided quoting cancel-race scope.,P407_CANCEL_LATENCY_MARKET_MAKER_REALISM
+phase407_precommit_exists,True,Phase407 precommit completed before results.,P407_CANCEL_LATENCY_MARKET_MAKER_REALISM
+latency_grid_precommitted,True,"Phase407 pinned 45 cancel latency, decision latency, move-threshold scenarios.",36a685cb9286bd75bf41384e61c3aacc57d9a63c0b5344d07cf056be416a98e3
+per_tick_cancel_race_executed,True,Phase408 executed the per-tick cancel-race simulator.,P408_P408_TWO_SIDED_TOP5_L2_L5_CHURN_QUOTER_P407_C150_D10_M0p25_J40720260817
+all_required_named_gates_evaluated,True,"Attachment says 17 hard gates, but enumerates 18 named gates; Phase408 evaluated 18.",18
+breadth_was_not_the_problem,True,Best Phase408 route met event/date/symbol breadth.,round_trips=152;dates=5;symbols=5
+profitability_failed_materially,True,Best Phase408 route failed the 12 percent cost200 annualized floor.,net_pnl_inr=-47401.785561310404;annualized_pct=-238.90499922900443
+kill_switch_fired,True,Phase408 kill switch fired.,1
+phase409_terminal_verdict_exists,True,Phase409 upgraded the P263 closure to strong falsification for the tested route.,P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED
+no_tune_it_outcome_preserved,True,The attachment permits only survive or falsified; no tuning path remains open.,0
