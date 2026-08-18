@@ -22654,6 +22654,88 @@ Current next best action after Phase457:
 
 - Run `run_phase458_delayed_intraday_cross_asset_displacement_no_paper_live`.
 
+## 24.285 Phase458 Delayed Intraday Cross-Asset Displacement Execution Completed
+
+Phase458 executed the Phase457 delayed intraday timing-source contract using contiguous raw L1-L5 windows starting at row `5,000` per symbol/date.
+
+Phase458 thesis ID:
+
+- `P458_DELAYED_INTRADAY_CROSS_ASSET_DISPLACEMENT_EXECUTION`.
+
+Phase458 execution coverage:
+
+- selected files: `30`;
+- files present: `30`;
+- months: `2026-01`, `2026-02`, `2026-03`;
+- daily signal metric rows: `640`;
+- delayed window start row: `5,000`;
+- contiguous rows per symbol/date: `271`;
+- source instruments: `NIFTYBEES`, `BANKBEES`, `ITBEES`;
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`.
+
+Phase458 primary scenario:
+
+- `P458_delayed_cross_asset_displacement_primary`.
+
+Phase458 primary result:
+
+- completed round trips: `146`;
+- trade dates: `64`;
+- symbols: `3`;
+- positive-date fraction: `0.0`;
+- gross P&L: `0.0` INR;
+- Zerodha `cost200`: `24,116.1968623696` INR;
+- net P&L after cost200: `-24,116.1968623696` INR;
+- annualized return using fixed `1,000,000` INR capital: `-9.495752514558031%`;
+- acceptance survivor: `0`.
+
+Phase458 controls:
+
+- source time-shift net P&L: `-23,785.8080896416` INR;
+- side-flip net P&L: `-24,116.1968623696` INR;
+- target-only L1-L5 net P&L: `-73,665.3896771728` INR;
+- ETF L1-only net P&L: `-24,116.1968623696` INR.
+
+Phase458 failed hard gates:
+
+- positive-date fraction at least `0.60`: failed (`0.0`);
+- annualized return at least `12.0%`: failed (`-9.495752514558031%`);
+- source time-shift not dominant: failed because the shifted control was slightly less negative;
+- side-flip not dominant: failed because side flip tied the primary;
+- ETF L1-only not dominant: failed because ETF L1-only tied the primary.
+
+Phase458 hard gates:
+
+- passed: `13 / 18`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase458 interpretation before formal Phase459:
+
+- The materially new delayed timing source produced real trades and breadth.
+- Like Phase455, the selected synthetic windows had no realized gross edge; entries and exits commonly matched over the fixed horizon.
+- The route is entirely transaction-cost negative under Zerodha `cost200`.
+- Full-depth materiality is not established because ETF L1-only and side-flip controls tied the primary.
+
+Phase458 outputs:
+
+- `scripts/run_phase458_delayed_intraday_cross_asset_displacement.py`;
+- `src/synthetic_l2/phase458_delayed_intraday_cross_asset_displacement.py`;
+- `outputs/phase458/phase458_acceptance_summary.csv`;
+- `outputs/phase458/phase458_control_summary.csv`;
+- `outputs/phase458/phase458_daily_signal_metrics.csv`;
+- `outputs/phase458/phase458_gate_evaluation.csv`;
+- `outputs/phase458/phase458_scenario_summary.csv`;
+- `outputs/phase458/phase458_selected_files.csv`;
+- `outputs/phase458/phase458_trade_ledger.csv`;
+- `outputs/phase458/phase458_delayed_intraday_cross_asset_displacement_report.md`;
+- `outputs/phase458/phase458_delayed_intraday_cross_asset_displacement_manifest.json`.
+
+Current next best action after Phase458:
+
+- Interpret Phase458 formally and close the delayed-window cross-asset displacement route unless a new label source uses actual non-flat move candidates rather than fixed row windows.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

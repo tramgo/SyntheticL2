@@ -1,0 +1,19 @@
+metric,value,description
+phase458_delayed_cross_asset_execution_complete,1,Phase458 execution completed
+phase458_thesis_id,P458_DELAYED_INTRADAY_CROSS_ASSET_DISPLACEMENT_EXECUTION,Execution thesis
+phase458_best_scenario_id,P458_delayed_cross_asset_displacement_primary,Primary scenario
+phase458_best_completed_round_trips,146,Primary completed round trips
+phase458_best_trade_dates,64,Primary dates
+phase458_best_symbols,3,Primary symbols
+phase458_best_positive_date_fraction,0.0,Primary positive-date fraction
+phase458_best_gross_pnl_inr,0.0,Primary gross P&L
+phase458_best_cost200_inr,24116.1968623696,Primary Zerodha cost200
+phase458_best_net_pnl_inr,-24116.1968623696,Primary net P&L
+phase458_best_annualized_return_pct,-9.495752514558031,Fixed-capital annualized return
+phase458_acceptance_survivor,0,Accepted only if every hard gate passes
+phase458_strategy_promotion_allowed,0,No promotion
+phase458_paper_or_live_acceptance_allowed,0,No paper/live
+phase458_deployable_profitability_claim_allowed,0,No deployable claim
+phase458_hard_gate_pass_rows,13,Passed hard gates
+phase458_hard_gate_rows,18,Hard gates
+phase458_next_best_action,interpret_phase458_delayed_intraday_cross_asset_displacement_no_paper_live,Recommended next action

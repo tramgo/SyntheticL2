@@ -1,0 +1,6 @@
+scenario_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct,acceptance_survivor
+P458_delayed_cross_asset_displacement_primary,146,64,3,0.0,0.0,24116.1968623696,-24116.1968623696,-9.495752514558031,0
+P458_delayed_cross_asset_displacement_source_time_shift,144,63,3,0.0,0.0,23785.8080896416,-23785.8080896416,-9.51432323585664,0
+P458_delayed_cross_asset_displacement_side_flip,146,64,3,0.0,0.0,24116.1968623696,-24116.1968623696,-9.495752514558031,0
+P458_delayed_cross_asset_target_only_l1_l5,446,64,7,0.0,0.0,73665.3896771728,-73665.3896771728,-29.00574718538679,0
+P458_delayed_cross_asset_etf_l1_only,146,64,3,0.0,0.0,24116.1968623696,-24116.1968623696,-9.495752514558031,0
