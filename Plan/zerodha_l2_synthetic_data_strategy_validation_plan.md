@@ -21292,6 +21292,66 @@ Current next best action after Phase436:
 
 - Precommit a materially new lower-turnover or longer-horizon source, or pause strategy search. Do not retune the same supervised event ranker after seeing this negative validation/control result.
 
+## 24.264 Phase437 Low-Turnover Full-Depth Regime Carry Precommit Completed
+
+Phase437 freezes a materially new lower-turnover and longer-horizon source after Phase436 showed that dense event ranking remained cost-dominated.
+
+Phase437 selected source:
+
+- `opening_full_depth_regime_carry_one_trade_per_symbol_date`.
+
+Phase437 thesis ID:
+
+- `P437_LOW_TURNOVER_FULL_DEPTH_REGIME_CARRY_PRECOMMIT`.
+
+Phase437 source design:
+
+- use early-session L1-L5 book pressure to choose direction;
+- take at most `1` trade per symbol/date;
+- enter only after a fixed precommitted tick delay;
+- exit after a precommitted longer-horizon hold or end of the symbol/date group;
+- score with fixed capital and Zerodha `cost200`.
+
+Phase437 frozen grid:
+
+- scenario rows: `18`;
+- early-window ticks: `120`, `240`, `480`;
+- hold ticks: `1200`, `2400`, `3600`;
+- entry delay ticks: `5`;
+- families: `depth_regime_carry`, `depth_regime_snapback`;
+- grid hash: `876b8c107924183e7c6dae45e717ac4302ec16f54249a474aa26bd2e7dee8a11`.
+
+Phase437 acceptance contract:
+
+- completed round trips: at least `30`;
+- trade dates: at least `5`;
+- symbols: at least `5`;
+- positive date fraction: at least `0.60`;
+- annualized return: at least `12.0%`;
+- controls required: L1-only ablation, side flip, time shuffle and real-anchor cross-check;
+- forbidden: dense tick scalping, same Phase435 ranker rescue, same Phase427 threshold sweep, market-maker rescue without a new external execution source, strategy promotion, paper/live acceptance and deployable profitability claim.
+
+Phase437 hard gates:
+
+- passed: `11 / 11`;
+- execution results generated now: `0`;
+- Phase438 execution allowed next: `1`.
+
+Phase437 outputs:
+
+- `scripts/run_phase437_low_turnover_depth_regime_precommit.py`;
+- `src/synthetic_l2/phase437_low_turnover_depth_regime_precommit.py`;
+- `outputs/phase437/phase437_acceptance_summary.csv`;
+- `outputs/phase437/phase437_frozen_phase438_contract.csv`;
+- `outputs/phase437/phase437_low_turnover_scenario_grid.csv`;
+- `outputs/phase437/phase437_gate_evaluation.csv`;
+- `outputs/phase437/phase437_low_turnover_depth_regime_precommit_report.md`;
+- `outputs/phase437/phase437_low_turnover_depth_regime_precommit_manifest.json`.
+
+Current next best action after Phase437:
+
+- Run `run_phase438_low_turnover_depth_regime_carry_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

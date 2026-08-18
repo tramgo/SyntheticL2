@@ -1,0 +1,17 @@
+contract_id,contract_value,description
+thesis_id,P437_LOW_TURNOVER_FULL_DEPTH_REGIME_CARRY_PRECOMMIT,Lower-turnover full-depth source precommit after Phase436.
+selected_source,opening_full_depth_regime_carry_one_trade_per_symbol_date,One trade per symbol/date from early-session L1-L5 regime.
+relationship_to_phase436,materially_new_lower_turnover_longer_horizon_source,Directly responds to cost domination in Phase435.
+turnover_policy,max_trades_per_symbol_date=1,No dense tick-scalping.
+entry_policy,observe_early_window_then_enter_after_fixed_tick_delay,Signal data precedes entry.
+exit_policy,exit_after_precommitted_longer_hold_ticks_or_end_of_group,Longer horizon intended to reduce cost drag per gross opportunity.
+early_window_ticks,120;240;480,Frozen early full-depth observation windows.
+hold_ticks,1200;2400;3600,Frozen longer-horizon hold windows.
+entry_delay_ticks,5,Frozen entry delay.
+full_depth_features,L1_mid_spread_volume_plus_L2_to_L5_imbalance_depth_slope_order_churn_replenishment,Top-five depth is core.
+direction_rule,sign_of_early_top5_pressure_plus_l2_l5_slope;optional_contrarian_variant_precommitted,"Simple low-turnover directional regime, not learned after results."
+controls_required,l1_only_ablation;side_flip;time_shuffle;real_anchor_cross_check,Controls must be emitted by Phase438.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Annualized return denominator is fixed capital.
+acceptance_floor,round_trips_ge_30;dates_ge_5;symbols_ge_5;positive_date_fraction_ge_0.6;annualized_ge_12.0,User profitability floor with breadth.
+forbidden,dense_tick_scalping;same_phase435_ranker_rescue;same_phase427_threshold_sweep;market_maker_rescue_without_external_execution_source;promotion;paper_live;deployable_profitability_claim,Closed or forbidden routes.
+execution_results_generated_now,0,Precommit only.
