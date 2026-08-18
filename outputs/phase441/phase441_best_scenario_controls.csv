@@ -1,0 +1,4 @@
+control,panel,scenario_id,family_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct,acceptance_survivor
+l1_only,l1_only_ablation,P441_catalyst_reversal_H600_exhaustion_C3,official_catalyst_reversal,34,12,21,0.16666666666666666,-1341.0199999999431,5601.332536733759,-6942.352536733702,-14.578940327140774,0
+side_flip,side_flip,P441_catalyst_reversal_H600_exhaustion_C3,official_catalyst_reversal,33,12,19,0.3333333333333333,4573.36999999995,5443.4176652126,-870.04766521265,-1.827100096946565,0
+time_shifted_catalyst,time_shifted_catalyst,P441_catalyst_reversal_H600_exhaustion_C3,official_catalyst_reversal,39,13,17,0.15384615384615385,-4683.530000000039,6423.74560238548,-11107.275602385518,-21.53102655231654,0

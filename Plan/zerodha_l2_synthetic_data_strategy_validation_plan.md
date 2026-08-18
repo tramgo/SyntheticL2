@@ -21549,6 +21549,86 @@ Current next best action after Phase440:
 
 - Run `run_phase441_external_catalyst_full_depth_confirmation_no_paper_live`.
 
+## 24.268 Phase441 External Catalyst Full-Depth Confirmation Execution Completed
+
+Phase441 executes the Phase440 external-catalyst plus full-depth confirmation source using the local Phase387 event-feature ledger.
+
+Phase441 execution scope:
+
+- source event rows available: `246`;
+- scenario rows evaluated: `12`;
+- external alpha axis: official/local catalyst event context;
+- full-depth role: L2-L5 confirmation and execution-quality context;
+- source limitation: exits use the Phase387 event-feature ledger's fixed event horizon, not fresh raw-horizon recomputation;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR;
+- order notional: `100,000` INR.
+
+Phase441 best scenario:
+
+- scenario: `P441_catalyst_reversal_H600_exhaustion_C3`;
+- family: `official_catalyst_reversal`;
+- completed round trips: `33`;
+- trade dates: `12`;
+- symbols: `19`;
+- positive date fraction: approximately `0.083333`;
+- gross P&L: approximately `-6,535.74` INR;
+- cost200 charges: approximately `5,443.851008` INR;
+- net P&L: approximately `-11,979.591008` INR;
+- annualized return: approximately `-25.157141%`;
+- cost200 acceptance survivors: `0`.
+
+Phase441 controls for the best scenario:
+
+- L1-only ablation annualized return: approximately `-14.578940%`;
+- primary minus L1-only annualized edge: approximately `-10.578201` percentage points, below the required `5.0`;
+- side-flip control annualized return: approximately `-1.827100%`, better than the primary;
+- time-shifted catalyst control annualized return: approximately `-21.531027%`, better than the primary;
+- the controls indicate that the frozen reversal direction is not supported by this event/depth subset.
+
+Phase441 hard gates:
+
+- passed: `9 / 14`;
+- passed:
+  - Phase440 precommit used;
+  - source event floor available;
+  - full-depth confirmation used;
+  - horizon-recompute limitation recorded;
+  - Zerodha cost200 fixed-capital scoring;
+  - event floor;
+  - date breadth;
+  - symbol breadth;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P441_L1_ONLY_CONTROL`: observed approximately `-10.578201`, required at least `5.0` percentage points;
+  - `P441_SIDE_FLIP_CONTROL_NOT_DOMINANT`: side flip was better than primary;
+  - `P441_TIME_SHIFT_CONTROL_NOT_DOMINANT`: time-shifted catalyst was better than primary;
+  - `P441_POSITIVE_DATE_FRACTION`: observed approximately `0.083333`, required at least `0.60`;
+  - `P441_ANNUALIZED_FLOOR`: observed approximately `-25.157141`, required at least `12.0`.
+
+Phase441 interpretation before formal Phase442:
+
+- The external catalyst source solved the event-floor/date/symbol breadth issue for the best scenario.
+- The frozen reversal direction failed; the side-flip control was materially better.
+- The result remains negative after cost200 and is not an accepted strategy.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase441 outputs:
+
+- `scripts/run_phase441_external_catalyst_full_depth_confirmation.py`;
+- `src/synthetic_l2/phase441_external_catalyst_full_depth_confirmation.py`;
+- `outputs/phase441/phase441_acceptance_summary.csv`;
+- `outputs/phase441/phase441_scenario_summary.csv`;
+- `outputs/phase441/phase441_trade_ledger.csv`;
+- `outputs/phase441/phase441_best_scenario_controls.csv`;
+- `outputs/phase441/phase441_gate_evaluation.csv`;
+- `outputs/phase441/phase441_external_catalyst_full_depth_confirmation_report.md`;
+- `outputs/phase441/phase441_external_catalyst_full_depth_confirmation_manifest.json`.
+
+Current next best action after Phase441:
+
+- Implement `interpret_phase441_external_catalyst_full_depth_confirmation_no_paper_live`. Treat Phase441 as a negative external-catalyst/full-depth confirmation result unless the formal interpretation finds a reporting error.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

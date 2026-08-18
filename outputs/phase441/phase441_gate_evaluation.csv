@@ -1,0 +1,15 @@
+gate_id,passed,observed_value,required_value,severity
+P441_PHASE440_PRECOMMIT_USED,True,run_phase441_external_catalyst_full_depth_confirmation_no_paper_live,phase440_next_action,hard
+P441_SOURCE_EVENT_FLOOR_AVAILABLE,True,246,>=30,hard
+P441_FULL_DEPTH_CONFIRMATION_USED,True,P441_catalyst_reversal_H600_exhaustion_C3,l2_l5_confirmation,hard
+P441_HORIZON_RECOMPUTE_LIMITATION_RECORDED,True,phase387_feature_ledger_fixed_horizon_seconds,recorded,hard
+P441_L1_ONLY_CONTROL,False,-10.578200789175309,>=5 pct pts,hard
+P441_SIDE_FLIP_CONTROL_NOT_DOMINANT,False,-1.827100096946565,primary>=side_flip,hard
+P441_TIME_SHIFT_CONTROL_NOT_DOMINANT,False,-21.53102655231654,primary>=time_shift,hard
+P441_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P441_EVENT_FLOOR,True,33,>=30,hard
+P441_DATE_BREADTH,True,12,>=5,hard
+P441_SYMBOL_BREADTH,True,19,>=5,hard
+P441_POSITIVE_DATE_FRACTION,False,0.08333333333333333,>=0.6,hard
+P441_ANNUALIZED_FLOOR,False,-25.157141116316083,>=12.0,hard
+P441_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

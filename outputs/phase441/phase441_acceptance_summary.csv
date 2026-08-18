@@ -1,0 +1,20 @@
+metric,value,description
+phase441_external_catalyst_full_depth_complete,1,Phase441 execution completed
+phase441_thesis_id,P441_EXTERNAL_CATALYST_FULL_DEPTH_CONFIRMATION_EXECUTION,Execution thesis
+phase441_source_event_rows,246,Phase387 ready event rows available
+phase441_best_scenario_id,P441_catalyst_reversal_H600_exhaustion_C3,Best active scenario
+phase441_best_completed_round_trips,33,Best round trips
+phase441_best_trade_dates,12,Best dates
+phase441_best_symbols,19,Best symbols
+phase441_best_positive_date_fraction,0.08333333333333333,Best positive-date fraction
+phase441_best_gross_pnl_inr,-6535.739999999964,Best gross P&L
+phase441_best_cost200_inr,5443.851007769599,Best cost200 charges
+phase441_best_net_pnl_inr,-11979.591007769564,Best net P&L
+phase441_best_annualized_return_pct,-25.157141116316083,Best annualized return
+phase441_cost200_acceptance_survivor_rows,0,Accepted scenario rows before controls
+phase441_strategy_promotion_allowed,0,No promotion
+phase441_paper_or_live_acceptance_allowed,0,No paper/live
+phase441_deployable_profitability_claim_allowed,0,No deployable claim
+phase441_hard_gate_pass_rows,9,Passed hard gates
+phase441_hard_gate_rows,14,Hard gates
+phase441_next_best_action,interpret_phase441_external_catalyst_full_depth_confirmation_no_paper_live,Recommended next action
