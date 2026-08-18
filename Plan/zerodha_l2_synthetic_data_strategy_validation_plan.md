@@ -23787,6 +23787,84 @@ Current next best action after Phase471:
 - treat Phase471 as a predictive model only, not profitability evidence;
 - only annualized-return claims after Phase472 costed P&L exists.
 
+## 24.299 Phase472 Score-to-Signal Replay Cost200 Completed and Rejected
+
+Phase472 replayed the Phase471 holdout scores as synthetic score-to-signal trades using fixed reusable capital, Zerodha equity intraday NSE order-formula charges, and an adverse cost200 slippage proxy. This phase produced costed P&L evidence for the repaired source-event-aware L1-L5 signal.
+
+Phase472 thesis ID:
+
+- `P472_SCORE_TO_SIGNAL_REPLAY_COST200`
+
+Phase472 replay scope:
+
+- input scores: `outputs/phase471/phase471_holdout_scores.csv`;
+- holdout period: March 2026;
+- holdout trading days: 21;
+- score sources: primary Phase471 logistic model, shuffled-label control, and L25 threshold control;
+- thresholds tested: `0.50;0.52;0.54;0.56;0.58;0.60`;
+- fixed reusable capital denominator: ₹100,000;
+- annualized return formula: `net_pnl_inr / 100000 * 252 / holdout_trading_days * 100`;
+- per-trade sizing: floor ₹100,000 by entry price;
+- statutory/brokerage cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost source: `https://zerodha.com/charges/`;
+- adverse cost200 slippage proxy: 2 bps round trip.
+
+Best primary Phase472 scenario:
+
+- scenario: `primary_threshold_0.60_cost200`;
+- trade count: 91;
+- gross P&L: ₹1,173.46;
+- Zerodha total charges: ₹7,516.02;
+- adverse slippage: ₹1,806.74;
+- net P&L: ₹-8,149.31;
+- average net per trade: ₹-89.55;
+- annualized return: -97.79167082366413%;
+- win rate after all costs: 2.1978%.
+
+Phase472 verdict:
+
+- primary positive scenario rows: 0;
+- primary scenarios above 12% annualized return: 0;
+- best primary annualized return: -97.79167082366413%;
+- best shuffled annualized return: -32.713032380419534%;
+- best primary did not beat best shuffled after costs.
+
+Interpretation:
+
+Phase471 showed a real predictive improvement versus shuffled-label control, but Phase472 shows that the predicted move size is too small for dense intraday trading after Zerodha charges and slippage. The signal has directional information, but not enough economic edge at the tested thresholds and sizing. This is exactly the distinction the validation plan is meant to enforce.
+
+Phase472 hard gates:
+
+- gates passed: 7 / 10;
+- Phase471 model used: pass;
+- scenarios present: pass, observed 18;
+- fixed capital used: pass;
+- Zerodha costs included: pass;
+- cost200 slippage included: pass;
+- primary positive scenario exists: fail, observed 0;
+- primary above 12% annualized exists: fail, observed 0;
+- best primary trade count at least 10: pass, observed 91;
+- best primary beats best shuffled: fail;
+- no paper/live/profitability claim: pass.
+
+Phase472 outputs:
+
+- `outputs/phase472/phase472_acceptance_summary.csv`;
+- `outputs/phase472/phase472_scenario_summary.csv`;
+- `outputs/phase472/phase472_trade_ledger.csv`;
+- `outputs/phase472/phase472_gate_evaluation.csv`;
+- `outputs/phase472/phase472_score_to_signal_replay_cost200_report.md`;
+- `outputs/phase472/phase472_score_to_signal_replay_cost200_manifest.json`;
+- `scripts/run_phase472_score_to_signal_replay_cost200.py`;
+- `src/synthetic_l2/phase472_score_to_signal_replay_cost200.py`.
+
+Current next best action after Phase472:
+
+- do not promote this score-to-signal replay;
+- do not claim profitability or paper/live readiness;
+- interpret the costed failure before tuning;
+- if continuing, test whether the edge exists only at larger forecast horizons, fewer higher-confidence events, or explicitly liquidity-vacuum/catalyst-conditioned subsets, with all choices precommitted before replay.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

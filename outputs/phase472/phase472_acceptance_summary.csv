@@ -1,0 +1,18 @@
+metric,value,description
+phase472_score_to_signal_replay_cost200_complete,1,Phase472 replay completed
+phase472_thesis_id,P472_SCORE_TO_SIGNAL_REPLAY_COST200,Replay thesis
+phase472_best_primary_scenario_id,primary_threshold_0.60_cost200,Best primary scenario
+phase472_best_primary_trade_count,91,Trade count
+phase472_best_primary_net_pnl_inr,-8149.30590197201,Best primary net P&L
+phase472_best_primary_annualized_return_pct,-97.79167082366413,Fixed-capital annualized return
+phase472_best_primary_avg_net_per_trade_inr,-89.55281210958253,Average net per trade
+phase472_primary_above12_scenario_rows,0,Primary scenarios above 12% annualized
+phase472_fixed_capital_inr,100000.0,Reusable capital denominator
+phase472_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model version
+phase472_zerodha_cost_source_url,https://zerodha.com/charges/,Cost source
+phase472_paper_or_live_acceptance_allowed,0,No paper/live
+phase472_deployable_profitability_claim_allowed,0,No deployable claim
+phase472_phase473_allowed_next,0,Allows expanded validation if all gates pass
+phase472_hard_gate_pass_rows,7,Passed hard gates
+phase472_hard_gate_rows,10,Hard gates
+phase472_next_best_action,interpret_phase472_costed_replay_failure_before_tuning,Recommended next action

@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P472_PHASE471_MODEL_USED,True,1,1,hard
+P472_SCENARIOS_PRESENT,True,18,18,hard
+P472_FIXED_CAPITAL_USED,True,100000.0,100000.0,hard
+P472_ZERODHA_COSTS_INCLUDED,True,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,zerodha_cost_model,hard
+P472_COST200_SLIPPAGE_INCLUDED,True,2.0,2.0,hard
+P472_PRIMARY_POSITIVE_SCENARIO_EXISTS,False,0,>0,hard
+P472_PRIMARY_ABOVE_12PCT_ANNUALIZED_EXISTS,False,0,>0,hard
+P472_BEST_PRIMARY_TRADE_COUNT_GE_10,True,91,>=10,hard
+P472_BEST_PRIMARY_BEATS_BEST_SHUFFLED,False,primary=-97.79167082366413;shuffled=-32.713032380419534,primary>shuffled,hard
+P472_NO_PAPER_LIVE_OR_CLAIM,True,replay_only;paper=0;live=0,no_paper_live,hard
