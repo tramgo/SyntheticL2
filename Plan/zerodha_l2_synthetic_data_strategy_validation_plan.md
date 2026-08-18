@@ -19288,6 +19288,109 @@ Current next best action after Phase409:
 - Stop this retail two-sided top-five L2 market-maker route, or require a genuinely new external execution source before reopening it.
 - For the broader project, the next strategy search must be a materially different full-depth L2 thesis, not another same-family quoting or passive-aware rescue.
 
+## 24.237 Phase410 Full-Depth Replenishment Breakout Precommit Completed
+
+Phase410 precommits the next materially different full-depth L2 thesis after Phase409 falsified the tested retail two-sided top-five L2 market-maker route.
+
+The Phase410 thesis is:
+
+- thesis id: `P410_FULL_DEPTH_REPLENISHMENT_BREAKOUT_TAKER_ONLY`;
+- market hypothesis: after an impulse, continuation may be stronger when levels 2-5 visibly replenish behind the impulse, spread remains controlled, withdrawal pressure is low and price confirms a breakout in the impulse direction;
+- execution style: taker-only entry and taker-only exit;
+- not market-making;
+- not passive fill rescue;
+- not liquidity-vacuum continuation rescue;
+- not bar-return reversal rescue;
+- no same-family market-maker tuning;
+- no strategy result generated in Phase410.
+
+Phase410 fixed parameters:
+
+- impulse lookback: `30` seconds;
+- depth rebuild confirmation: `20` seconds;
+- breakout confirmation: `10` seconds;
+- horizon: `180` seconds;
+- stop: `12.0` bps;
+- take profit: `18.0` bps;
+- minimum absolute impulse: `4.0` bps;
+- minimum levels 2-5 replenishment pressure: `0.12`;
+- minimum top-five imbalance alignment: `0.15`;
+- minimum level-weighted imbalance alignment: `0.15`;
+- maximum spread: `8.0` bps;
+- maximum depth withdrawal pressure: `0.10`;
+- parameter freeze SHA-256: `26ef1b2fb6ec4aa3fc7843275feb1e090ce7a9a7e33df0fd4673510b7a8f8482`.
+
+Phase410 cost and capital:
+
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: `2.0`;
+- fixed initial capital: `1,000,000` INR;
+- fixed notional per trade: `100,000` INR;
+- maximum concurrent positions: `2`;
+- maker rebate assumed: `0`.
+
+Phase410 input evidence:
+
+- Phase298 dense root: `raw_synthetic_l2_dense_full_year`;
+- Phase298 L1-L5 required: `1`;
+- Phase298 levels 2-5 required: `1`;
+- Phase298 L1-only variant rows: `0`;
+- Phase298 net-edge live mask rows: `0`;
+- Phase298 schema present columns minimum: `30`;
+- Phase403 material-new thesis required: `1`;
+- Phase409 selected verdict: `P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED`;
+- Phase409 same-family tuning allowed: `0`;
+- verified local real anchor date count: `16`.
+
+Phase410 precommitted Phase411 hard gates:
+
+- tick-ordered replay;
+- stateful sequence: impulse, rebuild, breakout confirmation;
+- taker-only execution;
+- full-depth L1-L5 market-by-price state;
+- levels 2-5 materiality;
+- no lookahead;
+- Zerodha cost200 fixed-capital scoring;
+- fixed parameters only;
+- completed round-trip floor of at least `30`;
+- distinct trade-date breadth of at least `5`;
+- distinct symbol breadth of at least `3`;
+- positive date fraction of at least `0.60`;
+- annualized fixed-capital return of at least `12.0%`;
+- side-flip control;
+- levels 2-5 removed control;
+- spread-gate removed control;
+- real-anchor cross-check;
+- closed promotion, paper/live and deployable-claim boundaries.
+
+Phase410 result:
+
+- precommit complete: `1`;
+- contract rows: `26`;
+- parameter freeze rows: `13`;
+- hard gates passed: `17 / 17`;
+- execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase410 outputs:
+
+- `scripts/run_phase410_full_depth_replenishment_breakout_precommit.py`;
+- `src/synthetic_l2/phase410_full_depth_replenishment_breakout_precommit.py`;
+- `outputs/phase410/phase410_acceptance_summary.csv`;
+- `outputs/phase410/phase410_frozen_thesis_contract.csv`;
+- `outputs/phase410/phase410_parameter_freeze.csv`;
+- `outputs/phase410/phase410_input_registry.csv`;
+- `outputs/phase410/phase410_execution_hard_gate_contract.csv`;
+- `outputs/phase410/phase410_gate_evaluation.csv`;
+- `outputs/phase410/phase410_full_depth_replenishment_breakout_precommit_report.md`;
+- `outputs/phase410/phase410_full_depth_replenishment_breakout_precommit_manifest.json`.
+
+Current next best action after Phase410:
+
+- Commit and push Phase410 before any results, then implement `run_phase411_full_depth_replenishment_breakout_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

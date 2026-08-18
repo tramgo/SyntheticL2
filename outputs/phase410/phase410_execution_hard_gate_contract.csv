@@ -1,0 +1,19 @@
+gate_id,requirement,severity,phase410_precommitted
+P411_TICK_ORDERED_REPLAY,Execution must iterate ticks in timestamp order; no bar-only shortcut.,hard,1
+P411_STATEFUL_SEQUENCE,Signal requires impulse then depth rebuild then breakout confirmation.,hard,1
+P411_TAKER_ONLY_EXECUTION,"No passive fills, no two-sided quoting, no maker rebate.",hard,1
+P411_FULL_DEPTH_L1_L5,Execution must read all L1-L5 price/quantity/order fields where available.,hard,1
+P411_LEVELS_2_TO_5_MATERIAL,At least one required signal gate must use levels 2-5 excluding L1.,hard,1
+P411_NO_LOOKAHEAD,All feature windows must end before order arrival/fill evaluation.,hard,1
+P411_COST200_FIXED_CAPITAL,"Use Zerodha cost200, fixed initial capital and fixed notional.",hard,1
+P411_FIXED_PARAMETERS,No post-result threshold tuning or rescue grid.,hard,1
+P411_EVENT_FLOOR,Completed round trips >= 30.,hard,1
+P411_DATE_BREADTH,Distinct trade dates >= 5.,hard,1
+P411_SYMBOL_BREADTH,Distinct symbols >= 3.,hard,1
+P411_POSITIVE_DATE_FRACTION,Positive date fraction >= 0.6.,hard,1
+P411_ANNUALIZED_FLOOR,Annualized fixed-capital return >= 12.0 percent.,hard,1
+P411_SIDE_FLIP_CONTROL,Side-flip control must not dominate the primary.,hard,1
+P411_L2_L5_REMOVED_CONTROL,Removing levels 2-5 must degrade or invalidate the primary.,hard,1
+P411_SPREAD_GATE_REMOVED_CONTROL,Spread-gate-removed control must be reported.,hard,1
+P411_REAL_ANCHOR_CROSS_CHECK,Synthetic winner sign must be cross-checked on reserved real anchors.,hard,1
+P411_BOUNDARIES_CLOSED,"No promotion, paper/live acceptance or deployable claim.",hard,1

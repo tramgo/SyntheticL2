@@ -1,0 +1,20 @@
+metric,value,description
+phase410_full_depth_replenishment_breakout_precommit_complete,1,Phase410 precommit completed
+phase410_thesis_id,P410_FULL_DEPTH_REPLENISHMENT_BREAKOUT_TAKER_ONLY,Frozen thesis
+phase410_material_new_after_phase409,1,"Not market-making, passive rescue, liquidity-vacuum rescue or bar-reversal rescue"
+phase410_contract_rows,26,Contract rows
+phase410_parameter_freeze_rows,13,Frozen parameter rows
+phase410_parameter_freeze_hash,26ef1b2fb6ec4aa3fc7843275feb1e090ce7a9a7e33df0fd4673510b7a8f8482,Hash of frozen parameter table
+phase410_real_anchor_date_count,16,Local real anchor dates
+phase410_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha cost model
+phase410_cost_multiplier,2.0,Cost200
+phase410_initial_capital_inr,1000000.0,Fixed capital
+phase410_fixed_notional_inr,100000.0,Fixed notional per trade
+phase410_execution_results_generated,0,Precommit only
+phase410_strategy_promotion_allowed,0,No promotion
+phase410_paper_or_live_acceptance_allowed,0,No paper/live
+phase410_deployable_profitability_claim_allowed,0,No deployable claim
+phase410_execution_allowed_next,1,Whether Phase411 may run
+phase410_hard_gate_pass_rows,17,Passed hard gates
+phase410_hard_gate_rows,17,Hard gates
+phase410_next_best_action,run_phase411_full_depth_replenishment_breakout_execution_no_paper_live,Recommended next action

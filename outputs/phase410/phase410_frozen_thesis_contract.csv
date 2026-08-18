@@ -1,0 +1,27 @@
+contract_id,contract_value,description
+thesis_id,P410_FULL_DEPTH_REPLENISHMENT_BREAKOUT_TAKER_ONLY,Material-new full-depth L2 thesis after Phase409 falsified retail maker route.
+material_difference,taker_only_replenishment_breakout_not_market_making_not_passive_not_vacuum,"No two-sided quoting, no passive queue rescue, no liquidity-vacuum continuation."
+market_hypothesis,when impulse is followed by levels_2_to_5_replenishment_and_spread_control_price_breaks_in_impulse_direction,Strong depth rebuild behind the move may indicate real continuation support.
+event_sequence,impulse_window_then_rebuild_window_then_breakout_confirmation_window,Stateful sequence; not a one-bar reversal or same-event shortcut.
+impulse_window_seconds,30,Past-only impulse measurement.
+rebuild_confirm_seconds,20,Past-only depth rebuild confirmation window.
+breakout_confirm_seconds,10,Past-only confirmation before taker entry.
+horizon_seconds,180,Exit horizon if stop/target not reached.
+entry_execution,taker_entry_after_breakout_confirmation,No passive fill model and no maker rebate.
+exit_execution,taker_stop_or_target_or_horizon_exit,Taker-only close.
+side_rule,trade_in_impulse_direction_only,Long after positive impulse; short after negative impulse.
+min_abs_impulse_bps,4.0,"Fixed threshold, no post-result tuning."
+min_levels_2_to_5_replenishment_pressure,0.12,Core full-depth gate beyond L1.
+min_top5_imbalance_alignment,0.15,Top-five alignment with side.
+min_level_weighted_imbalance_alignment,0.15,Level-weighted L1-L5 alignment with side.
+max_spread_bps,8.0,Avoid wide-spread conditions.
+max_depth_withdrawal_pressure,0.1,Reject cases where visible book is being pulled.
+stop_bps,12.0,"Fixed stop, not optimized after results."
+take_profit_bps,18.0,"Fixed target, not optimized after results."
+full_depth_required,L1_to_L5_book_state_with_levels_2_to_5_materiality,L1-only variants forbidden.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+cost_multiplier,2.0,Cost200 acceptance scoring.
+capital,initial=1000000.0;notional=100000.0;max_concurrent=2,Fixed capital denominator; no unlimited capital.
+acceptance,round_trips>=30;dates>=5;symbols>=3;positive_date_fraction>=0.6;annualized>=12.0,Profitability must meet breadth and annualized gates.
+controls,side_flip;levels_2_to_5_removed;spread_gate_removed;synthetic_vs_real_anchor_sign,Controls required in execution phase.
+forbidden,same_family_market_maker_tuning;passive_fill_rescue;liquidity_vacuum_rescue;bar_reversal_rescue;promotion;paper_live;deployable_profit_claim,Boundaries remain closed.
