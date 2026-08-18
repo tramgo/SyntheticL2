@@ -23306,6 +23306,80 @@ Current next best action after Phase465:
 
 - Interpret Phase465 predictive-model failure or precommit a materially expanded past-only feature set before replay. Do not run score-to-signal P&L from this exact model.
 
+## 24.293 Phase466 Predictive-Model Failure Interpretation Completed
+
+Phase466 formally interprets Phase465 and blocks score-to-signal replay from the weak five-feature model.
+
+Phase466 thesis ID:
+
+- `P466_PREDICTIVE_MODEL_FAILURE_INTERPRETATION`.
+
+Phase466 selected verdict:
+
+- `P466_WEAK_PREDICTIVE_SMELL_NOT_REPLAYABLE`.
+
+Phase466 decision basis:
+
+- Phase465 primary holdout AUC: `0.55775759633339`;
+- Phase465 primary holdout balanced accuracy: `0.5555720590731624`;
+- Phase465 shuffled-label control AUC: `0.543116618570701`;
+- Phase465 AUC lift versus shuffled: `0.014640977762688911`;
+- required AUC lift versus shuffled: `0.02`;
+- Phase465 failed gate: `P465_AUC_LIFT_VS_SHUFFLED_GE_002`;
+- Phase465 score-to-signal replay allowance: `0`.
+
+Phase466 decision:
+
+- score-to-signal replay allowed: `0`;
+- same five-feature model rescue allowed: `0`;
+- materially richer past-only feature precommit allowed: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase466 richer past-only feature families selected for the next precommit:
+
+- `depth_curve_shape`: L1-L5 ladder slope, convexity and depth concentration over the lookback window;
+- `ofi_and_depth_churn`: signed changes in L1-L5 quantities and replenishment/withdrawal counts before entry;
+- `microprice_pressure`: L1 and L2-L5 microprice displacement from mid before entry;
+- `spread_regime_context`: rolling spread percentile and compression/expansion;
+- `volume_acceleration`: rolling trade-volume acceleration and volume imbalance proxies;
+- `time_of_day_context`: known-before-entry session bucket;
+- `symbol_normalization`: train-split symbol normalization.
+
+Phase466 hard gates:
+
+- passed: `9 / 9`;
+- Phase465 completed: pass;
+- Phase465 replay not allowed: pass;
+- required failed predictive gate identified: pass;
+- exactly one predictive gate failed: pass;
+- replay rejected: pass;
+- same-model rescue rejected: pass;
+- richer past-only features selected: pass.
+
+Phase466 boundary:
+
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase466 outputs:
+
+- `scripts/run_phase466_predictive_model_failure_interpretation.py`;
+- `src/synthetic_l2/phase466_predictive_model_failure_interpretation.py`;
+- `outputs/phase466/phase466_acceptance_summary.csv`;
+- `outputs/phase466/phase466_decision_ledger.csv`;
+- `outputs/phase466/phase466_gate_evaluation.csv`;
+- `outputs/phase466/phase466_richer_past_only_feature_plan.csv`;
+- `outputs/phase466/phase466_predictive_model_failure_interpretation_report.md`;
+- `outputs/phase466/phase466_predictive_model_failure_interpretation_manifest.json`.
+
+Current next best action after Phase466:
+
+- Precommit Phase467 richer past-only L1-L5 feature matrix before any replay.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

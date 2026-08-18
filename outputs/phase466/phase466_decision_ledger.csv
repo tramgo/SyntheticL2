@@ -1,0 +1,15 @@
+decision_id,decision_value,description
+selected_verdict,P466_WEAK_PREDICTIVE_SMELL_NOT_REPLAYABLE,Phase465 has weak predictive signal but fails the shuffled-label lift gate.
+primary_holdout_auc,0.55775759633339,Primary holdout AUC.
+primary_holdout_balanced_accuracy,0.5555720590731624,Primary holdout balanced accuracy.
+shuffled_holdout_auc,0.543116618570701,Shuffled-label control holdout AUC.
+auc_lift_vs_shuffled,0.014640977762688911,Primary AUC lift versus shuffled-label control.
+l25_threshold_holdout_auc,0.4789933797317943,Single L2-L5 threshold control holdout AUC.
+failed_gate_count,1,Failed Phase465 hard gates.
+failed_gate_ids,P465_AUC_LIFT_VS_SHUFFLED_GE_002,Failed Phase465 gate ids.
+score_to_signal_replay_allowed,0,Phase465 did not allow Phase466 replay.
+same_five_feature_model_rescue_allowed,0,Do not retune the same weak feature set after seeing holdout controls.
+materially_richer_past_only_features_allowed,1,A new precommitted matrix may add richer past-only L1-L5 window features.
+strategy_promotion_allowed,0,No promotion.
+paper_or_live_acceptance_allowed,0,No paper/live.
+deployable_profitability_claim_allowed,0,No deployable claim.

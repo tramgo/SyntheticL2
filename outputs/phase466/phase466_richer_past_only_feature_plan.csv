@@ -1,0 +1,8 @@
+feature_family,timestamp_rule,description,uses_l2_l5_depth
+depth_curve_shape,past_only_window,"Use L1-L5 bid/ask ladder slope, convexity and depth concentration over the lookback window.",1
+ofi_and_depth_churn,past_only_window,Use signed changes in L1-L5 quantities and replenishment/withdrawal counts before entry.,1
+microprice_pressure,past_only_window,"Use L1 and L2-L5 microprice displacement from mid, computed before entry.",1
+spread_regime_context,past_only_window,"Use rolling spread percentile, spread compression/expansion and tight/loose regime flags.",0
+volume_acceleration,past_only_window,Use rolling trade-volume acceleration and volume imbalance proxies before entry.,0
+time_of_day_context,known_before_entry,"Use open/midday/close bucket only, not future session outcomes.",0
+symbol_normalization,known_before_entry,Normalize features within symbol/train split to avoid large-price or large-volume domination.,0
