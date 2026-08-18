@@ -1,0 +1,20 @@
+metric,value,description
+phase474_larger_horizon_fewer_trade_experiment_complete,1,Phase474 experiment completed
+phase474_thesis_id,P474_LARGER_HORIZON_FEWER_TRADE_SOURCE_EVENT_L1_L5,Experiment thesis
+phase474_best_scenario_id,horizon_1800_top_0.05_cost200,Best scenario
+phase474_best_horizon_ticks,1800,Best horizon
+phase474_best_top_fraction,0.05,Best top confidence fraction
+phase474_best_trade_count,31,Best trade count
+phase474_best_net_pnl_inr,-1464.1009413759268,Best net P&L
+phase474_best_annualized_return_pct,-16.770610783033344,Best fixed-capital annualized return
+phase474_positive_net_scenario_rows,0,Positive net scenarios
+phase474_above12_annualized_scenario_rows,0,Scenarios above 12% annualized
+phase474_fixed_capital_inr,100000.0,Reusable capital denominator
+phase474_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model version
+phase474_zerodha_cost_source_url,https://zerodha.com/charges/,Cost source
+phase474_paper_or_live_acceptance_allowed,0,No paper/live
+phase474_deployable_profitability_claim_allowed,0,No deployable claim
+phase474_phase475_allowed_next,0,Allows expansion only if all gates pass
+phase474_hard_gate_pass_rows,10,Passed hard gates
+phase474_hard_gate_rows,12,Hard gates
+phase474_next_best_action,interpret_phase474_larger_horizon_failure_or_precommit_catalyst_conditioned_subset,Recommended next action

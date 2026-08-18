@@ -23928,6 +23928,93 @@ Current next best action after Phase473:
 - precommit Phase474 with larger-horizon labels, fewer higher-confidence events, full L1-L5 source-event features, Zerodha cost200, and fixed-capital annualized return;
 - do not use same-horizon threshold-only tuning as a valid continuation.
 
+## 24.301 Phase474 Larger-Horizon Fewer-Trade Source-Event L1-L5 Experiment Completed and Rejected
+
+Phase474 executed the Phase473 next path: larger forward horizons, fewer top-confidence trades, full source-event-aware L1-L5 features, Zerodha equity intraday NSE order-formula charges, cost200 adverse slippage, and fixed reusable capital annualization.
+
+Phase474 thesis ID:
+
+- `P474_LARGER_HORIZON_FEWER_TRADE_SOURCE_EVENT_L1_L5`
+
+Phase474 experiment scope:
+
+- selected Phase467 distributional full-year partitions: 21 files;
+- feature contract: Phase469 repaired 25-feature source-event-aware L1-L5 contract;
+- horizons tested: 480, 960, and 1,800 ticks;
+- confidence cuts tested: top 5%, top 10%, and top 20% of holdout scores;
+- replay selection rule: top absolute distance from 0.5 primary probability, not future move-candidate filtering;
+- train split: January-February 2026;
+- holdout split: March 2026;
+- fixed reusable capital denominator: ₹100,000;
+- annualized return formula: `net_pnl_inr / 100000 * 252 / holdout_days * 100`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost source: `https://zerodha.com/charges/`;
+- adverse cost200 slippage proxy: 2 bps round trip.
+
+Phase474 model evidence:
+
+- horizon 480 primary holdout AUC: 0.5630234033175304;
+- horizon 960 primary holdout AUC: 0.5496241948915805;
+- horizon 1,800 primary holdout AUC: 0.5301476532913493;
+- all primary models had positive AUC lift versus shuffled-label controls.
+
+Best Phase474 costed replay scenario:
+
+- scenario: `horizon_1800_top_0.05_cost200`;
+- trade count: 31;
+- gross P&L: ₹1,713.31;
+- Zerodha charges: ₹2,561.18;
+- adverse slippage: ₹616.23;
+- net P&L: ₹-1,464.10;
+- annualized return: -16.770610595403714%;
+- positive net scenarios: 0;
+- scenarios above 12% annualized return: 0.
+
+Interpretation:
+
+The larger-horizon/fewer-trade path materially improved economics compared with Phase472, but still did not clear costs. The best Phase472 scenario had ₹-8,149.31 net P&L and -97.79% annualized return; the best Phase474 scenario improved to ₹-1,464.10 and -16.77%, but remained below zero and below the 12% profitability bar.
+
+Phase474 hard gates:
+
+- gates passed: 10 / 12;
+- Phase473 precommit used: pass;
+- larger horizons used: pass;
+- matrix rows present for all horizons: pass;
+- full-depth L1-L5 features used: pass;
+- fewer-trade scenarios used: pass;
+- cost200 included: pass;
+- fixed capital used: pass;
+- all models had positive AUC lift: pass;
+- positive net scenario exists: fail, observed 0;
+- above 12% annualized scenario exists: fail, observed 0;
+- best trade count at least 10: pass, observed 31;
+- no paper/live/profitability claim: pass.
+
+Phase474 outputs:
+
+- `outputs/phase474/phase474_acceptance_summary.csv`;
+- `outputs/phase474/phase474_matrix_summary.csv`;
+- `outputs/phase474/phase474_model_summary.csv`;
+- `outputs/phase474/phase474_primary_coefficients.csv`;
+- `outputs/phase474/phase474_holdout_scores.csv`;
+- `outputs/phase474/phase474_scenario_summary.csv`;
+- `outputs/phase474/phase474_trade_ledger.csv`;
+- `outputs/phase474/phase474_gate_evaluation.csv`;
+- `outputs/phase474/phase474_larger_horizon_fewer_trade_experiment_report.md`;
+- `outputs/phase474/phase474_larger_horizon_fewer_trade_experiment_manifest.json`;
+- `outputs/phase474/phase474_feature_label_matrix_horizon_480.csv`;
+- `outputs/phase474/phase474_feature_label_matrix_horizon_960.csv`;
+- `outputs/phase474/phase474_feature_label_matrix_horizon_1800.csv`;
+- `scripts/run_phase474_larger_horizon_fewer_trade_experiment.py`;
+- `src/synthetic_l2/phase474_larger_horizon_fewer_trade_experiment.py`.
+
+Current next best action after Phase474:
+
+- do not promote Phase474;
+- do not perform same-family horizon/top-fraction rescue without a new precommit;
+- the next credible test is a catalyst-conditioned or liquidity-vacuum-conditioned subset that reduces adverse/noise events while keeping full L1-L5 depth and cost200;
+- real-L2 holdout should be used when disk/storage allows, but synthetic-only remains the current acceptance path because real fills and contract notes are unavailable.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

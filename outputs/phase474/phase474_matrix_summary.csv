@@ -1,0 +1,4 @@
+horizon_ticks,matrix_rows,train_rows,holdout_rows,move_candidate_rows,l2_l5_feature_count,source_event_feature_count,long_rows,short_rows
+480,1792,1176,616,1134,10,11,902,876
+960,1792,1176,616,1242,10,11,862,924
+1800,1792,1176,616,1311,10,11,812,973
