@@ -1,0 +1,6 @@
+scenario_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct,acceptance_survivor
+P452_cross_asset_etf_pressure_primary,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+P452_cross_asset_etf_pressure_source_time_shift,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+P452_cross_asset_etf_pressure_side_flip,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+P452_cross_asset_target_only_l1_l5,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+P452_cross_asset_etf_l1_only,0,0,0,0.0,0.0,0.0,0.0,0.0,0

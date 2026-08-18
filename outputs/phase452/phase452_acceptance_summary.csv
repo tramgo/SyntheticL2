@@ -1,0 +1,19 @@
+metric,value,description
+phase452_cross_asset_execution_complete,1,Phase452 execution completed
+phase452_thesis_id,P452_CROSS_ASSET_ETF_PRESSURE_EXECUTION,Execution thesis
+phase452_best_scenario_id,P452_cross_asset_etf_pressure_primary,Primary scenario
+phase452_best_completed_round_trips,0,Primary completed round trips
+phase452_best_trade_dates,0,Primary dates
+phase452_best_symbols,0,Primary symbols
+phase452_best_positive_date_fraction,0.0,Primary positive-date fraction
+phase452_best_gross_pnl_inr,0.0,Primary gross P&L
+phase452_best_cost200_inr,0.0,Primary Zerodha cost200
+phase452_best_net_pnl_inr,0.0,Primary net P&L
+phase452_best_annualized_return_pct,0.0,Fixed-capital annualized return
+phase452_acceptance_survivor,0,Accepted only if every hard gate passes
+phase452_strategy_promotion_allowed,0,No promotion
+phase452_paper_or_live_acceptance_allowed,0,No paper/live
+phase452_deployable_profitability_claim_allowed,0,No deployable claim
+phase452_hard_gate_pass_rows,7,Passed hard gates
+phase452_hard_gate_rows,16,Hard gates
+phase452_next_best_action,interpret_phase452_cross_asset_etf_pressure_no_paper_live,Recommended next action

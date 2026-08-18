@@ -1,0 +1,17 @@
+gate_id,passed,observed_value,required_value,severity
+P452_PHASE451_PRECOMMIT_USED,True,1,1,hard
+P452_REQUIRED_FILES_PRESENT,True,60,60,hard
+P452_LOW_TURNOVER_CAP_APPLIED,True,max_one_event_per_target_date,applied,hard
+P452_CROSS_ASSET_SOURCE_USED,True,NIFTYBEES;BANKBEES;ITBEES,etf_proxies,hard
+P452_FULL_DEPTH_L2_L5_PRIMARY,True,ETF and target l2_l5 pressure used,levels_2_to_5,hard
+P452_COMPLETED_ROUND_TRIPS_GE_30,False,0,>=30,hard
+P452_DATE_BREADTH_GE_5,False,0,>=5,hard
+P452_SYMBOL_BREADTH_GE_3,False,0,>=3,hard
+P452_POSITIVE_DATE_FRACTION_GE_0_60,False,0.0,>=0.60,hard
+P452_ANNUALIZED_GE_12_COST200,False,0.0,>=12.0,hard
+P452_TIME_SHIFT_NOT_DOMINANT,False,primary=0.0;shift=0.0,primary_gt_shift,hard
+P452_SIDE_FLIP_NOT_DOMINANT,False,primary=0.0;side_flip=0.0,primary_gt_side_flip,hard
+P452_TARGET_ONLY_NOT_DOMINANT,False,primary=0.0;target_only=0.0,primary_gt_target_only,hard
+P452_ETF_L1_ONLY_NOT_DOMINANT,False,primary=0.0;etf_l1=0.0,primary_gt_etf_l1,hard
+P452_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P452_NO_PROMOTION_PAPER_LIVE,True,promotion=0;paper_live=0;claim=0,all_zero,hard

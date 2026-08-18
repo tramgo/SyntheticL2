@@ -22257,6 +22257,88 @@ Current next best action after Phase451:
 
 - Run `run_phase452_cross_asset_etf_pressure_no_paper_live`.
 
+## 24.279 Phase452 Cross-Asset ETF Pressure Execution Completed
+
+Phase452 executed the Phase451 frozen cross-asset ETF pressure source against the dense raw L1-L5 Parquet lake.
+
+Phase452 thesis ID:
+
+- `P452_CROSS_ASSET_ETF_PRESSURE_EXECUTION`.
+
+Phase452 frozen source instruments:
+
+- `NIFTYBEES`;
+- `BANKBEES`;
+- `ITBEES`.
+
+Phase452 frozen target symbols:
+
+- `AXISBANK`;
+- `HDFCBANK`;
+- `ICICIBANK`;
+- `INFY`;
+- `HCLTECH`;
+- `TCS`;
+- `RELIANCE`.
+
+Phase452 selected file coverage:
+
+- selected files: `60`;
+- files present: `60`;
+- months: `2026-01` through `2026-06`;
+- explicit month filtering was applied so monthly partitions did not double-count other dates.
+
+Phase452 result:
+
+- completed round trips: `0`;
+- trade dates: `0`;
+- symbols: `0`;
+- gross P&L: `0.0` INR;
+- Zerodha `cost200`: `0.0` INR;
+- net P&L: `0.0` INR;
+- annualized return using fixed `1,000,000` INR capital: `0.0%`;
+- acceptance survivor: `0`.
+
+Phase452 implementation finding:
+
+- The Phase451 contract froze `sample_stride=4096` and `horizon_ticks=240`;
+- after explicit month filtering, sampled symbol/date streams did not retain enough contiguous post-entry rows for the 240-tick horizon;
+- therefore Phase452 failed as a precommit-design/data-access mismatch, not as positive or negative trading evidence.
+
+Phase452 failed hard gates:
+
+- completed round trips at least `30`: failed (`0`);
+- date breadth at least `5`: failed (`0`);
+- symbol breadth at least `3`: failed (`0`);
+- positive-date fraction at least `0.60`: failed (`0.0`);
+- annualized return at least `12.0%`: failed (`0.0`);
+- controls not dominant gates failed because no primary/control trades were produced.
+
+Phase452 hard gates:
+
+- passed: `7 / 16`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase452 outputs:
+
+- `scripts/run_phase452_cross_asset_etf_pressure.py`;
+- `src/synthetic_l2/phase452_cross_asset_etf_pressure.py`;
+- `outputs/phase452/phase452_acceptance_summary.csv`;
+- `outputs/phase452/phase452_control_summary.csv`;
+- `outputs/phase452/phase452_daily_signal_metrics.csv`;
+- `outputs/phase452/phase452_gate_evaluation.csv`;
+- `outputs/phase452/phase452_scenario_summary.csv`;
+- `outputs/phase452/phase452_selected_files.csv`;
+- `outputs/phase452/phase452_trade_ledger.csv`;
+- `outputs/phase452/phase452_cross_asset_etf_pressure_report.md`;
+- `outputs/phase452/phase452_cross_asset_etf_pressure_manifest.json`.
+
+Current next best action after Phase452:
+
+- Interpret Phase452 formally, then precommit a repaired cross-asset execution-access contract that captures contiguous raw tick windows per date instead of sampling too sparsely for a fixed tick horizon.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
