@@ -20757,6 +20757,56 @@ Current next best action after Phase428:
 
 - Implement `interpret_phase428_broader_full_depth_feature_family_sweep_no_paper_live`, then precommit a timing-geometry audit/repair for exact-tick exits before another strategy sweep.
 
+## 24.256 Phase429 Broader Full-Depth Sweep Interpretation Completed
+
+Phase429 formally interprets Phase428 as a timing-geometry blockage, not as a profitable or unprofitable signal-family conclusion.
+
+Phase429 selected verdict:
+
+- `P429_BROADER_FULL_DEPTH_SWEEP_BLOCKED_BY_TIMING_GEOMETRY`.
+
+Phase429 decision:
+
+- Phase428 evaluated all `1,458` frozen Phase427 grid rows;
+- Phase428 produced `0` candidate scan points and `0` selected synthetic trades;
+- Phase428 best annualized return was `0.0%`;
+- because no scan point satisfied the exact forward-tick plus elapsed-hold geometry, Phase428 cannot fairly decide whether the full-depth feature families have signal value;
+- the next step must audit timestamp units, tick cadence, max-hold ticks and minimum elapsed hold before another strategy sweep;
+- no promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase429 acceptance summary:
+
+- Phase428 grid rows evaluated: `1,458`;
+- Phase428 best completed round trips: `0`;
+- Phase428 best annualized return: `0.0%`;
+- strategy signal conclusion allowed: `0`;
+- timing-geometry audit required: `1`;
+- hard gates passed: `8 / 8`.
+
+Phase429 required timing-geometry audit:
+
+- compare exchange timestamp deltas for synthetic and real L2 panels;
+- detect whether timestamp units behave like milliseconds, seconds, or synthetic dense subticks;
+- estimate whether each forward-tick bucket can satisfy the minimum elapsed hold inside the max-hold window;
+- compare median, p90 and p95 tick gaps for synthetic and real-anchor data;
+- if needed, precommit a geometry-consistent max-hold/elapsed-hold grid before strategy execution;
+- do not alter feature thresholds while repairing execution geometry.
+
+Phase429 outputs:
+
+- `scripts/run_phase429_broader_full_depth_sweep_interpretation.py`;
+- `src/synthetic_l2/phase429_broader_full_depth_sweep_interpretation.py`;
+- `outputs/phase429/phase429_acceptance_summary.csv`;
+- `outputs/phase429/phase429_decision_ledger.csv`;
+- `outputs/phase429/phase429_required_timing_geometry_audit.csv`;
+- `outputs/phase429/phase429_gate_evaluation.csv`;
+- `outputs/phase429/phase429_broader_full_depth_sweep_interpretation_report.md`;
+- `outputs/phase429/phase429_broader_full_depth_sweep_interpretation_manifest.json`.
+
+Current next best action after Phase429:
+
+- Precommit Phase430 timing-geometry audit before any new strategy sweep.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

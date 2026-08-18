@@ -1,0 +1,6 @@
+audit_id,requirement,status
+timestamp_unit_audit,Compare exchange_timestamp_ms deltas for synthetic and real L2 panels and detect ms/second/nanosecond semantics.,required
+hold_window_feasibility,"For each forward-tick bucket, estimate whether the max-hold window can satisfy the minimum elapsed hold.",required
+synthetic_real_cadence_alignment,Report median/p90/p95 tick gaps separately for synthetic and real-anchor data.,required
+parameter_geometry_repair,"If needed, precommit a geometry-consistent max-hold/elapsed-hold grid before strategy execution.",required
+no_signal_tuning,Do not alter feature thresholds while repairing execution geometry.,closed_boundary

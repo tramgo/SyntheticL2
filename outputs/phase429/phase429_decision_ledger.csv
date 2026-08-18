@@ -1,0 +1,16 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P429_BROADER_FULL_DEPTH_SWEEP_BLOCKED_BY_TIMING_GEOMETRY,Phase428 completed but produced zero candidate scan points under the frozen exact-tick plus 250 ms hold geometry.,blocked_for_strategy_conclusion
+phase428_next_action_matched,interpret_phase428_broader_full_depth_feature_family_sweep_no_paper_live,Phase429 implements the Phase428 next-action string.,basis
+phase428_grid_rows_evaluated,1458,Frozen grid rows were evaluated.,evidence
+synthetic_candidate_scan_points,0,No synthetic scan point satisfied exit geometry.,timing_geometry_failure
+synthetic_selected_trades,0,No synthetic trades selected.,timing_geometry_failure
+phase428_best_scenario_id,P428_book_slope_migration_L360_F12_S12p0_I0p55_D0p4,Best row is arbitrary among zero-return rows.,diagnostic
+phase428_best_annualized_return_pct,0.0,Zero return due to zero events.,failure
+phase428_failed_hard_gates,P428_L1_ONLY_CONTROL;P428_EVENT_FLOOR;P428_DATE_BREADTH;P428_SYMBOL_BREADTH;P428_POSITIVE_DATE_FRACTION;P428_ANNUALIZED_FLOOR,Explicit failed gate basis.,basis
+empty_scan_reason,no_scan_points_satisfied_exact_forward_tick_and_min_hold_window,Recorded empty-scan reason.,timing_geometry_failure
+strategy_signal_conclusion_allowed,0,Zero scan points means this is not a discriminating feature-signal result.,closed
+timing_geometry_audit_required,1,"Need to audit timestamp units, tick cadence, max-hold ticks and min-hold ms before new sweeps.",next
+strategy_promotion_allowed,0,No accepted survivor.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+next_action,precommit_phase430_timing_geometry_audit_before_new_strategy_sweep,Precommit timing-geometry audit before another strategy sweep.,next
