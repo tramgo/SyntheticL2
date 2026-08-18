@@ -1,0 +1,17 @@
+verdict_id,verdict_value,evidence,status
+selected_verdict,P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED,No cost200 survivor and kill-switch fired.,terminal_for_tested_route
+p263_closure_upgrade,conservative_zero_cancel_to_cancel_race_falsified,Phase408 added realistic cancel latency and still failed.,upgrade
+phase408_best_annualized_return_pct,-238.90499922900443,Best synthetic scenario annualized return.,failed_profitability
+phase408_best_completed_round_trips,152,Event floor was met.,passed_event_floor
+phase408_best_trade_dates,5,Date breadth was met.,passed_date_breadth
+phase408_best_symbols,5,Symbol breadth was met.,passed_symbol_breadth
+phase408_positive_date_fraction,0.0,Every synthetic date was net negative.,failed_positive_date_fraction
+phase408_acceptance_survivors,0,Zero accepted scenarios.,failed_acceptance
+phase408_failed_hard_gates,MM_POSITIVE_DATE_FRACTION;MM_ANNUALIZED_FLOOR;MM_LATENCY_MONOTONICITY,Failed gates.,kill_switch_basis
+synthetic_cancel_attempts,6840,Cancel attempts logged in per-tick loop.,diagnostic
+synthetic_cancel_succeeded,0,No synthetic cancel succeeded before fill in this bounded run.,diagnostic
+synthetic_cancel_lost_race,6840,Cancel attempts that lost the race.,diagnostic
+real_anchor_best_annualized_return_pct,-158.09510421577735,Reserved real-anchor replay also negative.,cross_check
+same_family_tuning_allowed,0,Charter has no third tune-it outcome.,forbidden
+paper_live_or_profit_claim,0,promotion=0;paper=0;claim=0,closed
+next_action,stop_retail_two_sided_top5_l2_market_maker_route_or_require_new_external_execution_source,Only a new external execution source could reopen this retail maker route.,next

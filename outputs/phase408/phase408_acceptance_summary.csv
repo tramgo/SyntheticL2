@@ -1,0 +1,21 @@
+metric,value,description
+phase408_per_tick_cancel_race_market_maker_complete,1,Phase408 execution completed
+phase408_synthetic_scenario_rows,45,Synthetic scenario rows
+phase408_real_anchor_scenario_rows,45,Real-anchor scenario rows
+phase408_best_scenario_id,P408_P408_TWO_SIDED_TOP5_L2_L5_CHURN_QUOTER_P407_C150_D10_M0p25_J40720260817,Best synthetic scenario
+phase408_best_scenario_grid_id,P407_C150_D10_M0p25_J40720260817,Best grid id
+phase408_best_cancel_latency_ms,150,Best cancel latency
+phase408_best_completed_round_trips,152,Best completed round trips
+phase408_best_trade_dates,5,Best trade dates
+phase408_best_symbols,5,Best symbols
+phase408_best_positive_date_fraction,0.0,Best positive date fraction
+phase408_best_net_pnl_inr,-47401.785561310404,Best net PnL
+phase408_best_annualized_return_pct,-238.90499922900443,Best annualized return
+phase408_cost200_acceptance_survivor_rows,0,Cost200 acceptance survivors
+phase408_kill_switch_triggered,1,Kill if no survivors or hard gates fail
+phase408_strategy_promotion_allowed,0,No promotion
+phase408_paper_or_live_acceptance_allowed,0,No paper/live
+phase408_deployable_profitability_claim_allowed,0,No deployable claim
+phase408_hard_gate_pass_rows,15,Passed hard gates
+phase408_hard_gate_rows,18,Hard gates
+phase408_next_best_action,interpret_phase408_cancel_race_market_maker_no_paper_live,Recommended next action

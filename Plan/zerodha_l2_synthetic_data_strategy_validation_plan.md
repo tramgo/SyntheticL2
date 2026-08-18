@@ -19141,6 +19141,153 @@ Current next best action after Phase407:
 
 - Commit and push Phase407 before any results, then implement `run_phase408_per_tick_cancel_race_market_maker_no_paper_live`.
 
+## 24.235 Phase408 Per-Tick Cancel-Race Market-Maker Execution Completed
+
+Phase408 executes the Phase407 precommitted retail two-sided quoting charter after the Phase407 precommit was committed and pushed. It uses a tick-ordered simulator with:
+
+- Zerodha-WebSocket-like raw dense L1-L5 input;
+- two-sided bid and ask quoting;
+- full top-five market-by-price state persisted in the feature/fill logic;
+- levels 2-5 imbalance/pressure features, not L1-only selection;
+- cancel trigger, cancel-arrival and lost-race logging;
+- deterministic jitter from the Phase407 pinned seed;
+- no maker rebate;
+- Zerodha equity intraday NSE cost model version `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier `2.0`;
+- fixed initial capital `1,000,000` INR;
+- fixed notional per side `100,000` INR.
+
+Phase408 tested all `45` Phase407 latency-grid scenarios:
+
+- cancel latency ms: `150`, `250`, `400`, `700`, `1000`;
+- decision latency ms: `10`, `20`, `50`;
+- cancel move threshold as captured-spread fraction: `0.25`, `0.50`, `0.75`.
+
+Phase408 best synthetic result:
+
+- best grid id: `P407_C150_D10_M0p25_J40720260817`;
+- best scenario id: `P408_P408_TWO_SIDED_TOP5_L2_L5_CHURN_QUOTER_P407_C150_D10_M0p25_J40720260817`;
+- completed round trips: `152`;
+- trade dates: `5`;
+- symbols: `5`;
+- positive date fraction: `0.0`;
+- net P&L: approximately `-47,401.785561310404` INR;
+- annualized return: approximately `-238.90499922900443%`;
+- cost200 acceptance survivors: `0`;
+- kill switch triggered: `1`.
+
+Phase408 cancel-race diagnostics:
+
+- synthetic cancel attempts: `6,840`;
+- synthetic cancel succeeded: `0`;
+- synthetic cancel lost race: `6,840`;
+- synthetic trade ledger rows: `6,840`;
+- total synthetic trade-ledger net P&L across all scenarios: approximately `-2,133,080.3502589683` INR.
+
+Phase408 real-anchor cross-check:
+
+- real-anchor scenario rows: `45`;
+- real-anchor total net P&L across scenarios: approximately `-282,312.6860996023` INR;
+- best real-anchor annualized return remained negative, approximately `-158.095104%`;
+- sign preservation gate passed.
+
+Phase408 hard gates:
+
+- passed: `15 / 18`;
+- failed gates:
+  - `MM_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.6`;
+  - `MM_ANNUALIZED_FLOOR`: observed approximately `-238.90499922900443%`, required at least `12.0%`;
+  - `MM_LATENCY_MONOTONICITY`: observed `0`, required `1` because the latency curve was flat/non-material rather than materially degrading.
+
+Phase408 interpretation before formal Phase409:
+
+- The route is not profitable under the precommitted cost200 retail cancel-race model.
+- Event/date/symbol breadth was sufficient, so this is not merely a sparse-trade rejection.
+- The hard profitability and positive-date gates failed badly.
+- The latency monotonicity gate failed because the tested fills were already adverse enough that slower cancels did not create a materially different P&L curve. A flat latency curve is not accepted as robust latency evidence.
+
+Phase408 outputs:
+
+- `scripts/run_phase408_per_tick_cancel_race_market_maker.py`;
+- `src/synthetic_l2/phase408_per_tick_cancel_race_market_maker.py`;
+- `outputs/phase408/phase408_acceptance_summary.csv`;
+- `outputs/phase408/phase408_gate_evaluation.csv`;
+- `outputs/phase408/phase408_latency_monotonicity_curves.csv`;
+- `outputs/phase408/phase408_synthetic_scenario_summary.csv`;
+- `outputs/phase408/phase408_synthetic_cancel_race_diagnostics.csv`;
+- `outputs/phase408/phase408_synthetic_trade_ledger.csv`;
+- `outputs/phase408/phase408_real_anchor_scenario_summary.csv`;
+- `outputs/phase408/phase408_real_anchor_cancel_race_diagnostics.csv`;
+- `outputs/phase408/phase408_real_anchor_trade_ledger.csv`;
+- `outputs/phase408/phase408_per_tick_cancel_race_market_maker_report.md`;
+- `outputs/phase408/phase408_per_tick_cancel_race_market_maker_manifest.json`.
+
+Current next best action after Phase408:
+
+- Interpret the failed cancel-race market-maker test formally in Phase409. Do not tune the same family to rescue it.
+
+## 24.236 Phase409 Cancel-Race Market-Maker Interpretation Completed
+
+Phase409 converts the Phase408 result into a terminal verdict for the tested retail two-sided top-five L2 market-making route.
+
+Phase409 selected verdict:
+
+- `P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED`.
+
+Phase409 decision:
+
+- P263 is upgraded from a conservative zero-cancel closure to a stronger cancel-race falsification for this tested route;
+- Phase408 completed and evaluated all `18` hard execution gates;
+- zero cost200 scenarios survived;
+- kill switch fired;
+- failed-gate basis was explicit: positive-date fraction, annualized floor and material latency monotonicity;
+- no same-family tuning outcome is allowed;
+- no strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase409 acceptance summary:
+
+- interpretation complete: `1`;
+- selected verdict: `P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED`;
+- Phase408 best completed round trips: `152`;
+- Phase408 best trade dates: `5`;
+- Phase408 best symbols: `5`;
+- Phase408 best positive date fraction: `0.0`;
+- Phase408 best net P&L: approximately `-47,401.785561310404` INR;
+- Phase408 best annualized return: approximately `-238.90499922900443%`;
+- Phase408 cost200 acceptance survivors: `0`;
+- Phase408 failed hard gates: `3`;
+- Phase409 hard gates passed: `8 / 8`.
+
+Durable byproducts retained from Phase407-409:
+
+- reusable per-tick cancel-race harness;
+- reusable latency grid and deterministic jitter model;
+- cancel lost-race ledger;
+- Zerodha cost200 application path;
+- real-anchor replay path for local Zerodha L2 days.
+
+Boundaries:
+
+- This is not paper/live evidence.
+- It does not claim broker-confirmed queue priority or exchange fills.
+- It does not justify weakening costs, assuming rebates, using sub-100ms retail latency or tuning the same market-maker family.
+
+Phase409 outputs:
+
+- `scripts/run_phase409_cancel_race_market_maker_interpretation.py`;
+- `src/synthetic_l2/phase409_cancel_race_market_maker_interpretation.py`;
+- `outputs/phase409/phase409_acceptance_summary.csv`;
+- `outputs/phase409/phase409_terminal_verdict_ledger.csv`;
+- `outputs/phase409/phase409_durable_byproduct_catalog.csv`;
+- `outputs/phase409/phase409_gate_evaluation.csv`;
+- `outputs/phase409/phase409_cancel_race_market_maker_interpretation_report.md`;
+- `outputs/phase409/phase409_cancel_race_market_maker_interpretation_manifest.json`.
+
+Current next best action after Phase409:
+
+- Stop this retail two-sided top-five L2 market-maker route, or require a genuinely new external execution source before reopening it.
+- For the broader project, the next strategy search must be a materially different full-depth L2 thesis, not another same-family quoting or passive-aware rescue.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

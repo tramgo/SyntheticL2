@@ -1,0 +1,6 @@
+byproduct_id,classification,kept_for,not_kept_for
+P409_PER_TICK_CANCEL_RACE_HARNESS,reusable_infrastructure,Reusable for future order-lifecycle realism tests.,Not evidence of true exchange queue identity.
+P409_LATENCY_GRID_AND_JITTER,reusable_latency_model,Pinned cancel-latency scenarios and deterministic jitter.,Do not use sub-100ms retail fantasy latency.
+P409_CANCEL_LOST_RACE_LEDGER,negative_evidence,Shows cancel attempts losing to fills in the tested windows.,Do not treat as broker-confirmed fills.
+P409_ZERODHA_COST200_APPLICATION,reusable_cost_model,Applies pinned Zerodha equity intraday cost model under 2x stress.,Do not weaken costs to rescue maker economics.
+P409_REAL_ANCHOR_REPLAY_PATH,cross_check_infrastructure,Reserved real-anchor replay path for local Zerodha L2 days.,Not paper/live or contract-note reconciliation.
