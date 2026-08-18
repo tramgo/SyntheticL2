@@ -21629,6 +21629,55 @@ Current next best action after Phase441:
 
 - Implement `interpret_phase441_external_catalyst_full_depth_confirmation_no_paper_live`. Treat Phase441 as a negative external-catalyst/full-depth confirmation result unless the formal interpretation finds a reporting error.
 
+## 24.269 Phase442 External Catalyst Interpretation Completed
+
+Phase442 formally interprets Phase441 as a rejected catalyst-reversal result.
+
+Phase442 selected verdict:
+
+- `P442_EXTERNAL_CATALYST_REVERSAL_REJECTED_CONTROLS_FAVOR_SIDE_FLIP`.
+
+Phase442 decision:
+
+- Phase441 achieved source-event, date and symbol breadth;
+- Phase441 failed profitability after Zerodha `cost200`;
+- Phase441 failed positive-date fraction;
+- the L1-only, side-flip and time-shifted controls were all better than the primary reversal result on relevant gates;
+- the same catalyst-reversal form is closed for rescue/tuning;
+- catalyst continuation/side-flip may be tested only as a new precommitted source;
+- no strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase442 acceptance summary:
+
+- Phase441 best completed round trips: `33`;
+- Phase441 best annualized return: approximately `-25.157141%`;
+- Phase441 cost200 acceptance survivors: `0`;
+- Phase442 hard gates passed: `9 / 9`;
+- same reversal rescue allowed: `0`;
+- side-flip new precommit allowed: `1`.
+
+Phase442 failed-evidence basis inherited from Phase441:
+
+- `P441_L1_ONLY_CONTROL`: observed approximately `-10.578201`, required at least `5.0` percentage points;
+- `P441_SIDE_FLIP_CONTROL_NOT_DOMINANT`: side flip was better than primary;
+- `P441_TIME_SHIFT_CONTROL_NOT_DOMINANT`: time-shifted catalyst was better than primary;
+- `P441_POSITIVE_DATE_FRACTION`: observed approximately `0.083333`, required at least `0.60`;
+- `P441_ANNUALIZED_FLOOR`: observed approximately `-25.157141`, required at least `12.0`.
+
+Phase442 outputs:
+
+- `scripts/run_phase442_external_catalyst_interpretation.py`;
+- `src/synthetic_l2/phase442_external_catalyst_interpretation.py`;
+- `outputs/phase442/phase442_acceptance_summary.csv`;
+- `outputs/phase442/phase442_decision_ledger.csv`;
+- `outputs/phase442/phase442_gate_evaluation.csv`;
+- `outputs/phase442/phase442_external_catalyst_interpretation_report.md`;
+- `outputs/phase442/phase442_external_catalyst_interpretation_manifest.json`.
+
+Current next best action after Phase442:
+
+- Precommit catalyst continuation/side-flip as a materially new external-alpha source, or pause strategy search. Do not rescue the same catalyst-reversal form.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
