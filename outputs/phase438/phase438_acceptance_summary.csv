@@ -1,0 +1,24 @@
+metric,value,description
+phase438_low_turnover_depth_regime_complete,1,Phase438 execution completed
+phase438_thesis_id,P438_LOW_TURNOVER_FULL_DEPTH_REGIME_CARRY_EXECUTION,Execution thesis
+phase438_synthetic_tick_rows_loaded,1920000,Synthetic tick rows loaded
+phase438_synthetic_trade_dates_loaded,12,Synthetic dates loaded
+phase438_synthetic_symbols_loaded,32,Synthetic symbols loaded
+phase438_best_scenario_id,P438_depth_regime_snapback_E120_H2400_D5,Best active synthetic scenario
+phase438_best_family_id,depth_regime_snapback,Best family
+phase438_best_completed_round_trips,384,Best round trips
+phase438_best_trade_dates,12,Best trade dates
+phase438_best_symbols,32,Best symbols
+phase438_best_positive_date_fraction,0.0,Best positive date fraction
+phase438_best_gross_pnl_inr,-4844.559999999852,Best gross P&L
+phase438_best_cost200_inr,63221.99322700972,Best cost200 charges
+phase438_best_net_pnl_inr,-68066.55322700957,Best net P&L
+phase438_best_annualized_return_pct,-142.9397617767201,Best annualized return
+phase438_real_anchor_best_annualized_return_pct,-10.169317418798217,Real-anchor best annualized return
+phase438_cost200_acceptance_survivor_rows,0,Synthetic acceptance survivors before controls
+phase438_strategy_promotion_allowed,0,No promotion
+phase438_paper_or_live_acceptance_allowed,0,No paper/live
+phase438_deployable_profitability_claim_allowed,0,No deployable claim
+phase438_hard_gate_pass_rows,11,Passed hard gates
+phase438_hard_gate_rows,14,Hard gates
+phase438_next_best_action,interpret_phase438_low_turnover_depth_regime_carry_no_paper_live,Recommended next action

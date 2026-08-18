@@ -1,0 +1,4 @@
+control,panel,scenario_id,family_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct,acceptance_survivor
+l1_only,synthetic_l1_only,P438_depth_regime_snapback_E120_H2400_D5,depth_regime_snapback,384,12,32,0.0,-4844.559999999852,63221.99322700972,-68066.55322700957,-142.9397617767201,0
+side_flip,synthetic_side_flip,P438_depth_regime_snapback_E120_H2400_D5,depth_regime_snapback,384,12,32,0.0,-12839.590000000171,63223.08569732672,-76062.6756973269,-159.73161896438646,0
+time_shuffle,synthetic_time_shuffle,P438_depth_regime_snapback_E120_H2400_D5,depth_regime_snapback,384,12,32,0.0,-11093.199999999939,63222.99045324052,-74316.19045324046,-156.063999951805,0

@@ -21352,6 +21352,93 @@ Current next best action after Phase437:
 
 - Run `run_phase438_low_turnover_depth_regime_carry_no_paper_live`.
 
+## 24.265 Phase438 Low-Turnover Full-Depth Regime Carry Execution Completed
+
+Phase438 executes the Phase437 lower-turnover source: one early-session full-depth regime trade per symbol/date with longer hold horizons.
+
+Phase438 execution scope:
+
+- synthetic tick rows loaded: `1,920,000`;
+- synthetic trade dates loaded: `12`;
+- synthetic symbols loaded: `32`;
+- scenario rows evaluated: `18`;
+- maximum trades per symbol/date: `1`;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR;
+- order notional: `100,000` INR.
+
+Phase438 best synthetic scenario:
+
+- scenario: `P438_depth_regime_snapback_E120_H2400_D5`;
+- family: `depth_regime_snapback`;
+- completed round trips: `384`;
+- trade dates: `12`;
+- symbols: `32`;
+- positive date fraction: `0.0`;
+- gross P&L: approximately `-4,844.56` INR;
+- cost200 charges: approximately `63,221.993227` INR;
+- net P&L: approximately `-68,066.553227` INR;
+- annualized return: approximately `-142.939762%`;
+- cost200 acceptance survivors: `0`.
+
+Phase438 controls for the best scenario:
+
+- L1-only ablation annualized return: approximately `-142.939762%`;
+- primary minus L1-only annualized edge: `0.0` percentage points, below the required `5.0`;
+- side-flip control annualized return: approximately `-159.731619%`, not dominant;
+- time-shuffle control annualized return: approximately `-156.064000%`, not dominant.
+
+Phase438 real-anchor cross-check:
+
+- best real-anchor scenario annualized return: approximately `-10.169317%`;
+- matching best synthetic scenario real-anchor annualized return: approximately `-25.255077%`;
+- the sign is consistent with the negative synthetic result.
+
+Phase438 hard gates:
+
+- passed: `11 / 14`;
+- passed:
+  - Phase437 precommit used;
+  - low-turnover one-trade-per-symbol/date cap;
+  - full-depth primary scenario present;
+  - side-flip control not dominant;
+  - time-shuffle control not dominant;
+  - Zerodha cost200 fixed-capital scoring;
+  - event floor;
+  - date breadth;
+  - symbol breadth;
+  - real-anchor same-sign cross-check;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P438_L1_ONLY_CONTROL`: observed `0.0`, required at least `5.0` percentage points;
+  - `P438_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+  - `P438_ANNUALIZED_FLOOR`: observed approximately `-142.939762`, required at least `12.0`.
+
+Phase438 interpretation before formal Phase439:
+
+- Lower turnover solved the breadth problem but did not solve the edge problem.
+- The best scenario was negative even before costs, and cost200 made the rejection decisive.
+- Full-depth L2-L5 did not add measurable value over the L1-only control for the best scenario.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase438 outputs:
+
+- `scripts/run_phase438_low_turnover_depth_regime_carry.py`;
+- `src/synthetic_l2/phase438_low_turnover_depth_regime_carry.py`;
+- `outputs/phase438/phase438_acceptance_summary.csv`;
+- `outputs/phase438/phase438_synthetic_scenario_summary.csv`;
+- `outputs/phase438/phase438_synthetic_trade_ledger_sample.csv`;
+- `outputs/phase438/phase438_best_scenario_controls.csv`;
+- `outputs/phase438/phase438_real_anchor_scenario_summary.csv`;
+- `outputs/phase438/phase438_real_anchor_trade_ledger_sample.csv`;
+- `outputs/phase438/phase438_gate_evaluation.csv`;
+- `outputs/phase438/phase438_low_turnover_depth_regime_carry_report.md`;
+- `outputs/phase438/phase438_low_turnover_depth_regime_carry_manifest.json`.
+
+Current next best action after Phase438:
+
+- Implement `interpret_phase438_low_turnover_depth_regime_carry_no_paper_live`. Treat Phase438 as a negative lower-turnover result unless the formal interpretation finds a reporting error.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

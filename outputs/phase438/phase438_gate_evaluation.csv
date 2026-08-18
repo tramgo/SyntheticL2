@@ -1,0 +1,15 @@
+gate_id,passed,observed_value,required_value,severity
+P438_PHASE437_PRECOMMIT_USED,True,run_phase438_low_turnover_depth_regime_carry_no_paper_live,phase437_next_action,hard
+P438_LOW_TURNOVER_ONE_TRADE_PER_SYMBOL_DATE,True,384,one_per_symbol_date,hard
+P438_FULL_DEPTH_PRIMARY_PRESENT,True,P438_depth_regime_snapback_E120_H2400_D5,full_depth_pressure,hard
+P438_L1_ONLY_CONTROL,False,0.0,>=5 pct pts,hard
+P438_SIDE_FLIP_CONTROL_NOT_DOMINANT,True,-159.73161896438646,primary>=side_flip,hard
+P438_TIME_SHUFFLE_CONTROL_NOT_DOMINANT,True,-156.063999951805,primary>=time_shuffle,hard
+P438_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P438_EVENT_FLOOR,True,384,>=30,hard
+P438_DATE_BREADTH,True,12,>=5,hard
+P438_SYMBOL_BREADTH,True,32,>=5,hard
+P438_POSITIVE_DATE_FRACTION,False,0.0,>=0.6,hard
+P438_ANNUALIZED_FLOOR,False,-142.9397617767201,>=12.0,hard
+P438_REAL_ANCHOR_CROSS_CHECK,True,-25.255077360105343,same_sign,hard
+P438_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard
