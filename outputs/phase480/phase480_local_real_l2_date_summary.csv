@@ -1,0 +1,17 @@
+trade_date,roots,symbols,parquet_files,bytes,full_32_symbol_universe
+2026-07-08,real_data_sample\l2_multiday_panel;scratch_azcopy_selected\raw_l2,32,41014,1439784898,1
+2026-07-09,real_data_sample\l2_multiday_panel;scratch_azcopy_selected\raw_l2,32,57120,2012756334,1
+2026-07-10,real_data_sample\l2_multiday_panel;scratch_azcopy_selected\raw_l2,32,101018,3531214654,1
+2026-07-13,real_data_sample\l2_multiday_panel,32,50205,1764005784,1
+2026-07-14,real_data_sample\l2_multiday_panel;scratch_azcopy_selected\raw_l2,32,99464,3501708584,1
+2026-07-15,real_data_sample\l2_multiday_panel,32,50010,1756113023,1
+2026-07-16,real_data_sample\l2_multiday_panel,32,50283,1763034702,1
+2026-07-17,real_data_sample\l2_unseen_validation,32,50787,1788505298,1
+2026-07-20,real_data_sample\l2_unseen_validation,32,50421,1773570501,1
+2026-07-21,real_data_sample\l2_unseen_validation,32,50187,1763772568,1
+2026-07-22,real_data_sample\l2_unseen_validation,32,50018,1753883840,1
+2026-07-23,real_data_sample\l2_unseen_validation,32,49929,1758380336,1
+2026-07-24,real_data_sample\l2_unseen_validation,32,50103,1759706001,1
+2026-07-27,real_data_sample\l2_unseen_validation,32,5665,198041216,1
+2026-08-03,real_data_sample\l2_unseen_validation,32,50073,1751944736,1
+2026-08-04,real_data_sample\l2_unseen_validation,32,50499,1761442001,1

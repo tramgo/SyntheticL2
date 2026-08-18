@@ -1,0 +1,18 @@
+metric,value,description
+phase480_comprehensive_local_real_l2_breadth_audit_complete,1,Phase480 complete if all gates pass
+phase480_thesis_id,P480_COMPREHENSIVE_LOCAL_REAL_L2_BREADTH_AUDIT,Phase480 thesis
+phase480_local_real_l2_date_rows,16,Comprehensive local dated real-L2 dates
+phase480_full_32_symbol_day_rows,16,Full 32-symbol local days
+phase480_official_catalyst_overlap_date_rows,16,Catalyst-overlap dates
+phase480_latest_selected_trade_rows,25,Latest frozen retest selected trades
+phase480_latest_net_pnl_inr,992.9649840110026,Latest frozen retest net PnL
+phase480_latest_annualized_return_pct,7.149347884879218,Latest frozen retest annualized return
+phase480_latest_event_floor_met,0,Latest frozen retest event floor
+phase480_latest_acceptance_candidate,0,Latest interpretation acceptance candidate
+phase480_download_required_before_next_precommit,0,Current local panel is sufficient for next precommit decision
+phase480_strategy_promotion_allowed,0,No promotion
+phase480_paper_or_live_acceptance_allowed,0,No paper/live
+phase480_deployable_profitability_claim_allowed,0,No deployable claim
+phase480_hard_gate_pass_rows,8,Passed hard gates
+phase480_hard_gate_rows,8,Hard gates
+phase480_next_best_action,precommit_next_real_l2_breadth_or_capacity_retest_using_current_16_date_panel_no_download_first,Recommended next action

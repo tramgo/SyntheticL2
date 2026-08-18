@@ -24410,6 +24410,95 @@ Current next best action after Phase479:
 - keep the Phase409 falsification as terminal for the tested route unless a genuinely new external execution source exists;
 - continue the Phase478-selected path: repair Azure CLI TLS or provide fresh SAS, then download or verify exactly one disk-safe full-universe official-catalyst real-L2 day before the next acceptance retest.
 
+## 24.307 Phase480 Comprehensive Local Real-L2 Breadth Audit Completed
+
+Phase480 corrected the narrow Phase478 inventory view before any new Azure download. Phase478 only audited a subset of roots and reported 4 dated real-L2 partitions. Phase480 audited all known local real-L2 roots, including `real_data_sample/l2_multiday_panel`, `real_data_sample/l2_unseen_validation`, `scratch_azcopy_selected/raw_l2`, `real_data_sample/l2_single_day`, `scratch_l2_sample_20260710_HDFCBANK`, and `raw_l2`.
+
+Phase480 thesis ID:
+
+- `P480_COMPREHENSIVE_LOCAL_REAL_L2_BREADTH_AUDIT`
+
+Phase480 local real-L2 evidence:
+
+- comprehensive local dated real-L2 dates: 16;
+- local dates with all 32 configured symbols present: 16;
+- official-catalyst overlap dates: 16;
+- official catalyst symbol-date overlaps from the latest Phase399/Phase373 calendar: 172;
+- sampled top-five schema rows with L1 through level-5 depth present: 640;
+- no Azure download was executed in this phase.
+
+The 16 locally available dated panels are:
+
+- `2026-07-08`;
+- `2026-07-09`;
+- `2026-07-10`;
+- `2026-07-13`;
+- `2026-07-14`;
+- `2026-07-15`;
+- `2026-07-16`;
+- `2026-07-17`;
+- `2026-07-20`;
+- `2026-07-21`;
+- `2026-07-22`;
+- `2026-07-23`;
+- `2026-07-24`;
+- `2026-07-27`;
+- `2026-08-03`;
+- `2026-08-04`.
+
+Important terminology note:
+
+Phase480 uses “32-symbol local day” to mean that all 32 configured symbols have at least one local parquet partition for that date. It does not automatically mean equal collector coverage or a complete full-session file count. For example, `2026-07-27` has all 32 symbols but is much smaller by file count and bytes than the larger days, so any execution phase must still enforce per-date tick/schema/coverage gates.
+
+Latest expanded real-L2 retest evidence used:
+
+- latest refreshed no-lookahead eligible rows: 273;
+- latest adapted work-order dates: 16;
+- latest actual selected trades: 25;
+- latest actual net P&L: INR 992.96;
+- latest actual annualized return: 7.15%;
+- latest event floor met: no;
+- latest acceptance candidate: no;
+- remaining capacity-selected trade gap: 5;
+- latest interpretation next action: `precommit_capacity_rule_sensitivity_or_add_more_real_l2_no_paper_live`.
+
+Phase480 interpretation:
+
+The current local real-L2 panel is broader than Phase478 reported. Therefore, the next step should not wait on Azure first. Use the existing 16-date official-catalyst-overlapping local panel to precommit the next real-L2 breadth/capacity retest or capacity-rule sensitivity audit. The current branch is still not accepted because the latest actual frozen retest remains below the 30 selected-trade/event floor and below the 12% annualized research bar.
+
+Phase480 hard gates:
+
+- gates passed: 8 / 8;
+- comprehensive roots used: pass;
+- 32-symbol local days present: pass;
+- top-five schema sampled: pass;
+- official catalyst overlap present: pass;
+- latest real-L2 retest evidence used: pass;
+- acceptance still closed: pass;
+- download not required before next precommit: pass;
+- no promotion, paper/live, or deployable profitability claim: pass.
+
+Phase480 outputs:
+
+- `outputs/phase480/phase480_acceptance_summary.csv`;
+- `outputs/phase480/phase480_local_real_l2_symbol_inventory.csv`;
+- `outputs/phase480/phase480_local_real_l2_date_summary.csv`;
+- `outputs/phase480/phase480_top5_schema_sample_audit.csv`;
+- `outputs/phase480/phase480_official_catalyst_overlap_by_date.csv`;
+- `outputs/phase480/phase480_latest_retest_ledger.csv`;
+- `outputs/phase480/phase480_decision_ledger.csv`;
+- `outputs/phase480/phase480_gate_evaluation.csv`;
+- `outputs/phase480/phase480_comprehensive_local_real_l2_breadth_audit_report.md`;
+- `outputs/phase480/phase480_comprehensive_local_real_l2_breadth_audit_manifest.json`;
+- `scripts/run_phase480_comprehensive_local_real_l2_breadth_audit.py`;
+- `src/synthetic_l2/phase480_comprehensive_local_real_l2_breadth_audit.py`.
+
+Current next best action after Phase480:
+
+- precommit a no-download Phase481 using the current 16-date real-L2 panel;
+- focus Phase481 on either capacity-rule sensitivity for the latest Phase387/388 clue or a stricter breadth retest that targets the remaining 5 selected-trade gap;
+- keep event floor, 12% annualized threshold, full top-five depth, costs, controls, and paper/live boundaries unchanged.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

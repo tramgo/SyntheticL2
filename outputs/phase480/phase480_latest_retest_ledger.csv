@@ -1,0 +1,13 @@
+metric,value,description
+phase399_refreshed_eligible_rows,273,Latest duplicated Phase373 refresh eligible rows.
+phase399_estimated_selected_after_refresh,36.19512195121951,Latest estimated selected trades after refresh.
+phase399_event_floor_after_refresh_estimate,1,Event floor estimate from refresh.
+phase400_adapted_work_order_rows,273,Latest precommitted adapted work order rows.
+phase400_adapted_work_order_dates,16,Latest work-order diagnostic dates.
+phase401_primary_selected_trade_rows,25,Actual frozen retest selected trades.
+phase401_primary_net_pnl_inr,992.9649840110026,Actual frozen retest net PnL.
+phase401_primary_annualized_return_pct,7.149347884879218,Actual frozen retest annualized return.
+phase401_primary_event_floor_met,0,Actual frozen retest event floor.
+phase402_acceptance_candidate,0,Latest interpretation acceptance candidate flag.
+phase402_capacity_selected_gap,5,Remaining capacity-selected trade gap.
+phase402_next_best_action,precommit_capacity_rule_sensitivity_or_add_more_real_l2_no_paper_live,Latest interpretation next action.

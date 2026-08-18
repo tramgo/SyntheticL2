@@ -1,0 +1,10 @@
+decision_id,decision_value,evidence
+comprehensive_local_real_l2_dates,16,Local dated real-L2 dates across comprehensive roots.
+comprehensive_full_32_symbol_days,16,Local dates with at least the 32-symbol configured universe.
+official_catalyst_overlap_dates,16,Dates with both local L2 and official catalyst symbol-date overlap.
+latest_actual_selected_trades,25,Latest frozen expanded retest selected trades.
+latest_actual_annualized_return_pct,7.149347884879218,Latest frozen expanded retest annualized return.
+latest_event_floor_met,0,Latest frozen expanded retest event floor.
+latest_acceptance_candidate,0,Latest interpretation acceptance flag.
+download_required_before_any_next_step,0,A local 16-date panel exists; first precommit using current local evidence before downloading more.
+next_action,precommit_next_real_l2_breadth_or_capacity_retest_using_current_16_date_panel_no_download_first,Corrects Phase478's narrow inventory and keeps paper/live closed.
