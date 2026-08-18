@@ -24528,10 +24528,11 @@ Prior evidence carried into Phase481:
 
 Frozen Phase482 capacity policies:
 
-- `P481_BASELINE_MAX3_CONCURRENT`: reproduce Phase387 active-exit overlap capacity rule with max 3 concurrent positions;
-- `P481_MAX5_CONCURRENT`: same overlap rule with max 5 concurrent positions;
-- `P481_ONE_PER_SYMBOL_DATE`: keep earliest candidate per scenario, diagnostic date, and symbol;
-- `P481_TWO_PER_TRADE_DATE`: keep earliest two candidates per scenario and diagnostic date;
+- `P481_BASELINE_MAX2_CONCURRENT`: reproduce the executed real-L2 branch active-exit overlap capacity rule with max 2 concurrent positions;
+- `P481_MAX3_CONCURRENT_DIAGNOSTIC`: same overlap rule with max 3 concurrent positions, diagnostic-only because it can exceed the pinned capital model;
+- `P481_MAX5_CONCURRENT_DIAGNOSTIC`: same overlap rule with max 5 concurrent positions, diagnostic-only because it can exceed the pinned capital model;
+- `P481_ONE_PER_SYMBOL_DATE`: keep earliest candidate per scenario, diagnostic date, and symbol, diagnostic-only until overlap/capital feasibility is proven;
+- `P481_TWO_PER_TRADE_DATE`: keep earliest two candidates per scenario and diagnostic date, diagnostic-only until overlap/capital feasibility is proven;
 - `P481_ALL_READY_DIAGNOSTIC`: select all scheduled ready candidates as an upper-bound diagnostic only, not sufficient alone for acceptance because it ignores capital overlap.
 
 Phase481 locked acceptance rules:
@@ -24540,6 +24541,9 @@ Phase481 locked acceptance rules:
 - side-flip control: `P362_D120_I2p5_D0p25_R0p0_CONTINUATION`;
 - cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
 - cost multiplier: 2;
+- initial capital: INR 250,000;
+- fixed notional per trade: INR 100,000;
+- acceptance-feasible max concurrent positions under this capital model: 2;
 - minimum selected trades: 30;
 - annualized return floor: 12%;
 - full L1 plus top-five market-by-price depth required, with levels 2-5 materiality retained;
@@ -24590,20 +24594,21 @@ Phase482 thesis ID:
 
 Phase482 policy results for the frozen primary reversal-control scenario:
 
-- `P481_BASELINE_MAX3_CONCURRENT`: 28 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 2,536.45, annualized return 18.26%, above 12% yes, event floor no, beats side-flip yes, acceptance candidate no;
-- `P481_MAX5_CONCURRENT`: 32 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 4,231.58, annualized return 30.47%, above 12% yes, event floor yes, beats side-flip yes, acceptance candidate yes;
+- `P481_BASELINE_MAX2_CONCURRENT`: 25 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 992.96, annualized return 7.15%, above 12% no, event floor no, beats side-flip yes, acceptance candidate no;
+- `P481_MAX3_CONCURRENT_DIAGNOSTIC`: 28 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 2,536.45, annualized return 18.26%, above 12% yes, event floor no, beats side-flip yes, diagnostic-only;
+- `P481_MAX5_CONCURRENT_DIAGNOSTIC`: 32 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 4,231.58, annualized return 30.47%, above 12% yes, event floor yes, beats side-flip yes, diagnostic-only because it exceeds the pinned INR 250,000 capital model;
 - `P481_ONE_PER_SYMBOL_DATE`: 23 selected trades, 14 diagnostic dates, 14 symbols, net P&L INR -1,308.08, annualized return -9.42%, event floor no, acceptance candidate no;
 - `P481_TWO_PER_TRADE_DATE`: 23 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 438.58, annualized return 3.16%, event floor no, acceptance candidate no;
 - `P481_ALL_READY_DIAGNOSTIC`: 34 selected trades, 14 diagnostic dates, 14 symbols, net P&L INR 5,271.31, annualized return 37.95%, event floor yes, diagnostic-only and not sufficient for acceptance by itself.
 
 Phase482 side-flip control evidence:
 
-- under `P481_MAX5_CONCURRENT`, the side-flip continuation control selected 32 trades and returned INR -16,742.49 net P&L, annualized return -120.55%;
-- therefore the Phase482 best feasible primary beats the side-flip control under the same capacity policy.
+- under `P481_BASELINE_MAX2_CONCURRENT`, the side-flip continuation control selected 25 trades and returned INR -10,726.92 net P&L;
+- therefore the best acceptance-feasible primary beats the side-flip control under the same capacity policy, but still fails event-floor and annualized-return requirements.
 
 Phase482 interpretation boundary:
 
-This is the first capital-feasible cost200 candidate in the current real-L2 continuation line after Phase480 corrected the local-data audit. However, Phase482 does not itself open paper/live or deployable profitability. The result must be interpreted in the next phase, including whether `max5` concurrent positions is capital-realistic under the fixed capital model, whether date/symbol contribution concentration is acceptable, and whether the baseline `max3` improvement changes the branch status despite missing the event floor.
+The initially attractive `max5` result is diagnostic-only under the pinned capital model. With INR 250,000 initial capital and INR 100,000 notional per trade, only the max2 concurrent baseline is acceptance-feasible without explicitly changing capital. The acceptance-feasible baseline remains positive but below the event floor and below the 12% annualized threshold. Phase482 therefore opens interpretation, not acceptance.
 
 Phase482 hard gates:
 
@@ -24614,7 +24619,7 @@ Phase482 hard gates:
 - cost200 retained: pass;
 - event floor evaluated: pass;
 - all-ready diagnostic not treated as acceptance: pass;
-- acceptance candidate evaluated: pass;
+- acceptance candidate evaluated: pass, observed 0 capital-feasible candidates;
 - no promotion, paper/live, or deployable profitability claim: pass.
 
 Phase482 outputs:
@@ -24631,8 +24636,70 @@ Phase482 outputs:
 Current next best action after Phase482:
 
 - interpret Phase482 before any acceptance claim;
-- specifically audit capital feasibility of max5 concurrent positions, date/symbol concentration, positive-date fraction, and whether the cost200 edge survives the side-flip and stricter capacity controls;
+- specifically audit capital feasibility, date/symbol concentration, positive-date fraction, and whether the cost200 edge survives the side-flip and stricter capacity controls;
 - keep paper/live, promotion, and deployable profitability claims closed until the interpretation phase proves every acceptance requirement.
+
+## 24.310 Phase483 Real-L2 Capacity Candidate Interpretation Completed and Rejected
+
+Phase483 interpreted the Phase482 capacity sensitivity result after correcting the capital-feasibility assumptions. The selected acceptance-feasible policy is the true executed-branch baseline:
+
+- `P481_BASELINE_MAX2_CONCURRENT`.
+
+Phase483 selected verdict:
+
+- `P483_CAPACITY_CANDIDATE_REJECTED_BY_CONCENTRATION_AND_DATE_ROBUSTNESS`.
+
+Phase483 evidence:
+
+- selected trades: 25;
+- net P&L: INR 992.96;
+- annualized return: 7.15%;
+- event floor pass: no;
+- above 12% annualized pass: no;
+- breadth pass: yes;
+- side-flip evaluated and beaten: yes;
+- positive-date fraction: 35.71%;
+- top-date net contribution share: 379.50%;
+- top-symbol net contribution share: 326.08%;
+- research candidate allowed: no.
+
+Interpretation:
+
+The Phase482 capacity sensitivity contained a profitable-looking max5 diagnostic, but that policy is not acceptance-feasible under the pinned INR 250,000 capital denominator and INR 100,000 fixed-notional-per-trade model. The only acceptance-feasible baseline remains positive but too small and too concentrated: it fails the 30 selected-trade/event floor, fails the 12% annualized bar, has a low positive-date fraction, and depends heavily on a small number of profitable contributors offsetting losing dates.
+
+Phase483 hard gates:
+
+- gates passed: 10 / 10;
+- Phase482 complete: pass;
+- selected policy capital feasible: pass;
+- event floor evaluated: pass;
+- annualized return evaluated: pass;
+- breadth evaluated: pass;
+- side-flip evaluated: pass;
+- positive-date fraction evaluated: pass;
+- concentration evaluated: pass;
+- all-ready diagnostic not used for acceptance: pass;
+- no promotion, paper/live, or deployable profitability claim: pass.
+
+Phase483 outputs:
+
+- `outputs/phase483/phase483_acceptance_summary.csv`;
+- `outputs/phase483/phase483_candidate_diagnostics.csv`;
+- `outputs/phase483/phase483_candidate_by_date.csv`;
+- `outputs/phase483/phase483_candidate_by_symbol.csv`;
+- `outputs/phase483/phase483_gate_evaluation.csv`;
+- `outputs/phase483/phase483_verdict_ledger.csv`;
+- `outputs/phase483/phase483_interpret_real_l2_capacity_candidate_report.md`;
+- `outputs/phase483/phase483_interpret_real_l2_capacity_candidate_manifest.json`;
+- `scripts/run_phase483_interpret_real_l2_capacity_candidate.py`;
+- `src/synthetic_l2/phase483_interpret_real_l2_capacity_candidate.py`.
+
+Current next best action after Phase483:
+
+- do not promote the Phase482 capacity candidate;
+- do not treat diagnostic max3/max5/all-ready results as accepted profitability under the current capital model;
+- either stop acceptance for this capacity-rescue branch or require a materially new real-L2 signal that can pass under the pinned max2 capital-feasible capacity rule;
+- keep full top-five depth, levels 2-5 materiality, Zerodha cost200, official-catalyst no-lookahead timing, and paper/live boundaries unchanged.
 
 ## 25. Final Principle
 

@@ -1,0 +1,16 @@
+diagnostic_id,value,description
+selected_policy,P481_BASELINE_MAX2_CONCURRENT,Best capital-feasible Phase482 primary policy.
+primary_selected_trades,25,Capacity-selected primary trades.
+primary_dates,14,Diagnostic dates represented.
+primary_symbols,12,Symbols represented.
+primary_net_pnl_inr,992.9649840110019,Selected primary net PnL.
+primary_positive_date_rows,5,Positive dates.
+primary_positive_date_fraction,0.35714285714285715,Positive-date fraction.
+primary_positive_symbol_rows,3,Positive symbols.
+top_date_net_share,3.7950274600005844,Top profitable date contribution divided by total net PnL.
+top_symbol_net_share,3.260754895398129,Top profitable symbol contribution divided by total net PnL.
+side_flip_net_pnl_inr,-10726.924279742221,Same policy side-flip net PnL.
+capital_notional_cap_inr,200000.0,"Max5 concurrent positions times INR 100,000 notional."
+initial_capital_inr,250000.0,Pinned capital denominator.
+capital_feasible_ratio,0.8,Max simultaneous notional divided by capital.
+phase482_acceptance_candidate_rows,0,Phase482 candidate rows.

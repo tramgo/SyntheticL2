@@ -12,7 +12,8 @@ The purpose is to determine whether the latest 25-trade result is caused by the 
 | phase481_thesis_id | P481_REAL_L2_CAPACITY_SENSITIVITY_PRECOMMIT | Phase481 thesis |
 | phase481_local_real_l2_date_rows | 16 | Local dates used |
 | phase481_input_work_order_rows | 273 | Frozen work-order rows |
-| phase481_capacity_policy_rows | 5 | Frozen capacity policies |
+| phase481_capacity_policy_rows | 6 | Frozen capacity policies |
+| phase481_acceptance_feasible_policy_rows | 1 | Capital-feasible acceptance policies |
 | phase481_prior_scheduled_primary_candidates | 34 | Prior scheduled primary candidates |
 | phase481_prior_capacity_selected_trades | 25 | Prior baseline selected trades |
 | phase481_prior_net_pnl_inr | 992.965 | Prior baseline net PnL |
@@ -44,10 +45,11 @@ The purpose is to determine whether the latest 25-trade result is caused by the 
 
 | capacity_policy_id | policy_role | selection_rule | max_concurrent_positions | per_symbol_date_cap | per_trade_date_cap | all_ready_events | acceptance_role |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| P481_BASELINE_MAX3_CONCURRENT | baseline | reproduce Phase387 apply_capacity: sort by decision_ms, canonical_work_order_id; keep if active exits < 3 | 3 |  |  | 0 | primary |
-| P481_MAX5_CONCURRENT | looser_capacity | same active-exit overlap logic as baseline but max concurrent positions = 5 | 5 |  |  | 0 | sensitivity |
-| P481_ONE_PER_SYMBOL_DATE | breadth_first | after readiness and signal filters, keep earliest candidate per scenario, diagnostic_trade_date, symbol |  | 1 |  | 0 | sensitivity |
-| P481_TWO_PER_TRADE_DATE | date_balanced | after readiness and signal filters, keep earliest two candidates per scenario and diagnostic_trade_date |  |  | 2 | 0 | sensitivity |
+| P481_BASELINE_MAX2_CONCURRENT | baseline | reproduce Phase387 apply_capacity: sort by decision_ms, canonical_work_order_id; keep if active exits < 2 | 2 |  |  | 0 | primary |
+| P481_MAX3_CONCURRENT_DIAGNOSTIC | looser_capacity_diagnostic | same active-exit overlap logic as baseline but max concurrent positions = 3; diagnostic because it can exceed pinned capital | 3 |  |  | 0 | diagnostic_only |
+| P481_MAX5_CONCURRENT_DIAGNOSTIC | looser_capacity_diagnostic | same active-exit overlap logic as baseline but max concurrent positions = 5; diagnostic because it can exceed pinned capital | 5 |  |  | 0 | diagnostic_only |
+| P481_ONE_PER_SYMBOL_DATE | breadth_first_diagnostic | after readiness and signal filters, keep earliest candidate per scenario, diagnostic_trade_date, symbol; diagnostic until overlap/capital feasibility is proven |  | 1 |  | 0 | diagnostic_only |
+| P481_TWO_PER_TRADE_DATE | date_balanced_diagnostic | after readiness and signal filters, keep earliest two candidates per scenario and diagnostic_trade_date; diagnostic until overlap/capital feasibility is proven |  |  | 2 | 0 | diagnostic_only |
 | P481_ALL_READY_DIAGNOSTIC | upper_bound_diagnostic | select every scheduled ready candidate; not sufficient alone for acceptance because it ignores capital overlap |  |  |  | 1 | diagnostic_only |
 
 ## Execution Contract
@@ -63,6 +65,9 @@ The purpose is to determine whether the latest 25-trade result is caused by the 
 | side_flip_control_scenario_id | P362_D120_I2p5_D0p25_R0p0_CONTINUATION | Frozen continuation side-flip control. |
 | cost_model_version | zerodha_equity_intraday_nse_order_formula_v2_2026_07_14 | Pinned Zerodha cost model. |
 | cost_multiplier | 2 | Cost200 remains required. |
+| initial_capital_inr | 250000 | Pinned capital denominator from the executed real-L2 branch. |
+| fixed_notional_per_trade_inr | 100000 | Pinned per-trade notional from the executed real-L2 branch. |
+| max_acceptance_concurrent_positions | 2 | Only policies at or below this overlap cap are acceptance-feasible without increasing capital. |
 | minimum_selected_trades | 30 | Event floor cannot be softened. |
 | annualized_return_floor_pct | 12 | User research profitability bar retained. |
 | full_depth_required | L1 plus top-five market-by-price depth; levels 2-5 materiality retained | Core project objective. |
@@ -78,7 +83,7 @@ The purpose is to determine whether the latest 25-trade result is caused by the 
 | P481_CURRENT_16_DATE_PANEL_USED | True | 16 | >=16 | hard |
 | P481_WORK_ORDER_PRESENT | True | 273 | >=273 | hard |
 | P481_PRIOR_TRADE_LEDGER_PRESENT | True | 34 | >0 | hard |
-| P481_CAPACITY_POLICY_GRID_FROZEN | True | 5 | 5 | hard |
+| P481_CAPACITY_POLICY_GRID_FROZEN | True | 6 | 6 | hard |
 | P481_FULL_DEPTH_L2_L5_RETAINED | True | 1 | 1 | hard |
 | P481_COST200_RETAINED | True | 1 | 1 | hard |
 | P481_NO_DOWNLOAD_OR_RETEST_NOW | True | download=0;retest=0 | both_zero | hard |

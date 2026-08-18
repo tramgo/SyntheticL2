@@ -1,0 +1,11 @@
+verdict_id,verdict_value,evidence,status
+selected_verdict,P483_CAPACITY_CANDIDATE_REJECTED_BY_CONCENTRATION_AND_DATE_ROBUSTNESS,Phase482 max5 result can advance only if profitability is not too date/symbol concentrated.,rejected
+event_floor_pass,0,selected_trades=25,quality_check
+above12_pass,0,annualized_return_pct=7.149347884879213,quality_check
+breadth_pass,1,symbols=12;dates=14,quality_check
+positive_date_fraction_pass,0,positive_date_fraction=0.35714285714285715,quality_check
+concentration_pass,0,top_date_share=3.7950274600005844;top_symbol_share=3.260754895398129,quality_check
+paper_live_allowed,0,No paper/live from this interpretation.,closed
+promotion_allowed,0,No strategy promotion from this interpretation.,closed
+deployable_profitability_claim_allowed,0,No deployable profitability claim.,closed
+next_action,stop_acceptance_for_phase482_candidate_or_require_materially_new_real_l2_signal_no_paper_live,Do not tune Phase482 after seeing this result.,next

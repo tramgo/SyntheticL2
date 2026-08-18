@@ -3,7 +3,8 @@ phase481_real_l2_capacity_sensitivity_precommit_complete,1,Phase481 complete if 
 phase481_thesis_id,P481_REAL_L2_CAPACITY_SENSITIVITY_PRECOMMIT,Phase481 thesis
 phase481_local_real_l2_date_rows,16,Local dates used
 phase481_input_work_order_rows,273,Frozen work-order rows
-phase481_capacity_policy_rows,5,Frozen capacity policies
+phase481_capacity_policy_rows,6,Frozen capacity policies
+phase481_acceptance_feasible_policy_rows,1,Capital-feasible acceptance policies
 phase481_prior_scheduled_primary_candidates,34,Prior scheduled primary candidates
 phase481_prior_capacity_selected_trades,25,Prior baseline selected trades
 phase481_prior_net_pnl_inr,992.9649840110026,Prior baseline net PnL

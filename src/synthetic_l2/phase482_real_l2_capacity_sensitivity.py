@@ -13,6 +13,7 @@ from synthetic_l2.phase254_materialize_richer_raw_top5_depth_event_bars import a
 from synthetic_l2.phase274_focused_capital_followthrough_interpretation import metric_value
 from synthetic_l2.phase363_liquidity_replenished_catalyst_impulse_diagnostic import (
     ANNUALIZED_THRESHOLD_PCT,
+    FIXED_NOTIONAL_INR,
     INITIAL_CAPITAL_INR,
     ROBUST_EVENT_FLOOR,
     TRADING_DAYS_PER_YEAR,
@@ -101,6 +102,12 @@ def summarize_policy(trades: pd.DataFrame, policy: pd.Series) -> pd.DataFrame:
                 "event_floor_met": int(len(cap) >= ROBUST_EVENT_FLOOR),
                 "breadth_met": int((by_symbol > 0).sum() >= 2 and (by_symbol_date > 0).sum() >= 2),
                 "capital_feasible": int(acceptance_role != "diagnostic_only"),
+                "max_notional_if_concurrent_inr": float(as_int(policy.get("max_concurrent_positions", 0), 0) * FIXED_NOTIONAL_INR)
+                if as_int(policy.get("max_concurrent_positions", 0), 0) > 0
+                else "",
+                "capital_ratio_if_concurrent": float(as_int(policy.get("max_concurrent_positions", 0), 0) * FIXED_NOTIONAL_INR / INITIAL_CAPITAL_INR)
+                if as_int(policy.get("max_concurrent_positions", 0), 0) > 0
+                else "",
             }
         )
     summary = pd.DataFrame(rows)
@@ -153,12 +160,13 @@ def build_gates(phase481: pd.DataFrame, catalog: pd.DataFrame, scenario_summary:
     cost_ok = not policy_trades.empty and policy_trades["cost_model_version"].astype(str).eq(ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION).all()
     rows = [
         ("P482_PHASE481_PRECOMMIT_USED", as_int(scalar(phase481, "phase481_real_l2_capacity_sensitivity_precommit_complete", 0)) == 1, scalar(phase481, "phase481_real_l2_capacity_sensitivity_precommit_complete", 0), 1),
-        ("P482_POLICY_GRID_MATCHES_PRECOMMIT", len(catalog) == 5 and int(scenario_summary["capacity_policy_id"].nunique()) == 5, int(scenario_summary["capacity_policy_id"].nunique()), 5),
+        ("P482_POLICY_GRID_MATCHES_PRECOMMIT", len(catalog) == 6 and int(scenario_summary["capacity_policy_id"].nunique()) == 6, int(scenario_summary["capacity_policy_id"].nunique()), 6),
         ("P482_NO_DOWNLOAD_USED", True, "reused_phase401_trade_ledger", "no_download"),
         ("P482_COST200_RETAINED", cost_ok, int(cost_ok), 1),
         ("P482_EVENT_FLOOR_EVALUATED", not primary.empty and int(primary["event_floor_met"].astype(int).max()) in [0, 1], int(primary["event_floor_met"].astype(int).max()) if not primary.empty else "", "evaluated"),
         ("P482_ALL_READY_DIAGNOSTIC_NOT_ACCEPTANCE", not all_ready.empty and all_ready["capital_feasible"].astype(int).eq(0).all(), "diagnostic_only", "diagnostic_only"),
-        ("P482_ACCEPTANCE_CANDIDATE_EVALUATED", accepted >= 0, accepted, ">=0"),
+        ("P482_ONLY_BASELINE_CAPITAL_FEASIBLE", int(primary["capital_feasible"].astype(int).sum()) == 1, int(primary["capital_feasible"].astype(int).sum()), 1),
+        ("P482_ACCEPTANCE_CANDIDATE_EVALUATED", accepted >= 0, accepted, "evaluated"),
         ("P482_NO_PROMOTION_PAPER_LIVE_OR_CLAIM", True, "promotion=0;paper=0;claim=0", "all_zero"),
     ]
     return pd.DataFrame(

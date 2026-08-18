@@ -1,9 +1,10 @@
 gate_id,passed,observed_value,required_value,severity
 P482_PHASE481_PRECOMMIT_USED,True,1,1,hard
-P482_POLICY_GRID_MATCHES_PRECOMMIT,True,5,5,hard
+P482_POLICY_GRID_MATCHES_PRECOMMIT,True,6,6,hard
 P482_NO_DOWNLOAD_USED,True,reused_phase401_trade_ledger,no_download,hard
 P482_COST200_RETAINED,True,1,1,hard
 P482_EVENT_FLOOR_EVALUATED,True,1,evaluated,hard
 P482_ALL_READY_DIAGNOSTIC_NOT_ACCEPTANCE,True,diagnostic_only,diagnostic_only,hard
-P482_ACCEPTANCE_CANDIDATE_EVALUATED,True,1,>=0,hard
+P482_ONLY_BASELINE_CAPITAL_FEASIBLE,True,1,1,hard
+P482_ACCEPTANCE_CANDIDATE_EVALUATED,True,0,evaluated,hard
 P482_NO_PROMOTION_PAPER_LIVE_OR_CLAIM,True,promotion=0;paper=0;claim=0,all_zero,hard
