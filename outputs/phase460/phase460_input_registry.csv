@@ -1,0 +1,11 @@
+input_id,value,description
+dense_root_exists,1,Dense raw L1-L5 root exists.
+selected_file_rows,21,Frozen selected file rows.
+selected_files_present,21,Selected files present.
+months,2026-01;2026-02;2026-03,Frozen months.
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Frozen target symbols.
+window_start_rows,0;5000;10000;20000;50000,Frozen candidate offsets per symbol/date.
+feature_lookback_ticks,20,Past-only feature lookback.
+entry_index,20,Entry index after feature window.
+horizon_ticks,240,Forward label horizon.
+min_abs_forward_move_bps,2.0,Actual non-flat move label floor.

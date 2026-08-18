@@ -1,0 +1,19 @@
+contract_id,contract_value,description
+thesis_id,P460_ACTUAL_MOVE_CANDIDATE_LABEL_SOURCE_PRECOMMIT,Phase460 actual-move label-source precommit.
+selected_source,actual_move_candidate_labels_for_past_only_l2_feature_learning,Materially new label source after fixed-window failures.
+material_difference,candidate_selection_by_actual_forward_move_labels_not_fixed_clock_windows,"A label dataset source, not a tradable signal by itself."
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Frozen target symbols.
+months,2026-01;2026-02;2026-03,Frozen months.
+window_start_rows,0;5000;10000;20000;50000,Frozen candidate offsets to inspect.
+feature_lookback_ticks,20,All features must end before entry tick.
+entry_index,20,Entry tick index inside candidate window.
+horizon_ticks,240,Forward return label horizon.
+min_abs_forward_move_bps,2.0,Minimum non-flat forward move for positive/negative label inclusion.
+primary_features,past_only_L1_L5_spread_imbalance_depth_shape_churn_and_recent_mid_return,L1-L5 features available for later fit.
+label_columns,forward_return_bps;label_side;abs_forward_return_bps;move_candidate,Label columns to materialize.
+allowed_outputs,label_ledger;feature_label_summary;gate_evaluation;manifest;report,No trading P&L output in Phase461.
+forbidden,strategy_pnl;paper_live;deployable_profitability_claim;future_label_as_signal;threshold_tuning_after_label_result,Closed boundaries.
+cost_model_reference,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Kept for downstream replay but not charged in label materialization.
+capital_policy_reference,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Downstream replay denominator remains fixed.
+execution_results_generated_now,0,Precommit only.
+contract_hash,7b867e82633d116b537ac27a6cf27d8ca4329283dc47db476bd11d79a21b2577,Hash of frozen contract rows above.

@@ -22791,6 +22791,63 @@ Current next best action after Phase459:
 
 - Precommit an actual move-candidate label source or pause synthetic fixed-window routes. Do not tune fixed row offsets, thresholds or side rules after seeing the zero-gross-edge result.
 
+## 24.287 Phase460 Actual-Move Candidate Label Source Precommit Completed
+
+Phase460 freezes an actual non-flat move-candidate label source after fixed-window routes produced zero gross edge.
+
+Phase460 selected source:
+
+- `actual_move_candidate_labels_for_past_only_l2_feature_learning`.
+
+Phase460 thesis ID:
+
+- `P460_ACTUAL_MOVE_CANDIDATE_LABEL_SOURCE_PRECOMMIT`.
+
+Phase460 boundary:
+
+- actual forward movement is a label source for research;
+- actual forward movement is not a tradable signal available at order time;
+- Phase461 may materialize feature/label rows;
+- Phase461 may not emit strategy P&L, paper/live acceptance or deployable profitability claims.
+
+Phase460 frozen label contract:
+
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`;
+- months: `2026-01`, `2026-02`, `2026-03`;
+- candidate start rows per symbol/date: `0`, `5000`, `10000`, `20000`, `50000`;
+- feature lookback: `20` ticks;
+- entry index: `20`;
+- forward label horizon: `240` ticks;
+- minimum absolute forward move label: `2.0` bps;
+- primary features: past-only L1-L5 spread, imbalance, depth shape, churn and recent mid return;
+- label columns: `forward_return_bps`, `label_side`, `abs_forward_return_bps`, `move_candidate`.
+
+Phase460 hard gates:
+
+- passed: `10 / 10`;
+- execution results generated now: `0`;
+- Phase461 label materialization allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase460 outputs:
+
+- `scripts/run_phase460_actual_move_label_precommit.py`;
+- `src/synthetic_l2/phase460_actual_move_label_precommit.py`;
+- `outputs/phase460/phase460_acceptance_summary.csv`;
+- `outputs/phase460/phase460_frozen_phase461_contract.csv`;
+- `outputs/phase460/phase460_gate_evaluation.csv`;
+- `outputs/phase460/phase460_input_registry.csv`;
+- `outputs/phase460/phase460_prior_boundary.csv`;
+- `outputs/phase460/phase460_selected_files.csv`;
+- `outputs/phase460/phase460_actual_move_label_precommit_report.md`;
+- `outputs/phase460/phase460_actual_move_label_precommit_manifest.json`.
+
+Current next best action after Phase460:
+
+- Run `run_phase461_actual_move_candidate_label_materialization_no_pnl`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,4 @@
+phase,route,verdict_or_status,boundary
+P459,delayed_fixed_window_cross_asset,P459_DELAYED_CROSS_ASSET_DISPLACEMENT_REJECTED_ZERO_GROSS_EDGE,closed; next action requires actual move-candidate label source or pausing fixed-window routes
+P458,fixed_row_5000_windows,zero_gross_edge,do not tune row offsets after result
+P455,first_window_cross_asset,zero_gross_edge,do not tune first-window thresholds or side rules
