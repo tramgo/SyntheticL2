@@ -1,0 +1,180 @@
+from __future__ import annotations
+
+import argparse
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+import pandas as pd
+
+from synthetic_l2.phase25_event_replay_expansion import _markdown_table
+from synthetic_l2.phase254_materialize_richer_raw_top5_depth_event_bars import as_int, read_csv
+from synthetic_l2.phase274_focused_capital_followthrough_interpretation import metric_value
+from synthetic_l2.phase438_low_turnover_depth_regime_carry import NEXT_ACTION as PHASE438_NEXT_ACTION
+from synthetic_l2.reproducibility import reproducibility_fields
+from synthetic_l2.zerodha_costs import ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION
+
+
+DEFAULT_PHASE438_DIR = Path("outputs/phase438")
+DEFAULT_OUTPUT_DIR = Path("outputs/phase439")
+
+VERDICT = "P439_LOW_TURNOVER_FULL_DEPTH_REGIME_CARRY_REJECTED_NO_GROSS_EDGE"
+NEXT_ACTION = "pause_for_strategy_decision_or_precommit_external_alpha_source"
+REPAIR_ACTION = "repair_phase439_interpretation_inputs"
+
+
+def scalar(summary: pd.DataFrame, metric: str, default: Any = "") -> Any:
+    return metric_value(summary, metric, default) if not summary.empty else default
+
+
+def failed_gates(gates: pd.DataFrame) -> str:
+    if gates.empty:
+        return ""
+    failed = gates.loc[gates["passed"].astype(str).str.lower().isin(["false", "0"])]
+    return ";".join(failed["gate_id"].astype(str).tolist())
+
+
+def build_decision(acceptance438: pd.DataFrame, gates438: pd.DataFrame, summary438: pd.DataFrame, controls438: pd.DataFrame) -> pd.DataFrame:
+    best_sid = str(scalar(acceptance438, "phase438_best_scenario_id", ""))
+    best = summary438[summary438["scenario_id"].astype(str).eq(best_sid)].iloc[0] if not summary438.empty else pd.Series(dtype=object)
+    l1 = controls438[controls438["control"].astype(str).eq("l1_only")].iloc[0] if not controls438.empty else pd.Series(dtype=object)
+    return pd.DataFrame(
+        [
+            ("selected_verdict", VERDICT, "The lower-turnover source achieved breadth but the best scenario was negative before costs and worse after cost200.", "terminal_for_this_source_form"),
+            ("phase438_next_action_matched", PHASE438_NEXT_ACTION, "Phase439 implements the Phase438 next-action string.", "basis"),
+            ("synthetic_rows_loaded", scalar(acceptance438, "phase438_synthetic_tick_rows_loaded", 0), "Synthetic rows loaded by Phase438.", "evidence"),
+            ("best_scenario_id", best_sid, "Best active synthetic scenario.", "evidence"),
+            ("best_round_trips", best.get("completed_round_trips", 0), "Lower-turnover event count.", "evidence"),
+            ("best_trade_dates", best.get("trade_dates", 0), "Date breadth was achieved.", "evidence"),
+            ("best_symbols", best.get("symbols", 0), "Symbol breadth was achieved.", "evidence"),
+            ("best_positive_date_fraction", best.get("positive_date_fraction", 0), "Every synthetic date was net negative.", "failure"),
+            ("best_gross_pnl_inr", best.get("gross_pnl_inr", 0), "Negative even before costs.", "failure"),
+            ("best_cost200_inr", best.get("cost200_inr", 0), "Cost200 drag.", "failure"),
+            ("best_net_pnl_inr", best.get("net_pnl_inr", 0), "Net P&L after cost200.", "failure"),
+            ("best_annualized_return_pct", best.get("annualized_return_pct", 0), "Failed annualized floor.", "failure"),
+            ("l1_only_edge_pct_points", float(best.get("annualized_return_pct", 0)) - float(l1.get("annualized_return_pct", 0)), "Full-depth edge over L1-only was zero.", "control_failure"),
+            ("phase438_failed_hard_gates", failed_gates(gates438), "Explicit failed gate basis.", "basis"),
+            ("strategy_promotion_allowed", 0, "No accepted survivor.", "closed"),
+            ("paper_or_live_acceptance_allowed", 0, "No paper/live acceptance.", "closed"),
+            ("deployable_profitability_claim_allowed", 0, "No deployable claim.", "closed"),
+            ("same_source_rescue_allowed", 0, "Do not retune this same low-turnover source after seeing negative results.", "closed"),
+            ("next_action", NEXT_ACTION, "Pause for decision or precommit an external alpha source, not another L2-only geometry variant.", "next"),
+        ],
+        columns=["decision_id", "decision_value", "evidence", "status"],
+    )
+
+
+def build_gates(acceptance438: pd.DataFrame, gates438: pd.DataFrame, decision: pd.DataFrame) -> pd.DataFrame:
+    complete = as_int(scalar(acceptance438, "phase438_low_turnover_depth_regime_complete", 0))
+    hard_rows = as_int(scalar(acceptance438, "phase438_hard_gate_rows", 0))
+    hard_pass = as_int(scalar(acceptance438, "phase438_hard_gate_pass_rows", 0))
+    ann = float(scalar(acceptance438, "phase438_best_annualized_return_pct", 0))
+    gross = float(scalar(acceptance438, "phase438_best_gross_pnl_inr", 0))
+    survivors = as_int(scalar(acceptance438, "phase438_cost200_acceptance_survivor_rows", 0))
+    verdict = str(decision.loc[decision["decision_id"].eq("selected_verdict"), "decision_value"].iloc[0])
+    gates = [
+        ("P439_PHASE438_COMPLETE", complete == 1, complete, 1),
+        ("P439_PHASE438_GATES_EVALUATED", hard_rows == 14, hard_rows, 14),
+        ("P439_PHASE438_FAILED_GATES_PRESENT", hard_pass < hard_rows and failed_gates(gates438) != "", f"passed={hard_pass}/{hard_rows};failed={failed_gates(gates438)}", "failed_gates_nonempty"),
+        ("P439_BREADTH_ACHIEVED_BUT_NOT_ACCEPTED", as_int(scalar(acceptance438, "phase438_best_trade_dates", 0)) >= 5 and survivors == 0, f"dates={scalar(acceptance438, 'phase438_best_trade_dates', 0)};survivors={survivors}", "breadth_without_acceptance"),
+        ("P439_NEGATIVE_GROSS_EDGE_CONFIRMED", gross < 0, gross, "<0"),
+        ("P439_NEGATIVE_COST200_CONFIRMED", ann < 0, ann, "<0"),
+        ("P439_VERDICT_PRESENT", verdict == VERDICT, verdict, VERDICT),
+        ("P439_NO_SAME_SOURCE_RESCUE", str(decision.loc[decision["decision_id"].eq("same_source_rescue_allowed"), "decision_value"].iloc[0]) == "0", 0, 0),
+        ("P439_BOUNDARIES_CLOSED", str(decision.loc[decision["decision_id"].eq("paper_or_live_acceptance_allowed"), "decision_value"].iloc[0]) == "0", "promotion=0;paper=0;claim=0", "all_zero"),
+    ]
+    return pd.DataFrame([{"gate_id": gate, "passed": bool(passed), "observed_value": observed, "required_value": required, "severity": "hard"} for gate, passed, observed, required in gates])
+
+
+def build_acceptance(acceptance438: pd.DataFrame, gates: pd.DataFrame) -> pd.DataFrame:
+    hard_pass = int(gates["passed"].astype(bool).sum())
+    hard_rows = int(len(gates))
+    return pd.DataFrame(
+        [
+            ("phase439_low_turnover_interpretation_complete", 1, "Phase439 interpretation completed"),
+            ("phase439_selected_verdict", VERDICT, "Selected verdict"),
+            ("phase439_phase438_best_completed_round_trips", scalar(acceptance438, "phase438_best_completed_round_trips", 0), "Phase438 best round trips"),
+            ("phase439_phase438_best_annualized_return_pct", scalar(acceptance438, "phase438_best_annualized_return_pct", 0), "Phase438 best annualized return"),
+            ("phase439_phase438_acceptance_survivors", scalar(acceptance438, "phase438_cost200_acceptance_survivor_rows", 0), "Phase438 cost200 survivors"),
+            ("phase439_strategy_promotion_allowed", 0, "No promotion"),
+            ("phase439_paper_or_live_acceptance_allowed", 0, "No paper/live"),
+            ("phase439_deployable_profitability_claim_allowed", 0, "No deployable claim"),
+            ("phase439_same_source_rescue_allowed", 0, "No same-source rescue"),
+            ("phase439_hard_gate_pass_rows", hard_pass, "Passed hard gates"),
+            ("phase439_hard_gate_rows", hard_rows, "Hard gates"),
+            ("phase439_next_best_action", NEXT_ACTION if hard_pass == hard_rows else REPAIR_ACTION, "Recommended next action"),
+        ],
+        columns=["metric", "value", "description"],
+    )
+
+
+def write_report(output_dir: Path, acceptance: pd.DataFrame, decision: pd.DataFrame, gates: pd.DataFrame) -> None:
+    lines = [
+        "# Phase439 Low-Turnover Interpretation",
+        "",
+        "Phase439 formally interprets Phase438 as a negative lower-turnover result.",
+        "",
+        "The experiment fixed breadth and turnover, but the best scenario had negative gross P&L before costs and negative net P&L after Zerodha cost200.",
+        "",
+        "## Acceptance Summary",
+        "",
+        _markdown_table(acceptance),
+        "",
+        "## Decision Ledger",
+        "",
+        _markdown_table(decision),
+        "",
+        "## Gate Evaluation",
+        "",
+        _markdown_table(gates),
+        "",
+        "Boundary: do not retune this same low-turnover L2-only source. If strategy search continues, the next source should add an external alpha axis, not just another L2-only timing geometry.",
+    ]
+    (output_dir / "phase439_low_turnover_interpretation_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def run(phase438_dir: Path = DEFAULT_PHASE438_DIR, output_dir: Path = DEFAULT_OUTPUT_DIR) -> pd.DataFrame:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    generated_utc = datetime.now(timezone.utc).isoformat()
+    acceptance438 = read_csv(phase438_dir / "phase438_acceptance_summary.csv")
+    gates438 = read_csv(phase438_dir / "phase438_gate_evaluation.csv")
+    summary438 = read_csv(phase438_dir / "phase438_synthetic_scenario_summary.csv")
+    controls438 = read_csv(phase438_dir / "phase438_best_scenario_controls.csv")
+    if acceptance438.empty or gates438.empty or summary438.empty:
+        raise FileNotFoundError("Phase439 requires Phase438 acceptance, gates and scenario summary.")
+    decision = build_decision(acceptance438, gates438, summary438, controls438)
+    gates = build_gates(acceptance438, gates438, decision)
+    acceptance = build_acceptance(acceptance438, gates)
+    decision.to_csv(output_dir / "phase439_decision_ledger.csv", index=False)
+    gates.to_csv(output_dir / "phase439_gate_evaluation.csv", index=False)
+    acceptance.to_csv(output_dir / "phase439_acceptance_summary.csv", index=False)
+    write_report(output_dir, acceptance, decision, gates)
+    manifest = {
+        "generated_utc": generated_utc,
+        "scope": "phase439_low_turnover_interpretation",
+        **reproducibility_fields(
+            artifact_id="phase439_low_turnover_interpretation",
+            generated_utc=generated_utc,
+            inputs={"phase438_acceptance_summary": str(phase438_dir / "phase438_acceptance_summary.csv")},
+            parameters={"selected_verdict": VERDICT, "next_action": NEXT_ACTION},
+            outputs={"acceptance_summary": str(output_dir / "phase439_acceptance_summary.csv")},
+            cost_model_version=ZERODHA_EQUITY_INTRADAY_NSE_MODEL_VERSION,
+            latency_model_version="phase438_fixed_tick_longer_horizon",
+        ),
+    }
+    (output_dir / "phase439_low_turnover_interpretation_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return acceptance
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run Phase439 low-turnover interpretation.")
+    parser.add_argument("--phase438-dir", type=Path, default=DEFAULT_PHASE438_DIR)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    args = parser.parse_args()
+    acceptance = run(args.phase438_dir, args.output_dir)
+    print(acceptance.to_string(index=False))
+
+
+if __name__ == "__main__":
+    main()

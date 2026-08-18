@@ -1,0 +1,20 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P439_LOW_TURNOVER_FULL_DEPTH_REGIME_CARRY_REJECTED_NO_GROSS_EDGE,The lower-turnover source achieved breadth but the best scenario was negative before costs and worse after cost200.,terminal_for_this_source_form
+phase438_next_action_matched,interpret_phase438_low_turnover_depth_regime_carry_no_paper_live,Phase439 implements the Phase438 next-action string.,basis
+synthetic_rows_loaded,1920000,Synthetic rows loaded by Phase438.,evidence
+best_scenario_id,P438_depth_regime_snapback_E120_H2400_D5,Best active synthetic scenario.,evidence
+best_round_trips,384,Lower-turnover event count.,evidence
+best_trade_dates,12,Date breadth was achieved.,evidence
+best_symbols,32,Symbol breadth was achieved.,evidence
+best_positive_date_fraction,0.0,Every synthetic date was net negative.,failure
+best_gross_pnl_inr,-4844.559999999852,Negative even before costs.,failure
+best_cost200_inr,63221.99322700972,Cost200 drag.,failure
+best_net_pnl_inr,-68066.55322700957,Net P&L after cost200.,failure
+best_annualized_return_pct,-142.9397617767201,Failed annualized floor.,failure
+l1_only_edge_pct_points,0.0,Full-depth edge over L1-only was zero.,control_failure
+phase438_failed_hard_gates,P438_L1_ONLY_CONTROL;P438_POSITIVE_DATE_FRACTION;P438_ANNUALIZED_FLOOR,Explicit failed gate basis.,basis
+strategy_promotion_allowed,0,No accepted survivor.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+same_source_rescue_allowed,0,Do not retune this same low-turnover source after seeing negative results.,closed
+next_action,pause_for_strategy_decision_or_precommit_external_alpha_source,"Pause for decision or precommit an external alpha source, not another L2-only geometry variant.",next
