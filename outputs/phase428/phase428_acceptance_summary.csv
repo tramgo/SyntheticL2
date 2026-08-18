@@ -1,0 +1,20 @@
+metric,value,description
+phase428_broader_full_depth_feature_family_sweep_complete,1,Phase428 execution completed
+phase428_grid_rows_evaluated,1458,Scenario rows evaluated
+phase428_best_scenario_id,P428_book_slope_migration_L360_F12_S12p0_I0p55_D0p4,Best synthetic scenario by annualized return
+phase428_best_family_id,book_slope_migration,Best synthetic family
+phase428_best_completed_round_trips,0,Best round trips
+phase428_best_trade_dates,0,Best trade dates
+phase428_best_symbols,0,Best symbols
+phase428_best_positive_date_fraction,0.0,Best positive date fraction
+phase428_best_net_pnl_inr,0.0,Best net P&L
+phase428_best_annualized_return_pct,0.0,Best annualized return
+phase428_cost200_acceptance_survivor_rows,0,Accepted synthetic scenarios before control gates
+phase428_control_rows,25,Control rows
+phase428_real_anchor_rows,25,Real-anchor summary rows
+phase428_strategy_promotion_allowed,0,No promotion
+phase428_paper_or_live_acceptance_allowed,0,No paper/live
+phase428_deployable_profitability_claim_allowed,0,No deployable claim
+phase428_hard_gate_pass_rows,10,Passed hard gates
+phase428_hard_gate_rows,16,Hard gates
+phase428_next_best_action,interpret_phase428_broader_full_depth_feature_family_sweep_no_paper_live,Recommended next action

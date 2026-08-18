@@ -20659,6 +20659,104 @@ Current next best action after Phase427:
 
 - Commit and push Phase427 before any results, then run `run_phase428_broader_full_depth_feature_family_sweep_no_paper_live`.
 
+## 24.255 Phase428 Broader Full-Depth Feature-Family Sweep Execution Completed
+
+Phase428 executes the Phase427 frozen broader full-depth feature-family sweep on a bounded dense synthetic panel.
+
+Phase428 execution scope:
+
+- scenario grid rows evaluated: `1,458`;
+- frozen feature families evaluated: `6`;
+- bounded synthetic months: `2026-01`, `2026-02`;
+- bounded synthetic symbols: first `4` Phase427 symbols;
+- maximum rows per synthetic file: `5,000`;
+- exact forward-tick exits: from the frozen grid, `3`, `6`, or `12`;
+- minimum forward hold: `250.0` ms;
+- max-hold window: `60` ticks;
+- local real-anchor replay: top `25` bounded synthetic rows, if scan geometry permits;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR.
+
+Phase428 execution repair note:
+
+- the first direct implementation timed out because it evaluated `scenario x group x tick` loops too slowly;
+- the executor was repaired to build compact scan features once per symbol/date/lookback/forward combination;
+- the repaired executor completed the bounded run and produced Phase428 artifacts.
+
+Phase428 synthetic result:
+
+- grid rows evaluated: `1,458`;
+- candidate scan points: `0`;
+- selected trades: `0`;
+- best scenario by annualized return: `P428_book_slope_migration_L360_F12_S12p0_I0p55_D0p4`;
+- best family: `book_slope_migration`;
+- best completed round trips: `0`;
+- best trade dates: `0`;
+- best symbols: `0`;
+- best positive date fraction: `0.0`;
+- best net P&L: `0.0` INR;
+- best annualized return: `0.0%`;
+- cost200 acceptance survivors: `0`.
+
+Phase428 timing-geometry finding:
+
+- the frozen Phase427 combination of `250.0` ms minimum hold and `60` max-hold ticks produced no valid bounded synthetic scan points;
+- this is not evidence that any full-depth feature family is profitable;
+- it is evidence that the execution geometry must be audited before another broad signal sweep is meaningful.
+
+Phase428 real-anchor result:
+
+- real-anchor summary rows: `25`;
+- real-anchor selected trades for the replayed top synthetic scenarios: `0`;
+- real-anchor annualized return for replayed top rows: `0.0%`.
+
+Phase428 hard gates:
+
+- passed: `10 / 16`;
+- passed:
+  - execution complete;
+  - Phase427 precommit used;
+  - all `1,458` grid rows evaluated;
+  - tick-ordered replay;
+  - exact forward-tick indexing;
+  - full-depth primary feature families present;
+  - side-flip control did not dominate because all candidates were zero;
+  - cost200 fixed-capital scoring;
+  - real-anchor same-sign check;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P428_L1_ONLY_CONTROL`: observed `0.0`, required primary edge at least `5.0` percentage points;
+  - `P428_EVENT_FLOOR`: observed `0`, required at least `30`;
+  - `P428_DATE_BREADTH`: observed `0`, required at least `5`;
+  - `P428_SYMBOL_BREADTH`: observed `0`, required at least `5`;
+  - `P428_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+  - `P428_ANNUALIZED_FLOOR`: observed `0.0`, required at least `12.0`.
+
+Phase428 interpretation before formal Phase429:
+
+- The broader feature-family sweep is not profitable in this bounded execution.
+- The main blocker is timing geometry, not yet a discriminating price-signal result.
+- Do not promote, paper/live or claim deployable profitability.
+- Do not add a new signal family until a precommitted timing-geometry audit verifies feasible forward-hold windows for synthetic and real L2 cadence.
+
+Phase428 outputs:
+
+- `scripts/run_phase428_broader_full_depth_feature_family_sweep.py`;
+- `src/synthetic_l2/phase428_broader_full_depth_feature_family_sweep.py`;
+- `outputs/phase428/phase428_acceptance_summary.csv`;
+- `outputs/phase428/phase428_synthetic_scenario_summary.csv`;
+- `outputs/phase428/phase428_synthetic_scan_diagnostics.csv`;
+- `outputs/phase428/phase428_synthetic_trade_ledger_sample.csv`;
+- `outputs/phase428/phase428_top_scenario_controls.csv`;
+- `outputs/phase428/phase428_real_anchor_top_scenario_summary.csv`;
+- `outputs/phase428/phase428_gate_evaluation.csv`;
+- `outputs/phase428/phase428_broader_full_depth_feature_family_sweep_report.md`;
+- `outputs/phase428/phase428_broader_full_depth_feature_family_sweep_manifest.json`.
+
+Current next best action after Phase428:
+
+- Implement `interpret_phase428_broader_full_depth_feature_family_sweep_no_paper_live`, then precommit a timing-geometry audit/repair for exact-tick exits before another strategy sweep.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

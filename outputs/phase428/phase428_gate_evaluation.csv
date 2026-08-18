@@ -1,0 +1,17 @@
+gate_id,passed,observed_value,required_value,severity
+P428_EXECUTION_COMPLETE,True,1,1,hard
+P428_PHASE427_PRECOMMIT_USED,True,run_phase428_broader_full_depth_feature_family_sweep_no_paper_live,run_phase428,hard
+P428_GRID_ROWS_EVALUATED,True,1458,1458,hard
+P428_TICK_ORDERED_REPLAY,True,timestamp_sorted_group_loop,present,hard
+P428_EXACT_FORWARD_TICK_INDEXING,True,forward_ticks_from_grid,present,hard
+P428_FULL_DEPTH_PRIMARY_FEATURES,True,l2_l5_feature_families,present,hard
+P428_L1_ONLY_CONTROL,False,0.0,>=5.0,hard
+P428_SIDE_FLIP_CONTROL,True,0.0,best>=side_flip,hard
+P428_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P428_EVENT_FLOOR,False,0,>=30,hard
+P428_DATE_BREADTH,False,0,>=5,hard
+P428_SYMBOL_BREADTH,False,0,>=5,hard
+P428_POSITIVE_DATE_FRACTION,False,0.0,>=0.6,hard
+P428_ANNUALIZED_FLOOR,False,0.0,>=12.0,hard
+P428_REAL_ANCHOR_CROSS_CHECK,True,0.0,same_sign,hard
+P428_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard
