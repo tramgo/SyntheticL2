@@ -19819,6 +19819,97 @@ Current next best action after Phase416:
 
 - Stop the deep-book divergence snapback route, or precommit a materially new non-directional full-depth source. Do not continue by tuning this directional snapback route.
 
+## 24.244 Phase417 Pair-Spread Convergence Precommit Completed
+
+Phase417 precommits a materially new non-directional full-depth L2 source after Phase416 closed the directional deep-book divergence snapback route. It is a precommit-only milestone and generates no strategy result.
+
+Phase417 thesis:
+
+- thesis id: `P417_FULL_DEPTH_PAIR_SPREAD_CONVERGENCE_MARKET_NEUTRAL`;
+- market hypothesis: temporary pair-spread dislocations may converge when both legs have adequate levels 2-5 liquidity and no severe deep-book conflict;
+- exposure: market-neutral equal-notional long/short pair trade;
+- execution profile: taker entry on both legs and taker exit on both legs;
+- not single-name directional snapback;
+- not market-making;
+- not passive fill rescue;
+- not bar-return reversal alone;
+- no maker rebate.
+
+Phase417 frozen pair catalog:
+
+- `HDFCBANK_ICICIBANK`;
+- `HDFCBANK_AXISBANK`;
+- `INFY_TCS`;
+- `RELIANCE_ONGC`.
+
+Phase417 frozen parameters:
+
+- lookback: `240` ticks;
+- entry z-score: `1.75`;
+- exit z-score: `0.35`;
+- stop z-score: `3.25`;
+- max hold: `360` ticks;
+- maximum spread per leg: `8.0` bps;
+- minimum levels 2-5 liquidity per leg: `2,000,000` INR;
+- maximum absolute levels 2-5 imbalance conflict: `0.65`;
+- fixed initial capital: `1,000,000` INR;
+- gross pair notional: `100,000` INR;
+- leg notional: `50,000` INR;
+- cost multiplier: `2.0`;
+- parameter freeze SHA-256: `40e174686fa3b84c9f5b1da791b67c93900edeb742d45871686192d02b07df58`.
+
+Phase417 precommitted Phase418 hard gates:
+
+- tick-ordered pair alignment;
+- market-neutral equal-notional pair exposure;
+- taker-only execution;
+- full-depth L1-L5 book state on both legs;
+- levels 2-5 materiality;
+- no lookahead;
+- Zerodha cost200 fixed-capital scoring;
+- fixed parameters only;
+- completed pair round-trip floor of at least `30`;
+- distinct trade-date breadth of at least `5`;
+- distinct pair breadth of at least `2`;
+- positive date fraction of at least `0.60`;
+- annualized fixed-capital return of at least `12.0%`;
+- side-flip control;
+- levels 2-5 removed control;
+- single-leg proxy control;
+- cost100 rank stability;
+- real-anchor cross-check if available;
+- closed promotion, paper/live and deployable-claim boundaries.
+
+Phase417 result:
+
+- precommit complete: `1`;
+- contract rows: `23`;
+- pair catalog rows: `4`;
+- parameter freeze rows: `15`;
+- hard gates passed: `16 / 16`;
+- execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase417 outputs:
+
+- `scripts/run_phase417_pair_spread_convergence_precommit.py`;
+- `src/synthetic_l2/phase417_pair_spread_convergence_precommit.py`;
+- `outputs/phase417/phase417_acceptance_summary.csv`;
+- `outputs/phase417/phase417_frozen_thesis_contract.csv`;
+- `outputs/phase417/phase417_pair_catalog.csv`;
+- `outputs/phase417/phase417_parameter_freeze.csv`;
+- `outputs/phase417/phase417_input_registry.csv`;
+- `outputs/phase417/phase417_execution_hard_gate_contract.csv`;
+- `outputs/phase417/phase417_gate_evaluation.csv`;
+- `outputs/phase417/phase417_pair_spread_convergence_precommit_report.md`;
+- `outputs/phase417/phase417_pair_spread_convergence_precommit_manifest.json`.
+
+Current next best action after Phase417:
+
+- Commit and push Phase417 before any results, then implement `run_phase418_pair_spread_convergence_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,5 @@
+pair_id,leg_a,leg_b,gross_pair_notional_inr,leg_notional_inr,relationship
+HDFCBANK_ICICIBANK,HDFCBANK,ICICIBANK,100000.0,50000.0,sector_or_macro_linked_large_liquid_names
+HDFCBANK_AXISBANK,HDFCBANK,AXISBANK,100000.0,50000.0,sector_or_macro_linked_large_liquid_names
+INFY_TCS,INFY,TCS,100000.0,50000.0,sector_or_macro_linked_large_liquid_names
+RELIANCE_ONGC,RELIANCE,ONGC,100000.0,50000.0,sector_or_macro_linked_large_liquid_names

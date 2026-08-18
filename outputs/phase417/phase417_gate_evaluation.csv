@@ -1,0 +1,17 @@
+gate_id,passed,observed_value,required_value,severity
+P417_PHASE298_RAW_DENSE_PRESENT,True,raw_synthetic_l2_dense_full_year,raw_synthetic_l2_dense_full_year,hard
+P417_FULL_DEPTH_SCHEMA_PRESENT,True,30,>=30,hard
+P417_LEVELS_2_TO_5_REQUIRED,True,1,1,hard
+P417_L1_ONLY_FORBIDDEN,True,0,0,hard
+P417_NO_LOOKAHEAD_SOURCE,True,0,0,hard
+P417_PHASE416_DIRECTIONAL_ROUTE_CLOSED,True,P416_DEEP_BOOK_DIVERGENCE_SNAPBACK_REJECTED_NON_SPARSE_NEGATIVE,P416_DEEP_BOOK_DIVERGENCE_SNAPBACK_REJECTED_NON_SPARSE_NEGATIVE,hard
+P417_NO_SAME_FAMILY_TUNING,True,0,0,hard
+P417_MARKET_NEUTRAL_MATERIAL_NEW,True,market_neutral_pair_spread_convergence_not_single_name_directional_not_market_making,market_neutral_not_directional,hard
+P417_PAIR_CATALOG_FROZEN,True,4,>=4,hard
+P417_FIXED_PARAMETERS_FROZEN,True,15,>=15,hard
+P417_TAKER_ONLY_PINNED,True,taker_only_pair,present,hard
+P417_COST200_FIXED_CAPITAL_PINNED,True,cost=2.0;capital=1000000.0;pair_notional=100000.0,cost200_fixed_capital,hard
+P417_EXECUTION_HARD_GATES_PRECOMMITTED,True,19,19,hard
+P417_RESULTS_NOT_GENERATED,True,0,0,hard
+P417_FORBIDDEN_ROUTES_CLOSED,True,directional_snapback_rescue;market_maker_rescue;passive_fill_rescue;bar_return_reversal_alone;promotion;paper_live;deployable_claim,closed_routes_listed,hard
+P417_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

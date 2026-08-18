@@ -1,0 +1,20 @@
+gate_id,requirement,severity,phase417_precommitted
+P418_TICK_ORDERED_PAIR_ALIGNMENT,Pair ticks must be aligned by timestamp without lookahead.,hard,1
+P418_MARKET_NEUTRAL_PAIR_EXPOSURE,Both legs must be entered and exited with equal fixed notional.,hard,1
+P418_TAKER_ONLY_EXECUTION,"No passive fills, no maker rebate.",hard,1
+P418_FULL_DEPTH_L1_L5_BOTH_LEGS,Both legs must use L1-L5 book state.,hard,1
+P418_LEVELS_2_TO_5_MATERIAL,Levels 2-5 liquidity and imbalance gates required.,hard,1
+P418_NO_LOOKAHEAD,Rolling z-score and depth features must be known before entry.,hard,1
+P418_COST200_FIXED_CAPITAL,"Use Zerodha cost200 and fixed INR 1,000,000 capital.",hard,1
+P418_FIXED_PARAMETERS,No post-result tuning.,hard,1
+P418_EVENT_FLOOR,Completed pair round trips >= 30.,hard,1
+P418_DATE_BREADTH,Distinct trade dates >= 5.,hard,1
+P418_PAIR_BREADTH,Distinct pairs >= 2.,hard,1
+P418_POSITIVE_DATE_FRACTION,Positive date fraction >= 0.6.,hard,1
+P418_ANNUALIZED_FLOOR,Annualized fixed-capital return >= 12.0 percent.,hard,1
+P418_SIDE_FLIP_CONTROL,Side-flip pair direction must not dominate primary.,hard,1
+P418_L2_L5_REMOVED_CONTROL,Removing levels 2-5 must degrade or invalidate primary.,hard,1
+P418_SINGLE_LEG_PROXY_CONTROL,Pair result must not be explainable by one leg only.,hard,1
+P418_COST100_RANK_STABILITY,Cost100 rank must not reverse acceptance ordering.,hard,1
+P418_REAL_ANCHOR_CROSS_CHECK,Synthetic result sign must be checked on real anchors if available.,hard,1
+P418_BOUNDARIES_CLOSED,"No promotion, paper/live acceptance or deployable claim.",hard,1

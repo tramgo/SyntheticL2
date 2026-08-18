@@ -1,0 +1,24 @@
+contract_id,contract_value,description
+thesis_id,P417_FULL_DEPTH_PAIR_SPREAD_CONVERGENCE_MARKET_NEUTRAL,Material-new non-directional full-depth L2 source after Phase416.
+material_difference,market_neutral_pair_spread_convergence_not_single_name_directional_not_market_making,"Long/short pair exposure, not one-name direction or passive quoting."
+market_hypothesis,temporary_pair_spread_dislocation_with_adequate_l2_l5_liquidity_and_no_deep_book_conflict_may_converge,Non-directional relative-value thesis.
+entry_signal,rolling_log_mid_spread_zscore_abs_ge_entry_threshold,"Pair spread z-score, not bar-return reversal alone."
+side_rule,if spread high short leg_a_long_leg_b; if spread low long_leg_a_short_leg_b,Market-neutral pair direction.
+exit_rule,exit_on_zscore_reversion_stop_or_max_hold_ticks,"Fixed exit, stop and max hold."
+execution_profile,taker_entry_both_legs_taker_exit_both_legs_cost200,No passive fills and no maker rebate.
+lookback_ticks,240,Fixed rolling pair spread lookback.
+entry_zscore,1.75,Fixed entry z-score.
+exit_zscore,0.35,Fixed convergence exit.
+stop_zscore,3.25,Fixed divergence stop.
+max_hold_ticks,360,Fixed max hold.
+max_spread_bps_per_leg,8.0,Avoid wide-spread execution per leg.
+min_l2_l5_liquidity_per_leg_inr,2000000.0,Full-depth liquidity gate beyond L1.
+max_abs_l2_l5_imbalance_conflict,0.65,Avoid severe deep-book pressure against required leg direction.
+full_depth_required,L1_to_L5_both_legs_with_levels_2_to_5_liquidity_and_imbalance,L1-only variants forbidden.
+pair_catalog_rows,4,Precommitted pairs.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+cost_multiplier,2.0,Cost200 acceptance scoring.
+capital,initial=1000000.0;pair_notional=100000.0;leg_notional=50000.0,"Fixed capital denominator, no unlimited capital."
+acceptance,round_trips>=30;dates>=5;pairs>=2;positive_date_fraction>=0.6;annualized>=12.0,Must be profitable with breadth.
+controls,side_flip;levels_2_to_5_removed;single_leg_proxy;cost100_rank_stability;real_anchor_sign,Controls must be reported.
+forbidden,directional_snapback_rescue;market_maker_rescue;passive_fill_rescue;bar_return_reversal_alone;promotion;paper_live;deployable_claim,Closed routes and boundaries.

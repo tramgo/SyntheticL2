@@ -1,0 +1,12 @@
+input_id,value,description
+phase298_dense_root,raw_synthetic_l2_dense_full_year,Raw dense source root.
+phase298_full_depth_required,1,Must be one.
+phase298_levels_2_to_5_required,1,Must be one.
+phase298_l1_only_variant_rows,0,Must be zero.
+phase298_net_edge_live_mask_rows,0,Must be zero.
+phase298_schema_present_columns_min,30,Minimum L1-L5 schema columns.
+phase416_selected_verdict,P416_DEEP_BOOK_DIVERGENCE_SNAPBACK_REJECTED_NON_SPARSE_NEGATIVE,Directional snapback closure context.
+phase416_same_family_tuning_allowed,0,Must be zero.
+pair_catalog_rows,4,Precommitted pair count.
+symbols_needed,AXISBANK;HDFCBANK;ICICIBANK;INFY;ONGC;RELIANCE;TCS,Symbols required by Phase418.
+execution_results_generated_now,0,Precommit only.
