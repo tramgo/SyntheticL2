@@ -20287,6 +20287,55 @@ Current next best action after Phase422:
 
 - Implement `interpret_phase422_pair_spread_realism_retest_no_paper_live`. The interpretation should close the Phase418 positive lead for acceptance unless a genuinely new pair source is precommitted later.
 
+## 24.250 Phase423 Pair-Spread Realism Retest Interpretation Completed
+
+Phase423 formally interprets Phase422 and closes the Phase418 positive pair-spread lead for acceptance.
+
+Phase423 selected verdict:
+
+- `P423_PAIR_SPREAD_POSITIVE_LEAD_FALSIFIED_BY_REALISM_RETEST`.
+
+Phase423 decision:
+
+- the Phase418 synthetic positive lead depended on same-timestamp or too-fast exits;
+- after Phase421/Phase422 minimum forward-time realism, the synthetic primary produced `0` completed round trips;
+- exact forward-tick indexing was not available in the Phase418 helper ledger, so the separate forward-tick gate remains failed/proxy-only rather than claimed as passed;
+- the full-depth unique contribution gate failed because the primary did not outperform the L2-L5 removed control by the required margin;
+- the real-anchor pair panel was active, but the primary replay was negative after Zerodha `cost200`;
+- no same-family tuning, strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase423 acceptance summary:
+
+- Phase422 synthetic raw selections before forward-time filter: `807`;
+- Phase422 synthetic selections after forward-time filter: `0`;
+- Phase422 primary completed round trips: `0`;
+- Phase422 primary annualized return: `0.0%`;
+- Phase422 hard gates passed: `10 / 17`;
+- Phase423 interpretation gates passed: `9 / 9`;
+- pair-spread positive lead preserved: `0`.
+
+Phase423 real-anchor evidence:
+
+- real-anchor raw selections before forward-time filter: `606`;
+- real-anchor selections after forward-time filter: `593`;
+- real-anchor primary completed round trips: `139`;
+- real-anchor primary trade dates: `5`;
+- real-anchor primary pairs: `4`;
+- real-anchor primary net P&L after cost200: approximately `-31,111.796715` INR;
+- real-anchor primary annualized return on fixed `1,000,000` INR capital: approximately `-156.80345544176032%`.
+
+Durable byproducts retained from Phase421-423:
+
+- pair tick-alignment panel for synthetic and real-anchor pair replay;
+- local real L2 pair loader that normalizes symbol/date metadata;
+- Zerodha `cost200` pair ledger with gross, cost100, cost200 and net P&L fields;
+- reusable minimum forward-time realism filter;
+- explicit requirement that future forward-tick gates need exact post-entry aligned tick indices.
+
+Current next best action after Phase423:
+
+- Stop the tested pair-spread convergence route, or precommit a materially new full-depth L2 source/thesis. Do not tune this same pair-spread route to rescue the falsified lead.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

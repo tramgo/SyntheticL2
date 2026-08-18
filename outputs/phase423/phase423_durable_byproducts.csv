@@ -1,0 +1,6 @@
+artifact_id,description,status
+pair_alignment_panel,Pair tick alignment across synthetic and real-anchor panels remains reusable.,preserve
+real_anchor_pair_loader,Local real L2 loader normalizes symbol/trade_date metadata and top-five depth fields.,preserve
+zerodha_cost200_pair_ledger,"Both synthetic and real-anchor ledgers retain gross, cost100, cost200 and net P&L.",preserve
+forward_time_filter,Minimum 250 ms forward-time realism filter is reusable.,preserve
+forward_tick_index_repair,Exact post-entry aligned tick count was not implemented in Phase422 and should be added before any future tick-count gate is claimed.,required_if_reused
