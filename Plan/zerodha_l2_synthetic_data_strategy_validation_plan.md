@@ -19481,6 +19481,54 @@ Current next best action after Phase411:
 
 - Implement `interpret_phase411_failure_no_same_family_tuning`. Do not relax Phase410 thresholds after seeing zero selected trades.
 
+## 24.239 Phase412 Replenishment Breakout Interpretation Completed
+
+Phase412 formally interprets Phase411. The Phase410/P411 full-depth replenishment-breakout thesis is rejected as a zero-event form in the bounded execution shard.
+
+Phase412 selected verdict:
+
+- `P412_REPLENISHMENT_BREAKOUT_REJECTED_AS_ZERO_EVENT_FORM`.
+
+Phase412 evidence:
+
+- Phase411 execution complete: `1`;
+- Phase411 hard gates evaluated: `20`;
+- Phase411 failed hard gates: `5`;
+- Phase411 primary completed round trips: `0`;
+- Phase411 primary annualized return: `0.0%`;
+- Phase411 cost200 acceptance survivors: `0`;
+- synthetic candidate scan points: `3,360`;
+- synthetic selected trades: `0`;
+- real-anchor candidate scan points: `40`;
+- real-anchor selected trades: `0`.
+
+Phase412 decision:
+
+- Zero trades and zero P&L are not a profitability success.
+- The bounded execution input was non-empty, so this is not an empty-input artifact.
+- Same-family Phase410 threshold relaxation is not allowed after observing the zero-event result.
+- The Phase410 thesis must not be replayed shard-after-shard in the same form as a rescue.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase412 hard gates:
+
+- passed: `9 / 9`.
+
+Phase412 outputs:
+
+- `scripts/run_phase412_replenishment_breakout_interpretation.py`;
+- `src/synthetic_l2/phase412_replenishment_breakout_interpretation.py`;
+- `outputs/phase412/phase412_acceptance_summary.csv`;
+- `outputs/phase412/phase412_decision_ledger.csv`;
+- `outputs/phase412/phase412_failure_attribution.csv`;
+- `outputs/phase412/phase412_gate_evaluation.csv`;
+- `outputs/phase412/phase412_replenishment_breakout_interpretation_report.md`;
+- `outputs/phase412/phase412_replenishment_breakout_interpretation_manifest.json`.
+
+Current next best action after Phase412:
+
+- Either build a filter-failure attribution tool before the next execution, or precommit a materially new less-sparse full-depth L2 thesis. Do not tune the rejected replenishment-breakout thresholds.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

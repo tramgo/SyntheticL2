@@ -1,0 +1,9 @@
+attribution_id,value,description
+synthetic_scan_points,3360,candidate scan points in synthetic bounded shard
+synthetic_selected_trades,0,selected synthetic trades
+synthetic_selection_rate,0.0,selected / scan points
+real_anchor_scan_points,40,candidate scan points in real-anchor shard
+real_anchor_selected_trades,0,selected real-anchor trades
+real_anchor_selection_rate,0.0,selected / scan points
+primary_annualized_return_pct,0.0,primary annualized return
+cost200_acceptance_survivor_rows,0,accepted scenarios
