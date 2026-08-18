@@ -21736,6 +21736,83 @@ Current next best action after Phase443:
 
 - Run `run_phase444_external_catalyst_continuation_full_depth_no_paper_live`.
 
+## 24.271 Phase444 External Catalyst Continuation Full-Depth Execution Completed
+
+Phase444 executes the Phase443 catalyst-continuation source. Continuation follows the catalyst impulse; reversal is retained only as a control.
+
+Phase444 execution scope:
+
+- source event rows available: `246`;
+- scenario rows evaluated: `12`;
+- source data: local Phase387 event-feature ledger;
+- source limitation: exits use the Phase387 feature ledger's fixed event horizon, not fresh raw-horizon recomputation;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR;
+- order notional: `100,000` INR.
+
+Phase444 best scenario:
+
+- scenario: `P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5`;
+- family: `official_catalyst_continuation`;
+- completed round trips: `46`;
+- trade dates: `11`;
+- symbols: `20`;
+- positive date fraction: approximately `0.363636`;
+- gross P&L: approximately `9,388.07` INR;
+- cost200 charges: approximately `7,583.502632` INR;
+- net P&L: approximately `1,804.567368` INR;
+- annualized return: approximately `4.134100%`;
+- cost200 acceptance survivors: `0`.
+
+Phase444 controls for the best scenario:
+
+- L1-only ablation annualized return: approximately `-2.991334%`;
+- primary minus L1-only annualized edge: approximately `7.125434` percentage points, meeting the full-depth materiality gate;
+- reversal control annualized return: approximately `-44.303485%`, not dominant;
+- time-shifted catalyst control annualized return: approximately `3.797597%`, not dominant but close to the primary.
+
+Phase444 hard gates:
+
+- passed: `12 / 14`;
+- passed:
+  - Phase443 precommit used;
+  - source event floor available;
+  - full-depth confirmation used;
+  - horizon-recompute limitation recorded;
+  - L1-only control;
+  - reversal control not dominant;
+  - time-shifted catalyst control not dominant;
+  - Zerodha cost200 fixed-capital scoring;
+  - event floor;
+  - date breadth;
+  - symbol breadth;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P444_POSITIVE_DATE_FRACTION`: observed approximately `0.363636`, required at least `0.60`;
+  - `P444_ANNUALIZED_FLOOR`: observed approximately `4.134100`, required at least `12.0`.
+
+Phase444 interpretation before formal Phase445:
+
+- Catalyst continuation is the strongest recent route because it is positive after cost200 and L2-L5 adds material value over L1-only.
+- The route is still not accepted: annualized return is below `12%`, positive-date fraction is below `0.60`, and time-shifted catalyst control is close to primary.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase444 outputs:
+
+- `scripts/run_phase444_external_catalyst_continuation_full_depth.py`;
+- `src/synthetic_l2/phase444_external_catalyst_continuation_full_depth.py`;
+- `outputs/phase444/phase444_acceptance_summary.csv`;
+- `outputs/phase444/phase444_scenario_summary.csv`;
+- `outputs/phase444/phase444_trade_ledger.csv`;
+- `outputs/phase444/phase444_best_scenario_controls.csv`;
+- `outputs/phase444/phase444_gate_evaluation.csv`;
+- `outputs/phase444/phase444_external_catalyst_continuation_full_depth_report.md`;
+- `outputs/phase444/phase444_external_catalyst_continuation_full_depth_manifest.json`.
+
+Current next best action after Phase444:
+
+- Implement `interpret_phase444_external_catalyst_continuation_no_paper_live`. Treat Phase444 as a positive diagnostic but not an accepted strategy unless formal interpretation finds a reporting error.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
