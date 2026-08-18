@@ -1,0 +1,14 @@
+metric,value
+selected_files,21.0
+files_present,21.0
+label_rows,1792.0
+move_candidate_rows,935.0
+trade_dates,64.0
+symbols,7.0
+long_label_rows,943.0
+short_label_rows,838.0
+flat_label_rows,11.0
+median_abs_forward_return_bps,2.0940341071120674
+max_abs_forward_return_bps,24.188024870884526
+median_spread_bps,1.808841617865344
+median_l25_imbalance_abs,0.2942851718245681

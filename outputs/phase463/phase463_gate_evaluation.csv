@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P463_PHASE462_PRECOMMIT_USED,True,1,1,hard
+P463_SELECTED_FILES_PRESENT,True,21,21,hard
+P463_LABEL_ROWS_PRESENT,True,1792.0,>0,hard
+P463_MOVE_CANDIDATES_PRESENT,True,935.0,>0,hard
+P463_DATE_BREADTH_GE_5,True,64.0,>=5,hard
+P463_SYMBOL_BREADTH_GE_3,True,7.0,>=3,hard
+P463_LONG_LABELS_PRESENT,True,943.0,>0,hard
+P463_SHORT_LABELS_PRESENT,True,838.0,>0,hard
+P463_FULL_DEPTH_FEATURE_COLUMNS_PRESENT,True,0.2942851718245681,computed_from_L2_L5,hard
+P463_NO_STRATEGY_PNL,True,label_materialization_only,no_pnl,hard
+P463_NO_PAPER_LIVE_OR_CLAIM,True,promotion=0;paper=0;claim=0,all_zero,hard

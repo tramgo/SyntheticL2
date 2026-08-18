@@ -1,0 +1,4 @@
+label_side,rows,move_candidate_rows,median_forward_return_bps,median_abs_forward_return_bps
+flat,11,0,0.0,0.0
+long,943,522,2.3366261398168,2.3366261398168
+short,838,413,-1.9613167821340904,1.9613167821340904

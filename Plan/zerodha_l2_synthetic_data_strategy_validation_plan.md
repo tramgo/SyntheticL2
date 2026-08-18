@@ -23004,6 +23004,95 @@ Current next best action after Phase462:
 
 - Run `run_phase463_actual_move_label_materialization_on_phase162_distributional_l1_l5_no_pnl`.
 
+## 24.290 Phase463 Distributional Actual-Move Label Materialization Completed
+
+Phase463 executes the Phase462 frozen replacement contract on the Phase162/P159 distributional full-year L1-L5 source.
+
+Phase463 thesis ID:
+
+- `P463_DISTRIBUTIONAL_ACTUAL_MOVE_LABEL_MATERIALIZATION`.
+
+Phase463 boundary:
+
+- Phase463 is a feature/label materialization phase only;
+- actual forward movement remains a research label, not an order-time signal;
+- no strategy P&L was generated;
+- no strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase463 selected input:
+
+- dense root: `raw_synthetic_l2_phase162_distributional_full_year`;
+- profile: `P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE`;
+- selected files: `21`;
+- files present: `21`;
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`;
+- months: `2026-01`, `2026-02`, `2026-03`;
+- candidate start rows: `0`, `5000`, `10000`, `20000`, `50000`;
+- entry index: `20`;
+- forward horizon: `240` ticks;
+- minimum absolute forward move: `2.0` bps.
+
+Phase463 materialization result:
+
+- label rows: `1,792`;
+- move-candidate rows: `935`;
+- trade dates: `64`;
+- symbols: `7`;
+- long label rows: `943`;
+- short label rows: `838`;
+- flat label rows: `11`;
+- median absolute forward return: `2.0940341071120674` bps;
+- maximum absolute forward return: `24.188024870884526` bps;
+- median spread: `1.808841617865344` bps;
+- median absolute L2-L5 imbalance: `0.2942851718245681`.
+
+Phase463 symbol breadth:
+
+- `AXISBANK`: `126` move-candidate rows;
+- `HCLTECH`: `140` move-candidate rows;
+- `HDFCBANK`: `145` move-candidate rows;
+- `ICICIBANK`: `130` move-candidate rows;
+- `INFY`: `131` move-candidate rows;
+- `RELIANCE`: `128` move-candidate rows;
+- `TCS`: `135` move-candidate rows.
+
+Phase463 hard gates:
+
+- passed: `11 / 11`;
+- Phase462 precommit used: pass;
+- selected files present: `21 / 21`;
+- label rows present: pass;
+- move candidates present: pass;
+- date breadth: `64 >= 5`;
+- symbol breadth: `7 >= 3`;
+- long labels present: pass;
+- short labels present: pass;
+- full-depth L2-L5 feature column materiality computed: pass.
+
+Phase463 interpretation:
+
+- The Phase162/P159 distributional source fixes the Phase461 flat-label blocker.
+- The project now has a usable synthetic-only actual-move candidate label ledger with both directions and sufficient breadth.
+- This still does not prove profitability. It allows the next phase to precommit a past-only L1-L5 feature model that predicts these labels without future leakage.
+
+Phase463 outputs:
+
+- `scripts/run_phase463_distributional_actual_move_label_materialization.py`;
+- `src/synthetic_l2/phase463_distributional_actual_move_label_materialization.py`;
+- `outputs/phase463/phase463_acceptance_summary.csv`;
+- `outputs/phase463/phase463_feature_label_ledger.csv`;
+- `outputs/phase463/phase463_gate_evaluation.csv`;
+- `outputs/phase463/phase463_label_side_summary.csv`;
+- `outputs/phase463/phase463_label_summary.csv`;
+- `outputs/phase463/phase463_selected_files.csv`;
+- `outputs/phase463/phase463_symbol_summary.csv`;
+- `outputs/phase463/phase463_distributional_actual_move_label_materialization_report.md`;
+- `outputs/phase463/phase463_distributional_actual_move_label_materialization_manifest.json`.
+
+Current next best action after Phase463:
+
+- Precommit Phase464: a past-only L1-L5 feature model over Phase463 actual-move candidates, with no future labels as tradable signals and no strategy P&L until a later replay phase is separately frozen.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
