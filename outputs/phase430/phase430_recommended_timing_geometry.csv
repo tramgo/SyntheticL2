@@ -1,0 +1,3 @@
+panel,recommended_forward_ticks,recommended_max_hold_ticks,feasible_fraction,recommendation
+real_anchor,3,500,1.0,geometry_feasible_for_precommit
+synthetic,3,2500,1.0,geometry_feasible_for_precommit

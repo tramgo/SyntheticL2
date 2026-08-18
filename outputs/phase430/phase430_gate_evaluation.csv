@@ -1,0 +1,9 @@
+gate_id,passed,observed_value,required_value,severity
+P430_PHASE429_REQUIRED_AUDIT,True,1,1,hard
+P430_SYNTHETIC_CADENCE_MEASURED,True,True,True,hard
+P430_REAL_ANCHOR_CADENCE_MEASURED,True,True,True,hard
+P430_TIMESTAMP_UNIT_GUESSED,True,milliseconds_or_dense_subtick_counter,nonempty,hard
+P430_PHASE428_GEOMETRY_DIAGNOSED,True,0.0,0.0,hard
+P430_FEASIBLE_REPAIR_GEOMETRY_FOUND,True,2,>=1,hard
+P430_NO_SIGNAL_THRESHOLD_TUNING,True,timing_only,timing_only,hard
+P430_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

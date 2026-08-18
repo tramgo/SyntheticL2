@@ -1,0 +1,16 @@
+metric,value,description
+phase430_timing_geometry_audit_complete,1,Phase430 audit completed
+phase430_audit_id,P430_TIMING_GEOMETRY_AUDIT,Audit id
+phase430_synthetic_groups,16,Synthetic symbol/date groups
+phase430_real_anchor_groups,40,Real-anchor symbol/date groups
+phase430_synthetic_median_gap_median,1.0,Median of synthetic group median gaps
+phase430_real_anchor_median_gap_median,1.0,Median of real-anchor group median gaps
+phase430_phase428_max_hold_60_feasible_fraction,0.0,Best synthetic feasibility at 60 max-hold ticks
+phase430_recommended_geometry_rows,2,Recommended geometry rows
+phase430_timing_repair_precommit_allowed,1,Whether Phase431 may precommit repaired geometry
+phase430_strategy_promotion_allowed,0,No promotion
+phase430_paper_or_live_acceptance_allowed,0,No paper/live
+phase430_deployable_profitability_claim_allowed,0,No deployable claim
+phase430_hard_gate_pass_rows,8,Passed hard gates
+phase430_hard_gate_rows,8,Hard gates
+phase430_next_best_action,precommit_phase431_geometry_consistent_full_depth_sweep,Recommended next action

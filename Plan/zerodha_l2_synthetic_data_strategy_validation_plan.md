@@ -20807,6 +20807,79 @@ Current next best action after Phase429:
 
 - Precommit Phase430 timing-geometry audit before any new strategy sweep.
 
+## 24.257 Phase430 Timing-Geometry Audit Completed
+
+Phase430 audits the execution timing geometry that blocked Phase428.
+
+Phase430 audit scope:
+
+- synthetic source: bounded `raw_synthetic_l2_dense_full_year`;
+- synthetic months: `2026-01`, `2026-02`;
+- synthetic symbols: first `8` Phase424/427 symbols;
+- maximum synthetic rows per file: `25,000`;
+- real-anchor source: available local real L2 roots;
+- real-anchor dates: up to `5`;
+- real-anchor files per symbol/date: up to `80`;
+- minimum elapsed hold: `250.0` ms;
+- forward-tick buckets audited: `3`, `6`, `12`;
+- max-hold tick buckets audited: `30`, `60`, `120`, `250`, `500`, `1000`, `1500`, `2500`, `5000`;
+- signal thresholds were not changed.
+
+Phase430 cadence result:
+
+- synthetic symbol/date groups measured: `16`;
+- real-anchor symbol/date groups measured: `40`;
+- median of synthetic group median gaps: `1.0`;
+- median of real-anchor group median gaps: `1.0`;
+- timestamp-unit guess: `milliseconds_or_dense_subtick_counter`;
+- Phase428 `60` max-hold ticks synthetic feasibility: `0.0`.
+
+Phase430 hold-window feasibility result:
+
+- synthetic, `3` forward ticks and `60` max-hold ticks: feasible fraction `0.0`;
+- synthetic, `3` forward ticks and `1000` max-hold ticks: feasible fraction approximately `0.20377604166666666`;
+- synthetic, `3` forward ticks and `1500` max-hold ticks: feasible fraction approximately `0.7579787234042553`;
+- synthetic, `3` forward ticks and `2500` max-hold ticks: feasible fraction `1.0`;
+- real-anchor, `3` forward ticks and `60` max-hold ticks: feasible fraction approximately `0.0873015873015873`;
+- real-anchor, `3` forward ticks and `250` max-hold ticks: feasible fraction `0.44`;
+- real-anchor, `3` forward ticks and `500` max-hold ticks: feasible fraction `1.0`.
+
+Phase430 recommended timing geometry:
+
+- synthetic: `3` forward ticks, `2500` max-hold ticks, feasible fraction `1.0`;
+- real-anchor: `3` forward ticks, `500` max-hold ticks, feasible fraction `1.0`.
+
+Phase430 interpretation:
+
+- Phase428 failed before signal discrimination because its `60` max-hold ticks could not satisfy the `250.0` ms elapsed-hold requirement on the bounded synthetic cadence;
+- the failure was timing geometry, not proof that all full-depth feature families lack edge;
+- the next sweep must precommit a cadence-aware max-hold grid before running strategy logic;
+- no signal threshold tuning is allowed as part of the timing repair.
+
+Phase430 hard gates:
+
+- passed: `8 / 8`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase430 outputs:
+
+- `scripts/run_phase430_timing_geometry_audit.py`;
+- `src/synthetic_l2/phase430_timing_geometry_audit.py`;
+- `outputs/phase430/phase430_acceptance_summary.csv`;
+- `outputs/phase430/phase430_cadence_summary.csv`;
+- `outputs/phase430/phase430_hold_window_feasibility_by_group.csv`;
+- `outputs/phase430/phase430_hold_window_feasibility_summary.csv`;
+- `outputs/phase430/phase430_recommended_timing_geometry.csv`;
+- `outputs/phase430/phase430_gate_evaluation.csv`;
+- `outputs/phase430/phase430_timing_geometry_audit_report.md`;
+- `outputs/phase430/phase430_timing_geometry_audit_manifest.json`.
+
+Current next best action after Phase430:
+
+- Precommit Phase431 geometry-consistent full-depth sweep using the Phase430 cadence-aware max-hold recommendations. Do not alter feature thresholds during the timing repair.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
