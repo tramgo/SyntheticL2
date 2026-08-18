@@ -1,0 +1,20 @@
+metric,value,description
+phase425_queue_depletion_continuation_execution_complete,1,Phase425 execution completed
+phase425_primary_scenario_id,P425_PRIMARY_QUEUE_DEPLETION_CONTINUATION,Primary frozen scenario
+phase425_synthetic_scenario_rows,3,Synthetic scenario rows
+phase425_real_anchor_scenario_rows,3,Real-anchor scenario rows
+phase425_primary_completed_round_trips,0,Primary round trips
+phase425_primary_trade_dates,0,Primary trade dates
+phase425_primary_symbols,0,Primary symbols
+phase425_primary_positive_date_fraction,0.0,Primary positive date fraction
+phase425_primary_net_pnl_inr,0.0,Primary net P&L
+phase425_primary_annualized_return_pct,0.0,Primary annualized return
+phase425_l1_only_annualized_return_pct,0.0,L1-only control annualized return
+phase425_l2_l5_edge_delta_vs_l1_only_pct,0.0,Primary minus L1-only annualized percentage points
+phase425_cost200_acceptance_survivor_rows,0,Accepted synthetic scenarios
+phase425_strategy_promotion_allowed,0,No promotion
+phase425_paper_or_live_acceptance_allowed,0,No paper/live
+phase425_deployable_profitability_claim_allowed,0,No deployable claim
+phase425_hard_gate_pass_rows,13,Passed hard gates
+phase425_hard_gate_rows,19,Hard gates
+phase425_next_best_action,interpret_phase425_queue_depletion_continuation_no_paper_live,Recommended next action

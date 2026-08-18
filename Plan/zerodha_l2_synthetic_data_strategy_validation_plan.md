@@ -20427,6 +20427,116 @@ Current next best action after Phase424:
 
 - Commit and push Phase424 before any results, then run `run_phase425_queue_depletion_continuation_execution_no_paper_live`.
 
+## 24.252 Phase425 Queue-Depletion Continuation Execution Completed
+
+Phase425 executes the Phase424 frozen queue-depletion continuation thesis with exact post-entry tick indexing.
+
+Phase425 execution note:
+
+- Phase424 froze exact forward ticks, minimum hold milliseconds and max-hold ticks, but did not freeze take-profit or stop bps thresholds.
+- Therefore Phase425 does not invent new TP/SL thresholds after the precommit.
+- Exit uses the earliest tick satisfying both:
+  - at least `3` exact post-entry ticks;
+  - at least `250.0` ms after entry;
+  - within the frozen `30` max-hold-tick window.
+
+Phase425 execution scope:
+
+- primary scenario: `P425_PRIMARY_QUEUE_DEPLETION_CONTINUATION`;
+- controls:
+  - `P425_L1_ONLY_CONTROL`;
+  - `P425_SIDE_FLIP_CONTROL`;
+- bounded synthetic panel: first `30,000` rows per selected symbol/month over `2026-01` to `2026-05`;
+- synthetic symbols in this bounded executor: first `8` Phase424 symbols;
+- local real-anchor panel: available local real L2 roots, capped at `5` dates and `60` files per symbol/date;
+- scan stride: `250` ticks;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR;
+- order notional: `100,000` INR.
+
+Phase425 synthetic result:
+
+- scenario rows: `3`;
+- scan diagnostics rows: `120`;
+- candidate scan points: `14,400`;
+- primary completed round trips: `0`;
+- primary trade dates: `0`;
+- primary symbols: `0`;
+- primary positive date fraction: `0.0`;
+- primary net P&L: `0.0` INR;
+- primary annualized return: `0.0%`;
+- L1-only control annualized return: `0.0%`;
+- primary minus L1-only annualized edge: `0.0` percentage points;
+- cost200 acceptance survivors: `0`.
+
+Phase425 real-anchor result:
+
+- primary completed round trips: `4`;
+- primary trade dates: `3`;
+- primary symbols: `3`;
+- primary positive date fraction: `0.0`;
+- primary gross P&L: approximately `-2.70` INR;
+- primary cost200 charges: approximately `660.908903486` INR;
+- primary net P&L: approximately `-663.608903486` INR;
+- primary annualized return: approximately `-5.574314789282376%`.
+
+Phase425 real-anchor controls:
+
+- L1-only control: `41` trades, `5` dates, `7` symbols, annualized approximately `-37.521682356769446%`;
+- side-flip control: `4` trades, `3` dates, `3` symbols, annualized approximately `-6.775583224767816%`;
+- all real-anchor scenarios were negative after costs.
+
+Phase425 hard gates:
+
+- passed: `13 / 19`;
+- passed:
+  - execution complete;
+  - Phase424 precommit used;
+  - tick-ordered single-name replay;
+  - exact forward-tick indexing;
+  - minimum forward-time rule;
+  - L1-L5 full-depth fields required;
+  - levels 2-5 materiality in the primary signal;
+  - side-flip control did not dominate primary;
+  - taker-only execution;
+  - no lookahead;
+  - cost200 fixed-capital scoring;
+  - real-anchor sign check;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P425_L1_ONLY_CONTROL`: observed `0.0`, required primary edge at least `5.0` percentage points;
+  - `P425_EVENT_FLOOR`: observed `0`, required at least `30`;
+  - `P425_DATE_BREADTH`: observed `0`, required at least `5`;
+  - `P425_SYMBOL_BREADTH`: observed `0`, required at least `5`;
+  - `P425_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+  - `P425_ANNUALIZED_FLOOR`: observed `0.0`, required at least `12.0`.
+
+Phase425 interpretation before formal Phase426:
+
+- The queue-depletion continuation thesis generated zero synthetic primary trades under the frozen thresholds in the bounded executor.
+- The exact forward-tick machinery worked; the signal itself was too sparse on the bounded synthetic panel.
+- Real-anchor evidence was active but negative after cost200.
+- This blocks strategy promotion, paper/live acceptance and deployable profitability claims.
+
+Phase425 outputs:
+
+- `scripts/run_phase425_queue_depletion_continuation_execution.py`;
+- `src/synthetic_l2/phase425_queue_depletion_continuation_execution.py`;
+- `outputs/phase425/phase425_acceptance_summary.csv`;
+- `outputs/phase425/phase425_synthetic_trade_ledger.csv`;
+- `outputs/phase425/phase425_synthetic_scan_diagnostics.csv`;
+- `outputs/phase425/phase425_synthetic_scenario_summary.csv`;
+- `outputs/phase425/phase425_real_anchor_trade_ledger.csv`;
+- `outputs/phase425/phase425_real_anchor_scan_diagnostics.csv`;
+- `outputs/phase425/phase425_real_anchor_scenario_summary.csv`;
+- `outputs/phase425/phase425_gate_evaluation.csv`;
+- `outputs/phase425/phase425_queue_depletion_continuation_execution_report.md`;
+- `outputs/phase425/phase425_queue_depletion_continuation_execution_manifest.json`.
+
+Current next best action after Phase425:
+
+- Implement `interpret_phase425_queue_depletion_continuation_no_paper_live`. The interpretation should reject or close this frozen queue-depletion route for acceptance unless a materially new source is precommitted later.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

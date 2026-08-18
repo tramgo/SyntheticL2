@@ -1,0 +1,20 @@
+gate_id,passed,observed_value,required_value,severity
+P425_EXECUTION_COMPLETE,True,1,1,hard
+P425_PHASE424_PRECOMMIT_USED,True,run_phase425_queue_depletion_continuation_execution_no_paper_live,run_phase425,hard
+P425_TICK_ORDERED_SINGLE_NAME_REPLAY,True,timestamp_sorted_group_loop,present,hard
+P425_EXACT_FORWARD_TICK_INDEXING,True,3,>=3 exact post-entry ticks,hard
+P425_FORWARD_TIME_ENFORCED,True,250.0,>=250ms,hard
+P425_FULL_DEPTH_L1_L5_REQUIRED,True,required_columns=L1-L5_price_quantity_orders,present,hard
+P425_LEVELS_2_TO_5_MATERIAL,True,depletion_replenishment_order_thinning,present,hard
+P425_L1_ONLY_CONTROL,False,0.0,>=5.0,hard
+P425_SIDE_FLIP_CONTROL,True,0.0,primary>=side_flip,hard
+P425_TAKER_ONLY_EXECUTION,True,taker_entry_taker_exit,present,hard
+P425_NO_LOOKAHEAD,True,rolling_baseline_before_signal_then_entry_next_tick,present,hard
+P425_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P425_EVENT_FLOOR,False,0,>=30,hard
+P425_DATE_BREADTH,False,0,>=5,hard
+P425_SYMBOL_BREADTH,False,0,>=5,hard
+P425_POSITIVE_DATE_FRACTION,False,0.0,>=0.6,hard
+P425_ANNUALIZED_FLOOR,False,0.0,>=12.0,hard
+P425_REAL_ANCHOR_CROSS_CHECK,True,-5.574314789282376,same_sign,hard
+P425_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard
