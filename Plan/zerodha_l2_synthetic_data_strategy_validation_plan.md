@@ -19602,6 +19602,103 @@ Current next best action after Phase413:
 
 - Precommit a materially new less-sparse full-depth L2 thesis using the Phase413 failure map. Do not rescue Phase410 by threshold relaxation.
 
+## 24.241 Phase414 Deep-Book Divergence Snapback Precommit Completed
+
+Phase414 precommits a materially new less-sparse full-depth L2 thesis using the Phase413 failure map. It is a precommit-only milestone and generates no strategy result.
+
+Phase414 thesis:
+
+- thesis id: `P414_DEEP_BOOK_DIVERGENCE_SNAPBACK_TAKER_ONLY`;
+- market hypothesis: when a short impulse runs against deeper levels 2-5 book pressure and top-five does not strongly confirm the impulse, price may snap back toward the deeper-book pressure;
+- entry side: opposite the impulse, toward deeper-book pressure;
+- execution profile: taker entry, taker stop/target/horizon exit;
+- not Phase410 threshold relaxation;
+- not market-making;
+- not passive fill rescue;
+- not bar-return reversal alone;
+- no maker rebate.
+
+Phase414 relationship to Phase413:
+
+- Phase413 synthetic scan points: `840`;
+- Phase413 synthetic points passing all Phase410 filters: `0`;
+- Phase413 levels 2-5 replenishment pass rate: approximately `0.00833`;
+- Phase413 top-five alignment first-failure count: `483`;
+- Phase414 removes the Phase410 requirement for simultaneous impulse + top-five alignment + levels 2-5 replenishment + breakout confirmation, and instead requires a different deep-book divergence structure.
+
+Phase414 frozen parameters:
+
+- impulse lookback: `20` seconds;
+- confirmation window: `5` seconds;
+- horizon: `120` seconds;
+- minimum absolute impulse: `3.0` bps;
+- minimum opposing levels 2-5 imbalance: `0.08`;
+- maximum top-five alignment with impulse: `0.08`;
+- minimum level-weighted divergence: `0.05`;
+- maximum spread: `8.0` bps;
+- maximum withdrawal pressure: `0.25`;
+- stop: `10.0` bps;
+- take profit: `14.0` bps;
+- parameter freeze SHA-256: `8694fe2341e06baaf0e1ed4cf9aa300287b405b8958a3c1cff48d795e462af2b`.
+
+Phase414 cost and capital:
+
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: `2.0`;
+- fixed initial capital: `1,000,000` INR;
+- fixed notional per trade: `100,000` INR;
+- maximum concurrent positions: `2`.
+
+Phase414 precommitted Phase415 hard gates:
+
+- tick-ordered replay;
+- deep-book divergence signal;
+- not Phase410 threshold relaxation;
+- taker-only execution;
+- full-depth L1-L5 book state;
+- levels 2-5 materiality;
+- no lookahead;
+- Zerodha cost200 fixed-capital scoring;
+- fixed parameters only;
+- completed round-trip floor of at least `30`;
+- distinct trade-date breadth of at least `5`;
+- distinct symbol breadth of at least `3`;
+- positive date fraction of at least `0.60`;
+- annualized fixed-capital return of at least `12.0%`;
+- side-flip control;
+- levels 2-5 removed control;
+- top-five-only control;
+- real-anchor cross-check;
+- closed promotion, paper/live and deployable-claim boundaries.
+
+Phase414 result:
+
+- precommit complete: `1`;
+- contract rows: `24`;
+- parameter freeze rows: `11`;
+- hard gates passed: `17 / 17`;
+- execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase414 outputs:
+
+- `scripts/run_phase414_deep_book_divergence_snapback_precommit.py`;
+- `src/synthetic_l2/phase414_deep_book_divergence_snapback_precommit.py`;
+- `outputs/phase414/phase414_acceptance_summary.csv`;
+- `outputs/phase414/phase414_frozen_thesis_contract.csv`;
+- `outputs/phase414/phase414_parameter_freeze.csv`;
+- `outputs/phase414/phase414_input_registry.csv`;
+- `outputs/phase414/phase414_execution_hard_gate_contract.csv`;
+- `outputs/phase414/phase414_gate_evaluation.csv`;
+- `outputs/phase414/phase414_deep_book_divergence_snapback_precommit_report.md`;
+- `outputs/phase414/phase414_deep_book_divergence_snapback_precommit_manifest.json`.
+
+Current next best action after Phase414:
+
+- Commit and push Phase414 before any results, then implement `run_phase415_deep_book_divergence_snapback_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

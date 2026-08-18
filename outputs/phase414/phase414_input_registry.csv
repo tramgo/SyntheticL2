@@ -1,0 +1,14 @@
+input_id,value,description
+phase298_dense_root,raw_synthetic_l2_dense_full_year,Raw dense source root.
+phase298_full_depth_required,1,Must be one.
+phase298_levels_2_to_5_required,1,Must be one.
+phase298_l1_only_variant_rows,0,Must be zero.
+phase298_net_edge_live_mask_rows,0,Must be zero.
+phase298_schema_present_columns_min,30,Minimum present L1-L5 price/quantity/order columns.
+phase409_maker_route_closed,P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED,Closed market-maker context.
+phase412_zero_event_verdict,P412_REPLENISHMENT_BREAKOUT_REJECTED_AS_ZERO_EVENT_FORM,Closed replenishment-breakout context.
+phase413_synthetic_scan_points,840,Attribution universe size.
+phase413_synthetic_pass_all_filters,0,Must be zero for zero-event diagnosis.
+phase413_l2_l5_replenishment_pass_rate,0.0083333333333333,Phase413 bottleneck evidence.
+phase413_top5_alignment_first_failure_count,483,Phase413 earliest failure evidence.
+execution_results_generated_now,0,Precommit only.

@@ -1,0 +1,20 @@
+gate_id,requirement,severity,phase414_precommitted
+P415_TICK_ORDERED_REPLAY,Execution must iterate ticks in timestamp order.,hard,1
+P415_DEEP_BOOK_DIVERGENCE_SIGNAL,Signal must require levels 2-5 pressure opposing impulse.,hard,1
+P415_NOT_PHASE410_THRESHOLD_RELAXATION,No reuse of replenishment-breakout same-family thresholds as a rescue.,hard,1
+P415_TAKER_ONLY_EXECUTION,"No passive fills, no maker rebate, no two-sided quoting.",hard,1
+P415_FULL_DEPTH_L1_L5,Execution must read L1-L5 book state.,hard,1
+P415_LEVELS_2_TO_5_MATERIAL,Removing levels 2-5 must be a logged control.,hard,1
+P415_NO_LOOKAHEAD,All features must be computed before entry tick.,hard,1
+P415_COST200_FIXED_CAPITAL,Use Zerodha cost200 with fixed capital and notional.,hard,1
+P415_FIXED_PARAMETERS,No post-result tuning.,hard,1
+P415_EVENT_FLOOR,Completed round trips >= 30.,hard,1
+P415_DATE_BREADTH,Distinct trade dates >= 5.,hard,1
+P415_SYMBOL_BREADTH,Distinct symbols >= 3.,hard,1
+P415_POSITIVE_DATE_FRACTION,Positive date fraction >= 0.6.,hard,1
+P415_ANNUALIZED_FLOOR,Annualized fixed-capital return >= 12.0 percent.,hard,1
+P415_SIDE_FLIP_CONTROL,Side-flip must not dominate primary.,hard,1
+P415_L2_L5_REMOVED_CONTROL,Levels 2-5 removed control must degrade or invalidate primary.,hard,1
+P415_TOP5_ONLY_CONTROL,Top5-only control must be reported.,hard,1
+P415_REAL_ANCHOR_CROSS_CHECK,Synthetic winner sign must be cross-checked on real anchors.,hard,1
+P415_BOUNDARIES_CLOSED,"No promotion, paper/live acceptance or deployable claim.",hard,1
