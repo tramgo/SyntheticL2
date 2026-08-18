@@ -1,0 +1,18 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P419_PAIR_SPREAD_CONVERGENCE_POSITIVE_SYNTHETIC_LEAD_NOT_ACCEPTED,Positive cost200 synthetic result but failed full-depth contribution gate.,lead_not_acceptance
+primary_completed_round_trips,189,Event floor passed.,positive_lead
+primary_trade_dates,5,Date breadth passed.,positive_lead
+primary_pairs,4,Pair breadth passed.,positive_lead
+primary_positive_date_fraction,0.8,Positive-date gate passed.,positive_lead
+primary_net_pnl_inr,15352.134856071578,Synthetic cost200 net P&L.,positive_lead
+primary_annualized_return_pct,77.37475967460075,Synthetic cost200 annualized return.,positive_lead
+side_flip_annualized_return_pct,-519.9392118699669,Side-flip control was strongly worse.,supportive_control
+l2_l5_removed_annualized_return_pct,98.21200763402916,Levels 2-5 removed control outperformed primary.,blocking_control
+single_leg_proxy_annualized_return_pct,38.68737983730038,Single-leg proxy positive but below primary.,supportive_control
+phase418_failed_hard_gates,P418_L2_L5_REMOVED_CONTROL,Explicit failed gate basis.,basis
+full_depth_contribution_proven,0,Must be one before acceptance.,blocked
+real_anchor_pair_evidence_strong,0,Real-anchor pair catalog evidence unavailable/zero in bounded run.,blocked
+strategy_promotion_allowed,0,Blocked despite positive synthetic lead.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+next_action,repair_full_depth_contribution_and_real_anchor_pair_evidence_before_any_promotion,"Repair contribution/evidence first, not paper/live.",next

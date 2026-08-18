@@ -1,0 +1,6 @@
+repair_id,repair_requirement,status
+P420_FULL_DEPTH_CONTRIBUTION_REPAIR,Create a precommitted test where levels 2-5 materially improve or uniquely gate the pair-spread result.,required_before_acceptance
+P420_REAL_ANCHOR_PAIR_PANEL_REPAIR,"Verify whether local/Azure real L2 has matching pair symbols and dates, then run pair replay on real anchors if available.",required_before_acceptance
+P420_SAME_TIMESTAMP_ALIGNMENT_AUDIT,Audit same-millisecond aligned entry/exit cases and enforce a minimum forward-tick or elapsed-time rule if needed.,required_before_acceptance
+P420_COST100_COST200_RANK_AUDIT,Record whether the positive lead remains ranked under cost100/cost200 without weakening acceptance.,required_before_acceptance
+P420_NO_PAPER_LIVE_BOUNDARY,"No paper/live until contribution, real-anchor and timing realism repairs pass.",closed_boundary
