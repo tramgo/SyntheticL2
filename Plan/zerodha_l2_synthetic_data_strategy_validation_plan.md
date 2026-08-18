@@ -22128,6 +22128,56 @@ Current next best action after Phase449:
 
 - Interpret Phase449 formally and close this depth-curvature dynamic route unless a new non-threshold source with a materially different label/execution mechanism is precommitted.
 
+## 24.277 Phase450 Depth-Curvature Break/Repair Interpretation Completed
+
+Phase450 formally interprets Phase449 and closes the tested dynamic depth-curvature break/repair route.
+
+Phase450 selected verdict:
+
+- `P450_DEPTH_CURVATURE_DYNAMIC_ROUTE_REJECTED_COST_AND_CONTROLS`.
+
+Phase450 decision:
+
+- Phase449 acceptance survivor: `0`;
+- same-source rescue allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase450 rejection basis:
+
+- Phase449 primary net P&L after cost200 was `-238,862.03393146786` INR;
+- Phase449 primary fixed-capital annualized return was `-23.886203393146786%`;
+- Phase449 primary positive-date fraction was `0.16666666666666666`;
+- L1-only, static-curvature and time-shift controls were less negative than the dynamic L2-L5 primary;
+- therefore the route failed both economic and full-depth materiality evidence.
+
+Phase450 durable byproducts:
+
+- reusable strided Parquet scanner for raw dense L1-L5 shards;
+- reusable L2-L5 curvature/asymmetry/repair feature code;
+- reusable L1-only, side-flip, static-snapshot and time-shift control harness;
+- negative-evidence ledger showing high-turnover curvature dynamics are cost-dominated under Zerodha `cost200`.
+
+Phase450 hard gates:
+
+- passed: `7 / 7`.
+
+Phase450 outputs:
+
+- `scripts/run_phase450_depth_curvature_interpretation.py`;
+- `src/synthetic_l2/phase450_depth_curvature_interpretation.py`;
+- `outputs/phase450/phase450_acceptance_summary.csv`;
+- `outputs/phase450/phase450_decision_ledger.csv`;
+- `outputs/phase450/phase450_durable_byproduct_catalog.csv`;
+- `outputs/phase450/phase450_gate_evaluation.csv`;
+- `outputs/phase450/phase450_depth_curvature_interpretation_report.md`;
+- `outputs/phase450/phase450_depth_curvature_interpretation_manifest.json`.
+
+Current next best action after Phase450:
+
+- Precommit a new low-turnover external or cross-asset source edge. The next source should reduce turnover before execution rather than hoping a dense tick-level signal can overcome Zerodha `cost200`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

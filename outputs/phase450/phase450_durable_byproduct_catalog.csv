@@ -1,0 +1,5 @@
+byproduct_id,status,description
+phase449_strided_parquet_scanner,reusable,Efficiently scans raw dense Parquet batches without loading full 80GB-style lake into memory.
+phase449_l2_l5_curvature_features,diagnostic,"Reusable feature engineering for depth curvature, asymmetry and repair/break rate."
+phase449_control_harness,reusable,"L1-only, side-flip, static-snapshot and time-shift controls can be reused for future L2 source tests."
+negative_evidence_cost200,ledger,High event count with negative net P&L shows turnover/cost mismatch.

@@ -1,0 +1,13 @@
+decision_id,decision_value,description,required_or_implication
+selected_verdict,P450_DEPTH_CURVATURE_DYNAMIC_ROUTE_REJECTED_COST_AND_CONTROLS,Phase449 is rejected as a stable/profitable strategy route.,terminal_for_this_dynamic_curvature_form
+acceptance_survivor,0,No accepted survivor.,0
+primary_net_pnl_inr,-238862.03393146783,Primary net P&L after cost200.,>0_required_else_reject
+primary_annualized_return_pct,-23.886203393146783,Fixed-capital annualized return.,>=12_required
+primary_positive_date_fraction,0.1666666666666666,Positive-date fraction.,>=0.60_required
+l1_only_net_pnl_inr,-218598.1333378012,L1-only control net P&L.,primary_should_dominate
+static_curvature_net_pnl_inr,-196206.98747506447,Static curvature control net P&L.,primary_should_dominate
+time_shift_net_pnl_inr,-234062.1660561393,Time-shift control net P&L.,primary_should_dominate
+failed_gate_ids,P449_POSITIVE_DATE_FRACTION_GE_0_60;P449_ANNUALIZED_GE_12_COST200;P449_L1_ONLY_NOT_DOMINANT;P449_STATIC_SNAPSHOT_NOT_DOMINANT;P449_TIME_SHIFT_NOT_DOMINANT,Failed hard gates.,must_be_empty_for_acceptance
+same_source_rescue_allowed,0,Do not tune this dynamic curvature source after failure.,0
+paper_live_or_profit_claim,0,"No promotion, paper/live acceptance or deployable profitability claim.",0
+next_action,precommit_new_low_turnover_external_or_cross_asset_source_edge,"Next work must be a new source edge, preferably lower-turnover/external/cross-asset.",new_source
