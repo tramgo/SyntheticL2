@@ -23197,6 +23197,115 @@ Current next best action after Phase464:
 
 - Run `run_phase465_train_holdout_past_only_l1_l5_label_model_no_strategy_pnl`.
 
+## 24.292 Phase465 Train/Holdout Past-Only L1-L5 Label Model Completed
+
+Phase465 trains and evaluates the Phase464 frozen past-only L1-L5 feature model. It does not create a strategy replay, P&L, promotion or paper/live acceptance.
+
+Phase465 thesis ID:
+
+- `P465_TRAIN_HOLDOUT_PAST_ONLY_L1_L5_LABEL_MODEL`.
+
+Phase465 input contract:
+
+- source matrix: `outputs/phase464/phase464_split_label_matrix_preview.csv`;
+- train split: `2026-01`, `2026-02`;
+- holdout split: `2026-03`;
+- model rows used: move-candidate rows only;
+- train rows used: `626`;
+- holdout rows used: `309`;
+- target: `label_side == long`;
+- primary model: deterministic NumPy class-weighted L2-regularized logistic regression;
+- controls: shuffled-label logistic control and L2-L5 threshold control.
+
+Phase465 allowed past-only features:
+
+- `recent_mid_return_bps`;
+- `spread_bps`;
+- `l1_imbalance`;
+- `l25_imbalance`;
+- `volume_delta_lookback`.
+
+Phase465 forbidden inputs remained excluded:
+
+- `forward_return_bps`;
+- `abs_forward_return_bps`;
+- `label_side`;
+- `move_candidate`;
+- `exit_price`;
+- `exit_row`.
+
+Phase465 primary holdout result:
+
+- holdout AUC: `0.55775759633339`;
+- holdout balanced accuracy: `0.5555720590731624`;
+- holdout accuracy: `0.5631067961165048`;
+- holdout log loss: `0.6867362747034796`;
+- true positives: `107`;
+- true negatives: `67`;
+- false positives: `70`;
+- false negatives: `65`.
+
+Phase465 controls:
+
+- shuffled-label control holdout AUC: `0.543116618570701`;
+- primary AUC lift versus shuffled: `0.014640977762688911`;
+- required AUC lift versus shuffled: `0.02`;
+- L2-L5 threshold control holdout AUC: `0.4789933797317943`;
+- L2-L5 threshold control train AUC: `0.5112732919254659`;
+- L2-L5 threshold direction: `positive`.
+
+Phase465 primary coefficients:
+
+- `spread_bps`: `-0.19659610646357126`;
+- `l1_imbalance`: `0.1084823465069933`;
+- `l25_imbalance`: `-0.04077087662109596`;
+- `volume_delta_lookback`: `0.11370043606159785`;
+- `recent_mid_return_bps`: `-0.000000515188704767353`.
+
+Phase465 hard gates:
+
+- passed: `12 / 13`;
+- Phase464 precommit used: pass;
+- train and holdout rows present: pass;
+- both classes present in train and holdout: pass;
+- full-depth feature used: pass;
+- forbidden future features excluded: pass;
+- holdout AUC at least `0.53`: pass;
+- balanced accuracy at least `0.52`: pass;
+- primary not worse than L2-L5 threshold: pass;
+- AUC lift versus shuffled at least `0.02`: failed (`0.014640977762688911`).
+
+Phase465 boundary:
+
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase466 score-to-signal replay allowed next: `0`.
+
+Phase465 interpretation:
+
+- The past-only L1-L5 model has weak predictive signal on the March holdout.
+- The signal is not strong enough to pass the shuffled-label lift gate.
+- Therefore no score-to-signal replay should run from this exact model yet.
+- The next action is to formally interpret the predictive-model failure or expand the past-only feature set under a new precommit before any replay.
+
+Phase465 outputs:
+
+- `scripts/run_phase465_train_holdout_past_only_l2_label_model.py`;
+- `src/synthetic_l2/phase465_train_holdout_past_only_l2_label_model.py`;
+- `outputs/phase465/phase465_acceptance_summary.csv`;
+- `outputs/phase465/phase465_gate_evaluation.csv`;
+- `outputs/phase465/phase465_holdout_scores.csv`;
+- `outputs/phase465/phase465_model_summary.csv`;
+- `outputs/phase465/phase465_primary_coefficients.csv`;
+- `outputs/phase465/phase465_train_holdout_past_only_l1_l5_label_model_report.md`;
+- `outputs/phase465/phase465_train_holdout_past_only_l1_l5_label_model_manifest.json`.
+
+Current next best action after Phase465:
+
+- Interpret Phase465 predictive-model failure or precommit a materially expanded past-only feature set before replay. Do not run score-to-signal P&L from this exact model.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

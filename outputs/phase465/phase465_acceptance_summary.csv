@@ -1,0 +1,15 @@
+metric,value,description
+phase465_train_holdout_past_only_l1_l5_label_model_complete,1,Phase465 model fit/evaluation completed
+phase465_thesis_id,P465_TRAIN_HOLDOUT_PAST_ONLY_L1_L5_LABEL_MODEL,Model fit thesis
+phase465_primary_holdout_auc,0.55775759633339,Primary holdout AUC
+phase465_shuffled_holdout_auc,0.543116618570701,Shuffled-label control AUC
+phase465_auc_lift_vs_shuffled,0.014640977762688911,AUC lift versus shuffled-label control
+phase465_primary_holdout_balanced_accuracy,0.5555720590731624,Primary holdout balanced accuracy
+phase465_strategy_pnl_generated,0,No strategy P&L
+phase465_strategy_promotion_allowed,0,No promotion
+phase465_paper_or_live_acceptance_allowed,0,No paper/live
+phase465_deployable_profitability_claim_allowed,0,No deployable claim
+phase465_phase466_allowed_next,0,Allows precommitted score-to-signal replay only if all gates pass
+phase465_hard_gate_pass_rows,12,Passed hard gates
+phase465_hard_gate_rows,13,Hard gates
+phase465_next_best_action,interpret_phase465_predictive_model_failure_or_expand_past_only_features_before_replay,Recommended next action
