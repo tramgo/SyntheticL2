@@ -21485,6 +21485,70 @@ Current next best action after Phase439:
 
 - Pause for a strategy decision, or precommit an external alpha source. Do not continue with another L2-only timing geometry, threshold sweep, supervised ranker rescue or lower-turnover regime-carry variant.
 
+## 24.267 Phase440 External Catalyst Full-Depth Confirmation Precommit Completed
+
+Phase440 responds to Phase439 by selecting an external-alpha source instead of another L2-only timing or threshold variant.
+
+Phase440 selected source:
+
+- `official_catalyst_reversal_with_full_depth_confirmation`.
+
+Phase440 thesis ID:
+
+- `P440_EXTERNAL_CATALYST_FULL_DEPTH_CONFIRMATION_PRECOMMIT`.
+
+Phase440 evidence basis:
+
+- Phase439 requires either pausing strategy search or precommitting an external alpha source;
+- Phase387 provided a prior official-catalyst real-L2 clue above `12%` annualized, but it was sparse and not accepted;
+- Phase387 primary selected trades: `21`;
+- Phase387 primary diagnostic dates: `12`;
+- Phase387 primary symbols: `12`;
+- Phase387 primary annualized return: approximately `18.850571%`;
+- Phase387 primary acceptance candidate: `0`;
+- Phase393 verified a full-universe local real-L2 day but did not retest strategy results.
+
+Phase440 frozen contract:
+
+- external alpha axis: official/local catalyst calendar and context from Phase387/Phase393 artifacts;
+- L2 role: full-depth confirmation and execution-quality context, not a standalone alpha source;
+- event-floor repair: require at least `30` candidate events before replay/acceptance;
+- direction policy: catalyst reversal only when full-depth confirms exhaustion;
+- full-depth features: L1 spread/microprice plus L2-L5 imbalance, depth, slope, replenishment and vacuum features;
+- controls required: non-catalyst date control, side flip, time-shifted catalyst, L1-only ablation and real-anchor holdout;
+- capital policy: fixed capital `1,000,000` INR, order notional `100,000` INR, Zerodha `cost200`;
+- acceptance floor: at least `30` round trips, `5` dates, `5` symbols, positive-date fraction at least `0.60`, annualized return at least `12.0%`.
+
+Phase440 frozen Phase441 grid:
+
+- scenario rows: `12`;
+- horizon ticks: `600`, `1200`, `2400`;
+- depth confirmation modes: `exhaustion`, `replenishment_after_exhaustion`;
+- capacity events per date: `3`, `5`;
+- grid hash: `bb62d5c763c73276da0b22d1ebdf16558f08ffe1bdb8e2f3771d73b07d38719d`.
+
+Phase440 hard gates:
+
+- passed: `11 / 11`;
+- execution results generated now: `0`;
+- Phase441 execution allowed next: `1`.
+
+Phase440 outputs:
+
+- `scripts/run_phase440_external_catalyst_full_depth_precommit.py`;
+- `src/synthetic_l2/phase440_external_catalyst_full_depth_precommit.py`;
+- `outputs/phase440/phase440_acceptance_summary.csv`;
+- `outputs/phase440/phase440_evidence_registry.csv`;
+- `outputs/phase440/phase440_frozen_phase441_contract.csv`;
+- `outputs/phase440/phase440_external_catalyst_scenario_grid.csv`;
+- `outputs/phase440/phase440_gate_evaluation.csv`;
+- `outputs/phase440/phase440_external_catalyst_full_depth_precommit_report.md`;
+- `outputs/phase440/phase440_external_catalyst_full_depth_precommit_manifest.json`.
+
+Current next best action after Phase440:
+
+- Run `run_phase441_external_catalyst_full_depth_confirmation_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

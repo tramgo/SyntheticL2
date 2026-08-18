@@ -1,0 +1,9 @@
+evidence_id,value,description
+phase439_boundary,pause_for_strategy_decision_or_precommit_external_alpha_source,Latest plan boundary requires external alpha source or pause.
+phase387_primary_annualized_return_pct,18.850571174586552,Prior official-catalyst real-L2 clue exceeded 12 percent but was sparse.
+phase387_primary_selected_trade_rows,21,Prior selected trades were below the event floor.
+phase387_primary_diagnostic_dates,12,Prior clue had useful date breadth.
+phase387_primary_symbols,12,Prior clue had useful symbol breadth.
+phase387_primary_acceptance_candidate,0,Prior clue was not accepted.
+phase393_full_universe_local_after,1,Local full-universe day available from prior Azure download milestone.
+phase393_strategy_retest_executed_now,0,Phase393 downloaded/verified data but did not retest.
