@@ -1,0 +1,16 @@
+decision_id,decision_value,description,required_or_implication
+selected_verdict,P456_FIRST_WINDOW_CROSS_ASSET_ETF_PRESSURE_REJECTED_ZERO_GROSS_EDGE,The repaired first-window cross-asset ETF pressure source is rejected.,terminal_for_first_window_form
+acceptance_survivor,0,No accepted survivor.,0
+primary_completed_round_trips,284,Breadth was sufficient for a real verdict.,>=30
+primary_trade_dates,129,Date breadth was sufficient.,>=5
+primary_symbols,3,Symbol breadth was sufficient.,>=3
+primary_gross_pnl_inr,0.0,Gross edge before costs.,positive_required_for_any_costed_edge
+primary_net_pnl_inr,-46912.583123133605,Net P&L after Zerodha cost200.,>0_required
+primary_annualized_return_pct,-9.164318563588887,Fixed-capital annualized return.,>=12_required
+source_time_shift_net_pnl_inr,-46416.8572100976,Time-shift control.,primary_should_dominate
+side_flip_net_pnl_inr,-46912.583123133605,Side-flip control.,primary_should_dominate
+etf_l1_only_net_pnl_inr,-46912.583123133605,ETF L1-only control.,primary_should_dominate
+failed_gate_ids,P455_POSITIVE_DATE_FRACTION_GE_0_60;P455_ANNUALIZED_GE_12_COST200;P455_TIME_SHIFT_NOT_DOMINANT;P455_SIDE_FLIP_NOT_DOMINANT;P455_ETF_L1_ONLY_NOT_DOMINANT,Failed Phase455 gates.,must_be_empty_for_acceptance
+same_first_window_cross_asset_rescue_allowed,0,Do not tune the same first-window source after this result.,0
+paper_live_or_profit_claim,0,"No promotion, paper/live acceptance or deployable claim.",0
+next_action,precommit_material_new_timing_or_label_source_not_first_window_cross_asset_pressure,"Next source must alter timing/label source materially, not tweak this failed form.",material_new

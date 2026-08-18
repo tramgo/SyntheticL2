@@ -22520,6 +22520,62 @@ Current next best action after Phase455:
 
 - Interpret Phase455 formally and close the first-window cross-asset ETF pressure route unless a materially different timing/label source is precommitted.
 
+## 24.283 Phase456 Cross-Asset ETF Pressure Interpretation Completed
+
+Phase456 formally interprets the repaired Phase455 contiguous cross-asset ETF pressure execution.
+
+Phase456 selected verdict:
+
+- `P456_FIRST_WINDOW_CROSS_ASSET_ETF_PRESSURE_REJECTED_ZERO_GROSS_EDGE`.
+
+Phase456 decision:
+
+- Phase455 produced real trades and breadth;
+- Phase455 acceptance survivor: `0`;
+- same first-window cross-asset rescue allowed: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase456 rejection basis:
+
+- primary completed round trips: `284`;
+- primary trade dates: `129`;
+- primary symbols: `3`;
+- primary gross P&L: `0.0` INR;
+- primary net P&L after Zerodha `cost200`: `-46,912.583123133605` INR;
+- primary annualized return using fixed `1,000,000` INR capital: `-9.164318563588889%`;
+- primary positive-date fraction: `0.0`;
+- ETF L1-only tied the primary;
+- side-flip tied the primary;
+- source time-shift was slightly less negative than the primary.
+
+Phase456 durable byproducts:
+
+- reusable contiguous raw L1-L5 tick-window reader;
+- reusable cross-asset daily proxy/target L1-L5 pressure metrics;
+- reusable low-turnover control harness;
+- negative-evidence ledger showing first-window proxy pressure produced no gross edge.
+
+Phase456 hard gates:
+
+- passed: `8 / 8`.
+
+Phase456 outputs:
+
+- `scripts/run_phase456_cross_asset_etf_pressure_interpretation.py`;
+- `src/synthetic_l2/phase456_cross_asset_etf_pressure_interpretation.py`;
+- `outputs/phase456/phase456_acceptance_summary.csv`;
+- `outputs/phase456/phase456_decision_ledger.csv`;
+- `outputs/phase456/phase456_durable_byproduct_catalog.csv`;
+- `outputs/phase456/phase456_gate_evaluation.csv`;
+- `outputs/phase456/phase456_cross_asset_etf_pressure_interpretation_report.md`;
+- `outputs/phase456/phase456_cross_asset_etf_pressure_interpretation_manifest.json`.
+
+Current next best action after Phase456:
+
+- Precommit a materially new timing or label source that is not the first-window cross-asset ETF pressure form. Do not tune Phase455 thresholds or side rules after seeing the zero-gross-edge result.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

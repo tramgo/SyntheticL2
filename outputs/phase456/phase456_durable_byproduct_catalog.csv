@@ -1,0 +1,5 @@
+byproduct_id,status,description
+contiguous_window_reader,reusable,Reads first contiguous raw L1-L5 tick windows per symbol/date from monthly Parquet partitions.
+cross_asset_signal_metrics,reusable,Daily proxy/target L1-L5 pressure metrics for ETF-to-constituent experiments.
+low_turnover_control_harness,reusable,"Source-shift, side-flip, target-only and ETF L1-only controls."
+negative_evidence_first_window,ledger,First-window proxy pressure produced zero gross edge and only costs.
