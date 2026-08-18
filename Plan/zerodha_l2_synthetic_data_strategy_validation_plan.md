@@ -20945,6 +20945,105 @@ Current next best action after Phase431:
 
 - Commit and push Phase431 before any results, then run `run_phase432_geometry_consistent_full_depth_feature_sweep_no_paper_live`.
 
+## 24.259 Phase432 Geometry-Consistent Full-Depth Feature Sweep Execution Completed
+
+Phase432 executes the Phase431 geometry-consistent full-depth feature sweep.
+
+Phase432 execution scope:
+
+- synthetic grid rows evaluated: `486`;
+- real-anchor grid rows evaluated: `486`;
+- synthetic timing geometry: `3` forward ticks, `250.0` ms minimum hold, `2500` max-hold ticks;
+- real-anchor timing geometry: `3` forward ticks, `250.0` ms minimum hold, `500` max-hold ticks;
+- feature thresholds inherited from Phase427;
+- no feature-threshold tuning;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR;
+- order notional: `100,000` INR.
+
+Phase432 synthetic result:
+
+- active synthetic scenario rows: `27`;
+- synthetic candidate scan points: `19,440`;
+- synthetic selected trades across the grid: `270`;
+- best active scenario: `P432_synthetic_depth_pressure_continuation_L60_F3_M2500_S8p0_I0p25_D0p1`;
+- best active family: `depth_pressure_continuation`;
+- best active completed round trips: `10`;
+- best active trade dates: `2`;
+- best active symbols: `1`;
+- best active positive date fraction: `0.0`;
+- best active gross P&L: approximately `48.56` INR;
+- best active cost200 charges: approximately `1,652.745638` INR;
+- best active net P&L: approximately `-1,604.185638` INR;
+- best active annualized return: approximately `-20.21273903621011%`;
+- cost200 acceptance survivors: `0`.
+
+Phase432 control result:
+
+- top-scenario control rows: `25`;
+- L1-only control annualized return for the best active scenario: approximately `-20.21273903621011%`;
+- primary minus L1-only annualized edge: `0.0` percentage points;
+- side-flip annualized return for the best active scenario: approximately `-30.219361745951907%`;
+- the side-flip control did not dominate, but the full-depth unique edge gate failed because the primary did not beat L1-only.
+
+Phase432 real-anchor result:
+
+- real-anchor grid rows evaluated: `486`;
+- real-anchor selected trades for matching top synthetic scenarios: `0`;
+- real-anchor annualized result for matching top rows: `0.0%`.
+
+Phase432 hard gates:
+
+- passed: `11 / 17`;
+- passed:
+  - execution complete;
+  - Phase431 precommit used;
+  - synthetic grid rows evaluated;
+  - real-anchor grid rows evaluated;
+  - panel-specific timing geometry;
+  - exact forward-tick indexing;
+  - full-depth primary feature families present;
+  - side-flip control did not dominate;
+  - cost200 fixed-capital scoring;
+  - real-anchor same-sign check;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P432_L1_ONLY_CONTROL`: observed `0.0`, required primary edge at least `5.0` percentage points;
+  - `P432_EVENT_FLOOR`: observed `10`, required at least `30`;
+  - `P432_DATE_BREADTH`: observed `2`, required at least `5`;
+  - `P432_SYMBOL_BREADTH`: observed `1`, required at least `5`;
+  - `P432_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+  - `P432_ANNUALIZED_FLOOR`: observed approximately `-20.21273903621011`, required at least `12.0`.
+
+Phase432 interpretation before formal Phase433:
+
+- The timing-geometry repair worked: the executor produced real synthetic scan points and selected trades.
+- The repaired broader sweep still produced no profitable cost200 survivor.
+- The best active synthetic pocket was sparse and negative after costs.
+- L2-L5 did not add unique value over the L1-only control for the best active scenario.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase432 outputs:
+
+- `scripts/run_phase432_geometry_consistent_full_depth_feature_sweep.py`;
+- `src/synthetic_l2/phase432_geometry_consistent_full_depth_feature_sweep.py`;
+- `outputs/phase432/phase432_acceptance_summary.csv`;
+- `outputs/phase432/phase432_synthetic_scenario_summary.csv`;
+- `outputs/phase432/phase432_synthetic_scan_diagnostics.csv`;
+- `outputs/phase432/phase432_synthetic_trade_ledger_sample.csv`;
+- `outputs/phase432/phase432_top_scenario_controls.csv`;
+- `outputs/phase432/phase432_real_anchor_scenario_summary.csv`;
+- `outputs/phase432/phase432_real_anchor_scan_diagnostics.csv`;
+- `outputs/phase432/phase432_real_anchor_trade_ledger_sample.csv`;
+- `outputs/phase432/phase432_cross_panel_comparison.csv`;
+- `outputs/phase432/phase432_gate_evaluation.csv`;
+- `outputs/phase432/phase432_geometry_consistent_full_depth_feature_sweep_report.md`;
+- `outputs/phase432/phase432_geometry_consistent_full_depth_feature_sweep_manifest.json`.
+
+Current next best action after Phase432:
+
+- Implement `interpret_phase432_geometry_consistent_full_depth_feature_sweep_no_paper_live`. The interpretation should treat Phase432 as a real negative result after timing-geometry repair, not as another timing blockage.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

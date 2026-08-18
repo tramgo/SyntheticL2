@@ -1,0 +1,21 @@
+metric,value,description
+phase432_geometry_consistent_full_depth_sweep_complete,1,Phase432 execution completed
+phase432_synthetic_grid_rows_evaluated,486,Synthetic scenario rows
+phase432_real_anchor_grid_rows_evaluated,486,Real-anchor scenario rows
+phase432_best_scenario_id,P432_synthetic_depth_pressure_continuation_L60_F3_M2500_S8p0_I0p25_D0p1,Best synthetic scenario by annualized return
+phase432_best_family_id,depth_pressure_continuation,Best synthetic family
+phase432_best_completed_round_trips,10,Best round trips
+phase432_best_trade_dates,2,Best trade dates
+phase432_best_symbols,1,Best symbols
+phase432_best_positive_date_fraction,0.0,Best positive date fraction
+phase432_best_net_pnl_inr,-1604.185637794453,Best net P&L
+phase432_best_annualized_return_pct,-20.21273903621011,Best annualized return
+phase432_active_synthetic_scenario_rows,27,Synthetic scenarios with at least one trade
+phase432_cost200_acceptance_survivor_rows,0,Accepted synthetic scenarios before control gates
+phase432_control_rows,25,Control rows
+phase432_strategy_promotion_allowed,0,No promotion
+phase432_paper_or_live_acceptance_allowed,0,No paper/live
+phase432_deployable_profitability_claim_allowed,0,No deployable claim
+phase432_hard_gate_pass_rows,11,Passed hard gates
+phase432_hard_gate_rows,17,Hard gates
+phase432_next_best_action,interpret_phase432_geometry_consistent_full_depth_feature_sweep_no_paper_live,Recommended next action
