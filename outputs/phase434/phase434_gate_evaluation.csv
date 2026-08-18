@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P434_PHASE433_AVAILABLE,True,P433 evidence row present,present,hard
+P434_PHASE433_NEXT_ACTION_MATCHED,True,threshold-family sweep produced active but sparse negative cost200 trades; no same-threshold tuning,no same-threshold tuning,hard
+P434_ATTACHED_CANCEL_CHARTER_RECONCILED,True,P409 cancel-latency evidence row present,present,hard
+P434_SELECTED_SOURCE_PRESENT,True,1,1,hard
+P434_SELECTED_SOURCE_USES_L2_L5,True,1,1,hard
+P434_SELECTED_SOURCE_NON_THRESHOLD,True,1,1,hard
+P434_PHASE435_EXECUTION_ALLOWED,True,1,1,hard
+P434_COST200_FIXED_CAPITAL_PRECOMMITTED,True,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,cost200 fixed capital,hard
+P434_CONTROLS_PRECOMMITTED,True,l1_only_feature_ablation_side_flip_time_shuffle_real_anchor_cross_check,l1/control set,hard
+P434_RESULTS_NOT_GENERATED,True,0,0,hard
+P434_BOUNDARIES_CLOSED,True,same_threshold_family_tuning;market_maker_rescue_without_external_execution_source;promotion;paper_live;deployable_profitability_claim,closed,hard

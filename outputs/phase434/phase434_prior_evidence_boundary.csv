@@ -1,0 +1,5 @@
+phase,route,verdict_or_status,reason_for_not_continuing
+P409,retail_two_sided_market_maker_cancel_latency,P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED,attached cancel-included charter line already tested; do not reopen without new external execution source
+P423,pair_spread_convergence,P423_PAIR_SPREAD_POSITIVE_LEAD_FALSIFIED_BY_REALISM_RETEST,realism retest closed the route; do not repair with same-stack tuning
+P426,queue_depletion_continuation,P426_QUEUE_DEPLETION_CONTINUATION_REJECTED_ZERO_SYNTHETIC_EVENTS,queue-depletion continuation failed acceptance; broader sweep was already attempted next
+P433,geometry_consistent_full_depth_threshold_family_sweep,P433_GEOMETRY_CONSISTENT_FULL_DEPTH_SWEEP_REJECTED_NEGATIVE_SPARSE,threshold-family sweep produced active but sparse negative cost200 trades; no same-threshold tuning

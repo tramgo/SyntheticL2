@@ -21092,6 +21092,60 @@ Current next best action after Phase433:
 
 - Pause for a strategy decision report, or precommit a materially new non-threshold source. Do not tune the same Phase427/431 threshold-family sweep after seeing this negative sparse result.
 
+## 24.261 Phase434 Strategy Decision and Non-Threshold Source Precommit Completed
+
+Phase434 responds to Phase433 by choosing the next execution source rather than continuing same-threshold full-depth sweeps.
+
+Phase434 selected source:
+
+- `supervised_full_depth_event_ranker`.
+
+Phase434 thesis ID:
+
+- `P434_SUPERVISED_FULL_DEPTH_EVENT_RANKER_SOURCE_PRECOMMIT`.
+
+Phase434 decision:
+
+- the Phase407-409 cancel-included retail market-maker charter line is treated as already tested and falsified unless a new external execution source is introduced;
+- the pair-spread and queue-depletion routes remain closed for same-stack tuning;
+- the Phase427/431 threshold-family sweep remains closed for same-threshold tuning after Phase433;
+- the next valid strategy experiment is a materially new non-threshold source: a train-only supervised event ranker using L1-L5 book state and cost-aware forward labels.
+
+Phase434 selected-source contract:
+
+- model family: train-only regularized event ranker, with simple logistic or tree baseline allowed in Phase435;
+- primary features: L1 mid/spread/volume plus L2-L5 depth shape, imbalance, slope, pressure and replenishment features;
+- label design: forward 3-tick cost-aware net-bps and tradeability labels;
+- capital policy: fixed initial capital `1,000,000` INR, order notional `100,000` INR, Zerodha cost200;
+- selection policy: train-only top-k event budget per symbol/date, followed by validation execution;
+- required controls: L1-only feature ablation, side flip, time shuffle and real-anchor cross-check;
+- acceptance floor: annualized return at least `12%` after cost200, at least `30` completed round trips, and positive-date fraction at least `0.60`;
+- forbidden: same-threshold family tuning, market-maker rescue without new external execution source, strategy promotion, paper/live acceptance and deployable profitability claim.
+
+Phase434 acceptance summary:
+
+- Phase434 hard gates passed: `11 / 11`;
+- selected source uses full top-five depth: `1`;
+- selected source is non-threshold: `1`;
+- execution results generated now: `0`;
+- Phase435 execution allowed next: `1`.
+
+Phase434 outputs:
+
+- `scripts/run_phase434_strategy_decision_and_non_threshold_source_precommit.py`;
+- `src/synthetic_l2/phase434_strategy_decision_and_non_threshold_source_precommit.py`;
+- `outputs/phase434/phase434_acceptance_summary.csv`;
+- `outputs/phase434/phase434_prior_evidence_boundary.csv`;
+- `outputs/phase434/phase434_source_scorecard.csv`;
+- `outputs/phase434/phase434_frozen_phase435_contract.csv`;
+- `outputs/phase434/phase434_gate_evaluation.csv`;
+- `outputs/phase434/phase434_strategy_decision_and_non_threshold_source_precommit_report.md`;
+- `outputs/phase434/phase434_strategy_decision_and_non_threshold_source_precommit_manifest.json`.
+
+Current next best action after Phase434:
+
+- Run `run_phase435_supervised_full_depth_event_ranker_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

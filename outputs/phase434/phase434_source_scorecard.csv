@@ -1,0 +1,5 @@
+source_id,material_new_axis,uses_l2_l5_core,non_threshold_source,can_execute_next,why_selected
+supervised_full_depth_event_ranker,learned event ranking from full-depth L1-L5 feature vectors and cost-aware forward labels,1,1,1,moves away from hand-threshold sweeps; ranks only the best events per symbol/date under fixed cost-aware labels
+more_same_threshold_sweep,none,1,0,0,rejected: Phase433 forbids same-threshold family tuning after negative sparse result
+retail_market_maker_cancel_latency_rescue,none_without_new_external_execution_source,1,0,0,rejected: attached cancel-included route already ran through Phase407-409 and was falsified
+fresh_real_l2_download_only,data_breadth_without_new_signal_source,1,1,0,"not selected now: useful later, but low disk space and no frozen new candidate makes it a storage-first detour"

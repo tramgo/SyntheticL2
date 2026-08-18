@@ -1,0 +1,14 @@
+metric,value,description
+phase434_strategy_decision_precommit_complete,1,Phase434 source decision completed
+phase434_thesis_id,P434_SUPERVISED_FULL_DEPTH_EVENT_RANKER_SOURCE_PRECOMMIT,Frozen thesis/source precommit
+phase434_selected_source_id,supervised_full_depth_event_ranker,Selected materially new source
+phase434_selected_source_uses_l2_l5,1,Selected source uses full top-five depth
+phase434_selected_source_non_threshold,1,Selected source is not another threshold-family sweep
+phase434_execution_results_generated,0,Precommit only
+phase434_strategy_promotion_allowed,0,No promotion
+phase434_paper_or_live_acceptance_allowed,0,No paper/live
+phase434_deployable_profitability_claim_allowed,0,No deployable claim
+phase434_execution_allowed_next,1,Whether Phase435 may execute
+phase434_hard_gate_pass_rows,11,Passed hard gates
+phase434_hard_gate_rows,11,Hard gates
+phase434_next_best_action,run_phase435_supervised_full_depth_event_ranker_no_paper_live,Recommended next action
