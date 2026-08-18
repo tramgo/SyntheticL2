@@ -1,0 +1,12 @@
+metric,value,description
+phase451_cross_asset_precommit_complete,1,Phase451 precommit completed
+phase451_thesis_id,P451_CROSS_ASSET_ETF_PRESSURE_PRECOMMIT,Frozen thesis/source precommit
+phase451_selected_source_id,cross_asset_etf_depth_pressure_lead_lag,Selected source
+phase451_execution_results_generated,0,Precommit only
+phase451_strategy_promotion_allowed,0,No promotion
+phase451_paper_or_live_acceptance_allowed,0,No paper/live
+phase451_deployable_profitability_claim_allowed,0,No deployable claim
+phase451_execution_allowed_next,1,Whether Phase452 may execute
+phase451_hard_gate_pass_rows,11,Passed hard gates
+phase451_hard_gate_rows,11,Hard gates
+phase451_next_best_action,run_phase452_cross_asset_etf_pressure_no_paper_live,Recommended next action

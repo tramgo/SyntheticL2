@@ -1,0 +1,21 @@
+contract_id,contract_value,description
+thesis_id,P451_CROSS_ASSET_ETF_PRESSURE_PRECOMMIT,Phase451 selected source precommit.
+selected_source,cross_asset_etf_depth_pressure_lead_lag,Materially new low-turnover cross-asset source.
+market_hypothesis,etf_proxy_l2_l5_depth_pressure_and_return_leads_constituent_short_horizon_move,ETF/order-book pressure may reveal basket demand before all constituents adjust.
+source_instruments,NIFTYBEES;BANKBEES;ITBEES,ETF/index-proxy source instruments.
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Frozen target basket.
+months,2026-01;2026-02;2026-03;2026-04;2026-05;2026-06,Frozen bounded execution months before results.
+feature_family,etf_return_bps_plus_etf_l2_l5_imbalance_pressure_minus_target_l1_l2_l5_confirmation,Primary source is cross-asset ETF pressure plus full-depth target confirmation.
+entry_logic,one_low_turnover_taker_event_per_target_date_when_proxy_pressure_agrees_with_target_depth,Low turnover before costs.
+max_events_per_target_date,1,No dense churning.
+horizon_ticks,240,Fixed exit horizon.
+stop_bps,18.0,Fixed stop.
+take_profit_bps,30.0,Fixed take profit.
+sample_stride,4096,Deterministic bounded scan stride.
+controls_required,source_time_shift;side_flip;target_only_l1_l5_without_etf_proxy;etf_l1_only_ablation,Controls required in Phase452.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Annualized denominator is fixed capital.
+acceptance_floor,round_trips_ge_30;dates_ge_5;symbols_ge_3;positive_date_fraction_ge_0p60;annualized_ge_12_cost200;controls_not_dominant,User profitability bar with breadth.
+forbidden,same_depth_curvature_rescue;catalyst_rescue;market_maker_rescue;supervised_ranker_retry;promotion;paper_live;deployable_profitability_claim,Closed boundaries.
+execution_results_generated_now,0,Precommit only.
+contract_hash,42311b5acbe45bdda6d441781603f6db49a815045089a2b9fc40a47991acca8f,Hash of frozen contract rows above.

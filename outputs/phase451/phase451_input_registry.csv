@@ -1,0 +1,13 @@
+input_id,value,description
+dense_root_exists,1,Raw dense L1-L5 lake root exists.
+dense_parquet_file_count,384,Current dense Parquet file count.
+available_symbol_count,32,Symbols available under dense root.
+available_month_count,12,Trade months available under dense root.
+etf_proxies,NIFTYBEES;BANKBEES;ITBEES,Cross-asset source instruments.
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Liquid target symbols.
+months,2026-01;2026-02;2026-03;2026-04;2026-05;2026-06,Frozen execution months.
+missing_required_symbols,,Must be empty.
+missing_required_months,,Must be empty.
+cost_multiplier,2.0,Cost200 scoring.
+initial_capital_inr,1000000.0,Fixed capital denominator.
+order_notional_inr,100000.0,Fixed order notional.

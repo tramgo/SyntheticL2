@@ -1,0 +1,5 @@
+source_id,material_new_axis,uses_l2_l5_core,low_turnover_or_external,can_execute_next,why_selected
+cross_asset_etf_depth_pressure_lead_lag,cross_asset_external_proxy_plus_full_depth_confirmation,1,1,1,selected: lower turnover and external/cross-asset information source after Phase450
+another_depth_curvature_threshold,none,1,0,0,rejected: Phase450 closed same-source rescue
+another_catalyst_continuation,none,1,0,0,rejected: Phase447 holdout failed
+another_market_maker_cancel_race,none,1,0,0,rejected: Phase407-409 already falsified attached charter

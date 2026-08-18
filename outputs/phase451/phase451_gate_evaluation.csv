@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P451_PHASE450_AVAILABLE,True,1,1,hard
+P451_NEXT_ACTION_MATCHED,True,precommit_new_low_turnover_external_or_cross_asset_source_edge,external_or_cross_asset,hard
+P451_SELECTED_SOURCE_PRESENT,True,1,1,hard
+P451_SELECTED_SOURCE_USES_L2_L5,True,1,1,hard
+P451_SELECTED_SOURCE_LOW_TURNOVER_EXTERNAL,True,1,1,hard
+P451_DENSE_ROOT_PRESENT,True,exists=1;files=384,exists_and_files,hard
+P451_REQUIRED_SYMBOLS_AVAILABLE,True,,empty,hard
+P451_REQUIRED_MONTHS_AVAILABLE,True,,empty,hard
+P451_COST200_FIXED_CAPITAL,True,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,cost200_fixed_capital,hard
+P451_RESULTS_NOT_GENERATED,True,0,0,hard
+P451_BOUNDARIES_CLOSED,True,same_depth_curvature_rescue;catalyst_rescue;market_maker_rescue;supervised_ranker_retry;promotion;paper_live;deployable_profitability_claim,closed,hard

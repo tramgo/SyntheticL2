@@ -1,0 +1,5 @@
+phase,route,verdict_or_status,reason_for_not_continuing
+P450,depth_curvature_dynamic_route,P450_DEPTH_CURVATURE_DYNAMIC_ROUTE_REJECTED_COST_AND_CONTROLS,closed; next action requires new low-turnover external or cross-asset source edge
+P447,catalyst_continuation_stability,rejected_by_frozen_holdout,do not tune/reuse catalyst continuation as source
+P409,retail_two_sided_market_maker_cancel_latency,falsified,do not reopen attached cancel-included charter without new external execution source
+P435,supervised_full_depth_event_ranker,rejected,do not retry ranker without materially different label/source

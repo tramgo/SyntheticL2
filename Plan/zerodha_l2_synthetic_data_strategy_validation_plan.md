@@ -22178,6 +22178,85 @@ Current next best action after Phase450:
 
 - Precommit a new low-turnover external or cross-asset source edge. The next source should reduce turnover before execution rather than hoping a dense tick-level signal can overcome Zerodha `cost200`.
 
+## 24.278 Phase451 Cross-Asset ETF Pressure Source Precommit Completed
+
+Phase451 freezes a low-turnover external/cross-asset source after Phase450 closed the high-turnover depth-curvature route.
+
+Phase451 selected source:
+
+- `cross_asset_etf_depth_pressure_lead_lag`.
+
+Phase451 thesis ID:
+
+- `P451_CROSS_ASSET_ETF_PRESSURE_PRECOMMIT`.
+
+Phase451 frozen source instruments:
+
+- `NIFTYBEES`;
+- `BANKBEES`;
+- `ITBEES`.
+
+Phase451 frozen target symbols:
+
+- `AXISBANK`;
+- `HDFCBANK`;
+- `ICICIBANK`;
+- `INFY`;
+- `HCLTECH`;
+- `TCS`;
+- `RELIANCE`.
+
+Phase451 frozen months:
+
+- `2026-01` through `2026-06`.
+
+Phase451 execution contract:
+
+- source: ETF/index-proxy return and L2-L5 depth pressure;
+- target confirmation: target-side L1-L5 depth agreement;
+- turnover cap: at most `1` event per target symbol/date;
+- horizon: `240` ticks;
+- stop: `18.0` bps;
+- take profit: `30.0` bps;
+- deterministic sample stride: `4096`;
+- cost model: Zerodha `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: `2.0`;
+- fixed initial capital: `1,000,000` INR;
+- fixed order notional: `100,000` INR.
+
+Phase451 required controls:
+
+- source time shift;
+- side flip;
+- target-only L1-L5 without ETF proxy;
+- ETF L1-only ablation.
+
+Phase451 hard gates:
+
+- passed: `11 / 11`;
+- execution results generated now: `0`;
+- Phase452 execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase451 outputs:
+
+- `scripts/run_phase451_cross_asset_etf_pressure_precommit.py`;
+- `src/synthetic_l2/phase451_cross_asset_etf_pressure_precommit.py`;
+- `outputs/phase451/phase451_acceptance_summary.csv`;
+- `outputs/phase451/phase451_frozen_phase452_contract.csv`;
+- `outputs/phase451/phase451_gate_evaluation.csv`;
+- `outputs/phase451/phase451_input_registry.csv`;
+- `outputs/phase451/phase451_prior_boundary.csv`;
+- `outputs/phase451/phase451_source_scorecard.csv`;
+- `outputs/phase451/phase451_cross_asset_etf_pressure_precommit_report.md`;
+- `outputs/phase451/phase451_cross_asset_etf_pressure_precommit_manifest.json`.
+
+Current next best action after Phase451:
+
+- Run `run_phase452_cross_asset_etf_pressure_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
