@@ -24580,6 +24580,60 @@ Current next best action after Phase481:
 - treat `P481_ALL_READY_DIAGNOSTIC` as diagnostic-only unless a capital-feasible policy also passes;
 - keep paper/live and deployable profitability claims closed.
 
+## 24.309 Phase482 Real-L2 Capacity Sensitivity Executed
+
+Phase482 executed the frozen Phase481 capacity-policy grid on the already-materialized Phase401 real-L2 trade/event ledger. It did not download data, did not rebuild signals from raw L2, and did not add new filters after seeing results.
+
+Phase482 thesis ID:
+
+- `P482_REAL_L2_CAPACITY_SENSITIVITY`
+
+Phase482 policy results for the frozen primary reversal-control scenario:
+
+- `P481_BASELINE_MAX3_CONCURRENT`: 28 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 2,536.45, annualized return 18.26%, above 12% yes, event floor no, beats side-flip yes, acceptance candidate no;
+- `P481_MAX5_CONCURRENT`: 32 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 4,231.58, annualized return 30.47%, above 12% yes, event floor yes, beats side-flip yes, acceptance candidate yes;
+- `P481_ONE_PER_SYMBOL_DATE`: 23 selected trades, 14 diagnostic dates, 14 symbols, net P&L INR -1,308.08, annualized return -9.42%, event floor no, acceptance candidate no;
+- `P481_TWO_PER_TRADE_DATE`: 23 selected trades, 14 diagnostic dates, 12 symbols, net P&L INR 438.58, annualized return 3.16%, event floor no, acceptance candidate no;
+- `P481_ALL_READY_DIAGNOSTIC`: 34 selected trades, 14 diagnostic dates, 14 symbols, net P&L INR 5,271.31, annualized return 37.95%, event floor yes, diagnostic-only and not sufficient for acceptance by itself.
+
+Phase482 side-flip control evidence:
+
+- under `P481_MAX5_CONCURRENT`, the side-flip continuation control selected 32 trades and returned INR -16,742.49 net P&L, annualized return -120.55%;
+- therefore the Phase482 best feasible primary beats the side-flip control under the same capacity policy.
+
+Phase482 interpretation boundary:
+
+This is the first capital-feasible cost200 candidate in the current real-L2 continuation line after Phase480 corrected the local-data audit. However, Phase482 does not itself open paper/live or deployable profitability. The result must be interpreted in the next phase, including whether `max5` concurrent positions is capital-realistic under the fixed capital model, whether date/symbol contribution concentration is acceptable, and whether the baseline `max3` improvement changes the branch status despite missing the event floor.
+
+Phase482 hard gates:
+
+- gates passed: 8 / 8;
+- Phase481 precommit used: pass;
+- policy grid matches precommit: pass;
+- no download used: pass;
+- cost200 retained: pass;
+- event floor evaluated: pass;
+- all-ready diagnostic not treated as acceptance: pass;
+- acceptance candidate evaluated: pass;
+- no promotion, paper/live, or deployable profitability claim: pass.
+
+Phase482 outputs:
+
+- `outputs/phase482/phase482_acceptance_summary.csv`;
+- `outputs/phase482/phase482_scenario_summary.csv`;
+- `outputs/phase482/phase482_policy_trade_ledger.csv`;
+- `outputs/phase482/phase482_gate_evaluation.csv`;
+- `outputs/phase482/phase482_real_l2_capacity_sensitivity_report.md`;
+- `outputs/phase482/phase482_real_l2_capacity_sensitivity_manifest.json`;
+- `scripts/run_phase482_real_l2_capacity_sensitivity.py`;
+- `src/synthetic_l2/phase482_real_l2_capacity_sensitivity.py`.
+
+Current next best action after Phase482:
+
+- interpret Phase482 before any acceptance claim;
+- specifically audit capital feasibility of max5 concurrent positions, date/symbol concentration, positive-date fraction, and whether the cost200 edge survives the side-flip and stricter capacity controls;
+- keep paper/live, promotion, and deployable profitability claims closed until the interpretation phase proves every acceptance requirement.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
