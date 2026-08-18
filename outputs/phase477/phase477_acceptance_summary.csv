@@ -1,0 +1,20 @@
+metric,value,description
+phase477_combined_shock_market_context_l2_fade_diagnostic_complete,1,Phase477 diagnostic completed
+phase477_thesis_id,P477_COMBINED_SHOCK_MARKET_CONTEXT_L2_FADE_DIAGNOSTIC,Diagnostic thesis
+phase477_best_primary_scenario_id,horizon_1800_deep_l25_fade_top10_cost200,Best deep L2-L5 fade scenario
+phase477_best_primary_trade_count,10,Best primary trade count
+phase477_best_primary_net_pnl_inr,-360.10595112291935,Best primary net P&L
+phase477_best_primary_annualized_return_pct,-45.37334984148784,Best primary fixed-capital annualized return
+phase477_primary_positive_scenario_rows,0,Positive primary scenarios
+phase477_primary_above12_scenario_rows,0,Primary scenarios above 12%
+phase477_best_primary_acceptance_event_floor_met,0,Acceptance event floor met
+phase477_fixed_capital_inr,100000.0,Reusable capital denominator
+phase477_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model version
+phase477_zerodha_cost_source_url,https://zerodha.com/charges/,Cost source
+phase477_strategy_promotion_allowed,0,No promotion
+phase477_paper_or_live_acceptance_allowed,0,No paper/live
+phase477_deployable_profitability_claim_allowed,0,No deployable claim
+phase477_phase478_allowed_next,0,Allows expansion precommit only if all gates pass
+phase477_hard_gate_pass_rows,11,Passed hard gates
+phase477_hard_gate_rows,14,Hard gates
+phase477_next_best_action,interpret_phase477_combined_clue_failure_or_close_synthetic_branch,Recommended next action

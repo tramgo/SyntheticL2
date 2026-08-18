@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-18T14:08:27.353939+00:00",
+  "scope": "phase477_combined_shock_market_context_l2_fade_diagnostic",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "299a0c5cc9e50a2890bb7a6c10319a3eb9143a14",
+  "configuration_hash": "9efd4583f8b1e233397653b39dc17f7d83420b9c3a3bf606aebd46ce3ad2dcb3",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase477_cost200_diagnostic_proxy",
+  "creation_timestamp": "2026-08-18T14:08:27.353939+00:00"
+}

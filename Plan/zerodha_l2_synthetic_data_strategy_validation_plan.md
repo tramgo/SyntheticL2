@@ -24197,6 +24197,95 @@ Current next best action after Phase476:
 - keep paper/live and deployable profitability claims closed;
 - do not use Phase477 to reopen the closed Phase338/339 survivor route.
 
+## 24.304 Phase477 Combined Shock Market-Context L2 Fade Diagnostic Completed and Rejected
+
+Phase477 executed the Phase476 frozen combined-clue diagnostic. It tested shock/catalyst context plus market-neutral depth-2-5 fade on the current synthetic branch, while preserving full L1-L5 depth, Zerodha cost200, fixed-capital annualization, and controls. It did not reopen the closed Phase338/339 survivor route and did not reuse Phase475 as a same-grid score-filter rescue.
+
+Phase477 thesis ID:
+
+- `P477_COMBINED_SHOCK_MARKET_CONTEXT_L2_FADE_DIAGNOSTIC`
+
+Phase477 diagnostic scope:
+
+- source contract: `outputs/phase476/phase476_phase477_contract.csv`;
+- input matrices: Phase474 horizon 480, 960, and 1,800 feature-label matrices;
+- shock/catalyst source: selected Phase467 raw synthetic partitions;
+- required signal family: `market_neutral_depth_2_5_fade_under_catalyst_or_shock_context`;
+- primary rule: fade L2-L5 quantity imbalance under shock/deep-pressure context;
+- reference rule: fade L1 imbalance;
+- controls: L2-L5 momentum side and deterministic alternate side;
+- selected horizons: 480, 960, and 1,800 ticks;
+- top counts: 10, 20, and 40;
+- fixed reusable capital denominator: ₹100,000;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost source: `https://zerodha.com/charges/`;
+- adverse cost200 slippage proxy: 2 bps round trip.
+
+Phase477 candidate evidence:
+
+- candidate rows per horizon: 35;
+- holdout days represented per horizon: 2;
+- symbols represented per horizon: 7;
+- train-only absolute L2-L5 imbalance q75 threshold: 0.43959747528879356;
+- train-only absolute source-event L2-L5 OFI q75 threshold: 122.0.
+
+Best Phase477 primary scenario:
+
+- scenario: `horizon_1800_deep_l25_fade_top10_cost200`;
+- rule: `deep_l25_fade`;
+- trade count: 10;
+- holdout days: 2;
+- gross P&L: ₹664.23;
+- Zerodha charges: ₹825.98;
+- adverse slippage: ₹198.36;
+- net P&L: ₹-360.11;
+- annualized return: -45.37334984148784%;
+- win rate: 20%;
+- average net per trade: ₹-36.01;
+- acceptance event floor met: no.
+
+Phase477 interpretation:
+
+The combined synthetic diagnostic did not rescue the route. It underperformed the Phase475 best shock-only score-based near-miss, which was ₹-232.24 net P&L and -2.66% annualized. The Phase477 primary deep L2-L5 fade rule did not create a positive net scenario, did not reach the 12% annualized research bar, did not beat the best control, and remained far below the 30 real-event acceptance floor. In the selected shock/deep-pressure rows, L1 and L2-L5 fade signs aligned, so the top1 reference tied the primary rather than providing independent confirmation.
+
+Phase477 hard gates:
+
+- gates passed: 11 / 14;
+- Phase476 contract used: pass;
+- thesis matched contract: pass;
+- closed Phase338 route not used: pass;
+- Phase475 same-grid-only reuse avoided: pass;
+- full-depth deep fade rule executed: pass;
+- candidates present for all horizons: pass;
+- cost200 included: pass;
+- fixed capital used: pass;
+- primary positive scenario exists: fail, observed 0;
+- primary above 12% annualized scenario exists: fail, observed 0;
+- best primary trade count at least 10: pass;
+- best primary beats best control: fail;
+- acceptance event floor checked: pass;
+- no paper/live/profitability claim: pass.
+
+Phase477 outputs:
+
+- `outputs/phase477/phase477_acceptance_summary.csv`;
+- `outputs/phase477/phase477_candidate_summary.csv`;
+- `outputs/phase477/phase477_scenario_summary.csv`;
+- `outputs/phase477/phase477_trade_ledger.csv`;
+- `outputs/phase477/phase477_gate_evaluation.csv`;
+- `outputs/phase477/phase477_combined_shock_market_context_l2_fade_diagnostic_report.md`;
+- `outputs/phase477/phase477_combined_shock_market_context_l2_fade_diagnostic_manifest.json`;
+- `scripts/run_phase477_combined_shock_market_context_l2_fade_diagnostic.py`;
+- `src/synthetic_l2/phase477_combined_shock_market_context_l2_fade_diagnostic.py`.
+
+Current next best action after Phase477:
+
+- do not promote Phase477;
+- do not continue same-family synthetic filter or side-rule rescues;
+- preserve the separate Phase358 real official-catalyst market-context fade clue as positive-but-sparse only;
+- prioritize real-date expansion or a materially different real-catalyst test if fresh L2 data/access is available;
+- otherwise close the current synthetic combined-clue branch for acceptance.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

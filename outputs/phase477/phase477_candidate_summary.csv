@@ -1,0 +1,4 @@
+horizon_ticks,candidate_rows,holdout_days,symbols,train_l25_abs_q75,train_source_event_l25_ofi_abs_q75
+480,35,2,7,0.43959747528879356,122.0
+960,35,2,7,0.43959747528879356,122.0
+1800,35,2,7,0.43959747528879356,122.0
