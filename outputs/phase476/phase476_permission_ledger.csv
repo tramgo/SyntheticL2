@@ -1,0 +1,14 @@
+decision_id,decision_value,description
+same_phase475_filter_grid_rescue_allowed,0,Phase475 had zero positive net scenarios; no same-family filter tweak.
+phase358_route_promotion_allowed,0,Phase358 was positive but sparse and below real event floor.
+combined_clue_followup_allowed,1,Both clues point to catalyst/shock context plus full-depth market-context fade.
+paper_or_live_acceptance_allowed,0,No paper/live from sparse real clue or negative synthetic clue.
+deployable_profitability_claim_allowed,0,No deployable claim until expanded real/synthetic validation passes.
+real_event_floor_required,30,Acceptance must require broader official-catalyst real event count.
+synthetic_shock_condition_required,shock_only_or_official_catalyst_window,"Use catalyst/shock context as condition, not as direction label."
+market_context_l2_fade_required,depth_2_5_market_neutral_fade,Carry the Phase358 positive real clue into the next test.
+full_depth_l1_l5_required,1,Keep top-five market-by-price depth levels 1-5; levels 2-5 must be material.
+zerodha_cost200_required,1,Keep Zerodha order-formula charges plus cost stress/slippage.
+fixed_capital_annualization_required,1,No unlimited-capital annual return math.
+phase358_net_pnl_inr,1821.8913646568187,Real clue net P&L.
+phase475_net_pnl_inr,-232.2428884019506,Synthetic near-miss net P&L.

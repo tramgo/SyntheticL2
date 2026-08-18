@@ -24097,6 +24097,106 @@ Current next best action after Phase475:
 - interpret whether the near-break-even synthetic clue justifies a material new branch;
 - the most credible new branch is to combine this shock-only conditioning with the existing real official-catalyst market-context fade clue, while keeping L2-L5 depth, fixed capital, Zerodha cost200, and event-floor controls.
 
+## 24.303 Phase476 Conditioned Near-Miss Interpretation and Combined-Clue Precommit Completed
+
+Phase476 interpreted the Phase475 synthetic conditioned near-miss alongside the existing Phase358 real official-catalyst market-context fade clue. It does not rescue Phase475 by retuning the same grid, does not reopen the closed Phase338/339 survivor route, and does not promote any strategy.
+
+Phase476 thesis ID:
+
+- `P476_INTERPRET_CONDITIONED_NEAR_MISS_PRECOMMIT_COMBINED_CLUE`
+
+Phase476 clue comparison:
+
+- real clue: `P358_REAL_OFFICIAL_CATALYST_MARKET_CONTEXT_FADE`;
+- real source: official-catalyst real L2 panel;
+- real status: positive but sparse;
+- real best scenario: `P356_CONTROL_DEPTH_2_5_FADE_VARIANT`;
+- real trade rows: 12;
+- real diagnostic trade dates: 7;
+- real net P&L: ₹1,821.89;
+- real annualized return: 26.235235651058197%;
+- real above 12%: yes;
+- real acceptance candidate: no, because event floor was not met.
+
+Synthetic clue:
+
+- synthetic clue: `P475_SYNTHETIC_SHOCK_ONLY_NEAR_BREAK_EVEN`;
+- synthetic source: distributional synthetic L2 branch;
+- synthetic status: negative but near break-even;
+- synthetic best scenario: `horizon_480_shock_only_top_0.05_cost200`;
+- synthetic trade rows: 10;
+- synthetic holdout days: 22;
+- synthetic net P&L: ₹-232.24;
+- synthetic annualized return: -2.660236721695071%;
+- synthetic above 12%: no;
+- synthetic acceptance candidate: no;
+- estimated additional net P&L required for 12% annualized over that holdout: ₹1,279.86.
+
+Phase476 permission ledger:
+
+- same Phase475 filter-grid rescue allowed: `0`;
+- Phase358 route promotion allowed: `0`;
+- combined-clue follow-up allowed: `1`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- real event floor required for acceptance: 30;
+- synthetic shock/catalyst context required as a condition, not as a direction label;
+- market-context L2 fade required: `depth_2_5_market_neutral_fade`;
+- full-depth L1-L5 required with L2-L5 materiality;
+- Zerodha cost200 required;
+- fixed-capital annualization required.
+
+Phase477 frozen contract:
+
+- thesis: `P477_COMBINED_SHOCK_MARKET_CONTEXT_L2_FADE_DIAGNOSTIC`;
+- source clue real: `P358_REAL_OFFICIAL_CATALYST_MARKET_CONTEXT_FADE`;
+- source clue synthetic: `P475_SYNTHETIC_SHOCK_ONLY_NEAR_BREAK_EVEN`;
+- closed Phase338 survivor reuse: `0`;
+- Phase475 same-grid-only reuse: `0`;
+- required live signal family: `market_neutral_depth_2_5_fade_under_catalyst_or_shock_context`;
+- required depth scope: `l1_l5_with_l2_l5_materiality`;
+- required cost scope: `zerodha_order_formula_plus_cost200`;
+- required capital scope: `fixed_initial_capital`;
+- minimum trade rows for research lead: 10;
+- minimum real event rows for acceptance: 30;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase476 hard gates:
+
+- gates passed: 12 / 12;
+- Phase475 complete: pass;
+- Phase475 rejection confirmed: pass;
+- Phase358 real clue complete: pass;
+- Phase358 positive-but-sparse confirmed: pass;
+- Phase475 near-miss negative confirmed: pass;
+- same Phase475 grid rescue blocked: pass;
+- closed Phase338 survivor not reopened: pass;
+- combined follow-up allowed: pass;
+- full depth required: pass;
+- cost200 and fixed capital required: pass;
+- Phase477 contract present: pass;
+- no paper/live/profitability claim: pass.
+
+Phase476 outputs:
+
+- `outputs/phase476/phase476_acceptance_summary.csv`;
+- `outputs/phase476/phase476_clue_comparison_ledger.csv`;
+- `outputs/phase476/phase476_permission_ledger.csv`;
+- `outputs/phase476/phase476_phase477_contract.csv`;
+- `outputs/phase476/phase476_gate_evaluation.csv`;
+- `outputs/phase476/phase476_interpret_conditioned_near_miss_precommit_combined_clue_report.md`;
+- `outputs/phase476/phase476_interpret_conditioned_near_miss_precommit_combined_clue_manifest.json`;
+- `scripts/run_phase476_interpret_conditioned_near_miss_precommit_combined_clue.py`;
+- `src/synthetic_l2/phase476_interpret_conditioned_near_miss_precommit_combined_clue.py`.
+
+Current next best action after Phase476:
+
+- run Phase477 exactly as frozen: a combined shock/catalyst-context and market-neutral depth-2-5 fade diagnostic;
+- keep paper/live and deployable profitability claims closed;
+- do not use Phase477 to reopen the closed Phase338/339 survivor route.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

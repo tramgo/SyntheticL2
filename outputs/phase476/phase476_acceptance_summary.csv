@@ -1,0 +1,12 @@
+metric,value,description
+phase476_interpret_conditioned_near_miss_precommit_complete,1,Phase476 interpretation/precommit completed
+phase476_thesis_id,P476_INTERPRET_CONDITIONED_NEAR_MISS_PRECOMMIT_COMBINED_CLUE,Phase476 thesis
+phase476_same_phase475_grid_rescue_allowed,0,Same-grid rescue remains blocked
+phase476_combined_clue_followup_allowed,1,Allows Phase477 combined-clue diagnostic if all gates pass
+phase476_strategy_promotion_allowed,0,No promotion
+phase476_paper_or_live_acceptance_allowed,0,No paper/live
+phase476_deployable_profitability_claim_allowed,0,No deployable claim
+phase476_phase477_allowed_next,1,Allows Phase477 execution only
+phase476_hard_gate_pass_rows,12,Passed hard gates
+phase476_hard_gate_rows,12,Hard gates
+phase476_next_best_action,run_phase477_combined_shock_market_context_l2_fade_diagnostic,Recommended next action

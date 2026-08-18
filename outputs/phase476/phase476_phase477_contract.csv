@@ -1,0 +1,15 @@
+contract_id,contract_value,description
+phase477_thesis_id,P477_COMBINED_SHOCK_MARKET_CONTEXT_L2_FADE_DIAGNOSTIC,Material new combined-clue diagnostic.
+source_clue_real,P358_REAL_OFFICIAL_CATALYST_MARKET_CONTEXT_FADE,Positive sparse real official-catalyst market-context fade clue.
+source_clue_synthetic,P475_SYNTHETIC_SHOCK_ONLY_NEAR_BREAK_EVEN,Near-break-even synthetic shock-only clue.
+use_closed_phase338_survivor,0,Do not reopen the closed Phase338/339 survivor route.
+use_phase475_same_grid_only,0,Do not perform a same-horizon/same-filter rescue.
+required_live_signal_family,market_neutral_depth_2_5_fade_under_catalyst_or_shock_context,Combined clue family.
+required_depth_scope,l1_l5_with_l2_l5_materiality,Full Zerodha-style top-five depth required.
+required_cost_scope,zerodha_order_formula_plus_cost200,Use real cost formula and stressed slippage.
+required_capital_scope,fixed_initial_capital,Annualized returns use fixed capital denominator.
+minimum_trade_rows_for_research_lead,10,Minimum diagnostic research rows.
+minimum_real_event_rows_for_acceptance,30,No acceptance below real event floor.
+strategy_promotion_allowed,0,No promotion in Phase477.
+paper_or_live_acceptance_allowed,0,No paper/live in Phase477.
+deployable_profitability_claim_allowed,0,No deployable claim in Phase477.
