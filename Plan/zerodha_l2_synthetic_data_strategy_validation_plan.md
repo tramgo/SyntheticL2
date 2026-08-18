@@ -19529,6 +19529,79 @@ Current next best action after Phase412:
 
 - Either build a filter-failure attribution tool before the next execution, or precommit a materially new less-sparse full-depth L2 thesis. Do not tune the rejected replenishment-breakout thresholds.
 
+## 24.240 Phase413 Replenishment Breakout Filter-Failure Attribution Completed
+
+Phase413 implements the filter-failure attribution path selected after Phase412. It does not generate P&L, does not relax Phase410 thresholds and does not promote a strategy. It replays the Phase411 bounded candidate scan universe and records where candidate formation failed.
+
+Phase413 scope:
+
+- attribution id: `P413_REPLENISHMENT_BREAKOUT_FILTER_FAILURE_ATTRIBUTION`;
+- synthetic scan points attributed: `840`;
+- real-anchor scan points attributed: `10`;
+- synthetic points passing all Phase410 filters: `0`;
+- real-anchor points passing all Phase410 filters: `0`;
+- P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- hard gates passed: `9 / 9`.
+
+Synthetic first-failure attribution:
+
+- `top5_alignment`: `483` scan points, approximately `57.5%`;
+- `impulse_threshold`: `193` scan points, approximately `22.98%`;
+- `l2_l5_replenishment`: `157` scan points, approximately `18.69%`;
+- `breakout_confirmation`: `7` scan points, approximately `0.83%`;
+- `passes_all`: `0`.
+
+Synthetic independent stage pass rates:
+
+- `window_ok`: `840 / 840`, pass rate `1.0`;
+- `impulse_threshold`: `647 / 840`, pass rate approximately `0.7702`;
+- `top5_alignment`: `238 / 840`, pass rate approximately `0.2833`;
+- `level_weighted_alignment`: `238 / 840`, pass rate approximately `0.2833`;
+- `l2_l5_replenishment`: `7 / 840`, pass rate approximately `0.00833`;
+- `l2_l5_imbalance_alignment`: `238 / 840`, pass rate approximately `0.2833`;
+- `withdrawal_limit`: `825 / 840`, pass rate approximately `0.9821`;
+- `spread_limit`: `840 / 840`, pass rate `1.0`;
+- `breakout_confirmation`: `0 / 840`, pass rate `0.0`;
+- `future_window`: `840 / 840`, pass rate `1.0`.
+
+Real-anchor first-failure attribution:
+
+- `top5_alignment`: `4` scan points, `40%`;
+- `l2_l5_replenishment`: `3` scan points, `30%`;
+- `impulse_threshold`: `2` scan points, `20%`;
+- `breakout_confirmation`: `1` scan point, `10%`;
+- `passes_all`: `0`.
+
+Phase413 interpretation:
+
+- Phase411 was not empty because of missing data or no future ticks. Window, spread and future-window checks were healthy.
+- The primary bottleneck was the combination of direction-aligned top-five imbalance, level-weighted alignment and levels 2-5 replenishment.
+- The L2-L5 replenishment threshold was especially restrictive: only `7 / 840` synthetic scan points passed it independently.
+- The strict breakout confirmation was also incompatible with the selected scan cadence in this bounded form.
+- This map should guide a materially new less-sparse full-depth L2 thesis. It is not permission to tune the rejected Phase410 thresholds after seeing results.
+
+Phase413 outputs:
+
+- `scripts/run_phase413_replenishment_breakout_filter_attribution.py`;
+- `src/synthetic_l2/phase413_replenishment_breakout_filter_attribution.py`;
+- `outputs/phase413/phase413_acceptance_summary.csv`;
+- `outputs/phase413/phase413_synthetic_scan_point_ledger.csv`;
+- `outputs/phase413/phase413_real_anchor_scan_point_ledger.csv`;
+- `outputs/phase413/phase413_stage_summary.csv`;
+- `outputs/phase413/phase413_first_failure_summary.csv`;
+- `outputs/phase413/phase413_metric_distribution_summary.csv`;
+- `outputs/phase413/phase413_recommendation_ledger.csv`;
+- `outputs/phase413/phase413_gate_evaluation.csv`;
+- `outputs/phase413/phase413_replenishment_breakout_filter_attribution_report.md`;
+- `outputs/phase413/phase413_replenishment_breakout_filter_attribution_manifest.json`.
+
+Current next best action after Phase413:
+
+- Precommit a materially new less-sparse full-depth L2 thesis using the Phase413 failure map. Do not rescue Phase410 by threshold relaxation.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,8 @@
+recommendation_id,value,description
+selected_interpretation,P413_ZERO_EVENT_CAUSE_ATTRIBUTED,Filter attribution completed on Phase411 scan universe.
+phase412_verdict,P412_REPLENISHMENT_BREAKOUT_REJECTED_AS_ZERO_EVENT_FORM,Phase412 context.
+largest_stage_fail_counts,breakout_confirmation:840;l2_l5_replenishment:833;l2_l5_imbalance_alignment:602,Largest all-stage failures.
+largest_first_failure_stages,top5_alignment:483;impulse_threshold:193;l2_l5_replenishment:157,Earliest gate failures.
+threshold_relaxation_allowed,0,This diagnostic is not permission to tune Phase410 after seeing results.
+less_sparse_material_new_required,1,Next thesis should be precommitted using lower event sparsity as a design objective.
+next_action,precommit_material_new_less_sparse_full_depth_l2_thesis_using_phase413_failure_map,"Use the failure map to design a materially new full-depth route, not a threshold rescue."

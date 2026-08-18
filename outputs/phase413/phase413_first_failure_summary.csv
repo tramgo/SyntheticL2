@@ -1,0 +1,9 @@
+panel,first_failure_stage,count,share
+synthetic,top5_alignment,483,0.575
+synthetic,impulse_threshold,193,0.22976190476190475
+synthetic,l2_l5_replenishment,157,0.1869047619047619
+synthetic,breakout_confirmation,7,0.008333333333333333
+real_anchor,top5_alignment,4,0.4
+real_anchor,l2_l5_replenishment,3,0.3
+real_anchor,impulse_threshold,2,0.2
+real_anchor,breakout_confirmation,1,0.1

@@ -1,0 +1,21 @@
+panel,stage,scan_points,pass_count,fail_count,pass_rate,threshold_or_rule
+synthetic,window_ok,840,840,0,1.0,windows have >=3 ticks for 30s/20s/10s
+synthetic,impulse_threshold,840,647,193,0.7702380952380953,abs(impulse_bps)>=4.0
+synthetic,top5_alignment,840,238,602,0.2833333333333333,side*top5_imbalance>=0.15
+synthetic,level_weighted_alignment,840,238,602,0.2833333333333333,side*level_weighted_imbalance>=0.15
+synthetic,l2_l5_replenishment,840,7,833,0.008333333333333333,levels_2_to_5_replenishment>=0.12
+synthetic,l2_l5_imbalance_alignment,840,238,602,0.2833333333333333,side*l2_l5_imbalance>=0.15
+synthetic,withdrawal_limit,840,825,15,0.9821428571428571,depth_withdrawal_pressure<=0.1
+synthetic,spread_limit,840,840,0,1.0,spread_bps<=8.0
+synthetic,breakout_confirmation,840,0,840,0.0,last_price confirms breakout in impulse direction
+synthetic,future_window,840,840,0,1.0,>=2 future ticks inside 180s horizon
+real_anchor,window_ok,10,10,0,1.0,windows have >=3 ticks for 30s/20s/10s
+real_anchor,impulse_threshold,10,8,2,0.8,abs(impulse_bps)>=4.0
+real_anchor,top5_alignment,10,6,4,0.6,side*top5_imbalance>=0.15
+real_anchor,level_weighted_alignment,10,6,4,0.6,side*level_weighted_imbalance>=0.15
+real_anchor,l2_l5_replenishment,10,1,9,0.1,levels_2_to_5_replenishment>=0.12
+real_anchor,l2_l5_imbalance_alignment,10,5,5,0.5,side*l2_l5_imbalance>=0.15
+real_anchor,withdrawal_limit,10,6,4,0.6,depth_withdrawal_pressure<=0.1
+real_anchor,spread_limit,10,10,0,1.0,spread_bps<=8.0
+real_anchor,breakout_confirmation,10,1,9,0.1,last_price confirms breakout in impulse direction
+real_anchor,future_window,10,10,0,1.0,>=2 future ticks inside 180s horizon

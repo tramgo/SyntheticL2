@@ -1,0 +1,14 @@
+metric,value,description
+phase413_filter_attribution_complete,1,Phase413 attribution completed
+phase413_attribution_id,P413_REPLENISHMENT_BREAKOUT_FILTER_FAILURE_ATTRIBUTION,Attribution id
+phase413_synthetic_scan_points,840,Synthetic scan points attributed
+phase413_synthetic_pass_all_filters,0,Synthetic points passing all Phase410 filters
+phase413_real_anchor_scan_points,10,Real-anchor scan points attributed
+phase413_real_anchor_pass_all_filters,0,Real-anchor points passing all Phase410 filters
+phase413_pnl_generated,0,No P&L generated
+phase413_strategy_promotion_allowed,0,No promotion
+phase413_paper_or_live_acceptance_allowed,0,No paper/live
+phase413_deployable_profitability_claim_allowed,0,No deployable claim
+phase413_hard_gate_pass_rows,9,Passed hard gates
+phase413_hard_gate_rows,9,Hard gates
+phase413_next_best_action,precommit_material_new_less_sparse_full_depth_l2_thesis_using_phase413_failure_map,Recommended next action
