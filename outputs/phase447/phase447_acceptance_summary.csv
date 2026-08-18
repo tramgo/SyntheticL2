@@ -1,0 +1,19 @@
+metric,value,description
+phase447_stability_holdout_complete,1,Phase447 holdout audit completed
+phase447_thesis_id,P447_CATALYST_CONTINUATION_STABILITY_HOLDOUT_EXECUTION,Holdout execution thesis
+phase447_locked_scenario_id,P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5,Locked scenario audited
+phase447_holdout_completed_round_trips,12,Holdout trades
+phase447_holdout_trade_dates,3,Holdout dates
+phase447_holdout_symbols,9,Holdout symbols
+phase447_holdout_gross_pnl_inr,1061.9500000000162,Holdout gross P&L
+phase447_holdout_cost200_inr,1974.4159279501998,Holdout Zerodha cost200
+phase447_holdout_net_pnl_inr,-912.465927950184,Holdout net P&L after cost200
+phase447_holdout_annualized_return_pct,-7.664713794781545,"Holdout annualized return with fixed INR 1,000,000 capital"
+phase447_holdout_positive_date_fraction,0.3333333333333333,Holdout positive-date fraction
+phase447_acceptance_survivor,0,Accepted only if every hard holdout gate passes
+phase447_strategy_promotion_allowed,0,No paper/live/deployable promotion in Phase447
+phase447_paper_or_live_acceptance_allowed,0,No paper/live
+phase447_deployable_profitability_claim_allowed,0,No deployable claim
+phase447_hard_gate_pass_rows,7,Passed hard gates
+phase447_hard_gate_rows,10,Hard gates
+phase447_next_best_action,reject_catalyst_continuation_stability_or_precommit_new_source_edge,Recommended next action

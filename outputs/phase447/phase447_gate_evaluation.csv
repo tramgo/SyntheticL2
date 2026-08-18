@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P447_PHASE446_PRECOMMIT_AVAILABLE,True,phase446_stability_precommit_complete,1,hard
+P447_LOCKED_SCENARIO_ONLY,True,P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5,P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5,hard
+P447_FROZEN_HOLDOUT_DATES_MATCH,True,2026-07-23;2026-07-24;2026-07-27,2026-07-23;2026-07-24;2026-07-27,hard
+P447_NO_PARAMETER_TUNING,True,Phase447 reads Phase446 locked contract and filters only locked scenario/date split.,no tuning,hard
+P447_HOLDOUT_TRADES_PRESENT,True,12,>0,hard
+P447_HOLDOUT_NET_PNL_POSITIVE,False,-912.465927950184,>0.0,hard
+P447_HOLDOUT_ANNUALIZED_GE_12,False,-7.664713794781545,>=12.0,hard
+P447_HOLDOUT_POSITIVE_DATE_FRACTION_GE_0_60,False,0.3333333333333333,>=0.6,hard
+P447_COST200_FIXED_CAPITAL,True,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,cost200_fixed_1000000_capital,hard
+P447_NO_PROMOTION_PAPER_LIVE,True,execution-only stability audit,closed,hard

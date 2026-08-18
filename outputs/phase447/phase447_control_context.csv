@@ -1,0 +1,4 @@
+control,net_pnl_inr,annualized_return_pct,positive_date_fraction,note
+l1_only,-1424.444707584306,-2.9913338859270424,0.25,L1-only ablation context; not used for holdout selection.
+reversal,-19338.82272016537,-44.303484777106135,0.0909090909090909,Opposite-direction control context; not used for holdout selection.
+time_shifted_catalyst,1959.0778982638444,3.797597156634529,0.6153846153846154,Temporal catalyst-shift control context; not used for holdout selection.

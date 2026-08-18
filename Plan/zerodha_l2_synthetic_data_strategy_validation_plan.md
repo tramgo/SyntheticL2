@@ -21912,6 +21912,82 @@ Current next best action after Phase446:
 
 - Run `run_phase447_catalyst_continuation_stability_holdout_no_paper_live`.
 
+## 24.274 Phase447 Catalyst Continuation Stability Holdout Execution Completed
+
+Phase447 executed the Phase446 frozen chronological holdout for the locked positive Phase444 diagnostic. It did not tune parameters, add thresholds, drop bad dates, drop symbols, or make any paper/live/deployable strategy claim.
+
+Phase447 locked scenario:
+
+- `P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5`.
+
+Phase447 frozen holdout dates:
+
+- `2026-07-23`;
+- `2026-07-24`;
+- `2026-07-27`.
+
+Phase447 fixed-capital holdout result:
+
+- completed round trips: `12`;
+- trade dates: `3`;
+- symbols: `9`;
+- gross P&L: `1,061.95` INR;
+- Zerodha `cost200`: `1,974.4159279501998` INR;
+- net P&L after cost200: `-912.465927950184` INR;
+- annualized return using fixed `1,000,000` INR capital: `-7.664713794781545%`;
+- positive-date fraction: `0.3333333333333333`.
+
+Phase447 development context:
+
+- development completed round trips: `34`;
+- development trade dates: `8`;
+- development net P&L after cost200: `2,717.0332954903374` INR;
+- development annualized return using fixed `1,000,000` INR capital: `8.558654880794563%`.
+
+Phase447 all-locked diagnostic context:
+
+- total completed round trips: `46`;
+- total dates: `11`;
+- total symbols: `20`;
+- total net P&L after cost200: `1,804.5673675401545` INR;
+- total annualized return using fixed `1,000,000` INR capital: `4.134099787455627%`.
+
+Phase447 failed hard holdout gates:
+
+- holdout net P&L positive: failed (`-912.465927950184` INR);
+- holdout annualized return at least `12.0%`: failed (`-7.664713794781545%`);
+- holdout positive-date fraction at least `0.60`: failed (`0.3333333333333333`).
+
+Phase447 hard gates:
+
+- passed: `7 / 10`;
+- acceptance survivor: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase447 verdict:
+
+- `P447_CATALYST_CONTINUATION_STABILITY_HOLDOUT_EXECUTION` is rejected as a stable/profitable strategy candidate.
+- The Phase444 catalyst-continuation result remains a useful full-depth diagnostic clue, but it did not survive the frozen chronological holdout.
+
+Phase447 outputs:
+
+- `scripts/run_phase447_catalyst_continuation_stability_holdout.py`;
+- `src/synthetic_l2/phase447_catalyst_continuation_stability_holdout.py`;
+- `outputs/phase447/phase447_acceptance_summary.csv`;
+- `outputs/phase447/phase447_control_context.csv`;
+- `outputs/phase447/phase447_date_pnl.csv`;
+- `outputs/phase447/phase447_gate_evaluation.csv`;
+- `outputs/phase447/phase447_split_summary.csv`;
+- `outputs/phase447/phase447_symbol_pnl.csv`;
+- `outputs/phase447/phase447_catalyst_continuation_stability_holdout_report.md`;
+- `outputs/phase447/phase447_catalyst_continuation_stability_holdout_manifest.json`.
+
+Current next best action after Phase447:
+
+- Reject this catalyst-continuation stability route, or precommit a genuinely new source edge before more execution. Do not tune this rejected route after seeing the holdout failure.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
