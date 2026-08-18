@@ -1,0 +1,18 @@
+metric,value,description
+phase475_catalyst_liquidity_conditioned_replay_complete,1,Phase475 conditioned replay completed
+phase475_thesis_id,P475_CATALYST_LIQUIDITY_CONDITIONED_REPLAY,Conditioned replay thesis
+phase475_best_scenario_id,horizon_480_shock_only_top_0.05_cost200,Best scenario
+phase475_best_trade_count,10,Best trade count
+phase475_best_net_pnl_inr,-232.2428884019506,Best net P&L
+phase475_best_annualized_return_pct,-2.660236721695071,Best fixed-capital annualized return
+phase475_positive_net_scenario_rows,0,Positive net scenarios
+phase475_above12_annualized_scenario_rows,0,Scenarios above 12% annualized
+phase475_fixed_capital_inr,100000.0,Reusable capital denominator
+phase475_zerodha_cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Cost model version
+phase475_zerodha_cost_source_url,https://zerodha.com/charges/,Cost source
+phase475_paper_or_live_acceptance_allowed,0,No paper/live
+phase475_deployable_profitability_claim_allowed,0,No deployable claim
+phase475_phase476_allowed_next,0,Allows expansion only if all gates pass
+phase475_hard_gate_pass_rows,9,Passed hard gates
+phase475_hard_gate_rows,11,Hard gates
+phase475_next_best_action,interpret_phase475_conditioned_replay_failure_or_return_to_real_date_expansion,Recommended next action

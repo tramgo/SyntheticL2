@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P475_PHASE474_COMPLETE_USED,True,1,1,hard
+P475_PHASE474_REJECTION_USED,True,0,0,hard
+P475_FILTER_GRID_PRESENT,True,36,36,hard
+P475_CATALYST_FILTERS_USED,True,liquidity_vacuum;shock_and_l25_pressure;shock_and_liquidity_vacuum;shock_only,shock_filter_present,hard
+P475_LIQUIDITY_FILTERS_USED,True,liquidity_vacuum;shock_and_l25_pressure;shock_and_liquidity_vacuum;shock_only,liquidity_or_l25_filter_present,hard
+P475_COST200_INCLUDED,True,2.0,2.0,hard
+P475_FIXED_CAPITAL_USED,True,100000.0,100000.0,hard
+P475_POSITIVE_NET_SCENARIO_EXISTS,False,0,>0,hard
+P475_ABOVE_12PCT_ANNUALIZED_SCENARIO_EXISTS,False,0,>0,hard
+P475_BEST_TRADE_COUNT_GE_10,True,10,>=10,hard
+P475_NO_PAPER_LIVE_OR_CLAIM,True,synthetic_conditioned_replay_only;paper=0;live=0,no_paper_live,hard

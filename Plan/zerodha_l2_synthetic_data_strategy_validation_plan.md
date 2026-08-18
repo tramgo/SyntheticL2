@@ -24015,6 +24015,88 @@ Current next best action after Phase474:
 - the next credible test is a catalyst-conditioned or liquidity-vacuum-conditioned subset that reduces adverse/noise events while keeping full L1-L5 depth and cost200;
 - real-L2 holdout should be used when disk/storage allows, but synthetic-only remains the current acceptance path because real fills and contract notes are unavailable.
 
+## 24.302 Phase475 Catalyst/Liquidity-Conditioned Replay Completed and Rejected
+
+Phase475 executed the Phase474 next credible test: condition the larger-horizon source-event-aware branch on synthetic catalyst/shock flags and entry-time L1-L5 liquidity-vacuum features, then replay only top-confidence holdout trades with Zerodha cost200 and fixed-capital annualization.
+
+Phase475 thesis ID:
+
+- `P475_CATALYST_LIQUIDITY_CONDITIONED_REPLAY`
+
+Phase475 experiment scope:
+
+- input scores: `outputs/phase474/phase474_holdout_scores.csv`;
+- input feature matrices: Phase474 horizon 480, 960, and 1,800 matrices;
+- catalyst/shock source: selected Phase467 raw synthetic partitions using `is_market_shock_day`, `is_symbol_shock`, and `regime_code`;
+- live filter thresholds: learned from train rows only;
+- filters tested: `shock_only`, `liquidity_vacuum`, `shock_and_liquidity_vacuum`, `shock_and_l25_pressure`;
+- top-confidence replay fractions: 5%, 10%, and 20%;
+- fixed reusable capital denominator: ₹100,000;
+- annualized return formula: `net_pnl_inr / 100000 * 252 / holdout_days * 100`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost source: `https://zerodha.com/charges/`;
+- adverse cost200 slippage proxy: 2 bps round trip.
+
+Train-only filter thresholds:
+
+- spread q75: 2.431098700771897 bps;
+- source-event spread volatility q75: 0.0004345263362563 bps;
+- absolute L2-L5 imbalance q75: 0.43959747528879356;
+- absolute source-event L2-L5 OFI q75: 122.0.
+
+Best Phase475 conditioned replay scenario:
+
+- scenario: `horizon_480_shock_only_top_0.05_cost200`;
+- candidate rows after filter: 56;
+- trade count: 10;
+- holdout days: 22;
+- gross P&L: ₹792.26;
+- Zerodha charges: ₹826.02;
+- adverse slippage: ₹198.48;
+- net P&L: ₹-232.24;
+- annualized return: -2.660237%;
+- win rate: 30%;
+- average net per trade: ₹-23.22;
+- maximum daily drawdown: ₹-361.13.
+
+Phase475 interpretation:
+
+Phase475 moved the signal closer to economic viability than Phase474, but still did not pass. The best Phase474 scenario was ₹-1,464.10 net P&L and -16.77% annualized. The best Phase475 conditioned scenario improved to ₹-232.24 net P&L and -2.66% annualized, but remained below zero and far below the 12% annualized research bar. Conditioning reduced noise and turnover, but not enough to overcome Zerodha charges plus cost200 slippage.
+
+Phase475 hard gates:
+
+- gates passed: 9 / 11;
+- Phase474 complete used: pass;
+- Phase474 rejection used: pass;
+- filter grid present: pass, observed 36;
+- catalyst filters used: pass;
+- liquidity/L2-L5 filters used: pass;
+- cost200 included: pass;
+- fixed capital used: pass;
+- positive net scenario exists: fail, observed 0;
+- above 12% annualized scenario exists: fail, observed 0;
+- best trade count at least 10: pass, observed 10;
+- no paper/live/profitability claim: pass.
+
+Phase475 outputs:
+
+- `outputs/phase475/phase475_acceptance_summary.csv`;
+- `outputs/phase475/phase475_train_filter_thresholds.csv`;
+- `outputs/phase475/phase475_scenario_summary.csv`;
+- `outputs/phase475/phase475_trade_ledger.csv`;
+- `outputs/phase475/phase475_gate_evaluation.csv`;
+- `outputs/phase475/phase475_catalyst_liquidity_conditioned_replay_report.md`;
+- `outputs/phase475/phase475_catalyst_liquidity_conditioned_replay_manifest.json`;
+- `scripts/run_phase475_catalyst_liquidity_conditioned_replay.py`;
+- `src/synthetic_l2/phase475_catalyst_liquidity_conditioned_replay.py`.
+
+Current next best action after Phase475:
+
+- do not promote Phase475;
+- do not perform same-family filter-grid rescue without a new precommit;
+- interpret whether the near-break-even synthetic clue justifies a material new branch;
+- the most credible new branch is to combine this shock-only conditioning with the existing real official-catalyst market-context fade clue, while keeping L2-L5 depth, fixed capital, Zerodha cost200, and event-floor controls.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

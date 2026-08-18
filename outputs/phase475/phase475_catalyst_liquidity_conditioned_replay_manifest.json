@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-08-18T14:00:45.833389+00:00",
+  "scope": "phase475_catalyst_liquidity_conditioned_replay",
+  "reproducibility_schema_name": "synthetic_l2_reproducibility_manifest_v1",
+  "generator_version": "622327ff0c2068b0f9cc2daed6b00352c6b6752b",
+  "configuration_hash": "f58fc4e40842e17786ae085f7f87224c58233a2d34a6a8cc47c429226c3d377f",
+  "random_seed": "not_applicable_deterministic",
+  "calibration_dataset_id": "zerodha_l2_single_day_seed_and_current_synthetic_outputs",
+  "ticker_metadata_version": "nse_32_symbol_universe_current_plan",
+  "regime_calendar_version": "outputs/phase4/scenario_calendar.csv_or_not_applicable",
+  "scenario_ids": "current_phase_outputs_all_available_scenarios_or_not_applicable",
+  "cost_model_version": "zerodha_equity_intraday_nse_order_formula_v2_2026_07_14",
+  "latency_model_version": "phase475_cost200_adverse_slippage_proxy",
+  "creation_timestamp": "2026-08-18T14:00:45.833389+00:00"
+}
