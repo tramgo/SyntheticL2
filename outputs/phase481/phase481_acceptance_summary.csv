@@ -1,0 +1,18 @@
+metric,value,description
+phase481_real_l2_capacity_sensitivity_precommit_complete,1,Phase481 complete if all gates pass
+phase481_thesis_id,P481_REAL_L2_CAPACITY_SENSITIVITY_PRECOMMIT,Phase481 thesis
+phase481_local_real_l2_date_rows,16,Local dates used
+phase481_input_work_order_rows,273,Frozen work-order rows
+phase481_capacity_policy_rows,5,Frozen capacity policies
+phase481_prior_scheduled_primary_candidates,34,Prior scheduled primary candidates
+phase481_prior_capacity_selected_trades,25,Prior baseline selected trades
+phase481_prior_net_pnl_inr,992.9649840110026,Prior baseline net PnL
+phase481_prior_annualized_return_pct,7.149347884879218,Prior baseline annualized return
+phase481_strategy_retest_executed_now,0,Precommit only
+phase481_download_executed_now,0,No download
+phase481_strategy_promotion_allowed,0,No promotion
+phase481_paper_or_live_acceptance_allowed,0,No paper/live
+phase481_deployable_profitability_claim_allowed,0,No deployable claim
+phase481_hard_gate_pass_rows,9,Passed hard gates
+phase481_hard_gate_rows,9,Hard gates
+phase481_next_best_action,execute_phase482_real_l2_capacity_sensitivity_no_search_no_download_no_paper_live,Recommended next action

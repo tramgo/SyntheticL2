@@ -24499,6 +24499,87 @@ Current next best action after Phase480:
 - focus Phase481 on either capacity-rule sensitivity for the latest Phase387/388 clue or a stricter breadth retest that targets the remaining 5 selected-trade gap;
 - keep event floor, 12% annualized threshold, full top-five depth, costs, controls, and paper/live boundaries unchanged.
 
+## 24.308 Phase481 Real-L2 Capacity Sensitivity Precommit Completed
+
+Phase481 freezes the next no-download real-L2 retest contract using the current 16-date official-catalyst local panel confirmed by Phase480. It does not execute the retest. It exists because the latest expanded frozen retest had 34 scheduled primary candidates but only 25 capacity-selected trades, leaving a 5-trade gap to the 30 selected-trade/event floor.
+
+Phase481 thesis ID:
+
+- `P481_REAL_L2_CAPACITY_SENSITIVITY_PRECOMMIT`
+
+Frozen inputs:
+
+- Phase480 comprehensive local real-L2 breadth audit;
+- latest 16-date adapted official-catalyst work order: `outputs/phase400/phase386_phase360_execution_work_order.csv`;
+- latest Phase401 trade/event ledger: `outputs/phase401/phase387_trade_ledger.csv`;
+- latest Phase401 scenario summary: `outputs/phase401/phase387_scenario_summary.csv`;
+- latest Phase402 interpretation summary.
+
+Prior evidence carried into Phase481:
+
+- local real-L2 dates: 16;
+- frozen work-order rows: 273;
+- scheduled primary candidates before capacity selection: 34;
+- baseline capacity-selected trades: 25;
+- baseline net P&L: INR 992.96;
+- baseline annualized return: 7.15%;
+- baseline event floor met: no;
+- baseline acceptance candidate: no.
+
+Frozen Phase482 capacity policies:
+
+- `P481_BASELINE_MAX3_CONCURRENT`: reproduce Phase387 active-exit overlap capacity rule with max 3 concurrent positions;
+- `P481_MAX5_CONCURRENT`: same overlap rule with max 5 concurrent positions;
+- `P481_ONE_PER_SYMBOL_DATE`: keep earliest candidate per scenario, diagnostic date, and symbol;
+- `P481_TWO_PER_TRADE_DATE`: keep earliest two candidates per scenario and diagnostic date;
+- `P481_ALL_READY_DIAGNOSTIC`: select all scheduled ready candidates as an upper-bound diagnostic only, not sufficient alone for acceptance because it ignores capital overlap.
+
+Phase481 locked acceptance rules:
+
+- primary scenario: `P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL`;
+- side-flip control: `P362_D120_I2p5_D0p25_R0p0_CONTINUATION`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: 2;
+- minimum selected trades: 30;
+- annualized return floor: 12%;
+- full L1 plus top-five market-by-price depth required, with levels 2-5 materiality retained;
+- no download in Phase482;
+- no post-result parameter search;
+- no paper/live, promotion, or deployable profitability claim.
+
+Phase481 hard gates:
+
+- gates passed: 9 / 9;
+- Phase480 complete: pass;
+- current 16-date panel used: pass;
+- work order present: pass;
+- prior trade ledger present: pass;
+- capacity policy grid frozen: pass;
+- full depth L2-L5 retained: pass;
+- cost200 retained: pass;
+- no download or retest now: pass;
+- no promotion, paper/live, or deployable profitability claim: pass.
+
+Phase481 outputs:
+
+- `outputs/phase481/phase481_acceptance_summary.csv`;
+- `outputs/phase481/phase481_capacity_policy_catalog.csv`;
+- `outputs/phase481/phase481_execution_contract.csv`;
+- `outputs/phase481/phase481_prior_evidence_ledger.csv`;
+- `outputs/phase481/phase481_gate_evaluation.csv`;
+- `outputs/phase481/phase481_real_l2_capacity_sensitivity_precommit_report.md`;
+- `outputs/phase481/phase481_real_l2_capacity_sensitivity_precommit_manifest.json`;
+- `scripts/run_phase481_real_l2_capacity_sensitivity_precommit.py`;
+- `src/synthetic_l2/phase481_real_l2_capacity_sensitivity_precommit.py`.
+
+Current next best action after Phase481:
+
+- execute Phase482 exactly from the frozen Phase481 contract;
+- do not download new data for Phase482;
+- do not add new filters after seeing policy-level results;
+- treat `P481_ALL_READY_DIAGNOSTIC` as diagnostic-only unless a capital-feasible policy also passes;
+- keep paper/live and deployable profitability claims closed.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

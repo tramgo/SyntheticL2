@@ -1,0 +1,16 @@
+contract_key,contract_value,description
+contract_id,P481_REAL_L2_CAPACITY_SENSITIVITY_PRECOMMIT,Frozen Phase481 contract identifier.
+input_work_order,outputs\phase400\phase386_phase360_execution_work_order.csv,Use the latest 16-date adapted official-catalyst work order.
+input_work_order_rows,273,Expected rows in frozen work order.
+input_trade_ledger,outputs\phase401\phase387_trade_ledger.csv,Reuse Phase401 event/trade features; do not rebuild signal after seeing capacity outcomes.
+scheduled_primary_candidates,34,Current primary scheduled candidate count before capacity policy.
+primary_scenario_id,P362_D120_I2p5_D0p25_R0p0_REVERSAL_CONTROL,Frozen reversal-control scenario.
+side_flip_control_scenario_id,P362_D120_I2p5_D0p25_R0p0_CONTINUATION,Frozen continuation side-flip control.
+cost_model_version,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha cost model.
+cost_multiplier,2,Cost200 remains required.
+minimum_selected_trades,30,Event floor cannot be softened.
+annualized_return_floor_pct,12,User research profitability bar retained.
+full_depth_required,L1 plus top-five market-by-price depth; levels 2-5 materiality retained,Core project objective.
+no_download_allowed,1,Use current local 16-date panel first.
+parameter_search_allowed,0,No post-result tuning.
+paper_live_or_profit_claim_allowed,0,Boundaries closed.

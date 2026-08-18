@@ -1,0 +1,6 @@
+capacity_policy_id,policy_role,selection_rule,max_concurrent_positions,per_symbol_date_cap,per_trade_date_cap,all_ready_events,acceptance_role
+P481_BASELINE_MAX3_CONCURRENT,baseline,"reproduce Phase387 apply_capacity: sort by decision_ms, canonical_work_order_id; keep if active exits < 3",3,,,0,primary
+P481_MAX5_CONCURRENT,looser_capacity,same active-exit overlap logic as baseline but max concurrent positions = 5,5,,,0,sensitivity
+P481_ONE_PER_SYMBOL_DATE,breadth_first,"after readiness and signal filters, keep earliest candidate per scenario, diagnostic_trade_date, symbol",,1,,0,sensitivity
+P481_TWO_PER_TRADE_DATE,date_balanced,"after readiness and signal filters, keep earliest two candidates per scenario and diagnostic_trade_date",,,2,0,sensitivity
+P481_ALL_READY_DIAGNOSTIC,upper_bound_diagnostic,select every scheduled ready candidate; not sufficient alone for acceptance because it ignores capital overlap,,,,1,diagnostic_only

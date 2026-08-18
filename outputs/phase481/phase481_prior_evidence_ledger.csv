@@ -1,0 +1,10 @@
+evidence_id,value,description
+phase480_local_real_l2_dates,16,Current local real-L2 dates.
+phase480_full_32_symbol_days,16,Dates with all configured symbols present.
+phase480_official_catalyst_overlap_dates,16,Official-catalyst overlap dates.
+phase387_scheduled_primary_candidates,34,Scheduled candidates before capacity selection.
+phase387_primary_selected_trades,25,Actual baseline capacity-selected trades.
+phase387_primary_net_pnl_inr,992.9649840110026,Actual baseline net PnL.
+phase387_primary_annualized_return_pct,7.149347884879218,Actual baseline annualized return.
+phase388_capacity_selected_gap,5,Remaining trade gap to 30 selected trades.
+phase388_acceptance_candidate,0,Acceptance remains closed.

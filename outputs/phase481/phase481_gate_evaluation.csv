@@ -1,0 +1,10 @@
+gate_id,passed,observed_value,required_value,severity
+P481_PHASE480_COMPLETE,True,1,1,hard
+P481_CURRENT_16_DATE_PANEL_USED,True,16,>=16,hard
+P481_WORK_ORDER_PRESENT,True,273,>=273,hard
+P481_PRIOR_TRADE_LEDGER_PRESENT,True,34,>0,hard
+P481_CAPACITY_POLICY_GRID_FROZEN,True,5,5,hard
+P481_FULL_DEPTH_L2_L5_RETAINED,True,1,1,hard
+P481_COST200_RETAINED,True,1,1,hard
+P481_NO_DOWNLOAD_OR_RETEST_NOW,True,download=0;retest=0,both_zero,hard
+P481_NO_PROMOTION_PAPER_LIVE_OR_CLAIM,True,promotion=0;paper=0;claim=0,all_zero,hard
