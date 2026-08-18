@@ -1,0 +1,20 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P445_CATALYST_CONTINUATION_POSITIVE_DIAGNOSTIC_NOT_ACCEPTED,"Catalyst continuation cleared cost200 and beat L1-only, but failed positive-date and 12 percent annualized gates.",positive_diagnostic_not_acceptance
+phase444_next_action_matched,interpret_phase444_external_catalyst_continuation_no_paper_live,Phase445 implements the Phase444 next-action string.,basis
+best_scenario_id,P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5,Best Phase444 scenario.,evidence
+best_round_trips,46,Event floor met.,evidence
+best_trade_dates,11,Date breadth met.,evidence
+best_symbols,20,Symbol breadth met.,evidence
+best_gross_pnl_inr,9388.069999999952,Positive gross P&L.,evidence
+best_net_pnl_inr,1804.5673675401536,Positive after cost200.,evidence
+best_annualized_return_pct,4.134099787455624,Positive but below 12 percent.,failure
+best_positive_date_fraction,0.36363636363636365,Below positive-date gate.,failure
+l1_only_annualized_return_pct,-2.9913338859270424,Full-depth materially beat L1-only.,control_pass
+reversal_control_annualized_return_pct,-44.303484777106135,Continuation beat reversal.,control_pass
+time_shifted_catalyst_annualized_return_pct,3.797597156634529,Time-shift was close to primary.,diagnostic_warning
+phase444_failed_hard_gates,P444_POSITIVE_DATE_FRACTION;P444_ANNUALIZED_FLOOR,Explicit failed gate basis.,basis
+strategy_promotion_allowed,0,No accepted survivor.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+same_result_tuning_allowed,0,No post-result tuning without a new precommit.,closed
+next_action,precommit_catalyst_continuation_stability_repair_or_add_real_holdout,Repair stability or add real holdout under a new precommit.,next

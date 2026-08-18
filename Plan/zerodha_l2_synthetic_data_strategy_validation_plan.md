@@ -21813,6 +21813,52 @@ Current next best action after Phase444:
 
 - Implement `interpret_phase444_external_catalyst_continuation_no_paper_live`. Treat Phase444 as a positive diagnostic but not an accepted strategy unless formal interpretation finds a reporting error.
 
+## 24.272 Phase445 Catalyst Continuation Interpretation Completed
+
+Phase445 formally interprets Phase444 as a positive diagnostic, not an accepted strategy.
+
+Phase445 selected verdict:
+
+- `P445_CATALYST_CONTINUATION_POSITIVE_DIAGNOSTIC_NOT_ACCEPTED`.
+
+Phase445 decision:
+
+- Phase444 is the strongest recent result because it cleared Zerodha `cost200`;
+- Phase444 achieved event, date and symbol breadth;
+- Phase444 materially beat the L1-only ablation and the reversal control;
+- Phase444 is not accepted because annualized return remained below `12%` and positive-date fraction remained below `0.60`;
+- the time-shifted catalyst control was close to the primary, so catalyst timing stability needs repair or holdout testing;
+- no same-result tuning, strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase445 acceptance summary:
+
+- Phase444 best completed round trips: `46`;
+- Phase444 best net P&L after cost200: approximately `1,804.567368` INR;
+- Phase444 best annualized return: approximately `4.134100%`;
+- Phase444 cost200 acceptance survivors: `0`;
+- Phase445 hard gates passed: `8 / 8`;
+- same-result tuning allowed: `0`.
+
+Phase445 failed-evidence basis inherited from Phase444:
+
+- `P444_POSITIVE_DATE_FRACTION`: observed approximately `0.363636`, required at least `0.60`;
+- `P444_ANNUALIZED_FLOOR`: observed approximately `4.134100`, required at least `12.0`;
+- time-shifted catalyst control annualized return was approximately `3.797597%`, close to the primary.
+
+Phase445 outputs:
+
+- `scripts/run_phase445_catalyst_continuation_interpretation.py`;
+- `src/synthetic_l2/phase445_catalyst_continuation_interpretation.py`;
+- `outputs/phase445/phase445_acceptance_summary.csv`;
+- `outputs/phase445/phase445_decision_ledger.csv`;
+- `outputs/phase445/phase445_gate_evaluation.csv`;
+- `outputs/phase445/phase445_catalyst_continuation_interpretation_report.md`;
+- `outputs/phase445/phase445_catalyst_continuation_interpretation_manifest.json`.
+
+Current next best action after Phase445:
+
+- Precommit catalyst-continuation stability repair or add real holdout. Do not tune Phase444 after seeing the positive diagnostic without a new precommit.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
