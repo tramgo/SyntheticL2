@@ -1,0 +1,19 @@
+metric,value,description
+phase422_pair_spread_realism_retest_execution_complete,1,Phase422 execution completed
+phase422_primary_scenario_id,P422_PRIMARY_PAIR_SPREAD_REALISM_RETEST,Primary scenario
+phase422_synthetic_scenario_rows,4,Synthetic scenario rows
+phase422_real_anchor_scenario_rows,4,Real-anchor scenario rows
+phase422_primary_completed_round_trips,0,Primary pair round trips
+phase422_primary_trade_dates,0,Primary trade dates
+phase422_primary_pairs,0,Primary pairs
+phase422_primary_positive_date_fraction,0.0,Primary positive date fraction
+phase422_primary_net_pnl_inr,0.0,Primary net P&L
+phase422_primary_annualized_return_pct,0.0,Primary annualized return
+phase422_l2_l5_edge_delta_vs_removed_pct,0.0,Primary minus L2-L5 removed annualized percentage points
+phase422_cost200_acceptance_survivor_rows,0,Accepted synthetic scenarios
+phase422_strategy_promotion_allowed,0,No promotion
+phase422_paper_or_live_acceptance_allowed,0,No paper/live
+phase422_deployable_profitability_claim_allowed,0,No deployable claim
+phase422_hard_gate_pass_rows,10,Passed hard gates
+phase422_hard_gate_rows,17,Hard gates
+phase422_next_best_action,interpret_phase422_pair_spread_realism_retest_no_paper_live,Recommended next action

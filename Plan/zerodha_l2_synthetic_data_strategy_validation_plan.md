@@ -20187,6 +20187,106 @@ Current next best action after Phase421:
 
 - Commit and push Phase421 before any results, then run `run_phase422_pair_spread_realism_retest_execution_no_paper_live`.
 
+## 24.249 Phase422 Pair-Spread Realism Retest Execution Completed
+
+Phase422 executes the Phase421 precommitted repair retest for the positive Phase418 pair-spread lead. It enforces minimum forward-time realism and evaluates the full-depth unique contribution gate before any promotion.
+
+Phase422 execution scope:
+
+- primary scenario: `P422_PRIMARY_PAIR_SPREAD_REALISM_RETEST`;
+- controls:
+  - `P422_SIDE_FLIP_CONTROL`;
+  - `P422_L2_L5_REMOVED_CONTROL`;
+  - `P422_SINGLE_LEG_PROXY_CONTROL`;
+- synthetic source: bounded raw dense L1-L5 pair slices;
+- real-anchor source: local real L2 pair panel;
+- minimum forward hold: `250.0` ms;
+- minimum forward ticks after entry: `3`;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR.
+
+Phase422 synthetic result:
+
+- raw synthetic selections before forward-time filter: `807`;
+- synthetic selections after forward-time filter: `0`;
+- primary completed pair round trips: `0`;
+- primary trade dates: `0`;
+- primary pairs: `0`;
+- primary positive date fraction: `0.0`;
+- primary net P&L: `0.0` INR;
+- primary annualized return: `0.0%`;
+- cost200 acceptance survivors: `0`;
+- primary minus L2-L5 removed annualized edge: `0.0` percentage points.
+
+Phase422 real-anchor result:
+
+- raw real-anchor selections before forward-time filter: `606`;
+- real-anchor selections after forward-time filter: `593`;
+- real-anchor primary completed pair round trips: `139`;
+- real-anchor primary trade dates: `5`;
+- real-anchor primary pairs: `4`;
+- real-anchor primary positive date fraction: `0.0`;
+- real-anchor primary gross P&L: approximately `-2,088.10` INR;
+- real-anchor primary cost200 charges: approximately `29,023.696715` INR;
+- real-anchor primary net P&L: approximately `-31,111.796715` INR;
+- real-anchor primary annualized return: approximately `-156.80345544176032%`.
+
+Phase422 real-anchor controls:
+
+- side-flip control annualized return: approximately `-124.232769%`;
+- L2-L5 removed control annualized return: approximately `-231.977393%`;
+- single-leg proxy control annualized return: approximately `-78.401728%`;
+- all real-anchor controls were negative after costs.
+
+Phase422 hard gates:
+
+- passed: `10 / 17`;
+- passed:
+  - execution complete;
+  - Phase421 precommit used;
+  - forward-time rule enforced;
+  - real-anchor pair panel used;
+  - market-neutral pair exposure;
+  - taker-only execution;
+  - no lookahead;
+  - cost200 fixed-capital scoring;
+  - real-anchor sign check;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P422_FORWARD_TICKS_ENFORCED`: observed `elapsed_time_proxy_only; configured_min_ticks=3`, required at least `3` exact post-entry aligned ticks;
+  - `P422_FULL_DEPTH_UNIQUE_GATE`: observed `0.0`, required at least `5.0`;
+  - `P422_EVENT_FLOOR`: observed `0`, required at least `30`;
+  - `P422_DATE_BREADTH`: observed `0`, required at least `5`;
+  - `P422_PAIR_BREADTH`: observed `0`, required at least `2`;
+  - `P422_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.6`;
+  - `P422_ANNUALIZED_FLOOR`: observed `0.0`, required at least `12.0`.
+
+Phase422 interpretation before formal Phase423:
+
+- The Phase418 synthetic positive lead does not survive the Phase421 timing realism repair.
+- Once same-timestamp and too-fast exits are blocked, the synthetic primary produces zero trades.
+- The real-anchor pair panel is available and active, but the primary loses substantially after cost200.
+- This strongly blocks promotion or paper/live acceptance.
+
+Phase422 outputs:
+
+- `scripts/run_phase422_pair_spread_realism_retest_execution.py`;
+- `src/synthetic_l2/phase422_pair_spread_realism_retest_execution.py`;
+- `outputs/phase422/phase422_acceptance_summary.csv`;
+- `outputs/phase422/phase422_synthetic_scenario_summary.csv`;
+- `outputs/phase422/phase422_synthetic_pair_scan_diagnostics.csv`;
+- `outputs/phase422/phase422_synthetic_pair_trade_ledger.csv`;
+- `outputs/phase422/phase422_real_anchor_scenario_summary.csv`;
+- `outputs/phase422/phase422_real_anchor_pair_scan_diagnostics.csv`;
+- `outputs/phase422/phase422_real_anchor_pair_trade_ledger.csv`;
+- `outputs/phase422/phase422_gate_evaluation.csv`;
+- `outputs/phase422/phase422_pair_spread_realism_retest_execution_report.md`;
+- `outputs/phase422/phase422_pair_spread_realism_retest_execution_manifest.json`.
+
+Current next best action after Phase422:
+
+- Implement `interpret_phase422_pair_spread_realism_retest_no_paper_live`. The interpretation should close the Phase418 positive lead for acceptance unless a genuinely new pair source is precommitted later.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,18 @@
+gate_id,passed,observed_value,required_value,severity
+P422_EXECUTION_COMPLETE,True,1,1,hard
+P422_PHASE421_PRECOMMIT_USED,True,run_phase422_pair_spread_realism_retest_execution_no_paper_live,run_phase422,hard
+P422_FORWARD_TIME_ENFORCED,True,250.0,>=250ms,hard
+P422_FORWARD_TICKS_ENFORCED,False,elapsed_time_proxy_only; configured_min_ticks=3,>=3 exact post-entry aligned ticks,hard
+P422_FULL_DEPTH_UNIQUE_GATE,False,0.0,>=5.0,hard
+P422_REAL_ANCHOR_PAIR_PANEL_USED,True,5,>=1,hard
+P422_PAIR_MARKET_NEUTRAL,True,equal_notional_long_short,present,hard
+P422_TAKER_ONLY,True,taker_both_legs,present,hard
+P422_NO_LOOKAHEAD,True,rolling_before_entry,present,hard
+P422_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0,cost200_fixed_capital,hard
+P422_EVENT_FLOOR,False,0,>=30,hard
+P422_DATE_BREADTH,False,0,>=5,hard
+P422_PAIR_BREADTH,False,0,>=2,hard
+P422_POSITIVE_DATE_FRACTION,False,0.0,>=0.6,hard
+P422_ANNUALIZED_FLOOR,False,0.0,>=12.0,hard
+P422_REAL_ANCHOR_SIGN,True,-156.80345544176032,same_sign,hard
+P422_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

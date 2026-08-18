@@ -1,0 +1,1 @@
+scenario_id,pair_id,leg_a,leg_b,trade_date,entry_ts_ms,exit_ts_ms,entry_zscore,exit_zscore,side_a,side_b,exit_reason,entry_price_a,entry_price_b,exit_price_a,exit_price_b,quantity_a,quantity_b,gross_pnl_inr,cost100_inr,cost200_inr,net_pnl_inr,net_pnl_cost100_inr,hold_ms,forward_time_pass
