@@ -1,0 +1,16 @@
+metric,value,description
+phase461_actual_move_label_materialization_complete,1,Phase461 label materialization completed
+phase461_thesis_id,P461_ACTUAL_MOVE_CANDIDATE_LABEL_MATERIALIZATION,Label materialization thesis
+phase461_label_rows,2240.0,All materialized label rows
+phase461_move_candidate_rows,0.0,Rows passing non-flat move floor
+phase461_trade_dates,64.0,Dates with labels
+phase461_symbols,7.0,Symbols with labels
+phase461_long_label_rows,0.0,Long forward labels
+phase461_short_label_rows,0.0,Short forward labels
+phase461_strategy_pnl_generated,0,No P&L generated
+phase461_strategy_promotion_allowed,0,No promotion
+phase461_paper_or_live_acceptance_allowed,0,No paper/live
+phase461_deployable_profitability_claim_allowed,0,No deployable claim
+phase461_hard_gate_pass_rows,7,Passed hard gates
+phase461_hard_gate_rows,9,Hard gates
+phase461_next_best_action,pause_or_repair_synthetic_generator_non_flat_move_distribution_before_strategy_replay,Recommended next action

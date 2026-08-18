@@ -22848,6 +22848,78 @@ Current next best action after Phase460:
 
 - Run `run_phase461_actual_move_candidate_label_materialization_no_pnl`.
 
+## 24.288 Phase461 Actual-Move Candidate Label Materialization Completed
+
+Phase461 materialized the Phase460 frozen actual-move label contract from dense raw synthetic L1-L5 data.
+
+Phase461 thesis ID:
+
+- `P461_ACTUAL_MOVE_CANDIDATE_LABEL_MATERIALIZATION`.
+
+Phase461 boundary:
+
+- Phase461 is a feature/label materialization phase only;
+- actual forward movement remains a research label, not a tradable signal;
+- no strategy P&L was generated;
+- no strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase461 selected dense inputs:
+
+- dense root: `raw_synthetic_l2_dense_full_year`;
+- months: `2026-01`, `2026-02`, `2026-03`;
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`;
+- selected files: `21`;
+- files present: `21`;
+- candidate start rows per symbol/date: `0`, `5000`, `10000`, `20000`, `50000`;
+- entry index: `20`;
+- forward horizon: `240` ticks;
+- minimum absolute forward move label: `2.0` bps.
+
+Phase461 materialization result:
+
+- label rows: `2,240`;
+- trade dates: `64`;
+- symbols: `7`;
+- move-candidate rows at or above `2.0` bps: `0`;
+- long label rows: `0`;
+- short label rows: `0`;
+- flat label rows: `2,240`;
+- median absolute forward return: `0.0` bps;
+- maximum absolute forward return: `0.0` bps.
+
+Phase461 hard gates:
+
+- passed: `7 / 9`;
+- failed: `P461_MOVE_CANDIDATES_PRESENT`;
+- failed: `P461_LONG_OR_SHORT_LABELS_PRESENT`;
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase461 interpretation:
+
+- The Phase460 label source was executed correctly and with adequate date/symbol breadth.
+- The current dense synthetic store does not produce non-flat forward mid-price movement in the frozen candidate windows.
+- This blocks actual-move feature learning and dense strategy replay from this synthetic distribution, because there are no positive/negative movement labels to learn from.
+- The next action is not another fixed-window strategy shard. The next action is to repair or replace the synthetic generator so it emits realistic tick-level mid-price movement while preserving L1-L5 book states, costs and execution realism.
+
+Phase461 outputs:
+
+- `scripts/run_phase461_actual_move_label_materialization.py`;
+- `src/synthetic_l2/phase461_actual_move_label_materialization.py`;
+- `outputs/phase461/phase461_acceptance_summary.csv`;
+- `outputs/phase461/phase461_feature_label_ledger.csv`;
+- `outputs/phase461/phase461_gate_evaluation.csv`;
+- `outputs/phase461/phase461_label_summary.csv`;
+- `outputs/phase461/phase461_selected_files.csv`;
+- `outputs/phase461/phase461_actual_move_label_materialization_report.md`;
+- `outputs/phase461/phase461_actual_move_label_materialization_manifest.json`.
+
+Current next best action after Phase461:
+
+- Pause fixed-window synthetic strategy shards and repair the synthetic generator's non-flat tick-level move distribution before strategy replay.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
