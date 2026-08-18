@@ -1,0 +1,12 @@
+gate_id,requirement,severity,phase431_precommitted
+P432_PHASE431_PRECOMMIT_USED,Execution must read Phase431 geometry grid.,hard,1
+P432_PANEL_SPECIFIC_GEOMETRY,Synthetic uses max_hold=2500; real-anchor uses max_hold=500.,hard,1
+P432_NO_FEATURE_THRESHOLD_TUNING,Feature thresholds must match Phase427 grid dimensions.,hard,1
+P432_EXACT_FORWARD_TICK_INDEXING,Every trade exit uses exact post-entry tick indexing.,hard,1
+P432_FULL_DEPTH_PRIMARY_FEATURES,Primary scenarios require L2-L5 features.,hard,1
+P432_L1_ONLY_CONTROL,Run removed-depth control for top/surviving scenarios.,hard,1
+P432_SIDE_FLIP_CONTROL,Run side-flip control for top/surviving scenarios.,hard,1
+P432_COST200_FIXED_CAPITAL,"Use Zerodha cost200 and fixed INR 1,000,000 capital.",hard,1
+P432_BREADTH_AND_RETURN_GATES,Apply event/date/symbol/positive-date/annualized gates.,hard,1
+P432_REAL_ANCHOR_CROSS_CHECK,Replay top synthetic candidates using real-anchor geometry.,hard,1
+P432_BOUNDARIES_CLOSED,"No promotion, paper/live or deployable claim.",hard,1

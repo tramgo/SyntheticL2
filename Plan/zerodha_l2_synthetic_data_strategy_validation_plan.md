@@ -20880,6 +20880,71 @@ Current next best action after Phase430:
 
 - Precommit Phase431 geometry-consistent full-depth sweep using the Phase430 cadence-aware max-hold recommendations. Do not alter feature thresholds during the timing repair.
 
+## 24.258 Phase431 Geometry-Consistent Full-Depth Sweep Precommit Completed
+
+Phase431 precommits the timing-geometry repair required by Phase430.
+
+Phase431 selected thesis:
+
+- `P431_GEOMETRY_CONSISTENT_FULL_DEPTH_FEATURE_SWEEP`.
+
+Phase431 relationship to Phase427:
+
+- same feature families;
+- same lookback buckets;
+- same spread buckets;
+- same imbalance thresholds;
+- same depth-change thresholds;
+- no signal threshold tuning;
+- only execution timing geometry is repaired.
+
+Phase431 repaired timing geometry:
+
+- synthetic:
+  - exact forward ticks: `3`;
+  - minimum elapsed hold: `250.0` ms;
+  - max-hold ticks: `2500`;
+  - source: Phase430 synthetic feasible geometry recommendation.
+- real-anchor:
+  - exact forward ticks: `3`;
+  - minimum elapsed hold: `250.0` ms;
+  - max-hold ticks: `500`;
+  - source: Phase430 real-anchor feasible geometry recommendation.
+
+Phase431 frozen grid:
+
+- panel-specific rows: `972`;
+- parameter grid hash: `449e98404bc602a0e16d033809099f823f3fde3ee29c14a00dfb6bf0751a68c7`;
+- feature families: `6`;
+- forward-tick bucket: `3`;
+- panels: `synthetic`, `real_anchor`.
+
+Phase431 hard gates:
+
+- passed: `11 / 11`;
+- execution results generated: `0`;
+- execution allowed next: `1`;
+- promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase431 outputs:
+
+- `scripts/run_phase431_geometry_consistent_full_depth_sweep_precommit.py`;
+- `src/synthetic_l2/phase431_geometry_consistent_full_depth_sweep_precommit.py`;
+- `outputs/phase431/phase431_acceptance_summary.csv`;
+- `outputs/phase431/phase431_frozen_contract.csv`;
+- `outputs/phase431/phase431_geometry_consistent_parameter_grid.csv`;
+- `outputs/phase431/phase431_input_registry.csv`;
+- `outputs/phase431/phase431_execution_hard_gate_contract.csv`;
+- `outputs/phase431/phase431_gate_evaluation.csv`;
+- `outputs/phase431/phase431_geometry_consistent_full_depth_sweep_precommit_report.md`;
+- `outputs/phase431/phase431_geometry_consistent_full_depth_sweep_precommit_manifest.json`.
+
+Current next best action after Phase431:
+
+- Commit and push Phase431 before any results, then run `run_phase432_geometry_consistent_full_depth_feature_sweep_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,12 @@
+gate_id,passed,observed_value,required_value,severity
+P431_PHASE430_COMPLETE,True,1,1,hard
+P431_TIMING_REPAIR_ALLOWED,True,1,1,hard
+P431_SYNTHETIC_GEOMETRY_MATCHES_AUDIT,True,2500,2500,hard
+P431_REAL_GEOMETRY_MATCHES_AUDIT,True,500,500,hard
+P431_FEATURE_THRESHOLDS_NOT_TUNED,True,phase427_threshold_dimensions_preserved_except_forward_bucket_repair,preserved,hard
+P431_PANEL_GEOMETRY_GRID_FROZEN,True,972,972,hard
+P431_COST200_FIXED_CAPITAL_PINNED,True,cost=2.0;capital=1000000.0,cost200_fixed_capital,hard
+P431_EXECUTION_HARD_GATES_PRECOMMITTED,True,11,11,hard
+P431_RESULTS_NOT_GENERATED,True,0,0,hard
+P431_FORBIDDEN_ROUTES_CLOSED,True,feature_threshold_tuning;pair_spread_rescue;queue_depletion_threshold_rescue;market_maker_rescue;promotion;paper_live;deployable_claim,closed_routes_listed,hard
+P431_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

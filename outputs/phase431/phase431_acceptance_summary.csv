@@ -1,0 +1,16 @@
+metric,value,description
+phase431_geometry_consistent_precommit_complete,1,Phase431 precommit completed
+phase431_thesis_id,P431_GEOMETRY_CONSISTENT_FULL_DEPTH_FEATURE_SWEEP,Frozen thesis
+phase431_grid_rows,972,Frozen geometry-consistent rows
+phase431_parameter_grid_hash,449e98404bc602a0e16d033809099f823f3fde3ee29c14a00dfb6bf0751a68c7,Hash of frozen grid
+phase431_synthetic_max_hold_ticks,2500,Synthetic repaired max hold
+phase431_real_anchor_max_hold_ticks,500,Real-anchor repaired max hold
+phase431_forward_ticks,3,Forward tick bucket
+phase431_execution_results_generated,0,Precommit only
+phase431_strategy_promotion_allowed,0,No promotion
+phase431_paper_or_live_acceptance_allowed,0,No paper/live
+phase431_deployable_profitability_claim_allowed,0,No deployable claim
+phase431_execution_allowed_next,1,Whether Phase432 may run
+phase431_hard_gate_pass_rows,11,Passed hard gates
+phase431_hard_gate_rows,11,Hard gates
+phase431_next_best_action,run_phase432_geometry_consistent_full_depth_feature_sweep_no_paper_live,Recommended next action

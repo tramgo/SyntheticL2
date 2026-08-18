@@ -1,0 +1,12 @@
+input_id,value,description
+phase427_grid_rows,1458,Original broad sweep grid.
+phase430_audit_complete,1,Timing audit complete.
+phase430_timing_repair_precommit_allowed,1,Must be one.
+phase430_synthetic_recommended_forward_ticks,3,Phase430 synthetic recommendation.
+phase430_synthetic_recommended_max_hold_ticks,2500,Phase430 synthetic recommendation.
+phase430_synthetic_feasible_fraction,1.0,Phase430 synthetic recommendation.
+phase430_real_recommended_forward_ticks,3,Phase430 real-anchor recommendation.
+phase430_real_recommended_max_hold_ticks,500,Phase430 real-anchor recommendation.
+phase430_real_feasible_fraction,1.0,Phase430 real-anchor recommendation.
+phase431_grid_rows,972,Repaired grid rows.
+execution_results_generated_now,0,Precommit only.
