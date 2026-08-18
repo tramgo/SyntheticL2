@@ -1,0 +1,22 @@
+contract_id,contract_value,description
+phase464_thesis_id,P464_PAST_ONLY_L1_L5_FEATURE_MODEL_PRECOMMIT,Precommit thesis
+model_family_id,class_weighted_regularized_logistic_direction_model_with_tree_baseline_diagnostic,Allowed model family
+primary_model,class_weighted_l2_regularized_logistic_regression,Simple regularized baseline for direction/move labels
+diagnostic_baseline,depth_feature_threshold_and_shuffled_label_controls,"Controls only, not promotion"
+training_split,2026-01;2026-02,Training months
+holdout_split,2026-03,Untouched holdout month
+allowed_features,recent_mid_return_bps;spread_bps;l1_imbalance;l25_imbalance;volume_delta_lookback,Feature columns allowed as inputs
+required_full_depth_features,l25_imbalance,L2-L5 feature columns required
+forbidden_feature_columns,forward_return_bps;abs_forward_return_bps;label_side;move_candidate;exit_price;exit_row,Leakage columns forbidden as predictors
+label_columns,forward_return_bps;abs_forward_return_bps;label_side;move_candidate,Future labels retained only as targets
+minimum_train_rows,500,Training-row floor
+minimum_holdout_rows,200,Holdout-row floor
+minimum_train_move_candidates,250,Train candidate floor
+minimum_holdout_move_candidates,100,Holdout candidate floor
+split_summary_hash,39509801689bee33752302943e65acc4ea4a015f2ca6a34d1387b229c14eccb5,Frozen split summary hash
+feature_contract_hash,86ed4fd9b6b7e35fbe386251eeea424361356c04885cea60ebe0554a078ab6c6,Frozen feature contract hash
+phase465_allowed_next,1,Allows model fit/evaluation only
+strategy_pnl_allowed,0,No strategy P&L in Phase464/465
+strategy_promotion_allowed,0,No promotion
+paper_or_live_acceptance_allowed,0,No paper/live
+deployable_profitability_claim_allowed,0,No deployable claim

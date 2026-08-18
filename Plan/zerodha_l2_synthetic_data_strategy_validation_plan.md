@@ -23093,6 +23093,110 @@ Current next best action after Phase463:
 
 - Precommit Phase464: a past-only L1-L5 feature model over Phase463 actual-move candidates, with no future labels as tradable signals and no strategy P&L until a later replay phase is separately frozen.
 
+## 24.291 Phase464 Past-Only L1-L5 Feature-Model Precommit Completed
+
+Phase464 freezes the model-fit contract for learning from Phase463 actual-move labels without using future labels as order-time features.
+
+Phase464 thesis ID:
+
+- `P464_PAST_ONLY_L1_L5_FEATURE_MODEL_PRECOMMIT`.
+
+Phase464 model family:
+
+- `class_weighted_regularized_logistic_direction_model_with_tree_baseline_diagnostic`;
+- primary model: `class_weighted_l2_regularized_logistic_regression`;
+- diagnostic baseline: `depth_feature_threshold_and_shuffled_label_controls`.
+
+Phase464 input evidence:
+
+- Phase463 Phase464 allowance: `1`;
+- Phase463 label rows: `1,792`;
+- Phase463 move-candidate rows: `935`;
+- Phase463 long label rows: `943`;
+- Phase463 short label rows: `838`.
+
+Phase464 chronological split:
+
+- train months: `2026-01`, `2026-02`;
+- holdout month: `2026-03`;
+- train rows: `1,176`;
+- holdout rows: `616`;
+- train move-candidate rows: `626`;
+- holdout move-candidate rows: `309`;
+- train trade dates: `42`;
+- holdout trade dates: `22`;
+- symbols in both splits: `7`;
+- train long/short rows: `632 / 538`;
+- holdout long/short rows: `311 / 300`.
+
+Phase464 allowed past-only model inputs:
+
+- `recent_mid_return_bps`;
+- `spread_bps`;
+- `l1_imbalance`;
+- `l25_imbalance`;
+- `volume_delta_lookback`.
+
+Phase464 required full-depth feature:
+
+- `l25_imbalance`, computed from levels 2-5 bid/ask quantities.
+
+Phase464 forbidden model inputs:
+
+- `forward_return_bps`;
+- `abs_forward_return_bps`;
+- `label_side`;
+- `move_candidate`;
+- `exit_price`;
+- `exit_row`.
+
+Phase464 frozen Phase465 contract hashes:
+
+- split summary hash: `39509801689bee33752302943e65acc4ea4a015f2ca6a34d1387b229c14eccb5`;
+- feature contract hash: `86ed4fd9b6b7e35fbe386251eeea424361356c04885cea60ebe0554a078ab6c6`.
+
+Phase464 hard gates:
+
+- passed: `13 / 13`;
+- Phase463 precommit used: pass;
+- ledger rows present: pass;
+- move candidates present: pass;
+- train split rows: `1,176 >= 500`;
+- holdout split rows: `616 >= 200`;
+- train move candidates: `626 >= 250`;
+- holdout move candidates: `309 >= 100`;
+- all allowed feature columns present: pass;
+- L2-L5 feature required: pass;
+- forbidden future-label columns are not model inputs: pass;
+- both directions present in train and holdout: pass.
+
+Phase464 boundary:
+
+- execution results generated: `0`;
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase465 model fit/evaluation allowed next: `1`.
+
+Phase464 outputs:
+
+- `scripts/run_phase464_past_only_l2_feature_model_precommit.py`;
+- `src/synthetic_l2/phase464_past_only_l2_feature_model_precommit.py`;
+- `outputs/phase464/phase464_acceptance_summary.csv`;
+- `outputs/phase464/phase464_feature_contract.csv`;
+- `outputs/phase464/phase464_frozen_phase465_model_contract.csv`;
+- `outputs/phase464/phase464_gate_evaluation.csv`;
+- `outputs/phase464/phase464_input_evidence.csv`;
+- `outputs/phase464/phase464_split_label_matrix_preview.csv`;
+- `outputs/phase464/phase464_split_summary.csv`;
+- `outputs/phase464/phase464_past_only_l1_l5_feature_model_precommit_report.md`;
+- `outputs/phase464/phase464_past_only_l1_l5_feature_model_precommit_manifest.json`.
+
+Current next best action after Phase464:
+
+- Run `run_phase465_train_holdout_past_only_l1_l5_label_model_no_strategy_pnl`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

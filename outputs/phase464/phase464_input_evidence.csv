@@ -1,0 +1,13 @@
+evidence_id,observed_value,description
+phase463_phase464_allowed_next,1,Phase463 allowance
+phase463_move_candidate_rows,935.0,Phase463 candidates
+phase463_long_label_rows,943.0,Phase463 long labels
+phase463_short_label_rows,838.0,Phase463 short labels
+ledger_rows,1792,Rows in Phase463 ledger
+train_rows,1176,Training rows
+holdout_rows,616,Holdout rows
+train_move_candidates,626,Training move candidates
+holdout_move_candidates,309,Holdout move candidates
+train_dates,42,Training trade dates
+holdout_dates,22,Holdout trade dates
+symbols,7,Ledger symbol breadth

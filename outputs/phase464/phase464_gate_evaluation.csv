@@ -1,0 +1,14 @@
+gate_id,passed,observed_value,required_value,severity
+P464_PHASE463_PRECOMMIT_USED,True,1,1,hard
+P464_LEDGER_ROWS_PRESENT,True,1792,>0,hard
+P464_MOVE_CANDIDATES_PRESENT,True,935.0,>0,hard
+P464_TRAIN_SPLIT_ROWS,True,1176,>=500,hard
+P464_HOLDOUT_SPLIT_ROWS,True,616,>=200,hard
+P464_TRAIN_MOVE_CANDIDATES,True,626,>=250,hard
+P464_HOLDOUT_MOVE_CANDIDATES,True,309,>=100,hard
+P464_FEATURE_COLUMNS_PRESENT,True,l1_imbalance;l25_imbalance;recent_mid_return_bps;spread_bps;volume_delta_lookback,recent_mid_return_bps;spread_bps;l1_imbalance;l25_imbalance;volume_delta_lookback,hard
+P464_FULL_DEPTH_L2_L5_FEATURE_REQUIRED,True,l25_imbalance,>=1 L2-L5 feature,hard
+P464_FORBIDDEN_LABELS_NOT_MODEL_INPUTS,True,,empty,hard
+P464_BOTH_DIRECTIONS_IN_TRAIN_AND_HOLDOUT,True,train_long=632;train_short=538;holdout_long=311;holdout_short=300,all >0,hard
+P464_NO_STRATEGY_PNL,True,precommit_only,no_pnl,hard
+P464_NO_PAPER_LIVE_OR_CLAIM,True,promotion=0;paper=0;claim=0,all_zero,hard

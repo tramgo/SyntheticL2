@@ -1,0 +1,10 @@
+feature_name,allowed_as_model_input,timestamp_rule,source_definition,full_depth_l2_l5_feature
+recent_mid_return_bps,1,must be observable at or before entry row,entry row minus prior lookback mid price; computed before/at entry,0
+spread_bps,1,must be observable at or before entry row,best ask minus best bid at entry,0
+l1_imbalance,1,must be observable at or before entry row,top-of-book quantity imbalance at entry,0
+l25_imbalance,1,must be observable at or before entry row,levels 2-5 bid/ask quantity imbalance at entry,1
+volume_delta_lookback,1,must be observable at or before entry row,entry volume minus prior lookback volume,0
+forward_return_bps,0,future label only; forbidden as predictor,computed using exit row after horizon,0
+abs_forward_return_bps,0,future label only; forbidden as predictor,computed using exit row after horizon,0
+label_side,0,future label only; forbidden as predictor,computed using exit row after horizon,0
+move_candidate,0,future label only; forbidden as predictor,computed using exit row after horizon,0
