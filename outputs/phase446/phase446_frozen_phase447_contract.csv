@@ -1,0 +1,11 @@
+contract_id,contract_value,description
+thesis_id,P446_CATALYST_CONTINUATION_STABILITY_HOLDOUT_PRECOMMIT,Stability/holdout precommit after Phase445 positive diagnostic.
+locked_scenario_id,P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5,No parameter tuning from Phase444.
+split_policy,chronological_last_third_dates_as_holdout_min_3_dates,Holdout split frozen before Phase447.
+holdout_dates,2026-07-23;2026-07-24;2026-07-27,Frozen holdout dates.
+development_dates,2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16;2026-07-20;2026-07-21;2026-07-22,Frozen development dates.
+acceptance_floor,holdout_net_pnl_gt_0.0;holdout_annualized_ge_12.0;holdout_positive_date_fraction_ge_0.6,Holdout stability requirements.
+controls_required,locked_scenario_only;no_new_filters;date_pnl_concentration;symbol_pnl_concentration;time_shift_context,No same-result tuning.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Annualized denominator fixed.
+forbidden,new_thresholds;drop_bad_dates;drop_bad_symbols;promotion;paper_live;deployable_profitability_claim,Closed boundaries.
+execution_results_generated_now,0,Precommit only.

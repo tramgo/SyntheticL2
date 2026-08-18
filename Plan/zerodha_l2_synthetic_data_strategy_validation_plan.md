@@ -21859,6 +21859,59 @@ Current next best action after Phase445:
 
 - Precommit catalyst-continuation stability repair or add real holdout. Do not tune Phase444 after seeing the positive diagnostic without a new precommit.
 
+## 24.273 Phase446 Catalyst Continuation Stability Holdout Precommit Completed
+
+Phase446 freezes a no-tuning chronological stability audit for the positive Phase444 diagnostic.
+
+Phase446 locked scenario:
+
+- `P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5`.
+
+Phase446 thesis ID:
+
+- `P446_CATALYST_CONTINUATION_STABILITY_HOLDOUT_PRECOMMIT`.
+
+Phase446 frozen split:
+
+- development dates: `2026-07-10`, `2026-07-13`, `2026-07-14`, `2026-07-15`, `2026-07-16`, `2026-07-20`, `2026-07-21`, `2026-07-22`;
+- holdout dates: `2026-07-23`, `2026-07-24`, `2026-07-27`;
+- split policy: chronological last third of dates as holdout, minimum `3` holdout dates.
+
+Phase446 frozen contract:
+
+- no parameter tuning from Phase444;
+- no dropping bad dates;
+- no dropping bad symbols;
+- no new thresholds;
+- holdout net P&L must be positive;
+- holdout annualized return must be at least `12.0%`;
+- holdout positive-date fraction must be at least `0.60`;
+- cost model remains Zerodha `cost200`;
+- fixed capital remains `1,000,000` INR;
+- order notional remains `100,000` INR.
+
+Phase446 hard gates:
+
+- passed: `9 / 9`;
+- execution results generated now: `0`;
+- Phase447 execution allowed next: `1`.
+
+Phase446 outputs:
+
+- `scripts/run_phase446_catalyst_continuation_stability_precommit.py`;
+- `src/synthetic_l2/phase446_catalyst_continuation_stability_precommit.py`;
+- `outputs/phase446/phase446_acceptance_summary.csv`;
+- `outputs/phase446/phase446_evidence_registry.csv`;
+- `outputs/phase446/phase446_frozen_phase447_contract.csv`;
+- `outputs/phase446/phase446_frozen_date_split.csv`;
+- `outputs/phase446/phase446_gate_evaluation.csv`;
+- `outputs/phase446/phase446_catalyst_continuation_stability_precommit_report.md`;
+- `outputs/phase446/phase446_catalyst_continuation_stability_precommit_manifest.json`.
+
+Current next best action after Phase446:
+
+- Run `run_phase447_catalyst_continuation_stability_holdout_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

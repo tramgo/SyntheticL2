@@ -1,0 +1,7 @@
+evidence_id,value,description
+phase445_next_action,precommit_catalyst_continuation_stability_repair_or_add_real_holdout,Phase445 requires stability repair or real holdout.
+phase445_best_net_pnl_inr,1804.5673675401536,Positive diagnostic net P&L.
+phase445_best_annualized_pct,4.134099787455624,Positive diagnostic annualized return.
+locked_trade_rows,46,Locked scenario trade rows.
+locked_dates,11,Locked scenario dates.
+locked_positive_dates,4,Positive date count before holdout audit.

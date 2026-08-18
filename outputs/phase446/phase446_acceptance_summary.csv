@@ -1,0 +1,13 @@
+metric,value,description
+phase446_stability_precommit_complete,1,Phase446 precommit completed
+phase446_thesis_id,P446_CATALYST_CONTINUATION_STABILITY_HOLDOUT_PRECOMMIT,Frozen thesis
+phase446_locked_scenario_id,P444_catalyst_continuation_H600_replenishment_after_exhaustion_C5,Locked candidate
+phase446_holdout_dates,2026-07-23;2026-07-24;2026-07-27,Frozen holdout dates
+phase446_execution_results_generated,0,Precommit only
+phase446_strategy_promotion_allowed,0,No promotion
+phase446_paper_or_live_acceptance_allowed,0,No paper/live
+phase446_deployable_profitability_claim_allowed,0,No deployable claim
+phase446_execution_allowed_next,1,Whether Phase447 may execute
+phase446_hard_gate_pass_rows,9,Passed hard gates
+phase446_hard_gate_rows,9,Hard gates
+phase446_next_best_action,run_phase447_catalyst_continuation_stability_holdout_no_paper_live,Recommended next action
