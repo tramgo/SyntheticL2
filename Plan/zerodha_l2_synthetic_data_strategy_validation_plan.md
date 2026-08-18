@@ -23865,6 +23865,69 @@ Current next best action after Phase472:
 - interpret the costed failure before tuning;
 - if continuing, test whether the edge exists only at larger forecast horizons, fewer higher-confidence events, or explicitly liquidity-vacuum/catalyst-conditioned subsets, with all choices precommitted before replay.
 
+## 24.300 Phase473 Phase472 Costed-Failure Interpretation Completed
+
+Phase473 interpreted the Phase472 costed replay failure and precommitted the next valid experiment boundary. This phase does not rescue the failed replay, does not retune the same threshold grid, does not promote the strategy, and does not claim paper/live readiness.
+
+Phase473 thesis ID:
+
+- `P473_INTERPRET_PHASE472_COSTED_FAILURE`
+
+Phase473 failure attribution:
+
+- predictive signal passed: Phase471 holdout AUC was 0.5455780003395009 against the 0.53 floor;
+- gross edge existed but was too small: best primary gross P&L was ₹1,173.46;
+- cost drag was much larger than the gross edge: Zerodha charges plus cost200 slippage were ₹9,322.76;
+- best primary net P&L was negative: ₹-8,149.31;
+- annualized profitability failed: best primary fixed-capital annualized return was -97.79167082366412% against the 12% research bar;
+- same threshold grid was not rescuable: 0 primary threshold scenarios had positive net P&L;
+- direct expansion was blocked because Phase472 profitability gates failed.
+
+Phase473 next-experiment contract:
+
+- selected next thesis: `P474_LARGER_HORIZON_FEWER_TRADE_SOURCE_EVENT_L1_L5`;
+- allowed input matrix: `outputs/phase470/phase470_source_event_aware_feature_label_matrix.csv`;
+- same Phase472 threshold retune allowed: `0`;
+- required change 1: larger forward horizon;
+- required change 2: fewer higher-confidence events;
+- required change 3: full-depth L1-L5 remains required;
+- required change 4: Zerodha cost200 remains required;
+- required change 5: fixed-capital annualization remains required;
+- minimum profitability bar: 12% annualized;
+- model retraining required: `1`, because horizon changes require new labels;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase473 hard gates:
+
+- gates passed: 10 / 10;
+- Phase472 replay complete: pass;
+- Phase472 rejection confirmed: pass;
+- cost drag attributed: pass;
+- best primary net negative confirmed: pass;
+- 12% annualized bar failed confirmed: pass;
+- same-threshold retune blocked: pass;
+- larger-horizon next experiment precommitted: pass;
+- full-depth L1-L5 required next: pass;
+- cost200 required next: pass;
+- no paper/live/profitability claim: pass.
+
+Phase473 outputs:
+
+- `outputs/phase473/phase473_acceptance_summary.csv`;
+- `outputs/phase473/phase473_failure_attribution.csv`;
+- `outputs/phase473/phase473_next_experiment_contract.csv`;
+- `outputs/phase473/phase473_gate_evaluation.csv`;
+- `outputs/phase473/phase473_interpret_phase472_costed_failure_report.md`;
+- `outputs/phase473/phase473_interpret_phase472_costed_failure_manifest.json`;
+- `scripts/run_phase473_interpret_phase472_costed_failure.py`;
+- `src/synthetic_l2/phase473_interpret_phase472_costed_failure.py`.
+
+Current next best action after Phase473:
+
+- precommit Phase474 with larger-horizon labels, fewer higher-confidence events, full L1-L5 source-event features, Zerodha cost200, and fixed-capital annualized return;
+- do not use same-horizon threshold-only tuning as a valid continuation.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

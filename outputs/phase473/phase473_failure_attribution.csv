@@ -1,0 +1,7 @@
+attribution_id,observed_value,comparison_value,verdict,description
+predictive_signal_passed,0.5455780003395009,0.53,passed,Phase471 primary holdout AUC cleared the predictive floor.
+gross_edge_positive_but_small,1173.4551999997784,9322.761101971788,cost_drag_larger_than_gross_edge,Best primary scenario had positive gross P&L but costs plus slippage were larger.
+best_primary_net_negative,-8149.30590197201,0.0,failed,Best primary net P&L was negative after cost200 and Zerodha charges.
+annualized_profitability_failed,-97.79167082366412,12.0,failed,Best primary fixed-capital annualized return was below the 12% research profitability bar.
+same_threshold_grid_not_rescuable,0.0,1.0,closed,No primary threshold in the tested grid produced positive net P&L.
+phase472_expansion_not_allowed,0.0,1.0,expansion_blocked,Phase472 did not allow direct expansion because profitability gates failed.

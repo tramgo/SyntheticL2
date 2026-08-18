@@ -1,0 +1,12 @@
+metric,value,description
+phase473_interpret_phase472_costed_failure_complete,1,Phase473 interpretation completed
+phase473_thesis_id,P473_INTERPRET_PHASE472_COSTED_FAILURE,Interpretation thesis
+phase473_same_phase472_threshold_retune_allowed,0,Same-grid threshold rescue is blocked
+phase473_larger_horizon_experiment_precommitted,1,Next experiment must target larger gross move
+phase473_strategy_promotion_allowed,0,No promotion
+phase473_paper_or_live_acceptance_allowed,0,No paper/live
+phase473_deployable_profitability_claim_allowed,0,No deployable claim
+phase473_phase474_allowed_next,1,Allows Phase474 precommit only if gates pass
+phase473_hard_gate_pass_rows,10,Passed hard gates
+phase473_hard_gate_rows,10,Hard gates
+phase473_next_best_action,precommit_phase474_larger_horizon_fewer_trade_source_event_l1_l5_experiment,Recommended next action

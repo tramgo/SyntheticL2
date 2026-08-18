@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P473_PHASE472_REPLAY_COMPLETE,True,1,1,hard
+P473_PHASE472_REJECTED_CONFIRMED,True,0,0,hard
+P473_COST_DRAG_ATTRIBUTED,True,cost_drag_larger_than_gross_edge,cost_drag_larger_than_gross_edge,hard
+P473_BEST_PRIMARY_NET_NEGATIVE_CONFIRMED,True,failed,failed,hard
+P473_12PCT_BAR_FAILED_CONFIRMED,True,failed,failed,hard
+P473_SAME_THRESHOLD_RETUNE_BLOCKED,True,0,0,hard
+P473_LARGER_HORIZON_NEXT_PRECOMMITTED,True,P474_LARGER_HORIZON_FEWER_TRADE_SOURCE_EVENT_L1_L5,larger_horizon,hard
+P473_FULL_DEPTH_REQUIRED_NEXT,True,full_depth_l1_l5_required,full_depth_l1_l5_required,hard
+P473_COST200_REQUIRED_NEXT,True,zerodha_cost200_required,zerodha_cost200_required,hard
+P473_NO_PAPER_LIVE_OR_CLAIM,True,paper=0;claim=0,all_zero,hard

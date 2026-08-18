@@ -1,0 +1,13 @@
+contract_id,contract_value,description
+selected_next_thesis,P474_LARGER_HORIZON_FEWER_TRADE_SOURCE_EVENT_L1_L5,Seek larger gross moves rather than denser threshold retuning.
+input_matrix_allowed,outputs/phase470/phase470_source_event_aware_feature_label_matrix.csv,Reuse repaired source-event-aware L1-L5 features.
+same_phase472_threshold_retune_allowed,0,Do not only move thresholds on the same 240-tick horizon replay.
+required_change_1,larger_forward_horizon,Increase horizon to target moves large enough to survive costs.
+required_change_2,fewer_higher_confidence_events,Reduce turnover by ranking confidence and trading fewer events.
+required_change_3,full_depth_l1_l5_required,Keep L1-L5 depth features central to the experiment.
+required_change_4,zerodha_cost200_required,Apply Zerodha order-formula charges and cost200 slippage.
+required_change_5,fixed_capital_annualization_required,"Annualize using fixed reusable capital, not unlimited notional."
+minimum_profitability_bar_pct,12.0,Research lead profitability floor requested by user.
+model_retraining_required,1,Horizon change requires new labels and a new train/holdout model evaluation.
+paper_or_live_acceptance_allowed,0,No paper/live without expanded synthetic and real-L2 holdout checks.
+deployable_profitability_claim_allowed,0,No deployable claim from this synthetic-only failure interpretation.
