@@ -19391,6 +19391,96 @@ Current next best action after Phase410:
 
 - Commit and push Phase410 before any results, then implement `run_phase411_full_depth_replenishment_breakout_execution_no_paper_live`.
 
+## 24.238 Phase411 Full-Depth Replenishment Breakout Execution Completed
+
+Phase411 executes the Phase410 frozen taker-only replenishment-breakout thesis on a bounded immediate raw dense shard. This is a strategy execution result, not just a plan artifact.
+
+Phase411 execution scope:
+
+- source: `raw_synthetic_l2_dense_full_year`;
+- synthetic symbols: `HDFCBANK`, `RELIANCE`, `INFY`, `SBIN`, `AXISBANK`;
+- synthetic months: `2026-01`, `2026-02`, `2026-03`, `2026-04`, `2026-05`;
+- maximum synthetic rows per file: `20,000`;
+- synthetic diagnostic groups: `84`;
+- synthetic candidate scan points: `3,360`;
+- real-anchor diagnostic groups: `4`;
+- real-anchor candidate scan points: `40`;
+- execution style: taker-only next-tick entry, taker stop/target/horizon exit;
+- full-depth requirement: L1-L5 book state with levels 2-5 replenishment and imbalance gates;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed initial capital: `1,000,000` INR;
+- fixed notional per trade: `100,000` INR.
+
+Phase411 scenarios:
+
+- `P411_PRIMARY_REPLENISHMENT_BREAKOUT`;
+- `P411_SIDE_FLIP_CONTROL`;
+- `P411_LEVELS_2_TO_5_REMOVED_CONTROL`;
+- `P411_SPREAD_GATE_REMOVED_CONTROL`.
+
+Phase411 primary result:
+
+- completed round trips: `0`;
+- trade dates: `0`;
+- symbols: `0`;
+- positive date fraction: `0.0`;
+- net P&L: `0.0` INR;
+- annualized return: `0.0%`;
+- cost200 acceptance survivors: `0`.
+
+Phase411 hard gates:
+
+- passed: `15 / 20`;
+- failed gates:
+  - `P411_EVENT_FLOOR`: observed `0`, required at least `30`;
+  - `P411_DATE_BREADTH`: observed `0`, required at least `5`;
+  - `P411_SYMBOL_BREADTH`: observed `0`, required at least `3`;
+  - `P411_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.6`;
+  - `P411_ANNUALIZED_FLOOR`: observed `0.0`, required at least `12.0`.
+
+Phase411 passed machinery gates:
+
+- execution complete;
+- Phase410 authorized execution;
+- tick-ordered replay;
+- stateful impulse → rebuild → breakout sequence;
+- taker-only execution;
+- full-depth L1-L5 input;
+- levels 2-5 materiality in the primary signal;
+- no lookahead;
+- cost200 fixed-capital scoring;
+- fixed Phase410 parameters;
+- side-flip control reported;
+- levels 2-5 removed control reported;
+- spread-gate removed control reported;
+- real-anchor sign cross-check;
+- closed promotion, paper/live and deployable-claim boundaries.
+
+Phase411 interpretation before formal Phase412:
+
+- The frozen replenishment-breakout form is too selective in the immediate bounded shard and produces no trades.
+- This is not a profitable candidate and cannot be promoted.
+- Because it has zero selected events, it should not be rescued by relaxing thresholds post hoc. If this branch continues, the next step must be a formal interpretation/closure or a new precommitted source construction, not same-family tuning.
+
+Phase411 outputs:
+
+- `scripts/run_phase411_full_depth_replenishment_breakout_execution.py`;
+- `src/synthetic_l2/phase411_full_depth_replenishment_breakout_execution.py`;
+- `outputs/phase411/phase411_acceptance_summary.csv`;
+- `outputs/phase411/phase411_synthetic_scenario_summary.csv`;
+- `outputs/phase411/phase411_synthetic_scan_diagnostics.csv`;
+- `outputs/phase411/phase411_synthetic_trade_ledger.csv`;
+- `outputs/phase411/phase411_real_anchor_scenario_summary.csv`;
+- `outputs/phase411/phase411_real_anchor_scan_diagnostics.csv`;
+- `outputs/phase411/phase411_real_anchor_trade_ledger.csv`;
+- `outputs/phase411/phase411_gate_evaluation.csv`;
+- `outputs/phase411/phase411_full_depth_replenishment_breakout_execution_report.md`;
+- `outputs/phase411/phase411_full_depth_replenishment_breakout_execution_manifest.json`.
+
+Current next best action after Phase411:
+
+- Implement `interpret_phase411_failure_no_same_family_tuning`. Do not relax Phase410 thresholds after seeing zero selected trades.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

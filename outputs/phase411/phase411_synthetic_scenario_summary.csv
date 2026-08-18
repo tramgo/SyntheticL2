@@ -1,0 +1,5 @@
+panel,scenario_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,net_pnl_inr,gross_pnl_inr,cost200_inr,annualized_return_pct,acceptance_survivor
+synthetic,P411_PRIMARY_REPLENISHMENT_BREAKOUT,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+synthetic,P411_SIDE_FLIP_CONTROL,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+synthetic,P411_LEVELS_2_TO_5_REMOVED_CONTROL,0,0,0,0.0,0.0,0.0,0.0,0.0,0
+synthetic,P411_SPREAD_GATE_REMOVED_CONTROL,0,0,0,0.0,0.0,0.0,0.0,0.0,0

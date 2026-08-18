@@ -1,0 +1,18 @@
+metric,value,description
+phase411_full_depth_replenishment_breakout_execution_complete,1,Phase411 execution completed
+phase411_primary_scenario_id,P411_PRIMARY_REPLENISHMENT_BREAKOUT,Primary frozen scenario
+phase411_synthetic_scenario_rows,4,Synthetic scenario rows
+phase411_real_anchor_scenario_rows,4,Real-anchor scenario rows
+phase411_primary_completed_round_trips,0,Primary round trips
+phase411_primary_trade_dates,0,Primary trade dates
+phase411_primary_symbols,0,Primary symbols
+phase411_primary_positive_date_fraction,0.0,Primary positive date fraction
+phase411_primary_net_pnl_inr,0.0,Primary net PnL
+phase411_primary_annualized_return_pct,0.0,Primary annualized return
+phase411_cost200_acceptance_survivor_rows,0,Accepted synthetic scenarios
+phase411_strategy_promotion_allowed,0,No promotion
+phase411_paper_or_live_acceptance_allowed,0,No paper/live
+phase411_deployable_profitability_claim_allowed,0,No deployable claim
+phase411_hard_gate_pass_rows,15,Passed hard gates
+phase411_hard_gate_rows,20,Hard gates
+phase411_next_best_action,interpret_phase411_failure_no_same_family_tuning,Recommended next action
