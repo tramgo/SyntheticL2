@@ -1,0 +1,15 @@
+gate_id,passed,observed_value,required_value,severity
+P435_PHASE434_PRECOMMIT_USED,True,run_phase435_supervised_full_depth_event_ranker_no_paper_live,phase434_next_action,hard
+P435_TRAIN_VALIDATION_SPLIT_PRESENT,True,1,>0 validation dates,hard
+P435_FULL_DEPTH_FEATURE_WEIGHTS_NONZERO,True,0.28455749938956276,>0,hard
+P435_L2_L5_MATERIALITY_OVER_L1,False,0.5977495474628256,>=5 pct pts,hard
+P435_SIDE_FLIP_CONTROL_NOT_DOMINANT,True,-173.7215042863939,primary>=side_flip,hard
+P435_TIME_SHUFFLE_CONTROL_NOT_DOMINANT,False,-64.47799535157071,primary>=time_shuffle,hard
+P435_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P435_EVENT_FLOOR,True,32,>=30,hard
+P435_DATE_BREADTH,False,1,>=5,hard
+P435_SYMBOL_BREADTH,False,4,>=5,hard
+P435_POSITIVE_DATE_FRACTION,False,0.0,>=0.6,hard
+P435_ANNUALIZED_FLOOR,False,-130.2218249756231,>=12.0,hard
+P435_REAL_ANCHOR_CROSS_CHECK,True,-224.91725577881968,same_sign,hard
+P435_BOUNDARIES_CLOSED,True,promotion=0;paper=0;claim=0,all_zero,hard

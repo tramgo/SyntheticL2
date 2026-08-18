@@ -1,0 +1,2 @@
+panel,scenario_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct
+real_anchor,P435_full_depth_ranker_real_anchor,88,2,7,0.0,-3353.0199999999604,14497.55585546192,-17850.57585546188,-224.91725577881968

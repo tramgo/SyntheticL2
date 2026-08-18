@@ -1,0 +1,5 @@
+panel,scenario_id,completed_round_trips,trade_dates,symbols,positive_date_fraction,gross_pnl_inr,cost200_inr,net_pnl_inr,annualized_return_pct
+synthetic_validation,P435_full_depth_ranker_validation,32,1,4,0.0,76.55999999993946,5244.09273712784,-5167.5327371279,-130.2218249756231
+synthetic_validation,P435_l1_only_ablation_validation,32,1,4,0.0,52.049999999886495,5243.3029572652,-5191.252957265314,-130.81957452308592
+synthetic_validation,P435_side_flip_control_validation,32,1,4,0.0,-1650.4500000001135,5243.260487555201,-6893.710487555314,-173.7215042863939
+synthetic_validation,P435_time_shuffle_control_validation,32,1,4,0.0,2684.5499999998865,5243.2006091892,-2558.6506091893134,-64.47799535157071

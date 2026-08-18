@@ -1,0 +1,21 @@
+metric,value,description
+phase435_supervised_full_depth_event_ranker_complete,1,Phase435 execution completed
+phase435_thesis_id,P435_SUPERVISED_FULL_DEPTH_EVENT_RANKER_EXECUTION,Execution thesis
+phase435_synthetic_event_rows,960,Synthetic event-label rows
+phase435_best_scenario_id,P435_full_depth_ranker_validation,Primary validation scenario
+phase435_best_completed_round_trips,32,Primary completed round trips
+phase435_best_trade_dates,1,Primary validation trade dates
+phase435_best_symbols,4,Primary validation symbols
+phase435_best_positive_date_fraction,0.0,Primary positive-date fraction
+phase435_best_gross_pnl_inr,76.55999999993946,Primary gross P&L
+phase435_best_cost200_inr,5244.09273712784,Primary cost200 charges
+phase435_best_net_pnl_inr,-5167.5327371279,Primary net P&L
+phase435_best_annualized_return_pct,-130.2218249756231,Primary annualized return
+phase435_real_anchor_round_trips,88,Real-anchor selected trades
+phase435_cost200_acceptance_survivor_rows,0,Accepted rows after all gates
+phase435_strategy_promotion_allowed,0,No promotion
+phase435_paper_or_live_acceptance_allowed,0,No paper/live
+phase435_deployable_profitability_claim_allowed,0,No deployable claim
+phase435_hard_gate_pass_rows,8,Passed hard gates
+phase435_hard_gate_rows,14,Hard gates
+phase435_next_best_action,interpret_phase435_supervised_full_depth_event_ranker_no_paper_live,Recommended next action

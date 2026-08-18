@@ -21146,6 +21146,103 @@ Current next best action after Phase434:
 
 - Run `run_phase435_supervised_full_depth_event_ranker_no_paper_live`.
 
+## 24.262 Phase435 Supervised Full-Depth Event Ranker Execution Completed
+
+Phase435 executes the Phase434 materially new source: a train-only supervised event ranker using L1-L5 book-state features and cost-aware forward labels.
+
+Phase435 execution scope:
+
+- synthetic event-label rows generated: `960`;
+- train/validation split: train dates precede validation dates;
+- validation selection policy: top `8` ranked events per symbol/date;
+- exact forward geometry: `3` forward ticks with at least `250.0` ms hold;
+- synthetic max-hold ticks: `2500`;
+- real-anchor max-hold ticks: `500`;
+- cost model: Zerodha equity intraday NSE `cost200`;
+- fixed capital: `1,000,000` INR;
+- order notional: `100,000` INR.
+
+Phase435 primary synthetic validation result:
+
+- scenario: `P435_full_depth_ranker_validation`;
+- completed round trips: `32`;
+- trade dates: `1`;
+- symbols: `4`;
+- positive date fraction: `0.0`;
+- gross P&L: approximately `76.56` INR;
+- cost200 charges: approximately `5,244.092737` INR;
+- net P&L: approximately `-5,167.532737` INR;
+- annualized return: approximately `-130.221825%`;
+- cost200 acceptance survivors: `0`.
+
+Phase435 controls:
+
+- L1-only ablation annualized return: approximately `-130.819575%`;
+- primary minus L1-only annualized edge: approximately `0.597750` percentage points, below the required `5.0` percentage points;
+- side-flip control annualized return: approximately `-173.729979%`, not dominant;
+- time-shuffle control annualized return: approximately `-64.477995%`, better than primary and therefore a failed control.
+
+Phase435 real-anchor cross-check:
+
+- real-anchor selected round trips: `88`;
+- real-anchor trade dates: `2`;
+- real-anchor symbols: `7`;
+- real-anchor gross P&L: approximately `-3,353.02` INR;
+- real-anchor cost200 charges: approximately `14,497.555855` INR;
+- real-anchor net P&L: approximately `-17,850.575855` INR;
+- real-anchor annualized return: approximately `-224.917256%`;
+- sign is consistent with the negative synthetic validation result.
+
+Phase435 hard gates:
+
+- passed: `8 / 14`;
+- passed:
+  - Phase434 precommit used;
+  - train/validation split present;
+  - full-depth feature weights nonzero;
+  - side-flip control not dominant;
+  - Zerodha cost200 fixed-capital scoring;
+  - event floor;
+  - real-anchor same-sign cross-check;
+  - closed promotion, paper/live and deployable-claim boundaries;
+- failed:
+  - `P435_L2_L5_MATERIALITY_OVER_L1`: observed approximately `0.597750`, required at least `5.0` percentage points;
+  - `P435_TIME_SHUFFLE_CONTROL_NOT_DOMINANT`: time shuffle annualized approximately `-64.477995`, better than primary;
+  - `P435_DATE_BREADTH`: observed `1`, required at least `5`;
+  - `P435_SYMBOL_BREADTH`: observed `4`, required at least `5`;
+  - `P435_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+  - `P435_ANNUALIZED_FLOOR`: observed approximately `-130.221825`, required at least `12.0`.
+
+Phase435 interpretation before formal Phase436:
+
+- The supervised non-threshold source produced enough validation trades to test costs, but it did not find a profitable cost200 edge.
+- The primary result was only slightly better than L1-only and worse than the time-shuffle control.
+- Costs again dominate the small gross edge.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase435 outputs:
+
+- `scripts/run_phase435_supervised_full_depth_event_ranker.py`;
+- `src/synthetic_l2/phase435_supervised_full_depth_event_ranker.py`;
+- `outputs/phase435/phase435_acceptance_summary.csv`;
+- `outputs/phase435/phase435_synthetic_event_label_sample.csv`;
+- `outputs/phase435/phase435_full_depth_ranker_weights.csv`;
+- `outputs/phase435/phase435_l1_only_ranker_weights.csv`;
+- `outputs/phase435/phase435_scenario_summary.csv`;
+- `outputs/phase435/phase435_primary_trade_ledger_sample.csv`;
+- `outputs/phase435/phase435_l1_control_trade_ledger_sample.csv`;
+- `outputs/phase435/phase435_side_flip_trade_ledger_sample.csv`;
+- `outputs/phase435/phase435_time_shuffle_trade_ledger_sample.csv`;
+- `outputs/phase435/phase435_real_anchor_summary.csv`;
+- `outputs/phase435/phase435_real_anchor_trade_ledger_sample.csv`;
+- `outputs/phase435/phase435_gate_evaluation.csv`;
+- `outputs/phase435/phase435_supervised_full_depth_event_ranker_report.md`;
+- `outputs/phase435/phase435_supervised_full_depth_event_ranker_manifest.json`.
+
+Current next best action after Phase435:
+
+- Implement `interpret_phase435_supervised_full_depth_event_ranker_no_paper_live`. Treat Phase435 as a negative execution result unless the formal interpretation finds a reporting error.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
