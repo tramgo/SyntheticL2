@@ -1,0 +1,33 @@
+charter_item,value,description
+charter_id,P407_CANCEL_LATENCY_MARKET_MAKER_REALISM,Phase407 cancel-latency retail two-sided quoting precommit.
+attachment_sha256,4dc4a03759bf58ec8e3d9058bebfe3610b42dbe81395acd5a0c270bb30cb24f3,Hash of the attached charter text.
+status,PRECOMMIT_NO_RESULTS_GENERATED,Commit before generating cancel-race results.
+scope,retail_two_sided_quoting_with_honest_per_tick_cancel_race,Reopens P263 only under material-new cancel-race machinery.
+p263_relationship,conservative_zero_cancel_closure_stands_until_this_test,This strengthens or supersedes P263; it does not erase it.
+p300_p302_relationship,directional_passive_aware_closure_stands,This does not reopen P302 directional microstructure closure.
+p403_relationship,material_new_full_depth_l2_thesis,"Per-tick cancel race is new machinery, not same-stack rescue."
+raw_dense_input,raw_synthetic_l2_dense_full_year_from_phase298,Per-tick top-five market-by-price lake.
+full_depth_requirement,levels_1_to_5_price_quantity_orders_with_levels_2_to_5_signal,No L1-only variants.
+real_anchor_requirement,at_least_3_verified_real_l2_anchor_days,Reserve at least one anchor for cross-check.
+latency_grid_hash,36a685cb9286bd75bf41384e61c3aacc57d9a63c0b5344d07cf056be416a98e3,Hash of precommitted latency grid.
+cancel_latency_ms_allowed,150;250;400;700;1000,No sub-100ms fantasy cancel latency.
+decide_latency_ms_allowed,10;20;50,Trigger-to-decide latency grid.
+move_threshold_spread_fraction_allowed,0.25;0.5;0.75,Cancel trigger threshold grid.
+jitter_seed,40720260817,Pinned deterministic jitter seed.
+two_sided_required,1,Bid and ask must be live simultaneously in the quote window.
+per_tick_loop_required,1,Forbidden to use P262 per-bar EV shortcut or P300 per-event fill draw.
+cancel_race_required,1,"Log cancel attempted, succeeded, and lost-race counts."
+no_rebate,1,No maker rebate assumed.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha cost model.
+cost_multiplier,2.0,Cost200 scoring.
+fixed_capital,1000000.0,Fixed capital denominator.
+fixed_notional_per_side,100000.0,Per-side notional at retail scale.
+acceptance_round_trips,30,Completed round-trip floor.
+acceptance_date_breadth,5,Minimum distinct dates.
+acceptance_symbol_breadth,3,Minimum distinct symbols.
+acceptance_positive_date_fraction,0.6,Minimum positive date fraction.
+acceptance_annualized_pct,12.0,Cost200 fixed-capital annualized floor.
+strategy_replay_allowed,0,Boundary remains closed.
+strategy_promotion_allowed,0,Boundary remains closed.
+paper_or_live_acceptance_allowed,0,Boundary remains closed.
+deployable_profitability_claim_allowed,0,Boundary remains closed.

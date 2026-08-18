@@ -1,0 +1,20 @@
+metric,value,description
+phase407_cancel_latency_market_maker_precommit_complete,1,Phase407 precommit completed
+phase407_charter_id,P407_CANCEL_LATENCY_MARKET_MAKER_REALISM,Charter id
+phase407_latency_grid_rows,45,Precommitted latency grid rows
+phase407_latency_grid_hash,36a685cb9286bd75bf41384e61c3aacc57d9a63c0b5344d07cf056be416a98e3,Latency grid hash
+phase407_jitter_seed,40720260817,Pinned jitter seed
+phase407_real_anchor_date_count,16,Local real anchor dates
+phase407_per_tick_cancel_race_required,1,Phase408 must implement per-tick loop
+phase407_sub100ms_latency_forbidden,1,No cancel latency below 100 ms
+phase407_maker_rebate_assumed,0,No maker rebate
+phase407_cost_multiplier,2.0,Cost200
+phase407_initial_capital_inr,1000000.0,Fixed capital
+phase407_fixed_notional_per_side_inr,100000.0,Per-side notional
+phase407_results_generated,0,Precommit only
+phase407_strategy_promotion_allowed,0,No promotion
+phase407_paper_or_live_acceptance_allowed,0,No paper/live
+phase407_deployable_profitability_claim_allowed,0,No deployable claim
+phase407_hard_gate_pass_rows,14,Passed hard gates
+phase407_hard_gate_rows,14,Hard gates
+phase407_next_best_action,run_phase408_per_tick_cancel_race_market_maker_no_paper_live,Recommended next action

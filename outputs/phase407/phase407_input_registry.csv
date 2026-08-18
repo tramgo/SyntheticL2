@@ -1,0 +1,13 @@
+input_id,value,description
+phase298_dense_root,raw_synthetic_l2_dense_full_year,Raw dense source root.
+phase298_raw_book_state_l1_l5_required,1,Full-depth source requirement.
+phase298_levels_2_to_5_required,1,Levels 2-5 materiality.
+phase298_l1_only_variant_rows,0,Must be zero.
+phase298_net_edge_live_mask_rows,0,Must be zero.
+phase298_schema_present_columns_min,30,Minimum present L1-L5 price/quantity/order columns in Phase298 schema audit.
+phase300_cost200_survivors,0,P300 closure context.
+phase302_do_not_continue_same_route,1,Directional route closure context.
+phase403_material_new_thesis_required,1,P403 requirement.
+real_anchor_dates,2026-07-08;2026-07-09;2026-07-10;2026-07-13;2026-07-14;2026-07-15;2026-07-16;2026-07-17;2026-07-20;2026-07-21;2026-07-22;2026-07-23;2026-07-24;2026-07-27;2026-08-03;2026-08-04,Verified local real L2 anchor dates.
+real_anchor_date_count,16,At least 3 required.
+execution_results_generated_now,0,Precommit only.

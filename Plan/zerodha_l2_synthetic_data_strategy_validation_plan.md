@@ -19078,6 +19078,69 @@ Current next best action after Phase406:
 
 - Either precommit another materially new full-depth L2 thesis, or pause strategy search and consolidate the repeated negative evidence into a decision report. Do not continue the same liquidity-vacuum continuation thresholds, same passive-aware rescue, or same frozen reversal route.
 
+## 24.234 Phase407 Cancel-Latency Market-Maker Realism Precommit Completed
+
+Phase407 records the attached `cancel_included.txt` charter before generating any cancel-race results. It reopens the retail two-sided quoting family only under material-new machinery: a per-tick cancel-race simulator with realistic retail cancel latency, no maker rebate, full top-five market-by-price depth, Zerodha cost200 scoring and closed paper/live boundaries.
+
+Phase407 reconciliation:
+
+- P263 remains a valid conservative zero-cancel closure until this stricter test is executed;
+- P300/P301/P302/P403 directional/passive-aware closures remain closed;
+- Phase407 does not reopen the P302 directional microstructure route;
+- Phase407 qualifies as material-new under Phase403 because it requires a per-tick loop, cancel branch, latency grid and jitter model rather than a P262 per-bar EV shortcut or P300 per-event fill draw.
+
+Phase407 pinned inputs:
+
+- raw dense input: `raw_synthetic_l2_dense_full_year` from Phase298;
+- Phase298 full-depth schema audit: `30 / 30` required L1-L5 price/quantity/order columns present;
+- L1-only variants: `0`;
+- net-edge live mask rows: `0`;
+- real anchor date count: `16`;
+- cost model: `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: `2.0`;
+- fixed initial capital: `1,000,000` INR;
+- fixed notional per side: `100,000` INR;
+- maker rebate assumed: `0`.
+
+Phase407 latency grid:
+
+- cancel latency ms: `150`, `250`, `400`, `700`, `1000`;
+- decide latency ms: `10`, `20`, `50`;
+- cancel move threshold as captured-spread fraction: `0.25`, `0.50`, `0.75`;
+- grid rows: `45`;
+- jitter seed: `40720260817`;
+- latency grid SHA-256: `36a685cb9286bd75bf41384e61c3aacc57d9a63c0b5344d07cf056be416a98e3`.
+
+Phase407 hard-gate contract:
+
+- all `18` market-maker hard gates from the attachment are precommitted, including per-tick loop, cancel-race logging, honest latency, no rebate, two-sided posting, full-depth levels 2-5 signal use, no lookahead, cost200 scoring, event/date/symbol breadth, positive date fraction, annualized floor, rank stability, latency monotonicity, real-anchor cross-check and closed boundaries.
+
+Phase407 result:
+
+- precommit complete: `1`;
+- results generated: `0`;
+- hard precommit gates passed: `14 / 14`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase407 outputs:
+
+- `scripts/run_phase407_cancel_latency_market_maker_precommit.py`;
+- `src/synthetic_l2/phase407_cancel_latency_market_maker_precommit.py`;
+- `outputs/phase407/phase407_acceptance_summary.csv`;
+- `outputs/phase407/phase407_cancel_latency_charter.csv`;
+- `outputs/phase407/phase407_latency_grid.csv`;
+- `outputs/phase407/phase407_input_registry.csv`;
+- `outputs/phase407/phase407_execution_hard_gate_contract.csv`;
+- `outputs/phase407/phase407_gate_evaluation.csv`;
+- `outputs/phase407/phase407_cancel_latency_market_maker_precommit_report.md`;
+- `outputs/phase407/phase407_cancel_latency_market_maker_precommit_manifest.json`.
+
+Current next best action after Phase407:
+
+- Commit and push Phase407 before any results, then implement `run_phase408_per_tick_cancel_race_market_maker_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
