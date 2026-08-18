@@ -23552,6 +23552,81 @@ Current next best action after Phase468:
 
 - Repair Phase468 feature materialization by widening or source-event-aligning past-only churn windows before any richer model precommit.
 
+## 24.296 Phase469 Source-Event-Aware Feature Repair Precommit Completed
+
+Phase469 freezes a repair for Phase468's constant dense-subtick feature issue. It does not materialize the repaired matrix, fit a model, replay a strategy or emit P&L.
+
+Phase469 thesis ID:
+
+- `P469_SOURCE_EVENT_AWARE_FEATURE_REPAIR_PRECOMMIT`.
+
+Phase469 decision basis:
+
+- Phase468 matrix rows: `1,792`;
+- Phase468 move-candidate rows: `935`;
+- Phase468 failed gate: `P468_FEATURE_VARIATION_PRESENT`;
+- Phase468 model precommit allowance: `0`;
+- constant Phase468 features: `recent_mid_return_bps`, `ofi_l1_lookback`, `ofi_l25_lookback`, `l25_replenishment_events`, `l25_withdrawal_events`, `spread_change_lookback_bps`.
+
+Phase469 repair:
+
+- same 20 dense-tick churn reuse allowed: `0`;
+- replace constant churn/change features with distinct `source_annual_event_id` lookback features;
+- source-event lookbacks pinned: `1`, `3`, `5`;
+- repaired feature count: `25`;
+- repaired L2-L5 feature count: `10`;
+- Phase470 varying-feature floor raised to `18`.
+
+Phase469 source-event-aware replacement features:
+
+- `source_event_mid_return_1`;
+- `source_event_mid_return_3`;
+- `source_event_mid_return_5`;
+- `source_event_l1_ofi_1`;
+- `source_event_l1_ofi_3`;
+- `source_event_l25_ofi_1`;
+- `source_event_l25_ofi_3`;
+- `source_event_l25_replenishment_count_5`;
+- `source_event_l25_withdrawal_count_5`;
+- `source_event_spread_change_3_bps`;
+- `source_event_spread_vol_5_bps`.
+
+Phase469 hard gates:
+
+- passed: `13 / 13`;
+- Phase468 complete: pass;
+- Phase468 variation failure confirmed: pass;
+- Phase469 model precommit blocked by Phase468: pass;
+- constant features replaced: pass;
+- source-event repair features added: `11 / 11`;
+- repaired feature count at least `25`: pass;
+- repaired L2-L5 feature count at least `10`: pass;
+- source-event lookbacks pinned: pass.
+
+Phase469 boundary:
+
+- model fit generated: `0`;
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase470 repaired matrix materialization allowed next: `1`.
+
+Phase469 outputs:
+
+- `scripts/run_phase469_source_event_aware_feature_repair_precommit.py`;
+- `src/synthetic_l2/phase469_source_event_aware_feature_repair_precommit.py`;
+- `outputs/phase469/phase469_acceptance_summary.csv`;
+- `outputs/phase469/phase469_decision_ledger.csv`;
+- `outputs/phase469/phase469_gate_evaluation.csv`;
+- `outputs/phase469/phase469_repaired_feature_contract.csv`;
+- `outputs/phase469/phase469_source_event_aware_feature_repair_precommit_report.md`;
+- `outputs/phase469/phase469_source_event_aware_feature_repair_precommit_manifest.json`.
+
+Current next best action after Phase469:
+
+- Run `run_phase470_materialize_source_event_aware_l1_l5_feature_matrix_no_model_no_pnl`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

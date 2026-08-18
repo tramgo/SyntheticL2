@@ -1,0 +1,11 @@
+decision_id,decision_value,description
+selected_verdict,P469_REPAIR_CONSTANT_DENSE_SUBTICK_FEATURES,Phase468 matrix exists but the variation gate failed.
+phase468_matrix_rows,1792,Phase468 matrix rows.
+phase468_move_candidate_rows,935,Phase468 move candidates.
+phase468_failed_gate_ids,P468_FEATURE_VARIATION_PRESENT,Failed Phase468 gates.
+constant_feature_names,recent_mid_return_bps;ofi_l1_lookback;ofi_l25_lookback;l25_replenishment_events;l25_withdrawal_events;spread_change_lookback_bps,Features with one unique value.
+source_event_lookbacks,1;3;5,Distinct source-event lookbacks selected.
+same_20_dense_tick_churn_reuse_allowed,0,Do not reuse the constant dense-subtick churn features.
+model_fit_allowed,0,No model fit in Phase469/470.
+strategy_pnl_allowed,0,No strategy P&L.
+paper_or_live_acceptance_allowed,0,No paper/live.

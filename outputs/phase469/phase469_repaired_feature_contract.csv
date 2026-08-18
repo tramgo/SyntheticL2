@@ -1,0 +1,26 @@
+feature_name,feature_family,timestamp_rule,description,uses_l2_l5_depth,allowed_as_model_input
+spread_bps,base,computed only from rows <= entry row inside each candidate window,entry best ask minus best bid in bps,0,1
+l1_imbalance,base,computed only from rows <= entry row inside each candidate window,entry level-1 quantity imbalance,0,1
+l25_imbalance,base,computed only from rows <= entry row inside each candidate window,entry levels 2-5 quantity imbalance,1,1
+volume_delta_lookback,base,computed only from rows <= entry row inside each candidate window,entry volume minus lookback-start volume,0,1
+l1_l5_bid_depth_slope,depth_curve_shape,computed only from rows <= entry row inside each candidate window,entry bid quantity slope over levels 1-5,1,1
+l1_l5_ask_depth_slope,depth_curve_shape,computed only from rows <= entry row inside each candidate window,entry ask quantity slope over levels 1-5,1,1
+l1_l5_depth_concentration,depth_curve_shape,computed only from rows <= entry row inside each candidate window,entry L1 depth share of total L1-L5 depth,1,1
+l25_order_imbalance,depth_curve_shape,computed only from rows <= entry row inside each candidate window,entry levels 2-5 order-count imbalance,1,1
+microprice_l1_minus_mid_bps,microprice_pressure,computed only from rows <= entry row inside each candidate window,L1 microprice displacement from mid at entry,0,1
+microprice_l25_minus_mid_bps,microprice_pressure,computed only from rows <= entry row inside each candidate window,levels 2-5 microprice displacement from mid at entry,1,1
+spread_mean_lookback_bps,spread_regime_context,computed only from rows <= entry row inside each candidate window,mean spread over past-only lookback,0,1
+trade_qty_sum_lookback,volume_acceleration,computed only from rows <= entry row inside each candidate window,sum last_traded_quantity over lookback,0,1
+trade_qty_accel_lookback,volume_acceleration,computed only from rows <= entry row inside each candidate window,second-half minus first-half traded quantity over lookback,0,1
+minute_of_day,time_of_day_context,computed only from rows <= entry row inside each candidate window,known exchange timestamp minute bucket,0,1
+source_event_mid_return_1,source_event_price,computed from distinct source_annual_event_id rows at or before entry only,mid return versus previous distinct source event,0,1
+source_event_mid_return_3,source_event_price,computed from distinct source_annual_event_id rows at or before entry only,mid return versus three source events back,0,1
+source_event_mid_return_5,source_event_price,computed from distinct source_annual_event_id rows at or before entry only,mid return versus five source events back,0,1
+source_event_l1_ofi_1,source_event_ofi,computed from distinct source_annual_event_id rows at or before entry only,signed L1 depth change versus previous source event,0,1
+source_event_l1_ofi_3,source_event_ofi,computed from distinct source_annual_event_id rows at or before entry only,signed L1 depth change versus three source events back,0,1
+source_event_l25_ofi_1,source_event_ofi,computed from distinct source_annual_event_id rows at or before entry only,signed L2-L5 depth change versus previous source event,1,1
+source_event_l25_ofi_3,source_event_ofi,computed from distinct source_annual_event_id rows at or before entry only,signed L2-L5 depth change versus three source events back,1,1
+source_event_l25_replenishment_count_5,source_event_churn,computed from distinct source_annual_event_id rows at or before entry only,positive L2-L5 depth-change count across last five source events,1,1
+source_event_l25_withdrawal_count_5,source_event_churn,computed from distinct source_annual_event_id rows at or before entry only,negative L2-L5 depth-change count across last five source events,1,1
+source_event_spread_change_3_bps,source_event_spread,computed from distinct source_annual_event_id rows at or before entry only,spread change versus three source events back,0,1
+source_event_spread_vol_5_bps,source_event_spread,computed from distinct source_annual_event_id rows at or before entry only,spread volatility across last five source events,0,1
