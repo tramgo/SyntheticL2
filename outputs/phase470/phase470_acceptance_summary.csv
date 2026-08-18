@@ -1,0 +1,20 @@
+metric,value,description
+phase470_source_event_aware_l1_l5_feature_matrix_complete,1,Phase470 matrix materialization completed
+phase470_thesis_id,P470_MATERIALIZE_SOURCE_EVENT_AWARE_L1_L5_FEATURE_MATRIX,Matrix thesis
+phase470_phase469_thesis_id,P469_SOURCE_EVENT_AWARE_FEATURE_REPAIR_PRECOMMIT,Precommit source
+phase470_matrix_rows,1792.0,Matrix rows
+phase470_feature_count,25.0,Feature count
+phase470_l2_l5_feature_count,10.0,L2-L5 feature count
+phase470_move_candidate_rows,935.0,Move candidates
+phase470_train_rows,1176.0,Train rows
+phase470_holdout_rows,616.0,Holdout rows
+phase470_min_source_event_history_rows,1.0,Minimum distinct source-event history rows
+phase470_model_fit_generated,0,No model fit
+phase470_strategy_pnl_generated,0,No strategy P&L
+phase470_strategy_promotion_allowed,0,No promotion
+phase470_paper_or_live_acceptance_allowed,0,No paper/live
+phase470_deployable_profitability_claim_allowed,0,No deployable claim
+phase470_phase471_allowed_next,1,Allows model precommit only if all gates pass
+phase470_hard_gate_pass_rows,14,Passed hard gates
+phase470_hard_gate_rows,14,Hard gates
+phase470_next_best_action,precommit_phase471_train_holdout_source_event_aware_l1_l5_model_no_replay,Recommended next action

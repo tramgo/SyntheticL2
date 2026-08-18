@@ -23627,6 +23627,85 @@ Current next best action after Phase469:
 
 - Run `run_phase470_materialize_source_event_aware_l1_l5_feature_matrix_no_model_no_pnl`.
 
+## 24.297 Phase470 Source-Event-Aware L1-L5 Feature Matrix Materialization Completed
+
+Phase470 materialized the Phase469 repaired feature contract using distinct `source_annual_event_id` history at or before the entry tick. This phase was matrix-only: it did not fit a model, replay a strategy, emit P&L, promote a thesis, or claim paper/live readiness.
+
+Phase470 thesis ID:
+
+- `P470_MATERIALIZE_SOURCE_EVENT_AWARE_L1_L5_FEATURE_MATRIX`
+
+Phase470 matrix source:
+
+- selected Phase467 distributional full-year partitions: 21 files;
+- files present: 21;
+- candidate starts: `0;5000;10000;20000;50000`;
+- entry index: 20;
+- horizon ticks: 240;
+- source-event prehistory rows carried per candidate window: 512;
+- source-event lookbacks used: `1;3;5`;
+- source-event rule: use distinct `source_annual_event_id` rows at or before entry only.
+
+Phase470 materialized results:
+
+- matrix rows: 1,792;
+- move-candidate rows: 935;
+- trade dates: 64;
+- symbols: 7;
+- train rows: 1,176;
+- holdout rows: 616;
+- train move candidates: 626;
+- holdout move candidates: 309;
+- long rows: 943;
+- short rows: 838;
+- median distinct source-event history rows at entry: 9.
+
+Phase470 repaired feature result:
+
+- feature count: 25;
+- L2-L5 feature count: 10;
+- finite feature rows: 1,792 for every feature;
+- varying feature count: 25, above the Phase469 raised floor of 18;
+- varying L2-L5 feature count: 10, above the floor of 8.
+
+This directly repairs the Phase468 failure, where only 14 features varied against a required floor of 15. The repaired source-event features vary because they are computed from distinct source events rather than repeated dense-subtick rows.
+
+Phase470 hard gates:
+
+- gates passed: 14 / 14;
+- Phase469 precommit used: pass;
+- matrix rows present: pass;
+- 25-feature contract matched: pass;
+- 10 L2-L5 feature contract matched: pass;
+- all features finite: pass;
+- feature variation present: pass, observed 25 vs required at least 18;
+- L2-L5 feature variation present: pass, observed 10 vs required at least 8;
+- move candidates present: pass;
+- train and holdout present: pass;
+- both long and short directions present: pass;
+- source-event history present: pass;
+- no model fit: pass;
+- no strategy P&L: pass;
+- no paper/live/profitability claim: pass.
+
+Phase470 outputs:
+
+- `outputs/phase470/phase470_source_event_aware_feature_label_matrix.csv`;
+- `outputs/phase470/phase470_matrix_summary.csv`;
+- `outputs/phase470/phase470_feature_quality.csv`;
+- `outputs/phase470/phase470_gate_evaluation.csv`;
+- `outputs/phase470/phase470_acceptance_summary.csv`;
+- `outputs/phase470/phase470_materialize_source_event_aware_l1_l5_feature_matrix_report.md`;
+- `outputs/phase470/phase470_materialize_source_event_aware_l1_l5_feature_matrix_manifest.json`;
+- `scripts/run_phase470_materialize_source_event_aware_l1_l5_feature_matrix.py`;
+- `src/synthetic_l2/phase470_materialize_source_event_aware_l1_l5_feature_matrix.py`.
+
+Current next best action after Phase470:
+
+- precommit Phase471 train/holdout model evaluation on the Phase470 source-event-aware matrix;
+- keep strategy replay and P&L closed until a Phase471 model gate passes out of sample;
+- require a shuffled-label/control comparison before any replayable thesis is allowed.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
