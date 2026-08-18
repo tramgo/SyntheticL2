@@ -23471,6 +23471,87 @@ Current next best action after Phase467:
 
 - Run `run_phase468_materialize_richer_past_only_l1_l5_feature_matrix_no_model_no_pnl`.
 
+## 24.295 Phase468 Richer Past-Only L1-L5 Feature Matrix Materialization Completed
+
+Phase468 materializes the Phase467 frozen richer past-only L1-L5 feature matrix. It does not fit a model, run a strategy replay or emit P&L.
+
+Phase468 thesis ID:
+
+- `P468_MATERIALIZE_RICHER_PAST_ONLY_L1_L5_FEATURE_MATRIX`.
+
+Phase468 input:
+
+- Phase467 precommit used: `1`;
+- selected files: `21`;
+- files present: `21`;
+- feature contract count: `20`;
+- L2-L5 feature count: `9`.
+
+Phase468 materialization result:
+
+- matrix rows: `1,792`;
+- move-candidate rows: `935`;
+- trade dates: `64`;
+- symbols: `7`;
+- train rows: `1,176`;
+- holdout rows: `616`;
+- train move-candidate rows: `626`;
+- holdout move-candidate rows: `309`;
+- long rows: `943`;
+- short rows: `838`.
+
+Phase468 feature quality:
+
+- all `20` feature columns are present;
+- all `20` feature columns are finite for all `1,792` rows;
+- features with more than one unique value: `14`;
+- required varying-feature floor: `15`.
+
+Phase468 constant-feature finding:
+
+- `recent_mid_return_bps` had `1` unique value;
+- `ofi_l1_lookback` had `1` unique value;
+- `ofi_l25_lookback` had `1` unique value;
+- `l25_replenishment_events` had `1` unique value;
+- `l25_withdrawal_events` had `1` unique value;
+- `spread_change_lookback_bps` had `1` unique value.
+
+Phase468 interpretation:
+
+- The richer matrix was successfully materialized with full L1-L5 schema and usable labels.
+- The matrix is not ready for a new model precommit because the frozen 20-tick dense subtick lookback is too narrow for several churn/change features.
+- The failure is a feature-window/materialization-quality issue, not a strategy P&L result.
+- The next repair should replace or recompute constant churn features with a wider or source-event-aware past-only window before model fitting.
+
+Phase468 hard gates:
+
+- passed: `11 / 12`;
+- failed: `P468_FEATURE_VARIATION_PRESENT`;
+- observed varying features: `14`;
+- required varying features: `>=15`;
+- model fit generated: `0`;
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase469 model precommit allowed next: `0`.
+
+Phase468 outputs:
+
+- `scripts/run_phase468_materialize_richer_past_only_l2_feature_matrix.py`;
+- `src/synthetic_l2/phase468_materialize_richer_past_only_l2_feature_matrix.py`;
+- `outputs/phase468/phase468_acceptance_summary.csv`;
+- `outputs/phase468/phase468_feature_quality.csv`;
+- `outputs/phase468/phase468_gate_evaluation.csv`;
+- `outputs/phase468/phase468_matrix_summary.csv`;
+- `outputs/phase468/phase468_richer_feature_label_matrix.csv`;
+- `outputs/phase468/phase468_materialize_richer_past_only_l1_l5_feature_matrix_report.md`;
+- `outputs/phase468/phase468_materialize_richer_past_only_l1_l5_feature_matrix_manifest.json`.
+
+Current next best action after Phase468:
+
+- Repair Phase468 feature materialization by widening or source-event-aligning past-only churn windows before any richer model precommit.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

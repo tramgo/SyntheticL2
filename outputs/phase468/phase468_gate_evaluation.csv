@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P468_PHASE467_PRECOMMIT_USED,True,1,1,hard
+P468_MATRIX_ROWS_PRESENT,True,1792,>0,hard
+P468_FEATURE_COUNT_MATCHES_CONTRACT,True,20,20,hard
+P468_L2_L5_FEATURE_COUNT_MATCHES_CONTRACT,True,9,9,hard
+P468_ALL_FEATURES_FINITE,True,1792,1792,hard
+P468_FEATURE_VARIATION_PRESENT,False,14,>=15,hard
+P468_MOVE_CANDIDATES_PRESENT,True,935,>0,hard
+P468_TRAIN_AND_HOLDOUT_PRESENT,True,train=1176;holdout=616,both>0,hard
+P468_BOTH_DIRECTIONS_PRESENT,True,long=943;short=838,both>0,hard
+P468_NO_MODEL_FIT,True,matrix_only,no_model_fit,hard
+P468_NO_STRATEGY_PNL,True,matrix_only,no_pnl,hard
+P468_NO_PAPER_LIVE_OR_CLAIM,True,promotion=0;paper=0;claim=0,all_zero,hard

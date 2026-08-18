@@ -1,0 +1,15 @@
+metric,value
+selected_files,21
+files_present,21
+matrix_rows,1792
+feature_count,20
+l2_l5_feature_count,9
+move_candidate_rows,935
+trade_dates,64
+symbols,7
+train_rows,1176
+holdout_rows,616
+train_move_candidate_rows,626
+holdout_move_candidate_rows,309
+long_rows,943
+short_rows,838

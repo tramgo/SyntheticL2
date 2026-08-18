@@ -1,0 +1,18 @@
+metric,value,description
+phase468_richer_past_only_l1_l5_feature_matrix_complete,1,Phase468 matrix materialization completed
+phase468_thesis_id,P468_MATERIALIZE_RICHER_PAST_ONLY_L1_L5_FEATURE_MATRIX,Matrix thesis
+phase468_matrix_rows,1792,Matrix rows
+phase468_feature_count,20,Feature count
+phase468_l2_l5_feature_count,9,L2-L5 feature count
+phase468_move_candidate_rows,935,Move candidates
+phase468_train_rows,1176,Train rows
+phase468_holdout_rows,616,Holdout rows
+phase468_model_fit_generated,0,No model fit
+phase468_strategy_pnl_generated,0,No strategy P&L
+phase468_strategy_promotion_allowed,0,No promotion
+phase468_paper_or_live_acceptance_allowed,0,No paper/live
+phase468_deployable_profitability_claim_allowed,0,No deployable claim
+phase468_phase469_allowed_next,0,Allows model precommit only if all gates pass
+phase468_hard_gate_pass_rows,11,Passed hard gates
+phase468_hard_gate_rows,12,Hard gates
+phase468_next_best_action,repair_phase468_richer_matrix_materialization_before_model_precommit,Recommended next action
