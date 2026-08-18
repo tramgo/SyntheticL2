@@ -21044,6 +21044,54 @@ Current next best action after Phase432:
 
 - Implement `interpret_phase432_geometry_consistent_full_depth_feature_sweep_no_paper_live`. The interpretation should treat Phase432 as a real negative result after timing-geometry repair, not as another timing blockage.
 
+## 24.260 Phase433 Geometry-Consistent Sweep Interpretation Completed
+
+Phase433 formally interprets Phase432 as a real negative result after timing-geometry repair.
+
+Phase433 selected verdict:
+
+- `P433_GEOMETRY_CONSISTENT_FULL_DEPTH_SWEEP_REJECTED_NEGATIVE_SPARSE`.
+
+Phase433 decision:
+
+- Phase432 repaired the prior timing-geometry blockage;
+- Phase432 evaluated `486` synthetic and `486` real-anchor panel-specific grid rows;
+- Phase432 produced `27` active synthetic scenarios and `270` selected synthetic trades across the grid;
+- the best active synthetic scenario remained sparse and negative after Zerodha `cost200`;
+- real-anchor matching rows produced no active trades;
+- no same-threshold family tuning, strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase433 acceptance summary:
+
+- Phase432 best active completed round trips: `10`;
+- Phase432 best active annualized return: approximately `-20.21273903621011%`;
+- Phase432 active synthetic scenario rows: `27`;
+- Phase433 hard gates passed: `8 / 8`;
+- same-threshold family tuning allowed: `0`.
+
+Phase433 failed-evidence basis inherited from Phase432:
+
+- `P432_L1_ONLY_CONTROL`: primary edge over L1-only was `0.0` percentage points;
+- `P432_EVENT_FLOOR`: observed `10`, required at least `30`;
+- `P432_DATE_BREADTH`: observed `2`, required at least `5`;
+- `P432_SYMBOL_BREADTH`: observed `1`, required at least `5`;
+- `P432_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+- `P432_ANNUALIZED_FLOOR`: observed approximately `-20.21273903621011`, required at least `12.0`.
+
+Phase433 outputs:
+
+- `scripts/run_phase433_geometry_consistent_sweep_interpretation.py`;
+- `src/synthetic_l2/phase433_geometry_consistent_sweep_interpretation.py`;
+- `outputs/phase433/phase433_acceptance_summary.csv`;
+- `outputs/phase433/phase433_decision_ledger.csv`;
+- `outputs/phase433/phase433_gate_evaluation.csv`;
+- `outputs/phase433/phase433_geometry_consistent_sweep_interpretation_report.md`;
+- `outputs/phase433/phase433_geometry_consistent_sweep_interpretation_manifest.json`.
+
+Current next best action after Phase433:
+
+- Pause for a strategy decision report, or precommit a materially new non-threshold source. Do not tune the same Phase427/431 threshold-family sweep after seeing this negative sparse result.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
