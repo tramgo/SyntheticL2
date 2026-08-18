@@ -1,0 +1,10 @@
+input_id,value,description
+phase420_complete,1,Phase420 audit complete.
+phase420_positive_lead_preserved,1,Lead still alive.
+phase420_acceptance_allowed,0,Must be zero before repair.
+phase420_full_depth_contribution_pass,0.0,Must be zero blocker.
+phase420_timing_realism_pass,0.0,Must be zero blocker.
+phase420_same_timestamp_share,0.4232804232804232,Timing blocker magnitude.
+phase420_real_anchor_pair_available_count,4,Real-anchor pair availability.
+phase420_min_overlap_dates_per_pair,16,Minimum overlap dates across frozen pairs.
+execution_results_generated_now,0,Precommit only.

@@ -1,0 +1,13 @@
+gate_id,requirement,severity,phase421_precommitted
+P422_PHASE421_PRECOMMIT_USED,Execution must read Phase421 frozen contract.,hard,1
+P422_FORWARD_TIME_ENFORCED,Exit must be at least 250.0 ms after entry.,hard,1
+P422_FORWARD_TICKS_ENFORCED,Exit must be at least 3 aligned ticks after entry.,hard,1
+P422_FULL_DEPTH_UNIQUE_GATE,Primary must beat L2-L5 removed control by required margin.,hard,1
+P422_REAL_ANCHOR_PAIR_PANEL_USED,Use local real-anchor pair dates if available.,hard,1
+P422_PAIR_MARKET_NEUTRAL,Equal notional long/short pair exposure.,hard,1
+P422_TAKER_ONLY,No passive fill and no maker rebate.,hard,1
+P422_NO_LOOKAHEAD,Rolling features before entry only.,hard,1
+P422_COST200_FIXED_CAPITAL,Zerodha cost200 with fixed capital.,hard,1
+P422_BREADTH_AND_RETURN_GATES,Event/date/pair/positive-date/annualized gates must pass.,hard,1
+P422_COST_RANK_RECORDED,Cost100 and cost200 rank must be recorded.,hard,1
+P422_BOUNDARIES_CLOSED,"No promotion, paper/live or deployable claim in execution phase.",hard,1

@@ -1,0 +1,16 @@
+contract_id,contract_value,description
+thesis_id,P421_PAIR_SPREAD_REALISM_RETEST_FULL_DEPTH_UNIQUE_GATE,Realism repair precommit for the Phase418 positive pair lead.
+relationship_to_phase418,same_pair_family_allowed_only_as_precommitted_repair_not_promotion,"This is a repair retest, not a new acceptance claim."
+phase420_blockers_addressed,full_depth_contribution;timing_realism;real_anchor_pair_panel;cost_rank,All Phase420 required repairs are in scope.
+pair_catalog,HDFCBANK/ICICIBANK;HDFCBANK/AXISBANK;INFY/TCS;RELIANCE/ONGC,Same frozen Phase417 pairs.
+entry_signal,same_pair_spread_zscore_form_as_phase417,Signal form unchanged to isolate repairs.
+minimum_forward_time,hold_ms>=250.0,Blocks same-timestamp exits.
+minimum_forward_ticks,ticks_after_entry>=3,Requires actual forward ticks after entry.
+full_depth_unique_gate,primary_annualized_minus_l2_removed>=5.0,Levels 2-5 must add value versus removal.
+real_anchor_requirement,real_anchor_pair_dates>=5,Use existing local real pair coverage.
+execution_profile,taker_entry_both_legs_taker_exit_both_legs_cost200,"No passive fill, no maker rebate."
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+cost_multiplier,2.0,Cost200 acceptance scoring.
+capital,initial=1000000.0;leg_notional=50000.0,Fixed capital denominator.
+acceptance,round_trips>=30;dates>=5;pairs>=2;positive_date_fraction>=0.6;annualized>=12.0,Same profitability acceptance discipline.
+forbidden,promotion_before_phase422;paper_live;deployable_claim;dropping_l2_l5_gate;dropping_forward_time_rule,Closed boundaries.

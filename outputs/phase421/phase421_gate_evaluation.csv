@@ -1,0 +1,13 @@
+gate_id,passed,observed_value,required_value,severity
+P421_PHASE420_COMPLETE,True,1,1,hard
+P421_POSITIVE_LEAD_PRESERVED,True,1,1,hard
+P421_ACCEPTANCE_STILL_BLOCKED,True,0,0,hard
+P421_FULL_DEPTH_BLOCKER_ACKNOWLEDGED,True,0.0,0,hard
+P421_TIMING_BLOCKER_ACKNOWLEDGED,True,0.0,0,hard
+P421_REAL_ANCHOR_PANEL_AVAILABLE,True,16,>=5,hard
+P421_FORWARD_TIME_RULE_FROZEN,True,ms=250.0;ticks=3,positive,hard
+P421_FULL_DEPTH_UNIQUE_GATE_FROZEN,True,5.0,>0,hard
+P421_FIXED_PARAMETERS_FROZEN,True,11,>=11,hard
+P421_EXECUTION_HARD_GATES_PRECOMMITTED,True,12,12,hard
+P421_RESULTS_NOT_GENERATED,True,0,0,hard
+P421_FORBIDDEN_BOUNDARIES_CLOSED,True,promotion_before_phase422;paper_live;deployable_claim;dropping_l2_l5_gate;dropping_forward_time_rule,closed_routes_listed,hard

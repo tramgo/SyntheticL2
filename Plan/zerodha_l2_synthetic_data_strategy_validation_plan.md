@@ -20110,6 +20110,83 @@ Current next best action after Phase420:
 
 - Precommit Phase421 pair-spread realism retest with a minimum forward-time rule and a full-depth unique gate, using existing local real-anchor pair coverage.
 
+## 24.248 Phase421 Pair-Spread Realism Retest Precommit Completed
+
+Phase421 precommits the repair retest required by Phase420 before any new pair-spread execution. It keeps the positive Phase418 synthetic lead alive, but freezes stricter realism and full-depth contribution requirements.
+
+Phase421 thesis:
+
+- thesis id: `P421_PAIR_SPREAD_REALISM_RETEST_FULL_DEPTH_UNIQUE_GATE`;
+- relationship to Phase418: same pair family allowed only as precommitted repair, not promotion;
+- blockers addressed: full-depth contribution, timing realism, real-anchor pair panel and cost-rank audit;
+- pair catalog: same frozen Phase417 pairs;
+- execution profile: taker entry and taker exit on both legs;
+- no passive fill;
+- no maker rebate;
+- no paper/live acceptance.
+
+Phase421 new repair rules:
+
+- minimum forward hold: `250.0` ms;
+- minimum forward ticks after entry: `3`;
+- minimum primary edge versus levels 2-5 removed control: `5.0` percentage points;
+- real-anchor pair-date requirement: at least `5` overlapping dates;
+- alignment tolerance: `1,000` ms;
+- maximum rows per symbol-month: `25,000`;
+- parameter freeze SHA-256: `8930d855e637875b84b73b1412ffa72c3bbb571b712ff17680c92ebb51fe4f57`.
+
+Phase421 input evidence from Phase420:
+
+- positive lead preserved: `1`;
+- acceptance still blocked: `1`;
+- full-depth contribution pass: `0`;
+- timing realism pass: `0`;
+- same-timestamp share: approximately `0.42328042328042326`;
+- minimum real-anchor overlap dates per frozen pair: `16`.
+
+Phase421 precommitted Phase422 hard gates:
+
+- Phase421 precommit used;
+- forward time enforced;
+- forward ticks enforced;
+- full-depth unique gate enforced;
+- real-anchor pair panel used;
+- market-neutral pair exposure;
+- taker-only execution;
+- no lookahead;
+- Zerodha cost200 fixed-capital scoring;
+- breadth and return gates;
+- cost100/cost200 rank recorded;
+- closed promotion, paper/live and deployable-claim boundaries.
+
+Phase421 result:
+
+- precommit complete: `1`;
+- contract rows: `15`;
+- parameter freeze rows: `11`;
+- hard gates passed: `12 / 12`;
+- execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase421 outputs:
+
+- `scripts/run_phase421_pair_spread_realism_retest_precommit.py`;
+- `src/synthetic_l2/phase421_pair_spread_realism_retest_precommit.py`;
+- `outputs/phase421/phase421_acceptance_summary.csv`;
+- `outputs/phase421/phase421_frozen_contract.csv`;
+- `outputs/phase421/phase421_parameter_freeze.csv`;
+- `outputs/phase421/phase421_input_registry.csv`;
+- `outputs/phase421/phase421_execution_hard_gate_contract.csv`;
+- `outputs/phase421/phase421_gate_evaluation.csv`;
+- `outputs/phase421/phase421_pair_spread_realism_retest_precommit_report.md`;
+- `outputs/phase421/phase421_pair_spread_realism_retest_precommit_manifest.json`.
+
+Current next best action after Phase421:
+
+- Commit and push Phase421 before any results, then run `run_phase422_pair_spread_realism_retest_execution_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
