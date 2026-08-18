@@ -1,0 +1,20 @@
+contract_id,contract_value,description
+thesis_id,P454_CONTIGUOUS_TICK_WINDOW_CROSS_ASSET_ETF_PRESSURE_PRECOMMIT,Phase454 repaired access precommit.
+repair_type,contiguous_raw_tick_window_access,Repairs Phase452 sparse-stride access failure.
+source_instruments,NIFTYBEES;BANKBEES;ITBEES,Keep Phase451 ETF proxies.
+target_symbols,AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Keep Phase451 targets.
+months,2026-01;2026-02;2026-03;2026-04;2026-05;2026-06,Keep Phase451 months.
+entry_index,20,Keep Phase452 event index.
+horizon_ticks,240,Keep Phase451 horizon.
+guard_ticks,10,Guard rows beyond horizon.
+window_rows_per_symbol_date,271,Minimum contiguous rows per symbol/date.
+max_events_per_target_date,1,Keep low-turnover cap.
+side_rule,unchanged_from_phase451_cross_asset_etf_pressure,No signal/side rescue after Phase452.
+controls_required,source_time_shift;side_flip;target_only_l1_l5_without_etf_proxy;etf_l1_only_ablation,Keep Phase451 controls.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha cost model.
+cost_multiplier,2.0,Cost200.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Fixed capital and notional.
+acceptance_floor,round_trips_ge_30;dates_ge_5;symbols_ge_3;positive_date_fraction_ge_0p60;annualized_ge_12_cost200;controls_not_dominant,Keep Phase451 acceptance floor.
+forbidden,threshold_relaxation;side_rule_change;source_universe_change;catalyst_rescue;market_maker_rescue;promotion;paper_live;deployable_profitability_claim,Closed boundaries.
+execution_results_generated_now,0,Precommit only.
+contract_hash,f724dbead002e8c07828a132fbf55beaa87e6180e850cf74503393a3bc0c070d,Hash of frozen repair contract rows above.

@@ -1,0 +1,12 @@
+metric,value,description
+phase454_contiguous_precommit_complete,1,Phase454 precommit completed
+phase454_thesis_id,P454_CONTIGUOUS_TICK_WINDOW_CROSS_ASSET_ETF_PRESSURE_PRECOMMIT,Repaired execution-access thesis
+phase454_window_rows_per_symbol_date,271,Contiguous rows per symbol/date
+phase454_execution_results_generated,0,Precommit only
+phase454_strategy_promotion_allowed,0,No promotion
+phase454_paper_or_live_acceptance_allowed,0,No paper/live
+phase454_deployable_profitability_claim_allowed,0,No deployable claim
+phase454_execution_allowed_next,1,Whether Phase455 may execute
+phase454_hard_gate_pass_rows,11,Passed hard gates
+phase454_hard_gate_rows,11,Hard gates
+phase454_next_best_action,run_phase455_contiguous_cross_asset_etf_pressure_no_paper_live,Recommended next action

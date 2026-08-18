@@ -22389,6 +22389,56 @@ Current next best action after Phase453:
 
 - Precommit Phase454 contiguous tick-window cross-asset ETF pressure repair, with no result generation until the repaired access contract is committed.
 
+## 24.281 Phase454 Contiguous Tick-Window Cross-Asset ETF Pressure Precommit Completed
+
+Phase454 repairs only the Phase452 data-access mismatch by freezing contiguous raw tick windows per symbol/date. It does not change the Phase451 cross-asset ETF pressure source or side rule.
+
+Phase454 thesis ID:
+
+- `P454_CONTIGUOUS_TICK_WINDOW_CROSS_ASSET_ETF_PRESSURE_PRECOMMIT`.
+
+Phase454 repaired access contract:
+
+- source: same cross-asset ETF pressure source from Phase451;
+- source instruments: `NIFTYBEES`, `BANKBEES`, `ITBEES`;
+- target symbols: `AXISBANK`, `HDFCBANK`, `ICICIBANK`, `INFY`, `HCLTECH`, `TCS`, `RELIANCE`;
+- months: `2026-01` through `2026-06`;
+- contiguous rows per symbol/date: `271`;
+- entry index: `20`;
+- horizon: `240` ticks;
+- guard: `10` ticks;
+- max events per target/date: `1`;
+- side rule: unchanged from Phase451;
+- cost model: Zerodha `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: `2.0`;
+- fixed initial capital: `1,000,000` INR;
+- fixed order notional: `100,000` INR.
+
+Phase454 hard gates:
+
+- passed: `11 / 11`;
+- execution results generated now: `0`;
+- Phase455 execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase454 outputs:
+
+- `scripts/run_phase454_contiguous_cross_asset_precommit.py`;
+- `src/synthetic_l2/phase454_contiguous_cross_asset_precommit.py`;
+- `outputs/phase454/phase454_acceptance_summary.csv`;
+- `outputs/phase454/phase454_frozen_phase455_contract.csv`;
+- `outputs/phase454/phase454_gate_evaluation.csv`;
+- `outputs/phase454/phase454_input_registry.csv`;
+- `outputs/phase454/phase454_selected_files.csv`;
+- `outputs/phase454/phase454_contiguous_cross_asset_precommit_report.md`;
+- `outputs/phase454/phase454_contiguous_cross_asset_precommit_manifest.json`.
+
+Current next best action after Phase454:
+
+- Run `run_phase455_contiguous_cross_asset_etf_pressure_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

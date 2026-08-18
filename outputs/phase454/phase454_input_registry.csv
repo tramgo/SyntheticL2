@@ -1,0 +1,11 @@
+input_id,value,description
+phase451_contract_available,1,Prior source/target/month contract available.
+dense_root_exists,1,Dense root exists.
+selected_file_rows,60,Frozen file rows.
+selected_files_present,60,Selected files present.
+months,2026-01;2026-02;2026-03;2026-04;2026-05;2026-06,Frozen months inherited from Phase451.
+symbols,NIFTYBEES;BANKBEES;ITBEES;AXISBANK;HDFCBANK;ICICIBANK;INFY;HCLTECH;TCS;RELIANCE,Frozen source plus target symbols inherited from Phase451.
+window_rows_per_symbol_date,271,Contiguous rows required per symbol/date.
+entry_index,20,Frozen entry index.
+horizon_ticks,240,Frozen horizon.
+guard_ticks,10,Frozen guard.
