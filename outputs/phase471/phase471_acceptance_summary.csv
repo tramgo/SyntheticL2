@@ -1,0 +1,15 @@
+metric,value,description
+phase471_train_holdout_source_event_aware_l1_l5_label_model_complete,1,Phase471 model fit/evaluation completed
+phase471_thesis_id,P471_TRAIN_HOLDOUT_SOURCE_EVENT_AWARE_L1_L5_LABEL_MODEL,Model fit thesis
+phase471_primary_holdout_auc,0.5455780003395009,Primary holdout AUC
+phase471_shuffled_holdout_auc,0.42687998641996266,Shuffled-label control AUC
+phase471_auc_lift_vs_shuffled,0.11869801391953821,AUC lift versus shuffled-label control
+phase471_primary_holdout_balanced_accuracy,0.5520497368867765,Primary holdout balanced accuracy
+phase471_strategy_pnl_generated,0,No strategy P&L
+phase471_strategy_promotion_allowed,0,No promotion
+phase471_paper_or_live_acceptance_allowed,0,No paper/live
+phase471_deployable_profitability_claim_allowed,0,No deployable claim
+phase471_phase472_allowed_next,1,Allows score-to-signal replay only if all gates pass
+phase471_hard_gate_pass_rows,13,Passed hard gates
+phase471_hard_gate_rows,13,Hard gates
+phase471_next_best_action,precommit_phase472_score_to_signal_replay_with_cost200_no_live,Recommended next action

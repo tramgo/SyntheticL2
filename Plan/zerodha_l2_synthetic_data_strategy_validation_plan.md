@@ -23706,6 +23706,87 @@ Current next best action after Phase470:
 - keep strategy replay and P&L closed until a Phase471 model gate passes out of sample;
 - require a shuffled-label/control comparison before any replayable thesis is allowed.
 
+## 24.298 Phase471 Train/Holdout Source-Event-Aware L1-L5 Label Model Completed
+
+Phase471 trained and evaluated a class-weighted logistic label model on the Phase470 source-event-aware feature-label matrix. This is the first repaired model step after the Phase468 variation failure. It still did not replay a strategy, calculate strategy P&L, promote a thesis, or claim paper/live readiness.
+
+Phase471 thesis ID:
+
+- `P471_TRAIN_HOLDOUT_SOURCE_EVENT_AWARE_L1_L5_LABEL_MODEL`
+
+Phase471 model scope:
+
+- input matrix: `outputs/phase470/phase470_source_event_aware_feature_label_matrix.csv`;
+- feature contract: `outputs/phase469/phase469_repaired_feature_contract.csv`;
+- candidate rows used for classification: move candidates only;
+- train split: January-February 2026;
+- holdout split: March 2026;
+- model: class-weighted logistic regression implemented with NumPy;
+- controls: shuffled-label logistic control and L25 imbalance threshold control;
+- features used: 25;
+- L2-L5 features used: 10;
+- source-event repair features used: 11.
+
+Phase471 evaluation result:
+
+- train rows: 626;
+- holdout rows: 309;
+- holdout positive/long rate: 55.6634%;
+- primary holdout AUC: 0.5455780003395009;
+- shuffled-label holdout AUC: 0.42687998641996266;
+- AUC lift versus shuffled-label control: 0.11869801391953821;
+- primary holdout balanced accuracy: 0.5520497368867765;
+- primary holdout accuracy: 0.5533980582524272;
+- L25 threshold control holdout AUC: 0.4789933797317943.
+
+Phase471 hard gates:
+
+- gates passed: 13 / 13;
+- Phase470 matrix used: pass;
+- train rows present: pass;
+- holdout rows present: pass;
+- both classes in train: pass;
+- both classes in holdout: pass;
+- full-depth features used: pass, observed 10;
+- source-event features used: pass, observed 11;
+- holdout AUC at least 0.53: pass;
+- AUC lift versus shuffled label at least 0.02: pass;
+- balanced accuracy at least 0.52: pass;
+- primary model not worse than L25 threshold control: pass;
+- no strategy P&L: pass;
+- no paper/live/profitability claim: pass.
+
+Largest absolute standardized coefficient terms in the Phase471 primary model:
+
+- `source_event_l25_replenishment_count_5`: -0.280155490360015;
+- `source_event_spread_vol_5_bps`: 0.26166551377147096;
+- `source_event_spread_change_3_bps`: 0.21351788505881053;
+- `source_event_mid_return_5`: -0.1869510636356095;
+- `source_event_mid_return_3`: 0.16420530694313207;
+- `l1_l5_depth_concentration`: -0.15646230501011751;
+- `source_event_mid_return_1`: -0.1443042878899148;
+- `microprice_l1_minus_mid_bps`: 0.13096510791289148;
+- `spread_mean_lookback_bps`: -0.12876887601026504;
+- `spread_bps`: -0.12876623180745658.
+
+Phase471 outputs:
+
+- `outputs/phase471/phase471_acceptance_summary.csv`;
+- `outputs/phase471/phase471_model_summary.csv`;
+- `outputs/phase471/phase471_primary_coefficients.csv`;
+- `outputs/phase471/phase471_holdout_scores.csv`;
+- `outputs/phase471/phase471_gate_evaluation.csv`;
+- `outputs/phase471/phase471_train_holdout_source_event_aware_l1_l5_label_model_report.md`;
+- `outputs/phase471/phase471_train_holdout_source_event_aware_l1_l5_label_model_manifest.json`;
+- `scripts/run_phase471_train_holdout_source_event_aware_l1_l5_label_model.py`;
+- `src/synthetic_l2/phase471_train_holdout_source_event_aware_l1_l5_label_model.py`.
+
+Current next best action after Phase471:
+
+- precommit and run Phase472 score-to-signal replay on holdout with cost200, latency, slippage and fixed capital sizing;
+- treat Phase471 as a predictive model only, not profitability evidence;
+- only annualized-return claims after Phase472 costed P&L exists.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
