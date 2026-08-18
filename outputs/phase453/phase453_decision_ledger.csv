@@ -1,0 +1,10 @@
+decision_id,decision_value,description,required_or_implication
+selected_verdict,P453_CROSS_ASSET_ETF_PRESSURE_EXECUTION_ACCESS_REPAIR_REQUIRED,Phase452 did not produce executable trades because sparse stride conflicted with fixed tick horizon.,repair_execution_access
+phase452_completed_round_trips,0,Observed Phase452 trades.,zero_is_not_strategy_edge_evidence
+phase452_acceptance_survivor,0,No survivor.,0
+failed_gate_ids,P452_COMPLETED_ROUND_TRIPS_GE_30;P452_DATE_BREADTH_GE_5;P452_SYMBOL_BREADTH_GE_3;P452_POSITIVE_DATE_FRACTION_GE_0_60;P452_ANNUALIZED_GE_12_COST200;P452_TIME_SHIFT_NOT_DOMINANT;P452_SIDE_FLIP_NOT_DOMINANT;P452_TARGET_ONLY_NOT_DOMINANT;P452_ETF_L1_ONLY_NOT_DOMINANT,Failed hard gates.,basis
+cross_asset_source_closed,0,Source is not closed by zero-trade execution-access failure.,0
+phase451_stride_contract_closed,1,The sparse-stride plus 240-tick-horizon access contract is closed.,1
+profitability_claim_allowed,0,Zero-trade execution does not imply profitability.,0
+paper_live_or_promotion_allowed,0,No paper/live or promotion.,0
+next_action,precommit_phase454_contiguous_tick_window_cross_asset_etf_pressure_no_results,Repair with contiguous raw tick windows before execution.,precommit_repair_first

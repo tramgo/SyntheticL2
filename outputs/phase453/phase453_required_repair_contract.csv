@@ -1,0 +1,11 @@
+contract_id,contract_value,description
+repair_source,same_cross_asset_etf_pressure_source,Not a new alpha result; repairs data-access mechanics.
+required_change,contiguous_raw_tick_windows_per_symbol_date,Retain at least EVENT_INDEX + horizon + guard rows per date.
+forbidden_change,no_threshold_relaxation_or_side_rule_change,No signal rescue after seeing Phase452.
+horizon_ticks,240,Keep Phase451 frozen horizon.
+entry_index,20,Keep Phase452 event index.
+max_events_per_target_date,1,Keep low-turnover cap.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Keep cost model.
+cost_multiplier,2.0,Keep cost200.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Keep fixed capital/notional.
+execution_results_generated_now,0,Phase453 interpretation only.
