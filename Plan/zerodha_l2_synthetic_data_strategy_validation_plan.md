@@ -19774,6 +19774,51 @@ Current next best action after Phase415:
 
 - Implement `interpret_phase415_failure_or_success_no_paper_live`. Do not tune this same divergence snapback route after seeing negative cost200 results.
 
+## 24.243 Phase416 Deep-Book Divergence Snapback Interpretation Completed
+
+Phase416 formally interprets Phase415. The Phase414/P415 deep-book divergence snapback route is rejected as a non-sparse but strongly negative cost200 result.
+
+Phase416 selected verdict:
+
+- `P416_DEEP_BOOK_DIVERGENCE_SNAPBACK_REJECTED_NON_SPARSE_NEGATIVE`.
+
+Phase416 evidence:
+
+- Phase415 execution complete: `1`;
+- Phase415 hard gates evaluated: `21`;
+- primary completed round trips: `238`;
+- primary trade dates: `5`;
+- primary symbols: `3`;
+- primary positive date fraction: `0.0`;
+- primary net P&L: approximately `-83,261.78122609416` INR;
+- primary annualized return: approximately `-419.6393773795146%`;
+- cost200 acceptance survivors: `0`.
+
+Phase416 interpretation:
+
+- Phase415 met event, date and symbol breadth, so this is no longer a sparse-trade failure.
+- The result failed because the trade direction/economics were negative after realistic Zerodha cost200, not because the simulator found no events.
+- Same-family deep-book divergence snapback tuning is not allowed after this negative result.
+- No strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase416 hard gates:
+
+- passed: `8 / 8`.
+
+Phase416 outputs:
+
+- `scripts/run_phase416_deep_book_divergence_snapback_interpretation.py`;
+- `src/synthetic_l2/phase416_deep_book_divergence_snapback_interpretation.py`;
+- `outputs/phase416/phase416_acceptance_summary.csv`;
+- `outputs/phase416/phase416_decision_ledger.csv`;
+- `outputs/phase416/phase416_gate_evaluation.csv`;
+- `outputs/phase416/phase416_deep_book_divergence_snapback_interpretation_report.md`;
+- `outputs/phase416/phase416_deep_book_divergence_snapback_interpretation_manifest.json`.
+
+Current next best action after Phase416:
+
+- Stop the deep-book divergence snapback route, or precommit a materially new non-directional full-depth source. Do not continue by tuning this directional snapback route.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

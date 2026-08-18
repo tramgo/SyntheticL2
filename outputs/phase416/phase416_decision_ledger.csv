@@ -1,0 +1,15 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P416_DEEP_BOOK_DIVERGENCE_SNAPBACK_REJECTED_NON_SPARSE_NEGATIVE,"Enough events/breadth, but negative cost200 result.",terminal_for_this_route
+primary_completed_round_trips,238,Event floor passed.,non_sparse
+primary_trade_dates,5,Date breadth passed.,non_sparse
+primary_symbols,3,Symbol breadth passed.,non_sparse
+primary_positive_date_fraction,0.0,Failed positive-date fraction.,failure
+primary_net_pnl_inr,-83261.78122609416,Net P&L after cost200.,failure
+primary_annualized_return_pct,-419.6393773795146,Failed annualized floor.,failure
+cost200_acceptance_survivor_rows,0,No accepted scenario.,failure
+phase415_failed_hard_gates,P415_POSITIVE_DATE_FRACTION;P415_ANNUALIZED_FLOOR;P415_SIDE_FLIP_CONTROL,Explicit failed gate basis.,basis
+same_family_tuning_allowed,0,Do not tune this route after broad negative evidence.,closed
+strategy_promotion_allowed,0,No accepted survivor.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+next_action,stop_deep_book_divergence_snapback_route_or_precommit_material_new_non_directional_full_depth_source,Move away from this directional snapback route.,next
