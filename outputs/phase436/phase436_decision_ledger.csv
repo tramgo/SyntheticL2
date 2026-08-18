@@ -1,0 +1,20 @@
+decision_id,decision_value,evidence,status
+selected_verdict,P436_SUPERVISED_FULL_DEPTH_EVENT_RANKER_REJECTED_COST_DOMINATED,The materially new supervised full-depth event ranker produced enough events to test but failed cost200 profitability and controls.,terminal_for_this_source_form
+phase435_next_action_matched,interpret_phase435_supervised_full_depth_event_ranker_no_paper_live,Phase436 implements the Phase435 next-action string.,basis
+synthetic_event_rows,960,Synthetic event-label rows used by Phase435.,evidence
+primary_round_trips,32,Primary selected validation trades.,evidence
+primary_trade_dates,1,Validation date breadth.,failure
+primary_symbols,4,Validation symbol breadth.,failure
+primary_gross_pnl_inr,76.55999999993946,Gross edge before costs.,evidence
+primary_cost200_inr,5244.09273712784,Zerodha cost200 charges.,failure
+primary_net_pnl_inr,-5167.5327371279,Net P&L after cost200.,failure
+primary_annualized_return_pct,-130.2218249756231,Failed annualized floor.,failure
+l1_only_annualized_return_pct,-130.81957452308592,L1-only ablation nearly matched primary.,control_failure
+time_shuffle_annualized_return_pct,-64.47799535157071,Time-shuffle control was less negative than primary.,control_failure
+real_anchor_annualized_return_pct,-224.91725577881968,Real-anchor cross-check preserved negative sign.,evidence
+phase435_failed_hard_gates,P435_L2_L5_MATERIALITY_OVER_L1;P435_TIME_SHUFFLE_CONTROL_NOT_DOMINANT;P435_DATE_BREADTH;P435_SYMBOL_BREADTH;P435_POSITIVE_DATE_FRACTION;P435_ANNUALIZED_FLOOR,Explicit failed gate basis.,basis
+strategy_promotion_allowed,0,No accepted survivor.,closed
+paper_or_live_acceptance_allowed,0,No paper/live acceptance.,closed
+deployable_profitability_claim_allowed,0,No deployable claim.,closed
+same_source_rescue_allowed,0,Do not retune this same ranker after seeing validation/control failures.,closed
+next_action,precommit_material_new_lower_turnover_horizon_or_pause_strategy_search,"Move only to a materially lower-turnover/longer-horizon source, or pause strategy search.",next

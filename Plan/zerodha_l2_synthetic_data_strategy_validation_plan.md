@@ -21243,6 +21243,55 @@ Current next best action after Phase435:
 
 - Implement `interpret_phase435_supervised_full_depth_event_ranker_no_paper_live`. Treat Phase435 as a negative execution result unless the formal interpretation finds a reporting error.
 
+## 24.263 Phase436 Supervised Ranker Interpretation Completed
+
+Phase436 formally interprets Phase435 as a negative execution result.
+
+Phase436 selected verdict:
+
+- `P436_SUPERVISED_FULL_DEPTH_EVENT_RANKER_REJECTED_COST_DOMINATED`.
+
+Phase436 decision:
+
+- Phase435 was a materially new non-threshold source and therefore was a valid next test after Phase433;
+- Phase435 generated enough validation trades to test cost impact;
+- Phase435 did not produce a profitable cost200 strategy;
+- the full-depth ranker only barely beat the L1-only ablation;
+- the time-shuffle control was less negative than the primary model;
+- the real-anchor cross-check preserved the negative sign;
+- no same-source rescue, strategy promotion, paper/live acceptance or deployable profitability claim is allowed.
+
+Phase436 acceptance summary:
+
+- Phase435 primary completed round trips: `32`;
+- Phase435 primary annualized return: approximately `-130.221825%`;
+- Phase435 cost200 acceptance survivors: `0`;
+- Phase436 hard gates passed: `8 / 8`;
+- same-source rescue allowed: `0`.
+
+Phase436 failed-evidence basis inherited from Phase435:
+
+- `P435_L2_L5_MATERIALITY_OVER_L1`: observed approximately `0.597750`, required at least `5.0` percentage points;
+- `P435_TIME_SHUFFLE_CONTROL_NOT_DOMINANT`: the time-shuffle control was less negative than the primary model;
+- `P435_DATE_BREADTH`: observed `1`, required at least `5`;
+- `P435_SYMBOL_BREADTH`: observed `4`, required at least `5`;
+- `P435_POSITIVE_DATE_FRACTION`: observed `0.0`, required at least `0.60`;
+- `P435_ANNUALIZED_FLOOR`: observed approximately `-130.221825`, required at least `12.0`.
+
+Phase436 outputs:
+
+- `scripts/run_phase436_supervised_ranker_interpretation.py`;
+- `src/synthetic_l2/phase436_supervised_ranker_interpretation.py`;
+- `outputs/phase436/phase436_acceptance_summary.csv`;
+- `outputs/phase436/phase436_decision_ledger.csv`;
+- `outputs/phase436/phase436_gate_evaluation.csv`;
+- `outputs/phase436/phase436_supervised_ranker_interpretation_report.md`;
+- `outputs/phase436/phase436_supervised_ranker_interpretation_manifest.json`.
+
+Current next best action after Phase436:
+
+- Precommit a materially new lower-turnover or longer-horizon source, or pause strategy search. Do not retune the same supervised event ranker after seeing this negative validation/control result.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
