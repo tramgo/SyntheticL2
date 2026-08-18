@@ -1,0 +1,15 @@
+gate_id,passed,observed_value,required_value,severity
+P449_PHASE448_PRECOMMIT_USED,True,1,1,hard
+P449_RAW_FILES_SCANNED,True,36,>0,hard
+P449_FULL_DEPTH_L2_L5_PRIMARY,True,dynamic_curvature_score uses buy/sell quantities at levels 2-5,levels_2_to_5,hard
+P449_COMPLETED_ROUND_TRIPS_GE_30,True,1512,>=30,hard
+P449_DATE_BREADTH_GE_5,True,252,>=5,hard
+P449_SYMBOL_BREADTH_GE_3,True,3,>=3,hard
+P449_POSITIVE_DATE_FRACTION_GE_0_60,False,0.16666666666666666,>=0.60,hard
+P449_ANNUALIZED_GE_12_COST200,False,-23.886203393146786,>=12.0,hard
+P449_L1_ONLY_NOT_DOMINANT,False,primary=-238862.03393146786;l1=-218598.1333378012,primary_gt_l1,hard
+P449_SIDE_FLIP_NOT_DOMINANT,True,primary=-238862.03393146786;side_flip=-282923.80438962794,primary_gt_side_flip,hard
+P449_STATIC_SNAPSHOT_NOT_DOMINANT,False,primary=-238862.03393146786;static=-196206.98747506447,primary_gt_static,hard
+P449_TIME_SHIFT_NOT_DOMINANT,False,primary=-238862.03393146786;shift=-234062.1660561393,primary_gt_shift,hard
+P449_COST200_FIXED_CAPITAL,True,cost=2.0;capital=1000000.0;notional=100000.0,cost200_fixed_capital,hard
+P449_NO_PROMOTION_PAPER_LIVE,True,promotion=0;paper_live=0;claim=0,all_zero,hard

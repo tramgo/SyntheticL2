@@ -1,0 +1,19 @@
+metric,value,description
+phase449_depth_curvature_execution_complete,1,Phase449 execution completed
+phase449_thesis_id,P449_DEPTH_CURVATURE_BREAK_REPAIR_EXECUTION,Execution thesis
+phase449_best_scenario_id,P449_depth_curvature_repair_primary,Primary scenario
+phase449_best_completed_round_trips,1512,Primary completed round trips
+phase449_best_trade_dates,252,Primary dates
+phase449_best_symbols,3,Primary symbols
+phase449_best_positive_date_fraction,0.16666666666666666,Primary positive-date fraction
+phase449_best_gross_pnl_inr,8437.800000000138,Primary gross P&L
+phase449_best_cost200_inr,247299.833931468,Primary Zerodha cost200
+phase449_best_net_pnl_inr,-238862.03393146786,Primary net P&L
+phase449_best_annualized_return_pct,-23.886203393146786,Fixed-capital annualized return
+phase449_acceptance_survivor,0,Accepted only if every hard gate passes
+phase449_strategy_promotion_allowed,0,No promotion
+phase449_paper_or_live_acceptance_allowed,0,No paper/live
+phase449_deployable_profitability_claim_allowed,0,No deployable claim
+phase449_hard_gate_pass_rows,9,Passed hard gates
+phase449_hard_gate_rows,14,Hard gates
+phase449_next_best_action,interpret_phase449_depth_curvature_break_repair_no_paper_live,Recommended next action

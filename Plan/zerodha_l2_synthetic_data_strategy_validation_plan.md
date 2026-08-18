@@ -22058,6 +22058,76 @@ Current next best action after Phase448:
 
 - Run `run_phase449_depth_curvature_break_repair_no_paper_live`.
 
+## 24.276 Phase449 Depth-Curvature Break/Repair Execution Completed
+
+Phase449 executed the Phase448 frozen depth-curvature source on deterministic strided raw dense L1-L5 Parquet shards. It scanned `36` files covering `12` months across `3` symbols.
+
+Phase449 thesis ID:
+
+- `P449_DEPTH_CURVATURE_BREAK_REPAIR_EXECUTION`.
+
+Phase449 primary scenario:
+
+- `P449_depth_curvature_repair_primary`.
+
+Phase449 primary result:
+
+- completed round trips: `1,512`;
+- trade dates: `252`;
+- symbols: `3`;
+- positive-date fraction: `0.16666666666666666`;
+- gross P&L: `8,437.800000000138` INR;
+- Zerodha `cost200`: `247,299.833931468` INR;
+- net P&L after cost200: `-238,862.03393146786` INR;
+- annualized return using fixed `1,000,000` INR capital: `-23.886203393146786%`;
+- acceptance survivor: `0`.
+
+Phase449 controls:
+
+- L1-only ablation net P&L: `-218,598.1333378012` INR;
+- side-flip control net P&L: `-282,923.80438962794` INR;
+- static-curvature snapshot control net P&L: `-196,206.98747506447` INR;
+- time-shift control net P&L: `-234,062.1660561393` INR.
+
+Phase449 failed hard gates:
+
+- positive-date fraction at least `0.60`: failed (`0.16666666666666666`);
+- annualized return at least `12.0%`: failed (`-23.886203393146786%`);
+- L1-only not dominant: failed because the L1-only control was less negative than the primary;
+- static snapshot not dominant: failed because static curvature was less negative than dynamic repair;
+- time shift not dominant: failed because shifted curvature was less negative than the primary.
+
+Phase449 hard gates:
+
+- passed: `9 / 14`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase449 interpretation before formal Phase450:
+
+- The route has ample event/date/symbol breadth, so the rejection is not a sparsity artifact.
+- The primary problem is economic: gross edge is too small versus Zerodha `cost200`.
+- The levels `2` to `5` dynamic curvature signal did not beat simpler controls, so there is no accepted full-depth materiality claim.
+
+Phase449 outputs:
+
+- `scripts/run_phase449_depth_curvature_break_repair.py`;
+- `src/synthetic_l2/phase449_depth_curvature_break_repair.py`;
+- `outputs/phase449/phase449_acceptance_summary.csv`;
+- `outputs/phase449/phase449_control_summary.csv`;
+- `outputs/phase449/phase449_feature_sample.csv`;
+- `outputs/phase449/phase449_gate_evaluation.csv`;
+- `outputs/phase449/phase449_scenario_summary.csv`;
+- `outputs/phase449/phase449_selected_files.csv`;
+- `outputs/phase449/phase449_trade_ledger.csv`;
+- `outputs/phase449/phase449_depth_curvature_break_repair_report.md`;
+- `outputs/phase449/phase449_depth_curvature_break_repair_manifest.json`.
+
+Current next best action after Phase449:
+
+- Interpret Phase449 formally and close this depth-curvature dynamic route unless a new non-threshold source with a materially different label/execution mechanism is precommitted.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
