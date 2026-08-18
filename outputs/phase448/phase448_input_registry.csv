@@ -1,0 +1,9 @@
+input_id,value,description
+phase298_available,1,Prior raw dense L1-L5 sweep available.
+phase298_dense_root,raw_synthetic_l2_dense_full_year,Dense lake root recorded by Phase298.
+dense_root_exists,1,Current dense root exists.
+dense_parquet_file_count,384,Current dense Parquet file count.
+levels_2_to_5_required,1,Phase448 requires depth beyond L1.
+cost_multiplier,2.0,Cost200 scoring is pinned.
+initial_capital_inr,1000000.0,Fixed capital denominator.
+order_notional_inr,100000.0,Fixed notional per order.

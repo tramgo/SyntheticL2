@@ -21988,6 +21988,76 @@ Current next best action after Phase447:
 
 - Reject this catalyst-continuation stability route, or precommit a genuinely new source edge before more execution. Do not tune this rejected route after seeing the holdout failure.
 
+## 24.275 Phase448 Depth-Curvature Break/Repair Source Precommit Completed
+
+Phase448 responds to the Phase447 holdout rejection by freezing a genuinely new full-depth L2 source edge before any new result generation.
+
+Phase448 selected source:
+
+- `depth_curvature_break_repair`.
+
+Phase448 thesis ID:
+
+- `P448_DEPTH_CURVATURE_BREAK_REPAIR_PRECOMMIT`.
+
+Phase448 material-new axis:
+
+- shape change in depth levels `2` to `5`;
+- curvature, slope, asymmetry, break rate and repair rate of visible liquidity beyond the touch;
+- not catalyst continuation;
+- not market making;
+- not supervised ranker retry;
+- not low-turnover carry;
+- not same-threshold rescue.
+
+Phase448 frozen Phase449 execution contract:
+
+- primary information source: L1-L5 book state with levels `2` to `5` materiality;
+- market hypothesis: levels `2` to `5` depth curvature break or repair precedes a short-horizon mid-price move;
+- entry: taker entry after past-only curvature break/repair confirmation;
+- side rule: long when bid-side depth curvature repairs and ask-side curvature breaks; short when the opposite occurs;
+- horizon: `60` ticks;
+- stop: `10.0` bps;
+- take profit: `16.0` bps;
+- minimum event spacing: `120` ticks;
+- cost model: Zerodha `zerodha_equity_intraday_nse_order_formula_v2_2026_07_14`;
+- cost multiplier: `2.0`;
+- fixed initial capital: `1,000,000` INR;
+- fixed order notional: `100,000` INR.
+
+Phase448 required controls:
+
+- L1-only ablation;
+- side flip;
+- time reverse or shift;
+- static-curvature snapshot without repair-rate dynamics.
+
+Phase448 hard gates:
+
+- passed: `12 / 12`;
+- execution results generated now: `0`;
+- Phase449 execution allowed next: `1`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`.
+
+Phase448 outputs:
+
+- `scripts/run_phase448_depth_curvature_break_repair_precommit.py`;
+- `src/synthetic_l2/phase448_depth_curvature_break_repair_precommit.py`;
+- `outputs/phase448/phase448_acceptance_summary.csv`;
+- `outputs/phase448/phase448_frozen_phase449_contract.csv`;
+- `outputs/phase448/phase448_gate_evaluation.csv`;
+- `outputs/phase448/phase448_input_registry.csv`;
+- `outputs/phase448/phase448_prior_evidence_boundary.csv`;
+- `outputs/phase448/phase448_source_scorecard.csv`;
+- `outputs/phase448/phase448_depth_curvature_break_repair_precommit_report.md`;
+- `outputs/phase448/phase448_depth_curvature_break_repair_precommit_manifest.json`.
+
+Current next best action after Phase448:
+
+- Run `run_phase449_depth_curvature_break_repair_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.

@@ -1,0 +1,12 @@
+metric,value,description
+phase448_depth_curvature_precommit_complete,1,Phase448 source precommit completed
+phase448_thesis_id,P448_DEPTH_CURVATURE_BREAK_REPAIR_PRECOMMIT,Frozen thesis/source precommit
+phase448_selected_source_id,depth_curvature_break_repair,Selected materially new source
+phase448_execution_results_generated,0,Precommit only
+phase448_strategy_promotion_allowed,0,No promotion
+phase448_paper_or_live_acceptance_allowed,0,No paper/live
+phase448_deployable_profitability_claim_allowed,0,No deployable claim
+phase448_execution_allowed_next,1,Whether Phase449 may execute
+phase448_hard_gate_pass_rows,12,Passed hard gates
+phase448_hard_gate_rows,12,Hard gates
+phase448_next_best_action,run_phase449_depth_curvature_break_repair_no_paper_live,Recommended next action

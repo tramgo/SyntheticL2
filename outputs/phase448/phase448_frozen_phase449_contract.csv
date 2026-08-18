@@ -1,0 +1,20 @@
+contract_id,contract_value,description
+thesis_id,P448_DEPTH_CURVATURE_BREAK_REPAIR_PRECOMMIT,Phase448 selected source precommit.
+selected_source,depth_curvature_break_repair,Materially new full-depth source for Phase449.
+source_row_hash,74aa661f2b1869449fa03fee7a1096968cf86912de91e732873cbc406666c61d,Hash of selected source scorecard row.
+market_hypothesis,levels_2_to_5_depth_curvature_break_or_repair_precedes_short_horizon_mid_move,Curvature across deeper visible book can reveal hidden pressure before L1 fully reflects it.
+feature_family,L2_to_L5_convexity_slope_curvature_asymmetry_repair_rate_and_break_rate,Full top-five market-by-price depth remains core.
+entry_logic,taker_entry_after_past_only_curvature_break_or_repair_confirmation,"No passive fill, no maker rebate and no future label access."
+side_rule,long_when_bid_depth_curvature_repairs_and_ask_curvature_breaks_short_when_opposite,"Side is determined by L2-L5 shape change, not catalyst text or fitted rank."
+sample_policy,bounded_month_symbol_stride_then_breadth_first_execution,Execution may start bounded but must report breadth and no acceptance if floors are not met.
+horizon_ticks,60,Fixed exit horizon if stop/target not hit.
+stop_bps,10.0,Fixed stop.
+take_profit_bps,16.0,Fixed target.
+min_event_spacing_ticks,120,Avoid overlapping events in the same symbol stream.
+full_depth_required,L1_to_L5_book_state_with_levels_2_to_5_materiality,"L1-only variants are controls, not the primary."
+controls_required,l1_only_ablation;side_flip;time_reverse_or_shift;curvature_static_snapshot_without_repair,Controls must be emitted by Phase449.
+cost_model,zerodha_equity_intraday_nse_order_formula_v2_2026_07_14,Pinned Zerodha equity intraday NSE formula.
+capital_policy,fixed_initial_capital_1000000_inr_order_notional_100000_inr_cost200,Annualized denominator is fixed capital.
+acceptance_floor,round_trips_ge_30;dates_ge_5;symbols_ge_3;positive_date_fraction_ge_0p60;annualized_ge_12_cost200,User profitability bar with breadth.
+forbidden,catalyst_continuation_rescue;market_maker_rescue;supervised_ranker_retry;low_turnover_carry_retry;promotion;paper_live;deployable_profitability_claim,Closed boundaries.
+execution_results_generated_now,0,Precommit only.

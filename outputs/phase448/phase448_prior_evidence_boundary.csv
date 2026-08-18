@@ -1,0 +1,5 @@
+phase,route,verdict_or_status,reason_for_not_continuing
+P409,retail_two_sided_market_maker_cancel_latency,P409_CANCEL_RACE_MARKET_MAKER_FALSIFIED,closed: cancel-included attachment already executed; no same-family maker rescue
+P435,supervised_full_depth_event_ranker,-5167.5327371279,closed for current evidence: learned ranker had negative validation net P&L and failed breadth/profit gates
+P439,low_turnover_full_depth_regime_carry,P439_LOW_TURNOVER_FULL_DEPTH_REGIME_CARRY_REJECTED_NO_GROSS_EDGE,closed: no gross edge under low-turnover carry
+P447,external_catalyst_continuation_stability,reject_catalyst_continuation_stability_or_precommit_new_source_edge,closed for same-route continuation: frozen chronological holdout failed

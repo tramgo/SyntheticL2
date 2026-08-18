@@ -1,0 +1,5 @@
+source_id,material_new_axis,uses_l2_l5_core,non_closed_family,can_execute_next,why_selected
+depth_curvature_break_repair,shape_change_in_depth_levels_2_to_5_curvature_before_short_horizon_break_or_repair,1,1,1,"uses the geometry of liquidity across levels 2-5, not catalyst labels, passive making, supervised ranker selection, low-turnover carry or same threshold rescue"
+rerun_catalyst_continuation_with_new_dates,none_without_new_source,1,0,0,rejected: Phase447 failed the frozen stability holdout
+market_maker_cancel_latency_again,none_without_external_execution_source,1,0,0,rejected: Phase407-409 already falsified the attached cancel-included charter
+another_supervised_ranker,weak,1,0,0,rejected: Phase435 ranker failed; a new ranker alone is too close without a different label/source
