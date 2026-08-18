@@ -1,0 +1,11 @@
+gate_id,passed,observed_value,required_value,severity
+P467_PHASE466_RICHER_FEATURE_PRECOMMIT_ALLOWED,True,1,1,hard
+P467_SELECTED_FILES_PRESENT,True,21,21,hard
+P467_REQUIRED_SCHEMA_PRESENT,True,21,21,hard
+P467_FEATURE_COUNT_GE_20,True,20,>=20,hard
+P467_L2_L5_FEATURE_COUNT_GE_8,True,9,>=8,hard
+P467_BASE_PHASE465_FEATURES_RETAINED,True,l1_imbalance;l1_l5_ask_depth_slope;l1_l5_bid_depth_slope;l1_l5_depth_concentration;l25_imbalance;l25_order_imbalance;l25_replenishment_events;l25_withdrawal_events;microprice_l1_minus_mid_bps;microprice_l25_minus_mid_bps;minute_of_day;ofi_l1_lookback;ofi_l25_lookback;recent_mid_return_bps;spread_bps;spread_change_lookback_bps;spread_mean_lookback_bps;trade_qty_accel_lookback;trade_qty_sum_lookback;volume_delta_lookback,base features included,hard
+P467_FORBIDDEN_LABELS_NOT_FEATURES,True,,empty,hard
+P467_MODEL_FIT_NOT_ALLOWED,True,precommit_only,no_model_fit,hard
+P467_NO_STRATEGY_PNL,True,precommit_only,no_pnl,hard
+P467_NO_PAPER_LIVE_OR_CLAIM,True,promotion=0;paper=0;claim=0,all_zero,hard

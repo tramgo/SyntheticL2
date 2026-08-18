@@ -23380,6 +23380,97 @@ Current next best action after Phase466:
 
 - Precommit Phase467 richer past-only L1-L5 feature matrix before any replay.
 
+## 24.294 Phase467 Richer Past-Only L1-L5 Feature Matrix Precommit Completed
+
+Phase467 freezes a richer past-only L1-L5 feature matrix contract before any additional model fitting or strategy P&L replay.
+
+Phase467 thesis ID:
+
+- `P467_RICHER_PAST_ONLY_L1_L5_FEATURE_MATRIX_PRECOMMIT`.
+
+Phase467 source:
+
+- dense root: `raw_synthetic_l2_phase162_distributional_full_year`;
+- profile: `P159_DISTRIBUTIONAL_FULL_PARTITION_CADENCE`;
+- selected files: `21`;
+- selected files present: `21`;
+- required raw schema columns: `39`;
+- each selected Parquet file schema columns: `64`;
+- selected file hash: `14b16054c17f688680c32b4a378e7f74ee7e7c6b9ccc3cac0f627d9545a19315`.
+
+Phase467 frozen matrix parameters:
+
+- lookback ticks: `20`;
+- entry index: `20`;
+- forward horizon retained for labels only: `240` ticks;
+- minimum absolute forward move retained for labels only: `2.0` bps.
+
+Phase467 allowed feature count:
+
+- total allowed features: `20`;
+- features using levels 2-5: `9`.
+
+Phase467 allowed past-only feature families:
+
+- base retained features: `recent_mid_return_bps`, `spread_bps`, `l1_imbalance`, `l25_imbalance`, `volume_delta_lookback`;
+- depth curve shape: `l1_l5_bid_depth_slope`, `l1_l5_ask_depth_slope`, `l1_l5_depth_concentration`, `l25_order_imbalance`;
+- order-flow/depth churn: `ofi_l1_lookback`, `ofi_l25_lookback`, `l25_replenishment_events`, `l25_withdrawal_events`;
+- microprice pressure: `microprice_l1_minus_mid_bps`, `microprice_l25_minus_mid_bps`;
+- spread regime context: `spread_change_lookback_bps`, `spread_mean_lookback_bps`;
+- volume acceleration: `trade_qty_sum_lookback`, `trade_qty_accel_lookback`;
+- time-of-day context: `minute_of_day`.
+
+Phase467 forbidden model inputs:
+
+- `forward_return_bps`;
+- `abs_forward_return_bps`;
+- `label_side`;
+- `move_candidate`;
+- `exit_price`;
+- `exit_row`.
+
+Phase467 contract hashes:
+
+- feature contract hash: `ed5cfad137c17ad74a6c12256000a47fb6cc4c642eeed3d36fc1976a8d151793`;
+- schema evidence hash: `803e8f5e7e476aa7a3c7c1543f6a09ea981425d7dd96fd7a74011104bf4d0f41`.
+
+Phase467 hard gates:
+
+- passed: `10 / 10`;
+- Phase466 richer-feature precommit allowance: pass;
+- selected files present: `21 / 21`;
+- required raw schema present: `21 / 21`;
+- feature count at least `20`: pass;
+- L2-L5 feature count at least `8`: pass;
+- base Phase465 features retained: pass;
+- forbidden label/future columns are not features: pass.
+
+Phase467 boundary:
+
+- model fit generated: `0`;
+- strategy P&L generated: `0`;
+- strategy promotion allowed: `0`;
+- paper/live acceptance allowed: `0`;
+- deployable profitability claim allowed: `0`;
+- Phase468 richer matrix materialization allowed next: `1`.
+
+Phase467 outputs:
+
+- `scripts/run_phase467_richer_past_only_l2_feature_matrix_precommit.py`;
+- `src/synthetic_l2/phase467_richer_past_only_l2_feature_matrix_precommit.py`;
+- `outputs/phase467/phase467_acceptance_summary.csv`;
+- `outputs/phase467/phase467_feature_contract.csv`;
+- `outputs/phase467/phase467_frozen_phase468_contract.csv`;
+- `outputs/phase467/phase467_gate_evaluation.csv`;
+- `outputs/phase467/phase467_schema_evidence.csv`;
+- `outputs/phase467/phase467_selected_files.csv`;
+- `outputs/phase467/phase467_richer_past_only_l1_l5_feature_matrix_precommit_report.md`;
+- `outputs/phase467/phase467_richer_past_only_l1_l5_feature_matrix_precommit_manifest.json`.
+
+Current next best action after Phase467:
+
+- Run `run_phase468_materialize_richer_past_only_l1_l5_feature_matrix_no_model_no_pnl`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
