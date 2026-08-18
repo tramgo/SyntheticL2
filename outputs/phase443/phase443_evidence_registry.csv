@@ -1,0 +1,7 @@
+evidence_id,value,description
+phase442_next_action,precommit_external_catalyst_continuation_or_pause_strategy_search,Phase442 allowed catalyst continuation/side-flip as a new source.
+phase442_side_flip_new_precommit_allowed,1,Must be one.
+phase441_primary_reversal_annualized_pct,-25.157141116316083,Rejected reversal baseline.
+phase441_side_flip_annualized_pct,-1.827100096946565,Side-flip clue to test as continuation.
+phase441_side_flip_net_pnl_inr,-870.04766521265,Side-flip net P&L clue.
+phase441_side_flip_positive_date_fraction,0.3333333333333333,Side-flip positive-date clue.

@@ -21678,6 +21678,64 @@ Current next best action after Phase442:
 
 - Precommit catalyst continuation/side-flip as a materially new external-alpha source, or pause strategy search. Do not rescue the same catalyst-reversal form.
 
+## 24.270 Phase443 External Catalyst Continuation Precommit Completed
+
+Phase443 freezes catalyst continuation/side-flip as a new precommitted source after Phase442 closed the catalyst-reversal form.
+
+Phase443 selected source:
+
+- `official_catalyst_continuation_with_full_depth_exhaustion_confirmation`.
+
+Phase443 thesis ID:
+
+- `P443_EXTERNAL_CATALYST_CONTINUATION_FULL_DEPTH_PRECOMMIT`.
+
+Phase443 evidence basis:
+
+- Phase442 allowed catalyst continuation/side-flip only as a new precommit;
+- Phase441 side-flip annualized return was approximately `-1.827100%`, materially better than the rejected reversal primary at approximately `-25.157141%`;
+- the side-flip clue remains non-accepted and must be tested as a frozen continuation source, not as a same-run rescue.
+
+Phase443 frozen contract:
+
+- primary direction policy: follow impulse side when full-depth confirms exhaustion or replenishment after exhaustion;
+- reversal role: control only;
+- full-depth features: L1 spread/microprice plus L2-L5 imbalance, depth, slope, replenishment and vacuum;
+- controls required: reversal control, L1-only ablation, time-shifted catalyst and capacity robustness;
+- capital policy: fixed capital `1,000,000` INR, order notional `100,000` INR, Zerodha `cost200`;
+- acceptance floor: at least `30` round trips, `5` dates, `5` symbols, positive-date fraction at least `0.60`, annualized return at least `12.0%`;
+- forbidden: same reversal rescue, post-result direction flip without precommit, promotion, paper/live acceptance and deployable profitability claim.
+
+Phase443 frozen Phase444 grid:
+
+- scenario rows: `12`;
+- horizon ticks: `600`, `1200`, `2400`;
+- depth confirmation modes: `exhaustion`, `replenishment_after_exhaustion`;
+- capacity events per date: `3`, `5`;
+- grid hash: `0cdcd016ffc6b40063d19f433b02c129be1290ac5ffd16cb927fd87757e8557b`.
+
+Phase443 hard gates:
+
+- passed: `10 / 10`;
+- execution results generated now: `0`;
+- Phase444 execution allowed next: `1`.
+
+Phase443 outputs:
+
+- `scripts/run_phase443_external_catalyst_continuation_precommit.py`;
+- `src/synthetic_l2/phase443_external_catalyst_continuation_precommit.py`;
+- `outputs/phase443/phase443_acceptance_summary.csv`;
+- `outputs/phase443/phase443_evidence_registry.csv`;
+- `outputs/phase443/phase443_frozen_phase444_contract.csv`;
+- `outputs/phase443/phase443_catalyst_continuation_scenario_grid.csv`;
+- `outputs/phase443/phase443_gate_evaluation.csv`;
+- `outputs/phase443/phase443_external_catalyst_continuation_precommit_report.md`;
+- `outputs/phase443/phase443_external_catalyst_continuation_precommit_manifest.json`.
+
+Current next best action after Phase443:
+
+- Run `run_phase444_external_catalyst_continuation_full_depth_no_paper_live`.
+
 ## 25. Final Principle
 
 The synthetic generator must be designed to **challenge strategies**, not to make them profitable.
